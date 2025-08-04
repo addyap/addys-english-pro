@@ -56,11 +56,35 @@ const Home = () => {
     <>
       <SEOHead {...seoMetadata.home} />
       
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-900 to-blue-700 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      {/* Hero Section with Video Background */}
+      <section className="relative bg-gradient-to-r from-blue-900 to-blue-700 text-white overflow-hidden">
+        {/* Video Background */}
+        <div className="absolute inset-0 w-full h-full">
+          <iframe
+            src="https://www.youtube.com/embed/p5UG08OsMGw?autoplay=1&mute=1&loop=1&playlist=p5UG08OsMGw&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0&cc_load_policy=0&playsinline=1&enablejsapi=0"
+            className="absolute top-1/2 left-1/2 w-full h-full min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+            style={{
+              width: '100vw',
+              height: '56.25vw', // 16:9 aspect ratio
+              minHeight: '100%',
+              minWidth: '177.78vh', // 16:9 aspect ratio
+            }}
+            frameBorder="0"
+            allow="autoplay; encrypted-media"
+            allowFullScreen={false}
+            title="Hero Background Video"
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
+
+        {/* Fallback background for when video fails to load */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-blue-700"></div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-shadow-lg">
               Formations d'anglais professionnel pour adultes
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100">
@@ -69,13 +93,13 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/offres-de-formation"
-                className="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                className="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
               >
                 Découvrir mes offres
               </Link>
               <Link
                 to="/contact"
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors"
+                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors shadow-lg"
               >
                 Me contacter
               </Link>

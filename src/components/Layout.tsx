@@ -27,9 +27,9 @@ const Layout = ({ children }: LayoutProps) => {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
               <img
-                src="/lovable-uploads/6f8aaa52-c442-40e7-bae7-4a43584bb898.png"
+                src="/lovable-uploads/14a6c69a-52b7-4b5e-b640-11c0082db53d.png"
                 alt="Formations Logo"
-                className="h-12 w-12 mr-3"
+                className="h-20 w-20 sm:h-24 sm:w-24 lg:h-28 lg:w-28 mr-4"
               />
               <Link to="/" className="text-2xl font-bold text-slate-800">
                 Antony Addy
@@ -72,8 +72,15 @@ const Layout = ({ children }: LayoutProps) => {
       <footer className="bg-slate-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Antony Addy</h3>
+            <div className="flex flex-col items-start">
+              <div className="flex items-center mb-4">
+                <img
+                  src="/lovable-uploads/14a6c69a-52b7-4b5e-b640-11c0082db53d.png"
+                  alt="Formations Logo"
+                  className="h-12 w-12 mr-3"
+                />
+                <h3 className="text-lg font-semibold">Antony Addy</h3>
+              </div>
               <p className="text-gray-300">
                 Formateur Professionnel d'Adultes certifié<br />
                 Formations d'anglais professionnel
