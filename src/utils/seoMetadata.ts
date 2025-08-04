@@ -27,8 +27,8 @@ export const seoMetadata: Record<string, SEOMetadata> = {
     canonical: "https://antonyaddy.com/offres-de-formation"
   },
   testimonials: {
-    title: "Témoignages – Antony Addy",
-    description: "Avis d'apprenants ayant suivi une formation d'anglais avec Antony Addy.",
+    title: "Témoignages – Antony Addy | Formateur Anglais",
+    description: "Avis authentiques d'anciens apprenants et professionnels sur la qualité des formations d'anglais animées par Antony Addy.",
     canonical: "https://antonyaddy.com/temoignages"
   },
   contact: {
