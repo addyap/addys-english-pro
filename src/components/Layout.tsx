@@ -27,9 +27,9 @@ const Layout = ({ children }: LayoutProps) => {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
               <img
-                src="/lovable-uploads/60886575-4fca-43ae-899d-4b60a891ac53.png"
+                src="/lovable-uploads/e702870f-381a-41f9-a7a3-652513be9f42.png"
                 alt="Formations Logo"
-                className="h-24 w-24 sm:h-32 sm:w-32 lg:h-36 lg:w-36 mr-6"
+                className="h-28 w-28 sm:h-36 sm:w-36 lg:h-40 lg:w-40 mr-6"
               />
               <Link to="/" className="text-2xl font-bold text-slate-800">
                 Antony Addy
@@ -75,9 +75,9 @@ const Layout = ({ children }: LayoutProps) => {
             <div className="flex flex-col items-start">
               <div className="flex items-center mb-4">
                 <img
-                  src="/lovable-uploads/60886575-4fca-43ae-899d-4b60a891ac53.png"
+                  src="/lovable-uploads/e702870f-381a-41f9-a7a3-652513be9f42.png"
                   alt="Formations Logo"
-                  className="h-16 w-16 mr-4"
+                  className="h-20 w-20 mr-4"
                 />
                 <h3 className="text-lg font-semibold">Antony Addy</h3>
               </div>
