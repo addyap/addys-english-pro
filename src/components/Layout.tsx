@@ -1,7 +1,7 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { MessageSquare } from 'lucide-react';
+import { MessageSquare, Menu, X, ExternalLink } from 'lucide-react';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -9,6 +9,7 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navigation = [
     { name: 'Accueil', href: '/', current: location.pathname === '/' },
@@ -18,6 +19,10 @@ const Layout = ({ children }: LayoutProps) => {
     { name: 'Contact', href: '/contact', current: location.pathname === '/contact' },
     { name: 'Blog', href: '/blog', current: location.pathname === '/blog' },
   ];
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -29,32 +34,68 @@ const Layout = ({ children }: LayoutProps) => {
               <img
                 src="/lovable-uploads/e702870f-381a-41f9-a7a3-652513be9f42.png"
                 alt="Formations Logo"
-                className="h-28 w-28 sm:h-36 sm:w-36 lg:h-40 lg:w-40 mr-6"
+                className="h-12 w-12 sm:h-16 sm:w-16 mr-4"
               />
-              <Link to="/" className="text-2xl font-bold text-slate-800">
-                Antony Addy
-              </Link>
+              <div className="flex flex-col">
+                <Link to="/" className="text-xl sm:text-2xl font-bold text-slate-800">
+                  Antony Addy
+                </Link>
+                <a
+                  href="https://anglaisadistance.fr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-blue-600 hover:text-blue-800 flex items-center gap-1 mt-1"
+                >
+                  🎓 Ressources gratuites sur anglaisadistance.fr
+                  <ExternalLink className="h-3 w-3" />
+                </a>
+              </div>
             </div>
             
-            <nav className="hidden md:flex space-x-8">
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex space-x-2">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`${
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     item.current
-                      ? 'text-blue-600 border-b-2 border-blue-600'
-                      : 'text-gray-600 hover:text-blue-600'
-                  } pb-2 text-sm font-medium transition-colors`}
+                      ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md'
+                      : 'bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 hover:from-blue-100 hover:to-blue-200 hover:shadow-sm'
+                  }`}
                 >
                   {item.name}
                 </Link>
               ))}
             </nav>
 
+            {/* Mobile menu button */}
+            <div className="md:hidden flex items-center gap-3">
+              <a
+                href="https://wa.me/33649829826"
+                className="bg-green-500 text-white px-3 py-2 rounded-lg flex items-center gap-1 hover:bg-green-600 transition-colors text-sm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageSquare className="h-4 w-4" />
+                WhatsApp
+              </a>
+              <button
+                onClick={toggleMobileMenu}
+                className="text-gray-600 hover:text-gray-900 p-2"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
+
+            {/* Desktop WhatsApp button */}
             <a
               href="https://wa.me/33649829826"
-              className="bg-green-500 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-green-600 transition-colors"
+              className="hidden md:flex bg-green-500 text-white px-4 py-2 rounded-lg items-center gap-2 hover:bg-green-600 transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -62,6 +103,28 @@ const Layout = ({ children }: LayoutProps) => {
               WhatsApp
             </a>
           </div>
+
+          {/* Mobile Navigation Menu */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden border-t border-gray-200 py-4">
+              <nav className="flex flex-col space-y-2">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
+                      item.current
+                        ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md'
+                        : 'bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 hover:from-blue-100 hover:to-blue-200'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+          )}
         </div>
       </header>
 
@@ -77,7 +140,7 @@ const Layout = ({ children }: LayoutProps) => {
                 <img
                   src="/lovable-uploads/e702870f-381a-41f9-a7a3-652513be9f42.png"
                   alt="Formations Logo"
-                  className="h-20 w-20 mr-4"
+                  className="h-16 w-16 mr-4"
                 />
                 <h3 className="text-lg font-semibold">Antony Addy</h3>
               </div>
