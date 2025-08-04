@@ -25,9 +25,9 @@ const Layout = ({ children }: LayoutProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
+      <header className="bg-primary shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
@@ -37,14 +37,14 @@ const Layout = ({ children }: LayoutProps) => {
                 className="h-12 w-12 sm:h-16 sm:w-16 mr-4"
               />
               <div className="flex flex-col">
-                <Link to="/" className="text-xl sm:text-2xl font-bold text-slate-800">
+                <Link to="/" className="text-xl sm:text-2xl font-bold text-primary-foreground">
                   Antony Addy
                 </Link>
                 <a
                   href="https://anglaisadistance.fr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-blue-600 hover:text-blue-800 flex items-center gap-1 mt-1"
+                  className="text-xs text-accent hover:text-accent/80 flex items-center gap-1 mt-1"
                 >
                   🎓 Ressources gratuites sur anglaisadistance.fr
                   <ExternalLink className="h-3 w-3" />
@@ -60,8 +60,8 @@ const Layout = ({ children }: LayoutProps) => {
                   to={item.href}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     item.current
-                      ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md'
-                      : 'bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 hover:from-blue-100 hover:to-blue-200 hover:shadow-sm'
+                      ? 'bg-accent text-accent-foreground shadow-md'
+                      : 'bg-accent/80 text-accent-foreground hover:bg-accent hover:shadow-sm'
                   }`}
                 >
                   {item.name}
@@ -82,7 +82,7 @@ const Layout = ({ children }: LayoutProps) => {
               </a>
               <button
                 onClick={toggleMobileMenu}
-                className="text-gray-600 hover:text-gray-900 p-2"
+                className="text-primary-foreground hover:text-primary-foreground/80 p-2"
               >
                 {isMobileMenuOpen ? (
                   <X className="h-6 w-6" />
@@ -106,7 +106,7 @@ const Layout = ({ children }: LayoutProps) => {
 
           {/* Mobile Navigation Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden border-t border-gray-200 py-4">
+            <div className="md:hidden border-t border-primary-foreground/20 py-4">
               <nav className="flex flex-col space-y-2">
                 {navigation.map((item) => (
                   <Link
@@ -115,8 +115,8 @@ const Layout = ({ children }: LayoutProps) => {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
                       item.current
-                        ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md'
-                        : 'bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 hover:from-blue-100 hover:to-blue-200'
+                        ? 'bg-accent text-accent-foreground shadow-md'
+                        : 'bg-accent/80 text-accent-foreground hover:bg-accent'
                     }`}
                   >
                     {item.name}
@@ -132,7 +132,7 @@ const Layout = ({ children }: LayoutProps) => {
       <main>{children}</main>
 
       {/* Footer */}
-      <footer className="bg-slate-800 text-white">
+      <footer className="bg-secondary text-secondary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="flex flex-col items-start">
@@ -144,7 +144,7 @@ const Layout = ({ children }: LayoutProps) => {
                 />
                 <h3 className="text-lg font-semibold">Antony Addy</h3>
               </div>
-              <p className="text-gray-300">
+              <p className="text-secondary-foreground/80">
                 Formateur Professionnel d'Adultes certifié<br />
                 Formations d'anglais professionnel
               </p>
@@ -152,7 +152,7 @@ const Layout = ({ children }: LayoutProps) => {
             
             <div>
               <h4 className="text-lg font-semibold mb-4">Contact</h4>
-              <p className="text-gray-300 mb-2">hello@antonyaddy.com</p>
+              <p className="text-secondary-foreground/80 mb-2">hello@antonyaddy.com</p>
               <a
                 href="https://wa.me/33649829826"
                 className="text-green-400 hover:text-green-300"
@@ -167,7 +167,7 @@ const Layout = ({ children }: LayoutProps) => {
               <h4 className="text-lg font-semibold mb-4">Ressources</h4>
               <a
                 href="https://anglaisadistance.fr"
-                className="text-blue-400 hover:text-blue-300 block mb-2"
+                className="text-accent hover:text-accent/80 block mb-2"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -175,7 +175,7 @@ const Layout = ({ children }: LayoutProps) => {
               </a>
               <a
                 href="https://linkedin.com/in/antonyaddy"
-                className="text-blue-400 hover:text-blue-300"
+                className="text-accent hover:text-accent/80"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -184,16 +184,16 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
           </div>
           
-          <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <div className="flex space-x-6 text-sm text-gray-300">
-              <Link to="/mentions-legales" className="hover:text-white">
+          <div className="border-t border-secondary-foreground/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <div className="flex space-x-6 text-sm text-secondary-foreground/80">
+              <Link to="/mentions-legales" className="hover:text-secondary-foreground">
                 Mentions légales
               </Link>
-              <Link to="/politique-confidentialite" className="hover:text-white">
+              <Link to="/politique-confidentialite" className="hover:text-secondary-foreground">
                 Politique de confidentialité
               </Link>
             </div>
-            <p className="text-sm text-gray-300 mt-4 md:mt-0">
+            <p className="text-sm text-secondary-foreground/80 mt-4 md:mt-0">
               © 2025 Antony Addy. Tous droits réservés.
             </p>
           </div>
