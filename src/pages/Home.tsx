@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink, UserCheck, Building, GraduationCap, Target, Briefcase, Settings } from 'lucide-react';
@@ -8,34 +7,34 @@ import { seoMetadata } from '../utils/seoMetadata';
 const Home = () => {
   const features = [
     {
+      icon: Globe,
+      title: 'Anglais authentique avec un formateur britannique natif',
+      description: 'Apprenez avec un native speaker pour une prononciation et une expression naturelles'
+    },
+    {
+      icon: Target,
+      title: 'Cours adaptés aux besoins concrets des adultes',
+      description: 'Formations ciblées selon vos objectifs professionnels et personnels'
+    },
+    {
       icon: Award,
-      title: 'Prestataire certifié FPA',
-      description: 'Formateur Professionnel d\'Adultes certifié avec NDA actif'
+      title: 'Formateur Professionnel d\'Adultes certifié',
+      description: 'Certification officielle FPA pour une pédagogie adaptée aux adultes'
     },
     {
       icon: Users,
-      title: '20 ans d\'expérience',
-      description: 'Expert en formation d\'anglais pour adultes et professionnels'
+      title: 'Approche humaine et motivante',
+      description: 'Un accompagnement personnalisé qui respecte votre rythme d\'apprentissage'
     },
     {
-      icon: Globe,
-      title: 'Anglais ciblé par secteur',
-      description: 'Formations adaptées aux besoins spécifiques de votre domaine'
+      icon: Building,
+      title: 'Expérience avec écoles, entreprises, et centres de formation',
+      description: 'Partenariats établis avec de nombreuses institutions et organismes'
     },
     {
       icon: CheckCircle,
-      title: 'CPF via partenaires',
-      description: 'Formations CPF assurées via organismes certifiés Qualiopi'
-    },
-    {
-      icon: BookOpen,
-      title: 'Ressources complémentaires',
-      description: 'Accès aux outils et supports via anglaisadistance.fr'
-    },
-    {
-      icon: UserCheck,
-      title: 'Anglais natif & parfaitement bilingue',
-      description: 'Formateur britannique natif, bilingue français — je vous accompagne avec précision, clarté et adaptabilité.'
+      title: 'Disponible en présentiel (PACA) ou à distance (France entière)',
+      description: 'Flexibilité géographique pour s\'adapter à vos contraintes'
     }
   ];
 
@@ -123,11 +122,14 @@ const Home = () => {
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-shadow-lg font-heading">
-              Formations d'anglais professionnel pour adultes
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-shadow-lg font-heading leading-tight">
+              Formateur d'anglais britannique pour adultes
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 font-body">
-              En ligne ou en présentiel — CPF via centres partenaires agréés
+            <p className="text-xl md:text-2xl mb-4 text-blue-100 font-body">
+              Des formations claires, flexibles et efficaces — pour particuliers, professionnels et centres de formation.
+            </p>
+            <p className="text-lg mb-8 text-blue-200 italic font-body">
+              Native speaker – En ligne ou en présentiel, partout en France
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -229,11 +231,23 @@ const Home = () => {
         </div>
       </section>
 
+      {/* CPF Section - Discrete */}
+      <section className="py-12 bg-muted">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-lg p-6 border border-border/50">
+            <h3 className="text-lg font-medium mb-2 text-primary font-heading">CPF, financement ou formation via organisme</h3>
+            <p className="text-sm text-muted-foreground font-body">
+              Je peux intervenir en tant que formateur dans le cadre de dispositifs tels que le CPF ou via des organismes de formation partenaires. N'hésitez pas à me contacter pour en discuter.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Zone d'intervention Section */}
-      <section className="py-16 bg-muted">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">Zone d'intervention</h2>
-          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+          <div className="bg-muted rounded-2xl shadow-lg p-8 md:p-12">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="order-2 md:order-1">
                 <div className="space-y-4">
@@ -260,14 +274,14 @@ const Home = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">
             Avis Clients
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-muted p-6 rounded-lg shadow-md">
+              <div key={index} className="bg-white p-6 rounded-lg shadow-md">
                 <p className="text-muted-foreground mb-4 italic font-body">"{testimonial.text}"</p>
                 <div>
                   <p className="font-semibold text-primary font-heading">{testimonial.author}</p>
