@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink, UserCheck, Building, GraduationCap, Target, Briefcase, Settings } from 'lucide-react';
+import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink, UserCheck, Building, GraduationCap, Target, Briefcase, Settings, MessageCircle, Mail } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import { seoMetadata } from '../utils/seoMetadata';
@@ -133,15 +133,33 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Features Section - 6 blocks in 2x3 grid */}
+      {/* Qui je suis Section */}
       <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-primary mb-6 font-heading">Qui je suis</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed font-body">
+            Formateur d'anglais certifié, je suis natif britannique et j'accompagne des adultes en formation continue, CPF ou en reconversion. Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
+          </p>
+          <div className="mt-8">
+            <Link
+              to="/qui-je-suis"
+              className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body"
+            >
+              En savoir plus
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section - 6 blocks in 2x3 grid */}
+      <section className="py-16 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">
             Pourquoi choisir mes formations ?
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="text-center p-6 rounded-lg bg-muted hover:shadow-lg transition-shadow">
+              <div key={index} className="text-center p-6 rounded-lg bg-white hover:shadow-lg transition-shadow">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 text-accent rounded-full mb-4">
                   <feature.icon className="h-8 w-8" />
                 </div>
@@ -150,6 +168,25 @@ const Home = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Ils me font confiance Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-primary mb-8 font-heading">Ils me font confiance</h2>
+          
+          <div className="flex justify-center items-center mb-6">
+            <img
+              src="/lovable-uploads/85fe123d-5424-47dd-9132-7931205fcd09.png"
+              alt="IGY Vieux-Port de Cannes"
+              className="h-16 object-contain"
+            />
+          </div>
+
+          <p className="text-lg text-muted-foreground font-body">
+            ITEC, ESCCOM, Ingeneria
+          </p>
         </div>
       </section>
 
@@ -260,28 +297,29 @@ const Home = () => {
       {/* Avis Clients Section */}
       <AvisClients />
 
-      {/* Contact CTA Section */}
-      <section className="py-16 bg-primary text-primary-foreground">
+      {/* Contact CTA Section - Appel à l'action */}
+      <section className="py-16 bg-red-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4 font-heading">Prêt à améliorer votre anglais professionnel ?</h2>
-          <p className="text-xl mb-8 text-primary-foreground/80 font-body">
-            Contactez-moi pour discuter de vos besoins en formation
+          <p className="text-xl mb-8 font-body">
+            Discutons de votre projet de formation. Je suis à votre écoute !
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact"
-              className="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors font-body"
-            >
-              Me contacter
-            </Link>
             <a
               href="https://wa.me/33649829826"
-              className="border-2 border-green-500 bg-green-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-600 hover:border-green-600 transition-colors flex items-center justify-center gap-2 font-body"
+              className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-2 font-body"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <MessageSquare className="h-5 w-5" />
+              <MessageCircle className="h-5 w-5" />
               WhatsApp
+            </a>
+            <a
+              href="mailto:formations@antonyaddy.com"
+              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors flex items-center justify-center gap-2 font-body"
+            >
+              <Mail className="h-5 w-5" />
+              Email
             </a>
           </div>
         </div>
