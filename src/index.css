@@ -105,9 +105,14 @@ All colors MUST be HSL.
   }
 }
 
-/* Custom utility for text shadow */
+/* Custom utilities */
 @layer utilities {
   .text-shadow-lg {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+  
+  .object-cover {
+    object-fit: cover;
   }
 }
+</lov-utilities>
