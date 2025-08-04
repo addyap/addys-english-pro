@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink } from 'lucide-react';
+import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink, UserCheck, Building, GraduationCap, Target, Briefcase, Settings } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { seoMetadata } from '../utils/seoMetadata';
 
@@ -31,6 +31,44 @@ const Home = () => {
       icon: BookOpen,
       title: 'Ressources complémentaires',
       description: 'Accès aux outils et supports via anglaisadistance.fr'
+    },
+    {
+      icon: UserCheck,
+      title: 'Anglais natif & parfaitement bilingue',
+      description: 'Formateur britannique natif, bilingue français — je vous accompagne avec précision, clarté et adaptabilité.'
+    }
+  ];
+
+  const services = [
+    {
+      icon: Building,
+      title: 'Formations en Entreprise',
+      description: 'Sessions personnalisées pour renforcer les compétences linguistiques de vos équipes (anglais professionnel, techniques, ou sectoriels).'
+    },
+    {
+      icon: Briefcase,
+      title: 'CPF (Compte Personnel de Formation)',
+      description: 'Parcours éligibles au CPF, assurés via partenaires certifiés Qualiopi. Formations adaptées à vos objectifs individuels.'
+    },
+    {
+      icon: Target,
+      title: 'AFC – Actions de Formation Conventionnées',
+      description: 'Financement par France Travail et les Régions. Je peux intervenir sous-traité par des organismes certifiés, selon les nouvelles règles 2025.'
+    },
+    {
+      icon: Users,
+      title: 'Dispositifs d\'Accès à l\'Emploi (POE, POEI, AFPR)',
+      description: 'Préparation des publics en reconversion dans le cadre des dispositifs pilotés par les OPCO ou France Travail.'
+    },
+    {
+      icon: GraduationCap,
+      title: 'Formations Bachelor & Master',
+      description: 'Soutien aux étudiants et alternants pour maîtriser l\'anglais académique et professionnel, en formation continue.'
+    },
+    {
+      icon: Settings,
+      title: 'Autres Dispositifs (VAE, Pro-A, etc.)',
+      description: 'Je suis mobilisable par le biais d\'organismes partenaires Qualiopi sur les dispositifs comme la VAE, l\'Agefiph, les missions locales, etc.'
     }
   ];
 
@@ -65,9 +103,9 @@ const Home = () => {
             className="absolute top-1/2 left-1/2 w-full h-full min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 pointer-events-none object-cover"
             style={{
               width: '100vw',
-              height: '56.25vw', // 16:9 aspect ratio
+              height: '56.25vw',
               minHeight: '100vh',
-              minWidth: '177.78vh', // 16:9 aspect ratio
+              minWidth: '177.78vh',
             }}
             frameBorder="0"
             allow="autoplay; encrypted-media"
@@ -109,41 +147,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* anglaisadistance.fr Block */}
-      <section className="py-16 bg-muted">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-border">
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-shrink-0">
-                <img
-                  src="/lovable-uploads/d96440ab-4b9c-4f42-9910-75051d4f8b0e.png"
-                  alt="anglaisadistance.fr"
-                  className="h-24 w-auto"
-                />
-              </div>
-              <div className="flex-1 text-center md:text-left">
-                <h2 className="text-3xl font-bold text-primary mb-4 font-heading">
-                  Ressources gratuites en anglais
-                </h2>
-                <p className="text-lg text-muted-foreground mb-6 font-body">
-                  Découvrez mes supports de grammaire, vocabulaire, dialogues, et jeux interactifs gratuitement sur anglaisadistance.fr.
-                </p>
-                <a
-                  href="https://anglaisadistance.fr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors font-body"
-                >
-                  Explorer les ressources
-                  <ExternalLink className="h-4 w-4" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
+      {/* Features Section - 6 blocks in 2x3 grid */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">
@@ -163,15 +167,107 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* anglaisadistance.fr Block */}
       <section className="py-16 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-border">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-shrink-0">
+                <img
+                  src="/lovable-uploads/d96440ab-4b9c-4f42-9910-75051d4f8b0e.png"
+                  alt="anglaisadistance.fr"
+                  className="h-24 w-auto"
+                />
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h2 className="text-3xl font-bold text-primary mb-4 font-heading">
+                  Des ressources gratuites en anglais — à votre rythme
+                </h2>
+                <p className="text-lg text-muted-foreground mb-6 font-body">
+                  J'ai créé anglaisadistance.fr pour offrir gratuitement des ressources fiables et accessibles à tous : grammaire, vocabulaire, dialogues, jeux...
+                </p>
+                <a
+                  href="https://anglaisadistance.fr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors font-body"
+                >
+                  Découvrir les ressources
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">
-            Témoignages
+            Mes offres de formation
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <div key={index} className="text-center p-6 rounded-lg bg-muted hover:shadow-lg transition-shadow">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 text-primary rounded-full mb-4">
+                  <service.icon className="h-8 w-8" />
+                </div>
+                <h3 className="text-xl font-semibold text-primary mb-3 font-heading">{service.title}</h3>
+                <p className="text-muted-foreground font-body">{service.description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link
+              to="/offres-de-formation"
+              className="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body"
+            >
+              Voir toutes mes offres
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Zone d'intervention Section */}
+      <section className="py-16 bg-muted">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">Zone d'intervention</h2>
+          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="order-2 md:order-1">
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-xl font-semibold text-primary mb-2 font-heading">Présentiel</h3>
+                    <p className="text-muted-foreground font-body">Cannes, Antibes, Nice, Monaco (Alpes-Maritimes)</p>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-primary mb-2 font-heading">Distanciel</h3>
+                    <p className="text-muted-foreground font-body">France entière</p>
+                  </div>
+                </div>
+              </div>
+              <div className="order-1 md:order-2">
+                <img
+                  src="/lovable-uploads/de1467b6-7694-4b1e-b2c8-e4cb04b71b21.png"
+                  alt="Carte de la zone d'intervention - Côte d'Azur"
+                  className="w-full h-auto rounded-lg"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">
+            Avis Clients
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md">
+              <div key={index} className="bg-muted p-6 rounded-lg shadow-md">
                 <p className="text-muted-foreground mb-4 italic font-body">"{testimonial.text}"</p>
                 <div>
                   <p className="font-semibold text-primary font-heading">{testimonial.author}</p>
@@ -185,21 +281,8 @@ const Home = () => {
               to="/temoignages"
               className="text-accent hover:text-accent/80 font-medium font-body"
             >
-              Voir tous les témoignages →
+              Lire tous les témoignages →
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Zone Coverage Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-primary/5 border border-primary/10 rounded-lg p-8 text-center">
-            <h2 className="text-2xl font-bold text-primary mb-4 font-heading">Zone d'intervention</h2>
-            <p className="text-lg text-primary font-body">
-              <span className="font-semibold">Présentiel :</span> Var (Fréjus, Saint-Raphaël, Draguignan)<br />
-              <span className="font-semibold">Distanciel :</span> France entière
-            </p>
           </div>
         </div>
       </section>
