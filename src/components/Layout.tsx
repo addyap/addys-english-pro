@@ -18,6 +18,7 @@ const Layout = ({ children }: LayoutProps) => {
     { name: 'Témoignages', href: '/temoignages', current: location.pathname === '/temoignages' },
     { name: 'Contact', href: '/contact', current: location.pathname === '/contact' },
     { name: 'Blog', href: '/blog', current: location.pathname === '/blog' },
+    { name: 'Ressources', href: '/anglaisadistance', current: location.pathname === '/anglaisadistance' },
   ];
 
   const toggleMobileMenu = () => {
@@ -25,7 +26,7 @@ const Layout = ({ children }: LayoutProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background font-body">
       {/* Header */}
       <header className="bg-primary shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,14 +38,14 @@ const Layout = ({ children }: LayoutProps) => {
                 className="h-12 w-12 sm:h-16 sm:w-16 mr-4"
               />
               <div className="flex flex-col">
-                <Link to="/" className="text-xl sm:text-2xl font-bold text-primary-foreground">
+                <Link to="/" className="text-xl sm:text-2xl font-bold text-primary-foreground font-heading">
                   Antony Addy
                 </Link>
                 <a
                   href="https://anglaisadistance.fr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-accent hover:text-accent/80 flex items-center gap-1 mt-1"
+                  className="text-xs text-primary-foreground/80 hover:text-primary-foreground flex items-center gap-1 mt-1 transition-colors"
                 >
                   🎓 Ressources gratuites sur anglaisadistance.fr
                   <ExternalLink className="h-3 w-3" />
@@ -53,15 +54,15 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
             
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-2">
+            <nav className="hidden md:flex space-x-1">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 font-body ${
                     item.current
-                      ? 'bg-accent text-accent-foreground shadow-md'
-                      : 'bg-accent/80 text-accent-foreground hover:bg-accent hover:shadow-sm'
+                      ? 'text-primary-foreground border-b-2 border-primary-foreground/50'
+                      : 'text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10'
                   }`}
                 >
                   {item.name}
@@ -73,7 +74,7 @@ const Layout = ({ children }: LayoutProps) => {
             <div className="md:hidden flex items-center gap-3">
               <a
                 href="https://wa.me/33649829826"
-                className="bg-green-500 text-white px-3 py-2 rounded-lg flex items-center gap-1 hover:bg-green-600 transition-colors text-sm"
+                className="bg-green-500 text-white px-3 py-2 rounded-lg flex items-center gap-1 hover:bg-green-600 transition-colors text-sm font-body"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -95,7 +96,7 @@ const Layout = ({ children }: LayoutProps) => {
             {/* Desktop WhatsApp button */}
             <a
               href="https://wa.me/33649829826"
-              className="hidden md:flex bg-green-500 text-white px-4 py-2 rounded-lg items-center gap-2 hover:bg-green-600 transition-colors"
+              className="hidden md:flex bg-green-500 text-white px-4 py-2 rounded-lg items-center gap-2 hover:bg-green-600 transition-colors font-body"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -113,10 +114,10 @@ const Layout = ({ children }: LayoutProps) => {
                     key={item.name}
                     to={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 font-body ${
                       item.current
-                        ? 'bg-accent text-accent-foreground shadow-md'
-                        : 'bg-accent/80 text-accent-foreground hover:bg-accent'
+                        ? 'text-primary-foreground border-l-4 border-primary-foreground/50 bg-primary-foreground/10'
+                        : 'text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10'
                     }`}
                   >
                     {item.name}
@@ -142,20 +143,20 @@ const Layout = ({ children }: LayoutProps) => {
                   alt="Formations Logo"
                   className="h-16 w-16 mr-4"
                 />
-                <h3 className="text-lg font-semibold">Antony Addy</h3>
+                <h3 className="text-lg font-semibold font-heading">Antony Addy</h3>
               </div>
-              <p className="text-secondary-foreground/80">
+              <p className="text-secondary-foreground/80 font-body">
                 Formateur Professionnel d'Adultes certifié<br />
                 Formations d'anglais professionnel
               </p>
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold mb-4">Contact</h4>
-              <p className="text-secondary-foreground/80 mb-2">hello@antonyaddy.com</p>
+              <h4 className="text-lg font-semibold mb-4 font-heading">Contact</h4>
+              <p className="text-secondary-foreground/80 mb-2 font-body">hello@antonyaddy.com</p>
               <a
                 href="https://wa.me/33649829826"
-                className="text-green-400 hover:text-green-300"
+                className="text-green-400 hover:text-green-300 font-body"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -164,10 +165,10 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold mb-4">Ressources</h4>
+              <h4 className="text-lg font-semibold mb-4 font-heading">Ressources</h4>
               <a
                 href="https://anglaisadistance.fr"
-                className="text-accent hover:text-accent/80 block mb-2"
+                className="text-accent hover:text-accent/80 block mb-2 font-body"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -175,7 +176,7 @@ const Layout = ({ children }: LayoutProps) => {
               </a>
               <a
                 href="https://linkedin.com/in/antonyaddy"
-                className="text-accent hover:text-accent/80"
+                className="text-accent hover:text-accent/80 font-body"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -185,7 +186,7 @@ const Layout = ({ children }: LayoutProps) => {
           </div>
           
           <div className="border-t border-secondary-foreground/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <div className="flex space-x-6 text-sm text-secondary-foreground/80">
+            <div className="flex space-x-6 text-sm text-secondary-foreground/80 font-body">
               <Link to="/mentions-legales" className="hover:text-secondary-foreground">
                 Mentions légales
               </Link>
@@ -193,7 +194,7 @@ const Layout = ({ children }: LayoutProps) => {
                 Politique de confidentialité
               </Link>
             </div>
-            <p className="text-sm text-secondary-foreground/80 mt-4 md:mt-0">
+            <p className="text-sm text-secondary-foreground/80 mt-4 md:mt-0 font-body">
               © 2025 Antony Addy. Tous droits réservés.
             </p>
           </div>

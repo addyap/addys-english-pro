@@ -13,6 +13,7 @@ import Testimonials from "./pages/Testimonials";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
+import AnglaisADistance from "./pages/AnglaisADistance";
 import LegalNotices from "./pages/LegalNotices";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
@@ -35,6 +36,7 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:id" element={<BlogArticle />} />
+              <Route path="/anglaisadistance" element={<AnglaisADistance />} />
               <Route path="/mentions-legales" element={<LegalNotices />} />
               <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

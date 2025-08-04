@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare } from 'lucide-react';
+import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { seoMetadata } from '../utils/seoMetadata';
 
@@ -84,22 +85,22 @@ const Home = () => {
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-shadow-lg">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-shadow-lg font-heading">
               Formations d'anglais professionnel pour adultes
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100">
+            <p className="text-xl md:text-2xl mb-8 text-blue-100 font-body">
               En ligne ou en présentiel — CPF via centres partenaires agréés
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/offres-de-formation"
-                className="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
+                className="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all shadow-md font-body"
               >
                 Découvrir mes offres
               </Link>
               <Link
                 to="/contact"
-                className="border-2 border-accent text-white bg-accent/20 px-8 py-3 rounded-lg font-semibold hover:bg-accent hover:border-accent transition-colors shadow-lg"
+                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-all font-body"
               >
                 Me contacter
               </Link>
@@ -108,10 +109,44 @@ const Home = () => {
         </div>
       </section>
 
+      {/* anglaisadistance.fr Block */}
+      <section className="py-16 bg-muted">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-border">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-shrink-0">
+                <img
+                  src="/lovable-uploads/d96440ab-4b9c-4f42-9910-75051d4f8b0e.png"
+                  alt="anglaisadistance.fr"
+                  className="h-24 w-auto"
+                />
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h2 className="text-3xl font-bold text-primary mb-4 font-heading">
+                  Ressources gratuites en anglais
+                </h2>
+                <p className="text-lg text-muted-foreground mb-6 font-body">
+                  Découvrez mes supports de grammaire, vocabulaire, dialogues, et jeux interactifs gratuitement sur anglaisadistance.fr.
+                </p>
+                <a
+                  href="https://anglaisadistance.fr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors font-body"
+                >
+                  Explorer les ressources
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-primary mb-12">
+          <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">
             Pourquoi choisir mes formations ?
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -120,8 +155,8 @@ const Home = () => {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 text-accent rounded-full mb-4">
                   <feature.icon className="h-8 w-8" />
                 </div>
-                <h3 className="text-xl font-semibold text-primary mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <h3 className="text-xl font-semibold text-primary mb-3 font-heading">{feature.title}</h3>
+                <p className="text-muted-foreground font-body">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -131,16 +166,16 @@ const Home = () => {
       {/* Testimonials Section */}
       <section className="py-16 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-primary mb-12">
+          <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">
             Témoignages
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                <p className="text-muted-foreground mb-4 italic">"{testimonial.text}"</p>
+                <p className="text-muted-foreground mb-4 italic font-body">"{testimonial.text}"</p>
                 <div>
-                  <p className="font-semibold text-primary">{testimonial.author}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                  <p className="font-semibold text-primary font-heading">{testimonial.author}</p>
+                  <p className="text-sm text-muted-foreground font-body">{testimonial.role}</p>
                 </div>
               </div>
             ))}
@@ -148,7 +183,7 @@ const Home = () => {
           <div className="text-center mt-8">
             <Link
               to="/temoignages"
-              className="text-accent hover:text-accent/80 font-medium"
+              className="text-accent hover:text-accent/80 font-medium font-body"
             >
               Voir tous les témoignages →
             </Link>
@@ -160,8 +195,8 @@ const Home = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-primary/5 border border-primary/10 rounded-lg p-8 text-center">
-            <h2 className="text-2xl font-bold text-primary mb-4">Zone d'intervention</h2>
-            <p className="text-lg text-primary">
+            <h2 className="text-2xl font-bold text-primary mb-4 font-heading">Zone d'intervention</h2>
+            <p className="text-lg text-primary font-body">
               <span className="font-semibold">Présentiel :</span> Var (Fréjus, Saint-Raphaël, Draguignan)<br />
               <span className="font-semibold">Distanciel :</span> France entière
             </p>
@@ -172,20 +207,20 @@ const Home = () => {
       {/* Contact CTA Section */}
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Prêt à améliorer votre anglais professionnel ?</h2>
-          <p className="text-xl mb-8 text-primary-foreground/80">
+          <h2 className="text-3xl font-bold mb-4 font-heading">Prêt à améliorer votre anglais professionnel ?</h2>
+          <p className="text-xl mb-8 text-primary-foreground/80 font-body">
             Contactez-moi pour discuter de vos besoins en formation
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              className="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors font-body"
             >
               Me contacter
             </Link>
             <a
               href="https://wa.me/33649829826"
-              className="border-2 border-accent bg-accent text-accent-foreground px-8 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors flex items-center justify-center gap-2"
+              className="border-2 border-green-500 bg-green-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-600 hover:border-green-600 transition-colors flex items-center justify-center gap-2 font-body"
               target="_blank"
               rel="noopener noreferrer"
             >
