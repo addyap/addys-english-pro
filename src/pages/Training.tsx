@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Users, Building, GraduationCap, CheckCircle, AlertCircle } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
@@ -76,7 +77,7 @@ const Training = () => {
                   <strong>En ligne :</strong> Toute la France
                 </p>
                 <p className="text-muted-foreground">
-                  <strong>En présentiel :</strong> Var (Fréjus, Saint-Raphaël, Draguignan)
+                  <strong>En présentiel :</strong> Cannes, Antibes, Nice, Monaco (Alpes-Maritimes)
                 </p>
               </div>
             </div>

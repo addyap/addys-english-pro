@@ -35,10 +35,10 @@ const Layout = ({ children }: LayoutProps) => {
               <img
                 src="/lovable-uploads/e702870f-381a-41f9-a7a3-652513be9f42.png"
                 alt="Formations Logo"
-                className="h-12 w-12 mr-4"
+                className="h-10 w-10 mr-3"
               />
               <div className="flex flex-col">
-                <Link to="/" className="text-xl font-bold text-primary font-heading">
+                <Link to="/" className="text-lg font-bold text-primary font-heading">
                   Antony Addy
                 </Link>
                 <a
@@ -54,15 +54,15 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
             
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-2">
+            <nav className="hidden lg:flex items-center space-x-1">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 font-body border ${
+                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 font-body border ${
                     item.current
-                      ? 'bg-primary text-primary-foreground border-primary'
-                      : 'text-primary hover:text-primary-foreground hover:bg-primary border-primary hover:border-primary'
+                      ? 'bg-accent text-accent-foreground border-accent'
+                      : 'text-primary hover:text-accent-foreground hover:bg-accent border-transparent hover:border-accent'
                   }`}
                 >
                   {item.name}
@@ -71,7 +71,7 @@ const Layout = ({ children }: LayoutProps) => {
             </nav>
 
             {/* Mobile menu button */}
-            <div className="md:hidden flex items-center gap-3">
+            <div className="lg:hidden flex items-center gap-3">
               <a
                 href="https://wa.me/33649829826"
                 className="bg-green-500 text-white px-3 py-2 rounded-lg flex items-center gap-1 hover:bg-green-600 transition-colors text-sm font-body"
@@ -96,7 +96,7 @@ const Layout = ({ children }: LayoutProps) => {
             {/* Desktop WhatsApp button */}
             <a
               href="https://wa.me/33649829826"
-              className="hidden md:flex bg-green-500 text-white px-4 py-2 rounded-lg items-center gap-2 hover:bg-green-600 transition-colors font-body"
+              className="hidden lg:flex bg-green-500 text-white px-4 py-2 rounded-lg items-center gap-2 hover:bg-green-600 transition-colors font-body ml-4"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -107,7 +107,7 @@ const Layout = ({ children }: LayoutProps) => {
 
           {/* Mobile Navigation Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden border-t border-gray-200 py-4">
+            <div className="lg:hidden border-t border-gray-200 py-4">
               <nav className="flex flex-col space-y-2">
                 {navigation.map((item) => (
                   <Link
@@ -116,8 +116,8 @@ const Layout = ({ children }: LayoutProps) => {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 font-body border ${
                       item.current
-                        ? 'text-primary-foreground bg-primary border-primary'
-                        : 'text-primary hover:text-primary-foreground hover:bg-primary border-primary hover:border-primary'
+                        ? 'text-accent-foreground bg-accent border-accent'
+                        : 'text-primary hover:text-accent-foreground hover:bg-accent border-transparent hover:border-accent'
                     }`}
                   >
                     {item.name}
@@ -143,20 +143,20 @@ const Layout = ({ children }: LayoutProps) => {
                   alt="Formations Logo"
                   className="h-12 w-12 mr-4"
                 />
-                <h3 className="text-lg font-semibold font-heading">Antony Addy</h3>
+                <h3 className="text-lg font-semibold font-heading text-white">Antony Addy</h3>
               </div>
-              <p className="text-primary-foreground/80 font-body">
+              <p className="text-gray-200 font-body">
                 Formateur Professionnel d'Adultes certifié<br />
                 Formations d'anglais professionnel
               </p>
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold mb-4 font-heading">Contact</h4>
-              <p className="text-primary-foreground/80 mb-2 font-body">formations@antonyaddy.com</p>
+              <h4 className="text-lg font-semibold mb-4 font-heading text-white">Contact</h4>
+              <p className="text-gray-200 mb-2 font-body">formations@antonyaddy.com</p>
               <a
                 href="https://wa.me/33649829826"
-                className="text-green-400 hover:text-green-300 block mb-2 font-body"
+                className="text-green-300 hover:text-green-200 block mb-2 font-body transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -164,7 +164,7 @@ const Layout = ({ children }: LayoutProps) => {
               </a>
               <a
                 href="https://linkedin.com/in/antonyaddy"
-                className="text-accent hover:text-accent/80 font-body"
+                className="text-blue-300 hover:text-blue-200 font-body transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -173,10 +173,10 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold mb-4 font-heading">Ressources</h4>
+              <h4 className="text-lg font-semibold mb-4 font-heading text-white">Ressources</h4>
               <a
                 href="https://anglaisadistance.fr"
-                className="text-accent hover:text-accent/80 block mb-2 font-body"
+                className="text-blue-300 hover:text-blue-200 block mb-2 font-body transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -185,16 +185,16 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
           </div>
           
-          <div className="border-t border-primary-foreground/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <div className="flex space-x-6 text-sm text-primary-foreground/80 font-body">
-              <Link to="/mentions-legales" className="hover:text-primary-foreground">
+          <div className="border-t border-gray-500 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <div className="flex space-x-6 text-sm text-gray-200 font-body">
+              <Link to="/mentions-legales" className="hover:text-yellow-200 transition-colors">
                 Mentions légales
               </Link>
-              <Link to="/politique-confidentialite" className="hover:text-primary-foreground">
+              <Link to="/politique-confidentialite" className="hover:text-yellow-200 transition-colors">
                 Politique de confidentialité
               </Link>
             </div>
-            <p className="text-sm text-primary-foreground/80 mt-4 md:mt-0 font-body">
+            <p className="text-sm text-gray-200 mt-4 md:mt-0 font-body">
               © 2025 Antony Addy. Tous droits réservés.
             </p>
           </div>
