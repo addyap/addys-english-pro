@@ -1,7 +1,9 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink, UserCheck, Building, GraduationCap, Target, Briefcase, Settings } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import AvisClients from '../components/AvisClients';
 import { seoMetadata } from '../utils/seoMetadata';
 
 const Home = () => {
@@ -68,24 +70,6 @@ const Home = () => {
       icon: Settings,
       title: 'Autres Dispositifs (VAE, Pro-A, etc.)',
       description: 'Je suis mobilisable par le biais d\'organismes partenaires Qualiopi sur les dispositifs comme la VAE, l\'Agefiph, les missions locales, etc.'
-    }
-  ];
-
-  const testimonials = [
-    {
-      text: "Une formation vraiment adaptée à mes besoins en anglais commercial. Antony a su identifier mes points faibles et m'aider à progresser rapidement.",
-      author: "Marie L.",
-      role: "Responsable Export"
-    },
-    {
-      text: "Excellent formateur, très pédagogue. Les modules sur l'anglais des réunions m'ont été particulièrement utiles.",
-      author: "Thomas B.",
-      role: "Chef de projet"
-    },
-    {
-      text: "Professional training that really made a difference in my daily work. Highly recommend Antony's approach.",
-      author: "Sarah M.",
-      role: "Marketing Manager"
     }
   ];
 
@@ -273,33 +257,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-16 bg-muted">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">
-            Avis Clients
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                <p className="text-muted-foreground mb-4 italic font-body">"{testimonial.text}"</p>
-                <div>
-                  <p className="font-semibold text-primary font-heading">{testimonial.author}</p>
-                  <p className="text-sm text-muted-foreground font-body">{testimonial.role}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <Link
-              to="/temoignages"
-              className="text-accent hover:text-accent/80 font-medium font-body"
-            >
-              Lire tous les témoignages →
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Avis Clients Section */}
+      <AvisClients />
 
       {/* Contact CTA Section */}
       <section className="py-16 bg-primary text-primary-foreground">
