@@ -1,9 +1,7 @@
-
 import React, { useState } from 'react';
 import { MessageSquare, Mail, MapPin, Clock } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { seoMetadata } from '../utils/seoMetadata';
-
 const Contact = () => {
   const [formData, setFormData] = useState({
     prenom: '',
@@ -11,24 +9,25 @@ const Contact = () => {
     email: '',
     message: ''
   });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
     // Here you would typically send the form data to a server
     alert('Message envoyé ! Je vous recontacte rapidement.');
-    setFormData({ prenom: '', nom: '', email: '', message: '' });
+    setFormData({
+      prenom: '',
+      nom: '',
+      email: '',
+      message: ''
+    });
   };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   };
-
-  return (
-    <>
+  return <>
       <SEOHead {...seoMetadata.contact} />
       
       <div className="min-h-screen bg-gray-50 py-12">
@@ -58,30 +57,14 @@ const Contact = () => {
                     <label htmlFor="prenom" className="block text-sm font-medium text-gray-700 mb-2">
                       Prénom *
                     </label>
-                    <input
-                      type="text"
-                      id="prenom"
-                      name="prenom"
-                      value={formData.prenom}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
+                    <input type="text" id="prenom" name="prenom" value={formData.prenom} onChange={handleChange} required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                   </div>
                   
                   <div>
                     <label htmlFor="nom" className="block text-sm font-medium text-gray-700 mb-2">
                       Nom *
                     </label>
-                    <input
-                      type="text"
-                      id="nom"
-                      name="nom"
-                      value={formData.nom}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
+                    <input type="text" id="nom" name="nom" value={formData.nom} onChange={handleChange} required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                   </div>
                 </div>
                 
@@ -89,37 +72,17 @@ const Contact = () => {
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                     Email *
                   </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
+                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                     Message *
                   </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={6}
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    placeholder="Décrivez vos besoins en formation, votre niveau actuel, vos objectifs..."
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                  />
+                  <textarea id="message" name="message" rows={6} value={formData.message} onChange={handleChange} required placeholder="Décrivez vos besoins en formation, votre niveau actuel, vos objectifs..." className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none" />
                 </div>
                 
-                <button
-                  type="submit"
-                  className="w-full bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                >
+                <button type="submit" className="w-full bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
                   Envoyer le message
                 </button>
               </form>
@@ -143,12 +106,7 @@ const Contact = () => {
                 <p className="text-green-800 mb-4">
                   Pour une réponse immédiate, contactez-moi directement sur WhatsApp
                 </p>
-                <a
-                  href="https://wa.me/33649829826"
-                  className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="https://wa.me/33649829826" className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors" target="_blank" rel="noopener noreferrer">
                   <MessageSquare className="h-5 w-5 mr-2" />
                   Ouvrir WhatsApp
                 </a>
@@ -165,9 +123,7 @@ const Contact = () => {
                     <Mail className="h-5 w-5 text-blue-600 mr-3" />
                     <div>
                       <p className="font-medium text-gray-900">Email</p>
-                      <a href="mailto:hello@antonyaddy.com" className="text-blue-600 hover:text-blue-800">
-                        hello@antonyaddy.com
-                      </a>
+                      <a href="mailto:hello@antonyaddy.com" className="text-blue-600 hover:text-blue-800">formations@antonyaddy.com</a>
                     </div>
                   </div>
                   
@@ -200,20 +156,11 @@ const Contact = () => {
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">
                   Connectons-nous sur LinkedIn
                 </h3>
-                <img
-                  src="/lovable-uploads/200e88ab-2bbf-4168-85ad-8123b07c44ac.png"
-                  alt="QR Code LinkedIn Antony Addy"
-                  className="mx-auto mb-4 max-w-48"
-                />
+                <img src="/lovable-uploads/200e88ab-2bbf-4168-85ad-8123b07c44ac.png" alt="QR Code LinkedIn Antony Addy" className="mx-auto mb-4 max-w-48" />
                 <p className="text-sm text-gray-600">
                   Scannez ce QR code pour me suivre sur LinkedIn
                 </p>
-                <a
-                  href="https://linkedin.com/in/antonyaddy"
-                  className="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="https://linkedin.com/in/antonyaddy" className="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium" target="_blank" rel="noopener noreferrer">
                   Voir mon profil LinkedIn →
                 </a>
               </div>
@@ -221,8 +168,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </>
-  );
+    </>;
 };
-
 export default Contact;
