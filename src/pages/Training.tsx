@@ -1,39 +1,30 @@
-
 import React from 'react';
 import { Users, Building, GraduationCap, CheckCircle, AlertCircle } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { seoMetadata } from '../utils/seoMetadata';
-
 const Training = () => {
-  const directTraining = [
-    {
-      title: 'Emailing professionnel',
-      description: 'Maîtrisez la rédaction d\'emails efficaces en anglais',
-      duration: '10-15 heures',
-      level: 'Tous niveaux'
-    },
-    {
-      title: 'Réunions en anglais',
-      description: 'Participez activement et animez vos réunions internationales',
-      duration: '15-20 heures',
-      level: 'Intermédiaire+'
-    },
-    {
-      title: 'Communication téléphonique',
-      description: 'Gérez vos appels professionnels avec assurance',
-      duration: '8-12 heures',
-      level: 'Tous niveaux'
-    },
-    {
-      title: 'Entretiens et négociation',
-      description: 'Préparez vos entretiens et négociations en anglais',
-      duration: '12-18 heures',
-      level: 'Intermédiaire+'
-    }
-  ];
-
-  return (
-    <>
+  const directTraining = [{
+    title: 'Emailing professionnel',
+    description: 'Maîtrisez la rédaction d\'emails efficaces en anglais',
+    duration: '10-15 heures',
+    level: 'Tous niveaux'
+  }, {
+    title: 'Réunions en anglais',
+    description: 'Participez activement et animez vos réunions internationales',
+    duration: '15-20 heures',
+    level: 'Intermédiaire+'
+  }, {
+    title: 'Communication téléphonique',
+    description: 'Gérez vos appels professionnels avec assurance',
+    duration: '8-12 heures',
+    level: 'Tous niveaux'
+  }, {
+    title: 'Entretiens et négociation',
+    description: 'Préparez vos entretiens et négociations en anglais',
+    duration: '12-18 heures',
+    level: 'Intermédiaire+'
+  }];
+  return <>
       <SEOHead {...seoMetadata.training} />
       
       <div className="min-h-screen bg-gray-50 py-12">
@@ -130,24 +121,7 @@ const Training = () => {
           </div>
 
           {/* Training Modules */}
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">
-              Modules de formation disponibles
-            </h2>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              {directTraining.map((module, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                  <h3 className="text-xl font-semibold text-blue-600 mb-3">{module.title}</h3>
-                  <p className="text-gray-700 mb-4">{module.description}</p>
-                  <div className="flex justify-between items-center text-sm text-gray-500">
-                    <span><strong>Durée :</strong> {module.duration}</span>
-                    <span><strong>Niveau :</strong> {module.level}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          
 
           {/* Sectors */}
           <div className="bg-blue-50 rounded-lg p-8 mb-12">
@@ -186,26 +160,16 @@ const Training = () => {
               de formation sur mesure
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/contact"
-                className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-              >
+              <a href="/contact" className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
                 Me contacter
               </a>
-              <a
-                href="https://wa.me/33649829826"
-                className="border-2 border-green-500 text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-green-500 hover:text-white transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://wa.me/33649829826" className="border-2 border-green-500 text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-green-500 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
                 WhatsApp
               </a>
             </div>
           </div>
         </div>
       </div>
-    </>
-  );
+    </>;
 };
-
 export default Training;
