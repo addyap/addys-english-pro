@@ -10,6 +10,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const year = new Date().getFullYear();
 
   const navigation = [
     { name: 'Accueil', href: '/', current: location.pathname === '/' },
@@ -133,69 +134,67 @@ const Layout = ({ children }: LayoutProps) => {
       <main>{children}</main>
 
       {/* Footer */}
-      <footer className="bg-primary text-primary-foreground">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-start">
-              <div className="flex items-center mb-4">
-                <img
-                  src="/lovable-uploads/e702870f-381a-41f9-a7a3-652513be9f42.png"
-                  alt="Formations Logo"
-                  className="h-12 w-12 mr-4"
-                />
-                <h3 className="text-lg font-semibold font-heading text-white">Antony Addy</h3>
-              </div>
-              <p className="text-gray-200 font-body">
-                Formateur Professionnel d'Adultes certifié<br />
-                Formations d'anglais professionnel
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="text-lg font-semibold mb-4 font-heading text-white">Contact</h4>
-              <p className="text-gray-200 mb-2 font-body">formations@antonyaddy.com</p>
-              <a
-                href="https://wa.me/33649829826"
-                className="text-green-300 hover:text-green-200 block mb-2 font-body transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                WhatsApp
-              </a>
-              <a
-                href="https://linkedin.com/in/antonyaddy"
-                className="text-blue-300 hover:text-blue-200 font-body transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
-              </a>
-            </div>
-            
-            <div>
-              <h4 className="text-lg font-semibold mb-4 font-heading text-white">Ressources</h4>
-              <a
-                href="https://anglaisadistance.fr"
-                className="text-blue-300 hover:text-blue-200 block mb-2 font-body transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                anglaisadistance.fr
-              </a>
-            </div>
+      <footer className="bg-slate-900 text-white text-sm py-8 px-4">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
+          <div>
+            <h3 className="font-semibold mb-2">Navigation</h3>
+            <ul className="space-y-1">
+              <li>
+                <Link to="/mentions-legales" className="hover:underline">
+                  Mentions Légales
+                </Link>
+              </li>
+              <li>
+                <Link to="/politique-confidentialite" className="hover:underline">
+                  Politique de confidentialité
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:underline">
+                  Contact
+                </Link>
+              </li>
+            </ul>
           </div>
-          
-          <div className="border-t border-gray-500 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <div className="flex space-x-6 text-sm text-gray-200 font-body">
-              <Link to="/mentions-legales" className="hover:text-yellow-200 transition-colors">
-                Mentions légales
-              </Link>
-              <Link to="/politique-confidentialite" className="hover:text-yellow-200 transition-colors">
-                Politique de confidentialité
-              </Link>
-            </div>
-            <p className="text-sm text-gray-200 mt-4 md:mt-0 font-body">
-              © 2025 Antony Addy. Tous droits réservés.
+
+          <div>
+            <h3 className="font-semibold mb-2">Contact</h3>
+            <ul className="space-y-1">
+              <li>
+                📧{" "}
+                <a
+                  href="mailto:formations@antonyaddy.com"
+                  className="hover:underline"
+                >
+                  formations@antonyaddy.com
+                </a>
+              </li>
+              <li>
+                💬{" "}
+                <a
+                  href="https://wa.me/33649829826"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  +33 6 49 82 98 26 (WhatsApp)
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="md:text-right">
+            <p>© {year} Antony Addy. Tous droits réservés.</p>
+            <p className="mt-1 text-gray-400">
+              Site hébergé par Bluehost –{" "}
+              <a
+                href="https://www.bluehost.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                www.bluehost.com
+              </a>
             </p>
           </div>
         </div>
