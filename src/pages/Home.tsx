@@ -156,7 +156,7 @@ const Home = () => {
             <SwiperSlide>
               <div className="flex flex-col items-center">
                 <img
-                  src="/assets/IGY Vieux-Port de Cannes.png"
+                  src="/lovable-uploads/a3da9e3b-1f6c-447a-b308-2ca44d071c67.png"
                   alt="IGY Vieux-Port de Cannes"
                   className="h-24 object-contain mb-2"
                 />
@@ -167,7 +167,7 @@ const Home = () => {
             <SwiperSlide>
               <div className="flex flex-col items-center">
                 <img
-                  src="/assets/ITEC Logo.png"
+                  src="/lovable-uploads/694fcb0f-d52b-44f3-8cbc-6c1a051e416b.png"
                   alt="ITEC"
                   className="h-24 object-contain mb-2"
                 />
@@ -178,7 +178,7 @@ const Home = () => {
             <SwiperSlide>
               <div className="flex flex-col items-center">
                 <img
-                  src="/assets/Esccom logo.png"
+                  src="/lovable-uploads/6668f20c-7d63-477f-a5be-856e631eaaef.png"
                   alt="ESCCOM"
                   className="h-24 object-contain mb-2"
                 />
@@ -189,7 +189,7 @@ const Home = () => {
             <SwiperSlide>
               <div className="flex flex-col items-center">
                 <img
-                  src="/assets/Ingeneria Project Logo.png"
+                  src="/lovable-uploads/69034832-a004-43a5-b367-f4726a4d126a.png"
                   alt="Ingeneria"
                   className="h-24 object-contain mb-2"
                 />
