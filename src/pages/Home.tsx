@@ -133,24 +133,56 @@ const Home = () => {
       </section>
 
       {/* Ils me font confiance Section */}
-      <section className="py-12 bg-white text-center">
-        <h2 className="text-2xl font-bold mb-6">Ils me font confiance</h2>
-        <div className="flex flex-wrap justify-center gap-10 items-center">
-          <div className="flex items-center gap-3">
-            <img src="/lovable-uploads/85fe123d-5424-47dd-9132-7931205fcd09.png" alt="IGY Vieux-Port de Cannes" className="h-8" />
-            <span className="text-base font-medium">IGY Vieux-Port de Cannes</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <img src="/images/itec-logo.png" alt="ITEC" className="h-8" />
-            <span className="text-base font-medium">ITEC</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <img src="/images/esccom-logo.png" alt="ESCCOM" className="h-8" />
-            <span className="text-base font-medium">ESCCOM</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <img src="/images/ingeneria-logo.png" alt="Ingeneria" className="h-8" />
-            <span className="text-base font-medium">Ingeneria</span>
+      <section className="py-16 px-6 md:px-12 bg-muted/40">
+        <h2 className="text-3xl font-bold text-center text-primary mb-12">
+          Ils me font confiance
+        </h2>
+        <div className="overflow-x-auto">
+          <div className="flex gap-6 snap-x snap-mandatory overflow-x-scroll pb-4">
+            {[
+              {
+                name: "IGY Vieux-Port de Cannes",
+                logo: "/assets/IGY Vieux-Port de Cannes.png",
+                href: "https://www.igymarinas.com/marinas/igy-vieux-port-de-cannes",
+                tooltip: "Port de plaisance international à Cannes"
+              },
+              {
+                name: "ITEC",
+                logo: "/assets/ITEC Logo.png",
+                href: "https://www.itec.fr",
+                tooltip: "Établissement d'enseignement supérieur technique"
+              },
+              {
+                name: "ESCCOM",
+                logo: "/assets/Esccom logo.png",
+                href: "https://www.esccom.net",
+                tooltip: "École de commerce et de gestion à Nice et Cannes"
+              },
+              {
+                name: "Ingeneria",
+                logo: "/assets/Ingeneria Project Logo.png",
+                href: "https://www.ingeneria.fr",
+                tooltip: "Bureau d'études spécialisé en ingénierie"
+              }
+            ].map(({ name, logo, href, tooltip }) => (
+              <a
+                key={name}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={tooltip}
+                className="min-w-[200px] snap-start bg-white rounded-2xl shadow-md p-6 flex flex-col items-center justify-center transition-transform hover:-translate-y-1 hover:shadow-lg hover:scale-105 duration-300"
+              >
+                <img
+                  src={logo}
+                  alt={name}
+                  className="h-20 max-w-[140px] object-contain mb-4"
+                />
+                <span className="text-center text-sm font-medium text-muted-foreground">
+                  {name}
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </section>
