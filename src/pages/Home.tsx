@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink, UserCheck, Building, GraduationCap, Target, Briefcase, Settings, MessageCircle, Mail } from 'lucide-react';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import { seoMetadata } from '../utils/seoMetadata';
@@ -56,6 +59,7 @@ const Home = () => {
     title: 'Autres Dispositifs (VAE, Pro-A, etc.)',
     description: 'Je suis mobilisable par le biais d\'organismes partenaires Qualiopi sur les dispositifs comme la VAE, l\'Agefiph, les missions locales, etc.'
   }];
+
   return <>
       <SEOHead {...seoMetadata.home} />
       
@@ -132,53 +136,67 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Ils me font confiance Section */}
-      <section className="bg-muted/40 py-16 px-6 md:px-12">
-        <h2 className="text-3xl font-bold text-center text-primary mb-12">
-          Ils me font confiance
-        </h2>
-        <div className="overflow-x-auto scrollbar-hide">
-          <div className="flex space-x-8 md:space-x-12 items-center justify-start snap-x snap-mandatory overflow-x-scroll pb-4">
-            {[
-              {
-                name: "IGY Vieux-Port de Cannes",
-                logo: "/assets/IGY Vieux-Port de Cannes.png",
-                href: "https://www.igymarinas.com/marinas/igy-vieux-port-de-cannes"
-              },
-              {
-                name: "ITEC",
-                logo: "/assets/ITEC Logo.png",
-                href: "https://www.itec.fr"
-              },
-              {
-                name: "ESCCOM",
-                logo: "/assets/Esccom logo.png",
-                href: "https://www.esccom.net"
-              },
-              {
-                name: "Ingeneria",
-                logo: "/assets/Ingeneria Project Logo.png",
-                href: "https://www.ingeneria.fr"
-              }
-            ].map(({ name, logo, href }) => (
-              <a
-                key={name}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="snap-start min-w-[180px] md:min-w-[200px] hover:scale-105 transition-transform duration-300 flex flex-col items-center"
-              >
+      {/* Ils me font confiance Section - Swiper Carousel */}
+      <section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl font-extrabold text-primary mb-12">Ils me font confiance</h2>
+          <Swiper
+            spaceBetween={40}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+              1280: { slidesPerView: 4 },
+            }}
+            loop={true}
+            autoplay={{ delay: 3000 }}
+            modules={[Autoplay]}
+            className="pb-8"
+          >
+            <SwiperSlide>
+              <div className="flex flex-col items-center">
                 <img
-                  src={logo}
-                  alt={name}
-                  className="h-24 md:h-28 object-contain mb-4 max-w-[160px]"
+                  src="/assets/IGY Vieux-Port de Cannes.png"
+                  alt="IGY Vieux-Port de Cannes"
+                  className="h-24 object-contain mb-2"
                 />
-                <span className="text-sm text-center text-muted-foreground font-medium">
-                  {name}
-                </span>
-              </a>
-            ))}
-          </div>
+                <p className="text-sm font-medium text-primary">IGY Vieux-Port de Cannes</p>
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <div className="flex flex-col items-center">
+                <img
+                  src="/assets/ITEC Logo.png"
+                  alt="ITEC"
+                  className="h-24 object-contain mb-2"
+                />
+                <p className="text-sm font-medium text-primary">ITEC</p>
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <div className="flex flex-col items-center">
+                <img
+                  src="/assets/Esccom logo.png"
+                  alt="ESCCOM"
+                  className="h-24 object-contain mb-2"
+                />
+                <p className="text-sm font-medium text-primary">ESCCOM</p>
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <div className="flex flex-col items-center">
+                <img
+                  src="/assets/Ingeneria Project Logo.png"
+                  alt="Ingeneria"
+                  className="h-24 object-contain mb-2"
+                />
+                <p className="text-sm font-medium text-primary">Ingeneria</p>
+              </div>
+            </SwiperSlide>
+          </Swiper>
         </div>
       </section>
 
