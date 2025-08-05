@@ -7,7 +7,6 @@ import "swiper/css";
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import { seoMetadata } from '../utils/seoMetadata';
-
 const Home = () => {
   const features = [{
     icon: Globe,
@@ -59,7 +58,6 @@ const Home = () => {
     title: 'Autres Dispositifs (VAE, Pro-A, etc.)',
     description: 'Je suis mobilisable par le biais d\'organismes partenaires Qualiopi sur les dispositifs comme la VAE, l\'Agefiph, les missions locales, etc.'
   }];
-
   return <>
       <SEOHead {...seoMetadata.home} />
       
@@ -140,59 +138,43 @@ const Home = () => {
       <section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl font-extrabold text-primary mb-12">Ils me font confiance</h2>
-          <Swiper
-            spaceBetween={40}
-            slidesPerView={1}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-              1280: { slidesPerView: 4 },
-            }}
-            loop={true}
-            autoplay={{ delay: 3000 }}
-            modules={[Autoplay]}
-            className="pb-8"
-          >
+          <Swiper spaceBetween={40} slidesPerView={1} breakpoints={{
+          640: {
+            slidesPerView: 2
+          },
+          1024: {
+            slidesPerView: 3
+          },
+          1280: {
+            slidesPerView: 4
+          }
+        }} loop={true} autoplay={{
+          delay: 3000
+        }} modules={[Autoplay]} className="pb-8">
             <SwiperSlide>
               <div className="flex flex-col items-center">
-                <img
-                  src="/lovable-uploads/a3da9e3b-1f6c-447a-b308-2ca44d071c67.png"
-                  alt="IGY Vieux-Port de Cannes"
-                  className="h-24 object-contain mb-2"
-                />
+                <img src="/lovable-uploads/a3da9e3b-1f6c-447a-b308-2ca44d071c67.png" alt="IGY Vieux-Port de Cannes" className="h-24 object-contain mb-2" />
                 <p className="text-sm font-medium text-primary">IGY Vieux-Port de Cannes</p>
               </div>
             </SwiperSlide>
 
             <SwiperSlide>
               <div className="flex flex-col items-center">
-                <img
-                  src="/lovable-uploads/694fcb0f-d52b-44f3-8cbc-6c1a051e416b.png"
-                  alt="ITEC"
-                  className="h-24 object-contain mb-2"
-                />
+                <img src="/lovable-uploads/694fcb0f-d52b-44f3-8cbc-6c1a051e416b.png" alt="ITEC" className="h-24 object-contain mb-2" />
                 <p className="text-sm font-medium text-primary">ITEC</p>
               </div>
             </SwiperSlide>
 
             <SwiperSlide>
               <div className="flex flex-col items-center">
-                <img
-                  src="/lovable-uploads/6668f20c-7d63-477f-a5be-856e631eaaef.png"
-                  alt="ESCCOM"
-                  className="h-24 object-contain mb-2"
-                />
+                <img src="/lovable-uploads/6668f20c-7d63-477f-a5be-856e631eaaef.png" alt="ESCCOM" className="h-24 object-contain mb-2" />
                 <p className="text-sm font-medium text-primary">ESCCOM</p>
               </div>
             </SwiperSlide>
 
             <SwiperSlide>
               <div className="flex flex-col items-center">
-                <img
-                  src="/lovable-uploads/69034832-a004-43a5-b367-f4726a4d126a.png"
-                  alt="Ingeneria"
-                  className="h-24 object-contain mb-2"
-                />
+                <img src="/lovable-uploads/69034832-a004-43a5-b367-f4726a4d126a.png" alt="Ingeneria" className="h-24 object-contain mb-2" />
                 <p className="text-sm font-medium text-primary">Ingeneria</p>
               </div>
             </SwiperSlide>
@@ -251,12 +233,7 @@ const Home = () => {
       {/* CPF Section - Discrete */}
       <section className="py-12 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-lg p-6 border border-border/50">
-            <h3 className="text-lg font-medium mb-2 text-primary font-heading">CPF, financement ou formation via organisme</h3>
-            <p className="text-sm text-muted-foreground font-body">
-              Je peux intervenir en tant que formateur dans le cadre de dispositifs tels que le CPF ou via des organismes de formation partenaires. N'hésitez pas à me contacter pour en discuter.
-            </p>
-          </div>
+          
         </div>
       </section>
 
@@ -310,5 +287,4 @@ const Home = () => {
       </section>
     </>;
 };
-
 export default Home;
