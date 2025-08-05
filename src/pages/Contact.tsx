@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MessageSquare, Mail, MapPin, Clock } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { seoMetadata } from '../utils/seoMetadata';
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     prenom: '',
@@ -9,6 +10,7 @@ const Contact = () => {
     email: '',
     message: ''
   });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
@@ -21,12 +23,14 @@ const Contact = () => {
       message: ''
     });
   };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   };
+
   return <>
       <SEOHead {...seoMetadata.contact} />
       
@@ -88,7 +92,7 @@ const Contact = () => {
               </form>
               
               <p className="text-sm text-gray-500 mt-4 text-center">
-                Réponse rapide. Présentiel dans le Var. Distanciel France entière.
+                Réponse rapide. Présentiel dans le Var & les Alpes-Maritimes. Distanciel France entière.
               </p>
             </div>
 
@@ -132,7 +136,7 @@ const Contact = () => {
                     <div>
                       <p className="font-medium text-gray-900">Zone d'intervention</p>
                       <p className="text-gray-600">
-                        Présentiel : Var (Fréjus, Saint-Raphaël, Draguignan)<br />
+                        Présentiel : Alpes-Maritimes & Var<br />
                         Distanciel : France entière
                       </p>
                     </div>
@@ -170,4 +174,5 @@ const Contact = () => {
       </div>
     </>;
 };
+
 export default Contact;

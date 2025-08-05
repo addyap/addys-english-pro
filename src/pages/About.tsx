@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Award, MapPin, Clock } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
@@ -54,22 +53,15 @@ const About = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Mon parcours</h2>
             <div className="prose prose-lg max-w-none text-gray-700">
               <p className="mb-6">
-                Je propose des formations en anglais adaptées aux adultes, aux centres de formation, aux écoles spécialisées,
-                aux universités et aux entreprises. Mon approche repose sur l'écoute, l'adaptation, et une expertise fondée sur
-                plusieurs années d'intervention dans des contextes variés.
+                Je propose des formations en anglais adaptées aux adultes, aux centres de formation, aux écoles spécialisées, aux universités et aux entreprises. Mon approche repose sur l'écoute, l'adaptation, et une expertise fondée sur plusieurs années d'expérience dans des contextes variés.
               </p>
               
               <p className="mb-6">
-                Natif anglais, Antony a développé une approche pédagogique unique, centrée sur la 
-                communication professionnelle pratique. Son style d'enseignement est reconnu pour 
-                être humain, flexible et parfaitement orienté vers les besoins concrets du monde 
-                du travail.
+                Formateur natif britannique, j'ai développé une approche pédagogique tournée vers la communication professionnelle concrète. Mon style est reconnu pour être humain, accessible et centré sur les besoins du terrain.
               </p>
 
               <p className="mb-6">
-                Titulaire d'un Numéro de Déclaration d'Activité (NDA) actif, Antony collabore 
-                exclusivement avec des organismes certifiés Qualiopi pour les formations CPF, 
-                garantissant ainsi la qualité et la conformité réglementaire de ses interventions.
+                Je suis titulaire d'un Numéro de Déclaration d'Activité (NDA) et je collabore exclusivement avec des centres de formation certifiés Qualiopi pour les formations CPF, en garantissant la conformité réglementaire et la qualité de chaque intervention.
               </p>
             </div>
           </div>

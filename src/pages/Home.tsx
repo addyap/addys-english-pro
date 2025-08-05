@@ -4,6 +4,7 @@ import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import { seoMetadata } from '../utils/seoMetadata';
+
 const Home = () => {
   const features = [{
     icon: Globe,
@@ -132,17 +133,25 @@ const Home = () => {
       </section>
 
       {/* Ils me font confiance Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-primary mb-8 font-heading">Ils me font confiance</h2>
-          
-          <div className="flex justify-center items-center mb-6">
-            <img src="/lovable-uploads/85fe123d-5424-47dd-9132-7931205fcd09.png" alt="IGY Vieux-Port de Cannes" className="h-16 object-contain" />
+      <section className="py-12 bg-white text-center">
+        <h2 className="text-2xl font-bold mb-6">Ils me font confiance</h2>
+        <div className="flex flex-wrap justify-center gap-10 items-center">
+          <div className="flex items-center gap-3">
+            <img src="/lovable-uploads/85fe123d-5424-47dd-9132-7931205fcd09.png" alt="IGY Vieux-Port de Cannes" className="h-8" />
+            <span className="text-base font-medium">IGY Vieux-Port de Cannes</span>
           </div>
-
-          <p className="text-lg text-muted-foreground font-body">
-            ITEC, ESCCOM, Ingeneria
-          </p>
+          <div className="flex items-center gap-3">
+            <img src="/images/itec-logo.png" alt="ITEC" className="h-8" />
+            <span className="text-base font-medium">ITEC</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <img src="/images/esccom-logo.png" alt="ESCCOM" className="h-8" />
+            <span className="text-base font-medium">ESCCOM</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <img src="/images/ingeneria-logo.png" alt="Ingeneria" className="h-8" />
+            <span className="text-base font-medium">Ingeneria</span>
+          </div>
         </div>
       </section>
 
@@ -256,4 +265,5 @@ const Home = () => {
       </section>
     </>;
 };
+
 export default Home;
