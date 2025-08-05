@@ -64,81 +64,11 @@ const About = () => {
                 du travail.
               </p>
 
-              <p className="mb-6">Domaines d'expertise
-Secteurs d'intervention
-Secteur tertiaire
-
-Commerce & Vente
-
-Service Client & Accueil
-
-Immobilier
-
-Banque & Assurance
-
-Marketing & Communication
-
-
-
-
-Tourisme & Hôtellerie
-
-Hôtellerie & Tourisme
-
-Accueil international
-
-Services aux voyageurs
-
-
-
-
-Administration & Gestion
-
-Ressources Humaines
-
-Administration & Secrétariat
-
-Formation & Enseignement
-
-
-
-
-Technique & Industrie
-
-Logistique & Transport
-
-Industrie & Technique
-
-Informatique & Digital
-
-
-
-
-Publics spécifiques
-
-Cadres & Managers
-
-Étudiants & Alternants
-
-Recherche d’emploi / Insertion professionnelle
-
-Secteur Public & Collectivités
-
-Écoles & Centres de Formation
-
-
-
-
-• Ressources humaines
-• Logistique et transport
-• Hôtellerie et luxe
-• Services aux entreprise
-Compétences ciblées
-• Emailing professionnel
-• Animation de réunions
-• Communication téléphonique
-• Entretiens et négociation
-• Présentation orale</p>
+              <p className="mb-6">
+                Titulaire d'un Numéro de Déclaration d'Activité (NDA) actif, Antony collabore 
+                exclusivement avec des organismes certifiés Qualiopi pour les formations CPF, 
+                garantissant ainsi la qualité et la conformité réglementaire de ses interventions.
+              </p>
             </div>
           </div>
 
