@@ -7,6 +7,7 @@ import "swiper/css";
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import { seoMetadata } from '../utils/seoMetadata';
+
 const Home = () => {
   const features = [{
     icon: Globe,
@@ -33,6 +34,7 @@ const Home = () => {
     title: 'Disponible en présentiel (PACA) ou à distance (France entière)',
     description: 'Flexibilité géographique pour s\'adapter à vos contraintes'
   }];
+
   const services = [{
     icon: Building,
     title: 'Formations en Entreprise',
@@ -58,6 +60,7 @@ const Home = () => {
     title: 'Autres Dispositifs (VAE, Pro-A, etc.)',
     description: 'Je suis mobilisable par le biais d\'organismes partenaires Qualiopi sur les dispositifs comme la VAE, l\'Agefiph, les missions locales, etc.'
   }];
+
   return <>
       <SEOHead {...seoMetadata.home} />
       
@@ -101,17 +104,37 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Qui je suis Section */}
+      {/* Qui je suis Section - Updated with split layout */}
       <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-primary mb-6 font-heading">Qui je suis</h2>
-          <p className="text-lg text-muted-foreground leading-relaxed font-body">
-            Formateur d'anglais certifié, je suis natif britannique et j'accompagne des adultes en formation continue, CPF ou en reconversion. Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
-          </p>
-          <div className="mt-8">
-            <Link to="/qui-je-suis" className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body">
-              En savoir plus
-            </Link>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-primary mb-12 text-center font-heading">Qui je suis</h2>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Image Side */}
+            <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start">
+              <div className="relative">
+                <img 
+                  src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
+                  alt="Antony Addy, Formateur en Anglais"
+                  className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200"
+                  loading="lazy"
+                />
+                <p className="text-sm text-muted-foreground mt-3 text-center lg:text-left font-body italic">
+                  Formateur en action
+                </p>
+              </div>
+            </div>
+            
+            {/* Content Side */}
+            <div className="order-1 lg:order-2">
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
+                Formateur d'anglais certifié, je suis natif britannique et j'accompagne des adultes en formation continue, CPF ou en reconversion. Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
+              </p>
+              <div className="text-center lg:text-left">
+                <Link to="/qui-je-suis" className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body">
+                  En savoir plus
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -287,4 +310,5 @@ const Home = () => {
       </section>
     </>;
 };
+
 export default Home;
