@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Award, MapPin, Clock } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
@@ -17,7 +18,7 @@ const About = () => {
               </div>
               <div className="flex-1 text-center md:text-left">
                 <h1 className="text-4xl font-bold text-gray-900 mb-4">Antony Addy</h1>
-                <p className="text-xl text-blue-600 mb-4">Formateur Professionnel d’Adultes – anglais, natif du Royaume-Uni</p>
+                <p className="text-xl text-blue-600 mb-4">Formateur Professionnel d'Adultes – anglais, natif du Royaume-Uni</p>
                 <p className="text-lg text-gray-600">
                   Prestataire de formation indépendant spécialisé en anglais professionnel
                 </p>
@@ -41,8 +42,8 @@ const About = () => {
             
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <MapPin className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Var + France</h3>
-              <p className="text-gray-600">Présentiel dans le Var, distanciel national</p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Alpes-Maritimes + France</h3>
+              <p className="text-gray-600">Présentiel dans les Alpes-Maritimes, distanciel national</p>
             </div>
           </div>
 
@@ -108,8 +109,6 @@ const About = () => {
                 Antony intervient en collaboration avec :
               </p>
               <div className="flex flex-wrap justify-center gap-4 text-blue-600 font-medium">
-                <span>France Travail</span>
-                <span>•</span>
                 <span>Centres de Formation</span>
                 <span>•</span>
                 <span>Écoles de Commerce</span>

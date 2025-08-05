@@ -11,25 +11,38 @@ const PrivacyPolicy = () => {
           </h1>
           
           <div className="prose max-w-none text-gray-700">
-            <p className="text-lg text-gray-600 mb-8">
-              Page de politique de confidentialité en cours de rédaction.
+            <p className="text-lg mb-6">
+              Ce site ne collecte aucune donnée personnelle sans votre consentement explicite.
             </p>
             
-            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
-              Collecte des données
-            </h2>
-            <p>
-              Les données personnelles collectées via le formulaire de contact 
-              (nom, prénom, email, message) sont utilisées uniquement dans le cadre 
-              de la prise de contact pour les formations.
+            <p className="mb-6">
+              Les seules informations collectées le sont via le formulaire de contact ou les échanges directs
+              par email ou WhatsApp. Ces données sont utilisées uniquement pour répondre à vos demandes de
+              formation, et ne sont jamais transmises à des tiers.
             </p>
 
-            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
-              Conservation et traitement
-            </h2>
-            <p>
-              Vos données sont conservées de manière sécurisée et ne sont pas 
-              transmises à des tiers sans votre consentement explicite.
+            <p className="mb-6">
+              Aucune donnée de navigation, de géolocalisation, ni de profilage n'est stockée ou analysée à
+              des fins commerciales.
+            </p>
+
+            <p className="mb-4">
+              Conformément au Règlement Général sur la Protection des Données (RGPD), vous pouvez à tout moment :
+            </p>
+
+            <ul className="list-disc list-inside mb-6 space-y-2">
+              <li>Demander l'accès à vos données personnelles</li>
+              <li>Demander leur rectification ou suppression</li>
+              <li>Retirer votre consentement à tout moment</li>
+            </ul>
+
+            <p className="mb-6">
+              Pour toute demande relative à vos données personnelles, contactez :
+              <strong> formations@antonyaddy.com</strong>
+            </p>
+
+            <p className="text-sm text-gray-600">
+              Hébergement du site : Bluehost – www.bluehost.com
             </p>
           </div>
         </div>
