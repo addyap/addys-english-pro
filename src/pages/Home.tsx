@@ -1,100 +1,73 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink, UserCheck, Building, GraduationCap, Target, Briefcase, Settings, MessageCircle, Mail } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import { seoMetadata } from '../utils/seoMetadata';
-
 const Home = () => {
-  const features = [
-    {
-      icon: Globe,
-      title: 'Anglais authentique avec un formateur britannique natif',
-      description: 'Apprenez avec un native speaker pour une prononciation et une expression naturelles'
-    },
-    {
-      icon: Target,
-      title: 'Cours adaptés aux besoins concrets des adultes',
-      description: 'Formations ciblées selon vos objectifs professionnels et personnels'
-    },
-    {
-      icon: Award,
-      title: 'Formateur Professionnel d\'Adultes certifié',
-      description: 'Certification officielle FPA pour une pédagogie adaptée aux adultes'
-    },
-    {
-      icon: Users,
-      title: 'Approche humaine et motivante',
-      description: 'Un accompagnement personnalisé qui respecte votre rythme d\'apprentissage'
-    },
-    {
-      icon: Building,
-      title: 'Expérience avec écoles, entreprises, et centres de formation',
-      description: 'Partenariats établis avec de nombreuses institutions et organismes'
-    },
-    {
-      icon: CheckCircle,
-      title: 'Disponible en présentiel (PACA) ou à distance (France entière)',
-      description: 'Flexibilité géographique pour s\'adapter à vos contraintes'
-    }
-  ];
-
-  const services = [
-    {
-      icon: Building,
-      title: 'Formations en Entreprise',
-      description: 'Sessions personnalisées pour renforcer les compétences linguistiques de vos équipes (anglais professionnel, techniques, ou sectoriels).'
-    },
-    {
-      icon: Briefcase,
-      title: 'CPF (Compte Personnel de Formation)',
-      description: 'Parcours éligibles au CPF, assurés via partenaires certifiés Qualiopi. Formations adaptées à vos objectifs individuels.'
-    },
-    {
-      icon: Target,
-      title: 'AFC – Actions de Formation Conventionnées',
-      description: 'Financement par France Travail et les Régions. Je peux intervenir sous-traité par des organismes certifiés, selon les nouvelles règles 2025.'
-    },
-    {
-      icon: Users,
-      title: 'Dispositifs d\'Accès à l\'Emploi (POE, POEI, AFPR)',
-      description: 'Préparation des publics en reconversion dans le cadre des dispositifs pilotés par les OPCO ou France Travail.'
-    },
-    {
-      icon: GraduationCap,
-      title: 'Formations Bachelor & Master',
-      description: 'Soutien aux étudiants et alternants pour maîtriser l\'anglais académique et professionnel, en formation continue.'
-    },
-    {
-      icon: Settings,
-      title: 'Autres Dispositifs (VAE, Pro-A, etc.)',
-      description: 'Je suis mobilisable par le biais d\'organismes partenaires Qualiopi sur les dispositifs comme la VAE, l\'Agefiph, les missions locales, etc.'
-    }
-  ];
-
-  return (
-    <>
+  const features = [{
+    icon: Globe,
+    title: 'Anglais authentique avec un formateur britannique natif',
+    description: 'Apprenez avec un native speaker pour une prononciation et une expression naturelles'
+  }, {
+    icon: Target,
+    title: 'Cours adaptés aux besoins concrets des adultes',
+    description: 'Formations ciblées selon vos objectifs professionnels et personnels'
+  }, {
+    icon: Award,
+    title: 'Formateur Professionnel d\'Adultes certifié',
+    description: 'Certification officielle FPA pour une pédagogie adaptée aux adultes'
+  }, {
+    icon: Users,
+    title: 'Approche humaine et motivante',
+    description: 'Un accompagnement personnalisé qui respecte votre rythme d\'apprentissage'
+  }, {
+    icon: Building,
+    title: 'Expérience avec écoles, entreprises, et centres de formation',
+    description: 'Partenariats établis avec de nombreuses institutions et organismes'
+  }, {
+    icon: CheckCircle,
+    title: 'Disponible en présentiel (PACA) ou à distance (France entière)',
+    description: 'Flexibilité géographique pour s\'adapter à vos contraintes'
+  }];
+  const services = [{
+    icon: Building,
+    title: 'Formations en Entreprise',
+    description: 'Sessions personnalisées pour renforcer les compétences linguistiques de vos équipes (anglais professionnel, techniques, ou sectoriels).'
+  }, {
+    icon: Briefcase,
+    title: 'CPF (Compte Personnel de Formation)',
+    description: 'Parcours éligibles au CPF, assurés via partenaires certifiés Qualiopi. Formations adaptées à vos objectifs individuels.'
+  }, {
+    icon: Target,
+    title: 'AFC – Actions de Formation Conventionnées',
+    description: 'Financement par France Travail et les Régions. Je peux intervenir sous-traité par des organismes certifiés, selon les nouvelles règles 2025.'
+  }, {
+    icon: Users,
+    title: 'Dispositifs d\'Accès à l\'Emploi (POE, POEI, AFPR)',
+    description: 'Préparation des publics en reconversion dans le cadre des dispositifs pilotés par les OPCO ou France Travail.'
+  }, {
+    icon: GraduationCap,
+    title: 'Formations Bachelor & Master',
+    description: 'Soutien aux étudiants et alternants pour maîtriser l\'anglais académique et professionnel, en formation continue.'
+  }, {
+    icon: Settings,
+    title: 'Autres Dispositifs (VAE, Pro-A, etc.)',
+    description: 'Je suis mobilisable par le biais d\'organismes partenaires Qualiopi sur les dispositifs comme la VAE, l\'Agefiph, les missions locales, etc.'
+  }];
+  return <>
       <SEOHead {...seoMetadata.home} />
       
       {/* Hero Section with Video Background */}
       <section className="relative text-white overflow-hidden min-h-screen flex items-center">
         {/* YouTube Video Background */}
         <div className="absolute inset-0 w-full h-full">
-          <iframe
-            src="https://www.youtube.com/embed/p5UG08OsMGw?autoplay=1&mute=1&loop=1&playlist=p5UG08OsMGw&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0&cc_load_policy=0&playsinline=1&enablejsapi=0&start=0"
-            className="absolute top-1/2 left-1/2 w-full h-full min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 pointer-events-none object-cover"
-            style={{
-              width: '100vw',
-              height: '56.25vw',
-              minHeight: '100vh',
-              minWidth: '177.78vh',
-            }}
-            frameBorder="0"
-            allow="autoplay; encrypted-media"
-            allowFullScreen={false}
-            title="Hero Background Video"
-          />
+          <iframe src="https://www.youtube.com/embed/p5UG08OsMGw?autoplay=1&mute=1&loop=1&playlist=p5UG08OsMGw&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0&cc_load_policy=0&playsinline=1&enablejsapi=0&start=0" className="absolute top-1/2 left-1/2 w-full h-full min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 pointer-events-none object-cover" style={{
+          width: '100vw',
+          height: '56.25vw',
+          minHeight: '100vh',
+          minWidth: '177.78vh'
+        }} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen={false} title="Hero Background Video" />
           
           {/* Dark overlay for text readability */}
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
@@ -112,20 +85,12 @@ const Home = () => {
             <p className="text-xl md:text-2xl mb-4 text-blue-100 font-body">
               Des formations claires, flexibles et efficaces — pour particuliers, professionnels et centres de formation.
             </p>
-            <p className="text-lg mb-8 text-blue-200 italic font-body">
-              Native speaker – En ligne ou en présentiel, partout en France
-            </p>
+            <p className="text-lg mb-8 text-blue-200 italic font-body">Formateur britannique – Présentiel dans les Alpes-Maritimes, à distance partout en France</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/offres-de-formation"
-                className="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all shadow-md font-body"
-              >
+              <Link to="/offres-de-formation" className="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all shadow-md font-body">
                 Découvrir mes offres
               </Link>
-              <Link
-                to="/contact"
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-all font-body"
-              >
+              <Link to="/contact" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-all font-body">
                 Me contacter
               </Link>
             </div>
@@ -141,10 +106,7 @@ const Home = () => {
             Formateur d'anglais certifié, je suis natif britannique et j'accompagne des adultes en formation continue, CPF ou en reconversion. Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
           </p>
           <div className="mt-8">
-            <Link
-              to="/qui-je-suis"
-              className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body"
-            >
+            <Link to="/qui-je-suis" className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body">
               En savoir plus
             </Link>
           </div>
@@ -158,15 +120,13 @@ const Home = () => {
             Pourquoi choisir mes formations ?
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="text-center p-6 rounded-lg bg-white hover:shadow-lg transition-shadow">
+            {features.map((feature, index) => <div key={index} className="text-center p-6 rounded-lg bg-white hover:shadow-lg transition-shadow">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 text-accent rounded-full mb-4">
                   <feature.icon className="h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-primary mb-3 font-heading">{feature.title}</h3>
                 <p className="text-muted-foreground font-body">{feature.description}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -177,11 +137,7 @@ const Home = () => {
           <h2 className="text-3xl font-bold text-primary mb-8 font-heading">Ils me font confiance</h2>
           
           <div className="flex justify-center items-center mb-6">
-            <img
-              src="/lovable-uploads/85fe123d-5424-47dd-9132-7931205fcd09.png"
-              alt="IGY Vieux-Port de Cannes"
-              className="h-16 object-contain"
-            />
+            <img src="/lovable-uploads/85fe123d-5424-47dd-9132-7931205fcd09.png" alt="IGY Vieux-Port de Cannes" className="h-16 object-contain" />
           </div>
 
           <p className="text-lg text-muted-foreground font-body">
@@ -196,11 +152,7 @@ const Home = () => {
           <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-border">
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="flex-shrink-0">
-                <img
-                  src="/lovable-uploads/d96440ab-4b9c-4f42-9910-75051d4f8b0e.png"
-                  alt="anglaisadistance.fr"
-                  className="h-24 w-auto"
-                />
+                <img src="/lovable-uploads/d96440ab-4b9c-4f42-9910-75051d4f8b0e.png" alt="anglaisadistance.fr" className="h-24 w-auto" />
               </div>
               <div className="flex-1 text-center md:text-left">
                 <h2 className="text-3xl font-bold text-primary mb-4 font-heading">
@@ -209,12 +161,7 @@ const Home = () => {
                 <p className="text-lg text-muted-foreground mb-6 font-body">
                   J'ai créé anglaisadistance.fr pour offrir gratuitement des ressources fiables et accessibles à tous : grammaire, vocabulaire, dialogues, jeux...
                 </p>
-                <a
-                  href="https://anglaisadistance.fr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors font-body"
-                >
+                <a href="https://anglaisadistance.fr" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors font-body">
                   Découvrir les ressources
                   <ExternalLink className="h-4 w-4" />
                 </a>
@@ -231,21 +178,16 @@ const Home = () => {
             Mes offres de formation
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div key={index} className="text-center p-6 rounded-lg bg-muted hover:shadow-lg transition-shadow">
+            {services.map((service, index) => <div key={index} className="text-center p-6 rounded-lg bg-muted hover:shadow-lg transition-shadow">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 text-primary rounded-full mb-4">
                   <service.icon className="h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-primary mb-3 font-heading">{service.title}</h3>
                 <p className="text-muted-foreground font-body">{service.description}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
           <div className="text-center mt-8">
-            <Link
-              to="/offres-de-formation"
-              className="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body"
-            >
+            <Link to="/offres-de-formation" className="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body">
               Voir toutes mes offres
             </Link>
           </div>
@@ -283,11 +225,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="order-1 md:order-2">
-                <img
-                  src="/lovable-uploads/de1467b6-7694-4b1e-b2c8-e4cb04b71b21.png"
-                  alt="Carte de la zone d'intervention - Côte d'Azur"
-                  className="w-full h-auto rounded-lg"
-                />
+                <img src="/lovable-uploads/de1467b6-7694-4b1e-b2c8-e4cb04b71b21.png" alt="Carte de la zone d'intervention - Côte d'Azur" className="w-full h-auto rounded-lg" />
               </div>
             </div>
           </div>
@@ -305,27 +243,17 @@ const Home = () => {
             Discutons de votre projet de formation. Je suis à votre écoute !
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://wa.me/33649829826"
-              className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-2 font-body"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://wa.me/33649829826" className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-2 font-body" target="_blank" rel="noopener noreferrer">
               <MessageCircle className="h-5 w-5" />
               WhatsApp
             </a>
-            <a
-              href="mailto:formations@antonyaddy.com"
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors flex items-center justify-center gap-2 font-body"
-            >
+            <a href="mailto:formations@antonyaddy.com" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors flex items-center justify-center gap-2 font-body">
               <Mail className="h-5 w-5" />
               Email
             </a>
           </div>
         </div>
       </section>
-    </>
-  );
+    </>;
 };
-
 export default Home;
