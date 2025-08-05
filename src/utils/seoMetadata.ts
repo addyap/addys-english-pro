@@ -40,5 +40,11 @@ export const seoMetadata: Record<string, SEOMetadata> = {
     title: "Blog – Conseils et ressources en anglais professionnel",
     description: "Articles pour progresser en anglais, éviter les pièges, et mieux communiquer au travail.",
     canonical: "https://antonyaddy.com/blog"
+  },
+  anglaisadistance: {
+    title: "anglaisadistance.fr – Ressources gratuites pour apprendre l'anglais",
+    description: "Explorez grammaire, vocabulaire, dialogues, quiz et plus encore sur anglaisadistance.fr – la plateforme gratuite dédiée à l'apprentissage de l'anglais.",
+    canonical: "https://antonyaddy.com/anglaisadistance",
+    keywords: "anglais à distance, grammaire anglaise, vocabulaire anglais, dialogues anglais, quiz anglais"
   }
 };

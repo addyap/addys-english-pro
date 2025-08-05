@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ExternalLink, BookOpen, MessageCircle, Brain, Trophy, Target } from 'lucide-react';
+import { ExternalLink, BookOpen, MessageCircle, Brain, Trophy, Target, AlertTriangle, Award } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 
 const AnglaisADistance = () => {
@@ -9,7 +9,7 @@ const AnglaisADistance = () => {
       icon: BookOpen,
       title: 'Grammaire essentielle',
       description: 'Les règles de grammaire anglaise expliquées simplement avec exercices pratiques',
-      link: 'https://anglaisadistance.fr/grammaire'
+      link: 'https://anglaisadistance.fr/grammaire-essentielle'
     },
     {
       icon: Target,
@@ -27,23 +27,35 @@ const AnglaisADistance = () => {
       icon: Brain,
       title: 'Jeux interactifs',
       description: 'Exercices ludiques pour apprendre en s\'amusant',
-      link: 'https://anglaisadistance.fr/jeux'
+      link: 'https://anglaisadistance.fr/quizz'
     },
     {
       icon: Trophy,
       title: 'Tests de niveau',
       description: 'Évaluez votre niveau d\'anglais avec nos tests gratuits',
-      link: 'https://anglaisadistance.fr/tests'
+      link: 'https://anglaisadistance.fr/test-de-niveau'
+    },
+    {
+      icon: Award,
+      title: 'Niveaux CEFR',
+      description: 'Découvrez les 6 niveaux européens (A1-C2) avec supports adaptés',
+      link: 'https://anglaisadistance.fr/niveau'
+    },
+    {
+      icon: AlertTriangle,
+      title: 'Pièges classiques',
+      description: 'Les erreurs fréquentes en anglais expliquées simplement avec exemples et quiz',
+      link: 'https://anglaisadistance.fr/pieges-classiques'
     }
   ];
 
   return (
     <>
       <SEOHead
-        title="anglaisadistance.fr – Ressources gratuites d'anglais"
-        description="Découvrez toutes les ressources gratuites d'anglais disponibles sur anglaisadistance.fr : grammaire, vocabulaire, dialogues, jeux et tests."
+        title="anglaisadistance.fr – Ressources gratuites pour apprendre l'anglais"
+        description="Explorez grammaire, vocabulaire, dialogues, quiz et plus encore sur anglaisadistance.fr – la plateforme gratuite dédiée à l'apprentissage de l'anglais."
         canonical="https://antonyaddy.com/anglaisadistance"
-        keywords="anglais gratuit, ressources anglais, grammaire anglaise, vocabulaire anglais"
+        keywords="anglais à distance, grammaire anglaise, vocabulaire anglais, dialogues anglais, quiz anglais"
       />
 
       {/* Header Section */}
