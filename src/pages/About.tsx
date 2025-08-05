@@ -3,8 +3,10 @@ import React from 'react';
 import { Award, MapPin, Clock } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { seoMetadata } from '../utils/seoMetadata';
+
 const About = () => {
-  return <>
+  return (
+    <>
       <SEOHead {...seoMetadata.about} />
       
       <div className="min-h-screen bg-gray-50 py-12">
@@ -52,10 +54,9 @@ const About = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Mon parcours</h2>
             <div className="prose prose-lg max-w-none text-gray-700">
               <p className="mb-6">
-                <strong>Antony Addy</strong> est prestataire de formation indépendant certifié FPA, 
-                avec plus de 20 ans d'expérience dans la formation d'anglais professionnel pour adultes. 
-                Il intervient dans des structures publiques et privées : centres certifiés, écoles, 
-                universités, France Travail.
+                Je propose des formations en anglais adaptées aux adultes, aux centres de formation, aux écoles spécialisées,
+                aux universités et aux entreprises. Mon approche repose sur l'écoute, l'adaptation, et une expertise fondée sur
+                plusieurs années d'intervention dans des contextes variés.
               </p>
               
               <p className="mb-6">
@@ -76,26 +77,53 @@ const About = () => {
           {/* Expertise Areas */}
           <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Domaines d'expertise</h2>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-lg font-semibold text-blue-600 mb-3">Secteurs d'intervention</h3>
+                <h3 className="text-lg font-semibold text-blue-600 mb-3">Secteur tertiaire</h3>
                 <ul className="space-y-2 text-gray-700">
-                  <li>• Commerce et vente</li>
-                  <li>• Ressources humaines</li>
-                  <li>• Logistique et transport</li>
-                  <li>• Hôtellerie et luxe</li>
-                  <li>• Services aux entreprises</li>
+                  <li>• Commerce & Vente</li>
+                  <li>• Service Client & Accueil</li>
+                  <li>• Immobilier</li>
+                  <li>• Banque & Assurance</li>
+                  <li>• Marketing & Communication</li>
                 </ul>
               </div>
               
               <div>
-                <h3 className="text-lg font-semibold text-blue-600 mb-3">Compétences ciblées</h3>
+                <h3 className="text-lg font-semibold text-blue-600 mb-3">Tourisme & Hôtellerie</h3>
                 <ul className="space-y-2 text-gray-700">
-                  <li>• Emailing professionnel</li>
-                  <li>• Animation de réunions</li>
-                  <li>• Communication téléphonique</li>
-                  <li>• Entretiens et négociation</li>
-                  <li>• Présentation orale</li>
+                  <li>• Hôtellerie & Tourisme</li>
+                  <li>• Accueil international</li>
+                  <li>• Services aux voyageurs</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-blue-600 mb-3">Administration & Gestion</h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Ressources Humaines</li>
+                  <li>• Administration & Secrétariat</li>
+                  <li>• Formation & Enseignement</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-blue-600 mb-3">Technique & Industrie</h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Logistique & Transport</li>
+                  <li>• Industrie & Technique</li>
+                  <li>• Informatique & Digital</li>
+                </ul>
+              </div>
+
+              <div className="md:col-span-2">
+                <h3 className="text-lg font-semibold text-blue-600 mb-3">Publics spécifiques</h3>
+                <ul className="grid md:grid-cols-2 gap-2 text-gray-700">
+                  <li>• Cadres & Managers</li>
+                  <li>• Étudiants & Alternants</li>
+                  <li>• Recherche d'emploi / Insertion professionnelle</li>
+                  <li>• Secteur Public & Collectivités</li>
+                  <li>• Écoles & Centres de Formation</li>
                 </ul>
               </div>
             </div>
@@ -124,6 +152,8 @@ const About = () => {
           </div>
         </div>
       </div>
-    </>;
+    </>
+  );
 };
+
 export default About;
