@@ -46,5 +46,17 @@ export const seoMetadata: Record<string, SEOMetadata> = {
     description: "Explorez grammaire, vocabulaire, dialogues, quiz et plus encore sur anglaisadistance.fr – la plateforme gratuite dédiée à l'apprentissage de l'anglais.",
     canonical: "https://antonyaddy.com/anglaisadistance",
     keywords: "anglais à distance, grammaire anglaise, vocabulaire anglais, dialogues anglais, quiz anglais"
+  },
+  legalNotices: {
+    title: "Mentions légales – Antony Addy",
+    description: "Consultez les mentions légales du site antonyaddy.com, y compris l'identité de l'éditeur, hébergeur et conditions d'utilisation.",
+    canonical: "https://antonyaddy.com/mentions-legales",
+    keywords: "mentions légales, site internet, antonyaddy.com"
+  },
+  privacyPolicy: {
+    title: "Politique de confidentialité – Antony Addy",
+    description: "Découvrez comment vos données personnelles sont collectées et utilisées sur antonyaddy.com conformément au RGPD.",
+    canonical: "https://antonyaddy.com/politique-confidentialite",
+    keywords: "politique de confidentialité, RGPD, données personnelles, antonyaddy.com"
   }
 };

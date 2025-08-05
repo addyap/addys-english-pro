@@ -15,6 +15,7 @@ const SEOHead = ({ title, description, canonical, keywords, ogImage }: SEOHeadPr
       <html lang="fr" />
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta name="robots" content="index, follow" />
       <link rel="canonical" href={canonical} />
       {keywords && <meta name="keywords" content={keywords} />}
       
