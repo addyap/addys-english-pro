@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { Users, Building, GraduationCap, CheckCircle, AlertCircle, Globe, MapPin, Phone, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import { seoMetadata } from '../utils/seoMetadata';
 
@@ -176,11 +176,11 @@ const Training = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact" className="bg-accent text-accent-foreground px-8 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">
-                <span className="mr-2">👉</span>
-                Envoyer un message
-              </a>
-              <a href="https://wa.me/33649829826" className="border-2 border-green-500 text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-green-500 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
+              <Link to="/contact" className="bg-accent text-accent-foreground px-8 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">
+                <span className="mr-2">💬</span>
+                Parlons de votre projet
+              </Link>
+              <a href="https://wa.me/33649829826" className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-8 py-3 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
                 WhatsApp direct
               </a>
             </div>
