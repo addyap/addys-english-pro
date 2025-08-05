@@ -133,52 +133,47 @@ const Home = () => {
       </section>
 
       {/* Ils me font confiance Section */}
-      <section className="py-16 px-6 md:px-12 bg-muted/40">
+      <section className="bg-muted/40 py-16 px-6 md:px-12">
         <h2 className="text-3xl font-bold text-center text-primary mb-12">
           Ils me font confiance
         </h2>
-        <div className="overflow-x-auto">
-          <div className="flex gap-6 snap-x snap-mandatory overflow-x-scroll pb-4">
+        <div className="overflow-x-auto scrollbar-hide">
+          <div className="flex space-x-8 md:space-x-12 items-center justify-start snap-x snap-mandatory overflow-x-scroll pb-4">
             {[
               {
                 name: "IGY Vieux-Port de Cannes",
                 logo: "/assets/IGY Vieux-Port de Cannes.png",
-                href: "https://www.igymarinas.com/marinas/igy-vieux-port-de-cannes",
-                tooltip: "Port de plaisance international à Cannes"
+                href: "https://www.igymarinas.com/marinas/igy-vieux-port-de-cannes"
               },
               {
                 name: "ITEC",
                 logo: "/assets/ITEC Logo.png",
-                href: "https://www.itec.fr",
-                tooltip: "Établissement d'enseignement supérieur technique"
+                href: "https://www.itec.fr"
               },
               {
                 name: "ESCCOM",
                 logo: "/assets/Esccom logo.png",
-                href: "https://www.esccom.net",
-                tooltip: "École de commerce et de gestion à Nice et Cannes"
+                href: "https://www.esccom.net"
               },
               {
                 name: "Ingeneria",
                 logo: "/assets/Ingeneria Project Logo.png",
-                href: "https://www.ingeneria.fr",
-                tooltip: "Bureau d'études spécialisé en ingénierie"
+                href: "https://www.ingeneria.fr"
               }
-            ].map(({ name, logo, href, tooltip }) => (
+            ].map(({ name, logo, href }) => (
               <a
                 key={name}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                title={tooltip}
-                className="min-w-[200px] snap-start bg-white rounded-2xl shadow-md p-6 flex flex-col items-center justify-center transition-transform hover:-translate-y-1 hover:shadow-lg hover:scale-105 duration-300"
+                className="snap-start min-w-[180px] md:min-w-[200px] hover:scale-105 transition-transform duration-300 flex flex-col items-center"
               >
                 <img
                   src={logo}
                   alt={name}
-                  className="h-20 max-w-[140px] object-contain mb-4"
+                  className="h-24 md:h-28 object-contain mb-4 max-w-[160px]"
                 />
-                <span className="text-center text-sm font-medium text-muted-foreground">
+                <span className="text-sm text-center text-muted-foreground font-medium">
                   {name}
                 </span>
               </a>
