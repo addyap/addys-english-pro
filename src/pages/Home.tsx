@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink, UserCheck, Building, GraduationCap, Target, Briefcase, Settings, MessageCircle, Mail } from 'lucide-react';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import { seoMetadata } from '../utils/seoMetadata';
+
 const Home = () => {
   const features = [{
     icon: Globe,
@@ -55,6 +59,7 @@ const Home = () => {
     title: 'Autres Dispositifs (VAE, Pro-A, etc.)',
     description: 'Je suis mobilisable par le biais d\'organismes partenaires Qualiopi sur les dispositifs comme la VAE, l\'Agefiph, les missions locales, etc.'
   }];
+
   return <>
       <SEOHead {...seoMetadata.home} />
       
@@ -131,18 +136,67 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Ils me font confiance Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-primary mb-8 font-heading">Ils me font confiance</h2>
-          
-          <div className="flex justify-center items-center mb-6">
-            <img src="/lovable-uploads/85fe123d-5424-47dd-9132-7931205fcd09.png" alt="IGY Vieux-Port de Cannes" className="h-16 object-contain" />
-          </div>
+      {/* Ils me font confiance Section - Swiper Carousel */}
+      <section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl font-extrabold text-primary mb-12">Ils me font confiance</h2>
+          <Swiper
+            spaceBetween={40}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+              1280: { slidesPerView: 4 },
+            }}
+            loop={true}
+            autoplay={{ delay: 3000 }}
+            modules={[Autoplay]}
+            className="pb-8"
+          >
+            <SwiperSlide>
+              <div className="flex flex-col items-center">
+                <img
+                  src="/lovable-uploads/a3da9e3b-1f6c-447a-b308-2ca44d071c67.png"
+                  alt="IGY Vieux-Port de Cannes"
+                  className="h-24 object-contain mb-2"
+                />
+                <p className="text-sm font-medium text-primary">IGY Vieux-Port de Cannes</p>
+              </div>
+            </SwiperSlide>
 
-          <p className="text-lg text-muted-foreground font-body">
-            ITEC, ESCCOM, Ingeneria
-          </p>
+            <SwiperSlide>
+              <div className="flex flex-col items-center">
+                <img
+                  src="/lovable-uploads/694fcb0f-d52b-44f3-8cbc-6c1a051e416b.png"
+                  alt="ITEC"
+                  className="h-24 object-contain mb-2"
+                />
+                <p className="text-sm font-medium text-primary">ITEC</p>
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <div className="flex flex-col items-center">
+                <img
+                  src="/lovable-uploads/6668f20c-7d63-477f-a5be-856e631eaaef.png"
+                  alt="ESCCOM"
+                  className="h-24 object-contain mb-2"
+                />
+                <p className="text-sm font-medium text-primary">ESCCOM</p>
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <div className="flex flex-col items-center">
+                <img
+                  src="/lovable-uploads/69034832-a004-43a5-b367-f4726a4d126a.png"
+                  alt="Ingeneria"
+                  className="h-24 object-contain mb-2"
+                />
+                <p className="text-sm font-medium text-primary">Ingeneria</p>
+              </div>
+            </SwiperSlide>
+          </Swiper>
         </div>
       </section>
 
@@ -216,7 +270,7 @@ const Home = () => {
                 <div className="space-y-4">
                   <div>
                     <h3 className="text-xl font-semibold text-primary mb-2 font-heading">Présentiel</h3>
-                    <p className="text-muted-foreground font-body">France entière</p>
+                    <p className="text-muted-foreground font-body">Cannes, Antibes, Nice, Monaco (Alpes-Maritimes)</p>
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-primary mb-2 font-heading">Distanciel</h3>
@@ -256,4 +310,5 @@ const Home = () => {
       </section>
     </>;
 };
+
 export default Home;
