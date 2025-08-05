@@ -1,12 +1,9 @@
-
 import React from 'react';
 import { Award, MapPin, Clock } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { seoMetadata } from '../utils/seoMetadata';
-
 const About = () => {
-  return (
-    <>
+  return <>
       <SEOHead {...seoMetadata.about} />
       
       <div className="min-h-screen bg-gray-50 py-12">
@@ -16,17 +13,11 @@ const About = () => {
           <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="flex-shrink-0">
-                <img
-                  src="/lovable-uploads/3a23b0a6-a218-4cdd-b92b-4fbf7beee415.png"
-                  alt="Antony Addy, Formateur d'anglais professionnel"
-                  className="w-48 h-48 rounded-full object-cover shadow-lg"
-                />
+                <img src="/lovable-uploads/3a23b0a6-a218-4cdd-b92b-4fbf7beee415.png" alt="Antony Addy, Formateur d'anglais professionnel" className="w-48 h-48 rounded-full object-cover shadow-lg" />
               </div>
               <div className="flex-1 text-center md:text-left">
                 <h1 className="text-4xl font-bold text-gray-900 mb-4">Antony Addy</h1>
-                <p className="text-xl text-blue-600 mb-4">
-                  Formateur Professionnel d'Adultes certifié FPA
-                </p>
+                <p className="text-xl text-blue-600 mb-4">Formateur Professionnel d’Adultes – anglais, natif du Royaume-Uni</p>
                 <p className="text-lg text-gray-600">
                   Prestataire de formation indépendant spécialisé en anglais professionnel
                 </p>
@@ -134,8 +125,6 @@ const About = () => {
           </div>
         </div>
       </div>
-    </>
-  );
+    </>;
 };
-
 export default About;
