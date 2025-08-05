@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink, UserCheck, Building, GraduationCap, Target, Briefcase, Settings, MessageCircle, Mail } from 'lucide-react';
@@ -246,9 +247,22 @@ const Home = () => {
               </div>)}
           </div>
           <div className="text-center mt-8">
-            <Link to="/offres-de-formation" className="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body">
-              Voir toutes mes offres
-            </Link>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-6">
+              <a
+                href="https://wa.me/33649829826"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-5 py-3 rounded-full text-base font-semibold shadow transition"
+              >
+                💬 Discutons sur WhatsApp
+              </a>
+              <Link
+                to="/contact"
+                className="text-[#1A1A63] hover:underline text-base font-medium"
+              >
+                📬 Remplir le formulaire de contact
+              </Link>
+            </div>
           </div>
         </div>
       </section>
