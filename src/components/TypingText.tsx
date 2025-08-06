@@ -1,23 +1,19 @@
-
 import React, { useState, useEffect } from "react";
-
 interface TypingTextProps {
   texts: string[];
   speed?: number;
   pause?: number;
   className?: string;
 }
-
 export const TypingText: React.FC<TypingTextProps> = ({
   texts,
   speed = 60,
   pause = 1200,
-  className = "",
+  className = ""
 }) => {
   const [displayedText, setDisplayedText] = useState("");
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
-
   useEffect(() => {
     const currentText = texts[textIndex];
     if (charIndex < currentText.length) {
@@ -35,11 +31,5 @@ export const TypingText: React.FC<TypingTextProps> = ({
       return () => clearTimeout(timeout);
     }
   }, [charIndex, textIndex, texts, speed, pause]);
-
-  return (
-    <span className={`${className}`}>
-      {displayedText}
-      <span className="blinking-cursor">|</span>
-    </span>
-  );
+  return;
 };
