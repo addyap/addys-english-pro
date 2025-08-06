@@ -8,6 +8,7 @@ import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import { TypingText } from '../components/TypingText';
 import { seoMetadata } from '../utils/seoMetadata';
+
 const Home = () => {
   const features = [{
     icon: Globe,
@@ -34,6 +35,7 @@ const Home = () => {
     title: 'Disponible en présentiel (PACA) ou à distance (France entière)',
     description: 'Flexibilité géographique pour s\'adapter à vos contraintes'
   }];
+
   const services = [{
     icon: Building,
     title: 'Formations en Entreprise',
@@ -59,6 +61,7 @@ const Home = () => {
     title: 'Autres Dispositifs Spécialisés',
     description: 'Interventions via organismes partenaires sur les dispositifs VAE, Agefiph, missions locales, etc.'
   }];
+
   const clientCategories = [{
     icon: Building,
     title: 'Entreprises'
@@ -81,6 +84,7 @@ const Home = () => {
     icon: Globe,
     title: 'Écoles de langues'
   }];
+
   return <>
       <SEOHead {...seoMetadata.home} />
       
@@ -180,7 +184,12 @@ const Home = () => {
           
           {/* Client Categories */}
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
-            {clientCategories.map((category, index) => {})}
+            {clientCategories.map((category, index) => (
+              <div key={index} className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm">
+                <category.icon className="h-5 w-5 text-accent mr-2" />
+                <span className="font-medium text-primary text-sm">{category.title}</span>
+              </div>
+            ))}
           </div>
 
           {/* Existing client logos carousel */}
@@ -331,4 +340,5 @@ const Home = () => {
       </section>
     </>;
 };
+
 export default Home;
