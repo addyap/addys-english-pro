@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Award, BookOpen, Users, Globe, CheckCircle, Target, MessageCircle, Mail, Building, GraduationCap, MapPin, Phone, Factory, School, University, Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -5,6 +6,7 @@ import SEOHead from '../components/SEOHead';
 import { TypingText } from '../components/TypingText';
 import { FadeInSection } from '../components/Effects';
 import { seoMetadata } from '../utils/seoMetadata';
+
 const About = () => {
   return <>
       <SEOHead {...seoMetadata.about} />
@@ -17,7 +19,7 @@ const About = () => {
               <h1 className="text-4xl font-bold text-primary mb-6">
                 Qui je suis
               </h1>
-              <TypingText texts={["Un formateur engagé pour votre réussite.", "Spécialiste de l'anglais professionnel.", "20+ ans d'expérience en formation d'adultes."]} className="text-xl font-semibold text-primary" />
+              <TypingText texts={["Un formateur engagé pour votre réussite.", "Spécialiste de l'anglais professionnel.", "Formateur Professionnel d'Adultes depuis 2017."]} className="text-xl font-semibold text-primary" />
             </div>
           </FadeInSection>
 
@@ -29,7 +31,10 @@ const About = () => {
                 <h2 className="text-2xl font-bold text-primary">Antony Addy</h2>
               </div>
               
-              
+              {/* Photo */}
+              <div className="flex justify-center mb-6">
+                <img src="/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png" alt="Antony Addy, Formateur en Anglais" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" loading="lazy" />
+              </div>
 
               <div className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
                 <p className="mb-4">
@@ -179,4 +184,5 @@ const About = () => {
       </div>
     </>;
 };
+
 export default About;

@@ -136,7 +136,7 @@ const Home = () => {
             {/* Image Side */}
             <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start">
               <div className="relative">
-                <img src="/lovable-uploads/fcfb75ec-febe-4da2-bd7e-eca346b5e233.png" alt="Antony Addy, Formateur en Anglais" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" loading="lazy" />
+                <img src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png" alt="Antony Addy, Formateur en Anglais" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" loading="lazy" />
                 <p className="text-sm text-muted-foreground mt-3 text-center lg:text-left font-body italic">
                   Formateur en action
                 </p>
@@ -166,13 +166,15 @@ const Home = () => {
             Pourquoi choisir mes formations ?
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => <div key={index} className="text-center p-6 rounded-lg bg-white hover:shadow-lg transition-shadow">
+            {features.map((feature, index) => (
+              <div key={index} className="text-center p-6 rounded-lg bg-white hover:shadow-lg transition-shadow">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 text-accent rounded-full mb-4">
                   <feature.icon className="h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-primary mb-3 font-heading">{feature.title}</h3>
                 <p className="text-muted-foreground font-body">{feature.description}</p>
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -269,13 +271,15 @@ const Home = () => {
             Mes offres de formation
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => <div key={index} className="text-center p-6 rounded-lg bg-muted hover:shadow-lg transition-shadow">
+            {services.map((service, index) => (
+              <div key={index} className="text-center p-6 rounded-lg bg-muted hover:shadow-lg transition-shadow">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 text-primary rounded-full mb-4">
                   <service.icon className="h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-primary mb-3 font-heading">{service.title}</h3>
                 <p className="text-muted-foreground font-body">{service.description}</p>
-              </div>)}
+              </div>
+            ))}
           </div>
           <div className="text-center mt-8">
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-6">
