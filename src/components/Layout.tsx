@@ -1,7 +1,7 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { MessageSquare, Menu, X, ExternalLink } from 'lucide-react';
+import { ScrollProgressBar } from "@/components/Effects";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -28,6 +28,8 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div className="min-h-screen bg-background font-body">
+      <ScrollProgressBar />
+      
       {/* Header */}
       <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
