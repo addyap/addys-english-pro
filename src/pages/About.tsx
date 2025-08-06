@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Award, BookOpen, Users, Globe, CheckCircle, Target, MessageCircle, Mail, Building, GraduationCap, MapPin, Phone, Factory, School, University, Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -6,10 +5,8 @@ import SEOHead from '../components/SEOHead';
 import { TypingText } from '../components/TypingText';
 import { FadeInSection } from '../components/Effects';
 import { seoMetadata } from '../utils/seoMetadata';
-
 const About = () => {
-  return (
-    <>
+  return <>
       <SEOHead {...seoMetadata.about} />
       
       <div className="min-h-screen bg-background py-12">
@@ -20,14 +17,7 @@ const About = () => {
               <h1 className="text-4xl font-bold text-primary mb-6">
                 Qui je suis
               </h1>
-              <TypingText
-                texts={[
-                  "Un formateur engagé pour votre réussite.",
-                  "Spécialiste de l'anglais professionnel.",
-                  "20+ ans d'expérience en formation d'adultes.",
-                ]}
-                className="text-xl font-semibold text-primary"
-              />
+              <TypingText texts={["Un formateur engagé pour votre réussite.", "Spécialiste de l'anglais professionnel.", "20+ ans d'expérience en formation d'adultes."]} className="text-xl font-semibold text-primary" />
             </div>
           </FadeInSection>
 
@@ -39,77 +29,31 @@ const About = () => {
                 <h2 className="text-2xl font-bold text-primary">Antony Addy</h2>
               </div>
               
-              <div className="mb-6">
-                <TypingText
-                  texts={["Formateur Professionnel d'Adultes depuis 2017 – Spécialiste en anglais professionnel"]}
-                  speed={40}
-                  pause={3000}
-                  className="text-lg font-semibold text-primary mb-4"
-                />
-              </div>
+              
 
               <div className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
                 <p className="mb-4">
                   Avec plus de 20 ans d'expérience dans l'enseignement de l'anglais, j'interviens auprès de publics variés à travers la France.
                 </p>
-                <p className="font-semibold mb-3">J'ai travaillé avec :</p>
-                <ul className="space-y-2">
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
-                    <span>Entreprises</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
-                    <span>Organismes de formation</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
-                    <span>Écoles de Commerce</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
-                    <span>Écoles privées spécialisées (journalisme, communication, etc.)</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
-                    <span>Universités</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
-                    <span>Centres de formation France Travail</span>
-                  </li>
-                  <li className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
-                    <span>Écoles de langues</span>
-                  </li>
-                </ul>
+                
+                
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-xl font-semibold text-primary mb-2">
-                    <Award className="inline-block h-5 w-5 mr-1 align-middle" />
-                    Expérience
-                  </h3>
-                  <p className="text-muted-foreground">
-                    Plus de 20 ans d'expérience dans la formation pour adultes, en France et à l'étranger.
-                  </p>
+                  
+                  
                 </div>
                 
                 <div>
-                  <h3 className="text-xl font-semibold text-primary mb-2">
-                    <BookOpen className="inline-block h-5 w-5 mr-1 align-middle" />
-                    Pédagogie
-                  </h3>
-                  <p className="text-muted-foreground">
-                    Méthodes actives et participatives, basées sur vos besoins et vos objectifs.
-                  </p>
+                  
+                  
                 </div>
               </div>
               
               <div className="mt-6 space-y-2 text-muted-foreground">
-                <p>• Formations sur mesure, adaptées à votre niveau</p>
-                <p>• Suivi personnalisé et conseils individualisés</p>
+                
+                
               </div>
             </div>
           </FadeInSection>
@@ -233,8 +177,6 @@ const About = () => {
           </FadeInSection>
         </div>
       </div>
-    </>
-  );
+    </>;
 };
-
 export default About;
