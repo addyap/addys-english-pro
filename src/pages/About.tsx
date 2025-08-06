@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Award, BookOpen, Users, Globe, CheckCircle, Target, MessageCircle, Mail, Building, GraduationCap, MapPin, Phone } from 'lucide-react';
+import { Award, BookOpen, Users, Globe, CheckCircle, Target, MessageCircle, Mail, Building, GraduationCap, MapPin, Phone, Factory, School, University, Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import { TypingText } from '../components/TypingText';
@@ -39,15 +39,51 @@ const About = () => {
                 <h2 className="text-2xl font-bold text-primary">Antony Addy</h2>
               </div>
               
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
+              <div className="mb-6">
                 <TypingText
-                  texts={["Formateur Professionnel d'Adultes depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais."]}
+                  texts={["Formateur Professionnel d'Adultes depuis 2017 – Spécialiste en anglais professionnel"]}
                   speed={40}
                   pause={3000}
-                  className="text-muted-foreground"
+                  className="text-lg font-semibold text-primary mb-4"
                 />
-                {" "}Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
-              </p>
+              </div>
+
+              <div className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
+                <p className="mb-4">
+                  Avec plus de 20 ans d'expérience dans l'enseignement de l'anglais, j'interviens auprès de publics variés à travers la France.
+                </p>
+                <p className="font-semibold mb-3">J'ai travaillé avec :</p>
+                <ul className="space-y-2">
+                  <li className="flex items-center">
+                    <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Entreprises</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Organismes de formation</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Écoles de Commerce</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Écoles privées spécialisées (journalisme, communication, etc.)</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Universités</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Centres de formation France Travail</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
+                    <span>Écoles de langues</span>
+                  </li>
+                </ul>
+              </div>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -88,18 +124,38 @@ const About = () => {
               
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div className="flex items-center">
-                  <Users className="h-5 w-5 text-accent mr-2" />
+                  <Factory className="h-5 w-5 text-accent mr-2" />
                   <span className="font-medium text-primary">Entreprises</span>
                 </div>
                 
                 <div className="flex items-center">
-                  <Building className="h-5 w-5 text-accent mr-2" />
-                  <span className="font-medium text-primary">Écoles</span>
+                  <Target className="h-5 w-5 text-accent mr-2" />
+                  <span className="font-medium text-primary">Organismes de formation</span>
                 </div>
                 
                 <div className="flex items-center">
-                  <GraduationCap className="h-5 w-5 text-accent mr-2" />
-                  <span className="font-medium text-primary">Centres de formation</span>
+                  <Briefcase className="h-5 w-5 text-accent mr-2" />
+                  <span className="font-medium text-primary">Écoles de Commerce</span>
+                </div>
+
+                <div className="flex items-center">
+                  <School className="h-5 w-5 text-accent mr-2" />
+                  <span className="font-medium text-primary">Écoles privées spécialisées</span>
+                </div>
+
+                <div className="flex items-center">
+                  <University className="h-5 w-5 text-accent mr-2" />
+                  <span className="font-medium text-primary">Universités</span>
+                </div>
+
+                <div className="flex items-center">
+                  <Building className="h-5 w-5 text-accent mr-2" />
+                  <span className="font-medium text-primary">Centres de formation France Travail</span>
+                </div>
+
+                <div className="flex items-center">
+                  <Globe className="h-5 w-5 text-accent mr-2" />
+                  <span className="font-medium text-primary">Écoles de langues</span>
                 </div>
               </div>
               
