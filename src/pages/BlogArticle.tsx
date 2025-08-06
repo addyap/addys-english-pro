@@ -2,6 +2,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
+import SEOHead from '../components/SEOHead';
 
 const BlogArticle = () => {
   const { id } = useParams();
@@ -39,7 +40,9 @@ const BlogArticle = () => {
       date: '2025-01-15',
       author: 'Antony Addy',
       category: 'Conseils carrière',
-      readTime: '5 min'
+      readTime: '5 min',
+      description: 'Découvrez pourquoi l\'anglais professionnel est devenu une compétence indispensable en 2025 et comment la développer efficacement.',
+      ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
     },
     'erreurs-francophones': {
       title: 'Les erreurs fréquentes chez les francophones – et comment les éviter',
@@ -79,7 +82,9 @@ const BlogArticle = () => {
       date: '2025-01-10',
       author: 'Antony Addy',
       category: 'Grammaire & Vocabulaire',
-      readTime: '7 min'
+      readTime: '7 min',
+      description: 'Identifiez et corrigez les erreurs les plus communes des francophones en anglais avec les conseils d\'un formateur expérimenté.',
+      ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
     },
     'oral-vs-ecrit': {
       title: 'Anglais oral vs écrit – adapter sa communication professionnelle',
@@ -139,11 +144,21 @@ const BlogArticle = () => {
       date: '2025-01-05',
       author: 'Antony Addy',
       category: 'Communication',
-      readTime: '6 min'
+      readTime: '6 min',
+      description: 'Apprenez à adapter votre style de communication en anglais selon le canal : emails, présentations orales, appels téléphoniques.',
+      ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
     }
   };
 
   const article = id ? articles[id as keyof typeof articles] : null;
+
+  // Get related posts (excluding current article)
+  const getRelatedPosts = () => {
+    const allArticles = Object.entries(articles).filter(([key]) => key !== id);
+    return allArticles.slice(0, 3);
+  };
+
+  const relatedPosts = getRelatedPosts();
 
   if (!article) {
     return (
@@ -158,86 +173,133 @@ const BlogArticle = () => {
     );
   }
 
+  // Generate SEO metadata for this article
+  const articleSEO = {
+    title: `${article.title} - Blog Antony Addy`,
+    description: article.description,
+    canonical: `https://antonyaddy.com/blog/${id}`,
+    ogImage: article.ogImage,
+    keywords: `anglais professionnel, formation anglais, ${article.category.toLowerCase()}`
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Navigation */}
-        <div className="mb-8">
-          <Link 
-            to="/blog" 
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Retour au blog
-          </Link>
-        </div>
-
-        {/* Article Header */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-          <div className="mb-6">
-            <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
-              {article.category}
-            </span>
-          </div>
+    <>
+      <SEOHead {...articleSEO} />
+      
+      <div className="min-h-screen bg-gray-50 py-12">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <h1 className="text-4xl font-bold text-gray-900 mb-6">
-            {article.title}
-          </h1>
-          
-          <div className="flex items-center space-x-6 text-gray-500 text-sm border-b border-gray-200 pb-6">
-            <div className="flex items-center">
-              <Calendar className="h-4 w-4 mr-2" />
-              {new Date(article.date).toLocaleDateString('fr-FR', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-              })}
-            </div>
-            <div className="flex items-center">
-              <User className="h-4 w-4 mr-2" />
-              {article.author}
-            </div>
-            <span>{article.readTime} de lecture</span>
+          {/* Navigation */}
+          <div className="mb-8">
+            <Link 
+              to="/blog" 
+              className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Retour au blog
+            </Link>
           </div>
-        </div>
 
-        {/* Article Content */}
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <div 
-            className="prose prose-lg max-w-none text-gray-700"
-            dangerouslySetInnerHTML={{ __html: article.content }}
-          />
-        </div>
+          {/* Article Header */}
+          <article className="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <div className="mb-6">
+              <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
+                {article.category}
+              </span>
+            </div>
+            
+            <header>
+              <h1 className="text-4xl font-bold text-gray-900 mb-6">
+                {article.title}
+              </h1>
+              
+              <div className="flex items-center space-x-6 text-gray-500 text-sm border-b border-gray-200 pb-6 mb-8">
+                <div className="flex items-center">
+                  <Calendar className="h-4 w-4 mr-2" />
+                  <time dateTime={article.date}>
+                    {new Date(article.date).toLocaleDateString('fr-FR', { 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    })}
+                  </time>
+                </div>
+                <div className="flex items-center">
+                  <User className="h-4 w-4 mr-2" />
+                  {article.author}
+                </div>
+                <span>{article.readTime} de lecture</span>
+              </div>
+            </header>
 
-        {/* Author CTA */}
-        <div className="bg-blue-50 rounded-lg p-8 mt-8">
-          <div className="text-center">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">
-              Besoin d'aide pour progresser en anglais ?
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Antony Addy propose des formations personnalisées en anglais professionnel, 
-              adaptées à votre secteur et à vos objectifs.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/contact"
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-              >
-                Me contacter
-              </Link>
-              <Link
-                to="/offres-de-formation"
-                className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors"
-              >
-                Voir les formations
-              </Link>
+            {/* Article Content */}
+            <div 
+              className="prose prose-lg max-w-none text-gray-700"
+              dangerouslySetInnerHTML={{ __html: article.content }}
+            />
+          </article>
+
+          {/* Related Posts */}
+          {relatedPosts.length > 0 && (
+            <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Articles connexes</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {relatedPosts.map(([key, relatedArticle]) => (
+                  <Link
+                    key={key}
+                    to={`/blog/${key}`}
+                    className="group block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
+                  >
+                    <div className="mb-2">
+                      <span className="text-xs text-blue-600 font-medium">
+                        {relatedArticle.category}
+                      </span>
+                    </div>
+                    <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                      {relatedArticle.title}
+                    </h3>
+                    <div className="flex items-center text-sm text-gray-500">
+                      <Calendar className="h-3 w-3 mr-1" />
+                      {new Date(relatedArticle.date).toLocaleDateString('fr-FR', { 
+                        month: 'short', 
+                        day: 'numeric' 
+                      })}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Author CTA */}
+          <div className="bg-blue-50 rounded-lg p-8">
+            <div className="text-center">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                Besoin d'aide pour progresser en anglais ?
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Antony Addy propose des formations personnalisées en anglais professionnel, 
+                adaptées à votre secteur et à vos objectifs.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to="/contact"
+                  className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                >
+                  Me contacter
+                </Link>
+                <Link
+                  to="/offres-de-formation"
+                  className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors"
+                >
+                  Voir les formations
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

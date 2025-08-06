@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import { Award, BookOpen, Users, Globe, CheckCircle, Target, MessageCircle, Mail, Building, GraduationCap, MapPin, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -40,8 +38,8 @@ const About = () => {
                 <h2 className="text-2xl font-bold text-primary">Antony Addy</h2>
               </div>
               
-              <p className="text-muted-foreground mb-6">
-                Formateur d'anglais certifié, je suis natif britannique et j'accompagne des adultes en formation continue, <span className="transition duration-300 hover:bg-yellow-100 rounded px-1">CPF</span> ou en reconversion. Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
+                Formateur Professionnel d'Adultes depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais. Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
               </p>
 
               <div className="grid md:grid-cols-2 gap-6">
@@ -69,15 +67,6 @@ const About = () => {
               <div className="mt-6 space-y-2 text-muted-foreground">
                 <p>• Formations sur mesure, adaptées à votre niveau</p>
                 <p>• Suivi personnalisé et conseils individualisés</p>
-              </div>
-
-              {/* Animated signature */}
-              <div className="mt-8 flex justify-center">
-                <svg width="240" height="60" viewBox="0 0 240 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10 30C30 10, 60 10, 80 30C100 50, 130 50, 150 30" stroke="#1D4ED8" strokeWidth="2" fill="none">
-                    <animate attributeName="stroke-dasharray" from="0,200" to="200,0" dur="2s" fill="freeze" begin="0.3s" />
-                  </path>
-                </svg>
               </div>
             </div>
           </FadeInSection>

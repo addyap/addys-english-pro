@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink, UserCheck, Building, GraduationCap, Target, Briefcase, Settings, MessageCircle, Mail } from 'lucide-react';
@@ -87,16 +86,9 @@ const Home = () => {
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
-            <TypingText
-              texts={[
-                "Formateur d'anglais professionnel.",
-                "Formations CPF et entreprises.",
-                "Partout en France, en ligne ou en présentiel.",
-              ]}
-              speed={60}
-              pause={2000}
-              className="text-3xl sm:text-4xl md:text-6xl font-bold text-white text-shadow-lg font-heading leading-tight mb-6 block"
-            />
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white text-shadow-lg font-heading leading-tight mb-6">
+              Formateur d'anglais professionnel – Natif britannique, bilingue français
+            </h1>
             <p className="text-xl md:text-2xl mb-4 text-blue-100 font-body">
               Des formations claires, flexibles et efficaces — pour particuliers, professionnels et centres de formation.
             </p>
@@ -136,7 +128,7 @@ const Home = () => {
             {/* Content Side */}
             <div className="order-1 lg:order-2">
               <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
-                Formateur d'anglais certifié, je suis natif britannique et j'accompagne des adultes en formation continue, CPF ou en reconversion. Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
+                Formateur Professionnel d'Adultes depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais. Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
               </p>
               <div className="text-center lg:text-left">
                 <Link to="/qui-je-suis" className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body">
