@@ -38,7 +38,25 @@ const Blog = () => {
 
   return (
     <>
-      <SEOHead {...seoMetadata.blog} />
+      <SEOHead
+        title="Blog – Conseils pour apprendre l'anglais"
+        description="Le blog d'Antony Addy : astuces, grammaire et vocabulaire pour progresser en anglais professionnel."
+        canonicalUrl="https://antonyaddy.com/blog"
+        keywords={[
+          "blog anglais",
+          "astuces anglais",
+          "grammaire anglaise",
+          "vocabulaire anglais",
+          "anglais professionnel",
+          "apprendre l'anglais",
+          "formateur d'anglais",
+          "conseils langue anglaise",
+          "formation linguistique",
+          "Antony Addy",
+          "CPF",
+          "anglais pour adultes"
+        ]}
+      />
       
       <div className="min-h-screen bg-gray-50 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

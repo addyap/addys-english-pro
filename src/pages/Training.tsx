@@ -32,7 +32,25 @@ const Training = () => {
 
   return (
     <>
-      <SEOHead {...seoMetadata.training} />
+      <SEOHead
+        title="Offres de formation en anglais – Antony Addy"
+        description="Découvrez les formations d'anglais proposées par Antony Addy : anglais professionnel, CPF, entreprises, particuliers en présentiel et à distance."
+        canonicalUrl="https://antonyaddy.com/offres-de-formation"
+        keywords={[
+          "formation anglais",
+          "anglais professionnel",
+          "CPF",
+          "cours individuels",
+          "anglais pour entreprises",
+          "formation continue",
+          "cours à distance",
+          "Antony Addy",
+          "anglais Alpes-Maritimes",
+          "formateur natif britannique",
+          "anglais des affaires",
+          "présentiel et visioconférence"
+        ]}
+      />
       
       <div className="min-h-screen bg-background py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

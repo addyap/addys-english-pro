@@ -177,9 +177,21 @@ const BlogArticle = () => {
   const articleSEO = {
     title: `${article.title} - Blog Antony Addy`,
     description: article.description,
-    canonical: `https://antonyaddy.com/blog/${id}`,
+    canonicalUrl: `https://antonyaddy.com/blog/${id}`,
     ogImage: article.ogImage,
-    keywords: `anglais professionnel, formation anglais, ${article.category.toLowerCase()}`
+    keywords: [
+      "article anglais",
+      "anglais professionnel",
+      "formation CPF",
+      "anglais des affaires",
+      "formation continue",
+      "trucs et astuces anglais",
+      "anglais pour entreprises",
+      "anglais pour adultes",
+      "formateur d'anglais",
+      "Antony Addy",
+      article.category.toLowerCase()
+    ]
   };
 
   return (
