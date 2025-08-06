@@ -136,7 +136,7 @@ const Home = () => {
             {/* Image Side */}
             <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start">
               <div className="relative">
-                <img src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png" alt="Antony Addy, Formateur en Anglais" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" loading="lazy" />
+                <img src="/lovable-uploads/fcfb75ec-febe-4da2-bd7e-eca346b5e233.png" alt="Antony Addy, Formateur en Anglais" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" loading="lazy" />
                 <p className="text-sm text-muted-foreground mt-3 text-center lg:text-left font-body italic">
                   Formateur en action
                 </p>
