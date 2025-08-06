@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink, UserCheck, Building, GraduationCap, Target, Briefcase, Settings, MessageCircle, Mail } from 'lucide-react';
+import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink, UserCheck, Building, GraduationCap, Target, Briefcase, Settings, MessageCircle, Mail, School, University, MapPin, Factory } from 'lucide-react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -62,6 +62,16 @@ const Home = () => {
     description: 'Interventions via organismes partenaires sur les dispositifs VAE, Agefiph, missions locales, etc.'
   }];
 
+  const clientCategories = [
+    { icon: Building, title: 'Entreprises' },
+    { icon: GraduationCap, title: 'Organismes de formation' },
+    { icon: School, title: 'Écoles de Commerce' },
+    { icon: BookOpen, title: 'Écoles privées spécialisées' },
+    { icon: University, title: 'Universités' },
+    { icon: MapPin, title: 'Centres de formation France Travail' },
+    { icon: Globe, title: 'Écoles de langues' }
+  ];
+
   return <>
       <SEOHead {...seoMetadata.home} />
       
@@ -87,7 +97,12 @@ const Home = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white text-shadow-lg font-heading leading-tight mb-6">
-              Formateur d'anglais professionnel – Natif britannique, bilingue français
+              <TypingText
+                texts={["Spécialiste en anglais professionnel – Formateur Professionnel d'Adultes depuis 2017"]}
+                speed={60}
+                pause={3000}
+                className="text-white"
+              />
             </h1>
             <p className="text-xl md:text-2xl mb-4 text-blue-100 font-body">
               Des formations claires, flexibles et efficaces — pour particuliers, professionnels et centres de formation.
@@ -128,7 +143,13 @@ const Home = () => {
             {/* Content Side */}
             <div className="order-1 lg:order-2">
               <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
-                Formateur Professionnel d'Adultes depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais. Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
+                <TypingText
+                  texts={["Formateur Professionnel d'Adultes depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais."]}
+                  speed={40}
+                  pause={3000}
+                  className="text-muted-foreground"
+                />
+                {" "}Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
               </p>
               <div className="text-center lg:text-left">
                 <Link to="/qui-je-suis" className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body">
@@ -158,10 +179,24 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Ils me font confiance Section - Swiper Carousel */}
+      {/* Ils me font confiance Section - Updated with client categories */}
       <section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-extrabold text-primary mb-12">Ils me font confiance</h2>
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-extrabold text-primary mb-12 text-center">Ils me font confiance</h2>
+          
+          {/* Client Categories */}
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+            {clientCategories.map((category, index) => (
+              <div key={index} className="text-center p-4 rounded-lg bg-white hover:shadow-lg transition-shadow">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 text-primary rounded-full mb-3">
+                  <category.icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-sm font-semibold text-primary font-heading">{category.title}</h3>
+              </div>
+            ))}
+          </div>
+
+          {/* Existing client logos carousel */}
           <Swiper spaceBetween={40} slidesPerView={1} breakpoints={{
           640: {
             slidesPerView: 2
@@ -264,13 +299,6 @@ const Home = () => {
               </Link>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* CPF Section - Discrete */}
-      <section className="py-12 bg-muted">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
         </div>
       </section>
 

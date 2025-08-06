@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Award, BookOpen, Users, Globe, CheckCircle, Target, MessageCircle, Mail, Building, GraduationCap, MapPin, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -39,7 +40,13 @@ const About = () => {
               </div>
               
               <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
-                Formateur Professionnel d'Adultes depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais. Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
+                <TypingText
+                  texts={["Formateur Professionnel d'Adultes depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais."]}
+                  speed={40}
+                  pause={3000}
+                  className="text-muted-foreground"
+                />
+                {" "}Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
               </p>
 
               <div className="grid md:grid-cols-2 gap-6">
