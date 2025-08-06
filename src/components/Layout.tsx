@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { MessageSquare, Menu, X, ExternalLink } from 'lucide-react';
@@ -19,7 +20,7 @@ const Layout = ({ children }: LayoutProps) => {
     { name: 'Témoignages', href: '/temoignages', current: location.pathname === '/temoignages' },
     { name: 'Contact', href: '/contact', current: location.pathname === '/contact' },
     { name: 'Blog', href: '/blog', current: location.pathname === '/blog' },
-    { name: 'Ressources', href: '/anglaisadistance', current: location.pathname === '/anglaisadistance' },
+    { name: 'Ressources en ligne', href: '/anglaisadistance', current: location.pathname === '/anglaisadistance' },
   ];
 
   const toggleMobileMenu = () => {
@@ -44,15 +45,6 @@ const Layout = ({ children }: LayoutProps) => {
                 <Link to="/" className="text-lg font-bold text-primary font-heading">
                   Antony Addy
                 </Link>
-                <a
-                  href="https://anglaisadistance.fr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-muted-foreground hover:text-primary flex items-center gap-1 mt-1 transition-colors"
-                >
-                  🎓 Ressources gratuites sur anglaisadistance.fr
-                  <ExternalLink className="h-3 w-3" />
-                </a>
               </div>
             </div>
             
@@ -137,7 +129,7 @@ const Layout = ({ children }: LayoutProps) => {
 
       {/* Footer */}
       <footer className="bg-slate-900 text-white text-sm py-8 px-4">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-6">
           <div>
             <h3 className="font-semibold mb-2">Navigation</h3>
             <ul className="space-y-1">
@@ -180,6 +172,23 @@ const Layout = ({ children }: LayoutProps) => {
                   className="hover:underline"
                 >
                   +33 6 49 82 98 26 (WhatsApp)
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-2">Ressources</h3>
+            <ul className="space-y-1">
+              <li>
+                <a
+                  href="https://anglaisadistance.fr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline flex items-center gap-1"
+                >
+                  🎓 anglaisadistance.fr
+                  <ExternalLink className="h-3 w-3" />
                 </a>
               </li>
             </ul>

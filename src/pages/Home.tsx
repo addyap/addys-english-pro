@@ -42,15 +42,15 @@ const Home = () => {
     description: 'Sessions personnalisées pour renforcer les compétences linguistiques de vos équipes (anglais professionnel, techniques, ou sectoriels).'
   }, {
     icon: Briefcase,
-    title: 'CPF (Compte Personnel de Formation)',
-    description: 'Parcours éligibles au CPF, assurés via partenaires certifiés Qualiopi. Formations adaptées à vos objectifs individuels.'
+    title: 'Formations Individuelles',
+    description: 'Parcours personnalisés adaptés à vos objectifs individuels et votre rythme d\'apprentissage.'
   }, {
     icon: Target,
-    title: 'AFC – Actions de Formation Conventionnées',
-    description: 'Financement par France Travail et les Régions. Je peux intervenir sous-traité par des organismes certifiés, selon les nouvelles règles 2025.'
+    title: 'Actions de Formation Conventionnées',
+    description: 'Interventions via des organismes certifiés pour répondre aux besoins spécifiques des entreprises et institutions.'
   }, {
     icon: Users,
-    title: 'Dispositifs d\'Accès à l\'Emploi (POE, POEI, AFPR)',
+    title: 'Dispositifs d\'Accès à l\'Emploi',
     description: 'Préparation des publics en reconversion dans le cadre des dispositifs pilotés par les OPCO ou France Travail.'
   }, {
     icon: GraduationCap,
@@ -58,8 +58,8 @@ const Home = () => {
     description: 'Soutien aux étudiants et alternants pour maîtriser l\'anglais académique et professionnel, en formation continue.'
   }, {
     icon: Settings,
-    title: 'Autres Dispositifs (VAE, Pro-A, etc.)',
-    description: 'Je suis mobilisable par le biais d\'organismes partenaires Qualiopi sur les dispositifs comme la VAE, l\'Agefiph, les missions locales, etc.'
+    title: 'Autres Dispositifs Spécialisés',
+    description: 'Interventions via organismes partenaires sur les dispositifs VAE, Agefiph, missions locales, etc.'
   }];
 
   return <>
