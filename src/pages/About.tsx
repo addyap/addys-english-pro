@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { Award, BookOpen, Users, Globe, CheckCircle, Target, MessageCircle, Mail } from 'lucide-react';
+import { Award, BookOpen, Users, Globe, CheckCircle, Target, MessageCircle, Mail, Building, GraduationCap, MapPin, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import { TypingText } from '../components/TypingText';
