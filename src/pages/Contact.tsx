@@ -1,9 +1,17 @@
+
 import React, { useState } from 'react';
 import { MessageSquare, Mail, MapPin, Clock } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
-import { seoMetadata } from '../utils/seoMetadata';
 
 const Contact = () => {
+  const contactJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact - Antony Addy",
+    "description": "Contactez Antony Addy pour vos besoins en formation d'anglais professionnel",
+    "url": "https://antonyaddy.com/contact"
+  };
+
   const [formData, setFormData] = useState({
     prenom: '',
     nom: '',
@@ -14,7 +22,6 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // Here you would typically send the form data to a server
     alert('Message envoyé ! Je vous recontacte rapidement.');
     setFormData({
       prenom: '',
@@ -32,10 +39,16 @@ const Contact = () => {
   };
 
   return <>
-      <SEOHead {...seoMetadata.contact} />
+      <SEOHead 
+        title="Contact – Antony Addy, Prestataire d'anglais"
+        description="Contactez-moi pour une formation en anglais professionnel. Réponse rapide garantie."
+        keywords={["Contact", "Antony Addy", "formation anglais", "devis", "consultation"]}
+        canonicalUrl="https://antonyaddy.com/contact"
+        jsonLd={contactJsonLd}
+      />
       
       <div className="min-h-screen bg-gray-50 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4">
           
           {/* Header */}
           <div className="text-center mb-12">

@@ -1,10 +1,17 @@
-
 import React from 'react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import SEOHead from '../components/SEOHead';
 import { TypingText } from '../components/TypingText';
 
 const Testimonials = () => {
+  const testimonialsJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "name": "Témoignages clients - Antony Addy",
+    "description": "Avis authentiques d'anciens apprenants sur les formations d'anglais d'Antony Addy",
+    "url": "https://antonyaddy.com/temoignages"
+  };
+
   const testimonials = [
     {
       quote: "An excellent teacher! Passionate and dedicated to their work, which brings a positive energy to the class atmosphere!",
@@ -83,15 +90,15 @@ const Testimonials = () => {
     },
   ];
 
-  const seoData = {
-    title: "Témoignages – Antony Addy | Formateur Anglais",
-    description: "Avis authentiques d'anciens apprenants et professionnels sur la qualité des formations d'anglais animées par Antony Addy.",
-    canonical: "https://antonyaddy.com/temoignages"
-  };
-
   return (
     <>
-      <SEOHead {...seoData} />
+      <SEOHead 
+        title="Témoignages – Antony Addy | Formateur Anglais"
+        description="Avis authentiques d'anciens apprenants et professionnels sur la qualité des formations d'anglais animées par Antony Addy."
+        keywords={["témoignages", "avis clients", "formation anglais", "Antony Addy", "satisfaction clients"]}
+        canonicalUrl="https://antonyaddy.com/temoignages"
+        jsonLd={testimonialsJsonLd}
+      />
       
       <div className="min-h-screen bg-background py-12">
         <div className="max-w-4xl mx-auto px-4">

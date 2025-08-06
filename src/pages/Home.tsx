@@ -7,9 +7,23 @@ import "swiper/css";
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import { TypingText } from '../components/TypingText';
-import { seoMetadata } from '../utils/seoMetadata';
 
 const Home = () => {
+  const homeJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Antony Addy - Formateur d'anglais",
+    "description": "Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes",
+    "url": "https://antonyaddy.com",
+    "email": "formations@antonyaddy.com",
+    "areaServed": "France",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Alpes-Maritimes",
+      "addressCountry": "FR"
+    }
+  };
+
   const features = [{
     icon: Globe,
     title: 'Anglais authentique avec un formateur britannique natif',
@@ -86,18 +100,38 @@ const Home = () => {
   }];
 
   return <>
-      <SEOHead {...seoMetadata.home} />
+      <SEOHead 
+        title="Formateur d'anglais pour adultes – Antony Addy"
+        description="Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes. CPF via centres certifiés Qualiopi."
+        keywords={["Anglais professionnel", "Formateur anglais", "Antony Addy", "CPF", "Formation d'anglais", "Cours d'anglais en ligne", "Anglais pour adultes", "Alpes-Maritimes", "Formation continue"]}
+        canonicalUrl="https://antonyaddy.com/"
+        jsonLd={homeJsonLd}
+      />
       
+      {/* Skip to content link for accessibility */}
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded-lg z-50">
+        Aller au contenu principal
+      </a>
+
       {/* Hero Section with Video Background */}
       <section className="relative text-white overflow-hidden min-h-screen flex items-center">
         {/* YouTube Video Background */}
         <div className="absolute inset-0 w-full h-full">
-          <iframe src="https://www.youtube.com/embed/p5UG08OsMGw?autoplay=1&mute=1&loop=1&playlist=p5UG08OsMGw&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0&cc_load_policy=0&playsinline=1&enablejsapi=0&start=0" className="absolute top-1/2 left-1/2 w-full h-full min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 pointer-events-none object-cover" style={{
-          width: '100vw',
-          height: '56.25vw',
-          minHeight: '100vh',
-          minWidth: '177.78vh'
-        }} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen={false} title="Hero Background Video" />
+          <iframe 
+            src="https://www.youtube.com/embed/02-JnWFj2Fs?autoplay=1&mute=1&loop=1&playlist=02-JnWFj2Fs&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0&cc_load_policy=0&playsinline=1&enablejsapi=0&start=0" 
+            className="absolute top-1/2 left-1/2 w-full h-full min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 pointer-events-none object-cover" 
+            style={{
+              width: '100vw',
+              height: '56.25vw',
+              minHeight: '100vh',
+              minWidth: '177.78vh'
+            }} 
+            frameBorder="0" 
+            allow="autoplay; encrypted-media" 
+            allowFullScreen={false} 
+            title="Background video - Antony Addy formations anglais"
+            loading="lazy"
+          />
           
           {/* Dark overlay for text readability */}
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
@@ -107,7 +141,7 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary -z-10"></div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 py-20">
           <div className="text-center">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white text-shadow-lg font-heading leading-tight mb-6">
               <TypingText texts={["Spécialiste en anglais professionnel – Formateur Professionnel d'Adultes depuis 2017"]} speed={60} pause={3000} className="text-white" />
@@ -128,220 +162,222 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Qui je suis Section - Updated with split layout */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-primary mb-12 text-center font-heading">Qui je suis</h2>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Image Side */}
-            <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start">
-              <div className="relative">
-                <img src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png" alt="Antony Addy, Formateur en Anglais" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" loading="lazy" />
-                <p className="text-sm text-muted-foreground mt-3 text-center lg:text-left font-body italic">
-                  Formateur en action
+      <main id="main-content">
+        {/* Qui je suis Section - Updated with split layout */}
+        <section className="py-16 bg-white">
+          <div className="max-w-6xl mx-auto px-4">
+            <h2 className="text-3xl font-bold text-primary mb-12 text-center font-heading">Qui je suis</h2>
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Image Side */}
+              <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start">
+                <div className="relative">
+                  <img src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png" alt="Antony Addy, Formateur en Anglais professionnel" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" loading="lazy" />
+                  <p className="text-sm text-muted-foreground mt-3 text-center lg:text-left font-body italic">
+                    Formateur en action
+                  </p>
+                </div>
+              </div>
+              
+              {/* Content Side */}
+              <div className="order-1 lg:order-2">
+                <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
+                  <TypingText texts={["Formateur Professionnel d'Adultes depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais."]} speed={40} pause={3000} className="text-muted-foreground" />
+                  {" "}Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
                 </p>
+                <div className="text-center lg:text-left">
+                  <Link to="/qui-je-suis" className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body">
+                    En savoir plus
+                  </Link>
+                </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Features Section - 6 blocks in 2x3 grid */}
+        <section className="py-16 bg-muted">
+          <div className="max-w-6xl mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">
+              Pourquoi choisir mes formations ?
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {features.map((feature, index) => (
+                <div key={index} className="text-center p-6 rounded-lg bg-white hover:shadow-lg transition-shadow">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 text-accent rounded-full mb-4">
+                    <feature.icon className="h-8 w-8" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-primary mb-3 font-heading">{feature.title}</h3>
+                  <p className="text-muted-foreground font-body">{feature.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Ils me font confiance Section - Updated with client categories */}
+        <section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-extrabold text-primary mb-12 text-center">Ils me font confiance</h2>
             
-            {/* Content Side */}
-            <div className="order-1 lg:order-2">
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
-                <TypingText texts={["Formateur Professionnel d'Adultes depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais."]} speed={40} pause={3000} className="text-muted-foreground" />
-                {" "}Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
-              </p>
-              <div className="text-center lg:text-left">
-                <Link to="/qui-je-suis" className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body">
-                  En savoir plus
+            {/* Client Categories */}
+            <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+              {clientCategories.map((category, index) => (
+                <div key={index} className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm">
+                  <category.icon className="h-5 w-5 text-accent mr-2" />
+                  <span className="font-medium text-primary text-sm">{category.title}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Existing client logos carousel */}
+            <Swiper spaceBetween={40} slidesPerView={1} breakpoints={{
+            640: {
+              slidesPerView: 2
+            },
+            1024: {
+              slidesPerView: 3
+            },
+            1280: {
+              slidesPerView: 4
+            }
+          }} loop={true} autoplay={{
+            delay: 3000
+          }} modules={[Autoplay]} className="pb-8">
+              <SwiperSlide>
+                <div className="flex flex-col items-center">
+                  <img src="/lovable-uploads/a3da9e3b-1f6c-447a-b308-2ca44d071c67.png" alt="IGY Vieux-Port de Cannes" className="h-24 object-contain mb-2" />
+                  <p className="text-sm font-medium text-primary">IGY Vieux-Port de Cannes</p>
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className="flex flex-col items-center">
+                  <img src="/lovable-uploads/694fcb0f-d52b-44f3-8cbc-6c1a051e416b.png" alt="ITEC" className="h-24 object-contain mb-2" />
+                  <p className="text-sm font-medium text-primary">ITEC</p>
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className="flex flex-col items-center">
+                  <img src="/lovable-uploads/6668f20c-7d63-477f-a5be-856e631eaaef.png" alt="ESCCOM" className="h-24 object-contain mb-2" />
+                  <p className="text-sm font-medium text-primary">ESCCOM</p>
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className="flex flex-col items-center">
+                  <img src="/lovable-uploads/69034832-a004-43a5-b367-f4726a4d126a.png" alt="Ingeneria" className="h-24 object-contain mb-2" />
+                  <p className="text-sm font-medium text-primary">Ingeneria</p>
+                </div>
+              </SwiperSlide>
+            </Swiper>
+          </div>
+        </section>
+
+        {/* anglaisadistance.fr Block */}
+        <section className="py-16 bg-muted">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-border">
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                <div className="flex-shrink-0">
+                  <img src="/lovable-uploads/d96440ab-4b9c-4f42-9910-75051d4f8b0e.png" alt="anglaisadistance.fr" className="h-24 w-auto" />
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <h2 className="text-3xl font-bold text-primary mb-4 font-heading">
+                    Des ressources gratuites en anglais — à votre rythme
+                  </h2>
+                  <p className="text-lg text-muted-foreground mb-6 font-body">
+                    J'ai créé anglaisadistance.fr pour offrir gratuitement des ressources fiables et accessibles à tous : grammaire, vocabulaire, dialogues, jeux...
+                  </p>
+                  <a href="https://anglaisadistance.fr" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors font-body">
+                    Découvrir les ressources
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Services Section */}
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">
+              Mes offres de formation
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service, index) => (
+                <div key={index} className="text-center p-6 rounded-lg bg-muted hover:shadow-lg transition-shadow">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 text-primary rounded-full mb-4">
+                    <service.icon className="h-8 w-8" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-primary mb-3 font-heading">{service.title}</h3>
+                  <p className="text-muted-foreground font-body">{service.description}</p>
+                </div>
+              ))}
+            </div>
+            <div className="text-center mt-8">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-6">
+                <a href="https://wa.me/33649829826" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-5 py-3 rounded-full text-base font-semibold shadow transition">
+                  💬 Discutons sur WhatsApp
+                </a>
+                <Link to="/contact" className="text-[#1A1A63] hover:underline text-base font-medium">
+                  📬 Remplir le formulaire de contact
                 </Link>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Features Section - 6 blocks in 2x3 grid */}
-      <section className="py-16 bg-muted">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">
-            Pourquoi choisir mes formations ?
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="text-center p-6 rounded-lg bg-white hover:shadow-lg transition-shadow">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 text-accent rounded-full mb-4">
-                  <feature.icon className="h-8 w-8" />
+        {/* Zone d'intervention Section */}
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">Zone d'intervention</h2>
+            <div className="bg-muted rounded-2xl shadow-lg p-8 md:p-12">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="order-2 md:order-1">
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="text-xl font-semibold text-primary mb-2 font-heading">Présentiel</h3>
+                      <p className="text-muted-foreground font-body">Cannes, Antibes, Nice, Monaco (Alpes-Maritimes)</p>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-primary mb-2 font-heading">Distanciel</h3>
+                      <p className="text-muted-foreground font-body">France entière</p>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-primary mb-3 font-heading">{feature.title}</h3>
-                <p className="text-muted-foreground font-body">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Ils me font confiance Section - Updated with client categories */}
-      <section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-extrabold text-primary mb-12 text-center">Ils me font confiance</h2>
-          
-          {/* Client Categories */}
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
-            {clientCategories.map((category, index) => (
-              <div key={index} className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm">
-                <category.icon className="h-5 w-5 text-accent mr-2" />
-                <span className="font-medium text-primary text-sm">{category.title}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Existing client logos carousel */}
-          <Swiper spaceBetween={40} slidesPerView={1} breakpoints={{
-          640: {
-            slidesPerView: 2
-          },
-          1024: {
-            slidesPerView: 3
-          },
-          1280: {
-            slidesPerView: 4
-          }
-        }} loop={true} autoplay={{
-          delay: 3000
-        }} modules={[Autoplay]} className="pb-8">
-            <SwiperSlide>
-              <div className="flex flex-col items-center">
-                <img src="/lovable-uploads/a3da9e3b-1f6c-447a-b308-2ca44d071c67.png" alt="IGY Vieux-Port de Cannes" className="h-24 object-contain mb-2" />
-                <p className="text-sm font-medium text-primary">IGY Vieux-Port de Cannes</p>
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <div className="flex flex-col items-center">
-                <img src="/lovable-uploads/694fcb0f-d52b-44f3-8cbc-6c1a051e416b.png" alt="ITEC" className="h-24 object-contain mb-2" />
-                <p className="text-sm font-medium text-primary">ITEC</p>
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <div className="flex flex-col items-center">
-                <img src="/lovable-uploads/6668f20c-7d63-477f-a5be-856e631eaaef.png" alt="ESCCOM" className="h-24 object-contain mb-2" />
-                <p className="text-sm font-medium text-primary">ESCCOM</p>
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <div className="flex flex-col items-center">
-                <img src="/lovable-uploads/69034832-a004-43a5-b367-f4726a4d126a.png" alt="Ingeneria" className="h-24 object-contain mb-2" />
-                <p className="text-sm font-medium text-primary">Ingeneria</p>
-              </div>
-            </SwiperSlide>
-          </Swiper>
-        </div>
-      </section>
-
-      {/* anglaisadistance.fr Block */}
-      <section className="py-16 bg-muted">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-border">
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-shrink-0">
-                <img src="/lovable-uploads/d96440ab-4b9c-4f42-9910-75051d4f8b0e.png" alt="anglaisadistance.fr" className="h-24 w-auto" />
-              </div>
-              <div className="flex-1 text-center md:text-left">
-                <h2 className="text-3xl font-bold text-primary mb-4 font-heading">
-                  Des ressources gratuites en anglais — à votre rythme
-                </h2>
-                <p className="text-lg text-muted-foreground mb-6 font-body">
-                  J'ai créé anglaisadistance.fr pour offrir gratuitement des ressources fiables et accessibles à tous : grammaire, vocabulaire, dialogues, jeux...
-                </p>
-                <a href="https://anglaisadistance.fr" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors font-body">
-                  Découvrir les ressources
-                  <ExternalLink className="h-4 w-4" />
-                </a>
+                <div className="order-1 md:order-2">
+                  <img src="/lovable-uploads/de1467b6-7694-4b1e-b2c8-e4cb04b71b21.png" alt="Carte de la zone d'intervention - Côte d'Azur" className="w-full h-auto rounded-lg" />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Services Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">
-            Mes offres de formation
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div key={index} className="text-center p-6 rounded-lg bg-muted hover:shadow-lg transition-shadow">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 text-primary rounded-full mb-4">
-                  <service.icon className="h-8 w-8" />
-                </div>
-                <h3 className="text-xl font-semibold text-primary mb-3 font-heading">{service.title}</h3>
-                <p className="text-muted-foreground font-body">{service.description}</p>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-6">
-              <a href="https://wa.me/33649829826" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-5 py-3 rounded-full text-base font-semibold shadow transition">
-                💬 Discutons sur WhatsApp
+        {/* Avis Clients Section */}
+        <AvisClients />
+
+        {/* Contact CTA Section - Appel à l'action */}
+        <section className="py-16 bg-red-600 text-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl font-bold mb-4 font-heading">Prêt à améliorer votre anglais professionnel ?</h2>
+            <p className="text-xl mb-8 font-body">
+              Discutons de votre projet de formation. Je suis à votre écoute !
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="https://wa.me/33649829826" className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-2 font-body" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="h-5 w-5" />
+                WhatsApp
               </a>
-              <Link to="/contact" className="text-[#1A1A63] hover:underline text-base font-medium">
-                📬 Remplir le formulaire de contact
-              </Link>
+              <a href="mailto:formations@antonyaddy.com" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors flex items-center justify-center gap-2 font-body">
+                <Mail className="h-5 w-5" />
+                Email
+              </a>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Zone d'intervention Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">Zone d'intervention</h2>
-          <div className="bg-muted rounded-2xl shadow-lg p-8 md:p-12">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="order-2 md:order-1">
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="text-xl font-semibold text-primary mb-2 font-heading">Présentiel</h3>
-                    <p className="text-muted-foreground font-body">Cannes, Antibes, Nice, Monaco (Alpes-Maritimes)</p>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-primary mb-2 font-heading">Distanciel</h3>
-                    <p className="text-muted-foreground font-body">France entière</p>
-                  </div>
-                </div>
-              </div>
-              <div className="order-1 md:order-2">
-                <img src="/lovable-uploads/de1467b6-7694-4b1e-b2c8-e4cb04b71b21.png" alt="Carte de la zone d'intervention - Côte d'Azur" className="w-full h-auto rounded-lg" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Avis Clients Section */}
-      <AvisClients />
-
-      {/* Contact CTA Section - Appel à l'action */}
-      <section className="py-16 bg-red-600 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4 font-heading">Prêt à améliorer votre anglais professionnel ?</h2>
-          <p className="text-xl mb-8 font-body">
-            Discutons de votre projet de formation. Je suis à votre écoute !
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://wa.me/33649829826" className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-2 font-body" target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="h-5 w-5" />
-              WhatsApp
-            </a>
-            <a href="mailto:formations@antonyaddy.com" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors flex items-center justify-center gap-2 font-body">
-              <Mail className="h-5 w-5" />
-              Email
-            </a>
-          </div>
-        </div>
-      </section>
+        </section>
+      </main>
     </>;
 };
 

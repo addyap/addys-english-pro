@@ -1,18 +1,44 @@
-
 import React from 'react';
 import { Award, BookOpen, Users, Globe, CheckCircle, Target, MessageCircle, Mail, Building, GraduationCap, MapPin, Phone, Factory, School, University, Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import { TypingText } from '../components/TypingText';
 import { FadeInSection } from '../components/Effects';
-import { seoMetadata } from '../utils/seoMetadata';
 
 const About = () => {
+  const aboutJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Antony Addy",
+    "jobTitle": "Formateur Professionnel d'Adultes certifié",
+    "description": "Formateur d'anglais professionnel avec plus de 20 ans d'expérience",
+    "url": "https://antonyaddy.com/qui-je-suis",
+    "email": "formations@antonyaddy.com",
+    "areaServed": {
+      "@type": "Place",
+      "name": "France"
+    },
+    "hasOccupation": {
+      "@type": "Occupation",
+      "name": "English Language Trainer",
+      "occupationLocation": {
+        "@type": "AdministrativeArea",
+        "name": "Alpes-Maritimes, France"
+      }
+    }
+  };
+
   return <>
-      <SEOHead {...seoMetadata.about} />
+      <SEOHead 
+        title="Qui suis-je – Antony Addy, Prestataire de formation certifié"
+        description="Antony Addy, formateur certifié FPA, expert en anglais professionnel pour adultes et institutions depuis 2017."
+        keywords={["Antony Addy", "Formateur Professionnel d'Adultes", "FPA", "anglais professionnel", "formation continue", "Alpes-Maritimes"]}
+        canonicalUrl="https://antonyaddy.com/qui-je-suis"
+        jsonLd={aboutJsonLd}
+      />
       
       <div className="min-h-screen bg-background py-12">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4">
           {/* Header */}
           <FadeInSection>
             <div className="text-center mb-12">
@@ -33,15 +59,13 @@ const About = () => {
               
               {/* Photo */}
               <div className="flex justify-center mb-6">
-                <img src="/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png" alt="Antony Addy, Formateur en Anglais" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" loading="lazy" />
+                <img src="/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png" alt="Antony Addy, Formateur en Anglais professionnel certifié" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" loading="lazy" />
               </div>
 
               <div className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
                 <p className="mb-4">
-                  Avec plus de 20 ans d'expérience dans l'enseignement de l'anglais, j'interviens auprès de publics variés à travers la France.
+                  Formateur Professionnel d'Adultes depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais, j'interviens auprès de publics variés à travers la France.
                 </p>
-                
-                
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
