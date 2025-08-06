@@ -8,7 +8,6 @@ import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import { TypingText } from '../components/TypingText';
 import { seoMetadata } from '../utils/seoMetadata';
-
 const Home = () => {
   const features = [{
     icon: Globe,
@@ -35,7 +34,6 @@ const Home = () => {
     title: 'Disponible en présentiel (PACA) ou à distance (France entière)',
     description: 'Flexibilité géographique pour s\'adapter à vos contraintes'
   }];
-
   const services = [{
     icon: Building,
     title: 'Formations en Entreprise',
@@ -61,17 +59,28 @@ const Home = () => {
     title: 'Autres Dispositifs Spécialisés',
     description: 'Interventions via organismes partenaires sur les dispositifs VAE, Agefiph, missions locales, etc.'
   }];
-
-  const clientCategories = [
-    { icon: Building, title: 'Entreprises' },
-    { icon: GraduationCap, title: 'Organismes de formation' },
-    { icon: School, title: 'Écoles de Commerce' },
-    { icon: BookOpen, title: 'Écoles privées spécialisées' },
-    { icon: University, title: 'Universités' },
-    { icon: MapPin, title: 'Centres de formation France Travail' },
-    { icon: Globe, title: 'Écoles de langues' }
-  ];
-
+  const clientCategories = [{
+    icon: Building,
+    title: 'Entreprises'
+  }, {
+    icon: GraduationCap,
+    title: 'Organismes de formation'
+  }, {
+    icon: School,
+    title: 'Écoles de Commerce'
+  }, {
+    icon: BookOpen,
+    title: 'Écoles privées spécialisées'
+  }, {
+    icon: University,
+    title: 'Universités'
+  }, {
+    icon: MapPin,
+    title: 'Centres de formation France Travail'
+  }, {
+    icon: Globe,
+    title: 'Écoles de langues'
+  }];
   return <>
       <SEOHead {...seoMetadata.home} />
       
@@ -97,12 +106,7 @@ const Home = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white text-shadow-lg font-heading leading-tight mb-6">
-              <TypingText
-                texts={["Spécialiste en anglais professionnel – Formateur Professionnel d'Adultes depuis 2017"]}
-                speed={60}
-                pause={3000}
-                className="text-white"
-              />
+              <TypingText texts={["Spécialiste en anglais professionnel – Formateur Professionnel d'Adultes depuis 2017"]} speed={60} pause={3000} className="text-white" />
             </h1>
             <p className="text-xl md:text-2xl mb-4 text-blue-100 font-body">
               Des formations claires, flexibles et efficaces — pour particuliers, professionnels et centres de formation.
@@ -128,12 +132,7 @@ const Home = () => {
             {/* Image Side */}
             <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start">
               <div className="relative">
-                <img 
-                  src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
-                  alt="Antony Addy, Formateur en Anglais"
-                  className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200"
-                  loading="lazy"
-                />
+                <img src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png" alt="Antony Addy, Formateur en Anglais" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" loading="lazy" />
                 <p className="text-sm text-muted-foreground mt-3 text-center lg:text-left font-body italic">
                   Formateur en action
                 </p>
@@ -143,12 +142,7 @@ const Home = () => {
             {/* Content Side */}
             <div className="order-1 lg:order-2">
               <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
-                <TypingText
-                  texts={["Formateur Professionnel d'Adultes depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais."]}
-                  speed={40}
-                  pause={3000}
-                  className="text-muted-foreground"
-                />
+                <TypingText texts={["Formateur Professionnel d'Adultes depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais."]} speed={40} pause={3000} className="text-muted-foreground" />
                 {" "}Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
               </p>
               <div className="text-center lg:text-left">
@@ -186,14 +180,7 @@ const Home = () => {
           
           {/* Client Categories */}
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
-            {clientCategories.map((category, index) => (
-              <div key={index} className="text-center p-4 rounded-lg bg-white hover:shadow-lg transition-shadow">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 text-primary rounded-full mb-3">
-                  <category.icon className="h-6 w-6" />
-                </div>
-                <h3 className="text-sm font-semibold text-primary font-heading">{category.title}</h3>
-              </div>
-            ))}
+            {clientCategories.map((category, index) => {})}
           </div>
 
           {/* Existing client logos carousel */}
@@ -283,18 +270,10 @@ const Home = () => {
           </div>
           <div className="text-center mt-8">
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-6">
-              <a
-                href="https://wa.me/33649829826"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-5 py-3 rounded-full text-base font-semibold shadow transition"
-              >
+              <a href="https://wa.me/33649829826" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-5 py-3 rounded-full text-base font-semibold shadow transition">
                 💬 Discutons sur WhatsApp
               </a>
-              <Link
-                to="/contact"
-                className="text-[#1A1A63] hover:underline text-base font-medium"
-              >
+              <Link to="/contact" className="text-[#1A1A63] hover:underline text-base font-medium">
                 📬 Remplir le formulaire de contact
               </Link>
             </div>
@@ -352,5 +331,4 @@ const Home = () => {
       </section>
     </>;
 };
-
 export default Home;
