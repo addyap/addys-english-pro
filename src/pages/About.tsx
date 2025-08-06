@@ -1,6 +1,8 @@
 import React from 'react';
-import { Award, MapPin, Clock } from 'lucide-react';
+import { Award, BookOpen, Users, Globe, CheckCircle, Target, MessageCircle, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
+import { TypingText } from '../components/TypingText';
 import { seoMetadata } from '../utils/seoMetadata';
 
 const About = () => {
@@ -8,138 +10,151 @@ const About = () => {
     <>
       <SEOHead {...seoMetadata.about} />
       
-      <div className="min-h-screen bg-gray-50 py-12">
+      <div className="min-h-screen bg-background py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          {/* Hero Section */}
-          <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-shrink-0">
-                <img src="/lovable-uploads/3a23b0a6-a218-4cdd-b92b-4fbf7beee415.png" alt="Antony Addy, Formateur d'anglais professionnel" className="w-48 h-48 rounded-full object-cover shadow-lg" />
+          {/* Header */}
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-primary mb-6">
+              Qui je suis
+            </h1>
+            <TypingText
+              texts={[
+                "Un formateur engagé pour votre réussite.",
+                "Spécialiste de l'anglais professionnel.",
+                "20+ ans d'expérience en formation d'adultes.",
+              ]}
+              className="text-xl font-semibold text-primary"
+            />
+          </div>
+
+          {/* Content */}
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <div className="flex items-center mb-6">
+              <span className="text-2xl mr-3">👋</span>
+              <h2 className="text-2xl font-bold text-primary">Antony Addy</h2>
+            </div>
+            
+            <p className="text-muted-foreground mb-6">
+              Formateur d'anglais certifié, je suis natif britannique et j'accompagne des adultes en formation continue, CPF ou en reconversion. Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-xl font-semibold text-primary mb-2">
+                  <Award className="inline-block h-5 w-5 mr-1 align-middle" />
+                  Expérience
+                </h3>
+                <p className="text-muted-foreground">
+                  Plus de 20 ans d'expérience dans la formation pour adultes, en France et à l'étranger.
+                </p>
               </div>
-              <div className="flex-1 text-center md:text-left">
-                <h1 className="text-4xl font-bold text-gray-900 mb-4">Antony Addy</h1>
-                <p className="text-xl text-blue-600 mb-4">Formateur Professionnel d'Adultes – anglais, natif du Royaume-Uni</p>
-                <p className="text-lg text-gray-600">
-                  Prestataire de formation indépendant spécialisé en anglais professionnel
+              
+              <div>
+                <h3 className="text-xl font-semibold text-primary mb-2">
+                  <BookOpen className="inline-block h-5 w-5 mr-1 align-middle" />
+                  Pédagogie
+                </h3>
+                <p className="text-muted-foreground">
+                  Méthodes actives et participatives, basées sur vos besoins et vos objectifs.
+                </p>
+              </div>
+            </div>
+            
+            <div className="mt-6 space-y-2 text-muted-foreground">
+              <p>• Formations sur mesure, adaptées à votre niveau</p>
+              <p>• Suivi personnalisé et conseils individualisés</p>
+            </div>
+          </div>
+
+          {/* Mes clients */}
+          <div className="bg-white rounded-lg shadow-lg p-8 mt-12">
+            <div className="flex items-center mb-6">
+              <span className="text-2xl mr-3">🏢</span>
+              <h2 className="text-2xl font-bold text-primary">Ils me font confiance</h2>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="flex items-center">
+                <Users className="h-5 w-5 text-accent mr-2" />
+                <span className="font-medium text-primary">Entreprises</span>
+              </div>
+              
+              <div className="flex items-center">
+                <Building className="h-5 w-5 text-accent mr-2" />
+                <span className="font-medium text-primary">Écoles</span>
+              </div>
+              
+              <div className="flex items-center">
+                <GraduationCap className="h-5 w-5 text-accent mr-2" />
+                <span className="font-medium text-primary">Centres de formation</span>
+              </div>
+            </div>
+            
+            <p className="text-muted-foreground mt-6">
+              J'interviens auprès de structures variées, de la PME aux grands groupes, en passant par les écoles de commerce et les organismes de formation professionnelle.
+            </p>
+          </div>
+
+          {/* Zone d'intervention */}
+          <div className="bg-white rounded-lg shadow-lg p-8 mt-12">
+            <div className="flex items-center mb-6">
+              <span className="text-2xl mr-3">📍</span>
+              <h2 className="text-2xl font-bold text-primary">Zone d'intervention</h2>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-xl font-semibold text-primary mb-2">
+                  <Globe className="inline-block h-5 w-5 mr-1 align-middle" />
+                  En ligne
+                </h3>
+                <p className="text-muted-foreground">
+                  Partout en France et à l'étranger
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-xl font-semibold text-primary mb-2">
+                  <MapPin className="inline-block h-5 w-5 mr-1 align-middle" />
+                  En présentiel
+                </h3>
+                <p className="text-muted-foreground">
+                  Cannes, Antibes, Nice, Monaco (Alpes-Maritimes)
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Key Stats */}
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <Award className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Certification FPA</h3>
-              <p className="text-gray-600">Formateur Professionnel d'Adultes avec NDA actif</p>
+          {/* Contact */}
+          <div className="bg-white rounded-lg shadow-lg p-8 mt-12 text-center">
+            <div className="flex items-center justify-center mb-6">
+              <span className="text-2xl mr-3">📞</span>
+              <h2 className="text-2xl font-bold text-primary">Discutons ensemble de vos besoins</h2>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <Clock className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">20+ années</h3>
-              <p className="text-gray-600">D'expérience en formation d'anglais professionnel</p>
+            <p className="text-muted-foreground mb-6">
+              Je réponds rapidement à toutes vos demandes. Vous pouvez me contacter directement ici :
+            </p>
+            
+            <div className="space-y-4 mb-8">
+              <div className="flex items-center justify-center text-muted-foreground">
+                <Mail className="h-5 w-5 mr-3" />
+                <span>formations@antonyaddy.com</span>
+              </div>
+              <div className="flex items-center justify-center text-muted-foreground">
+                <Phone className="h-5 w-5 mr-3" />
+                <span>WhatsApp : +33 6 49 82 98 26</span>
+              </div>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <MapPin className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Alpes-Maritimes + France</h3>
-              <p className="text-gray-600">Présentiel dans les Alpes-Maritimes, distanciel national</p>
-            </div>
-          </div>
-
-          {/* Biography Section */}
-          <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Mon parcours</h2>
-            <div className="prose prose-lg max-w-none text-gray-700">
-              <p className="mb-6">
-                Je propose des formations en anglais adaptées aux adultes, aux centres de formation, aux écoles spécialisées, aux universités et aux entreprises. Mon approche repose sur l'écoute, l'adaptation, et une expertise fondée sur plusieurs années d'expérience dans des contextes variés.
-              </p>
-              
-              <p className="mb-6">
-                Formateur natif britannique, j'ai développé une approche pédagogique tournée vers la communication professionnelle concrète. Mon style est reconnu pour être humain, accessible et centré sur les besoins du terrain.
-              </p>
-
-              <p className="mb-6">
-                Je suis titulaire d'un Numéro de Déclaration d'Activité (NDA) et je collabore exclusivement avec des centres de formation certifiés Qualiopi pour les formations CPF, en garantissant la conformité réglementaire et la qualité de chaque intervention.
-              </p>
-            </div>
-          </div>
-
-          {/* Expertise Areas */}
-          <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Domaines d'expertise</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-lg font-semibold text-blue-600 mb-3">Secteur tertiaire</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• Commerce & Vente</li>
-                  <li>• Service Client & Accueil</li>
-                  <li>• Immobilier</li>
-                  <li>• Banque & Assurance</li>
-                  <li>• Marketing & Communication</li>
-                </ul>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-semibold text-blue-600 mb-3">Tourisme & Hôtellerie</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• Hôtellerie & Tourisme</li>
-                  <li>• Accueil international</li>
-                  <li>• Services aux voyageurs</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-semibold text-blue-600 mb-3">Administration & Gestion</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• Ressources Humaines</li>
-                  <li>• Administration & Secrétariat</li>
-                  <li>• Formation & Enseignement</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-semibold text-blue-600 mb-3">Technique & Industrie</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li>• Logistique & Transport</li>
-                  <li>• Industrie & Technique</li>
-                  <li>• Informatique & Digital</li>
-                </ul>
-              </div>
-
-              <div className="md:col-span-2">
-                <h3 className="text-lg font-semibold text-blue-600 mb-3">Publics spécifiques</h3>
-                <ul className="grid md:grid-cols-2 gap-2 text-gray-700">
-                  <li>• Cadres & Managers</li>
-                  <li>• Étudiants & Alternants</li>
-                  <li>• Recherche d'emploi / Insertion professionnelle</li>
-                  <li>• Secteur Public & Collectivités</li>
-                  <li>• Écoles & Centres de Formation</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Partners & Certifications */}
-          <div className="bg-blue-50 rounded-lg p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Partenaires et certifications</h2>
-            <div className="text-center">
-              <p className="text-lg text-gray-700 mb-4">
-                Antony intervient en collaboration avec :
-              </p>
-              <div className="flex flex-wrap justify-center gap-4 text-blue-600 font-medium">
-                <span>Centres de Formation</span>
-                <span>•</span>
-                <span>Écoles de Commerce</span>
-                <span>•</span>
-                <span>Écoles Spécialisées</span>
-                <span>•</span>
-                <span>Universités</span>
-              </div>
-              <p className="text-sm text-gray-600 mt-4">
-                Toutes les formations CPF sont assurées via des organismes certifiés Qualiopi
-              </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact" className="bg-accent text-accent-foreground px-8 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">
+                <span className="mr-2">💬</span>
+                Parlons de votre projet
+              </Link>
+              <a href="https://wa.me/33649829826" className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-8 py-3 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
+                WhatsApp direct
+              </a>
             </div>
           </div>
         </div>

@@ -7,6 +7,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
+import { TypingText } from '../components/TypingText';
 import { seoMetadata } from '../utils/seoMetadata';
 
 const Home = () => {
@@ -86,9 +87,16 @@ const Home = () => {
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-shadow-lg font-heading leading-tight">
-              Formateur d'anglais britannique pour adultes
-            </h1>
+            <TypingText
+              texts={[
+                "Formateur d'anglais professionnel.",
+                "Formations CPF et entreprises.",
+                "Partout en France, en ligne ou en présentiel.",
+              ]}
+              speed={60}
+              pause={2000}
+              className="text-3xl sm:text-4xl md:text-6xl font-bold text-white text-shadow-lg font-heading leading-tight mb-6 block"
+            />
             <p className="text-xl md:text-2xl mb-4 text-blue-100 font-body">
               Des formations claires, flexibles et efficaces — pour particuliers, professionnels et centres de formation.
             </p>

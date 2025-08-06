@@ -2,6 +2,7 @@
 import React from 'react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import SEOHead from '../components/SEOHead';
+import { TypingText } from '../components/TypingText';
 
 const Testimonials = () => {
   const testimonials = [
@@ -97,9 +98,19 @@ const Testimonials = () => {
           
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-foreground mb-4">
+            <h1 className="text-4xl font-bold text-foreground mb-6">
               Témoignages
             </h1>
+            <TypingText
+              texts={[
+                "Ce qu'ils disent de mes formations...",
+                "Des retours authentiques.",
+                "Ils m'ont fait confiance.",
+              ]}
+              speed={50}
+              pause={1800}
+              className="text-lg font-medium text-center text-muted-foreground mb-6 block"
+            />
           </div>
 
           {/* Testimonials */}
