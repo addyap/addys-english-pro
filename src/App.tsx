@@ -16,7 +16,6 @@ import BlogArticle from "./pages/BlogArticle";
 import AnglaisADistance from "./pages/AnglaisADistance";
 import LegalNotices from "./pages/LegalNotices";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
-import SitemapPage from "./pages/SitemapPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,7 +39,6 @@ const App = () => (
               <Route path="/anglaisadistance" element={<AnglaisADistance />} />
               <Route path="/mentions-legales" element={<LegalNotices />} />
               <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
-              <Route path="/sitemap-page" element={<SitemapPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
