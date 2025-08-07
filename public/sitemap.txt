@@ -1,0 +1,16 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://antonyaddy.com/</loc></url>
+  <url><loc>https://antonyaddy.com/qui-je-suis</loc></url>
+  <url><loc>https://antonyaddy.com/offres-de-formation</loc></url>
+  <url><loc>https://antonyaddy.com/temoignages</loc></url>
+  <url><loc>https://antonyaddy.com/contact</loc></url>
+  <url><loc>https://antonyaddy.com/blog</loc></url>
+  <url><loc>https://antonyaddy.com/blog/anglais-professionnel-2025</loc></url>
+  <url><loc>https://antonyaddy.com/blog/erreurs-francophones</loc></url>
+  <url><loc>https://antonyaddy.com/blog/oral-vs-ecrit</loc></url>
+  <url><loc>https://antonyaddy.com/anglaisadistance</loc></url>
+  <url><loc>https://antonyaddy.com/mentions-legales</loc></url>
+  <url><loc>https://antonyaddy.com/politique-confidentialite</loc></url>
+</urlset>
