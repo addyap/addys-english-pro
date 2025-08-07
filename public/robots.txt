@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://antonyaddy.com/sitemap.xml
+Sitemap: https://gist.githubusercontent.com/addyap/0a22b4decd781eeb47d9b1731df44ff3/raw/3c578c1bf2ec73d87ef4bac7e63e414cd44f9385/gistfile1.txt
