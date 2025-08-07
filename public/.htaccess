@@ -1,15 +1,25 @@
-# Allow sitemap.xml to be served directly and NOT rewritten
+# Enable URL rewriting
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  # Let sitemap.xml through
+  # Serve sitemap.xml as a real XML file, not routed through index.html
   RewriteRule ^sitemap\.xml$ - [L]
 
-  # Let index.html pass
+  # Prevent routing sitemap.xml to SPA fallback
   RewriteRule ^index\.html$ - [L]
 
+  # SPA fallback: route all non-file, non-folder requests to index.html
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
+</IfModule>
+
+# Force correct MIME type for XML files
+AddType application/xml .xml
+
+# Optional: charset and compression
+AddDefaultCharset UTF-8
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE application/xml
 </IfModule>
