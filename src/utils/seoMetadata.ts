@@ -58,5 +58,11 @@ export const seoMetadata: Record<string, SEOMetadata> = {
     description: "Découvrez comment vos données personnelles sont collectées et utilisées sur antonyaddy.com conformément au RGPD.",
     canonical: "https://antonyaddy.com/politique-confidentialite",
     keywords: "politique de confidentialité, RGPD, données personnelles, antonyaddy.com"
+  },
+  sitemapPage: {
+    title: "Plan du site – Antony Addy",
+    description: "Toutes les pages disponibles sur antonyaddy.com",
+    canonical: "https://antonyaddy.com/sitemap-page",
+    keywords: "plan du site, sitemap, navigation, antonyaddy.com"
   }
 };
