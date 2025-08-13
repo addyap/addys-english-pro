@@ -1,0 +1,15 @@
+
+{
+  "base": "https://antonyaddy.com",
+  "routes": [
+    { "path": "/", "priority": 1.0, "changefreq": "weekly", "title": "Home" },
+    { "path": "/qui-je-suis", "priority": 0.8, "changefreq": "monthly", "title": "About" },
+    { "path": "/offres-de-formation", "priority": 0.9, "changefreq": "monthly", "title": "Training" },
+    { "path": "/temoignages", "priority": 0.7, "changefreq": "monthly", "title": "Testimonials" },
+    { "path": "/contact", "priority": 0.8, "changefreq": "monthly", "title": "Contact" },
+    { "path": "/blog", "priority": 0.7, "changefreq": "weekly", "title": "Blog" },
+    { "path": "/anglaisadistance", "priority": 0.6, "changefreq": "monthly", "title": "Anglais à Distance" },
+    { "path": "/mentions-legales", "priority": 0.3, "changefreq": "yearly", "title": "Legal Notices" },
+    { "path": "/politique-confidentialite", "priority": 0.3, "changefreq": "yearly", "title": "Privacy Policy" }
+  ]
+}

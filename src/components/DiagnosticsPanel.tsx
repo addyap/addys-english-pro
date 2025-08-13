@@ -1,0 +1,39 @@
+
+import { useEffect, useMemo, useState } from "react";
+
+export default function DiagnosticsPanel() {
+  const [open, setOpen] = useState<boolean>(() => new URLSearchParams(location.search).has("diag"));
+  const [fails, setFails] = useState<number>(0);
+  const [lastError, setLastError] = useState<string>("");
+
+  useEffect(() => {
+    const origFetch = window.fetch;
+    window.fetch = async (...args: any[]) => {
+      const res = await origFetch(...args);
+      if (!res.ok) setFails((n) => n + 1);
+      return res;
+    };
+    const handler = (e: ErrorEvent) => setLastError(e.message || "Runtime error");
+    window.addEventListener("error", handler);
+    return () => {
+      window.fetch = origFetch;
+      window.removeEventListener("error", handler);
+    };
+  }, []);
+
+  const route = useMemo(() => location.pathname + location.search, []);
+
+  if (!open) return null;
+  return (
+    <div style={{
+      position: "fixed", right: 16, bottom: 16, background: "white", border: "1px solid #e5e7eb",
+      borderRadius: 12, padding: 12, boxShadow: "0 10px 20px rgba(0,0,0,.1)", zIndex: 9999
+    }}>
+      <div style={{ fontWeight: 600, marginBottom: 6 }}>Diagnostics</div>
+      <div><strong>Route:</strong> {route}</div>
+      <div><strong>Failed requests:</strong> {fails}</div>
+      <div><strong>Last error:</strong> {lastError || "—"}</div>
+      <button style={{ marginTop: 8 }} onClick={() => setOpen(false)}>Close</button>
+    </div>
+  );
+}

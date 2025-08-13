@@ -1,55 +1,133 @@
 
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { useEffect } from "react";
 
-interface SEOProps {
+type SEOHeadProps = {
   title?: string;
   description?: string;
-  keywords?: string[];
-  canonicalUrl?: string;
-  ogImage?: string;
-  jsonLd?: object;
+  canonical?: string;
+  image?: string;
   robots?: string;
-}
-
-export const SEOHead = ({
-  title = "Antony Addy – Formateur d'anglais pour adultes",
-  description = "Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes. CPF via centres certifiés Qualiopi.",
-  keywords = ["Anglais professionnel", "Formateur anglais", "Antony Addy", "CPF", "Formation d'anglais", "Cours d'anglais en ligne", "Anglais pour adultes"],
-  canonicalUrl = typeof window !== 'undefined' ? window.location.href : "https://antonyaddy.com",
-  ogImage = "/social-preview.jpg",
-  jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Antony Addy",
-    "url": "https://antonyaddy.com"
-  },
-  robots = "index, follow"
-}: SEOProps) => {
-  return (
-    <Helmet>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      <meta name="keywords" content={keywords.join(", ")} />
-      <meta name="robots" content={robots} />
-      <link rel="canonical" href={canonicalUrl} />
-
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:type" content="website" />
-
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={ogImage} />
-
-      <script type="application/ld+json">
-        {JSON.stringify(jsonLd)}
-      </script>
-    </Helmet>
-  );
+  jsonLd?: Record<string, any> | Record<string, any>[];
+  twitterCreator?: string; // e.g. @antonyaddy
 };
 
-export default SEOHead;
+function upsertMeta(attr: "name" | "property", key: string, value?: string) {
+  if (!value) return;
+  let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attr, key);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", value);
+}
+
+function upsertLink(rel: string, href?: string) {
+  if (!href) return;
+  let el = document.head.querySelector<HTMLLinkElement>(`link[rel="${rel}"]`);
+  if (!el) {
+    el = document.createElement("link");
+    el.setAttribute("rel", rel);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("href", href);
+}
+
+function removeAll(selector: string) {
+  document.head.querySelectorAll(selector).forEach((n) => n.remove());
+}
+
+export default function SEOHead({
+  title = "Antony Addy — English Training & Coaching",
+  description = "Professional English training for adults: business English, coaching, and online learning.",
+  canonical = "https://antonyaddy.com",
+  image = "/og/antonyaddy-card.png",
+  robots = "index,follow",
+  jsonLd,
+  twitterCreator = "@antonyaddy",
+}: SEOHeadProps) {
+  useEffect(() => {
+    if (title) document.title = title;
+
+    // Basics
+    upsertMeta("name", "description", description);
+    upsertLink("canonical", canonical);
+    upsertMeta("name", "robots", robots);
+
+    // Open Graph
+    upsertMeta("property", "og:title", title);
+    upsertMeta("property", "og:description", description);
+    upsertMeta("property", "og:type", "website");
+    upsertMeta("property", "og:url", canonical);
+    upsertMeta("property", "og:image", image);
+
+    // Twitter
+    upsertMeta("name", "twitter:card", "summary_large_image");
+    upsertMeta("name", "twitter:title", title);
+    upsertMeta("name", "twitter:description", description);
+    upsertMeta("name", "twitter:image", image);
+    upsertMeta("name", "twitter:creator", twitterCreator);
+
+    // JSON‑LD
+    removeAll('script[data-seohead="jsonld"]');
+    const items = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+    items.forEach((obj) => {
+      const s = document.createElement("script");
+      s.type = "application/ld+json";
+      s.dataset.seohead = "jsonld";
+      s.text = JSON.stringify(obj);
+      document.head.appendChild(s);
+    });
+  }, [title, description, canonical, image, robots, twitterCreator, JSON.stringify(jsonLd)]);
+
+  return null;
+}
+
+// JSON‑LD helpers
+export const jsonLdPerson = (opts?: {
+  name?: string; url?: string; image?: string; sameAs?: string[];
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: opts?.name ?? "Antony Addy",
+  url: opts?.url ?? "https://antonyaddy.com",
+  image: opts?.image ?? "/og/antonyaddy-card.png",
+  sameAs: opts?.sameAs ?? [],
+});
+
+export const jsonLdOrganization = (opts?: {
+  name?: string; url?: string; logo?: string; sameAs?: string[];
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: opts?.name ?? "Antony Addy — English Training",
+  url: opts?.url ?? "https://antonyaddy.com",
+  logo: opts?.logo ?? "/og/antonyaddy-card.png",
+  sameAs: opts?.sameAs ?? [],
+});
+
+export const jsonLdBreadcrumbs = (items: Array<{ name: string; url: string }>) => ({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((it, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: it.name,
+    item: it.url,
+  })),
+});
+
+export const jsonLdCourse = (opts: {
+  name: string; description: string; url: string; providerName?: string; providerUrl?: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: opts.name,
+  description: opts.description,
+  url: opts.url,
+  provider: {
+    "@type": "Organization",
+    name: opts.providerName ?? "Antony Addy",
+    sameAs: opts.providerUrl ?? "https://antonyaddy.com",
+  },
+});

@@ -5,6 +5,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
+import { AppErrorBoundary } from "./components/AppErrorBoundary";
+import DiagnosticsPanel from "./components/DiagnosticsPanel";
+import Analytics from "./components/Analytics";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -21,32 +24,36 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <HelmetProvider>
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/qui-je-suis" element={<About />} />
-              <Route path="/offres-de-formation" element={<Training />} />
-              <Route path="/temoignages" element={<Testimonials />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:id" element={<BlogArticle />} />
-              <Route path="/anglaisadistance" element={<AnglaisADistance />} />
-              <Route path="/mentions-legales" element={<LegalNotices />} />
-              <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Layout>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  </HelmetProvider>
+  <AppErrorBoundary>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Analytics />
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/qui-je-suis" element={<About />} />
+                <Route path="/offres-de-formation" element={<Training />} />
+                <Route path="/temoignages" element={<Testimonials />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:id" element={<BlogArticle />} />
+                <Route path="/anglaisadistance" element={<AnglaisADistance />} />
+                <Route path="/mentions-legales" element={<LegalNotices />} />
+                <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Layout>
+          </BrowserRouter>
+          <DiagnosticsPanel />
+        </TooltipProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
+  </AppErrorBoundary>
 );
 
 export default App;
