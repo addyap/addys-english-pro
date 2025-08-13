@@ -1,7 +1,12 @@
 
 import { useEffect } from "react";
 
-declare global { interface Window { dataLayer?: any[]; gtag?: (...a:any[])=>void } }
+declare global { 
+  interface Window { 
+    dataLayer?: any[]; 
+    gtag?: (command: string, ...args: any[]) => void;
+  } 
+}
 
 export default function Analytics() {
   useEffect(() => {
@@ -9,8 +14,10 @@ export default function Analytics() {
     if (!id || id === "G-XXXXXXXXXX") return; // disabled until you set real GA4 ID
 
     window.dataLayer = window.dataLayer || [];
-    function gtag(){ window.dataLayer!.push(arguments); }
-    window.gtag = gtag as any;
+    function gtag(command: string, ...args: any[]){ 
+      window.dataLayer!.push([command, ...args]); 
+    }
+    window.gtag = gtag;
     gtag("js", new Date());
     gtag("config", id, { anonymize_ip: true });
 

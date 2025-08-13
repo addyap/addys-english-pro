@@ -8,8 +8,8 @@ export default function DiagnosticsPanel() {
 
   useEffect(() => {
     const origFetch = window.fetch;
-    window.fetch = async (...args: any[]) => {
-      const res = await origFetch(...args);
+    window.fetch = async (input: RequestInfo | URL, init?: RequestInit) => {
+      const res = await origFetch(input, init);
       if (!res.ok) setFails((n) => n + 1);
       return res;
     };

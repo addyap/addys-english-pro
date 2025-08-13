@@ -5,8 +5,10 @@ type SEOHeadProps = {
   title?: string;
   description?: string;
   canonical?: string;
+  canonicalUrl?: string; // Support both for backwards compatibility
   image?: string;
   robots?: string;
+  keywords?: string[]; // Add keywords support
   jsonLd?: Record<string, any> | Record<string, any>[];
   twitterCreator?: string; // e.g. @antonyaddy
 };
@@ -41,24 +43,34 @@ export default function SEOHead({
   title = "Antony Addy — English Training & Coaching",
   description = "Professional English training for adults: business English, coaching, and online learning.",
   canonical = "https://antonyaddy.com",
+  canonicalUrl, // Support backwards compatibility
   image = "/og/antonyaddy-card.png",
   robots = "index,follow",
+  keywords,
   jsonLd,
   twitterCreator = "@antonyaddy",
 }: SEOHeadProps) {
   useEffect(() => {
     if (title) document.title = title;
 
+    // Use canonicalUrl if provided, otherwise canonical
+    const canonicalHref = canonicalUrl || canonical;
+
     // Basics
     upsertMeta("name", "description", description);
-    upsertLink("canonical", canonical);
+    upsertLink("canonical", canonicalHref);
     upsertMeta("name", "robots", robots);
+    
+    // Keywords
+    if (keywords && keywords.length > 0) {
+      upsertMeta("name", "keywords", keywords.join(", "));
+    }
 
     // Open Graph
     upsertMeta("property", "og:title", title);
     upsertMeta("property", "og:description", description);
     upsertMeta("property", "og:type", "website");
-    upsertMeta("property", "og:url", canonical);
+    upsertMeta("property", "og:url", canonicalHref);
     upsertMeta("property", "og:image", image);
 
     // Twitter
@@ -78,7 +90,7 @@ export default function SEOHead({
       s.text = JSON.stringify(obj);
       document.head.appendChild(s);
     });
-  }, [title, description, canonical, image, robots, twitterCreator, JSON.stringify(jsonLd)]);
+  }, [title, description, canonical, canonicalUrl, image, robots, keywords, twitterCreator, JSON.stringify(jsonLd)]);
 
   return null;
 }
