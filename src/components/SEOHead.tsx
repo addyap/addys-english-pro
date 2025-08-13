@@ -13,6 +13,13 @@ type SEOHeadProps = {
   twitterCreator?: string; // e.g. @antonyaddy
 };
 
+const SITE_URL = "https://antonyaddy.com";
+
+function slugFromPath(pathname: string) {
+  if (!pathname || pathname === "/") return "home";
+  return pathname.split("?")[0].split("#")[0].replace(/\//g, "-").replace(/^-+/, "").toLowerCase();
+}
+
 function upsertMeta(attr: "name" | "property", key: string, value?: string) {
   if (!value) return;
   let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
@@ -44,7 +51,7 @@ export default function SEOHead({
   description = "Professional English training for adults: business English, coaching, and online learning.",
   canonical = "https://antonyaddy.com",
   canonicalUrl, // Support backwards compatibility
-  image = "/og/antonyaddy-card.png",
+  image,
   robots = "index,follow",
   keywords,
   jsonLd,
@@ -55,6 +62,11 @@ export default function SEOHead({
 
     // Use canonicalUrl if provided, otherwise canonical
     const canonicalHref = canonicalUrl || canonical;
+    
+    // Generate OG image URL based on current path
+    const currentPath = window.location.pathname;
+    const slug = slugFromPath(currentPath);
+    const ogImage = image || `${SITE_URL}/og/${slug}-1200x630.png`;
 
     // Basics
     upsertMeta("name", "description", description);
@@ -71,13 +83,15 @@ export default function SEOHead({
     upsertMeta("property", "og:description", description);
     upsertMeta("property", "og:type", "website");
     upsertMeta("property", "og:url", canonicalHref);
-    upsertMeta("property", "og:image", image);
+    upsertMeta("property", "og:image", ogImage);
+    upsertMeta("property", "og:image:width", "1200");
+    upsertMeta("property", "og:image:height", "630");
 
     // Twitter
     upsertMeta("name", "twitter:card", "summary_large_image");
     upsertMeta("name", "twitter:title", title);
     upsertMeta("name", "twitter:description", description);
-    upsertMeta("name", "twitter:image", image);
+    upsertMeta("name", "twitter:image", ogImage);
     upsertMeta("name", "twitter:creator", twitterCreator);
 
     // JSON‑LD
