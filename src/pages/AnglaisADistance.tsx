@@ -35,12 +35,6 @@ const AnglaisADistance = () => {
       link: 'https://anglaisadistance.fr/test-de-niveau'
     },
     {
-      icon: Award,
-      title: 'Niveaux CEFR',
-      description: 'Découvrez les 6 niveaux européens (A1-C2) avec supports adaptés',
-      link: 'https://anglaisadistance.fr/niveau'
-    },
-    {
       icon: AlertTriangle,
       title: 'Pièges classiques',
       description: 'Les erreurs fréquentes en anglais expliquées simplement avec exemples et quiz',
