@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const SITE = "https://antonyaddy.com";
+const SITE = "https://www.antonyaddy.com";
 const cfg = JSON.parse(fs.readFileSync(path.join(__dirname, "routes.json"), "utf8"));
 
 const BUILD_DIRS = ["out", "dist", "build"];

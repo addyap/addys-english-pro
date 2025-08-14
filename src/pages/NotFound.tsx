@@ -19,8 +19,8 @@ const NotFound = () => {
       <SEOHead 
         title="Page non trouvée - 404 | Antony Addy"
         description="La page que vous cherchez n'existe pas. Retournez à l'accueil du site d'Antony Addy, formateur d'anglais professionnel."
-        robots="noindex, follow"
-        canonicalUrl={`https://antonyaddy.com${location.pathname}`}
+        noindex={true}
+        canonicalPath={location.pathname}
       />
       
       <div className="min-h-screen flex items-center justify-center bg-gray-100">

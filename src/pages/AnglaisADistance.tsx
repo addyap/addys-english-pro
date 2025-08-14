@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ExternalLink, BookOpen, MessageCircle, Brain, Trophy, Target, AlertTriangle, Award } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 
@@ -47,7 +48,7 @@ const AnglaisADistance = () => {
       <SEOHead
         title="anglaisadistance.fr – Ressources gratuites pour apprendre l'anglais"
         description="Explorez grammaire, vocabulaire, dialogues, quiz et plus encore sur anglaisadistance.fr – la plateforme gratuite dédiée à l'apprentissage de l'anglais."
-        canonicalUrl="https://antonyaddy.com/anglaisadistance"
+        canonicalPath="/anglaisadistance"
         keywords={[
           "anglais à distance",
           "grammaire anglaise", 
@@ -183,18 +184,18 @@ const AnglaisADistance = () => {
             Complétez vos ressources gratuites avec une formation sur mesure
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/offres-de-formation"
+            <Link
+              to="/offres-de-formation"
               className="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors font-body"
             >
               Voir mes formations
-            </a>
-            <a
-              href="/contact"
+            </Link>
+            <Link
+              to="/contact"
               className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors font-body"
             >
               Me contacter
-            </a>
+            </Link>
           </div>
         </div>
       </section>

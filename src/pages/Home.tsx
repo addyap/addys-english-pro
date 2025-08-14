@@ -9,20 +9,34 @@ import AvisClients from '../components/AvisClients';
 import { TypingText } from '../components/TypingText';
 
 const Home = () => {
-  const homeJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "name": "Antony Addy - Formateur d'anglais",
-    "description": "Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes",
-    "url": "https://antonyaddy.com",
-    "email": "formations@antonyaddy.com",
-    "areaServed": "France",
-    "address": {
-      "@type": "PostalAddress",
-      "addressRegion": "Alpes-Maritimes",
-      "addressCountry": "FR"
+  const homeJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Antony Addy — Formateur d'anglais",
+      "url": "https://www.antonyaddy.com",
+      "description": "Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.antonyaddy.com/blog?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Antony Addy - Formateur d'anglais",
+      "description": "Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes",
+      "url": "https://www.antonyaddy.com",
+      "email": "formations@antonyaddy.com",
+      "areaServed": "France",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Alpes-Maritimes",
+        "addressCountry": "FR"
+      }
     }
-  };
+  ];
 
   const features = [{
     icon: Globe,
@@ -104,7 +118,7 @@ const Home = () => {
         title="Formateur d'anglais pour adultes – Antony Addy"
         description="Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes. CPF via centres certifiés Qualiopi."
         keywords={["Anglais professionnel", "Formateur anglais", "Antony Addy", "CPF", "Formation d'anglais", "Cours d'anglais en ligne", "Anglais pour adultes", "Alpes-Maritimes", "Formation continue"]}
-        canonicalUrl="https://antonyaddy.com/"
+        canonicalPath="/"
         jsonLd={homeJsonLd}
       />
       

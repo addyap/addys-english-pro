@@ -1,6 +1,6 @@
 
 {
-  "base": "https://antonyaddy.com",
+  "base": "https://www.antonyaddy.com",
   "routes": [
     { "path": "/", "priority": 1.0, "changefreq": "weekly", "title": "Home" },
     { "path": "/qui-je-suis", "priority": 0.8, "changefreq": "monthly", "title": "About" },
