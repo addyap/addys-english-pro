@@ -3,6 +3,33 @@
   RewriteEngine On
   RewriteBase /
 
+  # 301 Redirects for legacy antonyaddy.com pages
+  RewriteRule ^services/?$ / [R=301,L]
+  RewriteRule ^tarifs-cpf/?$ / [R=301,L]
+  RewriteRule ^videos/?$ / [R=301,L]
+  RewriteRule ^faq/?$ / [R=301,L]
+  RewriteRule ^a-propos/?$ /qui-je-suis [R=301,L]
+  RewriteRule ^contactez-moi/?$ /contact [R=301,L]
+  RewriteRule ^ressources-et-conseils/?$ / [R=301,L]
+  RewriteRule ^ipsum-autem-impedit-nisi/?$ / [R=301,L]
+  RewriteRule ^formations-et-services/?$ /offres-de-formation [R=301,L]
+  RewriteRule ^tag/ad/?$ / [R=301,L]
+  RewriteRule ^votre-besoin/?$ / [R=301,L]
+  RewriteRule ^lander/?$ / [R=301,L]
+  RewriteRule ^est-ut-praesentium-voluptatibus-et/?$ / [R=301,L]
+  RewriteRule ^assumenda-nisi-nemo-labore-error/?$ / [R=301,L]
+  RewriteRule ^ullam-omnis-et-voluptatum-quis-quia/?$ / [R=301,L]
+  RewriteRule ^hellofacture/?$ / [R=301,L]
+  RewriteRule ^avis-clients/?$ /temoignages [R=301,L]
+  RewriteRule ^reseaux-sociaux/?$ / [R=301,L]
+  RewriteRule ^velit-et-eum-id-nobis-velit/?$ / [R=301,L]
+  RewriteRule ^aut-quo-eos-qui-odit-amet/?$ / [R=301,L]
+  RewriteRule ^velit-cumque-quos-harum-aut/?$ / [R=301,L]
+  RewriteRule ^jeux-anglais/?$ /anglaisadistance [R=301,L]
+
+  # Catch-all for any /products/* routes (Shopify legacy)
+  RewriteRule ^products/.*$ / [R=301,L]
+
   # Serve sitemap.xml as a real XML file, not routed through index.html
   RewriteRule ^sitemap\.xml$ - [L]
 
