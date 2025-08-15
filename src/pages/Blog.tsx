@@ -41,7 +41,9 @@ const Blog = () => {
       <SEOHead
         title="Blog – Conseils pour apprendre l'anglais"
         description="Le blog d'Antony Addy : astuces, grammaire et vocabulaire pour progresser en anglais professionnel."
-        canonicalUrl="https://antonyaddy.com/blog"
+        canonicalPath="/blog"
+        datePublished="2025-01-15T10:00:00+01:00"
+        dateModified="2025-01-15T10:00:00+01:00"
         keywords={[
           "blog anglais",
           "astuces anglais",
@@ -55,6 +57,20 @@ const Blog = () => {
           "Antony Addy",
           "CPF",
           "anglais pour adultes"
+        ]}
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            name: "Blog Antony Addy",
+            description: "Conseils et ressources pour progresser en anglais professionnel",
+            url: "https://www.antonyaddy.com/blog",
+            author: {
+              "@type": "Person",
+              name: "Antony Addy",
+              url: "https://www.antonyaddy.com"
+            }
+          }
         ]}
       />
       

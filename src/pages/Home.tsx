@@ -4,7 +4,7 @@ import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import SEOHead from '../components/SEOHead';
+import SEOHead, { jsonLdWebsite, jsonLdOrganization, jsonLdPerson } from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import { TypingText } from '../components/TypingText';
 
@@ -117,9 +117,24 @@ const Home = () => {
       <SEOHead 
         title="Formateur d'anglais pour adultes – Antony Addy"
         description="Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes. CPF via centres certifiés Qualiopi."
-        keywords={["Anglais professionnel", "Formateur anglais", "Antony Addy", "CPF", "Formation d'anglais", "Cours d'anglais en ligne", "Anglais pour adultes", "Alpes-Maritimes", "Formation continue"]}
         canonicalPath="/"
-        jsonLd={homeJsonLd}
+        datePublished="2025-01-15T10:00:00+01:00"
+        dateModified="2025-01-15T10:00:00+01:00"
+        keywords={["Anglais professionnel", "Formateur anglais", "Antony Addy", "CPF", "Formation d'anglais", "Cours d'anglais en ligne", "Anglais pour adultes", "Alpes-Maritimes", "Formation continue"]}
+        jsonLd={[
+          jsonLdWebsite(),
+          jsonLdOrganization(),
+          jsonLdPerson(),
+          {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            name: "Formation d'anglais professionnel",
+            description: "Services de formation en anglais professionnel, coaching linguistique et cours particuliers",
+            provider: jsonLdOrganization(),
+            areaServed: { "@type": "Place", name: "France" },
+            serviceType: ["Formation d'anglais professionnel", "Coaching linguistique", "Cours particuliers d'anglais"]
+          }
+        ]}
       />
       
       {/* Skip to content link for accessibility */}

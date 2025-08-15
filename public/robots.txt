@@ -1,4 +1,5 @@
 
 User-agent: *
 Allow: /
+Disallow: /mentions-legales
 Sitemap: https://www.antonyaddy.com/sitemap.xml

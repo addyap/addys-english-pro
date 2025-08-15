@@ -4,30 +4,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Performance Optimization: Preconnect and DNS Prefetch -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    
     <!-- HEAD placeholder -->
     <title>Formateur d'anglais pour adultes – Antony Addy</title>
     <meta name="description" content="Formations d'anglais en ligne ou en présentiel dans le Var. CPF via centres certifiés Qualiopi." />
     <meta name="author" content="Antony Addy" />
+    
+    <!-- International SEO -->
+    <link rel="alternate" hreflang="fr" href="https://www.antonyaddy.com/" />
+    <link rel="alternate" hreflang="en" href="https://www.antonyaddy.com/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.antonyaddy.com/" />
+    
     <link rel="icon" href="/lovable-uploads/2fd5760c-9208-4295-a1b5-87b41963111b.png" type="image/png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.json">
 
+    <!-- Critical CSS Inline -->
+    <style>
+      /* Critical above-the-fold styles */
+      body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; }
+      .hero-section { min-height: 50vh; }
+      h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    </style>
+
     <meta property="og:title" content="Formateur d'anglais pour adultes – Antony Addy" />
     <meta property="og:description" content="Formations d'anglais en ligne ou en présentiel dans le Var. CPF via centres certifiés Qualiopi." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://antonyaddy.com" />
-    <meta property="og:image" content="https://antonyaddy.com/social-preview.jpg" />
+    <meta property="og:url" content="https://www.antonyaddy.com" />
+    <meta property="og:image" content="https://www.antonyaddy.com/social-preview.jpg" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@antonyaddy" />
     <meta name="twitter:title" content="Formateur d'anglais pour adultes – Antony Addy" />
     <meta name="twitter:description" content="Formations d'anglais en ligne ou en présentiel dans le Var. CPF via centres certifiés Qualiopi." />
-    <meta name="twitter:image" content="https://antonyaddy.com/social-preview.jpg" />
+    <meta name="twitter:image" content="https://www.antonyaddy.com/social-preview.jpg" />
   </head>
 
   <body>
     <!-- BODY placeholder -->
     <div id="root"></div>
+    
+    <!-- Load non-critical CSS asynchronously -->
+    <script>
+      // Async CSS loading
+      const loadCSS = (href) => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        link.media = 'print';
+        link.onload = () => { link.media = 'all'; };
+        document.head.appendChild(link);
+      };
+      
+      // Route prefetching for better navigation
+      const prefetchRoutes = ['/qui-je-suis', '/offres-de-formation', '/contact', '/blog'];
+      prefetchRoutes.forEach(route => {
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = route;
+        document.head.appendChild(link);
+      });
+    </script>
+    
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

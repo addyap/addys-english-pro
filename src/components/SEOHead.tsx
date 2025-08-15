@@ -33,12 +33,13 @@ function upsertMeta(attr: "name" | "property", key: string, value?: string) {
   el.setAttribute("content", value);
 }
 
-function upsertLink(rel: string, href?: string) {
+function upsertLink(rel: string, href?: string, attr?: string, value?: string) {
   if (!href) return;
-  let el = document.head.querySelector<HTMLLinkElement>(`link[rel="${rel}"]`);
+  let el = document.head.querySelector<HTMLLinkElement>(`link[rel="${rel}"]${attr ? `[${attr}="${value}"]` : ''}`);
   if (!el) {
     el = document.createElement("link");
     el.setAttribute("rel", rel);
+    if (attr && value) el.setAttribute(attr, value);
     document.head.appendChild(el);
   }
   el.setAttribute("href", href);
@@ -60,7 +61,9 @@ export default function SEOHead({
   keywords,
   jsonLd,
   twitterCreator = "@antonyaddy",
-}: SEOHeadProps) {
+  datePublished,
+  dateModified,
+}: SEOHeadProps & { datePublished?: string; dateModified?: string }) {
   useEffect(() => {
     if (title && title.length > 60) {
       console.warn(`SEO Warning: Title "${title}" is ${title.length} chars (max 60 recommended)`);
@@ -71,7 +74,7 @@ export default function SEOHead({
     
     if (title) document.title = title;
 
-    // Compute absolute canonical URL
+    // Compute absolute canonical URL - always use canonicalPath for proper URL generation
     let canonicalHref = "";
     if (canonicalPath) {
       canonicalHref = SITE_URL + (canonicalPath.startsWith("/") ? canonicalPath : "/" + canonicalPath);
@@ -83,11 +86,17 @@ export default function SEOHead({
       canonicalHref = SITE_URL + window.location.pathname;
     }
 
+    // International SEO - hreflang tags
+    removeAll('link[rel="alternate"]');
+    const currentPath = window.location.pathname;
+    upsertLink("alternate", `${SITE_URL}${currentPath}`, "hreflang", "fr");
+    upsertLink("alternate", `${SITE_URL}/en${currentPath}`, "hreflang", "en");
+    upsertLink("alternate", `${SITE_URL}${currentPath}`, "hreflang", "x-default");
+
     // Set robots meta
     const robotsContent = noindex ? "noindex,follow" : (robots || "index,follow");
     
     // Generate OG image URL based on current path
-    const currentPath = window.location.pathname;
     const slug = slugFromPath(currentPath);
     const ogImage = image || `${SITE_URL}/og/${slug}-1200x630.png`;
 
@@ -99,6 +108,14 @@ export default function SEOHead({
     // Keywords
     if (keywords && keywords.length > 0) {
       upsertMeta("name", "keywords", keywords.join(", "));
+    }
+
+    // Date meta tags for blog posts and key pages
+    if (datePublished) {
+      upsertMeta("property", "article:published_time", datePublished);
+    }
+    if (dateModified) {
+      upsertMeta("property", "article:modified_time", dateModified);
     }
 
     // Open Graph
@@ -149,14 +166,25 @@ export const jsonLdPerson = (opts?: {
 });
 
 export const jsonLdOrganization = (opts?: {
-  name?: string; url?: string; logo?: string; sameAs?: string[];
+  name?: string; url?: string; logo?: string; sameAs?: string[]; telephone?: string; email?: string; address?: object;
 }) => ({
   "@context": "https://schema.org",
   "@type": "Organization",
   name: opts?.name ?? "Antony Addy — English Training",
   url: opts?.url ?? "https://www.antonyaddy.com",
-  logo: opts?.logo ?? "/og/antonyaddy-card.png",
-  sameAs: opts?.sameAs ?? [],
+  logo: opts?.logo ?? "https://www.antonyaddy.com/og/antonyaddy-card.png",
+  telephone: opts?.telephone ?? "+33 6 XX XX XX XX",
+  email: opts?.email ?? "contact@antonyaddy.com",
+  address: opts?.address ?? {
+    "@type": "PostalAddress",
+    addressCountry: "FR",
+    addressRegion: "Provence-Alpes-Côte d'Azur",
+    addressLocality: "Alpes-Maritimes"
+  },
+  sameAs: opts?.sameAs ?? [
+    "https://www.linkedin.com/in/antonyaddy",
+    "https://twitter.com/antonyaddy"
+  ],
 });
 
 export const jsonLdWebsite = () => ({
@@ -170,6 +198,24 @@ export const jsonLdWebsite = () => ({
     target: "https://www.antonyaddy.com/blog?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
+});
+
+export const jsonLdProfessionalService = () => ({
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Formation d'anglais professionnel",
+  description: "Services de formation en anglais professionnel, coaching linguistique et cours particuliers",
+  provider: jsonLdOrganization(),
+  areaServed: {
+    "@type": "Place",
+    name: "France"
+  },
+  serviceType: [
+    "Formation d'anglais professionnel",
+    "Coaching linguistique",
+    "Cours particuliers d'anglais",
+    "Préparation aux certifications"
+  ]
 });
 
 export const jsonLdBreadcrumbs = (items: Array<{ name: string; url: string }>) => ({

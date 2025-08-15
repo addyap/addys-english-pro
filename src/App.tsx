@@ -9,6 +9,7 @@ import { AppErrorBoundary } from "./components/AppErrorBoundary";
 import DiagnosticsPanel from "./components/DiagnosticsPanel";
 import Analytics from "./components/Analytics";
 import Layout from "./components/Layout";
+import PrefetchRoutes from "./components/PrefetchRoutes";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Training from "./pages/Training";
@@ -32,6 +33,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <PrefetchRoutes />
             <Layout>
               <Routes>
                 <Route path="/" element={<Home />} />
