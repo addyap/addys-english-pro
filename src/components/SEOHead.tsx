@@ -86,9 +86,11 @@ export default function SEOHead({
       canonicalHref = SITE_URL + window.location.pathname;
     }
 
+    // Get current path for multiple uses
+    const currentPath = window.location.pathname;
+
     // International SEO - hreflang tags
     removeAll('link[rel="alternate"]');
-    const currentPath = window.location.pathname;
     upsertLink("alternate", `${SITE_URL}${currentPath}`, "hreflang", "fr");
     upsertLink("alternate", `${SITE_URL}/en${currentPath}`, "hreflang", "en");
     upsertLink("alternate", `${SITE_URL}${currentPath}`, "hreflang", "x-default");
