@@ -7,7 +7,6 @@ import "swiper/css";
 import SEOHead, { jsonLdWebsite, jsonLdOrganization, jsonLdPerson } from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import { TypingText } from '../components/TypingText';
-import HeroBGYouTube from '../components/HeroBGYouTube';
 
 const Home = () => {
   const homeJsonLd = [
@@ -143,17 +142,29 @@ const Home = () => {
         Aller au contenu principal
       </a>
 
-      {/* Hero Section with YouTube Video Background */}
+      {/* Hero Section with Video Background */}
       <section className="relative text-white overflow-hidden min-h-screen flex items-center">
         {/* YouTube Video Background */}
-        <HeroBGYouTube
-          url="https://youtu.be/p5UG08OsMGw"
-          className="absolute inset-0 w-full h-full"
-          aspectRatio="16/9"
-        />
-        
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div className="absolute inset-0 w-full h-full">
+          <iframe 
+            src="https://www.youtube.com/embed/02-JnWFj2Fs?autoplay=1&mute=1&loop=1&playlist=02-JnWFj2Fs&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0&cc_load_policy=0&playsinline=1&enablejsapi=0&start=0" 
+            className="absolute top-1/2 left-1/2 w-full h-full min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 pointer-events-none object-cover" 
+            style={{
+              width: '100vw',
+              height: '56.25vw',
+              minHeight: '100vh',
+              minWidth: '177.78vh'
+            }} 
+            frameBorder="0" 
+            allow="autoplay; encrypted-media" 
+            allowFullScreen={false} 
+            title="Background video - Antony Addy formations anglais"
+            loading="lazy"
+          />
+          
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        </div>
 
         {/* Fallback background for when video fails to load */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary -z-10"></div>
