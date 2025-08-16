@@ -10,8 +10,7 @@ declare global {
 
 export default function Analytics() {
   useEffect(() => {
-    const id = import.meta.env.VITE_GA_ID || (window as any).__GA_ID__ || "G-XXXXXXXXXX"; // placeholder
-    if (!id || id === "G-XXXXXXXXXX") return; // disabled until you set real GA4 ID
+    const id = "G-DNSN8DZZTV"; // Your specific GA4 Measurement ID
 
     window.dataLayer = window.dataLayer || [];
     function gtag(command: string, ...args: any[]){ 
@@ -20,6 +19,10 @@ export default function Analytics() {
     window.gtag = gtag;
     gtag("js", new Date());
     gtag("config", id, { anonymize_ip: true });
+
+    // Debug logging
+    console.log("[GA4] gtag loaded with Measurement ID: G-DNSN8DZZTV");
+    gtag('event', 'debug_event', { debug: true });
 
     const s = document.createElement("script");
     s.async = true;
