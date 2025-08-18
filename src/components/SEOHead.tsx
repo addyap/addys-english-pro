@@ -87,13 +87,13 @@ export default function SEOHead(props: SEOProps) {
   const computedTitle = composeTitle(title, siteName);
   
   // Handle different canonical URL formats for backward compatibility
-  let canonicalUrl: string | undefined;
+  let finalCanonicalUrl: string | undefined;
   if (canonical) {
-    canonicalUrl = buildCanonical(canonical);
+    finalCanonicalUrl = buildCanonical(canonical);
   } else if (canonicalPath) {
-    canonicalUrl = buildCanonical(canonicalPath);
-  } else if (props.canonicalUrl) {
-    canonicalUrl = buildCanonical(props.canonicalUrl);
+    finalCanonicalUrl = buildCanonical(canonicalPath);
+  } else if (canonicalUrl) {
+    finalCanonicalUrl = buildCanonical(canonicalUrl);
   }
   
   const robots = robotsDirectives({ noIndex: noIndex || noindex, noFollow });
@@ -106,9 +106,9 @@ export default function SEOHead(props: SEOProps) {
         {keywords && keywords.length > 0 && (
           <meta name="keywords" content={keywords.join(", ")} />
         )}
-        {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+        {finalCanonicalUrl && <link rel="canonical" href={finalCanonicalUrl} />}
         {robots && <meta name="robots" content={robots} />}
-        {ogTags({ title: computedTitle, description, image, type, url: canonicalUrl, siteName, locale })}
+        {ogTags({ title: computedTitle, description, image, type, url: finalCanonicalUrl, siteName, locale })}
         {twitterTags({ card: twitterCard, site: twitterSite, creator: twitterCreator, title: computedTitle, description, image })}
         {hreflangLinks(hreflangs)}
         {datePublished && <meta property="article:published_time" content={datePublished} />}
@@ -116,7 +116,7 @@ export default function SEOHead(props: SEOProps) {
       </Helmet>
 
       {enableOrgJsonLd && <OrgJsonLd siteName={siteName} />}
-      {enableWebSiteJsonLd && canonicalUrl && <WebSiteJsonLd siteName={siteName} url={canonicalUrl} />}
+      {enableWebSiteJsonLd && finalCanonicalUrl && <WebSiteJsonLd siteName={siteName} url={finalCanonicalUrl} />}
       {breadcrumbItems && breadcrumbItems.length > 0 && <BreadcrumbJsonLd items={breadcrumbItems} />}
       {type === "article" && article && (
         <ArticleJsonLd
@@ -127,7 +127,7 @@ export default function SEOHead(props: SEOProps) {
           dateModified={article.dateModified}
           authorName={article.authorName}
           type={article.type}
-          url={canonicalUrl}
+          url={finalCanonicalUrl}
         />
       )}
       {jsonLd && (
