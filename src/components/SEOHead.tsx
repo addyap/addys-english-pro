@@ -1,161 +1,111 @@
 
-import { useEffect } from "react";
+import React from "react";
+import { Helmet } from "react-helmet-async";
+import {
+  composeTitle,
+  buildCanonical,
+  metaBasics,
+  ogTags,
+  twitterTags,
+  hreflangLinks,
+  robotsDirectives,
+} from "@/lib/seo/utils";
+import {
+  OrgJsonLd,
+  WebSiteJsonLd,
+  BreadcrumbJsonLd,
+  ArticleJsonLd,
+} from "@/lib/seo/jsonld";
 
-type SEOHeadProps = {
-  title?: string;
+export type Hreflang = { href: string; hrefLang: string };
+export type BreadcrumbItem = { name: string; item: string };
+export type ArticleData = {
+  headline: string;
   description?: string;
-  canonicalPath?: string; // Use path only, we'll make it absolute
-  canonical?: string; // Legacy support
-  canonicalUrl?: string; // Legacy support
   image?: string;
-  robots?: string;
-  noindex?: boolean; // Cleaner API
-  keywords?: string[];
-  jsonLd?: Record<string, any> | Record<string, any>[];
-  twitterCreator?: string;
+  datePublished?: string;
+  dateModified?: string;
+  authorName?: string;
+  type?: "Article" | "BlogPosting" | "NewsArticle";
 };
 
-const SITE_URL = "https://www.antonyaddy.com";
+export type SEOProps = {
+  title?: string;
+  siteName?: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+  locale?: string;
+  type?: "website" | "article";
+  twitterCard?: "summary" | "summary_large_image";
+  twitterSite?: string;
+  twitterCreator?: string;
+  hreflangs?: Hreflang[];
+  noIndex?: boolean;
+  noFollow?: boolean;
+  enableOrgJsonLd?: boolean;
+  enableWebSiteJsonLd?: boolean;
+  breadcrumbItems?: BreadcrumbItem[];
+  article?: ArticleData;
+};
 
-function slugFromPath(pathname: string) {
-  if (!pathname || pathname === "/") return "home";
-  return pathname.split("?")[0].split("#")[0].replace(/\//g, "-").replace(/^-+/, "").toLowerCase();
+export default function SEOHead(props: SEOProps) {
+  const {
+    title,
+    siteName,
+    description,
+    canonical,
+    image,
+    locale = "en_GB",
+    type = "website",
+    twitterCard = "summary_large_image",
+    twitterSite,
+    twitterCreator,
+    hreflangs = [],
+    noIndex = false,
+    noFollow = false,
+    enableOrgJsonLd = false,
+    enableWebSiteJsonLd = false,
+    breadcrumbItems,
+    article,
+  } = props;
+
+  const computedTitle = composeTitle(title, siteName);
+  const canonicalUrl = canonical ? buildCanonical(canonical) : undefined;
+  const robots = robotsDirectives({ noIndex, noFollow });
+
+  return (
+    <>
+      <Helmet>
+        <title>{computedTitle}</title>
+        {metaBasics({ description })}
+        {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+        {robots && <meta name="robots" content={robots} />}
+        {ogTags({ title: computedTitle, description, image, type, url: canonicalUrl, siteName, locale })}
+        {twitterTags({ card: twitterCard, site: twitterSite, creator: twitterCreator, title: computedTitle, description, image })}
+        {hreflangLinks(hreflangs)}
+      </Helmet>
+
+      {enableOrgJsonLd && <OrgJsonLd siteName={siteName} />}
+      {enableWebSiteJsonLd && canonicalUrl && <WebSiteJsonLd siteName={siteName} url={canonicalUrl} />}
+      {breadcrumbItems && breadcrumbItems.length > 0 && <BreadcrumbJsonLd items={breadcrumbItems} />}
+      {type === "article" && article && (
+        <ArticleJsonLd
+          headline={article.headline}
+          description={article.description}
+          image={article.image}
+          datePublished={article.datePublished}
+          dateModified={article.dateModified}
+          authorName={article.authorName}
+          type={article.type}
+          url={canonicalUrl}
+        />
+      )}
+    </>
+  );
 }
 
-function upsertMeta(attr: "name" | "property", key: string, value?: string) {
-  if (!value) return;
-  let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute(attr, key);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", value);
-}
-
-function upsertLink(rel: string, href?: string, attr?: string, value?: string) {
-  if (!href) return;
-  let el = document.head.querySelector<HTMLLinkElement>(`link[rel="${rel}"]${attr ? `[${attr}="${value}"]` : ''}`);
-  if (!el) {
-    el = document.createElement("link");
-    el.setAttribute("rel", rel);
-    if (attr && value) el.setAttribute(attr, value);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("href", href);
-}
-
-function removeAll(selector: string) {
-  document.head.querySelectorAll(selector).forEach((n) => n.remove());
-}
-
-export default function SEOHead({
-  title = "Antony Addy — English Training & Coaching",
-  description = "Professional English training for adults: business English, coaching, and online learning.",
-  canonicalPath,
-  canonical, // Legacy
-  canonicalUrl, // Legacy
-  image,
-  robots,
-  noindex = false,
-  keywords,
-  jsonLd,
-  twitterCreator = "@antonyaddy",
-  datePublished,
-  dateModified,
-}: SEOHeadProps & { datePublished?: string; dateModified?: string }) {
-  useEffect(() => {
-    if (title && title.length > 60) {
-      console.warn(`SEO Warning: Title "${title}" is ${title.length} chars (max 60 recommended)`);
-    }
-    if (description && (description.length < 120 || description.length > 160)) {
-      console.warn(`SEO Warning: Description "${description}" is ${description.length} chars (120-160 recommended)`);
-    }
-    
-    if (title) document.title = title;
-
-    // Compute absolute canonical URL - always use canonicalPath for proper URL generation
-    let canonicalHref = "";
-    if (canonicalPath) {
-      canonicalHref = SITE_URL + (canonicalPath.startsWith("/") ? canonicalPath : "/" + canonicalPath);
-    } else if (canonicalUrl) {
-      canonicalHref = canonicalUrl; // Legacy support
-    } else if (canonical) {
-      canonicalHref = canonical; // Legacy support
-    } else {
-      canonicalHref = SITE_URL + window.location.pathname;
-    }
-
-    // Get current path for multiple uses
-    const currentPath = window.location.pathname;
-
-    // International SEO - hreflang tags
-    removeAll('link[rel="alternate"]');
-    upsertLink("alternate", `${SITE_URL}${currentPath}`, "hreflang", "fr");
-    upsertLink("alternate", `${SITE_URL}/en${currentPath}`, "hreflang", "en");
-    upsertLink("alternate", `${SITE_URL}${currentPath}`, "hreflang", "x-default");
-
-    // Set robots meta
-    const robotsContent = noindex ? "noindex,follow" : (robots || "index,follow");
-    
-    // Generate OG image URL based on current path
-    const slug = slugFromPath(currentPath);
-    const ogImage = image || `${SITE_URL}/og/${slug}-1200x630.png`;
-
-    // Basics
-    upsertMeta("name", "description", description);
-    upsertLink("canonical", canonicalHref);
-    upsertMeta("name", "robots", robotsContent);
-    
-    // Keywords
-    if (keywords && keywords.length > 0) {
-      upsertMeta("name", "keywords", keywords.join(", "));
-    }
-
-    // Date meta tags for blog posts and key pages
-    if (datePublished) {
-      upsertMeta("property", "article:published_time", datePublished);
-    }
-    if (dateModified) {
-      upsertMeta("property", "article:modified_time", dateModified);
-    }
-
-    // Open Graph
-    upsertMeta("property", "og:title", title);
-    upsertMeta("property", "og:description", description);
-    upsertMeta("property", "og:type", "website");
-    upsertMeta("property", "og:url", canonicalHref);
-    upsertMeta("property", "og:image", ogImage);
-    upsertMeta("property", "og:image:width", "1200");
-    upsertMeta("property", "og:image:height", "630");
-
-    // Twitter
-    upsertMeta("name", "twitter:card", "summary_large_image");
-    upsertMeta("name", "twitter:title", title);
-    upsertMeta("name", "twitter:description", description);
-    upsertMeta("name", "twitter:image", ogImage);
-    upsertMeta("name", "twitter:creator", twitterCreator);
-
-    // JSON‑LD
-    removeAll('script[data-seohead="jsonld"]');
-    const items = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
-    items.forEach((obj) => {
-      const s = document.createElement("script");
-      s.type = "application/ld+json";
-      s.dataset.seohead = "jsonld";
-      try {
-        s.text = JSON.stringify(obj);
-        document.head.appendChild(s);
-      } catch (e) {
-        console.error("Invalid JSON-LD:", obj, e);
-      }
-    });
-  }, [title, description, canonicalPath, canonical, canonicalUrl, image, robots, noindex, keywords, twitterCreator, JSON.stringify(jsonLd)]);
-
-  return null;
-}
-
-// JSON‑LD helpers
+// Export legacy helpers for backward compatibility
 export const jsonLdPerson = (opts?: {
   name?: string; url?: string; image?: string; sameAs?: string[];
 }) => ({
