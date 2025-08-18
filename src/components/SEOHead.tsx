@@ -9,12 +9,15 @@ import {
   twitterTags,
   hreflangLinks,
   robotsDirectives,
+  metaKeywords,
+  articleDateMeta,
 } from "@/lib/seo/utils";
 import {
   OrgJsonLd,
   WebSiteJsonLd,
   BreadcrumbJsonLd,
   ArticleJsonLd,
+  RawJsonLd,
 } from "@/lib/seo/jsonld";
 
 export type Hreflang = { href: string; hrefLang: string };
@@ -23,8 +26,8 @@ export type ArticleData = {
   headline: string;
   description?: string;
   image?: string;
-  datePublished?: string;
-  dateModified?: string;
+  datePublished?: string; // ISO
+  dateModified?: string;  // ISO
   authorName?: string;
   type?: "Article" | "BlogPosting" | "NewsArticle";
 };
@@ -33,19 +36,19 @@ export type SEOProps = {
   title?: string;
   siteName?: string;
   description?: string;
-  canonical?: string;
-  canonicalPath?: string;
-  canonicalUrl?: string;
+  canonical?: string;       // legacy support
+  canonicalPath?: string;   // legacy support
+  canonicalUrl?: string;    // preferred
   image?: string;
-  locale?: string;
+  locale?: string;          // e.g. "en_GB"
   type?: "website" | "article";
   twitterCard?: "summary" | "summary_large_image";
-  twitterSite?: string;
-  twitterCreator?: string;
+  twitterSite?: string;     // @handle
+  twitterCreator?: string;  // @handle
   hreflangs?: Hreflang[];
   noIndex?: boolean;
   noFollow?: boolean;
-  noindex?: boolean; // Legacy support
+  noindex?: boolean;        // legacy boolean
   enableOrgJsonLd?: boolean;
   enableWebSiteJsonLd?: boolean;
   breadcrumbItems?: BreadcrumbItem[];
@@ -53,7 +56,7 @@ export type SEOProps = {
   keywords?: string[];
   datePublished?: string;
   dateModified?: string;
-  jsonLd?: any | any[];
+  jsonLd?: unknown | unknown[]; // optional raw JSON-LD object(s)
 };
 
 export default function SEOHead(props: SEOProps) {
@@ -73,7 +76,7 @@ export default function SEOHead(props: SEOProps) {
     hreflangs = [],
     noIndex = false,
     noFollow = false,
-    noindex = false, // Legacy support
+    noindex = false, // legacy
     enableOrgJsonLd = false,
     enableWebSiteJsonLd = false,
     breadcrumbItems,
@@ -85,39 +88,65 @@ export default function SEOHead(props: SEOProps) {
   } = props;
 
   const computedTitle = composeTitle(title, siteName);
-  
-  // Handle different canonical URL formats for backward compatibility
+
+  // Canonical URL (single source of truth) — FIX: no redeclarations
   let finalCanonicalUrl: string | undefined;
-  if (canonical) {
+  if (canonicalUrl) {
+    finalCanonicalUrl = buildCanonical(canonicalUrl);
+  } else if (canonical) {
     finalCanonicalUrl = buildCanonical(canonical);
   } else if (canonicalPath) {
     finalCanonicalUrl = buildCanonical(canonicalPath);
-  } else if (canonicalUrl) {
-    finalCanonicalUrl = buildCanonical(canonicalUrl);
   }
-  
+
   const robots = robotsDirectives({ noIndex: noIndex || noindex, noFollow });
 
   return (
     <>
       <Helmet>
+        {/* Title + basics */}
         <title>{computedTitle}</title>
         {metaBasics({ description })}
-        {keywords && keywords.length > 0 && (
-          <meta name="keywords" content={keywords.join(", ")} />
-        )}
+        {metaKeywords({ keywords })}
+
+        {/* Canonical + robots */}
         {finalCanonicalUrl && <link rel="canonical" href={finalCanonicalUrl} />}
         {robots && <meta name="robots" content={robots} />}
-        {ogTags({ title: computedTitle, description, image, type, url: finalCanonicalUrl, siteName, locale })}
-        {twitterTags({ card: twitterCard, site: twitterSite, creator: twitterCreator, title: computedTitle, description, image })}
+
+        {/* Open Graph + Twitter */}
+        {ogTags({
+          title: computedTitle,
+          description,
+          image,
+          type,
+          url: finalCanonicalUrl,
+          siteName,
+          locale,
+        })}
+        {twitterTags({
+          card: twitterCard,
+          site: twitterSite,
+          creator: twitterCreator,
+          title: computedTitle,
+          description,
+          image,
+        })}
+
+        {/* Hreflang */}
         {hreflangLinks(hreflangs)}
-        {datePublished && <meta property="article:published_time" content={datePublished} />}
-        {dateModified && <meta property="article:modified_time" content={dateModified} />}
+
+        {/* Optional article dates (if you previously emitted them) */}
+        {articleDateMeta({ datePublished, dateModified })}
       </Helmet>
 
+      {/* JSON-LD blocks that the project already used */}
       {enableOrgJsonLd && <OrgJsonLd siteName={siteName} />}
-      {enableWebSiteJsonLd && finalCanonicalUrl && <WebSiteJsonLd siteName={siteName} url={finalCanonicalUrl} />}
-      {breadcrumbItems && breadcrumbItems.length > 0 && <BreadcrumbJsonLd items={breadcrumbItems} />}
+      {enableWebSiteJsonLd && finalCanonicalUrl && (
+        <WebSiteJsonLd siteName={siteName} url={finalCanonicalUrl} />
+      )}
+      {breadcrumbItems && breadcrumbItems.length > 0 && (
+        <BreadcrumbJsonLd items={breadcrumbItems} />
+      )}
       {type === "article" && article && (
         <ArticleJsonLd
           headline={article.headline}
@@ -130,105 +159,23 @@ export default function SEOHead(props: SEOProps) {
           url={finalCanonicalUrl}
         />
       )}
-      {jsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(Array.isArray(jsonLd) ? jsonLd : [jsonLd])
-          }}
-        />
-      )}
+
+      {/* Optional raw JSON-LD passthrough(s) */}
+      {Array.isArray(jsonLd)
+        ? jsonLd.map((block, i) => <RawJsonLd key={i} json={block} />)
+        : jsonLd
+        ? <RawJsonLd json={jsonLd} />
+        : null}
     </>
   );
 }
 
-// Export legacy helpers for backward compatibility
-export const jsonLdPerson = (opts?: {
-  name?: string; url?: string; image?: string; sameAs?: string[];
-}) => ({
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: opts?.name ?? "Antony Addy",
-  url: opts?.url ?? "https://www.antonyaddy.com",
-  image: opts?.image ?? "/og/antonyaddy-card.png",
-  sameAs: opts?.sameAs ?? [],
-});
-
-export const jsonLdOrganization = (opts?: {
-  name?: string; url?: string; logo?: string; sameAs?: string[]; telephone?: string; email?: string; address?: object;
-}) => ({
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: opts?.name ?? "Antony Addy — English Training",
-  url: opts?.url ?? "https://www.antonyaddy.com",
-  logo: opts?.logo ?? "https://www.antonyaddy.com/og/antonyaddy-card.png",
-  telephone: opts?.telephone ?? "+33 6 XX XX XX XX",
-  email: opts?.email ?? "contact@antonyaddy.com",
-  address: opts?.address ?? {
-    "@type": "PostalAddress",
-    addressCountry: "FR",
-    addressRegion: "Provence-Alpes-Côte d'Azur",
-    addressLocality: "Alpes-Maritimes"
-  },
-  sameAs: opts?.sameAs ?? [
-    "https://www.linkedin.com/in/antonyaddy",
-    "https://twitter.com/antonyaddy"
-  ],
-});
-
-export const jsonLdWebsite = () => ({
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "Antony Addy — Formateur d'anglais",
-  url: "https://www.antonyaddy.com",
-  description: "Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: "https://www.antonyaddy.com/blog?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-});
-
-export const jsonLdProfessionalService = () => ({
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Formation d'anglais professionnel",
-  description: "Services de formation en anglais professionnel, coaching linguistique et cours particuliers",
-  provider: jsonLdOrganization(),
-  areaServed: {
-    "@type": "Place",
-    name: "France"
-  },
-  serviceType: [
-    "Formation d'anglais professionnel",
-    "Coaching linguistique",
-    "Cours particuliers d'anglais",
-    "Préparation aux certifications"
-  ]
-});
-
-export const jsonLdBreadcrumbs = (items: Array<{ name: string; url: string }>) => ({
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: items.map((it, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    name: it.name,
-    item: it.url,
-  })),
-});
-
-export const jsonLdCourse = (opts: {
-  name: string; description: string; url: string; providerName?: string; providerUrl?: string;
-}) => ({
-  "@context": "https://schema.org",
-  "@type": "Course",
-  name: opts.name,
-  description: opts.description,
-  url: opts.url,
-  provider: {
-    "@type": "Organization",
-    name: opts.providerName ?? "Antony Addy",
-    sameAs: opts.providerUrl ?? "https://www.antonyaddy.com",
-  },
-});
+// Re-export legacy helpers for backward compatibility (if existing code imports from SEOHead)
+export {
+  jsonLdPerson,
+  jsonLdOrganization,
+  jsonLdWebsite,
+  jsonLdProfessionalService,
+  jsonLdBreadcrumbs,
+  jsonLdCourse,
+} from "@/lib/seo/jsonld";

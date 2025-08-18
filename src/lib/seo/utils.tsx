@@ -1,5 +1,23 @@
-
 import React from "react";
+
+type OgInput = {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article";
+  url?: string;
+  siteName?: string;
+  locale?: string;
+};
+
+type TwitterInput = {
+  card?: "summary" | "summary_large_image";
+  site?: string;
+  creator?: string;
+  title?: string;
+  description?: string;
+  image?: string;
+};
 
 export function composeTitle(baseTitle?: string, siteName?: string) {
   if (!baseTitle && !siteName) return "";
@@ -9,6 +27,7 @@ export function composeTitle(baseTitle?: string, siteName?: string) {
 }
 
 export function buildCanonical(url: string) {
+  // Keep your existing canonical normalization; if you previously passed through, do the same.
   return url;
 }
 
@@ -16,7 +35,22 @@ export function metaBasics({ description }: { description?: string }) {
   return <>{description && <meta name="description" content={description} />}</>;
 }
 
-export function ogTags({ title, description, image, type = "website", url, siteName, locale }: any) {
+export function metaKeywords({ keywords }: { keywords?: string[] }) {
+  if (!keywords || keywords.length === 0) return null;
+  return <meta name="keywords" content={keywords.join(", ")} />;
+}
+
+export function articleDateMeta({ datePublished, dateModified }: { datePublished?: string; dateModified?: string }) {
+  // Only emit if you previously did. Using Open Graph "article:*" here as a safe default.
+  return (
+    <>
+      {datePublished && <meta property="article:published_time" content={datePublished} />}
+      {dateModified && <meta property="article:modified_time" content={dateModified} />}
+    </>
+  );
+}
+
+export function ogTags({ title, description, image, type = "website", url, siteName, locale }: OgInput) {
   return (
     <>
       {title && <meta property="og:title" content={title} />}
@@ -30,7 +64,7 @@ export function ogTags({ title, description, image, type = "website", url, siteN
   );
 }
 
-export function twitterTags({ card = "summary_large_image", site, creator, title, description, image }: any) {
+export function twitterTags({ card = "summary_large_image", site, creator, title, description, image }: TwitterInput) {
   return (
     <>
       <meta name="twitter:card" content={card} />
