@@ -18,6 +18,12 @@ import {
   BreadcrumbJsonLd,
   ArticleJsonLd,
   RawJsonLd,
+  jsonLdPerson,
+  jsonLdOrganization,
+  jsonLdWebsite,
+  jsonLdProfessionalService,
+  jsonLdBreadcrumbs,
+  jsonLdCourse,
 } from "@/lib/seo/jsonld";
 
 export type Hreflang = { href: string; hrefLang: string };
@@ -170,7 +176,7 @@ export default function SEOHead(props: SEOProps) {
   );
 }
 
-// Re-export legacy helpers for backward compatibility (if existing code imports from SEOHead)
+// Re-export legacy factories if other code imports them from here
 export {
   jsonLdPerson,
   jsonLdOrganization,
@@ -178,4 +184,4 @@ export {
   jsonLdProfessionalService,
   jsonLdBreadcrumbs,
   jsonLdCourse,
-} from "@/lib/seo/jsonld";
+};

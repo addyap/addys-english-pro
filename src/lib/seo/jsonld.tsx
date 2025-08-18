@@ -2,9 +2,15 @@
 import React from "react";
 
 export function RawJsonLd({ json }: { json: unknown }) {
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }} />;
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
+    />
+  );
 }
 
+/** Organization JSON-LD — keep values identical to what you used before */
 export function OrgJsonLd({ siteName }: { siteName?: string }) {
   const json = {
     "@context": "https://schema.org",
@@ -17,7 +23,14 @@ export function OrgJsonLd({ siteName }: { siteName?: string }) {
   return <RawJsonLd json={json} />;
 }
 
-export function WebSiteJsonLd({ siteName, url }: { siteName?: string; url: string }) {
+/** WebSite JSON-LD */
+export function WebSiteJsonLd({
+  siteName,
+  url,
+}: {
+  siteName?: string;
+  url: string;
+}) {
   const json = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -32,7 +45,12 @@ export function WebSiteJsonLd({ siteName, url }: { siteName?: string; url: strin
   return <RawJsonLd json={json} />;
 }
 
-export function BreadcrumbJsonLd({ items }: { items: Array<{ name: string; item: string }> }) {
+/** Breadcrumb JSON-LD */
+export function BreadcrumbJsonLd({
+  items,
+}: {
+  items: Array<{ name: string; item: string }>;
+}) {
   const json = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -46,6 +64,7 @@ export function BreadcrumbJsonLd({ items }: { items: Array<{ name: string; item:
   return <RawJsonLd json={json} />;
 }
 
+/** Article / BlogPosting JSON-LD */
 export function ArticleJsonLd({
   headline,
   description,
@@ -80,9 +99,12 @@ export function ArticleJsonLd({
   return <RawJsonLd json={json} />;
 }
 
-/* Legacy helper factories (return JSON objects) for backward compatibility */
+/* Legacy helper factories (return JSON objects) */
 export const jsonLdPerson = (opts?: {
-  name?: string; url?: string; image?: string; sameAs?: string[];
+  name?: string;
+  url?: string;
+  image?: string;
+  sameAs?: string[];
 }) => ({
   "@context": "https://schema.org",
   "@type": "Person",
@@ -93,7 +115,13 @@ export const jsonLdPerson = (opts?: {
 });
 
 export const jsonLdOrganization = (opts?: {
-  name?: string; url?: string; logo?: string; sameAs?: string[]; telephone?: string; email?: string; address?: object;
+  name?: string;
+  url?: string;
+  logo?: string;
+  sameAs?: string[];
+  telephone?: string;
+  email?: string;
+  address?: object;
 }) => ({
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -119,7 +147,8 @@ export const jsonLdWebsite = () => ({
   "@type": "WebSite",
   name: "Antony Addy — Formateur d'anglais",
   url: "https://www.antonyaddy.com",
-  description: "Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes",
+  description:
+    "Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes",
   potentialAction: {
     "@type": "SearchAction",
     target: "https://www.antonyaddy.com/blog?q={search_term_string}",
@@ -131,7 +160,8 @@ export const jsonLdProfessionalService = () => ({
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Formation d'anglais professionnel",
-  description: "Services de formation en anglais professionnel, coaching linguistique et cours particuliers",
+  description:
+    "Services de formation en anglais professionnel, coaching linguistique et cours particuliers",
   provider: jsonLdOrganization(),
   areaServed: { "@type": "Place", name: "France" },
   serviceType: [
@@ -142,7 +172,9 @@ export const jsonLdProfessionalService = () => ({
   ],
 });
 
-export const jsonLdBreadcrumbs = (items: Array<{ name: string; url: string }>) => ({
+export const jsonLdBreadcrumbs = (
+  items: Array<{ name: string; url: string }>
+) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: items.map((it, i) => ({
@@ -154,7 +186,11 @@ export const jsonLdBreadcrumbs = (items: Array<{ name: string; url: string }>) =
 });
 
 export const jsonLdCourse = (opts: {
-  name: string; description: string; url: string; providerName?: string; providerUrl?: string;
+  name: string;
+  description: string;
+  url: string;
+  providerName?: string;
+  providerUrl?: string;
 }) => ({
   "@context": "https://schema.org",
   "@type": "Course",

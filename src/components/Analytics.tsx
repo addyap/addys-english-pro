@@ -1,11 +1,11 @@
 
 import { useEffect } from "react";
 
-declare global { 
-  interface Window { 
-    dataLayer?: any[]; 
+declare global {
+  interface Window {
+    dataLayer?: any[];
     gtag?: (command: string, ...args: any[]) => void;
-  } 
+  }
 }
 
 export default function Analytics() {
@@ -14,20 +14,20 @@ export default function Analytics() {
       (typeof import.meta !== "undefined" && (import.meta as any).env && (import.meta as any).env.DEV) ||
       process.env.NODE_ENV === "development";
 
-    const id = "G-DNSN8DZZTV"; // Your specific GA4 Measurement ID
+    const id = "G-DNSN8DZZTV"; // GA4 Measurement ID
 
     window.dataLayer = window.dataLayer || [];
-    function gtag(command: string, ...args: any[]){ 
-      window.dataLayer!.push([command, ...args]); 
+    function gtag(command: string, ...args: any[]) {
+      window.dataLayer!.push([command, ...args]);
     }
     window.gtag = gtag;
     gtag("js", new Date());
     gtag("config", id, { anonymize_ip: true });
 
-    // Debug logging - only in development
+    // Debug/console only in development
     if (isDev) {
-      console.log("[GA4] gtag loaded with Measurement ID: G-DNSN8DZZTV");
-      gtag('event', 'debug_event', { debug: true });
+      console.log("[GA4] gtag loaded with Measurement ID:", id);
+      gtag("event", "debug_event", { debug: true });
     }
 
     const s = document.createElement("script");

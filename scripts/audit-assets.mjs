@@ -1,104 +1,121 @@
 
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const projectRoot = path.resolve(__dirname, '..');
+const projectRoot = path.resolve(__dirname, "..");
 
 function scanDirectory(dir, extensions = []) {
   const results = [];
+  if (!fs.existsSync(dir)) return results;
   const items = fs.readdirSync(dir, { withFileTypes: true });
-  
   for (const item of items) {
     const fullPath = path.join(dir, item.name);
     if (item.isDirectory()) {
       results.push(...scanDirectory(fullPath, extensions));
-    } else if (extensions.length === 0 || extensions.some(ext => item.name.endsWith(ext))) {
+    } else if (
+      extensions.length === 0 ||
+      extensions.some((ext) => item.name.toLowerCase().endsWith(ext))
+    ) {
       results.push(fullPath);
     }
   }
-  
   return results;
 }
 
 function findAssetReferences(assetFiles, searchDirs) {
   const references = {};
-  
-  assetFiles.forEach(assetPath => {
-    const assetName = path.basename(assetPath);
-    const relativePath = path.relative(projectRoot, assetPath).replace(/\\/g, '/');
+  for (const assetPath of assetFiles) {
+    const relativePath = path.relative(projectRoot, assetPath).replace(/\\/g, "/");
     references[relativePath] = [];
-  });
-  
-  searchDirs.forEach(searchDir => {
-    const searchFiles = scanDirectory(searchDir, ['.tsx', '.ts', '.jsx', '.js', '.html', '.css', '.md']);
-    
-    searchFiles.forEach(filePath => {
+  }
+  for (const searchDir of searchDirs) {
+    const searchFiles = scanDirectory(searchDir, [
+      ".tsx",
+      ".ts",
+      ".jsx",
+      ".js",
+      ".html",
+      ".css",
+      ".md",
+    ]);
+    for (const filePath of searchFiles) {
+      let content = "";
       try {
-        const content = fs.readFileSync(filePath, 'utf-8');
-        
-        Object.keys(references).forEach(assetPath => {
-          const assetName = path.basename(assetPath);
-          const patterns = [
-            assetPath,
-            assetName,
-            assetPath.replace('public/', '/'),
-            '/' + assetPath,
-          ];
-          
-          patterns.forEach(pattern => {
-            if (content.includes(pattern)) {
-              const relativeFilePath = path.relative(projectRoot, filePath).replace(/\\/g, '/');
-              if (!references[assetPath].includes(relativeFilePath)) {
-                references[assetPath].push(relativeFilePath);
-              }
-            }
-          });
-        });
-      } catch (error) {
-        console.warn(`Could not read file: ${filePath}`);
+        content = fs.readFileSync(filePath, "utf8");
+      } catch {
+        continue;
       }
-    });
-  });
-  
+      for (const relAsset of Object.keys(references)) {
+        const assetName = path.basename(relAsset);
+        const patterns = [
+          relAsset,
+          assetName,
+          relAsset.replace(/^public\//, "/"),
+          "/" + relAsset,
+        ];
+        for (const pattern of patterns) {
+          if (content.includes(pattern)) {
+            const relFile = path.relative(projectRoot, filePath).replace(/\\/g, "/");
+            if (!references[relAsset].includes(relFile)) {
+              references[relAsset].push(relFile);
+            }
+            break;
+          }
+        }
+      }
+    }
+  }
   return references;
 }
 
 function auditAssets() {
-  console.log('🔍 Auditing project assets...');
-  
-  const assetsDir = path.join(projectRoot, 'public', 'assets');
-  const publicDir = path.join(projectRoot, 'public');
-  const srcDir = path.join(projectRoot, 'src');
-  
+  console.log("🔍 Auditing project assets...");
+
+  const assetsDir = path.join(projectRoot, "public", "assets");
+  const publicDir = path.join(projectRoot, "public");
+  const srcDir = path.join(projectRoot, "src");
+
   if (!fs.existsSync(assetsDir)) {
-    console.log('No assets directory found at public/assets');
+    console.log("No assets directory found at public/assets");
+    const empty = {
+      timestamp: new Date().toISOString(),
+      summary: { total: 0, used: 0, unused: 0 },
+      used: [],
+      unused: [],
+    };
+    fs.writeFileSync(
+      path.join(projectRoot, "audit-assets-report.json"),
+      JSON.stringify(empty, null, 2)
+    );
     return;
   }
-  
-  // Find all asset files
-  const assetExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.ico', '.pdf', '.mp4', '.webm'];
-  const assetFiles = scanDirectory(assetsDir, assetExtensions);
-  
-  // Search for references in source code and public files
-  const searchDirs = [srcDir, publicDir];
-  const references = findAssetReferences(assetFiles, searchDirs);
-  
-  // Categorize assets
+
+  const exts = [
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".gif",
+    ".svg",
+    ".webp",
+    ".ico",
+    ".pdf",
+    ".mp4",
+    ".webm",
+  ];
+  const assetFiles = scanDirectory(assetsDir, exts);
+  const references = findAssetReferences(assetFiles, [srcDir, publicDir]);
+
   const used = [];
   const unused = [];
-  
-  Object.entries(references).forEach(([assetPath, refs]) => {
-    if (refs.length > 0) {
-      used.push({ asset: assetPath, references: refs });
-    } else {
-      unused.push(assetPath);
-    }
-  });
-  
-  // Generate report
+
+  for (const [asset, refs] of Object.entries(references)) {
+    if ((refs as string[]).length > 0) used.push({ asset, references: refs });
+    else unused.push(asset);
+  }
+
   const report = {
     timestamp: new Date().toISOString(),
     summary: {
@@ -109,23 +126,19 @@ function auditAssets() {
     used,
     unused,
   };
-  
-  // Write report to file
-  const reportPath = path.join(projectRoot, 'audit-assets-report.json');
-  fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
-  
-  // Log results
-  console.log(`\n📊 Asset Audit Complete:`);
+
+  const outPath = path.join(projectRoot, "audit-assets-report.json");
+  fs.writeFileSync(outPath, JSON.stringify(report, null, 2));
+
+  console.log("\n📊 Asset Audit Complete:");
   console.log(`   Total assets: ${report.summary.total}`);
-  console.log(`   Used assets: ${report.summary.used}`);
-  console.log(`   Unused assets: ${report.summary.unused}`);
-  
+  console.log(`   Used assets:  ${report.summary.used}`);
+  console.log(`   Unused assets:${report.summary.unused}`);
   if (unused.length > 0) {
-    console.log(`\n🗑️  Potentially unused assets:`);
-    unused.forEach(asset => console.log(`   - ${asset}`));
+    console.log("\n🗑️  Potentially unused assets:");
+    for (const a of unused) console.log("   -", a);
   }
-  
-  console.log(`\n📄 Full report saved to: audit-assets-report.json`);
+  console.log("\n📄 Full report saved to: audit-assets-report.json");
 }
 
 auditAssets();
