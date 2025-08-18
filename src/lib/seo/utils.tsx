@@ -26,8 +26,8 @@ export function composeTitle(baseTitle?: string, siteName?: string) {
   return `${baseTitle} | ${siteName}`;
 }
 
+// Keep whatever normalization you previously had; default pass-through.
 export function buildCanonical(url: string) {
-  // Keep your existing canonical normalization; if you previously passed through, do the same.
   return url;
 }
 
@@ -40,8 +40,13 @@ export function metaKeywords({ keywords }: { keywords?: string[] }) {
   return <meta name="keywords" content={keywords.join(", ")} />;
 }
 
-export function articleDateMeta({ datePublished, dateModified }: { datePublished?: string; dateModified?: string }) {
-  // Only emit if you previously did. Using Open Graph "article:*" here as a safe default.
+export function articleDateMeta({
+  datePublished,
+  dateModified,
+}: {
+  datePublished?: string;
+  dateModified?: string;
+}) {
   return (
     <>
       {datePublished && <meta property="article:published_time" content={datePublished} />}
@@ -50,7 +55,15 @@ export function articleDateMeta({ datePublished, dateModified }: { datePublished
   );
 }
 
-export function ogTags({ title, description, image, type = "website", url, siteName, locale }: OgInput) {
+export function ogTags({
+  title,
+  description,
+  image,
+  type = "website",
+  url,
+  siteName,
+  locale,
+}: OgInput) {
   return (
     <>
       {title && <meta property="og:title" content={title} />}
@@ -64,7 +77,14 @@ export function ogTags({ title, description, image, type = "website", url, siteN
   );
 }
 
-export function twitterTags({ card = "summary_large_image", site, creator, title, description, image }: TwitterInput) {
+export function twitterTags({
+  card = "summary_large_image",
+  site,
+  creator,
+  title,
+  description,
+  image,
+}: TwitterInput) {
   return (
     <>
       <meta name="twitter:card" content={card} />
@@ -77,7 +97,9 @@ export function twitterTags({ card = "summary_large_image", site, creator, title
   );
 }
 
-export function hreflangLinks(hreflangs: Array<{ href: string; hrefLang: string }>) {
+export function hreflangLinks(
+  hreflangs: Array<{ href: string; hrefLang: string }>
+) {
   if (!hreflangs?.length) return null;
   return (
     <>
@@ -88,7 +110,13 @@ export function hreflangLinks(hreflangs: Array<{ href: string; hrefLang: string 
   );
 }
 
-export function robotsDirectives({ noIndex, noFollow }: { noIndex?: boolean; noFollow?: boolean }) {
+export function robotsDirectives({
+  noIndex,
+  noFollow,
+}: {
+  noIndex?: boolean;
+  noFollow?: boolean;
+}) {
   if (!noIndex && !noFollow) return "index,follow";
   const d: string[] = [];
   d.push(noIndex ? "noindex" : "index");
