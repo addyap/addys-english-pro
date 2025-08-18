@@ -14,6 +14,13 @@ if (import.meta.env.PROD) {
   createRoot(rootElement).render(<App />);
 }
 
+// Service Worker registration
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch(() => {});
+  });
+}
+
 // Console diagnostics on start
 console.log(`
 SEOHead wired: ${document.querySelectorAll('[data-seohead]').length}
