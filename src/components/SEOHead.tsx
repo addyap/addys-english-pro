@@ -34,6 +34,8 @@ export type SEOProps = {
   siteName?: string;
   description?: string;
   canonical?: string;
+  canonicalPath?: string;
+  canonicalUrl?: string;
   image?: string;
   locale?: string;
   type?: "website" | "article";
@@ -43,10 +45,15 @@ export type SEOProps = {
   hreflangs?: Hreflang[];
   noIndex?: boolean;
   noFollow?: boolean;
+  noindex?: boolean; // Legacy support
   enableOrgJsonLd?: boolean;
   enableWebSiteJsonLd?: boolean;
   breadcrumbItems?: BreadcrumbItem[];
   article?: ArticleData;
+  keywords?: string[];
+  datePublished?: string;
+  dateModified?: string;
+  jsonLd?: any | any[];
 };
 
 export default function SEOHead(props: SEOProps) {
@@ -55,6 +62,8 @@ export default function SEOHead(props: SEOProps) {
     siteName,
     description,
     canonical,
+    canonicalPath,
+    canonicalUrl,
     image,
     locale = "en_GB",
     type = "website",
@@ -64,26 +73,46 @@ export default function SEOHead(props: SEOProps) {
     hreflangs = [],
     noIndex = false,
     noFollow = false,
+    noindex = false, // Legacy support
     enableOrgJsonLd = false,
     enableWebSiteJsonLd = false,
     breadcrumbItems,
     article,
+    keywords,
+    datePublished,
+    dateModified,
+    jsonLd,
   } = props;
 
   const computedTitle = composeTitle(title, siteName);
-  const canonicalUrl = canonical ? buildCanonical(canonical) : undefined;
-  const robots = robotsDirectives({ noIndex, noFollow });
+  
+  // Handle different canonical URL formats for backward compatibility
+  let canonicalUrl: string | undefined;
+  if (canonical) {
+    canonicalUrl = buildCanonical(canonical);
+  } else if (canonicalPath) {
+    canonicalUrl = buildCanonical(canonicalPath);
+  } else if (props.canonicalUrl) {
+    canonicalUrl = buildCanonical(props.canonicalUrl);
+  }
+  
+  const robots = robotsDirectives({ noIndex: noIndex || noindex, noFollow });
 
   return (
     <>
       <Helmet>
         <title>{computedTitle}</title>
         {metaBasics({ description })}
+        {keywords && keywords.length > 0 && (
+          <meta name="keywords" content={keywords.join(", ")} />
+        )}
         {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
         {robots && <meta name="robots" content={robots} />}
         {ogTags({ title: computedTitle, description, image, type, url: canonicalUrl, siteName, locale })}
         {twitterTags({ card: twitterCard, site: twitterSite, creator: twitterCreator, title: computedTitle, description, image })}
         {hreflangLinks(hreflangs)}
+        {datePublished && <meta property="article:published_time" content={datePublished} />}
+        {dateModified && <meta property="article:modified_time" content={dateModified} />}
       </Helmet>
 
       {enableOrgJsonLd && <OrgJsonLd siteName={siteName} />}
@@ -99,6 +128,14 @@ export default function SEOHead(props: SEOProps) {
           authorName={article.authorName}
           type={article.type}
           url={canonicalUrl}
+        />
+      )}
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(Array.isArray(jsonLd) ? jsonLd : [jsonLd])
+          }}
         />
       )}
     </>
