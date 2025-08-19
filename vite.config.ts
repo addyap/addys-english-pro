@@ -3,7 +3,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
-import { visualizer } from "vite-plugin-visualizer";
+import { visualizer } from "rollup-plugin-visualizer";
 
 const analyze = process.env.ANALYZE === "true";
 
