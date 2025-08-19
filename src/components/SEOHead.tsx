@@ -68,13 +68,13 @@ export type SEOProps = {
 export default function SEOHead(props: SEOProps) {
   const {
     title,
-    siteName,
+    siteName = "Antony Addy",
     description,
     canonical,
     canonicalPath,
     canonicalUrl,
     image,
-    locale = "en_GB",
+    locale = "fr_FR",
     type = "website",
     twitterCard = "summary_large_image",
     twitterSite,
