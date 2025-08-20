@@ -74,7 +74,7 @@ export default function SEOHead(props: SEOProps) {
     canonicalPath,
     canonicalUrl,
     image,
-    locale = "en_GB",
+    locale = "fr_FR",
     type = "website",
     twitterCard = "summary_large_image",
     twitterSite,
@@ -95,7 +95,7 @@ export default function SEOHead(props: SEOProps) {
 
   const computedTitle = composeTitle(title, siteName);
 
-  // Canonical URL (single source of truth) — FIX: no redeclarations
+  // Simplified canonical URL logic - single source of truth
   let finalCanonicalUrl: string | undefined;
   if (canonicalUrl) {
     finalCanonicalUrl = buildCanonical(canonicalUrl);
@@ -103,13 +103,15 @@ export default function SEOHead(props: SEOProps) {
     finalCanonicalUrl = buildCanonical(canonical);
   } else if (canonicalPath) {
     finalCanonicalUrl = buildCanonical(canonicalPath);
+  } else if (typeof window !== 'undefined') {
+    finalCanonicalUrl = window.location.href;
   }
 
   const robots = robotsDirectives({ noIndex: noIndex || noindex, noFollow });
 
   return (
     <>
-      <Helmet>
+      <Helmet htmlAttributes={{ lang: "fr" }}>
         {/* Title + basics */}
         <title>{computedTitle}</title>
         {metaBasics({ description })}

@@ -4,12 +4,13 @@ import React, { useState } from "react";
 const LOGO_CANDIDATES = [
   "/assets/logo.svg",
   "/assets/logo-512.png",
+  "/lovable-uploads/e702870f-381a-41f9-a7a3-652513be9f42.png", // fallback to existing
 ];
 
 export default function SiteLogo({
   height = 40,
   className,
-  alt = "Antony Addy",
+  alt = "Antony Addy — Formateur d'anglais professionnel",
 }: {
   height?: number;
   className?: string;
