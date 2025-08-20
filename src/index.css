@@ -1,79 +1,92 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom semantic tokens and design system */
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 96%;
+    --foreground: 240 50% 21%;
+
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 240 50% 21%;
+
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 231 48% 48%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 94%;
-    --accent-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 240 50% 21%;
+
+    --primary: 240 50% 21%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 258 41% 30%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 240 50% 35%;
+
+    --accent: 0 68% 47%;
+    --accent-foreground: 0 0% 100%;
+
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 10% 85%;
+    --input: 240 10% 85%;
+    --ring: 240 50% 21%;
+
     --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-foreground: 240 50% 21%;
+    --sidebar-primary: 240 50% 21%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 0 0% 95%;
+    --sidebar-accent-foreground: 240 50% 21%;
+    --sidebar-border: 240 10% 85%;
+    --sidebar-ring: 240 50% 21%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --background: 240 50% 21%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 50% 21%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 50% 21%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 50% 21%;
+
+    --secondary: 258 41% 30%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 258 41% 30%;
+    --muted-foreground: 0 0% 85%;
+
+    --accent: 0 68% 47%;
+    --accent-foreground: 0 0% 100%;
+
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 94.1%;
-    --sidebar-primary-foreground: 240 5.9% 10%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 258 41% 30%;
+    --input: 258 41% 30%;
+    --ring: 0 0% 83.9%;
+    --sidebar-background: 240 50% 21%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 68% 47%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 258 41% 30%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 258 41% 30%;
+    --sidebar-ring: 0 68% 47%;
   }
 }
 
@@ -81,99 +94,42 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 }
 
-/* Enhanced header z-index - critical fix */
-.site-header {
-  position: relative;
-  z-index: 20;
-}
-
-/* Font family declarations */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
-
-.font-heading {
-  font-family: 'Playfair Display', serif;
-}
-
-.font-body {
-  font-family: 'Inter', sans-serif;
-}
-
-/* Text shadow utility for hero text */
-.text-shadow-lg {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-/* Hero heading mobile clamp fix - only for extreme mobile */
-@media (max-width: 480px) {
-  .hero-title--mobileClamp {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+/* Custom utilities */
+@layer utilities {
+  .text-shadow-lg {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+  
+  .object-cover {
+    object-fit: cover;
+  }
+  
+  .font-heading {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .font-body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 }
 
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
+/* Blinking cursor animation */
+.blinking-cursor {
+  animation: blink 1s infinite;
 }
 
-/* Focus styles for accessibility */
-.focus-visible:focus {
-  @apply outline-2 outline-offset-2 outline-primary;
-}
-
-/* Skip to content link styles */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.focus\:not-sr-only:focus {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0.5rem 1rem;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-}
-
-/* Animation for mobile menu */
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-slideDown {
-  animation: slideDown 0.2s ease-out;
-}
-
-/* Ensure dropdowns have proper background and z-index */
-[role="menu"], 
-[role="listbox"],
-.dropdown-menu {
-  background: hsl(var(--background));
-  z-index: 50;
-  border: 1px solid hsl(var(--border));
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }

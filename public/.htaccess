@@ -1,107 +1,72 @@
+# Security Headers
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "no-referrer-when-downgrade"
+  Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data: https:; font-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https:;"
+</IfModule>
 
-############################
-# Base: Apache .htaccess
-############################
-
-AddDefaultCharset utf-8
-
-Header always set X-Content-Type-Options "nosniff"
-Header always set X-Frame-Options "SAMEORIGIN"
-Header always set X-XSS-Protection "0"
-Header always set Referrer-Policy "strict-origin-when-cross-origin"
-Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
-
+# Enable URL rewriting
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteBase /
+
+  # Force HTTPS
   RewriteCond %{HTTPS} !=on
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Force www subdomain
+  RewriteCond %{HTTP_HOST} !^www\.antonyaddy\.com$ [NC]
+  RewriteRule ^ https://www.antonyaddy.com%{REQUEST_URI} [L,R=301]
+
+  # Normalize trailing slash policy (no trailing slash except root)
+  RewriteCond %{REQUEST_URI} .+/$
+  RewriteRule ^(.+)/$ https://www.antonyaddy.com/$1 [L,R=301]
+
+  # 301 Redirects for legacy antonyaddy.com pages
+  RewriteRule ^services/?$ / [R=301,L]
+  RewriteRule ^tarifs-cpf/?$ / [R=301,L]
+  RewriteRule ^videos/?$ / [R=301,L]
+  RewriteRule ^faq/?$ / [R=301,L]
+  RewriteRule ^a-propos/?$ /qui-je-suis [R=301,L]
+  RewriteRule ^contactez-moi/?$ /contact [R=301,L]
+  RewriteRule ^ressources-et-conseils/?$ / [R=301,L]
+  RewriteRule ^ipsum-autem-impedit-nisi/?$ / [R=301,L]
+  RewriteRule ^formations-et-services/?$ /offres-de-formation [R=301,L]
+  RewriteRule ^tag/ad/?$ / [R=301,L]
+  RewriteRule ^votre-besoin/?$ / [R=301,L]
+  RewriteRule ^lander/?$ / [R=301,L]
+  RewriteRule ^est-ut-praesentium-voluptatibus-et/?$ / [R=301,L]
+  RewriteRule ^assumenda-nisi-nemo-labore-error/?$ / [R=301,L]
+  RewriteRule ^ullam-omnis-et-voluptatum-quis-quia/?$ / [R=301,L]
+  RewriteRule ^hellofacture/?$ / [R=301,L]
+  RewriteRule ^avis-clients/?$ /temoignages [R=301,L]
+  RewriteRule ^reseaux-sociaux/?$ / [R=301,L]
+  RewriteRule ^velit-et-eum-id-nobis-velit/?$ / [R=301,L]
+  RewriteRule ^aut-quo-eos-qui-odit-amet/?$ / [R=301,L]
+  RewriteRule ^velit-cumque-quos-harum-aut/?$ / [R=301,L]
+  RewriteRule ^jeux-anglais/?$ /anglaisadistance [R=301,L]
+
+  # Catch-all for any /products/* routes (Shopify legacy)
+  RewriteRule ^products/.*$ / [R=301,L]
+
+  # Serve sitemap.xml as a real XML file, not routed through index.html
+  RewriteRule ^sitemap\.xml$ - [L]
+
+  # Prevent routing sitemap.xml to SPA fallback
+  RewriteRule ^index\.html$ - [L]
+
+  # SPA fallback: route all non-file, non-folder requests to index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
 </IfModule>
 
-# Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+# Force correct MIME type for XML files
+AddType application/xml .xml
 
-Options -MultiViews
-
-<IfModule mod_mime.c>
-  AddType text/javascript js mjs
-  AddType text/css css
-  AddType application/manifest+json webmanifest
-  AddType image/avif avif
-  AddType image/webp webp
+# Optional: charset and compression
+AddDefaultCharset UTF-8
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE application/xml
 </IfModule>
-
-<IfModule mod_headers.c>
-  RewriteEngine On
-  RewriteCond %{REQUEST_FILENAME} \.(js|css|svg|json|wasm|mjs)$ [OR]
-  RewriteCond %{REQUEST_FILENAME} \.(ttf|otf|woff|woff2|eot)$ [OR]
-  RewriteCond %{REQUEST_FILENAME} \.(png|jpg|jpeg|gif|webp|avif|ico)$
-  RewriteCond %{HTTP:Accept-Encoding} br
-  RewriteCond %{REQUEST_FILENAME}.br -f
-  RewriteRule ^(.+)$ $1.br [L]
-
-  RewriteCond %{REQUEST_URI} !\.br$
-  RewriteCond %{HTTP:Accept-Encoding} gzip
-  RewriteCond %{REQUEST_FILENAME}.gz -f
-  RewriteRule ^(.+)$ $1.gz [L]
-
-  <FilesMatch "\.br$">
-    Header set Content-Encoding br
-    ForceType None
-  </FilesMatch>
-  <FilesMatch "\.gz$">
-    Header set Content-Encoding gzip
-    ForceType None
-  </FilesMatch>
-</IfModule>
-
-<IfModule mod_expires.c>
-  ExpiresActive On
-  ExpiresByType text/html "access plus 0 seconds"
-  Header always set Cache-Control "no-cache, no-store, must-revalidate" "expr=%{CONTENT_TYPE} =~ m#text/html#i"
-  ExpiresByType text/css "access plus 1 year"
-  ExpiresByType text/javascript "access plus 1 year"
-  ExpiresByType application/javascript "access plus 1 year"
-  ExpiresByType application/wasm "access plus 1 year"
-  ExpiresByType image/avif "access plus 1 year"
-  ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/gif "access plus 1 year"
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType font/ttf "access plus 1 year"
-  ExpiresByType font/otf "access plus 1 year"
-  ExpiresByType font/woff "access plus 1 year"
-  ExpiresByType font/woff2 "access plus 1 year"
-</IfModule>
-
-<IfModule mod_headers.c>
-  Header merge Accept-Ranges bytes
-</IfModule>
-
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-
-  RewriteCond %{REQUEST_URI} ^/(sitemap\.xml|robots\.txt|humans\.txt|favicon\.ico)$ [NC]
-  RewriteRule .* - [L]
-
-  RewriteCond %{REQUEST_FILENAME} -f [OR]
-  RewriteCond %{REQUEST_FILENAME} -d
-  RewriteRule .* - [L]
-
-  RewriteCond %{REQUEST_FILENAME}/index.html -f
-  RewriteRule ^(.+?)/?$ $1/index.html [L]
-
-  RewriteRule ^ index.html [L]
-</IfModule>
-
-<IfModule mod_headers.c>
-  <FilesMatch "\.(ttf|otf|eot|woff|woff2)$">
-    Header always set Access-Control-Allow-Origin "*"
-  </FilesMatch>
-</IfModule>
-
-# ErrorDocument 404 /404.html
-
-############################
-# End of file
-############################

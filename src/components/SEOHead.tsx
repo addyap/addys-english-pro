@@ -68,13 +68,13 @@ export type SEOProps = {
 export default function SEOHead(props: SEOProps) {
   const {
     title,
-    siteName = "Antony Addy",
+    siteName,
     description,
     canonical,
     canonicalPath,
     canonicalUrl,
     image,
-    locale = "fr_FR",
+    locale = "en_GB",
     type = "website",
     twitterCard = "summary_large_image",
     twitterSite,
@@ -83,8 +83,8 @@ export default function SEOHead(props: SEOProps) {
     noIndex = false,
     noFollow = false,
     noindex = false, // legacy
-    enableOrgJsonLd = true, // Enable by default for better SEO
-    enableWebSiteJsonLd = true, // Enable by default for better SEO
+    enableOrgJsonLd = false,
+    enableWebSiteJsonLd = false,
     breadcrumbItems,
     article,
     keywords,
@@ -95,17 +95,14 @@ export default function SEOHead(props: SEOProps) {
 
   const computedTitle = composeTitle(title, siteName);
 
-  // Canonical URL (single source of truth) — FIX: use proper base URL
+  // Canonical URL (single source of truth) — FIX: no redeclarations
   let finalCanonicalUrl: string | undefined;
   if (canonicalUrl) {
     finalCanonicalUrl = buildCanonical(canonicalUrl);
   } else if (canonical) {
     finalCanonicalUrl = buildCanonical(canonical);
   } else if (canonicalPath) {
-    // Ensure canonical path starts with base domain
-    const baseUrl = "https://www.antonyaddy.com";
-    const cleanPath = canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`;
-    finalCanonicalUrl = buildCanonical(`${baseUrl}${cleanPath}`);
+    finalCanonicalUrl = buildCanonical(canonicalPath);
   }
 
   const robots = robotsDirectives({ noIndex: noIndex || noindex, noFollow });
@@ -113,16 +110,16 @@ export default function SEOHead(props: SEOProps) {
   return (
     <>
       <Helmet>
-        {/* Title + basics - NO stray variables */}
+        {/* Title + basics */}
         <title>{computedTitle}</title>
         {metaBasics({ description })}
         {metaKeywords({ keywords })}
 
-        {/* Canonical + robots - properly wrapped */}
+        {/* Canonical + robots */}
         {finalCanonicalUrl && <link rel="canonical" href={finalCanonicalUrl} />}
         {robots && <meta name="robots" content={robots} />}
 
-        {/* Open Graph + Twitter - all properly wrapped */}
+        {/* Open Graph + Twitter */}
         {ogTags({
           title: computedTitle,
           description,
@@ -141,10 +138,10 @@ export default function SEOHead(props: SEOProps) {
           image,
         })}
 
-        {/* Hreflang - properly wrapped */}
+        {/* Hreflang */}
         {hreflangLinks(hreflangs)}
 
-        {/* Optional article dates - properly wrapped */}
+        {/* Optional article dates (if you previously emitted them) */}
         {articleDateMeta({ datePublished, dateModified })}
       </Helmet>
 

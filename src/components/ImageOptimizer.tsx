@@ -60,4 +60,3 @@ const ImageOptimizer: React.FC<ImageOptimizerProps> = ({
 };
 
 export default ImageOptimizer;
-export { default as AutoImage } from "./AutoImage";

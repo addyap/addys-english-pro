@@ -1,149 +1,211 @@
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
-import SiteLogo from './SiteLogo';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { MessageSquare, Menu, X, ExternalLink } from 'lucide-react';
+import { ScrollProgressBar } from "@/components/Effects";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const year = new Date().getFullYear();
 
   const navigation = [
-    { href: '/', label: 'Accueil' },
-    { href: '/qui-je-suis', label: 'Qui je suis' },
-    { href: '/offres-de-formation', label: 'Offres de formation' },
-    { href: '/temoignages', label: 'Témoignages' },
-    { href: '/blog', label: 'Blog' },
-    { href: '/contact', label: 'Contact' }
+    { name: 'Accueil', href: '/', current: location.pathname === '/' },
+    { name: 'Qui je suis', href: '/qui-je-suis', current: location.pathname === '/qui-je-suis' },
+    { name: 'Offres de formation', href: '/offres-de-formation', current: location.pathname === '/offres-de-formation' },
+    { name: 'Témoignages', href: '/temoignages', current: location.pathname === '/temoignages' },
+    { name: 'Contact', href: '/contact', current: location.pathname === '/contact' },
+    { name: 'Blog', href: '/blog', current: location.pathname === '/blog' },
+    { name: 'Ressources en ligne', href: '/anglaisadistance', current: location.pathname === '/anglaisadistance' },
   ];
 
-  return (
-    <div className="min-h-screen bg-background">
-      {/* Header with enforced z-index */}
-      <header className="site-header relative z-20 bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <Link to="/" className="site-logo flex items-center" aria-label="Accueil">
-              <SiteLogo height={40} />
-              <span className="ml-2 text-xl font-bold text-primary hidden sm:block">
-                Antony Addy
-              </span>
-            </Link>
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
+  return (
+    <div className="min-h-screen bg-background font-body">
+      <ScrollProgressBar />
+      
+      {/* Header */}
+      <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4">
+            <div className="flex items-center">
+              <img
+                src="/lovable-uploads/e702870f-381a-41f9-a7a3-652513be9f42.png"
+                alt="Formations Logo"
+                className="h-10 w-10 mr-3"
+              />
+              <div className="flex flex-col">
+                <Link to="/" className="text-lg font-bold text-primary font-heading">
+                  Antony Addy
+                </Link>
+              </div>
+            </div>
+            
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8" role="navigation" aria-label="Navigation principale">
+            <nav className="hidden lg:flex items-center space-x-1">
               {navigation.map((item) => (
                 <Link
-                  key={item.href}
+                  key={item.name}
                   to={item.href}
-                  className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 font-body border ${
+                    item.current
+                      ? 'bg-accent text-accent-foreground border-accent'
+                      : 'text-primary hover:text-accent-foreground hover:bg-accent border-transparent hover:border-accent'
+                  }`}
                 >
-                  {item.label}
+                  {item.name}
                 </Link>
               ))}
             </nav>
 
             {/* Mobile menu button */}
-            <button
-              onClick={toggleMenu}
-              className="md:hidden p-2 rounded-md text-foreground hover:text-primary hover:bg-muted transition-colors"
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-menu"
-              aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            <div className="lg:hidden flex items-center gap-3">
+              <a
+                href="https://wa.me/33649829826"
+                className="bg-green-500 text-white px-3 py-2 rounded-lg flex items-center gap-1 hover:bg-green-600 transition-colors text-sm font-body"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageSquare className="h-4 w-4" />
+                WhatsApp
+              </a>
+              <button
+                onClick={toggleMobileMenu}
+                className="text-primary hover:text-primary/80 p-2"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
+
+            {/* Desktop WhatsApp button */}
+            <a
+              href="https://wa.me/33649829826"
+              className="hidden lg:flex bg-green-500 text-white px-4 py-2 rounded-lg items-center gap-2 hover:bg-green-600 transition-colors font-body ml-4"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+              <MessageSquare className="h-4 w-4" />
+              WhatsApp
+            </a>
           </div>
 
-          {/* Mobile Navigation */}
-          <div 
-            id="mobile-menu"
-            className={`md:hidden transition-all duration-300 ease-in-out ${
-              isMenuOpen 
-                ? 'max-h-96 opacity-100' 
-                : 'max-h-0 opacity-0 overflow-hidden'
-            }`}
-            role="navigation"
-            aria-label="Navigation mobile"
-          >
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
-              {navigation.map((item) => (
-                <Link
-                  key={item.href}
-                  to={item.href}
-                  className="block px-3 py-2 text-base font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+          {/* Mobile Navigation Menu */}
+          {isMobileMenuOpen && (
+            <div className="lg:hidden border-t border-gray-200 py-4">
+              <nav className="flex flex-col space-y-2">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 font-body border ${
+                      item.current
+                        ? 'text-accent-foreground bg-accent border-accent'
+                        : 'text-primary hover:text-accent-foreground hover:bg-accent border-transparent hover:border-accent'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </nav>
             </div>
-          </div>
+          )}
         </div>
       </header>
 
       {/* Main Content */}
-      <main role="main">
-        {children}
-      </main>
+      <main>{children}</main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12" role="contentinfo">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Contact</h3>
-              <div className="space-y-2">
-                <div className="flex items-center gap-2">
-                  <Phone className="h-4 w-4" />
-                  <span>06 49 82 98 26</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="h-4 w-4" />
-                  <span>formations@antonyaddy.com</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4" />
-                  <span>Alpes-Maritimes, France</span>
-                </div>
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Liens utiles</h3>
-              <div className="space-y-2">
-                <Link to="/anglaisadistance" className="block hover:text-gray-300 transition-colors">
-                  anglaisadistance.fr
+      <footer className="bg-slate-900 text-white text-sm py-8 px-4">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-6">
+          <div>
+            <h3 className="font-semibold mb-2">Navigation</h3>
+            <ul className="space-y-1">
+              <li>
+                <Link to="/mentions-legales" className="hover:underline">
+                  Mentions Légales
                 </Link>
-                <Link to="/politique-confidentialite" className="block hover:text-gray-300 transition-colors">
+              </li>
+              <li>
+                <Link to="/politique-confidentialite" className="hover:underline">
                   Politique de confidentialité
                 </Link>
-                <Link to="/mentions-legales" className="block hover:text-gray-300 transition-colors">
-                  Mentions légales
+              </li>
+              <li>
+                <Link to="/contact" className="hover:underline">
+                  Contact
                 </Link>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-4">À propos</h3>
-              <p className="text-gray-300">
-                Formateur Professionnel d'Adultes certifié, spécialisé en anglais professionnel.
-                Formations en présentiel dans les Alpes-Maritimes et à distance partout en France.
-              </p>
-            </div>
+              </li>
+            </ul>
           </div>
-          
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-            <p className="text-gray-400">
-              © 2024 Antony Addy. Tous droits réservés.
+
+          <div>
+            <h3 className="font-semibold mb-2">Contact</h3>
+            <ul className="space-y-1">
+              <li>
+                📧{" "}
+                <a
+                  href="mailto:formations@antonyaddy.com"
+                  className="hover:underline"
+                >
+                  formations@antonyaddy.com
+                </a>
+              </li>
+              <li>
+                💬{" "}
+                <a
+                  href="https://wa.me/33649829826"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  +33 6 49 82 98 26 (WhatsApp)
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-2">Ressources</h3>
+            <ul className="space-y-1">
+              <li>
+                <a
+                  href="https://anglaisadistance.fr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline flex items-center gap-1"
+                >
+                  🎓 anglaisadistance.fr
+                  <ExternalLink className="h-3 w-3" />
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="md:text-right">
+            <p>© {year} Antony Addy. Tous droits réservés.</p>
+            <p className="mt-1 text-gray-400">
+              Site hébergé par Bluehost –{" "}
+              <a
+                href="https://www.bluehost.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                www.bluehost.com
+              </a>
             </p>
           </div>
         </div>
