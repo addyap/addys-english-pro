@@ -124,6 +124,21 @@ All colors MUST be HSL.
   }
 }
 
+/* Prevent long headings from clipping/truncating */
+.hero-title {
+  line-height: 1.1;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+/* Ensure text sits above overlays if a background video/image exists */
+.hero-title-wrap {
+  position: relative;
+  z-index: 10;
+}
+
 /* Blinking cursor animation */
 .blinking-cursor {
   animation: blink 1s infinite;

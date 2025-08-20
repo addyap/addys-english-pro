@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { MessageSquare, Menu, X, ExternalLink } from 'lucide-react';
 import { ScrollProgressBar } from "@/components/Effects";
+import SiteLogo from "@/components/SiteLogo";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -36,11 +36,7 @@ const Layout = ({ children }: LayoutProps) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
-              <img
-                src="/lovable-uploads/e702870f-381a-41f9-a7a3-652513be9f42.png"
-                alt="Formations Logo"
-                className="h-10 w-10 mr-3"
-              />
+              <SiteLogo height={40} className="mr-3" alt="Antony Addy" />
               <div className="flex flex-col">
                 <Link to="/" className="text-lg font-bold text-primary font-heading">
                   Antony Addy

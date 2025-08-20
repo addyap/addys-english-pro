@@ -171,8 +171,8 @@ const Home = () => {
 
         {/* Content */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 py-20">
-          <div className="text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white text-shadow-lg font-heading leading-tight mb-6">
+          <div className="text-center hero-title-wrap">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white text-shadow-lg font-heading leading-tight mb-6 hero-title">
               <TypingText texts={["Spécialiste en anglais professionnel – Formateur Professionnel d'Adultes depuis 2017"]} speed={60} pause={3000} className="text-white" />
             </h1>
             <p className="text-xl md:text-2xl mb-4 text-blue-100 font-body">
