@@ -1,10 +1,14 @@
 
 import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
 import SiteLogo from './SiteLogo';
 
-const Layout = () => {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+const Layout = ({ children }: LayoutProps) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const toggleMenu = () => {
@@ -88,7 +92,7 @@ const Layout = () => {
 
       {/* Main Content */}
       <main role="main">
-        <Outlet />
+        {children}
       </main>
 
       {/* Footer */}
