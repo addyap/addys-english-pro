@@ -29,17 +29,18 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {/* Header */}
       <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-14 items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2" aria-label="Retour à l'accueil">
             <span className="font-bold text-xl">Antony Addy</span>
           </Link>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex items-center space-x-6" role="navigation" aria-label="Navigation principale">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
-                className="text-sm font-medium transition-colors hover:text-primary"
+                className="text-sm font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                aria-current={location.pathname === item.href ? 'page' : undefined}
               >
                 {item.name}
               </Link>
@@ -48,10 +49,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           
           {/* Mobile menu button */}
           <button
-            className="md:hidden"
+            className="md:hidden p-2 rounded-md hover:bg-accent focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-expanded={isMenuOpen}
-            aria-label="Toggle navigation menu"
+            aria-label="Ouvrir le menu de navigation"
+            aria-controls="mobile-menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -59,13 +61,19 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden border-t bg-background">
+          <nav 
+            id="mobile-menu"
+            className="md:hidden border-t bg-background"
+            role="navigation" 
+            aria-label="Navigation mobile"
+          >
             <div className="container py-4 space-y-3">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  className="block text-sm font-medium transition-colors hover:text-primary"
+                  className="block text-sm font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1"
+                  aria-current={location.pathname === item.href ? 'page' : undefined}
                 >
                   {item.name}
                 </Link>
@@ -76,12 +84,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       </header>
 
       {/* Main Content */}
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="flex-1" role="main">
         {children}
       </main>
 
       {/* Footer */}
-      <footer className="border-t bg-muted/50">
+      <footer className="border-t bg-muted/50" role="contentinfo">
         <div className="container py-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
@@ -92,12 +100,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             </div>
             <div>
               <h3 className="font-semibold mb-4">Navigation</h3>
-              <nav className="space-y-2">
+              <nav className="space-y-2" role="navigation" aria-label="Navigation du pied de page">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
                     to={item.href}
-                    className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    className="block text-sm text-muted-foreground hover:text-foreground transition-colors focus:text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
                   >
                     {item.name}
                   </Link>
@@ -106,16 +114,16 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             </div>
             <div>
               <h3 className="font-semibold mb-4">Légal</h3>
-              <nav className="space-y-2">
+              <nav className="space-y-2" role="navigation" aria-label="Navigation légale">
                 <Link
                   to="/mentions-legales"
-                  className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="block text-sm text-muted-foreground hover:text-foreground transition-colors focus:text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
                 >
                   Mentions légales
                 </Link>
                 <Link
                   to="/politique-confidentialite"
-                  className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="block text-sm text-muted-foreground hover:text-foreground transition-colors focus:text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
                 >
                   Politique de confidentialité
                 </Link>

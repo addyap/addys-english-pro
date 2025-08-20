@@ -1,5 +1,22 @@
 
 User-agent: *
 Allow: /
-Disallow: /mentions-legales
-Sitemap: https://www.antonyaddy.com/sitemap.xml
+
+# Important pages
+Allow: /qui-je-suis
+Allow: /offres-de-formation
+Allow: /temoignages
+Allow: /contact
+Allow: /blog
+Allow: /anglaisadistance
+
+# Block admin/private areas if any exist
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*.json$
+
+# Sitemap location
+Sitemap: https://antonyaddy.com/sitemap.xml
+
+# Crawl delay (optional, be nice to servers)
+Crawl-delay: 1

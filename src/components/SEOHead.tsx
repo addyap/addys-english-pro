@@ -83,8 +83,8 @@ export default function SEOHead(props: SEOProps) {
     noIndex = false,
     noFollow = false,
     noindex = false, // legacy
-    enableOrgJsonLd = false,
-    enableWebSiteJsonLd = false,
+    enableOrgJsonLd = true, // Enable by default for better SEO
+    enableWebSiteJsonLd = true, // Enable by default for better SEO
     breadcrumbItems,
     article,
     keywords,
@@ -95,14 +95,17 @@ export default function SEOHead(props: SEOProps) {
 
   const computedTitle = composeTitle(title, siteName);
 
-  // Canonical URL (single source of truth) — FIX: no redeclarations
+  // Canonical URL (single source of truth) — FIX: use proper base URL
   let finalCanonicalUrl: string | undefined;
   if (canonicalUrl) {
     finalCanonicalUrl = buildCanonical(canonicalUrl);
   } else if (canonical) {
     finalCanonicalUrl = buildCanonical(canonical);
   } else if (canonicalPath) {
-    finalCanonicalUrl = buildCanonical(canonicalPath);
+    // Ensure canonical path starts with base domain
+    const baseUrl = "https://antonyaddy.com";
+    const cleanPath = canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`;
+    finalCanonicalUrl = buildCanonical(`${baseUrl}${cleanPath}`);
   }
 
   const robots = robotsDirectives({ noIndex: noIndex || noindex, noFollow });

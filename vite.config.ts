@@ -17,7 +17,12 @@ export default defineConfig(({ mode }) => ({
     react(),
     mode === 'development' &&
     componentTagger(),
-    ...(analyze ? [visualizer({ filename: "dist/stats.html", gzipSize: true, brotliSize: true })] : []),
+    ...(analyze ? [visualizer({ 
+      filename: "dist/stats.html", 
+      gzipSize: true, 
+      brotliSize: true,
+      template: "treemap" 
+    })] : []),
   ].filter(Boolean),
   resolve: {
     alias: {
@@ -25,6 +30,19 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    sourcemap: analyze, // for better reports
+    sourcemap: analyze, // Enable sourcemaps only when analyzing
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
+          ui: ['@radix-ui/react-select', '@radix-ui/react-dialog', '@radix-ui/react-toast'],
+        }
+      }
+    }
   },
+  // Optimize for production
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom']
+  }
 }));
