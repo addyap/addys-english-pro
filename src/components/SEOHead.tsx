@@ -103,7 +103,7 @@ export default function SEOHead(props: SEOProps) {
     finalCanonicalUrl = buildCanonical(canonical);
   } else if (canonicalPath) {
     // Ensure canonical path starts with base domain
-    const baseUrl = "https://antonyaddy.com";
+    const baseUrl = "https://www.antonyaddy.com";
     const cleanPath = canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`;
     finalCanonicalUrl = buildCanonical(`${baseUrl}${cleanPath}`);
   }
@@ -113,16 +113,16 @@ export default function SEOHead(props: SEOProps) {
   return (
     <>
       <Helmet>
-        {/* Title + basics */}
+        {/* Title + basics - NO stray variables */}
         <title>{computedTitle}</title>
         {metaBasics({ description })}
         {metaKeywords({ keywords })}
 
-        {/* Canonical + robots */}
+        {/* Canonical + robots - properly wrapped */}
         {finalCanonicalUrl && <link rel="canonical" href={finalCanonicalUrl} />}
         {robots && <meta name="robots" content={robots} />}
 
-        {/* Open Graph + Twitter */}
+        {/* Open Graph + Twitter - all properly wrapped */}
         {ogTags({
           title: computedTitle,
           description,
@@ -141,10 +141,10 @@ export default function SEOHead(props: SEOProps) {
           image,
         })}
 
-        {/* Hreflang */}
+        {/* Hreflang - properly wrapped */}
         {hreflangLinks(hreflangs)}
 
-        {/* Optional article dates (if you previously emitted them) */}
+        {/* Optional article dates - properly wrapped */}
         {articleDateMeta({ datePublished, dateModified })}
       </Helmet>
 

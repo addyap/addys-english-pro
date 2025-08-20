@@ -142,7 +142,7 @@ const Home = () => {
         Aller au contenu principal
       </a>
 
-      {/* Hero Section with Video Background */}
+      {/* Hero Section with Video Background - Fixed H1 wrapping */}
       <section className="relative text-white overflow-hidden min-h-screen flex items-center">
         {/* YouTube Video Background */}
         <div className="absolute inset-0 w-full h-full">
@@ -162,17 +162,17 @@ const Home = () => {
             loading="lazy"
           />
           
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+          {/* Dark overlay for text readability - lower z-index */}
+          <div className="absolute inset-0 bg-black bg-opacity-40 z-0"></div>
         </div>
 
         {/* Fallback background for when video fails to load */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary -z-10"></div>
 
-        {/* Content */}
+        {/* Content with higher z-index and no clipping */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 py-20">
           <div className="text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white text-shadow-lg font-heading leading-tight mb-6">
+            <h1 className="leading-tight [overflow-wrap:anywhere] hyphens-auto whitespace-normal [contain:layout_paint] text-[clamp(2rem,5vw,4rem)] font-bold text-white text-shadow-lg font-heading mb-6">
               <TypingText texts={["Spécialiste en anglais professionnel – Formateur Professionnel d'Adultes depuis 2017"]} speed={60} pause={3000} className="text-white" />
             </h1>
             <p className="text-xl md:text-2xl mb-4 text-blue-100 font-body">
