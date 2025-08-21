@@ -1,9 +1,9 @@
-
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { TypingText } from "./TypingText";
 import { afterFirstInteraction, onIdle } from "../lib/loaders/deferScript";
 
+// LCP poster image (guarantees hero paint)
 const POSTER = "/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png";
 const POSTER_WIDTH = 1600;
 const POSTER_HEIGHT = 900;
@@ -15,8 +15,9 @@ export default function OptimizedHero() {
   const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
-    const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-    if (prefersReduced) return; // keep poster only if reduced motion
+    const prefersReduced =
+      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    if (prefersReduced) return; // poster only for reduced motion
 
     const initVideo = () => setShowVideo(true);
     afterFirstInteraction(initVideo);
@@ -38,11 +39,19 @@ export default function OptimizedHero() {
         fetchPriority="high"
       />
 
+      {/* <noscript> fallback */}
       <noscript>
         <img
           src={POSTER}
           alt="Hero background"
-          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-20"
+          style={{
+            position: "absolute",
+            inset: "0",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            zIndex: -20,
+          }}
         />
       </noscript>
 
@@ -59,8 +68,10 @@ export default function OptimizedHero() {
         />
       )}
 
+      {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-40 -z-10" />
 
+      {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 text-center hero-title-wrap">
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white text-shadow-lg font-heading leading-tight mb-6 hero-title">
           <TypingText
@@ -77,8 +88,8 @@ export default function OptimizedHero() {
           professionnels et centres de formation.
         </p>
         <p className="text-lg mb-8 text-blue-200 italic font-body">
-          Formateur britannique – Présentiel dans les Alpes-Maritimes, à distance
-          partout en France
+          Formateur britannique – Présentiel dans les Alpes-Maritimes, à
+          distance partout en France
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
