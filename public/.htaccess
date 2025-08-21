@@ -1,13 +1,30 @@
 
+
 # Security Headers
 <IfModule mod_headers.c>
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
   Header always set X-Content-Type-Options "nosniff"
-  Header always set Referrer-Policy "no-referrer-when-downgrade"
-  Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data: https:; font-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; connect-src 'self' https:;"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+  # Compatibility CSP (safe defaults, allows inline for stability)
+  Header always set Content-Security-Policy "\
+    default-src 'self'; \
+    base-uri 'self'; \
+    img-src 'self' data: https:; \
+    font-src 'self' https://fonts.gstatic.com data:; \
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; \
+    script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; \
+    connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; \
+    frame-src https://www.youtube.com https://www.youtube-nocookie.com; \
+    media-src 'self' https:; \
+    object-src 'none'; \
+    frame-ancestors 'self'; \
+    upgrade-insecure-requests; \
+    block-all-mixed-content"
 </IfModule>
 
-# Static assets: 30 days + immutable
+# Caching (keep)
 <IfModule mod_headers.c>
   <FilesMatch "\.(js|css|woff2?|png|jpe?g|gif|svg|webp|avif)$">
     Header set Cache-Control "public, max-age=2592000, immutable"
