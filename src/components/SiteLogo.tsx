@@ -28,9 +28,11 @@ export default function SiteLogo({
       src={src}
       alt={alt}
       height={height}
-      style={{ height, width: "auto", display: "block" }}
+      width={height} // Add width to prevent CLS
+      style={{ height, width: height, display: "block" }}
       loading="eager"
       decoding="async"
+      fetchPriority="high"
       onError={handleError}
       className={className}
     />
