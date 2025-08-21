@@ -14,6 +14,9 @@
     <!-- Hero poster preload for faster LCP -->
     <link rel="preload" as="image" href="/assets/hero-poster.jpg" imagesizes="100vw">
     
+    <!-- Google Fonts with display=swap -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <!-- HEAD placeholder -->
     <title>Formateur d'anglais pour adultes – Antony Addy</title>
     <meta name="description" content="Formations d'anglais en ligne ou en présentiel dans le Var. CPF via centres certifiés Qualiopi." />
@@ -52,31 +55,6 @@
   <body>
     <!-- BODY placeholder -->
     <div id="root"></div>
-    
-    <!-- Load non-critical CSS asynchronously -->
-    <script>
-      // Async CSS loading
-      const loadCSS = (href) => {
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = href;
-        link.media = 'print';
-        link.onload = () => { link.media = 'all'; };
-        document.head.appendChild(link);
-      };
-      
-      // Load Google Fonts with display=swap
-      loadCSS('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
-      
-      // Route prefetching for better navigation
-      const prefetchRoutes = ['/qui-je-suis', '/offres-de-formation', '/contact', '/blog'];
-      prefetchRoutes.forEach(route => {
-        const link = document.createElement('link');
-        link.rel = 'prefetch';
-        link.href = route;
-        document.head.appendChild(link);
-      });
-    </script>
     
     <script type="module" src="/src/main.tsx"></script>
   </body>
