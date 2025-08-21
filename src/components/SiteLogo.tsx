@@ -21,15 +21,16 @@ export default function SiteLogo({
   const [idx, setIdx] = useState(0);
   const src = LOGO_CANDIDATES[idx];
 
+  const w = width ?? Math.round(height * 1.0);
+
   return (
     <img
       src={src}
-      alt={alt}
+      width={w}
       height={height}
-      width={width}
-      style={{ height, width: width ? `${width}px` : "auto", display: "block" }}
-      loading="eager"
+      alt={alt}
       decoding="async"
+      fetchPriority="low"
       onError={() => {
         if (idx < LOGO_CANDIDATES.length - 1) setIdx(idx + 1);
       }}

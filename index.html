@@ -5,24 +5,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Performance Optimization: Preconnect and DNS Prefetch -->
+    <!-- Preconnects -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
+    <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
     <link rel="dns-prefetch" href="https://www.google-analytics.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     
-    <!-- Hero poster preload for faster LCP -->
-    <link rel="preload" as="image" href="/assets/hero-poster.jpg" imagesizes="100vw">
+    <!-- Preload actual poster -->
+    <link
+      rel="preload"
+      as="image"
+      href="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
+      imagesrcset="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png 1600w"
+      imagesizes="100vw"
+    >
     
-    <!-- Google Fonts with display=swap -->
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- HEAD placeholder -->
     <title>Formateur d'anglais pour adultes – Antony Addy</title>
     <meta name="description" content="Formations d'anglais en ligne ou en présentiel dans le Var. CPF via centres certifiés Qualiopi." />
     <meta name="author" content="Antony Addy" />
     
-    <!-- International SEO -->
+    <!-- SEO -->
     <link rel="alternate" hreflang="fr" href="https://www.antonyaddy.com/" />
     <link rel="alternate" hreflang="en" href="https://www.antonyaddy.com/en/" />
     <link rel="alternate" hreflang="x-default" href="https://www.antonyaddy.com/" />
@@ -31,13 +38,16 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.json">
 
-    <!-- Critical CSS Inline -->
+    <!-- Critical CSS -->
     <style>
-      /* Critical above-the-fold styles */
       body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; }
-      .hero-section { min-height: 50vh; }
-      h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+      .hero-section { min-height: 60vh; }
+      .header { min-height: 64px; }
+      h1,h2,h3,h4,h5,h6 { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
     </style>
+
+    <meta name="theme-color" content="#0F172A">
+    <meta name="color-scheme" content="light dark">
 
     <meta property="og:title" content="Formateur d'anglais pour adultes – Antony Addy" />
     <meta property="og:description" content="Formations d'anglais en ligne ou en présentiel dans le Var. CPF via centres certifiés Qualiopi." />
@@ -53,9 +63,7 @@
   </head>
 
   <body>
-    <!-- BODY placeholder -->
     <div id="root"></div>
-    
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
