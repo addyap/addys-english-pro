@@ -1,10 +1,38 @@
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { TypingText } from "./TypingText";
 import BackgroundVideo from "./BackgroundVideo";
 
 export default function OptimizedHero() {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [videoReady, setVideoReady] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          video.play().catch(() => {
+            const resume = () => { 
+              video.play().catch(() => {}); 
+              window.removeEventListener("pointerdown", resume); 
+            };
+            window.addEventListener("pointerdown", resume, { once: true });
+          });
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="relative hero-section hero-root overflow-hidden bg-black text-white min-h-[80vh]">
       <BackgroundVideo youtubeUrl="https://youtu.be/WRe3F6Ejb6E" poster="/assets/hero-poster.jpg" />
