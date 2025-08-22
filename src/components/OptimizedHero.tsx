@@ -6,7 +6,7 @@ import BackgroundVideo from "./BackgroundVideo";
 
 export default function OptimizedHero() {
   return (
-    <section className="relative hero-section overflow-hidden bg-black text-white hero-root">
+    <section className="relative hero-section hero-root overflow-hidden bg-black text-white min-h-[80vh]">
       <BackgroundVideo youtubeUrl="https://youtu.be/WRe3F6Ejb6E" poster="/assets/hero-poster.jpg" />
 
       {/* Content */}

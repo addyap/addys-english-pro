@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
+// Convert YouTube/short links to privacy-friendly embed
 function toEmbed(url: string) {
   try {
     const u = new URL(url);
@@ -21,6 +22,7 @@ export default function BackgroundVideo({
   const [ready, setReady] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
+  // Kick playback after first interaction (mobile autoplay quirks)
   useEffect(() => {
     const kick = () => {
       iframeRef.current?.contentWindow?.postMessage(
@@ -36,8 +38,9 @@ export default function BackgroundVideo({
     };
   }, []);
 
+  // Let the poster paint first (better LCP)
   useEffect(() => {
-    const t = setTimeout(() => setReady(true), 250);
+    const t = setTimeout(() => setReady(true), 200);
     return () => clearTimeout(t);
   }, []);
 
@@ -45,11 +48,12 @@ export default function BackgroundVideo({
 
   return (
     <div className="bgvideo-root" aria-hidden="true">
-      <img className="bgvideo-poster" src={poster} alt="" />
+      {/* Poster uses same cover math so no flashes/bars */}
+      <img className="bgvideo-cover bgvideo-poster" src={poster} alt="" />
       {ready && (
         <iframe
           ref={iframeRef}
-          className="bgvideo-iframe"
+          className="bgvideo-cover bgvideo-iframe"
           src={src}
           title="Background video"
           allow="autoplay; encrypted-media; picture-in-picture"
