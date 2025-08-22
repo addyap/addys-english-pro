@@ -1,13 +1,10 @@
+
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
-import { initHashScroll } from './hashScroll';
 
 // Initialize Core Web Vitals monitoring
 import './monitor/vitals.ts'
-
-// Initialize hash scroll handling
-initHashScroll(88);
 
 const rootElement = document.getElementById("root")!;
 
