@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
@@ -148,3 +147,33 @@ All colors MUST be HSL.
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
+/* Background Video Styles */
+.bgvideo-root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+.bgvideo-poster,
+.bgvideo-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.bgvideo-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+}
+.hero-root, .hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Smooth scroll + header offset */
+html { scroll-behavior: smooth; }
+:root { --header-offset: 88px; }
+[id] { scroll-margin-top: var(--header-offset); }

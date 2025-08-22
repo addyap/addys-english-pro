@@ -1,78 +1,16 @@
-import React, { useEffect, useState } from "react";
+
+import React from "react";
 import { Link } from "react-router-dom";
 import { TypingText } from "./TypingText";
-import { afterFirstInteraction, onIdle } from "../lib/loaders/deferScript";
-
-// LCP poster image (guarantees hero paint)
-const POSTER = "/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png";
-const POSTER_WIDTH = 1600;
-const POSTER_HEIGHT = 900;
-
-// YouTube hero background
-const VIDEO_ID = "p5UG08OsMGw";
+import BackgroundVideo from "./BackgroundVideo";
 
 export default function OptimizedHero() {
-  const [showVideo, setShowVideo] = useState(false);
-
-  useEffect(() => {
-    const prefersReduced =
-      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-    if (prefersReduced) return; // poster only for reduced motion
-
-    const initVideo = () => setShowVideo(true);
-    afterFirstInteraction(initVideo);
-    onIdle(() => {
-      if (!showVideo) initVideo();
-    });
-  }, [showVideo]);
-
   return (
-    <section className="relative hero-section overflow-hidden bg-black text-white">
-      {/* Poster for immediate LCP */}
-      <img
-        src={POSTER}
-        width={POSTER_WIDTH}
-        height={POSTER_HEIGHT}
-        alt="Hero background"
-        className="absolute inset-0 w-full h-full object-cover -z-20"
-        loading="eager"
-        fetchPriority="high"
-      />
-
-      {/* <noscript> fallback */}
-      <noscript>
-        <img
-          src={POSTER}
-          alt="Hero background"
-          style={{
-            position: "absolute",
-            inset: "0",
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            zIndex: -20,
-          }}
-        />
-      </noscript>
-
-      {/* YouTube background */}
-      {showVideo && VIDEO_ID && (
-        <iframe
-          className="absolute inset-0 w-full h-full object-cover -z-20"
-          src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&playsinline=1&loop=1&controls=0&playlist=${VIDEO_ID}&modestbranding=1&rel=0&showinfo=0`}
-          title="Hero video background (muted loop)"
-          tabIndex={-1}
-          aria-hidden="true"
-          allow="autoplay; fullscreen"
-          loading="lazy"
-        />
-      )}
-
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-40 -z-10" />
+    <section className="relative hero-section overflow-hidden bg-black text-white hero-root">
+      <BackgroundVideo youtubeUrl="https://youtu.be/WRe3F6Ejb6E" poster="/assets/hero-poster.jpg" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 text-center hero-title-wrap">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 text-center hero-title-wrap hero-content">
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white text-shadow-lg font-heading leading-tight mb-6 hero-title">
           <TypingText
             texts={[
