@@ -25,9 +25,11 @@ export default function SiteLogo({
   const w = width ?? Math.round(height * 1.0);
 
   const handleError = () => {
+    console.log(`Logo failed to load: ${src}, trying next...`);
     if (idx < LOGO_CANDIDATES.length - 1) {
       setIdx(idx + 1);
     } else {
+      console.log("All logo candidates failed, showing text fallback");
       setAllFailed(true);
     }
   };
@@ -51,7 +53,6 @@ export default function SiteLogo({
       height={height}
       alt={alt}
       decoding="async"
-      fetchPriority="high"
       onError={handleError}
       className={className}
     />

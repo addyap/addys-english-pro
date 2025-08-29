@@ -15,14 +15,19 @@ export default function OptimizedHero() {
   const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
+    console.log("OptimizedHero: Setting up video loading...");
     const prefersReduced =
       window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-    if (prefersReduced) return;
+    if (prefersReduced) {
+      console.log("OptimizedHero: Reduced motion preferred, skipping video");
+      return;
+    }
 
-    // Show video immediately, no need to wait for interaction
+    // Show video after a short delay
     const timer = setTimeout(() => {
+      console.log("OptimizedHero: Loading YouTube video");
       setShowVideo(true);
-    }, 1000); // Small delay to let poster load first
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -37,21 +42,24 @@ export default function OptimizedHero() {
         alt="Hero background"
         className="absolute inset-0 w-full h-full object-cover -z-20"
         loading="eager"
-        fetchPriority="high"
       />
 
       {/* YouTube background video */}
       {showVideo && VIDEO_ID && (
-        <iframe
-          className="absolute inset-0 w-full h-full object-cover -z-20"
-          src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&playsinline=1&loop=1&controls=0&playlist=${VIDEO_ID}&modestbranding=1&rel=0&showinfo=0&start=0`}
-          title="Hero video background (muted loop)"
-          tabIndex={-1}
-          aria-hidden="true"
-          allow="autoplay; fullscreen"
-          loading="lazy"
-          style={{ border: 'none' }}
-        />
+        <div className="absolute inset-0 w-full h-full -z-10">
+          <iframe
+            className="w-full h-full"
+            src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=1&origin=${window.location.origin}`}
+            title="Hero video background"
+            allow="autoplay; encrypted-media"
+            style={{ 
+              border: 'none',
+              pointerEvents: 'none'
+            }}
+            onLoad={() => console.log("YouTube iframe loaded successfully")}
+            onError={() => console.error("YouTube iframe failed to load")}
+          />
+        </div>
       )}
 
       {/* Overlay */}
