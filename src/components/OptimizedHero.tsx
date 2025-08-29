@@ -1,40 +1,16 @@
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { TypingText } from "./TypingText";
 
-// LCP poster image (guarantees hero paint)
+// Just keep the poster image for background
 const POSTER = "/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png";
 const POSTER_WIDTH = 1600;
 const POSTER_HEIGHT = 900;
 
-// Updated YouTube video ID from the provided URL
-const VIDEO_ID = "02-JnWFj2Fs";
-
 export default function OptimizedHero() {
-  const [showVideo, setShowVideo] = useState(false);
-
-  useEffect(() => {
-    console.log("OptimizedHero: Setting up video loading...");
-    const prefersReduced =
-      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-    if (prefersReduced) {
-      console.log("OptimizedHero: Reduced motion preferred, skipping video");
-      return;
-    }
-
-    // Show video after a short delay
-    const timer = setTimeout(() => {
-      console.log("OptimizedHero: Loading YouTube video");
-      setShowVideo(true);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <section className="relative hero-section overflow-hidden bg-black text-white min-h-screen">
-      {/* Poster for immediate LCP */}
+      {/* Static poster image only */}
       <img
         src={POSTER}
         width={POSTER_WIDTH}
@@ -43,24 +19,6 @@ export default function OptimizedHero() {
         className="absolute inset-0 w-full h-full object-cover -z-20"
         loading="eager"
       />
-
-      {/* YouTube background video */}
-      {showVideo && VIDEO_ID && (
-        <div className="absolute inset-0 w-full h-full -z-10">
-          <iframe
-            className="w-full h-full"
-            src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=1&origin=${window.location.origin}`}
-            title="Hero video background"
-            allow="autoplay; encrypted-media"
-            style={{ 
-              border: 'none',
-              pointerEvents: 'none'
-            }}
-            onLoad={() => console.log("YouTube iframe loaded successfully")}
-            onError={() => console.error("YouTube iframe failed to load")}
-          />
-        </div>
-      )}
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-40 -z-10" />
