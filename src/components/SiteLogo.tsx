@@ -10,7 +10,7 @@ const LOGO_CANDIDATES = [
 export default function SiteLogo({
   height = 40,
   width,
-  className,
+  className = "",
   alt = "Antony Addy — Formateur d'anglais professionnel",
 }: {
   height?: number;
@@ -19,9 +19,30 @@ export default function SiteLogo({
   alt?: string;
 }) {
   const [idx, setIdx] = useState(0);
+  const [allFailed, setAllFailed] = useState(false);
   const src = LOGO_CANDIDATES[idx];
 
   const w = width ?? Math.round(height * 1.0);
+
+  const handleError = () => {
+    if (idx < LOGO_CANDIDATES.length - 1) {
+      setIdx(idx + 1);
+    } else {
+      setAllFailed(true);
+    }
+  };
+
+  // If all images fail, show text fallback
+  if (allFailed || !src) {
+    return (
+      <div 
+        className={`font-heading font-bold text-primary ${className}`}
+        style={{ height }}
+      >
+        Antony Addy
+      </div>
+    );
+  }
 
   return (
     <img
@@ -30,10 +51,8 @@ export default function SiteLogo({
       height={height}
       alt={alt}
       decoding="async"
-      fetchPriority="low"
-      onError={() => {
-        if (idx < LOGO_CANDIDATES.length - 1) setIdx(idx + 1);
-      }}
+      fetchPriority="high"
+      onError={handleError}
       className={className}
     />
   );
