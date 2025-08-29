@@ -1,16 +1,26 @@
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { TypingText } from "./TypingText";
 
-// Just keep the poster image for background
 const POSTER = "/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png";
 const POSTER_WIDTH = 1600;
 const POSTER_HEIGHT = 900;
+const VIDEO_ID = "02-JnWFj2Fs";
 
 export default function OptimizedHero() {
+  const [showVideo, setShowVideo] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowVideo(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <section className="relative hero-section overflow-hidden bg-black text-white min-h-screen">
-      {/* Static poster image only */}
+    <section className="relative hero-section overflow-hidden text-white min-h-screen">
+      {/* Poster image */}
       <img
         src={POSTER}
         width={POSTER_WIDTH}
@@ -20,8 +30,21 @@ export default function OptimizedHero() {
         loading="eager"
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-40 -z-10" />
+      {/* YouTube background video */}
+      {showVideo && (
+        <div className="absolute inset-0 w-full h-full -z-10">
+          <iframe
+            className="w-full h-full"
+            src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1`}
+            title="Hero video background"
+            allow="autoplay; encrypted-media"
+            style={{ border: 'none', pointerEvents: 'none' }}
+          />
+        </div>
+      )}
+
+      {/* Overlay for text readability */}
+      <div className="absolute inset-0 bg-black bg-opacity-40 -z-5" />
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 text-center hero-title-wrap">

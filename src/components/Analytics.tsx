@@ -10,30 +10,49 @@ declare global {
 
 export default function Analytics() {
   useEffect(() => {
-    const isDev =
-      (typeof import.meta !== "undefined" && (import.meta as any).env && (import.meta as any).env.DEV) ||
-      process.env.NODE_ENV === "development";
-
-    const id = "G-DNSN8DZZTV"; // GA4 Measurement ID
-
+    const id = "G-DNSN8DZZTV";
+    
+    // Initialize dataLayer
     window.dataLayer = window.dataLayer || [];
-    function gtag(command: string, ...args: any[]) {
-      window.dataLayer!.push([command, ...args]);
+    
+    // Define gtag function
+    function gtag(...args: any[]) {
+      window.dataLayer!.push(arguments);
     }
+    
+    // Make gtag globally available
     window.gtag = gtag;
-    gtag("js", new Date());
-    gtag("config", id, { anonymize_ip: true });
+    
+    // Configure gtag
+    gtag('js', new Date());
+    gtag('config', id, {
+      anonymize_ip: true,
+      send_page_view: true
+    });
 
-    // Debug/console only in development
-    if (isDev) {
-      console.log("[GA4] gtag loaded with Measurement ID:", id);
-      gtag("event", "debug_event", { debug: true });
-    }
+    // Load the GA script
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+    
+    script.onload = () => {
+      console.log('[GA4] Script loaded successfully');
+      gtag('event', 'page_view', {
+        page_title: document.title,
+        page_location: window.location.href
+      });
+    };
+    
+    document.head.appendChild(script);
 
-    const s = document.createElement("script");
-    s.async = true;
-    s.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
-    document.head.appendChild(s);
+    return () => {
+      // Cleanup if needed
+      const existingScript = document.querySelector(`script[src*="${id}"]`);
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
   }, []);
+
   return null;
 }

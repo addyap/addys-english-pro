@@ -12,12 +12,5 @@ export default function SiteLogo({
   className?: string;
   alt?: string;
 }) {
-  return (
-    <div 
-      className={`font-heading font-bold text-primary ${className}`}
-      style={{ height }}
-    >
-      Antony Addy
-    </div>
-  );
+  return null; // Remove the logo placeholder completely
 }
