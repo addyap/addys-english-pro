@@ -8,7 +8,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { AppErrorBoundary } from "./components/AppErrorBoundary";
 import DiagnosticsPanel from "./components/DiagnosticsPanel";
 import Analytics from "./components/Analytics";
-import GAStatusBanner from "./components/GAStatusBanner";
+
 import Layout from "./components/Layout";
 import PrefetchRoutes from "./components/PrefetchRoutes";
 import Home from "./pages/Home";
@@ -53,7 +53,7 @@ const App = () => (
             </Layout>
           </BrowserRouter>
           <DiagnosticsPanel />
-          <GAStatusBanner />
+          
         </TooltipProvider>
       </QueryClientProvider>
     </HelmetProvider>
