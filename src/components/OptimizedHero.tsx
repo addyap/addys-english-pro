@@ -34,12 +34,12 @@ export default function OptimizedHero() {
             className="w-full h-full object-cover"
             src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&rel=0&modestbranding=1&playsinline=1`}
             title="Hero video background"
-            allow="autoplay; fullscreen; encrypted-media; gyroscope; picture-in-picture"
+            allow="autoplay; encrypted-media"
             allowFullScreen={false}
             style={{ 
               border: 'none', 
               pointerEvents: 'none',
-              transform: 'scale(1.1)', // Slight zoom to hide black bars
+              transform: 'scale(1.1)',
               transformOrigin: 'center center'
             }}
             onLoad={() => console.log('YouTube iframe loaded')}
