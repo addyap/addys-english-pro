@@ -32,10 +32,10 @@ export default function OptimizedHero() {
 
       {/* YouTube background video */}
       {showVideo && (
-        <div className="absolute inset-0 w-full h-full -z-10 opacity-50">
+        <div className="absolute inset-0 w-full h-full -z-10">
           <iframe
             className="w-full h-full object-cover"
-            src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
+            src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&origin=${window.location.origin}`}
             title="Hero video background"
             allow="autoplay; fullscreen; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen={false}
@@ -51,8 +51,6 @@ export default function OptimizedHero() {
         </div>
       )}
 
-      {/* Overlay for text readability */}
-      <div className="absolute inset-0 bg-black bg-opacity-40 -z-5" />
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 text-center hero-title-wrap">
