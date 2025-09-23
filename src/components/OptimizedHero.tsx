@@ -32,13 +32,21 @@ export default function OptimizedHero() {
 
       {/* YouTube background video */}
       {showVideo && (
-        <div className="absolute inset-0 w-full h-full -z-10">
+        <div className="absolute inset-0 w-full h-full -z-10 opacity-50">
           <iframe
-            className="w-full h-full"
-            src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1`}
+            className="w-full h-full object-cover"
+            src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&origin=${window.location.origin}`}
             title="Hero video background"
-            allow="autoplay; encrypted-media"
-            style={{ border: 'none', pointerEvents: 'none' }}
+            allow="autoplay; fullscreen; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen={false}
+            style={{ 
+              border: 'none', 
+              pointerEvents: 'none',
+              transform: 'scale(1.1)', // Slight zoom to hide black bars
+              transformOrigin: 'center center'
+            }}
+            onLoad={() => console.log('YouTube iframe loaded')}
+            onError={() => console.log('YouTube iframe error')}
           />
         </div>
       )}
