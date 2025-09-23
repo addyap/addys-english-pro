@@ -32,9 +32,9 @@ export default function OptimizedHero() {
         <div className="absolute inset-0 w-full h-full z-0 opacity-60">
           <iframe
             className="w-full h-full object-cover"
-            src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&rel=0&modestbranding=1&playsinline=1`}
+            src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0`}
             title="Hero video background"
-            allow="autoplay; encrypted-media"
+            allow="autoplay"
             allowFullScreen={false}
             style={{ 
               border: 'none', 
@@ -42,8 +42,6 @@ export default function OptimizedHero() {
               transform: 'scale(1.1)',
               transformOrigin: 'center center'
             }}
-            onLoad={() => console.log('YouTube iframe loaded')}
-            onError={() => console.log('YouTube iframe error')}
           />
         </div>
       )}
