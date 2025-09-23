@@ -6,7 +6,7 @@ import { TypingText } from "./TypingText";
 const POSTER = "/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png";
 const POSTER_WIDTH = 1600;
 const POSTER_HEIGHT = 900;
-const VIDEO_ID = "02-JnWFj2Fs";
+const VIDEO_ID = "p5UG08OsMGw";
 
 export default function OptimizedHero() {
   const [showVideo, setShowVideo] = useState(false);
@@ -35,7 +35,7 @@ export default function OptimizedHero() {
         <div className="absolute inset-0 w-full h-full -z-10 opacity-50">
           <iframe
             className="w-full h-full object-cover"
-            src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&origin=${window.location.origin}`}
+            src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
             title="Hero video background"
             allow="autoplay; fullscreen; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen={false}
