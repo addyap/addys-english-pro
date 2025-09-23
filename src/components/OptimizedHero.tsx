@@ -12,10 +12,7 @@ export default function OptimizedHero() {
   const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowVideo(true);
-    }, 1000);
-    return () => clearTimeout(timer);
+    setShowVideo(true);
   }, []);
 
   return (
@@ -26,16 +23,16 @@ export default function OptimizedHero() {
         width={POSTER_WIDTH}
         height={POSTER_HEIGHT}
         alt="Hero background"
-        className="absolute inset-0 w-full h-full object-cover -z-20"
+        className="absolute inset-0 w-full h-full object-cover z-0"
         loading="eager"
       />
 
       {/* YouTube background video */}
       {showVideo && (
-        <div className="absolute inset-0 w-full h-full -z-10">
+        <div className="absolute inset-0 w-full h-full z-0">
           <iframe
             className="w-full h-full object-cover"
-            src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&origin=${window.location.origin}`}
+            src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&rel=0&modestbranding=1&playsinline=1`}
             title="Hero video background"
             allow="autoplay; fullscreen; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen={false}
