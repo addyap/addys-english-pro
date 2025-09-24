@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { TypingText } from "./TypingText";
 
@@ -7,23 +7,48 @@ const VIDEO_ID = "WRe3F6Ejb6E";
 
 export default function OptimizedHero() {
   const [showVideo, setShowVideo] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+  // Optimized video URL with better performance parameters
+  const videoUrl = useMemo(() => 
+    `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0&start=0&end=0&origin=${window.location.origin}&enablejsapi=0`
+  , []);
+
+  const handleVideoLoad = useCallback(() => {
+    setIsVideoLoaded(true);
+  }, []);
 
   useEffect(() => {
-    setShowVideo(true);
+    // Delay video loading for better initial page performance
+    const timer = setTimeout(() => {
+      setShowVideo(true);
+    }, 500);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <section className="relative hero-section overflow-hidden text-white min-h-screen">
+    <section 
+      className="relative hero-section overflow-hidden text-white min-h-screen"
+      role="banner"
+      aria-label="Section principale de présentation"
+    >
+      {/* Loading state for video */}
+      {showVideo && !isVideoLoaded && (
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/40 z-0 animate-pulse" />
+      )}
 
       {/* YouTube background video */}
       {showVideo && (
         <div className="absolute inset-0 w-full h-full z-0">
           <iframe
             className="w-full h-full object-cover"
-            src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&hd=1&vq=hd1080`}
-            title="Hero video background"
-            allow="autoplay"
+            src={videoUrl}
+            title="Vidéo de présentation des formations en anglais professionnel"
+            allow="autoplay; encrypted-media"
             allowFullScreen={false}
+            loading="lazy"
+            onLoad={handleVideoLoad}
             style={{ 
               border: 'none', 
               pointerEvents: 'none'
@@ -32,45 +57,87 @@ export default function OptimizedHero() {
         </div>
       )}
 
+      {/* Enhanced overlay with gradient for better readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/50 z-5" />
 
-      {/* Subtle overlay for text readability */}
-      <div className="absolute inset-0 bg-black/40 z-5" />
+      {/* Skip to content link for accessibility */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:text-primary focus:px-4 focus:py-2 focus:rounded-lg focus:font-semibold"
+      >
+        Aller au contenu principal
+      </a>
 
-      {/* Content */}
+      {/* Optimized content with better semantic structure */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 text-center hero-title-wrap">
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white font-heading leading-tight mb-6 hero-title drop-shadow-2xl">
-          <TypingText
-            texts={[
-              "Spécialiste en anglais professionnel – Formateur Professionnel d'Adultes depuis 2017",
-            ]}
-            speed={60}
-            pause={3000}
-            className="text-white drop-shadow-2xl"
-          />
-        </h1>
-        <p className="text-xl md:text-2xl mb-4 text-white font-body drop-shadow-xl">
-          Des formations claires, flexibles et efficaces — pour particuliers,
-          professionnels et centres de formation.
-        </p>
-        <p className="text-lg mb-8 text-white/90 italic font-body drop-shadow-lg">
-          Formateur britannique – Présentiel dans les Alpes-Maritimes, à
-          distance partout en France
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <header className="mb-8">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white font-heading leading-tight mb-6 hero-title drop-shadow-2xl">
+            <TypingText
+              texts={[
+                "Spécialiste en anglais professionnel – Formateur Professionnel d'Adultes depuis 2017",
+              ]}
+              speed={50}
+              pause={3000}
+              className="text-white drop-shadow-2xl"
+            />
+          </h1>
+          
+          <p className="text-xl md:text-2xl mb-4 text-white font-body drop-shadow-xl max-w-4xl mx-auto">
+            Des formations claires, flexibles et efficaces — pour particuliers,
+            professionnels et centres de formation.
+          </p>
+          
+          <p className="text-lg mb-8 text-white/90 italic font-body drop-shadow-lg max-w-3xl mx-auto">
+            Formateur britannique – Présentiel dans les Alpes-Maritimes, à
+            distance partout en France
+          </p>
+        </header>
+
+        <nav className="flex flex-col sm:flex-row gap-4 justify-center" aria-label="Actions principales">
           <Link
             to="/offres-de-formation"
-            className="bg-white/95 text-primary px-8 py-3 rounded-lg font-semibold hover:bg-white hover:shadow-2xl transition-all shadow-xl font-body backdrop-blur-sm"
+            className="group bg-white/95 text-primary px-8 py-3 rounded-lg font-semibold hover:bg-white hover:shadow-2xl transition-all duration-300 shadow-xl font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/50"
+            aria-label="Découvrir les offres de formation en anglais professionnel"
           >
-            Découvrir mes offres
+            <span className="relative">
+              Découvrir mes offres
+              <span className="absolute inset-0 rounded-lg bg-primary/10 scale-0 group-hover:scale-100 transition-transform duration-300" />
+            </span>
           </Link>
+          
           <Link
             to="/contact"
-            className="border-2 border-white/90 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 hover:border-white transition-all font-body backdrop-blur-sm"
+            className="group border-2 border-white/90 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 hover:border-white transition-all duration-300 font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/50"
+            aria-label="Contacter Antony Addy pour une formation personnalisée"
           >
-            Me contacter
+            <span className="relative">
+              Me contacter
+              <span className="absolute inset-0 rounded-lg bg-white/5 scale-0 group-hover:scale-100 transition-transform duration-300" />
+            </span>
           </Link>
-        </div>
+        </nav>
       </div>
+
+      {/* JSON-LD structured data for SEO */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Antony Addy",
+          "jobTitle": "Formateur Professionnel d'Adultes en Anglais",
+          "description": "Spécialiste en anglais professionnel depuis 2017, formations pour particuliers, professionnels et centres de formation",
+          "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "Alpes-Maritimes",
+            "addressCountry": "FR"
+          },
+          "offers": {
+            "@type": "Service",
+            "name": "Formation en anglais professionnel",
+            "description": "Formations claires, flexibles et efficaces en anglais professionnel"
+          }
+        })}
+      </script>
     </section>
   );
 }
