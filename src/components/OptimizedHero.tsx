@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { TypingText } from "./TypingText";
 
-const VIDEO_ID = "p5UG08OsMGw";
+const VIDEO_ID = "WRe3F6Ejb6E";
 
 export default function OptimizedHero() {
   const [showVideo, setShowVideo] = useState(false);
@@ -35,6 +35,8 @@ export default function OptimizedHero() {
       )}
 
 
+      {/* Subtle overlay for text readability */}
+      <div className="absolute inset-0 bg-black/40 z-5" />
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 text-center hero-title-wrap">
