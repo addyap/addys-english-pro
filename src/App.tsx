@@ -11,6 +11,7 @@ import Analytics from "./components/Analytics";
 
 import Layout from "./components/Layout";
 import PrefetchRoutes from "./components/PrefetchRoutes";
+import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Training from "./pages/Training";
@@ -34,6 +35,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <ScrollToTop />
             <PrefetchRoutes />
             <Layout>
               <Routes>
