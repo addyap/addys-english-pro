@@ -1,5 +1,6 @@
 
 import React from "react";
+import logoImage from "@/assets/antony-addy-logo.png";
 
 export default function SiteLogo({
   height = 40,
@@ -12,5 +13,14 @@ export default function SiteLogo({
   className?: string;
   alt?: string;
 }) {
-  return null; // Remove the logo placeholder completely
+  const calculatedWidth = width || Math.round(height * 1.2); // Maintain aspect ratio
+
+  return (
+    <img
+      src={logoImage}
+      alt={alt}
+      className={`object-contain ${className}`}
+      style={{ height: `${height}px`, width: `${calculatedWidth}px` }}
+    />
+  );
 }
