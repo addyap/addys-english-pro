@@ -224,8 +224,9 @@ const Home = () => {
             1280: {
               slidesPerView: 4
             }
-          }} loop={true} autoplay={{
-            delay: 3000
+          }} loop={false} autoplay={{
+            delay: 3000,
+            disableOnInteraction: false
           }} modules={[Autoplay]} className="pb-8">
               <SwiperSlide>
                 <div className="flex flex-col items-center">
