@@ -42,18 +42,22 @@ export default function OptimizedHero() {
       {showVideo && (
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
           <iframe
-            className="absolute top-1/2 left-1/2 w-full h-full min-w-full min-h-full"
+            className="absolute top-1/2 left-1/2"
             src={videoUrl}
             title="Vidéo de présentation des formations en anglais professionnel"
             allow="autoplay; encrypted-media"
             allowFullScreen={false}
             loading="lazy"
             onLoad={handleVideoLoad}
-            style={{ 
-              border: 'none', 
+            style={{
+              border: 'none',
               pointerEvents: 'none',
-              transform: 'translate(-50%, -50%) scale(1.2)',
-              aspectRatio: '16/9'
+              // Cover technique to eliminate side gaps
+              width: '177.78vh',
+              height: '100vh',
+              minWidth: '100%',
+              minHeight: '56.25vw',
+              transform: 'translate(-50%, -50%)'
             }}
           />
         </div>
