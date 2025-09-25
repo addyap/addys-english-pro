@@ -40,9 +40,9 @@ export default function OptimizedHero() {
 
       {/* YouTube background video */}
       {showVideo && (
-        <div className="absolute inset-0 w-full h-full z-0">
+        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
           <iframe
-            className="w-full h-full object-cover"
+            className="absolute top-1/2 left-1/2 w-full h-full min-w-full min-h-full"
             src={videoUrl}
             title="Vidéo de présentation des formations en anglais professionnel"
             allow="autoplay; encrypted-media"
@@ -51,7 +51,9 @@ export default function OptimizedHero() {
             onLoad={handleVideoLoad}
             style={{ 
               border: 'none', 
-              pointerEvents: 'none'
+              pointerEvents: 'none',
+              transform: 'translate(-50%, -50%) scale(1.2)',
+              aspectRatio: '16/9'
             }}
           />
         </div>
