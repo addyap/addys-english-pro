@@ -5,24 +5,49 @@ import { TypingText } from "./TypingText";
 
 const VIDEO_ID = "WRe3F6Ejb6E";
 
+// Preconnect to YouTube for faster loading
+const preconnectYouTube = () => {
+  if (typeof document !== 'undefined') {
+    const link = document.createElement('link');
+    link.rel = 'preconnect';
+    link.href = 'https://www.youtube-nocookie.com';
+    document.head.appendChild(link);
+  }
+};
+
 export default function OptimizedHero() {
   const [showVideo, setShowVideo] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   // Optimized video URL with better performance parameters
-  const videoUrl = useMemo(() => 
-    `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0&start=0&end=0&origin=${window.location.origin}&enablejsapi=0`
-  , []);
+  const videoUrl = useMemo(() => {
+    const origin = typeof window !== 'undefined' ? window.location.origin : '';
+    return `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0&start=0&end=0&origin=${origin}&enablejsapi=0`;
+  }, []);
 
   const handleVideoLoad = useCallback(() => {
+    setIsVideoLoaded(true);
+    setHasError(false);
+  }, []);
+
+  const handleVideoError = useCallback(() => {
+    setHasError(true);
     setIsVideoLoaded(true);
   }, []);
 
   useEffect(() => {
+    // Preconnect to YouTube for faster loading
+    preconnectYouTube();
+    
+    // Respect user's motion preferences
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const delay = prefersReducedMotion ? 100 : 300;
+    
     // Delay video loading for better initial page performance
     const timer = setTimeout(() => {
       setShowVideo(true);
-    }, 500);
+    }, delay);
 
     return () => clearTimeout(timer);
   }, []);
@@ -33,13 +58,24 @@ export default function OptimizedHero() {
       role="banner"
       aria-label="Section principale de présentation"
     >
+      {/* Fallback background for video errors */}
+      {hasError && (
+        <div 
+          className="absolute inset-0 bg-gradient-to-br from-primary via-primary-foreground to-secondary z-0"
+          role="img"
+          aria-label="Arrière-plan dégradé de secours"
+        />
+      )}
+
       {/* Loading state for video */}
-      {showVideo && !isVideoLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/40 z-0 animate-pulse" />
+      {showVideo && !isVideoLoaded && !hasError && (
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/40 z-0">
+          <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        </div>
       )}
 
       {/* YouTube background video */}
-      {showVideo && (
+      {showVideo && !hasError && (
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
           <iframe
             className="absolute top-1/2 left-1/2"
@@ -49,6 +85,7 @@ export default function OptimizedHero() {
             allowFullScreen={false}
             loading="lazy"
             onLoad={handleVideoLoad}
+            onError={handleVideoError}
             style={{
               border: 'none',
               pointerEvents: 'none',
@@ -102,24 +139,24 @@ export default function OptimizedHero() {
         <nav className="flex flex-col sm:flex-row gap-4 justify-center" aria-label="Actions principales">
           <Link
             to="/offres-de-formation"
-            className="group bg-white/95 text-primary px-8 py-3 rounded-lg font-semibold hover:bg-white hover:shadow-2xl transition-all duration-300 shadow-xl font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/50"
+            className="group relative overflow-hidden bg-white/95 text-primary px-8 py-3 rounded-lg font-semibold hover:bg-white hover:shadow-2xl transition-all duration-300 shadow-xl font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/50 active:scale-100"
             aria-label="Découvrir les offres de formation en anglais professionnel"
           >
-            <span className="relative">
+            <span className="relative z-10">
               Découvrir mes offres
-              <span className="absolute inset-0 rounded-lg bg-primary/10 scale-0 group-hover:scale-100 transition-transform duration-300" />
             </span>
+            <span className="absolute inset-0 bg-primary/5 scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
           </Link>
           
           <Link
             to="/contact"
-            className="group border-2 border-white/90 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 hover:border-white transition-all duration-300 font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/50"
+            className="group relative overflow-hidden border-2 border-white/90 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 hover:border-white transition-all duration-300 font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/50 active:scale-100"
             aria-label="Contacter Antony Addy pour une formation personnalisée"
           >
-            <span className="relative">
+            <span className="relative z-10">
               Me contacter
-              <span className="absolute inset-0 rounded-lg bg-white/5 scale-0 group-hover:scale-100 transition-transform duration-300" />
             </span>
+            <span className="absolute inset-0 bg-white/5 scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
           </Link>
         </nav>
       </div>
