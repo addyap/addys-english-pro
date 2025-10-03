@@ -155,7 +155,7 @@ const Home = () => {
               {/* Image Side */}
               <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start">
                 <div className="relative">
-                  <img src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png" alt="Antony Addy, Formateur en Anglais professionnel" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" loading="lazy" />
+                  <img src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png" alt="Antony Addy animant une formation en anglais professionnel avec des apprenants adultes" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" width="350" height="auto" loading="lazy" />
                   <p className="text-sm text-muted-foreground mt-3 text-center lg:text-left font-body italic">
                     Formateur en action
                   </p>
@@ -179,20 +179,20 @@ const Home = () => {
         </section>
 
         {/* Features Section - 6 blocks in 2x3 grid */}
-        <section className="py-16 bg-muted">
+        <section className="py-16 bg-muted" aria-labelledby="features-heading">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">
+            <h2 id="features-heading" className="text-3xl font-bold text-center text-primary mb-12 font-heading">
               Pourquoi choisir mes formations ?
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
               {features.map((feature, index) => (
-                <div key={index} className="text-center p-6 rounded-lg bg-white hover:shadow-lg transition-shadow">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 text-accent rounded-full mb-4">
+                <article key={index} className="text-center p-6 rounded-lg bg-white hover:shadow-lg transition-shadow" role="listitem">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 text-accent rounded-full mb-4" aria-hidden="true">
                     <feature.icon className="h-8 w-8" />
                   </div>
                   <h3 className="text-xl font-semibold text-primary mb-3 font-heading">{feature.title}</h3>
                   <p className="text-muted-foreground font-body">{feature.description}</p>
-                </div>
+                </article>
               ))}
             </div>
           </div>
@@ -230,21 +230,21 @@ const Home = () => {
           }} modules={[Autoplay]} className="pb-8">
               <SwiperSlide>
                 <div className="flex flex-col items-center">
-                  <img src="/lovable-uploads/a3da9e3b-1f6c-447a-b308-2ca44d071c67.png" alt="IGY Vieux-Port de Cannes" className="h-24 object-contain mb-2" />
+                  <img src="/lovable-uploads/a3da9e3b-1f6c-447a-b308-2ca44d071c67.png" alt="Logo IGY Vieux-Port de Cannes, partenaire formation anglais" className="h-24 object-contain mb-2" width="96" height="96" loading="lazy" />
                   <p className="text-sm font-medium text-primary">IGY Vieux-Port de Cannes</p>
                 </div>
               </SwiperSlide>
 
               <SwiperSlide>
                 <div className="flex flex-col items-center">
-                  <img src="/lovable-uploads/694fcb0f-d52b-44f3-8cbc-6c1a051e416b.png" alt="ITEC" className="h-24 object-contain mb-2" />
+                  <img src="/lovable-uploads/694fcb0f-d52b-44f3-8cbc-6c1a051e416b.png" alt="Logo ITEC, école partenaire pour formations d'anglais" className="h-24 object-contain mb-2" width="96" height="96" loading="lazy" />
                   <p className="text-sm font-medium text-primary">ITEC</p>
                 </div>
               </SwiperSlide>
 
               <SwiperSlide>
                 <div className="flex flex-col items-center">
-                  <img src="/lovable-uploads/6668f20c-7d63-477f-a5be-856e631eaaef.png" alt="ESCCOM" className="h-24 object-contain mb-2" />
+                  <img src="/lovable-uploads/6668f20c-7d63-477f-a5be-856e631eaaef.png" alt="Logo ESCCOM, école de commerce partenaire formations anglais" className="h-24 object-contain mb-2" width="96" height="96" loading="lazy" />
                   <p className="text-sm font-medium text-primary">ESCCOM</p>
                 </div>
               </SwiperSlide>

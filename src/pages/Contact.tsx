@@ -51,14 +51,14 @@ const Contact = () => {
         <div className="max-w-6xl mx-auto px-4">
           
           {/* Header */}
-          <div className="text-center mb-12">
+          <header className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Contact
+              Contactez-moi pour vos formations d'anglais
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Contactez-moi pour discuter de vos besoins en formation d'anglais professionnel
+              Discutons ensemble de vos besoins en formation d'anglais professionnel
             </p>
-          </div>
+          </header>
 
           <div className="grid lg:grid-cols-2 gap-12">
             
@@ -99,7 +99,7 @@ const Contact = () => {
                   <textarea id="message" name="message" rows={6} value={formData.message} onChange={handleChange} required placeholder="Décrivez vos besoins en formation, votre niveau actuel, vos objectifs..." className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none" />
                 </div>
                 
-                <button type="submit" className="w-full bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                <button type="submit" className="w-full bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" aria-label="Envoyer le message de contact">
                   Envoyer le message
                 </button>
               </form>
@@ -123,8 +123,8 @@ const Contact = () => {
                 <p className="text-green-800 mb-4">
                   Pour une réponse immédiate, contactez-moi directement sur WhatsApp
                 </p>
-                <a href="https://wa.me/33649829826" className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors" target="_blank" rel="noopener noreferrer">
-                  <MessageSquare className="h-5 w-5 mr-2" />
+                <a href="https://wa.me/33649829826" className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2" target="_blank" rel="noopener noreferrer" aria-label="Contactez-moi via WhatsApp">
+                  <MessageSquare className="h-5 w-5 mr-2" aria-hidden="true" />
                   Ouvrir WhatsApp
                 </a>
               </div>
@@ -173,11 +173,11 @@ const Contact = () => {
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">
                   Connectons-nous sur LinkedIn
                 </h3>
-                <img src="/lovable-uploads/200e88ab-2bbf-4168-85ad-8123b07c44ac.png" alt="QR Code LinkedIn Antony Addy" className="mx-auto mb-4 max-w-48" />
+                <img src="/lovable-uploads/200e88ab-2bbf-4168-85ad-8123b07c44ac.png" alt="QR Code LinkedIn permettant de se connecter au profil d'Antony Addy" className="mx-auto mb-4 max-w-48" width="192" height="192" loading="lazy" />
                 <p className="text-sm text-gray-600">
                   Scannez ce QR code pour me suivre sur LinkedIn
                 </p>
-                <a href="https://linkedin.com/in/antonyaddy" className="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium" target="_blank" rel="noopener noreferrer">
+                <a href="https://linkedin.com/in/antonyaddy" className="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:rounded" target="_blank" rel="noopener noreferrer" aria-label="Voir mon profil LinkedIn (ouvre dans un nouvel onglet)">
                   Voir mon profil LinkedIn →
                 </a>
               </div>
