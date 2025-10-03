@@ -6,6 +6,8 @@ interface ImageOptimizerProps {
   className?: string;
   width?: number;
   height?: number;
+  sizes?: string;
+  priority?: boolean;
 }
 
 const ImageOptimizer: React.FC<ImageOptimizerProps> = ({ 
@@ -13,7 +15,9 @@ const ImageOptimizer: React.FC<ImageOptimizerProps> = ({
   alt, 
   className = '', 
   width, 
-  height 
+  height,
+  sizes = '100vw',
+  priority = false
 }) => {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
@@ -48,7 +52,10 @@ const ImageOptimizer: React.FC<ImageOptimizerProps> = ({
         className={`${className} ${loaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
         width={width}
         height={height}
-        loading="lazy"
+        sizes={sizes}
+        loading={priority ? 'eager' : 'lazy'}
+        fetchPriority={priority ? 'high' : 'auto'}
+        decoding={priority ? 'sync' : 'async'}
         onLoad={() => setLoaded(true)}
         onError={() => setError(true)}
         style={{

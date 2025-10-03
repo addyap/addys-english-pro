@@ -1,15 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import SEOHead from '../components/SEOHead';
 import { TypingText } from '../components/TypingText';
+import { TestimonialSkeleton } from '../components/SkeletonLoader';
 
 const Testimonials = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading testimonials
+    const timer = setTimeout(() => setIsLoading(false), 300);
+    return () => clearTimeout(timer);
+  }, []);
+
   const testimonialsJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Review",
-    "name": "Témoignages clients - Antony Addy",
-    "description": "Avis authentiques d'anciens apprenants sur les formations d'anglais d'Antony Addy",
-    "url": "https://antonyaddy.com/temoignages"
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Alina Ostashchenko"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "reviewBody": "An excellent teacher! Passionate and dedicated to their work, which brings a positive energy to the class atmosphere!"
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Yamina ABDA"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "reviewBody": "Un formateur exceptionnel qui sait transmettre et communiquer avec la bonne humeur qui le caractérise!"
+      }
+    ]
   };
 
   const testimonials = [
@@ -122,24 +154,30 @@ const Testimonials = () => {
 
           {/* Testimonials */}
           <div className="space-y-6">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="border-red-500 border-2 bg-card">
-                <CardHeader>
-                  <div className="text-red-500 text-4xl mb-2">"</div>
-                  <p className="text-lg italic text-card-foreground leading-relaxed">
-                    {testimonial.quote}
-                  </p>
-                </CardHeader>
-                <CardContent>
-                  <p className="font-bold text-primary text-lg">
-                    {testimonial.name}
-                  </p>
-                  <p className="text-muted-foreground mt-1">
-                    {testimonial.role}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
+            {isLoading ? (
+              Array.from({ length: 5 }).map((_, index) => (
+                <TestimonialSkeleton key={index} />
+              ))
+            ) : (
+              testimonials.map((testimonial, index) => (
+                <Card key={index} className="border-red-500 border-2 bg-card">
+                  <CardHeader>
+                    <div className="text-red-500 text-4xl mb-2">"</div>
+                    <p className="text-lg italic text-card-foreground leading-relaxed">
+                      {testimonial.quote}
+                    </p>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="font-bold text-primary text-lg">
+                      {testimonial.name}
+                    </p>
+                    <p className="text-muted-foreground mt-1">
+                      {testimonial.role}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))
+            )}
           </div>
         </div>
       </div>

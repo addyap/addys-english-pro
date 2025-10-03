@@ -7,6 +7,45 @@ import { FadeInSection, Accordion } from '../components/Effects';
 import { seoMetadata } from '../utils/seoMetadata';
 
 const Training = () => {
+  const trainingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Formations d'anglais professionnel",
+    "description": "Formations d'anglais personnalisées pour adultes, en ligne ou en présentiel",
+    "provider": {
+      "@type": "Person",
+      "name": "Antony Addy",
+      "jobTitle": "Formateur Professionnel d'Adultes certifié"
+    },
+    "hasCourseInstance": [
+      {
+        "@type": "CourseInstance",
+        "courseMode": "online",
+        "courseWorkload": "PT20H"
+      },
+      {
+        "@type": "CourseInstance",
+        "courseMode": "onsite",
+        "location": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "Alpes-Maritimes",
+            "addressCountry": "FR"
+          }
+        }
+      }
+    ],
+    "offers": {
+      "@type": "Offer",
+      "category": "Professional Training",
+      "eligibleRegion": {
+        "@type": "Place",
+        "name": "France"
+      }
+    }
+  };
+
   const formations = [
     {
       title: 'Anglais général',
@@ -50,6 +89,7 @@ const Training = () => {
           "anglais des affaires",
           "présentiel et visioconférence"
         ]}
+        jsonLd={trainingJsonLd}
       />
       
       <div className="min-h-screen bg-background py-12">
