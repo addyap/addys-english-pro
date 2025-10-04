@@ -1,7 +1,8 @@
-const VERSION = 'v1.1.0';
+const VERSION = 'v1.2.0';
 const CACHE_NAME = `antonyaddy-${VERSION}`;
 const STATIC_CACHE = `${CACHE_NAME}-static`;
 const DYNAMIC_CACHE = `${CACHE_NAME}-dynamic`;
+const MAX_CACHE_SIZE = 50; // Maximum items in dynamic cache
 
 const STATIC_FILES = [
   '/',
@@ -19,6 +20,17 @@ const STATIC_FILES = [
   '/lovable-uploads/2fd5760c-9208-4295-a1b5-87b41963111b.png',
   '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
 ];
+
+// Limit cache size
+const limitCacheSize = (cacheName, maxSize) => {
+  caches.open(cacheName).then(cache => {
+    cache.keys().then(keys => {
+      if (keys.length > maxSize) {
+        cache.delete(keys[0]).then(() => limitCacheSize(cacheName, maxSize));
+      }
+    });
+  });
+};
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -103,11 +115,32 @@ self.addEventListener('fetch', (event) => {
     caches.match(event.request)
       .then(response => {
         return response || fetch(event.request).then(networkResponse => {
-          caches.open(DYNAMIC_CACHE).then(cache => {
-            cache.put(event.request, networkResponse.clone());
-          });
+          // Only cache successful responses
+          if (networkResponse.status === 200) {
+            caches.open(DYNAMIC_CACHE).then(cache => {
+              cache.put(event.request, networkResponse.clone());
+              limitCacheSize(DYNAMIC_CACHE, MAX_CACHE_SIZE);
+            });
+          }
           return networkResponse;
+        }).catch(() => {
+          // Return offline fallback for navigation requests
+          if (event.request.mode === 'navigate') {
+            return caches.match('/index.html');
+          }
         });
       })
   );
 });
+
+// Background sync for failed requests
+self.addEventListener('sync', (event) => {
+  if (event.tag === 'sync-data') {
+    event.waitUntil(syncData());
+  }
+});
+
+async function syncData() {
+  // Placeholder for background sync logic
+  console.log('Background sync triggered');
+}
