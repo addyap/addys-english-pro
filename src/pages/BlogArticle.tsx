@@ -1,11 +1,15 @@
 
-import React from 'react';
+import React, { useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import ReadingProgress from '../components/ReadingProgress';
+import { useScrollTracking } from '@/hooks/useScrollTracking';
 
 const BlogArticle = () => {
   const { id } = useParams();
+  const articleRef = useRef<HTMLDivElement>(null);
+  useScrollTracking(`/blog/${id}`);
 
   const articles = {
     'anglais-professionnel-2025': {
@@ -197,8 +201,9 @@ const BlogArticle = () => {
   return (
     <>
       <SEOHead {...articleSEO} />
+      <ReadingProgress target={articleRef} />
       
-      <div className="min-h-screen bg-gray-50 py-12">
+      <div ref={articleRef} className="min-h-screen bg-gray-50 py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Navigation */}

@@ -1,8 +1,7 @@
 
 import React from 'react';
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Quote } from "lucide-react";
 import { Link } from "react-router-dom";
+import TestimonialCarousel from './TestimonialCarousel';
 
 const AvisClients = () => {
   const testimonials = [
@@ -31,35 +30,12 @@ const AvisClients = () => {
             Avis Clients
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card
-                key={index}
-                className="border-2 border-red-500 h-full animate-fade-in bg-card"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <CardHeader className="flex flex-col items-start gap-2">
-                  <Quote className="w-6 h-6 text-red-500" />
-                  <p className="italic text-lg leading-relaxed text-card-foreground">
-                    "{testimonial.quote}"
-                  </p>
-                </CardHeader>
-                <CardContent>
-                  <p className="font-bold text-primary text-lg font-heading">
-                    {testimonial.name}
-                  </p>
-                  <p className="text-muted-foreground text-sm font-body">
-                    {testimonial.role}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <TestimonialCarousel testimonials={testimonials} />
 
           <div className="mt-10">
             <Link
               to="/temoignages"
-              className="inline-block bg-red-600 text-white font-medium px-6 py-3 rounded hover:bg-red-700 transition-colors font-body"
+              className="inline-block bg-red-600 text-white font-medium px-6 py-3 rounded hover:bg-red-700 transition-all hover:scale-105 active:scale-95 font-body focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
             >
               Voir tous les témoignages
             </Link>

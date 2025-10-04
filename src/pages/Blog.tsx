@@ -1,11 +1,18 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { seoMetadata } from '../utils/seoMetadata';
+import BlogSearch from '../components/BlogSearch';
+import AnimatedCard from '../components/AnimatedCard';
+import { useScrollTracking } from '@/hooks/useScrollTracking';
 
 const Blog = () => {
+  useScrollTracking('/blog');
+  
+  const [filteredArticles, setFilteredArticles] = useState<typeof articles>([]);
+
   const articles = [
     {
       id: 'anglais-professionnel-2025',
@@ -87,8 +94,12 @@ const Blog = () => {
             </p>
           </div>
 
+          {/* Search and Filter */}
+          <BlogSearch articles={articles} onFilterChange={setFilteredArticles} />
+
           {/* Featured Article */}
-          <div className="bg-white rounded-lg shadow-lg mb-12 overflow-hidden">
+          {filteredArticles.length > 0 && (
+          <AnimatedCard className="bg-white shadow-lg mb-12 overflow-hidden" hoverScale={1.01}>
             <div className="p-8">
               <div className="flex items-center mb-4 text-sm text-gray-500">
                 <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full font-medium">
@@ -97,18 +108,18 @@ const Blog = () => {
               </div>
               
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                {articles[0].title}
+                {filteredArticles[0].title}
               </h2>
               
               <p className="text-lg text-gray-600 mb-6">
-                {articles[0].excerpt}
+                {filteredArticles[0].excerpt}
               </p>
               
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4 text-sm text-gray-500">
                   <div className="flex items-center">
                     <Calendar className="h-4 w-4 mr-1" />
-                    {new Date(articles[0].date).toLocaleDateString('fr-FR', { 
+                    {new Date(filteredArticles[0].date).toLocaleDateString('fr-FR', { 
                       year: 'numeric', 
                       month: 'long', 
                       day: 'numeric' 
@@ -116,26 +127,29 @@ const Blog = () => {
                   </div>
                   <div className="flex items-center">
                     <User className="h-4 w-4 mr-1" />
-                    {articles[0].author}
+                    {filteredArticles[0].author}
                   </div>
-                  <span>{articles[0].readTime} de lecture</span>
+                  <span>{filteredArticles[0].readTime} de lecture</span>
                 </div>
                 
                 <Link
-                  to={`/blog/${articles[0].id}`}
-                  className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                  to={`/blog/${filteredArticles[0].id}`}
+                  className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all hover:scale-105 active:scale-95"
                 >
                   Lire l'article
                   <ArrowRight className="h-4 w-4 ml-2" />
                 </Link>
               </div>
             </div>
-          </div>
+          </AnimatedCard>
+          )}
 
           {/* Articles Grid */}
+          {filteredArticles.length > 1 && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {articles.slice(1).map((article) => (
-              <article key={article.id} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden">
+            {filteredArticles.slice(1).map((article, index) => (
+              <AnimatedCard key={article.id} className="bg-white shadow-md" delay={index * 0.1}>
+                <article className="overflow-hidden h-full">
                 <div className="p-6">
                   <div className="flex items-center mb-3">
                     <span className="bg-green-100 text-green-600 px-2 py-1 rounded text-sm font-medium">
@@ -172,8 +186,22 @@ const Blog = () => {
                   </div>
                 </div>
               </article>
+              </AnimatedCard>
             ))}
           </div>
+          )}
+
+          {/* No Results Message */}
+          {filteredArticles.length === 0 && (
+            <div className="text-center py-12 bg-white rounded-lg shadow-md">
+              <p className="text-xl text-gray-600 mb-4">
+                Aucun article ne correspond à vos critères de recherche
+              </p>
+              <p className="text-gray-500">
+                Essayez de modifier votre recherche ou vos filtres
+              </p>
+            </div>
+          )}
 
           {/* Newsletter CTA */}
           <div className="bg-blue-900 text-white rounded-lg p-8 text-center">
