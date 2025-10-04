@@ -1,7 +1,9 @@
 
 import React, { useState } from 'react';
-import { MessageSquare, Mail, MapPin, Clock } from 'lucide-react';
+import { MessageSquare, Mail, MapPin, Clock, CheckCircle2 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { trackFormSubmission, trackFormError, trackWhatsAppClick, trackEmailClick } from '@/lib/analytics';
+import { useScrollTracking } from '@/hooks/useScrollTracking';
 
 const Contact = () => {
   const contactJsonLd = {
@@ -12,23 +14,86 @@ const Contact = () => {
     "url": "https://antonyaddy.com/contact"
   };
 
+  useScrollTracking('/contact');
+
   const [formData, setFormData] = useState({
     prenom: '',
     nom: '',
     email: '',
-    message: ''
+    message: '',
+    honeypot: '' // Anti-spam field
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+
+    if (!formData.prenom.trim()) {
+      newErrors.prenom = 'Le prénom est requis';
+    }
+    if (!formData.nom.trim()) {
+      newErrors.nom = 'Le nom est requis';
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = 'L\'email est requis';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Email invalide';
+    }
+    if (!formData.message.trim()) {
+      newErrors.message = 'Le message est requis';
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Le message doit contenir au moins 10 caractères';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Message envoyé ! Je vous recontacte rapidement.');
-    setFormData({
-      prenom: '',
-      nom: '',
-      email: '',
-      message: ''
-    });
+
+    // Honeypot check (spam prevention)
+    if (formData.honeypot) {
+      console.log('Spam detected');
+      trackFormError('contact', 'spam_detected');
+      return;
+    }
+
+    if (!validateForm()) {
+      trackFormError('contact', 'validation_failed');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      console.log('Form submitted:', formData);
+      trackFormSubmission('contact', true);
+      
+      setSubmitSuccess(true);
+      setFormData({
+        prenom: '',
+        nom: '',
+        email: '',
+        message: '',
+        honeypot: ''
+      });
+
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubmitSuccess(false), 5000);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      trackFormError('contact', 'submission_failed');
+      setErrors({ submit: 'Une erreur est survenue. Veuillez réessayer.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -69,19 +134,49 @@ const Contact = () => {
               </h2>
               
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Honeypot field - hidden from real users */}
+                <input
+                  type="text"
+                  name="honeypot"
+                  value={formData.honeypot}
+                  onChange={handleChange}
+                  style={{ position: 'absolute', left: '-9999px' }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
+
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="prenom" className="block text-sm font-medium text-gray-700 mb-2">
                       Prénom *
                     </label>
-                    <input type="text" id="prenom" name="prenom" value={formData.prenom} onChange={handleChange} required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                    <input 
+                      type="text" 
+                      id="prenom" 
+                      name="prenom" 
+                      value={formData.prenom} 
+                      onChange={handleChange} 
+                      required 
+                      className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-blue-500 focus:border-transparent ${errors.prenom ? 'border-red-500' : 'border-gray-300'}`}
+                    />
+                    {errors.prenom && <p className="text-red-500 text-sm mt-1">{errors.prenom}</p>}
                   </div>
                   
                   <div>
                     <label htmlFor="nom" className="block text-sm font-medium text-gray-700 mb-2">
                       Nom *
                     </label>
-                    <input type="text" id="nom" name="nom" value={formData.nom} onChange={handleChange} required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                    <input 
+                      type="text" 
+                      id="nom" 
+                      name="nom" 
+                      value={formData.nom} 
+                      onChange={handleChange} 
+                      required 
+                      className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-blue-500 focus:border-transparent ${errors.nom ? 'border-red-500' : 'border-gray-300'}`}
+                    />
+                    {errors.nom && <p className="text-red-500 text-sm mt-1">{errors.nom}</p>}
                   </div>
                 </div>
                 
@@ -89,18 +184,55 @@ const Contact = () => {
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                     Email *
                   </label>
-                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    value={formData.email} 
+                    onChange={handleChange} 
+                    required 
+                    className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-blue-500 focus:border-transparent ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+                  />
+                  {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                     Message *
                   </label>
-                  <textarea id="message" name="message" rows={6} value={formData.message} onChange={handleChange} required placeholder="Décrivez vos besoins en formation, votre niveau actuel, vos objectifs..." className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none" />
+                  <textarea 
+                    id="message" 
+                    name="message" 
+                    rows={6} 
+                    value={formData.message} 
+                    onChange={handleChange} 
+                    required 
+                    placeholder="Décrivez vos besoins en formation, votre niveau actuel, vos objectifs..." 
+                    className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none ${errors.message ? 'border-red-500' : 'border-gray-300'}`}
+                  />
+                  {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
                 </div>
+
+                {errors.submit && (
+                  <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                    {errors.submit}
+                  </div>
+                )}
+
+                {submitSuccess && (
+                  <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 flex items-center gap-2 animate-fade-in">
+                    <CheckCircle2 className="h-5 w-5" />
+                    <span>Message envoyé avec succès ! Je vous recontacte rapidement.</span>
+                  </div>
+                )}
                 
-                <button type="submit" className="w-full bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" aria-label="Envoyer le message de contact">
-                  Envoyer le message
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98]" 
+                  aria-label="Envoyer le message de contact"
+                >
+                  {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
                 </button>
               </form>
               
@@ -123,7 +255,14 @@ const Contact = () => {
                 <p className="text-green-800 mb-4">
                   Pour une réponse immédiate, contactez-moi directement sur WhatsApp
                 </p>
-                <a href="https://wa.me/33649829826" className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2" target="_blank" rel="noopener noreferrer" aria-label="Contactez-moi via WhatsApp">
+                <a 
+                  href="https://wa.me/33649829826" 
+                  className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 hover:scale-105 active:scale-95" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  aria-label="Contactez-moi via WhatsApp"
+                  onClick={trackWhatsAppClick}
+                >
                   <MessageSquare className="h-5 w-5 mr-2" aria-hidden="true" />
                   Ouvrir WhatsApp
                 </a>
@@ -140,7 +279,13 @@ const Contact = () => {
                     <Mail className="h-5 w-5 text-blue-600 mr-3" />
                     <div>
                       <p className="font-medium text-gray-900">Email</p>
-                      <a href="mailto:hello@antonyaddy.com" className="text-blue-600 hover:text-blue-800">formations@antonyaddy.com</a>
+                      <a 
+                        href="mailto:hello@antonyaddy.com" 
+                        className="text-blue-600 hover:text-blue-800 transition-colors"
+                        onClick={trackEmailClick}
+                      >
+                        formations@antonyaddy.com
+                      </a>
                     </div>
                   </div>
                   

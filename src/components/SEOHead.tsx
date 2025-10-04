@@ -46,6 +46,9 @@ export type SEOProps = {
   canonicalPath?: string;   // legacy support
   canonicalUrl?: string;    // preferred
   image?: string;
+  imageAlt?: string;        // Alt text for social image
+  imageWidth?: number;      // Image dimensions for OG
+  imageHeight?: number;
   locale?: string;          // e.g. "en_GB"
   type?: "website" | "article";
   twitterCard?: "summary" | "summary_large_image";
@@ -63,6 +66,9 @@ export type SEOProps = {
   datePublished?: string;
   dateModified?: string;
   jsonLd?: unknown | unknown[]; // optional raw JSON-LD object(s)
+  author?: string;          // Author name for articles
+  section?: string;         // Article section/category
+  tags?: string[];          // Article tags
 };
 
 export default function SEOHead(props: SEOProps) {
@@ -74,6 +80,9 @@ export default function SEOHead(props: SEOProps) {
     canonicalPath,
     canonicalUrl,
     image,
+    imageAlt,
+    imageWidth = 1200,
+    imageHeight = 630,
     locale = "fr_FR",
     type = "website",
     twitterCard = "summary_large_image",
@@ -91,6 +100,9 @@ export default function SEOHead(props: SEOProps) {
     datePublished,
     dateModified,
     jsonLd,
+    author,
+    section,
+    tags,
   } = props;
 
   const computedTitle = composeTitle(title, siteName);
@@ -131,6 +143,13 @@ export default function SEOHead(props: SEOProps) {
           siteName,
           locale,
         })}
+        {image && imageAlt && <meta property="og:image:alt" content={imageAlt} />}
+        {image && <meta property="og:image:width" content={String(imageWidth)} />}
+        {image && <meta property="og:image:height" content={String(imageHeight)} />}
+        {author && <meta property="article:author" content={author} />}
+        {section && <meta property="article:section" content={section} />}
+        {tags && tags.map((tag, i) => <meta key={i} property="article:tag" content={tag} />)}
+
         {twitterTags({
           card: twitterCard,
           site: twitterSite,
@@ -139,6 +158,7 @@ export default function SEOHead(props: SEOProps) {
           description,
           image,
         })}
+        {image && imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
 
         {/* Hreflang */}
         {hreflangLinks(hreflangs)}
