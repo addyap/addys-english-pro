@@ -1,5 +1,6 @@
 
 import React from "react";
+import ErrorFallback from './ErrorFallback';
 
 type State = { hasError: boolean; error?: any; info?: any };
 
@@ -12,34 +13,29 @@ export class AppErrorBoundary extends React.Component<React.PropsWithChildren, S
 
   componentDidCatch(error: any, info: any) {
     console.error("AppErrorBoundary", { error, info });
+    
+    // Track critical error in analytics
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'exception', {
+        description: error?.message || 'Unknown error',
+        fatal: true,
+      });
+    }
   }
+
+  resetError = () => {
+    this.setState({ hasError: false, error: undefined });
+  };
 
   render() {
     if (!this.state.hasError) return this.props.children;
 
-    const message = String(this.state.error?.message ?? this.state.error ?? "Unknown error");
     return (
-      <div role="alert" style={{ padding: 16 }}>
-        <h1>Something went wrong</h1>
-        <p>{message}</p>
-        <details style={{ whiteSpace: "pre-wrap", marginTop: 8 }}>
-          {String(this.state.error?.stack ?? "")}
-        </details>
-        <button
-          style={{ marginTop: 12, padding: "8px 12px", border: "1px solid #111", borderRadius: 8 }}
-          onClick={() => {
-            const payload = {
-              message,
-              stack: String(this.state.error?.stack ?? ""),
-              url: window.location.href,
-              ua: navigator.userAgent,
-            };
-            navigator.clipboard.writeText(JSON.stringify(payload, null, 2)).catch(() => {});
-            alert("Diagnostics copied to clipboard");
-          }}
-        >
-          Copy diagnostics
-        </button>
+      <div className="min-h-screen flex items-center justify-center bg-background px-4">
+        <ErrorFallback 
+          error={this.state.error} 
+          resetErrorBoundary={this.resetError}
+        />
       </div>
     );
   }
