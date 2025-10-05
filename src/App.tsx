@@ -9,6 +9,10 @@ import { HelmetProvider } from 'react-helmet-async';
 import { AppErrorBoundary } from "./components/AppErrorBoundary";
 import DiagnosticsPanel from "./components/DiagnosticsPanel";
 import Analytics from "./components/Analytics";
+import OfflineBanner from "./components/OfflineBanner";
+import A11yProvider from "./components/A11yProvider";
+import CookieConsent from "./components/CookieConsent";
+import { usePerformanceMonitor } from "./hooks/usePerformanceMonitor";
 
 import Layout from "./components/Layout";
 import PrefetchRoutes from "./components/PrefetchRoutes";
@@ -40,38 +44,53 @@ const PageLoader = () => (
 
 const queryClient = new QueryClient();
 
+const AppContent = () => {
+  // Monitor performance metrics
+  usePerformanceMonitor((metrics) => {
+    console.log('[Performance Metrics]', metrics);
+  });
+
+  return (
+    <>
+      <OfflineBanner />
+      <CookieConsent />
+      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+        <ScrollToTop />
+        <PrefetchRoutes />
+        <Layout>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/qui-je-suis" element={<About />} />
+              <Route path="/offres-de-formation" element={<Training />} />
+              <Route path="/temoignages" element={<Testimonials />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<BlogArticle />} />
+              <Route path="/anglaisadistance" element={<AnglaisADistance />} />
+              <Route path="/mentions-legales" element={<LegalNotices />} />
+              <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </Layout>
+      </BrowserRouter>
+    </>
+  );
+};
+
 const App = () => (
   <AppErrorBoundary>
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
-          <Analytics />
-          <Toaster />
-          <Sonner />
-          <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-            <ScrollToTop />
-            <PrefetchRoutes />
-            <Layout>
-              <Suspense fallback={<PageLoader />}>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/qui-je-suis" element={<About />} />
-                  <Route path="/offres-de-formation" element={<Training />} />
-                  <Route path="/temoignages" element={<Testimonials />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/blog" element={<Blog />} />
-                  <Route path="/blog/:id" element={<BlogArticle />} />
-                  <Route path="/anglaisadistance" element={<AnglaisADistance />} />
-                  <Route path="/mentions-legales" element={<LegalNotices />} />
-                  <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
-                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </Suspense>
-            </Layout>
-          </BrowserRouter>
-          <DiagnosticsPanel />
-          
+          <A11yProvider>
+            <Analytics />
+            <Toaster />
+            <Sonner />
+            <DiagnosticsPanel />
+            <AppContent />
+          </A11yProvider>
         </TooltipProvider>
       </QueryClientProvider>
     </HelmetProvider>
