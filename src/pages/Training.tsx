@@ -4,6 +4,7 @@ import { Users, Building, GraduationCap, CheckCircle, AlertCircle, Globe, MapPin
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import { FadeInSection, Accordion } from '../components/Effects';
+import { CourseSchema } from '@/lib/seo/structuredData';
 import { seoMetadata } from '../utils/seoMetadata';
 
 const Training = () => {
@@ -90,6 +91,14 @@ const Training = () => {
           "présentiel et visioconférence"
         ]}
         jsonLd={trainingJsonLd}
+      />
+      <CourseSchema
+        name="Formations d'anglais professionnel"
+        description="Formations personnalisées en anglais professionnel pour adultes, éligibles CPF, en ligne ou en présentiel dans les Alpes-Maritimes."
+        provider={{
+          name: "Antony Addy",
+          url: "https://antonyaddy.com"
+        }}
       />
       
       <div className="min-h-screen bg-background py-12">

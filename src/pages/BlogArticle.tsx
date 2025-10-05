@@ -4,6 +4,8 @@ import { useParams, Link } from 'react-router-dom';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import ReadingProgress from '../components/ReadingProgress';
+import SocialShare from '../components/SocialShare';
+import { ArticleSchema } from '@/lib/seo/structuredData';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
 
 const BlogArticle = () => {
@@ -201,6 +203,14 @@ const BlogArticle = () => {
   return (
     <>
       <SEOHead {...articleSEO} />
+      <ArticleSchema
+        headline={article.title}
+        description={article.description}
+        image={article.ogImage}
+        datePublished={article.date}
+        author={{ name: article.author, url: 'https://antonyaddy.com/qui-je-suis' }}
+        publisher={{ name: 'Antony Addy', logo: 'https://antonyaddy.com/assets/logo.svg' }}
+      />
       <ReadingProgress target={articleRef} />
       
       <div ref={articleRef} className="min-h-screen bg-gray-50 py-12">
@@ -254,6 +264,16 @@ const BlogArticle = () => {
               className="prose prose-lg max-w-none text-gray-700"
               dangerouslySetInnerHTML={{ __html: article.content }}
             />
+
+            {/* Social Share */}
+            <div className="mt-8 pt-6 border-t border-gray-200">
+              <p className="text-sm font-medium text-gray-700 mb-3">Partager cet article :</p>
+              <SocialShare 
+                title={article.title}
+                description={article.description}
+                hashtags={['anglais', 'formation', 'CPF']}
+              />
+            </div>
           </article>
 
           {/* Related Posts */}
