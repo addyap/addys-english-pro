@@ -1,54 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { motion } from 'framer-motion';
 
-interface ReadingProgressProps {
-  target?: React.RefObject<HTMLElement>;
-}
-
-const ReadingProgress: React.FC<ReadingProgressProps> = ({ target }) => {
-  const [readingTime, setReadingTime] = useState(0);
-  const { scrollYProgress } = useScroll({
-    target: target as any,
-    offset: ["start start", "end end"]
-  });
-
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+/**
+ * Reading Progress Bar Component
+ * Shows scroll progress at the top of the page
+ */
+const ReadingProgress: React.FC = () => {
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const updateReadingTime = () => {
-      const progress = scrollYProgress.get();
-      const estimatedTotalTime = 5; // minutes (adjust based on article)
-      const currentTime = Math.round(progress * estimatedTotalTime);
-      setReadingTime(estimatedTotalTime - currentTime);
+    const updateProgress = () => {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = window.scrollY;
+      const progress = (scrolled / scrollHeight) * 100;
+      setProgress(Math.min(progress, 100));
     };
 
-    const unsubscribe = scrollYProgress.on('change', updateReadingTime);
-    return () => unsubscribe();
-  }, [scrollYProgress]);
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress(); // Initial calculation
+
+    return () => window.removeEventListener('scroll', updateProgress);
+  }, []);
 
   return (
-    <>
-      {/* Progress Bar */}
+    <motion.div
+      className="fixed top-0 left-0 right-0 h-1 bg-primary/20 z-50"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-blue-600 origin-left z-50"
-        style={{ scaleX }}
+        className="h-full bg-primary"
+        style={{ width: `${progress}%` }}
+        transition={{ duration: 0.1 }}
       />
-
-      {/* Reading Time Indicator */}
-      <div className="fixed bottom-8 right-8 bg-white/90 backdrop-blur-sm shadow-lg rounded-full px-4 py-2 text-sm font-medium text-gray-700 border border-gray-200 hidden md:block z-40">
-        {readingTime > 0 ? (
-          <>
-            <span className="text-blue-600">{readingTime} min</span> restantes
-          </>
-        ) : (
-          <span className="text-green-600">✓ Lecture terminée</span>
-        )}
-      </div>
-    </>
+    </motion.div>
   );
 };
 

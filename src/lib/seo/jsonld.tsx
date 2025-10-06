@@ -203,3 +203,47 @@ export const jsonLdCourse = (opts: {
     sameAs: opts.providerUrl ?? "https://www.antonyaddy.com",
   },
 });
+
+// FAQ Schema
+export const jsonLdFAQ = (faqs: Array<{ question: string; answer: string }>) => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+});
+
+// Review Schema
+export const jsonLdReview = (reviews: Array<{
+  author: string;
+  rating: number;
+  reviewBody: string;
+  datePublished: string;
+}>) => ({
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Formation Anglais Professionnel",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length,
+    reviewCount: reviews.length,
+  },
+  review: reviews.map((review) => ({
+    "@type": "Review",
+    author: {
+      "@type": "Person",
+      name: review.author,
+    },
+    datePublished: review.datePublished,
+    reviewBody: review.reviewBody,
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: review.rating,
+    },
+  })),
+});

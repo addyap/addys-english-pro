@@ -1,68 +1,70 @@
-import React, { useState } from 'react';
+import React from 'react';
+import LazyImage from './LazyImage';
 
 interface ImageOptimizerProps {
   src: string;
   alt: string;
-  className?: string;
   width?: number;
   height?: number;
-  sizes?: string;
+  className?: string;
   priority?: boolean;
+  sizes?: string;
 }
 
-const ImageOptimizer: React.FC<ImageOptimizerProps> = ({ 
-  src, 
-  alt, 
-  className = '', 
-  width, 
+/**
+ * Image Optimizer Component
+ * Handles responsive images with lazy loading and optimization
+ */
+const ImageOptimizer: React.FC<ImageOptimizerProps> = ({
+  src,
+  alt,
+  width,
   height,
+  className,
+  priority = false,
   sizes = '100vw',
-  priority = false
 }) => {
-  const [loaded, setLoaded] = useState(false);
-  const [error, setError] = useState(false);
-
-  // Generate WebP and AVIF sources if the image is not already optimized
-  const getOptimizedSources = (originalSrc: string) => {
-    if (originalSrc.includes('lovable-uploads') || originalSrc.startsWith('data:')) {
-      return []; // Already optimized or data URI
+  // Generate srcset for responsive images
+  const generateSrcSet = (baseSrc: string) => {
+    if (!baseSrc || baseSrc.startsWith('data:')) {
+      return undefined;
     }
-    
-    const baseUrl = originalSrc.replace(/\.(jpg|jpeg|png)$/i, '');
-    return [
-      { srcSet: `${baseUrl}.avif`, type: 'image/avif' },
-      { srcSet: `${baseUrl}.webp`, type: 'image/webp' }
-    ];
+
+    // For external images, return as-is
+    if (baseSrc.startsWith('http')) {
+      return `${baseSrc} 1x`;
+    }
+
+    return undefined;
   };
 
-  const sources = getOptimizedSources(src);
+  const srcSet = generateSrcSet(src);
 
-  return (
-    <picture>
-      {sources.map((source, index) => (
-        <source 
-          key={index}
-          srcSet={source.srcSet} 
-          type={source.type}
-        />
-      ))}
+  if (priority) {
+    // For priority images, load immediately without lazy loading
+    return (
       <img
         src={src}
+        srcSet={srcSet}
+        sizes={sizes}
         alt={alt}
-        className={`${className} ${loaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
         width={width}
         height={height}
-        sizes={sizes}
-        loading={priority ? 'eager' : 'lazy'}
-        fetchPriority={priority ? 'high' : 'auto'}
-        decoding={priority ? 'sync' : 'async'}
-        onLoad={() => setLoaded(true)}
-        onError={() => setError(true)}
-        style={{
-          aspectRatio: width && height ? `${width}/${height}` : undefined
-        }}
+        className={className}
+        loading="eager"
+        decoding="async"
       />
-    </picture>
+    );
+  }
+
+  return (
+    <LazyImage
+      src={src}
+      alt={alt}
+      className={className}
+      width={width}
+      height={height}
+    />
   );
 };
 

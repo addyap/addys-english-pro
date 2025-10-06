@@ -211,7 +211,7 @@ const BlogArticle = () => {
         author={{ name: article.author, url: 'https://antonyaddy.com/qui-je-suis' }}
         publisher={{ name: 'Antony Addy', logo: 'https://antonyaddy.com/assets/logo.svg' }}
       />
-      <ReadingProgress target={articleRef} />
+      <ReadingProgress />
       
       <div ref={articleRef} className="min-h-screen bg-gray-50 py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

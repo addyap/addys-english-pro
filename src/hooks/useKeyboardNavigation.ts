@@ -1,98 +1,115 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-interface KeyboardNavigationOptions {
-  onEscape?: () => void;
-  onEnter?: () => void;
-  onArrowUp?: () => void;
-  onArrowDown?: () => void;
-  onArrowLeft?: () => void;
-  onArrowRight?: () => void;
-  enabled?: boolean;
+interface KeyboardShortcut {
+  key: string;
+  ctrl?: boolean;
+  shift?: boolean;
+  alt?: boolean;
+  callback: () => void;
 }
 
 /**
- * Hook to handle keyboard navigation
+ * Hook for keyboard shortcuts
  */
-export const useKeyboardNavigation = (options: KeyboardNavigationOptions) => {
-  const {
-    onEscape,
-    onEnter,
-    onArrowUp,
-    onArrowDown,
-    onArrowLeft,
-    onArrowRight,
-    enabled = true,
-  } = options;
-
+export const useKeyboardShortcuts = (shortcuts: KeyboardShortcut[]) => {
   useEffect(() => {
-    if (!enabled) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      shortcuts.forEach((shortcut) => {
+        const ctrlMatch = shortcut.ctrl ? e.ctrlKey || e.metaKey : !e.ctrlKey && !e.metaKey;
+        const shiftMatch = shortcut.shift ? e.shiftKey : !e.shiftKey;
+        const altMatch = shortcut.alt ? e.altKey : !e.altKey;
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      switch (event.key) {
-        case 'Escape':
-          onEscape?.();
-          break;
-        case 'Enter':
-          onEnter?.();
-          break;
-        case 'ArrowUp':
-          event.preventDefault();
-          onArrowUp?.();
-          break;
-        case 'ArrowDown':
-          event.preventDefault();
-          onArrowDown?.();
-          break;
-        case 'ArrowLeft':
-          onArrowLeft?.();
-          break;
-        case 'ArrowRight':
-          onArrowRight?.();
-          break;
-      }
+        if (
+          e.key.toLowerCase() === shortcut.key.toLowerCase() &&
+          ctrlMatch &&
+          shiftMatch &&
+          altMatch
+        ) {
+          e.preventDefault();
+          shortcut.callback();
+        }
+      });
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [enabled, onEscape, onEnter, onArrowUp, onArrowDown, onArrowLeft, onArrowRight]);
+  }, [shortcuts]);
 };
 
 /**
- * Hook to trap focus within a container (useful for modals, menus)
+ * Hook for common navigation shortcuts
  */
-export const useFocusTrap = (containerRef: React.RefObject<HTMLElement>, enabled: boolean = true) => {
+export const useNavigationShortcuts = () => {
+  const navigate = useNavigate();
+
+  useKeyboardShortcuts([
+    {
+      key: 'h',
+      alt: true,
+      callback: () => navigate('/'),
+    },
+    {
+      key: 'b',
+      alt: true,
+      callback: () => navigate('/blog'),
+    },
+    {
+      key: 'c',
+      alt: true,
+      callback: () => navigate('/contact'),
+    },
+    {
+      key: 'f',
+      ctrl: true,
+      callback: () => {
+        const searchInput = document.querySelector('input[type="search"]') as HTMLInputElement;
+        searchInput?.focus();
+      },
+    },
+  ]);
+};
+
+/**
+ * Hook for arrow key navigation in lists
+ */
+export const useArrowNavigation = (itemsRef: React.RefObject<HTMLElement[]>) => {
   useEffect(() => {
-    if (!enabled || !containerRef.current) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!itemsRef.current || itemsRef.current.length === 0) return;
 
-    const container = containerRef.current;
-    const focusableElements = container.querySelectorAll<HTMLElement>(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    );
-    
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
+      const activeElement = document.activeElement as HTMLElement;
+      const currentIndex = itemsRef.current.indexOf(activeElement);
 
-    const handleTabKey = (e: KeyboardEvent) => {
-      if (e.key !== 'Tab') return;
+      if (currentIndex === -1) return;
 
-      if (e.shiftKey) {
-        if (document.activeElement === firstElement) {
-          lastElement?.focus();
+      let nextIndex = currentIndex;
+
+      switch (e.key) {
+        case 'ArrowDown':
           e.preventDefault();
-        }
-      } else {
-        if (document.activeElement === lastElement) {
-          firstElement?.focus();
+          nextIndex = Math.min(currentIndex + 1, itemsRef.current.length - 1);
+          break;
+        case 'ArrowUp':
           e.preventDefault();
-        }
+          nextIndex = Math.max(currentIndex - 1, 0);
+          break;
+        case 'Home':
+          e.preventDefault();
+          nextIndex = 0;
+          break;
+        case 'End':
+          e.preventDefault();
+          nextIndex = itemsRef.current.length - 1;
+          break;
+        default:
+          return;
       }
+
+      itemsRef.current[nextIndex]?.focus();
     };
 
-    container.addEventListener('keydown', handleTabKey);
-    firstElement?.focus();
-
-    return () => {
-      container.removeEventListener('keydown', handleTabKey);
-    };
-  }, [containerRef, enabled]);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [itemsRef]);
 };

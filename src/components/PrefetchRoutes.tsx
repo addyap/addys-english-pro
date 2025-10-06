@@ -1,39 +1,53 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const PrefetchRoutes = () => {
+/**
+ * Routes that should be prefetched for faster navigation
+ */
+const PREFETCH_ROUTES = [
+  '/qui-je-suis',
+  '/offres-de-formation',
+  '/blog',
+  '/contact',
+  '/temoignages',
+];
+
+/**
+ * Component to prefetch important routes on idle
+ */
+const PrefetchRoutes: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Define route prefetching based on current page
-    const routeMap: Record<string, string[]> = {
-      '/': ['/qui-je-suis', '/offres-de-formation', '/contact'],
-      '/qui-je-suis': ['/offres-de-formation', '/contact', '/blog'],
-      '/offres-de-formation': ['/contact', '/qui-je-suis', '/temoignages'],
-      '/blog': ['/qui-je-suis', '/contact', '/offres-de-formation'],
-      '/contact': ['/qui-je-suis', '/offres-de-formation'],
-      '/temoignages': ['/contact', '/offres-de-formation'],
-      '/anglaisadistance': ['/contact', '/offres-de-formation']
-    };
+    if (typeof window === 'undefined' || !('requestIdleCallback' in window)) {
+      return;
+    }
 
-    const routesToPrefetch = routeMap[location.pathname] || [];
-
-    routesToPrefetch.forEach(route => {
+    const prefetchRoute = (route: string) => {
+      // Create a link element to trigger prefetch
       const link = document.createElement('link');
       link.rel = 'prefetch';
       link.href = route;
       link.as = 'document';
       document.head.appendChild(link);
-    });
+    };
 
-    // Cleanup function to remove prefetch links when component unmounts
-    return () => {
-      routesToPrefetch.forEach(route => {
-        const existingLink = document.head.querySelector(`link[rel="prefetch"][href="${route}"]`);
-        if (existingLink) {
-          document.head.removeChild(existingLink);
+    const handleIdle = () => {
+      // Prefetch routes that aren't the current route
+      PREFETCH_ROUTES.forEach((route) => {
+        if (route !== location.pathname) {
+          prefetchRoute(route);
         }
       });
+    };
+
+    // Use requestIdleCallback to prefetch during idle time
+    const idleCallback = window.requestIdleCallback(handleIdle, { timeout: 2000 });
+
+    return () => {
+      if (idleCallback) {
+        window.cancelIdleCallback(idleCallback);
+      }
     };
   }, [location.pathname]);
 
