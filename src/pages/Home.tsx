@@ -8,8 +8,11 @@ import SEOHead, { jsonLdWebsite, jsonLdOrganization, jsonLdPerson } from '../com
 import AvisClients from '../components/AvisClients';
 import OptimizedHero from '../components/OptimizedHero';
 import { TypingText } from '../components/TypingText';
+import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 
 const Home = () => {
+  useScrollTracking('home');
+  useTimeTracking('home');
   const homeJsonLd = [
     {
       "@context": "https://schema.org",

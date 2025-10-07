@@ -6,8 +6,11 @@ import SEOHead from '../components/SEOHead';
 import { FadeInSection, Accordion } from '../components/Effects';
 import { CourseSchema } from '@/lib/seo/structuredData';
 import { seoMetadata } from '../utils/seoMetadata';
+import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 
 const Training = () => {
+  useScrollTracking('training');
+  useTimeTracking('training');
   const trainingJsonLd = {
     "@context": "https://schema.org",
     "@type": "Course",

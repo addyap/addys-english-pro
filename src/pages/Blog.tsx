@@ -6,10 +6,11 @@ import SEOHead from '../components/SEOHead';
 import { seoMetadata } from '../utils/seoMetadata';
 import BlogSearch from '../components/BlogSearch';
 import AnimatedCard from '../components/AnimatedCard';
-import { useScrollTracking } from '@/hooks/useScrollTracking';
+import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 
 const Blog = () => {
-  useScrollTracking('/blog');
+  useScrollTracking('blog');
+  useTimeTracking('blog');
   
   const [filteredArticles, setFilteredArticles] = useState<typeof articles>([]);
 
