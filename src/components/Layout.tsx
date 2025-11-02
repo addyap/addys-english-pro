@@ -20,6 +20,7 @@ const Layout = ({ children }: LayoutProps) => {
     { name: 'Témoignages', href: '/temoignages', current: location.pathname === '/temoignages' },
     { name: 'Contact', href: '/contact', current: location.pathname === '/contact' },
     { name: 'Blog', href: '/blog', current: location.pathname === '/blog' },
+    { name: 'Exercices', href: '/exercices', current: location.pathname === '/exercices' },
     { name: 'Ressources en ligne', href: '/anglaisadistance', current: location.pathname === '/anglaisadistance' },
   ];
 

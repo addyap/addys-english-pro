@@ -265,7 +265,7 @@ const Home = () => {
         {/* anglaisadistance.fr Block */}
         <section className="py-16 bg-muted">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-border">
+            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-border mb-8">
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="flex-shrink-0">
                   <img src="/lovable-uploads/d96440ab-4b9c-4f42-9910-75051d4f8b0e.png" alt="anglaisadistance.fr" className="h-24 w-auto" />
@@ -281,6 +281,28 @@ const Home = () => {
                     Découvrir les ressources
                     <ExternalLink className="h-4 w-4" />
                   </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Exercises Block */}
+            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-border">
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                <div className="flex-shrink-0">
+                  <div className="w-24 h-24 bg-primary/10 rounded-xl flex items-center justify-center">
+                    <BookOpen className="h-12 w-12 text-primary" />
+                  </div>
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <h2 className="text-3xl font-bold text-primary mb-4 font-heading">
+                    100 Exercices d'Anglais
+                  </h2>
+                  <p className="text-lg text-muted-foreground mb-6 font-body">
+                    Perfectionnez votre anglais avec 100 exercices ciblés sur les pièges les plus courants : grammaire, vocabulaire, faux amis...
+                  </p>
+                  <Link to="/exercices" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body">
+                    Découvrir les exercices
+                  </Link>
                 </div>
               </div>
             </div>

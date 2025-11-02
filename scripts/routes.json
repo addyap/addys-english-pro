@@ -8,6 +8,7 @@
     { "path": "/temoignages", "priority": 0.7, "changefreq": "monthly", "title": "Testimonials" },
     { "path": "/contact", "priority": 0.8, "changefreq": "monthly", "title": "Contact" },
     { "path": "/blog", "priority": 0.7, "changefreq": "weekly", "title": "Blog" },
+    { "path": "/exercices", "priority": 0.7, "changefreq": "monthly", "title": "Exercices" },
     { "path": "/anglaisadistance", "priority": 0.6, "changefreq": "monthly", "title": "Anglais à Distance" },
     { "path": "/politique-confidentialite", "priority": 0.3, "changefreq": "yearly", "title": "Privacy Policy" }
   ]
