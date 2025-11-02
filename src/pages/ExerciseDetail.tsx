@@ -1,0 +1,208 @@
+import React, { useState, useEffect } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { ArrowLeft, BookOpen, ChevronLeft, ChevronRight, Trophy, RotateCcw } from 'lucide-react';
+import SEOHead from '../components/SEOHead';
+import { exercisesData, exercisesList } from '../data/exercisesData';
+import ExerciseQuestion from '../components/ExerciseQuestion';
+import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
+import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
+
+const ExerciseDetail = () => {
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const exerciseId = parseInt(id || '0');
+  const exercise = exercisesData.find(ex => ex.id === exerciseId);
+
+  useScrollTracking(`exercise-${exerciseId}`);
+  useTimeTracking(`exercise-${exerciseId}`);
+
+  const [completedQuestions, setCompletedQuestions] = useState<Set<number>>(new Set());
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [exerciseId]);
+
+  if (!exercise) {
+    return (
+      <div className="min-h-screen bg-background py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-2xl font-bold text-primary mb-4">Exercice non disponible</h1>
+          <p className="text-muted-foreground mb-8">
+            Cet exercice n'est pas encore disponible ou n'existe pas.
+          </p>
+          <Link to="/exercices" className="text-primary hover:underline">
+            Retour aux exercices
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const progress = (completedQuestions.size / exercise.questions.length) * 100;
+  const previousExercise = exercisesList.find(ex => ex.id === exerciseId - 1);
+  const nextExercise = exercisesList.find(ex => ex.id === exerciseId + 1);
+
+  const handleResetExercise = () => {
+    setCompletedQuestions(new Set());
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <>
+      <SEOHead 
+        title={`${exercise.title} - Exercices d'anglais`}
+        description={exercise.description}
+        canonicalPath={`/exercices/${exerciseId}`}
+        keywords={["Exercice d'anglais", exercise.title, "Grammaire anglaise", "Antony Addy"]}
+      />
+
+      <div className="min-h-screen bg-background">
+        {/* Header */}
+        <section className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground py-12">
+          <div className="max-w-4xl mx-auto px-4">
+            <Link 
+              to="/exercices" 
+              className="inline-flex items-center gap-2 text-primary-foreground/90 hover:text-primary-foreground mb-6 transition-colors"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Retour aux exercices
+            </Link>
+            
+            <div className="flex items-start gap-4 mb-6">
+              <div className="flex-shrink-0 w-16 h-16 rounded-full bg-white/10 flex items-center justify-center">
+                <span className="text-2xl font-bold">{exercise.id}</span>
+              </div>
+              <div className="flex-1">
+                <h1 className="text-3xl md:text-4xl font-bold mb-2 font-heading">
+                  {exercise.title}
+                </h1>
+                <p className="text-lg text-primary-foreground/90 font-body">
+                  {exercise.description}
+                </p>
+              </div>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="bg-white/10 rounded-lg p-4">
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-sm font-medium">Progression</span>
+                <span className="text-sm font-medium">
+                  {completedQuestions.size} / {exercise.questions.length}
+                </span>
+              </div>
+              <Progress value={progress} className="h-2 bg-white/20" />
+            </div>
+          </div>
+        </section>
+
+        {/* Questions */}
+        <section className="py-12">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="space-y-6">
+              {exercise.questions.map((question, index) => (
+                <ExerciseQuestion
+                  key={question.id}
+                  question={question}
+                  questionNumber={index + 1}
+                />
+              ))}
+            </div>
+
+            {/* Completion Section */}
+            {progress === 100 && (
+              <div className="mt-12 bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-lg p-8 text-center">
+                <Trophy className="h-16 w-16 text-green-600 mx-auto mb-4" />
+                <h2 className="text-2xl font-bold text-green-800 mb-2">
+                  Exercice terminé !
+                </h2>
+                <p className="text-green-700 mb-6">
+                  Félicitations ! Vous avez complété toutes les questions.
+                </p>
+                <Button
+                  onClick={handleResetExercise}
+                  variant="outline"
+                  className="gap-2"
+                >
+                  <RotateCcw className="h-4 w-4" />
+                  Recommencer l'exercice
+                </Button>
+              </div>
+            )}
+
+            {/* Navigation */}
+            <div className="mt-12 flex justify-between items-center gap-4">
+              {previousExercise ? (
+                exercisesData.find(ex => ex.id === previousExercise.id) ? (
+                  <Button
+                    onClick={() => navigate(`/exercices/${previousExercise.id}`)}
+                    variant="outline"
+                    className="gap-2"
+                  >
+                    <ChevronLeft className="h-4 w-4" />
+                    <span className="hidden sm:inline">Exercice précédent</span>
+                    <span className="sm:hidden">Précédent</span>
+                  </Button>
+                ) : (
+                  <div className="text-sm text-muted-foreground">
+                    Exercice {previousExercise.id} bientôt disponible
+                  </div>
+                )
+              ) : (
+                <div />
+              )}
+
+              {nextExercise ? (
+                exercisesData.find(ex => ex.id === nextExercise.id) ? (
+                  <Button
+                    onClick={() => navigate(`/exercices/${nextExercise.id}`)}
+                    className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
+                  >
+                    <span className="hidden sm:inline">Exercice suivant</span>
+                    <span className="sm:hidden">Suivant</span>
+                    <ChevronRight className="h-4 w-4" />
+                  </Button>
+                ) : (
+                  <div className="text-sm text-muted-foreground">
+                    Exercice {nextExercise.id} bientôt disponible
+                  </div>
+                )
+              ) : (
+                <div />
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-16 bg-muted">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <BookOpen className="h-12 w-12 text-primary mx-auto mb-4" />
+            <h2 className="text-2xl font-bold text-primary mb-4 font-heading">
+              Besoin d'un accompagnement personnalisé ?
+            </h2>
+            <p className="text-muted-foreground mb-6 font-body">
+              Ces exercices sont conçus pour compléter mes formations. Pour un apprentissage structuré, contactez-moi.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/contact"
+                className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors inline-block"
+              >
+                Me contacter
+              </Link>
+              <Link
+                to="/offres-de-formation"
+                className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors inline-block"
+              >
+                Voir les formations
+              </Link>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
+  );
+};
+
+export default ExerciseDetail;
