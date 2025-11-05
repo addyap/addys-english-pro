@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, BookOpen, ChevronLeft, ChevronRight, Trophy, RotateCcw } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
-import { exercisesData, exercisesList } from '../data/exercisesData';
+import { allExercisesData as exercisesData, allExercisesList as exercisesList } from '../data/allExercises';
 import ExerciseQuestion from '../components/ExerciseQuestion';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';

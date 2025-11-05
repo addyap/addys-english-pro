@@ -4,7 +4,7 @@ import { BookOpen, Lock, CheckCircle } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import AnimatedCard from '../components/AnimatedCard';
-import { exercisesData, exercisesList } from '../data/exercisesData';
+import { allExercisesData as exercisesData, allExercisesList as exercisesList } from '../data/allExercises';
 
 const Exercises = () => {
   useScrollTracking('exercises');
