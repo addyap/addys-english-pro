@@ -13,7 +13,24 @@ export default function Analytics() {
     const id = "G-DNSN8DZZTV";
     let hasLoaded = false;
 
+    // Check for existing consent
+    const getConsent = () => {
+      try {
+        return localStorage.getItem('cookie-consent');
+      } catch {
+        return null;
+      }
+    };
+
     const loadAnalytics = () => {
+      const consent = getConsent();
+      
+      // Don't load if consent is declined or not given
+      if (consent !== 'accepted') {
+        console.log('[GA4] Waiting for cookie consent');
+        return;
+      }
+
       if (hasLoaded) return;
       hasLoaded = true;
 
@@ -28,6 +45,12 @@ export default function Analytics() {
       // Make gtag globally available
       window.gtag = gtag;
       
+      // Set default consent to denied
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+      });
+
       // Configure gtag
       gtag('js', new Date());
       gtag('config', id, {
@@ -41,7 +64,11 @@ export default function Analytics() {
       script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
       
       script.onload = () => {
-        console.log('[GA4] Script loaded after user interaction');
+        console.log('[GA4] Script loaded with user consent');
+        // Grant consent after script loads
+        gtag('consent', 'update', {
+          analytics_storage: 'granted',
+        });
         gtag('event', 'page_view', {
           page_title: document.title,
           page_location: window.location.href
@@ -51,7 +78,21 @@ export default function Analytics() {
       document.head.appendChild(script);
     };
 
-    // Load on first user interaction (optimized for performance)
+    // Listen for consent changes
+    const handleConsentChange = () => {
+      const consent = getConsent();
+      if (consent === 'accepted' && !hasLoaded) {
+        loadAnalytics();
+      }
+    };
+
+    // Check consent on mount
+    handleConsentChange();
+
+    // Listen for storage changes (consent updates)
+    window.addEventListener('storage', handleConsentChange);
+
+    // Load on first user interaction if consent already given
     const events = ['mousedown', 'keydown', 'touchstart', 'scroll'];
     const handler = () => {
       loadAnalytics();
@@ -60,11 +101,12 @@ export default function Analytics() {
 
     events.forEach(event => window.addEventListener(event, handler, { once: true, passive: true }));
 
-    // Fallback: load after 5 seconds if no interaction
+    // Fallback: load after 5 seconds if no interaction and consent given
     const timeout = setTimeout(loadAnalytics, 5000);
 
     return () => {
       clearTimeout(timeout);
+      window.removeEventListener('storage', handleConsentChange);
       events.forEach(event => window.removeEventListener(event, handler));
       const existingScript = document.querySelector(`script[src*="${id}"]`);
       if (existingScript) {

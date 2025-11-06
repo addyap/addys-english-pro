@@ -20,6 +20,9 @@ const CookieConsent: React.FC = () => {
     setConsent('accepted');
     setShowBanner(false);
 
+    // Trigger storage event for Analytics component
+    window.dispatchEvent(new Event('storage'));
+
     // Enable analytics if available
     if (window.gtag) {
       window.gtag('consent', 'update', {

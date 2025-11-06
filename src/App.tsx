@@ -9,6 +9,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { AppErrorBoundary } from "./components/AppErrorBoundary";
 import DiagnosticsPanel from "./components/DiagnosticsPanel";
 import Analytics from "./components/Analytics";
+import GAStatusBanner from "./components/GAStatusBanner";
 import OfflineBanner from "./components/OfflineBanner";
 import A11yProvider from "./components/A11yProvider";
 import CookieConsent from "./components/CookieConsent";
@@ -90,6 +91,7 @@ const App = () => (
         <TooltipProvider>
           <A11yProvider>
             <Analytics />
+            <GAStatusBanner />
             <Toaster />
             <Sonner />
             <DiagnosticsPanel />
