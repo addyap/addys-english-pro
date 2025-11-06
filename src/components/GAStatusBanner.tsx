@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 
 export default function GAStatusBanner() {
   const [status, setStatus] = useState("Not loaded");
+  const id = (window as any).__GA_ID__ || import.meta.env.VITE_GA_ID || "G-DNSN8DZTZV";
 
   useEffect(() => {
     const interval = setInterval(() => {
       if ((window as any).gtag) {
-        setStatus("✅ GA4 Active: G-DNSN8DZTZV");
+        setStatus(`✅ GA4 Active: ${id}`);
       } else {
         setStatus("❌ GA4 Not detected");
       }
@@ -15,7 +16,8 @@ export default function GAStatusBanner() {
     return () => clearInterval(interval);
   }, []);
 
-  if (process.env.NODE_ENV !== "development") return null;
+  const show = import.meta.env.DEV || new URLSearchParams(window.location.search).has('ga_debug');
+  if (!show) return null;
 
   return (
     <div

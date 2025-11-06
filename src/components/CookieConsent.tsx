@@ -20,8 +20,8 @@ const CookieConsent: React.FC = () => {
     setConsent('accepted');
     setShowBanner(false);
 
-    // Trigger storage event for Analytics component
-    window.dispatchEvent(new Event('storage'));
+    // Notify listeners (Analytics) about consent change
+    window.dispatchEvent(new CustomEvent('cookie-consent-changed', { detail: 'accepted' }));
 
     // Enable analytics if available
     if (window.gtag) {
@@ -34,6 +34,9 @@ const CookieConsent: React.FC = () => {
   const handleDecline = () => {
     setConsent('declined');
     setShowBanner(false);
+
+    // Notify listeners (Analytics) about consent change
+    window.dispatchEvent(new CustomEvent('cookie-consent-changed', { detail: 'declined' }));
 
     // Disable analytics if available
     if (window.gtag) {

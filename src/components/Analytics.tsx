@@ -10,7 +10,7 @@ declare global {
 
 export default function Analytics() {
   useEffect(() => {
-    const id = "G-DNSN8DZTZV";
+    const id = (window as any).__GA_ID__ || import.meta.env.VITE_GA_ID || "G-DNSN8DZTZV";
     let hasLoaded = false;
 
     // Check for existing consent
@@ -55,7 +55,8 @@ export default function Analytics() {
       gtag('js', new Date());
       gtag('config', id, {
         anonymize_ip: true,
-        send_page_view: true
+        send_page_view: true,
+        debug_mode: import.meta.env.DEV || Boolean((window as any).__GA_DEBUG__),
       });
 
       // Load the GA script
@@ -91,6 +92,7 @@ export default function Analytics() {
 
     // Listen for storage changes (consent updates)
     window.addEventListener('storage', handleConsentChange);
+    window.addEventListener('cookie-consent-changed', handleConsentChange as EventListener);
 
     // Load on first user interaction if consent already given
     const events = ['mousedown', 'keydown', 'touchstart', 'scroll'];
@@ -107,6 +109,7 @@ export default function Analytics() {
     return () => {
       clearTimeout(timeout);
       window.removeEventListener('storage', handleConsentChange);
+      window.removeEventListener('cookie-consent-changed', handleConsentChange as EventListener);
       events.forEach(event => window.removeEventListener(event, handler));
       const existingScript = document.querySelector(`script[src*="${id}"]`);
       if (existingScript) {
