@@ -7,7 +7,7 @@ export default function GAStatusBanner() {
   useEffect(() => {
     const interval = setInterval(() => {
       if ((window as any).gtag) {
-        setStatus("✅ GA4 Active: G-DNSN8DZZTV");
+        setStatus("✅ GA4 Active: G-DNSN8DZTZV");
       } else {
         setStatus("❌ GA4 Not detected");
       }

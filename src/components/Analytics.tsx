@@ -10,7 +10,7 @@ declare global {
 
 export default function Analytics() {
   useEffect(() => {
-    const id = "G-DNSN8DZZTV";
+    const id = "G-DNSN8DZTZV";
     let hasLoaded = false;
 
     // Check for existing consent
