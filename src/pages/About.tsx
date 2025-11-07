@@ -30,11 +30,29 @@ const About = () => {
 
   return <>
       <SEOHead 
-        title="Qui suis-je – Antony Addy, Prestataire de formation certifié"
-        description="Antony Addy, formateur certifié FPA, expert en anglais professionnel pour adultes et institutions depuis 2017."
-        keywords={["Antony Addy", "Formateur Professionnel d'Adultes", "FPA", "anglais professionnel", "formation continue", "Alpes-Maritimes"]}
+        title="Qui suis-je – Antony Addy, Formateur d'anglais certifié FPA"
+        description="Antony Addy, formateur britannique natif certifié FPA depuis 2017. Plus de 20 ans d'expérience en formation d'anglais professionnel pour adultes, entreprises et écoles."
+        keywords={["Antony Addy", "Formateur Professionnel d'Adultes", "FPA certifié", "anglais professionnel", "formation continue", "Alpes-Maritimes", "formateur britannique natif", "plus de 20 ans d'expérience"]}
         canonicalUrl="https://antonyaddy.com/qui-je-suis"
-        jsonLd={aboutJsonLd}
+        image="https://www.antonyaddy.com/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png"
+        imageAlt="Photo professionnelle d'Antony Addy, formateur d'anglais certifié"
+        jsonLd={[aboutJsonLd, {
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          mainEntity: {
+            "@type": "Person",
+            name: "Antony Addy",
+            jobTitle: "Formateur Professionnel d'Adultes certifié",
+            description: "Formateur britannique natif avec plus de 20 ans d'expérience dans l'enseignement de l'anglais professionnel",
+            nationality: "British",
+            knowsLanguage: ["en", "fr"],
+            hasCredential: {
+              "@type": "EducationalOccupationalCredential",
+              credentialCategory: "Certification",
+              name: "Formateur Professionnel d'Adultes (FPA)"
+            }
+          }
+        }]}
       />
       
       <div className="min-h-screen bg-background py-12">

@@ -76,24 +76,57 @@ const Training = () => {
   return (
     <>
       <SEOHead
-        title="Offres de formation en anglais – Antony Addy"
-        description="Découvrez les formations d'anglais proposées par Antony Addy : anglais professionnel, CPF, entreprises, particuliers en présentiel et à distance."
+        title="Offres de formation en anglais professionnel – Antony Addy"
+        description="Formations d'anglais sur mesure : anglais professionnel, CPF, entreprises, particuliers. En présentiel (Alpes-Maritimes) ou à distance (France entière). Formateur britannique natif certifié FPA."
         canonicalUrl="https://antonyaddy.com/offres-de-formation"
+        image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
+        imageAlt="Formations d'anglais professionnel par Antony Addy"
         keywords={[
-          "formation anglais",
-          "anglais professionnel",
-          "CPF",
-          "cours individuels",
-          "anglais pour entreprises",
-          "formation continue",
-          "cours à distance",
+          "formation anglais professionnel",
+          "anglais des affaires",
+          "CPF anglais",
+          "cours individuels anglais",
+          "formation anglais entreprise",
+          "formation continue anglais",
+          "cours anglais à distance",
           "Antony Addy",
           "anglais Alpes-Maritimes",
           "formateur natif britannique",
-          "anglais des affaires",
-          "présentiel et visioconférence"
+          "anglais téléphonique",
+          "préparation TOEIC",
+          "anglais spécialisé",
+          "visioconférence anglais"
         ]}
-        jsonLd={trainingJsonLd}
+        jsonLd={[trainingJsonLd, {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Quels types de formations d'anglais proposez-vous ?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Je propose plusieurs types de formations : anglais général, anglais professionnel, anglais téléphonique et email, anglais spécialisé (vente, RH, immobilier, hôtellerie), et préparation aux certifications (TOEIC, CLOE, Bright)."
+              }
+            },
+            {
+              "@type": "Question",
+              name: "Les formations sont-elles disponibles en ligne ?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Oui, toutes les formations sont disponibles en ligne (visioconférence) pour toute la France, ou en présentiel dans les Alpes-Maritimes (Cannes, Antibes, Nice, Monaco)."
+              }
+            },
+            {
+              "@type": "Question",
+              name: "Puis-je financer ma formation avec mon CPF ?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Oui, les formations peuvent être financées via le CPF en passant par des organismes de formation certifiés Qualiopi partenaires."
+              }
+            }
+          ]
+        }]}
       />
       <CourseSchema
         name="Formations d'anglais professionnel"

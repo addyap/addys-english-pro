@@ -47,36 +47,44 @@ const Blog = () => {
   return (
     <>
       <SEOHead
-        title="Blog – Conseils pour apprendre l'anglais"
-        description="Le blog d'Antony Addy : astuces, grammaire et vocabulaire pour progresser en anglais professionnel."
+        title="Blog Anglais Professionnel – Conseils & Astuces | Antony Addy"
+        description="Découvrez les meilleurs conseils pour apprendre l'anglais professionnel : grammaire, vocabulaire, erreurs courantes et astuces de formation par un formateur certifié."
         canonicalPath="/blog"
         datePublished="2025-01-15T10:00:00+01:00"
         dateModified="2025-01-15T10:00:00+01:00"
+        image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
+        imageAlt="Blog anglais professionnel par Antony Addy formateur certifié"
         keywords={[
-          "blog anglais",
-          "astuces anglais",
-          "grammaire anglaise",
-          "vocabulaire anglais",
-          "anglais professionnel",
-          "apprendre l'anglais",
-          "formateur d'anglais",
-          "conseils langue anglaise",
-          "formation linguistique",
-          "Antony Addy",
-          "CPF",
-          "anglais pour adultes"
+          "blog anglais professionnel",
+          "astuces apprendre anglais",
+          "grammaire anglaise expliquée",
+          "vocabulaire business english",
+          "erreurs francophones anglais",
+          "conseils formation anglais",
+          "anglais pour adultes",
+          "communication professionnelle anglais",
+          "Antony Addy blog",
+          "CPF anglais",
+          "améliorer son anglais",
+          "formateur anglais natif"
         ]}
         jsonLd={[
           {
             "@context": "https://schema.org",
             "@type": "Blog",
-            name: "Blog Antony Addy",
-            description: "Conseils et ressources pour progresser en anglais professionnel",
+            name: "Blog Anglais Professionnel - Antony Addy",
+            description: "Conseils d'expert, astuces pratiques et ressources pour progresser en anglais professionnel. Articles rédigés par un formateur britannique natif certifié FPA.",
             url: "https://www.antonyaddy.com/blog",
             author: {
               "@type": "Person",
               name: "Antony Addy",
-              url: "https://www.antonyaddy.com"
+              url: "https://www.antonyaddy.com",
+              jobTitle: "Formateur Professionnel d'Adultes certifié"
+            },
+            inLanguage: "fr",
+            publisher: {
+              "@type": "Person",
+              name: "Antony Addy"
             }
           }
         ]}

@@ -120,11 +120,13 @@ const Home = () => {
   return <>
       <SEOHead 
         title="Formateur d'anglais pour adultes – Antony Addy"
-        description="Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes. CPF via centres certifiés Qualiopi."
+        description="Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes. CPF via centres certifiés Qualiopi. Formateur natif britannique certifié FPA."
         canonicalPath="/"
         datePublished="2025-01-15T10:00:00+01:00"
         dateModified="2025-01-15T10:00:00+01:00"
-        keywords={["Anglais professionnel", "Formateur anglais", "Antony Addy", "CPF", "Formation d'anglais", "Cours d'anglais en ligne", "Anglais pour adultes", "Alpes-Maritimes", "Formation continue"]}
+        image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
+        imageAlt="Antony Addy, formateur d'anglais professionnel certifié FPA animant une session de formation"
+        keywords={["Anglais professionnel", "Formateur anglais natif", "Antony Addy", "CPF", "Formation d'anglais", "Cours d'anglais en ligne", "Anglais pour adultes", "Alpes-Maritimes", "Formation continue", "Formateur britannique", "FPA certifié"]}
         jsonLd={[
           jsonLdWebsite(),
           jsonLdOrganization(),
@@ -133,10 +135,37 @@ const Home = () => {
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
             name: "Formation d'anglais professionnel",
-            description: "Services de formation en anglais professionnel, coaching linguistique et cours particuliers",
+            description: "Services de formation en anglais professionnel, coaching linguistique et cours particuliers dispensés par un formateur natif britannique certifié",
             provider: jsonLdOrganization(),
             areaServed: { "@type": "Place", name: "France" },
-            serviceType: ["Formation d'anglais professionnel", "Coaching linguistique", "Cours particuliers d'anglais"]
+            serviceType: ["Formation d'anglais professionnel", "Coaching linguistique", "Cours particuliers d'anglais"],
+            priceRange: "$$",
+            availableChannel: [
+              { "@type": "ServiceChannel", serviceType: "En présentiel", availableLanguage: "fr" },
+              { "@type": "ServiceChannel", serviceType: "À distance", availableLanguage: "fr" }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Où intervient Antony Addy pour les formations d'anglais ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "En présentiel dans les Alpes-Maritimes (Cannes, Antibes, Nice, Monaco) et à distance partout en France."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Les formations sont-elles éligibles au CPF ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Oui, les formations peuvent être financées via le CPF en passant par des centres de formation certifiés Qualiopi partenaires."
+                }
+              }
+            ]
           }
         ]}
       />
@@ -254,7 +283,7 @@ const Home = () => {
 
               <SwiperSlide>
                 <div className="flex flex-col items-center">
-                  <img src="/lovable-uploads/69034832-a004-43a5-b367-f4726a4d126a.png" alt="Ingeneria" className="h-24 object-contain mb-2" />
+                  <img src="/lovable-uploads/69034832-a004-43a5-b367-f4726a4d126a.png" alt="Logo Ingeneria Project, entreprise partenaire pour formations d'anglais professionnel" className="h-24 object-contain mb-2" width="96" height="96" loading="lazy" />
                   <p className="text-sm font-medium text-primary">Ingeneria</p>
                 </div>
               </SwiperSlide>
@@ -268,7 +297,7 @@ const Home = () => {
             <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-border mb-8">
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="flex-shrink-0">
-                  <img src="/lovable-uploads/d96440ab-4b9c-4f42-9910-75051d4f8b0e.png" alt="anglaisadistance.fr" className="h-24 w-auto" />
+                  <img src="/lovable-uploads/d96440ab-4b9c-4f42-9910-75051d4f8b0e.png" alt="Logo anglaisadistance.fr - Plateforme gratuite de ressources pédagogiques en anglais créée par Antony Addy" className="h-24 w-auto" width="96" height="96" loading="lazy" />
                 </div>
                 <div className="flex-1 text-center md:text-left">
                   <h2 className="text-3xl font-bold text-primary mb-4 font-heading">
@@ -358,7 +387,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="order-1 md:order-2">
-                  <img src="/lovable-uploads/de1467b6-7694-4b1e-b2c8-e4cb04b71b21.png" alt="Carte de la zone d'intervention - Côte d'Azur" className="w-full h-auto rounded-lg" />
+                  <img src="/lovable-uploads/de1467b6-7694-4b1e-b2c8-e4cb04b71b21.png" alt="Carte de la zone d'intervention d'Antony Addy formateur d'anglais - Cannes, Antibes, Nice, Monaco, Côte d'Azur et toute la France à distance" className="w-full h-auto rounded-lg" width="600" height="auto" loading="lazy" />
                 </div>
               </div>
             </div>

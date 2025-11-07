@@ -125,11 +125,23 @@ const Testimonials = () => {
   return (
     <>
       <SEOHead 
-        title="Témoignages – Antony Addy | Formateur Anglais"
-        description="Avis authentiques d'anciens apprenants et professionnels sur la qualité des formations d'anglais animées par Antony Addy."
-        keywords={["témoignages", "avis clients", "formation anglais", "Antony Addy", "satisfaction clients"]}
+        title="Témoignages Clients – Avis sur les formations d'Antony Addy"
+        description="Découvrez les avis authentiques de plus de 15 professionnels ayant suivi les formations d'anglais d'Antony Addy. Retours vérifiés sur la qualité, la pédagogie et l'efficacité des cours."
+        keywords={["témoignages formation anglais", "avis clients Antony Addy", "retours formations anglais", "satisfaction apprenants", "avis formateur anglais", "témoignages professionnels", "formation anglais avis", "recommandations formateur"]}
         canonicalUrl="https://antonyaddy.com/temoignages"
-        jsonLd={testimonialsJsonLd}
+        image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
+        imageAlt="Témoignages clients formations anglais Antony Addy"
+        jsonLd={[testimonialsJsonLd, {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Antony Addy",
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "5",
+            bestRating: "5",
+            ratingCount: "15"
+          }
+        }]}
       />
       
       <div className="min-h-screen bg-background py-12">

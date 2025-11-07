@@ -105,11 +105,23 @@ const Contact = () => {
 
   return <>
       <SEOHead 
-        title="Contact – Antony Addy, Prestataire d'anglais"
-        description="Contactez-moi pour une formation en anglais professionnel. Réponse rapide garantie."
-        keywords={["Contact", "Antony Addy", "formation anglais", "devis", "consultation"]}
+        title="Contact – Antony Addy | Formateur d'anglais professionnel"
+        description="Contactez Antony Addy pour vos besoins en formation d'anglais professionnel. Réponse rapide par email, WhatsApp ou formulaire. Devis gratuit sur demande."
+        keywords={["Contact Antony Addy", "contacter formateur anglais", "devis formation anglais", "consultation anglais professionnel", "WhatsApp formateur", "email formations", "Alpes-Maritimes", "France"]}
         canonicalUrl="https://antonyaddy.com/contact"
-        jsonLd={contactJsonLd}
+        image="https://www.antonyaddy.com/lovable-uploads/200e88ab-2bbf-4168-85ad-8123b07c44ac.png"
+        imageAlt="QR Code LinkedIn pour contacter Antony Addy"
+        jsonLd={[contactJsonLd, {
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          mainEntity: {
+            "@type": "ContactPoint",
+            contactType: "Customer Service",
+            email: "formations@antonyaddy.com",
+            availableLanguage: ["French", "English"],
+            areaServed: "FR"
+          }
+        }]}
       />
       
       <div className="min-h-screen bg-gray-50 py-12">

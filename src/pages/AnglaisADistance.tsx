@@ -46,25 +46,43 @@ const AnglaisADistance = () => {
   return (
     <>
       <SEOHead
-        title="anglaisadistance.fr – Ressources gratuites pour apprendre l'anglais"
-        description="Explorez grammaire, vocabulaire, dialogues, quiz et plus encore sur anglaisadistance.fr – la plateforme gratuite dédiée à l'apprentissage de l'anglais."
+        title="anglaisadistance.fr – Ressources gratuites d'anglais par Antony Addy"
+        description="Plateforme gratuite de ressources pédagogiques en anglais : grammaire claire, vocabulaire thématique, dialogues authentiques, quiz interactifs et tests de niveau. Créée par Antony Addy, formateur professionnel."
         canonicalPath="/anglaisadistance"
+        image="https://www.antonyaddy.com/lovable-uploads/d96440ab-4b9c-4f42-9910-75051d4f8b0e.png"
+        imageAlt="Logo anglaisadistance.fr - Ressources gratuites pour apprendre l'anglais"
         keywords={[
-          "anglais à distance",
-          "grammaire anglaise", 
-          "vocabulaire anglais",
-          "dialogues anglais",
-          "quiz anglais",
-          "formation anglais à distance",
-          "cours d'anglais en ligne",
-          "anglais professionnel",
-          "formateur anglais",
-          "CPF",
-          "anglais pour adultes",
-          "apprendre l'anglais",
-          "Alpes-Maritimes",
-          "formation en visioconférence"
+          "anglaisadistance.fr",
+          "ressources anglais gratuites",
+          "grammaire anglaise gratuite", 
+          "vocabulaire anglais thématique",
+          "dialogues anglais audio",
+          "quiz anglais interactifs",
+          "apprendre anglais gratuit",
+          "cours anglais en ligne gratuit",
+          "exercices anglais",
+          "tests niveau anglais",
+          "Antony Addy ressources",
+          "formation anglais autonome",
+          "anglais pour adultes gratuit",
+          "supports pédagogiques anglais"
         ]}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "anglaisadistance.fr",
+          description: "Plateforme gratuite de ressources pédagogiques en anglais créée par Antony Addy",
+          url: "https://anglaisadistance.fr",
+          author: {
+            "@type": "Person",
+            name: "Antony Addy",
+            jobTitle: "Formateur Professionnel d'Adultes certifié"
+          },
+          isAccessibleForFree: true,
+          inLanguage: "fr",
+          educationalUse: ["self-paced learning", "practice"],
+          keywords: "grammaire anglaise, vocabulaire, dialogues, quiz, ressources gratuites"
+        }}
       />
 
       {/* Header Section */}
@@ -73,8 +91,11 @@ const AnglaisADistance = () => {
           <div className="flex justify-center mb-8">
             <img
               src="/lovable-uploads/d96440ab-4b9c-4f42-9910-75051d4f8b0e.png"
-              alt="anglaisadistance.fr"
+              alt="Logo anglaisadistance.fr - Plateforme gratuite de ressources pédagogiques en anglais : grammaire, vocabulaire, dialogues et quiz interactifs"
               className="h-32 w-auto"
+              width="128"
+              height="128"
+              loading="eager"
             />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 font-heading">

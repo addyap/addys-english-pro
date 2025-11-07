@@ -15,10 +15,27 @@ const Exercises = () => {
   return (
     <>
       <SEOHead 
-        title="100 Exercices d'anglais – Antony Addy"
-        description="Accédez à 100 exercices d'anglais couvrant la grammaire, le vocabulaire et les pièges courants pour améliorer votre niveau."
+        title="100 Exercices d'anglais gratuits – Grammaire & Vocabulaire | Antony Addy"
+        description="Accédez à 100 exercices d'anglais gratuits créés par un formateur professionnel. Grammaire, vocabulaire, pièges courants et faux-amis. Idéal pour progresser rapidement."
         canonicalPath="/exercices"
-        keywords={["Exercices d'anglais", "Grammaire anglaise", "Vocabulaire anglais", "Pièges en anglais", "Formation anglais", "Antony Addy"]}
+        image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
+        imageAlt="Exercices d'anglais interactifs par Antony Addy"
+        keywords={["Exercices d'anglais gratuits", "Grammaire anglaise exercices", "Vocabulaire anglais pratique", "Pièges en anglais", "Faux-amis anglais", "Quiz anglais", "Exercices anglais en ligne", "Antony Addy", "Apprendre l'anglais", "Entraînement anglais"]}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "LearningResource",
+          name: "100 Exercices d'Anglais",
+          description: "Collection de 100 exercices d'anglais couvrant la grammaire, le vocabulaire et les pièges courants",
+          author: {
+            "@type": "Person",
+            name: "Antony Addy",
+            jobTitle: "Formateur Professionnel d'Adultes"
+          },
+          educationalLevel: "Beginner to Advanced",
+          inLanguage: "fr",
+          learningResourceType: "Exercise",
+          isAccessibleForFree: true
+        }}
       />
 
       <div className="min-h-screen bg-background">
