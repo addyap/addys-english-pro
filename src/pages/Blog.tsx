@@ -12,8 +12,6 @@ const Blog = () => {
   useScrollTracking('blog');
   useTimeTracking('blog');
   
-  const [filteredArticles, setFilteredArticles] = useState<typeof articles>([]);
-
   const articles = [
     {
       id: 'anglais-professionnel-2025',
@@ -43,6 +41,8 @@ const Blog = () => {
       readTime: '6 min'
     }
   ];
+
+  const [filteredArticles, setFilteredArticles] = useState<typeof articles>(articles);
 
   return (
     <>
