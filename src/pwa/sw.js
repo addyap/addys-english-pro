@@ -1,24 +1,34 @@
-const VERSION = 'v1.2.0';
+const VERSION = 'v2.0.0';
 const CACHE_NAME = `antonyaddy-${VERSION}`;
 const STATIC_CACHE = `${CACHE_NAME}-static`;
 const DYNAMIC_CACHE = `${CACHE_NAME}-dynamic`;
-const MAX_CACHE_SIZE = 50; // Maximum items in dynamic cache
+const OFFLINE_CACHE = `${CACHE_NAME}-offline`;
+const MAX_CACHE_SIZE = 100; // Maximum items in dynamic cache
 
+// Critical app shell files
 const STATIC_FILES = [
   '/',
   '/index.html',
+  '/manifest.webmanifest',
   '/manifest.json',
   '/robots.txt',
   '/health.html',
   '/status.html',
   '/apple-touch-icon.png',
-  '/favicon.ico',
-  '/src/main.tsx',
   '/assets/logo.svg',
   '/assets/logo-512.png',
-  '/assets/hero-poster.jpg',
   '/lovable-uploads/2fd5760c-9208-4295-a1b5-87b41963111b.png',
   '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+];
+
+// Routes to cache for offline access
+const OFFLINE_ROUTES = [
+  '/',
+  '/exercices-anglais',
+  '/blog',
+  '/contact',
+  '/qui-je-suis',
+  '/offres-de-formation',
 ];
 
 // Limit cache size

@@ -19,6 +19,7 @@ import Layout from "./components/Layout";
 import PrefetchRoutes from "./components/PrefetchRoutes";
 import ScrollToTop from "./components/ScrollToTop";
 import { HeroSkeleton, CardSkeleton } from "./components/SkeletonLoader";
+import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
 
 // Lazy load pages for better performance
 const Home = lazy(() => import("./pages/Home"));
@@ -33,6 +34,7 @@ const Exercises = lazy(() => import("./pages/Exercises"));
 const ExerciseDetail = lazy(() => import("./pages/ExerciseDetail"));
 const LegalNotices = lazy(() => import("./pages/LegalNotices"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const Install = lazy(() => import("./pages/Install"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const PageLoader = () => (
@@ -57,6 +59,7 @@ const AppContent = () => {
     <>
       <OfflineBanner />
       <CookieConsent />
+      <PWAInstallPrompt />
       <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <ScrollToTop />
         <PrefetchRoutes />
@@ -75,6 +78,7 @@ const AppContent = () => {
               <Route path="/exercices/:id" element={<ExerciseDetail />} />
               <Route path="/mentions-legales" element={<LegalNotices />} />
               <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
+              <Route path="/install" element={<Install />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
