@@ -697,5 +697,265 @@ export const grammarCategories: GrammarCategory[] = [
         ]
       }
     ]
+  },
+  {
+    id: 'prepositions-place',
+    titleEn: 'Prepositions of Place: In, On, At',
+    titleFr: 'Prépositions de Lieu : In, On, At',
+    explanationEn: `**IN** is used for:
+- Enclosed spaces (in a room, in a car, in a box)
+- Cities, countries, continents (in Paris, in France, in Europe)
+- Water (in the sea, in a pool)
+- Lines/rows (in a queue, in a line)
+
+**ON** is used for:
+- Surfaces (on the table, on the wall, on the floor)
+- Streets/roads (on Oxford Street, on the highway)
+- Floors of buildings (on the first floor)
+- Public transport (on a bus, on a train, on a plane)
+- Islands (on an island)
+
+**AT** is used for:
+- Specific points/locations (at the door, at the corner)
+- Addresses with numbers (at 25 Oxford Street)
+- Places of activity (at school, at work, at home)
+- Events (at a party, at a concert)`,
+    explanationFr: `**IN** s'utilise pour :
+- Les espaces clos (dans une pièce, dans une voiture, dans une boîte)
+- Les villes, pays, continents (à Paris, en France, en Europe)
+- L'eau (dans la mer, dans une piscine)
+- Les files/rangées (dans une queue, dans une ligne)
+
+**ON** s'utilise pour :
+- Les surfaces (sur la table, sur le mur, sur le sol)
+- Les rues/routes (dans Oxford Street, sur l'autoroute)
+- Les étages (au premier étage)
+- Les transports en commun (dans un bus, dans un train, dans un avion)
+- Les îles (sur une île)
+
+**AT** s'utilise pour :
+- Les points/lieux spécifiques (à la porte, au coin)
+- Les adresses avec numéros (au 25 Oxford Street)
+- Les lieux d'activité (à l'école, au travail, à la maison)
+- Les événements (à une fête, à un concert)`,
+    examples: [
+      { en: "She lives **in** London.", fr: "Elle habite **à** Londres." },
+      { en: "The book is **on** the shelf.", fr: "Le livre est **sur** l'étagère." },
+      { en: "I'll meet you **at** the station.", fr: "Je te retrouve **à** la gare." },
+      { en: "He's **in** the car waiting for us.", fr: "Il est **dans** la voiture à nous attendre." }
+    ],
+    exercises: [
+      {
+        id: 107,
+        title: "Prepositions of Place",
+        description: "Choose the correct preposition: in, on, or at.",
+        questions: [
+          {
+            id: 1,
+            question: "She lives ___ a small village.",
+            options: ["in", "on", "at"],
+            correctAnswer: "in",
+            explanation: "Use 'in' for villages, towns, cities, and countries."
+          },
+          {
+            id: 2,
+            question: "The picture is hanging ___ the wall.",
+            options: ["in", "on", "at"],
+            correctAnswer: "on",
+            explanation: "Use 'on' for surfaces like walls."
+          },
+          {
+            id: 3,
+            question: "I'll meet you ___ the bus stop.",
+            options: ["in", "on", "at"],
+            correctAnswer: "at",
+            explanation: "Use 'at' for specific meeting points."
+          },
+          {
+            id: 4,
+            question: "There's someone ___ the door.",
+            options: ["in", "on", "at"],
+            correctAnswer: "at",
+            explanation: "Use 'at' for specific positions like door, window."
+          },
+          {
+            id: 5,
+            question: "He's sitting ___ the back of the car.",
+            options: ["in", "on", "at"],
+            correctAnswer: "in",
+            explanation: "Use 'in' for positions inside vehicles."
+          },
+          {
+            id: 6,
+            question: "My office is ___ the third floor.",
+            options: ["in", "on", "at"],
+            correctAnswer: "on",
+            explanation: "Use 'on' for floors of buildings."
+          },
+          {
+            id: 7,
+            question: "We had a picnic ___ the park.",
+            options: ["in", "on", "at"],
+            correctAnswer: "in",
+            explanation: "Use 'in' for enclosed or bounded areas like parks."
+          },
+          {
+            id: 8,
+            question: "She was waiting ___ the corner of the street.",
+            options: ["in", "on", "at"],
+            correctAnswer: "at",
+            explanation: "Use 'at' for specific points like corners."
+          },
+          {
+            id: 9,
+            question: "I left my keys ___ the table.",
+            options: ["in", "on", "at"],
+            correctAnswer: "on",
+            explanation: "Use 'on' for surfaces like tables."
+          },
+          {
+            id: 10,
+            question: "She spent her holiday ___ a beautiful island.",
+            options: ["in", "on", "at"],
+            correctAnswer: "on",
+            explanation: "Use 'on' for islands."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'prepositions-time',
+    titleEn: 'Prepositions of Time: In, On, At (or No Preposition)',
+    titleFr: 'Prépositions de Temps : In, On, At (ou Pas de Préposition)',
+    explanationEn: `**IN** is used for:
+- Months (in January, in March)
+- Years (in 2024, in 1990)
+- Seasons (in summer, in winter)
+- Parts of the day (in the morning, in the afternoon, in the evening)
+- Centuries/decades (in the 21st century, in the 1980s)
+
+**ON** is used for:
+- Days of the week (on Monday, on Friday)
+- Dates (on 25th December, on March 3rd)
+- Special days (on my birthday, on Christmas Day)
+- Specific day + part (on Monday morning)
+
+**AT** is used for:
+- Exact times (at 5 o'clock, at midnight)
+- Night (at night - exception!)
+- Meal times (at lunchtime, at dinner)
+- Holiday periods (at Christmas, at Easter, at the weekend - British)
+
+**NO PREPOSITION** with:
+- This, next, last, every (this week, next Monday, last year, every day)
+- Today, tomorrow, yesterday`,
+    explanationFr: `**IN** s'utilise pour :
+- Les mois (en janvier, en mars)
+- Les années (en 2024, en 1990)
+- Les saisons (en été, en hiver)
+- Les parties de la journée (le matin, l'après-midi, le soir)
+- Les siècles/décennies (au 21ème siècle, dans les années 1980)
+
+**ON** s'utilise pour :
+- Les jours de la semaine (lundi, vendredi)
+- Les dates (le 25 décembre, le 3 mars)
+- Les jours spéciaux (le jour de mon anniversaire, le jour de Noël)
+- Jour spécifique + partie (lundi matin)
+
+**AT** s'utilise pour :
+- Les heures exactes (à 5 heures, à minuit)
+- La nuit (at night - exception!)
+- Les repas (à l'heure du déjeuner, à l'heure du dîner)
+- Les périodes de fêtes (à Noël, à Pâques, le week-end)
+
+**PAS DE PRÉPOSITION** avec :
+- This, next, last, every (cette semaine, lundi prochain, l'an dernier, chaque jour)
+- Today, tomorrow, yesterday`,
+    examples: [
+      { en: "I was born **in** 1995.", fr: "Je suis né **en** 1995." },
+      { en: "The meeting is **on** Friday.", fr: "La réunion est **vendredi**." },
+      { en: "I wake up **at** 7 AM.", fr: "Je me réveille **à** 7 heures." },
+      { en: "I'll see you **next** week. (no preposition)", fr: "Je te vois **la semaine** prochaine. (pas de préposition)" }
+    ],
+    exercises: [
+      {
+        id: 108,
+        title: "Prepositions of Time",
+        description: "Choose the correct preposition: in, on, at, or no preposition (-).",
+        questions: [
+          {
+            id: 1,
+            question: "I usually go to bed ___ midnight.",
+            options: ["in", "on", "at", "- (no preposition)"],
+            correctAnswer: "at",
+            explanation: "Use 'at' for specific times like midnight."
+          },
+          {
+            id: 2,
+            question: "She was born ___ March.",
+            options: ["in", "on", "at", "- (no preposition)"],
+            correctAnswer: "in",
+            explanation: "Use 'in' for months."
+          },
+          {
+            id: 3,
+            question: "The party is ___ Saturday.",
+            options: ["in", "on", "at", "- (no preposition)"],
+            correctAnswer: "on",
+            explanation: "Use 'on' for days of the week."
+          },
+          {
+            id: 4,
+            question: "I'll call you ___ tomorrow.",
+            options: ["in", "on", "at", "- (no preposition)"],
+            correctAnswer: "- (no preposition)",
+            explanation: "No preposition before 'tomorrow'."
+          },
+          {
+            id: 5,
+            question: "We often go skiing ___ winter.",
+            options: ["in", "on", "at", "- (no preposition)"],
+            correctAnswer: "in",
+            explanation: "Use 'in' for seasons."
+          },
+          {
+            id: 6,
+            question: "The concert starts ___ 8 o'clock.",
+            options: ["in", "on", "at", "- (no preposition)"],
+            correctAnswer: "at",
+            explanation: "Use 'at' for exact times."
+          },
+          {
+            id: 7,
+            question: "I met her ___ Christmas Day.",
+            options: ["in", "on", "at", "- (no preposition)"],
+            correctAnswer: "on",
+            explanation: "Use 'on' for specific days (Christmas Day is a specific day)."
+          },
+          {
+            id: 8,
+            question: "What are you doing ___ next weekend?",
+            options: ["in", "on", "at", "- (no preposition)"],
+            correctAnswer: "- (no preposition)",
+            explanation: "No preposition with 'next'."
+          },
+          {
+            id: 9,
+            question: "I prefer to study ___ the morning.",
+            options: ["in", "on", "at", "- (no preposition)"],
+            correctAnswer: "in",
+            explanation: "Use 'in' for parts of the day (except 'at night')."
+          },
+          {
+            id: 10,
+            question: "The shop is closed ___ night.",
+            options: ["in", "on", "at", "- (no preposition)"],
+            correctAnswer: "at",
+            explanation: "'At night' is an exception - we use 'at', not 'in'."
+          }
+        ]
+      }
+    ]
   }
 ];
