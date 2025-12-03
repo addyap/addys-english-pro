@@ -1871,5 +1871,137 @@ export const grammarCategories: GrammarCategory[] = [
         ]
       }
     ]
+  },
+  {
+    id: 'used-to',
+    titleEn: 'The Different Forms of "Used to"',
+    titleFr: 'Les Différentes Formes de "Used to"',
+    explanationEn: `There are THREE different structures with "used to":
+
+**1. USED TO + infinitive** (past habits/states that no longer exist):
+- I used to smoke. (but I don't anymore)
+- She used to live in Paris. (but she doesn't now)
+- Did you use to play football? / I didn't use to like coffee.
+
+**2. BE USED TO + noun/gerund** (be accustomed to):
+- I am used to working late. (I'm accustomed to it)
+- She is used to the noise. (it doesn't bother her)
+- Are you used to living alone?
+
+**3. GET USED TO + noun/gerund** (become accustomed to):
+- I'm getting used to my new job. (becoming accustomed)
+- You'll get used to it. (you will become accustomed)
+- I can't get used to waking up early.
+
+**Key differences:**
+- USED TO + infinitive → past habit (no longer true)
+- BE USED TO + gerund → current state of being accustomed
+- GET USED TO + gerund → process of becoming accustomed`,
+    explanationFr: `Il existe TROIS structures différentes avec "used to" :
+
+**1. USED TO + infinitif** (habitudes/états passés qui n'existent plus) :
+- I used to smoke. (mais je ne fume plus)
+- She used to live in Paris. (mais elle n'y habite plus)
+- Did you use to play football? / I didn't use to like coffee.
+
+**2. BE USED TO + nom/gérondif** (être habitué à) :
+- I am used to working late. (j'y suis habitué)
+- She is used to the noise. (ça ne la dérange pas)
+- Are you used to living alone?
+
+**3. GET USED TO + nom/gérondif** (s'habituer à) :
+- I'm getting used to my new job. (je m'y habitue)
+- You'll get used to it. (tu t'y habitueras)
+- I can't get used to waking up early.
+
+**Différences clés :**
+- USED TO + infinitif → habitude passée (plus vraie maintenant)
+- BE USED TO + gérondif → état actuel d'être habitué
+- GET USED TO + gérondif → processus de s'habituer`,
+    examples: [
+      { en: "I **used to** play tennis. (past habit, not anymore)", fr: "Je **jouais** au tennis. (habitude passée, plus maintenant)" },
+      { en: "I **am used to** getting up early. (I'm accustomed to it)", fr: "J'**ai l'habitude** de me lever tôt. (j'y suis habitué)" },
+      { en: "I **can't get used to** this weather. (struggling to adapt)", fr: "Je **n'arrive pas à m'habituer** à ce temps. (difficulté à s'adapter)" },
+      { en: "She **didn't use to** like spicy food.", fr: "Elle **n'aimait pas** la nourriture épicée avant." }
+    ],
+    exercises: [
+      {
+        id: 116,
+        title: "Forms of 'Used to'",
+        description: "Choose the correct form.",
+        questions: [
+          {
+            id: 1,
+            question: "I ___ smoke, but I quit five years ago.",
+            options: ["used to", "am used to", "get used to"],
+            correctAnswer: "used to",
+            explanation: "'Used to' + infinitive for past habits that no longer exist."
+          },
+          {
+            id: 2,
+            question: "She ___ working at night. It doesn't bother her anymore.",
+            options: ["used to", "is used to", "gets used to"],
+            correctAnswer: "is used to",
+            explanation: "'Be used to' + gerund for being accustomed to something."
+          },
+          {
+            id: 3,
+            question: "It took me a while to ___ the new software.",
+            options: ["used to", "be used to", "get used to"],
+            correctAnswer: "get used to",
+            explanation: "'Get used to' for the process of becoming accustomed."
+          },
+          {
+            id: 4,
+            question: "Did you ___ live in London?",
+            options: ["use to", "used to", "be used to"],
+            correctAnswer: "use to",
+            explanation: "In questions with 'did', use 'use to' (no 'd')."
+          },
+          {
+            id: 5,
+            question: "I ___ the cold weather now. I've been here for two years.",
+            options: ["used to", "am used to", "get used to"],
+            correctAnswer: "am used to",
+            explanation: "'Be used to' for a current state of being accustomed."
+          },
+          {
+            id: 6,
+            question: "He ___ have long hair when he was younger.",
+            options: ["used to", "is used to", "gets used to"],
+            correctAnswer: "used to",
+            explanation: "'Used to' for a past state that is no longer true."
+          },
+          {
+            id: 7,
+            question: "I can't ___ waking up so early every day.",
+            options: ["used to", "be used to", "get used to"],
+            correctAnswer: "get used to",
+            explanation: "'Get used to' for the process of adapting (struggling here)."
+          },
+          {
+            id: 8,
+            question: "Are you ___ driving on the left side of the road?",
+            options: ["use to", "used to", "getting used to"],
+            correctAnswer: "used to",
+            explanation: "'Be used to' in question form: Are you used to + gerund."
+          },
+          {
+            id: 9,
+            question: "We didn't ___ have a car when I was a child.",
+            options: ["use to", "used to", "be used to"],
+            correctAnswer: "use to",
+            explanation: "In negatives with 'didn't', use 'use to' (no 'd')."
+          },
+          {
+            id: 10,
+            question: "After a few months, you'll ___ the routine.",
+            options: ["used to", "be used to", "get used to"],
+            correctAnswer: "get used to",
+            explanation: "'Get used to' for future adaptation process."
+          }
+        ]
+      }
+    ]
   }
 ];
