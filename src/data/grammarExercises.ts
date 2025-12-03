@@ -4127,5 +4127,141 @@ Ils sont suivis de la base verbale (sans "to").
         ]
       }
     ]
+  },
+  {
+    id: 'subject-object-pronouns',
+    titleEn: 'Subject and Object Pronouns',
+    titleFr: 'Pronoms Sujets et Compléments',
+    explanationEn: `**Subject pronouns** replace the subject of a sentence (who does the action).
+**Object pronouns** replace the object of a sentence (who receives the action).
+
+**Subject pronouns:** I, you, he, she, it, we, they
+**Object pronouns:** me, you, him, her, it, us, them
+
+**Subject pronouns** come BEFORE the verb:
+- **I** love chocolate.
+- **She** is my sister.
+- **They** work here.
+
+**Object pronouns** come AFTER the verb or preposition:
+- Call **me** later.
+- I saw **him** yesterday.
+- This is for **you**.
+
+**Common mistakes:**
+- ❌ Me and John went to the shop. → ✅ **John and I** went to the shop.
+- ❌ Between you and I → ✅ Between you and **me** (after preposition)
+- ❌ Him is tall. → ✅ **He** is tall.
+
+**Tip:** When in doubt with "X and I" vs "X and me", remove "X and" to test:
+- John and I/me went... → I went ✓ / Me went ✗ → "John and I"`,
+    explanationFr: `**Les pronoms sujets** remplacent le sujet de la phrase (qui fait l'action).
+**Les pronoms compléments** remplacent l'objet de la phrase (qui reçoit l'action).
+
+**Pronoms sujets :** I, you, he, she, it, we, they
+**Pronoms compléments :** me, you, him, her, it, us, them
+
+**Les pronoms sujets** viennent AVANT le verbe :
+- **I** love chocolate. (J'aime le chocolat)
+- **She** is my sister. (Elle est ma sœur)
+- **They** work here. (Ils travaillent ici)
+
+**Les pronoms compléments** viennent APRÈS le verbe ou la préposition :
+- Call **me** later. (Appelle-moi plus tard)
+- I saw **him** yesterday. (Je l'ai vu hier)
+- This is for **you**. (C'est pour toi)
+
+**Erreurs courantes :**
+- ❌ Me and John went to the shop. → ✅ **John and I** went to the shop.
+- ❌ Between you and I → ✅ Between you and **me** (après préposition)
+- ❌ Him is tall. → ✅ **He** is tall.
+
+**Astuce :** En cas de doute avec "X and I" vs "X and me", enlevez "X and" pour tester :
+- John and I/me went... → I went ✓ / Me went ✗ → "John and I"`,
+    examples: [
+      { en: "**I** love **her** and **she** loves **me**.", fr: "**Je** l'aime et **elle** m'aime." },
+      { en: "**They** invited **us** to **their** party.", fr: "**Ils** nous ont invités à leur fête." },
+      { en: "**He** gave the book to **her**.", fr: "**Il** lui a donné le livre." },
+      { en: "My brother and **I** went shopping.", fr: "Mon frère et **moi** sommes allés faire du shopping." }
+    ],
+    exercises: [
+      {
+        id: 133,
+        title: "Subject and Object Pronouns",
+        description: "Choose the correct pronoun.",
+        questions: [
+          {
+            id: 1,
+            question: "___ is my best friend.",
+            options: ["Her", "She", "Hers"],
+            correctAnswer: "She",
+            explanation: "Subject pronoun needed before the verb 'is'."
+          },
+          {
+            id: 2,
+            question: "Please call ___ when you arrive.",
+            options: ["I", "me", "myself"],
+            correctAnswer: "me",
+            explanation: "Object pronoun needed after the verb 'call'."
+          },
+          {
+            id: 3,
+            question: "John and ___ went to the cinema.",
+            options: ["me", "I", "myself"],
+            correctAnswer: "I",
+            explanation: "Subject pronoun needed (test: 'I went' not 'me went')."
+          },
+          {
+            id: 4,
+            question: "The teacher spoke to Sarah and ___.",
+            options: ["I", "me", "myself"],
+            correctAnswer: "me",
+            explanation: "Object pronoun after 'to' (test: 'spoke to me')."
+          },
+          {
+            id: 5,
+            question: "Between you and ___, I don't like him.",
+            options: ["I", "me", "myself"],
+            correctAnswer: "me",
+            explanation: "Object pronoun after the preposition 'between'."
+          },
+          {
+            id: 6,
+            question: "___ and his wife are coming to dinner.",
+            options: ["Him", "He", "His"],
+            correctAnswer: "He",
+            explanation: "Subject pronoun needed before the verb 'are coming'."
+          },
+          {
+            id: 7,
+            question: "I saw ___ at the supermarket yesterday.",
+            options: ["they", "them", "their"],
+            correctAnswer: "them",
+            explanation: "Object pronoun needed after the verb 'saw'."
+          },
+          {
+            id: 8,
+            question: "This present is for ___.",
+            options: ["she", "her", "hers"],
+            correctAnswer: "her",
+            explanation: "Object pronoun after the preposition 'for'."
+          },
+          {
+            id: 9,
+            question: "___ students need to work harder.",
+            options: ["Us", "We", "Our"],
+            correctAnswer: "We",
+            explanation: "Subject pronoun needed before the noun 'students'."
+          },
+          {
+            id: 10,
+            question: "My parents gave my sister and ___ a car.",
+            options: ["I", "me", "myself"],
+            correctAnswer: "me",
+            explanation: "Object pronoun (indirect object of 'gave')."
+          }
+        ]
+      }
+    ]
   }
 ];
