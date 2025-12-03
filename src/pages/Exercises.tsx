@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Lock, CheckCircle } from 'lucide-react';
+import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import AnimatedCard from '../components/AnimatedCard';
 import { allExercisesData as exercisesData, allExercisesList as exercisesList } from '../data/allExercises';
+import { grammarCategories } from '../data/grammarExercises';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import GrammarExplanation from '../components/GrammarExplanation';
+import GrammarExercise from '../components/GrammarExercise';
 
 const Exercises = () => {
   useScrollTracking('exercises');
@@ -46,81 +51,141 @@ const Exercises = () => {
               <BookOpen className="h-10 w-10" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 font-heading">
-              100 Exercices d'Anglais
+              Exercices d'Anglais
             </h1>
             <p className="text-xl md:text-2xl text-primary-foreground/90 max-w-3xl mx-auto font-body">
-              Maîtrisez les nuances de l'anglais avec des exercices ciblés sur les pièges courants
+              Maîtrisez la grammaire anglaise avec des explications claires et des exercices pratiques
             </p>
           </div>
         </section>
 
-        {/* Progress Notice */}
-        <section className="py-8 bg-accent/10">
+        {/* Main Content */}
+        <section className="py-12">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="bg-white rounded-lg shadow-md p-6 text-center border-l-4 border-primary">
-              <CheckCircle className="h-8 w-8 text-primary mx-auto mb-3" />
-              <h2 className="text-xl font-semibold text-primary mb-2 font-heading">
-                {exercisesData.length} exercices disponibles sur 100
-              </h2>
-              <p className="text-muted-foreground font-body">
-                De nouveaux exercices sont ajoutés régulièrement. Les exercices avec cadenas seront bientôt disponibles.
-              </p>
-            </div>
-          </div>
-        </section>
+            <Tabs defaultValue="grammar" className="w-full">
+              <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+                <TabsTrigger value="grammar" className="gap-2">
+                  <GraduationCap className="h-4 w-4" />
+                  Grammar Lessons
+                </TabsTrigger>
+                <TabsTrigger value="vocabulary" className="gap-2">
+                  <Sparkles className="h-4 w-4" />
+                  Vocabulary
+                </TabsTrigger>
+              </TabsList>
 
-        {/* Exercises Grid */}
-        <section className="py-16">
-          <div className="max-w-6xl mx-auto px-4">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {exercisesList.map((exercise, index) => {
-                const isAvailable = availableExercises.has(exercise.id);
-                
-                return isAvailable ? (
-                  <AnimatedCard
-                    key={exercise.id}
-                    href={`/exercices/${exercise.id}`}
-                    className="bg-card hover:bg-accent/5 border border-border p-4 hover:border-primary transition-colors"
-                    delay={index * 0.02}
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                        <span className="text-sm font-bold text-primary font-heading">
-                          {exercise.id}
-                        </span>
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-sm font-medium text-foreground leading-tight font-body">
-                          {exercise.title}
-                        </h3>
-                      </div>
-                      <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
-                    </div>
-                  </AnimatedCard>
-                ) : (
-                  <AnimatedCard
-                    key={exercise.id}
-                    className="bg-card hover:bg-accent/5 border border-border p-4 cursor-not-allowed opacity-60"
-                    delay={index * 0.02}
-                    hoverScale={1}
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                        <span className="text-sm font-bold text-primary font-heading">
-                          {exercise.id}
-                        </span>
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-sm font-medium text-foreground leading-tight font-body">
-                          {exercise.title}
-                        </h3>
-                      </div>
-                      <Lock className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                    </div>
-                  </AnimatedCard>
-                );
-              })}
-            </div>
+              {/* Grammar Tab */}
+              <TabsContent value="grammar" className="space-y-6">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-primary mb-2 font-heading">
+                    English Tenses & Grammar
+                  </h2>
+                  <p className="text-muted-foreground font-body">
+                    Clear explanations with toggle for French translation
+                  </p>
+                </div>
+
+                <Accordion type="single" collapsible className="space-y-4">
+                  {grammarCategories.map((category) => (
+                    <AccordionItem 
+                      key={category.id} 
+                      value={category.id}
+                      className="border rounded-lg px-4 bg-card"
+                    >
+                      <AccordionTrigger className="hover:no-underline py-4">
+                        <div className="flex items-center gap-3 text-left">
+                          <div className="p-2 bg-primary/10 rounded-lg">
+                            <GraduationCap className="h-5 w-5 text-primary" />
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-semibold font-heading">{category.titleEn}</h3>
+                            <p className="text-sm text-muted-foreground font-body">{category.titleFr}</p>
+                          </div>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent className="pb-6">
+                        <GrammarExplanation
+                          titleEn={category.titleEn}
+                          titleFr={category.titleFr}
+                          explanationEn={category.explanationEn}
+                          explanationFr={category.explanationFr}
+                          examples={category.examples}
+                        />
+                        
+                        {category.exercises.map((exercise) => (
+                          <GrammarExercise key={exercise.id} exercise={exercise} />
+                        ))}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </TabsContent>
+
+              {/* Vocabulary Tab */}
+              <TabsContent value="vocabulary" className="space-y-6">
+                {/* Progress Notice */}
+                <div className="bg-card rounded-lg shadow-md p-6 text-center border-l-4 border-primary">
+                  <CheckCircle className="h-8 w-8 text-primary mx-auto mb-3" />
+                  <h2 className="text-xl font-semibold text-primary mb-2 font-heading">
+                    {exercisesData.length} exercices disponibles sur 100
+                  </h2>
+                  <p className="text-muted-foreground font-body">
+                    De nouveaux exercices sont ajoutés régulièrement. Les exercices avec cadenas seront bientôt disponibles.
+                  </p>
+                </div>
+
+                {/* Exercises Grid */}
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  {exercisesList.map((exercise, index) => {
+                    const isAvailable = availableExercises.has(exercise.id);
+                    
+                    return isAvailable ? (
+                      <AnimatedCard
+                        key={exercise.id}
+                        href={`/exercices/${exercise.id}`}
+                        className="bg-card hover:bg-accent/5 border border-border p-4 hover:border-primary transition-colors"
+                        delay={index * 0.02}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                            <span className="text-sm font-bold text-primary font-heading">
+                              {exercise.id}
+                            </span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-sm font-medium text-foreground leading-tight font-body">
+                              {exercise.title}
+                            </h3>
+                          </div>
+                          <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
+                        </div>
+                      </AnimatedCard>
+                    ) : (
+                      <AnimatedCard
+                        key={exercise.id}
+                        className="bg-card hover:bg-accent/5 border border-border p-4 cursor-not-allowed opacity-60"
+                        delay={index * 0.02}
+                        hoverScale={1}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                            <span className="text-sm font-bold text-primary font-heading">
+                              {exercise.id}
+                            </span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-sm font-medium text-foreground leading-tight font-body">
+                              {exercise.title}
+                            </h3>
+                          </div>
+                          <Lock className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                        </div>
+                      </AnimatedCard>
+                    );
+                  })}
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
         </section>
 
