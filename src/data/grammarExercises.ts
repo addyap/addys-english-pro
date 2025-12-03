@@ -3719,5 +3719,413 @@ Ils sont suivis de la base verbale (sans "to").
         ]
       }
     ]
+  },
+  {
+    id: 'make-vs-do',
+    titleEn: 'Make vs Do',
+    titleFr: 'Make vs Do',
+    explanationEn: `**MAKE** and **DO** are often confused because both can mean "faire" in French. However, they're used differently in English.
+
+**DO** is typically used for:
+- Tasks, jobs, and work (do the housework, do homework, do a job)
+- General activities without specifying what (do something, do nothing, do your best)
+- Body and personal care (do your hair, do your nails, do exercise)
+- With -ing words (do the shopping, do the cooking, do the cleaning)
+
+**MAKE** is typically used for:
+- Creating or producing something (make a cake, make coffee, make dinner)
+- Causing a result or reaction (make a mistake, make noise, make someone happy)
+- Plans and decisions (make a decision, make plans, make an appointment)
+- Communication (make a phone call, make a speech, make a comment)
+- Money (make money, make a profit, make a fortune)
+
+**Common expressions:**
+- DO: do well, do badly, do business, do damage, do a favor, do research
+- MAKE: make friends, make progress, make an effort, make sense, make sure`,
+    explanationFr: `**MAKE** et **DO** sont souvent confondus car tous deux peuvent signifier "faire" en français. Cependant, ils s'utilisent différemment en anglais.
+
+**DO** s'utilise typiquement pour :
+- Les tâches, travaux et emplois (do the housework, do homework, do a job)
+- Les activités générales sans précision (do something, do nothing, do your best)
+- Les soins corporels et personnels (do your hair, do your nails, do exercise)
+- Avec les mots en -ing (do the shopping, do the cooking, do the cleaning)
+
+**MAKE** s'utilise typiquement pour :
+- Créer ou produire quelque chose (make a cake, make coffee, make dinner)
+- Causer un résultat ou une réaction (make a mistake, make noise, make someone happy)
+- Les plans et décisions (make a decision, make plans, make an appointment)
+- La communication (make a phone call, make a speech, make a comment)
+- L'argent (make money, make a profit, make a fortune)
+
+**Expressions courantes :**
+- DO : do well, do badly, do business, do damage, do a favor, do research
+- MAKE : make friends, make progress, make an effort, make sense, make sure`,
+    examples: [
+      { en: "I need to **do** the housework before guests arrive.", fr: "Je dois **faire** le ménage avant l'arrivée des invités." },
+      { en: "Can you **make** me a cup of tea?", fr: "Peux-tu me **faire** une tasse de thé ?" },
+      { en: "She **made** a mistake in her calculation.", fr: "Elle **a fait** une erreur dans son calcul." },
+      { en: "He **does** exercise every morning.", fr: "Il **fait** de l'exercice chaque matin." }
+    ],
+    exercises: [
+      {
+        id: 130,
+        title: "Make vs Do",
+        description: "Choose make or do.",
+        questions: [
+          {
+            id: 1,
+            question: "Can you ___ me a favor?",
+            options: ["make", "do"],
+            correctAnswer: "do",
+            explanation: "'Do a favor' is a fixed expression."
+          },
+          {
+            id: 2,
+            question: "She ___ a lot of money in her new job.",
+            options: ["makes", "does"],
+            correctAnswer: "makes",
+            explanation: "Make is used with money (earn/produce)."
+          },
+          {
+            id: 3,
+            question: "I need to ___ some research for my project.",
+            options: ["make", "do"],
+            correctAnswer: "do",
+            explanation: "'Do research' is the correct collocation."
+          },
+          {
+            id: 4,
+            question: "Don't ___ noise! The baby is sleeping.",
+            options: ["make", "do"],
+            correctAnswer: "make",
+            explanation: "Make is used for producing sounds (make noise)."
+          },
+          {
+            id: 5,
+            question: "I ___ my best to help you.",
+            options: ["made", "did"],
+            correctAnswer: "did",
+            explanation: "'Do your best' is a fixed expression."
+          },
+          {
+            id: 6,
+            question: "She ___ an appointment with the doctor.",
+            options: ["made", "did"],
+            correctAnswer: "made",
+            explanation: "Make is used for arrangements (make an appointment)."
+          },
+          {
+            id: 7,
+            question: "Who ___ the cooking in your family?",
+            options: ["makes", "does"],
+            correctAnswer: "does",
+            explanation: "Do is used with -ing activities (do the cooking)."
+          },
+          {
+            id: 8,
+            question: "The company ___ business with several countries.",
+            options: ["makes", "does"],
+            correctAnswer: "does",
+            explanation: "'Do business' is the correct expression."
+          },
+          {
+            id: 9,
+            question: "Let me ___ a suggestion.",
+            options: ["make", "do"],
+            correctAnswer: "make",
+            explanation: "Make is used for communication (make a suggestion)."
+          },
+          {
+            id: 10,
+            question: "I'm trying to ___ progress with my English.",
+            options: ["make", "do"],
+            correctAnswer: "make",
+            explanation: "'Make progress' means to improve."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'say-vs-tell',
+    titleEn: 'Say vs Tell',
+    titleFr: 'Say vs Tell',
+    explanationEn: `**SAY** and **TELL** both involve communicating with words, but they're used differently.
+
+**SAY** is used:
+- To quote or report words directly or indirectly
+- Without mentioning who you're speaking to (or with "to" + person)
+- Say something / say that... / say "..."
+
+**TELL** is used:
+- With a person object (tell someone something)
+- For giving information, instructions, or orders
+- Tell someone (that)... / tell someone to do something
+
+**Key difference:**
+- SAY focuses on the words spoken
+- TELL focuses on who receives the information
+
+**Fixed expressions with TELL:**
+- tell the truth, tell a lie, tell a story, tell a joke
+- tell the time, tell the difference, tell someone's fortune
+
+**Fixed expressions with SAY:**
+- say hello/goodbye, say please/thank you, say sorry
+- say a prayer, say a few words, say yes/no`,
+    explanationFr: `**SAY** et **TELL** impliquent tous deux de communiquer avec des mots, mais ils s'utilisent différemment.
+
+**SAY** s'utilise :
+- Pour citer ou rapporter des paroles directement ou indirectement
+- Sans mentionner à qui on parle (ou avec "to" + personne)
+- Say something / say that... / say "..."
+
+**TELL** s'utilise :
+- Avec un complément d'objet personne (tell someone something)
+- Pour donner des informations, instructions ou ordres
+- Tell someone (that)... / tell someone to do something
+
+**Différence clé :**
+- SAY se concentre sur les mots prononcés
+- TELL se concentre sur qui reçoit l'information
+
+**Expressions figées avec TELL :**
+- tell the truth, tell a lie, tell a story, tell a joke
+- tell the time, tell the difference, tell someone's fortune
+
+**Expressions figées avec SAY :**
+- say hello/goodbye, say please/thank you, say sorry
+- say a prayer, say a few words, say yes/no`,
+    examples: [
+      { en: "He **said** (that) he was tired.", fr: "Il **a dit** qu'il était fatigué." },
+      { en: "He **told** me (that) he was tired.", fr: "Il m'**a dit** qu'il était fatigué." },
+      { en: "She **said** hello to everyone.", fr: "Elle **a dit** bonjour à tout le monde." },
+      { en: "Can you **tell** me the time?", fr: "Peux-tu me **dire** l'heure ?" }
+    ],
+    exercises: [
+      {
+        id: 131,
+        title: "Say vs Tell",
+        description: "Choose say or tell.",
+        questions: [
+          {
+            id: 1,
+            question: "She ___ me she was leaving.",
+            options: ["said", "told"],
+            correctAnswer: "told",
+            explanation: "Tell + person object (me)."
+          },
+          {
+            id: 2,
+            question: "He ___ that he didn't agree.",
+            options: ["said", "told"],
+            correctAnswer: "said",
+            explanation: "Say + that clause (no person object)."
+          },
+          {
+            id: 3,
+            question: "Can you ___ me the truth?",
+            options: ["say", "tell"],
+            correctAnswer: "tell",
+            explanation: "'Tell the truth' is a fixed expression (+ person object)."
+          },
+          {
+            id: 4,
+            question: "Don't forget to ___ goodbye to your grandmother.",
+            options: ["say", "tell"],
+            correctAnswer: "say",
+            explanation: "'Say goodbye' is a fixed expression."
+          },
+          {
+            id: 5,
+            question: "He ___ to me that he would be late.",
+            options: ["said", "told"],
+            correctAnswer: "said",
+            explanation: "Say + to + person is correct."
+          },
+          {
+            id: 6,
+            question: "I can't ___ the difference between them.",
+            options: ["say", "tell"],
+            correctAnswer: "tell",
+            explanation: "'Tell the difference' is a fixed expression."
+          },
+          {
+            id: 7,
+            question: "___ me a story, please!",
+            options: ["Say", "Tell"],
+            correctAnswer: "Tell",
+            explanation: "'Tell a story' requires a person object."
+          },
+          {
+            id: 8,
+            question: "She always ___ what she thinks.",
+            options: ["says", "tells"],
+            correctAnswer: "says",
+            explanation: "Say + what/something (no person object)."
+          },
+          {
+            id: 9,
+            question: "They ___ us to wait outside.",
+            options: ["said", "told"],
+            correctAnswer: "told",
+            explanation: "Tell + person + to do something for instructions."
+          },
+          {
+            id: 10,
+            question: "What did she ___ about the meeting?",
+            options: ["say", "tell"],
+            correctAnswer: "say",
+            explanation: "Say + about something (no person object)."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'reflexive-pronouns',
+    titleEn: 'Reflexive Pronouns',
+    titleFr: 'Pronoms Réfléchis',
+    explanationEn: `**Reflexive pronouns** end in -self (singular) or -selves (plural) and refer back to the subject.
+
+**Forms:**
+- I → myself
+- you (singular) → yourself
+- he → himself
+- she → herself
+- it → itself
+- we → ourselves
+- you (plural) → yourselves
+- they → themselves
+
+**Uses:**
+1. When subject and object are the same person:
+   - I hurt **myself**. (I hurt me)
+   - She taught **herself** to play piano.
+
+2. For emphasis (emphatic pronouns):
+   - I'll do it **myself**! (I, and no one else)
+   - The president **himself** came to the meeting.
+
+3. With "by" to mean "alone":
+   - He lives by **himself**. (alone)
+   - Did you make this by **yourself**?
+
+**Common expressions:**
+- enjoy yourself, behave yourself, help yourself, make yourself at home
+- introduce yourself, express yourself, believe in yourself`,
+    explanationFr: `**Les pronoms réfléchis** se terminent en -self (singulier) ou -selves (pluriel) et renvoient au sujet.
+
+**Formes :**
+- I → myself
+- you (singulier) → yourself
+- he → himself
+- she → herself
+- it → itself
+- we → ourselves
+- you (pluriel) → yourselves
+- they → themselves
+
+**Utilisations :**
+1. Quand le sujet et l'objet sont la même personne :
+   - I hurt **myself**. (Je me suis blessé)
+   - She taught **herself** to play piano. (Elle s'est appris le piano)
+
+2. Pour l'emphase (pronoms emphatiques) :
+   - I'll do it **myself**! (Moi, et personne d'autre)
+   - The president **himself** came to the meeting.
+
+3. Avec "by" pour signifier "seul" :
+   - He lives by **himself**. (seul)
+   - Did you make this by **yourself**? (tout seul)
+
+**Expressions courantes :**
+- enjoy yourself, behave yourself, help yourself, make yourself at home
+- introduce yourself, express yourself, believe in yourself`,
+    examples: [
+      { en: "Be careful! You might hurt **yourself**.", fr: "Fais attention ! Tu pourrais te blesser." },
+      { en: "I made this cake **myself**.", fr: "J'ai fait ce gâteau moi-même." },
+      { en: "The children can dress **themselves**.", fr: "Les enfants peuvent s'habiller tout seuls." },
+      { en: "She lives by **herself** in a small apartment.", fr: "Elle vit seule dans un petit appartement." }
+    ],
+    exercises: [
+      {
+        id: 132,
+        title: "Reflexive Pronouns",
+        description: "Choose the correct reflexive pronoun.",
+        questions: [
+          {
+            id: 1,
+            question: "I taught ___ to play guitar.",
+            options: ["me", "myself", "I"],
+            correctAnswer: "myself",
+            explanation: "Subject (I) and object are the same person."
+          },
+          {
+            id: 2,
+            question: "Be careful with that knife! You'll cut ___.",
+            options: ["you", "yourself", "yourselves"],
+            correctAnswer: "yourself",
+            explanation: "Singular 'you' needs 'yourself'."
+          },
+          {
+            id: 3,
+            question: "The children made the decorations ___.",
+            options: ["theirselves", "themselves", "themself"],
+            correctAnswer: "themselves",
+            explanation: "Plural subject 'children' needs 'themselves'."
+          },
+          {
+            id: 4,
+            question: "Help ___ to some cake!",
+            options: ["you", "yourself", "yourselves"],
+            correctAnswer: "yourself",
+            explanation: "'Help yourself' is a polite invitation (singular)."
+          },
+          {
+            id: 5,
+            question: "The cat is cleaning ___.",
+            options: ["it", "itself", "himself"],
+            correctAnswer: "itself",
+            explanation: "'Cat' (it) needs 'itself'."
+          },
+          {
+            id: 6,
+            question: "We really enjoyed ___ at the party.",
+            options: ["us", "ourself", "ourselves"],
+            correctAnswer: "ourselves",
+            explanation: "'We' needs 'ourselves' (plural)."
+          },
+          {
+            id: 7,
+            question: "Did you paint this picture by ___?",
+            options: ["you", "yourself", "your own"],
+            correctAnswer: "yourself",
+            explanation: "'By yourself' means alone/without help."
+          },
+          {
+            id: 8,
+            question: "She looked at ___ in the mirror.",
+            options: ["her", "herself", "hers"],
+            correctAnswer: "herself",
+            explanation: "Subject (she) and object are the same person."
+          },
+          {
+            id: 9,
+            question: "The machine turns ___ off automatically.",
+            options: ["it", "itself", "its"],
+            correctAnswer: "itself",
+            explanation: "The machine does the action to itself."
+          },
+          {
+            id: 10,
+            question: "Let me introduce ___. I'm Sarah.",
+            options: ["me", "myself", "mine"],
+            correctAnswer: "myself",
+            explanation: "'Introduce myself' - formal self-introduction."
+          }
+        ]
+      }
+    ]
   }
 ];
