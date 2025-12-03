@@ -2003,5 +2003,267 @@ export const grammarCategories: GrammarCategory[] = [
         ]
       }
     ]
+  },
+  {
+    id: 'conditionals',
+    titleEn: 'Conditional Sentences',
+    titleFr: 'Les Phrases Conditionnelles',
+    explanationEn: `**ZERO CONDITIONAL** (general truths, always true):
+- If + present simple, present simple
+- If you heat water to 100°C, it boils.
+- If I eat too much, I feel sick.
+
+**FIRST CONDITIONAL** (real/possible future situations):
+- If + present simple, will + infinitive
+- If it rains tomorrow, I will stay home.
+- If you study hard, you will pass the exam.
+
+**SECOND CONDITIONAL** (unreal/hypothetical present/future):
+- If + past simple, would + infinitive
+- If I won the lottery, I would travel the world.
+- If I were you, I would apologize. (were for all persons)
+
+**THIRD CONDITIONAL** (unreal past, impossible to change):
+- If + past perfect, would have + past participle
+- If I had studied harder, I would have passed.
+- If she had called, I would have helped her.
+
+**Mixed conditionals** combine different time references.`,
+    explanationFr: `**ZERO CONDITIONAL** (vérités générales, toujours vrai) :
+- If + présent simple, présent simple
+- Si on chauffe l'eau à 100°C, elle bout.
+- Si je mange trop, je me sens mal.
+
+**FIRST CONDITIONAL** (situations futures réelles/possibles) :
+- If + présent simple, will + infinitif
+- S'il pleut demain, je resterai à la maison.
+- Si tu étudies bien, tu réussiras l'examen.
+
+**SECOND CONDITIONAL** (présent/futur irréel/hypothétique) :
+- If + prétérit, would + infinitif
+- Si je gagnais au loto, je voyagerais dans le monde.
+- Si j'étais toi, je m'excuserais. (were pour toutes les personnes)
+
+**THIRD CONDITIONAL** (passé irréel, impossible à changer) :
+- If + plus-que-parfait, would have + participe passé
+- Si j'avais étudié plus, j'aurais réussi.
+- Si elle avait appelé, je l'aurais aidée.
+
+**Conditionnels mixtes** combinent différentes références temporelles.`,
+    examples: [
+      { en: "If you **heat** ice, it **melts**. (zero)", fr: "Si tu **chauffes** la glace, elle **fond**. (zero)" },
+      { en: "If it **rains**, I **will take** an umbrella. (first)", fr: "S'il **pleut**, je **prendrai** un parapluie. (first)" },
+      { en: "If I **had** more time, I **would learn** Japanese. (second)", fr: "Si j'**avais** plus de temps, j'**apprendrais** le japonais. (second)" },
+      { en: "If I **had known**, I **would have told** you. (third)", fr: "Si j'**avais su**, je te l'**aurais dit**. (third)" }
+    ],
+    exercises: [
+      {
+        id: 117,
+        title: "Conditional Sentences",
+        description: "Choose the correct form to complete the conditional.",
+        questions: [
+          {
+            id: 1,
+            question: "If you ___ water to 100°C, it boils.",
+            options: ["heat", "heated", "will heat"],
+            correctAnswer: "heat",
+            explanation: "Zero conditional: If + present, present (general truth)."
+          },
+          {
+            id: 2,
+            question: "If it rains tomorrow, we ___ the picnic.",
+            options: ["cancel", "will cancel", "would cancel"],
+            correctAnswer: "will cancel",
+            explanation: "First conditional: If + present, will + infinitive."
+          },
+          {
+            id: 3,
+            question: "If I ___ rich, I would buy a yacht.",
+            options: ["am", "was/were", "will be"],
+            correctAnswer: "was/were",
+            explanation: "Second conditional: If + past simple, would + infinitive."
+          },
+          {
+            id: 4,
+            question: "If she had studied harder, she ___ the exam.",
+            options: ["passed", "would pass", "would have passed"],
+            correctAnswer: "would have passed",
+            explanation: "Third conditional: If + past perfect, would have + past participle."
+          },
+          {
+            id: 5,
+            question: "I ___ you if I had known your number.",
+            options: ["will call", "would call", "would have called"],
+            correctAnswer: "would have called",
+            explanation: "Third conditional for unreal past situation."
+          },
+          {
+            id: 6,
+            question: "If I ___ you, I would accept the offer.",
+            options: ["am", "were", "will be"],
+            correctAnswer: "were",
+            explanation: "Second conditional: 'were' is used for all persons in formal English."
+          },
+          {
+            id: 7,
+            question: "If you mix blue and yellow, you ___ green.",
+            options: ["get", "will get", "would get"],
+            correctAnswer: "get",
+            explanation: "Zero conditional for scientific facts."
+          },
+          {
+            id: 8,
+            question: "If he ___ earlier, he wouldn't have missed the train.",
+            options: ["left", "had left", "would leave"],
+            correctAnswer: "had left",
+            explanation: "Third conditional: If + past perfect in the if-clause."
+          },
+          {
+            id: 9,
+            question: "We will go to the beach if the weather ___ nice.",
+            options: ["is", "was", "will be"],
+            correctAnswer: "is",
+            explanation: "First conditional: present simple in the if-clause."
+          },
+          {
+            id: 10,
+            question: "If I had more free time, I ___ a new hobby.",
+            options: ["start", "will start", "would start"],
+            correctAnswer: "would start",
+            explanation: "Second conditional for hypothetical present/future."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'passive-voice',
+    titleEn: 'Passive Voice',
+    titleFr: 'La Voix Passive',
+    explanationEn: `**Active voice:** The subject performs the action.
+- The chef **cooks** the meal.
+
+**Passive voice:** The subject receives the action.
+- The meal **is cooked** (by the chef).
+
+**Formation:** be + past participle
+
+**Passive in different tenses:**
+- Present Simple: The car **is washed** every week.
+- Past Simple: The letter **was sent** yesterday.
+- Present Perfect: The work **has been completed**.
+- Future: The project **will be finished** tomorrow.
+- Modal: The report **must be submitted** by Friday.
+
+**When to use passive:**
+- When the doer is unknown: My bike **was stolen**.
+- When the action is more important than the doer.
+- In formal/scientific writing: The experiment **was conducted**.
+- When the doer is obvious: He **was arrested** (by police).`,
+    explanationFr: `**Voix active :** Le sujet fait l'action.
+- Le chef **prépare** le repas.
+
+**Voix passive :** Le sujet subit l'action.
+- Le repas **est préparé** (par le chef).
+
+**Formation :** be + participe passé
+
+**Passif aux différents temps :**
+- Présent Simple : La voiture **est lavée** chaque semaine.
+- Passé Simple : La lettre **a été envoyée** hier.
+- Present Perfect : Le travail **a été terminé**.
+- Futur : Le projet **sera terminé** demain.
+- Modal : Le rapport **doit être soumis** avant vendredi.
+
+**Quand utiliser le passif :**
+- Quand l'auteur est inconnu : Mon vélo **a été volé**.
+- Quand l'action est plus importante que l'auteur.
+- Dans l'écriture formelle/scientifique : L'expérience **a été menée**.
+- Quand l'auteur est évident : Il **a été arrêté** (par la police).`,
+    examples: [
+      { en: "The book **was written** by J.K. Rowling.", fr: "Le livre **a été écrit** par J.K. Rowling." },
+      { en: "English **is spoken** in many countries.", fr: "L'anglais **est parlé** dans de nombreux pays." },
+      { en: "The Eiffel Tower **was built** in 1889.", fr: "La Tour Eiffel **a été construite** en 1889." },
+      { en: "The results **will be announced** tomorrow.", fr: "Les résultats **seront annoncés** demain." }
+    ],
+    exercises: [
+      {
+        id: 118,
+        title: "Passive Voice",
+        description: "Choose the correct passive form.",
+        questions: [
+          {
+            id: 1,
+            question: "The window ___ by the storm last night.",
+            options: ["broke", "was broken", "has broken"],
+            correctAnswer: "was broken",
+            explanation: "Past simple passive: was/were + past participle."
+          },
+          {
+            id: 2,
+            question: "English ___ all over the world.",
+            options: ["speaks", "is spoken", "is speaking"],
+            correctAnswer: "is spoken",
+            explanation: "Present simple passive for general facts."
+          },
+          {
+            id: 3,
+            question: "The new hospital ___ next year.",
+            options: ["will build", "will be built", "is built"],
+            correctAnswer: "will be built",
+            explanation: "Future passive: will be + past participle."
+          },
+          {
+            id: 4,
+            question: "The report ___ already ___.",
+            options: ["has... written", "has... been written", "was... written"],
+            correctAnswer: "has... been written",
+            explanation: "Present perfect passive: has/have been + past participle."
+          },
+          {
+            id: 5,
+            question: "The documents must ___ by Friday.",
+            options: ["submit", "be submitted", "be submitting"],
+            correctAnswer: "be submitted",
+            explanation: "Modal passive: modal + be + past participle."
+          },
+          {
+            id: 6,
+            question: "This castle ___ in the 15th century.",
+            options: ["built", "was built", "has been built"],
+            correctAnswer: "was built",
+            explanation: "Past simple passive for historical facts."
+          },
+          {
+            id: 7,
+            question: "The meeting ___ at the moment.",
+            options: ["is holding", "is being held", "is held"],
+            correctAnswer: "is being held",
+            explanation: "Present continuous passive: is/are being + past participle."
+          },
+          {
+            id: 8,
+            question: "By whom ___ this painting ___?",
+            options: ["was... paint", "was... painted", "did... paint"],
+            correctAnswer: "was... painted",
+            explanation: "Passive question: By whom was + subject + past participle."
+          },
+          {
+            id: 9,
+            question: "The thief ___ yet.",
+            options: ["hasn't caught", "hasn't been caught", "didn't catch"],
+            correctAnswer: "hasn't been caught",
+            explanation: "Present perfect passive negative."
+          },
+          {
+            id: 10,
+            question: "This song ___ by millions of people.",
+            options: ["loves", "is loved", "is loving"],
+            correctAnswer: "is loved",
+            explanation: "Present simple passive for general statements."
+          }
+        ]
+      }
+    ]
   }
 ];
