@@ -1209,5 +1209,273 @@ export const grammarCategories: GrammarCategory[] = [
         ]
       }
     ]
+  },
+  {
+    id: 'comparatives',
+    titleEn: 'Comparatives',
+    titleFr: 'Les Comparatifs',
+    explanationEn: `**Comparatives** are used to compare two things, people, or ideas.
+
+**Short adjectives (1 syllable):** Add -er
+- tall → taller, fast → faster, old → older
+- Spelling rules: big → bigger (double consonant), nice → nicer (drop e)
+
+**Long adjectives (2+ syllables):** Use "more" + adjective
+- beautiful → more beautiful, expensive → more expensive
+- Exception: 2-syllable adjectives ending in -y: happy → happier
+
+**Irregular comparatives:**
+- good → better
+- bad → worse
+- far → farther/further
+
+**Structure:** Subject + be + comparative + than + noun/pronoun
+- She is taller than her brother.
+- This book is more interesting than that one.
+
+**As...as for equality:**
+- He is as tall as his father. (equal)
+- She isn't as old as me. (not equal)`,
+    explanationFr: `**Les comparatifs** servent à comparer deux choses, personnes ou idées.
+
+**Adjectifs courts (1 syllabe) :** Ajouter -er
+- tall → taller, fast → faster, old → older
+- Règles d'orthographe : big → bigger (doubler la consonne), nice → nicer (supprimer le e)
+
+**Adjectifs longs (2+ syllabes) :** Utiliser "more" + adjectif
+- beautiful → more beautiful, expensive → more expensive
+- Exception : adjectifs de 2 syllabes en -y : happy → happier
+
+**Comparatifs irréguliers :**
+- good → better
+- bad → worse
+- far → farther/further
+
+**Structure :** Sujet + be + comparatif + than + nom/pronom
+- Elle est plus grande que son frère.
+- Ce livre est plus intéressant que celui-là.
+
+**As...as pour l'égalité :**
+- Il est aussi grand que son père. (égal)
+- Elle n'est pas aussi âgée que moi. (pas égal)`,
+    examples: [
+      { en: "This car is **faster than** that one.", fr: "Cette voiture est **plus rapide que** celle-là." },
+      { en: "English is **easier than** Chinese.", fr: "L'anglais est **plus facile que** le chinois." },
+      { en: "She is **more intelligent than** him.", fr: "Elle est **plus intelligente que** lui." },
+      { en: "My coffee is **as hot as** yours.", fr: "Mon café est **aussi chaud que** le tien." }
+    ],
+    exercises: [
+      {
+        id: 111,
+        title: "Comparatives",
+        description: "Choose the correct comparative form.",
+        questions: [
+          {
+            id: 1,
+            question: "My house is ___ than yours.",
+            options: ["bigger", "more big", "biger"],
+            correctAnswer: "bigger",
+            explanation: "Short adjective 'big' → double consonant + er = bigger."
+          },
+          {
+            id: 2,
+            question: "This exercise is ___ than the last one.",
+            options: ["difficulter", "more difficult", "most difficult"],
+            correctAnswer: "more difficult",
+            explanation: "Long adjective 'difficult' → more + adjective."
+          },
+          {
+            id: 3,
+            question: "She speaks English ___ than her sister.",
+            options: ["better", "gooder", "more good"],
+            correctAnswer: "better",
+            explanation: "'Good' has an irregular comparative: better."
+          },
+          {
+            id: 4,
+            question: "Today is ___ than yesterday.",
+            options: ["hoter", "more hot", "hotter"],
+            correctAnswer: "hotter",
+            explanation: "Short adjective 'hot' → double consonant + er = hotter."
+          },
+          {
+            id: 5,
+            question: "The movie was ___ than I expected.",
+            options: ["boringer", "more boring", "most boring"],
+            correctAnswer: "more boring",
+            explanation: "Two-syllable adjective 'boring' → more + adjective."
+          },
+          {
+            id: 6,
+            question: "He is ___ than his brother.",
+            options: ["taller", "more tall", "tallest"],
+            correctAnswer: "taller",
+            explanation: "Short adjective 'tall' → adjective + er."
+          },
+          {
+            id: 7,
+            question: "This situation is ___ than before.",
+            options: ["badder", "worse", "more bad"],
+            correctAnswer: "worse",
+            explanation: "'Bad' has an irregular comparative: worse."
+          },
+          {
+            id: 8,
+            question: "Learning French is ___ than I thought.",
+            options: ["easier", "more easy", "easyer"],
+            correctAnswer: "easier",
+            explanation: "Adjectives ending in -y: change y to i + er = easier."
+          },
+          {
+            id: 9,
+            question: "This hotel is ___ than the other one.",
+            options: ["expensiver", "more expensive", "most expensive"],
+            correctAnswer: "more expensive",
+            explanation: "Long adjective 'expensive' → more + adjective."
+          },
+          {
+            id: 10,
+            question: "He drives ___ than his father.",
+            options: ["more carefully", "carefuller", "carefullier"],
+            correctAnswer: "more carefully",
+            explanation: "Adverbs ending in -ly use 'more' for comparison."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'superlatives',
+    titleEn: 'Superlatives',
+    titleFr: 'Les Superlatifs',
+    explanationEn: `**Superlatives** are used to compare one thing with all others in a group (the highest degree).
+
+**Short adjectives (1 syllable):** Add -est
+- tall → the tallest, fast → the fastest, old → the oldest
+- Spelling rules: big → the biggest, nice → the nicest
+
+**Long adjectives (2+ syllables):** Use "the most" + adjective
+- beautiful → the most beautiful, expensive → the most expensive
+- Exception: 2-syllable adjectives ending in -y: happy → the happiest
+
+**Irregular superlatives:**
+- good → the best
+- bad → the worst
+- far → the farthest/furthest
+
+**Structure:** Subject + be + the + superlative + (in/of)
+- She is the tallest in her class.
+- This is the most expensive car in the world.
+
+**In vs Of:**
+- "In" for places/groups: the best in the class, the tallest in the family
+- "Of" for quantities: the best of all, the youngest of the three`,
+    explanationFr: `**Les superlatifs** servent à comparer une chose avec toutes les autres d'un groupe (le plus haut degré).
+
+**Adjectifs courts (1 syllabe) :** Ajouter -est
+- tall → the tallest, fast → the fastest, old → the oldest
+- Règles d'orthographe : big → the biggest, nice → the nicest
+
+**Adjectifs longs (2+ syllabes) :** Utiliser "the most" + adjectif
+- beautiful → the most beautiful, expensive → the most expensive
+- Exception : adjectifs de 2 syllabes en -y : happy → the happiest
+
+**Superlatifs irréguliers :**
+- good → the best
+- bad → the worst
+- far → the farthest/furthest
+
+**Structure :** Sujet + be + the + superlatif + (in/of)
+- Elle est la plus grande de sa classe.
+- C'est la voiture la plus chère du monde.
+
+**In vs Of :**
+- "In" pour les lieux/groupes : the best in the class, the tallest in the family
+- "Of" pour les quantités : the best of all, the youngest of the three`,
+    examples: [
+      { en: "She is **the tallest** girl in the class.", fr: "Elle est **la plus grande** fille de la classe." },
+      { en: "This is **the most beautiful** place I have ever seen.", fr: "C'est **le plus bel** endroit que j'aie jamais vu." },
+      { en: "He is **the best** student in our school.", fr: "Il est **le meilleur** élève de notre école." },
+      { en: "It was **the worst** day of my life.", fr: "C'était **le pire** jour de ma vie." }
+    ],
+    exercises: [
+      {
+        id: 112,
+        title: "Superlatives",
+        description: "Choose the correct superlative form.",
+        questions: [
+          {
+            id: 1,
+            question: "Mount Everest is ___ mountain in the world.",
+            options: ["the highest", "the most high", "higher"],
+            correctAnswer: "the highest",
+            explanation: "Short adjective 'high' → the + adjective + est."
+          },
+          {
+            id: 2,
+            question: "This is ___ book I have ever read.",
+            options: ["the interestingest", "the most interesting", "more interesting"],
+            correctAnswer: "the most interesting",
+            explanation: "Long adjective 'interesting' → the most + adjective."
+          },
+          {
+            id: 3,
+            question: "She is ___ person I know.",
+            options: ["the nicest", "the most nice", "nicer"],
+            correctAnswer: "the nicest",
+            explanation: "Short adjective 'nice' → the + adjective (drop e) + st."
+          },
+          {
+            id: 4,
+            question: "What is ___ city in your country?",
+            options: ["the bigger", "the most big", "the biggest"],
+            correctAnswer: "the biggest",
+            explanation: "Short adjective 'big' → the + double consonant + est."
+          },
+          {
+            id: 5,
+            question: "He is ___ player on the team.",
+            options: ["the better", "the best", "the goodest"],
+            correctAnswer: "the best",
+            explanation: "'Good' has an irregular superlative: the best."
+          },
+          {
+            id: 6,
+            question: "This was ___ exam of the year.",
+            options: ["the difficultest", "the most difficult", "more difficult"],
+            correctAnswer: "the most difficult",
+            explanation: "Long adjective 'difficult' → the most + adjective."
+          },
+          {
+            id: 7,
+            question: "Today is ___ day of the year.",
+            options: ["the hottest", "the most hot", "the hotest"],
+            correctAnswer: "the hottest",
+            explanation: "Short adjective 'hot' → the + double consonant + est."
+          },
+          {
+            id: 8,
+            question: "It was ___ experience of my life.",
+            options: ["the baddest", "the worst", "the most bad"],
+            correctAnswer: "the worst",
+            explanation: "'Bad' has an irregular superlative: the worst."
+          },
+          {
+            id: 9,
+            question: "She is ___ of the three sisters.",
+            options: ["the youngest", "the most young", "younger"],
+            correctAnswer: "the youngest",
+            explanation: "Short adjective 'young' + 'of' for comparing within a group."
+          },
+          {
+            id: 10,
+            question: "This restaurant serves ___ food in town.",
+            options: ["the delicioust", "the most delicious", "deliciouser"],
+            correctAnswer: "the most delicious",
+            explanation: "Long adjective 'delicious' → the most + adjective."
+          }
+        ]
+      }
+    ]
   }
 ];
