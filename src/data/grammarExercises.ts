@@ -699,6 +699,258 @@ export const grammarCategories: GrammarCategory[] = [
     ]
   },
   {
+    id: 'present-perfect-continuous',
+    titleEn: 'Present Perfect Continuous',
+    titleFr: 'Present Perfect Continu',
+    explanationEn: `**Present Perfect Continuous** (have/has + been + verb-ing) is used for:
+
+**1. Actions that started in the past and are still continuing:**
+- I have been waiting for an hour. (still waiting)
+- She has been learning English for two years. (still learning)
+
+**2. Recent continuous actions with visible results:**
+- You're out of breath. Have you been running?
+- Her eyes are red. She has been crying.
+
+**3. Emphasis on duration:**
+- How long have you been working here?
+- I've been studying all day.
+
+**Key signal words:** for, since, all day/morning/week, how long, lately, recently
+
+**Present Perfect vs Present Perfect Continuous:**
+- I have read three books. (focus on completion/result)
+- I have been reading all morning. (focus on duration/activity)`,
+    explanationFr: `**Le Present Perfect Continuous** (have/has + been + verbe-ing) s'utilise pour :
+
+**1. Les actions qui ont commencé dans le passé et continuent encore :**
+- J'attends depuis une heure. (j'attends toujours)
+- Elle apprend l'anglais depuis deux ans. (elle apprend toujours)
+
+**2. Les actions continues récentes avec des résultats visibles :**
+- Tu es essoufflé. Tu as couru ?
+- Ses yeux sont rouges. Elle a pleuré.
+
+**3. L'accent sur la durée :**
+- Depuis combien de temps travaillez-vous ici ?
+- J'étudie toute la journée.
+
+**Mots-clés indicateurs :** for, since, all day/morning/week, how long, lately, recently
+
+**Present Perfect vs Present Perfect Continuous :**
+- J'ai lu trois livres. (accent sur l'achèvement/le résultat)
+- Je lis toute la matinée. (accent sur la durée/l'activité)`,
+    examples: [
+      { en: "I **have been waiting** for you for 30 minutes!", fr: "Je **t'attends** depuis 30 minutes !" },
+      { en: "She **has been working** here since 2020.", fr: "Elle **travaille** ici depuis 2020." },
+      { en: "It **has been raining** all day.", fr: "Il **pleut** toute la journée." },
+      { en: "What **have** you **been doing**?", fr: "Qu'est-ce que tu **as fait** (tout ce temps) ?" }
+    ],
+    exercises: [
+      {
+        id: 109,
+        title: "Present Perfect Continuous",
+        description: "Choose the correct form.",
+        questions: [
+          {
+            id: 1,
+            question: "I ___ for two hours. I'm exhausted!",
+            options: ["have studied", "have been studying"],
+            correctAnswer: "have been studying",
+            explanation: "Continuous emphasizes the duration of the activity."
+          },
+          {
+            id: 2,
+            question: "She ___ three emails this morning.",
+            options: ["has written", "has been writing"],
+            correctAnswer: "has written",
+            explanation: "Simple Perfect for completed quantity (three emails)."
+          },
+          {
+            id: 3,
+            question: "How long ___ you ___ English?",
+            options: ["have... learned", "have... been learning"],
+            correctAnswer: "have... been learning",
+            explanation: "'How long' suggests duration - use Continuous."
+          },
+          {
+            id: 4,
+            question: "Your hands are dirty. What ___ you ___?",
+            options: ["have... done", "have... been doing"],
+            correctAnswer: "have... been doing",
+            explanation: "Continuous for recent activity with visible result."
+          },
+          {
+            id: 5,
+            question: "I ___ this book. It's really good!",
+            options: ["have finished", "have been finishing"],
+            correctAnswer: "have finished",
+            explanation: "Simple Perfect for completed action."
+          },
+          {
+            id: 6,
+            question: "They ___ tennis since 9 AM.",
+            options: ["have played", "have been playing"],
+            correctAnswer: "have been playing",
+            explanation: "'Since' + duration suggests ongoing activity."
+          },
+          {
+            id: 7,
+            question: "Sorry I'm late. ___ you ___ long?",
+            options: ["Have... waited", "Have... been waiting"],
+            correctAnswer: "Have... been waiting",
+            explanation: "Asking about duration of waiting."
+          },
+          {
+            id: 8,
+            question: "He ___ to that song all morning. It's annoying!",
+            options: ["has listened", "has been listening"],
+            correctAnswer: "has been listening",
+            explanation: "'All morning' emphasizes continuous duration."
+          },
+          {
+            id: 9,
+            question: "I ___ five countries in Europe.",
+            options: ["have visited", "have been visiting"],
+            correctAnswer: "have visited",
+            explanation: "Simple Perfect for completed experiences/quantity."
+          },
+          {
+            id: 10,
+            question: "Why are your eyes red? ___ you ___?",
+            options: ["Have... cried", "Have... been crying"],
+            correctAnswer: "Have... been crying",
+            explanation: "Continuous for recent activity with visible result."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'future-perfect-continuous',
+    titleEn: 'Future Perfect Continuous',
+    titleFr: 'Futur Perfect Continu',
+    explanationEn: `**Future Perfect Continuous** (will + have + been + verb-ing) is used for:
+
+**1. Duration of an action up to a point in the future:**
+- By next month, I will have been working here for 10 years.
+- In June, they will have been living together for 5 years.
+
+**2. Cause of a future situation:**
+- She'll be tired because she will have been traveling all day.
+- He will have been studying for hours by exam time.
+
+**Structure:** Subject + will have been + verb-ing
+
+**Key signal words:** by (the time), for, when, by next week/month/year
+
+**Future Perfect vs Future Perfect Continuous:**
+- By 6 PM, I will have finished my work. (completed)
+- By 6 PM, I will have been working for 8 hours. (duration)`,
+    explanationFr: `**Le Future Perfect Continuous** (will + have + been + verbe-ing) s'utilise pour :
+
+**1. La durée d'une action jusqu'à un moment dans le futur :**
+- Le mois prochain, ça fera 10 ans que je travaille ici.
+- En juin, ça fera 5 ans qu'ils vivent ensemble.
+
+**2. La cause d'une situation future :**
+- Elle sera fatiguée parce qu'elle aura voyagé toute la journée.
+- Il aura étudié pendant des heures avant l'examen.
+
+**Structure :** Sujet + will have been + verbe-ing
+
+**Mots-clés indicateurs :** by (the time), for, when, by next week/month/year
+
+**Future Perfect vs Future Perfect Continuous :**
+- À 18h, j'aurai fini mon travail. (achevé)
+- À 18h, j'aurai travaillé pendant 8 heures. (durée)`,
+    examples: [
+      { en: "By December, I **will have been living** here for 5 years.", fr: "En décembre, ça fera 5 ans que **j'habite** ici." },
+      { en: "She **will have been teaching** for 20 years next month.", fr: "Elle **aura enseigné** pendant 20 ans le mois prochain." },
+      { en: "By the time you arrive, I **will have been waiting** for an hour.", fr: "Quand tu arriveras, **j'attendrai** depuis une heure." },
+      { en: "They **will have been traveling** all day, so they'll be tired.", fr: "Ils **auront voyagé** toute la journée, donc ils seront fatigués." }
+    ],
+    exercises: [
+      {
+        id: 110,
+        title: "Future Perfect Continuous",
+        description: "Choose the correct form.",
+        questions: [
+          {
+            id: 1,
+            question: "By next year, she ___ at this company for 10 years.",
+            options: ["will work", "will have been working"],
+            correctAnswer: "will have been working",
+            explanation: "Duration up to a future point requires Future Perfect Continuous."
+          },
+          {
+            id: 2,
+            question: "By 8 PM, I ___ for five hours.",
+            options: ["will have studied", "will have been studying"],
+            correctAnswer: "will have been studying",
+            explanation: "Emphasis on duration (five hours) - use Continuous."
+          },
+          {
+            id: 3,
+            question: "In 2030, they ___ married for 25 years.",
+            options: ["will be", "will have been being"],
+            correctAnswer: "will be",
+            explanation: "'Be' doesn't typically use continuous forms - use Future Perfect."
+          },
+          {
+            id: 4,
+            question: "By the time the movie ends, we ___ for 3 hours.",
+            options: ["will have sat", "will have been sitting"],
+            correctAnswer: "will have been sitting",
+            explanation: "Duration of ongoing action - use Continuous."
+          },
+          {
+            id: 5,
+            question: "She'll be exhausted. She ___ all day without a break.",
+            options: ["will have worked", "will have been working"],
+            correctAnswer: "will have been working",
+            explanation: "Continuous emphasizes the ongoing nature causing exhaustion."
+          },
+          {
+            id: 6,
+            question: "By Christmas, I ___ English for two years.",
+            options: ["will have learned", "will have been learning"],
+            correctAnswer: "will have been learning",
+            explanation: "Duration of learning process - use Continuous."
+          },
+          {
+            id: 7,
+            question: "By the time he retires, he ___ for this company for 40 years.",
+            options: ["will have worked", "will have been working"],
+            correctAnswer: "will have been working",
+            explanation: "Duration of employment - Continuous emphasizes the ongoing nature."
+          },
+          {
+            id: 8,
+            question: "At midnight, they ___ for 6 hours straight.",
+            options: ["will have danced", "will have been dancing"],
+            correctAnswer: "will have been dancing",
+            explanation: "'For 6 hours' emphasizes duration - use Continuous."
+          },
+          {
+            id: 9,
+            question: "By next month, how long ___ you ___ on this project?",
+            options: ["will... have worked", "will... have been working"],
+            correctAnswer: "will... have been working",
+            explanation: "'How long' asks about duration - use Continuous."
+          },
+          {
+            id: 10,
+            question: "When you arrive, I ___ dinner for an hour already.",
+            options: ["will have cooked", "will have been cooking"],
+            correctAnswer: "will have been cooking",
+            explanation: "Duration of ongoing activity at arrival time."
+          }
+        ]
+      }
+    ]
+  },
+  {
     id: 'prepositions-place',
     titleEn: 'Prepositions of Place: In, On, At',
     titleFr: 'Prépositions de Lieu : In, On, At',
