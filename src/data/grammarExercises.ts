@@ -2265,5 +2265,137 @@ export const grammarCategories: GrammarCategory[] = [
         ]
       }
     ]
+  },
+  {
+    id: 'phrasal-verbs',
+    titleEn: 'Phrasal Verbs',
+    titleFr: 'Les Verbes à Particule (Phrasal Verbs)',
+    explanationEn: `**Phrasal verbs** = verb + particle (preposition/adverb)
+The meaning often changes completely from the original verb.
+
+**SEPARABLE phrasal verbs** (object can go in the middle):
+- Turn off the light. / Turn the light off. / Turn it off.
+- Pick up your clothes. / Pick your clothes up. / Pick them up.
+- ⚠️ With pronouns, MUST separate: Turn **it** off. (NOT: Turn off it.)
+
+**INSEPARABLE phrasal verbs** (object must come after):
+- Look after the children. (NOT: Look the children after.)
+- Get over a problem. (NOT: Get a problem over.)
+
+**THREE-WORD phrasal verbs** (always inseparable):
+- I look forward to the holiday.
+- She gets along with everyone.
+- We ran out of milk.
+
+**Common phrasal verbs:**
+- give up (stop trying), look up (search), put off (postpone)
+- turn down (refuse), work out (exercise/solve), break down (stop working)
+- figure out (understand), come across (find by chance)`,
+    explanationFr: `**Les phrasal verbs** = verbe + particule (préposition/adverbe)
+Le sens change souvent complètement par rapport au verbe original.
+
+**Phrasal verbs SÉPARABLES** (l'objet peut aller au milieu) :
+- Turn off the light. / Turn the light off. / Turn it off.
+- Pick up your clothes. / Pick your clothes up. / Pick them up.
+- ⚠️ Avec les pronoms, on DOIT séparer : Turn **it** off. (PAS : Turn off it.)
+
+**Phrasal verbs INSÉPARABLES** (l'objet doit venir après) :
+- Look after the children. (PAS : Look the children after.)
+- Get over a problem. (PAS : Get a problem over.)
+
+**Phrasal verbs à TROIS MOTS** (toujours inséparables) :
+- I look forward to the holiday.
+- She gets along with everyone.
+- We ran out of milk.
+
+**Phrasal verbs courants :**
+- give up (abandonner), look up (chercher), put off (reporter)
+- turn down (refuser), work out (faire du sport/résoudre), break down (tomber en panne)
+- figure out (comprendre), come across (trouver par hasard)`,
+    examples: [
+      { en: "Please **turn off** the TV. / Please **turn** the TV **off**.", fr: "S'il te plaît, **éteins** la télé." },
+      { en: "I need to **look after** my sister. (inseparable)", fr: "Je dois **m'occuper de** ma sœur. (inséparable)" },
+      { en: "She **gave up** smoking last year.", fr: "Elle a **arrêté de** fumer l'année dernière." },
+      { en: "We've **run out of** coffee.", fr: "Nous n'avons **plus de** café." }
+    ],
+    exercises: [
+      {
+        id: 119,
+        title: "Phrasal Verbs",
+        description: "Choose the correct phrasal verb or word order.",
+        questions: [
+          {
+            id: 1,
+            question: "Can you ___ the music? It's too loud.",
+            options: ["turn down", "turn up", "turn on"],
+            correctAnswer: "turn down",
+            explanation: "'Turn down' means to reduce volume or refuse."
+          },
+          {
+            id: 2,
+            question: "I need to ___ this word in the dictionary.",
+            options: ["look up", "look after", "look for"],
+            correctAnswer: "look up",
+            explanation: "'Look up' means to search for information."
+          },
+          {
+            id: 3,
+            question: "The meeting has been ___. It's now next week.",
+            options: ["put on", "put off", "put up"],
+            correctAnswer: "put off",
+            explanation: "'Put off' means to postpone."
+          },
+          {
+            id: 4,
+            question: "Which is correct? 'Turn ___ .'",
+            options: ["off it", "it off", "it on off"],
+            correctAnswer: "it off",
+            explanation: "With pronouns, separable phrasal verbs MUST be split."
+          },
+          {
+            id: 5,
+            question: "She ___ her grandmother every weekend.",
+            options: ["looks after", "looks up", "looks for"],
+            correctAnswer: "looks after",
+            explanation: "'Look after' means to take care of someone."
+          },
+          {
+            id: 6,
+            question: "I can't ___ what this word means.",
+            options: ["figure out", "figure up", "figure in"],
+            correctAnswer: "figure out",
+            explanation: "'Figure out' means to understand or solve."
+          },
+          {
+            id: 7,
+            question: "He ___ smoking three years ago.",
+            options: ["gave up", "gave in", "gave off"],
+            correctAnswer: "gave up",
+            explanation: "'Give up' means to stop doing something."
+          },
+          {
+            id: 8,
+            question: "We've ___ milk. Can you buy some?",
+            options: ["run out of", "run into", "run over"],
+            correctAnswer: "run out of",
+            explanation: "'Run out of' means to have no more of something."
+          },
+          {
+            id: 9,
+            question: "I ___ an old friend at the supermarket yesterday.",
+            options: ["came across", "came up", "came in"],
+            correctAnswer: "came across",
+            explanation: "'Come across' means to find or meet by chance."
+          },
+          {
+            id: 10,
+            question: "My car ___ on the highway. I had to call for help.",
+            options: ["broke down", "broke up", "broke in"],
+            correctAnswer: "broke down",
+            explanation: "'Break down' means to stop working (for machines)."
+          }
+        ]
+      }
+    ]
   }
 ];
