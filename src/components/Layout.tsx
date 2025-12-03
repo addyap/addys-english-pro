@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { MessageSquare, Menu, X, ExternalLink } from 'lucide-react';
+import { MessageSquare, Menu, X, ExternalLink, User, LogOut } from 'lucide-react';
 import { ScrollProgressBar } from "@/components/Effects";
 import SiteLogo from "@/components/SiteLogo";
+import { useAuth } from '@/hooks/useAuth';
+import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -12,6 +15,16 @@ const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const year = new Date().getFullYear();
+  const { user, signOut, loading } = useAuth();
+
+  const handleSignOut = async () => {
+    const { error } = await signOut();
+    if (error) {
+      toast.error('Erreur lors de la déconnexion');
+    } else {
+      toast.success('Déconnexion réussie');
+    }
+  };
 
   const navigation = [
     { name: 'Accueil', href: '/', current: location.pathname === '/' },
@@ -95,6 +108,30 @@ const Layout = ({ children }: LayoutProps) => {
               <MessageSquare className="h-4 w-4" />
               WhatsApp
             </a>
+
+            {/* Auth buttons - Desktop */}
+            {!loading && (
+              <div className="hidden lg:flex items-center ml-2">
+                {user ? (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={handleSignOut}
+                    className="text-primary hover:text-accent"
+                  >
+                    <LogOut className="h-4 w-4 mr-1" />
+                    Déconnexion
+                  </Button>
+                ) : (
+                  <Link to="/auth">
+                    <Button variant="outline" size="sm">
+                      <User className="h-4 w-4 mr-1" />
+                      Connexion
+                    </Button>
+                  </Link>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Mobile Navigation Menu */}
@@ -115,6 +152,31 @@ const Layout = ({ children }: LayoutProps) => {
                     {item.name}
                   </Link>
                 ))}
+                
+                {/* Auth link - Mobile */}
+                {!loading && (
+                  user ? (
+                    <button
+                      onClick={() => {
+                        handleSignOut();
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="px-4 py-3 rounded-lg text-sm font-medium text-primary hover:text-accent-foreground hover:bg-accent border border-transparent hover:border-accent flex items-center gap-2"
+                    >
+                      <LogOut className="h-4 w-4" />
+                      Déconnexion
+                    </button>
+                  ) : (
+                    <Link
+                      to="/auth"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="px-4 py-3 rounded-lg text-sm font-medium text-primary hover:text-accent-foreground hover:bg-accent border border-transparent hover:border-accent flex items-center gap-2"
+                    >
+                      <User className="h-4 w-4" />
+                      Connexion
+                    </Link>
+                  )
+                )}
               </nav>
             </div>
           )}
