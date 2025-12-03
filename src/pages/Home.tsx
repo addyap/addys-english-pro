@@ -324,13 +324,13 @@ const Home = () => {
                 </div>
                 <div className="flex-1 text-center md:text-left">
                   <h2 className="text-3xl font-bold text-primary mb-4 font-heading">
-                    100 Exercices d'Anglais
+                    Grammaire & Exercices Interactifs
                   </h2>
                   <p className="text-lg text-muted-foreground mb-6 font-body">
-                    Perfectionnez votre anglais avec 100 exercices ciblés sur les pièges les plus courants : grammaire, vocabulaire, faux amis...
+                    Maîtrisez les temps anglais, les prépositions et les comparatifs avec des explications claires (EN/FR) et plus de 200 exercices interactifs.
                   </p>
                   <Link to="/exercices" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body">
-                    Découvrir les exercices
+                    Accéder aux leçons
                   </Link>
                 </div>
               </div>
