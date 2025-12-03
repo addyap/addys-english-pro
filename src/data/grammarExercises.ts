@@ -4263,5 +4263,151 @@ Ils sont suivis de la base verbale (sans "to").
         ]
       }
     ]
+  },
+  {
+    id: 'possessive-adjectives',
+    titleEn: 'Possessive Adjectives',
+    titleFr: 'Adjectifs Possessifs',
+    explanationEn: `**Possessive adjectives** show ownership and come BEFORE a noun.
+
+**Forms:**
+- I → **my** (my book)
+- you → **your** (your car)
+- he → **his** (his phone)
+- she → **her** (her bag)
+- it → **its** (its tail)
+- we → **our** (our house)
+- they → **their** (their children)
+
+**Key rules:**
+1. Possessive adjectives are always followed by a noun:
+   - This is **my** book. ✓
+   - This is **my**. ✗ (need "mine" without noun)
+
+2. They don't change for singular/plural nouns:
+   - **my** book / **my** books
+   - **her** child / **her** children
+
+3. **Its vs It's:**
+   - **its** = possessive (The dog wagged **its** tail)
+   - **it's** = it is/it has (It's raining)
+
+4. **Their vs There vs They're:**
+   - **their** = possessive (**Their** house is big)
+   - **there** = place (over **there**)
+   - **they're** = they are (**They're** happy)`,
+    explanationFr: `**Les adjectifs possessifs** indiquent la possession et viennent AVANT un nom.
+
+**Formes :**
+- I → **my** (mon/ma/mes)
+- you → **your** (ton/ta/tes, votre/vos)
+- he → **his** (son/sa/ses - à lui)
+- she → **her** (son/sa/ses - à elle)
+- it → **its** (son/sa/ses - pour les choses/animaux)
+- we → **our** (notre/nos)
+- they → **their** (leur/leurs)
+
+**Règles clés :**
+1. Les adjectifs possessifs sont toujours suivis d'un nom :
+   - This is **my** book. ✓
+   - This is **my**. ✗ (il faut "mine" sans nom)
+
+2. Ils ne changent pas selon le singulier/pluriel du nom :
+   - **my** book / **my** books
+   - **her** child / **her** children
+
+3. **Its vs It's :**
+   - **its** = possessif (The dog wagged **its** tail)
+   - **it's** = it is/it has (It's raining)
+
+4. **Their vs There vs They're :**
+   - **their** = possessif (**Their** house is big)
+   - **there** = lieu (over **there**)
+   - **they're** = they are (**They're** happy)`,
+    examples: [
+      { en: "I love **my** job.", fr: "J'aime **mon** travail." },
+      { en: "She forgot **her** keys.", fr: "Elle a oublié **ses** clés." },
+      { en: "The cat is licking **its** paw.", fr: "Le chat lèche **sa** patte." },
+      { en: "**Their** children go to **our** school.", fr: "**Leurs** enfants vont à **notre** école." }
+    ],
+    exercises: [
+      {
+        id: 134,
+        title: "Possessive Adjectives",
+        description: "Choose the correct possessive adjective.",
+        questions: [
+          {
+            id: 1,
+            question: "I can't find ___ keys anywhere.",
+            options: ["me", "my", "mine"],
+            correctAnswer: "my",
+            explanation: "Possessive adjective 'my' before noun 'keys'."
+          },
+          {
+            id: 2,
+            question: "She loves ___ new job.",
+            options: ["she", "her", "hers"],
+            correctAnswer: "her",
+            explanation: "Possessive adjective 'her' before noun 'job'."
+          },
+          {
+            id: 3,
+            question: "The dog is wagging ___ tail.",
+            options: ["it's", "its", "his"],
+            correctAnswer: "its",
+            explanation: "'Its' (no apostrophe) is the possessive for 'it'."
+          },
+          {
+            id: 4,
+            question: "We should clean ___ room before Mom gets home.",
+            options: ["we", "our", "ours"],
+            correctAnswer: "our",
+            explanation: "Possessive adjective 'our' before noun 'room'."
+          },
+          {
+            id: 5,
+            question: "They invited all ___ friends to the party.",
+            options: ["they", "their", "theirs"],
+            correctAnswer: "their",
+            explanation: "Possessive adjective 'their' before noun 'friends'."
+          },
+          {
+            id: 6,
+            question: "John forgot ___ wallet at home.",
+            options: ["he", "him", "his"],
+            correctAnswer: "his",
+            explanation: "Possessive adjective 'his' for male person."
+          },
+          {
+            id: 7,
+            question: "Is this ___ pen? - Yes, it's mine.",
+            options: ["you", "your", "yours"],
+            correctAnswer: "your",
+            explanation: "Possessive adjective 'your' before noun 'pen'."
+          },
+          {
+            id: 8,
+            question: "The company changed ___ logo last year.",
+            options: ["it's", "its", "their"],
+            correctAnswer: "its",
+            explanation: "'Its' for things/organizations (no apostrophe)."
+          },
+          {
+            id: 9,
+            question: "I need to wash ___ hair.",
+            options: ["me", "my", "mine"],
+            correctAnswer: "my",
+            explanation: "Possessive adjective 'my' before noun 'hair'."
+          },
+          {
+            id: 10,
+            question: "___ house is bigger than ours.",
+            options: ["They", "Their", "Theirs"],
+            correctAnswer: "Their",
+            explanation: "Possessive adjective 'Their' before noun 'house'."
+          }
+        ]
+      }
+    ]
   }
 ];
