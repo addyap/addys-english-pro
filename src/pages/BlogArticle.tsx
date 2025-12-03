@@ -7,13 +7,29 @@ import ReadingProgress from '../components/ReadingProgress';
 import SocialShare from '../components/SocialShare';
 import { ArticleSchema } from '@/lib/seo/structuredData';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
+import { grammarBlogPosts } from '@/data/grammarBlogPosts';
 
 const BlogArticle = () => {
   const { id } = useParams();
   const articleRef = useRef<HTMLDivElement>(null);
   useScrollTracking(`/blog/${id}`);
 
-  const articles = {
+  // Convert grammar blog posts to the expected format
+  const grammarArticlesMap = grammarBlogPosts.reduce((acc, post) => {
+    acc[post.id] = {
+      title: post.title,
+      content: post.content,
+      date: post.date,
+      author: post.author,
+      category: post.category,
+      readTime: post.readTime,
+      description: post.description,
+      ogImage: post.ogImage
+    };
+    return acc;
+  }, {} as Record<string, any>);
+
+  const baseArticles = {
     'anglais-professionnel-2025': {
       title: 'Pourquoi l\'anglais professionnel est une compétence essentielle en 2025',
       content: `

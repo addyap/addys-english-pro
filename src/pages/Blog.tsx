@@ -7,12 +7,13 @@ import { seoMetadata } from '../utils/seoMetadata';
 import BlogSearch from '../components/BlogSearch';
 import AnimatedCard from '../components/AnimatedCard';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
+import { grammarArticles } from '@/data/grammarBlogPosts';
 
 const Blog = () => {
   useScrollTracking('blog');
   useTimeTracking('blog');
   
-  const articles = [
+  const baseArticles = [
     {
       id: 'anglais-professionnel-2025',
       title: 'Pourquoi l\'anglais professionnel est une compétence essentielle en 2025',
@@ -41,6 +42,11 @@ const Blog = () => {
       readTime: '6 min'
     }
   ];
+
+  // Combine base articles with grammar articles
+  const articles = [...baseArticles, ...grammarArticles].sort((a, b) => 
+    new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
   const [filteredArticles, setFilteredArticles] = useState<typeof articles>(articles);
 
