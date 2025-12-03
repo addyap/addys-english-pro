@@ -1477,5 +1477,399 @@ export const grammarCategories: GrammarCategory[] = [
         ]
       }
     ]
+  },
+  {
+    id: 'countable-uncountable',
+    titleEn: 'Countable and Uncountable Nouns',
+    titleFr: 'Noms Dénombrables et Indénombrables',
+    explanationEn: `**Countable nouns** can be counted and have singular/plural forms:
+- a book → two books, an apple → three apples
+- Use: a/an, many, few, a few, several, a number of
+
+**Uncountable nouns** cannot be counted and have no plural form:
+- water, milk, rice, information, advice, furniture, money
+- Use: much, little, a little, a great deal of, an amount of
+
+**Common uncountable nouns (often mistaken as countable):**
+- information (NOT informations)
+- advice (NOT advices)
+- furniture (NOT furnitures)
+- luggage/baggage (NOT luggages)
+- news (NOT a news)
+- work (NOT works, when meaning employment)
+
+**Quantifiers for both:**
+- some, any, a lot of, lots of, plenty of, enough
+
+**Making uncountable nouns countable:**
+- a piece of advice, a glass of water, a slice of bread`,
+    explanationFr: `**Les noms dénombrables** peuvent être comptés et ont des formes singulier/pluriel :
+- a book → two books, an apple → three apples
+- Utiliser : a/an, many, few, a few, several, a number of
+
+**Les noms indénombrables** ne peuvent pas être comptés et n'ont pas de pluriel :
+- water, milk, rice, information, advice, furniture, money
+- Utiliser : much, little, a little, a great deal of, an amount of
+
+**Noms indénombrables courants (souvent confondus avec dénombrables) :**
+- information (PAS informations)
+- advice (PAS advices)
+- furniture (PAS furnitures)
+- luggage/baggage (PAS luggages)
+- news (PAS a news)
+- work (PAS works, quand il signifie emploi)
+
+**Quantifieurs pour les deux :**
+- some, any, a lot of, lots of, plenty of, enough
+
+**Rendre les indénombrables dénombrables :**
+- a piece of advice, a glass of water, a slice of bread`,
+    examples: [
+      { en: "I need some **information**. (NOT informations)", fr: "J'ai besoin d'**informations**. (information est indénombrable en anglais)" },
+      { en: "She gave me good **advice**. (NOT advices)", fr: "Elle m'a donné de bons **conseils**. (advice est indénombrable en anglais)" },
+      { en: "How **much** money do you have?", fr: "**Combien** d'argent as-tu ?" },
+      { en: "How **many** books did you read?", fr: "**Combien** de livres as-tu lus ?" }
+    ],
+    exercises: [
+      {
+        id: 113,
+        title: "Countable and Uncountable Nouns",
+        description: "Choose the correct word or form.",
+        questions: [
+          {
+            id: 1,
+            question: "How ___ sugar do you want in your coffee?",
+            options: ["many", "much", "few"],
+            correctAnswer: "much",
+            explanation: "'Sugar' is uncountable, so use 'much'."
+          },
+          {
+            id: 2,
+            question: "There are ___ apples in the basket.",
+            options: ["much", "a few", "a little"],
+            correctAnswer: "a few",
+            explanation: "'Apples' is countable, so use 'a few'."
+          },
+          {
+            id: 3,
+            question: "Can you give me some ___?",
+            options: ["advice", "advices", "an advice"],
+            correctAnswer: "advice",
+            explanation: "'Advice' is uncountable - no plural form."
+          },
+          {
+            id: 4,
+            question: "I don't have ___ time today.",
+            options: ["many", "much", "few"],
+            correctAnswer: "much",
+            explanation: "'Time' is uncountable, so use 'much'."
+          },
+          {
+            id: 5,
+            question: "She bought ___ new furniture for her apartment.",
+            options: ["a", "some", "many"],
+            correctAnswer: "some",
+            explanation: "'Furniture' is uncountable - use 'some', not 'a' or 'many'."
+          },
+          {
+            id: 6,
+            question: "How ___ people came to the party?",
+            options: ["much", "many", "a lot"],
+            correctAnswer: "many",
+            explanation: "'People' is countable, so use 'many'."
+          },
+          {
+            id: 7,
+            question: "I need ___ information about the course.",
+            options: ["an", "some", "many"],
+            correctAnswer: "some",
+            explanation: "'Information' is uncountable - use 'some'."
+          },
+          {
+            id: 8,
+            question: "There is ___ milk left in the fridge.",
+            options: ["a few", "a little", "many"],
+            correctAnswer: "a little",
+            explanation: "'Milk' is uncountable, so use 'a little'."
+          },
+          {
+            id: 9,
+            question: "The ___ was very heavy at the airport.",
+            options: ["luggages", "luggage", "a luggage"],
+            correctAnswer: "luggage",
+            explanation: "'Luggage' is uncountable - no plural, no article 'a'."
+          },
+          {
+            id: 10,
+            question: "I have ___ homework to do tonight.",
+            options: ["many", "a lot of", "a few"],
+            correctAnswer: "a lot of",
+            explanation: "'Homework' is uncountable - 'a lot of' works for both types."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'demonstratives',
+    titleEn: 'Demonstratives: This, That, These, Those',
+    titleFr: 'Les Démonstratifs : This, That, These, Those',
+    explanationEn: `**Demonstratives** point to specific things and indicate distance.
+
+**THIS** (singular, near):
+- This book is interesting. (the book near me)
+- This is my friend John. (introducing someone present)
+
+**THAT** (singular, far):
+- That building over there is the museum.
+- That was a great movie! (referring to something past)
+
+**THESE** (plural, near):
+- These shoes are comfortable. (shoes near me)
+- These are my colleagues.
+
+**THOSE** (plural, far):
+- Those mountains in the distance are beautiful.
+- Those were the days! (referring to past times)
+
+**Key uses:**
+- Physical distance: this/these (near) vs that/those (far)
+- Time: this (present/future) vs that (past)
+- Phone: "This is John speaking" (introducing yourself)`,
+    explanationFr: `**Les démonstratifs** désignent des choses spécifiques et indiquent la distance.
+
+**THIS** (singulier, proche) :
+- This book is interesting. (le livre près de moi)
+- This is my friend John. (présenter quelqu'un présent)
+
+**THAT** (singulier, loin) :
+- That building over there is the museum.
+- That was a great movie! (référence au passé)
+
+**THESE** (pluriel, proche) :
+- These shoes are comfortable. (chaussures près de moi)
+- These are my colleagues.
+
+**THOSE** (pluriel, loin) :
+- Those mountains in the distance are beautiful.
+- Those were the days! (référence au passé)
+
+**Utilisations clés :**
+- Distance physique : this/these (proche) vs that/those (loin)
+- Temps : this (présent/futur) vs that (passé)
+- Téléphone : "This is John speaking" (se présenter)`,
+    examples: [
+      { en: "**This** is delicious! (food I am eating now)", fr: "**C'est** délicieux ! (ce que je mange maintenant)" },
+      { en: "**That** restaurant across the street is expensive.", fr: "**Ce** restaurant de l'autre côté de la rue est cher." },
+      { en: "**These** flowers smell lovely.", fr: "**Ces** fleurs sentent bon." },
+      { en: "**Those** were happy times.", fr: "**C'étaient** des moments heureux." }
+    ],
+    exercises: [
+      {
+        id: 114,
+        title: "Demonstratives",
+        description: "Choose the correct demonstrative: this, that, these, or those.",
+        questions: [
+          {
+            id: 1,
+            question: "___ is my new car. (showing a car right next to you)",
+            options: ["This", "That", "These", "Those"],
+            correctAnswer: "This",
+            explanation: "'This' for singular objects near the speaker."
+          },
+          {
+            id: 2,
+            question: "Look at ___ birds in the sky!",
+            options: ["this", "that", "these", "those"],
+            correctAnswer: "those",
+            explanation: "'Those' for plural objects far from the speaker."
+          },
+          {
+            id: 3,
+            question: "___ shoes are too tight. (shoes you are wearing)",
+            options: ["This", "That", "These", "Those"],
+            correctAnswer: "These",
+            explanation: "'These' for plural objects near/on the speaker."
+          },
+          {
+            id: 4,
+            question: "Hello? ___ is Sarah speaking.",
+            options: ["This", "That", "These", "Those"],
+            correctAnswer: "This",
+            explanation: "On the phone, use 'this' to introduce yourself."
+          },
+          {
+            id: 5,
+            question: "___ was an excellent movie! (movie you just watched)",
+            options: ["This", "That", "These", "Those"],
+            correctAnswer: "That",
+            explanation: "'That' for referring to something just finished/past."
+          },
+          {
+            id: 6,
+            question: "Can you pass me ___ book on the table next to you?",
+            options: ["this", "that", "these", "those"],
+            correctAnswer: "that",
+            explanation: "'That' for singular objects far from the speaker."
+          },
+          {
+            id: 7,
+            question: "___ days, everyone uses smartphones.",
+            options: ["This", "That", "These", "Those"],
+            correctAnswer: "These",
+            explanation: "'These days' refers to the current time period."
+          },
+          {
+            id: 8,
+            question: "Who are ___ people over there?",
+            options: ["this", "that", "these", "those"],
+            correctAnswer: "those",
+            explanation: "'Those' for plural people at a distance."
+          },
+          {
+            id: 9,
+            question: "___ coffee is too hot to drink. (cup in your hand)",
+            options: ["This", "That", "These", "Those"],
+            correctAnswer: "This",
+            explanation: "'This' for something you are holding."
+          },
+          {
+            id: 10,
+            question: "Do you remember ___ holidays we spent in Spain?",
+            options: ["this", "that", "these", "those"],
+            correctAnswer: "those",
+            explanation: "'Those' for plural past memories/events."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'either-neither',
+    titleEn: 'Either (or) / Neither (nor)',
+    titleFr: 'Either (or) / Neither (nor)',
+    explanationEn: `**EITHER...OR** presents two choices/alternatives (positive):
+- You can have either tea or coffee.
+- Either you apologize, or I leave.
+- Either option is fine with me.
+
+**NEITHER...NOR** negates both options:
+- I like neither tea nor coffee. (= I don't like tea AND I don't like coffee)
+- Neither John nor Mary came to the party.
+- The film was neither interesting nor entertaining.
+
+**EITHER/NEITHER alone:**
+- "I don't like coffee." → "I don't either." / "Neither do I." / "Me neither."
+- Either of them can help you. (one or the other)
+- Neither of them knows the answer. (not one, not the other)
+
+**Subject-verb agreement:**
+- With "either...or" / "neither...nor": verb agrees with the NEAREST subject
+- Neither the teacher nor the students were happy.
+- Neither the students nor the teacher was happy.`,
+    explanationFr: `**EITHER...OR** présente deux choix/alternatives (positif) :
+- Tu peux avoir soit du thé soit du café.
+- Soit tu t'excuses, soit je pars.
+- L'une ou l'autre option me convient.
+
+**NEITHER...NOR** nie les deux options :
+- Je n'aime ni le thé ni le café.
+- Ni John ni Mary ne sont venus à la fête.
+- Le film n'était ni intéressant ni divertissant.
+
+**EITHER/NEITHER seuls :**
+- "Je n'aime pas le café." → "Moi non plus."
+- Either of them can help you. (l'un ou l'autre)
+- Neither of them knows the answer. (ni l'un ni l'autre)
+
+**Accord sujet-verbe :**
+- Avec "either...or" / "neither...nor" : le verbe s'accorde avec le sujet LE PLUS PROCHE
+- Neither the teacher nor the students were happy.
+- Neither the students nor the teacher was happy.`,
+    examples: [
+      { en: "You can **either** stay **or** leave.", fr: "Tu peux **soit** rester **soit** partir." },
+      { en: "**Neither** answer is correct.", fr: "**Aucune** des deux réponses n'est correcte." },
+      { en: "I speak **neither** Spanish **nor** Italian.", fr: "Je ne parle **ni** espagnol **ni** italien." },
+      { en: "\"I'm tired.\" - \"Me too.\" / \"I'm not tired.\" - \"**Neither** am I.\"", fr: "\"Je suis fatigué.\" - \"Moi aussi.\" / \"Je ne suis pas fatigué.\" - \"**Moi non plus**.\"" }
+    ],
+    exercises: [
+      {
+        id: 115,
+        title: "Either (or) / Neither (nor)",
+        description: "Choose the correct word or phrase.",
+        questions: [
+          {
+            id: 1,
+            question: "You can ___ call me ___ send an email.",
+            options: ["either... or", "neither... nor", "either... nor"],
+            correctAnswer: "either... or",
+            explanation: "'Either...or' for presenting two positive alternatives."
+          },
+          {
+            id: 2,
+            question: "I like ___ tea ___ coffee. I prefer water.",
+            options: ["either... or", "neither... nor", "either... nor"],
+            correctAnswer: "neither... nor",
+            explanation: "'Neither...nor' to negate both options."
+          },
+          {
+            id: 3,
+            question: "\"I don't like horror films.\" - \"___ do I.\"",
+            options: ["Either", "Neither", "So"],
+            correctAnswer: "Neither",
+            explanation: "'Neither do I' agrees with a negative statement."
+          },
+          {
+            id: 4,
+            question: "___ of the two candidates was qualified for the job.",
+            options: ["Either", "Neither", "Both"],
+            correctAnswer: "Neither",
+            explanation: "'Neither' means not one and not the other."
+          },
+          {
+            id: 5,
+            question: "The restaurant was ___ cheap ___ good.",
+            options: ["either... or", "neither... nor", "both... and"],
+            correctAnswer: "neither... nor",
+            explanation: "'Neither...nor' = not cheap AND not good."
+          },
+          {
+            id: 6,
+            question: "You can take ___ the bus ___ the train. Both go to the center.",
+            options: ["either... or", "neither... nor", "neither... or"],
+            correctAnswer: "either... or",
+            explanation: "'Either...or' for choosing between two options."
+          },
+          {
+            id: 7,
+            question: "___ Tom ___ his brothers were at home.",
+            options: ["Either... or", "Neither... nor", "Both... or"],
+            correctAnswer: "Neither... nor",
+            explanation: "'Neither...nor' = Tom wasn't there AND his brothers weren't there."
+          },
+          {
+            id: 8,
+            question: "\"I've never been to Japan.\" - \"I haven't ___.\"",
+            options: ["too", "either", "neither"],
+            correctAnswer: "either",
+            explanation: "'Either' at the end of a negative sentence means 'also not'."
+          },
+          {
+            id: 9,
+            question: "___ of these options works for me. Choose whichever you prefer.",
+            options: ["Either", "Neither", "None"],
+            correctAnswer: "Either",
+            explanation: "'Either' = one or the other (both are acceptable)."
+          },
+          {
+            id: 10,
+            question: "She ___ called ___ texted me. I'm worried.",
+            options: ["either... or", "neither... nor", "either... and"],
+            correctAnswer: "neither... nor",
+            explanation: "'Neither...nor' = she didn't call AND she didn't text."
+          }
+        ]
+      }
+    ]
   }
 ];
