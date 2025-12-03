@@ -9,6 +9,17 @@ import { ArticleSchema } from '@/lib/seo/structuredData';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
 import { grammarBlogPosts } from '@/data/grammarBlogPosts';
 
+interface ArticleData {
+  title: string;
+  content: string;
+  date: string;
+  author: string;
+  category: string;
+  readTime: string;
+  description: string;
+  ogImage: string;
+}
+
 const BlogArticle = () => {
   const { id } = useParams();
   const articleRef = useRef<HTMLDivElement>(null);
@@ -29,9 +40,9 @@ const BlogArticle = () => {
     return acc;
   }, {} as Record<string, any>);
 
-  const baseArticles = {
+  const baseArticles: Record<string, ArticleData> = {
     'anglais-professionnel-2025': {
-      title: 'Pourquoi l\'anglais professionnel est une compétence essentielle en 2025',
+      title: "Pourquoi l'anglais professionnel est une compétence essentielle en 2025",
       content: `
         <p>Dans un monde professionnel de plus en plus globalisé, maîtriser l'anglais n'est plus un simple atout sur le CV : c'est devenu une nécessité absolue pour évoluer dans sa carrière et rester compétitif sur le marché du travail.</p>
 
@@ -63,7 +74,7 @@ const BlogArticle = () => {
       author: 'Antony Addy',
       category: 'Conseils carrière',
       readTime: '5 min',
-      description: 'Découvrez pourquoi l\'anglais professionnel est devenu une compétence indispensable en 2025 et comment la développer efficacement.',
+      description: "Découvrez pourquoi l'anglais professionnel est devenu une compétence indispensable en 2025 et comment la développer efficacement.",
       ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
     },
     'erreurs-francophones': {
@@ -105,7 +116,7 @@ const BlogArticle = () => {
       author: 'Antony Addy',
       category: 'Grammaire & Vocabulaire',
       readTime: '7 min',
-      description: 'Identifiez et corrigez les erreurs les plus communes des francophones en anglais avec les conseils d\'un formateur expérimenté.',
+      description: "Identifiez et corrigez les erreurs les plus communes des francophones en anglais avec les conseils d'un formateur expérimenté.",
       ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
     },
     'oral-vs-ecrit': {
@@ -167,12 +178,15 @@ const BlogArticle = () => {
       author: 'Antony Addy',
       category: 'Communication',
       readTime: '6 min',
-      description: 'Apprenez à adapter votre style de communication en anglais selon le canal : emails, présentations orales, appels téléphoniques.',
+      description: "Apprenez à adapter votre style de communication en anglais selon le canal : emails, présentations orales, appels téléphoniques.",
       ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
     }
   };
 
-  const article = id ? articles[id as keyof typeof articles] : null;
+  // Merge base articles with grammar articles
+  const articles: Record<string, ArticleData> = { ...baseArticles, ...grammarArticlesMap };
+
+  const article = id ? articles[id] : null;
 
   // Get related posts (excluding current article)
   const getRelatedPosts = () => {
