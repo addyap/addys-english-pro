@@ -2397,5 +2397,1327 @@ Le sens change souvent complètement par rapport au verbe original.
         ]
       }
     ]
+  },
+  {
+    id: 'articles',
+    titleEn: 'Articles: A, An, The, Zero Article',
+    titleFr: 'Les Articles : A, An, The, Article Zéro',
+    explanationEn: `**A/AN** (indefinite article) - for singular countable nouns, first mention:
+- A before consonant sounds: a book, a university (sounds like "yoo")
+- An before vowel sounds: an apple, an hour (silent h)
+
+**THE** (definite article) - for specific/known things:
+- When both speaker and listener know: The book on the table.
+- Unique things: the sun, the internet, the President
+- Superlatives: the best, the most beautiful
+- With of: the end of the story
+
+**ZERO ARTICLE (no article):**
+- Plural/uncountable for general statements: Dogs are loyal. Water is essential.
+- Countries (most): France, Japan (BUT: the USA, the UK, the Netherlands)
+- Languages: English, French
+- Meals: breakfast, lunch, dinner
+- Sports: football, tennis
+- Next/last + time: next week, last year
+
+**Common mistakes:**
+- I like THE music. ❌ → I like music. ✓ (general)
+- She is doctor. ❌ → She is A doctor. ✓`,
+    explanationFr: `**A/AN** (article indéfini) - pour les noms dénombrables singuliers, première mention :
+- A devant les sons consonnes : a book, a university (sonne comme "you")
+- An devant les sons voyelles : an apple, an hour (h muet)
+
+**THE** (article défini) - pour les choses spécifiques/connues :
+- Quand les deux interlocuteurs savent : The book on the table.
+- Choses uniques : the sun, the internet, the President
+- Superlatifs : the best, the most beautiful
+- Avec of : the end of the story
+
+**ARTICLE ZÉRO (pas d'article) :**
+- Pluriel/indénombrable pour généralités : Dogs are loyal. Water is essential.
+- Pays (la plupart) : France, Japan (MAIS : the USA, the UK, the Netherlands)
+- Langues : English, French
+- Repas : breakfast, lunch, dinner
+- Sports : football, tennis
+- Next/last + temps : next week, last year
+
+**Erreurs courantes :**
+- I like THE music. ❌ → I like music. ✓ (général)
+- She is doctor. ❌ → She is A doctor. ✓`,
+    examples: [
+      { en: "I saw **a** dog. **The** dog was brown.", fr: "J'ai vu **un** chien. **Le** chien était marron." },
+      { en: "**The** sun rises in **the** east.", fr: "**Le** soleil se lève à **l'**est." },
+      { en: "I like **∅** music. (general)", fr: "J'aime **la** musique. (général - pas d'article en anglais)" },
+      { en: "She is **an** engineer.", fr: "Elle est **∅** ingénieur. (article en anglais, pas en français)" }
+    ],
+    exercises: [
+      {
+        id: 120,
+        title: "Articles",
+        description: "Choose the correct article: a, an, the, or no article (-).",
+        questions: [
+          {
+            id: 1,
+            question: "She is ___ doctor.",
+            options: ["a", "an", "the", "- (no article)"],
+            correctAnswer: "a",
+            explanation: "Use 'a' before professions (consonant sound)."
+          },
+          {
+            id: 2,
+            question: "I love ___ music.",
+            options: ["a", "an", "the", "- (no article)"],
+            correctAnswer: "- (no article)",
+            explanation: "No article for general statements about uncountable nouns."
+          },
+          {
+            id: 3,
+            question: "___ Amazon is the longest river in South America.",
+            options: ["A", "An", "The", "- (no article)"],
+            correctAnswer: "The",
+            explanation: "Use 'the' with rivers, oceans, and mountain ranges."
+          },
+          {
+            id: 4,
+            question: "He is ___ honest man.",
+            options: ["a", "an", "the", "- (no article)"],
+            correctAnswer: "an",
+            explanation: "'Honest' starts with a vowel sound (silent h)."
+          },
+          {
+            id: 5,
+            question: "I had ___ breakfast at 8 AM.",
+            options: ["a", "an", "the", "- (no article)"],
+            correctAnswer: "- (no article)",
+            explanation: "No article before meal names in general."
+          },
+          {
+            id: 6,
+            question: "This is ___ best restaurant in town.",
+            options: ["a", "an", "the", "- (no article)"],
+            correctAnswer: "the",
+            explanation: "Use 'the' with superlatives."
+          },
+          {
+            id: 7,
+            question: "She goes to ___ university in London.",
+            options: ["a", "an", "the", "- (no article)"],
+            correctAnswer: "a",
+            explanation: "'University' starts with a consonant sound (yoo-)."
+          },
+          {
+            id: 8,
+            question: "I'm going to ___ France next summer.",
+            options: ["a", "an", "the", "- (no article)"],
+            correctAnswer: "- (no article)",
+            explanation: "No article before most country names."
+          },
+          {
+            id: 9,
+            question: "Can you pass me ___ salt, please?",
+            options: ["a", "an", "the", "- (no article)"],
+            correctAnswer: "the",
+            explanation: "Use 'the' when both people know which salt."
+          },
+          {
+            id: 10,
+            question: "He plays ___ football every weekend.",
+            options: ["a", "an", "the", "- (no article)"],
+            correctAnswer: "- (no article)",
+            explanation: "No article before sports."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'modal-verbs',
+    titleEn: 'Modal Verbs',
+    titleFr: 'Les Verbes Modaux',
+    explanationEn: `**Modal verbs** express ability, possibility, permission, obligation, etc.
+They are followed by the base form of the verb (no "to").
+
+**CAN / COULD:**
+- Ability: I can swim. I could swim when I was 5.
+- Permission: Can I leave? Could I use your phone? (more polite)
+- Possibility: It can be cold in winter.
+
+**MAY / MIGHT:**
+- Permission (formal): May I come in?
+- Possibility: It may/might rain later. (might = less certain)
+
+**MUST / HAVE TO:**
+- Obligation: You must wear a seatbelt. / You have to wear a seatbelt.
+- Strong probability: He must be tired. (I'm sure he is)
+- MUSTN'T = prohibition ≠ DON'T HAVE TO = no obligation
+
+**SHOULD / OUGHT TO:**
+- Advice: You should see a doctor.
+- Expectation: She should be here soon.
+
+**WOULD:**
+- Polite requests: Would you help me?
+- Hypothetical: I would travel if I had money.`,
+    explanationFr: `**Les verbes modaux** expriment la capacité, la possibilité, la permission, l'obligation, etc.
+Ils sont suivis de la base verbale (sans "to").
+
+**CAN / COULD :**
+- Capacité : I can swim. I could swim when I was 5.
+- Permission : Can I leave? Could I use your phone? (plus poli)
+- Possibilité : It can be cold in winter.
+
+**MAY / MIGHT :**
+- Permission (formel) : May I come in?
+- Possibilité : It may/might rain later. (might = moins certain)
+
+**MUST / HAVE TO :**
+- Obligation : You must wear a seatbelt. / You have to wear a seatbelt.
+- Forte probabilité : He must be tired. (je suis sûr qu'il l'est)
+- MUSTN'T = interdiction ≠ DON'T HAVE TO = pas d'obligation
+
+**SHOULD / OUGHT TO :**
+- Conseil : You should see a doctor.
+- Attente : She should be here soon.
+
+**WOULD :**
+- Demandes polies : Would you help me?
+- Hypothétique : I would travel if I had money.`,
+    examples: [
+      { en: "You **must** wear a helmet. (obligation)", fr: "Tu **dois** porter un casque. (obligation)" },
+      { en: "You **mustn't** smoke here. (prohibition)", fr: "Tu **ne dois pas** fumer ici. (interdiction)" },
+      { en: "You **don't have to** come. (no obligation)", fr: "Tu **n'es pas obligé** de venir. (pas d'obligation)" },
+      { en: "It **might** rain tomorrow.", fr: "Il **pourrait** pleuvoir demain." }
+    ],
+    exercises: [
+      {
+        id: 121,
+        title: "Modal Verbs",
+        description: "Choose the correct modal verb.",
+        questions: [
+          {
+            id: 1,
+            question: "You ___ drive without a license. It's illegal.",
+            options: ["mustn't", "don't have to", "shouldn't"],
+            correctAnswer: "mustn't",
+            explanation: "'Mustn't' for prohibition (it's not allowed)."
+          },
+          {
+            id: 2,
+            question: "You ___ come if you don't want to. It's optional.",
+            options: ["mustn't", "don't have to", "can't"],
+            correctAnswer: "don't have to",
+            explanation: "'Don't have to' = no obligation (your choice)."
+          },
+          {
+            id: 3,
+            question: "___ you help me with this box, please?",
+            options: ["Could", "Must", "Should"],
+            correctAnswer: "Could",
+            explanation: "'Could' for polite requests."
+          },
+          {
+            id: 4,
+            question: "She ___ be at home. Her car is in the driveway.",
+            options: ["can", "must", "should"],
+            correctAnswer: "must",
+            explanation: "'Must' for strong probability/deduction."
+          },
+          {
+            id: 5,
+            question: "You ___ see a doctor. That cough sounds bad.",
+            options: ["should", "must", "could"],
+            correctAnswer: "should",
+            explanation: "'Should' for advice/recommendation."
+          },
+          {
+            id: 6,
+            question: "When I was young, I ___ run very fast.",
+            options: ["can", "could", "may"],
+            correctAnswer: "could",
+            explanation: "'Could' for past ability."
+          },
+          {
+            id: 7,
+            question: "It ___ rain later. Take an umbrella just in case.",
+            options: ["must", "might", "should"],
+            correctAnswer: "might",
+            explanation: "'Might' for possibility (not certain)."
+          },
+          {
+            id: 8,
+            question: "___ I use your bathroom, please?",
+            options: ["May", "Must", "Should"],
+            correctAnswer: "May",
+            explanation: "'May' for formal/polite permission requests."
+          },
+          {
+            id: 9,
+            question: "You ___ to finish this report by Friday. It's required.",
+            options: ["should", "have", "must"],
+            correctAnswer: "have",
+            explanation: "'Have to' expresses external obligation."
+          },
+          {
+            id: 10,
+            question: "He ___ be French. He has a strong accent.",
+            options: ["can't", "mustn't", "shouldn't"],
+            correctAnswer: "can't",
+            explanation: "'Can't' for impossibility/negative deduction."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'reported-speech',
+    titleEn: 'Reported Speech (Indirect Speech)',
+    titleFr: 'Le Discours Indirect (Reported Speech)',
+    explanationEn: `**Reported speech** reports what someone said without quoting exactly.
+
+**Tense changes (backshift):**
+- Present Simple → Past Simple: "I work" → He said he worked.
+- Present Continuous → Past Continuous: "I'm working" → He said he was working.
+- Past Simple → Past Perfect: "I worked" → He said he had worked.
+- Will → Would: "I will go" → He said he would go.
+- Can → Could: "I can swim" → He said he could swim.
+
+**Pronoun and time changes:**
+- I → he/she, you → I/we, my → his/her
+- today → that day, tomorrow → the next day, yesterday → the day before
+- here → there, this → that, now → then
+
+**Reporting verbs:**
+- say (+ that): He said (that) he was tired.
+- tell (+ person): He told me (that) he was tired.
+- ask (questions): She asked if/whether I was coming.
+
+**Questions in reported speech:**
+- "Are you happy?" → She asked if I was happy.
+- "Where do you live?" → She asked where I lived.`,
+    explanationFr: `**Le discours indirect** rapporte ce que quelqu'un a dit sans citer exactement.
+
+**Changements de temps (concordance des temps) :**
+- Présent Simple → Prétérit : "I work" → He said he worked.
+- Présent Continu → Prétérit Continu : "I'm working" → He said he was working.
+- Prétérit → Plus-que-parfait : "I worked" → He said he had worked.
+- Will → Would : "I will go" → He said he would go.
+- Can → Could : "I can swim" → He said he could swim.
+
+**Changements de pronoms et de temps :**
+- I → he/she, you → I/we, my → his/her
+- today → that day, tomorrow → the next day, yesterday → the day before
+- here → there, this → that, now → then
+
+**Verbes introducteurs :**
+- say (+ that) : He said (that) he was tired.
+- tell (+ personne) : He told me (that) he was tired.
+- ask (questions) : She asked if/whether I was coming.
+
+**Questions au discours indirect :**
+- "Are you happy?" → She asked if I was happy.
+- "Where do you live?" → She asked where I lived.`,
+    examples: [
+      { en: "\"I am tired.\" → He said he **was** tired.", fr: "\"Je suis fatigué.\" → Il a dit qu'il **était** fatigué." },
+      { en: "\"I will call you.\" → She said she **would** call me.", fr: "\"Je t'appellerai.\" → Elle a dit qu'elle **m'appellerait**." },
+      { en: "\"Where do you live?\" → He asked where I **lived**.", fr: "\"Où habites-tu ?\" → Il m'a demandé où **j'habitais**." },
+      { en: "\"Are you coming?\" → She asked **if** I was coming.", fr: "\"Tu viens ?\" → Elle m'a demandé **si** je venais." }
+    ],
+    exercises: [
+      {
+        id: 122,
+        title: "Reported Speech",
+        description: "Convert to reported speech or choose the correct form.",
+        questions: [
+          {
+            id: 1,
+            question: "\"I am happy.\" → She said she ___ happy.",
+            options: ["is", "was", "were"],
+            correctAnswer: "was",
+            explanation: "Present Simple 'am' becomes Past Simple 'was'."
+          },
+          {
+            id: 2,
+            question: "\"I will help you.\" → He said he ___ help me.",
+            options: ["will", "would", "could"],
+            correctAnswer: "would",
+            explanation: "'Will' becomes 'would' in reported speech."
+          },
+          {
+            id: 3,
+            question: "\"I have finished.\" → She said she ___ finished.",
+            options: ["has", "had", "have"],
+            correctAnswer: "had",
+            explanation: "Present Perfect 'have' becomes Past Perfect 'had'."
+          },
+          {
+            id: 4,
+            question: "\"Where do you work?\" → He asked me where I ___.",
+            options: ["work", "worked", "am working"],
+            correctAnswer: "worked",
+            explanation: "Present Simple becomes Past Simple in reported questions."
+          },
+          {
+            id: 5,
+            question: "\"Are you coming?\" → She asked ___ I was coming.",
+            options: ["that", "if", "what"],
+            correctAnswer: "if",
+            explanation: "Yes/No questions use 'if' or 'whether' in reported speech."
+          },
+          {
+            id: 6,
+            question: "He ___ me that he was tired.",
+            options: ["said", "told", "asked"],
+            correctAnswer: "told",
+            explanation: "'Tell' requires an object (told ME)."
+          },
+          {
+            id: 7,
+            question: "\"I can swim.\" → She said she ___ swim.",
+            options: ["can", "could", "may"],
+            correctAnswer: "could",
+            explanation: "'Can' becomes 'could' in reported speech."
+          },
+          {
+            id: 8,
+            question: "\"I saw her yesterday.\" → He said he had seen her ___.",
+            options: ["yesterday", "the day before", "tomorrow"],
+            correctAnswer: "the day before",
+            explanation: "'Yesterday' becomes 'the day before' in reported speech."
+          },
+          {
+            id: 9,
+            question: "\"What time does the train leave?\" → She asked what time the train ___.",
+            options: ["leaves", "left", "had left"],
+            correctAnswer: "left",
+            explanation: "Present Simple becomes Past Simple."
+          },
+          {
+            id: 10,
+            question: "She said, \"I'm working.\" → She said she ___.",
+            options: ["is working", "was working", "had been working"],
+            correctAnswer: "was working",
+            explanation: "Present Continuous becomes Past Continuous."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'relative-clauses',
+    titleEn: 'Relative Clauses',
+    titleFr: 'Les Propositions Relatives',
+    explanationEn: `**Relative clauses** give extra information about a noun.
+
+**Relative pronouns:**
+- **WHO** for people: The man who called is my uncle.
+- **WHICH** for things/animals: The book which I bought is interesting.
+- **THAT** for people/things (informal): The man that called... The book that I bought...
+- **WHOSE** for possession: The woman whose car was stolen...
+- **WHERE** for places: The restaurant where we met...
+- **WHEN** for times: The day when I graduated...
+
+**Defining vs Non-defining:**
+- Defining (essential): The man WHO stole my bag was arrested. (which man?)
+- Non-defining (extra info): My brother, WHO lives in Paris, is a doctor. (commas!)
+
+**Omitting relative pronouns:**
+- When the relative pronoun is the OBJECT, you can omit it:
+- The book (which/that) I read was good. ✓
+- The man (who/that) I met was nice. ✓
+- But NOT when it's the SUBJECT: The man who called... (cannot omit)`,
+    explanationFr: `**Les propositions relatives** donnent des informations supplémentaires sur un nom.
+
+**Pronoms relatifs :**
+- **WHO** pour les personnes : The man who called is my uncle.
+- **WHICH** pour les choses/animaux : The book which I bought is interesting.
+- **THAT** pour personnes/choses (informel) : The man that called... The book that I bought...
+- **WHOSE** pour la possession : The woman whose car was stolen...
+- **WHERE** pour les lieux : The restaurant where we met...
+- **WHEN** pour le temps : The day when I graduated...
+
+**Définissante vs Non-définissante :**
+- Définissante (essentielle) : The man WHO stole my bag was arrested. (quel homme ?)
+- Non-définissante (info supplémentaire) : My brother, WHO lives in Paris, is a doctor. (virgules !)
+
+**Omission du pronom relatif :**
+- Quand le pronom relatif est OBJET, on peut l'omettre :
+- The book (which/that) I read was good. ✓
+- The man (who/that) I met was nice. ✓
+- Mais PAS quand c'est le SUJET : The man who called... (ne peut pas omettre)`,
+    examples: [
+      { en: "The woman **who** lives next door is a teacher.", fr: "La femme **qui** habite à côté est professeur." },
+      { en: "The car **which/that** I bought is red.", fr: "La voiture **que** j'ai achetée est rouge." },
+      { en: "That's the man **whose** dog bit me.", fr: "C'est l'homme **dont** le chien m'a mordu." },
+      { en: "This is the hotel **where** we stayed.", fr: "C'est l'hôtel **où** nous avons séjourné." }
+    ],
+    exercises: [
+      {
+        id: 123,
+        title: "Relative Clauses",
+        description: "Choose the correct relative pronoun.",
+        questions: [
+          {
+            id: 1,
+            question: "The man ___ called you is my father.",
+            options: ["who", "which", "whose"],
+            correctAnswer: "who",
+            explanation: "'Who' for people as subject of the clause."
+          },
+          {
+            id: 2,
+            question: "The book ___ I'm reading is very interesting.",
+            options: ["who", "which", "whose"],
+            correctAnswer: "which",
+            explanation: "'Which' for things."
+          },
+          {
+            id: 3,
+            question: "That's the woman ___ husband is a pilot.",
+            options: ["who", "which", "whose"],
+            correctAnswer: "whose",
+            explanation: "'Whose' shows possession."
+          },
+          {
+            id: 4,
+            question: "This is the restaurant ___ we had our first date.",
+            options: ["which", "where", "when"],
+            correctAnswer: "where",
+            explanation: "'Where' for places."
+          },
+          {
+            id: 5,
+            question: "I remember the day ___ I met you.",
+            options: ["which", "where", "when"],
+            correctAnswer: "when",
+            explanation: "'When' for times."
+          },
+          {
+            id: 6,
+            question: "The movie ___ we watched last night was boring.",
+            options: ["who", "which", "whose"],
+            correctAnswer: "which",
+            explanation: "'Which' (or 'that') for things."
+          },
+          {
+            id: 7,
+            question: "She's the girl ___ won the competition.",
+            options: ["who", "which", "whose"],
+            correctAnswer: "who",
+            explanation: "'Who' for people as subject."
+          },
+          {
+            id: 8,
+            question: "The house ___ roof is red belongs to my uncle.",
+            options: ["who", "which", "whose"],
+            correctAnswer: "whose",
+            explanation: "'Whose' for possession (the house's roof)."
+          },
+          {
+            id: 9,
+            question: "Is this the bag ___ you were looking for?",
+            options: ["who", "which", "whose"],
+            correctAnswer: "which",
+            explanation: "'Which' (or 'that') for things."
+          },
+          {
+            id: 10,
+            question: "My sister, ___ lives in London, is visiting us.",
+            options: ["who", "which", "that"],
+            correctAnswer: "who",
+            explanation: "Non-defining clause (with commas) - 'who' for people, not 'that'."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'gerunds-infinitives',
+    titleEn: 'Gerunds vs Infinitives',
+    titleFr: 'Gérondif vs Infinitif',
+    explanationEn: `**Gerund** (-ing form used as a noun):
+- Enjoy, finish, avoid, consider, suggest, keep, mind, practice + -ING
+- I enjoy **swimming**. She finished **working**.
+
+**Infinitive** (to + verb):
+- Want, need, decide, hope, plan, promise, refuse, learn, offer + TO
+- I want **to go**. She decided **to stay**.
+
+**Both (same meaning):**
+- Like, love, hate, prefer, start, begin, continue
+- I like swimming / I like to swim. (same meaning)
+
+**Both (DIFFERENT meanings):**
+- STOP: He stopped smoking. (quit) vs He stopped to smoke. (paused in order to)
+- REMEMBER: I remember locking the door. (memory of past) vs Remember to lock the door. (don't forget)
+- TRY: Try eating less sugar. (experiment) vs Try to eat less. (make an effort)
+- FORGET: I forgot meeting him. (no memory) vs I forgot to meet him. (didn't do it)
+
+**After prepositions → always gerund:**
+- interested in learning, good at swimming, instead of working`,
+    explanationFr: `**Gérondif** (forme en -ing utilisée comme nom) :
+- Enjoy, finish, avoid, consider, suggest, keep, mind, practice + -ING
+- I enjoy **swimming**. She finished **working**.
+
+**Infinitif** (to + verbe) :
+- Want, need, decide, hope, plan, promise, refuse, learn, offer + TO
+- I want **to go**. She decided **to stay**.
+
+**Les deux (même sens) :**
+- Like, love, hate, prefer, start, begin, continue
+- I like swimming / I like to swim. (même sens)
+
+**Les deux (sens DIFFÉRENT) :**
+- STOP : He stopped smoking. (arrêter) vs He stopped to smoke. (s'arrêter pour)
+- REMEMBER : I remember locking the door. (souvenir du passé) vs Remember to lock the door. (n'oublie pas)
+- TRY : Try eating less sugar. (expérimenter) vs Try to eat less. (faire un effort)
+- FORGET : I forgot meeting him. (pas de souvenir) vs I forgot to meet him. (je n'ai pas fait)
+
+**Après les prépositions → toujours gérondif :**
+- interested in learning, good at swimming, instead of working`,
+    examples: [
+      { en: "I enjoy **reading**. (gerund after enjoy)", fr: "J'aime **lire**. (gérondif après enjoy)" },
+      { en: "I want **to travel**. (infinitive after want)", fr: "Je veux **voyager**. (infinitif après want)" },
+      { en: "He stopped **smoking**. (quit the habit)", fr: "Il a arrêté de **fumer**. (abandonner l'habitude)" },
+      { en: "He stopped **to smoke**. (paused to have a cigarette)", fr: "Il s'est arrêté pour **fumer**. (pause pour fumer)" }
+    ],
+    exercises: [
+      {
+        id: 124,
+        title: "Gerunds vs Infinitives",
+        description: "Choose the correct form: gerund (-ing) or infinitive (to + verb).",
+        questions: [
+          {
+            id: 1,
+            question: "I enjoy ___ to music.",
+            options: ["listen", "listening", "to listen"],
+            correctAnswer: "listening",
+            explanation: "'Enjoy' is always followed by gerund (-ing)."
+          },
+          {
+            id: 2,
+            question: "She decided ___ a new car.",
+            options: ["buy", "buying", "to buy"],
+            correctAnswer: "to buy",
+            explanation: "'Decide' is followed by infinitive."
+          },
+          {
+            id: 3,
+            question: "He stopped ___ because of his health.",
+            options: ["smoke", "smoking", "to smoke"],
+            correctAnswer: "smoking",
+            explanation: "'Stop + gerund' = quit the habit."
+          },
+          {
+            id: 4,
+            question: "I want ___ English fluently.",
+            options: ["speak", "speaking", "to speak"],
+            correctAnswer: "to speak",
+            explanation: "'Want' is followed by infinitive."
+          },
+          {
+            id: 5,
+            question: "Would you mind ___ the window?",
+            options: ["open", "opening", "to open"],
+            correctAnswer: "opening",
+            explanation: "'Mind' is always followed by gerund."
+          },
+          {
+            id: 6,
+            question: "She's interested in ___ French.",
+            options: ["learn", "learning", "to learn"],
+            correctAnswer: "learning",
+            explanation: "After prepositions (in), always use gerund."
+          },
+          {
+            id: 7,
+            question: "Remember ___ the door when you leave.",
+            options: ["lock", "locking", "to lock"],
+            correctAnswer: "to lock",
+            explanation: "'Remember + infinitive' = don't forget to do something."
+          },
+          {
+            id: 8,
+            question: "I can't avoid ___ mistakes.",
+            options: ["make", "making", "to make"],
+            correctAnswer: "making",
+            explanation: "'Avoid' is always followed by gerund."
+          },
+          {
+            id: 9,
+            question: "They promised ___ on time.",
+            options: ["arrive", "arriving", "to arrive"],
+            correctAnswer: "to arrive",
+            explanation: "'Promise' is followed by infinitive."
+          },
+          {
+            id: 10,
+            question: "I tried ___ the door, but it was stuck.",
+            options: ["push", "pushing", "to push"],
+            correctAnswer: "pushing",
+            explanation: "'Try + gerund' = experiment with a method."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'question-tags',
+    titleEn: 'Question Tags',
+    titleFr: 'Les Question Tags',
+    explanationEn: `**Question tags** are mini-questions at the end of sentences to confirm information.
+
+**Rules:**
+- Positive statement → negative tag: You are French, **aren't you**?
+- Negative statement → positive tag: You aren't French, **are you**?
+- Use the same auxiliary/modal: She can swim, **can't she**?
+- No auxiliary? Use do/does/did: You like coffee, **don't you**?
+
+**Special cases:**
+- I am → aren't I? (NOT amn't I): I'm late, **aren't I**?
+- Let's → shall we?: Let's go, **shall we**?
+- Imperative → will you/won't you?: Close the door, **will you**?
+- There is/are: There's a problem, **isn't there**?
+- Nobody/nothing (negative) → positive tag: Nobody called, **did they**?
+
+**Intonation:**
+- Rising intonation ↗ = genuine question (you don't know)
+- Falling intonation ↘ = expecting agreement (you're pretty sure)`,
+    explanationFr: `**Les question tags** sont des mini-questions à la fin des phrases pour confirmer une information.
+
+**Règles :**
+- Phrase positive → tag négatif : You are French, **aren't you**?
+- Phrase négative → tag positif : You aren't French, **are you**?
+- Utiliser le même auxiliaire/modal : She can swim, **can't she**?
+- Pas d'auxiliaire ? Utiliser do/does/did : You like coffee, **don't you**?
+
+**Cas spéciaux :**
+- I am → aren't I? (PAS amn't I) : I'm late, **aren't I**?
+- Let's → shall we? : Let's go, **shall we**?
+- Impératif → will you/won't you? : Close the door, **will you**?
+- There is/are : There's a problem, **isn't there**?
+- Nobody/nothing (négatif) → tag positif : Nobody called, **did they**?
+
+**Intonation :**
+- Intonation montante ↗ = vraie question (vous ne savez pas)
+- Intonation descendante ↘ = attente d'accord (vous êtes assez sûr)`,
+    examples: [
+      { en: "You speak English, **don't you**?", fr: "Tu parles anglais, **n'est-ce pas** ?" },
+      { en: "She can't swim, **can she**?", fr: "Elle ne sait pas nager, **si** ?" },
+      { en: "I'm right, **aren't I**?", fr: "J'ai raison, **n'est-ce pas** ?" },
+      { en: "Let's have lunch, **shall we**?", fr: "Allons déjeuner, **d'accord** ?" }
+    ],
+    exercises: [
+      {
+        id: 125,
+        title: "Question Tags",
+        description: "Choose the correct question tag.",
+        questions: [
+          {
+            id: 1,
+            question: "You're coming to the party, ___?",
+            options: ["are you", "aren't you", "don't you"],
+            correctAnswer: "aren't you",
+            explanation: "Positive statement (you're) → negative tag (aren't you)."
+          },
+          {
+            id: 2,
+            question: "She doesn't like coffee, ___?",
+            options: ["does she", "doesn't she", "is she"],
+            correctAnswer: "does she",
+            explanation: "Negative statement → positive tag."
+          },
+          {
+            id: 3,
+            question: "They have finished, ___?",
+            options: ["have they", "haven't they", "don't they"],
+            correctAnswer: "haven't they",
+            explanation: "Positive with 'have' → negative 'haven't they'."
+          },
+          {
+            id: 4,
+            question: "You can swim, ___?",
+            options: ["can you", "can't you", "do you"],
+            correctAnswer: "can't you",
+            explanation: "Positive with modal 'can' → negative 'can't you'."
+          },
+          {
+            id: 5,
+            question: "I'm late, ___?",
+            options: ["am I", "amn't I", "aren't I"],
+            correctAnswer: "aren't I",
+            explanation: "Special case: 'I am' uses 'aren't I' in the tag."
+          },
+          {
+            id: 6,
+            question: "Let's go for a walk, ___?",
+            options: ["shall we", "will we", "do we"],
+            correctAnswer: "shall we",
+            explanation: "Special case: 'Let's' uses 'shall we'."
+          },
+          {
+            id: 7,
+            question: "He never calls, ___?",
+            options: ["doesn't he", "does he", "is he"],
+            correctAnswer: "does he",
+            explanation: "'Never' is negative, so use positive tag."
+          },
+          {
+            id: 8,
+            question: "There are many people here, ___?",
+            options: ["are there", "aren't there", "isn't there"],
+            correctAnswer: "aren't there",
+            explanation: "'There are' (positive) → 'aren't there' (negative)."
+          },
+          {
+            id: 9,
+            question: "You went to Paris last year, ___?",
+            options: ["did you", "didn't you", "weren't you"],
+            correctAnswer: "didn't you",
+            explanation: "Past simple positive → 'didn't you'."
+          },
+          {
+            id: 10,
+            question: "Nobody came to the meeting, ___?",
+            options: ["didn't they", "did they", "didn't nobody"],
+            correctAnswer: "did they",
+            explanation: "'Nobody' is negative, so use positive tag 'did they'."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'so-such',
+    titleEn: 'So and Such',
+    titleFr: 'So et Such',
+    explanationEn: `**SO** and **SUCH** both mean "very" but are used differently.
+
+**SO + adjective/adverb:**
+- It was **so** cold!
+- She speaks **so** quickly.
+- SO + adjective + that: It was **so cold that** we stayed inside.
+
+**SUCH + (a/an) + (adjective) + noun:**
+- It was **such** a cold day!
+- She is **such** a nice person.
+- They are **such** nice people. (no article with plural)
+- SUCH + noun + that: It was **such a cold day that** we stayed inside.
+
+**Remember:**
+- SO + adjective: so beautiful, so expensive, so tired
+- SUCH + a/an + adjective + noun: such a beautiful day, such an expensive car
+- SUCH + adjective + plural/uncountable noun: such nice people, such good advice
+
+**Common expressions:**
+- so much/many, so few/little (+ noun)
+- such a lot of (+ noun)`,
+    explanationFr: `**SO** et **SUCH** signifient tous deux "très/tellement" mais s'utilisent différemment.
+
+**SO + adjectif/adverbe :**
+- It was **so** cold! (C'était tellement froid !)
+- She speaks **so** quickly. (Elle parle si vite.)
+- SO + adjectif + that : It was **so cold that** we stayed inside.
+
+**SUCH + (a/an) + (adjectif) + nom :**
+- It was **such** a cold day! (C'était une journée si froide !)
+- She is **such** a nice person. (C'est une personne si gentille.)
+- They are **such** nice people. (pas d'article avec le pluriel)
+- SUCH + nom + that : It was **such a cold day that** we stayed inside.
+
+**À retenir :**
+- SO + adjectif : so beautiful, so expensive, so tired
+- SUCH + a/an + adjectif + nom : such a beautiful day, such an expensive car
+- SUCH + adjectif + nom pluriel/indénombrable : such nice people, such good advice
+
+**Expressions courantes :**
+- so much/many, so few/little (+ nom)
+- such a lot of (+ nom)`,
+    examples: [
+      { en: "The film was **so** boring!", fr: "Le film était **tellement** ennuyeux !" },
+      { en: "It was **such** a boring film!", fr: "C'était un film **tellement** ennuyeux !" },
+      { en: "I've never met **such** nice people.", fr: "Je n'ai jamais rencontré des gens **aussi** gentils." },
+      { en: "It was **so** hot **that** I couldn't sleep.", fr: "Il faisait **tellement** chaud **que** je n'arrivais pas à dormir." }
+    ],
+    exercises: [
+      {
+        id: 126,
+        title: "So and Such",
+        description: "Choose 'so' or 'such'.",
+        questions: [
+          {
+            id: 1,
+            question: "The weather was ___ nice that we went to the beach.",
+            options: ["so", "such", "such a"],
+            correctAnswer: "so",
+            explanation: "'So' + adjective (nice)."
+          },
+          {
+            id: 2,
+            question: "It was ___ nice day that we went to the beach.",
+            options: ["so", "such", "such a"],
+            correctAnswer: "such a",
+            explanation: "'Such a' + adjective + singular noun."
+          },
+          {
+            id: 3,
+            question: "She is ___ talented!",
+            options: ["so", "such", "such a"],
+            correctAnswer: "so",
+            explanation: "'So' + adjective (talented)."
+          },
+          {
+            id: 4,
+            question: "They are ___ good friends.",
+            options: ["so", "such", "such a"],
+            correctAnswer: "such",
+            explanation: "'Such' + adjective + plural noun (no article)."
+          },
+          {
+            id: 5,
+            question: "I've never seen ___ beautiful sunset.",
+            options: ["so", "such", "such a"],
+            correctAnswer: "such a",
+            explanation: "'Such a' + adjective + singular noun."
+          },
+          {
+            id: 6,
+            question: "Why are you ___ angry?",
+            options: ["so", "such", "such a"],
+            correctAnswer: "so",
+            explanation: "'So' + adjective (angry)."
+          },
+          {
+            id: 7,
+            question: "He gave me ___ good advice.",
+            options: ["so", "such", "such a"],
+            correctAnswer: "such",
+            explanation: "'Such' + adjective + uncountable noun (advice)."
+          },
+          {
+            id: 8,
+            question: "The test was ___ difficult that nobody passed.",
+            options: ["so", "such", "such a"],
+            correctAnswer: "so",
+            explanation: "'So' + adjective + that clause."
+          },
+          {
+            id: 9,
+            question: "We had ___ wonderful time!",
+            options: ["so", "such", "such a"],
+            correctAnswer: "such a",
+            explanation: "'Such a' + adjective + singular noun."
+          },
+          {
+            id: 10,
+            question: "There were ___ many people at the concert.",
+            options: ["so", "such", "such a"],
+            correctAnswer: "so",
+            explanation: "'So many' (not 'such many') + plural noun."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'too-enough',
+    titleEn: 'Too and Enough',
+    titleFr: 'Too et Enough',
+    explanationEn: `**TOO** = more than necessary (negative meaning)
+**ENOUGH** = sufficient (can be positive or negative with "not")
+
+**TOO + adjective/adverb:**
+- This coffee is **too** hot. (I can't drink it)
+- He drives **too** fast. (it's dangerous)
+- TOO + adjective + to: He's **too young to** drive.
+- TOO + adjective + for + person: It's **too difficult for** me.
+
+**ENOUGH + noun (before):**
+- I have **enough** money. (sufficient)
+- There isn't **enough** time.
+
+**Adjective/Adverb + ENOUGH (after):**
+- He's **old enough** to drive. (sufficient age)
+- She didn't run **fast enough**.
+- Adjective + ENOUGH + to: She's **tall enough to** reach.
+
+**TOO vs VERY:**
+- very = high degree (neutral): The coffee is very hot. (but I can drink it)
+- too = excessive (negative): The coffee is too hot. (I can't drink it)`,
+    explanationFr: `**TOO** = plus que nécessaire (sens négatif)
+**ENOUGH** = suffisant (peut être positif ou négatif avec "not")
+
+**TOO + adjectif/adverbe :**
+- This coffee is **too** hot. (Je ne peux pas le boire)
+- He drives **too** fast. (c'est dangereux)
+- TOO + adjectif + to : He's **too young to** drive.
+- TOO + adjectif + for + personne : It's **too difficult for** me.
+
+**ENOUGH + nom (avant) :**
+- I have **enough** money. (suffisamment)
+- There isn't **enough** time.
+
+**Adjectif/Adverbe + ENOUGH (après) :**
+- He's **old enough** to drive. (âge suffisant)
+- She didn't run **fast enough**.
+- Adjectif + ENOUGH + to : She's **tall enough to** reach.
+
+**TOO vs VERY :**
+- very = haut degré (neutre) : The coffee is very hot. (mais je peux le boire)
+- too = excessif (négatif) : The coffee is too hot. (je ne peux pas le boire)`,
+    examples: [
+      { en: "This bag is **too** heavy. I can't carry it.", fr: "Ce sac est **trop** lourd. Je ne peux pas le porter." },
+      { en: "He's **old enough** to vote.", fr: "Il est **assez** vieux pour voter." },
+      { en: "I don't have **enough** time.", fr: "Je n'ai pas **assez** de temps." },
+      { en: "It's **too** cold **to** go swimming.", fr: "Il fait **trop** froid **pour** aller nager." }
+    ],
+    exercises: [
+      {
+        id: 127,
+        title: "Too and Enough",
+        description: "Choose the correct option.",
+        questions: [
+          {
+            id: 1,
+            question: "This box is ___ heavy for me to lift.",
+            options: ["too", "enough", "very"],
+            correctAnswer: "too",
+            explanation: "'Too' + adjective = excessive (can't lift)."
+          },
+          {
+            id: 2,
+            question: "She's ___ to understand the situation.",
+            options: ["old too", "enough old", "old enough"],
+            correctAnswer: "old enough",
+            explanation: "Adjective + 'enough' (enough comes after)."
+          },
+          {
+            id: 3,
+            question: "I don't have ___ money to buy a car.",
+            options: ["too", "enough", "too much"],
+            correctAnswer: "enough",
+            explanation: "'Enough' + noun = sufficient."
+          },
+          {
+            id: 4,
+            question: "The music is ___ loud. I can't hear you.",
+            options: ["too", "enough", "very enough"],
+            correctAnswer: "too",
+            explanation: "'Too' + adjective = excessive."
+          },
+          {
+            id: 5,
+            question: "Is your coffee hot ___?",
+            options: ["too", "enough", "much"],
+            correctAnswer: "enough",
+            explanation: "Adjective + 'enough' in questions."
+          },
+          {
+            id: 6,
+            question: "He's ___ young ___ drive a car.",
+            options: ["too... to", "enough... to", "very... to"],
+            correctAnswer: "too... to",
+            explanation: "'Too + adjective + to' = excessively (negative result)."
+          },
+          {
+            id: 7,
+            question: "We have ___ food for everyone.",
+            options: ["too", "enough", "too much"],
+            correctAnswer: "enough",
+            explanation: "'Enough' + noun (sufficient quantity)."
+          },
+          {
+            id: 8,
+            question: "She didn't work hard ___ to pass the exam.",
+            options: ["too", "enough", "very"],
+            correctAnswer: "enough",
+            explanation: "Adverb + 'enough' (insufficient effort)."
+          },
+          {
+            id: 9,
+            question: "This room is ___ small for all of us.",
+            options: ["too", "enough", "enough small"],
+            correctAnswer: "too",
+            explanation: "'Too' + adjective = insufficient space."
+          },
+          {
+            id: 10,
+            question: "Are you strong ___ to carry this?",
+            options: ["too", "enough", "very"],
+            correctAnswer: "enough",
+            explanation: "Adjective + 'enough' in questions."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'some-any',
+    titleEn: 'Some and Any',
+    titleFr: 'Some et Any',
+    explanationEn: `**SOME** and **ANY** are used with plural and uncountable nouns.
+
+**SOME** - mainly in positive sentences:
+- I have **some** friends in London.
+- There is **some** milk in the fridge.
+- Would you like **some** coffee? (offers)
+- Can I have **some** water? (requests)
+
+**ANY** - mainly in negative sentences and questions:
+- I don't have **any** friends here.
+- Is there **any** milk left?
+- Do you have **any** questions?
+
+**ANY in positive sentences** (meaning "it doesn't matter which"):
+- You can call me **any** time.
+- Take **any** seat you like.
+- **Anyone** can learn to cook.
+
+**Compounds:**
+- SOME: something, someone/somebody, somewhere
+- ANY: anything, anyone/anybody, anywhere
+- Negative: nothing, no one/nobody, nowhere (= not anything, not anyone, not anywhere)`,
+    explanationFr: `**SOME** et **ANY** s'utilisent avec les noms pluriels et indénombrables.
+
+**SOME** - principalement dans les phrases positives :
+- I have **some** friends in London.
+- There is **some** milk in the fridge.
+- Would you like **some** coffee? (offres)
+- Can I have **some** water? (demandes)
+
+**ANY** - principalement dans les phrases négatives et les questions :
+- I don't have **any** friends here.
+- Is there **any** milk left?
+- Do you have **any** questions?
+
+**ANY dans les phrases positives** (sens "n'importe lequel") :
+- You can call me **any** time. (n'importe quand)
+- Take **any** seat you like. (n'importe quel siège)
+- **Anyone** can learn to cook. (n'importe qui)
+
+**Composés :**
+- SOME : something, someone/somebody, somewhere
+- ANY : anything, anyone/anybody, anywhere
+- Négatif : nothing, no one/nobody, nowhere`,
+    examples: [
+      { en: "I bought **some** apples.", fr: "J'ai acheté **des** pommes." },
+      { en: "I don't have **any** money.", fr: "Je n'ai pas d'argent." },
+      { en: "Would you like **some** tea?", fr: "Voulez-vous **du** thé ?" },
+      { en: "**Anyone** can do it.", fr: "**N'importe qui** peut le faire." }
+    ],
+    exercises: [
+      {
+        id: 128,
+        title: "Some and Any",
+        description: "Choose 'some' or 'any'.",
+        questions: [
+          {
+            id: 1,
+            question: "There are ___ books on the table.",
+            options: ["some", "any"],
+            correctAnswer: "some",
+            explanation: "Positive sentence → 'some'."
+          },
+          {
+            id: 2,
+            question: "I don't have ___ brothers or sisters.",
+            options: ["some", "any"],
+            correctAnswer: "any",
+            explanation: "Negative sentence → 'any'."
+          },
+          {
+            id: 3,
+            question: "Would you like ___ more coffee?",
+            options: ["some", "any"],
+            correctAnswer: "some",
+            explanation: "Offers use 'some'."
+          },
+          {
+            id: 4,
+            question: "Is there ___ milk in the fridge?",
+            options: ["some", "any"],
+            correctAnswer: "any",
+            explanation: "Questions typically use 'any'."
+          },
+          {
+            id: 5,
+            question: "Can I have ___ water, please?",
+            options: ["some", "any"],
+            correctAnswer: "some",
+            explanation: "Polite requests use 'some'."
+          },
+          {
+            id: 6,
+            question: "You can sit in ___ chair you like.",
+            options: ["some", "any"],
+            correctAnswer: "any",
+            explanation: "'Any' = it doesn't matter which one."
+          },
+          {
+            id: 7,
+            question: "She didn't give me ___ information.",
+            options: ["some", "any"],
+            correctAnswer: "any",
+            explanation: "Negative sentence → 'any'."
+          },
+          {
+            id: 8,
+            question: "I need ___ help with this project.",
+            options: ["some", "any"],
+            correctAnswer: "some",
+            explanation: "Positive sentence → 'some'."
+          },
+          {
+            id: 9,
+            question: "Do you know ___ good restaurants nearby?",
+            options: ["some", "any"],
+            correctAnswer: "any",
+            explanation: "Question → typically 'any'."
+          },
+          {
+            id: 10,
+            question: "___ can enter the competition. It's open to all.",
+            options: ["Someone", "Anyone"],
+            correctAnswer: "Anyone",
+            explanation: "'Anyone' = any person, it doesn't matter who."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'wish-if-only',
+    titleEn: 'Wish and If Only',
+    titleFr: 'Wish et If Only',
+    explanationEn: `**WISH** and **IF ONLY** express regret or desire for something different.
+"If only" is more emphatic than "wish".
+
+**Present wishes (wanting present to be different):**
+- WISH/IF ONLY + past simple
+- I **wish** I **had** more money. (but I don't)
+- **If only** I **were** taller! (but I'm not)
+- I **wish** I **could** speak French. (but I can't)
+
+**Past wishes (regret about the past):**
+- WISH/IF ONLY + past perfect
+- I **wish** I **had studied** harder. (but I didn't)
+- **If only** I **hadn't said** that! (but I did)
+
+**Wishes about annoying habits/situations:**
+- WISH + would + infinitive (for other people/things)
+- I **wish** you **would** stop smoking.
+- I **wish** it **would** stop raining.
+- ⚠️ NOT: I wish I would... (use "I wish I could")
+
+**Were vs Was:**
+- Formal: I wish I **were**... / If only he **were**...
+- Informal: I wish I **was**... / If only he **was**...`,
+    explanationFr: `**WISH** et **IF ONLY** expriment le regret ou le désir que quelque chose soit différent.
+"If only" est plus emphatique que "wish".
+
+**Souhaits présents (vouloir que le présent soit différent) :**
+- WISH/IF ONLY + prétérit
+- I **wish** I **had** more money. (mais je n'en ai pas)
+- **If only** I **were** taller! (mais je ne le suis pas)
+- I **wish** I **could** speak French. (mais je ne peux pas)
+
+**Souhaits passés (regret concernant le passé) :**
+- WISH/IF ONLY + plus-que-parfait
+- I **wish** I **had studied** harder. (mais je n'ai pas étudié)
+- **If only** I **hadn't said** that! (mais je l'ai dit)
+
+**Souhaits concernant des habitudes/situations agaçantes :**
+- WISH + would + infinitif (pour les autres personnes/choses)
+- I **wish** you **would** stop smoking.
+- I **wish** it **would** stop raining.
+- ⚠️ PAS : I wish I would... (utiliser "I wish I could")
+
+**Were vs Was :**
+- Formel : I wish I **were**... / If only he **were**...
+- Informel : I wish I **was**... / If only he **was**...`,
+    examples: [
+      { en: "I **wish** I **had** a car. (present wish)", fr: "J'**aimerais** avoir une voiture. (souhait présent)" },
+      { en: "**If only** I **had listened** to you! (past regret)", fr: "**Si seulement** je t'**avais écouté** ! (regret passé)" },
+      { en: "I **wish** it **would** stop raining.", fr: "J'**aimerais** qu'il **arrête** de pleuvoir." },
+      { en: "I **wish** I **were** younger.", fr: "J'**aimerais** être plus jeune." }
+    ],
+    exercises: [
+      {
+        id: 129,
+        title: "Wish and If Only",
+        description: "Choose the correct form.",
+        questions: [
+          {
+            id: 1,
+            question: "I wish I ___ more free time. (present wish)",
+            options: ["have", "had", "would have"],
+            correctAnswer: "had",
+            explanation: "Present wish uses past simple."
+          },
+          {
+            id: 2,
+            question: "If only I ___ studied harder for the exam! (past regret)",
+            options: ["have", "had", "would have"],
+            correctAnswer: "had",
+            explanation: "Past regret uses past perfect (had + past participle)."
+          },
+          {
+            id: 3,
+            question: "I wish you ___ making that noise. It's annoying!",
+            options: ["stop", "stopped", "would stop"],
+            correctAnswer: "would stop",
+            explanation: "Wish + would for annoying habits (other people)."
+          },
+          {
+            id: 4,
+            question: "She wishes she ___ speak Spanish.",
+            options: ["can", "could", "would"],
+            correctAnswer: "could",
+            explanation: "Present wish about ability uses 'could'."
+          },
+          {
+            id: 5,
+            question: "If only I ___ rich!",
+            options: ["am", "was/were", "would be"],
+            correctAnswer: "was/were",
+            explanation: "Present wish uses past simple (were is formal)."
+          },
+          {
+            id: 6,
+            question: "I wish I ___ said that. It was stupid.",
+            options: ["didn't", "hadn't", "wouldn't"],
+            correctAnswer: "hadn't",
+            explanation: "Past regret uses past perfect."
+          },
+          {
+            id: 7,
+            question: "He wishes he ___ taller.",
+            options: ["is", "were", "would be"],
+            correctAnswer: "were",
+            explanation: "Present wish about unchangeable situation."
+          },
+          {
+            id: 8,
+            question: "I wish it ___ rain so much in this country.",
+            options: ["doesn't", "didn't", "wouldn't"],
+            correctAnswer: "didn't",
+            explanation: "Present wish about general situation uses past simple."
+          },
+          {
+            id: 9,
+            question: "If only I ___ to the party last night!",
+            options: ["went", "had gone", "would go"],
+            correctAnswer: "had gone",
+            explanation: "Past regret uses past perfect."
+          },
+          {
+            id: 10,
+            question: "I wish you ___ leave your clothes on the floor!",
+            options: ["don't", "didn't", "wouldn't"],
+            correctAnswer: "wouldn't",
+            explanation: "Wish + would for annoying repeated behavior."
+          }
+        ]
+      }
+    ]
   }
 ];
