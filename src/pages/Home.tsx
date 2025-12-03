@@ -327,7 +327,7 @@ const Home = () => {
                     Grammaire & Exercices Interactifs
                   </h2>
                   <p className="text-lg text-muted-foreground mb-6 font-body">
-                    Maîtrisez les temps anglais, les prépositions et les comparatifs avec des explications claires (EN/FR) et plus de 200 exercices interactifs.
+                    Maîtrisez les temps anglais, les pronoms, les prépositions et bien plus avec des explications claires (EN/FR) et plus de 35 leçons de grammaire interactives.
                   </p>
                   <Link to="/exercices" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body">
                     Accéder aux leçons
