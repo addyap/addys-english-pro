@@ -4409,5 +4409,147 @@ Ils sont suivis de la base verbale (sans "to").
         ]
       }
     ]
+  },
+  {
+    id: 'possessive-pronouns',
+    titleEn: 'Possessive Pronouns',
+    titleFr: 'Pronoms Possessifs',
+    explanationEn: `**Possessive pronouns** replace a possessive adjective + noun. They stand ALONE without a noun.
+
+**Forms:**
+- my → **mine**
+- your → **yours**
+- his → **his** (same form)
+- her → **hers**
+- its → (rarely used)
+- our → **ours**
+- their → **theirs**
+
+**Usage:**
+- Possessive adjective + noun: This is **my** book.
+- Possessive pronoun (alone): This book is **mine**.
+
+**Key difference:**
+- **my/your/his/her/our/their** + NOUN
+- **mine/yours/his/hers/ours/theirs** = NO noun after
+
+**Common patterns:**
+- Is this yours? - Yes, it's **mine**.
+- Whose car is that? - It's **theirs**.
+- A friend of **mine** (= one of my friends)
+- That's **none of your business** (fixed expression)
+
+**Note:** There is no possessive pronoun for "it" - we don't say "its" as a pronoun.`,
+    explanationFr: `**Les pronoms possessifs** remplacent un adjectif possessif + nom. Ils s'utilisent SEULS sans nom.
+
+**Formes :**
+- my → **mine** (le mien, la mienne, les miens, les miennes)
+- your → **yours** (le tien, le vôtre...)
+- his → **his** (le sien - à lui)
+- her → **hers** (le sien - à elle)
+- its → (rarement utilisé)
+- our → **ours** (le nôtre, les nôtres)
+- their → **theirs** (le leur, les leurs)
+
+**Utilisation :**
+- Adjectif possessif + nom : This is **my** book.
+- Pronom possessif (seul) : This book is **mine**.
+
+**Différence clé :**
+- **my/your/his/her/our/their** + NOM
+- **mine/yours/his/hers/ours/theirs** = PAS de nom après
+
+**Structures courantes :**
+- Is this yours? - Yes, it's **mine**.
+- Whose car is that? - It's **theirs**.
+- A friend of **mine** (= un de mes amis)
+- That's **none of your business** (expression figée)
+
+**Note :** Il n'y a pas de pronom possessif pour "it".`,
+    examples: [
+      { en: "This bag is **mine**, not yours.", fr: "Ce sac est **le mien**, pas le tien." },
+      { en: "Is this phone **yours**?", fr: "Ce téléphone est-il **le tien** ?" },
+      { en: "Their house is big, but **ours** is bigger.", fr: "Leur maison est grande, mais **la nôtre** est plus grande." },
+      { en: "A friend of **mine** told me the news.", fr: "Un de **mes** amis m'a dit la nouvelle." }
+    ],
+    exercises: [
+      {
+        id: 135,
+        title: "Possessive Pronouns",
+        description: "Choose the correct possessive pronoun.",
+        questions: [
+          {
+            id: 1,
+            question: "This umbrella isn't mine. Is it ___?",
+            options: ["your", "yours", "you"],
+            correctAnswer: "yours",
+            explanation: "Possessive pronoun 'yours' stands alone (no noun after)."
+          },
+          {
+            id: 2,
+            question: "I forgot my pen. Can I borrow ___?",
+            options: ["your", "yours", "you're"],
+            correctAnswer: "yours",
+            explanation: "Possessive pronoun replaces 'your pen'."
+          },
+          {
+            id: 3,
+            question: "Her car is red. ___ is blue.",
+            options: ["My", "Mine", "Me"],
+            correctAnswer: "Mine",
+            explanation: "'Mine' replaces 'My car'."
+          },
+          {
+            id: 4,
+            question: "Whose keys are these? - They're ___.",
+            options: ["her", "hers", "she"],
+            correctAnswer: "hers",
+            explanation: "Possessive pronoun 'hers' stands alone."
+          },
+          {
+            id: 5,
+            question: "Our garden is small, but ___ is huge.",
+            options: ["their", "theirs", "them"],
+            correctAnswer: "theirs",
+            explanation: "'Theirs' replaces 'their garden'."
+          },
+          {
+            id: 6,
+            question: "I met a friend of ___ at the party.",
+            options: ["him", "his", "he"],
+            correctAnswer: "his",
+            explanation: "'A friend of his' = one of his friends."
+          },
+          {
+            id: 7,
+            question: "This seat is taken. That one is ___.",
+            options: ["our", "ours", "us"],
+            correctAnswer: "ours",
+            explanation: "Possessive pronoun 'ours' replaces 'our seat'."
+          },
+          {
+            id: 8,
+            question: "Is this laptop ___ or your brother's?",
+            options: ["your", "yours", "you"],
+            correctAnswer: "yours",
+            explanation: "Possessive pronoun needed (no noun follows)."
+          },
+          {
+            id: 9,
+            question: "My phone is broken. Can I use ___?",
+            options: ["her", "hers", "she's"],
+            correctAnswer: "hers",
+            explanation: "'Hers' replaces 'her phone'."
+          },
+          {
+            id: 10,
+            question: "That idea was ___, not mine.",
+            options: ["your", "yours", "you're"],
+            correctAnswer: "yours",
+            explanation: "Possessive pronoun 'yours' stands alone."
+          }
+        ]
+      }
+    ]
   }
 ];
