@@ -4551,5 +4551,143 @@ Ils sont suivis de la base verbale (sans "to").
         ]
       }
     ]
+  },
+  {
+    id: 'either-neither',
+    titleEn: 'Either / Neither',
+    titleFr: 'Either / Neither',
+    explanationEn: `**EITHER** and **NEITHER** are used to talk about two things or people.
+
+**EITHER** (one OR the other):
+- **Either** = one or the other (of two)
+- **Either...or** = one or the other option
+- "Would you like tea or coffee?" - "**Either** is fine." (both are OK)
+
+**NEITHER** (not one AND not the other):
+- **Neither** = not one and not the other (of two)
+- **Neither...nor** = not the first and not the second
+- "Do you want tea or coffee?" - "**Neither**, thanks." (I don't want any)
+
+**Agreement expressions:**
+- A: "I love pizza." B: "**Me too**" / "**So do I**"
+- A: "I don't like spiders." B: "**Me neither**" / "**Neither do I**"
+
+**Verb agreement:**
+- Either of them **is** correct. (formal: singular)
+- Neither of them **has** arrived. (formal: singular)
+- In informal speech, plural is often used.
+
+**Position:**
+- Neither/Either + singular noun: **Neither** option works.
+- Neither/Either + of + plural noun: **Neither of** the options works.`,
+    explanationFr: `**EITHER** et **NEITHER** s'utilisent pour parler de deux choses ou personnes.
+
+**EITHER** (l'un OU l'autre) :
+- **Either** = l'un ou l'autre (parmi deux)
+- **Either...or** = l'une ou l'autre option
+- "Would you like tea or coffee?" - "**Either** is fine." (les deux me vont)
+
+**NEITHER** (ni l'un NI l'autre) :
+- **Neither** = ni l'un ni l'autre (parmi deux)
+- **Neither...nor** = pas le premier et pas le second
+- "Do you want tea or coffee?" - "**Neither**, thanks." (je n'en veux aucun)
+
+**Expressions d'accord :**
+- A: "I love pizza." B: "**Me too**" / "**So do I**" (Moi aussi)
+- A: "I don't like spiders." B: "**Me neither**" / "**Neither do I**" (Moi non plus)
+
+**Accord du verbe :**
+- Either of them **is** correct. (formel : singulier)
+- Neither of them **has** arrived. (formel : singulier)
+- Dans le langage informel, le pluriel est souvent utilisé.
+
+**Position :**
+- Neither/Either + nom singulier : **Neither** option works.
+- Neither/Either + of + nom pluriel : **Neither of** the options works.`,
+    examples: [
+      { en: "**Either** answer is acceptable.", fr: "L'une ou l'autre réponse est acceptable." },
+      { en: "**Neither** of them speaks French.", fr: "Ni l'un ni l'autre ne parle français." },
+      { en: "You can have **either** tea **or** coffee.", fr: "Tu peux avoir soit du thé soit du café." },
+      { en: "\"I don't like horror films.\" \"**Me neither**.\"", fr: "\"Je n'aime pas les films d'horreur.\" \"**Moi non plus**.\"" }
+    ],
+    exercises: [
+      {
+        id: 136,
+        title: "Either / Neither",
+        description: "Choose the correct word.",
+        questions: [
+          {
+            id: 1,
+            question: "___ of the two answers is correct.",
+            options: ["Either", "Neither", "Both"],
+            correctAnswer: "Either",
+            explanation: "Either = one or the other is correct."
+          },
+          {
+            id: 2,
+            question: "I don't like spinach. - ___.",
+            options: ["Me too", "Me neither", "So do I"],
+            correctAnswer: "Me neither",
+            explanation: "'Me neither' agrees with a negative statement."
+          },
+          {
+            id: 3,
+            question: "___ John ___ Mary came to the party. It was empty!",
+            options: ["Either...or", "Neither...nor", "Both...and"],
+            correctAnswer: "Neither...nor",
+            explanation: "Neither...nor = not one and not the other came."
+          },
+          {
+            id: 4,
+            question: "You can choose ___ the red one ___ the blue one.",
+            options: ["either...or", "neither...nor", "both...and"],
+            correctAnswer: "either...or",
+            explanation: "Either...or for choosing one of two options."
+          },
+          {
+            id: 5,
+            question: "I haven't seen that film. - ___ have I.",
+            options: ["So", "Neither", "Either"],
+            correctAnswer: "Neither",
+            explanation: "'Neither have I' agrees with negative (haven't)."
+          },
+          {
+            id: 6,
+            question: "___ of the restaurants was open. We couldn't eat out.",
+            options: ["Either", "Neither", "Both"],
+            correctAnswer: "Neither",
+            explanation: "Neither = not one and not the other was open."
+          },
+          {
+            id: 7,
+            question: "I can't swim. - ___ can my brother.",
+            options: ["So", "Neither", "Either"],
+            correctAnswer: "Neither",
+            explanation: "'Neither can...' agrees with negative (can't)."
+          },
+          {
+            id: 8,
+            question: "Which shirt do you prefer? - ___ is nice. I'll take both!",
+            options: ["Either", "Neither", "None"],
+            correctAnswer: "Either",
+            explanation: "Either = both are nice (one or the other)."
+          },
+          {
+            id: 9,
+            question: "She ___ called ___ texted me. I'm worried.",
+            options: ["either...or", "neither...nor", "both...and"],
+            correctAnswer: "neither...nor",
+            explanation: "Neither...nor = she didn't call AND didn't text."
+          },
+          {
+            id: 10,
+            question: "I love chocolate. - ___!",
+            options: ["Me too", "Me neither", "Neither do I"],
+            correctAnswer: "Me too",
+            explanation: "'Me too' agrees with a positive statement."
+          }
+        ]
+      }
+    ]
   }
 ];
