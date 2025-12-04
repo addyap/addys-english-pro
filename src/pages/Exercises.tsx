@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles } from 'lucide-react';
+import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import AnimatedCard from '../components/AnimatedCard';
@@ -56,11 +56,95 @@ const ExerciseCard = ({ exercise, isAvailable, index }: {
   );
 };
 
+// Define grammar category groups by priority
+const HIGH_PRIORITY_IDS = [
+  'will-vs-going-to',
+  'much-many-lot', 
+  'since-for',
+  'been-gone',
+  'few-little'
+];
+
+const MEDIUM_PRIORITY_IDS = [
+  'past-perfect-continuous',
+  'possessives',
+  'adverbs-frequency',
+  'causative-have-get',
+  'adjective-order',
+  'determiners'
+];
+
 const Exercises = () => {
   useScrollTracking('exercises');
   useTimeTracking('exercises');
 
   const availableExercises = new Set(exercisesData.map(ex => ex.id));
+  
+  // Group grammar categories
+  const highPriorityCategories = grammarCategories.filter(c => HIGH_PRIORITY_IDS.includes(c.id));
+  const mediumPriorityCategories = grammarCategories.filter(c => MEDIUM_PRIORITY_IDS.includes(c.id));
+  const coreCategories = grammarCategories.filter(
+    c => !HIGH_PRIORITY_IDS.includes(c.id) && !MEDIUM_PRIORITY_IDS.includes(c.id)
+  );
+
+  const renderGrammarSection = (
+    categories: typeof grammarCategories, 
+    title: string, 
+    subtitle: string,
+    icon: React.ReactNode,
+    borderColor: string,
+    badgeColor: string
+  ) => (
+    <div className="space-y-4">
+      <div className="flex items-center gap-3 pb-2 border-b border-border">
+        <div className={`h-10 w-1 ${borderColor} rounded-full`} />
+        <div className="flex items-center gap-2">
+          {icon}
+          <div>
+            <h3 className="text-lg font-semibold text-foreground font-heading">{title}</h3>
+            <p className="text-sm text-muted-foreground">{subtitle}</p>
+          </div>
+        </div>
+        <span className={`text-xs ${badgeColor} px-2 py-1 rounded-full ml-auto`}>
+          {categories.length} leçons
+        </span>
+      </div>
+      <Accordion type="single" collapsible className="space-y-3">
+        {categories.map((category) => (
+          <AccordionItem 
+            key={category.id} 
+            value={category.id}
+            className="border rounded-lg px-4 bg-card"
+          >
+            <AccordionTrigger className="hover:no-underline py-4">
+              <div className="flex items-center gap-3 text-left">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <GraduationCap className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold font-heading">{category.titleEn}</h3>
+                  <p className="text-sm text-muted-foreground font-body">{category.titleFr}</p>
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="pb-6">
+              <GrammarExplanation
+                titleEn={category.titleEn}
+                titleFr={category.titleFr}
+                explanationEn={category.explanationEn}
+                explanationFr={category.explanationFr}
+                examples={category.examples}
+              />
+              
+              {category.exercises.map((exercise) => (
+                <GrammarExercise key={exercise.id} exercise={exercise} />
+              ))}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </div>
+  );
 
   return (
     <>
@@ -101,6 +185,10 @@ const Exercises = () => {
             <p className="text-xl md:text-2xl text-primary-foreground/90 max-w-3xl mx-auto font-body">
               Maîtrisez la grammaire anglaise avec des explications claires et des exercices pratiques
             </p>
+            <div className="flex items-center justify-center gap-4 mt-6 text-sm">
+              <span className="bg-white/20 px-3 py-1 rounded-full">{grammarCategories.length} Grammar Lessons</span>
+              <span className="bg-white/20 px-3 py-1 rounded-full">{exercisesData.length} Vocabulary Exercises</span>
+            </div>
           </div>
         </section>
 
@@ -120,50 +208,45 @@ const Exercises = () => {
               </TabsList>
 
               {/* Grammar Tab */}
-              <TabsContent value="grammar" className="space-y-6">
+              <TabsContent value="grammar" className="space-y-10">
                 <div className="text-center mb-8">
                   <h2 className="text-2xl font-bold text-primary mb-2 font-heading">
                     English Tenses & Grammar
                   </h2>
                   <p className="text-muted-foreground font-body">
-                    Clear explanations with toggle for French translation
+                    {grammarCategories.length} lessons with clear explanations and toggle for French translation
                   </p>
                 </div>
 
-                <Accordion type="single" collapsible className="space-y-4">
-                  {grammarCategories.map((category) => (
-                    <AccordionItem 
-                      key={category.id} 
-                      value={category.id}
-                      className="border rounded-lg px-4 bg-card"
-                    >
-                      <AccordionTrigger className="hover:no-underline py-4">
-                        <div className="flex items-center gap-3 text-left">
-                          <div className="p-2 bg-primary/10 rounded-lg">
-                            <GraduationCap className="h-5 w-5 text-primary" />
-                          </div>
-                          <div>
-                            <h3 className="text-lg font-semibold font-heading">{category.titleEn}</h3>
-                            <p className="text-sm text-muted-foreground font-body">{category.titleFr}</p>
-                          </div>
-                        </div>
-                      </AccordionTrigger>
-                      <AccordionContent className="pb-6">
-                        <GrammarExplanation
-                          titleEn={category.titleEn}
-                          titleFr={category.titleFr}
-                          explanationEn={category.explanationEn}
-                          explanationFr={category.explanationFr}
-                          examples={category.examples}
-                        />
-                        
-                        {category.exercises.map((exercise) => (
-                          <GrammarExercise key={exercise.id} exercise={exercise} />
-                        ))}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
+                {/* High Priority - New */}
+                {highPriorityCategories.length > 0 && renderGrammarSection(
+                  highPriorityCategories,
+                  "High Priority",
+                  "Most common mistakes for French speakers",
+                  <Star className="h-5 w-5 text-amber-500" />,
+                  "bg-amber-500",
+                  "bg-amber-500/10 text-amber-700 dark:text-amber-400"
+                )}
+
+                {/* Medium Priority - New */}
+                {mediumPriorityCategories.length > 0 && renderGrammarSection(
+                  mediumPriorityCategories,
+                  "Medium Priority", 
+                  "Important grammar points",
+                  <Zap className="h-5 w-5 text-blue-500" />,
+                  "bg-blue-500",
+                  "bg-blue-500/10 text-blue-700 dark:text-blue-400"
+                )}
+
+                {/* Core Grammar */}
+                {renderGrammarSection(
+                  coreCategories,
+                  "Core Grammar",
+                  "Essential tenses and structures",
+                  <GraduationCap className="h-5 w-5 text-primary" />,
+                  "bg-primary",
+                  "bg-primary/10 text-primary"
+                )}
               </TabsContent>
 
               {/* Vocabulary Tab */}
