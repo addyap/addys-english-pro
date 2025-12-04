@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target } from 'lucide-react';
+import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import AnimatedCard from '../components/AnimatedCard';
@@ -13,6 +13,9 @@ import GrammarExercise from '../components/GrammarExercise';
 import ExerciseSearch from '../components/ExerciseSearch';
 import { useExerciseProgress } from '@/hooks/useExerciseProgress';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { readingPassages } from '@/data/readingPassages';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 // Exercise Card Component
 const ExerciseCard = ({ exercise, isAvailable, index, isCompleted, bestScore }: { 
@@ -244,14 +247,18 @@ const Exercises = () => {
         <section className="py-12">
           <div className="max-w-6xl mx-auto px-4">
             <Tabs defaultValue="grammar" className="w-full">
-              <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+              <TabsList className="grid w-full max-w-lg mx-auto grid-cols-3 mb-8">
                 <TabsTrigger value="grammar" className="gap-2">
                   <GraduationCap className="h-4 w-4" />
-                  Grammar Lessons
+                  Grammar
                 </TabsTrigger>
                 <TabsTrigger value="vocabulary" className="gap-2">
                   <Sparkles className="h-4 w-4" />
                   Vocabulary
+                </TabsTrigger>
+                <TabsTrigger value="reading" className="gap-2">
+                  <BookOpen className="h-4 w-4" />
+                  Reading
                 </TabsTrigger>
               </TabsList>
 
@@ -428,6 +435,97 @@ const Exercises = () => {
                     </div>
                   </div>
                 )}
+              </TabsContent>
+
+              {/* Reading Tab */}
+              <TabsContent value="reading" className="space-y-6">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-primary mb-2 font-heading">
+                    Reading Comprehension
+                  </h2>
+                  <p className="text-muted-foreground font-body">
+                    {readingPassages.length} texts with comprehension questions - 3 difficulty levels
+                  </p>
+                </div>
+
+                {/* Difficulty Level Stats */}
+                <div className="grid grid-cols-3 gap-4 mb-6">
+                  <Card className="text-center border-green-200 bg-green-50/50">
+                    <CardContent className="pt-4 pb-3">
+                      <p className="text-2xl font-bold text-green-600">
+                        {readingPassages.filter(p => p.difficulty === 'easy').length}
+                      </p>
+                      <p className="text-xs text-green-700">Facile</p>
+                    </CardContent>
+                  </Card>
+                  <Card className="text-center border-yellow-200 bg-yellow-50/50">
+                    <CardContent className="pt-4 pb-3">
+                      <p className="text-2xl font-bold text-yellow-600">
+                        {readingPassages.filter(p => p.difficulty === 'medium').length}
+                      </p>
+                      <p className="text-xs text-yellow-700">Intermédiaire</p>
+                    </CardContent>
+                  </Card>
+                  <Card className="text-center border-red-200 bg-red-50/50">
+                    <CardContent className="pt-4 pb-3">
+                      <p className="text-2xl font-bold text-red-600">
+                        {readingPassages.filter(p => p.difficulty === 'hard').length}
+                      </p>
+                      <p className="text-xs text-red-700">Avancé</p>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Reading Passages Grid */}
+                <div className="grid md:grid-cols-2 gap-4">
+                  {readingPassages.map((passage) => (
+                    <Card key={passage.id} className="hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2">
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <CardTitle className="text-lg">{passage.title}</CardTitle>
+                            <p className="text-sm text-muted-foreground">{passage.titleFr}</p>
+                          </div>
+                          <Badge className={
+                            passage.difficulty === 'easy' ? 'bg-green-100 text-green-700 border-green-200' :
+                            passage.difficulty === 'medium' ? 'bg-yellow-100 text-yellow-700 border-yellow-200' :
+                            'bg-red-100 text-red-700 border-red-200'
+                          }>
+                            {passage.difficulty === 'easy' ? 'Facile' : 
+                             passage.difficulty === 'medium' ? 'Inter.' : 'Avancé'}
+                          </Badge>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
+                          <span className="flex items-center gap-1">
+                            <Clock className="h-3 w-3" />
+                            {passage.readingTime} min
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <BarChart3 className="h-3 w-3" />
+                            {passage.questions.length} questions
+                          </span>
+                        </div>
+                        <Link to={`/reading/${passage.id}`}>
+                          <Button size="sm" className="w-full gap-2">
+                            Lire et pratiquer
+                            <ChevronRight className="h-4 w-4" />
+                          </Button>
+                        </Link>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+
+                <div className="text-center pt-4">
+                  <Link to="/reading">
+                    <Button variant="outline" className="gap-2">
+                      <BookOpen className="h-4 w-4" />
+                      Voir tous les textes
+                    </Button>
+                  </Link>
+                </div>
               </TabsContent>
             </Tabs>
           </div>

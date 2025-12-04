@@ -313,18 +313,22 @@ const Home = () => {
             </div>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
                 <p className="text-4xl font-bold mb-1">51</p>
-                <p className="text-sm text-primary-foreground/80">Leçons de grammaire</p>
+                <p className="text-sm text-primary-foreground/80">Leçons grammaire</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
                 <p className="text-4xl font-bold mb-1">150</p>
                 <p className="text-sm text-primary-foreground/80">Exercices vocabulaire</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
-                <p className="text-4xl font-bold mb-1">500+</p>
-                <p className="text-sm text-primary-foreground/80">Questions interactives</p>
+                <p className="text-4xl font-bold mb-1">6</p>
+                <p className="text-sm text-primary-foreground/80">Textes lecture</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                <p className="text-4xl font-bold mb-1">3</p>
+                <p className="text-sm text-primary-foreground/80">Niveaux difficulté</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
                 <p className="text-4xl font-bold mb-1">100%</p>
@@ -358,13 +362,20 @@ const Home = () => {
             </div>
 
             {/* CTA */}
-            <div className="text-center">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link 
                 to="/exercices" 
                 className="inline-flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/90 transition-all shadow-lg hover:shadow-xl hover:scale-105"
               >
                 <GraduationCap className="h-6 w-6" />
-                Commencer les exercices
+                Grammaire & Vocabulaire
+              </Link>
+              <Link 
+                to="/reading" 
+                className="inline-flex items-center gap-3 bg-white/20 text-primary-foreground border-2 border-white/50 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/30 transition-all"
+              >
+                <BookOpen className="h-6 w-6" />
+                Compréhension écrite
               </Link>
             </div>
           </div>

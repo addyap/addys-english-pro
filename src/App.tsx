@@ -37,6 +37,8 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Install = lazy(() => import("./pages/Install"));
 const Auth = lazy(() => import("./pages/Auth"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
+const Reading = lazy(() => import("./pages/Reading"));
+const ReadingDetail = lazy(() => import("./pages/ReadingDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const PageLoader = () => (
@@ -83,6 +85,8 @@ const AppContent = () => {
               <Route path="/install" element={<Install />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/reading" element={<Reading />} />
+              <Route path="/reading/:id" element={<ReadingDetail />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
