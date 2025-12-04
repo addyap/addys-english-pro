@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Exercise, Question } from '@/data/exercisesData';
+import { useExerciseProgress } from '@/hooks/useExerciseProgress';
 
 interface GrammarExerciseProps {
   exercise: Exercise;
@@ -13,6 +14,10 @@ const GrammarExercise: React.FC<GrammarExerciseProps> = ({ exercise }) => {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [showResults, setShowResults] = useState(false);
   const [score, setScore] = useState(0);
+  const { saveResult, getResult } = useExerciseProgress();
+
+  // Check for previous result
+  const previousResult = getResult(exercise.id.toString(), 'grammar');
 
   const handleAnswerChange = (questionId: number, value: string) => {
     setAnswers(prev => ({ ...prev, [questionId]: value }));
@@ -27,6 +32,15 @@ const GrammarExercise: React.FC<GrammarExerciseProps> = ({ exercise }) => {
     });
     setScore(correctCount);
     setShowResults(true);
+
+    // Save progress
+    saveResult({
+      exerciseId: exercise.id.toString(),
+      exerciseType: 'grammar',
+      score: correctCount,
+      totalQuestions: exercise.questions.length,
+      title: exercise.title,
+    });
   };
 
   const handleReset = () => {
@@ -41,7 +55,15 @@ const GrammarExercise: React.FC<GrammarExerciseProps> = ({ exercise }) => {
     <Card className="border-border">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between flex-wrap gap-2">
-          <CardTitle className="text-lg font-heading">{exercise.title}</CardTitle>
+          <div className="flex items-center gap-2">
+            <CardTitle className="text-lg font-heading">{exercise.title}</CardTitle>
+            {previousResult && !showResults && (
+              <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full flex items-center gap-1">
+                <CheckCircle className="h-3 w-3" />
+                {previousResult.score}/{previousResult.totalQuestions}
+              </span>
+            )}
+          </div>
           {showResults && (
             <div className={`px-3 py-1 rounded-full text-sm font-semibold ${
               score >= 8 ? 'bg-green-100 text-green-700' : 

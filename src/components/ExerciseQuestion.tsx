@@ -7,9 +7,10 @@ import { Question } from '@/data/exercisesData';
 interface ExerciseQuestionProps {
   question: Question;
   questionNumber: number;
+  onComplete?: (isCorrect: boolean) => void;
 }
 
-const ExerciseQuestion: React.FC<ExerciseQuestionProps> = ({ question, questionNumber }) => {
+const ExerciseQuestion: React.FC<ExerciseQuestionProps> = ({ question, questionNumber, onComplete }) => {
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
   const [showResult, setShowResult] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
@@ -17,6 +18,8 @@ const ExerciseQuestion: React.FC<ExerciseQuestionProps> = ({ question, questionN
   const handleCheck = () => {
     if (selectedAnswer) {
       setShowResult(true);
+      const correct = selectedAnswer === question.correctAnswer;
+      onComplete?.(correct);
     }
   };
 
