@@ -6153,5 +6153,564 @@ Ils sont suivis de la base verbale (sans "to").
         ]
       }
     ]
+  },
+  // === LOWER PRIORITY LESSONS ===
+  {
+    id: 'had-better-would-rather',
+    titleEn: 'Had Better / Would Rather',
+    titleFr: 'Had Better / Would Rather',
+    explanationEn: `**HAD BETTER** and **WOULD RATHER** express preferences and advice.
+
+**HAD BETTER** (+ infinitive without 'to'):
+- Strong advice or warning (something bad might happen if not followed)
+- "You **had better** hurry or you'll miss the bus."
+- "We **'d better** leave now." (contraction)
+- Negative: "You **had better not** be late."
+
+**WOULD RATHER** (+ infinitive without 'to'):
+- Personal preference
+- "I **would rather** stay home tonight."
+- "I**'d rather** not go." (negative)
+- Comparing: "I**'d rather** walk **than** drive."
+
+**WOULD RATHER + subject + past tense:**
+- Preference for someone else to do something
+- "I**'d rather** you **didn't** smoke here." (present/future meaning)
+- "I**'d rather** he **came** tomorrow." (past form, future meaning)
+
+**Key difference:**
+- Had better = advice/warning (external pressure)
+- Would rather = preference (personal choice)`,
+    explanationFr: `**HAD BETTER** et **WOULD RATHER** expriment des préférences et conseils.
+
+**HAD BETTER** (+ infinitif sans 'to') :
+- Conseil fort ou avertissement (quelque chose de mauvais pourrait arriver)
+- "You **had better** hurry or you'll miss the bus." (Tu ferais mieux de te dépêcher)
+- "We **'d better** leave now." (contraction)
+- Négatif : "You **had better not** be late." (Tu ferais mieux de ne pas être en retard)
+
+**WOULD RATHER** (+ infinitif sans 'to') :
+- Préférence personnelle
+- "I **would rather** stay home tonight." (Je préférerais rester à la maison)
+- "I**'d rather** not go." (négatif - Je préférerais ne pas y aller)
+- Comparaison : "I**'d rather** walk **than** drive." (Je préférerais marcher que conduire)
+
+**WOULD RATHER + sujet + passé :**
+- Préférence pour qu'une autre personne fasse quelque chose
+- "I**'d rather** you **didn't** smoke here." (Je préférerais que tu ne fumes pas ici)
+- "I**'d rather** he **came** tomorrow." (forme passée, sens futur)
+
+**Différence clé :**
+- Had better = conseil/avertissement (pression externe)
+- Would rather = préférence (choix personnel)`,
+    examples: [
+      { en: "You**'d better** study or you'll fail the exam.", fr: "Tu **ferais mieux** d'étudier sinon tu vas rater l'examen." },
+      { en: "I**'d rather** have tea **than** coffee.", fr: "Je **préférerais** du thé **plutôt que** du café." },
+      { en: "We**'d better not** wake the baby.", fr: "On **ferait mieux de ne pas** réveiller le bébé." },
+      { en: "I**'d rather** you **didn't** tell anyone.", fr: "Je **préférerais** que tu **ne le dises** à personne." }
+    ],
+    exercises: [
+      {
+        id: 148,
+        title: "Had Better / Would Rather",
+        description: "Choose the correct form.",
+        questions: [
+          {
+            id: 1,
+            question: "You ___ take an umbrella. It's going to rain.",
+            options: ["had better", "would rather"],
+            correctAnswer: "had better",
+            explanation: "Had better for advice/warning about rain."
+          },
+          {
+            id: 2,
+            question: "I ___ stay home tonight. I'm tired.",
+            options: ["had better", "would rather"],
+            correctAnswer: "would rather",
+            explanation: "Would rather for personal preference."
+          },
+          {
+            id: 3,
+            question: "You'd better ___ late for the interview.",
+            options: ["not be", "not to be"],
+            correctAnswer: "not be",
+            explanation: "Had better not + infinitive without 'to'."
+          },
+          {
+            id: 4,
+            question: "I'd rather ___ than take the bus.",
+            options: ["walk", "walking", "to walk"],
+            correctAnswer: "walk",
+            explanation: "Would rather + infinitive without 'to'."
+          },
+          {
+            id: 5,
+            question: "We ___ leave now or we'll miss the flight.",
+            options: ["had better", "would rather"],
+            correctAnswer: "had better",
+            explanation: "Had better for urgent advice."
+          },
+          {
+            id: 6,
+            question: "I'd rather you ___ smoke in here.",
+            options: ["don't", "didn't", "not"],
+            correctAnswer: "didn't",
+            explanation: "Would rather + subject + past tense."
+          },
+          {
+            id: 7,
+            question: "She ___ eat something before the meeting.",
+            options: ["had better", "would rather"],
+            correctAnswer: "had better",
+            explanation: "Had better for advice (she needs energy)."
+          },
+          {
+            id: 8,
+            question: "Would you rather ___ pizza or pasta?",
+            options: ["have", "having", "to have"],
+            correctAnswer: "have",
+            explanation: "Would rather + infinitive without 'to'."
+          },
+          {
+            id: 9,
+            question: "I'd rather he ___ tomorrow instead of today.",
+            options: ["comes", "came", "come"],
+            correctAnswer: "came",
+            explanation: "Would rather + subject + past tense for future."
+          },
+          {
+            id: 10,
+            question: "You ___ not mention this to anyone.",
+            options: ["had better", "would rather"],
+            correctAnswer: "had better",
+            explanation: "Had better for strong advice/warning."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'although-despite-however',
+    titleEn: 'Although / Despite / However',
+    titleFr: 'Although / Despite / However',
+    explanationEn: `These words express **contrast** (unexpected results).
+
+**ALTHOUGH / EVEN THOUGH / THOUGH** (+ clause):
+- "**Although** it was raining, we went out."
+- "We went out **even though** it was raining."
+- Though is more informal and can go at the end: "It was fun, **though**."
+
+**DESPITE / IN SPITE OF** (+ noun/-ing):
+- "**Despite** the rain, we went out."
+- "**In spite of** being tired, she worked late."
+- Never: ~~despite of~~ or ~~despite that~~
+
+**HOWEVER / NEVERTHELESS / NONETHELESS**:
+- Usually start a new sentence
+- "It was raining. **However**, we went out."
+- More formal than 'but'
+- Always followed by a comma
+
+**Comparison:**
+| Word | Followed by |
+|------|-------------|
+| Although | subject + verb |
+| Despite | noun / -ing |
+| However | comma + new clause |
+
+**Common mistake:**
+❌ Despite it was raining...
+✅ Despite the rain... / Although it was raining...`,
+    explanationFr: `Ces mots expriment le **contraste** (résultats inattendus).
+
+**ALTHOUGH / EVEN THOUGH / THOUGH** (+ proposition) :
+- "**Although** it was raining, we went out." (Bien qu'il pleuvait, on est sortis)
+- "We went out **even though** it was raining." (Même si...)
+- Though est plus informel et peut aller à la fin : "It was fun, **though**."
+
+**DESPITE / IN SPITE OF** (+ nom/-ing) :
+- "**Despite** the rain, we went out." (Malgré la pluie...)
+- "**In spite of** being tired, she worked late." (Malgré sa fatigue...)
+- Jamais : ~~despite of~~ ou ~~despite that~~
+
+**HOWEVER / NEVERTHELESS / NONETHELESS** :
+- Commencent généralement une nouvelle phrase
+- "It was raining. **However**, we went out." (Cependant...)
+- Plus formel que 'but'
+- Toujours suivi d'une virgule
+
+**Comparaison :**
+| Mot | Suivi de |
+|-----|----------|
+| Although | sujet + verbe |
+| Despite | nom / -ing |
+| However | virgule + nouvelle proposition |
+
+**Erreur courante :**
+❌ Despite it was raining...
+✅ Despite the rain... / Although it was raining...`,
+    examples: [
+      { en: "**Although** she's rich, she's not happy.", fr: "**Bien qu'**elle soit riche, elle n'est pas heureuse." },
+      { en: "**Despite** the cold weather, we went swimming.", fr: "**Malgré** le froid, nous sommes allés nager." },
+      { en: "I was tired. **However**, I finished the project.", fr: "J'étais fatigué. **Cependant**, j'ai fini le projet." },
+      { en: "**In spite of** working hard, he failed.", fr: "**Malgré** son travail acharné, il a échoué." }
+    ],
+    exercises: [
+      {
+        id: 149,
+        title: "Although / Despite / However",
+        description: "Choose the correct word.",
+        questions: [
+          {
+            id: 1,
+            question: "___ the heavy traffic, we arrived on time.",
+            options: ["Although", "Despite", "However"],
+            correctAnswer: "Despite",
+            explanation: "Despite + noun (the heavy traffic)."
+          },
+          {
+            id: 2,
+            question: "___ it was expensive, I bought it.",
+            options: ["Although", "Despite", "However"],
+            correctAnswer: "Although",
+            explanation: "Although + subject + verb (it was)."
+          },
+          {
+            id: 3,
+            question: "The hotel was old. ___, it was very comfortable.",
+            options: ["Although", "Despite", "However"],
+            correctAnswer: "However",
+            explanation: "However starts a new contrasting sentence."
+          },
+          {
+            id: 4,
+            question: "___ being very busy, she helped me.",
+            options: ["Although", "Despite", "However"],
+            correctAnswer: "Despite",
+            explanation: "Despite + -ing form."
+          },
+          {
+            id: 5,
+            question: "___ he studied hard, he failed the exam.",
+            options: ["Although", "Despite", "However"],
+            correctAnswer: "Although",
+            explanation: "Although + clause (he studied)."
+          },
+          {
+            id: 6,
+            question: "I don't like coffee. ___, I drink it sometimes.",
+            options: ["Although", "In spite of", "However"],
+            correctAnswer: "However",
+            explanation: "However connects two contrasting sentences."
+          },
+          {
+            id: 7,
+            question: "___ her fear of heights, she climbed the tower.",
+            options: ["Although", "In spite of", "However"],
+            correctAnswer: "In spite of",
+            explanation: "In spite of + noun (her fear)."
+          },
+          {
+            id: 8,
+            question: "___ we left early, we missed the train.",
+            options: ["Even though", "Despite", "However"],
+            correctAnswer: "Even though",
+            explanation: "Even though + clause (we left early)."
+          },
+          {
+            id: 9,
+            question: "The food was delicious ___ the poor service.",
+            options: ["although", "despite", "however"],
+            correctAnswer: "despite",
+            explanation: "Despite + noun phrase."
+          },
+          {
+            id: 10,
+            question: "It was a difficult test. I passed it, ___.",
+            options: ["although", "despite", "though"],
+            correctAnswer: "though",
+            explanation: "Though can go at the end of a sentence."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'still-yet-already',
+    titleEn: 'Still / Yet / Already',
+    titleFr: 'Still / Yet / Already',
+    explanationEn: `**STILL**, **YET**, and **ALREADY** relate to time and expectations.
+
+**STILL** = something continues (longer than expected):
+- Position: before main verb, after 'be'
+- "I**'m still** waiting." (continuing now)
+- "He **still** works there." (continuing)
+- "I **still** haven't finished." (negative - expected to finish by now)
+
+**YET** = up to now (used in questions and negatives):
+- Position: end of sentence
+- "Have you finished **yet**?" (Is it done now?)
+- "I haven't eaten **yet**." (Not done, but expected)
+- "She hasn't called **yet**."
+
+**ALREADY** = sooner than expected (used in positives):
+- Position: before main verb, or end for emphasis
+- "I've **already** finished." (sooner than expected)
+- "It's only 10 AM and she's **already** left."
+- In questions (surprise): "Have you **already** eaten?"
+
+**Key patterns:**
+- Still + positive/negative: action continues
+- Yet + negative/question: action not completed
+- Already + positive: action completed sooner than expected`,
+    explanationFr: `**STILL**, **YET** et **ALREADY** concernent le temps et les attentes.
+
+**STILL** = quelque chose continue (plus longtemps que prévu) :
+- Position : avant le verbe principal, après 'be'
+- "I**'m still** waiting." (J'attends encore)
+- "He **still** works there." (Il travaille encore là)
+- "I **still** haven't finished." (négatif - je n'ai toujours pas fini)
+
+**YET** = jusqu'à maintenant (questions et négations) :
+- Position : fin de phrase
+- "Have you finished **yet**?" (Tu as fini ?)
+- "I haven't eaten **yet**." (Je n'ai pas encore mangé)
+- "She hasn't called **yet**." (Elle n'a pas encore appelé)
+
+**ALREADY** = plus tôt que prévu (phrases positives) :
+- Position : avant le verbe principal, ou à la fin pour l'emphase
+- "I've **already** finished." (J'ai déjà fini)
+- "It's only 10 AM and she's **already** left." (Elle est déjà partie)
+- Dans les questions (surprise) : "Have you **already** eaten?"
+
+**Structures clés :**
+- Still + positif/négatif : l'action continue
+- Yet + négatif/question : l'action n'est pas terminée
+- Already + positif : l'action terminée plus tôt que prévu`,
+    examples: [
+      { en: "Are you **still** working? It's midnight!", fr: "Tu travailles **encore** ? Il est minuit !" },
+      { en: "I haven't finished my homework **yet**.", fr: "Je n'ai **pas encore** fini mes devoirs." },
+      { en: "She's **already** left for work.", fr: "Elle est **déjà** partie au travail." },
+      { en: "He **still** hasn't replied to my email.", fr: "Il n'a **toujours pas** répondu à mon email." }
+    ],
+    exercises: [
+      {
+        id: 150,
+        title: "Still / Yet / Already",
+        description: "Choose the correct word.",
+        questions: [
+          {
+            id: 1,
+            question: "Have you finished your project ___?",
+            options: ["still", "yet", "already"],
+            correctAnswer: "yet",
+            explanation: "Yet in questions (Is it done now?)."
+          },
+          {
+            id: 2,
+            question: "I've ___ seen that movie three times.",
+            options: ["still", "yet", "already"],
+            correctAnswer: "already",
+            explanation: "Already for completed action (emphasis)."
+          },
+          {
+            id: 3,
+            question: "He's ___ sleeping. It's 11 AM!",
+            options: ["still", "yet", "already"],
+            correctAnswer: "still",
+            explanation: "Still = continuing longer than expected."
+          },
+          {
+            id: 4,
+            question: "They haven't arrived ___.",
+            options: ["still", "yet", "already"],
+            correctAnswer: "yet",
+            explanation: "Yet in negative (not done but expected)."
+          },
+          {
+            id: 5,
+            question: "I ___ don't understand this grammar rule.",
+            options: ["still", "yet", "already"],
+            correctAnswer: "still",
+            explanation: "Still + negative = continuing not to understand."
+          },
+          {
+            id: 6,
+            question: "It's only 9 AM and she's ___ finished all her work!",
+            options: ["still", "yet", "already"],
+            correctAnswer: "already",
+            explanation: "Already = sooner than expected."
+          },
+          {
+            id: 7,
+            question: "Is she ___ talking on the phone?",
+            options: ["still", "yet", "already"],
+            correctAnswer: "still",
+            explanation: "Still = action continuing."
+          },
+          {
+            id: 8,
+            question: "I haven't decided ___. I need more time.",
+            options: ["still", "yet", "already"],
+            correctAnswer: "yet",
+            explanation: "Yet in negative sentence."
+          },
+          {
+            id: 9,
+            question: "Have you ___ booked your flight? The prices are going up!",
+            options: ["still", "yet", "already"],
+            correctAnswer: "already",
+            explanation: "Already in question showing surprise/urgency."
+          },
+          {
+            id: 10,
+            question: "He ___ hasn't apologized for what he said.",
+            options: ["still", "yet", "already"],
+            correctAnswer: "still",
+            explanation: "Still + negative = continuing not to do something."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'unless-as-long-as',
+    titleEn: 'Unless / As Long As / Provided',
+    titleFr: 'Unless / As Long As / Provided',
+    explanationEn: `These are **conditional connectors** with specific meanings.
+
+**UNLESS** = if not / except if:
+- "I'll go **unless** it rains." (= if it doesn't rain)
+- "**Unless** you study, you'll fail." (= if you don't study)
+- Don't use double negatives: ❌ unless you don't
+
+**AS LONG AS / SO LONG AS** = on the condition that:
+- "You can borrow my car **as long as** you're careful."
+- "I'll help you **so long as** you help me too."
+- Emphasizes the condition must be met
+
+**PROVIDED (THAT) / PROVIDING (THAT)** = on the condition that (more formal):
+- "I'll come **provided that** you pay for dinner."
+- "**Providing** the weather is good, we'll have a picnic."
+- More formal than 'as long as'
+
+**Comparison:**
+- Unless = negative condition (if not)
+- As long as = condition must be true
+- Provided = formal condition
+
+**Common mistake:**
+❌ Unless you don't hurry... (double negative)
+✅ Unless you hurry... (= if you don't hurry)`,
+    explanationFr: `Ce sont des **connecteurs conditionnels** avec des sens spécifiques.
+
+**UNLESS** = si... ne... pas / sauf si :
+- "I'll go **unless** it rains." (= sauf s'il pleut)
+- "**Unless** you study, you'll fail." (= si tu n'étudies pas)
+- Pas de double négation : ❌ unless you don't
+
+**AS LONG AS / SO LONG AS** = à condition que :
+- "You can borrow my car **as long as** you're careful." (tant que tu fais attention)
+- "I'll help you **so long as** you help me too." (à condition que tu m'aides aussi)
+- Souligne que la condition doit être remplie
+
+**PROVIDED (THAT) / PROVIDING (THAT)** = à condition que (plus formel) :
+- "I'll come **provided that** you pay for dinner." (à condition que tu paies)
+- "**Providing** the weather is good, we'll have a picnic."
+- Plus formel que 'as long as'
+
+**Comparaison :**
+- Unless = condition négative (si ne pas)
+- As long as = la condition doit être vraie
+- Provided = condition formelle
+
+**Erreur courante :**
+❌ Unless you don't hurry... (double négation)
+✅ Unless you hurry... (= si tu ne te dépêches pas)`,
+    examples: [
+      { en: "**Unless** you leave now, you'll be late.", fr: "**Si** tu ne pars pas maintenant, tu seras en retard." },
+      { en: "You can stay **as long as** you're quiet.", fr: "Tu peux rester **tant que** tu es silencieux." },
+      { en: "I'll lend you money **provided** you pay me back.", fr: "Je te prêterai de l'argent **à condition que** tu me rembourses." },
+      { en: "**Unless** there's a problem, I'll see you tomorrow.", fr: "**Sauf** s'il y a un problème, je te vois demain." }
+    ],
+    exercises: [
+      {
+        id: 151,
+        title: "Unless / As Long As / Provided",
+        description: "Choose the correct connector.",
+        questions: [
+          {
+            id: 1,
+            question: "I won't go ___ you come with me.",
+            options: ["unless", "as long as", "provided"],
+            correctAnswer: "unless",
+            explanation: "Unless = if you don't come."
+          },
+          {
+            id: 2,
+            question: "You can use my phone ___ you don't break it.",
+            options: ["unless", "as long as", "unless not"],
+            correctAnswer: "as long as",
+            explanation: "As long as = on condition that you don't break it."
+          },
+          {
+            id: 3,
+            question: "___ it stops raining, we'll have to cancel the game.",
+            options: ["Unless", "As long as", "Provided"],
+            correctAnswer: "Unless",
+            explanation: "Unless = if it doesn't stop raining."
+          },
+          {
+            id: 4,
+            question: "I'll help you ___ you promise to work hard.",
+            options: ["unless", "provided", "unless not"],
+            correctAnswer: "provided",
+            explanation: "Provided = on the condition that you promise."
+          },
+          {
+            id: 5,
+            question: "___ you study, you'll pass the exam easily.",
+            options: ["Unless", "As long as", "If not"],
+            correctAnswer: "As long as",
+            explanation: "As long as = if the condition is met."
+          },
+          {
+            id: 6,
+            question: "She won't speak to him ___ he apologizes.",
+            options: ["unless", "as long as", "provided"],
+            correctAnswer: "unless",
+            explanation: "Unless = if he doesn't apologize."
+          },
+          {
+            id: 7,
+            question: "You can borrow my car ___ you fill up the tank.",
+            options: ["unless", "providing", "unless not"],
+            correctAnswer: "providing",
+            explanation: "Providing = on condition that you fill it up."
+          },
+          {
+            id: 8,
+            question: "___ there are delays, we should arrive by 6 PM.",
+            options: ["Unless", "As long as", "Provided"],
+            correctAnswer: "Unless",
+            explanation: "Unless = if there are no delays."
+          },
+          {
+            id: 9,
+            question: "I'm happy ___ my family is healthy.",
+            options: ["unless", "as long as", "provided that"],
+            correctAnswer: "as long as",
+            explanation: "As long as = while the condition is true."
+          },
+          {
+            id: 10,
+            question: "___ everyone agrees, we can start the project.",
+            options: ["Unless", "Provided that", "Unless not"],
+            correctAnswer: "Provided that",
+            explanation: "Provided that = on the condition that everyone agrees."
+          }
+        ]
+      }
+    ]
   }
 ];

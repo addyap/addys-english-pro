@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap } from 'lucide-react';
+import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import AnimatedCard from '../components/AnimatedCard';
@@ -74,6 +74,13 @@ const MEDIUM_PRIORITY_IDS = [
   'determiners'
 ];
 
+const LOWER_PRIORITY_IDS = [
+  'had-better-would-rather',
+  'although-despite-however',
+  'still-yet-already',
+  'unless-as-long-as'
+];
+
 const Exercises = () => {
   useScrollTracking('exercises');
   useTimeTracking('exercises');
@@ -83,8 +90,11 @@ const Exercises = () => {
   // Group grammar categories
   const highPriorityCategories = grammarCategories.filter(c => HIGH_PRIORITY_IDS.includes(c.id));
   const mediumPriorityCategories = grammarCategories.filter(c => MEDIUM_PRIORITY_IDS.includes(c.id));
+  const lowerPriorityCategories = grammarCategories.filter(c => LOWER_PRIORITY_IDS.includes(c.id));
   const coreCategories = grammarCategories.filter(
-    c => !HIGH_PRIORITY_IDS.includes(c.id) && !MEDIUM_PRIORITY_IDS.includes(c.id)
+    c => !HIGH_PRIORITY_IDS.includes(c.id) && 
+         !MEDIUM_PRIORITY_IDS.includes(c.id) && 
+         !LOWER_PRIORITY_IDS.includes(c.id)
   );
 
   const renderGrammarSection = (
@@ -236,6 +246,16 @@ const Exercises = () => {
                   <Zap className="h-5 w-5 text-blue-500" />,
                   "bg-blue-500",
                   "bg-blue-500/10 text-blue-700 dark:text-blue-400"
+                )}
+
+                {/* Lower Priority */}
+                {lowerPriorityCategories.length > 0 && renderGrammarSection(
+                  lowerPriorityCategories,
+                  "Additional Topics", 
+                  "Useful expressions and connectors",
+                  <Lightbulb className="h-5 w-5 text-green-500" />,
+                  "bg-green-500",
+                  "bg-green-500/10 text-green-700 dark:text-green-400"
                 )}
 
                 {/* Core Grammar */}
