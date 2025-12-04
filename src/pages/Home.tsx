@@ -313,7 +313,7 @@ const Home = () => {
             </div>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
                 <p className="text-4xl font-bold mb-1">51</p>
                 <p className="text-sm text-primary-foreground/80">Leçons grammaire</p>
@@ -325,6 +325,10 @@ const Home = () => {
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
                 <p className="text-4xl font-bold mb-1">6</p>
                 <p className="text-sm text-primary-foreground/80">Textes lecture</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                <p className="text-4xl font-bold mb-1">5</p>
+                <p className="text-sm text-primary-foreground/80">Histoires interactives</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
                 <p className="text-4xl font-bold mb-1">3</p>
