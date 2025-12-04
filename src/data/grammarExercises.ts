@@ -4689,5 +4689,639 @@ Ils sont suivis de la base verbale (sans "to").
         ]
       }
     ]
+  },
+  {
+    id: 'will-vs-going-to',
+    titleEn: 'Will vs Going to',
+    titleFr: 'Will vs Going to',
+    explanationEn: `**WILL** and **GOING TO** both express the future, but they have different uses.
+
+**WILL** is used for:
+- Spontaneous decisions made at the moment of speaking: "I'll help you with that."
+- Predictions based on opinion/belief: "I think it will rain tomorrow."
+- Promises and offers: "I'll call you later."
+- Facts about the future: "The sun will rise at 6 AM."
+
+**GOING TO** is used for:
+- Plans and intentions decided before speaking: "I'm going to visit Paris next month."
+- Predictions based on present evidence: "Look at those clouds! It's going to rain."
+- Something that is about to happen: "She's going to have a baby."
+
+**Key difference:**
+- "I'll have pizza." (deciding NOW)
+- "I'm going to have pizza." (already decided before)`,
+    explanationFr: `**WILL** et **GOING TO** expriment tous deux le futur, mais avec des usages différents.
+
+**WILL** s'utilise pour :
+- Les décisions spontanées prises au moment de parler : "I'll help you with that."
+- Les prédictions basées sur une opinion : "I think it will rain tomorrow."
+- Les promesses et offres : "I'll call you later."
+- Les faits futurs : "The sun will rise at 6 AM."
+
+**GOING TO** s'utilise pour :
+- Les plans et intentions décidés avant de parler : "I'm going to visit Paris next month."
+- Les prédictions basées sur des preuves présentes : "Look at those clouds! It's going to rain."
+- Quelque chose qui va se produire très bientôt : "She's going to have a baby."
+
+**Différence clé :**
+- "I'll have pizza." (je décide MAINTENANT)
+- "I'm going to have pizza." (j'avais déjà décidé)`,
+    examples: [
+      { en: "The phone is ringing! I**'ll** answer it. (spontaneous)", fr: "Le téléphone sonne ! Je **vais** répondre. (spontané)" },
+      { en: "I**'m going to** study medicine next year. (plan)", fr: "Je **vais** étudier la médecine l'année prochaine. (plan)" },
+      { en: "Look out! You**'re going to** fall! (evidence)", fr: "Attention ! Tu **vas** tomber ! (preuve visible)" },
+      { en: "I think she **will** love this gift. (opinion)", fr: "Je pense qu'elle **va** adorer ce cadeau. (opinion)" }
+    ],
+    exercises: [
+      {
+        id: 137,
+        title: "Will vs Going to",
+        description: "Choose the correct future form.",
+        questions: [
+          {
+            id: 1,
+            question: "I've decided. I ___ learn Spanish next year.",
+            options: ["will", "am going to"],
+            correctAnswer: "am going to",
+            explanation: "Going to for a pre-planned intention."
+          },
+          {
+            id: 2,
+            question: "The phone is ringing. I ___ get it!",
+            options: ["will", "am going to"],
+            correctAnswer: "will",
+            explanation: "Will for spontaneous decisions."
+          },
+          {
+            id: 3,
+            question: "Look at those dark clouds. It ___ rain.",
+            options: ["will", "is going to"],
+            correctAnswer: "is going to",
+            explanation: "Going to for predictions based on present evidence."
+          },
+          {
+            id: 4,
+            question: "I think Brazil ___ win the World Cup.",
+            options: ["will", "is going to"],
+            correctAnswer: "will",
+            explanation: "Will for predictions based on opinion."
+          },
+          {
+            id: 5,
+            question: "We've booked everything. We ___ travel to Japan in May.",
+            options: ["will", "are going to"],
+            correctAnswer: "are going to",
+            explanation: "Going to for plans already made."
+          },
+          {
+            id: 6,
+            question: "Don't worry, I ___ help you with your homework.",
+            options: ["will", "am going to"],
+            correctAnswer: "will",
+            explanation: "Will for offers and promises."
+          },
+          {
+            id: 7,
+            question: "Be careful! That ladder ___ fall!",
+            options: ["will", "is going to"],
+            correctAnswer: "is going to",
+            explanation: "Going to for imminent events based on evidence."
+          },
+          {
+            id: 8,
+            question: "A: We need milk. B: OK, I ___ buy some on my way home.",
+            options: ["will", "am going to"],
+            correctAnswer: "will",
+            explanation: "Will for decisions made at the moment of speaking."
+          },
+          {
+            id: 9,
+            question: "She ___ have a baby in March. She's 8 months pregnant.",
+            options: ["will", "is going to"],
+            correctAnswer: "is going to",
+            explanation: "Going to for something certain based on present evidence."
+          },
+          {
+            id: 10,
+            question: "I promise I ___ never tell anyone your secret.",
+            options: ["will", "am going to"],
+            correctAnswer: "will",
+            explanation: "Will for promises."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'much-many-lot',
+    titleEn: 'Much, Many, A lot of',
+    titleFr: 'Much, Many, A lot of',
+    explanationEn: `**MUCH**, **MANY**, and **A LOT OF** express quantity.
+
+**MUCH** is used with:
+- Uncountable nouns (things we can't count)
+- Usually in questions and negatives
+- "How **much** money do you have?"
+- "I don't have **much** time."
+
+**MANY** is used with:
+- Countable nouns (things we can count)
+- Usually in questions and negatives
+- "How **many** books did you read?"
+- "There aren't **many** people here."
+
+**A LOT OF / LOTS OF** is used with:
+- Both countable AND uncountable nouns
+- Usually in affirmative sentences
+- "She has **a lot of** friends." (countable)
+- "We have **a lot of** work to do." (uncountable)
+
+**Note:** In formal English, "much" and "many" are also used in affirmatives.
+**In spoken English:** "a lot of" is more natural in positive sentences.`,
+    explanationFr: `**MUCH**, **MANY** et **A LOT OF** expriment la quantité.
+
+**MUCH** s'utilise avec :
+- Les noms indénombrables (ce qu'on ne peut pas compter)
+- Généralement dans les questions et négations
+- "How **much** money do you have?" (Combien d'argent ?)
+- "I don't have **much** time." (Je n'ai pas beaucoup de temps.)
+
+**MANY** s'utilise avec :
+- Les noms dénombrables (ce qu'on peut compter)
+- Généralement dans les questions et négations
+- "How **many** books did you read?" (Combien de livres ?)
+- "There aren't **many** people here." (Il n'y a pas beaucoup de gens.)
+
+**A LOT OF / LOTS OF** s'utilise avec :
+- Les noms dénombrables ET indénombrables
+- Généralement dans les phrases affirmatives
+- "She has **a lot of** friends." (dénombrable)
+- "We have **a lot of** work to do." (indénombrable)
+
+**À noter :** En anglais formel, "much" et "many" s'utilisent aussi dans les affirmatives.
+**En anglais parlé :** "a lot of" est plus naturel dans les phrases positives.`,
+    examples: [
+      { en: "I don't have **much** money. (uncountable, negative)", fr: "Je n'ai pas beaucoup d'**argent**. (indénombrable, négatif)" },
+      { en: "How **many** languages do you speak? (countable, question)", fr: "Combien de **langues** parles-tu ? (dénombrable, question)" },
+      { en: "She has **a lot of** experience. (uncountable, positive)", fr: "Elle a beaucoup d'**expérience**. (indénombrable, positif)" },
+      { en: "There are **a lot of** students in this class. (countable, positive)", fr: "Il y a beaucoup d'**étudiants** dans cette classe. (dénombrable, positif)" }
+    ],
+    exercises: [
+      {
+        id: 138,
+        title: "Much, Many, A lot of",
+        description: "Choose the correct quantifier.",
+        questions: [
+          {
+            id: 1,
+            question: "I don't have ___ time to finish this.",
+            options: ["much", "many", "a lot"],
+            correctAnswer: "much",
+            explanation: "Much with uncountable noun (time) in negative."
+          },
+          {
+            id: 2,
+            question: "How ___ people came to the party?",
+            options: ["much", "many", "a lot"],
+            correctAnswer: "many",
+            explanation: "Many with countable noun (people) in question."
+          },
+          {
+            id: 3,
+            question: "She earns ___ money as a lawyer.",
+            options: ["much", "many", "a lot of"],
+            correctAnswer: "a lot of",
+            explanation: "A lot of in affirmative with uncountable noun."
+          },
+          {
+            id: 4,
+            question: "There aren't ___ chairs in this room.",
+            options: ["much", "many", "a lot"],
+            correctAnswer: "many",
+            explanation: "Many with countable noun (chairs) in negative."
+          },
+          {
+            id: 5,
+            question: "How ___ sugar do you take in your coffee?",
+            options: ["much", "many", "a lot"],
+            correctAnswer: "much",
+            explanation: "Much with uncountable noun (sugar) in question."
+          },
+          {
+            id: 6,
+            question: "He has ___ friends on social media.",
+            options: ["much", "many", "a lot of"],
+            correctAnswer: "a lot of",
+            explanation: "A lot of in affirmative with countable noun."
+          },
+          {
+            id: 7,
+            question: "Is there ___ traffic on this road?",
+            options: ["much", "many", "a lot"],
+            correctAnswer: "much",
+            explanation: "Much with uncountable noun (traffic) in question."
+          },
+          {
+            id: 8,
+            question: "We didn't see ___ tourists in the winter.",
+            options: ["much", "many", "a lot"],
+            correctAnswer: "many",
+            explanation: "Many with countable noun (tourists) in negative."
+          },
+          {
+            id: 9,
+            question: "They drink ___ coffee every day.",
+            options: ["much", "many", "a lot of"],
+            correctAnswer: "a lot of",
+            explanation: "A lot of in affirmative with uncountable noun."
+          },
+          {
+            id: 10,
+            question: "There isn't ___ information about this topic.",
+            options: ["much", "many", "a lot"],
+            correctAnswer: "much",
+            explanation: "Much with uncountable noun (information) in negative."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'since-for',
+    titleEn: 'Since vs For',
+    titleFr: 'Since vs For',
+    explanationEn: `**SINCE** and **FOR** both express duration, but they work differently.
+
+**SINCE** is used with:
+- A specific POINT in time (when something started)
+- since Monday, since 2020, since I was a child, since 8 o'clock
+
+**FOR** is used with:
+- A PERIOD of time (how long)
+- for two days, for a year, for ages, for a long time
+
+**Common tenses:**
+- Present Perfect: "I **have lived** here **since** 2010 / **for** 10 years."
+- Past Perfect: "She **had worked** there **since** graduation / **for** 5 years."
+
+**Memory trick:**
+- **S**ince = **S**tarting point
+- **F**or = **F**or how long (period)`,
+    explanationFr: `**SINCE** et **FOR** expriment tous deux la durée, mais différemment.
+
+**SINCE** s'utilise avec :
+- Un POINT précis dans le temps (quand quelque chose a commencé)
+- since Monday, since 2020, since I was a child, since 8 o'clock
+
+**FOR** s'utilise avec :
+- Une PÉRIODE de temps (combien de temps)
+- for two days, for a year, for ages, for a long time
+
+**Temps courants :**
+- Present Perfect : "I **have lived** here **since** 2010 / **for** 10 years."
+- Past Perfect : "She **had worked** there **since** graduation / **for** 5 years."
+
+**Astuce mémorisation :**
+- **S**ince = Point de départ (**S**tart)
+- **F**or = Pendant combien de temps (**F**or how long)`,
+    examples: [
+      { en: "I've known her **since** 2015. (point in time)", fr: "Je la connais **depuis** 2015. (point dans le temps)" },
+      { en: "I've known her **for** 9 years. (period)", fr: "Je la connais **depuis** 9 ans. (période)" },
+      { en: "He's been waiting **since** 3 o'clock.", fr: "Il attend **depuis** 15h." },
+      { en: "He's been waiting **for** two hours.", fr: "Il attend **depuis** deux heures." }
+    ],
+    exercises: [
+      {
+        id: 139,
+        title: "Since vs For",
+        description: "Choose the correct word.",
+        questions: [
+          {
+            id: 1,
+            question: "I've lived in this city ___ 2010.",
+            options: ["since", "for"],
+            correctAnswer: "since",
+            explanation: "Since with a specific year (point in time)."
+          },
+          {
+            id: 2,
+            question: "She's been studying English ___ three years.",
+            options: ["since", "for"],
+            correctAnswer: "for",
+            explanation: "For with a period of time (three years)."
+          },
+          {
+            id: 3,
+            question: "We haven't seen each other ___ Christmas.",
+            options: ["since", "for"],
+            correctAnswer: "since",
+            explanation: "Since with a specific point in time (Christmas)."
+          },
+          {
+            id: 4,
+            question: "They've been married ___ a long time.",
+            options: ["since", "for"],
+            correctAnswer: "for",
+            explanation: "For with a period (a long time)."
+          },
+          {
+            id: 5,
+            question: "He's worked here ___ he graduated.",
+            options: ["since", "for"],
+            correctAnswer: "since",
+            explanation: "Since with a point when something started."
+          },
+          {
+            id: 6,
+            question: "I've been waiting ___ 45 minutes!",
+            options: ["since", "for"],
+            correctAnswer: "for",
+            explanation: "For with a duration (45 minutes)."
+          },
+          {
+            id: 7,
+            question: "She's been a doctor ___ 1998.",
+            options: ["since", "for"],
+            correctAnswer: "since",
+            explanation: "Since with a specific year."
+          },
+          {
+            id: 8,
+            question: "We've known each other ___ ages.",
+            options: ["since", "for"],
+            correctAnswer: "for",
+            explanation: "For with 'ages' (a period of time)."
+          },
+          {
+            id: 9,
+            question: "He hasn't called ___ last Monday.",
+            options: ["since", "for"],
+            correctAnswer: "since",
+            explanation: "Since with 'last Monday' (point in time)."
+          },
+          {
+            id: 10,
+            question: "I've had this car ___ over five years.",
+            options: ["since", "for"],
+            correctAnswer: "for",
+            explanation: "For with a duration (five years)."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'been-gone',
+    titleEn: 'Been vs Gone',
+    titleFr: 'Been vs Gone',
+    explanationEn: `**BEEN** and **GONE** are both past participles, but they mean different things.
+
+**HAS/HAVE BEEN (to):**
+- The person went somewhere and came BACK
+- "She **has been** to Paris." (= She visited Paris and returned)
+- Experience in life: "Have you ever **been** to Japan?"
+
+**HAS/HAVE GONE (to):**
+- The person went somewhere and is STILL THERE (not back yet)
+- "She **has gone** to Paris." (= She's in Paris now, not here)
+- Current absence: "Where's Tom?" "He **has gone** to the shops."
+
+**Memory trick:**
+- **BEEN** = **B**ack (visited and returned)
+- **GONE** = **G**one away (still there)
+
+**Note:** We say "have been TO" but "have gone TO" a place.`,
+    explanationFr: `**BEEN** et **GONE** sont tous deux des participes passés, mais avec des sens différents.
+
+**HAS/HAVE BEEN (to) :**
+- La personne est allée quelque part et est REVENUE
+- "She **has been** to Paris." (= Elle a visité Paris et est rentrée)
+- Expérience dans la vie : "Have you ever **been** to Japan?"
+
+**HAS/HAVE GONE (to) :**
+- La personne est allée quelque part et y est ENCORE (pas encore revenue)
+- "She **has gone** to Paris." (= Elle est à Paris maintenant, pas ici)
+- Absence actuelle : "Where's Tom?" "He **has gone** to the shops."
+
+**Astuce mémorisation :**
+- **BEEN** = De retour (visité et revenu)
+- **GONE** = Parti (encore là-bas)
+
+**Note :** On dit "have been TO" et "have gone TO" un lieu.`,
+    examples: [
+      { en: "I **have been** to London three times. (experience, I'm back)", fr: "Je **suis allé** à Londres trois fois. (expérience, je suis revenu)" },
+      { en: "She **has gone** to London. (she's there now)", fr: "Elle **est partie** à Londres. (elle y est maintenant)" },
+      { en: "Where's Dad? He **has gone** to work.", fr: "Où est papa ? Il **est parti** au travail." },
+      { en: "Have you ever **been** to Australia?", fr: "Es-tu déjà **allé** en Australie ?" }
+    ],
+    exercises: [
+      {
+        id: 140,
+        title: "Been vs Gone",
+        description: "Choose the correct word.",
+        questions: [
+          {
+            id: 1,
+            question: "Have you ever ___ to New York?",
+            options: ["been", "gone"],
+            correctAnswer: "been",
+            explanation: "Been for life experience (visiting and returning)."
+          },
+          {
+            id: 2,
+            question: "Where's Sarah? She has ___ to the supermarket.",
+            options: ["been", "gone"],
+            correctAnswer: "gone",
+            explanation: "Gone because she's still there (not back yet)."
+          },
+          {
+            id: 3,
+            question: "I've ___ to that restaurant many times. It's excellent!",
+            options: ["been", "gone"],
+            correctAnswer: "been",
+            explanation: "Been for past visits (went and came back)."
+          },
+          {
+            id: 4,
+            question: "Tom has ___ to the doctor. He'll be back soon.",
+            options: ["been", "gone"],
+            correctAnswer: "gone",
+            explanation: "Gone because he's currently at the doctor's."
+          },
+          {
+            id: 5,
+            question: "She's never ___ abroad before.",
+            options: ["been", "gone"],
+            correctAnswer: "been",
+            explanation: "Been for life experience (traveling abroad)."
+          },
+          {
+            id: 6,
+            question: "My parents have ___ on holiday. They're in Spain.",
+            options: ["been", "gone"],
+            correctAnswer: "gone",
+            explanation: "Gone because they're still on holiday."
+          },
+          {
+            id: 7,
+            question: "I've just ___ to the bank. Here's your money.",
+            options: ["been", "gone"],
+            correctAnswer: "been",
+            explanation: "Been because the person has returned."
+          },
+          {
+            id: 8,
+            question: "Have your parents ___ home yet?",
+            options: ["been", "gone"],
+            correctAnswer: "gone",
+            explanation: "Gone because asking if they've left/departed."
+          },
+          {
+            id: 9,
+            question: "We've ___ to that museum. It was amazing!",
+            options: ["been", "gone"],
+            correctAnswer: "been",
+            explanation: "Been for completed visit (went and returned)."
+          },
+          {
+            id: 10,
+            question: "Sorry, Mr. Smith has ___ to lunch. Can you call back?",
+            options: ["been", "gone"],
+            correctAnswer: "gone",
+            explanation: "Gone because he's currently out for lunch."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'few-little',
+    titleEn: 'Few / A few, Little / A little',
+    titleFr: 'Few / A few, Little / A little',
+    explanationEn: `These words express small quantities but with different meanings.
+
+**With COUNTABLE nouns (things we can count):**
+- **FEW** = almost none (negative meaning)
+  - "He has **few** friends." (= almost no friends, sad)
+- **A FEW** = some, a small number (positive meaning)
+  - "He has **a few** friends." (= some friends, that's good)
+
+**With UNCOUNTABLE nouns (things we can't count):**
+- **LITTLE** = almost none (negative meaning)
+  - "There is **little** hope." (= almost no hope, pessimistic)
+- **A LITTLE** = some, a small amount (positive meaning)
+  - "There is **a little** hope." (= some hope, optimistic)
+
+**Memory trick:**
+- Without "a" = negative, almost nothing
+- With "a" = positive, some amount
+
+**Common mistakes:** Don't use "few" with uncountable nouns!
+❌ few water → ✅ little water`,
+    explanationFr: `Ces mots expriment de petites quantités mais avec des sens différents.
+
+**Avec les noms DÉNOMBRABLES (qu'on peut compter) :**
+- **FEW** = presque aucun (sens négatif)
+  - "He has **few** friends." (= presque pas d'amis, triste)
+- **A FEW** = quelques, un petit nombre (sens positif)
+  - "He has **a few** friends." (= quelques amis, c'est bien)
+
+**Avec les noms INDÉNOMBRABLES (qu'on ne peut pas compter) :**
+- **LITTLE** = presque pas (sens négatif)
+  - "There is **little** hope." (= presque pas d'espoir, pessimiste)
+- **A LITTLE** = un peu (sens positif)
+  - "There is **a little** hope." (= un peu d'espoir, optimiste)
+
+**Astuce mémorisation :**
+- Sans "a" = négatif, presque rien
+- Avec "a" = positif, une certaine quantité
+
+**Erreurs courantes :** N'utilisez pas "few" avec les noms indénombrables !
+❌ few water → ✅ little water`,
+    examples: [
+      { en: "I have **few** options. (= almost no options, negative)", fr: "J'ai **peu** d'options. (= presque pas d'options, négatif)" },
+      { en: "I have **a few** options. (= some options, positive)", fr: "J'ai **quelques** options. (= certaines options, positif)" },
+      { en: "There's **little** time left. (= almost no time, negative)", fr: "Il reste **peu** de temps. (= presque pas de temps, négatif)" },
+      { en: "There's **a little** time left. (= some time, positive)", fr: "Il reste **un peu** de temps. (= du temps, positif)" }
+    ],
+    exercises: [
+      {
+        id: 141,
+        title: "Few / A few, Little / A little",
+        description: "Choose the correct word.",
+        questions: [
+          {
+            id: 1,
+            question: "I have ___ money, so I can buy you lunch. (positive)",
+            options: ["few", "a few", "little", "a little"],
+            correctAnswer: "a little",
+            explanation: "A little with uncountable (money), positive meaning."
+          },
+          {
+            id: 2,
+            question: "There are ___ eggs left. We need to buy more. (negative)",
+            options: ["few", "a few", "little", "a little"],
+            correctAnswer: "few",
+            explanation: "Few with countable (eggs), negative meaning."
+          },
+          {
+            id: 3,
+            question: "She speaks ___ French - enough to order in a restaurant.",
+            options: ["few", "a few", "little", "a little"],
+            correctAnswer: "a little",
+            explanation: "A little with uncountable (French), positive meaning."
+          },
+          {
+            id: 4,
+            question: "Very ___ people came to the meeting. It was disappointing.",
+            options: ["few", "a few", "little", "a little"],
+            correctAnswer: "few",
+            explanation: "Few with countable (people), negative meaning."
+          },
+          {
+            id: 5,
+            question: "Could you give me ___ advice?",
+            options: ["few", "a few", "little", "a little"],
+            correctAnswer: "a little",
+            explanation: "A little with uncountable (advice), polite request."
+          },
+          {
+            id: 6,
+            question: "I met ___ interesting people at the party.",
+            options: ["few", "a few", "little", "a little"],
+            correctAnswer: "a few",
+            explanation: "A few with countable (people), positive meaning."
+          },
+          {
+            id: 7,
+            question: "There's ___ hope of finding survivors. (pessimistic)",
+            options: ["few", "a few", "little", "a little"],
+            correctAnswer: "little",
+            explanation: "Little with uncountable (hope), negative meaning."
+          },
+          {
+            id: 8,
+            question: "I need ___ minutes to finish this.",
+            options: ["few", "a few", "little", "a little"],
+            correctAnswer: "a few",
+            explanation: "A few with countable (minutes), positive meaning."
+          },
+          {
+            id: 9,
+            question: "He has ___ patience with children. He gets angry easily.",
+            options: ["few", "a few", "little", "a little"],
+            correctAnswer: "little",
+            explanation: "Little with uncountable (patience), negative meaning."
+          },
+          {
+            id: 10,
+            question: "There are ___ good restaurants near here. Let me recommend one.",
+            options: ["few", "a few", "little", "a little"],
+            correctAnswer: "a few",
+            explanation: "A few with countable (restaurants), positive meaning."
+          }
+        ]
+      }
+    ]
   }
 ];
