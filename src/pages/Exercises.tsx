@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb } from 'lucide-react';
+import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import AnimatedCard from '../components/AnimatedCard';
@@ -10,12 +10,17 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import GrammarExplanation from '../components/GrammarExplanation';
 import GrammarExercise from '../components/GrammarExercise';
+import ExerciseSearch from '../components/ExerciseSearch';
+import { useExerciseProgress } from '@/hooks/useExerciseProgress';
+import { Button } from '@/components/ui/button';
 
 // Exercise Card Component
-const ExerciseCard = ({ exercise, isAvailable, index }: { 
+const ExerciseCard = ({ exercise, isAvailable, index, isCompleted, bestScore }: { 
   exercise: { id: number; title: string }; 
   isAvailable: boolean; 
   index: number;
+  isCompleted?: boolean;
+  bestScore?: { score: number; total: number };
 }) => {
   if (isAvailable) {
     return (
@@ -25,14 +30,25 @@ const ExerciseCard = ({ exercise, isAvailable, index }: {
         delay={index * 0.01}
       >
         <div className="flex items-center gap-3">
-          <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-            <span className="text-xs font-bold text-primary font-heading">
-              {exercise.id}
-            </span>
+          <div className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors ${
+            isCompleted ? 'bg-green-100' : 'bg-primary/10'
+          }`}>
+            {isCompleted ? (
+              <CheckCircle className="h-4 w-4 text-green-600" />
+            ) : (
+              <span className="text-xs font-bold text-primary font-heading">
+                {exercise.id}
+              </span>
+            )}
           </div>
           <h3 className="text-sm font-medium text-foreground leading-tight font-body flex-1 truncate">
             {exercise.title}
           </h3>
+          {bestScore && (
+            <span className="text-xs bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full">
+              {bestScore.score}/{bestScore.total}
+            </span>
+          )}
           <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
         </div>
       </AnimatedCard>
@@ -84,6 +100,14 @@ const LOWER_PRIORITY_IDS = [
 const Exercises = () => {
   useScrollTracking('exercises');
   useTimeTracking('exercises');
+
+  const { getResult, getStats } = useExerciseProgress();
+  const stats = getStats();
+  const [filteredExercises, setFilteredExercises] = useState(exercisesList);
+
+  const handleFilteredChange = useCallback((filtered: typeof exercisesList) => {
+    setFilteredExercises(filtered);
+  }, []);
 
   const availableExercises = new Set(exercisesData.map(ex => ex.id));
   
@@ -195,10 +219,24 @@ const Exercises = () => {
             <p className="text-xl md:text-2xl text-primary-foreground/90 max-w-3xl mx-auto font-body">
               Maîtrisez la grammaire anglaise avec des explications claires et des exercices pratiques
             </p>
-            <div className="flex items-center justify-center gap-4 mt-6 text-sm">
+            <div className="flex items-center justify-center gap-4 mt-6 text-sm flex-wrap">
               <span className="bg-white/20 px-3 py-1 rounded-full">{grammarCategories.length} Grammar Lessons</span>
               <span className="bg-white/20 px-3 py-1 rounded-full">{exercisesData.length} Vocabulary Exercises</span>
+              {stats.totalCompleted > 0 && (
+                <span className="bg-green-500/30 px-3 py-1 rounded-full flex items-center gap-1">
+                  <CheckCircle className="h-3 w-3" />
+                  {stats.totalCompleted} complétés
+                </span>
+              )}
             </div>
+            {stats.totalCompleted > 0 && (
+              <Link to="/dashboard">
+                <Button variant="secondary" className="mt-6 gap-2">
+                  <Target className="h-4 w-4" />
+                  Voir mon tableau de bord
+                </Button>
+              </Link>
+            )}
           </div>
         </section>
 
@@ -271,86 +309,125 @@ const Exercises = () => {
 
               {/* Vocabulary Tab */}
               <TabsContent value="vocabulary" className="space-y-6">
+                {/* Search & Filter */}
+                <ExerciseSearch
+                  exercises={exercisesList}
+                  onFilteredChange={handleFilteredChange}
+                />
+
                 {/* Progress Notice */}
                 <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-6 text-center border border-primary/20">
                   <div className="flex items-center justify-center gap-2 mb-3">
                     <CheckCircle className="h-6 w-6 text-primary" />
                     <span className="text-3xl font-bold text-primary font-heading">{exercisesData.length}</span>
                     <span className="text-lg text-muted-foreground font-body">exercices disponibles</span>
+                    {stats.vocabularyCompleted > 0 && (
+                      <span className="text-sm text-green-600 ml-2">({stats.vocabularyCompleted} complétés)</span>
+                    )}
                   </div>
                   <p className="text-muted-foreground font-body text-sm">
                     De nouveaux exercices sont ajoutés régulièrement
                   </p>
                 </div>
 
-                {/* Category Sections */}
-                <div className="space-y-8">
-                  {/* Section 1-50: Common Mistakes */}
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="h-8 w-1 bg-primary rounded-full" />
-                      <h3 className="text-lg font-semibold text-foreground font-heading">Erreurs courantes (1-50)</h3>
-                      <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">50 exercices</span>
-                    </div>
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-                      {exercisesList.slice(0, 50).map((exercise, index) => {
-                        const isAvailable = availableExercises.has(exercise.id);
-                        return (
-                          <ExerciseCard 
-                            key={exercise.id} 
-                            exercise={exercise} 
-                            isAvailable={isAvailable} 
-                            index={index}
-                          />
-                        );
-                      })}
-                    </div>
+                {/* Filtered Results or Category Sections */}
+                {filteredExercises.length !== exercisesList.length ? (
+                  // Show filtered results
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+                    {filteredExercises.map((exercise, index) => {
+                      const isAvailable = availableExercises.has(exercise.id);
+                      const result = getResult(exercise.id.toString(), 'vocabulary');
+                      return (
+                        <ExerciseCard 
+                          key={exercise.id} 
+                          exercise={exercise} 
+                          isAvailable={isAvailable} 
+                          index={index}
+                          isCompleted={!!result}
+                          bestScore={result ? { score: result.score, total: result.totalQuestions } : undefined}
+                        />
+                      );
+                    })}
                   </div>
+                ) : (
+                  // Show categorized sections
+                  <div className="space-y-8">
+                    {/* Section 1-50: Common Mistakes */}
+                    <div>
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="h-8 w-1 bg-primary rounded-full" />
+                        <h3 className="text-lg font-semibold text-foreground font-heading">Erreurs courantes (1-50)</h3>
+                        <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">50 exercices</span>
+                      </div>
+                      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+                        {exercisesList.slice(0, 50).map((exercise, index) => {
+                          const isAvailable = availableExercises.has(exercise.id);
+                          const result = getResult(exercise.id.toString(), 'vocabulary');
+                          return (
+                            <ExerciseCard 
+                              key={exercise.id} 
+                              exercise={exercise} 
+                              isAvailable={isAvailable} 
+                              index={index}
+                              isCompleted={!!result}
+                              bestScore={result ? { score: result.score, total: result.totalQuestions } : undefined}
+                            />
+                          );
+                        })}
+                      </div>
+                    </div>
 
-                  {/* Section 51-100: Advanced Mistakes */}
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="h-8 w-1 bg-accent rounded-full" />
-                      <h3 className="text-lg font-semibold text-foreground font-heading">Pièges avancés (51-100)</h3>
-                      <span className="text-xs bg-accent/10 text-accent-foreground px-2 py-1 rounded-full">50 exercices</span>
+                    {/* Section 51-100: Advanced Mistakes */}
+                    <div>
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="h-8 w-1 bg-accent rounded-full" />
+                        <h3 className="text-lg font-semibold text-foreground font-heading">Pièges avancés (51-100)</h3>
+                        <span className="text-xs bg-accent/10 text-accent-foreground px-2 py-1 rounded-full">50 exercices</span>
+                      </div>
+                      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+                        {exercisesList.slice(50, 100).map((exercise, index) => {
+                          const isAvailable = availableExercises.has(exercise.id);
+                          const result = getResult(exercise.id.toString(), 'vocabulary');
+                          return (
+                            <ExerciseCard 
+                              key={exercise.id} 
+                              exercise={exercise} 
+                              isAvailable={isAvailable} 
+                              index={index}
+                              isCompleted={!!result}
+                              bestScore={result ? { score: result.score, total: result.totalQuestions } : undefined}
+                            />
+                          );
+                        })}
+                      </div>
                     </div>
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-                      {exercisesList.slice(50, 100).map((exercise, index) => {
-                        const isAvailable = availableExercises.has(exercise.id);
-                        return (
-                          <ExerciseCard 
-                            key={exercise.id} 
-                            exercise={exercise} 
-                            isAvailable={isAvailable} 
-                            index={index}
-                          />
-                        );
-                      })}
-                    </div>
-                  </div>
 
-                  {/* Section 101-150: Confusing Word Pairs */}
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="h-8 w-1 bg-green-500 rounded-full" />
-                      <h3 className="text-lg font-semibold text-foreground font-heading">Mots confus (101-150)</h3>
-                      <span className="text-xs bg-green-500/10 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">50 exercices</span>
-                    </div>
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-                      {exercisesList.slice(100, 150).map((exercise, index) => {
-                        const isAvailable = availableExercises.has(exercise.id);
-                        return (
-                          <ExerciseCard 
-                            key={exercise.id} 
-                            exercise={exercise} 
-                            isAvailable={isAvailable} 
-                            index={index}
-                          />
-                        );
-                      })}
+                    {/* Section 101-150: Confusing Word Pairs */}
+                    <div>
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="h-8 w-1 bg-green-500 rounded-full" />
+                        <h3 className="text-lg font-semibold text-foreground font-heading">Mots confus (101-150)</h3>
+                        <span className="text-xs bg-green-500/10 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">50 exercices</span>
+                      </div>
+                      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+                        {exercisesList.slice(100, 150).map((exercise, index) => {
+                          const isAvailable = availableExercises.has(exercise.id);
+                          const result = getResult(exercise.id.toString(), 'vocabulary');
+                          return (
+                            <ExerciseCard 
+                              key={exercise.id} 
+                              exercise={exercise} 
+                              isAvailable={isAvailable} 
+                              index={index}
+                              isCompleted={!!result}
+                              bestScore={result ? { score: result.score, total: result.totalQuestions } : undefined}
+                            />
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
               </TabsContent>
             </Tabs>
           </div>

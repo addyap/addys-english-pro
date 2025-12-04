@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, BookOpen, ChevronLeft, ChevronRight, Trophy, RotateCcw } from 'lucide-react';
+import { ArrowLeft, BookOpen, ChevronLeft, ChevronRight, Trophy, RotateCcw, CheckCircle } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { allExercisesData as exercisesData, allExercisesList as exercisesList } from '../data/allExercises';
 import ExerciseQuestion from '../components/ExerciseQuestion';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
+import { useExerciseProgress } from '@/hooks/useExerciseProgress';
 
 const ExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -17,7 +18,32 @@ const ExerciseDetail = () => {
   useScrollTracking(`exercise-${exerciseId}`);
   useTimeTracking(`exercise-${exerciseId}`);
 
-  const [completedQuestions, setCompletedQuestions] = useState<Set<number>>(new Set());
+  const { saveResult, getResult } = useExerciseProgress();
+  const previousResult = getResult(exerciseId.toString(), 'vocabulary');
+
+  const [completedQuestions, setCompletedQuestions] = useState<Map<number, boolean>>(new Map());
+
+  const handleQuestionComplete = useCallback((questionId: number, isCorrect: boolean) => {
+    setCompletedQuestions(prev => {
+      const newMap = new Map(prev);
+      newMap.set(questionId, isCorrect);
+      return newMap;
+    });
+  }, []);
+
+  // Save progress when all questions are completed
+  useEffect(() => {
+    if (exercise && completedQuestions.size === exercise.questions.length) {
+      const correctCount = Array.from(completedQuestions.values()).filter(Boolean).length;
+      saveResult({
+        exerciseId: exerciseId.toString(),
+        exerciseType: 'vocabulary',
+        score: correctCount,
+        totalQuestions: exercise.questions.length,
+        title: exercise.title,
+      });
+    }
+  }, [completedQuestions, exercise, exerciseId, saveResult]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -40,11 +66,12 @@ const ExerciseDetail = () => {
   }
 
   const progress = (completedQuestions.size / exercise.questions.length) * 100;
+  const correctCount = Array.from(completedQuestions.values()).filter(Boolean).length;
   const previousExercise = exercisesList.find(ex => ex.id === exerciseId - 1);
   const nextExercise = exercisesList.find(ex => ex.id === exerciseId + 1);
 
   const handleResetExercise = () => {
-    setCompletedQuestions(new Set());
+    setCompletedQuestions(new Map());
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -80,6 +107,12 @@ const ExerciseDetail = () => {
                 <p className="text-lg text-primary-foreground/90 font-body">
                   {exercise.description}
                 </p>
+                {previousResult && (
+                  <div className="flex items-center gap-2 mt-2 text-sm">
+                    <CheckCircle className="h-4 w-4 text-green-300" />
+                    <span>Meilleur score: {previousResult.score}/{previousResult.totalQuestions}</span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -89,6 +122,9 @@ const ExerciseDetail = () => {
                 <span className="text-sm font-medium">Progression</span>
                 <span className="text-sm font-medium">
                   {completedQuestions.size} / {exercise.questions.length}
+                  {completedQuestions.size === exercise.questions.length && (
+                    <span className="ml-2">({correctCount} correct)</span>
+                  )}
                 </span>
               </div>
               <Progress value={progress} className="h-2 bg-white/20" />
@@ -105,6 +141,7 @@ const ExerciseDetail = () => {
                   key={question.id}
                   question={question}
                   questionNumber={index + 1}
+                  onComplete={(isCorrect) => handleQuestionComplete(question.id, isCorrect)}
                 />
               ))}
             </div>
