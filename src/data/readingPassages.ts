@@ -299,5 +299,283 @@ Perhaps most fundamentally, the role of AI forces us to reconsider what we value
         explanation: "The text states that 'The therapeutic relationship between healthcare providers and patients encompasses trust, empathy, and shared decision-making.'"
       }
     ]
+  },
+  {
+    id: 7,
+    title: "The Lost Dog",
+    titleFr: "Le chien perdu",
+    difficulty: 'easy',
+    readingTime: 2,
+    content: `Yesterday, I found a small dog in the park. It was brown and white, with big sad eyes. The dog didn't have a collar, so I didn't know who owned it.
+
+I took the dog home and gave it some water and food. It was very hungry. My mother helped me make a poster with a photo of the dog. We wrote "Found: Small brown and white dog" and our phone number.
+
+We put the posters around the neighborhood. The next morning, a little girl and her father came to our house. The girl was so happy to see her dog! She hugged it and cried tears of joy.
+
+The father thanked us many times. He explained that the dog had escaped from their garden two days ago. The girl had been very sad without her pet. I felt happy that I could help reunite them.`,
+    questions: [
+      {
+        question: "Where did the narrator find the dog?",
+        options: ["In the street", "In the park", "At school", "At a friend's house"],
+        correctAnswer: 1,
+        explanation: "The text says 'Yesterday, I found a small dog in the park.'"
+      },
+      {
+        question: "Why didn't the narrator know who owned the dog?",
+        options: ["The dog was too small", "The dog didn't have a collar", "The dog couldn't walk", "The dog was sleeping"],
+        correctAnswer: 1,
+        explanation: "The text states 'The dog didn't have a collar, so I didn't know who owned it.'"
+      },
+      {
+        question: "What did the narrator and their mother make?",
+        options: ["A bed for the dog", "A poster", "A leash", "Dog food"],
+        correctAnswer: 1,
+        explanation: "The text mentions 'My mother helped me make a poster with a photo of the dog.'"
+      },
+      {
+        question: "Who came to get the dog?",
+        options: ["A policeman", "A neighbor", "A little girl and her father", "An old woman"],
+        correctAnswer: 2,
+        explanation: "The text says 'a little girl and her father came to our house.'"
+      },
+      {
+        question: "How long had the dog been missing?",
+        options: ["One day", "Two days", "One week", "One month"],
+        correctAnswer: 1,
+        explanation: "The text states 'the dog had escaped from their garden two days ago.'"
+      }
+    ]
+  },
+  {
+    id: 8,
+    title: "Planning a Trip",
+    titleFr: "Planifier un voyage",
+    difficulty: 'medium',
+    readingTime: 3,
+    content: `Emma and her colleagues were planning their annual team-building trip. After much discussion, they decided to visit Barcelona for a long weekend. Emma was put in charge of organizing the accommodation and activities.
+
+She spent hours researching hotels online, comparing prices and reading reviews. Eventually, she found a boutique hotel in the Gothic Quarter that had excellent ratings and was within their budget. The location was perfect—walking distance from the main attractions.
+
+For activities, Emma created a flexible itinerary. On the first day, they would take a guided tour of the famous Sagrada Familia. The second day was left free for people to explore on their own or in small groups. On the final day, she booked a cooking class where they would learn to make traditional Spanish paella.
+
+When Emma presented the plan to her colleagues, everyone was impressed with her organization. Some people suggested minor changes, like adding a beach visit on the free day. Emma was happy to incorporate their ideas, making the trip a truly collaborative effort.`,
+    questions: [
+      {
+        question: "What type of trip were they planning?",
+        options: ["A family vacation", "A team-building trip", "A business conference", "A school excursion"],
+        correctAnswer: 1,
+        explanation: "The text states 'Emma and her colleagues were planning their annual team-building trip.'"
+      },
+      {
+        question: "Where was the hotel located?",
+        options: ["By the beach", "In the Gothic Quarter", "Near the airport", "In the suburbs"],
+        correctAnswer: 1,
+        explanation: "The text mentions 'a boutique hotel in the Gothic Quarter.'"
+      },
+      {
+        question: "What would they do on the first day?",
+        options: ["Go to the beach", "Have free time", "Take a tour of Sagrada Familia", "Take a cooking class"],
+        correctAnswer: 2,
+        explanation: "The text says 'On the first day, they would take a guided tour of the famous Sagrada Familia.'"
+      },
+      {
+        question: "What would they learn to cook?",
+        options: ["Pizza", "Paella", "Tapas", "Tortilla"],
+        correctAnswer: 1,
+        explanation: "The text mentions 'a cooking class where they would learn to make traditional Spanish paella.'"
+      },
+      {
+        question: "How did Emma's colleagues react to her plan?",
+        options: ["They rejected it", "They were impressed", "They were indifferent", "They were angry"],
+        correctAnswer: 1,
+        explanation: "The text states 'everyone was impressed with her organization.'"
+      }
+    ]
+  },
+  {
+    id: 9,
+    title: "The History of Coffee",
+    titleFr: "L'histoire du café",
+    difficulty: 'medium',
+    readingTime: 4,
+    content: `Coffee is one of the world's most popular beverages, but few people know its fascinating history. According to legend, coffee was discovered in Ethiopia around the 9th century by a goat herder named Kaldi. He noticed that his goats became unusually energetic after eating berries from a certain tree.
+
+Curious, Kaldi tried the berries himself and experienced a similar burst of energy. He shared his discovery with monks at a local monastery, who found that the berries helped them stay awake during long hours of prayer. Word spread, and coffee began its journey across the world.
+
+By the 15th century, coffee was being cultivated in Yemen. From there, it spread to Egypt, Turkey, and eventually to Europe in the 17th century. Initially, some Europeans were suspicious of the dark, bitter drink. In Venice, some people even called it "the bitter invention of Satan."
+
+However, when Pope Clement VIII tasted coffee, he enjoyed it so much that he gave it papal approval. This helped coffee gain acceptance throughout Europe. Today, over 2 billion cups of coffee are consumed daily around the world, making it second only to water as the most consumed beverage.`,
+    questions: [
+      {
+        question: "Where was coffee supposedly discovered?",
+        options: ["Yemen", "Turkey", "Ethiopia", "Italy"],
+        correctAnswer: 2,
+        explanation: "The text states 'coffee was discovered in Ethiopia around the 9th century.'"
+      },
+      {
+        question: "Who is credited with discovering coffee in the legend?",
+        options: ["A monk", "A farmer", "A goat herder named Kaldi", "A Turkish merchant"],
+        correctAnswer: 2,
+        explanation: "The text mentions 'a goat herder named Kaldi.'"
+      },
+      {
+        question: "Why did monks find coffee useful?",
+        options: ["It tasted good", "It helped them stay awake", "It was healthy", "It was cheap"],
+        correctAnswer: 1,
+        explanation: "The text says 'the berries helped them stay awake during long hours of prayer.'"
+      },
+      {
+        question: "What did some people in Venice call coffee?",
+        options: ["The divine drink", "The bitter invention of Satan", "The black medicine", "The Arabian wonder"],
+        correctAnswer: 1,
+        explanation: "The text mentions 'some people even called it \"the bitter invention of Satan.\"'"
+      },
+      {
+        question: "What is the most consumed beverage in the world?",
+        options: ["Coffee", "Tea", "Water", "Milk"],
+        correctAnswer: 2,
+        explanation: "The text states coffee is 'second only to water as the most consumed beverage.'"
+      }
+    ]
+  },
+  {
+    id: 10,
+    title: "Remote Work Revolution",
+    titleFr: "La révolution du télétravail",
+    difficulty: 'hard',
+    readingTime: 5,
+    content: `The COVID-19 pandemic accelerated a transformation in workplace culture that had been gradually developing for years. Almost overnight, millions of workers worldwide transitioned from traditional office environments to working from home. This shift has had profound implications for productivity, work-life balance, and the very nature of employment itself.
+
+Proponents of remote work point to numerous benefits. Employees save time and money on commuting, enjoy greater flexibility in managing their schedules, and often report higher job satisfaction. Companies benefit from reduced overhead costs and access to a global talent pool unrestricted by geographic boundaries. Environmental advocates note the decrease in carbon emissions from reduced commuting.
+
+However, critics raise valid concerns. The blurring of boundaries between work and personal life can lead to burnout, as employees find it difficult to "switch off" when their office is also their living room. Collaboration and creativity may suffer without the spontaneous interactions that occur naturally in physical workspaces. Younger employees, in particular, may miss out on mentorship opportunities and the professional development that comes from observing experienced colleagues.
+
+The emerging consensus suggests that a hybrid model—combining remote work with periodic in-office presence—may offer the best of both worlds. Organizations are experimenting with various configurations, trying to optimize for both productivity and employee well-being. What seems certain is that the traditional nine-to-five, five-days-a-week office paradigm has been permanently disrupted.`,
+    questions: [
+      {
+        question: "What accelerated the remote work transformation?",
+        options: ["New technology", "The COVID-19 pandemic", "Government policies", "Economic recession"],
+        correctAnswer: 1,
+        explanation: "The text states 'The COVID-19 pandemic accelerated a transformation in workplace culture.'"
+      },
+      {
+        question: "What benefit do companies gain from remote work?",
+        options: ["Higher employee turnover", "Access to a global talent pool", "More office space", "Increased supervision"],
+        correctAnswer: 1,
+        explanation: "The text mentions 'access to a global talent pool unrestricted by geographic boundaries.'"
+      },
+      {
+        question: "Why might remote workers experience burnout?",
+        options: ["Too much commuting", "Difficulty separating work and personal life", "Lack of technology", "Lower salaries"],
+        correctAnswer: 1,
+        explanation: "The text explains 'The blurring of boundaries between work and personal life can lead to burnout.'"
+      },
+      {
+        question: "What might younger employees miss in remote work?",
+        options: ["Higher salaries", "Mentorship opportunities", "Longer vacations", "Better technology"],
+        correctAnswer: 1,
+        explanation: "The text says 'Younger employees, in particular, may miss out on mentorship opportunities.'"
+      },
+      {
+        question: "What model does the text suggest as a solution?",
+        options: ["Fully remote work", "Traditional office work", "A hybrid model", "Part-time employment"],
+        correctAnswer: 2,
+        explanation: "The text states 'a hybrid model—combining remote work with periodic in-office presence—may offer the best of both worlds.'"
+      }
+    ]
+  },
+  {
+    id: 11,
+    title: "My Favorite Hobby",
+    titleFr: "Mon passe-temps préféré",
+    difficulty: 'easy',
+    readingTime: 2,
+    content: `I love taking photographs. I started this hobby three years ago when my grandmother gave me her old camera. At first, I only took pictures of my cat and my garden.
+
+Now, I take photos everywhere I go. My favorite subjects are nature and architecture. I especially like taking pictures at sunrise and sunset when the light is beautiful. The colors in the sky can be orange, pink, purple, or gold.
+
+Every weekend, I go to different places to find interesting things to photograph. Last month, I visited an old castle and took over two hundred photos! Only about twenty of them were really good.
+
+I share my best photos on social media. Many people like them and leave nice comments. Some people even ask me to take photos for their special events like birthdays and weddings. Photography makes me very happy.`,
+    questions: [
+      {
+        question: "How did the narrator get their first camera?",
+        options: ["They bought it", "Their grandmother gave it to them", "They won it in a contest", "Their parents gave it"],
+        correctAnswer: 1,
+        explanation: "The text says 'my grandmother gave me her old camera.'"
+      },
+      {
+        question: "What are the narrator's favorite subjects to photograph?",
+        options: ["People and animals", "Nature and architecture", "Food and clothes", "Cars and sports"],
+        correctAnswer: 1,
+        explanation: "The text states 'My favorite subjects are nature and architecture.'"
+      },
+      {
+        question: "When does the narrator prefer to take photos?",
+        options: ["At noon", "At midnight", "At sunrise and sunset", "In the afternoon"],
+        correctAnswer: 2,
+        explanation: "The text mentions 'I especially like taking pictures at sunrise and sunset.'"
+      },
+      {
+        question: "How many good photos did the narrator get at the castle?",
+        options: ["About ten", "About twenty", "About fifty", "About two hundred"],
+        correctAnswer: 1,
+        explanation: "The text says 'Only about twenty of them were really good.'"
+      },
+      {
+        question: "What do some people ask the narrator to do?",
+        options: ["Sell cameras", "Take photos for special events", "Teach photography classes", "Edit videos"],
+        correctAnswer: 1,
+        explanation: "The text states 'Some people even ask me to take photos for their special events.'"
+      }
+    ]
+  },
+  {
+    id: 12,
+    title: "The Psychology of Colors",
+    titleFr: "La psychologie des couleurs",
+    difficulty: 'hard',
+    readingTime: 5,
+    content: `Color psychology is the study of how colors affect human behavior, emotions, and decision-making. While often dismissed as pseudoscience, research has demonstrated that colors can have measurable physiological and psychological effects on individuals, though these effects are often culturally mediated and context-dependent.
+
+Red, for instance, has been shown to increase heart rate and stimulate adrenaline release. This explains its widespread use in warning signs and its association with urgency and danger. However, red also symbolizes love and passion in Western cultures, while in China, it represents luck and prosperity. These cultural variations remind us that color associations are learned rather than innate.
+
+Blue, conversely, tends to have a calming effect. Studies have found that exposure to blue light can lower blood pressure and slow respiration. Many corporate brands choose blue for their logos precisely because it conveys trustworthiness and reliability. However, blue is also associated with sadness in English-speaking cultures—hence the phrase "feeling blue."
+
+Marketers and designers leverage these associations strategically. Fast-food restaurants often use red and yellow in their branding because these colors supposedly stimulate appetite and create a sense of urgency. High-end brands frequently opt for black, which connotes sophistication and luxury. Understanding color psychology has become essential for anyone involved in branding, marketing, or user experience design.
+
+Nevertheless, individual responses to color vary significantly based on personal experiences, cultural background, and even genetic factors. While general trends exist, the notion that colors universally trigger specific emotions is an oversimplification of a complex phenomenon.`,
+    questions: [
+      {
+        question: "What does the text say about color psychology as a science?",
+        options: ["It is completely false", "It has measurable effects but is culturally influenced", "It is universally accepted", "It only applies to artists"],
+        correctAnswer: 1,
+        explanation: "The text states 'colors can have measurable physiological and psychological effects on individuals, though these effects are often culturally mediated.'"
+      },
+      {
+        question: "What physiological effect does red have?",
+        options: ["Decreases heart rate", "Increases heart rate", "Improves sleep", "Reduces hunger"],
+        correctAnswer: 1,
+        explanation: "The text says 'Red, for instance, has been shown to increase heart rate and stimulate adrenaline release.'"
+      },
+      {
+        question: "What does red symbolize in China?",
+        options: ["Danger and warning", "Sadness and mourning", "Luck and prosperity", "Trust and reliability"],
+        correctAnswer: 2,
+        explanation: "The text mentions 'in China, it represents luck and prosperity.'"
+      },
+      {
+        question: "Why do fast-food restaurants often use red and yellow?",
+        options: ["They are the cheapest colors", "They stimulate appetite and urgency", "They look professional", "They are calming"],
+        correctAnswer: 1,
+        explanation: "The text states 'these colors supposedly stimulate appetite and create a sense of urgency.'"
+      },
+      {
+        question: "What does the text conclude about universal color responses?",
+        options: ["They are scientifically proven", "They are an oversimplification", "They apply to all cultures", "They cannot be studied"],
+        correctAnswer: 1,
+        explanation: "The text concludes that 'the notion that colors universally trigger specific emotions is an oversimplification.'"
+      }
+    ]
   }
 ];
