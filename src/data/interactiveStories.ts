@@ -1,3 +1,5 @@
+import { interactiveStoriesPart2 } from './interactiveStories-part2';
+
 export interface StoryNode {
   id: string;
   text: string;
@@ -26,7 +28,7 @@ export interface InteractiveStory {
   startNodeId: string;
 }
 
-export const interactiveStories: InteractiveStory[] = [
+const baseStories: InteractiveStory[] = [
   {
     id: 1,
     title: "A Weekend in London",
@@ -223,3 +225,5 @@ export const interactiveStories: InteractiveStory[] = [
     }
   }
 ];
+
+export const interactiveStories: InteractiveStory[] = [...baseStories, ...interactiveStoriesPart2];
