@@ -39,6 +39,7 @@ const Auth = lazy(() => import("./pages/Auth"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Reading = lazy(() => import("./pages/Reading"));
 const ReadingDetail = lazy(() => import("./pages/ReadingDetail"));
+const InteractiveStory = lazy(() => import("./pages/InteractiveStory"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const PageLoader = () => (
@@ -87,6 +88,7 @@ const AppContent = () => {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/reading" element={<Reading />} />
               <Route path="/reading/:id" element={<ReadingDetail />} />
+              <Route path="/story/:id" element={<InteractiveStory />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
