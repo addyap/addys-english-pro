@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, CheckCircle, XCircle, RotateCcw, BookOpen, Clock } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CheckCircle, XCircle, RotateCcw, BookOpen, Clock, Languages } from 'lucide-react';
 import SEOHead from '@/components/SEOHead';
 import { readingPassages } from '@/data/readingPassages';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
+import { Switch } from '@/components/ui/switch';
 import { useExerciseProgress } from '@/hooks/useExerciseProgress';
 
 const difficultyColors = {
@@ -32,6 +33,7 @@ export default function ReadingDetail() {
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [showResults, setShowResults] = useState(false);
   const [score, setScore] = useState(0);
+  const [showFrench, setShowFrench] = useState(false);
 
   if (!passage) {
     return (
@@ -113,10 +115,23 @@ export default function ReadingDetail() {
           {/* Text Content */}
           <Card className="mb-8">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <BookOpen className="h-5 w-5" />
-                Texte à lire
-              </CardTitle>
+              <div className="flex items-center justify-between">
+                <CardTitle className="flex items-center gap-2">
+                  <BookOpen className="h-5 w-5" />
+                  Texte à lire
+                </CardTitle>
+                <div className="flex items-center gap-2">
+                  <Languages className="h-4 w-4 text-muted-foreground" />
+                  <Label htmlFor="show-french" className="text-sm text-muted-foreground cursor-pointer">
+                    Traduction FR
+                  </Label>
+                  <Switch 
+                    id="show-french" 
+                    checked={showFrench} 
+                    onCheckedChange={setShowFrench}
+                  />
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="prose prose-lg max-w-none">
@@ -126,6 +141,22 @@ export default function ReadingDetail() {
                   </p>
                 ))}
               </div>
+              
+              {showFrench && passage.contentFr && (
+                <div className="mt-6 pt-6 border-t border-border">
+                  <p className="text-sm font-medium text-muted-foreground mb-3 flex items-center gap-2">
+                    <Languages className="h-4 w-4" />
+                    Traduction française
+                  </p>
+                  <div className="prose prose-lg max-w-none bg-muted/30 rounded-lg p-4">
+                    {passage.contentFr.split('\n\n').map((paragraph, idx) => (
+                      <p key={idx} className="text-muted-foreground leading-relaxed mb-4 last:mb-0 italic">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              )}
             </CardContent>
           </Card>
 

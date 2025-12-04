@@ -5,6 +5,7 @@ export interface ReadingPassage {
   difficulty: 'easy' | 'medium' | 'hard';
   readingTime: number; // in minutes
   content: string;
+  contentFr: string;
   questions: {
     question: string;
     options: string[];
@@ -27,6 +28,13 @@ My sister and I built a sandcastle near the water. It took us two hours to finis
 At lunchtime, we ate sandwiches and drank lemonade. In the afternoon, we went swimming. The water was cold at first, but we got used to it quickly.
 
 Before we left, we watched the sunset. The sky turned orange and pink. It was a beautiful end to a wonderful day. We promised to come back next year.`,
+    contentFr: `L'été dernier, ma famille et moi sommes allés à la plage. Nous sommes partis tôt le matin parce que nous voulions trouver un bon emplacement. Le temps était parfait - ensoleillé mais pas trop chaud.
+
+Ma sœur et moi avons construit un château de sable près de l'eau. Il nous a fallu deux heures pour le terminer. Nos parents se sont assis sous un parasol et ont lu leurs livres.
+
+À l'heure du déjeuner, nous avons mangé des sandwichs et bu de la limonade. L'après-midi, nous sommes allés nager. L'eau était froide au début, mais nous nous y sommes vite habitués.
+
+Avant de partir, nous avons regardé le coucher du soleil. Le ciel est devenu orange et rose. C'était une belle fin pour une journée merveilleuse. Nous avons promis de revenir l'année prochaine.`,
     questions: [
       {
         question: "When did the family go to the beach?",
@@ -75,6 +83,15 @@ During the first week, Sarah noticed that James was a quick learner. He asked th
 By the end of the month, James had become confident in his role. He even suggested improvements to some of their marketing strategies. Sarah realized that training him had actually helped her see things from a fresh perspective.
 
 The experience taught Sarah that being a mentor could be just as rewarding as being a student. She was grateful for the opportunity and looked forward to helping other new employees in the future.`,
+    contentFr: `Sarah travaillait dans l'entreprise de marketing depuis cinq ans lorsqu'on lui a demandé de former le nouvel employé, James. Elle n'était pas sûre de ce qu'elle ressentait face à cette responsabilité au début.
+
+James est arrivé le lundi matin l'air nerveux. Sarah se souvenait avoir ressenti la même chose lors de son premier jour. Elle a décidé de lui faire sentir bienvenu en lui faisant visiter le bureau et en le présentant à l'équipe.
+
+Durant la première semaine, Sarah a remarqué que James apprenait vite. Il posait des questions pertinentes et prenait des notes détaillées. Cependant, il avait parfois du mal avec le logiciel de l'entreprise, qui était assez complexe.
+
+À la fin du mois, James était devenu confiant dans son rôle. Il a même suggéré des améliorations à certaines de leurs stratégies marketing. Sarah a réalisé que le former l'avait en fait aidée à voir les choses sous un angle nouveau.
+
+Cette expérience a appris à Sarah qu'être mentor pouvait être aussi gratifiant qu'être étudiant. Elle était reconnaissante de cette opportunité et avait hâte d'aider d'autres nouveaux employés à l'avenir.`,
     questions: [
       {
         question: "How long had Sarah been working at the company?",
@@ -123,6 +140,15 @@ However, implementing sustainable practices on a global scale presents considera
 Nevertheless, the consequences of inaction are becoming increasingly apparent. Climate scientists warn that without significant reductions in carbon emissions, global temperatures could rise by more than two degrees Celsius by the end of the century, leading to catastrophic changes in weather patterns, sea levels, and biodiversity.
 
 The solution may lie in innovative technologies and international cooperation. Renewable energy sources have become dramatically more affordable, and green hydrogen shows promise as a clean fuel alternative. Perhaps most importantly, younger generations worldwide are demanding environmental action, suggesting that the political will for change may finally be materializing.`,
+    contentFr: `La relation entre le développement économique et la durabilité environnementale fait depuis longtemps l'objet d'un débat intense parmi les décideurs politiques, les économistes et les écologistes. Alors que les modèles économiques traditionnels privilégiaient souvent la croissance à tout prix, les approches contemporaines reconnaissent de plus en plus la nécessité d'équilibrer la prospérité avec la préservation écologique.
+
+L'un des changements les plus significatifs de ces dernières décennies a été l'émergence du concept d'économie circulaire. Contrairement au modèle linéaire « extraire-fabriquer-jeter » qui a dominé la production industrielle tout au long du vingtième siècle, les principes de l'économie circulaire mettent l'accent sur l'utilisation continue des ressources par le recyclage, la remise à neuf et la régénération. Les entreprises qui ont adopté ces principes signalent non seulement des avantages environnementaux mais aussi des économies de coûts substantielles.
+
+Cependant, la mise en œuvre de pratiques durables à l'échelle mondiale présente des défis considérables. Les pays en développement soutiennent, non sans justification, que les pays riches ont atteint leur prospérité actuelle précisément en exploitant les ressources naturelles sans restriction. Demander à ces nations de limiter leur développement semble, pour beaucoup, fondamentalement injuste.
+
+Néanmoins, les conséquences de l'inaction deviennent de plus en plus apparentes. Les climatologues avertissent que sans réductions significatives des émissions de carbone, les températures mondiales pourraient augmenter de plus de deux degrés Celsius d'ici la fin du siècle, entraînant des changements catastrophiques dans les régimes météorologiques, les niveaux de la mer et la biodiversité.
+
+La solution pourrait résider dans les technologies innovantes et la coopération internationale. Les sources d'énergie renouvelables sont devenues considérablement plus abordables, et l'hydrogène vert est prometteur comme alternative de carburant propre. Plus important encore, les jeunes générations du monde entier exigent une action environnementale, suggérant que la volonté politique de changement pourrait enfin se matérialiser.`,
     questions: [
       {
         question: "What has been the traditional approach to economic development?",
@@ -171,6 +197,15 @@ Next, I go to the kitchen to make breakfast. I usually have toast with butter an
 While I eat breakfast, I check my phone for messages. I also look at the weather forecast to decide what to wear.
 
 Finally, I get dressed, pack my bag, and leave the house at 8:30. The bus stop is only five minutes away. I try to arrive at work before 9 o'clock.`,
+    contentFr: `Chaque matin, je me réveille à 7 heures. La première chose que je fais est d'éteindre mon réveil. Ensuite, je me lève et j'ouvre les rideaux. J'aime voir la lumière du soleil.
+
+Après cela, je vais à la salle de bain. Je me brosse les dents pendant deux minutes et je me lave le visage à l'eau froide. L'eau froide m'aide à me sentir éveillé.
+
+Ensuite, je vais à la cuisine pour préparer le petit-déjeuner. D'habitude, je mange des tartines avec du beurre et de la confiture. Je bois aussi une tasse de café au lait. Parfois, quand j'ai plus de temps, je fais des œufs brouillés.
+
+Pendant que je mange mon petit-déjeuner, je vérifie mon téléphone pour voir les messages. Je regarde aussi la météo pour décider quoi porter.
+
+Enfin, je m'habille, je prépare mon sac et je quitte la maison à 8h30. L'arrêt de bus est à seulement cinq minutes. J'essaie d'arriver au travail avant 9 heures.`,
     questions: [
       {
         question: "What time does the writer wake up?",
@@ -219,6 +254,15 @@ Preparation is crucial before entering any negotiation. Understanding your own g
 Emotions can be both helpful and harmful in negotiations. While passion and enthusiasm can be persuasive, anger and frustration often lead to poor decisions. Skilled negotiators learn to manage their emotions and read the emotional states of others.
 
 Finally, patience is perhaps the most underrated negotiation skill. Rushing to reach an agreement often results in accepting terms that could have been improved with more discussion. Taking time to consider options and alternatives usually leads to better outcomes for everyone involved.`,
+    contentFr: `La négociation est une compétence que tout le monde utilise, qu'on en soit conscient ou non. Du choix du restaurant avec des amis à la conclusion de grandes affaires commerciales, la capacité à négocier efficacement peut avoir un impact significatif sur le succès personnel et professionnel.
+
+L'erreur la plus courante en négociation est de la voir comme une compétition où un côté doit gagner et l'autre doit perdre. La recherche a montré que les négociations les plus réussies aboutissent à des résultats où les deux parties se sentent satisfaites. C'est ce qu'on appelle l'approche « gagnant-gagnant ».
+
+La préparation est cruciale avant d'entamer toute négociation. Comprendre ses propres objectifs, connaître ses limites et rechercher les intérêts de l'autre partie peut vous donner un avantage significatif. Tout aussi important est d'être disposé à écouter activement et à poser des questions plutôt que de simplement énoncer des exigences.
+
+Les émotions peuvent être à la fois utiles et nuisibles dans les négociations. Alors que la passion et l'enthousiasme peuvent être persuasifs, la colère et la frustration mènent souvent à de mauvaises décisions. Les négociateurs habiles apprennent à gérer leurs émotions et à lire les états émotionnels des autres.
+
+Enfin, la patience est peut-être la compétence de négociation la plus sous-estimée. Se précipiter pour parvenir à un accord aboutit souvent à accepter des conditions qui auraient pu être améliorées avec plus de discussion. Prendre le temps de considérer les options et les alternatives conduit généralement à de meilleurs résultats pour tous.`,
     questions: [
       {
         question: "According to the text, who uses negotiation skills?",
@@ -267,6 +311,15 @@ However, these technological achievements must be contextualized within broader 
 The question of accountability adds another layer of complexity. When an AI system contributes to a diagnostic error, determining responsibility becomes challenging. Is the fault with the algorithm's designers, the healthcare institution that deployed it, or the physician who relied upon its recommendations? Legal and ethical frameworks are still evolving to address these questions.
 
 Perhaps most fundamentally, the role of AI forces us to reconsider what we value in healthcare beyond mere accuracy. The therapeutic relationship between healthcare providers and patients encompasses trust, empathy, and shared decision-making—qualities that, at least currently, remain distinctly human. Finding the appropriate balance between technological efficiency and humanistic care will likely define healthcare's trajectory in the coming decades.`,
+    contentFr: `L'intégration de l'intelligence artificielle dans les systèmes de santé représente l'un des développements les plus prometteurs mais aussi les plus controversés de la médecine moderne. Les partisans soutiennent que l'IA a le potentiel de révolutionner le diagnostic, la planification des traitements et la découverte de médicaments, tandis que les critiques soulèvent des préoccupations concernant la confidentialité des données, les biais algorithmiques et la nature fondamentale de la relation médecin-patient.
+
+Dans les applications diagnostiques, les systèmes d'IA ont démontré des capacités remarquables. Les algorithmes d'apprentissage automatique peuvent maintenant analyser des images médicales — y compris les radiographies, les IRM et les lames de pathologie — avec une précision qui rivalise ou dépasse celle des spécialistes formés pour certaines tâches spécifiques. Par exemple, les modèles d'IA ont montré du succès dans la détection de cancers à un stade précoce qui pourraient être manqués par des observateurs humains.
+
+Cependant, ces réalisations technologiques doivent être contextualisées dans des réalités de santé plus larges. Les systèmes d'IA sont formés sur des données historiques, qui reflètent souvent les disparités existantes dans l'accès aux soins et les résultats de santé. Si un algorithme apprend à partir de données qui sous-représentent certains groupes démographiques, il peut être moins précis pour ces populations, aggravant potentiellement les inégalités de santé au lieu de les réduire.
+
+La question de la responsabilité ajoute une autre couche de complexité. Lorsqu'un système d'IA contribue à une erreur de diagnostic, déterminer la responsabilité devient difficile. La faute revient-elle aux concepteurs de l'algorithme, à l'établissement de santé qui l'a déployé, ou au médecin qui s'est appuyé sur ses recommandations ? Les cadres juridiques et éthiques évoluent encore pour répondre à ces questions.
+
+Plus fondamentalement peut-être, le rôle de l'IA nous oblige à reconsidérer ce que nous valorisons dans les soins de santé au-delà de la simple précision. La relation thérapeutique entre les prestataires de soins et les patients englobe la confiance, l'empathie et la prise de décision partagée — des qualités qui, du moins actuellement, restent distinctement humaines. Trouver l'équilibre approprié entre l'efficacité technologique et les soins humanistes définira probablement la trajectoire des soins de santé dans les décennies à venir.`,
     questions: [
       {
         question: "What concerns do critics raise about AI in healthcare?",
@@ -313,6 +366,13 @@ I took the dog home and gave it some water and food. It was very hungry. My moth
 We put the posters around the neighborhood. The next morning, a little girl and her father came to our house. The girl was so happy to see her dog! She hugged it and cried tears of joy.
 
 The father thanked us many times. He explained that the dog had escaped from their garden two days ago. The girl had been very sad without her pet. I felt happy that I could help reunite them.`,
+    contentFr: `Hier, j'ai trouvé un petit chien dans le parc. Il était marron et blanc, avec de grands yeux tristes. Le chien n'avait pas de collier, donc je ne savais pas à qui il appartenait.
+
+J'ai ramené le chien à la maison et je lui ai donné de l'eau et de la nourriture. Il avait très faim. Ma mère m'a aidé à faire une affiche avec une photo du chien. Nous avons écrit « Trouvé : Petit chien marron et blanc » et notre numéro de téléphone.
+
+Nous avons mis les affiches dans le quartier. Le lendemain matin, une petite fille et son père sont venus chez nous. La fille était si heureuse de voir son chien ! Elle l'a serré dans ses bras et a pleuré de joie.
+
+Le père nous a remerciés plusieurs fois. Il a expliqué que le chien s'était échappé de leur jardin il y a deux jours. La fille avait été très triste sans son animal. Je me suis senti heureux d'avoir pu les réunir.`,
     questions: [
       {
         question: "Where did the narrator find the dog?",
@@ -359,6 +419,13 @@ She spent hours researching hotels online, comparing prices and reading reviews.
 For activities, Emma created a flexible itinerary. On the first day, they would take a guided tour of the famous Sagrada Familia. The second day was left free for people to explore on their own or in small groups. On the final day, she booked a cooking class where they would learn to make traditional Spanish paella.
 
 When Emma presented the plan to her colleagues, everyone was impressed with her organization. Some people suggested minor changes, like adding a beach visit on the free day. Emma was happy to incorporate their ideas, making the trip a truly collaborative effort.`,
+    contentFr: `Emma et ses collègues planifiaient leur voyage annuel de team-building. Après beaucoup de discussions, ils ont décidé de visiter Barcelone pour un long week-end. Emma a été chargée d'organiser l'hébergement et les activités.
+
+Elle a passé des heures à rechercher des hôtels en ligne, à comparer les prix et à lire les avis. Finalement, elle a trouvé un hôtel boutique dans le Quartier Gothique qui avait d'excellentes notes et était dans leur budget. L'emplacement était parfait — à distance de marche des principales attractions.
+
+Pour les activités, Emma a créé un itinéraire flexible. Le premier jour, ils feraient une visite guidée de la célèbre Sagrada Familia. Le deuxième jour était laissé libre pour que les gens explorent seuls ou en petits groupes. Le dernier jour, elle a réservé un cours de cuisine où ils apprendraient à faire la paella espagnole traditionnelle.
+
+Quand Emma a présenté le plan à ses collègues, tout le monde a été impressionné par son organisation. Certaines personnes ont suggéré des changements mineurs, comme ajouter une visite à la plage le jour libre. Emma était heureuse d'incorporer leurs idées, faisant du voyage un véritable effort collaboratif.`,
     questions: [
       {
         question: "What type of trip were they planning?",
@@ -405,6 +472,13 @@ Curious, Kaldi tried the berries himself and experienced a similar burst of ener
 By the 15th century, coffee was being cultivated in Yemen. From there, it spread to Egypt, Turkey, and eventually to Europe in the 17th century. Initially, some Europeans were suspicious of the dark, bitter drink. In Venice, some people even called it "the bitter invention of Satan."
 
 However, when Pope Clement VIII tasted coffee, he enjoyed it so much that he gave it papal approval. This helped coffee gain acceptance throughout Europe. Today, over 2 billion cups of coffee are consumed daily around the world, making it second only to water as the most consumed beverage.`,
+    contentFr: `Le café est l'une des boissons les plus populaires au monde, mais peu de gens connaissent son histoire fascinante. Selon la légende, le café a été découvert en Éthiopie vers le 9e siècle par un berger de chèvres nommé Kaldi. Il a remarqué que ses chèvres devenaient inhabituellement énergiques après avoir mangé des baies d'un certain arbre.
+
+Curieux, Kaldi a essayé les baies lui-même et a ressenti une poussée d'énergie similaire. Il a partagé sa découverte avec des moines dans un monastère local, qui ont trouvé que les baies les aidaient à rester éveillés pendant de longues heures de prière. La nouvelle s'est répandue, et le café a commencé son voyage à travers le monde.
+
+Au 15e siècle, le café était cultivé au Yémen. De là, il s'est répandu en Égypte, en Turquie, et finalement en Europe au 17e siècle. Au début, certains Européens se méfiaient de cette boisson sombre et amère. À Venise, certaines personnes l'appelaient même « l'amère invention de Satan ».
+
+Cependant, quand le pape Clément VIII a goûté le café, il l'a tellement apprécié qu'il lui a donné l'approbation papale. Cela a aidé le café à gagner l'acceptation dans toute l'Europe. Aujourd'hui, plus de 2 milliards de tasses de café sont consommées quotidiennement dans le monde, ce qui en fait la deuxième boisson la plus consommée après l'eau.`,
     questions: [
       {
         question: "Where was coffee supposedly discovered?",
@@ -451,6 +525,13 @@ Proponents of remote work point to numerous benefits. Employees save time and mo
 However, critics raise valid concerns. The blurring of boundaries between work and personal life can lead to burnout, as employees find it difficult to "switch off" when their office is also their living room. Collaboration and creativity may suffer without the spontaneous interactions that occur naturally in physical workspaces. Younger employees, in particular, may miss out on mentorship opportunities and the professional development that comes from observing experienced colleagues.
 
 The emerging consensus suggests that a hybrid model—combining remote work with periodic in-office presence—may offer the best of both worlds. Organizations are experimenting with various configurations, trying to optimize for both productivity and employee well-being. What seems certain is that the traditional nine-to-five, five-days-a-week office paradigm has been permanently disrupted.`,
+    contentFr: `La pandémie de COVID-19 a accéléré une transformation de la culture du travail qui se développait progressivement depuis des années. Presque du jour au lendemain, des millions de travailleurs dans le monde sont passés d'environnements de bureau traditionnels au travail à domicile. Ce changement a eu des implications profondes sur la productivité, l'équilibre vie professionnelle-vie privée, et la nature même de l'emploi.
+
+Les partisans du télétravail soulignent de nombreux avantages. Les employés économisent du temps et de l'argent sur les trajets, bénéficient d'une plus grande flexibilité dans la gestion de leurs horaires, et rapportent souvent une plus grande satisfaction au travail. Les entreprises bénéficient de coûts généraux réduits et d'un accès à un vivier de talents mondial sans restriction géographique. Les défenseurs de l'environnement notent la diminution des émissions de carbone grâce à la réduction des trajets.
+
+Cependant, les critiques soulèvent des préoccupations valables. Le brouillage des frontières entre vie professionnelle et vie personnelle peut mener à l'épuisement, car les employés ont du mal à « déconnecter » quand leur bureau est aussi leur salon. La collaboration et la créativité peuvent souffrir sans les interactions spontanées qui se produisent naturellement dans les espaces de travail physiques. Les jeunes employés, en particulier, peuvent manquer des opportunités de mentorat et le développement professionnel qui vient de l'observation de collègues expérimentés.
+
+Le consensus émergent suggère qu'un modèle hybride — combinant le télétravail avec une présence périodique au bureau — pourrait offrir le meilleur des deux mondes. Les organisations expérimentent diverses configurations, essayant d'optimiser à la fois la productivité et le bien-être des employés. Ce qui semble certain, c'est que le paradigme traditionnel du bureau de neuf à cinq, cinq jours par semaine, a été définitivement perturbé.`,
     questions: [
       {
         question: "What accelerated the remote work transformation?",
@@ -497,6 +578,13 @@ Now, I take photos everywhere I go. My favorite subjects are nature and architec
 Every weekend, I go to different places to find interesting things to photograph. Last month, I visited an old castle and took over two hundred photos! Only about twenty of them were really good.
 
 I share my best photos on social media. Many people like them and leave nice comments. Some people even ask me to take photos for their special events like birthdays and weddings. Photography makes me very happy.`,
+    contentFr: `J'adore prendre des photos. J'ai commencé ce passe-temps il y a trois ans quand ma grand-mère m'a donné son vieil appareil photo. Au début, je ne prenais que des photos de mon chat et de mon jardin.
+
+Maintenant, je prends des photos partout où je vais. Mes sujets préférés sont la nature et l'architecture. J'aime particulièrement prendre des photos au lever et au coucher du soleil quand la lumière est belle. Les couleurs dans le ciel peuvent être orange, rose, violet ou doré.
+
+Chaque week-end, je vais dans différents endroits pour trouver des choses intéressantes à photographier. Le mois dernier, j'ai visité un vieux château et j'ai pris plus de deux cents photos ! Seulement une vingtaine d'entre elles étaient vraiment bonnes.
+
+Je partage mes meilleures photos sur les réseaux sociaux. Beaucoup de gens les aiment et laissent de gentils commentaires. Certaines personnes me demandent même de prendre des photos pour leurs événements spéciaux comme les anniversaires et les mariages. La photographie me rend très heureux.`,
     questions: [
       {
         question: "How did the narrator get their first camera?",
@@ -545,6 +633,15 @@ Blue, conversely, tends to have a calming effect. Studies have found that exposu
 Marketers and designers leverage these associations strategically. Fast-food restaurants often use red and yellow in their branding because these colors supposedly stimulate appetite and create a sense of urgency. High-end brands frequently opt for black, which connotes sophistication and luxury. Understanding color psychology has become essential for anyone involved in branding, marketing, or user experience design.
 
 Nevertheless, individual responses to color vary significantly based on personal experiences, cultural background, and even genetic factors. While general trends exist, the notion that colors universally trigger specific emotions is an oversimplification of a complex phenomenon.`,
+    contentFr: `La psychologie des couleurs est l'étude de la façon dont les couleurs affectent le comportement humain, les émotions et la prise de décision. Bien que souvent rejetée comme pseudoscience, la recherche a démontré que les couleurs peuvent avoir des effets physiologiques et psychologiques mesurables sur les individus, bien que ces effets soient souvent médiés culturellement et dépendants du contexte.
+
+Le rouge, par exemple, a été montré pour augmenter le rythme cardiaque et stimuler la libération d'adrénaline. Cela explique son utilisation répandue dans les panneaux d'avertissement et son association avec l'urgence et le danger. Cependant, le rouge symbolise aussi l'amour et la passion dans les cultures occidentales, tandis qu'en Chine, il représente la chance et la prospérité. Ces variations culturelles nous rappellent que les associations de couleurs sont apprises plutôt qu'innées.
+
+Le bleu, à l'inverse, tend à avoir un effet calmant. Des études ont montré que l'exposition à la lumière bleue peut abaisser la tension artérielle et ralentir la respiration. De nombreuses marques d'entreprise choisissent le bleu pour leurs logos précisément parce qu'il transmet la fiabilité et la confiance. Cependant, le bleu est aussi associé à la tristesse dans les cultures anglophones — d'où l'expression « feeling blue » (se sentir déprimé).
+
+Les marketeurs et designers exploitent ces associations de manière stratégique. Les restaurants de restauration rapide utilisent souvent le rouge et le jaune dans leur image de marque parce que ces couleurs stimulent supposément l'appétit et créent un sentiment d'urgence. Les marques haut de gamme optent fréquemment pour le noir, qui connote la sophistication et le luxe. Comprendre la psychologie des couleurs est devenu essentiel pour quiconque travaille dans le branding, le marketing ou le design d'expérience utilisateur.
+
+Néanmoins, les réponses individuelles aux couleurs varient significativement selon les expériences personnelles, le contexte culturel et même les facteurs génétiques. Bien que des tendances générales existent, la notion que les couleurs déclenchent universellement des émotions spécifiques est une simplification excessive d'un phénomène complexe.`,
     questions: [
       {
         question: "What does the text say about color psychology as a science?",
