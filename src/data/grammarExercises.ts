@@ -5323,5 +5323,835 @@ Ils sont suivis de la base verbale (sans "to").
         ]
       }
     ]
+  },
+  // === MEDIUM PRIORITY LESSONS ===
+  {
+    id: 'past-perfect-continuous',
+    titleEn: 'Past Perfect Continuous',
+    titleFr: 'Past Perfect Continu',
+    explanationEn: `**PAST PERFECT CONTINUOUS** (had been + -ing) describes actions that were ongoing before another past action.
+
+**Form:** Subject + had been + verb-ing
+
+**Uses:**
+- Duration of an activity before something in the past
+  - "I **had been waiting** for 2 hours when she finally arrived."
+- Cause of a past situation (explains why something was the case)
+  - "He was tired because he **had been working** all day."
+- Emphasize the duration/continuation of an action
+  - "They **had been living** there for 10 years before they moved."
+
+**Key signal words:**
+- for, since, all day/week, how long
+- when, before, by the time
+
+**Difference from Past Perfect:**
+- Past Perfect: focuses on completion ("I **had finished** the book")
+- Past Perfect Continuous: focuses on duration ("I **had been reading** for hours")`,
+    explanationFr: `**LE PAST PERFECT CONTINUOUS** (had been + -ing) décrit des actions qui étaient en cours avant une autre action passée.
+
+**Forme :** Sujet + had been + verbe-ing
+
+**Utilisations :**
+- Durée d'une activité avant quelque chose dans le passé
+  - "I **had been waiting** for 2 hours when she finally arrived." (J'attendais depuis 2h quand elle est enfin arrivée)
+- Cause d'une situation passée (explique pourquoi quelque chose était le cas)
+  - "He was tired because he **had been working** all day." (Il était fatigué parce qu'il avait travaillé toute la journée)
+- Souligner la durée/continuation d'une action
+  - "They **had been living** there for 10 years before they moved." (Ils habitaient là depuis 10 ans avant de déménager)
+
+**Mots-clés indicateurs :**
+- for, since, all day/week, how long
+- when, before, by the time
+
+**Différence avec le Past Perfect :**
+- Past Perfect : accent sur l'achèvement ("I **had finished** the book" - J'avais fini le livre)
+- Past Perfect Continuous : accent sur la durée ("I **had been reading** for hours" - Je lisais depuis des heures)`,
+    examples: [
+      { en: "She **had been studying** for 3 hours when I called.", fr: "Elle **étudiait depuis** 3 heures quand j'ai appelé." },
+      { en: "His eyes were red because he **had been crying**.", fr: "Ses yeux étaient rouges parce qu'il **avait pleuré**." },
+      { en: "How long **had** you **been waiting** before the bus came?", fr: "**Depuis combien de temps attendais**-tu avant que le bus arrive ?" },
+      { en: "They **had been dating** for 2 years before they got married.", fr: "Ils **sortaient ensemble depuis** 2 ans avant de se marier." }
+    ],
+    exercises: [
+      {
+        id: 142,
+        title: "Past Perfect Continuous",
+        description: "Choose the correct form.",
+        questions: [
+          {
+            id: 1,
+            question: "She was tired because she ___ all night.",
+            options: ["had worked", "had been working"],
+            correctAnswer: "had been working",
+            explanation: "Past Perfect Continuous emphasizes the duration of work."
+          },
+          {
+            id: 2,
+            question: "How long ___ you ___ before the train arrived?",
+            options: ["had... waited", "had... been waiting"],
+            correctAnswer: "had... been waiting",
+            explanation: "Past Perfect Continuous for duration before a past event."
+          },
+          {
+            id: 3,
+            question: "His clothes were dirty because he ___ in the garden.",
+            options: ["had worked", "had been working"],
+            correctAnswer: "had been working",
+            explanation: "Continuous shows the ongoing activity that caused the result."
+          },
+          {
+            id: 4,
+            question: "They ___ for 5 years before they moved abroad.",
+            options: ["had saved", "had been saving"],
+            correctAnswer: "had been saving",
+            explanation: "Past Perfect Continuous for ongoing action over a period."
+          },
+          {
+            id: 5,
+            question: "I ___ about you when you called!",
+            options: ["had just thought", "had just been thinking"],
+            correctAnswer: "had just been thinking",
+            explanation: "Continuous for an action in progress just before another."
+          },
+          {
+            id: 6,
+            question: "She finally got the job she ___ for.",
+            options: ["had applied", "had been applying"],
+            correctAnswer: "had been applying",
+            explanation: "Continuous emphasizes repeated/ongoing effort."
+          },
+          {
+            id: 7,
+            question: "The ground was wet. It ___.",
+            options: ["had rained", "had been raining"],
+            correctAnswer: "had been raining",
+            explanation: "Continuous for recent activity with visible effects."
+          },
+          {
+            id: 8,
+            question: "By the time he arrived, we ___ for 2 hours.",
+            options: ["had talked", "had been talking"],
+            correctAnswer: "had been talking",
+            explanation: "Continuous with 'for' indicating duration."
+          },
+          {
+            id: 9,
+            question: "She ___ English for 10 years before she visited London.",
+            options: ["had learned", "had been learning"],
+            correctAnswer: "had been learning",
+            explanation: "Continuous for an ongoing process over time."
+          },
+          {
+            id: 10,
+            question: "I was exhausted because I ___ since 5 AM.",
+            options: ["had driven", "had been driving"],
+            correctAnswer: "had been driving",
+            explanation: "Continuous with 'since' showing duration causing tiredness."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'possessives',
+    titleEn: 'Possessive Adjectives vs Possessive Pronouns',
+    titleFr: 'Adjectifs Possessifs vs Pronoms Possessifs',
+    explanationEn: `**POSSESSIVE ADJECTIVES** come BEFORE a noun:
+- my, your, his, her, its, our, their
+- "This is **my** book." (adjective + noun)
+
+**POSSESSIVE PRONOUNS** REPLACE the noun (stand alone):
+- mine, yours, his, hers, ours, theirs
+- "This book is **mine**." (no noun after)
+
+**Comparison:**
+| Adjective | Pronoun |
+|-----------|---------|
+| my | mine |
+| your | yours |
+| his | his |
+| her | hers |
+| its | (no pronoun form) |
+| our | ours |
+| their | theirs |
+
+**Common mistake with "its" vs "it's":**
+- **its** = possessive ("The dog wagged **its** tail.")
+- **it's** = it is/it has ("**It's** raining.")
+
+**Note:** "his" is the same for both adjective and pronoun.`,
+    explanationFr: `**LES ADJECTIFS POSSESSIFS** viennent AVANT un nom :
+- my, your, his, her, its, our, their
+- "This is **my** book." (adjectif + nom)
+
+**LES PRONOMS POSSESSIFS** REMPLACENT le nom (utilisés seuls) :
+- mine, yours, his, hers, ours, theirs
+- "This book is **mine**." (pas de nom après)
+
+**Comparaison :**
+| Adjectif | Pronom |
+|----------|--------|
+| my (mon/ma) | mine (le mien) |
+| your (ton/ta) | yours (le tien) |
+| his (son - à lui) | his (le sien) |
+| her (son - à elle) | hers (le sien) |
+| its (son - neutre) | (pas de forme pronom) |
+| our (notre) | ours (le nôtre) |
+| their (leur) | theirs (le leur) |
+
+**Erreur courante avec "its" vs "it's" :**
+- **its** = possessif ("The dog wagged **its** tail." - Le chien a remué sa queue)
+- **it's** = it is/it has ("**It's** raining." - Il pleut)
+
+**Note :** "his" est identique pour l'adjectif et le pronom.`,
+    examples: [
+      { en: "This is **my** car. The blue one is **yours**.", fr: "C'est **ma** voiture. La bleue est **la tienne**." },
+      { en: "Is this **her** bag? No, **hers** is red.", fr: "C'est **son** sac ? Non, **le sien** est rouge." },
+      { en: "**Our** house is big, but **theirs** is bigger.", fr: "**Notre** maison est grande, mais **la leur** est plus grande." },
+      { en: "The cat hurt **its** paw. (NOT it's)", fr: "Le chat s'est blessé **sa** patte. (PAS it's)" }
+    ],
+    exercises: [
+      {
+        id: 143,
+        title: "Possessives",
+        description: "Choose the correct possessive form.",
+        questions: [
+          {
+            id: 1,
+            question: "This isn't my pen. It's ___.",
+            options: ["your", "yours"],
+            correctAnswer: "yours",
+            explanation: "Possessive pronoun (yours) replaces 'your pen'."
+          },
+          {
+            id: 2,
+            question: "Is this ___ umbrella?",
+            options: ["her", "hers"],
+            correctAnswer: "her",
+            explanation: "Possessive adjective (her) before noun 'umbrella'."
+          },
+          {
+            id: 3,
+            question: "The dog wagged ___ tail happily.",
+            options: ["its", "it's"],
+            correctAnswer: "its",
+            explanation: "Its (possessive) not it's (it is)."
+          },
+          {
+            id: 4,
+            question: "My house is small. ___ is much bigger.",
+            options: ["Their", "Theirs"],
+            correctAnswer: "Theirs",
+            explanation: "Possessive pronoun (theirs) replaces 'their house'."
+          },
+          {
+            id: 5,
+            question: "She forgot ___ keys at home.",
+            options: ["her", "hers"],
+            correctAnswer: "her",
+            explanation: "Possessive adjective (her) before noun 'keys'."
+          },
+          {
+            id: 6,
+            question: "Is this phone yours or ___?",
+            options: ["my", "mine"],
+            correctAnswer: "mine",
+            explanation: "Possessive pronoun (mine) stands alone."
+          },
+          {
+            id: 7,
+            question: "___ children go to the same school as ___.",
+            options: ["Our... their", "Our... theirs"],
+            correctAnswer: "Our... theirs",
+            explanation: "Our (adjective + noun), theirs (pronoun alone)."
+          },
+          {
+            id: 8,
+            question: "A friend of ___ told me the news.",
+            options: ["her", "hers"],
+            correctAnswer: "hers",
+            explanation: "'A friend of hers' = one of her friends (pronoun)."
+          },
+          {
+            id: 9,
+            question: "___ raining outside.",
+            options: ["Its", "It's"],
+            correctAnswer: "It's",
+            explanation: "It's = It is raining."
+          },
+          {
+            id: 10,
+            question: "This bag isn't ___. ___ bag is black.",
+            options: ["my... My", "mine... My"],
+            correctAnswer: "mine... My",
+            explanation: "Mine (pronoun alone), My (adjective + noun)."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'adverbs-frequency',
+    titleEn: 'Adverbs of Frequency',
+    titleFr: 'Adverbes de Fréquence',
+    explanationEn: `**ADVERBS OF FREQUENCY** tell us how often something happens.
+
+**Common adverbs (from most to least frequent):**
+- always (100%)
+- usually/normally (80%)
+- often/frequently (60%)
+- sometimes (40%)
+- occasionally (20%)
+- rarely/seldom (5%)
+- never (0%)
+
+**Position in sentence:**
+
+1. **Before the main verb:**
+   - "I **always** eat breakfast."
+   - "She **never** drinks coffee."
+
+2. **After the verb "to be":**
+   - "He **is** always late."
+   - "They **are** never on time."
+
+3. **After auxiliary/modal verbs:**
+   - "I can **never** remember her name."
+   - "She has **always** loved music."
+
+**Exceptions - these can go at the beginning or end:**
+- sometimes, usually, occasionally, often
+- "**Sometimes** I go running." / "I go running **sometimes**."`,
+    explanationFr: `**LES ADVERBES DE FRÉQUENCE** indiquent à quelle fréquence quelque chose se produit.
+
+**Adverbes courants (du plus au moins fréquent) :**
+- always (toujours - 100%)
+- usually/normally (habituellement - 80%)
+- often/frequently (souvent - 60%)
+- sometimes (parfois - 40%)
+- occasionally (occasionnellement - 20%)
+- rarely/seldom (rarement - 5%)
+- never (jamais - 0%)
+
+**Position dans la phrase :**
+
+1. **Avant le verbe principal :**
+   - "I **always** eat breakfast." (Je prends toujours le petit-déjeuner)
+   - "She **never** drinks coffee." (Elle ne boit jamais de café)
+
+2. **Après le verbe "to be" :**
+   - "He **is** always late." (Il est toujours en retard)
+   - "They **are** never on time." (Ils ne sont jamais à l'heure)
+
+3. **Après les auxiliaires/modaux :**
+   - "I can **never** remember her name." (Je ne peux jamais me souvenir de son nom)
+   - "She has **always** loved music." (Elle a toujours aimé la musique)
+
+**Exceptions - peuvent aller au début ou à la fin :**
+- sometimes, usually, occasionally, often
+- "**Sometimes** I go running." / "I go running **sometimes**."`,
+    examples: [
+      { en: "I **always** brush my teeth before bed.", fr: "Je me brosse **toujours** les dents avant de dormir." },
+      { en: "She **is** usually tired after work.", fr: "Elle **est** généralement fatiguée après le travail." },
+      { en: "He can **never** find his keys.", fr: "Il ne peut **jamais** trouver ses clés." },
+      { en: "**Sometimes** we eat out on Fridays.", fr: "**Parfois** nous mangeons dehors le vendredi." }
+    ],
+    exercises: [
+      {
+        id: 144,
+        title: "Adverbs of Frequency",
+        description: "Choose the correct position or adverb.",
+        questions: [
+          {
+            id: 1,
+            question: "She ___ late for work.",
+            options: ["is never", "never is"],
+            correctAnswer: "is never",
+            explanation: "Adverb goes after 'to be'."
+          },
+          {
+            id: 2,
+            question: "I ___ my grandmother on Sundays.",
+            options: ["visit usually", "usually visit"],
+            correctAnswer: "usually visit",
+            explanation: "Adverb goes before the main verb."
+          },
+          {
+            id: 3,
+            question: "They ___ been to Asia.",
+            options: ["have never", "never have"],
+            correctAnswer: "have never",
+            explanation: "Adverb goes after the auxiliary 'have'."
+          },
+          {
+            id: 4,
+            question: "He ___ remembers my birthday.",
+            options: ["always", "is always"],
+            correctAnswer: "always",
+            explanation: "'Always' before main verb 'remembers'."
+          },
+          {
+            id: 5,
+            question: "We ___ late.",
+            options: ["are rarely", "rarely are"],
+            correctAnswer: "are rarely",
+            explanation: "Adverb goes after 'to be'."
+          },
+          {
+            id: 6,
+            question: "She can ___ find parking in the city.",
+            options: ["never", "never can"],
+            correctAnswer: "never",
+            explanation: "Adverb goes after modal 'can'."
+          },
+          {
+            id: 7,
+            question: "I ___ to the gym three times a week.",
+            options: ["go usually", "usually go"],
+            correctAnswer: "usually go",
+            explanation: "Adverb before main verb 'go'."
+          },
+          {
+            id: 8,
+            question: "My parents ___ strict when I was young.",
+            options: ["were always", "always were"],
+            correctAnswer: "were always",
+            explanation: "Adverb after 'to be' (were)."
+          },
+          {
+            id: 9,
+            question: "She ___ watch TV in the morning.",
+            options: ["doesn't usually", "usually doesn't"],
+            correctAnswer: "doesn't usually",
+            explanation: "Adverb after auxiliary 'doesn't'."
+          },
+          {
+            id: 10,
+            question: "___ I take a walk after dinner.",
+            options: ["Sometimes", "Always"],
+            correctAnswer: "Sometimes",
+            explanation: "'Sometimes' can go at the beginning (not 'always')."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'causative-have-get',
+    titleEn: 'Causative Have and Get',
+    titleFr: 'Causatif Have et Get',
+    explanationEn: `**CAUSATIVE** structures are used when someone else does something for us (we arrange/cause it to happen).
+
+**HAVE something done:**
+- Form: have + object + past participle
+- "I **had** my car **repaired**." (Someone repaired it for me)
+- "She **has** her hair **cut** every month."
+
+**GET something done:**
+- Form: get + object + past participle  
+- "I **got** my car **repaired**." (Same meaning as 'have')
+- More informal than 'have'
+
+**Common examples:**
+- have/get your hair cut (at the hairdresser's)
+- have/get your car serviced (at the garage)
+- have/get a suit made (by a tailor)
+- have/get your eyes tested (by an optician)
+- have/get your house painted (by painters)
+
+**Different tenses:**
+- Present: "I **have** my car **washed** every week."
+- Past: "I **had** my teeth **checked** yesterday."
+- Future: "I'**ll have** my nails **done** tomorrow."
+- Present Perfect: "I'**ve had** my phone **repaired**."`,
+    explanationFr: `**LE CAUSATIF** s'utilise quand quelqu'un d'autre fait quelque chose pour nous (on organise/fait en sorte que cela se produise).
+
+**HAVE something done :**
+- Forme : have + objet + participe passé
+- "I **had** my car **repaired**." (Quelqu'un l'a réparée pour moi)
+- "She **has** her hair **cut** every month." (Elle se fait couper les cheveux)
+
+**GET something done :**
+- Forme : get + objet + participe passé
+- "I **got** my car **repaired**." (Même sens que 'have')
+- Plus informel que 'have'
+
+**Exemples courants :**
+- have/get your hair cut (se faire couper les cheveux)
+- have/get your car serviced (faire réviser sa voiture)
+- have/get a suit made (se faire faire un costume)
+- have/get your eyes tested (se faire examiner les yeux)
+- have/get your house painted (faire peindre sa maison)
+
+**Différents temps :**
+- Présent : "I **have** my car **washed** every week."
+- Passé : "I **had** my teeth **checked** yesterday."
+- Futur : "I'**ll have** my nails **done** tomorrow."
+- Present Perfect : "I'**ve had** my phone **repaired**."`,
+    examples: [
+      { en: "I **had** my hair **cut** last week.", fr: "Je me suis fait couper les cheveux la semaine dernière." },
+      { en: "We're **having** our house **painted**.", fr: "Nous faisons peindre notre maison." },
+      { en: "You should **get** your eyes **tested**.", fr: "Tu devrais te faire examiner les yeux." },
+      { en: "I need to **have** my suit **cleaned**.", fr: "Je dois faire nettoyer mon costume." }
+    ],
+    exercises: [
+      {
+        id: 145,
+        title: "Causative Have and Get",
+        description: "Choose the correct causative form.",
+        questions: [
+          {
+            id: 1,
+            question: "I ___ my car ___ yesterday.",
+            options: ["had... washed", "had... washing"],
+            correctAnswer: "had... washed",
+            explanation: "Causative: have + object + past participle."
+          },
+          {
+            id: 2,
+            question: "She ___ her nails ___ every two weeks.",
+            options: ["has... done", "has... doing"],
+            correctAnswer: "has... done",
+            explanation: "Causative with past participle 'done'."
+          },
+          {
+            id: 3,
+            question: "We're going to ___ the house ___.",
+            options: ["have... paint", "have... painted"],
+            correctAnswer: "have... painted",
+            explanation: "Causative requires past participle."
+          },
+          {
+            id: 4,
+            question: "I need to ___ my passport ___ before the trip.",
+            options: ["get... renewed", "get... renew"],
+            correctAnswer: "get... renewed",
+            explanation: "Get + object + past participle."
+          },
+          {
+            id: 5,
+            question: "Have you ever ___ your fortune ___?",
+            options: ["had... tell", "had... told"],
+            correctAnswer: "had... told",
+            explanation: "Causative: have + object + past participle."
+          },
+          {
+            id: 6,
+            question: "She ___ her teeth ___ twice a year.",
+            options: ["gets... check", "gets... checked"],
+            correctAnswer: "gets... checked",
+            explanation: "Causative with past participle 'checked'."
+          },
+          {
+            id: 7,
+            question: "I'm ___ my suit ___ for the wedding.",
+            options: ["having... made", "having... make"],
+            correctAnswer: "having... made",
+            explanation: "Present continuous causative with past participle."
+          },
+          {
+            id: 8,
+            question: "You should ___ that cut ___ at by a doctor.",
+            options: ["have... look", "have... looked"],
+            correctAnswer: "have... looked",
+            explanation: "Causative: have + object + past participle."
+          },
+          {
+            id: 9,
+            question: "We ___ all our windows ___ last month.",
+            options: ["got... replaced", "got... replace"],
+            correctAnswer: "got... replaced",
+            explanation: "Past causative with past participle."
+          },
+          {
+            id: 10,
+            question: "I'll ___ the documents ___ to you tomorrow.",
+            options: ["have... send", "have... sent"],
+            correctAnswer: "have... sent",
+            explanation: "Future causative with past participle."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'adjective-order',
+    titleEn: 'Order of Adjectives',
+    titleFr: "Ordre des Adjectifs",
+    explanationEn: `When using multiple adjectives, English follows a specific order. The order is often remembered as **OSASCOMP**:
+
+1. **O**pinion - beautiful, ugly, lovely, horrible
+2. **S**ize - big, small, tall, short, huge
+3. **A**ge - old, new, young, ancient
+4. **S**hape - round, square, flat, rectangular
+5. **C**olor - red, blue, green, black
+6. **O**rigin - French, Japanese, Italian, American
+7. **M**aterial - wooden, metal, cotton, silk
+8. **P**urpose - cooking (pot), sleeping (bag)
+
+**Examples:**
+- "A **lovely** (opinion) **little** (size) **old** (age) **French** (origin) **wooden** (material) table"
+- "A **beautiful** **big** **round** **blue** vase"
+
+**Rules:**
+- Maximum 2-3 adjectives before a noun is natural
+- Determiners (a, the, my, this) always come first
+- Numbers come after determiners: "the **three** big houses"
+
+**Tip:** Native speakers may not follow this exactly, but wrong order sounds odd!`,
+    explanationFr: `Quand on utilise plusieurs adjectifs, l'anglais suit un ordre spécifique. On retient souvent **OSASCOMP** :
+
+1. **O**pinion - beautiful, ugly, lovely, horrible
+2. **S**ize (Taille) - big, small, tall, short, huge
+3. **A**ge - old, new, young, ancient
+4. **S**hape (Forme) - round, square, flat, rectangular
+5. **C**olor (Couleur) - red, blue, green, black
+6. **O**rigin (Origine) - French, Japanese, Italian, American
+7. **M**aterial (Matériau) - wooden, metal, cotton, silk
+8. **P**urpose (But) - cooking (pot), sleeping (bag)
+
+**Exemples :**
+- "A **lovely** (opinion) **little** (taille) **old** (âge) **French** (origine) **wooden** (matériau) table"
+- "A **beautiful** **big** **round** **blue** vase"
+
+**Règles :**
+- Maximum 2-3 adjectifs avant un nom semble naturel
+- Les déterminants (a, the, my, this) viennent toujours en premier
+- Les nombres viennent après les déterminants : "the **three** big houses"
+
+**Astuce :** Les natifs ne suivent pas toujours cet ordre exactement, mais un mauvais ordre sonne bizarre !`,
+    examples: [
+      { en: "A **beautiful big old** house (opinion-size-age)", fr: "Une **belle grande vieille** maison (opinion-taille-âge)" },
+      { en: "A **small round wooden** table (size-shape-material)", fr: "Une **petite table ronde en bois** (taille-forme-matériau)" },
+      { en: "An **expensive Italian leather** bag (opinion-origin-material)", fr: "Un **sac en cuir italien cher** (opinion-origine-matériau)" },
+      { en: "The **three large black German** cars (number-size-color-origin)", fr: "Les **trois grandes voitures allemandes noires**" }
+    ],
+    exercises: [
+      {
+        id: 146,
+        title: "Order of Adjectives",
+        description: "Choose the correct adjective order.",
+        questions: [
+          {
+            id: 1,
+            question: "She bought a ___ dress.",
+            options: ["beautiful red silk", "red beautiful silk", "silk red beautiful"],
+            correctAnswer: "beautiful red silk",
+            explanation: "Opinion (beautiful) + Color (red) + Material (silk)."
+          },
+          {
+            id: 2,
+            question: "They live in a ___ house.",
+            options: ["big old lovely", "lovely big old", "old lovely big"],
+            correctAnswer: "lovely big old",
+            explanation: "Opinion (lovely) + Size (big) + Age (old)."
+          },
+          {
+            id: 3,
+            question: "I found a ___ box in the attic.",
+            options: ["wooden small square", "small square wooden", "square small wooden"],
+            correctAnswer: "small square wooden",
+            explanation: "Size (small) + Shape (square) + Material (wooden)."
+          },
+          {
+            id: 4,
+            question: "She has ___ hair.",
+            options: ["long black beautiful", "beautiful long black", "black long beautiful"],
+            correctAnswer: "beautiful long black",
+            explanation: "Opinion (beautiful) + Size (long) + Color (black)."
+          },
+          {
+            id: 5,
+            question: "He drives an ___ car.",
+            options: ["old Italian expensive", "expensive old Italian", "Italian old expensive"],
+            correctAnswer: "expensive old Italian",
+            explanation: "Opinion (expensive) + Age (old) + Origin (Italian)."
+          },
+          {
+            id: 6,
+            question: "We sat at a ___ table.",
+            options: ["round big wooden", "big round wooden", "wooden round big"],
+            correctAnswer: "big round wooden",
+            explanation: "Size (big) + Shape (round) + Material (wooden)."
+          },
+          {
+            id: 7,
+            question: "She wore a ___ scarf.",
+            options: ["silk Chinese lovely", "lovely Chinese silk", "Chinese lovely silk"],
+            correctAnswer: "lovely Chinese silk",
+            explanation: "Opinion (lovely) + Origin (Chinese) + Material (silk)."
+          },
+          {
+            id: 8,
+            question: "I need a ___ bag.",
+            options: ["sleeping new blue", "new blue sleeping", "blue new sleeping"],
+            correctAnswer: "new blue sleeping",
+            explanation: "Age (new) + Color (blue) + Purpose (sleeping)."
+          },
+          {
+            id: 9,
+            question: "They bought ___ chairs.",
+            options: ["six comfortable plastic", "comfortable six plastic", "plastic comfortable six"],
+            correctAnswer: "six comfortable plastic",
+            explanation: "Number (six) + Opinion (comfortable) + Material (plastic)."
+          },
+          {
+            id: 10,
+            question: "It's a ___ building.",
+            options: ["tall modern glass", "modern tall glass", "glass tall modern"],
+            correctAnswer: "tall modern glass",
+            explanation: "Size (tall) + Age (modern) + Material (glass)."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'determiners',
+    titleEn: 'Determiners: All, Both, Each, Every, No',
+    titleFr: 'Déterminants : All, Both, Each, Every, No',
+    explanationEn: `**DETERMINERS** come before nouns and tell us which or how many.
+
+**ALL** = the whole group (100%)
+- All + plural noun: "**All** students must register."
+- All + uncountable: "**All** information is free."
+- All (of) the: "**All (of) the** children are here."
+
+**BOTH** = two things/people together
+- "**Both** answers are correct."
+- "I like **both** of them."
+- Both...and: "**Both** Tom **and** Mary came."
+
+**EACH** = every individual (one by one)
+- + singular verb: "**Each** student **has** a book."
+- More personal, individual focus
+
+**EVERY** = all members of a group
+- + singular verb: "**Every** student **has** a book."
+- More general, group focus
+- Every = each + all together
+
+**NO** = not any, zero
+- + singular or plural: "**No** student came." / "**No** students came."
+- "There's **no** milk left."
+
+**Difference: EACH vs EVERY**
+- Each: "Each of the 5 students received a prize." (individual)
+- Every: "Every student in the school wears uniform." (general rule)`,
+    explanationFr: `**LES DÉTERMINANTS** viennent avant les noms et indiquent lesquels ou combien.
+
+**ALL** = tout le groupe (100%)
+- All + nom pluriel : "**All** students must register." (Tous les étudiants)
+- All + indénombrable : "**All** information is free." (Toute l'information)
+- All (of) the : "**All (of) the** children are here." (Tous les enfants)
+
+**BOTH** = deux choses/personnes ensemble
+- "**Both** answers are correct." (Les deux réponses)
+- "I like **both** of them." (Je les aime tous les deux)
+- Both...and : "**Both** Tom **and** Mary came." (Tom et Mary tous les deux)
+
+**EACH** = chaque individu (un par un)
+- + verbe singulier : "**Each** student **has** a book." (Chaque étudiant)
+- Plus personnel, focus individuel
+
+**EVERY** = tous les membres d'un groupe
+- + verbe singulier : "**Every** student **has** a book." (Chaque étudiant)
+- Plus général, focus sur le groupe
+- Every = each + tous ensemble
+
+**NO** = pas de, zéro
+- + singulier ou pluriel : "**No** student came." / "**No** students came."
+- "There's **no** milk left." (Il n'y a plus de lait)
+
+**Différence : EACH vs EVERY**
+- Each : "Each of the 5 students received a prize." (individuel)
+- Every : "Every student in the school wears uniform." (règle générale)`,
+    examples: [
+      { en: "**All** my friends came to the party.", fr: "**Tous** mes amis sont venus à la fête." },
+      { en: "**Both** options are good.", fr: "**Les deux** options sont bonnes." },
+      { en: "**Each** person received a gift.", fr: "**Chaque** personne a reçu un cadeau." },
+      { en: "**Every** morning I drink coffee.", fr: "**Chaque** matin je bois du café." },
+      { en: "There's **no** reason to worry.", fr: "Il n'y a **aucune** raison de s'inquiéter." }
+    ],
+    exercises: [
+      {
+        id: 147,
+        title: "Determiners",
+        description: "Choose the correct determiner.",
+        questions: [
+          {
+            id: 1,
+            question: "___ of my parents are teachers.",
+            options: ["All", "Both", "Every"],
+            correctAnswer: "Both",
+            explanation: "Both for two people (parents = 2)."
+          },
+          {
+            id: 2,
+            question: "___ student must bring their own laptop.",
+            options: ["Each", "All", "Both"],
+            correctAnswer: "Each",
+            explanation: "Each + singular noun for individual requirement."
+          },
+          {
+            id: 3,
+            question: "There is ___ milk left in the fridge.",
+            options: ["no", "any", "every"],
+            correctAnswer: "no",
+            explanation: "No = not any milk remaining."
+          },
+          {
+            id: 4,
+            question: "___ children love ice cream.",
+            options: ["Every", "All", "Each"],
+            correctAnswer: "All",
+            explanation: "All + plural noun for general statement."
+          },
+          {
+            id: 5,
+            question: "___ day I learn something new.",
+            options: ["All", "Every", "Both"],
+            correctAnswer: "Every",
+            explanation: "Every + singular noun for 'each day'."
+          },
+          {
+            id: 6,
+            question: "I invited Tom and Sarah. ___ of them came.",
+            options: ["All", "Both", "Every"],
+            correctAnswer: "Both",
+            explanation: "Both for two people."
+          },
+          {
+            id: 7,
+            question: "___ the information you need is online.",
+            options: ["All", "Every", "Each"],
+            correctAnswer: "All",
+            explanation: "All + the + uncountable noun."
+          },
+          {
+            id: 8,
+            question: "She checks ___ door before leaving.",
+            options: ["every", "all", "no"],
+            correctAnswer: "every",
+            explanation: "Every + singular noun for each one."
+          },
+          {
+            id: 9,
+            question: "___ person in this room speaks English.",
+            options: ["Every", "All", "Both"],
+            correctAnswer: "Every",
+            explanation: "Every + singular noun for all individuals."
+          },
+          {
+            id: 10,
+            question: "I have ___ idea what you're talking about.",
+            options: ["no", "all", "every"],
+            correctAnswer: "no",
+            explanation: "No idea = I don't know at all."
+          }
+        ]
+      }
+    ]
   }
 ];
