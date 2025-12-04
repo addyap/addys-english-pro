@@ -11,6 +11,51 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import GrammarExplanation from '../components/GrammarExplanation';
 import GrammarExercise from '../components/GrammarExercise';
 
+// Exercise Card Component
+const ExerciseCard = ({ exercise, isAvailable, index }: { 
+  exercise: { id: number; title: string }; 
+  isAvailable: boolean; 
+  index: number;
+}) => {
+  if (isAvailable) {
+    return (
+      <AnimatedCard
+        href={`/exercices/${exercise.id}`}
+        className="bg-card hover:bg-accent/5 border border-border p-3 hover:border-primary hover:shadow-md transition-all group"
+        delay={index * 0.01}
+      >
+        <div className="flex items-center gap-3">
+          <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+            <span className="text-xs font-bold text-primary font-heading">
+              {exercise.id}
+            </span>
+          </div>
+          <h3 className="text-sm font-medium text-foreground leading-tight font-body flex-1 truncate">
+            {exercise.title}
+          </h3>
+          <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
+        </div>
+      </AnimatedCard>
+    );
+  }
+
+  return (
+    <div className="bg-muted/50 border border-border/50 p-3 rounded-lg opacity-50 cursor-not-allowed">
+      <div className="flex items-center gap-3">
+        <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-muted flex items-center justify-center">
+          <span className="text-xs font-bold text-muted-foreground font-heading">
+            {exercise.id}
+          </span>
+        </div>
+        <h3 className="text-sm font-medium text-muted-foreground leading-tight font-body flex-1 truncate">
+          {exercise.title}
+        </h3>
+        <Lock className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+      </div>
+    </div>
+  );
+};
+
 const Exercises = () => {
   useScrollTracking('exercises');
   useTimeTracking('exercises');
@@ -20,8 +65,8 @@ const Exercises = () => {
   return (
     <>
       <SEOHead 
-        title="100 Exercices d'anglais gratuits – Grammaire & Vocabulaire | Antony Addy"
-        description="Accédez à 100 exercices d'anglais gratuits créés par un formateur professionnel. Grammaire, vocabulaire, pièges courants et faux-amis. Idéal pour progresser rapidement."
+        title="150 Exercices d'anglais gratuits – Grammaire & Vocabulaire | Antony Addy"
+        description="Accédez à 150 exercices d'anglais gratuits créés par un formateur professionnel. Grammaire, vocabulaire, pièges courants et faux-amis. Idéal pour progresser rapidement."
         canonicalPath="/exercices"
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
         imageAlt="Exercices d'anglais interactifs par Antony Addy"
@@ -29,8 +74,8 @@ const Exercises = () => {
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "LearningResource",
-          name: "100 Exercices d'Anglais",
-          description: "Collection de 100 exercices d'anglais couvrant la grammaire, le vocabulaire et les pièges courants",
+          name: "150 Exercices d'Anglais",
+          description: "Collection de 150 exercices d'anglais couvrant la grammaire, le vocabulaire et les pièges courants",
           author: {
             "@type": "Person",
             name: "Antony Addy",
@@ -124,65 +169,84 @@ const Exercises = () => {
               {/* Vocabulary Tab */}
               <TabsContent value="vocabulary" className="space-y-6">
                 {/* Progress Notice */}
-                <div className="bg-card rounded-lg shadow-md p-6 text-center border-l-4 border-primary">
-                  <CheckCircle className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <h2 className="text-xl font-semibold text-primary mb-2 font-heading">
-                    {exercisesData.length} exercices disponibles sur 100
-                  </h2>
-                  <p className="text-muted-foreground font-body">
-                    De nouveaux exercices sont ajoutés régulièrement. Les exercices avec cadenas seront bientôt disponibles.
+                <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-6 text-center border border-primary/20">
+                  <div className="flex items-center justify-center gap-2 mb-3">
+                    <CheckCircle className="h-6 w-6 text-primary" />
+                    <span className="text-3xl font-bold text-primary font-heading">{exercisesData.length}</span>
+                    <span className="text-lg text-muted-foreground font-body">exercices disponibles</span>
+                  </div>
+                  <p className="text-muted-foreground font-body text-sm">
+                    De nouveaux exercices sont ajoutés régulièrement
                   </p>
                 </div>
 
-                {/* Exercises Grid */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                  {exercisesList.map((exercise, index) => {
-                    const isAvailable = availableExercises.has(exercise.id);
-                    
-                    return isAvailable ? (
-                      <AnimatedCard
-                        key={exercise.id}
-                        href={`/exercices/${exercise.id}`}
-                        className="bg-card hover:bg-accent/5 border border-border p-4 hover:border-primary transition-colors"
-                        delay={index * 0.02}
-                      >
-                        <div className="flex items-start gap-3">
-                          <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                            <span className="text-sm font-bold text-primary font-heading">
-                              {exercise.id}
-                            </span>
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h3 className="text-sm font-medium text-foreground leading-tight font-body">
-                              {exercise.title}
-                            </h3>
-                          </div>
-                          <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
-                        </div>
-                      </AnimatedCard>
-                    ) : (
-                      <AnimatedCard
-                        key={exercise.id}
-                        className="bg-card hover:bg-accent/5 border border-border p-4 cursor-not-allowed opacity-60"
-                        delay={index * 0.02}
-                        hoverScale={1}
-                      >
-                        <div className="flex items-start gap-3">
-                          <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                            <span className="text-sm font-bold text-primary font-heading">
-                              {exercise.id}
-                            </span>
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h3 className="text-sm font-medium text-foreground leading-tight font-body">
-                              {exercise.title}
-                            </h3>
-                          </div>
-                          <Lock className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                        </div>
-                      </AnimatedCard>
-                    );
-                  })}
+                {/* Category Sections */}
+                <div className="space-y-8">
+                  {/* Section 1-50: Common Mistakes */}
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="h-8 w-1 bg-primary rounded-full" />
+                      <h3 className="text-lg font-semibold text-foreground font-heading">Erreurs courantes (1-50)</h3>
+                      <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">50 exercices</span>
+                    </div>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+                      {exercisesList.slice(0, 50).map((exercise, index) => {
+                        const isAvailable = availableExercises.has(exercise.id);
+                        return (
+                          <ExerciseCard 
+                            key={exercise.id} 
+                            exercise={exercise} 
+                            isAvailable={isAvailable} 
+                            index={index}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Section 51-100: Advanced Mistakes */}
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="h-8 w-1 bg-accent rounded-full" />
+                      <h3 className="text-lg font-semibold text-foreground font-heading">Pièges avancés (51-100)</h3>
+                      <span className="text-xs bg-accent/10 text-accent-foreground px-2 py-1 rounded-full">50 exercices</span>
+                    </div>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+                      {exercisesList.slice(50, 100).map((exercise, index) => {
+                        const isAvailable = availableExercises.has(exercise.id);
+                        return (
+                          <ExerciseCard 
+                            key={exercise.id} 
+                            exercise={exercise} 
+                            isAvailable={isAvailable} 
+                            index={index}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Section 101-150: Confusing Word Pairs */}
+                  <div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="h-8 w-1 bg-green-500 rounded-full" />
+                      <h3 className="text-lg font-semibold text-foreground font-heading">Mots confus (101-150)</h3>
+                      <span className="text-xs bg-green-500/10 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">50 exercices</span>
+                    </div>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+                      {exercisesList.slice(100, 150).map((exercise, index) => {
+                        const isAvailable = availableExercises.has(exercise.id);
+                        return (
+                          <ExerciseCard 
+                            key={exercise.id} 
+                            exercise={exercise} 
+                            isAvailable={isAvailable} 
+                            index={index}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
               </TabsContent>
             </Tabs>
