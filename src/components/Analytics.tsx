@@ -16,7 +16,14 @@ export default function Analytics() {
     // Check for existing consent
     const getConsent = () => {
       try {
-        return localStorage.getItem('cookie-consent');
+        const raw = localStorage.getItem('cookie-consent');
+        if (!raw) return null;
+        // Handle both JSON-stringified and plain values
+        try {
+          return JSON.parse(raw);
+        } catch {
+          return raw;
+        }
       } catch {
         return null;
       }
