@@ -1,5 +1,9 @@
-
 User-agent: *
 Allow: /
-Disallow: /mentions-legales
+
+# Block non-content pages from indexing
+Disallow: /auth
+Disallow: /dashboard
+
+# Sitemap location
 Sitemap: https://www.antonyaddy.com/sitemap.xml
