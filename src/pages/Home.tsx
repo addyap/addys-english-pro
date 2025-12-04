@@ -291,10 +291,89 @@ const Home = () => {
           </div>
         </section>
 
+        {/* Interactive Exercises Section - PROMINENT */}
+        <section className="py-20 bg-gradient-to-br from-primary via-primary/95 to-primary/90 text-primary-foreground relative overflow-hidden">
+          {/* Background decoration */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl" />
+            <div className="absolute bottom-10 right-10 w-48 h-48 bg-white rounded-full blur-3xl" />
+          </div>
+          
+          <div className="max-w-6xl mx-auto px-4 relative z-10">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 rounded-full mb-6">
+                <BookOpen className="h-10 w-10" />
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 font-heading">
+                Exercices d'Anglais Interactifs
+              </h2>
+              <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto font-body">
+                Maîtrisez la grammaire anglaise avec des explications claires et des exercices pratiques
+              </p>
+            </div>
+
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                <p className="text-4xl font-bold mb-1">51</p>
+                <p className="text-sm text-primary-foreground/80">Leçons de grammaire</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                <p className="text-4xl font-bold mb-1">150</p>
+                <p className="text-sm text-primary-foreground/80">Exercices vocabulaire</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                <p className="text-4xl font-bold mb-1">500+</p>
+                <p className="text-sm text-primary-foreground/80">Questions interactives</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                <p className="text-4xl font-bold mb-1">100%</p>
+                <p className="text-sm text-primary-foreground/80">Gratuit</p>
+              </div>
+            </div>
+
+            {/* Features */}
+            <div className="grid md:grid-cols-3 gap-6 mb-10">
+              <div className="flex items-start gap-3">
+                <CheckCircle className="h-6 w-6 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-semibold">Explications bilingues</p>
+                  <p className="text-sm text-primary-foreground/80">Anglais avec traduction française</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="h-6 w-6 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-semibold">Feedback immédiat</p>
+                  <p className="text-sm text-primary-foreground/80">Correction et explications instantanées</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="h-6 w-6 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-semibold">Suivi de progression</p>
+                  <p className="text-sm text-primary-foreground/80">Tableau de bord personnel</p>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="text-center">
+              <Link 
+                to="/exercices" 
+                className="inline-flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/90 transition-all shadow-lg hover:shadow-xl hover:scale-105"
+              >
+                <GraduationCap className="h-6 w-6" />
+                Commencer les exercices
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* anglaisadistance.fr Block */}
         <section className="py-16 bg-muted">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-border mb-8">
+            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-border">
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="flex-shrink-0">
                   <img src="/lovable-uploads/d96440ab-4b9c-4f42-9910-75051d4f8b0e.png" alt="Logo anglaisadistance.fr - Plateforme gratuite de ressources pédagogiques en anglais créée par Antony Addy" className="h-24 w-auto" width="96" height="96" loading="lazy" />
@@ -310,28 +389,6 @@ const Home = () => {
                     Découvrir les ressources
                     <ExternalLink className="h-4 w-4" />
                   </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Exercises Block */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-border">
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="flex-shrink-0">
-                  <div className="w-24 h-24 bg-primary/10 rounded-xl flex items-center justify-center">
-                    <BookOpen className="h-12 w-12 text-primary" />
-                  </div>
-                </div>
-                <div className="flex-1 text-center md:text-left">
-                  <h2 className="text-3xl font-bold text-primary mb-4 font-heading">
-                    Grammaire & Exercices Interactifs
-                  </h2>
-                  <p className="text-lg text-muted-foreground mb-6 font-body">
-                    Maîtrisez les temps anglais, les pronoms, les prépositions et bien plus avec des explications claires (EN/FR) et plus de 35 leçons de grammaire interactives.
-                  </p>
-                  <Link to="/exercices" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body">
-                    Accéder aux leçons
-                  </Link>
                 </div>
               </div>
             </div>
