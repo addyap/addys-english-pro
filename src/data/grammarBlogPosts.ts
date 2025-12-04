@@ -1457,6 +1457,719 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     description: 'Maîtrisez either et neither pour exprimer le choix et l\'accord en anglais.',
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
     relatedExerciseId: 'either-neither'
+  },
+  // HIGH PRIORITY LESSONS
+  {
+    id: 'will-vs-going-to',
+    title: 'Will vs Going To : Quelle différence pour le futur ?',
+    excerpt: 'Will et Going to expriment tous deux le futur mais dans des contextes différents. Découvrez quand utiliser chacun.',
+    content: `
+      <p>Les deux formes <strong>Will</strong> et <strong>Going to</strong> parlent du futur, mais avec des nuances importantes que tout apprenant doit maîtriser.</p>
+
+      <h2>WILL - Décisions spontanées et prédictions</h2>
+      <p>Utilisez <strong>will</strong> pour :</p>
+      <ul>
+        <li><strong>Décisions prises sur le moment</strong> : "The phone is ringing. I'll answer it."</li>
+        <li><strong>Prédictions basées sur une opinion</strong> : "I think it will rain tomorrow."</li>
+        <li><strong>Promesses et offres</strong> : "I'll help you with that."</li>
+        <li><strong>Faits futurs certains</strong> : "She will be 30 next year."</li>
+      </ul>
+
+      <h2>GOING TO - Plans et intentions</h2>
+      <p>Utilisez <strong>going to</strong> pour :</p>
+      <ul>
+        <li><strong>Plans déjà décidés</strong> : "I'm going to visit my parents this weekend." (décidé avant)</li>
+        <li><strong>Prédictions basées sur des preuves visibles</strong> : "Look at those clouds! It's going to rain."</li>
+        <li><strong>Intentions fermes</strong> : "I'm going to learn Japanese this year."</li>
+      </ul>
+
+      <h2>Comparaison directe</h2>
+      <ul>
+        <li>"I <strong>will</strong> have a coffee." (je viens de décider)</li>
+        <li>"I <strong>am going to</strong> have a coffee." (j'avais prévu)</li>
+        <li>"It <strong>will</strong> probably snow." (opinion/supposition)</li>
+        <li>"Look at the sky! It <strong>is going to</strong> snow." (preuve visible)</li>
+      </ul>
+
+      <h2>Astuce mémo</h2>
+      <p><strong>Going to</strong> = vous y "allez" déjà mentalement (plan préexistant)<br/>
+      <strong>Will</strong> = décision ou prédiction faite maintenant</p>
+    `,
+    date: '2025-01-25',
+    author: 'Antony Addy',
+    category: 'Grammaire - Temps',
+    readTime: '5 min',
+    description: 'Comprenez la différence entre Will et Going To pour exprimer le futur en anglais avec des exemples clairs.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'will-going-to'
+  },
+  {
+    id: 'much-many-a-lot-of',
+    title: 'Much, Many, A lot of : Les quantités en anglais',
+    excerpt: 'Much, many et a lot of expriment tous la quantité mais ne s\'utilisent pas avec les mêmes noms. Voici les règles.',
+    content: `
+      <p>Exprimer la quantité en anglais nécessite de distinguer les noms <strong>dénombrables</strong> (countable) des noms <strong>indénombrables</strong> (uncountable).</p>
+
+      <h2>MANY - Noms dénombrables (pluriel)</h2>
+      <p>Utilisez <strong>many</strong> avec les noms qu'on peut compter :</p>
+      <ul>
+        <li>"How <strong>many</strong> books do you have?"</li>
+        <li>"There aren't <strong>many</strong> students today."</li>
+        <li>"She has <strong>many</strong> friends."</li>
+      </ul>
+
+      <h2>MUCH - Noms indénombrables (singulier)</h2>
+      <p>Utilisez <strong>much</strong> avec les noms qu'on ne peut pas compter :</p>
+      <ul>
+        <li>"How <strong>much</strong> water do you drink?"</li>
+        <li>"I don't have <strong>much</strong> time."</li>
+        <li>"There isn't <strong>much</strong> traffic today."</li>
+      </ul>
+
+      <h2>A LOT OF - Les deux types</h2>
+      <p><strong>A lot of</strong> fonctionne avec les deux types, surtout dans les phrases affirmatives :</p>
+      <ul>
+        <li>"I have <strong>a lot of</strong> books." (dénombrable)</li>
+        <li>"I have <strong>a lot of</strong> work." (indénombrable)</li>
+        <li>"She drinks <strong>a lot of</strong> coffee."</li>
+      </ul>
+
+      <h2>Règle d'usage</h2>
+      <ul>
+        <li><strong>Questions et négations</strong> : préférez much/many</li>
+        <li><strong>Phrases affirmatives</strong> : préférez a lot of</li>
+        <li>❌ "I have much money." → ✅ "I have a lot of money."</li>
+      </ul>
+
+      <h2>Noms indénombrables courants</h2>
+      <p>water, money, information, advice, news, furniture, luggage, traffic, work, homework, research</p>
+    `,
+    date: '2025-01-24',
+    author: 'Antony Addy',
+    category: 'Grammaire - Quantifieurs',
+    readTime: '5 min',
+    description: 'Maîtrisez much, many et a lot of pour exprimer les quantités correctement en anglais.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'much-many-lot'
+  },
+  {
+    id: 'since-vs-for',
+    title: 'Since vs For : Exprimer la durée en anglais',
+    excerpt: 'Since et For indiquent tous deux la durée mais s\'utilisent différemment. Apprenez à ne plus les confondre.',
+    content: `
+      <p>La confusion entre <strong>since</strong> et <strong>for</strong> est très courante. Ces deux mots expriment la durée mais de manière différente.</p>
+
+      <h2>FOR - Une durée (combien de temps)</h2>
+      <p>Utilisez <strong>for</strong> suivi d'une <strong>période de temps</strong> :</p>
+      <ul>
+        <li>"I have lived here <strong>for</strong> 5 years."</li>
+        <li>"She has been waiting <strong>for</strong> 30 minutes."</li>
+        <li>"They worked together <strong>for</strong> a long time."</li>
+      </ul>
+      <p><strong>Expressions avec for :</strong> for 2 hours, for a week, for months, for ages, for a long time</p>
+
+      <h2>SINCE - Un point de départ (depuis quand)</h2>
+      <p>Utilisez <strong>since</strong> suivi d'un <strong>moment précis</strong> :</p>
+      <ul>
+        <li>"I have lived here <strong>since</strong> 2019."</li>
+        <li>"She has been waiting <strong>since</strong> 3 o'clock."</li>
+        <li>"I haven't seen him <strong>since</strong> Monday."</li>
+      </ul>
+      <p><strong>Expressions avec since :</strong> since January, since 2020, since last week, since I was a child, since then</p>
+
+      <h2>Astuce mémo</h2>
+      <ul>
+        <li><strong>FOR</strong> = "pendant" (durée) → répond à "combien de temps ?"</li>
+        <li><strong>SINCE</strong> = "depuis" (point de départ) → répond à "depuis quand ?"</li>
+      </ul>
+
+      <h2>Exemples comparés</h2>
+      <ul>
+        <li>"I've known her <strong>for</strong> 10 years." (10 ans = durée)</li>
+        <li>"I've known her <strong>since</strong> 2014." (2014 = moment précis)</li>
+      </ul>
+    `,
+    date: '2025-01-23',
+    author: 'Antony Addy',
+    category: 'Grammaire - Prépositions',
+    readTime: '4 min',
+    description: 'Apprenez à distinguer since et for pour exprimer correctement la durée en anglais.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'since-for'
+  },
+  {
+    id: 'been-vs-gone',
+    title: 'Been vs Gone : Une nuance essentielle',
+    excerpt: 'Been et Gone sont les participes passés de "go" mais avec des sens très différents. Voici comment les distinguer.',
+    content: `
+      <p>La différence entre <strong>been</strong> et <strong>gone</strong> est subtile mais importante. Elle concerne la <strong>localisation actuelle</strong> de la personne.</p>
+
+      <h2>BEEN - Aller et revenir (expérience)</h2>
+      <p>Utilisez <strong>has/have been</strong> quand la personne est <strong>revenue</strong> :</p>
+      <ul>
+        <li>"She <strong>has been</strong> to Paris." (elle y est allée et elle est revenue)</li>
+        <li>"I <strong>have been</strong> to the supermarket." (j'en suis revenu)</li>
+        <li>"Have you ever <strong>been</strong> to Japan?" (expérience de vie)</li>
+      </ul>
+
+      <h2>GONE - Parti (pas encore revenu)</h2>
+      <p>Utilisez <strong>has/have gone</strong> quand la personne est <strong>encore là-bas</strong> :</p>
+      <ul>
+        <li>"She <strong>has gone</strong> to Paris." (elle y est encore)</li>
+        <li>"Where is John? He <strong>has gone</strong> to the shops." (il n'est pas là)</li>
+        <li>"They <strong>have gone</strong> on holiday." (ils sont partis en vacances)</li>
+      </ul>
+
+      <h2>Comparaison directe</h2>
+      <ul>
+        <li>"Tom <strong>has been</strong> to the bank." → Tom est revenu (il est ici)</li>
+        <li>"Tom <strong>has gone</strong> to the bank." → Tom est à la banque (il n'est pas ici)</li>
+      </ul>
+
+      <h2>Astuce mémo</h2>
+      <p><strong>Been</strong> = aller-retour (B comme "Back")<br/>
+      <strong>Gone</strong> = parti (G comme "Got away")</p>
+
+      <h2>Attention</h2>
+      <p>On ne peut pas dire "I have gone to Paris" pour parler de soi-même au présent (car si on parle, on est forcément revenu !). On dit "I have been to Paris".</p>
+    `,
+    date: '2025-01-22',
+    author: 'Antony Addy',
+    category: 'Grammaire - Verbes',
+    readTime: '4 min',
+    description: 'Comprenez la différence essentielle entre been et gone pour ne plus jamais les confondre.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'been-gone'
+  },
+  {
+    id: 'few-a-few-little-a-little',
+    title: 'Few/A few vs Little/A little : Nuances de quantité',
+    excerpt: 'Few et little expriment une petite quantité, mais avec ou sans "a", le sens change complètement. Découvrez ces nuances.',
+    content: `
+      <p>La présence ou l'absence de <strong>"a"</strong> devant few et little change le <strong>ton</strong> du message : positif ou négatif.</p>
+
+      <h2>FEW vs A FEW (noms dénombrables)</h2>
+      <ul>
+        <li><strong>Few</strong> = pas beaucoup, presque pas (négatif)
+          <br/>"<strong>Few</strong> people came to the party." (presque personne - décevant)</li>
+        <li><strong>A few</strong> = quelques, un petit nombre (positif)
+          <br/>"<strong>A few</strong> people came to the party." (quelques personnes - c'est bien)</li>
+      </ul>
+
+      <h2>LITTLE vs A LITTLE (noms indénombrables)</h2>
+      <ul>
+        <li><strong>Little</strong> = pas beaucoup, presque pas (négatif)
+          <br/>"I have <strong>little</strong> time." (presque pas de temps - problématique)</li>
+        <li><strong>A little</strong> = un peu (positif)
+          <br/>"I have <strong>a little</strong> time." (un peu de temps - ça va)</li>
+      </ul>
+
+      <h2>Résumé visuel</h2>
+      <table>
+        <tr><td></td><td><strong>Dénombrable</strong></td><td><strong>Indénombrable</strong></td></tr>
+        <tr><td>Positif (+)</td><td>a few</td><td>a little</td></tr>
+        <tr><td>Négatif (-)</td><td>few</td><td>little</td></tr>
+      </table>
+
+      <h2>Exemples comparés</h2>
+      <ul>
+        <li>"There is <strong>little</strong> hope." (presque pas d'espoir)</li>
+        <li>"There is <strong>a little</strong> hope." (un peu d'espoir)</li>
+        <li>"<strong>Few</strong> students passed." (très peu - mauvais résultat)</li>
+        <li>"<strong>A few</strong> students passed." (quelques-uns - acceptable)</li>
+      </ul>
+
+      <h2>Astuce</h2>
+      <p>"A" = une attitude positive (suffisant)<br/>
+      Sans "a" = une attitude négative (insuffisant)</p>
+    `,
+    date: '2025-01-21',
+    author: 'Antony Addy',
+    category: 'Grammaire - Quantifieurs',
+    readTime: '5 min',
+    description: 'Maîtrisez les nuances entre few/a few et little/a little pour exprimer la quantité avec précision.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'few-little'
+  },
+  // MEDIUM PRIORITY LESSONS
+  {
+    id: 'possessive-adjectives-pronouns',
+    title: 'Adjectifs possessifs vs Pronoms possessifs en anglais',
+    excerpt: 'My/mine, your/yours, his/his... Apprenez à distinguer les adjectifs possessifs des pronoms possessifs.',
+    content: `
+      <p>Les <strong>adjectifs possessifs</strong> et les <strong>pronoms possessifs</strong> expriment tous deux la possession, mais ils s'utilisent différemment dans la phrase.</p>
+
+      <h2>Adjectifs possessifs (+ nom)</h2>
+      <p>Les adjectifs possessifs sont <strong>toujours suivis d'un nom</strong> :</p>
+      <ul>
+        <li><strong>my</strong> book, <strong>your</strong> car, <strong>his</strong> phone</li>
+        <li><strong>her</strong> bag, <strong>its</strong> tail, <strong>our</strong> house</li>
+        <li><strong>their</strong> children</li>
+      </ul>
+      <p>"This is <strong>my</strong> pen." (adjectif + nom)</p>
+
+      <h2>Pronoms possessifs (remplacent nom)</h2>
+      <p>Les pronoms possessifs <strong>remplacent le nom</strong> (pas de nom après) :</p>
+      <ul>
+        <li><strong>mine</strong>, <strong>yours</strong>, <strong>his</strong></li>
+        <li><strong>hers</strong>, <strong>its</strong> (rare), <strong>ours</strong></li>
+        <li><strong>theirs</strong></li>
+      </ul>
+      <p>"This pen is <strong>mine</strong>." (pronom seul)</p>
+
+      <h2>Tableau récapitulatif</h2>
+      <table>
+        <tr><td>Sujet</td><td>Adj. possessif</td><td>Pronom possessif</td></tr>
+        <tr><td>I</td><td>my</td><td>mine</td></tr>
+        <tr><td>you</td><td>your</td><td>yours</td></tr>
+        <tr><td>he</td><td>his</td><td>his</td></tr>
+        <tr><td>she</td><td>her</td><td>hers</td></tr>
+        <tr><td>it</td><td>its</td><td>its</td></tr>
+        <tr><td>we</td><td>our</td><td>ours</td></tr>
+        <tr><td>they</td><td>their</td><td>theirs</td></tr>
+      </table>
+
+      <h2>Exemples d'usage</h2>
+      <ul>
+        <li>"Is this <strong>your</strong> bag?" / "Yes, it's <strong>mine</strong>."</li>
+        <li>"<strong>Her</strong> car is red. <strong>Mine</strong> is blue."</li>
+        <li>"<strong>Their</strong> house is bigger than <strong>ours</strong>."</li>
+      </ul>
+    `,
+    date: '2025-01-20',
+    author: 'Antony Addy',
+    category: 'Grammaire - Pronoms',
+    readTime: '4 min',
+    description: 'Apprenez à distinguer les adjectifs possessifs des pronoms possessifs en anglais.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'possessive-adjectives-pronouns'
+  },
+  {
+    id: 'adverbs-of-frequency',
+    title: 'Les adverbes de fréquence : always, usually, often, sometimes, never',
+    excerpt: 'Où placer les adverbes de fréquence dans la phrase anglaise ? Découvrez les règles et exceptions.',
+    content: `
+      <p>Les <strong>adverbes de fréquence</strong> indiquent à quelle fréquence une action se produit. Leur <strong>position</strong> dans la phrase suit des règles précises.</p>
+
+      <h2>Les principaux adverbes de fréquence</h2>
+      <p>Du plus fréquent au moins fréquent :</p>
+      <ul>
+        <li><strong>always</strong> (100%) - toujours</li>
+        <li><strong>usually</strong> (80%) - d'habitude</li>
+        <li><strong>often</strong> (70%) - souvent</li>
+        <li><strong>sometimes</strong> (50%) - parfois</li>
+        <li><strong>rarely/seldom</strong> (10%) - rarement</li>
+        <li><strong>never</strong> (0%) - jamais</li>
+      </ul>
+
+      <h2>Position dans la phrase</h2>
+      <p><strong>Règle générale :</strong> AVANT le verbe principal</p>
+      <ul>
+        <li>"I <strong>always</strong> drink coffee in the morning."</li>
+        <li>"She <strong>usually</strong> arrives on time."</li>
+        <li>"They <strong>never</strong> eat meat."</li>
+      </ul>
+
+      <h2>Exception avec BE</h2>
+      <p>Avec le verbe <strong>BE</strong> : APRÈS le verbe</p>
+      <ul>
+        <li>"He <strong>is always</strong> late."</li>
+        <li>"I <strong>am usually</strong> tired on Mondays."</li>
+        <li>"They <strong>are never</strong> home."</li>
+      </ul>
+
+      <h2>Sometimes : plus flexible</h2>
+      <p><strong>Sometimes</strong> peut aller en début ou fin de phrase :</p>
+      <ul>
+        <li>"<strong>Sometimes</strong> I go to the gym."</li>
+        <li>"I go to the gym <strong>sometimes</strong>."</li>
+        <li>"I <strong>sometimes</strong> go to the gym."</li>
+      </ul>
+
+      <h2>Avec les auxiliaires</h2>
+      <p>L'adverbe se place entre l'auxiliaire et le verbe principal :</p>
+      <ul>
+        <li>"I have <strong>never</strong> been to Japan."</li>
+        <li>"She can <strong>always</strong> help you."</li>
+      </ul>
+    `,
+    date: '2025-01-19',
+    author: 'Antony Addy',
+    category: 'Grammaire - Adverbes',
+    readTime: '5 min',
+    description: 'Maîtrisez la position des adverbes de fréquence en anglais avec des règles claires.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'adverbs-frequency'
+  },
+  {
+    id: 'causative-have-get',
+    title: 'Le causatif avec Have et Get : Faire faire quelque chose',
+    excerpt: 'Comment dire "faire faire" en anglais ? Découvrez les structures causatives avec have et get.',
+    content: `
+      <p>Les structures <strong>causatives</strong> permettent d'exprimer qu'on fait faire une action par quelqu'un d'autre.</p>
+
+      <h2>HAVE something done</h2>
+      <p>Structure : <strong>have + objet + participe passé</strong></p>
+      <ul>
+        <li>"I <strong>had</strong> my car <strong>repaired</strong>." (J'ai fait réparer ma voiture)</li>
+        <li>"She <strong>has</strong> her hair <strong>cut</strong> every month." (Elle se fait couper les cheveux)</li>
+        <li>"We <strong>had</strong> our house <strong>painted</strong>." (Nous avons fait peindre notre maison)</li>
+      </ul>
+
+      <h2>GET something done</h2>
+      <p>Structure : <strong>get + objet + participe passé</strong></p>
+      <ul>
+        <li>"I need to <strong>get</strong> my phone <strong>fixed</strong>."</li>
+        <li>"Where can I <strong>get</strong> this document <strong>translated</strong>?"</li>
+        <li>"You should <strong>get</strong> your eyes <strong>tested</strong>."</li>
+      </ul>
+
+      <h2>Différence have vs get</h2>
+      <ul>
+        <li><strong>Have</strong> : plus formel, neutre</li>
+        <li><strong>Get</strong> : plus informel, implique parfois plus d'effort</li>
+      </ul>
+
+      <h2>Faire faire PAR quelqu'un</h2>
+      <p>Pour préciser qui fait l'action :</p>
+      <ul>
+        <li><strong>Have someone do</strong> : "I'll <strong>have</strong> the mechanic <strong>check</strong> the brakes."</li>
+        <li><strong>Get someone to do</strong> : "I'll <strong>get</strong> him <strong>to help</strong> us."</li>
+      </ul>
+
+      <h2>Expériences négatives</h2>
+      <p>Le causatif peut aussi exprimer une expérience subie :</p>
+      <ul>
+        <li>"I <strong>had</strong> my wallet <strong>stolen</strong>." (On m'a volé mon portefeuille)</li>
+        <li>"She <strong>got</strong> her phone <strong>broken</strong>." (Son téléphone a été cassé)</li>
+      </ul>
+    `,
+    date: '2025-01-18',
+    author: 'Antony Addy',
+    category: 'Grammaire - Structures',
+    readTime: '5 min',
+    description: 'Apprenez à utiliser les structures causatives have et get pour exprimer "faire faire" en anglais.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'causative-have-get'
+  },
+  {
+    id: 'order-of-adjectives',
+    title: "L'ordre des adjectifs en anglais",
+    excerpt: 'En anglais, les adjectifs suivent un ordre précis. Découvrez la règle OSASCOMP pour ne plus vous tromper.',
+    content: `
+      <p>Quand plusieurs adjectifs décrivent un nom, ils suivent un <strong>ordre spécifique</strong> en anglais. Cet ordre est naturel pour les natifs mais doit être appris.</p>
+
+      <h2>La règle OSASCOMP</h2>
+      <ul>
+        <li><strong>O</strong>pinion (beautiful, lovely, awful)</li>
+        <li><strong>S</strong>ize (big, small, tiny)</li>
+        <li><strong>A</strong>ge (old, new, young)</li>
+        <li><strong>S</strong>hape (round, square, long)</li>
+        <li><strong>C</strong>olor (red, blue, green)</li>
+        <li><strong>O</strong>rigin (French, Japanese, Italian)</li>
+        <li><strong>M</strong>aterial (wooden, metal, cotton)</li>
+        <li><strong>P</strong>urpose (sleeping [bag], running [shoes])</li>
+      </ul>
+
+      <h2>Exemples</h2>
+      <ul>
+        <li>"A <strong>beautiful</strong> <strong>big</strong> <strong>old</strong> house" (opinion + size + age)</li>
+        <li>"A <strong>small</strong> <strong>round</strong> <strong>wooden</strong> table" (size + shape + material)</li>
+        <li>"An <strong>expensive</strong> <strong>new</strong> <strong>Italian</strong> car" (opinion + age + origin)</li>
+        <li>"<strong>Lovely</strong> <strong>long</strong> <strong>black</strong> hair" (opinion + shape + color)</li>
+      </ul>
+
+      <h2>En pratique</h2>
+      <p>On utilise rarement plus de 3 adjectifs. Voici les combinaisons courantes :</p>
+      <ul>
+        <li>Opinion + autre : "a <strong>nice</strong> <strong>big</strong> garden"</li>
+        <li>Size + age : "a <strong>small</strong> <strong>old</strong> cottage"</li>
+        <li>Color + origin : "<strong>red</strong> <strong>Italian</strong> wine"</li>
+      </ul>
+
+      <h2>Ce qui sonne faux</h2>
+      <ul>
+        <li>❌ "A wooden big table"</li>
+        <li>✅ "A big wooden table"</li>
+        <li>❌ "A French old lovely cheese"</li>
+        <li>✅ "A lovely old French cheese"</li>
+      </ul>
+    `,
+    date: '2025-01-17',
+    author: 'Antony Addy',
+    category: 'Grammaire - Adjectifs',
+    readTime: '5 min',
+    description: "Maîtrisez l'ordre des adjectifs en anglais avec la règle OSASCOMP.",
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'order-adjectives'
+  },
+  {
+    id: 'determiners',
+    title: 'Les déterminants : all, both, each, every, no',
+    excerpt: 'All, both, each, every, no : ces déterminants ont des usages précis. Apprenez à les utiliser correctement.',
+    content: `
+      <p>Les <strong>déterminants</strong> précisent de quels éléments on parle. Voici les règles pour les plus courants.</p>
+
+      <h2>ALL - Tous (3+)</h2>
+      <ul>
+        <li><strong>All</strong> + nom pluriel : "<strong>All</strong> students must attend."</li>
+        <li><strong>All</strong> + the/my/etc. + nom : "<strong>All</strong> the books are here."</li>
+        <li><strong>All of</strong> + pronom : "<strong>All of</strong> them passed."</li>
+      </ul>
+
+      <h2>BOTH - Les deux (exactement 2)</h2>
+      <ul>
+        <li>"<strong>Both</strong> options are good." (2 options)</li>
+        <li>"<strong>Both of</strong> my parents work."</li>
+        <li>"They <strong>both</strong> speak French." (position après le sujet)</li>
+      </ul>
+
+      <h2>EACH - Chacun (individuellement)</h2>
+      <ul>
+        <li>"<strong>Each</strong> student has a book." (chaque élève, un par un)</li>
+        <li>"<strong>Each of</strong> the rooms is different."</li>
+        <li>Verbe au <strong>singulier</strong> : "<strong>Each</strong> person <strong>is</strong> responsible."</li>
+      </ul>
+
+      <h2>EVERY - Chaque (ensemble)</h2>
+      <ul>
+        <li>"<strong>Every</strong> student passed." (tous les étudiants comme groupe)</li>
+        <li>"I go there <strong>every</strong> day."</li>
+        <li>Verbe au <strong>singulier</strong> : "<strong>Every</strong> child <strong>needs</strong> love."</li>
+        <li>❌ "<strong>Every of</strong>" n'existe pas</li>
+      </ul>
+
+      <h2>NO - Aucun</h2>
+      <ul>
+        <li>"<strong>No</strong> students came." = "Not any students came."</li>
+        <li>"There is <strong>no</strong> time."</li>
+        <li>"<strong>No one</strong> knows." / "<strong>Nobody</strong> knows."</li>
+      </ul>
+
+      <h2>Each vs Every</h2>
+      <ul>
+        <li><strong>Each</strong> : focus sur l'individu (peut être 2+)</li>
+        <li><strong>Every</strong> : focus sur le groupe (3+)</li>
+        <li>"<strong>Each</strong> twin has their own room." (2 jumeaux, individuellement)</li>
+        <li>"<strong>Every</strong> employee received a bonus." (tous ensemble)</li>
+      </ul>
+    `,
+    date: '2025-01-16',
+    author: 'Antony Addy',
+    category: 'Grammaire - Déterminants',
+    readTime: '5 min',
+    description: 'Maîtrisez les déterminants all, both, each, every et no en anglais.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'determiners'
+  },
+  // LOWER PRIORITY LESSONS
+  {
+    id: 'had-better-would-rather',
+    title: 'Had Better vs Would Rather : Conseils et préférences',
+    excerpt: "Had better exprime un conseil fort, would rather une préférence. Découvrez comment les utiliser.",
+    content: `
+      <p><strong>Had better</strong> et <strong>would rather</strong> sont deux expressions utiles pour donner des conseils et exprimer des préférences.</p>
+
+      <h2>HAD BETTER - Conseil fort / Avertissement</h2>
+      <p>Structure : <strong>had better + verbe base</strong> (sans "to")</p>
+      <ul>
+        <li>"You <strong>had better</strong> hurry or you'll miss the train."</li>
+        <li>"We <strong>had better</strong> leave now."</li>
+        <li>"You <strong>had better not</strong> be late." (forme négative)</li>
+      </ul>
+      <p><strong>Sens :</strong> conseil avec conséquence négative implicite si non suivi.</p>
+      <p><strong>Contraction :</strong> "You'd better go."</p>
+
+      <h2>WOULD RATHER - Préférence</h2>
+      <p>Structure : <strong>would rather + verbe base</strong> (sans "to")</p>
+      <ul>
+        <li>"I <strong>would rather</strong> stay home tonight."</li>
+        <li>"She <strong>would rather not</strong> talk about it."</li>
+        <li>"<strong>Would</strong> you <strong>rather</strong> have tea or coffee?"</li>
+      </ul>
+      <p><strong>Contraction :</strong> "I'd rather go."</p>
+
+      <h2>Would rather + proposition</h2>
+      <p>Quand on préfère que quelqu'un d'autre fasse quelque chose :</p>
+      <p>Structure : <strong>would rather + sujet + past simple</strong></p>
+      <ul>
+        <li>"I'd rather <strong>you didn't</strong> smoke here."</li>
+        <li>"She'd rather <strong>he came</strong> tomorrow."</li>
+      </ul>
+
+      <h2>Comparaison</h2>
+      <ul>
+        <li><strong>Had better</strong> = conseil/avertissement (tu ferais mieux)</li>
+        <li><strong>Would rather</strong> = préférence personnelle (je préférerais)</li>
+      </ul>
+    `,
+    date: '2025-01-15',
+    author: 'Antony Addy',
+    category: 'Grammaire - Expressions',
+    readTime: '5 min',
+    description: "Apprenez à utiliser had better et would rather pour donner des conseils et exprimer des préférences.",
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'had-better-would-rather'
+  },
+  {
+    id: 'although-despite-however',
+    title: 'Although, Despite, However : Exprimer la concession',
+    excerpt: 'Ces trois mots expriment tous un contraste, mais avec des structures différentes. Voici comment les utiliser.',
+    content: `
+      <p><strong>Although</strong>, <strong>despite</strong> et <strong>however</strong> expriment tous un <strong>contraste</strong> ou une concession, mais leur utilisation grammaticale diffère.</p>
+
+      <h2>ALTHOUGH - Bien que (+ proposition)</h2>
+      <p>Structure : <strong>although + sujet + verbe</strong></p>
+      <ul>
+        <li>"<strong>Although</strong> it was raining, we went out."</li>
+        <li>"I enjoyed the film <strong>although</strong> it was long."</li>
+        <li>"<strong>Although</strong> she's young, she's very mature."</li>
+      </ul>
+      <p>Synonymes : <strong>though</strong>, <strong>even though</strong></p>
+
+      <h2>DESPITE / IN SPITE OF - Malgré (+ nom/gérondif)</h2>
+      <p>Structure : <strong>despite + nom / -ing</strong></p>
+      <ul>
+        <li>"<strong>Despite</strong> the rain, we went out."</li>
+        <li>"<strong>Despite</strong> being tired, she kept working."</li>
+        <li>"He passed <strong>in spite of</strong> the difficulties."</li>
+      </ul>
+      <p>⚠️ Jamais suivi directement d'un verbe conjugué</p>
+
+      <h2>HOWEVER - Cependant (connecteur)</h2>
+      <p>Relie deux phrases indépendantes :</p>
+      <ul>
+        <li>"It was raining. <strong>However</strong>, we went out."</li>
+        <li>"The test was hard. <strong>However</strong>, most students passed."</li>
+      </ul>
+      <p><strong>Ponctuation :</strong> virgule après however</p>
+
+      <h2>Récapitulatif</h2>
+      <ul>
+        <li><strong>Although</strong> it rained... (+ phrase complète)</li>
+        <li><strong>Despite</strong> the rain... (+ nom)</li>
+        <li><strong>Despite</strong> raining... (+ -ing)</li>
+        <li>It rained. <strong>However</strong>, we... (nouvelle phrase)</li>
+      </ul>
+
+      <h2>Conversions</h2>
+      <p>"<strong>Although</strong> he was sick, he came to work."<br/>
+      = "<strong>Despite</strong> being sick, he came to work."<br/>
+      = "He was sick. <strong>However</strong>, he came to work."</p>
+    `,
+    date: '2025-01-14',
+    author: 'Antony Addy',
+    category: 'Grammaire - Connecteurs',
+    readTime: '5 min',
+    description: 'Maîtrisez although, despite et however pour exprimer le contraste en anglais.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'although-despite-however'
+  },
+  {
+    id: 'still-yet-already',
+    title: 'Still, Yet, Already : Le timing des actions',
+    excerpt: 'Still, yet et already parlent tous du temps, mais dans des contextes différents. Apprenez à les distinguer.',
+    content: `
+      <p><strong>Still</strong>, <strong>yet</strong> et <strong>already</strong> sont souvent confondus. Ils parlent tous du <strong>timing</strong> d'une action mais avec des nuances importantes.</p>
+
+      <h2>STILL - Toujours / Encore (action continue)</h2>
+      <p>L'action <strong>continue</strong> alors qu'on pourrait s'attendre à ce qu'elle soit terminée :</p>
+      <ul>
+        <li>"He's <strong>still</strong> sleeping." (il dort encore)</li>
+        <li>"I <strong>still</strong> live with my parents." (toujours)</li>
+        <li>"Do you <strong>still</strong> work there?"</li>
+      </ul>
+      <p><strong>Position :</strong> avant le verbe principal / après BE</p>
+
+      <h2>YET - Déjà / Encore (questions et négations)</h2>
+      <p>Pour demander si quelque chose s'est passé ou dire que non :</p>
+      <ul>
+        <li>"Have you finished <strong>yet</strong>?" (déjà terminé ?)</li>
+        <li>"I haven't eaten <strong>yet</strong>." (pas encore)</li>
+        <li>"She hasn't called <strong>yet</strong>."</li>
+      </ul>
+      <p><strong>Position :</strong> en fin de phrase</p>
+
+      <h2>ALREADY - Déjà (plus tôt que prévu)</h2>
+      <p>L'action s'est produite <strong>plus tôt qu'attendu</strong> :</p>
+      <ul>
+        <li>"I've <strong>already</strong> finished." (c'est fait)</li>
+        <li>"She's <strong>already</strong> here!" (déjà là, surprise)</li>
+        <li>"Have you <strong>already</strong> seen this film?" (si vite ?)</li>
+      </ul>
+      <p><strong>Position :</strong> avant le participe passé / en fin de phrase</p>
+
+      <h2>Comparaison</h2>
+      <ul>
+        <li>"He's <strong>still</strong> working." (il travaille toujours)</li>
+        <li>"He hasn't finished <strong>yet</strong>." (il n'a pas encore fini)</li>
+        <li>"He's <strong>already</strong> finished!" (il a déjà fini !)</li>
+      </ul>
+
+      <h2>Still + négatif (surprise/irritation)</h2>
+      <p>"He <strong>still</strong> hasn't called me." (toujours pas - frustration)</p>
+    `,
+    date: '2025-01-13',
+    author: 'Antony Addy',
+    category: 'Grammaire - Adverbes',
+    readTime: '5 min',
+    description: 'Comprenez la différence entre still, yet et already pour parler du timing en anglais.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'still-yet-already'
+  },
+  {
+    id: 'unless-as-long-as-provided',
+    title: 'Unless, As long as, Provided : Les conditions',
+    excerpt: 'Ces expressions introduisent des conditions de différentes manières. Découvrez leurs nuances.',
+    content: `
+      <p><strong>Unless</strong>, <strong>as long as</strong> et <strong>provided</strong> introduisent tous des <strong>conditions</strong>, mais avec des nuances différentes.</p>
+
+      <h2>UNLESS - Sauf si / À moins que</h2>
+      <p>Condition <strong>négative</strong> : = "if... not"</p>
+      <ul>
+        <li>"I'll go <strong>unless</strong> it rains." (= if it doesn't rain)</li>
+        <li>"<strong>Unless</strong> you hurry, you'll be late."</li>
+        <li>"Don't call me <strong>unless</strong> it's urgent."</li>
+      </ul>
+      <p>⚠️ Ne pas utiliser "not" après unless (double négation)</p>
+
+      <h2>AS LONG AS - Tant que / À condition que</h2>
+      <p>Condition <strong>nécessaire</strong> pour que quelque chose se produise :</p>
+      <ul>
+        <li>"You can go <strong>as long as</strong> you finish your homework."</li>
+        <li>"I'll help you <strong>as long as</strong> you listen."</li>
+        <li>"<strong>As long as</strong> you're happy, I'm happy."</li>
+      </ul>
+      <p>Synonyme : <strong>so long as</strong></p>
+
+      <h2>PROVIDED (THAT) - À condition que (formel)</h2>
+      <p>Condition <strong>formelle</strong>, souvent écrite :</p>
+      <ul>
+        <li>"You can leave early <strong>provided</strong> you finish your work."</li>
+        <li>"<strong>Provided that</strong> everyone agrees, we'll proceed."</li>
+        <li>"The event will happen <strong>providing</strong> the weather is good."</li>
+      </ul>
+      <p>Variantes : <strong>provided that</strong>, <strong>providing</strong></p>
+
+      <h2>Comparaison</h2>
+      <ul>
+        <li><strong>Unless</strong> = condition négative (sauf si)</li>
+        <li><strong>As long as</strong> = condition positive (tant que)</li>
+        <li><strong>Provided</strong> = condition formelle (à condition que)</li>
+      </ul>
+
+      <h2>Exemples équivalents</h2>
+      <p>"I'll come <strong>unless</strong> I'm busy." (sauf si je suis occupé)<br/>
+      "I'll come <strong>as long as</strong> I'm free." (tant que je suis libre)<br/>
+      "I'll come <strong>provided</strong> I have time." (à condition d'avoir le temps)</p>
+    `,
+    date: '2025-01-12',
+    author: 'Antony Addy',
+    category: 'Grammaire - Connecteurs',
+    readTime: '5 min',
+    description: 'Maîtrisez unless, as long as et provided pour exprimer des conditions en anglais.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'unless-as-long-as-provided'
   }
 ];
 
