@@ -27,7 +27,7 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
     
     <!-- Preload hero video poster -->
-    <link rel="preload" href="/public/assets/hero-poster.jpg" as="image" fetchpriority="high">
+    <link rel="preload" href="/assets/hero-poster.jpg" as="image" fetchpriority="high">
     
     <title>Formateur d'anglais pour adultes – Antony Addy</title>
     <meta name="description" content="Formations d'anglais en ligne ou en présentiel dans le Var. CPF via centres certifiés Qualiopi." />
@@ -35,7 +35,6 @@
     
     <!-- SEO -->
     <link rel="alternate" hreflang="fr" href="https://www.antonyaddy.com/" />
-    <link rel="alternate" hreflang="en" href="https://www.antonyaddy.com/en/" />
     <link rel="alternate" hreflang="x-default" href="https://www.antonyaddy.com/" />
     
     <link rel="icon" href="/lovable-uploads/2fd5760c-9208-4295-a1b5-87b41963111b.png" type="image/png">
@@ -65,7 +64,7 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/src/pwa/sw.js')
+          navigator.serviceWorker.register('/sw.js')
             .then(reg => console.log('Service Worker registered', reg))
             .catch(err => console.error('Service Worker registration failed', err));
         });
@@ -76,13 +75,13 @@
     <meta property="og:description" content="Formations d'anglais en ligne ou en présentiel dans le Var. CPF via centres certifiés Qualiopi." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.antonyaddy.com" />
-    <meta property="og:image" content="https://www.antonyaddy.com/social-preview.jpg" />
+    <meta property="og:image" content="https://www.antonyaddy.com/og/og-template.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@antonyaddy" />
     <meta name="twitter:title" content="Formateur d'anglais pour adultes – Antony Addy" />
     <meta name="twitter:description" content="Formations d'anglais en ligne ou en présentiel dans le Var. CPF via centres certifiés Qualiopi." />
-    <meta name="twitter:image" content="https://www.antonyaddy.com/social-preview.jpg" />
+    <meta name="twitter:image" content="https://www.antonyaddy.com/og/og-template.png" />
   </head>
 
   <body>
