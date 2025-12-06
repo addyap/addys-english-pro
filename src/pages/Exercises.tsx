@@ -1,12 +1,13 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3, GripVertical } from 'lucide-react';
+import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3, GripVertical, PenLine } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import AnimatedCard from '../components/AnimatedCard';
 import { allExercisesData as exercisesData, allExercisesList as exercisesList } from '../data/allExercises';
 import { grammarCategories } from '../data/grammarExercises';
 import { dragDropExercises } from '../data/dragDropExercises';
+import { sentenceTransformExercises, errorCorrectionExercises, fillParagraphExercises } from '../data/writingExercises';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import GrammarExplanation from '../components/GrammarExplanation';
@@ -248,22 +249,26 @@ const Exercises = () => {
         <section className="py-12">
           <div className="max-w-6xl mx-auto px-4">
             <Tabs defaultValue="grammar" className="w-full">
-              <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 mb-8">
-                <TabsTrigger value="grammar" className="gap-2">
+              <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-5 mb-8">
+                <TabsTrigger value="grammar" className="gap-1 text-xs sm:text-sm">
                   <GraduationCap className="h-4 w-4" />
                   <span className="hidden sm:inline">Grammar</span>
                 </TabsTrigger>
-                <TabsTrigger value="vocabulary" className="gap-2">
+                <TabsTrigger value="vocabulary" className="gap-1 text-xs sm:text-sm">
                   <Sparkles className="h-4 w-4" />
                   <span className="hidden sm:inline">Vocabulary</span>
                 </TabsTrigger>
-                <TabsTrigger value="reading" className="gap-2">
+                <TabsTrigger value="reading" className="gap-1 text-xs sm:text-sm">
                   <BookOpen className="h-4 w-4" />
                   <span className="hidden sm:inline">Reading</span>
                 </TabsTrigger>
-                <TabsTrigger value="dragdrop" className="gap-2">
+                <TabsTrigger value="dragdrop" className="gap-1 text-xs sm:text-sm">
                   <GripVertical className="h-4 w-4" />
                   <span className="hidden sm:inline">Drag & Drop</span>
+                </TabsTrigger>
+                <TabsTrigger value="writing" className="gap-1 text-xs sm:text-sm">
+                  <PenLine className="h-4 w-4" />
+                  <span className="hidden sm:inline">Writing</span>
                 </TabsTrigger>
               </TabsList>
 
@@ -575,6 +580,102 @@ const Exercises = () => {
                       </CardContent>
                     </Card>
                   ))}
+                </div>
+              </TabsContent>
+
+              {/* Writing Tab */}
+              <TabsContent value="writing" className="space-y-6">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-primary mb-2 font-heading">
+                    Writing Practice
+                  </h2>
+                  <p className="text-muted-foreground font-body">
+                    {sentenceTransformExercises.length + errorCorrectionExercises.length + fillParagraphExercises.length} exercices pour améliorer votre expression écrite
+                  </p>
+                </div>
+
+                {/* Sentence Transformation */}
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="h-8 w-1 bg-blue-500 rounded-full" />
+                    <h3 className="text-lg font-semibold text-foreground font-heading">Transformation de phrases</h3>
+                    <span className="text-xs bg-blue-500/10 text-blue-700 dark:text-blue-400 px-2 py-1 rounded-full">{sentenceTransformExercises.length} exercices</span>
+                  </div>
+                  <div className="grid md:grid-cols-3 gap-4">
+                    {sentenceTransformExercises.map((exercise) => (
+                      <Card key={exercise.id} className="hover:shadow-md transition-shadow group">
+                        <CardHeader className="pb-2">
+                          <CardTitle className="text-base group-hover:text-primary transition-colors">
+                            {exercise.title}
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-sm text-muted-foreground mb-4">{exercise.description}</p>
+                          <Link to={`/exercices/writing/transform/${exercise.id}`}>
+                            <Button size="sm" className="w-full gap-2">
+                              Commencer <ChevronRight className="h-4 w-4" />
+                            </Button>
+                          </Link>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Error Correction */}
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="h-8 w-1 bg-red-500 rounded-full" />
+                    <h3 className="text-lg font-semibold text-foreground font-heading">Correction d'erreurs</h3>
+                    <span className="text-xs bg-red-500/10 text-red-700 dark:text-red-400 px-2 py-1 rounded-full">{errorCorrectionExercises.length} exercices</span>
+                  </div>
+                  <div className="grid md:grid-cols-3 gap-4">
+                    {errorCorrectionExercises.map((exercise) => (
+                      <Card key={exercise.id} className="hover:shadow-md transition-shadow group">
+                        <CardHeader className="pb-2">
+                          <CardTitle className="text-base group-hover:text-primary transition-colors">
+                            {exercise.title}
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-sm text-muted-foreground mb-4">{exercise.description}</p>
+                          <Link to={`/exercices/writing/error/${exercise.id}`}>
+                            <Button size="sm" className="w-full gap-2">
+                              Commencer <ChevronRight className="h-4 w-4" />
+                            </Button>
+                          </Link>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Fill Paragraphs */}
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="h-8 w-1 bg-green-500 rounded-full" />
+                    <h3 className="text-lg font-semibold text-foreground font-heading">Textes à trous</h3>
+                    <span className="text-xs bg-green-500/10 text-green-700 dark:text-green-400 px-2 py-1 rounded-full">{fillParagraphExercises.length} exercices</span>
+                  </div>
+                  <div className="grid md:grid-cols-3 gap-4">
+                    {fillParagraphExercises.map((exercise) => (
+                      <Card key={exercise.id} className="hover:shadow-md transition-shadow group">
+                        <CardHeader className="pb-2">
+                          <CardTitle className="text-base group-hover:text-primary transition-colors">
+                            {exercise.title}
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-sm text-muted-foreground mb-4">{exercise.description}</p>
+                          <Link to={`/exercices/writing/fill/${exercise.id}`}>
+                            <Button size="sm" className="w-full gap-2">
+                              Commencer <ChevronRight className="h-4 w-4" />
+                            </Button>
+                          </Link>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
                 </div>
               </TabsContent>
             </Tabs>
