@@ -1763,6 +1763,57 @@ export const exercisesData: Exercise[] = [
       { id: 9, question: "I need to ___ more money.", options: ["earn", "win"], correctAnswer: "earn", explanation: "EARN money (travail)." },
       { id: 10, question: "He ___ the lottery!", options: ["earned", "won"], correctAnswer: "won", explanation: "WIN the lottery." }
     ]
+  },
+  {
+    id: 151,
+    title: "TEMPS MÉLANGÉS (1) : Present Simple vs Present Continuous",
+    description: "Choisir entre Present Simple (habitudes, vérités générales) et Present Continuous (actions en cours).",
+    questions: [
+      { id: 1, question: "I ___ coffee every morning.", options: ["drink", "am drinking"], correctAnswer: "drink", explanation: "Present Simple pour une habitude quotidienne." },
+      { id: 2, question: "Look! She ___ in the rain.", options: ["dances", "is dancing"], correctAnswer: "is dancing", explanation: "Present Continuous pour une action en cours (Look!)." },
+      { id: 3, question: "Water ___ at 100°C.", options: ["boils", "is boiling"], correctAnswer: "boils", explanation: "Present Simple pour une vérité scientifique." },
+      { id: 4, question: "Be quiet! The baby ___.", options: ["sleeps", "is sleeping"], correctAnswer: "is sleeping", explanation: "Present Continuous pour une action en cours (Be quiet!)." },
+      { id: 5, question: "He usually ___ to work by bus.", options: ["goes", "is going"], correctAnswer: "goes", explanation: "Present Simple pour une habitude (usually)." },
+      { id: 6, question: "I ___ a book at the moment.", options: ["read", "am reading"], correctAnswer: "am reading", explanation: "Present Continuous pour une action en cours (at the moment)." },
+      { id: 7, question: "The sun ___ in the east.", options: ["rises", "is rising"], correctAnswer: "rises", explanation: "Present Simple pour un fait permanent." },
+      { id: 8, question: "Why ___ you ___ at me?", options: ["do / look", "are / looking"], correctAnswer: "are / looking", explanation: "Present Continuous pour une action en cours maintenant." },
+      { id: 9, question: "She ___ English and French.", options: ["speaks", "is speaking"], correctAnswer: "speaks", explanation: "Present Simple pour une capacité permanente." },
+      { id: 10, question: "Listen! Someone ___ at the door.", options: ["knocks", "is knocking"], correctAnswer: "is knocking", explanation: "Present Continuous avec Listen! (action en cours)." }
+    ]
+  },
+  {
+    id: 152,
+    title: "TEMPS MÉLANGÉS (2) : Past Simple vs Past Continuous vs Past Perfect",
+    description: "Choisir entre Past Simple (action terminée), Past Continuous (action en cours dans le passé) et Past Perfect (action antérieure).",
+    questions: [
+      { id: 1, question: "When I arrived, they ___ dinner.", options: ["had", "were having", "had had"], correctAnswer: "were having", explanation: "Past Continuous pour une action en cours quand une autre se produit." },
+      { id: 2, question: "She ___ the film before, so she didn't want to watch it again.", options: ["saw", "was seeing", "had seen"], correctAnswer: "had seen", explanation: "Past Perfect pour une action antérieure à une autre action passée." },
+      { id: 3, question: "I ___ to Paris last summer.", options: ["went", "was going", "had gone"], correctAnswer: "went", explanation: "Past Simple pour une action terminée (last summer)." },
+      { id: 4, question: "While I ___, the phone rang.", options: ["studied", "was studying", "had studied"], correctAnswer: "was studying", explanation: "Past Continuous pour l'action en cours interrompue par 'rang'." },
+      { id: 5, question: "By the time he arrived, we ___ eating.", options: ["finished", "were finishing", "had finished"], correctAnswer: "had finished", explanation: "Past Perfect avec 'By the time' (action antérieure)." },
+      { id: 6, question: "What ___ you ___ at 8pm yesterday?", options: ["did / do", "were / doing", "had / done"], correctAnswer: "were / doing", explanation: "Past Continuous pour demander une action en cours à un moment précis du passé." },
+      { id: 7, question: "After she ___ her homework, she went out.", options: ["finished", "was finishing", "had finished"], correctAnswer: "had finished", explanation: "Past Perfect après 'After' pour l'action antérieure." },
+      { id: 8, question: "They ___ TV when the storm started.", options: ["watched", "were watching", "had watched"], correctAnswer: "were watching", explanation: "Past Continuous pour l'action en cours interrompue." },
+      { id: 9, question: "I ___ my keys, so I couldn't get in.", options: ["lost", "was losing", "had lost"], correctAnswer: "had lost", explanation: "Past Perfect : la perte des clés est antérieure à l'impossibilité d'entrer." },
+      { id: 10, question: "She ___ in London for 5 years before moving to Paris.", options: ["lived", "was living", "had lived"], correctAnswer: "had lived", explanation: "Past Perfect pour une durée antérieure à une action passée." }
+    ]
+  },
+  {
+    id: 153,
+    title: "TEMPS MÉLANGÉS (3) : Will vs Going to vs Present Continuous (Future)",
+    description: "Choisir entre Will (décision spontanée, prédiction), Going to (intention, prédiction évidente) et Present Continuous (plan fixé).",
+    questions: [
+      { id: 1, question: "Look at those clouds! It ___ rain.", options: ["will", "is going to", "is raining"], correctAnswer: "is going to", explanation: "Going to pour une prédiction basée sur une évidence présente." },
+      { id: 2, question: "I ___ my sister tomorrow. We've booked a restaurant.", options: ["will meet", "am going to meet", "am meeting"], correctAnswer: "am meeting", explanation: "Present Continuous pour un plan déjà organisé (booked)." },
+      { id: 3, question: "A: The phone is ringing! B: I ___ get it.", options: ["will", "am going to", "am getting"], correctAnswer: "will", explanation: "Will pour une décision spontanée prise au moment de parler." },
+      { id: 4, question: "I ___ learn Spanish next year. I've already enrolled.", options: ["will", "am going to", "am learning"], correctAnswer: "am going to", explanation: "Going to pour une intention/décision déjà prise." },
+      { id: 5, question: "In 50 years, robots ___ do most jobs.", options: ["will", "are going to", "are doing"], correctAnswer: "will", explanation: "Will pour une prédiction future lointaine." },
+      { id: 6, question: "She ___ the dentist at 3pm. It's in her diary.", options: ["will see", "is going to see", "is seeing"], correctAnswer: "is seeing", explanation: "Present Continuous pour un rendez-vous fixé." },
+      { id: 7, question: "Be careful! You ___ fall!", options: ["will", "are going to", "are falling"], correctAnswer: "are going to", explanation: "Going to pour une prédiction basée sur la situation présente." },
+      { id: 8, question: "I promise I ___ help you with your homework.", options: ["will", "am going to", "am helping"], correctAnswer: "will", explanation: "Will pour une promesse." },
+      { id: 9, question: "We ___ to Italy this summer. The flights are booked.", options: ["will go", "are going to go", "are going"], correctAnswer: "are going", explanation: "Present Continuous pour un voyage déjà organisé." },
+      { id: 10, question: "I think Brazil ___ win the World Cup.", options: ["will", "is going to", "is winning"], correctAnswer: "will", explanation: "Will avec 'I think' pour une opinion/prédiction." }
+    ]
   }
 ];
 
@@ -1817,4 +1868,7 @@ export const exercisesList = [
   { id: 48, title: "FAUX AMIS (1)" },
   { id: 49, title: "FAUX AMIS (2)" },
   { id: 50, title: "GAGNER : EARN ou WIN" },
+  { id: 151, title: "TEMPS MÉLANGÉS (1) : Present Simple vs Present Continuous" },
+  { id: 152, title: "TEMPS MÉLANGÉS (2) : Past Simple vs Past Continuous vs Past Perfect" },
+  { id: 153, title: "TEMPS MÉLANGÉS (3) : Will vs Going to vs Present Continuous (Future)" },
 ];
