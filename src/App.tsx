@@ -41,6 +41,7 @@ const Reading = lazy(() => import("./pages/Reading"));
 const ReadingDetail = lazy(() => import("./pages/ReadingDetail"));
 const InteractiveStory = lazy(() => import("./pages/InteractiveStory"));
 const DragDropExerciseDetail = lazy(() => import("./pages/DragDropExerciseDetail"));
+const WritingExerciseDetail = lazy(() => import("./pages/WritingExerciseDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const PageLoader = () => (
@@ -83,6 +84,7 @@ const AppContent = () => {
               <Route path="/exercices" element={<Exercises />} />
               <Route path="/exercices/:id" element={<ExerciseDetail />} />
               <Route path="/exercices/drag-drop/:id" element={<DragDropExerciseDetail />} />
+              <Route path="/exercices/writing/:type/:id" element={<WritingExerciseDetail />} />
               <Route path="/mentions-legales" element={<LegalNotices />} />
               <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
               <Route path="/install" element={<Install />} />
