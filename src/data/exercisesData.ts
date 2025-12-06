@@ -1814,6 +1814,57 @@ export const exercisesData: Exercise[] = [
       { id: 9, question: "We ___ to Italy this summer. The flights are booked.", options: ["will go", "are going to go", "are going"], correctAnswer: "are going", explanation: "Present Continuous pour un voyage déjà organisé." },
       { id: 10, question: "I think Brazil ___ win the World Cup.", options: ["will", "is going to", "is winning"], correctAnswer: "will", explanation: "Will avec 'I think' pour une opinion/prédiction." }
     ]
+  },
+  {
+    id: 154,
+    title: "COLLOCATIONS (1) : Verbes + Noms",
+    description: "Les collocations sont des combinaisons de mots qui vont naturellement ensemble en anglais.",
+    questions: [
+      { id: 1, question: "I need to ___ a decision.", options: ["make", "do", "take"], correctAnswer: "make", explanation: "MAKE a decision (prendre une décision)." },
+      { id: 2, question: "She ___ a photo of the sunset.", options: ["made", "took", "did"], correctAnswer: "took", explanation: "TAKE a photo (prendre une photo)." },
+      { id: 3, question: "We should ___ a break.", options: ["make", "take", "do"], correctAnswer: "take", explanation: "TAKE a break (faire une pause)." },
+      { id: 4, question: "He ___ a terrible mistake.", options: ["made", "did", "took"], correctAnswer: "made", explanation: "MAKE a mistake (faire une erreur)." },
+      { id: 5, question: "Can I ___ a suggestion?", options: ["do", "make", "give"], correctAnswer: "make", explanation: "MAKE a suggestion (faire une suggestion)." },
+      { id: 6, question: "I ___ a cold last week.", options: ["caught", "took", "made"], correctAnswer: "caught", explanation: "CATCH a cold (attraper un rhume)." },
+      { id: 7, question: "She ___ her best in the exam.", options: ["made", "did", "gave"], correctAnswer: "did", explanation: "DO your best (faire de son mieux)." },
+      { id: 8, question: "He ___ me a favour.", options: ["made", "did", "gave"], correctAnswer: "did", explanation: "DO someone a favour (rendre un service)." },
+      { id: 9, question: "There was ___ rain last night.", options: ["strong", "heavy", "hard"], correctAnswer: "heavy", explanation: "HEAVY rain (pluie forte) - pas 'strong rain'." },
+      { id: 10, question: "I need to ___ an appointment.", options: ["do", "make", "take"], correctAnswer: "make", explanation: "MAKE an appointment (prendre rendez-vous)." }
+    ]
+  },
+  {
+    id: 155,
+    title: "PHRASAL VERBS (1) : Verbes à particules courants",
+    description: "Les phrasal verbs sont des verbes composés d'un verbe + particule(s) qui changent le sens.",
+    questions: [
+      { id: 1, question: "Please ___ your shoes before entering.", options: ["take off", "take out", "take away"], correctAnswer: "take off", explanation: "TAKE OFF = enlever (vêtements, chaussures)." },
+      { id: 2, question: "I need to ___ early tomorrow for my flight.", options: ["get up", "get on", "get in"], correctAnswer: "get up", explanation: "GET UP = se lever." },
+      { id: 3, question: "Can you ___ the music? It's too loud.", options: ["turn down", "turn off", "turn up"], correctAnswer: "turn down", explanation: "TURN DOWN = baisser (le volume)." },
+      { id: 4, question: "The meeting was ___ until next week.", options: ["put off", "put on", "put away"], correctAnswer: "put off", explanation: "PUT OFF = reporter, remettre à plus tard." },
+      { id: 5, question: "I ___ my old friend at the supermarket.", options: ["ran into", "ran out", "ran over"], correctAnswer: "ran into", explanation: "RUN INTO = rencontrer par hasard." },
+      { id: 6, question: "We've ___ of milk. Can you buy some?", options: ["run out", "run off", "run into"], correctAnswer: "run out", explanation: "RUN OUT OF = être à court de, ne plus avoir." },
+      { id: 7, question: "I'll ___ you ___ at the airport.", options: ["pick / up", "pick / out", "pick / on"], correctAnswer: "pick / up", explanation: "PICK UP = aller chercher quelqu'un." },
+      { id: 8, question: "She ___ after her mother.", options: ["takes", "looks", "goes"], correctAnswer: "takes", explanation: "TAKE AFTER = ressembler à (famille)." },
+      { id: 9, question: "I'm ___ to seeing you again.", options: ["looking forward", "looking after", "looking for"], correctAnswer: "looking forward", explanation: "LOOK FORWARD TO = avoir hâte de." },
+      { id: 10, question: "Can you ___ the kids while I'm out?", options: ["look after", "look for", "look up"], correctAnswer: "look after", explanation: "LOOK AFTER = s'occuper de, surveiller." }
+    ]
+  },
+  {
+    id: 156,
+    title: "IDIOMS (1) : Expressions idiomatiques",
+    description: "Les idiomes sont des expressions dont le sens ne peut pas être deviné par les mots individuels.",
+    questions: [
+      { id: 1, question: "It's raining ___.", options: ["cats and dogs", "birds and bees", "fish and chips"], correctAnswer: "cats and dogs", explanation: "Raining cats and dogs = il pleut des cordes." },
+      { id: 2, question: "The exam was a piece of ___.", options: ["cake", "pie", "bread"], correctAnswer: "cake", explanation: "A piece of cake = très facile." },
+      { id: 3, question: "Let's call it a ___. I'm tired.", options: ["day", "night", "time"], correctAnswer: "day", explanation: "Call it a day = arrêter de travailler pour aujourd'hui." },
+      { id: 4, question: "He's feeling under the ___.", options: ["weather", "cloud", "rain"], correctAnswer: "weather", explanation: "Under the weather = ne pas se sentir bien, malade." },
+      { id: 5, question: "Break a ___! (Good luck)", options: ["leg", "arm", "finger"], correctAnswer: "leg", explanation: "Break a leg = bonne chance (théâtre)." },
+      { id: 6, question: "It cost an arm and a ___.", options: ["leg", "hand", "foot"], correctAnswer: "leg", explanation: "Cost an arm and a leg = coûter très cher." },
+      { id: 7, question: "She spilled the ___.", options: ["beans", "milk", "water"], correctAnswer: "beans", explanation: "Spill the beans = révéler un secret." },
+      { id: 8, question: "He's the black ___ of the family.", options: ["sheep", "horse", "dog"], correctAnswer: "sheep", explanation: "Black sheep = mouton noir (le différent de la famille)." },
+      { id: 9, question: "Once in a blue ___.", options: ["moon", "sky", "star"], correctAnswer: "moon", explanation: "Once in a blue moon = très rarement." },
+      { id: 10, question: "Kill two birds with one ___.", options: ["stone", "shot", "arrow"], correctAnswer: "stone", explanation: "Kill two birds with one stone = faire d'une pierre deux coups." }
+    ]
   }
 ];
 
@@ -1871,4 +1922,7 @@ export const exercisesList = [
   { id: 151, title: "TEMPS MÉLANGÉS (1) : Present Simple vs Present Continuous" },
   { id: 152, title: "TEMPS MÉLANGÉS (2) : Past Simple vs Past Continuous vs Past Perfect" },
   { id: 153, title: "TEMPS MÉLANGÉS (3) : Will vs Going to vs Present Continuous (Future)" },
+  { id: 154, title: "COLLOCATIONS (1) : Verbes + Noms" },
+  { id: 155, title: "PHRASAL VERBS (1) : Verbes à particules courants" },
+  { id: 156, title: "IDIOMS (1) : Expressions idiomatiques" },
 ];
