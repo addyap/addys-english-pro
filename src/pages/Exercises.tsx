@@ -1,11 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3 } from 'lucide-react';
+import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3, GripVertical } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import AnimatedCard from '../components/AnimatedCard';
 import { allExercisesData as exercisesData, allExercisesList as exercisesList } from '../data/allExercises';
 import { grammarCategories } from '../data/grammarExercises';
+import { dragDropExercises } from '../data/dragDropExercises';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import GrammarExplanation from '../components/GrammarExplanation';
@@ -247,18 +248,22 @@ const Exercises = () => {
         <section className="py-12">
           <div className="max-w-6xl mx-auto px-4">
             <Tabs defaultValue="grammar" className="w-full">
-              <TabsList className="grid w-full max-w-lg mx-auto grid-cols-3 mb-8">
+              <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 mb-8">
                 <TabsTrigger value="grammar" className="gap-2">
                   <GraduationCap className="h-4 w-4" />
-                  Grammar
+                  <span className="hidden sm:inline">Grammar</span>
                 </TabsTrigger>
                 <TabsTrigger value="vocabulary" className="gap-2">
                   <Sparkles className="h-4 w-4" />
-                  Vocabulary
+                  <span className="hidden sm:inline">Vocabulary</span>
                 </TabsTrigger>
                 <TabsTrigger value="reading" className="gap-2">
                   <BookOpen className="h-4 w-4" />
-                  Reading
+                  <span className="hidden sm:inline">Reading</span>
+                </TabsTrigger>
+                <TabsTrigger value="dragdrop" className="gap-2">
+                  <GripVertical className="h-4 w-4" />
+                  <span className="hidden sm:inline">Drag & Drop</span>
                 </TabsTrigger>
               </TabsList>
 
@@ -525,6 +530,51 @@ const Exercises = () => {
                       Voir tous les textes
                     </Button>
                   </Link>
+                </div>
+              </TabsContent>
+
+              {/* Drag & Drop Tab */}
+              <TabsContent value="dragdrop" className="space-y-6">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-primary mb-2 font-heading">
+                    Ordre des mots - Drag & Drop
+                  </h2>
+                  <p className="text-muted-foreground font-body">
+                    {dragDropExercises.length} exercices interactifs - Glissez les mots pour former des phrases correctes
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-4">
+                  {dragDropExercises.map((exercise) => (
+                    <Card key={exercise.id} className="hover:shadow-md transition-shadow group">
+                      <CardHeader className="pb-2">
+                        <div className="flex items-start gap-3">
+                          <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center">
+                            <GripVertical className="h-5 w-5 text-violet-600 dark:text-violet-400" />
+                          </div>
+                          <div className="flex-1">
+                            <CardTitle className="text-base group-hover:text-primary transition-colors">
+                              {exercise.title}
+                            </CardTitle>
+                            <p className="text-xs text-muted-foreground mt-1">
+                              {exercise.sentences.length} phrases à reconstruire
+                            </p>
+                          </div>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          {exercise.description}
+                        </p>
+                        <Link to={`/exercices/drag-drop/${exercise.id}`}>
+                          <Button size="sm" className="w-full gap-2">
+                            Commencer
+                            <ChevronRight className="h-4 w-4" />
+                          </Button>
+                        </Link>
+                      </CardContent>
+                    </Card>
+                  ))}
                 </div>
               </TabsContent>
             </Tabs>
