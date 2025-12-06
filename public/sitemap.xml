@@ -608,6 +608,19 @@
     <priority>0.6</priority>
   </url>
   
+  <!-- New Vocabulary Exercises (Mixed Tenses, Collocations, Phrasal Verbs, Idioms) -->
+  <url><loc>https://www.antonyaddy.com/exercices/151</loc><lastmod>2025-12-06</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.antonyaddy.com/exercices/152</loc><lastmod>2025-12-06</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.antonyaddy.com/exercices/153</loc><lastmod>2025-12-06</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.antonyaddy.com/exercices/154</loc><lastmod>2025-12-06</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.antonyaddy.com/exercices/155</loc><lastmod>2025-12-06</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.antonyaddy.com/exercices/156</loc><lastmod>2025-12-06</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  
+  <!-- Drag & Drop Exercises -->
+  <url><loc>https://www.antonyaddy.com/exercices/drag-drop/1</loc><lastmod>2025-12-06</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.antonyaddy.com/exercices/drag-drop/2</loc><lastmod>2025-12-06</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.antonyaddy.com/exercices/drag-drop/3</loc><lastmod>2025-12-06</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  
   <!-- Legal -->
   <url>
     <loc>https://www.antonyaddy.com/politique-confidentialite</loc>
