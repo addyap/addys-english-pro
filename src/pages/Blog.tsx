@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
@@ -8,6 +8,7 @@ import BlogSearch from '../components/BlogSearch';
 import AnimatedCard from '../components/AnimatedCard';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { grammarArticles } from '@/data/grammarBlogPosts';
+import { runDevAudit } from '@/utils/blogInternalLinks';
 
 const Blog = () => {
   useScrollTracking('blog');
@@ -47,6 +48,13 @@ const Blog = () => {
   const articles = [...baseArticles, ...grammarArticles].sort((a, b) => 
     new Date(b.date).getTime() - new Date(a.date).getTime()
   );
+
+  // Run internal links audit in dev mode only (once)
+  useEffect(() => {
+    const allPosts = articles.map(a => ({ id: a.id, category: a.category }));
+    runDevAudit(allPosts);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [filteredArticles, setFilteredArticles] = useState<typeof articles>(articles);
 

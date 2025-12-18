@@ -327,31 +327,70 @@ export function getReadingLink(postId?: string): { href: string; label: string }
 
 /**
  * Audit function: check coverage for all posts
- * Returns posts with no related topics (before fallback)
+ * Accepts real post objects with id and category
  */
-export function auditRelatedLinksCoverage(allPostIds: string[]): {
+export interface AuditResult {
   postsWithNoCluster: string[];
-  postsWithFallback: string[];
-  allPostsHaveRelated: boolean;
-} {
+  postsUsingFallback: string[];
+  postsWithNoRelatedAfterFallback: string[];
+  totalPosts: number;
+  clusteredCount: number;
+  fallbackCount: number;
+  failedCount: number;
+}
+
+export function auditRelatedLinksCoverage(allPosts: Array<{ id: string; category: string }>): AuditResult {
   const postsWithNoCluster: string[] = [];
-  const postsWithFallback: string[] = [];
+  const postsUsingFallback: string[] = [];
+  const postsWithNoRelatedAfterFallback: string[] = [];
   
-  for (const postId of allPostIds) {
-    const clusterTopics = topicClusters[postId];
-    if (!clusterTopics || clusterTopics.length === 0) {
-      postsWithNoCluster.push(postId);
-      // Check if fallback produces results
-      const fallback = getFallbackRelated(postId, '');
-      if (fallback.length > 0) {
-        postsWithFallback.push(postId);
+  for (const post of allPosts) {
+    const clusterTopics = topicClusters[post.id];
+    const hasCluster = clusterTopics && clusterTopics.length > 0 && clusterTopics.some(id => blogTitles[id]);
+    
+    if (!hasCluster) {
+      postsWithNoCluster.push(post.id);
+      // Check if fallback produces valid results with titles
+      const fallback = getFallbackRelated(post.id, post.category);
+      const validFallback = fallback.filter(id => blogTitles[id]);
+      
+      if (validFallback.length > 0) {
+        postsUsingFallback.push(post.id);
+      } else {
+        postsWithNoRelatedAfterFallback.push(post.id);
       }
     }
   }
   
   return {
     postsWithNoCluster,
-    postsWithFallback,
-    allPostsHaveRelated: postsWithNoCluster.length === 0 || postsWithFallback.length === postsWithNoCluster.length
+    postsUsingFallback,
+    postsWithNoRelatedAfterFallback,
+    totalPosts: allPosts.length,
+    clusteredCount: allPosts.length - postsWithNoCluster.length,
+    fallbackCount: postsUsingFallback.length,
+    failedCount: postsWithNoRelatedAfterFallback.length
   };
+}
+
+/**
+ * Run audit in dev mode and log summary
+ */
+export function runDevAudit(allPosts: Array<{ id: string; category: string }>): void {
+  if (import.meta.env.PROD) return;
+  
+  const result = auditRelatedLinksCoverage(allPosts);
+  
+  console.group('[Blog Internal Links Audit]');
+  console.log(`Total posts: ${result.totalPosts}`);
+  console.log(`With explicit cluster: ${result.clusteredCount}`);
+  console.log(`Using fallback: ${result.fallbackCount}`);
+  console.log(`Failed (no related): ${result.failedCount}`);
+  
+  if (result.postsWithNoRelatedAfterFallback.length > 0) {
+    console.warn('Posts with NO related links:', result.postsWithNoRelatedAfterFallback);
+  } else {
+    console.log('✓ All posts have related links');
+  }
+  console.groupEnd();
 }
