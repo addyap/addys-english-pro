@@ -6,12 +6,15 @@ import SiteLogo from "@/components/SiteLogo";
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 interface LayoutProps {
   children: React.ReactNode;
+  breadcrumbTitle?: string;
+  breadcrumbSection?: { label: string; path: string };
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const year = new Date().getFullYear();
@@ -182,6 +185,9 @@ const Layout = ({ children }: LayoutProps) => {
           )}
         </div>
       </header>
+
+      {/* Breadcrumbs */}
+      <Breadcrumbs customTitle={breadcrumbTitle} customSection={breadcrumbSection} />
 
       {/* Main Content */}
       <main>{children}</main>
