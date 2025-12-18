@@ -13,45 +13,6 @@ import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 const Home = () => {
   useScrollTracking('home');
   useTimeTracking('home');
-  const homeJsonLd = [
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Antony Addy — Formateur d'anglais",
-      "url": "https://www.antonyaddy.com",
-      "inLanguage": "fr-FR",
-      "description": "Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://www.antonyaddy.com/blog?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Antony Addy - Formateur d'anglais",
-      "description": "Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes. Formateur britannique natif, certifié FPA.",
-      "url": "https://www.antonyaddy.com",
-      "image": "https://www.antonyaddy.com/og/og-template.png",
-      "logo": "https://www.antonyaddy.com/assets/logo-512.png",
-      "email": "formations@antonyaddy.com",
-      "areaServed": {
-        "@type": "Country",
-        "name": "FR"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressRegion": "Alpes-Maritimes",
-        "addressCountry": "FR"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/antony-addy"
-      ],
-      "priceRange": "€€",
-      "serviceType": "Formation d'anglais professionnel"
-    }
-  ];
 
   const features = [{
     icon: Globe,

@@ -34,15 +34,31 @@ const sectionMappings: Record<string, { section: string; sectionPath: string }> 
   '/story/': { section: 'Histoires interactives', sectionPath: '/reading' },
 };
 
-// Helper: convert slug to human-readable Title Case
+// Helper: convert slug to human-readable Title Case with minor word handling
 function slugToTitle(slug: string): string {
   if (!slug) return '';
   const decoded = decodeURIComponent(slug);
+  
+  // Minor words that should be lowercase (unless first word)
+  const minorWords = ['vs', 'and', 'or', 'of', 'the', 'a', 'an', 'in', 'on', 'at', 'to', 'for'];
+  
   return decoded
     .replace(/[-_]+/g, ' ')  // Replace dashes/underscores with space
     .replace(/\s+/g, ' ')    // Collapse multiple spaces
     .trim()
-    .replace(/\b\w/g, (char) => char.toUpperCase());  // Title Case
+    .split(' ')
+    .map((word, index) => {
+      const lower = word.toLowerCase();
+      // First word always capitalized, minor words lowercase
+      if (index === 0) {
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      }
+      if (minorWords.includes(lower)) {
+        return lower;
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    })
+    .join(' ');
 }
 
 interface BreadcrumbsProps {
