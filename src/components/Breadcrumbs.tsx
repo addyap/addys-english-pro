@@ -24,15 +24,14 @@ const routeConfig: Record<string, { label: string; section?: string; sectionPath
   '/install': { label: 'Installer' },
 };
 
-// Section mappings for nested routes
+// Section mappings for nested routes - must match actual route patterns in App.tsx
 const sectionMappings: Record<string, { section: string; sectionPath: string }> = {
   '/blog/': { section: 'Blog', sectionPath: '/blog' },
+  '/exercices/drag-drop/': { section: 'Exercices interactifs', sectionPath: '/exercices' },
+  '/exercices/writing/': { section: 'Exercices d\'écriture', sectionPath: '/exercices' },
   '/exercices/': { section: 'Exercices', sectionPath: '/exercices' },
   '/reading/': { section: 'Compréhension écrite', sectionPath: '/reading' },
   '/story/': { section: 'Histoires interactives', sectionPath: '/reading' },
-  '/grammar/': { section: 'Grammaire', sectionPath: '/exercices' },
-  '/drag-drop/': { section: 'Exercices', sectionPath: '/exercices' },
-  '/writing/': { section: 'Écriture', sectionPath: '/exercices' },
 };
 
 // Helper: convert slug to human-readable Title Case
@@ -40,9 +39,10 @@ function slugToTitle(slug: string): string {
   if (!slug) return '';
   const decoded = decodeURIComponent(slug);
   return decoded
-    .replace(/[-_]/g, ' ')
-    .replace(/\b\w/g, (char) => char.toUpperCase())
-    .trim();
+    .replace(/[-_]+/g, ' ')  // Replace dashes/underscores with space
+    .replace(/\s+/g, ' ')    // Collapse multiple spaces
+    .trim()
+    .replace(/\b\w/g, (char) => char.toUpperCase());  // Title Case
 }
 
 interface BreadcrumbsProps {
