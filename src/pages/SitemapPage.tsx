@@ -31,6 +31,7 @@ const SitemapPage = () => {
         title="Plan du site – Antony Addy"
         description="Retrouvez toutes les pages du site antonyaddy.com : formations, exercices, blog, et ressources pour apprendre l'anglais."
         keywords={["plan du site", "sitemap", "navigation", "antonyaddy"]}
+        noIndex={true}
       />
 
       <div className="min-h-screen bg-background py-12">

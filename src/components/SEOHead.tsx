@@ -79,16 +79,48 @@ export type SEOProps = {
 };
 
 /**
+ * Normalizes a URL for canonical usage:
+ * - Always https
+ * - No trailing slash (except root)
+ * - Strip query params and hash
+ */
+function normalizeCanonicalUrl(url: string): string {
+  try {
+    // Handle relative paths
+    const fullUrl = url.startsWith('http') ? url : `${SITE_URL}${url}`;
+    const parsed = new URL(fullUrl);
+    
+    // Ensure https
+    parsed.protocol = 'https:';
+    
+    // Strip query params and hash
+    parsed.search = '';
+    parsed.hash = '';
+    
+    // Remove trailing slash except for root
+    let pathname = parsed.pathname;
+    if (pathname !== '/' && pathname.endsWith('/')) {
+      pathname = pathname.slice(0, -1);
+    }
+    
+    return `${parsed.origin}${pathname}`;
+  } catch {
+    // Fallback for invalid URLs
+    const cleanPath = url === "/" ? "/" : url.replace(/\/$/, "").split('?')[0].split('#')[0];
+    return `${SITE_URL}${cleanPath}`;
+  }
+}
+
+/**
  * Generates a clean canonical URL from a path
  */
 function generateCanonicalUrl(path: string): string {
-  // Remove trailing slash unless it's the root
-  const cleanPath = path === "/" ? "/" : path.replace(/\/$/, "");
-  return `${SITE_URL}${cleanPath}`;
+  return normalizeCanonicalUrl(path);
 }
 
 /**
  * Generates default self-referencing hreflangs
+ * Site is primarily French, so we use fr + x-default
  */
 function generateDefaultHreflangs(canonicalUrl: string): Hreflang[] {
   return [
