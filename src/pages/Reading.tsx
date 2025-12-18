@@ -44,15 +44,16 @@ export default function Reading() {
   return (
     <>
       <SEOHead
-        title="Compréhension Écrite | Reading Comprehension"
-        description="Améliorez votre compréhension de l'anglais avec des textes et questions interactifs. Exercices de lecture pour tous les niveaux."
+        title="Compréhension Écrite en Anglais | Reading Comprehension Exercises"
+        description="Améliorez votre compréhension de l'anglais écrit avec 12 textes et histoires interactives. Exercices de lecture pour tous les niveaux (A2-C1), créés par un formateur britannique natif certifié FPA."
         canonical="/reading"
+        keywords={["compréhension écrite anglais", "reading comprehension", "textes anglais", "exercices lecture anglais", "histoires interactives anglais", "apprendre lire anglais"]}
       />
 
       <div className="min-h-screen bg-background py-12">
         <div className="max-w-6xl mx-auto px-4">
           {/* Header */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
               <BookOpen className="h-8 w-8 text-primary" />
             </div>
@@ -62,6 +63,26 @@ export default function Reading() {
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-body">
               Lisez des textes en anglais et testez votre compréhension avec des questions interactives
             </p>
+          </div>
+
+          {/* Intro Section */}
+          <div className="bg-card border border-border rounded-xl p-6 mb-10">
+            <h2 className="text-xl font-semibold text-foreground mb-3 font-heading">
+              Pourquoi travailler la compréhension écrite ?
+            </h2>
+            <div className="text-muted-foreground space-y-3 font-body">
+              <p>
+                La lecture en anglais est une compétence essentielle pour progresser. Que vous prépariez le <strong className="text-primary">TOEIC</strong>, travailliez dans un contexte international, ou souhaitiez simplement lire des articles et documents en anglais, ces exercices vous aideront à développer votre <strong className="text-primary">vocabulaire</strong>, votre <strong className="text-primary">compréhension contextuelle</strong> et votre <strong className="text-primary">vitesse de lecture</strong>.
+              </p>
+              <p>
+                Chaque texte propose des questions de compréhension pour vérifier que vous avez saisi les points essentiels. Les <Link to="/story/1" className="text-accent hover:underline font-medium">histoires interactives</Link> ajoutent une dimension ludique : vous faites des choix qui influencent la suite de l'histoire, comme dans un livre dont vous êtes le héros.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-4 mt-4 text-sm">
+              <span className="bg-green-500/10 text-green-700 px-3 py-1 rounded-full">Traduction FR/EN disponible</span>
+              <span className="bg-blue-500/10 text-blue-700 px-3 py-1 rounded-full">Créé par un formateur FPA certifié</span>
+              <span className="bg-amber-500/10 text-amber-700 px-3 py-1 rounded-full">Niveaux A2 à C1</span>
+            </div>
           </div>
 
           <Tabs defaultValue="passages" className="w-full">
@@ -230,6 +251,24 @@ export default function Reading() {
               )}
             </TabsContent>
           </Tabs>
+
+          {/* CTA Section */}
+          <div className="mt-12 bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-8 text-center border border-primary/20">
+            <h2 className="text-2xl font-bold text-foreground mb-3 font-heading">
+              Envie de progresser davantage ?
+            </h2>
+            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+              Complétez votre entraînement avec nos <Link to="/exercices" className="text-accent hover:underline font-medium">exercices de grammaire et vocabulaire</Link>, ou découvrez les <Link to="/offres-de-formation" className="text-accent hover:underline font-medium">formations personnalisées</Link> d'Antony Addy.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/exercices" className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">
+                Voir les exercices
+              </Link>
+              <Link to="/contact" className="bg-card border border-border text-foreground px-6 py-3 rounded-lg font-semibold hover:bg-muted transition-colors">
+                Me contacter
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </>

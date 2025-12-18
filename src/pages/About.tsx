@@ -80,27 +80,58 @@ const About = () => {
                 <img src="/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png" alt="Antony Addy, Formateur Professionnel d'Adultes certifié depuis 2017, spécialisé en anglais professionnel" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" width="350" height="auto" loading="lazy" />
               </div>
 
-              <div className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
-                <p className="mb-4">
-                  Formateur Professionnel d'Adultes depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais, j'interviens auprès de publics variés à travers la France.
+              <div className="text-lg text-muted-foreground leading-relaxed mb-6 font-body space-y-4">
+                <p>
+                  Formateur Professionnel d'Adultes certifié depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais, j'interviens auprès de publics variés à travers la France.
+                </p>
+                <p>
+                  <strong className="text-primary">Britannique natif</strong>, j'apporte une perspective authentique de la langue anglaise. Mon parcours m'a conduit à travailler avec des profils très différents : cadres en entreprise, étudiants en école de commerce, salariés en reconversion, demandeurs d'emploi accompagnés par France Travail.
+                </p>
+                <p>
+                  Ma certification <strong className="text-primary">FPA (Formateur Professionnel d'Adultes)</strong> garantit une approche pédagogique adaptée aux adultes : méthodes actives, progression personnalisée, objectifs concrets. Je ne me contente pas d'enseigner la grammaire — je vous aide à <em>communiquer efficacement</em> dans votre contexte professionnel.
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  
-                  
+              {/* Credentials */}
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="bg-primary/5 rounded-lg p-4">
+                  <h3 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                    <Award className="h-5 w-5" />
+                    Certifications & Qualifications
+                  </h3>
+                  <ul className="text-muted-foreground space-y-1 text-sm">
+                    <li>• Titre professionnel FPA (niveau 5)</li>
+                    <li>• Spécialisation anglais professionnel</li>
+                    <li>• Formation continue pédagogique</li>
+                  </ul>
                 </div>
                 
-                <div>
-                  
-                  
+                <div className="bg-accent/5 rounded-lg p-4">
+                  <h3 className="font-semibold text-primary mb-2 flex items-center gap-2">
+                    <Target className="h-5 w-5" />
+                    Spécialisations
+                  </h3>
+                  <ul className="text-muted-foreground space-y-1 text-sm">
+                    <li>• Anglais des affaires & commercial</li>
+                    <li>• Préparation TOEIC, CLOE, Bright</li>
+                    <li>• Anglais téléphonique & rédactionnel</li>
+                  </ul>
                 </div>
               </div>
+
+              {/* Philosophy */}
+              <div className="border-l-4 border-accent pl-4 mt-6">
+                <h3 className="font-semibold text-primary mb-2">Ma philosophie d'enseignement</h3>
+                <p className="text-muted-foreground text-sm">
+                  L'apprentissage d'une langue doit être <strong>motivant et concret</strong>. Je privilégie les mises en situation réelles, les exercices pratiques et une atmosphère bienveillante où l'erreur est un tremplin vers le progrès. Mes apprenants progressent parce qu'ils <em>pratiquent</em>, pas parce qu'ils mémorisent.
+                </p>
+              </div>
               
-              <div className="mt-6 space-y-2 text-muted-foreground">
-                
-                
+              {/* Link to exercises */}
+              <div className="mt-6 p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg">
+                <p className="text-sm text-muted-foreground">
+                  <span className="font-medium text-primary">En complément de mes formations</span>, j'ai créé plus de <Link to="/exercices" className="text-accent hover:underline font-semibold">150 exercices d'anglais gratuits</Link> et des <Link to="/reading" className="text-accent hover:underline font-semibold">textes de compréhension écrite</Link> pour permettre à chacun de progresser en autonomie.
+                </p>
               </div>
             </div>
           </FadeInSection>

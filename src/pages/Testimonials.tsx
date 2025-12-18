@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import SEOHead from '../components/SEOHead';
 import { TypingText } from '../components/TypingText';
@@ -148,7 +149,7 @@ const Testimonials = () => {
         <div className="max-w-4xl mx-auto px-4">
           
           {/* Header */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-foreground mb-6">
               Témoignages
             </h1>
@@ -162,6 +163,26 @@ const Testimonials = () => {
               pause={1800}
               className="text-lg font-medium text-center text-muted-foreground mb-6 block"
             />
+          </div>
+
+          {/* Intro Section */}
+          <div className="bg-card border border-border rounded-xl p-6 mb-10">
+            <h2 className="text-xl font-semibold text-foreground mb-3 font-heading">
+              Des avis authentiques de professionnels
+            </h2>
+            <div className="text-muted-foreground space-y-3 font-body">
+              <p>
+                Depuis plus de <strong className="text-primary">20 ans</strong>, j'accompagne des adultes de tous horizons dans leur apprentissage de l'anglais. Ces témoignages proviennent de <strong className="text-primary">LinkedIn</strong> et reflètent l'expérience réelle de mes apprenants : cadres, étudiants en école de commerce, conseillers de vente, assistants de direction, notaires, préparateurs physiques...
+              </p>
+              <p>
+                Ce qui revient souvent dans leurs retours : une <strong className="text-primary">pédagogie adaptée</strong> à chaque profil, une <strong className="text-primary">atmosphère bienveillante</strong> et motivante, et des <strong className="text-primary">progrès concrets</strong> dans leur pratique professionnelle de l'anglais.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3 mt-4 text-sm">
+              <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">{testimonials.length} avis vérifiés</span>
+              <span className="bg-amber-500/10 text-amber-700 px-3 py-1 rounded-full">Note moyenne : 5/5</span>
+              <span className="bg-green-500/10 text-green-700 px-3 py-1 rounded-full">Formateur FPA certifié</span>
+            </div>
           </div>
 
           {/* Testimonials */}
@@ -190,6 +211,24 @@ const Testimonials = () => {
                 </Card>
               ))
             )}
+          </div>
+
+          {/* CTA Section */}
+          <div className="mt-12 bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-8 text-center border border-primary/20">
+            <h2 className="text-2xl font-bold text-foreground mb-3 font-heading">
+              Prêt à rejoindre ces apprenants satisfaits ?
+            </h2>
+            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+              Découvrez mes <Link to="/offres-de-formation" className="text-accent hover:underline font-medium">formations d'anglais personnalisées</Link> ou testez vos compétences avec nos <Link to="/exercices" className="text-accent hover:underline font-medium">exercices gratuits</Link>.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact" className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">
+                Me contacter
+              </Link>
+              <Link to="/exercices" className="bg-card border border-border text-foreground px-6 py-3 rounded-lg font-semibold hover:bg-muted transition-colors">
+                Essayer les exercices gratuits
+              </Link>
+            </div>
           </div>
         </div>
       </div>
