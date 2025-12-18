@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
 import {
   composeTitle,
   buildCanonical,
@@ -25,6 +26,12 @@ import {
   jsonLdBreadcrumbs,
   jsonLdCourse,
 } from "@/lib/seo/jsonld";
+
+// Site-wide constants
+const SITE_URL = "https://www.antonyaddy.com";
+const SITE_NAME = "Antony Addy";
+const DEFAULT_LOCALE = "fr_FR";
+const DEFAULT_LANG = "fr";
 
 export type Hreflang = { href: string; hrefLang: string };
 export type BreadcrumbItem = { name: string; item: string };
@@ -71,10 +78,30 @@ export type SEOProps = {
   tags?: string[];          // Article tags
 };
 
+/**
+ * Generates a clean canonical URL from a path
+ */
+function generateCanonicalUrl(path: string): string {
+  // Remove trailing slash unless it's the root
+  const cleanPath = path === "/" ? "/" : path.replace(/\/$/, "");
+  return `${SITE_URL}${cleanPath}`;
+}
+
+/**
+ * Generates default self-referencing hreflangs
+ */
+function generateDefaultHreflangs(canonicalUrl: string): Hreflang[] {
+  return [
+    { href: canonicalUrl, hrefLang: DEFAULT_LANG },
+    { href: canonicalUrl, hrefLang: "x-default" },
+  ];
+}
+
 export default function SEOHead(props: SEOProps) {
+  const location = useLocation();
   const {
     title,
-    siteName,
+    siteName = SITE_NAME,
     description,
     canonical,
     canonicalPath,
@@ -83,12 +110,12 @@ export default function SEOHead(props: SEOProps) {
     imageAlt,
     imageWidth = 1200,
     imageHeight = 630,
-    locale = "fr_FR",
+    locale = DEFAULT_LOCALE,
     type = "website",
     twitterCard = "summary_large_image",
-    twitterSite,
-    twitterCreator,
-    hreflangs = [],
+    twitterSite = "@antonyaddy",
+    twitterCreator = "@antonyaddy",
+    hreflangs,
     noIndex = false,
     noFollow = false,
     noindex = false, // legacy
@@ -100,76 +127,94 @@ export default function SEOHead(props: SEOProps) {
     datePublished,
     dateModified,
     jsonLd,
-    author,
+    author = "Antony Addy",
     section,
     tags,
   } = props;
 
   const computedTitle = composeTitle(title, siteName);
 
-  // Simplified canonical URL logic - single source of truth
-  let finalCanonicalUrl: string | undefined;
+  // Auto-generate canonical URL from current path if not provided
+  let finalCanonicalUrl: string;
   if (canonicalUrl) {
     finalCanonicalUrl = buildCanonical(canonicalUrl);
   } else if (canonical) {
     finalCanonicalUrl = buildCanonical(canonical);
   } else if (canonicalPath) {
-    finalCanonicalUrl = buildCanonical(canonicalPath);
-  } else if (typeof window !== 'undefined') {
-    finalCanonicalUrl = window.location.href;
+    finalCanonicalUrl = generateCanonicalUrl(canonicalPath);
+  } else {
+    // Auto-generate from current location
+    finalCanonicalUrl = generateCanonicalUrl(location.pathname);
   }
+
+  // Auto-generate hreflangs if not provided
+  const finalHreflangs = hreflangs && hreflangs.length > 0 
+    ? hreflangs 
+    : generateDefaultHreflangs(finalCanonicalUrl);
 
   const robots = robotsDirectives({ noIndex: noIndex || noindex, noFollow });
 
+  // Default image if not provided
+  const finalImage = image || `${SITE_URL}/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png`;
+  const finalImageAlt = imageAlt || "Antony Addy - Formateur d'anglais professionnel";
+
   return (
     <>
-      <Helmet htmlAttributes={{ lang: "fr" }}>
+      <Helmet htmlAttributes={{ lang: DEFAULT_LANG }}>
         {/* Title + basics */}
         <title>{computedTitle}</title>
         {metaBasics({ description })}
         {metaKeywords({ keywords })}
 
-        {/* Canonical + robots */}
-        {finalCanonicalUrl && <link rel="canonical" href={finalCanonicalUrl} />}
+        {/* Canonical (always present) */}
+        <link rel="canonical" href={finalCanonicalUrl} />
+        
+        {/* Robots */}
         {robots && <meta name="robots" content={robots} />}
 
-        {/* Open Graph + Twitter */}
+        {/* Open Graph */}
         {ogTags({
           title: computedTitle,
           description,
-          image,
+          image: finalImage,
           type,
           url: finalCanonicalUrl,
           siteName,
           locale,
         })}
-        {image && imageAlt && <meta property="og:image:alt" content={imageAlt} />}
-        {image && <meta property="og:image:width" content={String(imageWidth)} />}
-        {image && <meta property="og:image:height" content={String(imageHeight)} />}
+        <meta property="og:image:alt" content={finalImageAlt} />
+        <meta property="og:image:width" content={String(imageWidth)} />
+        <meta property="og:image:height" content={String(imageHeight)} />
         {author && <meta property="article:author" content={author} />}
         {section && <meta property="article:section" content={section} />}
         {tags && tags.map((tag, i) => <meta key={i} property="article:tag" content={tag} />)}
 
+        {/* Twitter Cards */}
         {twitterTags({
           card: twitterCard,
           site: twitterSite,
           creator: twitterCreator,
           title: computedTitle,
           description,
-          image,
+          image: finalImage,
         })}
-        {image && imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
+        <meta name="twitter:image:alt" content={finalImageAlt} />
 
-        {/* Hreflang */}
-        {hreflangLinks(hreflangs)}
+        {/* Hreflangs (always present for self-referencing) */}
+        {hreflangLinks(finalHreflangs)}
 
-        {/* Optional article dates (if you previously emitted them) */}
+        {/* Article dates */}
         {articleDateMeta({ datePublished, dateModified })}
+
+        {/* Additional SEO meta tags */}
+        <meta name="author" content={author} />
+        <meta name="geo.region" content="FR-06" />
+        <meta name="geo.placename" content="Alpes-Maritimes, France" />
       </Helmet>
 
-      {/* JSON-LD blocks that the project already used */}
+      {/* JSON-LD blocks */}
       {enableOrgJsonLd && <OrgJsonLd siteName={siteName} />}
-      {enableWebSiteJsonLd && finalCanonicalUrl && (
+      {enableWebSiteJsonLd && (
         <WebSiteJsonLd siteName={siteName} url={finalCanonicalUrl} />
       )}
       {breadcrumbItems && breadcrumbItems.length > 0 && (

@@ -1,9 +1,19 @@
+# Robots.txt for antonyaddy.com
+# Last updated: 2025-01-18
+
 User-agent: *
 Allow: /
 
-# Block non-content pages from indexing
+# Block authentication and user-specific pages
 Disallow: /auth
 Disallow: /dashboard
+Disallow: /install
 
-# Sitemap location
+# Block query parameters that might create duplicate content
+Disallow: /*?*
+
+# Crawl delay (optional, be nice to servers)
+Crawl-delay: 1
+
+# Sitemap location (canonical URL with www)
 Sitemap: https://www.antonyaddy.com/sitemap.xml
