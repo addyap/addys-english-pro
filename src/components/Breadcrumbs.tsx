@@ -32,8 +32,18 @@ const sectionMappings: Record<string, { section: string; sectionPath: string }> 
   '/story/': { section: 'Histoires interactives', sectionPath: '/reading' },
   '/grammar/': { section: 'Grammaire', sectionPath: '/exercices' },
   '/drag-drop/': { section: 'Exercices', sectionPath: '/exercices' },
-  '/writing/': { section: 'Exercices', sectionPath: '/exercices' },
+  '/writing/': { section: 'Écriture', sectionPath: '/exercices' },
 };
+
+// Helper: convert slug to human-readable Title Case
+function slugToTitle(slug: string): string {
+  if (!slug) return '';
+  const decoded = decodeURIComponent(slug);
+  return decoded
+    .replace(/[-_]/g, ' ')
+    .replace(/\b\w/g, (char) => char.toUpperCase())
+    .trim();
+}
 
 interface BreadcrumbsProps {
   customTitle?: string;
@@ -68,11 +78,29 @@ export default function Breadcrumbs({ customTitle, customSection }: BreadcrumbsP
     crumbs.push({ name: sectionInfo.section, path: sectionInfo.sectionPath });
   }
 
-  // Get current page label
+  // Get current page label with improved fallback logic
   let currentLabel = customTitle;
   if (!currentLabel) {
+    // 1. Try routeConfig lookup
     const config = routeConfig[pathname];
-    currentLabel = config?.label || 'Page';
+    if (config?.label) {
+      currentLabel = config.label;
+    } else {
+      // 2. Generate from last path segment (slug)
+      const segments = pathname.split('/').filter(Boolean);
+      const lastSegment = segments.pop() || '';
+      
+      // Check if slug is purely numeric or empty
+      if (!lastSegment || /^\d+$/.test(lastSegment)) {
+        // Use section name + "Détail"
+        currentLabel = sectionInfo 
+          ? `${sectionInfo.section} – Détail` 
+          : 'Détail';
+      } else {
+        // Convert slug to Title Case
+        currentLabel = slugToTitle(lastSegment);
+      }
+    }
   }
 
   // Add current page (not as a link)
