@@ -228,20 +228,20 @@
     { "path": "/exercices/149", "priority": 0.5, "changefreq": "monthly", "title": "Exercise 149" },
     { "path": "/exercices/150", "priority": 0.5, "changefreq": "monthly", "title": "Exercise 150" },
 
-    { "path": "/drag-drop-exercise/1", "priority": 0.5, "changefreq": "monthly", "title": "Drag & Drop: Basic Questions" },
-    { "path": "/drag-drop-exercise/2", "priority": 0.5, "changefreq": "monthly", "title": "Drag & Drop: Adverbs of Frequency" },
-    { "path": "/drag-drop-exercise/3", "priority": 0.5, "changefreq": "monthly", "title": "Drag & Drop: Complex Sentences" },
-    { "path": "/drag-drop-exercise/4", "priority": 0.5, "changefreq": "monthly", "title": "Drag & Drop: Conditionals" },
-    { "path": "/drag-drop-exercise/5", "priority": 0.5, "changefreq": "monthly", "title": "Drag & Drop: Reported Speech" },
+    { "path": "/exercices/drag-drop/1", "priority": 0.5, "changefreq": "monthly", "title": "Drag & Drop: Basic Questions" },
+    { "path": "/exercices/drag-drop/2", "priority": 0.5, "changefreq": "monthly", "title": "Drag & Drop: Adverbs of Frequency" },
+    { "path": "/exercices/drag-drop/3", "priority": 0.5, "changefreq": "monthly", "title": "Drag & Drop: Complex Sentences" },
+    { "path": "/exercices/drag-drop/4", "priority": 0.5, "changefreq": "monthly", "title": "Drag & Drop: Conditionals" },
+    { "path": "/exercices/drag-drop/5", "priority": 0.5, "changefreq": "monthly", "title": "Drag & Drop: Reported Speech" },
 
-    { "path": "/writing-exercise/transform/1", "priority": 0.5, "changefreq": "monthly", "title": "Writing: Active to Passive" },
-    { "path": "/writing-exercise/transform/2", "priority": 0.5, "changefreq": "monthly", "title": "Writing: Direct to Indirect Speech" },
-    { "path": "/writing-exercise/transform/3", "priority": 0.5, "changefreq": "monthly", "title": "Writing: Tense Changes" },
-    { "path": "/writing-exercise/correction/1", "priority": 0.5, "changefreq": "monthly", "title": "Writing: Common Errors" },
-    { "path": "/writing-exercise/correction/2", "priority": 0.5, "changefreq": "monthly", "title": "Writing: Prepositions & Articles" },
-    { "path": "/writing-exercise/correction/3", "priority": 0.5, "changefreq": "monthly", "title": "Writing: Tenses & Aspects" },
-    { "path": "/writing-exercise/fill/1", "priority": 0.5, "changefreq": "monthly", "title": "Writing: A Typical Day" },
-    { "path": "/writing-exercise/fill/2", "priority": 0.5, "changefreq": "monthly", "title": "Writing: My Last Holiday" },
-    { "path": "/writing-exercise/fill/3", "priority": 0.5, "changefreq": "monthly", "title": "Writing: Future Plans" }
+    { "path": "/exercices/writing/transform/1", "priority": 0.5, "changefreq": "monthly", "title": "Writing: Active to Passive" },
+    { "path": "/exercices/writing/transform/2", "priority": 0.5, "changefreq": "monthly", "title": "Writing: Direct to Indirect Speech" },
+    { "path": "/exercices/writing/transform/3", "priority": 0.5, "changefreq": "monthly", "title": "Writing: Tense Changes" },
+    { "path": "/exercices/writing/correction/1", "priority": 0.5, "changefreq": "monthly", "title": "Writing: Common Errors" },
+    { "path": "/exercices/writing/correction/2", "priority": 0.5, "changefreq": "monthly", "title": "Writing: Prepositions & Articles" },
+    { "path": "/exercices/writing/correction/3", "priority": 0.5, "changefreq": "monthly", "title": "Writing: Tenses & Aspects" },
+    { "path": "/exercices/writing/fill/1", "priority": 0.5, "changefreq": "monthly", "title": "Writing: A Typical Day" },
+    { "path": "/exercices/writing/fill/2", "priority": 0.5, "changefreq": "monthly", "title": "Writing: My Last Holiday" },
+    { "path": "/exercices/writing/fill/3", "priority": 0.5, "changefreq": "monthly", "title": "Writing: Future Plans" }
   ]
 }
