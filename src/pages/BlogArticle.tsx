@@ -8,7 +8,7 @@ import SocialShare from '../components/SocialShare';
 import { ArticleSchema } from '@/lib/seo/structuredData';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
 import { grammarBlogPosts } from '@/data/grammarBlogPosts';
-import { getRelatedContent, getExerciseLink } from '@/utils/blogInternalLinks';
+import { getRelatedContent, getExerciseLink, getReadingLink } from '@/utils/blogInternalLinks';
 
 interface ArticleData {
   title: string;
@@ -299,7 +299,8 @@ const BlogArticle = () => {
             {/* Practice Section - Internal Linking */}
             {(() => {
               const { practiceSection, relatedTopics, showCommercialCTA } = getRelatedContent(id || '', article.category);
-              const exerciseLink = getExerciseLink(article.category);
+              const exerciseLink = getExerciseLink(article.category, id);
+              const readingLink = getReadingLink(id);
               
               return (
                 <div className="mt-10 pt-8 border-t border-gray-200">
@@ -319,11 +320,11 @@ const BlogArticle = () => {
                       Accéder aux {exerciseLink.label}
                     </Link>
                     <Link 
-                      to="/reading"
+                      to={readingLink.href}
                       className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-lg hover:bg-green-100 transition-colors font-medium"
                     >
                       <BookOpen className="h-4 w-4" />
-                      Textes de compréhension
+                      {readingLink.label}
                     </Link>
                   </div>
                   
