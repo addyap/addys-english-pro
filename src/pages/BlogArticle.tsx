@@ -1,13 +1,14 @@
 
 import React, { useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Calendar, User, ArrowLeft } from 'lucide-react';
+import { Calendar, User, ArrowLeft, BookOpen, GraduationCap, ArrowRight } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import ReadingProgress from '../components/ReadingProgress';
 import SocialShare from '../components/SocialShare';
 import { ArticleSchema } from '@/lib/seo/structuredData';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
 import { grammarBlogPosts } from '@/data/grammarBlogPosts';
+import { getRelatedContent, getExerciseLink } from '@/utils/blogInternalLinks';
 
 interface ArticleData {
   title: string;
@@ -294,6 +295,71 @@ const BlogArticle = () => {
               className="prose prose-lg max-w-none text-gray-700"
               dangerouslySetInnerHTML={{ __html: article.content }}
             />
+
+            {/* Practice Section - Internal Linking */}
+            {(() => {
+              const { practiceSection, relatedTopics, showCommercialCTA } = getRelatedContent(id || '', article.category);
+              const exerciseLink = getExerciseLink(article.category);
+              
+              return (
+                <div className="mt-10 pt-8 border-t border-gray-200">
+                  <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <GraduationCap className="h-5 w-5 text-blue-600" />
+                    Pratiquer ce sujet
+                  </h2>
+                  <p className="text-gray-700 mb-4">
+                    {practiceSection}
+                  </p>
+                  <div className="flex flex-wrap gap-3 mb-6">
+                    <Link 
+                      to={exerciseLink.href}
+                      className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-lg hover:bg-blue-100 transition-colors font-medium"
+                    >
+                      <GraduationCap className="h-4 w-4" />
+                      Accéder aux {exerciseLink.label}
+                    </Link>
+                    <Link 
+                      to="/reading"
+                      className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-lg hover:bg-green-100 transition-colors font-medium"
+                    >
+                      <BookOpen className="h-4 w-4" />
+                      Textes de compréhension
+                    </Link>
+                  </div>
+                  
+                  {/* Related Blog Posts */}
+                  {relatedTopics.length > 0 && (
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <p className="text-sm font-medium text-gray-700 mb-2">Articles connexes sur ce thème :</p>
+                      <ul className="space-y-1">
+                        {relatedTopics.map(topic => (
+                          <li key={topic.id}>
+                            <Link 
+                              to={`/blog/${topic.id}`}
+                              className="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1"
+                            >
+                              <ArrowRight className="h-3 w-3" />
+                              {topic.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Soft Commercial CTA */}
+                  {showCommercialCTA && (
+                    <p className="text-sm text-gray-600 mt-4 italic">
+                      Besoin d'un accompagnement personnalisé ? Découvrez mes{' '}
+                      <Link to="/offres-de-formation" className="text-blue-600 hover:underline">
+                        formations d'anglais professionnel
+                      </Link>
+                      {' '}adaptées à votre niveau et vos objectifs.
+                    </p>
+                  )}
+                </div>
+              );
+            })()}
 
             {/* Social Share */}
             <div className="mt-8 pt-6 border-t border-gray-200">
