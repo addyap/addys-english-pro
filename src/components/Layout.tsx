@@ -186,84 +186,180 @@ const Layout = ({ children }: LayoutProps) => {
       {/* Main Content */}
       <main>{children}</main>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white text-sm py-8 px-4">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-6">
-          <div>
-            <h3 className="font-semibold mb-2">Navigation</h3>
-            <ul className="space-y-1">
-              <li>
-                <Link to="/mentions-legales" className="hover:underline">
-                  Mentions Légales
-                </Link>
-              </li>
-              <li>
-                <Link to="/politique-confidentialite" className="hover:underline">
-                  Politique de confidentialité
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:underline">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-2">Contact</h3>
-            <ul className="space-y-1">
-              <li>
-                📧{" "}
-                <a
-                  href="mailto:formations@antonyaddy.com"
-                  className="hover:underline"
-                >
-                  formations@antonyaddy.com
-                </a>
-              </li>
-              <li>
-                💬{" "}
+      {/* Footer - Comprehensive Internal Linking */}
+      <footer className="bg-slate-900 text-white text-sm py-12 px-4">
+        <div className="max-w-6xl mx-auto">
+          {/* Main Footer Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+            {/* Brand & About */}
+            <div className="lg:col-span-2">
+              <Link to="/" className="flex items-center gap-2 mb-4">
+                <SiteLogo height={32} className="brightness-0 invert" alt="Antony Addy" />
+                <span className="font-bold text-lg">Antony Addy</span>
+              </Link>
+              <p className="text-gray-400 mb-4 leading-relaxed">
+                Formateur d'anglais professionnel certifié FPA. Plus de 20 ans d'expérience 
+                dans la formation d'anglais pour adultes, entreprises et institutions.
+              </p>
+              <div className="flex gap-3">
                 <a
                   href="https://wa.me/33649829826"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:underline"
+                  className="bg-green-600 hover:bg-green-700 px-3 py-2 rounded-lg text-xs font-medium transition-colors"
+                  aria-label="Contactez-nous sur WhatsApp"
                 >
-                  +33 6 49 82 98 26 (WhatsApp)
+                  💬 WhatsApp
                 </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-2">Ressources</h3>
-            <ul className="space-y-1">
-              <li>
                 <a
-                  href="https://anglaisadistance.fr"
+                  href="https://linkedin.com/in/antonyaddy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:underline flex items-center gap-1"
+                  className="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded-lg text-xs font-medium transition-colors"
+                  aria-label="Suivez-nous sur LinkedIn"
                 >
-                  🎓 anglaisadistance.fr
-                  <ExternalLink className="h-3 w-3" />
+                  LinkedIn
                 </a>
-              </li>
-            </ul>
+              </div>
+            </div>
+
+            {/* Navigation */}
+            <nav aria-label="Navigation principale">
+              <h3 className="font-semibold mb-3 text-white">Navigation</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="/" className="text-gray-400 hover:text-white transition-colors">
+                    Accueil
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/qui-je-suis" className="text-gray-400 hover:text-white transition-colors">
+                    Qui je suis
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/offres-de-formation" className="text-gray-400 hover:text-white transition-colors">
+                    Offres de formation
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/temoignages" className="text-gray-400 hover:text-white transition-colors">
+                    Témoignages
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="text-gray-400 hover:text-white transition-colors">
+                    Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/blog" className="text-gray-400 hover:text-white transition-colors">
+                    Blog
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+
+            {/* Ressources Gratuites */}
+            <nav aria-label="Ressources gratuites">
+              <h3 className="font-semibold mb-3 text-white">Ressources Gratuites</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="/exercices" className="text-gray-400 hover:text-white transition-colors">
+                    Exercices d'anglais
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/reading" className="text-gray-400 hover:text-white transition-colors">
+                    Compréhension écrite
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/anglaisadistance" className="text-gray-400 hover:text-white transition-colors">
+                    Ressources en ligne
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard" className="text-gray-400 hover:text-white transition-colors">
+                    Mon tableau de bord
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="https://anglaisadistance.fr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition-colors flex items-center gap-1"
+                  >
+                    anglaisadistance.fr
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                </li>
+              </ul>
+            </nav>
+
+            {/* Contact & Legal */}
+            <div>
+              <h3 className="font-semibold mb-3 text-white">Contact</h3>
+              <ul className="space-y-2 mb-6">
+                <li>
+                  <a
+                    href="mailto:formations@antonyaddy.com"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    📧 formations@antonyaddy.com
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://wa.me/33649829826"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    💬 +33 6 49 82 98 26
+                  </a>
+                </li>
+                <li className="text-gray-400">
+                  📍 Alpes-Maritimes, France
+                </li>
+              </ul>
+              
+              <h4 className="font-semibold mb-2 text-white text-xs uppercase tracking-wider">Informations légales</h4>
+              <ul className="space-y-1">
+                <li>
+                  <Link to="/mentions-legales" className="text-gray-400 hover:text-white transition-colors text-xs">
+                    Mentions légales
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/politique-confidentialite" className="text-gray-400 hover:text-white transition-colors text-xs">
+                    Politique de confidentialité
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/sitemap-page" className="text-gray-400 hover:text-white transition-colors text-xs">
+                    Plan du site
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          <div className="md:text-right">
-            <p>© {year} Antony Addy. Tous droits réservés.</p>
-            <p className="mt-1 text-gray-400">
-              Site hébergé par Bluehost –{" "}
+          {/* Bottom Bar */}
+          <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-gray-500 text-xs">
+              © {year} Antony Addy. Tous droits réservés. Formateur Professionnel d'Adultes certifié.
+            </p>
+            <p className="text-gray-600 text-xs">
+              Site hébergé par{" "}
               <a
                 href="https://www.bluehost.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:underline"
+                className="hover:text-gray-400 transition-colors"
               >
-                www.bluehost.com
+                Bluehost
               </a>
             </p>
           </div>

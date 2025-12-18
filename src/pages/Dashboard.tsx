@@ -249,12 +249,35 @@ const Dashboard = () => {
             <p className="text-muted-foreground mb-6 font-body">
               Explorez plus de {totalGrammarLessons} leçons de grammaire et {totalVocabularyExercises} exercices de vocabulaire
             </p>
-            <Link to="/exercices">
-              <Button size="lg" className="gap-2">
-                <BookOpen className="h-5 w-5" />
-                Voir tous les exercices
-              </Button>
-            </Link>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link to="/exercices">
+                <Button size="lg" className="gap-2">
+                  <BookOpen className="h-5 w-5" />
+                  Voir tous les exercices
+                </Button>
+              </Link>
+              <Link to="/reading">
+                <Button size="lg" variant="outline" className="gap-2">
+                  Compréhension écrite
+                </Button>
+              </Link>
+            </div>
+            
+            {/* Additional Resources */}
+            <div className="mt-8 pt-6 border-t border-border">
+              <p className="text-sm text-muted-foreground mb-3">Autres ressources</p>
+              <div className="flex flex-wrap justify-center gap-4 text-sm">
+                <Link to="/blog" className="text-primary hover:underline">
+                  Blog anglais professionnel
+                </Link>
+                <Link to="/offres-de-formation" className="text-primary hover:underline">
+                  Formations personnalisées
+                </Link>
+                <Link to="/contact" className="text-primary hover:underline">
+                  Contactez-moi
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
       </div>

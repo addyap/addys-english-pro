@@ -42,6 +42,7 @@ const ReadingDetail = lazy(() => import("./pages/ReadingDetail"));
 const InteractiveStory = lazy(() => import("./pages/InteractiveStory"));
 const DragDropExerciseDetail = lazy(() => import("./pages/DragDropExerciseDetail"));
 const WritingExerciseDetail = lazy(() => import("./pages/WritingExerciseDetail"));
+const SitemapPage = lazy(() => import("./pages/SitemapPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const PageLoader = () => (
@@ -93,6 +94,7 @@ const AppContent = () => {
               <Route path="/reading" element={<Reading />} />
               <Route path="/reading/:id" element={<ReadingDetail />} />
               <Route path="/story/:id" element={<InteractiveStory />} />
+              <Route path="/sitemap-page" element={<SitemapPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

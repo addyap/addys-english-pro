@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Smartphone, Download, Check, Wifi, Zap, HardDrive } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -79,9 +80,9 @@ const Install = () => {
   return (
     <>
       <SEOHead
-        title="Install Antony Addy App - Learn English Offline"
-        description="Install our Progressive Web App for offline access to English exercises, faster loading, and a better mobile experience."
-        canonical="https://www.antonyaddy.com/install"
+        title="Installer l'application – Apprendre l'anglais hors ligne | Antony Addy"
+        description="Installez l'application Antony Addy sur votre appareil pour un accès instantané aux exercices d'anglais, même sans connexion internet."
+        keywords={["installer application", "PWA", "application mobile anglais", "apprendre hors ligne", "exercices anglais"]}
       />
 
       <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 py-16 px-4">
@@ -96,10 +97,10 @@ const Install = () => {
               <Smartphone className="h-12 w-12 text-primary" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Install Antony Addy App
+              Installer l'application
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Get instant access to English learning materials on your device. No app store needed!
+              Accédez instantanément aux exercices d'anglais sur votre appareil. Aucun app store requis !
             </p>
           </motion.div>
 
@@ -114,9 +115,9 @@ const Install = () => {
               <Card className="p-8 text-center">
                 {deferredPrompt ? (
                   <>
-                    <h2 className="text-2xl font-semibold mb-4">Ready to Install</h2>
+                    <h2 className="text-2xl font-semibold mb-4">Prêt à installer</h2>
                     <p className="text-muted-foreground mb-6">
-                      Install our app for the best learning experience
+                      Installez notre application pour une meilleure expérience d'apprentissage
                     </p>
                     <Button
                       onClick={handleInstall}
@@ -125,21 +126,21 @@ const Install = () => {
                       disabled={isInstalling}
                     >
                       <Download className="h-5 w-5" />
-                      {isInstalling ? 'Installing...' : 'Install App Now'}
+                      {isInstalling ? 'Installation...' : 'Installer maintenant'}
                     </Button>
                   </>
                 ) : (
                   <>
-                    <h2 className="text-2xl font-semibold mb-4">Installation Instructions</h2>
+                    <h2 className="text-2xl font-semibold mb-4">Instructions d'installation</h2>
                     <p className="text-muted-foreground mb-4">
-                      To install this app on your device:
+                      Pour installer cette application sur votre appareil :
                     </p>
                     <div className="text-left space-y-3 max-w-md mx-auto">
                       <p className="text-sm">
-                        <strong>On iPhone/iPad:</strong> Tap the Share button in Safari, then "Add to Home Screen"
+                        <strong>Sur iPhone/iPad :</strong> Appuyez sur le bouton Partager dans Safari, puis "Sur l'écran d'accueil"
                       </p>
                       <p className="text-sm">
-                        <strong>On Android:</strong> Tap the menu button in Chrome, then "Add to Home screen"
+                        <strong>Sur Android :</strong> Appuyez sur le menu dans Chrome, puis "Ajouter à l'écran d'accueil"
                       </p>
                     </div>
                   </>
@@ -156,9 +157,9 @@ const Install = () => {
             >
               <Card className="p-8 text-center bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
                 <Check className="h-16 w-16 text-green-600 mx-auto mb-4" />
-                <h2 className="text-2xl font-semibold mb-2">App Installed!</h2>
+                <h2 className="text-2xl font-semibold mb-2">Application installée !</h2>
                 <p className="text-muted-foreground">
-                  You can now access Antony Addy from your home screen
+                  Vous pouvez maintenant accéder à Antony Addy depuis votre écran d'accueil
                 </p>
               </Card>
             </motion.div>
@@ -171,7 +172,7 @@ const Install = () => {
             transition={{ delay: 0.3 }}
             className="mb-16"
           >
-            <h2 className="text-3xl font-bold text-center mb-8">Why Install?</h2>
+            <h2 className="text-3xl font-bold text-center mb-8">Pourquoi installer ?</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {features.map((feature, index) => (
                 <Card key={index} className="p-6">
@@ -188,8 +189,9 @@ const Install = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
+            className="mb-12"
           >
-            <h2 className="text-3xl font-bold text-center mb-8">How to Install</h2>
+            <h2 className="text-3xl font-bold text-center mb-8">Comment installer</h2>
             <Card className="p-8">
               <div className="space-y-6">
                 {steps.map((item) => (
@@ -203,6 +205,25 @@ const Install = () => {
               </div>
             </Card>
           </motion.div>
+
+          {/* Internal Links */}
+          <div className="text-center border-t border-border pt-8">
+            <h3 className="text-lg font-semibold text-foreground mb-4">Découvrez nos ressources</h3>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link to="/exercices" className="text-primary hover:underline">
+                Exercices d'anglais
+              </Link>
+              <Link to="/reading" className="text-primary hover:underline">
+                Compréhension écrite
+              </Link>
+              <Link to="/blog" className="text-primary hover:underline">
+                Blog
+              </Link>
+              <Link to="/offres-de-formation" className="text-primary hover:underline">
+                Formations
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </>
