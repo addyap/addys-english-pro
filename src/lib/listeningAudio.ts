@@ -3,7 +3,9 @@ export interface ListeningAudioResponse {
   cached: boolean;
 }
 
-export async function fetchListeningAudio(slug: string): Promise<ListeningAudioResponse> {
+export async function fetchListeningAudio(
+  slug: string
+): Promise<ListeningAudioResponse> {
   const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
   if (!supabaseUrl) throw new Error("Supabase URL not configured");
 
@@ -14,7 +16,9 @@ export async function fetchListeningAudio(slug: string): Promise<ListeningAudioR
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
-    throw new Error(errorData.error || `Failed to fetch audio: ${response.status}`);
+    throw new Error(
+      errorData.error || `Failed to fetch audio: ${response.status}`
+    );
   }
 
   const data = await response.json();

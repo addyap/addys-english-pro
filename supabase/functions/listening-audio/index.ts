@@ -60,10 +60,13 @@ serve(async (req) => {
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 
     if (!supabaseUrl || !supabaseServiceKey) {
-      return new Response(JSON.stringify({ error: "Server configuration error" }), {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      return new Response(
+        JSON.stringify({ error: "Server configuration error" }),
+        {
+          status: 500,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
     }
 
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
@@ -84,10 +87,13 @@ serve(async (req) => {
 
     const elevenlabsApiKey = Deno.env.get("ELEVENLABS_API_KEY");
     if (!elevenlabsApiKey) {
-      return new Response(JSON.stringify({ error: "ElevenLabs API key not configured" }), {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      return new Response(
+        JSON.stringify({ error: "ElevenLabs API key not configured" }),
+        {
+          status: 500,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
     }
 
     const text = EXERCISE_TEXTS[slug];
@@ -117,19 +123,30 @@ serve(async (req) => {
     );
 
     if (!ttsResponse.ok) {
-      const errorText = await ttsResponse.text();
+      await ttsResponse.text().catch(() => "");
+
       if (ttsResponse.status === 401) {
-        return new Response(JSON.stringify({ error: "Invalid ElevenLabs API key" }), {
-          status: 500,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
+        return new Response(
+          JSON.stringify({ error: "Invalid ElevenLabs API key" }),
+          {
+            status: 500,
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+          }
+        );
       }
+
       if (ttsResponse.status === 429) {
-        return new Response(JSON.stringify({ error: "ElevenLabs quota exceeded. Please try again later." }), {
-          status: 429,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
+        return new Response(
+          JSON.stringify({
+            error: "ElevenLabs quota exceeded. Please try again later.",
+          }),
+          {
+            status: 429,
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+          }
+        );
       }
+
       return new Response(JSON.stringify({ error: "Failed to generate audio" }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -140,7 +157,10 @@ serve(async (req) => {
 
     const { error: uploadError } = await supabase.storage
       .from(bucket)
-      .upload(filePath, audioBuffer, { contentType: "audio/mpeg", upsert: true });
+      .upload(filePath, audioBuffer, {
+        contentType: "audio/mpeg",
+        upsert: true,
+      });
 
     if (uploadError) {
       return new Response(JSON.stringify({ error: "Failed to cache audio" }), {
@@ -153,9 +173,14 @@ serve(async (req) => {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {
-    return new Response(JSON.stringify({ error: error instanceof Error ? error.message : "Unknown error" }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({
+        error: error instanceof Error ? error.message : "Unknown error",
+      }),
+      {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      }
+    );
   }
 });
