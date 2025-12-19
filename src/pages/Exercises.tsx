@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3, GripVertical, PenLine } from 'lucide-react';
+import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3, GripVertical, PenLine, Headphones } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import AnimatedCard from '../components/AnimatedCard';
@@ -17,6 +17,7 @@ import { useExerciseProgress } from '@/hooks/useExerciseProgress';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { readingPassages } from '@/data/readingPassages';
+import { listeningExercises } from '@/data/listeningExercises';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 // Exercise Card Component
@@ -249,7 +250,7 @@ const Exercises = () => {
         <section className="py-12">
           <div className="max-w-6xl mx-auto px-4">
             <Tabs defaultValue="grammar" className="w-full">
-              <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-5 mb-8">
+              <TabsList className="grid w-full max-w-4xl mx-auto grid-cols-6 mb-8">
                 <TabsTrigger value="grammar" className="gap-1 text-xs sm:text-sm">
                   <GraduationCap className="h-4 w-4" />
                   <span className="hidden sm:inline">Grammar</span>
@@ -261,6 +262,10 @@ const Exercises = () => {
                 <TabsTrigger value="reading" className="gap-1 text-xs sm:text-sm">
                   <BookOpen className="h-4 w-4" />
                   <span className="hidden sm:inline">Reading</span>
+                </TabsTrigger>
+                <TabsTrigger value="listening" className="gap-1 text-xs sm:text-sm">
+                  <Headphones className="h-4 w-4" />
+                  <span className="hidden sm:inline">Listening</span>
                 </TabsTrigger>
                 <TabsTrigger value="dragdrop" className="gap-1 text-xs sm:text-sm">
                   <GripVertical className="h-4 w-4" />
@@ -533,6 +538,61 @@ const Exercises = () => {
                     <Button variant="outline" className="gap-2">
                       <BookOpen className="h-4 w-4" />
                       Voir tous les textes
+                    </Button>
+                  </Link>
+                </div>
+              </TabsContent>
+
+              {/* Listening Tab */}
+              <TabsContent value="listening" className="space-y-6">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-primary mb-2 font-heading">
+                    Listening Lab
+                  </h2>
+                  <p className="text-muted-foreground font-body">
+                    {listeningExercises.length} exercices d'écoute avec traductions interactives
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-4">
+                  {listeningExercises.map((exercise) => (
+                    <Card key={exercise.slug} className="hover:shadow-md transition-shadow group">
+                      <CardHeader className="pb-2">
+                        <div className="flex items-start gap-3">
+                          <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center">
+                            <Headphones className="h-5 w-5 text-teal-600 dark:text-teal-400" />
+                          </div>
+                          <div className="flex-1">
+                            <CardTitle className="text-base group-hover:text-primary transition-colors">
+                              {exercise.title}
+                            </CardTitle>
+                            <div className="flex gap-2 mt-1">
+                              <Badge variant="secondary" className="text-xs">{exercise.level}</Badge>
+                              <Badge variant="outline" className="text-xs">{exercise.accent}</Badge>
+                            </div>
+                          </div>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          {Object.keys(exercise.glossary).length} mots avec traductions
+                        </p>
+                        <Link to={`/exercices/listening/${exercise.slug}`}>
+                          <Button size="sm" className="w-full gap-2">
+                            Écouter
+                            <ChevronRight className="h-4 w-4" />
+                          </Button>
+                        </Link>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+
+                <div className="text-center pt-4">
+                  <Link to="/exercices/listening">
+                    <Button variant="outline" className="gap-2">
+                      <Headphones className="h-4 w-4" />
+                      Voir le Listening Lab
                     </Button>
                   </Link>
                 </div>
