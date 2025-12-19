@@ -10,7 +10,7 @@ import Transcript from '@/components/listening/Transcript';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { fetchListeningAudioUrl } from '@/lib/listeningAudio';
+import { fetchListeningAudio } from '@/lib/listeningAudio';
 
 const ListeningExerciseContent: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -18,6 +18,7 @@ const ListeningExerciseContent: React.FC = () => {
   const exercise = getListeningExerciseBySlug(slug || '');
   
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const [audioCached, setAudioCached] = useState<boolean | null>(null);
   const [audioLoading, setAudioLoading] = useState(true);
   const [audioError, setAudioError] = useState<string | null>(null);
 
@@ -28,10 +29,12 @@ const ListeningExerciseContent: React.FC = () => {
     setAudioLoading(true);
     setAudioError(null);
     setAudioUrl(null);
+    setAudioCached(null);
 
-    fetchListeningAudioUrl(slug)
-      .then((url) => {
-        setAudioUrl(url);
+    fetchListeningAudio(slug)
+      .then((result) => {
+        setAudioUrl(result.url);
+        setAudioCached(result.cached);
         setAudioLoading(false);
       })
       .catch((err) => {
@@ -61,6 +64,14 @@ const ListeningExerciseContent: React.FC = () => {
   const currentIndex = listeningExercises.findIndex(ex => ex.slug === slug);
   const prevExercise = currentIndex > 0 ? listeningExercises[currentIndex - 1] : null;
   const nextExercise = currentIndex < listeningExercises.length - 1 ? listeningExercises[currentIndex + 1] : null;
+
+  // Debug status line
+  const getAudioStatus = () => {
+    if (audioLoading) return "Audio: loading";
+    if (audioError) return `Audio: error — ${audioError}`;
+    if (audioUrl) return `Audio: ready (cached: ${audioCached})`;
+    return null;
+  };
 
   return (
     <>
@@ -137,6 +148,11 @@ const ListeningExerciseContent: React.FC = () => {
             ) : audioUrl ? (
               <AudioPlayer audioUrl={audioUrl} title={exercise.title} />
             ) : null}
+
+            {/* Debug status line */}
+            {getAudioStatus() && (
+              <p className="text-xs text-muted-foreground">{getAudioStatus()}</p>
+            )}
 
             {/* Transcript */}
             <Card>

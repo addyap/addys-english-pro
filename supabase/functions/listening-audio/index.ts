@@ -3,7 +3,8 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders: Record<string, string> = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type",
   "Access-Control-Allow-Methods": "GET, OPTIONS",
 };
 
@@ -31,7 +32,6 @@ const VOICE_IDS: Partial<Record<Slug, string>> = {
 };
 
 serve(async (req) => {
-  // CORS preflight
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
@@ -58,6 +58,7 @@ serve(async (req) => {
 
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+
     if (!supabaseUrl || !supabaseServiceKey) {
       console.error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY");
       return new Response(JSON.stringify({ error: "Server configuration error" }), {
@@ -72,23 +73,17 @@ serve(async (req) => {
     const filePath = `${slug}.mp3`;
     const publicUrl = `${supabaseUrl}/storage/v1/object/public/${bucket}/${filePath}`;
 
-    // RELIABLE CACHE CHECK: Use download instead of list+search
+    // Reliable cache check: download()
     const { data: downloadData, error: downloadError } = await supabase.storage
       .from(bucket)
       .download(filePath);
 
-    // If download succeeds, file exists - return cached URL
     if (downloadData && !downloadError) {
-      console.log(`Cache hit for ${slug}`);
       return new Response(JSON.stringify({ url: publicUrl, cached: true }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    // Log cache miss reason
-    console.log(`Cache miss for ${slug}: ${downloadError?.message || "file not found"}`);
-
-    // Generate audio via ElevenLabs
     const elevenlabsApiKey = Deno.env.get("ELEVENLABS_API_KEY");
     if (!elevenlabsApiKey) {
       console.error("Missing ELEVENLABS_API_KEY");
@@ -100,8 +95,6 @@ serve(async (req) => {
 
     const text = EXERCISE_TEXTS[slug];
     const voiceId = VOICE_IDS[slug] || "EXAVITQu4vr4xnSDxMaL";
-
-    console.log(`Generating audio for ${slug} with voice ${voiceId}`);
 
     const ttsResponse = await fetch(
       `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,
@@ -151,14 +144,10 @@ serve(async (req) => {
     }
 
     const audioBuffer = await ttsResponse.arrayBuffer();
-    console.log(`Generated ${audioBuffer.byteLength} bytes for ${slug}`);
 
     const { error: uploadError } = await supabase.storage
       .from(bucket)
-      .upload(filePath, audioBuffer, {
-        contentType: "audio/mpeg",
-        upsert: true,
-      });
+      .upload(filePath, audioBuffer, { contentType: "audio/mpeg", upsert: true });
 
     if (uploadError) {
       console.error("Upload error:", uploadError);
@@ -168,7 +157,6 @@ serve(async (req) => {
       });
     }
 
-    console.log(`Cached audio at ${publicUrl}`);
     return new Response(JSON.stringify({ url: publicUrl, cached: false }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
