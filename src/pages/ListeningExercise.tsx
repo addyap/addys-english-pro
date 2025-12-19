@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Headphones, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Headphones, ChevronLeft, ChevronRight, Loader2, AlertCircle } from 'lucide-react';
 import SEOHead from '@/components/SEOHead';
 import { getListeningExerciseBySlug, listeningExercises } from '@/data/listeningExercises';
 import { ListeningLanguageProvider } from '@/contexts/ListeningLanguageContext';
@@ -10,11 +10,36 @@ import Transcript from '@/components/listening/Transcript';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { fetchListeningAudioUrl } from '@/lib/listeningAudio';
 
 const ListeningExerciseContent: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const exercise = getListeningExerciseBySlug(slug || '');
+  
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const [audioLoading, setAudioLoading] = useState(true);
+  const [audioError, setAudioError] = useState<string | null>(null);
+
+  // Fetch audio URL when slug changes
+  useEffect(() => {
+    if (!slug) return;
+    
+    setAudioLoading(true);
+    setAudioError(null);
+    setAudioUrl(null);
+
+    fetchListeningAudioUrl(slug)
+      .then((url) => {
+        setAudioUrl(url);
+        setAudioLoading(false);
+      })
+      .catch((err) => {
+        console.error('Failed to fetch audio:', err);
+        setAudioError(err.message || 'Failed to load audio');
+        setAudioLoading(false);
+      });
+  }, [slug]);
 
   if (!exercise) {
     return (
@@ -88,7 +113,30 @@ const ListeningExerciseContent: React.FC = () => {
             </div>
 
             {/* Audio Player */}
-            <AudioPlayer audioUrl={exercise.audioUrl} title={exercise.title} />
+            {audioLoading ? (
+              <Card>
+                <CardContent className="py-8">
+                  <div className="flex items-center justify-center gap-3 text-muted-foreground">
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                    <span>Generating audio...</span>
+                  </div>
+                </CardContent>
+              </Card>
+            ) : audioError ? (
+              <Card className="border-destructive/50">
+                <CardContent className="py-6">
+                  <div className="flex items-center gap-3 text-destructive">
+                    <AlertCircle className="h-5 w-5 flex-shrink-0" />
+                    <div>
+                      <p className="font-medium">Audio unavailable</p>
+                      <p className="text-sm text-muted-foreground">{audioError}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ) : audioUrl ? (
+              <AudioPlayer audioUrl={audioUrl} title={exercise.title} />
+            ) : null}
 
             {/* Transcript */}
             <Card>
