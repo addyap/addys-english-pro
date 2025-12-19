@@ -150,9 +150,9 @@ const ListeningExerciseContent: React.FC = () => {
             ) : null}
 
             {/* Debug status line */}
-            {getAudioStatus() && (
-              <p className="text-xs text-muted-foreground">{getAudioStatus()}</p>
-            )}
+            {getAudioStatus() ? (
+              <p className="mt-2 text-xs text-muted-foreground">{getAudioStatus()}</p>
+            ) : null}
 
             {/* Transcript */}
             <Card>

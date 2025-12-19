@@ -26,9 +26,9 @@ const EXERCISE_TEXTS: Record<Slug, string> = {
 };
 
 const VOICE_IDS: Partial<Record<Slug, string>> = {
-  "customer-service-call": "EXAVITQu4vr4xnSDxMaL", // Sarah - UK
-  "journalist-interview": "TX3LPaxmHKxFdv7VOQHJ", // Liam - US
-  "museum-reception": "EXAVITQu4vr4xnSDxMaL", // Sarah - UK
+  "customer-service-call": "EXAVITQu4vr4xnSDxMaL",
+  "journalist-interview": "TX3LPaxmHKxFdv7VOQHJ",
+  "museum-reception": "EXAVITQu4vr4xnSDxMaL",
 };
 
 serve(async (req) => {
@@ -60,7 +60,6 @@ serve(async (req) => {
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 
     if (!supabaseUrl || !supabaseServiceKey) {
-      console.error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY");
       return new Response(JSON.stringify({ error: "Server configuration error" }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -73,7 +72,6 @@ serve(async (req) => {
     const filePath = `${slug}.mp3`;
     const publicUrl = `${supabaseUrl}/storage/v1/object/public/${bucket}/${filePath}`;
 
-    // Reliable cache check: download()
     const { data: downloadData, error: downloadError } = await supabase.storage
       .from(bucket)
       .download(filePath);
@@ -86,7 +84,6 @@ serve(async (req) => {
 
     const elevenlabsApiKey = Deno.env.get("ELEVENLABS_API_KEY");
     if (!elevenlabsApiKey) {
-      console.error("Missing ELEVENLABS_API_KEY");
       return new Response(JSON.stringify({ error: "ElevenLabs API key not configured" }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -121,22 +118,18 @@ serve(async (req) => {
 
     if (!ttsResponse.ok) {
       const errorText = await ttsResponse.text();
-      console.error("ElevenLabs error:", ttsResponse.status, errorText);
-
       if (ttsResponse.status === 401) {
         return new Response(JSON.stringify({ error: "Invalid ElevenLabs API key" }), {
           status: 500,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-
       if (ttsResponse.status === 429) {
         return new Response(JSON.stringify({ error: "ElevenLabs quota exceeded. Please try again later." }), {
           status: 429,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-
       return new Response(JSON.stringify({ error: "Failed to generate audio" }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -150,7 +143,6 @@ serve(async (req) => {
       .upload(filePath, audioBuffer, { contentType: "audio/mpeg", upsert: true });
 
     if (uploadError) {
-      console.error("Upload error:", uploadError);
       return new Response(JSON.stringify({ error: "Failed to cache audio" }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -161,7 +153,6 @@ serve(async (req) => {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {
-    console.error("Edge function error:", error);
     return new Response(JSON.stringify({ error: error instanceof Error ? error.message : "Unknown error" }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
