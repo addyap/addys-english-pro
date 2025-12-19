@@ -1,7 +1,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-const corsHeaders: Record<string, string> = {
+const corsHeaders: { [key: string]: string } = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
     "authorization, x-client-info, apikey, content-type",
@@ -16,7 +16,7 @@ const VALID_SLUGS: Slug[] = [
   "museum-reception",
 ];
 
-const EXERCISE_TEXTS: Record<Slug, string> = {
+const EXERCISE_TEXTS: { [key in Slug]: string } = {
   "customer-service-call":
     "Good morning, thank you for calling TechSupport. My name is Sarah. How may I assist you today? I'm having trouble with my laptop. It keeps freezing whenever I open multiple applications. I understand how frustrating that must be. Let me help you troubleshoot the issue. First, could you tell me how much memory your device has? I believe it has eight gigabytes of RAM. That should be sufficient for most tasks. Have you tried restarting your computer recently? Yes, I restarted it this morning, but the problem persists. I see. Let's try clearing your cache and temporary files. This often resolves performance issues. Would you like me to guide you through the process step by step?",
   "journalist-interview":
@@ -25,7 +25,7 @@ const EXERCISE_TEXTS: Record<Slug, string> = {
     "Good afternoon and welcome to the National History Museum. How can I help you? Hello, we'd like to visit the museum. How much are the tickets? For adults, it's twelve pounds each. Children under twelve enter free of charge. We also offer a family ticket for thirty pounds, which includes two adults and up to three children. That sounds perfect. We'll take the family ticket, please. Excellent choice. Here are your tickets and a map of the museum. The Egyptian exhibition is particularly popular right now. It's on the second floor. Don't miss the mummy display. Are there any guided tours available? Yes, there's a guided tour starting in twenty minutes. It lasts approximately ninety minutes and covers the main highlights. It's included in your ticket price. Where does the tour begin? The tour meets at the main staircase in the entrance hall. Look for the guide holding a blue flag.",
 };
 
-const VOICE_IDS: Partial<Record<Slug, string>> = {
+const VOICE_IDS: { [key in Slug]?: string } = {
   "customer-service-call": "EXAVITQu4vr4xnSDxMaL",
   "journalist-interview": "TX3LPaxmHKxFdv7VOQHJ",
   "museum-reception": "EXAVITQu4vr4xnSDxMaL",

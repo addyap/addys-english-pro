@@ -3,9 +3,7 @@ export interface ListeningAudioResponse {
   cached: boolean;
 }
 
-export async function fetchListeningAudio(
-  slug: string
-): Promise<ListeningAudioResponse> {
+export async function fetchListeningAudio(slug: string): Promise<any> {
   const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
   if (!supabaseUrl) throw new Error("Supabase URL not configured");
 
@@ -27,7 +25,7 @@ export async function fetchListeningAudio(
   return { url: data.url, cached: data.cached ?? false };
 }
 
-export async function fetchListeningAudioUrl(slug: string): Promise<string> {
+export async function fetchListeningAudioUrl(slug: string): Promise<any> {
   const result = await fetchListeningAudio(slug);
   return result.url;
 }
