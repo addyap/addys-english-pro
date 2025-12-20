@@ -1,157 +1,186 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2, RefreshCw, Flame, Trash2, CheckCircle, XCircle, ExternalLink } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
+import { listeningExercises } from "@/data/listeningExercises";
 
-var SLUGS = ["customer-service-call", "journalist-interview", "museum-reception"];
+// Build slugs from canonical data source
+const slugs = listeningExercises.map((e) => e.slug);
 
-function ListeningAudioCacheAdmin() {
-  var secretState = useState("");
-  var adminSecret = secretState[0];
-  var setAdminSecret = secretState[1];
+interface StatusItem {
+  slug: string;
+  exists: boolean;
+  publicUrl: string;
+}
 
-  var loadingState = useState(false);
-  var loading = loadingState[0];
-  var setLoading = loadingState[1];
+interface ActionResult {
+  success: boolean;
+  message: string;
+}
 
-  var errorState = useState("");
-  var errorMsg = errorState[0];
-  var setErrorMsg = errorState[1];
+interface WarmSummary {
+  generated: number;
+  cached: number;
+  failed: number;
+}
 
-  var statusState = useState([]);
-  var statusItems = statusState[0];
-  var setStatusItems = statusState[1];
+interface PurgeSummary {
+  deleted: number;
+  failed: number;
+}
 
-  var resultsState = useState({});
-  var actionResults = resultsState[0];
-  var setActionResults = resultsState[1];
+type CurrentAction = "status" | "warm" | "purge" | null;
 
-  function callAdmin(action) {
-    var supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-    if (!supabaseUrl) {
-      setErrorMsg("Supabase URL not configured");
-      return Promise.resolve(null);
-    }
+export default function ListeningAudioCacheAdmin() {
+  const [adminSecret, setAdminSecret] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [statusItems, setStatusItems] = useState<StatusItem[]>([]);
+  const [actionResults, setActionResults] = useState<Record<string, ActionResult>>({});
+  const [currentAction, setCurrentAction] = useState<CurrentAction>(null);
+  const [warmSummary, setWarmSummary] = useState<WarmSummary | null>(null);
+  const [purgeSummary, setPurgeSummary] = useState<PurgeSummary | null>(null);
 
-    if (!adminSecret.trim()) {
-      setErrorMsg("Please enter the admin secret");
-      return Promise.resolve(null);
-    }
-
-    setErrorMsg("");
-    setLoading(true);
-
-    return fetch(supabaseUrl + "/functions/v1/listening-audio-admin", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-admin-secret": adminSecret
-      },
-      body: JSON.stringify({ action: action })
-    })
-      .then(function(response) {
-        return response.json().then(function(data) {
-          setLoading(false);
-          if (!response.ok) {
-            setErrorMsg(data.error || "Request failed: " + response.status);
-            return null;
-          }
-          return data;
-        });
-      })
-      .catch(function(err) {
-        setLoading(false);
-        var message = err instanceof Error ? err.message : String(err);
-        setErrorMsg("Error: " + message);
+  const callAdmin = useCallback(
+    async (action: "status" | "warm" | "purge"): Promise<any> => {
+      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+      if (!supabaseUrl) {
+        setErrorMsg("Supabase URL not configured");
         return null;
-      });
-  }
-
-  function handleRefreshStatus() {
-    callAdmin("status").then(function(data) {
-      if (data && data.items) {
-        setStatusItems(data.items);
       }
-    });
-  }
 
-  function handleWarmCache() {
-    callAdmin("warm").then(function(data) {
-      if (data) {
-        var newResults = {};
+      if (!adminSecret.trim()) {
+        setErrorMsg("Please enter the admin secret");
+        return null;
+      }
 
-        if (data.warmed) {
-          for (var i = 0; i < data.warmed.length; i++) {
-            var slug = data.warmed[i];
-            newResults[slug] = { success: true, message: "Generated" };
-          }
-        }
-        if (data.skipped) {
-          for (var j = 0; j < data.skipped.length; j++) {
-            var slug2 = data.skipped[j];
-            newResults[slug2] = { success: true, message: "Already cached" };
-          }
-        }
-        if (data.failed) {
-          for (var k = 0; k < data.failed.length; k++) {
-            var item = data.failed[k];
-            newResults[item.slug] = { success: false, message: item.error };
-          }
-        }
+      setErrorMsg("");
+      setLoading(true);
+      setCurrentAction(action);
 
-        setActionResults(Object.assign({}, actionResults, newResults));
-
-        callAdmin("status").then(function(statusData) {
-          if (statusData && statusData.items) {
-            setStatusItems(statusData.items);
-          }
+      try {
+        const response = await fetch(`${supabaseUrl}/functions/v1/listening-audio-admin`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-admin-secret": adminSecret,
+          },
+          body: JSON.stringify({ action, slugs }),
         });
-      }
-    });
-  }
 
-  function handlePurgeCache() {
-    var confirmed = window.confirm("Are you sure you want to purge all cached audio files?");
+        const data = await response.json();
+        setLoading(false);
+        setCurrentAction(null);
+
+        if (!response.ok) {
+          setErrorMsg(data.error || `Request failed: ${response.status}`);
+          return null;
+        }
+        return data;
+      } catch (err) {
+        setLoading(false);
+        setCurrentAction(null);
+        const message = err instanceof Error ? err.message : String(err);
+        setErrorMsg(`Error: ${message}`);
+        return null;
+      }
+    },
+    [adminSecret]
+  );
+
+  const handleRefreshStatus = useCallback(async () => {
+    const data = await callAdmin("status");
+    if (data?.items) {
+      setStatusItems(data.items);
+    }
+  }, [callAdmin]);
+
+  const handleWarmCache = useCallback(async () => {
+    setWarmSummary(null);
+    setPurgeSummary(null);
+    const data = await callAdmin("warm");
+    if (data) {
+      const newResults: Record<string, ActionResult> = {};
+
+      if (data.warmed) {
+        for (const slug of data.warmed) {
+          newResults[slug] = { success: true, message: "Generated" };
+        }
+      }
+      if (data.skipped) {
+        for (const slug of data.skipped) {
+          newResults[slug] = { success: true, message: "Already cached" };
+        }
+      }
+      if (data.failed) {
+        for (const item of data.failed) {
+          newResults[item.slug] = { success: false, message: item.error };
+        }
+      }
+
+      setActionResults((prev) => ({ ...prev, ...newResults }));
+      setWarmSummary({
+        generated: data.warmed?.length || 0,
+        cached: data.skipped?.length || 0,
+        failed: data.failed?.length || 0,
+      });
+
+      // Refresh status after warm
+      const statusData = await callAdmin("status");
+      if (statusData?.items) {
+        setStatusItems(statusData.items);
+      }
+    }
+  }, [callAdmin]);
+
+  const handlePurgeCache = useCallback(async () => {
+    const confirmed = window.confirm("Are you sure you want to purge all cached audio files?");
     if (!confirmed) return;
 
-    callAdmin("purge").then(function(data) {
-      if (data) {
-        var newResults = {};
+    setWarmSummary(null);
+    setPurgeSummary(null);
+    const data = await callAdmin("purge");
+    if (data) {
+      const newResults: Record<string, ActionResult> = {};
 
-        if (data.deleted) {
-          for (var i = 0; i < data.deleted.length; i++) {
-            var slug = data.deleted[i];
-            newResults[slug] = { success: true, message: "Deleted" };
-          }
+      if (data.deleted) {
+        for (const slug of data.deleted) {
+          newResults[slug] = { success: true, message: "Deleted" };
         }
-        if (data.failed) {
-          for (var j = 0; j < data.failed.length; j++) {
-            var item = data.failed[j];
-            newResults[item.slug] = { success: false, message: item.error };
-          }
-        }
-
-        setActionResults(Object.assign({}, actionResults, newResults));
-
-        callAdmin("status").then(function(statusData) {
-          if (statusData && statusData.items) {
-            setStatusItems(statusData.items);
-          }
-        });
       }
-    });
-  }
+      if (data.failed) {
+        for (const item of data.failed) {
+          newResults[item.slug] = { success: false, message: item.error };
+        }
+      }
 
-  function getStatusForSlug(slug) {
-    for (var i = 0; i < statusItems.length; i++) {
-      if (statusItems[i].slug === slug) {
-        return statusItems[i];
+      setActionResults((prev) => ({ ...prev, ...newResults }));
+      setPurgeSummary({
+        deleted: data.deleted?.length || 0,
+        failed: data.failed?.length || 0,
+      });
+
+      // Refresh status after purge
+      const statusData = await callAdmin("status");
+      if (statusData?.items) {
+        setStatusItems(statusData.items);
       }
     }
-    return null;
-  }
+  }, [callAdmin]);
+
+  // Auto-refresh on mount if secret is present
+  useEffect(() => {
+    if (adminSecret.trim()) {
+      handleRefreshStatus();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const getStatusForSlug = (slug: string): StatusItem | null => {
+    return statusItems.find((item) => item.slug === slug) || null;
+  };
 
   return (
     <>
@@ -169,18 +198,37 @@ function ListeningAudioCacheAdmin() {
           <Input
             type="password"
             value={adminSecret}
-            onChange={function(e) { setAdminSecret(e.target.value); }}
+            onChange={(e) => setAdminSecret(e.target.value)}
             placeholder="Enter admin secret"
             className="max-w-sm"
           />
           <p className="mt-2 text-sm text-muted-foreground">
-            Set <code className="font-mono">LISTENING_ADMIN_SECRET</code> in your backend secrets.
+            Set <code className="font-mono bg-muted px-1 rounded">LISTENING_ADMIN_SECRET</code> in your backend secrets.
           </p>
         </div>
 
         {errorMsg && (
           <div className="mb-4 p-3 bg-destructive/10 text-destructive rounded-md text-sm">
             {errorMsg}
+          </div>
+        )}
+
+        {loading && currentAction && (
+          <div className="mb-4 p-3 bg-primary/10 text-primary rounded-md text-sm flex items-center gap-2">
+            <Loader2 className="h-4 w-4 animate-spin" />
+            <span>Running: {currentAction}...</span>
+          </div>
+        )}
+
+        {warmSummary && (
+          <div className="mb-4 p-3 bg-green-100 text-green-800 rounded-md text-sm">
+            Warm complete: Generated {warmSummary.generated}, already cached {warmSummary.cached}, failed {warmSummary.failed}
+          </div>
+        )}
+
+        {purgeSummary && (
+          <div className="mb-4 p-3 bg-orange-100 text-orange-800 rounded-md text-sm">
+            Purge complete: Deleted {purgeSummary.deleted}, failed {purgeSummary.failed}
           </div>
         )}
 
@@ -200,9 +248,9 @@ function ListeningAudioCacheAdmin() {
         </div>
 
         <div className="space-y-4">
-          {SLUGS.map(function(slug) {
-            var status = getStatusForSlug(slug);
-            var result = actionResults[slug];
+          {slugs.map((slug) => {
+            const status = getStatusForSlug(slug);
+            const result = actionResults[slug];
 
             return (
               <Card key={slug}>
@@ -216,7 +264,7 @@ function ListeningAudioCacheAdmin() {
                           Cached
                         </span>
                       ) : (
-                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-muted text-muted-foreground">
                           <XCircle className="mr-1 h-3 w-3" />
                           Not cached
                         </span>
@@ -226,7 +274,7 @@ function ListeningAudioCacheAdmin() {
                 </CardHeader>
                 <CardContent className="text-sm text-muted-foreground">
                   <p className="mb-2">{slug}.mp3</p>
-                  {status && status.exists && (
+                  {status?.exists && status.publicUrl && (
                     <a
                       href={status.publicUrl}
                       target="_blank"
@@ -238,7 +286,12 @@ function ListeningAudioCacheAdmin() {
                     </a>
                   )}
                   {result && (
-                    <div className={"mt-2 text-xs " + (result.success ? "text-green-600" : "text-destructive")}>
+                    <div className={`mt-2 text-xs ${result.success ? "text-green-600" : "text-destructive"}`}>
+                      {result.success ? (
+                        <CheckCircle className="inline mr-1 h-3 w-3" />
+                      ) : (
+                        <XCircle className="inline mr-1 h-3 w-3" />
+                      )}
                       Last action: {result.message}
                     </div>
                   )}
@@ -251,5 +304,3 @@ function ListeningAudioCacheAdmin() {
     </>
   );
 }
-
-export default ListeningAudioCacheAdmin;
