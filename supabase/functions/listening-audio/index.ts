@@ -9,7 +9,7 @@ const corsHeaders: { [key: string]: string } = {
   "Access-Control-Allow-Methods": "GET, OPTIONS",
 };
 
-type Slug = "customer-service-call" | "journalist-interview" | "museum-reception" | "job-interview" | "restaurant-reservation" | "airport-announcement" | "doctor-appointment" | "hotel-check-in" | "weather-forecast" | "train-announcement" | "shopping-clothes" | "university-lecture" | "business-meeting";
+type Slug = "customer-service-call" | "journalist-interview" | "museum-reception" | "job-interview" | "restaurant-reservation" | "airport-announcement" | "doctor-appointment" | "hotel-check-in" | "weather-forecast" | "train-announcement" | "shopping-clothes" | "university-lecture" | "business-meeting" | "bank-account" | "gym-membership" | "cinema-booking" | "pharmacy-visit" | "car-rental" | "apartment-viewing" | "podcast-technology";
 
 const VALID_SLUGS: Slug[] = [
   "customer-service-call",
@@ -25,6 +25,13 @@ const VALID_SLUGS: Slug[] = [
   "shopping-clothes",
   "university-lecture",
   "business-meeting",
+  "bank-account",
+  "gym-membership",
+  "cinema-booking",
+  "pharmacy-visit",
+  "car-rental",
+  "apartment-viewing",
+  "podcast-technology",
 ];
 
 const EXERCISE_TEXTS: { [key in Slug]: string } = {
@@ -54,6 +61,20 @@ const EXERCISE_TEXTS: { [key in Slug]: string } = {
     "Good morning everyone, and welcome to this semester's introductory course on environmental science. Before we dive into the material, let me outline what we'll be covering over the next twelve weeks. The course is divided into three main sections. First, we'll examine the fundamental principles of ecology and ecosystems. In the second part, we'll focus on climate change, its causes, and its global impact. Finally, we'll explore sustainable solutions and the role of policy in environmental protection. Assessment will consist of two written assignments worth thirty percent each, and a final exam worth forty percent. I encourage you to participate actively in seminars and don't hesitate to visit during my office hours if you have questions. The reading list is available on the course website. I recommend starting with chapters one through three of the main textbook this week.",
   "business-meeting":
     "Alright everyone, let's get started. Thanks for joining today's meeting on such short notice. The main item on the agenda is the upcoming product launch scheduled for next quarter. Sarah, could you give us an update on the marketing campaign? Sure. We've finalized the social media strategy and the print materials are currently being designed. We should have everything ready two weeks before launch. Excellent. What about the budget? Are we still on track? We're slightly over budget due to unexpected production costs, but we've identified some areas where we can cut back. I see. Let's discuss that in more detail after this meeting. Tom, how's the development team progressing? We're on schedule. The final testing phase begins next week, and we're confident we'll meet the deadline. Great work everyone. Let's schedule a follow-up meeting for next Wednesday to review progress. Any questions before we wrap up?",
+  "bank-account":
+    "Good morning, how can I help you today? Hi, I'd like to open a new bank account, please. Certainly. Are you looking for a current account or a savings account? A current account for my everyday expenses. No problem. Do you have any identification with you? We'll need a passport or driving licence. Yes, I have my passport here. Perfect. And do you have proof of address? A utility bill or bank statement from another account? I have a recent electricity bill. Excellent. We offer several types of current accounts. Our standard account has no monthly fee, while our premium account offers additional benefits like travel insurance for twelve pounds a month. The standard account sounds fine for now. Great choice. I'll just need you to fill in this application form. Would you like to set up online banking as well? Yes, please. That would be very convenient.",
+  "gym-membership":
+    "Welcome to FitLife Gym! Are you interested in becoming a member? Yes, I'd like to know about your membership options. Of course! We have three plans. The basic plan is twenty-nine dollars a month and gives you access to all gym equipment. What about classes? For classes, you'd need our standard plan at forty-five dollars. That includes unlimited group classes like yoga, spinning, and aerobics. That sounds good. What's included in the premium plan? The premium plan is sixty-five dollars and includes personal training sessions, access to the spa, and towel service. I think the standard plan would work for me. Can I try the gym first? Absolutely! We offer a free one-day trial. Would you like to try it today? Yes, please! Great. Just fill out this form and I'll give you a tour of the facilities.",
+  "cinema-booking":
+    "Good evening, welcome to Starlight Cinema. How can I help? Hi, I'd like two tickets for the seven thirty showing of The Last Adventure, please. Certainly. Would you prefer standard seats or premium seats with extra legroom? What's the price difference? Standard seats are nine pounds fifty each, and premium seats are twelve pounds fifty. We'll take two standard seats, please. No problem. Would you like seats near the front, middle, or back of the cinema? The middle would be perfect. I have two seats available in row H. Does that work for you? Yes, that's great. Would you like any snacks or drinks? We have a special offer on large popcorn and drinks today. Yes, one large popcorn and two medium drinks, please. Excellent. Your total comes to twenty-eight pounds. Cash or card? Card, please.",
+  "pharmacy-visit":
+    "Good afternoon. How can I help you today? Hello, I've had a terrible cold for the past few days. I need something for my symptoms. I'm sorry to hear that. What symptoms are you experiencing? I have a blocked nose, a sore throat, and I've been coughing a lot. I see. Are you taking any other medications at the moment? Just some vitamins, nothing else. And do you have any allergies we should know about? No, no allergies. Right. I'd recommend this cold and flu remedy. It should help with all your symptoms. Take two tablets every four to six hours. Should I take them with food? It's not necessary, but it can help if you have a sensitive stomach. Also, make sure you drink plenty of fluids and get some rest. Thank you. How much is that? That's seven pounds forty-nine. I hope you feel better soon.",
+  "car-rental":
+    "Good morning, welcome to QuickDrive Car Rental. How can I assist you? Hi, I have a reservation for a compact car. The name is Martinez. Let me check that for you. Yes, here it is. A compact car for five days, picking up today and returning Friday. That's correct. May I see your driver's license and a credit card for the deposit? Sure, here they are. Thank you. Now, would you like to add any insurance coverage? We offer collision damage waiver and personal accident insurance. What does the collision damage waiver cover? It covers any damage to the vehicle in case of an accident. Without it, you'd be responsible for the full repair costs. I'll take the collision coverage then. How much extra is that? It's fifteen dollars per day. Would you also like a GPS navigation system? Yes, that would be helpful since I don't know the area. Perfect. Your total comes to two hundred eighty-five dollars. The car is in parking space B twelve.",
+  "apartment-viewing":
+    "Hello, you must be here for the viewing. Please, come in. Thank you. This looks lovely from the outside. As you can see, this is the open-plan living area. It gets plenty of natural light from these large windows. It's very spacious. How many square metres is the flat? The total floor space is seventy-five square metres. There are two bedrooms through here. The master bedroom is quite generous. Is that a built-in wardrobe? Yes, both bedrooms have built-in storage. The bathroom was renovated last year and has underfloor heating. That's a nice touch. What are the utility bills like? The previous tenants paid around one hundred twenty pounds a month for gas and electricity. The property has double glazing which helps with insulation. And what about the lease terms? It's a minimum twelve-month contract. The rent is one thousand four hundred pounds per month, plus a six-week deposit. When would it be available to move in? The first of next month.",
+  "podcast-technology":
+    "Welcome back to Tech Today, the podcast where we explore the latest innovations shaping our world. Today we're discussing artificial intelligence and its impact on everyday life. Over the past decade, AI has evolved from a niche technology to something we interact with daily, often without even realizing it. From the recommendations you get on streaming platforms to the voice assistants in your smartphones, AI is everywhere. But what does this mean for the future of work? Many experts predict significant changes in the job market. While some roles may become automated, new opportunities are emerging in fields like machine learning engineering and data science. The key is adaptability. Workers who continuously update their skills will thrive in this new landscape. Of course, there are ethical considerations too. Questions about privacy, bias in algorithms, and the environmental cost of training large models are increasingly important. Next week, we'll be joined by a leading researcher to discuss these challenges in depth. Until then, stay curious and keep exploring.",
 };
 
 const VOICE_IDS: { [key in Slug]?: string } = {
@@ -68,6 +89,16 @@ const VOICE_IDS: { [key in Slug]?: string } = {
   "weather-forecast": "nPczCjzI2devNBz1zQrb", // Brian
   "train-announcement": "onwK4e9ZLuTAKqWW03F9", // Daniel
   "shopping-clothes": "cgSgspJ2msm6clMCkdW9", // Jessica
+  "university-lecture": "JBFqnCBsd6RMkjVDRZzb", // George
+  "business-meeting": "TX3LPaxmHKxFdv7VOQHJ", // Liam
+  "bank-account": "EXAVITQu4vr4xnSDxMaL", // Sarah
+  "gym-membership": "cgSgspJ2msm6clMCkdW9", // Jessica
+  "cinema-booking": "EXAVITQu4vr4xnSDxMaL", // Sarah
+  "pharmacy-visit": "EXAVITQu4vr4xnSDxMaL", // Sarah
+  "car-rental": "JBFqnCBsd6RMkjVDRZzb", // George
+  "apartment-viewing": "TX3LPaxmHKxFdv7VOQHJ", // Liam
+  "podcast-technology": "CwhRBWXzGAHq8TQ4Fs17", // Roger
+};
   "university-lecture": "JBFqnCBsd6RMkjVDRZzb", // George
   "business-meeting": "TX3LPaxmHKxFdv7VOQHJ", // Liam
 };
