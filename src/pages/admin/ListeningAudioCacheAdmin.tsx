@@ -173,6 +173,9 @@ function ListeningAudioCacheAdmin() {
             placeholder="Enter admin secret"
             className="max-w-sm"
           />
+          <p className="mt-2 text-sm text-muted-foreground">
+            Set <code className="font-mono">LISTENING_ADMIN_SECRET</code> in your backend secrets.
+          </p>
         </div>
 
         {errorMsg && (
@@ -183,16 +186,16 @@ function ListeningAudioCacheAdmin() {
 
         <div className="flex flex-wrap gap-3 mb-6">
           <Button onClick={handleRefreshStatus} disabled={loading}>
-            {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <RefreshCw className="mr-2 h-4 w-4" />}
-            Refresh status
+            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <RefreshCw className="h-4 w-4" />}
+            <span className="ml-2">Refresh status</span>
           </Button>
           <Button onClick={handleWarmCache} disabled={loading} variant="secondary">
-            {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Flame className="mr-2 h-4 w-4" />}
-            Warm cache
+            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Flame className="h-4 w-4" />}
+            <span className="ml-2">Warm cache</span>
           </Button>
           <Button onClick={handlePurgeCache} disabled={loading} variant="destructive">
-            {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Trash2 className="mr-2 h-4 w-4" />}
-            Purge cache
+            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
+            <span className="ml-2">Purge cache</span>
           </Button>
         </div>
 
