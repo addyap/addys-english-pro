@@ -16,13 +16,23 @@ const Transcript: React.FC<TranscriptProps> = ({ text, glossary }) => {
   }, [text]);
 
   return (
-    <div className="space-y-3 text-lg font-body text-foreground">
+    <div className="space-y-2 text-lg font-body text-foreground">
       {lines.map((line, lineIndex) => (
-        <p key={lineIndex} className="leading-relaxed">
-          {line.tokens.map((token, tokenIndex) => (
-            <TranscriptWord key={`${lineIndex}-${token}-${tokenIndex}`} word={token} glossary={glossary} />
-          ))}
-        </p>
+        <div
+          key={lineIndex}
+          className={`flex items-start gap-3 py-2 px-3 rounded-lg transition-colors ${
+            lineIndex % 2 === 0 
+              ? 'bg-muted/30' 
+              : 'bg-transparent'
+          }`}
+        >
+          <span className="text-primary font-medium select-none mt-0.5">—</span>
+          <p className="leading-relaxed flex-1">
+            {line.tokens.map((token, tokenIndex) => (
+              <TranscriptWord key={`${lineIndex}-${token}-${tokenIndex}`} word={token} glossary={glossary} />
+            ))}
+          </p>
+        </div>
       ))}
     </div>
   );
