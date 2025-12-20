@@ -413,6 +413,95 @@ export const listeningExercises: ListeningExercise[] = [
         uk: "вхід"
       }
     }
+  },
+  {
+    slug: "job-interview",
+    title: "Job Interview",
+    level: "B1",
+    accent: "US",
+    audioUrl: "/audio/listening/job-interview.mp3",
+    text: "Good morning, please have a seat. Thank you for coming in today. I've reviewed your resume and I'm impressed by your experience. Can you tell me a bit about yourself? Of course. I recently graduated with a degree in marketing and I've spent the past two years working at a digital agency. I specialized in social media campaigns and content creation. That sounds relevant to our position. What made you apply for this role? I've always admired your company's innovative approach to branding. I believe my creative skills and analytical mindset would be a great fit for your team. Where do you see yourself in five years? I hope to grow into a leadership position where I can mentor others while continuing to develop cutting-edge marketing strategies.",
+    glossary: {
+      "resume": { fr: "CV", es: "currículum", it: "curriculum", de: "Lebenslauf", uk: "резюме" },
+      "impressed": { fr: "impressionné", es: "impresionado", it: "impressionato", de: "beeindruckt", uk: "вражений" },
+      "graduated": { fr: "diplômé", es: "graduado", it: "laureato", de: "abgeschlossen", uk: "закінчив" },
+      "specialized": { fr: "spécialisé", es: "especializado", it: "specializzato", de: "spezialisiert", uk: "спеціалізувався" },
+      "campaigns": { fr: "campagnes", es: "campañas", it: "campagne", de: "Kampagnen", uk: "кампанії" },
+      "relevant": { fr: "pertinent", es: "relevante", it: "pertinente", de: "relevant", uk: "релевантний" },
+      "innovative": { fr: "innovant", es: "innovador", it: "innovativo", de: "innovativ", uk: "інноваційний" },
+      "branding": { fr: "image de marque", es: "marca", it: "branding", de: "Markenbildung", uk: "брендинг" },
+      "analytical": { fr: "analytique", es: "analítico", it: "analitico", de: "analytisch", uk: "аналітичний" },
+      "mindset": { fr: "état d'esprit", es: "mentalidad", it: "mentalità", de: "Denkweise", uk: "спосіб мислення" },
+      "leadership": { fr: "leadership", es: "liderazgo", it: "leadership", de: "Führung", uk: "лідерство" },
+      "mentor": { fr: "encadrer", es: "orientar", it: "fare da mentore", de: "betreuen", uk: "наставляти" },
+      "cutting-edge": { fr: "de pointe", es: "vanguardista", it: "all'avanguardia", de: "bahnbrechend", uk: "передовий" }
+    }
+  },
+  {
+    slug: "restaurant-reservation",
+    title: "Restaurant Reservation",
+    level: "A2",
+    accent: "UK",
+    audioUrl: "/audio/listening/restaurant-reservation.mp3",
+    text: "Good evening, The Golden Fork, how may I help you? Hello, I'd like to make a reservation for Saturday evening, please. Certainly. How many people will be dining? There will be four of us. And what time would you prefer? Around seven thirty if possible. Let me check our availability. Yes, we have a table available at seven thirty. May I have a name for the reservation? It's under Johnson. Perfect, Mr Johnson. Would you like a table inside or on our terrace? The terrace would be lovely if the weather is nice. Of course. Do any of your guests have dietary requirements? Yes, one person is vegetarian. No problem, we have excellent vegetarian options. Your reservation is confirmed for Saturday at seven thirty for four people.",
+    glossary: {
+      "reservation": { fr: "réservation", es: "reserva", it: "prenotazione", de: "Reservierung", uk: "бронювання" },
+      "dining": { fr: "dîner", es: "cenar", it: "cenare", de: "speisen", uk: "обідати" },
+      "prefer": { fr: "préférer", es: "preferir", it: "preferire", de: "bevorzugen", uk: "віддавати перевагу" },
+      "availability": { fr: "disponibilité", es: "disponibilidad", it: "disponibilità", de: "Verfügbarkeit", uk: "наявність" },
+      "terrace": { fr: "terrasse", es: "terraza", it: "terrazza", de: "Terrasse", uk: "тераса" },
+      "weather": { fr: "temps", es: "tiempo", it: "tempo", de: "Wetter", uk: "погода" },
+      "dietary": { fr: "alimentaire", es: "dietético", it: "dietetico", de: "diätetisch", uk: "дієтичний" },
+      "requirements": { fr: "exigences", es: "requisitos", it: "requisiti", de: "Anforderungen", uk: "вимоги" },
+      "vegetarian": { fr: "végétarien", es: "vegetariano", it: "vegetariano", de: "vegetarisch", uk: "вегетаріанець" },
+      "confirmed": { fr: "confirmé", es: "confirmado", it: "confermato", de: "bestätigt", uk: "підтверджено" }
+    }
+  },
+  {
+    slug: "airport-announcement",
+    title: "Airport Announcement",
+    level: "B1",
+    accent: "UK",
+    audioUrl: "/audio/listening/airport-announcement.mp3",
+    text: "Attention all passengers. This is a final boarding call for Flight BA two four seven to New York JFK. All remaining passengers should proceed immediately to Gate fifteen. The gate will close in ten minutes. Passengers Smith and Williams, please make your way to the gate immediately or your luggage will be offloaded. We would also like to inform passengers that Flight LH five six two to Frankfurt has been delayed by approximately forty five minutes due to air traffic control restrictions. Passengers on this flight should remain in the departure lounge. We apologize for any inconvenience caused. Light refreshments will be provided. Please listen for further announcements regarding your new boarding time.",
+    glossary: {
+      "passengers": { fr: "passagers", es: "pasajeros", it: "passeggeri", de: "Passagiere", uk: "пасажири" },
+      "boarding": { fr: "embarquement", es: "embarque", it: "imbarco", de: "Boarding", uk: "посадка" },
+      "proceed": { fr: "se rendre", es: "dirigirse", it: "procedere", de: "begeben", uk: "прямувати" },
+      "immediately": { fr: "immédiatement", es: "inmediatamente", it: "immediatamente", de: "sofort", uk: "негайно" },
+      "luggage": { fr: "bagages", es: "equipaje", it: "bagagli", de: "Gepäck", uk: "багаж" },
+      "offloaded": { fr: "déchargé", es: "descargado", it: "scaricato", de: "ausgeladen", uk: "вивантажений" },
+      "delayed": { fr: "retardé", es: "retrasado", it: "ritardato", de: "verspätet", uk: "затриманий" },
+      "approximately": { fr: "environ", es: "aproximadamente", it: "circa", de: "ungefähr", uk: "приблизно" },
+      "restrictions": { fr: "restrictions", es: "restricciones", it: "restrizioni", de: "Einschränkungen", uk: "обмеження" },
+      "departure": { fr: "départ", es: "salida", it: "partenza", de: "Abflug", uk: "виліт" },
+      "lounge": { fr: "salon", es: "sala", it: "sala", de: "Lounge", uk: "зал очікування" },
+      "inconvenience": { fr: "désagrément", es: "inconveniente", it: "inconveniente", de: "Unannehmlichkeit", uk: "незручність" },
+      "refreshments": { fr: "rafraîchissements", es: "refrigerios", it: "rinfreschi", de: "Erfrischungen", uk: "закуски" }
+    }
+  },
+  {
+    slug: "doctor-appointment",
+    title: "Doctor's Appointment",
+    level: "B2",
+    accent: "US",
+    audioUrl: "/audio/listening/doctor-appointment.mp3",
+    text: "Good afternoon. What seems to be the problem today? I've been experiencing persistent headaches for about two weeks now. They're particularly bad in the morning. I see. Can you describe the pain? Is it sharp or dull? It's more of a dull, throbbing sensation, usually concentrated around my temples and forehead. Have you noticed any other symptoms? Perhaps changes in your vision or sensitivity to light? Now that you mention it, I have been more sensitive to bright lights lately. And I've been feeling quite fatigued. Have you been under any unusual stress recently? Actually yes, I've been working overtime on a major project. I've barely been sleeping. That could certainly be a contributing factor. I'd like to rule out anything more serious, so I'm going to recommend some blood tests and possibly a scan.",
+    glossary: {
+      "experiencing": { fr: "éprouver", es: "experimentando", it: "provando", de: "erleben", uk: "відчуваю" },
+      "persistent": { fr: "persistant", es: "persistente", it: "persistente", de: "anhaltend", uk: "постійний" },
+      "headaches": { fr: "maux de tête", es: "dolores de cabeza", it: "mal di testa", de: "Kopfschmerzen", uk: "головний біль" },
+      "particularly": { fr: "particulièrement", es: "particularmente", it: "particolarmente", de: "besonders", uk: "особливо" },
+      "throbbing": { fr: "lancinant", es: "palpitante", it: "pulsante", de: "pochend", uk: "пульсуючий" },
+      "sensation": { fr: "sensation", es: "sensación", it: "sensazione", de: "Gefühl", uk: "відчуття" },
+      "concentrated": { fr: "concentré", es: "concentrado", it: "concentrato", de: "konzentriert", uk: "зосереджений" },
+      "temples": { fr: "tempes", es: "sienes", it: "tempie", de: "Schläfen", uk: "скроні" },
+      "symptoms": { fr: "symptômes", es: "síntomas", it: "sintomi", de: "Symptome", uk: "симптоми" },
+      "sensitivity": { fr: "sensibilité", es: "sensibilidad", it: "sensibilità", de: "Empfindlichkeit", uk: "чутливість" },
+      "fatigued": { fr: "fatigué", es: "fatigado", it: "affaticato", de: "erschöpft", uk: "втомлений" },
+      "contributing": { fr: "contribuant", es: "contribuyente", it: "contribuente", de: "beitragend", uk: "сприяючий" },
+      "recommend": { fr: "recommander", es: "recomendar", it: "raccomandare", de: "empfehlen", uk: "рекомендувати" }
+    }
   }
 ];
 
