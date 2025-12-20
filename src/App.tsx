@@ -45,6 +45,7 @@ const WritingExerciseDetail = lazy(() => import("./pages/WritingExerciseDetail")
 const ListeningLibrary = lazy(() => import("./pages/ListeningLibrary"));
 const ListeningExercise = lazy(() => import("./pages/ListeningExercise"));
 const AudioAdminTools = lazy(() => import("./pages/AudioAdminTools"));
+const ListeningAudioCacheAdmin = lazy(() => import("./pages/admin/ListeningAudioCacheAdmin"));
 const SitemapPage = lazy(() => import("./pages/SitemapPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -101,6 +102,7 @@ const AppContent = () => {
               <Route path="/story/:id" element={<InteractiveStory />} />
               <Route path="/sitemap-page" element={<SitemapPage />} />
               <Route path="/admin/audio-cache" element={<AudioAdminTools />} />
+              <Route path="/admin/listening-cache" element={<ListeningAudioCacheAdmin />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
