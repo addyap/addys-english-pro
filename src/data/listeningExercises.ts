@@ -625,6 +625,144 @@ export const listeningExercises: ListeningExercise[] = [
       "deadline": { fr: "échéance", es: "plazo", it: "scadenza", de: "Frist", uk: "дедлайн" },
       "follow-up": { fr: "suivi", es: "seguimiento", it: "follow-up", de: "Nachbesprechung", uk: "подальша зустріч" }
     }
+  },
+  {
+    slug: "bank-account",
+    title: "Opening a Bank Account",
+    level: "B1",
+    accent: "UK",
+    audioUrl: "/audio/listening/bank-account.mp3",
+    text: "Good morning, how can I help you today?\nHi, I'd like to open a new bank account, please.\nCertainly. Are you looking for a current account or a savings account?\nA current account for my everyday expenses.\nNo problem. Do you have any identification with you? We'll need a passport or driving licence.\nYes, I have my passport here.\nPerfect. And do you have proof of address? A utility bill or bank statement from another account?\nI have a recent electricity bill.\nExcellent. We offer several types of current accounts. Our standard account has no monthly fee, while our premium account offers additional benefits like travel insurance for twelve pounds a month.\nThe standard account sounds fine for now.\nGreat choice. I'll just need you to fill in this application form. Would you like to set up online banking as well?\nYes, please. That would be very convenient.",
+    glossary: {
+      "current account": { fr: "compte courant", es: "cuenta corriente", it: "conto corrente", de: "Girokonto", uk: "поточний рахунок" },
+      "savings": { fr: "épargne", es: "ahorro", it: "risparmio", de: "Spar-", uk: "заощадження" },
+      "identification": { fr: "pièce d'identité", es: "identificación", it: "documento", de: "Ausweis", uk: "посвідчення" },
+      "driving licence": { fr: "permis de conduire", es: "carnet de conducir", it: "patente", de: "Führerschein", uk: "водійські права" },
+      "proof": { fr: "preuve", es: "prueba", it: "prova", de: "Nachweis", uk: "підтвердження" },
+      "utility bill": { fr: "facture", es: "factura de servicios", it: "bolletta", de: "Rechnung", uk: "рахунок за комунальні" },
+      "premium": { fr: "premium", es: "premium", it: "premium", de: "Premium", uk: "преміум" },
+      "benefits": { fr: "avantages", es: "beneficios", it: "vantaggi", de: "Vorteile", uk: "переваги" },
+      "application form": { fr: "formulaire", es: "formulario", it: "modulo", de: "Antragsformular", uk: "заява" },
+      "online banking": { fr: "banque en ligne", es: "banca online", it: "home banking", de: "Online-Banking", uk: "онлайн-банкінг" }
+    }
+  },
+  {
+    slug: "gym-membership",
+    title: "Joining a Gym",
+    level: "A2",
+    accent: "US",
+    audioUrl: "/audio/listening/gym-membership.mp3",
+    text: "Welcome to FitLife Gym! Are you interested in becoming a member?\nYes, I'd like to know about your membership options.\nOf course! We have three plans. The basic plan is twenty-nine dollars a month and gives you access to all gym equipment.\nWhat about classes?\nFor classes, you'd need our standard plan at forty-five dollars. That includes unlimited group classes like yoga, spinning, and aerobics.\nThat sounds good. What's included in the premium plan?\nThe premium plan is sixty-five dollars and includes personal training sessions, access to the spa, and towel service.\nI think the standard plan would work for me. Can I try the gym first?\nAbsolutely! We offer a free one-day trial. Would you like to try it today?\nYes, please!\nGreat. Just fill out this form and I'll give you a tour of the facilities.",
+    glossary: {
+      "membership": { fr: "adhésion", es: "membresía", it: "abbonamento", de: "Mitgliedschaft", uk: "членство" },
+      "equipment": { fr: "équipement", es: "equipo", it: "attrezzatura", de: "Geräte", uk: "обладнання" },
+      "unlimited": { fr: "illimité", es: "ilimitado", it: "illimitato", de: "unbegrenzt", uk: "необмежений" },
+      "spinning": { fr: "spinning", es: "spinning", it: "spinning", de: "Spinning", uk: "спінінг" },
+      "aerobics": { fr: "aérobic", es: "aeróbic", it: "aerobica", de: "Aerobic", uk: "аеробіка" },
+      "personal training": { fr: "coaching personnel", es: "entrenamiento personal", it: "personal training", de: "Personal Training", uk: "персональні тренування" },
+      "spa": { fr: "spa", es: "spa", it: "spa", de: "Spa", uk: "спа" },
+      "trial": { fr: "essai", es: "prueba", it: "prova", de: "Probetraining", uk: "пробний" },
+      "facilities": { fr: "installations", es: "instalaciones", it: "strutture", de: "Einrichtungen", uk: "приміщення" }
+    }
+  },
+  {
+    slug: "cinema-booking",
+    title: "Booking Cinema Tickets",
+    level: "A2",
+    accent: "UK",
+    audioUrl: "/audio/listening/cinema-booking.mp3",
+    text: "Good evening, welcome to Starlight Cinema. How can I help?\nHi, I'd like two tickets for the seven thirty showing of The Last Adventure, please.\nCertainly. Would you prefer standard seats or premium seats with extra legroom?\nWhat's the price difference?\nStandard seats are nine pounds fifty each, and premium seats are twelve pounds fifty.\nWe'll take two standard seats, please.\nNo problem. Would you like seats near the front, middle, or back of the cinema?\nThe middle would be perfect.\nI have two seats available in row H. Does that work for you?\nYes, that's great.\nWould you like any snacks or drinks? We have a special offer on large popcorn and drinks today.\nYes, one large popcorn and two medium drinks, please.\nExcellent. Your total comes to twenty-eight pounds. Cash or card?\nCard, please.",
+    glossary: {
+      "showing": { fr: "séance", es: "función", it: "spettacolo", de: "Vorstellung", uk: "сеанс" },
+      "standard": { fr: "standard", es: "estándar", it: "standard", de: "Standard", uk: "стандартний" },
+      "legroom": { fr: "espace pour les jambes", es: "espacio para piernas", it: "spazio gambe", de: "Beinfreiheit", uk: "місце для ніг" },
+      "row": { fr: "rangée", es: "fila", it: "fila", de: "Reihe", uk: "ряд" },
+      "snacks": { fr: "snacks", es: "aperitivos", it: "snack", de: "Snacks", uk: "закуски" },
+      "popcorn": { fr: "popcorn", es: "palomitas", it: "popcorn", de: "Popcorn", uk: "попкорн" },
+      "offer": { fr: "offre", es: "oferta", it: "offerta", de: "Angebot", uk: "пропозиція" },
+      "total": { fr: "total", es: "total", it: "totale", de: "Gesamtsumme", uk: "загалом" }
+    }
+  },
+  {
+    slug: "pharmacy-visit",
+    title: "At the Pharmacy",
+    level: "B1",
+    accent: "UK",
+    audioUrl: "/audio/listening/pharmacy-visit.mp3",
+    text: "Good afternoon. How can I help you today?\nHello, I've had a terrible cold for the past few days. I need something for my symptoms.\nI'm sorry to hear that. What symptoms are you experiencing?\nI have a blocked nose, a sore throat, and I've been coughing a lot.\nI see. Are you taking any other medications at the moment?\nJust some vitamins, nothing else.\nAnd do you have any allergies we should know about?\nNo, no allergies.\nRight. I'd recommend this cold and flu remedy. It should help with all your symptoms. Take two tablets every four to six hours.\nShould I take them with food?\nIt's not necessary, but it can help if you have a sensitive stomach. Also, make sure you drink plenty of fluids and get some rest.\nThank you. How much is that?\nThat's seven pounds forty-nine. I hope you feel better soon.",
+    glossary: {
+      "symptoms": { fr: "symptômes", es: "síntomas", it: "sintomi", de: "Symptome", uk: "симптоми" },
+      "blocked nose": { fr: "nez bouché", es: "nariz congestionada", it: "naso chiuso", de: "verstopfte Nase", uk: "закладений ніс" },
+      "sore throat": { fr: "mal de gorge", es: "dolor de garganta", it: "mal di gola", de: "Halsschmerzen", uk: "біль у горлі" },
+      "coughing": { fr: "tousser", es: "tosiendo", it: "tossendo", de: "Husten", uk: "кашель" },
+      "medications": { fr: "médicaments", es: "medicamentos", it: "farmaci", de: "Medikamente", uk: "ліки" },
+      "allergies": { fr: "allergies", es: "alergias", it: "allergie", de: "Allergien", uk: "алергії" },
+      "remedy": { fr: "remède", es: "remedio", it: "rimedio", de: "Heilmittel", uk: "засіб" },
+      "tablets": { fr: "comprimés", es: "pastillas", it: "compresse", de: "Tabletten", uk: "таблетки" },
+      "fluids": { fr: "liquides", es: "líquidos", it: "liquidi", de: "Flüssigkeiten", uk: "рідина" }
+    }
+  },
+  {
+    slug: "car-rental",
+    title: "Renting a Car",
+    level: "B1",
+    accent: "US",
+    audioUrl: "/audio/listening/car-rental.mp3",
+    text: "Good morning, welcome to QuickDrive Car Rental. How can I assist you?\nHi, I have a reservation for a compact car. The name is Martinez.\nLet me check that for you. Yes, here it is. A compact car for five days, picking up today and returning Friday.\nThat's correct.\nMay I see your driver's license and a credit card for the deposit?\nSure, here they are.\nThank you. Now, would you like to add any insurance coverage? We offer collision damage waiver and personal accident insurance.\nWhat does the collision damage waiver cover?\nIt covers any damage to the vehicle in case of an accident. Without it, you'd be responsible for the full repair costs.\nI'll take the collision coverage then. How much extra is that?\nIt's fifteen dollars per day. Would you also like a GPS navigation system?\nYes, that would be helpful since I don't know the area.\nPerfect. Your total comes to two hundred eighty-five dollars. The car is in parking space B twelve.",
+    glossary: {
+      "reservation": { fr: "réservation", es: "reserva", it: "prenotazione", de: "Reservierung", uk: "бронювання" },
+      "compact": { fr: "compacte", es: "compacto", it: "compatta", de: "Kompakt", uk: "компактний" },
+      "deposit": { fr: "caution", es: "depósito", it: "deposito", de: "Kaution", uk: "застава" },
+      "insurance": { fr: "assurance", es: "seguro", it: "assicurazione", de: "Versicherung", uk: "страхування" },
+      "collision": { fr: "collision", es: "colisión", it: "collisione", de: "Kollision", uk: "зіткнення" },
+      "waiver": { fr: "renonciation", es: "exención", it: "esonero", de: "Verzicht", uk: "відмова" },
+      "damage": { fr: "dommages", es: "daños", it: "danni", de: "Schäden", uk: "пошкодження" },
+      "repair": { fr: "réparation", es: "reparación", it: "riparazione", de: "Reparatur", uk: "ремонт" },
+      "GPS": { fr: "GPS", es: "GPS", it: "GPS", de: "GPS", uk: "GPS" },
+      "navigation": { fr: "navigation", es: "navegación", it: "navigazione", de: "Navigation", uk: "навігація" }
+    }
+  },
+  {
+    slug: "apartment-viewing",
+    title: "Viewing an Apartment",
+    level: "B2",
+    accent: "UK",
+    audioUrl: "/audio/listening/apartment-viewing.mp3",
+    text: "Hello, you must be here for the viewing. Please, come in.\nThank you. This looks lovely from the outside.\nAs you can see, this is the open-plan living area. It gets plenty of natural light from these large windows.\nIt's very spacious. How many square metres is the flat?\nThe total floor space is seventy-five square metres. There are two bedrooms through here.\nThe master bedroom is quite generous. Is that a built-in wardrobe?\nYes, both bedrooms have built-in storage. The bathroom was renovated last year and has underfloor heating.\nThat's a nice touch. What are the utility bills like?\nThe previous tenants paid around one hundred twenty pounds a month for gas and electricity. The property has double glazing which helps with insulation.\nAnd what about the lease terms?\nIt's a minimum twelve-month contract. The rent is one thousand four hundred pounds per month, plus a six-week deposit.\nWhen would it be available to move in?\nThe first of next month.",
+    glossary: {
+      "viewing": { fr: "visite", es: "visita", it: "visita", de: "Besichtigung", uk: "перегляд" },
+      "open-plan": { fr: "décloisonné", es: "de planta abierta", it: "open space", de: "offen gestaltet", uk: "відкрите планування" },
+      "spacious": { fr: "spacieux", es: "espacioso", it: "spazioso", de: "geräumig", uk: "просторий" },
+      "square metres": { fr: "mètres carrés", es: "metros cuadrados", it: "metri quadrati", de: "Quadratmeter", uk: "квадратних метрів" },
+      "built-in": { fr: "intégré", es: "empotrado", it: "incorporato", de: "eingebaut", uk: "вбудований" },
+      "renovated": { fr: "rénové", es: "renovado", it: "ristrutturato", de: "renoviert", uk: "відремонтований" },
+      "underfloor heating": { fr: "chauffage au sol", es: "suelo radiante", it: "riscaldamento a pavimento", de: "Fußbodenheizung", uk: "тепла підлога" },
+      "utility bills": { fr: "charges", es: "facturas", it: "bollette", de: "Nebenkosten", uk: "комунальні платежі" },
+      "double glazing": { fr: "double vitrage", es: "doble acristalamiento", it: "doppi vetri", de: "Doppelverglasung", uk: "склопакети" },
+      "lease": { fr: "bail", es: "contrato", it: "contratto", de: "Mietvertrag", uk: "оренда" },
+      "deposit": { fr: "caution", es: "depósito", it: "caparra", de: "Kaution", uk: "застава" }
+    }
+  },
+  {
+    slug: "podcast-technology",
+    title: "Technology Podcast",
+    level: "B2",
+    accent: "US",
+    audioUrl: "/audio/listening/podcast-technology.mp3",
+    text: "Welcome back to Tech Today, the podcast where we explore the latest innovations shaping our world.\nToday we're discussing artificial intelligence and its impact on everyday life.\nOver the past decade, AI has evolved from a niche technology to something we interact with daily, often without even realizing it.\nFrom the recommendations you get on streaming platforms to the voice assistants in your smartphones, AI is everywhere.\nBut what does this mean for the future of work? Many experts predict significant changes in the job market.\nWhile some roles may become automated, new opportunities are emerging in fields like machine learning engineering and data science.\nThe key is adaptability. Workers who continuously update their skills will thrive in this new landscape.\nOf course, there are ethical considerations too. Questions about privacy, bias in algorithms, and the environmental cost of training large models are increasingly important.\nNext week, we'll be joined by a leading researcher to discuss these challenges in depth.\nUntil then, stay curious and keep exploring.",
+    glossary: {
+      "innovations": { fr: "innovations", es: "innovaciones", it: "innovazioni", de: "Innovationen", uk: "інновації" },
+      "artificial intelligence": { fr: "intelligence artificielle", es: "inteligencia artificial", it: "intelligenza artificiale", de: "künstliche Intelligenz", uk: "штучний інтелект" },
+      "evolved": { fr: "évolué", es: "evolucionado", it: "evoluto", de: "entwickelt", uk: "еволюціонував" },
+      "niche": { fr: "niche", es: "nicho", it: "nicchia", de: "Nische", uk: "ніша" },
+      "streaming": { fr: "streaming", es: "streaming", it: "streaming", de: "Streaming", uk: "стрімінг" },
+      "automated": { fr: "automatisé", es: "automatizado", it: "automatizzato", de: "automatisiert", uk: "автоматизований" },
+      "machine learning": { fr: "apprentissage automatique", es: "aprendizaje automático", it: "machine learning", de: "maschinelles Lernen", uk: "машинне навчання" },
+      "adaptability": { fr: "adaptabilité", es: "adaptabilidad", it: "adattabilità", de: "Anpassungsfähigkeit", uk: "адаптивність" },
+      "ethical": { fr: "éthique", es: "ético", it: "etico", de: "ethisch", uk: "етичний" },
+      "algorithms": { fr: "algorithmes", es: "algoritmos", it: "algoritmi", de: "Algorithmen", uk: "алгоритми" },
+      "bias": { fr: "biais", es: "sesgo", it: "pregiudizio", de: "Voreingenommenheit", uk: "упередженість" }
+    }
   }
 ];
 
