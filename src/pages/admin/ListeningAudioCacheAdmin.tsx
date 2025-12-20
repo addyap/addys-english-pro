@@ -1,159 +1,163 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2, RefreshCw, Flame, Trash2, CheckCircle, XCircle, ExternalLink } from "lucide-react";
-import { toast } from "sonner";
 import SEOHead from "@/components/SEOHead";
 
-const SLUGS = ["customer-service-call", "journalist-interview", "museum-reception"];
+var SLUGS = ["customer-service-call", "journalist-interview", "museum-reception"];
 
-interface StatusItem {
-  slug: string;
-  exists: boolean;
-  publicUrl: string;
-}
+function ListeningAudioCacheAdmin() {
+  var secretState = useState("");
+  var adminSecret = secretState[0];
+  var setAdminSecret = secretState[1];
 
-interface ActionResult {
-  slug: string;
-  action: string;
-  success: boolean;
-  message: string;
-}
+  var loadingState = useState(false);
+  var loading = loadingState[0];
+  var setLoading = loadingState[1];
 
-export default function ListeningAudioCacheAdmin() {
-  const [adminSecret, setAdminSecret] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [statusItems, setStatusItems] = useState<StatusItem[]>([]);
-  const [actionResults, setActionResults] = useState<Record<string, ActionResult>>({});
+  var errorState = useState("");
+  var errorMsg = errorState[0];
+  var setErrorMsg = errorState[1];
 
-  const callAdminEndpoint = async (action: string) => {
-    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+  var statusState = useState([]);
+  var statusItems = statusState[0];
+  var setStatusItems = statusState[1];
+
+  var resultsState = useState({});
+  var actionResults = resultsState[0];
+  var setActionResults = resultsState[1];
+
+  function callAdmin(action) {
+    var supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
     if (!supabaseUrl) {
-      toast.error("Supabase URL not configured");
-      return null;
+      setErrorMsg("Supabase URL not configured");
+      return Promise.resolve(null);
     }
 
     if (!adminSecret.trim()) {
-      toast.error("Please enter the admin secret");
-      return null;
+      setErrorMsg("Please enter the admin secret");
+      return Promise.resolve(null);
     }
 
-    const response = await fetch(supabaseUrl + "/functions/v1/listening-audio-admin", {
+    setErrorMsg("");
+    setLoading(true);
+
+    return fetch(supabaseUrl + "/functions/v1/listening-audio-admin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-admin-secret": adminSecret,
+        "x-admin-secret": adminSecret
       },
-      body: JSON.stringify({ action }),
-    });
+      body: JSON.stringify({ action: action })
+    })
+      .then(function(response) {
+        return response.json().then(function(data) {
+          setLoading(false);
+          if (!response.ok) {
+            setErrorMsg(data.error || "Request failed: " + response.status);
+            return null;
+          }
+          return data;
+        });
+      })
+      .catch(function(err) {
+        setLoading(false);
+        var message = err instanceof Error ? err.message : String(err);
+        setErrorMsg("Error: " + message);
+        return null;
+      });
+  }
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.error || "Request failed: " + response.status);
-    }
-
-    return data;
-  };
-
-  const handleRefreshStatus = async () => {
-    setLoading(true);
-    try {
-      const data = await callAdminEndpoint("status");
+  function handleRefreshStatus() {
+    callAdmin("status").then(function(data) {
       if (data && data.items) {
         setStatusItems(data.items);
-        toast.success("Status refreshed");
       }
-    } catch (err) {
-      const message = err instanceof Error ? err.message : String(err);
-      toast.error("Failed: " + message);
-    }
-    setLoading(false);
-  };
+    });
+  }
 
-  const handleWarmCache = async () => {
-    setLoading(true);
-    try {
-      const data = await callAdminEndpoint("warm");
+  function handleWarmCache() {
+    callAdmin("warm").then(function(data) {
       if (data) {
-        const newResults: Record<string, ActionResult> = {};
+        var newResults = {};
 
         if (data.warmed) {
-          for (const slug of data.warmed) {
-            newResults[slug] = { slug, action: "warm", success: true, message: "Generated" };
+          for (var i = 0; i < data.warmed.length; i++) {
+            var slug = data.warmed[i];
+            newResults[slug] = { success: true, message: "Generated" };
           }
         }
         if (data.skipped) {
-          for (const slug of data.skipped) {
-            newResults[slug] = { slug, action: "warm", success: true, message: "Already cached" };
+          for (var j = 0; j < data.skipped.length; j++) {
+            var slug2 = data.skipped[j];
+            newResults[slug2] = { success: true, message: "Already cached" };
           }
         }
         if (data.failed) {
-          for (const item of data.failed) {
-            newResults[item.slug] = { slug: item.slug, action: "warm", success: false, message: item.error };
+          for (var k = 0; k < data.failed.length; k++) {
+            var item = data.failed[k];
+            newResults[item.slug] = { success: false, message: item.error };
           }
         }
 
-        setActionResults(prev => ({ ...prev, ...newResults }));
-        toast.success("Warm complete: " + (data.warmed?.length || 0) + " generated, " + (data.skipped?.length || 0) + " skipped");
+        setActionResults(Object.assign({}, actionResults, newResults));
 
-        // Refresh status
-        const statusData = await callAdminEndpoint("status");
-        if (statusData && statusData.items) {
-          setStatusItems(statusData.items);
-        }
+        callAdmin("status").then(function(statusData) {
+          if (statusData && statusData.items) {
+            setStatusItems(statusData.items);
+          }
+        });
       }
-    } catch (err) {
-      const message = err instanceof Error ? err.message : String(err);
-      toast.error("Failed: " + message);
-    }
-    setLoading(false);
-  };
+    });
+  }
 
-  const handlePurgeCache = async () => {
-    const confirmed = window.confirm("Are you sure you want to purge all cached audio files? This cannot be undone.");
+  function handlePurgeCache() {
+    var confirmed = window.confirm("Are you sure you want to purge all cached audio files?");
     if (!confirmed) return;
 
-    setLoading(true);
-    try {
-      const data = await callAdminEndpoint("purge");
+    callAdmin("purge").then(function(data) {
       if (data) {
-        const newResults: Record<string, ActionResult> = {};
+        var newResults = {};
 
         if (data.deleted) {
-          for (const slug of data.deleted) {
-            newResults[slug] = { slug, action: "purge", success: true, message: "Deleted" };
+          for (var i = 0; i < data.deleted.length; i++) {
+            var slug = data.deleted[i];
+            newResults[slug] = { success: true, message: "Deleted" };
           }
         }
         if (data.failed) {
-          for (const item of data.failed) {
-            newResults[item.slug] = { slug: item.slug, action: "purge", success: false, message: item.error };
+          for (var j = 0; j < data.failed.length; j++) {
+            var item = data.failed[j];
+            newResults[item.slug] = { success: false, message: item.error };
           }
         }
 
-        setActionResults(prev => ({ ...prev, ...newResults }));
-        toast.success("Purge complete: " + (data.deleted?.length || 0) + " deleted");
+        setActionResults(Object.assign({}, actionResults, newResults));
 
-        // Refresh status
-        const statusData = await callAdminEndpoint("status");
-        if (statusData && statusData.items) {
-          setStatusItems(statusData.items);
-        }
+        callAdmin("status").then(function(statusData) {
+          if (statusData && statusData.items) {
+            setStatusItems(statusData.items);
+          }
+        });
       }
-    } catch (err) {
-      const message = err instanceof Error ? err.message : String(err);
-      toast.error("Failed: " + message);
+    });
+  }
+
+  function getStatusForSlug(slug) {
+    for (var i = 0; i < statusItems.length; i++) {
+      if (statusItems[i].slug === slug) {
+        return statusItems[i];
+      }
     }
-    setLoading(false);
-  };
+    return null;
+  }
 
   return (
     <>
       <SEOHead
         title="Listening Audio Cache | Admin"
-        description="Admin tools for managing listening exercise audio cache"
+        description="Admin tools for listening audio cache"
         noIndex
       />
 
@@ -165,11 +169,17 @@ export default function ListeningAudioCacheAdmin() {
           <Input
             type="password"
             value={adminSecret}
-            onChange={(e) => setAdminSecret(e.target.value)}
+            onChange={function(e) { setAdminSecret(e.target.value); }}
             placeholder="Enter admin secret"
             className="max-w-sm"
           />
         </div>
+
+        {errorMsg && (
+          <div className="mb-4 p-3 bg-destructive/10 text-destructive rounded-md text-sm">
+            {errorMsg}
+          </div>
+        )}
 
         <div className="flex flex-wrap gap-3 mb-6">
           <Button onClick={handleRefreshStatus} disabled={loading}>
@@ -187,35 +197,35 @@ export default function ListeningAudioCacheAdmin() {
         </div>
 
         <div className="space-y-4">
-          {SLUGS.map((slug) => {
-            const statusItem = statusItems.find((s) => s.slug === slug);
-            const result = actionResults[slug];
+          {SLUGS.map(function(slug) {
+            var status = getStatusForSlug(slug);
+            var result = actionResults[slug];
 
             return (
               <Card key={slug}>
                 <CardHeader className="pb-2">
                   <CardTitle className="text-lg flex items-center justify-between">
                     <span className="capitalize">{slug.replace(/-/g, " ")}</span>
-                    {statusItem && (
-                      statusItem.exists ? (
-                        <Badge className="bg-green-600">
+                    {status && (
+                      status.exists ? (
+                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
                           <CheckCircle className="mr-1 h-3 w-3" />
                           Cached
-                        </Badge>
+                        </span>
                       ) : (
-                        <Badge variant="secondary">
+                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
                           <XCircle className="mr-1 h-3 w-3" />
                           Not cached
-                        </Badge>
+                        </span>
                       )
                     )}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="text-sm text-muted-foreground">
                   <p className="mb-2">{slug}.mp3</p>
-                  {statusItem && statusItem.exists && (
+                  {status && status.exists && (
                     <a
-                      href={statusItem.publicUrl}
+                      href={status.publicUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center text-primary hover:underline"
@@ -226,7 +236,7 @@ export default function ListeningAudioCacheAdmin() {
                   )}
                   {result && (
                     <div className={"mt-2 text-xs " + (result.success ? "text-green-600" : "text-destructive")}>
-                      Last action ({result.action}): {result.message}
+                      Last action: {result.message}
                     </div>
                   )}
                 </CardContent>
@@ -238,3 +248,5 @@ export default function ListeningAudioCacheAdmin() {
     </>
   );
 }
+
+export default ListeningAudioCacheAdmin;
