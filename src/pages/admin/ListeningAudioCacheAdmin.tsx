@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { listeningExercises } from "@/data/listeningExercises";
 
-const slugs = listeningExercises.map(e => e.slug);
+const slugs = listeningExercises.map((e) => e.slug);
 
 export default function ListeningAudioCacheAdmin() {
   const [secret, setSecret] = useState("");
   const [output, setOutput] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function call(action: string) {
+  async function call(action: "status" | "warm" | "purge") {
     setLoading(true);
     setOutput("Working...");
 
@@ -19,9 +19,9 @@ export default function ListeningAudioCacheAdmin() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "x-admin-secret": secret
+            "x-admin-secret": secret,
           },
-          body: JSON.stringify({ action, slugs })
+          body: JSON.stringify({ action, slugs }),
         }
       );
 
@@ -57,9 +57,7 @@ export default function ListeningAudioCacheAdmin() {
         </button>
       </div>
 
-      <pre style={{ marginTop: 16, whiteSpace: "pre-wrap" }}>
-        {output}
-      </pre>
+      <pre style={{ marginTop: 16, whiteSpace: "pre-wrap" }}>{output}</pre>
     </div>
   );
 }
