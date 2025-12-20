@@ -1,13 +1,22 @@
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2, RefreshCw, Flame, Trash2, CheckCircle, XCircle, ExternalLink } from "lucide-react";
+import {
+  CheckCircle,
+  ExternalLink,
+  Flame,
+  Loader2,
+  RefreshCw,
+  Trash2,
+  XCircle,
+} from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { listeningExercises } from "@/data/listeningExercises";
 
-// Build slugs from canonical data source
-const slugs = listeningExercises.map((e) => e.slug);
+type CurrentAction = "status" | "warm" | "purge" | null;
+type AdminAction = Exclude<CurrentAction, null>;
 
 interface StatusItem {
   slug: string;
@@ -20,34 +29,55 @@ interface ActionResult {
   message: string;
 }
 
-interface WarmSummary {
-  generated: number;
-  cached: number;
-  failed: number;
+interface StatusResponse {
+  items: StatusItem[];
 }
 
-interface PurgeSummary {
-  deleted: number;
-  failed: number;
+interface WarmResponse {
+  warmed: string[];
+  skipped: string[];
+  failed: Array<{ slug: string; error: string }>;
 }
 
-type CurrentAction = "status" | "warm" | "purge" | null;
+interface PurgeResponse {
+  deleted: string[];
+  failed: Array<{ slug: string; error: string }>;
+}
+
+type AdminResponse = StatusResponse | WarmResponse | PurgeResponse;
+
+// Canonical slugs source (no hardcoded arrays)
+const slugs = listeningExercises.map((e) => e.slug);
 
 export default function ListeningAudioCacheAdmin() {
   const [adminSecret, setAdminSecret] = useState("");
   const [loading, setLoading] = useState(false);
+  const [currentAction, setCurrentAction] = useState<CurrentAction>(null);
   const [errorMsg, setErrorMsg] = useState("");
+
   const [statusItems, setStatusItems] = useState<StatusItem[]>([]);
   const [actionResults, setActionResults] = useState<Record<string, ActionResult>>({});
-  const [currentAction, setCurrentAction] = useState<CurrentAction>(null);
-  const [warmSummary, setWarmSummary] = useState<WarmSummary | null>(null);
-  const [purgeSummary, setPurgeSummary] = useState<PurgeSummary | null>(null);
+
+  const [warmSummary, setWarmSummary] = useState<{ generated: number; cached: number; failed: number } | null>(null);
+  const [purgeSummary, setPurgeSummary] = useState<{ deleted: number; failed: number } | null>(null);
+
+  const statusBySlug = useMemo(() => {
+    return new Map(statusItems.map((item) => [item.slug, item] as const));
+  }, [statusItems]);
+
+  const titleBySlug = useMemo(() => {
+    return new Map(listeningExercises.map((e) => [e.slug, e.title] as const));
+  }, []);
+
+  const hasAutoRefreshedRef = useRef(false);
 
   const callAdmin = useCallback(
-    async (action: "status" | "warm" | "purge"): Promise<any> => {
-      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    async (action: AdminAction): Promise<AdminResponse | null> => {
+      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+      const publishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | undefined;
+
       if (!supabaseUrl) {
-        setErrorMsg("Supabase URL not configured");
+        setErrorMsg("Backend URL not configured (VITE_SUPABASE_URL)");
         return null;
       }
 
@@ -65,74 +95,96 @@ export default function ListeningAudioCacheAdmin() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            ...(publishableKey ? { apikey: publishableKey, Authorization: `Bearer ${publishableKey}` } : {}),
             "x-admin-secret": adminSecret,
           },
           body: JSON.stringify({ action, slugs }),
         });
 
-        const data = await response.json();
-        setLoading(false);
-        setCurrentAction(null);
+        const data = (await response.json()) as unknown;
 
         if (!response.ok) {
-          setErrorMsg(data.error || `Request failed: ${response.status}`);
+          const maybeError =
+            typeof data === "object" &&
+            data !== null &&
+            "error" in data &&
+            typeof (data as Record<string, unknown>).error === "string"
+              ? String((data as Record<string, unknown>).error)
+              : undefined;
+          setErrorMsg(maybeError || `Request failed: ${response.status}`);
           return null;
         }
-        return data;
+
+        return data as AdminResponse;
       } catch (err) {
-        setLoading(false);
-        setCurrentAction(null);
         const message = err instanceof Error ? err.message : String(err);
         setErrorMsg(`Error: ${message}`);
         return null;
+      } finally {
+        setLoading(false);
+        setCurrentAction(null);
       }
     },
     [adminSecret]
   );
 
   const handleRefreshStatus = useCallback(async () => {
+    setWarmSummary(null);
+    setPurgeSummary(null);
+
     const data = await callAdmin("status");
-    if (data?.items) {
+    if (data && "items" in data) {
       setStatusItems(data.items);
+      setActionResults((prev) => {
+        const next = { ...prev };
+        for (const item of data.items) {
+          next[item.slug] = { success: true, message: "Status checked" };
+        }
+        return next;
+      });
     }
   }, [callAdmin]);
 
   const handleWarmCache = useCallback(async () => {
     setWarmSummary(null);
     setPurgeSummary(null);
+
     const data = await callAdmin("warm");
-    if (data) {
-      const newResults: Record<string, ActionResult> = {};
+    if (!data || !("warmed" in data)) return;
 
-      if (data.warmed) {
-        for (const slug of data.warmed) {
-          newResults[slug] = { success: true, message: "Generated" };
-        }
-      }
-      if (data.skipped) {
-        for (const slug of data.skipped) {
-          newResults[slug] = { success: true, message: "Already cached" };
-        }
-      }
-      if (data.failed) {
-        for (const item of data.failed) {
-          newResults[item.slug] = { success: false, message: item.error };
-        }
-      }
+    const nextResults: Record<string, ActionResult> = {};
 
-      setActionResults((prev) => ({ ...prev, ...newResults }));
-      setWarmSummary({
-        generated: data.warmed?.length || 0,
-        cached: data.skipped?.length || 0,
-        failed: data.failed?.length || 0,
-      });
-
-      // Refresh status after warm
-      const statusData = await callAdmin("status");
-      if (statusData?.items) {
-        setStatusItems(statusData.items);
-      }
+    for (const slug of data.warmed ?? []) {
+      nextResults[slug] = { success: true, message: "Generated" };
     }
+    for (const slug of data.skipped ?? []) {
+      nextResults[slug] = { success: true, message: "Already cached" };
+    }
+    for (const item of data.failed ?? []) {
+      nextResults[item.slug] = { success: false, message: item.error };
+    }
+
+    setActionResults((prev) => ({ ...prev, ...nextResults }));
+
+    setWarmSummary({
+      generated: data.warmed?.length ?? 0,
+      cached: data.skipped?.length ?? 0,
+      failed: data.failed?.length ?? 0,
+    });
+
+    // Optimistically mark warmed + skipped as cached.
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+    setStatusItems((prev) => {
+      const map = new Map(prev.map((i) => [i.slug, i] as const));
+      const toMark = [...(data.warmed ?? []), ...(data.skipped ?? [])];
+      for (const slug of toMark) {
+        const publicUrl = supabaseUrl
+          ? `${supabaseUrl}/storage/v1/object/public/listening-audio/${slug}.mp3`
+          : map.get(slug)?.publicUrl || "";
+        map.set(slug, { slug, exists: true, publicUrl });
+      }
+      return slugs.map((s) => map.get(s) ?? { slug: s, exists: false, publicUrl: "" });
+    });
   }, [callAdmin]);
 
   const handlePurgeCache = useCallback(async () => {
@@ -141,166 +193,176 @@ export default function ListeningAudioCacheAdmin() {
 
     setWarmSummary(null);
     setPurgeSummary(null);
+
     const data = await callAdmin("purge");
-    if (data) {
-      const newResults: Record<string, ActionResult> = {};
+    if (!data || !("deleted" in data)) return;
 
-      if (data.deleted) {
-        for (const slug of data.deleted) {
-          newResults[slug] = { success: true, message: "Deleted" };
-        }
-      }
-      if (data.failed) {
-        for (const item of data.failed) {
-          newResults[item.slug] = { success: false, message: item.error };
-        }
-      }
+    const nextResults: Record<string, ActionResult> = {};
 
-      setActionResults((prev) => ({ ...prev, ...newResults }));
-      setPurgeSummary({
-        deleted: data.deleted?.length || 0,
-        failed: data.failed?.length || 0,
-      });
-
-      // Refresh status after purge
-      const statusData = await callAdmin("status");
-      if (statusData?.items) {
-        setStatusItems(statusData.items);
-      }
+    for (const slug of data.deleted ?? []) {
+      nextResults[slug] = { success: true, message: "Deleted" };
     }
+    for (const item of data.failed ?? []) {
+      nextResults[item.slug] = { success: false, message: item.error };
+    }
+
+    setActionResults((prev) => ({ ...prev, ...nextResults }));
+
+    setPurgeSummary({
+      deleted: data.deleted?.length ?? 0,
+      failed: data.failed?.length ?? 0,
+    });
+
+    // Optimistically mark deleted as not cached.
+    setStatusItems((prev) => {
+      const map = new Map(prev.map((i) => [i.slug, i] as const));
+      for (const slug of data.deleted ?? []) {
+        map.set(slug, { slug, exists: false, publicUrl: "" });
+      }
+      return slugs.map((s) => map.get(s) ?? { slug: s, exists: false, publicUrl: "" });
+    });
   }, [callAdmin]);
 
-  // Auto-refresh on mount if secret is present
+  // Auto-refresh once on first load if secret is already present (e.g. autofill).
   useEffect(() => {
-    if (adminSecret.trim()) {
-      handleRefreshStatus();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const getStatusForSlug = (slug: string): StatusItem | null => {
-    return statusItems.find((item) => item.slug === slug) || null;
-  };
+    if (hasAutoRefreshedRef.current) return;
+    if (!adminSecret.trim()) return;
+    hasAutoRefreshedRef.current = true;
+    handleRefreshStatus();
+  }, [adminSecret, handleRefreshStatus]);
 
   return (
     <>
-      <SEOHead
-        title="Listening Audio Cache | Admin"
-        description="Admin tools for listening audio cache"
-        noIndex
-      />
+      <SEOHead title="Listening Audio Cache | Admin" description="Admin tools for listening audio cache" noIndex />
 
-      <div className="container mx-auto py-8 px-4 max-w-3xl">
-        <h1 className="text-2xl font-bold mb-6">Listening Audio Cache</h1>
+      <main className="container mx-auto max-w-4xl py-8 px-4">
+        <header className="mb-6">
+          <h1 className="text-2xl font-heading font-bold">Listening Audio Cache</h1>
+        </header>
 
-        <div className="mb-6">
-          <label className="block text-sm font-medium mb-2">Admin Secret</label>
-          <Input
-            type="password"
-            value={adminSecret}
-            onChange={(e) => setAdminSecret(e.target.value)}
-            placeholder="Enter admin secret"
-            className="max-w-sm"
-          />
-          <p className="mt-2 text-sm text-muted-foreground">
-            Set <code className="font-mono bg-muted px-1 rounded">LISTENING_ADMIN_SECRET</code> in your backend secrets.
-          </p>
-        </div>
+        <section className="space-y-4">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Controls</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <label className="block text-sm font-medium">Admin Secret</label>
+                <Input
+                  type="password"
+                  value={adminSecret}
+                  onChange={(e) => setAdminSecret(e.target.value)}
+                  placeholder="Paste admin secret"
+                  autoComplete="off"
+                />
+                <p className="text-sm text-muted-foreground">
+                  Backend secret required: <code className="font-mono">LISTENING_ADMIN_SECRET</code>
+                </p>
+              </div>
 
-        {errorMsg && (
-          <div className="mb-4 p-3 bg-destructive/10 text-destructive rounded-md text-sm">
-            {errorMsg}
-          </div>
-        )}
+              {errorMsg ? <div className="text-sm text-destructive">{errorMsg}</div> : null}
 
-        {loading && currentAction && (
-          <div className="mb-4 p-3 bg-primary/10 text-primary rounded-md text-sm flex items-center gap-2">
-            <Loader2 className="h-4 w-4 animate-spin" />
-            <span>Running: {currentAction}...</span>
-          </div>
-        )}
+              {loading && currentAction ? (
+                <div className="text-sm text-muted-foreground flex items-center gap-2">
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  <span>Running: {currentAction}…</span>
+                </div>
+              ) : null}
 
-        {warmSummary && (
-          <div className="mb-4 p-3 bg-green-100 text-green-800 rounded-md text-sm">
-            Warm complete: Generated {warmSummary.generated}, already cached {warmSummary.cached}, failed {warmSummary.failed}
-          </div>
-        )}
+              {warmSummary ? (
+                <div className="text-sm text-muted-foreground">
+                  Warm summary: Generated {warmSummary.generated}, already cached {warmSummary.cached}, failed {warmSummary.failed}
+                </div>
+              ) : null}
 
-        {purgeSummary && (
-          <div className="mb-4 p-3 bg-orange-100 text-orange-800 rounded-md text-sm">
-            Purge complete: Deleted {purgeSummary.deleted}, failed {purgeSummary.failed}
-          </div>
-        )}
+              {purgeSummary ? (
+                <div className="text-sm text-muted-foreground">
+                  Purge summary: Deleted {purgeSummary.deleted}, failed {purgeSummary.failed}
+                </div>
+              ) : null}
 
-        <div className="flex flex-wrap gap-3 mb-6">
-          <Button onClick={handleRefreshStatus} disabled={loading}>
-            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <RefreshCw className="h-4 w-4" />}
-            <span className="ml-2">Refresh status</span>
-          </Button>
-          <Button onClick={handleWarmCache} disabled={loading} variant="secondary">
-            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Flame className="h-4 w-4" />}
-            <span className="ml-2">Warm cache</span>
-          </Button>
-          <Button onClick={handlePurgeCache} disabled={loading} variant="destructive">
-            {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
-            <span className="ml-2">Purge cache</span>
-          </Button>
-        </div>
+              <div className="flex flex-wrap gap-3">
+                <Button onClick={handleRefreshStatus} disabled={loading}>
+                  {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <RefreshCw className="h-4 w-4" />}
+                  <span className="ml-2">Refresh status</span>
+                </Button>
 
-        <div className="space-y-4">
-          {slugs.map((slug) => {
-            const status = getStatusForSlug(slug);
-            const result = actionResults[slug];
+                <Button onClick={handleWarmCache} disabled={loading} variant="secondary">
+                  {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Flame className="h-4 w-4" />}
+                  <span className="ml-2">Warm cache</span>
+                </Button>
 
-            return (
-              <Card key={slug}>
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg flex items-center justify-between">
-                    <span className="capitalize">{slug.replace(/-/g, " ")}</span>
-                    {status && (
-                      status.exists ? (
-                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                          <CheckCircle className="mr-1 h-3 w-3" />
-                          Cached
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-muted text-muted-foreground">
-                          <XCircle className="mr-1 h-3 w-3" />
-                          Not cached
-                        </span>
-                      )
-                    )}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground">
-                  <p className="mb-2">{slug}.mp3</p>
-                  {status?.exists && status.publicUrl && (
-                    <a
-                      href={status.publicUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-primary hover:underline"
-                    >
-                      <ExternalLink className="mr-1 h-3 w-3" />
-                      Public URL
-                    </a>
-                  )}
-                  {result && (
-                    <div className={`mt-2 text-xs ${result.success ? "text-green-600" : "text-destructive"}`}>
-                      {result.success ? (
-                        <CheckCircle className="inline mr-1 h-3 w-3" />
-                      ) : (
-                        <XCircle className="inline mr-1 h-3 w-3" />
-                      )}
-                      Last action: {result.message}
+                <Button onClick={handlePurgeCache} disabled={loading} variant="destructive">
+                  {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
+                  <span className="ml-2">Purge cache</span>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Slugs</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {slugs.map((slug) => {
+                const status = statusBySlug.get(slug);
+                const cached = Boolean(status?.exists);
+                const result = actionResults[slug];
+                const title = titleBySlug.get(slug) ?? slug;
+
+                return (
+                  <article key={slug} className="rounded-lg border border-border p-3">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="font-medium text-foreground truncate">{title}</div>
+                        <div className="text-xs text-muted-foreground font-mono truncate">{slug}</div>
+                      </div>
+
+                      <div className="flex items-center gap-2 shrink-0">
+                        {cached ? (
+                          <Badge variant="secondary" className="gap-1">
+                            <CheckCircle className="h-3 w-3" />
+                            Cached
+                          </Badge>
+                        ) : (
+                          <Badge variant="outline" className="gap-1">
+                            <XCircle className="h-3 w-3" />
+                            Not cached
+                          </Badge>
+                        )}
+
+                        {result ? (
+                          <Badge variant={result.success ? "secondary" : "destructive"} className="gap-1">
+                            {result.success ? <CheckCircle className="h-3 w-3" /> : <XCircle className="h-3 w-3" />}
+                            {result.success ? "OK" : "Fail"}
+                          </Badge>
+                        ) : null}
+                      </div>
                     </div>
-                  )}
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-      </div>
+
+                    <div className="mt-2 flex flex-wrap items-center gap-3 text-sm">
+                      {cached && status?.publicUrl ? (
+                        <a
+                          href={status.publicUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-sm text-primary hover:underline"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                          Public URL
+                        </a>
+                      ) : null}
+
+                      {result ? <span className="text-xs text-muted-foreground">Last action: {result.message}</span> : null}
+                    </div>
+                  </article>
+                );
+              })}
+            </CardContent>
+          </Card>
+        </section>
+      </main>
     </>
   );
 }
