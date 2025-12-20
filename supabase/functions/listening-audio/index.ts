@@ -9,7 +9,7 @@ const corsHeaders: { [key: string]: string } = {
   "Access-Control-Allow-Methods": "GET, OPTIONS",
 };
 
-type Slug = "customer-service-call" | "journalist-interview" | "museum-reception" | "job-interview" | "restaurant-reservation" | "airport-announcement" | "doctor-appointment";
+type Slug = "customer-service-call" | "journalist-interview" | "museum-reception" | "job-interview" | "restaurant-reservation" | "airport-announcement" | "doctor-appointment" | "hotel-check-in" | "weather-forecast" | "train-announcement" | "shopping-clothes" | "university-lecture" | "business-meeting";
 
 const VALID_SLUGS: Slug[] = [
   "customer-service-call",
@@ -19,6 +19,12 @@ const VALID_SLUGS: Slug[] = [
   "restaurant-reservation",
   "airport-announcement",
   "doctor-appointment",
+  "hotel-check-in",
+  "weather-forecast",
+  "train-announcement",
+  "shopping-clothes",
+  "university-lecture",
+  "business-meeting",
 ];
 
 const EXERCISE_TEXTS: { [key in Slug]: string } = {
@@ -36,6 +42,18 @@ const EXERCISE_TEXTS: { [key in Slug]: string } = {
     "Attention all passengers. This is a final boarding call for Flight BA two four seven to New York JFK. All remaining passengers should proceed immediately to Gate fifteen. The gate will close in ten minutes. Passengers Smith and Williams, please make your way to the gate immediately or your luggage will be offloaded. We would also like to inform passengers that Flight LH five six two to Frankfurt has been delayed by approximately forty five minutes due to air traffic control restrictions. Passengers on this flight should remain in the departure lounge. We apologize for any inconvenience caused. Light refreshments will be provided. Please listen for further announcements regarding your new boarding time.",
   "doctor-appointment":
     "Good afternoon. What seems to be the problem today? I've been experiencing persistent headaches for about two weeks now. They're particularly bad in the morning. I see. Can you describe the pain? Is it sharp or dull? It's more of a dull, throbbing sensation, usually concentrated around my temples and forehead. Have you noticed any other symptoms? Perhaps changes in your vision or sensitivity to light? Now that you mention it, I have been more sensitive to bright lights lately. And I've been feeling quite fatigued. Have you been under any unusual stress recently? Actually yes, I've been working overtime on a major project. I've barely been sleeping. That could certainly be a contributing factor. I'd like to rule out anything more serious, so I'm going to recommend some blood tests and possibly a scan.",
+  "hotel-check-in":
+    "Good evening, welcome to The Grand Hotel. How may I help you? Hello, I have a reservation under the name Thompson. Let me check that for you. Yes, here it is. A double room for three nights, is that correct? Yes, that's right. Perfect. Could I see your passport or ID card, please? Of course, here you go. Thank you. Your room is on the fourth floor, room four twelve. Here is your key card. What time is breakfast served? Breakfast is served in the restaurant on the ground floor from seven until ten thirty. Is there free wifi in the room? Yes, the wifi code is on the card with your key. Is there anything else you need? No, that's everything. Thank you very much. Enjoy your stay. The lift is just around the corner on your left.",
+  "weather-forecast":
+    "Good morning, here is your weather forecast for the week ahead. Today will start cloudy with temperatures around twelve degrees. Expect some light showers in the afternoon, so don't forget your umbrella. Tomorrow looks much brighter with sunny spells throughout the day. Temperatures will reach a pleasant eighteen degrees. Midweek will see a return of unsettled weather. Wednesday and Thursday will be windy with occasional heavy rain. The weekend is looking more promising. Saturday will be mostly dry with some sunshine. Sunday could see temperatures climb to twenty degrees, making it perfect for outdoor activities. That's your weather update. Stay tuned for traffic news coming up next.",
+  "train-announcement":
+    "Attention please. The train now approaching platform three is the eleven forty-five service to Edinburgh. This train will call at York, Durham, and Newcastle before arriving at Edinburgh Waverley at fourteen thirty. Passengers for Leeds should take the train on platform seven departing at eleven fifty-two. We regret to announce that the twelve fifteen service to Manchester has been cancelled due to a signalling problem. Passengers holding tickets for this service may travel on the next available train at twelve forty-five. Please keep your belongings with you at all times and report any unattended luggage to a member of staff. Thank you for travelling with us today.",
+  "shopping-clothes":
+    "Hi there, can I help you find anything today? Yes, I'm looking for a jacket for the winter. Great! What size are you? I'm usually a medium. We have some lovely options over here. Are you looking for something casual or more formal? Something casual that I can wear every day. How about this one? It's very popular this season and it's waterproof. Oh, that's nice. Can I try it on? Of course! The fitting rooms are just behind you on the right. It fits perfectly! How much is it? It's on sale right now. It was ninety-nine dollars, but it's now seventy-nine. That's a good deal. I'll take it. Would you like to pay by cash or card? Card, please.",
+  "university-lecture":
+    "Good morning everyone, and welcome to this semester's introductory course on environmental science. Before we dive into the material, let me outline what we'll be covering over the next twelve weeks. The course is divided into three main sections. First, we'll examine the fundamental principles of ecology and ecosystems. In the second part, we'll focus on climate change, its causes, and its global impact. Finally, we'll explore sustainable solutions and the role of policy in environmental protection. Assessment will consist of two written assignments worth thirty percent each, and a final exam worth forty percent. I encourage you to participate actively in seminars and don't hesitate to visit during my office hours if you have questions. The reading list is available on the course website. I recommend starting with chapters one through three of the main textbook this week.",
+  "business-meeting":
+    "Alright everyone, let's get started. Thanks for joining today's meeting on such short notice. The main item on the agenda is the upcoming product launch scheduled for next quarter. Sarah, could you give us an update on the marketing campaign? Sure. We've finalized the social media strategy and the print materials are currently being designed. We should have everything ready two weeks before launch. Excellent. What about the budget? Are we still on track? We're slightly over budget due to unexpected production costs, but we've identified some areas where we can cut back. I see. Let's discuss that in more detail after this meeting. Tom, how's the development team progressing? We're on schedule. The final testing phase begins next week, and we're confident we'll meet the deadline. Great work everyone. Let's schedule a follow-up meeting for next Wednesday to review progress. Any questions before we wrap up?",
 };
 
 const VOICE_IDS: { [key in Slug]?: string } = {
@@ -46,6 +64,12 @@ const VOICE_IDS: { [key in Slug]?: string } = {
   "restaurant-reservation": "EXAVITQu4vr4xnSDxMaL", // Sarah
   "airport-announcement": "onwK4e9ZLuTAKqWW03F9", // Daniel
   "doctor-appointment": "CwhRBWXzGAHq8TQ4Fs17", // Roger
+  "hotel-check-in": "EXAVITQu4vr4xnSDxMaL", // Sarah
+  "weather-forecast": "nPczCjzI2devNBz1zQrb", // Brian
+  "train-announcement": "onwK4e9ZLuTAKqWW03F9", // Daniel
+  "shopping-clothes": "cgSgspJ2msm6clMCkdW9", // Jessica
+  "university-lecture": "JBFqnCBsd6RMkjVDRZzb", // George
+  "business-meeting": "TX3LPaxmHKxFdv7VOQHJ", // Liam
 };
 
 serve(async (req) => {

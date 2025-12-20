@@ -502,6 +502,129 @@ export const listeningExercises: ListeningExercise[] = [
       "contributing": { fr: "contribuant", es: "contribuyente", it: "contribuente", de: "beitragend", uk: "сприяючий" },
       "recommend": { fr: "recommander", es: "recomendar", it: "raccomandare", de: "empfehlen", uk: "рекомендувати" }
     }
+  },
+  {
+    slug: "hotel-check-in",
+    title: "Hotel Check-In",
+    level: "A2",
+    accent: "UK",
+    audioUrl: "/audio/listening/hotel-check-in.mp3",
+    text: "Good evening, welcome to The Grand Hotel. How may I help you?\nHello, I have a reservation under the name Thompson.\nLet me check that for you. Yes, here it is. A double room for three nights, is that correct?\nYes, that's right.\nPerfect. Could I see your passport or ID card, please?\nOf course, here you go.\nThank you. Your room is on the fourth floor, room four twelve. Here is your key card.\nWhat time is breakfast served?\nBreakfast is served in the restaurant on the ground floor from seven until ten thirty.\nIs there free wifi in the room?\nYes, the wifi code is on the card with your key. Is there anything else you need?\nNo, that's everything. Thank you very much.\nEnjoy your stay. The lift is just around the corner on your left.",
+    glossary: {
+      "reservation": { fr: "réservation", es: "reserva", it: "prenotazione", de: "Reservierung", uk: "бронювання" },
+      "double": { fr: "double", es: "doble", it: "doppia", de: "Doppel", uk: "двомісний" },
+      "passport": { fr: "passeport", es: "pasaporte", it: "passaporto", de: "Reisepass", uk: "паспорт" },
+      "floor": { fr: "étage", es: "piso", it: "piano", de: "Stock", uk: "поверх" },
+      "key card": { fr: "carte-clé", es: "tarjeta llave", it: "chiave elettronica", de: "Schlüsselkarte", uk: "картка-ключ" },
+      "breakfast": { fr: "petit-déjeuner", es: "desayuno", it: "colazione", de: "Frühstück", uk: "сніданок" },
+      "served": { fr: "servi", es: "servido", it: "servito", de: "serviert", uk: "подається" },
+      "ground floor": { fr: "rez-de-chaussée", es: "planta baja", it: "piano terra", de: "Erdgeschoss", uk: "перший поверх" },
+      "wifi": { fr: "wifi", es: "wifi", it: "wifi", de: "WLAN", uk: "wifi" },
+      "lift": { fr: "ascenseur", es: "ascensor", it: "ascensore", de: "Aufzug", uk: "ліфт" }
+    }
+  },
+  {
+    slug: "weather-forecast",
+    title: "Weather Forecast",
+    level: "A2",
+    accent: "UK",
+    audioUrl: "/audio/listening/weather-forecast.mp3",
+    text: "Good morning, here is your weather forecast for the week ahead.\nToday will start cloudy with temperatures around twelve degrees. Expect some light showers in the afternoon, so don't forget your umbrella.\nTomorrow looks much brighter with sunny spells throughout the day. Temperatures will reach a pleasant eighteen degrees.\nMidweek will see a return of unsettled weather. Wednesday and Thursday will be windy with occasional heavy rain.\nThe weekend is looking more promising. Saturday will be mostly dry with some sunshine. Sunday could see temperatures climb to twenty degrees, making it perfect for outdoor activities.\nThat's your weather update. Stay tuned for traffic news coming up next.",
+    glossary: {
+      "forecast": { fr: "prévisions", es: "pronóstico", it: "previsioni", de: "Vorhersage", uk: "прогноз" },
+      "cloudy": { fr: "nuageux", es: "nublado", it: "nuvoloso", de: "bewölkt", uk: "хмарно" },
+      "temperatures": { fr: "températures", es: "temperaturas", it: "temperature", de: "Temperaturen", uk: "температури" },
+      "showers": { fr: "averses", es: "chubascos", it: "acquazzoni", de: "Schauer", uk: "дощі" },
+      "umbrella": { fr: "parapluie", es: "paraguas", it: "ombrello", de: "Regenschirm", uk: "парасолька" },
+      "brighter": { fr: "plus ensoleillé", es: "más brillante", it: "più luminoso", de: "heller", uk: "яскравіше" },
+      "sunny spells": { fr: "éclaircies", es: "intervalos soleados", it: "schiarite", de: "sonnige Abschnitte", uk: "сонячні проміжки" },
+      "unsettled": { fr: "instable", es: "inestable", it: "instabile", de: "unbeständig", uk: "нестабільна" },
+      "windy": { fr: "venteux", es: "ventoso", it: "ventoso", de: "windig", uk: "вітряно" },
+      "promising": { fr: "prometteur", es: "prometedor", it: "promettente", de: "vielversprechend", uk: "обнадійливий" },
+      "outdoor": { fr: "en plein air", es: "al aire libre", it: "all'aperto", de: "im Freien", uk: "на відкритому повітрі" }
+    }
+  },
+  {
+    slug: "train-announcement",
+    title: "Train Station Announcement",
+    level: "A2",
+    accent: "UK",
+    audioUrl: "/audio/listening/train-announcement.mp3",
+    text: "Attention please. The train now approaching platform three is the eleven forty-five service to Edinburgh.\nThis train will call at York, Durham, and Newcastle before arriving at Edinburgh Waverley at fourteen thirty.\nPassengers for Leeds should take the train on platform seven departing at eleven fifty-two.\nWe regret to announce that the twelve fifteen service to Manchester has been cancelled due to a signalling problem.\nPassengers holding tickets for this service may travel on the next available train at twelve forty-five.\nPlease keep your belongings with you at all times and report any unattended luggage to a member of staff.\nThank you for travelling with us today.",
+    glossary: {
+      "approaching": { fr: "approchant", es: "acercándose", it: "in arrivo", de: "ankommend", uk: "наближається" },
+      "platform": { fr: "quai", es: "andén", it: "binario", de: "Bahnsteig", uk: "платформа" },
+      "service": { fr: "service", es: "servicio", it: "servizio", de: "Verbindung", uk: "рейс" },
+      "departing": { fr: "partant", es: "saliendo", it: "in partenza", de: "abfahrend", uk: "відправлення" },
+      "regret": { fr: "regrettons", es: "lamentamos", it: "ci scusiamo", de: "bedauern", uk: "на жаль" },
+      "cancelled": { fr: "annulé", es: "cancelado", it: "cancellato", de: "ausgefallen", uk: "скасовано" },
+      "signalling": { fr: "signalisation", es: "señalización", it: "segnaletica", de: "Signaltechnik", uk: "сигналізація" },
+      "belongings": { fr: "affaires", es: "pertenencias", it: "effetti personali", de: "Gepäck", uk: "речі" },
+      "unattended": { fr: "sans surveillance", es: "desatendido", it: "incustodito", de: "unbeaufsichtigt", uk: "без нагляду" },
+      "staff": { fr: "personnel", es: "personal", it: "personale", de: "Personal", uk: "персонал" }
+    }
+  },
+  {
+    slug: "shopping-clothes",
+    title: "Shopping for Clothes",
+    level: "A2",
+    accent: "US",
+    audioUrl: "/audio/listening/shopping-clothes.mp3",
+    text: "Hi there, can I help you find anything today?\nYes, I'm looking for a jacket for the winter.\nGreat! What size are you?\nI'm usually a medium.\nWe have some lovely options over here. Are you looking for something casual or more formal?\nSomething casual that I can wear every day.\nHow about this one? It's very popular this season and it's waterproof.\nOh, that's nice. Can I try it on?\nOf course! The fitting rooms are just behind you on the right.\nIt fits perfectly! How much is it?\nIt's on sale right now. It was ninety-nine dollars, but it's now seventy-nine.\nThat's a good deal. I'll take it.\nWould you like to pay by cash or card?\nCard, please.",
+    glossary: {
+      "jacket": { fr: "veste", es: "chaqueta", it: "giacca", de: "Jacke", uk: "куртка" },
+      "size": { fr: "taille", es: "talla", it: "taglia", de: "Größe", uk: "розмір" },
+      "medium": { fr: "moyen", es: "mediana", it: "media", de: "mittel", uk: "середній" },
+      "casual": { fr: "décontracté", es: "informal", it: "casual", de: "lässig", uk: "повсякденний" },
+      "formal": { fr: "formel", es: "formal", it: "formale", de: "formell", uk: "офіційний" },
+      "waterproof": { fr: "imperméable", es: "impermeable", it: "impermeabile", de: "wasserdicht", uk: "водонепроникний" },
+      "try on": { fr: "essayer", es: "probarse", it: "provare", de: "anprobieren", uk: "приміряти" },
+      "fitting rooms": { fr: "cabines d'essayage", es: "probadores", it: "camerini", de: "Umkleidekabinen", uk: "примірочні" },
+      "sale": { fr: "soldes", es: "rebajas", it: "saldi", de: "Angebot", uk: "розпродаж" },
+      "deal": { fr: "affaire", es: "oferta", it: "affare", de: "Angebot", uk: "вигідна пропозиція" }
+    }
+  },
+  {
+    slug: "university-lecture",
+    title: "University Lecture Introduction",
+    level: "B2",
+    accent: "UK",
+    audioUrl: "/audio/listening/university-lecture.mp3",
+    text: "Good morning everyone, and welcome to this semester's introductory course on environmental science.\nBefore we dive into the material, let me outline what we'll be covering over the next twelve weeks.\nThe course is divided into three main sections. First, we'll examine the fundamental principles of ecology and ecosystems.\nIn the second part, we'll focus on climate change, its causes, and its global impact.\nFinally, we'll explore sustainable solutions and the role of policy in environmental protection.\nAssessment will consist of two written assignments worth thirty percent each, and a final exam worth forty percent.\nI encourage you to participate actively in seminars and don't hesitate to visit during my office hours if you have questions.\nThe reading list is available on the course website. I recommend starting with chapters one through three of the main textbook this week.",
+    glossary: {
+      "semester": { fr: "semestre", es: "semestre", it: "semestre", de: "Semester", uk: "семестр" },
+      "introductory": { fr: "introduction", es: "introductorio", it: "introduttivo", de: "Einführung", uk: "вступний" },
+      "outline": { fr: "présenter", es: "describir", it: "delineare", de: "umreißen", uk: "окреслити" },
+      "fundamental": { fr: "fondamental", es: "fundamental", it: "fondamentale", de: "grundlegend", uk: "фундаментальний" },
+      "ecology": { fr: "écologie", es: "ecología", it: "ecologia", de: "Ökologie", uk: "екологія" },
+      "ecosystems": { fr: "écosystèmes", es: "ecosistemas", it: "ecosistemi", de: "Ökosysteme", uk: "екосистеми" },
+      "sustainable": { fr: "durable", es: "sostenible", it: "sostenibile", de: "nachhaltig", uk: "сталий" },
+      "assessment": { fr: "évaluation", es: "evaluación", it: "valutazione", de: "Bewertung", uk: "оцінювання" },
+      "assignments": { fr: "devoirs", es: "trabajos", it: "compiti", de: "Aufgaben", uk: "завдання" },
+      "seminars": { fr: "séminaires", es: "seminarios", it: "seminari", de: "Seminare", uk: "семінари" },
+      "textbook": { fr: "manuel", es: "libro de texto", it: "manuale", de: "Lehrbuch", uk: "підручник" }
+    }
+  },
+  {
+    slug: "business-meeting",
+    title: "Business Meeting",
+    level: "B2",
+    accent: "US",
+    audioUrl: "/audio/listening/business-meeting.mp3",
+    text: "Alright everyone, let's get started. Thanks for joining today's meeting on such short notice.\nThe main item on the agenda is the upcoming product launch scheduled for next quarter.\nSarah, could you give us an update on the marketing campaign?\nSure. We've finalized the social media strategy and the print materials are currently being designed. We should have everything ready two weeks before launch.\nExcellent. What about the budget? Are we still on track?\nWe're slightly over budget due to unexpected production costs, but we've identified some areas where we can cut back.\nI see. Let's discuss that in more detail after this meeting. Tom, how's the development team progressing?\nWe're on schedule. The final testing phase begins next week, and we're confident we'll meet the deadline.\nGreat work everyone. Let's schedule a follow-up meeting for next Wednesday to review progress. Any questions before we wrap up?",
+    glossary: {
+      "agenda": { fr: "ordre du jour", es: "agenda", it: "ordine del giorno", de: "Tagesordnung", uk: "порядок денний" },
+      "launch": { fr: "lancement", es: "lanzamiento", it: "lancio", de: "Markteinführung", uk: "запуск" },
+      "quarter": { fr: "trimestre", es: "trimestre", it: "trimestre", de: "Quartal", uk: "квартал" },
+      "campaign": { fr: "campagne", es: "campaña", it: "campagna", de: "Kampagne", uk: "кампанія" },
+      "finalized": { fr: "finalisé", es: "finalizado", it: "finalizzato", de: "fertiggestellt", uk: "завершено" },
+      "budget": { fr: "budget", es: "presupuesto", it: "budget", de: "Budget", uk: "бюджет" },
+      "unexpected": { fr: "inattendu", es: "inesperado", it: "imprevisto", de: "unerwartet", uk: "несподіваний" },
+      "production": { fr: "production", es: "producción", it: "produzione", de: "Produktion", uk: "виробництво" },
+      "schedule": { fr: "calendrier", es: "cronograma", it: "programma", de: "Zeitplan", uk: "графік" },
+      "deadline": { fr: "échéance", es: "plazo", it: "scadenza", de: "Frist", uk: "дедлайн" },
+      "follow-up": { fr: "suivi", es: "seguimiento", it: "follow-up", de: "Nachbesprechung", uk: "подальша зустріч" }
+    }
   }
 ];
 
