@@ -85,6 +85,8 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl, title }) => {
       <audio
         ref={audioRef}
         src={audioUrl}
+        preload="none"
+        crossOrigin="anonymous"
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
         onEnded={handleEnded}
