@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { z } from 'zod';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
@@ -104,9 +104,12 @@ export default function Auth() {
   return (
     <>
       <SEOHead
-        title={isLogin ? "Connexion" : "Inscription"}
-        description="Connectez-vous à votre espace étudiant pour accéder à vos cours d'anglais."
+        title={isLogin ? "Connexion à votre espace étudiant | Antony Addy" : "Inscription gratuite - Créer un compte | Antony Addy"}
+        description={isLogin 
+          ? "Connectez-vous à votre espace étudiant Antony Addy pour suivre votre progression, accéder à vos exercices d'anglais et continuer votre apprentissage."
+          : "Créez votre compte gratuit sur Antony Addy pour accéder aux exercices d'anglais, suivre votre progression et améliorer vos compétences linguistiques."}
         canonicalPath="/auth"
+        noIndex={true}
       />
       
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-muted to-background p-4">
@@ -115,13 +118,13 @@ export default function Auth() {
             <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
               <GraduationCap className="w-8 h-8 text-primary" />
             </div>
-            <CardTitle className="text-2xl font-heading">
+            <h1 className="text-2xl font-heading font-bold">
               {isLogin ? 'Connexion' : 'Créer un compte'}
-            </CardTitle>
+            </h1>
             <CardDescription>
               {isLogin 
-                ? 'Accédez à votre espace étudiant' 
-                : 'Rejoignez notre communauté d\'apprenants'}
+                ? 'Accédez à votre espace étudiant pour suivre vos progrès' 
+                : 'Rejoignez notre communauté d\'apprenants et améliorez votre anglais'}
             </CardDescription>
           </CardHeader>
           
@@ -203,6 +206,22 @@ export default function Auth() {
                   ? "Pas encore de compte ? S'inscrire" 
                   : 'Déjà un compte ? Se connecter'}
               </button>
+            </div>
+            
+            {/* Internal links for SEO */}
+            <div className="mt-6 pt-4 border-t border-border text-center">
+              <p className="text-xs text-muted-foreground mb-2">Découvrez nos ressources</p>
+              <div className="flex flex-wrap justify-center gap-3 text-xs">
+                <Link to="/exercices" className="text-primary hover:underline">
+                  Exercices gratuits
+                </Link>
+                <Link to="/offres-de-formation" className="text-primary hover:underline">
+                  Formations
+                </Link>
+                <Link to="/" className="text-primary hover:underline">
+                  Accueil
+                </Link>
+              </div>
             </div>
           </CardContent>
         </Card>
