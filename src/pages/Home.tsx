@@ -353,7 +353,7 @@ const Home = () => {
                 Tous les exercices
               </Link>
               <Link 
-                to="/listening" 
+                to="/exercices/listening" 
                 className="inline-flex items-center gap-3 bg-white/20 text-primary-foreground border-2 border-white/50 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/30 transition-all"
               >
                 <Headphones className="h-6 w-6" />
