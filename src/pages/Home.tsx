@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink, UserCheck, Building, GraduationCap, Target, Briefcase, Settings, MessageCircle, Mail, School, University, MapPin, Factory } from 'lucide-react';
+import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink, UserCheck, Building, GraduationCap, Target, Briefcase, Settings, MessageCircle, Mail, School, University, MapPin, Factory, Headphones, GripVertical, PenLine, Sparkles } from 'lucide-react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -280,35 +280,41 @@ const Home = () => {
                 Exercices d'Anglais Interactifs
               </h2>
               <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto font-body">
-                Maîtrisez la grammaire anglaise avec des explications claires et des exercices pratiques
+                6 types d'exercices pour maîtriser l'anglais : grammaire, vocabulaire, lecture, écoute, et plus encore
               </p>
             </div>
 
-            {/* Stats Grid */}
+            {/* Exercise Types Grid */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
-                <p className="text-4xl font-bold mb-1">51</p>
-                <p className="text-sm text-primary-foreground/80">Leçons grammaire</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors">
+                <GraduationCap className="h-6 w-6 mx-auto mb-2" />
+                <p className="text-2xl font-bold mb-1">51</p>
+                <p className="text-xs text-primary-foreground/80">Grammar Lessons</p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
-                <p className="text-4xl font-bold mb-1">150</p>
-                <p className="text-sm text-primary-foreground/80">Exercices vocabulaire</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors">
+                <Sparkles className="h-6 w-6 mx-auto mb-2" />
+                <p className="text-2xl font-bold mb-1">150</p>
+                <p className="text-xs text-primary-foreground/80">Vocabulary</p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
-                <p className="text-4xl font-bold mb-1">6</p>
-                <p className="text-sm text-primary-foreground/80">Textes lecture</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors">
+                <BookOpen className="h-6 w-6 mx-auto mb-2" />
+                <p className="text-2xl font-bold mb-1">6</p>
+                <p className="text-xs text-primary-foreground/80">Reading</p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
-                <p className="text-4xl font-bold mb-1">5</p>
-                <p className="text-sm text-primary-foreground/80">Histoires interactives</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors">
+                <Headphones className="h-6 w-6 mx-auto mb-2" />
+                <p className="text-2xl font-bold mb-1">10</p>
+                <p className="text-xs text-primary-foreground/80">Listening</p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
-                <p className="text-4xl font-bold mb-1">3</p>
-                <p className="text-sm text-primary-foreground/80">Niveaux difficulté</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors">
+                <GripVertical className="h-6 w-6 mx-auto mb-2" />
+                <p className="text-2xl font-bold mb-1">3</p>
+                <p className="text-xs text-primary-foreground/80">Drag & Drop</p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
-                <p className="text-4xl font-bold mb-1">100%</p>
-                <p className="text-sm text-primary-foreground/80">Gratuit</p>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors">
+                <PenLine className="h-6 w-6 mx-auto mb-2" />
+                <p className="text-2xl font-bold mb-1">6</p>
+                <p className="text-xs text-primary-foreground/80">Writing</p>
               </div>
             </div>
 
@@ -344,14 +350,14 @@ const Home = () => {
                 className="inline-flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/90 transition-all shadow-lg hover:shadow-xl hover:scale-105"
               >
                 <GraduationCap className="h-6 w-6" />
-                Grammaire & Vocabulaire
+                Tous les exercices
               </Link>
               <Link 
-                to="/reading" 
+                to="/listening" 
                 className="inline-flex items-center gap-3 bg-white/20 text-primary-foreground border-2 border-white/50 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/30 transition-all"
               >
-                <BookOpen className="h-6 w-6" />
-                Compréhension écrite
+                <Headphones className="h-6 w-6" />
+                Écoute & Compréhension
               </Link>
             </div>
           </div>
