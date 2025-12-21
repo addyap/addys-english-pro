@@ -99,9 +99,6 @@ const VOICE_IDS: { [key in Slug]?: string } = {
   "apartment-viewing": "TX3LPaxmHKxFdv7VOQHJ", // Liam
   "podcast-technology": "CwhRBWXzGAHq8TQ4Fs17", // Roger
 };
-  "university-lecture": "JBFqnCBsd6RMkjVDRZzb", // George
-  "business-meeting": "TX3LPaxmHKxFdv7VOQHJ", // Liam
-};
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
