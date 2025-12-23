@@ -93,10 +93,12 @@ const Home = () => {
       <SEOHead 
         title="Formateur d'anglais pour adultes – Antony Addy"
         description="Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes. CPF via centres certifiés Qualiopi. Formateur natif britannique certifié FPA."
-        canonicalPath="/"
+        canonicalUrl="https://www.antonyaddy.com/"
         datePublished="2025-01-15T10:00:00+01:00"
         dateModified="2025-01-15T10:00:00+01:00"
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
+        enableOrgJsonLd
+        enableWebSiteJsonLd
         imageAlt="Antony Addy, formateur d'anglais professionnel certifié FPA animant une session de formation"
         keywords={["Anglais professionnel", "Formateur anglais natif", "Antony Addy", "CPF", "Formation d'anglais", "Cours d'anglais en ligne", "Anglais pour adultes", "Alpes-Maritimes", "Formation continue", "Formateur britannique", "FPA certifié"]}
         jsonLd={[

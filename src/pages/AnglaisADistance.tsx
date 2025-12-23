@@ -48,9 +48,11 @@ const AnglaisADistance = () => {
       <SEOHead
         title="anglaisadistance.fr – Ressources gratuites d'anglais par Antony Addy"
         description="Plateforme gratuite de ressources pédagogiques en anglais : grammaire claire, vocabulaire thématique, dialogues authentiques, quiz interactifs et tests de niveau. Créée par Antony Addy, formateur professionnel."
-        canonicalPath="/anglaisadistance"
+        canonicalUrl="https://www.antonyaddy.com/anglaisadistance"
         image="https://www.antonyaddy.com/lovable-uploads/d96440ab-4b9c-4f42-9910-75051d4f8b0e.png"
         imageAlt="Logo anglaisadistance.fr - Ressources gratuites pour apprendre l'anglais"
+        enableOrgJsonLd
+        enableWebSiteJsonLd
         keywords={[
           "anglaisadistance.fr",
           "ressources anglais gratuites",

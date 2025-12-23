@@ -78,7 +78,9 @@ const Training = () => {
       <SEOHead
         title="Offres de formation en anglais professionnel – Antony Addy"
         description="Formations d'anglais sur mesure : anglais professionnel, CPF, entreprises, particuliers. En présentiel (Alpes-Maritimes) ou à distance (France entière). Formateur britannique natif certifié FPA."
-        canonicalUrl="https://antonyaddy.com/offres-de-formation"
+        canonicalUrl="https://www.antonyaddy.com/offres-de-formation"
+        enableOrgJsonLd
+        enableWebSiteJsonLd
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
         imageAlt="Formations d'anglais professionnel par Antony Addy"
         keywords={[

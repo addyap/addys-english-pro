@@ -108,9 +108,11 @@ const Contact = () => {
         title="Contact – Antony Addy | Formateur d'anglais professionnel"
         description="Contactez Antony Addy pour vos besoins en formation d'anglais professionnel. Réponse rapide par email, WhatsApp ou formulaire. Devis gratuit sur demande."
         keywords={["Contact Antony Addy", "contacter formateur anglais", "devis formation anglais", "consultation anglais professionnel", "WhatsApp formateur", "email formations", "Alpes-Maritimes", "France"]}
-        canonicalUrl="https://antonyaddy.com/contact"
+        canonicalUrl="https://www.antonyaddy.com/contact"
         image="https://www.antonyaddy.com/lovable-uploads/200e88ab-2bbf-4168-85ad-8123b07c44ac.png"
         imageAlt="QR Code LinkedIn pour contacter Antony Addy"
+        enableOrgJsonLd
+        enableWebSiteJsonLd
         jsonLd={[contactJsonLd, {
           "@context": "https://schema.org",
           "@type": "ContactPage",
