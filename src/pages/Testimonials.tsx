@@ -129,7 +129,9 @@ const Testimonials = () => {
         title="Témoignages Clients – Avis sur les formations d'Antony Addy"
         description="Découvrez les avis authentiques de plus de 15 professionnels ayant suivi les formations d'anglais d'Antony Addy. Retours vérifiés sur la qualité, la pédagogie et l'efficacité des cours."
         keywords={["témoignages formation anglais", "avis clients Antony Addy", "retours formations anglais", "satisfaction apprenants", "avis formateur anglais", "témoignages professionnels", "formation anglais avis", "recommandations formateur"]}
-        canonicalUrl="https://antonyaddy.com/temoignages"
+        canonicalUrl="https://www.antonyaddy.com/temoignages"
+        enableOrgJsonLd
+        enableWebSiteJsonLd
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
         imageAlt="Témoignages clients formations anglais Antony Addy"
         jsonLd={[testimonialsJsonLd, {

@@ -63,11 +63,13 @@ const Blog = () => {
       <SEOHead
         title="Blog Anglais Professionnel – Conseils & Astuces | Antony Addy"
         description="Découvrez les meilleurs conseils pour apprendre l'anglais professionnel : grammaire, vocabulaire, erreurs courantes et astuces de formation par un formateur certifié."
-        canonicalPath="/blog"
+        canonicalUrl="https://www.antonyaddy.com/blog"
         datePublished="2025-01-15T10:00:00+01:00"
         dateModified="2025-01-15T10:00:00+01:00"
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
         imageAlt="Blog anglais professionnel par Antony Addy formateur certifié"
+        enableOrgJsonLd
+        enableWebSiteJsonLd
         keywords={[
           "blog anglais professionnel",
           "astuces apprendre anglais",

@@ -46,8 +46,10 @@ export default function Reading() {
       <SEOHead
         title="Compréhension Écrite en Anglais | Reading Comprehension Exercises"
         description="Améliorez votre compréhension de l'anglais écrit avec 12 textes et histoires interactives. Exercices de lecture pour tous les niveaux (A2-C1), créés par un formateur britannique natif certifié FPA."
-        canonical="/reading"
+        canonicalPath="/reading"
         keywords={["compréhension écrite anglais", "reading comprehension", "textes anglais", "exercices lecture anglais", "histoires interactives anglais", "apprendre lire anglais"]}
+        enableOrgJsonLd
+        enableWebSiteJsonLd
       />
 
       <div className="min-h-screen bg-background py-12">
