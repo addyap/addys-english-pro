@@ -23,10 +23,11 @@ const PRIORITY_ROUTES = [
   '/contact',
   '/blog',
   '/exercices',
-  '/reading',
-  '/anglaisadistance',
+  '/lecture',
+  '/listening',
+  '/anglais-a-distance',
   '/mentions-legales',
-  '/politique-confidentialite',
+  '/politique-de-confidentialite',
 ];
 
 // Site configuration
@@ -123,12 +124,17 @@ function getRouteSEOData(route) {
       description: 'Plus de 200 exercices d\'anglais interactifs : grammaire, vocabulaire, compréhension orale et écrite. Progressez à votre rythme.',
       h1: 'Exercices d\'Anglais Interactifs',
     },
-    '/reading': {
+    '/lecture': {
       title: 'Exercices de Lecture - Antony Addy',
       description: 'Améliorez votre compréhension écrite avec nos textes et exercices de lecture en anglais. Tous niveaux.',
       h1: 'Exercices de Lecture',
     },
-    '/anglaisadistance': {
+    '/listening': {
+      title: 'Exercices de Compréhension Orale - Antony Addy',
+      description: 'Améliorez votre compréhension orale avec nos exercices d\'écoute en anglais. Tous niveaux.',
+      h1: 'Exercices de Compréhension Orale',
+    },
+    '/anglais-a-distance': {
       title: 'Anglais à Distance - Antony Addy',
       description: 'Formations d\'anglais à distance partout en France. Cours en visioconférence avec un formateur natif britannique.',
       h1: 'Anglais à Distance',
@@ -138,7 +144,7 @@ function getRouteSEOData(route) {
       description: 'Mentions légales du site antonyaddy.com. Informations sur l\'éditeur et l\'hébergement.',
       h1: 'Mentions Légales',
     },
-    '/politique-confidentialite': {
+    '/politique-de-confidentialite': {
       title: 'Politique de Confidentialité - Antony Addy',
       description: 'Notre politique de confidentialité et de protection des données personnelles conformément au RGPD.',
       h1: 'Politique de Confidentialité',
@@ -261,7 +267,40 @@ function getPageContent(route) {
           <li>Exercices d'écriture</li>
         </ul>
         <a href="/blog">Lire nos articles de grammaire</a>
-        <a href="/reading">Exercices de lecture</a>
+        <a href="/lecture">Exercices de lecture</a>
+        <a href="/listening">Exercices d'écoute</a>
+      </section>
+    `,
+    '/lecture': `
+      <section>
+        <h2>Exercices de Lecture en Anglais</h2>
+        <p>Améliorez votre compréhension écrite avec nos textes et exercices de lecture en anglais. Contenus adaptés à tous les niveaux.</p>
+        <h3>Thèmes disponibles</h3>
+        <ul>
+          <li>L'importance de la lecture</li>
+          <li>Solutions au changement climatique</li>
+          <li>La révolution numérique</li>
+          <li>Mode de vie durable</li>
+          <li>L'art de la communication</li>
+        </ul>
+        <a href="/exercices">Autres exercices</a>
+        <a href="/listening">Exercices d'écoute</a>
+      </section>
+    `,
+    '/listening': `
+      <section>
+        <h2>Exercices de Compréhension Orale</h2>
+        <p>Améliorez votre compréhension orale avec nos exercices d'écoute en anglais. Audio de qualité avec transcriptions.</p>
+        <h3>Thèmes disponibles</h3>
+        <ul>
+          <li>Réunions professionnelles</li>
+          <li>Conversations de voyage</li>
+          <li>Actualités</li>
+          <li>Cours académiques</li>
+          <li>Vie quotidienne</li>
+        </ul>
+        <a href="/exercices">Autres exercices</a>
+        <a href="/lecture">Exercices de lecture</a>
       </section>
     `,
     '/blog': `
@@ -299,7 +338,7 @@ function getPageContent(route) {
         <a href="/offres-de-formation">Découvrir nos formations</a>
       </section>
     `,
-    '/anglaisadistance': `
+    '/anglais-a-distance': `
       <section>
         <h2>Formations d'anglais à distance</h2>
         <p>Apprenez l'anglais depuis chez vous avec un formateur britannique natif. Cours en visioconférence personnalisés, disponibles partout en France.</p>
