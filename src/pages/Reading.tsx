@@ -44,10 +44,10 @@ export default function Reading() {
   return (
     <>
       <SEOHead
-        title="Compréhension Écrite en Anglais | Reading Comprehension Exercises"
-        description="Améliorez votre compréhension de l'anglais écrit avec 12 textes et histoires interactives. Exercices de lecture pour tous les niveaux (A2-C1), créés par un formateur britannique natif certifié FPA."
-        canonicalPath="/reading"
-        keywords={["compréhension écrite anglais", "reading comprehension", "textes anglais", "exercices lecture anglais", "histoires interactives anglais", "apprendre lire anglais"]}
+        title="Compréhension Écrite Anglais | Antony Addy"
+        description="12 textes et histoires interactives pour améliorer votre lecture en anglais. Niveaux A2 à C1, créés par un formateur FPA."
+        canonicalUrl="https://www.antonyaddy.com/lecture"
+        keywords={["compréhension écrite anglais", "reading comprehension", "textes anglais", "lecture anglais"]}
         enableOrgJsonLd
         enableWebSiteJsonLd
       />

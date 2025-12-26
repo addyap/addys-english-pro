@@ -76,28 +76,20 @@ const Training = () => {
   return (
     <>
       <SEOHead
-        title="Offres de formation en anglais professionnel – Antony Addy"
-        description="Formations d'anglais sur mesure : anglais professionnel, CPF, entreprises, particuliers. En présentiel (Alpes-Maritimes) ou à distance (France entière). Formateur britannique natif certifié FPA."
+        title="Formations Anglais Professionnel | Antony Addy"
+        description="Formations d'anglais sur mesure : CPF, entreprises, particuliers. Présentiel Alpes-Maritimes ou distanciel France entière. Devis gratuit."
         canonicalUrl="https://www.antonyaddy.com/offres-de-formation"
         enableOrgJsonLd
         enableWebSiteJsonLd
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
         imageAlt="Formations d'anglais professionnel par Antony Addy"
         keywords={[
-          "formation anglais professionnel",
-          "anglais des affaires",
+          "formation anglais",
           "CPF anglais",
-          "cours individuels anglais",
-          "formation anglais entreprise",
-          "formation continue anglais",
-          "cours anglais à distance",
-          "Antony Addy",
+          "cours entreprise",
+          "formation à distance",
           "anglais Alpes-Maritimes",
-          "formateur natif britannique",
-          "anglais téléphonique",
-          "préparation TOEIC",
-          "anglais spécialisé",
-          "visioconférence anglais"
+          "préparation TOEIC"
         ]}
         jsonLd={[trainingJsonLd, {
           "@context": "https://schema.org",

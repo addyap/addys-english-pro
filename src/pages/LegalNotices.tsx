@@ -7,22 +7,10 @@ const LegalNotices = () => {
   return (
     <>
       <SEOHead 
-        title="Mentions légales – Antony Addy | Formateur Anglais"
-        description="Mentions légales et informations sur la protection des données (RGPD) du site antonyaddy.com"
-        canonicalUrl="https://antonyaddy.com/mentions-legales"
-        keywords={[
-          "mentions légales",
-          "site internet",
-          "propriété intellectuelle",
-          "politique juridique",
-          "Antony Addy",
-          "conditions générales",
-          "formateur indépendant",
-          "France",
-          "Alpes-Maritimes",
-          "RGPD",
-          "données personnelles"
-        ]}
+        title="Mentions Légales | antonyaddy.com"
+        description="Mentions légales du site antonyaddy.com : éditeur, hébergeur, RGPD et protection des données personnelles."
+        canonicalUrl="https://www.antonyaddy.com/mentions-legales"
+        keywords={["mentions légales", "RGPD", "données personnelles"]}
       />
       <div className="min-h-screen bg-gray-50 py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

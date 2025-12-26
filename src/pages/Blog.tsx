@@ -61,28 +61,20 @@ const Blog = () => {
   return (
     <>
       <SEOHead
-        title="Blog Anglais Professionnel – Conseils & Astuces | Antony Addy"
-        description="Découvrez les meilleurs conseils pour apprendre l'anglais professionnel : grammaire, vocabulaire, erreurs courantes et astuces de formation par un formateur certifié."
+        title="Blog Anglais Professionnel | Antony Addy"
+        description="Conseils d'expert pour progresser en anglais : grammaire, vocabulaire, erreurs courantes. Articles par un formateur FPA certifié."
         canonicalUrl="https://www.antonyaddy.com/blog"
         datePublished="2025-01-15T10:00:00+01:00"
-        dateModified="2025-01-15T10:00:00+01:00"
+        dateModified="2025-12-26T10:00:00+01:00"
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
-        imageAlt="Blog anglais professionnel par Antony Addy formateur certifié"
+        imageAlt="Blog anglais professionnel par Antony Addy"
         enableOrgJsonLd
         enableWebSiteJsonLd
         keywords={[
-          "blog anglais professionnel",
-          "astuces apprendre anglais",
-          "grammaire anglaise expliquée",
-          "vocabulaire business english",
-          "erreurs francophones anglais",
-          "conseils formation anglais",
-          "anglais pour adultes",
-          "communication professionnelle anglais",
-          "Antony Addy blog",
-          "CPF anglais",
-          "améliorer son anglais",
-          "formateur anglais natif"
+          "blog anglais",
+          "conseils anglais",
+          "grammaire anglaise",
+          "vocabulaire professionnel"
         ]}
         jsonLd={[
           {

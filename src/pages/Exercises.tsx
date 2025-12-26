@@ -189,12 +189,12 @@ const Exercises = () => {
   return (
     <>
       <SEOHead 
-        title="150 Exercices d'anglais gratuits – Grammaire & Vocabulaire | Antony Addy"
-        description="Accédez à 150 exercices d'anglais gratuits créés par un formateur professionnel. Grammaire, vocabulaire, pièges courants et faux-amis. Idéal pour progresser rapidement."
+        title="150+ Exercices Anglais Gratuits | Antony Addy"
+        description="Exercices interactifs gratuits : grammaire, vocabulaire, lecture, écoute. Créés par un formateur professionnel certifié."
         canonicalUrl="https://www.antonyaddy.com/exercices"
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
         imageAlt="Exercices d'anglais interactifs par Antony Addy"
-        keywords={["Exercices d'anglais gratuits", "Grammaire anglaise exercices", "Vocabulaire anglais pratique", "Pièges en anglais", "Faux-amis anglais", "Quiz anglais", "Exercices anglais en ligne", "Antony Addy", "Apprendre l'anglais", "Entraînement anglais"]}
+        keywords={["exercices anglais gratuits", "grammaire anglaise", "vocabulaire anglais", "quiz anglais"]}
         enableOrgJsonLd
         enableWebSiteJsonLd
         jsonLd={{
