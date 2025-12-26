@@ -80,9 +80,10 @@ const Install = () => {
   return (
     <>
       <SEOHead
-        title="Installer l'application – Apprendre l'anglais hors ligne | Antony Addy"
-        description="Installez l'application Antony Addy sur votre appareil pour un accès instantané aux exercices d'anglais, même sans connexion internet."
-        keywords={["installer application", "PWA", "application mobile anglais", "apprendre hors ligne", "exercices anglais"]}
+        title="Installer l'Application | Antony Addy"
+        description="Installez l'application Antony Addy sur votre appareil pour accéder aux exercices d'anglais hors ligne."
+        canonicalUrl="https://www.antonyaddy.com/install"
+        noIndex={true}
       />
 
       <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 py-16 px-4">

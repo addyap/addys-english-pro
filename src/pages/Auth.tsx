@@ -104,11 +104,11 @@ export default function Auth() {
   return (
     <>
       <SEOHead
-        title={isLogin ? "Connexion à votre espace étudiant | Antony Addy" : "Inscription gratuite - Créer un compte | Antony Addy"}
+        title={isLogin ? "Connexion | Antony Addy" : "Inscription | Antony Addy"}
         description={isLogin 
-          ? "Connectez-vous à votre espace étudiant Antony Addy pour suivre votre progression, accéder à vos exercices d'anglais et continuer votre apprentissage."
-          : "Créez votre compte gratuit sur Antony Addy pour accéder aux exercices d'anglais, suivre votre progression et améliorer vos compétences linguistiques."}
-        canonicalPath="/auth"
+          ? "Connectez-vous à votre espace étudiant pour suivre votre progression."
+          : "Créez votre compte gratuit pour accéder aux exercices d'anglais."}
+        canonicalUrl="https://www.antonyaddy.com/auth"
         noIndex={true}
       />
       

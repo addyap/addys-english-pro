@@ -45,7 +45,8 @@ const Dashboard = () => {
       <SEOHead
         title="Mon Tableau de Bord | Antony Addy"
         description="Suivez votre progression dans les exercices d'anglais. Consultez vos scores et les leçons complétées."
-        canonicalPath="/dashboard"
+        canonicalUrl="https://www.antonyaddy.com/dashboard"
+        noIndex={true}
       />
 
       <div className="min-h-screen bg-background">

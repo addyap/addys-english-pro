@@ -35,9 +35,11 @@ export function metaBasics({ description }: { description?: string }) {
   return <>{description && <meta name="description" content={description} />}</>;
 }
 
+// NOTE: Google ignores meta keywords since 2009. This function is deprecated but kept for backwards compatibility.
+// It now returns null to prevent rendering useless meta tags.
 export function metaKeywords({ keywords }: { keywords?: string[] }) {
-  if (!keywords || keywords.length === 0) return null;
-  return <meta name="keywords" content={keywords.join(", ")} />;
+  // Google ignores meta keywords - return null to prevent rendering
+  return null;
 }
 
 export function articleDateMeta({
