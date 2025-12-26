@@ -30,12 +30,12 @@ const About = () => {
 
   return <>
       <SEOHead 
-        title="Qui suis-je – Antony Addy, Formateur d'anglais certifié FPA"
-        description="Antony Addy, formateur britannique natif certifié FPA depuis 2017. Plus de 20 ans d'expérience en formation d'anglais professionnel pour adultes, entreprises et écoles."
-        keywords={["Antony Addy", "Formateur Professionnel d'Adultes", "FPA certifié", "anglais professionnel", "formation continue", "Alpes-Maritimes", "formateur britannique natif", "plus de 20 ans d'expérience"]}
+        title="Qui suis-je | Antony Addy, Formateur FPA"
+        description="Britannique natif certifié FPA depuis 2017, plus de 20 ans d'expérience en formation d'anglais professionnel. Découvrez mon parcours."
+        keywords={["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "formation adultes", "Alpes-Maritimes"]}
         canonicalUrl="https://www.antonyaddy.com/qui-je-suis"
         image="https://www.antonyaddy.com/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png"
-        imageAlt="Photo professionnelle d'Antony Addy, formateur d'anglais certifié"
+        imageAlt="Antony Addy, formateur d'anglais certifié FPA"
         enableOrgJsonLd
         enableWebSiteJsonLd
         jsonLd={[aboutJsonLd, {

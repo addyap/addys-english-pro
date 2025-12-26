@@ -46,29 +46,14 @@ const AnglaisADistance = () => {
   return (
     <>
       <SEOHead
-        title="anglaisadistance.fr – Ressources gratuites d'anglais par Antony Addy"
-        description="Plateforme gratuite de ressources pédagogiques en anglais : grammaire claire, vocabulaire thématique, dialogues authentiques, quiz interactifs et tests de niveau. Créée par Antony Addy, formateur professionnel."
-        canonicalUrl="https://www.antonyaddy.com/anglaisadistance"
+        title="anglaisadistance.fr – Ressources Gratuites | Antony Addy"
+        description="Plateforme gratuite : grammaire, vocabulaire, dialogues, quiz interactifs. Créée par Antony Addy, formateur professionnel."
+        canonicalUrl="https://www.antonyaddy.com/anglais-a-distance"
         image="https://www.antonyaddy.com/lovable-uploads/d96440ab-4b9c-4f42-9910-75051d4f8b0e.png"
-        imageAlt="Logo anglaisadistance.fr - Ressources gratuites pour apprendre l'anglais"
+        imageAlt="Logo anglaisadistance.fr - Ressources gratuites anglais"
         enableOrgJsonLd
         enableWebSiteJsonLd
-        keywords={[
-          "anglaisadistance.fr",
-          "ressources anglais gratuites",
-          "grammaire anglaise gratuite", 
-          "vocabulaire anglais thématique",
-          "dialogues anglais audio",
-          "quiz anglais interactifs",
-          "apprendre anglais gratuit",
-          "cours anglais en ligne gratuit",
-          "exercices anglais",
-          "tests niveau anglais",
-          "Antony Addy ressources",
-          "formation anglais autonome",
-          "anglais pour adultes gratuit",
-          "supports pédagogiques anglais"
-        ]}
+        keywords={["anglais à distance", "ressources gratuites", "grammaire anglaise", "vocabulaire anglais"]}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "WebSite",

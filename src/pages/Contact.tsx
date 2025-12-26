@@ -105,9 +105,9 @@ const Contact = () => {
 
   return <>
       <SEOHead 
-        title="Contact – Antony Addy | Formateur d'anglais professionnel"
-        description="Contactez Antony Addy pour vos besoins en formation d'anglais professionnel. Réponse rapide par email, WhatsApp ou formulaire. Devis gratuit sur demande."
-        keywords={["Contact Antony Addy", "contacter formateur anglais", "devis formation anglais", "consultation anglais professionnel", "WhatsApp formateur", "email formations", "Alpes-Maritimes", "France"]}
+        title="Contact | Antony Addy Formateur Anglais"
+        description="Contactez Antony Addy pour vos formations d'anglais. Réponse sous 24h par email, WhatsApp ou formulaire. Devis gratuit."
+        keywords={["contact formateur anglais", "devis formation", "WhatsApp", "email formations"]}
         canonicalUrl="https://www.antonyaddy.com/contact"
         image="https://www.antonyaddy.com/lovable-uploads/200e88ab-2bbf-4168-85ad-8123b07c44ac.png"
         imageAlt="QR Code LinkedIn pour contacter Antony Addy"

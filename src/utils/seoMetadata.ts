@@ -1,4 +1,3 @@
-
 interface SEOMetadata {
   title: string;
   description: string;
@@ -15,115 +14,123 @@ const DEFAULT_IMAGE = `${SITE_URL}/lovable-uploads/d29db9de-3e6a-459a-9275-77f27
 
 export const seoMetadata: Record<string, SEOMetadata> = {
   home: {
-    title: "Formateur d'anglais pour adultes – Antony Addy",
-    description: "Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes. CPF via centres certifiés Qualiopi. Formateur natif britannique certifié FPA.",
+    title: "Formateur Anglais Professionnel | Antony Addy",
+    description: "Formations d'anglais sur mesure avec un formateur britannique certifié FPA. CPF, entreprises, particuliers. Présentiel Alpes-Maritimes ou distanciel France.",
     canonical: `${SITE_URL}/`,
     h1: "Formateur d'anglais professionnel pour adultes",
-    keywords: ["formation anglais", "formateur FPA", "CPF anglais", "Alpes-Maritimes", "anglais professionnel", "cours anglais adultes"],
+    keywords: ["formateur anglais", "formation anglais professionnel", "CPF anglais", "formateur FPA", "cours anglais adultes", "Alpes-Maritimes"],
     ogImage: DEFAULT_IMAGE
   },
   about: {
-    title: "Qui suis-je – Antony Addy, Formateur d'anglais certifié FPA",
-    description: "Antony Addy, formateur britannique natif certifié FPA depuis 2017. Plus de 20 ans d'expérience en formation d'anglais professionnel pour adultes et entreprises.",
+    title: "Qui suis-je | Antony Addy, Formateur FPA",
+    description: "Britannique natif certifié FPA depuis 2017, plus de 20 ans d'expérience en formation d'anglais professionnel. Découvrez mon parcours.",
     canonical: `${SITE_URL}/qui-je-suis`,
-    h1: "Antony Addy – Formateur Professionnel d'Adultes certifié",
+    h1: "Antony Addy – Formateur Professionnel d'Adultes",
     keywords: ["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "formation adultes"],
     ogImage: DEFAULT_IMAGE
   },
   training: {
-    title: "Offres de formation en anglais professionnel – Antony Addy",
-    description: "Formations d'anglais sur mesure : anglais professionnel, CPF, entreprises, particuliers. En présentiel (Alpes-Maritimes) ou à distance (France entière).",
+    title: "Formations Anglais Professionnel | Antony Addy",
+    description: "Formations d'anglais sur mesure : CPF, entreprises, particuliers. Présentiel Alpes-Maritimes ou distanciel France entière. Devis gratuit.",
     canonical: `${SITE_URL}/offres-de-formation`,
     h1: "Offres de formation en anglais",
-    keywords: ["formation anglais professionnel", "CPF anglais", "cours entreprise", "formation à distance", "anglais Alpes-Maritimes"],
+    keywords: ["formation anglais", "CPF anglais", "cours entreprise", "formation à distance", "anglais Alpes-Maritimes"],
     ogImage: DEFAULT_IMAGE
   },
   testimonials: {
-    title: "Témoignages Clients – Avis sur les formations d'Antony Addy",
-    description: "Découvrez les avis authentiques de plus de 15 professionnels ayant suivi les formations d'anglais d'Antony Addy. Retours vérifiés sur la qualité et l'efficacité.",
+    title: "Avis Clients | Formations Anglais Antony Addy",
+    description: "15+ témoignages authentiques de professionnels satisfaits. Avis vérifiés sur la qualité des formations d'anglais d'Antony Addy.",
     canonical: `${SITE_URL}/temoignages`,
     h1: "Témoignages",
     keywords: ["témoignages formation anglais", "avis Antony Addy", "retours clients", "satisfaction apprenants"],
     ogImage: DEFAULT_IMAGE
   },
   contact: {
-    title: "Contact – Antony Addy | Formateur d'anglais professionnel",
-    description: "Contactez Antony Addy pour vos besoins en formation d'anglais professionnel. Réponse rapide par email, WhatsApp ou formulaire. Devis gratuit sur demande.",
+    title: "Contact | Antony Addy Formateur Anglais",
+    description: "Contactez Antony Addy pour vos formations d'anglais. Réponse sous 24h par email, WhatsApp ou formulaire. Devis gratuit.",
     canonical: `${SITE_URL}/contact`,
-    h1: "Contactez-moi pour vos formations d'anglais",
+    h1: "Contactez-moi",
     keywords: ["contact formateur anglais", "devis formation", "WhatsApp", "email formations"],
     ogImage: DEFAULT_IMAGE
   },
   blog: {
-    title: "Blog – Conseils et ressources en anglais professionnel | Antony Addy",
-    description: "Articles pour progresser en anglais : grammaire, vocabulaire, erreurs courantes, astuces professionnelles. Conseils d'un formateur certifié FPA.",
+    title: "Blog Anglais Professionnel | Antony Addy",
+    description: "Conseils d'expert pour progresser en anglais : grammaire, vocabulaire, erreurs courantes. Articles par un formateur FPA certifié.",
     canonical: `${SITE_URL}/blog`,
     h1: "Blog Anglais Professionnel",
-    keywords: ["blog anglais", "conseils anglais", "grammaire anglaise", "vocabulaire professionnel", "astuces anglais"],
+    keywords: ["blog anglais", "conseils anglais", "grammaire anglaise", "vocabulaire professionnel"],
     ogImage: DEFAULT_IMAGE
   },
   exercises: {
-    title: "150 Exercices d'anglais gratuits – Grammaire & Vocabulaire | Antony Addy",
-    description: "Accédez à 150 exercices d'anglais gratuits créés par un formateur professionnel. Grammaire, vocabulaire, pièges courants et faux-amis.",
+    title: "150+ Exercices Anglais Gratuits | Antony Addy",
+    description: "Exercices interactifs gratuits : grammaire, vocabulaire, lecture, écoute. Créés par un formateur professionnel certifié.",
     canonical: `${SITE_URL}/exercices`,
-    h1: "Exercices d'Anglais",
-    keywords: ["exercices anglais gratuits", "grammaire anglaise", "vocabulaire anglais", "quiz anglais", "pièges anglais"],
+    h1: "Exercices d'Anglais Interactifs",
+    keywords: ["exercices anglais gratuits", "grammaire anglaise", "vocabulaire anglais", "quiz anglais"],
     ogImage: DEFAULT_IMAGE
   },
   reading: {
-    title: "Compréhension Écrite | Reading Comprehension | Antony Addy",
-    description: "Améliorez votre compréhension écrite en anglais avec des textes adaptés à tous les niveaux et des questions de compréhension interactives.",
-    canonical: `${SITE_URL}/reading`,
+    title: "Compréhension Écrite Anglais | Antony Addy",
+    description: "12 textes et histoires interactives pour améliorer votre lecture en anglais. Niveaux A2 à C1, créés par un formateur FPA.",
+    canonical: `${SITE_URL}/lecture`,
     h1: "Compréhension Écrite",
     keywords: ["compréhension écrite anglais", "reading comprehension", "textes anglais", "lecture anglais"],
     ogImage: DEFAULT_IMAGE
   },
+  listening: {
+    title: "Listening Lab – Exercices Écoute Anglais | Antony Addy",
+    description: "Améliorez votre compréhension orale avec des exercices d'écoute interactifs. Transcriptions avec traductions instantanées.",
+    canonical: `${SITE_URL}/listening`,
+    h1: "Listening Lab",
+    keywords: ["compréhension orale anglais", "listening anglais", "exercices écoute", "audio anglais"],
+    ogImage: DEFAULT_IMAGE
+  },
   anglaisadistance: {
-    title: "anglaisadistance.fr – Ressources gratuites d'anglais | Antony Addy",
-    description: "Plateforme gratuite de ressources pédagogiques en anglais : grammaire claire, vocabulaire thématique, dialogues authentiques, quiz interactifs.",
-    canonical: `${SITE_URL}/anglaisadistance`,
-    h1: "anglaisadistance.fr",
-    keywords: ["anglais à distance", "ressources gratuites", "grammaire anglaise", "vocabulaire anglais", "quiz anglais"],
+    title: "anglaisadistance.fr – Ressources Gratuites | Antony Addy",
+    description: "Plateforme gratuite : grammaire, vocabulaire, dialogues, quiz interactifs. Créée par Antony Addy, formateur professionnel.",
+    canonical: `${SITE_URL}/anglais-a-distance`,
+    h1: "Ressources gratuites d'anglais",
+    keywords: ["anglais à distance", "ressources gratuites", "grammaire anglaise", "vocabulaire anglais"],
     ogImage: DEFAULT_IMAGE
   },
   dashboard: {
     title: "Mon Tableau de Bord | Antony Addy",
-    description: "Suivez votre progression dans les exercices d'anglais. Consultez vos scores, les leçons complétées et continuez votre apprentissage.",
+    description: "Suivez votre progression dans les exercices d'anglais. Scores, leçons complétées et statistiques.",
     canonical: `${SITE_URL}/dashboard`,
     h1: "Mon Tableau de Bord",
-    keywords: ["tableau de bord", "progression anglais", "suivi apprentissage", "scores exercices"],
+    keywords: ["tableau de bord", "progression anglais", "suivi apprentissage"],
     ogImage: DEFAULT_IMAGE
   },
   auth: {
-    title: "Connexion – Espace Étudiant | Antony Addy",
-    description: "Connectez-vous à votre espace étudiant pour accéder à vos cours d'anglais et suivre votre progression.",
+    title: "Connexion | Espace Étudiant Antony Addy",
+    description: "Connectez-vous à votre espace étudiant pour accéder à vos cours et suivre votre progression.",
     canonical: `${SITE_URL}/auth`,
     h1: "Connexion",
     keywords: ["connexion", "espace étudiant", "compte apprenant"],
     ogImage: DEFAULT_IMAGE
   },
   legalNotices: {
-    title: "Mentions légales – Antony Addy",
-    description: "Consultez les mentions légales du site antonyaddy.com, y compris l'identité de l'éditeur, hébergeur et conditions d'utilisation.",
+    title: "Mentions Légales | antonyaddy.com",
+    description: "Mentions légales du site antonyaddy.com : éditeur, hébergeur, RGPD et protection des données personnelles.",
     canonical: `${SITE_URL}/mentions-legales`,
     h1: "Mentions Légales",
-    keywords: ["mentions légales", "conditions utilisation", "éditeur site"],
+    keywords: ["mentions légales", "RGPD", "données personnelles"],
     ogImage: DEFAULT_IMAGE
   },
   privacyPolicy: {
-    title: "Politique de confidentialité – Antony Addy",
-    description: "Découvrez comment vos données personnelles sont collectées et utilisées sur antonyaddy.com conformément au RGPD.",
-    canonical: `${SITE_URL}/politique-confidentialite`,
+    title: "Politique de Confidentialité | antonyaddy.com",
+    description: "Politique de confidentialité et gestion des données personnelles conformément au RGPD sur antonyaddy.com.",
+    canonical: `${SITE_URL}/politique-de-confidentialite`,
     h1: "Politique de confidentialité",
     keywords: ["politique confidentialité", "RGPD", "données personnelles", "vie privée"],
     ogImage: DEFAULT_IMAGE
   },
   install: {
-    title: "Installer l'application – Antony Addy",
-    description: "Installez l'application Antony Addy sur votre appareil pour un accès rapide aux exercices d'anglais, même hors ligne.",
+    title: "Installer l'Application | Antony Addy",
+    description: "Installez l'application Antony Addy sur votre appareil pour accéder aux exercices d'anglais hors ligne.",
     canonical: `${SITE_URL}/install`,
     h1: "Installer l'application",
-    keywords: ["installer application", "PWA", "application mobile", "hors ligne"],
+    keywords: ["installer application", "PWA", "application mobile"],
     ogImage: DEFAULT_IMAGE
   }
 };

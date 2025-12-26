@@ -7,22 +7,10 @@ const PrivacyPolicy = () => {
   return (
     <>
       <SEOHead
-        title="Politique de confidentialité – Antony Addy"
-        description="Découvrez la politique de confidentialité et la gestion de vos données personnelles sur le site antonyaddy.com."
-        canonicalUrl="https://antonyaddy.com/politique-confidentialite"
-        keywords={[
-          "politique de confidentialité",
-          "RGPD",
-          "données personnelles",
-          "vie privée",
-          "formateur anglais",
-          "Antony Addy",
-          "site sécurisé",
-          "Alpes-Maritimes",
-          "France",
-          "protection des données",
-          "consentement"
-        ]}
+        title="Politique de Confidentialité | antonyaddy.com"
+        description="Politique de confidentialité et gestion des données personnelles conformément au RGPD sur antonyaddy.com."
+        canonicalUrl="https://www.antonyaddy.com/politique-de-confidentialite"
+        keywords={["politique confidentialité", "RGPD", "données personnelles", "vie privée"]}
       />
       
       <div className="min-h-screen bg-gray-50 py-12">
