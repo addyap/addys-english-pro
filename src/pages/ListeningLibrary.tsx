@@ -12,7 +12,7 @@ const ListeningLibrary: React.FC = () => {
       <SEOHead
         title="Listening Lab – Exercices Écoute Anglais | Antony Addy"
         description="Améliorez votre compréhension orale avec des exercices d'écoute interactifs. Transcriptions avec traductions instantanées."
-        canonicalUrl="https://www.antonyaddy.com/listening"
+        canonicalUrl="https://www.antonyaddy.com/exercices/listening"
         keywords={["compréhension orale anglais", "listening anglais", "exercices écoute", "audio anglais"]}
         enableOrgJsonLd
         enableWebSiteJsonLd

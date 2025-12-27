@@ -3,1041 +3,826 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Core Pages -->
   <url>
     <loc>https://www.antonyaddy.com/</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/qui-je-suis</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/contact</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/offres-de-formation</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/temoignages</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/anglais-a-distance</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/anglaisadistance</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/exercices</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/lecture</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/reading</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/listening</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/listening</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/mentions-legales</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/politique-de-confidentialite</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/politique-confidentialite</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
+  <!-- Blog Articles -->
   <url>
     <loc>https://www.antonyaddy.com/blog/present-simple-vs-present-continuous</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.antonyaddy.com/blog/past-simple-vs-present-perfect</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/past-simple-vs-past-continuous</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/present-perfect-vs-past-simple</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/past-simple-vs-past-perfect</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/future-tenses</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/past-perfect-continuous</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/conditionals</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/future-continuous</loc>
+    <lastmod>2025-12-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.antonyaddy.com/blog/future-perfect-continuous</loc>
+    <lastmod>2025-12-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.antonyaddy.com/blog/will-vs-going-to</loc>
+    <lastmod>2025-12-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.antonyaddy.com/blog/conditionals-zero-first-second-third</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/articles-a-an-the</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/prepositions-of-time</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/prepositions-de-temps</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/prepositions-of-place</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/prepositions-de-lieu</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/modal-verbs</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/passive-voice</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/reported-speech</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/relative-clauses</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/countable-uncountable-nouns</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/comparatives-superlatives</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/comparatifs-en-anglais</loc>
+    <lastmod>2025-12-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.antonyaddy.com/blog/superlatifs-en-anglais</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/question-tags</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/phrasal-verbs</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/gerunds-infinitives</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/gerunds-vs-infinitives</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/wish-if-only</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/wish-and-if-only</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/used-to-would</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/so-and-such</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/so-such</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/too-and-enough</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/too-enough</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/much-many-a-lot-of</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/much-many-lot</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/some-and-any</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/some-any-no</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/few-vs-little</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/all-every-each</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/either-neither</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/both-either-neither</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/blog/possessives</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/subject-object-pronouns</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/reflexive-pronouns</loc>
-    <lastmod>2025-12-25</lastmod>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/adverbs-frequency</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/possessive-adjectives</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/linking-words</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/possessive-pronouns</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/present-perfect-continuous</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/possessive-adjectives-vs-pronouns</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/past-perfect</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/adverbs-of-frequency</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/third-conditional</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/since-vs-for</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/mixed-conditionals</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/been-vs-gone</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/inversion</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/still-yet-already</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/cleft-sentences</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/make-vs-do</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/subjunctive</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/say-vs-tell</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/ellipsis-substitution</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/causative-have-get</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/discourse-markers</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/had-better-would-rather</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/blog/american-vs-british-english</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/although-despite-however</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/present-simple-basics</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/unless-as-long-as-provided</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/present-continuous-basics</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/present-simple-vs-continuous</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/past-simple-regular</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/past-simple-irregular</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/past-continuous-basics</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/past-simple-vs-continuous</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/present-perfect-basics</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/present-perfect-vs-past-simple</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/present-perfect-continuous</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/past-perfect-basics</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/future-will-going-to</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/future-continuous-perfect</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/first-conditional</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/second-conditional</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/third-conditional</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/mixed-conditionals</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/zero-conditional</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/articles-basics</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/articles-advanced</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/prepositions-time</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/prepositions-place</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/prepositions-movement</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/modal-can-could</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/modal-must-have-to</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/modal-should-ought</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/modal-may-might</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/passive-present-past</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/passive-perfect-future</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/reported-speech-statements</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/reported-speech-questions</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/relative-clauses-defining</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/relative-clauses-non-defining</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/countable-uncountable</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/comparatives-basics</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/superlatives-basics</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/question-tags</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/phrasal-verbs-common</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/phrasal-verbs-advanced</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/gerunds-infinitives-basics</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/adjective-order</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/gerunds-infinitives-advanced</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/wish-if-only</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/used-to-would</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.antonyaddy.com/exercice/so-such</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/too-enough</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/determiners</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/quantifiers-much-many</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/demonstratives-this-that-these-those</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/quantifiers-some-any</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/anglais-professionnel-2025</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/determiners-all-every</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/erreurs-francophones</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/determiners-both-either</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/blog/oral-vs-ecrit</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
+
+  <!-- Grammar Exercises (using numeric IDs as per actual routes) -->
   <url>
-    <loc>https://www.antonyaddy.com/exercice/possessives</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/1</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/reflexive-pronouns</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/2</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/adverbs-frequency</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/3</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/adverbs-manner</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/4</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/linking-words-contrast</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/5</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/linking-words-cause-effect</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/6</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/word-order-basics</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/7</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/word-order-adverbs</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/8</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/inversion</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/9</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/emphasis-cleft</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/10</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/subjunctive</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/11</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/ellipsis</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/12</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/have-something-done</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/13</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/make-vs-do</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/14</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/say-vs-tell</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/15</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/confusing-words</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/16</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/word-formation-prefixes</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/17</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/word-formation-suffixes</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/18</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/collocations-common</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/19</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/idioms-basics</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/20</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/exercice/formal-informal-language</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/21</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/drag-drop/sentence-building-basics</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/22</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/drag-drop/sentence-building-intermediate</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/23</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/drag-drop/sentence-building-advanced</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/24</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/drag-drop/word-order-questions</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/25</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/drag-drop/word-order-negatives</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/26</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/drag-drop/word-order-adverbs</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/27</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/drag-drop/paragraph-ordering</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/28</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/drag-drop/dialogue-ordering</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/29</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/drag-drop/story-sequencing</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/30</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/drag-drop/matching-synonyms</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/31</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/drag-drop/matching-antonyms</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/32</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/drag-drop/matching-definitions</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/33</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/drag-drop/categorization-nouns</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/34</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/drag-drop/categorization-verbs</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/35</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/drag-drop/categorization-adjectives</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/36</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/histoire/the-lost-key</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/37</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/histoire/the-job-interview</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/38</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/histoire/the-mystery-guest</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/39</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/histoire/the-haunted-house</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/40</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/histoire/the-time-traveler</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/41</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/histoire/the-desert-island</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/42</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/histoire/the-detective-case</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/43</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/histoire/the-space-mission</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/44</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/histoire/the-enchanted-forest</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/45</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/histoire/the-startup-dream</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/46</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/lecture/the-importance-of-reading</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/47</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/lecture/climate-change-solutions</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/48</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/lecture/the-digital-revolution</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/49</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/lecture/sustainable-living</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/50</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
+  <!-- Drag & Drop Exercises -->
   <url>
-    <loc>https://www.antonyaddy.com/lecture/the-art-of-communication</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/drag-drop/1</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/lecture/modern-education</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/drag-drop/2</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/lecture/health-and-wellness</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/drag-drop/3</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
+  <!-- Reading Passages -->
   <url>
-    <loc>https://www.antonyaddy.com/lecture/travel-and-culture</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/reading/1</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/lecture/technology-in-daily-life</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/reading/2</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/lecture/the-future-of-work</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/reading/3</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/listening/business-meeting</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/reading/4</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/listening/travel-conversation</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/reading/5</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/listening/news-report</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/reading/6</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/listening/academic-lecture</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/reading/7</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/listening/daily-routine</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/reading/8</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/listening/restaurant-ordering</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/reading/9</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/listening/phone-conversation</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/reading/10</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
+  <!-- Interactive Stories -->
   <url>
-    <loc>https://www.antonyaddy.com/listening/job-interview-tips</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/story/1</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/ecriture/email-formal</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/story/2</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/ecriture/email-informal</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/story/3</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/ecriture/essay-argumentative</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/story/4</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/ecriture/essay-descriptive</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/story/5</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
+  <!-- Listening Exercises -->
   <url>
-    <loc>https://www.antonyaddy.com/ecriture/letter-complaint</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/listening/customer-service-call</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/ecriture/letter-application</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/listening/job-interview</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/ecriture/report-business</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/listening/travel-booking</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/ecriture/review-product</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/listening/restaurant-order</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.antonyaddy.com/ecriture/story-narrative</loc>
-    <lastmod>2025-12-25</lastmod>
+    <loc>https://www.antonyaddy.com/exercices/listening/doctor-appointment</loc>
+    <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

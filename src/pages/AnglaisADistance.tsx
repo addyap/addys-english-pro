@@ -48,7 +48,7 @@ const AnglaisADistance = () => {
       <SEOHead
         title="anglaisadistance.fr – Ressources Gratuites | Antony Addy"
         description="Plateforme gratuite : grammaire, vocabulaire, dialogues, quiz interactifs. Créée par Antony Addy, formateur professionnel."
-        canonicalUrl="https://www.antonyaddy.com/anglais-a-distance"
+        canonicalUrl="https://www.antonyaddy.com/anglaisadistance"
         image="https://www.antonyaddy.com/lovable-uploads/d96440ab-4b9c-4f42-9910-75051d4f8b0e.png"
         imageAlt="Logo anglaisadistance.fr - Ressources gratuites anglais"
         enableOrgJsonLd
