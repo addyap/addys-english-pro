@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
       <SEOHead
         title="Politique de Confidentialité | antonyaddy.com"
         description="Politique de confidentialité et gestion des données personnelles conformément au RGPD sur antonyaddy.com."
-        canonicalUrl="https://www.antonyaddy.com/politique-de-confidentialite"
+        canonicalUrl="https://www.antonyaddy.com/politique-confidentialite"
         keywords={["politique confidentialité", "RGPD", "données personnelles", "vie privée"]}
       />
       

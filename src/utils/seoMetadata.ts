@@ -72,7 +72,7 @@ export const seoMetadata: Record<string, SEOMetadata> = {
   reading: {
     title: "Compréhension Écrite Anglais | Antony Addy",
     description: "12 textes et histoires interactives pour améliorer votre lecture en anglais. Niveaux A2 à C1, créés par un formateur FPA.",
-    canonical: `${SITE_URL}/lecture`,
+    canonical: `${SITE_URL}/reading`,
     h1: "Compréhension Écrite",
     keywords: ["compréhension écrite anglais", "reading comprehension", "textes anglais", "lecture anglais"],
     ogImage: DEFAULT_IMAGE
@@ -80,7 +80,7 @@ export const seoMetadata: Record<string, SEOMetadata> = {
   listening: {
     title: "Listening Lab – Exercices Écoute Anglais | Antony Addy",
     description: "Améliorez votre compréhension orale avec des exercices d'écoute interactifs. Transcriptions avec traductions instantanées.",
-    canonical: `${SITE_URL}/listening`,
+    canonical: `${SITE_URL}/exercices/listening`,
     h1: "Listening Lab",
     keywords: ["compréhension orale anglais", "listening anglais", "exercices écoute", "audio anglais"],
     ogImage: DEFAULT_IMAGE
@@ -88,7 +88,7 @@ export const seoMetadata: Record<string, SEOMetadata> = {
   anglaisadistance: {
     title: "anglaisadistance.fr – Ressources Gratuites | Antony Addy",
     description: "Plateforme gratuite : grammaire, vocabulaire, dialogues, quiz interactifs. Créée par Antony Addy, formateur professionnel.",
-    canonical: `${SITE_URL}/anglais-a-distance`,
+    canonical: `${SITE_URL}/anglaisadistance`,
     h1: "Ressources gratuites d'anglais",
     keywords: ["anglais à distance", "ressources gratuites", "grammaire anglaise", "vocabulaire anglais"],
     ogImage: DEFAULT_IMAGE
@@ -120,7 +120,7 @@ export const seoMetadata: Record<string, SEOMetadata> = {
   privacyPolicy: {
     title: "Politique de Confidentialité | antonyaddy.com",
     description: "Politique de confidentialité et gestion des données personnelles conformément au RGPD sur antonyaddy.com.",
-    canonical: `${SITE_URL}/politique-de-confidentialite`,
+    canonical: `${SITE_URL}/politique-confidentialite`,
     h1: "Politique de confidentialité",
     keywords: ["politique confidentialité", "RGPD", "données personnelles", "vie privée"],
     ogImage: DEFAULT_IMAGE
