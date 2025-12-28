@@ -310,38 +310,79 @@ const Home = () => {
               </p>
             </div>
 
-            {/* Exercise Types Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors">
-                <GraduationCap className="h-6 w-6 mx-auto mb-2" />
+            {/* Exercise Category Cards - Clickable */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
+              <Link 
+                to="/exercices?tab=grammar" 
+                className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
+              >
+                <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
+                  <GraduationCap className="h-6 w-6" />
+                </div>
                 <p className="text-2xl font-bold mb-1">51</p>
-                <p className="text-xs text-primary-foreground/80">Grammar Lessons</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors">
-                <Sparkles className="h-6 w-6 mx-auto mb-2" />
+                <p className="text-sm font-medium">Grammar</p>
+                <p className="text-xs text-primary-foreground/70 mt-1">Leçons & exercices</p>
+              </Link>
+              
+              <Link 
+                to="/exercices?tab=vocabulary" 
+                className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
+              >
+                <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
+                  <Sparkles className="h-6 w-6" />
+                </div>
                 <p className="text-2xl font-bold mb-1">150</p>
-                <p className="text-xs text-primary-foreground/80">Vocabulary</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors">
-                <BookOpen className="h-6 w-6 mx-auto mb-2" />
+                <p className="text-sm font-medium">Vocabulary</p>
+                <p className="text-xs text-primary-foreground/70 mt-1">QCM interactifs</p>
+              </Link>
+              
+              <Link 
+                to="/reading" 
+                className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
+              >
+                <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
+                  <BookOpen className="h-6 w-6" />
+                </div>
                 <p className="text-2xl font-bold mb-1">6</p>
-                <p className="text-xs text-primary-foreground/80">Reading</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors">
-                <Headphones className="h-6 w-6 mx-auto mb-2" />
+                <p className="text-sm font-medium">Reading</p>
+                <p className="text-xs text-primary-foreground/70 mt-1">Compréhension écrite</p>
+              </Link>
+              
+              <Link 
+                to="/exercices/listening" 
+                className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
+              >
+                <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
+                  <Headphones className="h-6 w-6" />
+                </div>
                 <p className="text-2xl font-bold mb-1">10</p>
-                <p className="text-xs text-primary-foreground/80">Listening</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors">
-                <GripVertical className="h-6 w-6 mx-auto mb-2" />
+                <p className="text-sm font-medium">Listening</p>
+                <p className="text-xs text-primary-foreground/70 mt-1">Compréhension orale</p>
+              </Link>
+              
+              <Link 
+                to="/exercices?tab=dragdrop" 
+                className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
+              >
+                <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
+                  <GripVertical className="h-6 w-6" />
+                </div>
                 <p className="text-2xl font-bold mb-1">3</p>
-                <p className="text-xs text-primary-foreground/80">Drag & Drop</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors">
-                <PenLine className="h-6 w-6 mx-auto mb-2" />
+                <p className="text-sm font-medium">Drag & Drop</p>
+                <p className="text-xs text-primary-foreground/70 mt-1">Ordre des mots</p>
+              </Link>
+              
+              <Link 
+                to="/exercices?tab=writing" 
+                className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
+              >
+                <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
+                  <PenLine className="h-6 w-6" />
+                </div>
                 <p className="text-2xl font-bold mb-1">6</p>
-                <p className="text-xs text-primary-foreground/80">Writing</p>
-              </div>
+                <p className="text-sm font-medium">Writing</p>
+                <p className="text-xs text-primary-foreground/70 mt-1">Expression écrite</p>
+              </Link>
             </div>
 
             {/* Features */}
