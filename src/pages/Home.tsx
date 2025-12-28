@@ -310,14 +310,14 @@ const Home = () => {
               </p>
             </div>
 
-            {/* Exercise Category Cards - Clickable */}
+            {/* Exercise Category Cards - Clickable with animated icons */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
               <Link 
                 to="/exercices?tab=grammar" 
                 className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
               >
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
-                  <GraduationCap className="h-6 w-6" />
+                  <GraduationCap className="h-6 w-6 animate-[bounce_2s_ease-in-out_infinite]" style={{ animationDelay: '0s' }} />
                 </div>
                 <p className="text-2xl font-bold mb-1">51</p>
                 <p className="text-sm font-medium">Grammar</p>
@@ -329,7 +329,7 @@ const Home = () => {
                 className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
               >
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
-                  <Sparkles className="h-6 w-6" />
+                  <Sparkles className="h-6 w-6 animate-[pulse_2s_ease-in-out_infinite]" style={{ animationDelay: '0.3s' }} />
                 </div>
                 <p className="text-2xl font-bold mb-1">150</p>
                 <p className="text-sm font-medium">Vocabulary</p>
@@ -341,7 +341,7 @@ const Home = () => {
                 className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
               >
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
-                  <BookOpen className="h-6 w-6" />
+                  <BookOpen className="h-6 w-6 animate-[bounce_2s_ease-in-out_infinite]" style={{ animationDelay: '0.6s' }} />
                 </div>
                 <p className="text-2xl font-bold mb-1">6</p>
                 <p className="text-sm font-medium">Reading</p>
@@ -353,7 +353,7 @@ const Home = () => {
                 className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
               >
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
-                  <Headphones className="h-6 w-6" />
+                  <Headphones className="h-6 w-6 animate-[pulse_2s_ease-in-out_infinite]" style={{ animationDelay: '0.9s' }} />
                 </div>
                 <p className="text-2xl font-bold mb-1">10</p>
                 <p className="text-sm font-medium">Listening</p>
@@ -365,7 +365,7 @@ const Home = () => {
                 className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
               >
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
-                  <GripVertical className="h-6 w-6" />
+                  <GripVertical className="h-6 w-6 animate-[bounce_2s_ease-in-out_infinite]" style={{ animationDelay: '1.2s' }} />
                 </div>
                 <p className="text-2xl font-bold mb-1">3</p>
                 <p className="text-sm font-medium">Drag & Drop</p>
@@ -377,7 +377,7 @@ const Home = () => {
                 className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
               >
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
-                  <PenLine className="h-6 w-6" />
+                  <PenLine className="h-6 w-6 animate-[pulse_2s_ease-in-out_infinite]" style={{ animationDelay: '1.5s' }} />
                 </div>
                 <p className="text-2xl font-bold mb-1">6</p>
                 <p className="text-sm font-medium">Writing</p>
