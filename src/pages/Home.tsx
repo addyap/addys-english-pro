@@ -184,6 +184,30 @@ const Home = () => {
           </div>
         </section>
 
+        {/* Quick Exercises CTA Banner */}
+        <section className="py-8 bg-accent text-accent-foreground">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="bg-white/20 rounded-full p-3">
+                  <Sparkles className="h-6 w-6" />
+                </div>
+                <div>
+                  <p className="font-bold text-lg">🎯 Pratiquez votre anglais maintenant !</p>
+                  <p className="text-sm text-accent-foreground/90">200+ exercices interactifs gratuits — Grammaire, Vocabulaire, Écoute, Lecture</p>
+                </div>
+              </div>
+              <Link 
+                to="/exercices" 
+                className="bg-white text-accent px-6 py-3 rounded-lg font-bold hover:bg-white/90 transition-colors flex items-center gap-2 whitespace-nowrap shadow-lg"
+              >
+                Commencer les exercices
+                <ExternalLink className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Features Section - 6 blocks in 2x3 grid */}
         <section className="py-16 bg-muted" aria-labelledby="features-heading">
           <div className="max-w-6xl mx-auto px-4">
