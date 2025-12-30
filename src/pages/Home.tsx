@@ -9,6 +9,25 @@ import AvisClients from '../components/AvisClients';
 import OptimizedHero from '../components/OptimizedHero';
 import { TypingText } from '../components/TypingText';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
+import { grammarCategories } from '@/data/grammarExercises';
+import { allExercisesData } from '@/data/allExercises';
+import { readingPassages } from '@/data/readingPassages';
+import { listeningExercises } from '@/data/listeningExercises';
+import { dragDropExercises } from '@/data/dragDropExercises';
+import { sentenceTransformExercises, errorCorrectionExercises, fillParagraphExercises } from '@/data/writingExercises';
+
+// Exercise counts from actual data
+const EXERCISE_COUNTS = {
+  grammar: grammarCategories.length,
+  vocabulary: allExercisesData.length,
+  reading: readingPassages.length,
+  listening: listeningExercises.length,
+  dragDrop: dragDropExercises.length,
+  writing: sentenceTransformExercises.length + errorCorrectionExercises.length + fillParagraphExercises.length,
+  get total() {
+    return this.grammar + this.vocabulary + this.reading + this.listening + this.dragDrop + this.writing;
+  }
+};
 
 const Home = () => {
   useScrollTracking('home');
@@ -194,7 +213,7 @@ const Home = () => {
                 </div>
                 <div>
                   <p className="font-bold text-lg">🎯 Pratiquez votre anglais maintenant !</p>
-                  <p className="text-sm text-accent-foreground/90">200+ exercices interactifs gratuits — Grammaire, Vocabulaire, Écoute, Lecture</p>
+                  <p className="text-sm text-accent-foreground/90">{EXERCISE_COUNTS.total}+ exercices interactifs gratuits — Grammaire, Vocabulaire, Écoute, Lecture</p>
                 </div>
               </div>
               <Link 
@@ -319,7 +338,7 @@ const Home = () => {
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
                   <GraduationCap className="h-6 w-6 animate-[bounce_2s_ease-in-out_infinite]" style={{ animationDelay: '0s' }} />
                 </div>
-                <p className="text-2xl font-bold mb-1">51</p>
+                <p className="text-2xl font-bold mb-1">{EXERCISE_COUNTS.grammar}</p>
                 <p className="text-sm font-medium">Grammar</p>
                 <p className="text-xs text-primary-foreground/70 mt-1">Leçons & exercices</p>
               </Link>
@@ -331,7 +350,7 @@ const Home = () => {
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
                   <Sparkles className="h-6 w-6 animate-[pulse_2s_ease-in-out_infinite]" style={{ animationDelay: '0.3s' }} />
                 </div>
-                <p className="text-2xl font-bold mb-1">150</p>
+                <p className="text-2xl font-bold mb-1">{EXERCISE_COUNTS.vocabulary}</p>
                 <p className="text-sm font-medium">Vocabulary</p>
                 <p className="text-xs text-primary-foreground/70 mt-1">QCM interactifs</p>
               </Link>
@@ -343,7 +362,7 @@ const Home = () => {
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
                   <BookOpen className="h-6 w-6 animate-[bounce_2s_ease-in-out_infinite]" style={{ animationDelay: '0.6s' }} />
                 </div>
-                <p className="text-2xl font-bold mb-1">6</p>
+                <p className="text-2xl font-bold mb-1">{EXERCISE_COUNTS.reading}</p>
                 <p className="text-sm font-medium">Reading</p>
                 <p className="text-xs text-primary-foreground/70 mt-1">Compréhension écrite</p>
               </Link>
@@ -355,7 +374,7 @@ const Home = () => {
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
                   <Headphones className="h-6 w-6 animate-[pulse_2s_ease-in-out_infinite]" style={{ animationDelay: '0.9s' }} />
                 </div>
-                <p className="text-2xl font-bold mb-1">10</p>
+                <p className="text-2xl font-bold mb-1">{EXERCISE_COUNTS.listening}</p>
                 <p className="text-sm font-medium">Listening</p>
                 <p className="text-xs text-primary-foreground/70 mt-1">Compréhension orale</p>
               </Link>
@@ -367,7 +386,7 @@ const Home = () => {
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
                   <GripVertical className="h-6 w-6 animate-[bounce_2s_ease-in-out_infinite]" style={{ animationDelay: '1.2s' }} />
                 </div>
-                <p className="text-2xl font-bold mb-1">3</p>
+                <p className="text-2xl font-bold mb-1">{EXERCISE_COUNTS.dragDrop}</p>
                 <p className="text-sm font-medium">Drag & Drop</p>
                 <p className="text-xs text-primary-foreground/70 mt-1">Ordre des mots</p>
               </Link>
@@ -379,7 +398,7 @@ const Home = () => {
                 <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
                   <PenLine className="h-6 w-6 animate-[pulse_2s_ease-in-out_infinite]" style={{ animationDelay: '1.5s' }} />
                 </div>
-                <p className="text-2xl font-bold mb-1">6</p>
+                <p className="text-2xl font-bold mb-1">{EXERCISE_COUNTS.writing}</p>
                 <p className="text-sm font-medium">Writing</p>
                 <p className="text-xs text-primary-foreground/70 mt-1">Expression écrite</p>
               </Link>
