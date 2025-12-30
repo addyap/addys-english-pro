@@ -15,6 +15,7 @@ import { readingPassages } from '@/data/readingPassages';
 import { listeningExercises } from '@/data/listeningExercises';
 import { dragDropExercises } from '@/data/dragDropExercises';
 import { sentenceTransformExercises, errorCorrectionExercises, fillParagraphExercises } from '@/data/writingExercises';
+import { idiomExercises } from '@/data/idiomExercises';
 
 // Exercise counts from actual data
 const EXERCISE_COUNTS = {
@@ -24,8 +25,9 @@ const EXERCISE_COUNTS = {
   listening: listeningExercises.length,
   dragDrop: dragDropExercises.length,
   writing: sentenceTransformExercises.length + errorCorrectionExercises.length + fillParagraphExercises.length,
+  idioms: idiomExercises.length,
   get total() {
-    return this.grammar + this.vocabulary + this.reading + this.listening + this.dragDrop + this.writing;
+    return this.grammar + this.vocabulary + this.reading + this.listening + this.dragDrop + this.writing + this.idioms;
   }
 };
 
