@@ -41,6 +41,7 @@ const ReadingDetail = lazy(() => import("./pages/ReadingDetail"));
 const InteractiveStory = lazy(() => import("./pages/InteractiveStory"));
 const DragDropExerciseDetail = lazy(() => import("./pages/DragDropExerciseDetail"));
 const WritingExerciseDetail = lazy(() => import("./pages/WritingExerciseDetail"));
+const IdiomExerciseDetail = lazy(() => import("./pages/IdiomExerciseDetail"));
 const ListeningLibrary = lazy(() => import("./pages/ListeningLibrary"));
 const ListeningExercise = lazy(() => import("./pages/ListeningExercise"));
 const AudioAdminTools = lazy(() => import("./pages/AudioAdminTools"));
@@ -88,6 +89,7 @@ export const AppRoutes = () => (
     <Route path="/exercices/:id" element={<ExerciseDetail />} />
     <Route path="/exercices/drag-drop/:id" element={<DragDropExerciseDetail />} />
     <Route path="/exercices/writing/:type/:id" element={<WritingExerciseDetail />} />
+    <Route path="/exercices/idioms/:id" element={<IdiomExerciseDetail />} />
     <Route path="/exercices/listening" element={<ListeningLibrary />} />
     <Route path="/exercices/listening/:slug" element={<ListeningExercise />} />
     <Route path="/mentions-legales" element={<LegalNotices />} />
