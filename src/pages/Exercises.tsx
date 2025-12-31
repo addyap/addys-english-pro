@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3, GripVertical, PenLine, Headphones, MessageCircle } from 'lucide-react';
+import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3, GripVertical, PenLine, Headphones, MessageCircle, ArrowRightLeft } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import AnimatedCard from '../components/AnimatedCard';
@@ -9,6 +9,7 @@ import { grammarCategories } from '../data/grammarExercises';
 import { dragDropExercises } from '../data/dragDropExercises';
 import { sentenceTransformExercises, errorCorrectionExercises, fillParagraphExercises } from '../data/writingExercises';
 import { idiomExercises } from '../data/idiomExercises';
+import { phrasalVerbExercises } from '../data/phrasalVerbExercises';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import GrammarExplanation from '../components/GrammarExplanation';
@@ -253,7 +254,7 @@ const Exercises = () => {
         <section className="py-12">
           <div className="max-w-6xl mx-auto px-4">
             <Tabs defaultValue="grammar" className="w-full">
-              <TabsList className="grid w-full max-w-5xl mx-auto grid-cols-7 mb-8">
+              <TabsList className="grid w-full max-w-5xl mx-auto grid-cols-4 sm:grid-cols-8 mb-8">
                 <TabsTrigger value="grammar" className="gap-1 text-xs sm:text-sm">
                   <GraduationCap className="h-4 w-4" />
                   <span className="hidden sm:inline">Grammar</span>
@@ -265,6 +266,10 @@ const Exercises = () => {
                 <TabsTrigger value="idioms" className="gap-1 text-xs sm:text-sm">
                   <MessageCircle className="h-4 w-4" />
                   <span className="hidden sm:inline">Idioms</span>
+                </TabsTrigger>
+                <TabsTrigger value="phrasal-verbs" className="gap-1 text-xs sm:text-sm">
+                  <ArrowRightLeft className="h-4 w-4" />
+                  <span className="hidden sm:inline">Phrasal</span>
                 </TabsTrigger>
                 <TabsTrigger value="reading" className="gap-1 text-xs sm:text-sm">
                   <BookOpen className="h-4 w-4" />
@@ -777,6 +782,50 @@ const Exercises = () => {
                           <Badge variant="outline">{exercise.questions.length} questions</Badge>
                         </div>
                         <Link to={`/exercices/idioms/${exercise.id}`}>
+                          <Button size="sm" className="w-full gap-2">
+                            Commencer <ChevronRight className="h-4 w-4" />
+                          </Button>
+                        </Link>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+
+              {/* Phrasal Verbs Tab */}
+              <TabsContent value="phrasal-verbs" className="space-y-6">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-primary mb-2 font-heading">
+                    Phrasal Verbs
+                  </h2>
+                  <p className="text-muted-foreground font-body">
+                    {phrasalVerbExercises.reduce((acc, ex) => acc + ex.phrasalVerbs.length, 0)} phrasal verbs organized by theme with interactive quizzes
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {phrasalVerbExercises.map((exercise) => (
+                    <Card key={exercise.id} className="hover:shadow-md transition-shadow group">
+                      <CardHeader className="pb-2">
+                        <div className="flex items-center gap-2">
+                          <div className="bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full w-8 h-8 flex items-center justify-center">
+                            <ArrowRightLeft className="h-4 w-4" />
+                          </div>
+                          <div>
+                            <CardTitle className="text-base group-hover:text-primary transition-colors">
+                              {exercise.title}
+                            </CardTitle>
+                            <p className="text-xs text-muted-foreground">{exercise.titleFr}</p>
+                          </div>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-3">{exercise.description}</p>
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
+                          <Badge variant="outline">{exercise.phrasalVerbs.length} verbs</Badge>
+                          <Badge variant="outline">{exercise.questions.length} questions</Badge>
+                        </div>
+                        <Link to={`/exercices/phrasal-verbs/${exercise.id}`}>
                           <Button size="sm" className="w-full gap-2">
                             Commencer <ChevronRight className="h-4 w-4" />
                           </Button>
