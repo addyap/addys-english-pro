@@ -23,7 +23,10 @@ interface SentenceItemProps {
 
 function SentenceItem({ sentence, index, showResult, isCorrect, currentOrder, onReorder, showTranslation }: SentenceItemProps) {
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+  const [touchStartY, setTouchStartY] = useState<number>(0);
+  const [touchStartX, setTouchStartX] = useState<number>(0);
 
+  // Desktop drag handlers
   const handleDragStart = (wordIndex: number) => (e: React.DragEvent) => {
     setDraggedIndex(wordIndex);
     e.dataTransfer.effectAllowed = 'move';
@@ -49,6 +52,61 @@ function SentenceItem({ sentence, index, showResult, isCorrect, currentOrder, on
     setDraggedIndex(null);
   };
 
+  // Touch handlers for mobile
+  const handleTouchStart = (wordIndex: number) => (e: React.TouchEvent) => {
+    if (showResult) return;
+    const touch = e.touches[0];
+    setTouchStartX(touch.clientX);
+    setTouchStartY(touch.clientY);
+    setDraggedIndex(wordIndex);
+  };
+
+  const handleTouchEnd = (targetIndex: number) => (e: React.TouchEvent) => {
+    if (showResult || draggedIndex === null) return;
+    
+    const touch = e.changedTouches[0];
+    const deltaX = touch.clientX - touchStartX;
+    const deltaY = Math.abs(touch.clientY - touchStartY);
+    
+    // Only process horizontal swipes (not vertical scrolling)
+    if (deltaY > 50) {
+      setDraggedIndex(null);
+      return;
+    }
+    
+    // Determine direction and swap
+    if (Math.abs(deltaX) > 30) {
+      const direction = deltaX > 0 ? 1 : -1;
+      const newTargetIndex = Math.max(0, Math.min(currentOrder.length - 1, draggedIndex + direction));
+      
+      if (newTargetIndex !== draggedIndex) {
+        const newOrder = [...currentOrder];
+        const [removed] = newOrder.splice(draggedIndex, 1);
+        newOrder.splice(newTargetIndex, 0, removed);
+        onReorder(newOrder);
+      }
+    }
+    
+    setDraggedIndex(null);
+  };
+
+  // Tap to select and tap to swap (alternative mobile method)
+  const handleTap = (wordIndex: number) => () => {
+    if (showResult) return;
+    
+    if (draggedIndex === null) {
+      setDraggedIndex(wordIndex);
+    } else if (draggedIndex === wordIndex) {
+      setDraggedIndex(null);
+    } else {
+      const newOrder = [...currentOrder];
+      const [removed] = newOrder.splice(draggedIndex, 1);
+      newOrder.splice(wordIndex, 0, removed);
+      onReorder(newOrder);
+      setDraggedIndex(null);
+    }
+  };
+
   const orderedWords = currentOrder.map(i => sentence.words[i]);
 
   return (
@@ -67,6 +125,12 @@ function SentenceItem({ sentence, index, showResult, isCorrect, currentOrder, on
         )}
       </div>
       
+      {!showResult && (
+        <p className="text-xs text-muted-foreground mb-2 md:hidden">
+          Appuyez sur un mot pour le sélectionner, puis sur sa destination
+        </p>
+      )}
+      
       <div className="flex flex-wrap gap-2 min-h-[48px]">
         {orderedWords.map((word, idx) => (
           <div
@@ -76,15 +140,18 @@ function SentenceItem({ sentence, index, showResult, isCorrect, currentOrder, on
             onDragOver={handleDragOver}
             onDrop={handleDrop(idx)}
             onDragEnd={handleDragEnd}
+            onTouchStart={handleTouchStart(idx)}
+            onTouchEnd={handleTouchEnd(idx)}
+            onClick={handleTap(idx)}
             className={cn(
               "px-3 py-2 rounded-md border font-medium transition-all select-none",
               !showResult && "cursor-grab active:cursor-grabbing hover:border-primary hover:bg-primary/5",
               showResult && "cursor-default",
-              draggedIndex === idx && "opacity-50 scale-95",
-              "bg-background flex items-center gap-1"
+              draggedIndex === idx && "opacity-50 scale-95 border-primary bg-primary/10 ring-2 ring-primary",
+              "bg-background flex items-center gap-1 touch-manipulation"
             )}
           >
-            {!showResult && <GripVertical className="h-3 w-3 text-muted-foreground" />}
+            {!showResult && <GripVertical className="h-3 w-3 text-muted-foreground hidden md:block" />}
             {word}
           </div>
         ))}
