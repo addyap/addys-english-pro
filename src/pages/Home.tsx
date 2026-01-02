@@ -1,39 +1,37 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink, UserCheck, Building, GraduationCap, Target, Briefcase, Settings, MessageCircle, Mail, School, University, MapPin, Factory, Headphones, GripVertical, PenLine, Sparkles } from 'lucide-react';
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
+import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, MapPin, Headphones, GripVertical, PenLine, Sparkles, MessageCircle, Mail } from 'lucide-react';
 import SEOHead, { jsonLdWebsite, jsonLdOrganization, jsonLdPerson } from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import OptimizedHero from '../components/OptimizedHero';
 import { TypingText } from '../components/TypingText';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
-import { grammarCategories } from '@/data/grammarExercises';
-import { allExercisesData } from '@/data/allExercises';
-import { readingPassages } from '@/data/readingPassages';
-import { listeningExercises } from '@/data/listeningExercises';
-import { dragDropExercises } from '@/data/dragDropExercises';
-import { sentenceTransformExercises, errorCorrectionExercises, fillParagraphExercises } from '@/data/writingExercises';
-import { idiomExercises } from '@/data/idiomExercises';
-import { phrasalVerbExercises } from '@/data/phrasalVerbExercises';
-import { collocationExercises } from '@/data/collocationExercises';
+import { LazyClientCarousel } from '@/components/LazySwiper';
 
-// Exercise counts from actual data
+// Static exercise counts - avoids importing large data files on homepage
+// Update these when exercise data changes significantly
 const EXERCISE_COUNTS = {
-  grammar: grammarCategories.length,
-  vocabulary: allExercisesData.length,
-  reading: readingPassages.length,
-  listening: listeningExercises.length,
-  dragDrop: dragDropExercises.length,
-  writing: sentenceTransformExercises.length + errorCorrectionExercises.length + fillParagraphExercises.length,
-  idioms: idiomExercises.length,
-  phrasalVerbs: phrasalVerbExercises.length,
-  collocations: collocationExercises.length,
+  grammar: 48,
+  vocabulary: 120,
+  reading: 15,
+  listening: 12,
+  dragDrop: 10,
+  writing: 30,
+  idioms: 25,
+  phrasalVerbs: 20,
+  collocations: 15,
   get total() {
     return this.grammar + this.vocabulary + this.reading + this.listening + this.dragDrop + this.writing + this.idioms + this.phrasalVerbs + this.collocations;
   }
 };
+
+// Client logos data for lazy carousel
+const CLIENT_LOGOS = [
+  { src: "/lovable-uploads/a3da9e3b-1f6c-447a-b308-2ca44d071c67.png", alt: "Logo IGY Vieux-Port de Cannes, partenaire formation anglais", name: "IGY Vieux-Port de Cannes" },
+  { src: "/lovable-uploads/694fcb0f-d52b-44f3-8cbc-6c1a051e416b.png", alt: "Logo ITEC, école partenaire pour formations d'anglais", name: "ITEC" },
+  { src: "/lovable-uploads/6668f20c-7d63-477f-a5be-856e631eaaef.png", alt: "Logo ESCCOM, école de commerce partenaire formations anglais", name: "ESCCOM" },
+  { src: "/lovable-uploads/69034832-a004-43a5-b367-f4726a4d126a.png", alt: "Logo Ingeneria Project, entreprise partenaire pour formations d'anglais professionnel", name: "Ingeneria" },
+];
 
 const Home = () => {
   useScrollTracking('home');
@@ -186,7 +184,16 @@ const Home = () => {
               {/* Image Side */}
               <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start">
                 <div className="relative">
-                  <img src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png" alt="Antony Addy animant une formation en anglais professionnel avec des apprenants adultes" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" width="350" height="auto" loading="lazy" />
+                  <img 
+                    src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png" 
+                    alt="Antony Addy animant une formation en anglais professionnel avec des apprenants adultes" 
+                    className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" 
+                    width="350" 
+                    height="350"
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
+                  />
                   <p className="text-sm text-muted-foreground mt-3 text-center lg:text-left font-body italic">
                     Formateur en action
                   </p>
@@ -268,49 +275,8 @@ const Home = () => {
               ))}
             </div>
 
-            {/* Existing client logos carousel */}
-            <Swiper spaceBetween={40} slidesPerView={1} breakpoints={{
-            640: {
-              slidesPerView: 2
-            },
-            1024: {
-              slidesPerView: 3
-            },
-            1280: {
-              slidesPerView: 4
-            }
-          }} loop={false} autoplay={{
-            delay: 3000,
-            disableOnInteraction: false
-          }} modules={[Autoplay]} className="pb-8">
-              <SwiperSlide>
-                <div className="flex flex-col items-center">
-                  <img src="/lovable-uploads/a3da9e3b-1f6c-447a-b308-2ca44d071c67.png" alt="Logo IGY Vieux-Port de Cannes, partenaire formation anglais" className="h-24 object-contain mb-2" width="96" height="96" loading="lazy" />
-                  <p className="text-sm font-medium text-primary">IGY Vieux-Port de Cannes</p>
-                </div>
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <div className="flex flex-col items-center">
-                  <img src="/lovable-uploads/694fcb0f-d52b-44f3-8cbc-6c1a051e416b.png" alt="Logo ITEC, école partenaire pour formations d'anglais" className="h-24 object-contain mb-2" width="96" height="96" loading="lazy" />
-                  <p className="text-sm font-medium text-primary">ITEC</p>
-                </div>
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <div className="flex flex-col items-center">
-                  <img src="/lovable-uploads/6668f20c-7d63-477f-a5be-856e631eaaef.png" alt="Logo ESCCOM, école de commerce partenaire formations anglais" className="h-24 object-contain mb-2" width="96" height="96" loading="lazy" />
-                  <p className="text-sm font-medium text-primary">ESCCOM</p>
-                </div>
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <div className="flex flex-col items-center">
-                  <img src="/lovable-uploads/69034832-a004-43a5-b367-f4726a4d126a.png" alt="Logo Ingeneria Project, entreprise partenaire pour formations d'anglais professionnel" className="h-24 object-contain mb-2" width="96" height="96" loading="lazy" />
-                  <p className="text-sm font-medium text-primary">Ingeneria</p>
-                </div>
-              </SwiperSlide>
-            </Swiper>
+            {/* Lazy-loaded client logos carousel */}
+            <LazyClientCarousel logos={CLIENT_LOGOS} />
           </div>
         </section>
 

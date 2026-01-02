@@ -26,7 +26,32 @@ export default defineConfig(({ mode, isSsrBuild }) => ({
       rollupOptions: {
         input: './src/entry-server.tsx',
       },
-    } : {}),
+    } : {
+      // Production optimizations for client build
+      rollupOptions: {
+        output: {
+          // Manual chunk splitting for better caching
+          manualChunks: {
+            // Vendor chunks - rarely change, cached longer
+            'react-vendor': ['react', 'react-dom'],
+            'router': ['react-router-dom'],
+            'ui-vendor': ['framer-motion', '@radix-ui/react-tooltip', '@radix-ui/react-dialog'],
+            // Swiper is large - isolate it
+            'swiper': ['swiper'],
+          },
+        },
+      },
+      // Increase chunk size warning limit slightly
+      chunkSizeWarningLimit: 600,
+      // Enable minification optimizations
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: mode === 'production',
+          drop_debugger: true,
+        },
+      },
+    }),
   },
   ssr: {
     // Externalize dependencies that shouldn't be bundled for SSR

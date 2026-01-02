@@ -122,6 +122,7 @@ export default function OptimizedHero() {
               speed={50}
               pause={3000}
               className="text-white drop-shadow-2xl"
+              prioritizeLCP
             />
           </h1>
           
