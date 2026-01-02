@@ -7,7 +7,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, ArrowRight, RotateCcw, Check, X, ChevronLeft, Languages, Link2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import Breadcrumbs from "@/components/Breadcrumbs";
 
 const CollocationExerciseDetail = () => {
   const { id } = useParams();
@@ -87,8 +86,6 @@ const CollocationExerciseDetail = () => {
 
       <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          <Breadcrumbs customTitle={exercise.title} customSection={{ label: "Collocations", path: "/exercices" }} />
-
           {/* Header */}
           <div className="mb-6">
             <div className="flex flex-wrap items-center gap-2 mb-2">

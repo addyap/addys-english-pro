@@ -6,7 +6,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { phrasalVerbExercises } from "@/data/phrasalVerbExercises";
 import SEOHead from "@/components/SEOHead";
-import Breadcrumbs from "@/components/Breadcrumbs";
 
 const PhrasalVerbExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -87,11 +86,6 @@ const PhrasalVerbExerciseDetail = () => {
       
       <div className="min-h-screen bg-background py-8">
         <div className="max-w-4xl mx-auto px-4">
-          <Breadcrumbs 
-            customTitle={showFrench ? exercise.titleFr : exercise.title}
-            customSection={{ label: "Exercices", path: "/exercices" }}
-          />
-          
           {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <div>
