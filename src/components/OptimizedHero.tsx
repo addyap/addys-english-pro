@@ -127,8 +127,7 @@ export default function OptimizedHero() {
           </h1>
           
           <p className="text-xl md:text-2xl mb-4 text-white font-body drop-shadow-xl max-w-4xl mx-auto">
-            Des formations claires, flexibles et efficaces — pour particuliers,
-            professionnels et centres de formation.
+            Des formations sur-mesure et plus de 1 000 exercices gratuits pour progresser à votre rythme.
           </p>
           
           <p className="text-lg mb-8 text-white/90 italic font-body drop-shadow-lg max-w-3xl mx-auto">
@@ -137,7 +136,7 @@ export default function OptimizedHero() {
           </p>
         </header>
 
-        <nav className="flex flex-col sm:flex-row gap-4 justify-center" aria-label="Actions principales">
+        <nav className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap" aria-label="Actions principales">
           <Link
             to="/offres-de-formation"
             className="group relative overflow-hidden bg-white/95 text-primary px-8 py-3 rounded-lg font-semibold hover:bg-white hover:shadow-2xl transition-all duration-300 shadow-xl font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/50 active:scale-100"
@@ -147,6 +146,17 @@ export default function OptimizedHero() {
               Découvrir mes offres
             </span>
             <span className="absolute inset-0 bg-primary/5 scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
+          </Link>
+          
+          <Link
+            to="/exercices"
+            className="group relative overflow-hidden bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-semibold hover:bg-accent hover:shadow-2xl transition-all duration-300 shadow-xl font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-accent/50 active:scale-100"
+            aria-label="Accéder aux exercices gratuits d'anglais"
+          >
+            <span className="relative z-10">
+              Exercices gratuits
+            </span>
+            <span className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
           </Link>
           
           <Link
