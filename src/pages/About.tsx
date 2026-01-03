@@ -54,6 +54,27 @@ const About = () => {
               name: "Formateur Professionnel d'Adultes (FPA)"
             }
           }
+        }, {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Qui est Antony Addy ?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Antony Addy est un formateur britannique natif certifié Formateur Professionnel d'Adultes (FPA) depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais professionnel."
+              }
+            },
+            {
+              "@type": "Question",
+              name: "Quelles sont ses qualifications ?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Il possède la certification FPA (Formateur Professionnel d'Adultes), une licence en langues et civilisations étrangères, et une spécialisation en anglais des affaires et TOEIC."
+              }
+            }
+          ]
         }]}
       />
       
