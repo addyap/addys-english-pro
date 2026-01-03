@@ -1,75 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 const CookieConsent: React.FC = () => {
   const [showBanner, setShowBanner] = useState(false);
   const [hasSeenNotice, setHasSeenNotice] = useLocalStorage('cookie-notice-seen', false);
-  const [, setConsent] = useLocalStorage('cookie-consent', 'accepted'); // Default to accepted
 
   useEffect(() => {
-    // Show banner after 2 seconds if user hasn't seen the notice yet
+    // Show for 3 seconds after a 2s delay, then auto-dismiss
     if (!hasSeenNotice) {
-      const timer = setTimeout(() => setShowBanner(true), 2000);
-      return () => clearTimeout(timer);
+      const showTimer = setTimeout(() => setShowBanner(true), 2000);
+      const hideTimer = setTimeout(() => {
+        setShowBanner(false);
+        setHasSeenNotice(true);
+      }, 5000); // 2s delay + 3s visible
+      return () => {
+        clearTimeout(showTimer);
+        clearTimeout(hideTimer);
+      };
     }
-  }, [hasSeenNotice]);
-
-  const handleDismiss = () => {
-    setHasSeenNotice(true);
-    setShowBanner(false);
-  };
-
-  const handleOptOut = () => {
-    setConsent('declined');
-    setHasSeenNotice(true);
-    setShowBanner(false);
-
-    // Notify listeners (Analytics) about consent change
-    window.dispatchEvent(new CustomEvent('cookie-consent-changed', { detail: 'declined' }));
-
-    // Disable analytics if available
-    if (window.gtag) {
-      window.gtag('consent', 'update', {
-        analytics_storage: 'denied',
-      });
-    }
-  };
+  }, [hasSeenNotice, setHasSeenNotice]);
 
   return (
     <AnimatePresence>
       {showBanner && (
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={{ opacity: 0.6 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          className="fixed bottom-3 left-3 z-50"
+          transition={{ duration: 0.3 }}
+          className="fixed bottom-2 left-2 z-40"
         >
-          <div className="flex items-center gap-2 px-3 py-1.5 bg-muted/80 backdrop-blur-sm rounded-full text-xs text-muted-foreground border border-border/50 shadow-sm">
-            <span>🍪</span>
-            <span>Cookies analytics</span>
-            <a 
-              href="/politique-confidentialite" 
-              className="text-primary/70 hover:text-primary hover:underline"
-            >
-              info
-            </a>
-            <span className="text-border">|</span>
-            <button
-              onClick={handleOptOut}
-              className="hover:text-foreground transition-colors"
-            >
-              non
-            </button>
-            <button
-              onClick={handleDismiss}
-              className="hover:text-foreground transition-colors"
-            >
-              <X className="h-3 w-3" />
-            </button>
-          </div>
+          <a 
+            href="/politique-confidentialite"
+            className="text-[10px] text-muted-foreground/50 hover:text-muted-foreground transition-colors"
+          >
+            🍪 cookies
+          </a>
         </motion.div>
       )}
     </AnimatePresence>
