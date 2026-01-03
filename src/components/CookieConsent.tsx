@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Cookie, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { X } from 'lucide-react';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 const CookieConsent: React.FC = () => {
@@ -42,52 +41,34 @@ const CookieConsent: React.FC = () => {
     <AnimatePresence>
       {showBanner && (
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-md z-50 bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed bottom-3 left-3 z-50"
         >
-          <div className="p-4">
-            <div className="flex items-start gap-3">
-              <Cookie className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
-              <div className="flex-1 min-w-0">
-                <p className="text-sm text-muted-foreground">
-                  Ce site utilise des cookies pour analyser le trafic.{' '}
-                  <a 
-                    href="/politique-confidentialite" 
-                    className="text-primary hover:underline"
-                  >
-                    En savoir plus
-                  </a>
-                </p>
-              </div>
-              <button
-                onClick={handleDismiss}
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="Fermer"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-
-            <div className="flex gap-2 mt-3 justify-end">
-              <Button
-                onClick={handleOptOut}
-                variant="ghost"
-                size="sm"
-                className="text-xs"
-              >
-                Refuser les cookies
-              </Button>
-              <Button
-                onClick={handleDismiss}
-                size="sm"
-                className="text-xs"
-              >
-                OK
-              </Button>
-            </div>
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-muted/80 backdrop-blur-sm rounded-full text-xs text-muted-foreground border border-border/50 shadow-sm">
+            <span>🍪</span>
+            <span>Cookies analytics</span>
+            <a 
+              href="/politique-confidentialite" 
+              className="text-primary/70 hover:text-primary hover:underline"
+            >
+              info
+            </a>
+            <span className="text-border">|</span>
+            <button
+              onClick={handleOptOut}
+              className="hover:text-foreground transition-colors"
+            >
+              non
+            </button>
+            <button
+              onClick={handleDismiss}
+              className="hover:text-foreground transition-colors"
+            >
+              <X className="h-3 w-3" />
+            </button>
           </div>
         </motion.div>
       )}
