@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3, GripVertical, PenLine, Headphones, MessageCircle, ArrowRightLeft, Link2, Volume2, Languages, GitCompare, List, Mic } from 'lucide-react';
+import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3, GripVertical, PenLine, Headphones, MessageCircle, ArrowRightLeft, Link2, Volume2, Languages, GitCompare, List, Mic, AlertTriangle, Puzzle } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import AnimatedCard from '../components/AnimatedCard';
@@ -18,6 +18,8 @@ import { conditionalExercises } from '../data/conditionalExercises';
 import { pronunciationExercises } from '../data/pronunciationExercises';
 import { paragraphOrderingExercises } from '../data/paragraphOrderingExercises';
 import { translationExercises } from '../data/translationExercises';
+import { errorCorrectionExercises as errorCorrectionData } from '../data/errorCorrectionExercises';
+import { sentenceBuildingExercises } from '../data/sentenceBuildingExercises';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import GrammarExplanation from '../components/GrammarExplanation';
@@ -326,6 +328,14 @@ const Exercises = () => {
                 <TabsTrigger value="translation" className="gap-1 text-xs">
                   <Languages className="h-4 w-4" />
                   <span className="hidden sm:inline">Translation</span>
+                </TabsTrigger>
+                <TabsTrigger value="error-correction" className="gap-1 text-xs">
+                  <AlertTriangle className="h-4 w-4" />
+                  <span className="hidden sm:inline">Errors</span>
+                </TabsTrigger>
+                <TabsTrigger value="sentence-building" className="gap-1 text-xs">
+                  <Puzzle className="h-4 w-4" />
+                  <span className="hidden sm:inline">Building</span>
                 </TabsTrigger>
               </TabsList>
 
@@ -1052,6 +1062,52 @@ const Exercises = () => {
                         <p className="text-sm text-muted-foreground mb-3">{ex.description}</p>
                         <div className="flex gap-2 mb-3"><Badge variant="outline">{ex.level}</Badge><Badge variant="secondary">{ex.direction}</Badge></div>
                         <Link to={`/exercices/translation/${ex.id}`}><Button size="sm" className="w-full gap-2">Commencer <ChevronRight className="h-4 w-4" /></Button></Link>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+
+              {/* Error Correction Tab */}
+              <TabsContent value="error-correction" className="space-y-6">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-primary mb-2 font-heading">Error Correction</h2>
+                  <p className="text-muted-foreground">{errorCorrectionData.length} exercises - Find and fix grammatical mistakes</p>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {errorCorrectionData.map((ex) => (
+                    <Card key={ex.id} className="hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2"><CardTitle className="text-base">{ex.title}</CardTitle></CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-3">{ex.description}</p>
+                        <div className="flex gap-2 mb-3">
+                          <Badge variant="outline">{ex.theme}</Badge>
+                          <Badge variant={ex.difficulty === 'easy' ? 'secondary' : ex.difficulty === 'hard' ? 'destructive' : 'default'}>{ex.difficulty}</Badge>
+                        </div>
+                        <Link to={`/exercices/error-correction/${ex.id}`}><Button size="sm" className="w-full gap-2">Commencer <ChevronRight className="h-4 w-4" /></Button></Link>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+
+              {/* Sentence Building Tab */}
+              <TabsContent value="sentence-building" className="space-y-6">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-primary mb-2 font-heading">Sentence Building</h2>
+                  <p className="text-muted-foreground">{sentenceBuildingExercises.length} exercises - Arrange words to form correct sentences</p>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {sentenceBuildingExercises.map((ex) => (
+                    <Card key={ex.id} className="hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2"><CardTitle className="text-base">{ex.title}</CardTitle></CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-3">{ex.description}</p>
+                        <div className="flex gap-2 mb-3">
+                          <Badge variant="outline">{ex.theme}</Badge>
+                          <Badge variant={ex.difficulty === 'easy' ? 'secondary' : ex.difficulty === 'hard' ? 'destructive' : 'default'}>{ex.difficulty}</Badge>
+                        </div>
+                        <Link to={`/exercices/sentence-building/${ex.id}`}><Button size="sm" className="w-full gap-2">Commencer <ChevronRight className="h-4 w-4" /></Button></Link>
                       </CardContent>
                     </Card>
                   ))}
