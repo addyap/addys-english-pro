@@ -52,7 +52,7 @@ export default function ExerciseTeaser() {
   };
 
   return (
-    <section className="py-12 bg-gradient-to-b from-white to-muted/50">
+    <section className="py-12 bg-gradient-to-b from-white to-muted/50 animate-fade-in">
       <div className="max-w-3xl mx-auto px-4">
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 rounded-full px-4 py-1.5 mb-4">
