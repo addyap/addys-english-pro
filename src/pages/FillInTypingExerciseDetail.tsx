@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ChevronRight, Check, X, Lightbulb, RefreshCw, Eye, EyeOff } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
@@ -8,6 +8,12 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Progress } from '@/components/ui/progress';
 import { fillInTypingExercises, FillInTypingSentence } from '@/data/fillInTypingExercises';
+import { TimedChallengeMode } from '@/components/TimedChallengeMode';
+import { QuizTimer } from '@/components/QuizTimer';
+import { GamificationStats } from '@/components/GamificationStats';
+import { BadgeNotification } from '@/components/BadgeNotification';
+import { useQuizTimer } from '@/hooks/useQuizTimer';
+import { useGamification } from '@/hooks/useGamification';
 
 interface AnswerState {
   [key: number]: {
@@ -24,6 +30,19 @@ const FillInTypingExerciseDetail = () => {
 
   const [answers, setAnswers] = useState<AnswerState>({});
   const [showTranslations, setShowTranslations] = useState(false);
+  const [isTimedMode, setIsTimedMode] = useState(false);
+  const [timedModeSeconds, setTimedModeSeconds] = useState(0);
+  
+  const { recordExerciseCompletion, newBadges, clearNewBadges } = useGamification();
+  
+  const handleTimeUp = useCallback(() => {
+    // Auto-submit remaining answers when time is up
+  }, []);
+
+  const timer = useQuizTimer({ 
+    totalSeconds: timedModeSeconds, 
+    onTimeUp: handleTimeUp 
+  });
 
   const handleInputChange = useCallback((sentenceId: number, value: string) => {
     setAnswers(prev => ({
@@ -70,10 +89,19 @@ const FillInTypingExerciseDetail = () => {
 
   const handleReset = useCallback(() => {
     setAnswers({});
-  }, []);
+    setIsTimedMode(false);
+    timer.reset();
+  }, [timer]);
+
+  const startTimedMode = useCallback((seconds: number) => {
+    setAnswers({});
+    setTimedModeSeconds(seconds);
+    setIsTimedMode(true);
+    setTimeout(() => timer.start(), 100);
+  }, [timer]);
 
   const stats = useMemo(() => {
-    if (!exercise) return { correct: 0, total: 0, percentage: 0 };
+    if (!exercise) return { correct: 0, total: 0, percentage: 0, answered: 0 };
     const submitted = Object.values(answers).filter(a => a.isSubmitted);
     const correct = submitted.filter(a => a.isCorrect).length;
     return {
@@ -83,6 +111,16 @@ const FillInTypingExerciseDetail = () => {
       percentage: Math.round((correct / exercise.sentences.length) * 100)
     };
   }, [answers, exercise]);
+
+  // Record completion when all answered
+  useEffect(() => {
+    if (exercise && stats.answered === stats.total && stats.total > 0) {
+      recordExerciseCompletion(stats.correct, stats.total, isTimedMode);
+      if (isTimedMode) {
+        timer.stop();
+      }
+    }
+  }, [stats.answered, stats.total, stats.correct, exercise, isTimedMode, recordExerciseCompletion, timer]);
 
   const renderSentenceWithBlank = (sentence: FillInTypingSentence) => {
     const parts = sentence.sentence.split('___');
@@ -171,6 +209,24 @@ const FillInTypingExerciseDetail = () => {
             <p className="text-muted-foreground">{exercise.descriptionFr}</p>
           </div>
 
+          {/* Timer for Timed Mode */}
+          {isTimedMode && timer.isRunning && (
+            <div className="mb-6 flex justify-center">
+              <QuizTimer
+                formattedTime={timer.formattedTime}
+                progress={timer.progress}
+                isRunning={timer.isRunning}
+                isPaused={timer.isPaused}
+                isLow={timer.isLow}
+                isCritical={timer.isCritical}
+                isTimeUp={timer.isTimeUp}
+                showControls={true}
+                onPause={timer.pause}
+                onResume={timer.resume}
+              />
+            </div>
+          )}
+
           {/* Progress & Controls */}
           <div className="mb-6 flex flex-wrap gap-4 items-center justify-between">
             <div className="flex-1 min-w-48">
@@ -180,7 +236,13 @@ const FillInTypingExerciseDetail = () => {
               </div>
               <Progress value={stats.percentage} className="h-2" />
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-wrap">
+              {!isTimedMode && stats.answered === 0 && (
+                <TimedChallengeMode
+                  questionCount={exercise.sentences.length}
+                  onStart={startTimedMode}
+                />
+              )}
               <Button variant="outline" size="sm" onClick={() => setShowTranslations(!showTranslations)}>
                 {showTranslations ? <EyeOff className="h-4 w-4 mr-1" /> : <Eye className="h-4 w-4 mr-1" />}
                 Traductions
@@ -190,6 +252,11 @@ const FillInTypingExerciseDetail = () => {
                 Recommencer
               </Button>
             </div>
+          </div>
+
+          {/* Gamification Stats (compact) */}
+          <div className="mb-6">
+            <GamificationStats compact />
           </div>
 
           {/* Sentences */}
@@ -306,6 +373,9 @@ const FillInTypingExerciseDetail = () => {
           </div>
         </div>
       </div>
+      
+      {/* Badge Notification */}
+      <BadgeNotification badges={newBadges} onClose={clearNewBadges} />
     </>
   );
 };
