@@ -6712,5 +6712,1358 @@ Ils sont suivis de la base verbale (sans "to").
         ]
       }
     ]
+  },
+  {
+    id: 'subject-verb-agreement',
+    titleEn: 'Subject-Verb Agreement',
+    titleFr: 'Accord Sujet-Verbe',
+    explanationEn: `**SUBJECT-VERB AGREEMENT** means the verb must match the subject in number (singular/plural).
+
+**Basic rules:**
+- Singular subject → singular verb: "The dog **runs**."
+- Plural subject → plural verb: "The dogs **run**."
+
+**Tricky cases:**
+
+1. **Compound subjects with "and"** → usually plural:
+   - "Tom **and** Mary **are** friends."
+
+2. **Either/or, Neither/nor** → verb agrees with nearest subject:
+   - "Neither the teacher **nor** the students **were** happy."
+   - "Neither the students **nor** the teacher **was** happy."
+
+3. **Collective nouns** (team, family, government):
+   - UK: can be singular or plural based on meaning
+   - US: usually singular ("The team **is** winning.")
+
+4. **Indefinite pronouns:**
+   - Singular: everyone, everybody, someone, nobody, each, every
+   - "Everyone **is** here." / "Each student **has** a book."
+
+5. **Phrases between subject and verb** - don't affect agreement:
+   - "The box of chocolates **is** on the table." (not "are")
+   - "The students in the class **are** noisy." (not "is")
+
+6. **There is/are:**
+   - "There **is** a book on the table."
+   - "There **are** books on the table."`,
+    explanationFr: `**L'ACCORD SUJET-VERBE** signifie que le verbe doit correspondre au sujet en nombre (singulier/pluriel).
+
+**Règles de base :**
+- Sujet singulier → verbe singulier : "The dog **runs**."
+- Sujet pluriel → verbe pluriel : "The dogs **run**."
+
+**Cas difficiles :**
+
+1. **Sujets composés avec "and"** → généralement pluriel :
+   - "Tom **and** Mary **are** friends."
+
+2. **Either/or, Neither/nor** → le verbe s'accorde avec le sujet le plus proche :
+   - "Neither the teacher **nor** the students **were** happy."
+   - "Neither the students **nor** the teacher **was** happy."
+
+3. **Noms collectifs** (team, family, government) :
+   - UK : peut être singulier ou pluriel selon le sens
+   - US : généralement singulier ("The team **is** winning.")
+
+4. **Pronoms indéfinis :**
+   - Singulier : everyone, everybody, someone, nobody, each, every
+   - "Everyone **is** here." / "Each student **has** a book."
+
+5. **Expressions entre sujet et verbe** - n'affectent pas l'accord :
+   - "The box of chocolates **is** on the table." (pas "are")
+   - "The students in the class **are** noisy." (pas "is")
+
+6. **There is/are :**
+   - "There **is** a book on the table."
+   - "There **are** books on the table."`,
+    examples: [
+      { en: "The list of items **is** on the desk.", fr: "La liste des articles **est** sur le bureau." },
+      { en: "Everyone **knows** the answer.", fr: "Tout le monde **connaît** la réponse." },
+      { en: "Neither Tom nor his friends **were** invited.", fr: "Ni Tom ni ses amis n'**ont été** invités." },
+      { en: "There **are** many reasons to be happy.", fr: "Il y **a** beaucoup de raisons d'être heureux." }
+    ],
+    exercises: [
+      {
+        id: 152,
+        title: "Subject-Verb Agreement",
+        description: "Choose the correct verb form.",
+        questions: [
+          {
+            id: 1,
+            question: "The group of students ___ waiting outside.",
+            options: ["is", "are"],
+            correctAnswer: "is",
+            explanation: "'Group' is the subject (singular), not 'students'."
+          },
+          {
+            id: 2,
+            question: "Everyone ___ to pass the exam.",
+            options: ["want", "wants"],
+            correctAnswer: "wants",
+            explanation: "'Everyone' is always singular."
+          },
+          {
+            id: 3,
+            question: "Neither the manager nor the employees ___ satisfied.",
+            options: ["was", "were"],
+            correctAnswer: "were",
+            explanation: "Verb agrees with nearest subject (employees = plural)."
+          },
+          {
+            id: 4,
+            question: "The news ___ shocking.",
+            options: ["is", "are"],
+            correctAnswer: "is",
+            explanation: "'News' is uncountable/singular."
+          },
+          {
+            id: 5,
+            question: "Each of the players ___ a uniform.",
+            options: ["has", "have"],
+            correctAnswer: "has",
+            explanation: "'Each' is always singular."
+          },
+          {
+            id: 6,
+            question: "There ___ many options to consider.",
+            options: ["is", "are"],
+            correctAnswer: "are",
+            explanation: "'Options' is plural, so 'are'."
+          },
+          {
+            id: 7,
+            question: "The scissors ___ on the table.",
+            options: ["is", "are"],
+            correctAnswer: "are",
+            explanation: "'Scissors' is always plural in English."
+          },
+          {
+            id: 8,
+            question: "Politics ___ a controversial topic.",
+            options: ["is", "are"],
+            correctAnswer: "is",
+            explanation: "'Politics' as a subject of study is singular."
+          },
+          {
+            id: 9,
+            question: "Either my brothers or my father ___ coming.",
+            options: ["is", "are"],
+            correctAnswer: "is",
+            explanation: "Verb agrees with nearest subject (father = singular)."
+          },
+          {
+            id: 10,
+            question: "A number of people ___ waiting.",
+            options: ["is", "are"],
+            correctAnswer: "are",
+            explanation: "'A number of' = many, takes plural verb."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'auxiliary-verbs',
+    titleEn: 'Auxiliary Verbs: Do, Have, Be',
+    titleFr: 'Verbes Auxiliaires : Do, Have, Be',
+    explanationEn: `**AUXILIARY VERBS** help main verbs form tenses, questions, and negatives.
+
+**DO / DOES / DID:**
+- Questions: "**Do** you like coffee?" / "**Did** she go?"
+- Negatives: "I **don't** understand." / "He **didn't** come."
+- Emphasis: "I **do** love you!" (emphatic)
+- Present: do/does | Past: did
+
+**HAVE / HAS / HAD:**
+- Perfect tenses: "I **have** finished." / "She **had** left."
+- Present Perfect: have/has + past participle
+- Past Perfect: had + past participle
+- Questions: "**Have** you eaten?"
+
+**BE (am/is/are/was/were):**
+- Continuous tenses: "I **am** working." / "They **were** sleeping."
+- Passive voice: "The book **was** written by her."
+- Questions: "**Are** you coming?" / "**Was** it good?"
+
+**Rules:**
+1. Only ONE auxiliary for questions/negatives (don't double up)
+   - ❌ "Do you can swim?" → ✅ "Can you swim?"
+2. Don't use 'do' with 'be' or modals:
+   - ❌ "Do you are happy?" → ✅ "Are you happy?"
+3. After auxiliary, use base form (not -s or -ed):
+   - ❌ "Does he works?" → ✅ "Does he work?"`,
+    explanationFr: `**LES VERBES AUXILIAIRES** aident les verbes principaux à former les temps, questions et négations.
+
+**DO / DOES / DID :**
+- Questions : "**Do** you like coffee?" / "**Did** she go?"
+- Négations : "I **don't** understand." / "He **didn't** come."
+- Emphase : "I **do** love you!" (emphatique)
+- Présent : do/does | Passé : did
+
+**HAVE / HAS / HAD :**
+- Temps parfaits : "I **have** finished." / "She **had** left."
+- Present Perfect : have/has + participe passé
+- Past Perfect : had + participe passé
+- Questions : "**Have** you eaten?"
+
+**BE (am/is/are/was/were) :**
+- Temps continus : "I **am** working." / "They **were** sleeping."
+- Voix passive : "The book **was** written by her."
+- Questions : "**Are** you coming?" / "**Was** it good?"
+
+**Règles :**
+1. Un seul auxiliaire pour questions/négations
+   - ❌ "Do you can swim?" → ✅ "Can you swim?"
+2. Ne pas utiliser 'do' avec 'be' ou les modaux :
+   - ❌ "Do you are happy?" → ✅ "Are you happy?"
+3. Après l'auxiliaire, utiliser la forme de base (pas -s ou -ed) :
+   - ❌ "Does he works?" → ✅ "Does he work?"`,
+    examples: [
+      { en: "**Do** you **speak** English?", fr: "**Est-ce que** tu **parles** anglais ?" },
+      { en: "She **doesn't** like spiders.", fr: "Elle **n'aime pas** les araignées." },
+      { en: "**Have** you **seen** my keys?", fr: "**As-tu vu** mes clés ?" },
+      { en: "I **was** working when you called.", fr: "Je **travaillais** quand tu as appelé." }
+    ],
+    exercises: [
+      {
+        id: 153,
+        title: "Auxiliary Verbs",
+        description: "Choose the correct auxiliary verb.",
+        questions: [
+          {
+            id: 1,
+            question: "___ she speak French?",
+            options: ["Do", "Does", "Is"],
+            correctAnswer: "Does",
+            explanation: "'Does' for third person singular questions."
+          },
+          {
+            id: 2,
+            question: "I ___ not understand the question.",
+            options: ["do", "am", "have"],
+            correctAnswer: "do",
+            explanation: "'Do not' (don't) for negatives with main verbs."
+          },
+          {
+            id: 3,
+            question: "___ you finished your homework yet?",
+            options: ["Do", "Have", "Are"],
+            correctAnswer: "Have",
+            explanation: "'Have' for Present Perfect questions."
+          },
+          {
+            id: 4,
+            question: "She ___ working when I arrived.",
+            options: ["did", "was", "had"],
+            correctAnswer: "was",
+            explanation: "'Was' for Past Continuous."
+          },
+          {
+            id: 5,
+            question: "___ they come to the party last night?",
+            options: ["Do", "Did", "Were"],
+            correctAnswer: "Did",
+            explanation: "'Did' for past simple questions."
+          },
+          {
+            id: 6,
+            question: "We ___ not seen him for weeks.",
+            options: ["do", "have", "are"],
+            correctAnswer: "have",
+            explanation: "'Have not' for Present Perfect negative."
+          },
+          {
+            id: 7,
+            question: "___ you coming to the meeting tomorrow?",
+            options: ["Do", "Have", "Are"],
+            correctAnswer: "Are",
+            explanation: "'Are' for Present Continuous questions."
+          },
+          {
+            id: 8,
+            question: "He ___ like coffee, but he loves tea.",
+            options: ["doesn't", "isn't", "hasn't"],
+            correctAnswer: "doesn't",
+            explanation: "'Doesn't' + base form for negative."
+          },
+          {
+            id: 9,
+            question: "The letter ___ sent yesterday.",
+            options: ["did", "was", "has"],
+            correctAnswer: "was",
+            explanation: "'Was' for past passive voice."
+          },
+          {
+            id: 10,
+            question: "I ___ really enjoy that film!",
+            options: ["do", "am", "have"],
+            correctAnswer: "do",
+            explanation: "'Do' for emphatic affirmative."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'word-order',
+    titleEn: 'Word Order in English',
+    titleFr: "L'Ordre des Mots en Anglais",
+    explanationEn: `**English has a strict word order** compared to many languages.
+
+**STATEMENTS (SVO):** Subject + Verb + Object
+- "I (S) **eat** (V) breakfast (O)."
+- "She (S) **loves** (V) music (O)."
+
+**QUESTIONS:**
+1. Yes/No questions: Auxiliary + Subject + Verb
+   - "**Do** you like pizza?"
+   - "**Is** she coming?"
+
+2. Wh-questions: Wh-word + Auxiliary + Subject + Verb
+   - "**Where do** you live?"
+   - "**What is** she doing?"
+
+3. Exception - Wh as subject (no auxiliary):
+   - "**Who** broke the window?" (not "Who did break")
+   - "**What** happened?" (not "What did happen")
+
+**NEGATIVES:** Subject + Auxiliary + Not + Verb
+- "I **do not** (don't) like it."
+- "She **is not** (isn't) coming."
+
+**ADVERBS:**
+- Time/Place usually at end: "I saw him **yesterday**."
+- Frequency before main verb: "I **always** eat breakfast."
+
+**ADJECTIVES:** Before the noun
+- "A **beautiful big** house" (not "a house beautiful big")`,
+    explanationFr: `**L'anglais a un ordre des mots strict** comparé à beaucoup de langues.
+
+**AFFIRMATIONS (SVO) :** Sujet + Verbe + Objet
+- "I (S) **eat** (V) breakfast (O)."
+- "She (S) **loves** (V) music (O)."
+
+**QUESTIONS :**
+1. Questions oui/non : Auxiliaire + Sujet + Verbe
+   - "**Do** you like pizza?"
+   - "**Is** she coming?"
+
+2. Questions en Wh : Mot Wh + Auxiliaire + Sujet + Verbe
+   - "**Where do** you live?"
+   - "**What is** she doing?"
+
+3. Exception - Wh comme sujet (pas d'auxiliaire) :
+   - "**Who** broke the window?" (pas "Who did break")
+   - "**What** happened?" (pas "What did happen")
+
+**NÉGATIONS :** Sujet + Auxiliaire + Not + Verbe
+- "I **do not** (don't) like it."
+- "She **is not** (isn't) coming."
+
+**ADVERBES :**
+- Temps/Lieu généralement à la fin : "I saw him **yesterday**."
+- Fréquence avant le verbe principal : "I **always** eat breakfast."
+
+**ADJECTIFS :** Avant le nom
+- "A **beautiful big** house" (pas "a house beautiful big")`,
+    examples: [
+      { en: "**What did** you **buy**? (Wh + aux + S + V)", fr: "**Qu'as-tu acheté** ?" },
+      { en: "**Who** called you? (Wh as subject, no aux)", fr: "**Qui** t'a appelé ?" },
+      { en: "I **don't** eat meat. (S + aux + not + V)", fr: "Je **ne mange pas** de viande." },
+      { en: "She **always** arrives early. (adverb before verb)", fr: "Elle **arrive toujours** tôt." }
+    ],
+    exercises: [
+      {
+        id: 154,
+        title: "Word Order",
+        description: "Choose the correct word order.",
+        questions: [
+          {
+            id: 1,
+            question: "Which is correct?",
+            options: ["Where you live?", "Where do you live?", "Where live you?"],
+            correctAnswer: "Where do you live?",
+            explanation: "Wh-word + auxiliary + subject + verb."
+          },
+          {
+            id: 2,
+            question: "Which is correct?",
+            options: ["Who did call you?", "Who called you?", "Who you called?"],
+            correctAnswer: "Who called you?",
+            explanation: "'Who' is the subject, so no auxiliary needed."
+          },
+          {
+            id: 3,
+            question: "Which is correct?",
+            options: ["I coffee drink every morning.", "Every morning I drink coffee.", "I drink coffee every morning."],
+            correctAnswer: "I drink coffee every morning.",
+            explanation: "Standard SVO order with time at end."
+          },
+          {
+            id: 4,
+            question: "Which is correct?",
+            options: ["She likes very much chocolate.", "She very much likes chocolate.", "She likes chocolate very much."],
+            correctAnswer: "She likes chocolate very much.",
+            explanation: "'Very much' comes after the object."
+          },
+          {
+            id: 5,
+            question: "Which is correct?",
+            options: ["What happened?", "What did happen?", "What did happened?"],
+            correctAnswer: "What happened?",
+            explanation: "'What' is the subject, no auxiliary needed."
+          },
+          {
+            id: 6,
+            question: "Which is correct?",
+            options: ["Never I have seen this.", "I have never seen this.", "I never have seen this."],
+            correctAnswer: "I have never seen this.",
+            explanation: "Adverb between auxiliary and main verb."
+          },
+          {
+            id: 7,
+            question: "Which is correct?",
+            options: ["Is she coming not?", "She is not coming?", "Is she not coming?"],
+            correctAnswer: "Is she not coming?",
+            explanation: "For questions: Is + subject + not + verb."
+          },
+          {
+            id: 8,
+            question: "Which is correct?",
+            options: ["A car red big", "A big red car", "A red big car"],
+            correctAnswer: "A big red car",
+            explanation: "Size before color (OSASCOMP order)."
+          },
+          {
+            id: 9,
+            question: "Which is correct?",
+            options: ["How much does it cost?", "How much it costs?", "How much costs it?"],
+            correctAnswer: "How much does it cost?",
+            explanation: "Wh + aux + subject + base verb."
+          },
+          {
+            id: 10,
+            question: "Which is correct?",
+            options: ["She gave to me a present.", "She gave me a present.", "She gave a present to I."],
+            correctAnswer: "She gave me a present.",
+            explanation: "Give + indirect object + direct object."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'linking-words',
+    titleEn: 'Linking Words and Conjunctions',
+    titleFr: 'Mots de Liaison et Conjonctions',
+    explanationEn: `**LINKING WORDS** connect ideas and show relationships between them.
+
+**ADDITION:**
+- and, also, as well as, moreover, furthermore, in addition
+- "I like tea **and** coffee."
+- "She speaks French. **Moreover**, she speaks German."
+
+**CONTRAST:**
+- but, however, although, despite, on the other hand, yet
+- "He is rich **but** unhappy."
+- "**Although** it rained, we went out."
+
+**CAUSE/REASON:**
+- because, since, as, due to, because of
+- "I stayed home **because** I was ill."
+- "**Due to** the weather, the flight was cancelled."
+
+**RESULT:**
+- so, therefore, consequently, as a result, thus
+- "It was raining, **so** we stayed inside."
+- "He worked hard. **Therefore**, he passed."
+
+**PURPOSE:**
+- to, in order to, so that, so as to
+- "I study **to** learn."
+- "She whispered **so that** no one would hear."
+
+**TIME:**
+- when, while, before, after, until, as soon as
+- "I'll call you **when** I arrive."
+
+**CONDITION:**
+- if, unless, provided that, as long as
+- "**If** you study, you'll pass."`,
+    explanationFr: `**LES MOTS DE LIAISON** connectent les idées et montrent leurs relations.
+
+**ADDITION :**
+- and, also, as well as, moreover, furthermore, in addition
+- "I like tea **and** coffee." (J'aime le thé et le café)
+- "She speaks French. **Moreover**, she speaks German." (De plus...)
+
+**CONTRASTE :**
+- but, however, although, despite, on the other hand, yet
+- "He is rich **but** unhappy." (Il est riche mais malheureux)
+- "**Although** it rained, we went out." (Bien qu'il ait plu...)
+
+**CAUSE/RAISON :**
+- because, since, as, due to, because of
+- "I stayed home **because** I was ill." (parce que)
+- "**Due to** the weather, the flight was cancelled." (En raison de)
+
+**RÉSULTAT :**
+- so, therefore, consequently, as a result, thus
+- "It was raining, **so** we stayed inside." (donc)
+- "He worked hard. **Therefore**, he passed." (Par conséquent)
+
+**BUT :**
+- to, in order to, so that, so as to
+- "I study **to** learn." (pour)
+- "She whispered **so that** no one would hear." (pour que)
+
+**TEMPS :**
+- when, while, before, after, until, as soon as
+- "I'll call you **when** I arrive." (quand)
+
+**CONDITION :**
+- if, unless, provided that, as long as
+- "**If** you study, you'll pass." (si)`,
+    examples: [
+      { en: "**Although** he was tired, he kept working.", fr: "**Bien qu'**il était fatigué, il a continué à travailler." },
+      { en: "She failed the exam **because** she didn't study.", fr: "Elle a raté l'examen **parce qu'**elle n'a pas étudié." },
+      { en: "It's cold; **therefore**, wear a coat.", fr: "Il fait froid ; **donc**, mets un manteau." },
+      { en: "I'll wait **until** you're ready.", fr: "J'attendrai **jusqu'à ce que** tu sois prêt." }
+    ],
+    exercises: [
+      {
+        id: 155,
+        title: "Linking Words",
+        description: "Choose the correct linking word.",
+        questions: [
+          {
+            id: 1,
+            question: "I love coffee, ___ I don't like tea.",
+            options: ["and", "but", "so"],
+            correctAnswer: "but",
+            explanation: "'But' shows contrast."
+          },
+          {
+            id: 2,
+            question: "She was tired, ___ she went to bed early.",
+            options: ["because", "so", "although"],
+            correctAnswer: "so",
+            explanation: "'So' shows result."
+          },
+          {
+            id: 3,
+            question: "I stayed home ___ I was ill.",
+            options: ["so", "because", "although"],
+            correctAnswer: "because",
+            explanation: "'Because' shows reason."
+          },
+          {
+            id: 4,
+            question: "___ it was raining, we decided to go out.",
+            options: ["Because", "So", "Although"],
+            correctAnswer: "Although",
+            explanation: "'Although' shows contrast (unexpected result)."
+          },
+          {
+            id: 5,
+            question: "I'll call you ___ I arrive.",
+            options: ["while", "when", "until"],
+            correctAnswer: "when",
+            explanation: "'When' = at the moment I arrive."
+          },
+          {
+            id: 6,
+            question: "She studies hard ___ pass the exam.",
+            options: ["for", "in order to", "so"],
+            correctAnswer: "in order to",
+            explanation: "'In order to' + infinitive shows purpose."
+          },
+          {
+            id: 7,
+            question: "He's very talented. ___, he's also humble.",
+            options: ["But", "Moreover", "So"],
+            correctAnswer: "Moreover",
+            explanation: "'Moreover' adds additional information."
+          },
+          {
+            id: 8,
+            question: "I won't leave ___ you tell me the truth.",
+            options: ["when", "until", "while"],
+            correctAnswer: "until",
+            explanation: "'Until' = I'll stay here and wait for the truth."
+          },
+          {
+            id: 9,
+            question: "___ the bad weather, the event was a success.",
+            options: ["Although", "Despite", "Because of"],
+            correctAnswer: "Despite",
+            explanation: "'Despite' + noun shows contrast."
+          },
+          {
+            id: 10,
+            question: "The flight was cancelled ___ the storm.",
+            options: ["due to", "so", "although"],
+            correctAnswer: "due to",
+            explanation: "'Due to' + noun shows cause."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'prepositions-movement',
+    titleEn: 'Prepositions of Movement',
+    titleFr: 'Prépositions de Mouvement',
+    explanationEn: `**PREPOSITIONS OF MOVEMENT** show direction or motion from one place to another.
+
+**TO** = destination
+- "I'm going **to** school."
+- "She walked **to** the park."
+
+**INTO** = entering (outside → inside)
+- "He jumped **into** the pool."
+- "She walked **into** the room."
+
+**OUT OF** = exiting (inside → outside)
+- "He climbed **out of** the window."
+- "She ran **out of** the house."
+
+**ONTO** = moving to a surface
+- "The cat jumped **onto** the table."
+- "Put the book **onto** the shelf."
+
+**OFF** = leaving a surface
+- "The cat jumped **off** the table."
+- "Take your feet **off** the sofa!"
+
+**THROUGH** = from one side to the other (inside)
+- "We drove **through** the tunnel."
+- "She walked **through** the park."
+
+**ACROSS** = from one side to the other (surface)
+- "They swam **across** the river."
+- "Walk **across** the street."
+
+**ALONG** = following a line
+- "We walked **along** the beach."
+
+**PAST** = by the side of
+- "I walked **past** the bank."
+
+**OVER** = above and across
+- "The plane flew **over** the city."
+- "Jump **over** the fence."
+
+**UNDER** = below something
+- "The cat ran **under** the bed."`,
+    explanationFr: `**LES PRÉPOSITIONS DE MOUVEMENT** indiquent la direction ou le mouvement d'un endroit à un autre.
+
+**TO** = destination
+- "I'm going **to** school." (Je vais à l'école)
+
+**INTO** = entrer (extérieur → intérieur)
+- "He jumped **into** the pool." (Il a sauté dans la piscine)
+
+**OUT OF** = sortir (intérieur → extérieur)
+- "He climbed **out of** the window." (Il est sorti par la fenêtre)
+
+**ONTO** = se déplacer sur une surface
+- "The cat jumped **onto** the table." (Le chat a sauté sur la table)
+
+**OFF** = quitter une surface
+- "The cat jumped **off** the table." (Le chat a sauté de la table)
+
+**THROUGH** = d'un côté à l'autre (à travers)
+- "We drove **through** the tunnel." (Nous avons traversé le tunnel)
+
+**ACROSS** = d'un côté à l'autre (surface)
+- "They swam **across** the river." (Ils ont traversé la rivière à la nage)
+
+**ALONG** = le long de
+- "We walked **along** the beach." (Nous avons marché le long de la plage)
+
+**PAST** = devant (en passant)
+- "I walked **past** the bank." (Je suis passé devant la banque)
+
+**OVER** = au-dessus et de l'autre côté
+- "Jump **over** the fence." (Saute par-dessus la clôture)
+
+**UNDER** = en dessous
+- "The cat ran **under** the bed." (Le chat a couru sous le lit)`,
+    examples: [
+      { en: "She walked **into** the shop and **out of** it 5 minutes later.", fr: "Elle est entrée **dans** le magasin et en est sortie 5 minutes plus tard." },
+      { en: "The children ran **across** the field.", fr: "Les enfants ont couru **à travers** le champ." },
+      { en: "We drove **through** the mountains.", fr: "Nous avons conduit **à travers** les montagnes." },
+      { en: "The dog jumped **over** the fence.", fr: "Le chien a sauté **par-dessus** la clôture." }
+    ],
+    exercises: [
+      {
+        id: 156,
+        title: "Prepositions of Movement",
+        description: "Choose the correct preposition.",
+        questions: [
+          {
+            id: 1,
+            question: "She walked ___ the room and sat down.",
+            options: ["in", "into", "to"],
+            correctAnswer: "into",
+            explanation: "'Into' shows entering a space."
+          },
+          {
+            id: 2,
+            question: "The cat jumped ___ the table.",
+            options: ["on", "onto", "over"],
+            correctAnswer: "onto",
+            explanation: "'Onto' for movement to a surface."
+          },
+          {
+            id: 3,
+            question: "We swam ___ the river to the other side.",
+            options: ["through", "across", "along"],
+            correctAnswer: "across",
+            explanation: "'Across' for crossing a surface."
+          },
+          {
+            id: 4,
+            question: "He drove ___ the tunnel for 10 minutes.",
+            options: ["across", "through", "along"],
+            correctAnswer: "through",
+            explanation: "'Through' for going inside something."
+          },
+          {
+            id: 5,
+            question: "Take your books ___ the floor!",
+            options: ["of", "off", "from"],
+            correctAnswer: "off",
+            explanation: "'Off' for removing from a surface."
+          },
+          {
+            id: 6,
+            question: "She walked ___ the beach for hours.",
+            options: ["along", "through", "across"],
+            correctAnswer: "along",
+            explanation: "'Along' for following a line/path."
+          },
+          {
+            id: 7,
+            question: "The plane flew ___ the city.",
+            options: ["across", "over", "through"],
+            correctAnswer: "over",
+            explanation: "'Over' for above and across."
+          },
+          {
+            id: 8,
+            question: "He climbed ___ the window to escape.",
+            options: ["out", "out of", "off"],
+            correctAnswer: "out of",
+            explanation: "'Out of' for exiting through something."
+          },
+          {
+            id: 9,
+            question: "I walked ___ the bank on my way here.",
+            options: ["past", "pass", "passed"],
+            correctAnswer: "past",
+            explanation: "'Past' = by the side of (preposition)."
+          },
+          {
+            id: 10,
+            question: "The ball rolled ___ the table.",
+            options: ["under", "below", "down"],
+            correctAnswer: "under",
+            explanation: "'Under' for beneath something."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'prefixes-suffixes',
+    titleEn: 'Prefixes and Suffixes',
+    titleFr: 'Préfixes et Suffixes',
+    explanationEn: `**PREFIXES** are added at the beginning of words to change meaning.
+**SUFFIXES** are added at the end to change word class or meaning.
+
+**COMMON PREFIXES:**
+
+**Negative prefixes:**
+- un-: unhappy, unusual, unfair
+- dis-: disagree, disappear, dishonest
+- im-/in-/il-/ir-: impossible, invisible, illegal, irregular
+- mis-: misunderstand, mistake
+
+**Other prefixes:**
+- re-: redo, rewrite, return (again)
+- pre-: preview, prepare (before)
+- over-: overwork, overeat (too much)
+- under-: underpay, underestimate (too little)
+
+**COMMON SUFFIXES:**
+
+**Noun suffixes:**
+- -tion/-sion: information, decision
+- -ness: happiness, sadness
+- -ment: development, agreement
+- -er/-or: teacher, actor
+- -ity: possibility, reality
+
+**Adjective suffixes:**
+- -ful: beautiful, careful (full of)
+- -less: careless, hopeless (without)
+- -able/-ible: comfortable, possible
+- -ous: dangerous, famous
+
+**Adverb suffix:**
+- -ly: quickly, carefully, happily
+
+**Verb suffixes:**
+- -ize/-ise: organize, realize
+- -en: widen, strengthen`,
+    explanationFr: `**LES PRÉFIXES** s'ajoutent au début des mots pour changer le sens.
+**LES SUFFIXES** s'ajoutent à la fin pour changer la classe ou le sens du mot.
+
+**PRÉFIXES COURANTS :**
+
+**Préfixes négatifs :**
+- un-: unhappy (malheureux), unusual (inhabituel)
+- dis-: disagree (être en désaccord), disappear (disparaître)
+- im-/in-/il-/ir-: impossible, invisible, illegal, irregular
+- mis-: misunderstand (mal comprendre)
+
+**Autres préfixes :**
+- re-: redo (refaire), rewrite (réécrire) - encore
+- pre-: preview (aperçu), prepare (préparer) - avant
+- over-: overwork (trop travailler) - trop
+- under-: underpay (sous-payer) - pas assez
+
+**SUFFIXES COURANTS :**
+
+**Suffixes de noms :**
+- -tion/-sion: information, decision
+- -ness: happiness (bonheur), sadness (tristesse)
+- -ment: development (développement)
+- -er/-or: teacher (professeur), actor (acteur)
+
+**Suffixes d'adjectifs :**
+- -ful: beautiful (beau), careful (prudent) - plein de
+- -less: careless (négligent), hopeless (sans espoir) - sans
+- -able/-ible: comfortable, possible
+- -ous: dangerous (dangereux), famous (célèbre)
+
+**Suffixe d'adverbe :**
+- -ly: quickly (rapidement), carefully (prudemment)`,
+    examples: [
+      { en: "**un**happy → happy with **un-** prefix means 'not happy'", fr: "**un**happy → happy avec le préfixe **un-** signifie 'pas content'" },
+      { en: "care → care**ful** (adjective) → care**fully** (adverb)", fr: "care → care**ful** (adjectif) → care**fully** (adverbe)" },
+      { en: "possible → **im**possible (negative prefix)", fr: "possible → **im**possible (préfixe négatif)" },
+      { en: "develop → develop**ment** (noun)", fr: "develop → develop**ment** (nom)" }
+    ],
+    exercises: [
+      {
+        id: 157,
+        title: "Prefixes and Suffixes",
+        description: "Choose the correct prefix or suffix.",
+        questions: [
+          {
+            id: 1,
+            question: "The opposite of 'happy' is ___.",
+            options: ["dishappy", "unhappy", "inhappy"],
+            correctAnswer: "unhappy",
+            explanation: "'Un-' is used with 'happy' to mean 'not happy'."
+          },
+          {
+            id: 2,
+            question: "The noun form of 'develop' is ___.",
+            options: ["developness", "development", "develoption"],
+            correctAnswer: "development",
+            explanation: "Develop + -ment = development."
+          },
+          {
+            id: 3,
+            question: "The opposite of 'possible' is ___.",
+            options: ["unpossible", "dispossible", "impossible"],
+            correctAnswer: "impossible",
+            explanation: "'Im-' before 'p' for negative."
+          },
+          {
+            id: 4,
+            question: "'Quick' becomes an adverb as ___.",
+            options: ["quickful", "quickly", "quickness"],
+            correctAnswer: "quickly",
+            explanation: "Adjective + -ly = adverb."
+          },
+          {
+            id: 5,
+            question: "Someone without care is ___.",
+            options: ["careful", "careless", "carefulness"],
+            correctAnswer: "careless",
+            explanation: "Care + -less = without care."
+          },
+          {
+            id: 6,
+            question: "The opposite of 'agree' is ___.",
+            options: ["unagree", "disagree", "inagree"],
+            correctAnswer: "disagree",
+            explanation: "'Dis-' is used with 'agree'."
+          },
+          {
+            id: 7,
+            question: "The noun form of 'happy' is ___.",
+            options: ["happyness", "happiness", "happiment"],
+            correctAnswer: "happiness",
+            explanation: "Happy (drop y) + -iness = happiness."
+          },
+          {
+            id: 8,
+            question: "To write again is to ___.",
+            options: ["prewrite", "rewrite", "unwrite"],
+            correctAnswer: "rewrite",
+            explanation: "'Re-' means 'again'."
+          },
+          {
+            id: 9,
+            question: "The opposite of 'legal' is ___.",
+            options: ["unlegal", "dislegal", "illegal"],
+            correctAnswer: "illegal",
+            explanation: "'Il-' before 'l' for negative."
+          },
+          {
+            id: 10,
+            question: "Something full of danger is ___.",
+            options: ["dangerly", "dangerous", "dangerful"],
+            correctAnswer: "dangerous",
+            explanation: "Danger + -ous = dangerous."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'inversion',
+    titleEn: 'Inversion for Emphasis',
+    titleFr: "L'Inversion pour l'Emphase",
+    explanationEn: `**INVERSION** means putting the auxiliary/verb before the subject for emphasis or in formal writing.
+
+**After negative adverbs at the start:**
+- Never, Rarely, Seldom, Hardly, Scarcely, No sooner, Not only
+
+Examples:
+- "**Never have** I seen such beauty." (Not: Never I have seen)
+- "**Rarely does** she complain."
+- "**Not only did** he arrive late, (but) he also forgot the documents."
+- "**Hardly had** I arrived when it started raining."
+
+**With 'only' + time/place expressions:**
+- "**Only then did** I understand."
+- "**Only after** the meeting **did** we realize the problem."
+- "**Only in Paris can** you find such cafés."
+
+**In conditional sentences (formal, no 'if'):**
+- "**Had** I known, I would have helped." (= If I had known)
+- "**Were** she here, she would agree." (= If she were here)
+- "**Should** you need help, call me." (= If you should need)
+
+**After 'so' and 'such' for emphasis:**
+- "**So beautiful was** the sunset that we stopped to watch."
+- "**Such was** his anger that he couldn't speak."
+
+**Note:** Inversion is more common in formal/literary English.`,
+    explanationFr: `**L'INVERSION** consiste à mettre l'auxiliaire/verbe avant le sujet pour l'emphase ou dans un style formel.
+
+**Après des adverbes négatifs en début de phrase :**
+- Never, Rarely, Seldom, Hardly, Scarcely, No sooner, Not only
+
+Exemples :
+- "**Never have** I seen such beauty." (Jamais je n'ai vu une telle beauté)
+- "**Rarely does** she complain." (Rarement se plaint-elle)
+- "**Not only did** he arrive late, (but) he also forgot the documents."
+- "**Hardly had** I arrived when it started raining."
+
+**Avec 'only' + expressions de temps/lieu :**
+- "**Only then did** I understand." (Ce n'est qu'alors que j'ai compris)
+- "**Only after** the meeting **did** we realize the problem."
+
+**Dans les phrases conditionnelles (formel, sans 'if') :**
+- "**Had** I known, I would have helped." (= Si j'avais su)
+- "**Were** she here, she would agree." (= Si elle était là)
+- "**Should** you need help, call me." (= Si tu as besoin d'aide)
+
+**Après 'so' et 'such' pour l'emphase :**
+- "**So beautiful was** the sunset that we stopped to watch."
+- "**Such was** his anger that he couldn't speak."
+
+**Note :** L'inversion est plus courante dans l'anglais formel/littéraire.`,
+    examples: [
+      { en: "**Never have** I been so happy!", fr: "**Jamais** je n'ai été aussi heureux !" },
+      { en: "**Had** I known, I would have called.", fr: "**Si j'avais su**, j'aurais appelé." },
+      { en: "**Not only did** she win, but she broke the record.", fr: "**Non seulement** elle a gagné, mais elle a battu le record." },
+      { en: "**Only then did** I realize my mistake.", fr: "**Ce n'est qu'alors** que j'ai réalisé mon erreur." }
+    ],
+    exercises: [
+      {
+        id: 158,
+        title: "Inversion",
+        description: "Choose the correct inverted form.",
+        questions: [
+          {
+            id: 1,
+            question: "Never ___ such a beautiful sunset.",
+            options: ["I have seen", "have I seen", "I saw"],
+            correctAnswer: "have I seen",
+            explanation: "After 'Never': auxiliary + subject."
+          },
+          {
+            id: 2,
+            question: "Rarely ___ so much.",
+            options: ["she eats", "does she eat", "she does eat"],
+            correctAnswer: "does she eat",
+            explanation: "After 'Rarely': does + subject + verb."
+          },
+          {
+            id: 3,
+            question: "___ I known, I would have helped.",
+            options: ["If", "Had", "Have"],
+            correctAnswer: "Had",
+            explanation: "'Had I known' = If I had known (formal)."
+          },
+          {
+            id: 4,
+            question: "Not only ___ late, but he also forgot the files.",
+            options: ["he arrived", "did he arrive", "arrived he"],
+            correctAnswer: "did he arrive",
+            explanation: "After 'Not only': did + subject + verb."
+          },
+          {
+            id: 5,
+            question: "Only then ___ the truth.",
+            options: ["I understood", "did I understand", "I did understand"],
+            correctAnswer: "did I understand",
+            explanation: "After 'Only then': did + subject + verb."
+          },
+          {
+            id: 6,
+            question: "___ she here, she would help us.",
+            options: ["If", "Were", "Was"],
+            correctAnswer: "Were",
+            explanation: "'Were she here' = If she were here (formal)."
+          },
+          {
+            id: 7,
+            question: "Hardly ___ home when the phone rang.",
+            options: ["I had arrived", "had I arrived", "I arrived"],
+            correctAnswer: "had I arrived",
+            explanation: "After 'Hardly': had + subject + past participle."
+          },
+          {
+            id: 8,
+            question: "___ you need any help, please call me.",
+            options: ["If", "Should", "Would"],
+            correctAnswer: "Should",
+            explanation: "'Should you need' = If you should need (formal)."
+          },
+          {
+            id: 9,
+            question: "So tired ___ that he fell asleep immediately.",
+            options: ["he was", "was he", "did he"],
+            correctAnswer: "was he",
+            explanation: "'So + adjective + was/were + subject' for emphasis."
+          },
+          {
+            id: 10,
+            question: "No sooner ___ than it started raining.",
+            options: ["I left", "had I left", "I had left"],
+            correctAnswer: "had I left",
+            explanation: "'No sooner had + subject + past participle'."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'cleft-sentences',
+    titleEn: 'Cleft Sentences: It is/was... that',
+    titleFr: 'Phrases Clivées : It is/was... that',
+    explanationEn: `**CLEFT SENTENCES** split a simple sentence into two parts to emphasize one element.
+
+**IT-CLEFTS (It is/was... that/who):**
+Used to emphasize the subject, object, or adverbial.
+
+Original: "John broke the window yesterday."
+- Emphasizing WHO: "**It was John who** broke the window."
+- Emphasizing WHAT: "**It was the window that** John broke."
+- Emphasizing WHEN: "**It was yesterday that** John broke the window."
+
+**WHAT-CLEFTS (What... is/was):**
+Often emphasize the action or thing needed/wanted.
+
+- "**What** I need **is** a coffee." (I need a coffee → emphasizing the coffee)
+- "**What** happened **was** unbelievable."
+- "**What** she said **was** true."
+
+**ALL-CLEFTS:**
+- "**All** I want **is** peace and quiet."
+- "**All** you need **is** love."
+
+**THE THING/REASON/PLACE CLEFTS:**
+- "**The thing** I like most **is** the view."
+- "**The reason** I called **is** to apologize."
+- "**The place** where I feel happiest **is** home."
+
+**Usage:**
+- Common in spoken and written English
+- Adds emphasis and focus
+- Can clarify or correct information`,
+    explanationFr: `**LES PHRASES CLIVÉES** divisent une phrase simple en deux parties pour souligner un élément.
+
+**IT-CLEFTS (It is/was... that/who) :**
+Utilisées pour souligner le sujet, l'objet ou l'adverbe.
+
+Original : "John broke the window yesterday."
+- Souligner QUI : "**It was John who** broke the window." (C'est John qui...)
+- Souligner QUOI : "**It was the window that** John broke." (C'est la fenêtre que...)
+- Souligner QUAND : "**It was yesterday that** John broke..." (C'est hier que...)
+
+**WHAT-CLEFTS (What... is/was) :**
+Soulignent souvent l'action ou ce dont on a besoin.
+
+- "**What** I need **is** a coffee." (Ce dont j'ai besoin, c'est un café)
+- "**What** happened **was** unbelievable." (Ce qui s'est passé était incroyable)
+- "**What** she said **was** true." (Ce qu'elle a dit était vrai)
+
+**ALL-CLEFTS :**
+- "**All** I want **is** peace and quiet." (Tout ce que je veux, c'est...)
+- "**All** you need **is** love." (Tout ce dont tu as besoin, c'est...)
+
+**THE THING/REASON/PLACE CLEFTS :**
+- "**The thing** I like most **is** the view." (Ce que j'aime le plus, c'est...)
+- "**The reason** I called **is** to apologize." (La raison pour laquelle...)
+
+**Usage :**
+- Courant à l'oral et à l'écrit
+- Ajoute de l'emphase et du focus
+- Peut clarifier ou corriger une information`,
+    examples: [
+      { en: "**It was** Tom **who** called you. (emphasizing Tom)", fr: "**C'est** Tom **qui** t'a appelé." },
+      { en: "**What** I really need **is** a vacation.", fr: "**Ce dont** j'ai vraiment besoin, **c'est** des vacances." },
+      { en: "**All** I want **is** to be happy.", fr: "**Tout** ce que je veux, **c'est** être heureux." },
+      { en: "**It was** in Paris **that** we first met.", fr: "**C'est** à Paris **que** nous nous sommes rencontrés." }
+    ],
+    exercises: [
+      {
+        id: 159,
+        title: "Cleft Sentences",
+        description: "Choose the correct cleft structure.",
+        questions: [
+          {
+            id: 1,
+            question: "___ John who broke the window.",
+            options: ["It is", "It was", "What was"],
+            correctAnswer: "It was",
+            explanation: "'It was + person + who' to emphasize the person."
+          },
+          {
+            id: 2,
+            question: "___ I need is a cup of coffee.",
+            options: ["It", "What", "That"],
+            correctAnswer: "What",
+            explanation: "'What + subject + verb + is' for what-cleft."
+          },
+          {
+            id: 3,
+            question: "It was the red dress ___ she bought.",
+            options: ["what", "which", "that"],
+            correctAnswer: "that",
+            explanation: "'It was + object + that' to emphasize the object."
+          },
+          {
+            id: 4,
+            question: "___ I want is some peace and quiet.",
+            options: ["What", "All", "It"],
+            correctAnswer: "All",
+            explanation: "'All + subject + verb + is' = the only thing."
+          },
+          {
+            id: 5,
+            question: "It ___ yesterday that I saw her.",
+            options: ["is", "was", "were"],
+            correctAnswer: "was",
+            explanation: "'It was' for past time reference."
+          },
+          {
+            id: 6,
+            question: "What happened ___ completely unexpected.",
+            options: ["is", "was", "were"],
+            correctAnswer: "was",
+            explanation: "'What happened was' for past events."
+          },
+          {
+            id: 7,
+            question: "___ she said made everyone laugh.",
+            options: ["What", "It", "That"],
+            correctAnswer: "What",
+            explanation: "'What + subject + verb' as subject of sentence."
+          },
+          {
+            id: 8,
+            question: "It is ___ I rely on the most.",
+            options: ["you who", "you that", "you which"],
+            correctAnswer: "you who",
+            explanation: "'Who' for people in cleft sentences."
+          },
+          {
+            id: 9,
+            question: "The reason ___ I called is to apologize.",
+            options: ["why", "that", "which"],
+            correctAnswer: "why",
+            explanation: "'The reason why' is the standard structure."
+          },
+          {
+            id: 10,
+            question: "It was in 2020 ___ we moved to this house.",
+            options: ["when", "that", "which"],
+            correctAnswer: "that",
+            explanation: "'It was + time + that' for emphasis on time."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'mixed-tenses-review',
+    titleEn: 'Mixed Tenses Review',
+    titleFr: 'Révision des Temps Mélangés',
+    explanationEn: `This is a comprehensive review combining all the major English tenses.
+
+**PRESENT TENSES:**
+- Present Simple: habits, facts ("I **work** every day.")
+- Present Continuous: now, temporary ("I **am working** now.")
+- Present Perfect: experience, until now ("I **have worked** here for 5 years.")
+- Present Perfect Continuous: ongoing action ("I **have been working** all day.")
+
+**PAST TENSES:**
+- Past Simple: completed past actions ("I **worked** yesterday.")
+- Past Continuous: ongoing past actions ("I **was working** at 8 PM.")
+- Past Perfect: before another past action ("I **had worked** before he arrived.")
+- Past Perfect Continuous: ongoing before past ("I **had been working** for hours.")
+
+**FUTURE TENSES:**
+- Will: predictions, spontaneous ("I **will work** tomorrow.")
+- Going to: plans, evidence ("I **am going to work** harder.")
+- Future Continuous: ongoing future ("I **will be working** at 8.")
+- Future Perfect: completed by future time ("I **will have worked** 10 hours by 6 PM.")
+
+**Key tips:**
+- Look for TIME MARKERS (yesterday, since, for, tomorrow, now)
+- Consider the CONTEXT (completed? ongoing? connected to present?)
+- Check for SIGNAL WORDS (already, just, yet, always, etc.)`,
+    explanationFr: `C'est une révision complète combinant tous les temps principaux de l'anglais.
+
+**TEMPS DU PRÉSENT :**
+- Present Simple : habitudes, faits ("I **work** every day.")
+- Present Continuous : maintenant, temporaire ("I **am working** now.")
+- Present Perfect : expérience, jusqu'à maintenant ("I **have worked** here for 5 years.")
+- Present Perfect Continuous : action en cours ("I **have been working** all day.")
+
+**TEMPS DU PASSÉ :**
+- Past Simple : actions passées terminées ("I **worked** yesterday.")
+- Past Continuous : actions passées en cours ("I **was working** at 8 PM.")
+- Past Perfect : avant une autre action passée ("I **had worked** before he arrived.")
+- Past Perfect Continuous : en cours avant le passé ("I **had been working** for hours.")
+
+**TEMPS DU FUTUR :**
+- Will : prédictions, spontané ("I **will work** tomorrow.")
+- Going to : plans, preuves ("I **am going to work** harder.")
+- Future Continuous : futur en cours ("I **will be working** at 8.")
+- Future Perfect : terminé avant un moment futur ("I **will have worked** 10 hours by 6 PM.")
+
+**Conseils clés :**
+- Cherchez les MARQUEURS DE TEMPS (yesterday, since, for, tomorrow, now)
+- Considérez le CONTEXTE (terminé ? en cours ? lié au présent ?)
+- Vérifiez les MOTS INDICATEURS (already, just, yet, always, etc.)`,
+    examples: [
+      { en: "I **have been waiting** for an hour. (ongoing until now)", fr: "J'**attends** depuis une heure. (en cours jusqu'à maintenant)" },
+      { en: "When I **arrived**, she **had** already **left**. (past before past)", fr: "Quand je **suis arrivé**, elle **était** déjà **partie**." },
+      { en: "By next year, I **will have graduated**. (completed before future time)", fr: "L'année prochaine, j'**aurai obtenu** mon diplôme." },
+      { en: "I **was sleeping** when you **called**. (ongoing interrupted)", fr: "Je **dormais** quand tu **as appelé**." }
+    ],
+    exercises: [
+      {
+        id: 160,
+        title: "Mixed Tenses Review",
+        description: "Choose the correct tense.",
+        questions: [
+          {
+            id: 1,
+            question: "I ___ for you since 9 o'clock.",
+            options: ["wait", "am waiting", "have been waiting"],
+            correctAnswer: "have been waiting",
+            explanation: "'Since' + ongoing action = Present Perfect Continuous."
+          },
+          {
+            id: 2,
+            question: "She ___ to London twice last year.",
+            options: ["went", "has gone", "was going"],
+            correctAnswer: "went",
+            explanation: "'Last year' = specific past time, use Past Simple."
+          },
+          {
+            id: 3,
+            question: "By the time you arrive, I ___ dinner.",
+            options: ["will cook", "will have cooked", "cook"],
+            correctAnswer: "will have cooked",
+            explanation: "'By the time' + future = Future Perfect."
+          },
+          {
+            id: 4,
+            question: "I ___ TV when the power went out.",
+            options: ["watched", "was watching", "have watched"],
+            correctAnswer: "was watching",
+            explanation: "Ongoing action interrupted = Past Continuous."
+          },
+          {
+            id: 5,
+            question: "___ you ever ___ Japanese food?",
+            options: ["Did... try", "Have... tried", "Were... trying"],
+            correctAnswer: "Have... tried",
+            explanation: "'Ever' for life experience = Present Perfect."
+          },
+          {
+            id: 6,
+            question: "Look! The bus ___!",
+            options: ["comes", "is coming", "came"],
+            correctAnswer: "is coming",
+            explanation: "Action happening now = Present Continuous."
+          },
+          {
+            id: 7,
+            question: "After she ___ the report, she went home.",
+            options: ["finished", "had finished", "was finishing"],
+            correctAnswer: "had finished",
+            explanation: "Action completed before another past action = Past Perfect."
+          },
+          {
+            id: 8,
+            question: "This time next week, I ___ on a beach.",
+            options: ["will lie", "will be lying", "am lying"],
+            correctAnswer: "will be lying",
+            explanation: "Ongoing action at a specific future time = Future Continuous."
+          },
+          {
+            id: 9,
+            question: "I ___ him for years. He's a good friend.",
+            options: ["know", "knew", "have known"],
+            correctAnswer: "have known",
+            explanation: "Started in past, continues now = Present Perfect."
+          },
+          {
+            id: 10,
+            question: "She ___ for two hours before the interview started.",
+            options: ["waited", "was waiting", "had been waiting"],
+            correctAnswer: "had been waiting",
+            explanation: "Ongoing action before a past moment = Past Perfect Continuous."
+          }
+        ]
+      }
+    ]
   }
 ];
