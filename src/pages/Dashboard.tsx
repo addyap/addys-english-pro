@@ -13,10 +13,14 @@ import { Badge } from '@/components/ui/badge';
 import { useExerciseProgress } from '@/hooks/useExerciseProgress';
 import { grammarCategories } from '@/data/grammarExercises';
 import { allExercisesData } from '@/data/allExercises';
+import { GamificationStats } from '@/components/GamificationStats';
+import { useGamification } from '@/hooks/useGamification';
+import { BadgeNotification } from '@/components/BadgeNotification';
 
 const Dashboard = () => {
   const { getStats, clearProgress } = useExerciseProgress();
   const stats = getStats();
+  const { newBadges, clearNewBadges } = useGamification();
 
   const totalGrammarLessons = grammarCategories.length;
   const totalVocabularyExercises = allExercisesData.length;
@@ -105,6 +109,17 @@ const Dashboard = () => {
                 </CardContent>
               </Card>
             </div>
+          </div>
+        </section>
+
+        {/* Gamification Section */}
+        <section className="py-8">
+          <div className="max-w-6xl mx-auto px-4">
+            <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
+              <Trophy className="h-5 w-5 text-accent" />
+              Points & Badges
+            </h2>
+            <GamificationStats showBadges={true} />
           </div>
         </section>
 
@@ -282,6 +297,9 @@ const Dashboard = () => {
           </div>
         </section>
       </div>
+      
+      {/* Badge Notification */}
+      <BadgeNotification badges={newBadges} onClose={clearNewBadges} />
     </>
   );
 };
