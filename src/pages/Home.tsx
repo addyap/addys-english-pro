@@ -1,12 +1,14 @@
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, MapPin, Headphones, Sparkles, MessageCircle, Mail } from 'lucide-react';
+import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, MapPin, Headphones, Sparkles, MessageCircle, Mail, ArrowRight } from 'lucide-react';
 import SEOHead, { jsonLdWebsite, jsonLdOrganization, jsonLdPerson } from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import OptimizedHero from '../components/OptimizedHero';
 import { TypingText } from '../components/TypingText';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { LazyClientCarousel } from '@/components/LazySwiper';
+import FloatingExerciseCTA from '@/components/FloatingExerciseCTA';
+import ExerciseTeaser from '@/components/ExerciseTeaser';
 
 // Accurate exercise counts based on actual data files
 const EXERCISE_COUNTS = {
@@ -179,6 +181,8 @@ const Home = () => {
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded-lg z-50">
         Aller au contenu principal
       </a>
+      {/* Floating CTA for mobile */}
+      <FloatingExerciseCTA />
 
       {/* Optimized Hero Section */}
       <OptimizedHero />
@@ -512,6 +516,29 @@ const Home = () => {
 
         {/* Avis Clients Section */}
         <AvisClients />
+
+        {/* Post-Testimonials CTA - Capture warm leads */}
+        <section className="py-12 bg-gradient-to-r from-primary/5 to-accent/5">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <h3 className="text-2xl md:text-3xl font-bold text-primary mb-4 font-heading">
+              Prêt à progresser ?
+            </h3>
+            <p className="text-lg text-muted-foreground mb-6 font-body">
+              Rejoignez des centaines d'apprenants. Commencez par un exercice gratuit — sans inscription.
+            </p>
+            <Link
+              to="/exercices"
+              className="inline-flex items-center gap-2 bg-emerald-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-emerald-700 transition-all hover:scale-105 shadow-lg"
+            >
+              <Sparkles className="h-5 w-5" />
+              Essayer un exercice maintenant
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </div>
+        </section>
+
+        {/* Exercise Teaser - Interactive sample */}
+        <ExerciseTeaser />
 
         {/* Contact CTA Section - Appel à l'action */}
         <section className="py-16 bg-red-600 text-white">
