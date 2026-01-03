@@ -13,19 +13,18 @@ export default function Analytics() {
   useEffect(() => {
     const id = import.meta.env.VITE_GA_ID || "G-DNSN8DZTZV";
 
-    // Check for existing consent from localStorage
-    const getConsent = (): string | null => {
+    // Check if user has explicitly opted out
+    const hasOptedOut = (): boolean => {
       try {
         const raw = localStorage.getItem('cookie-consent');
-        if (!raw) return null;
-        // The useLocalStorage hook JSON.stringify the value
+        if (!raw) return false; // No preference = allow tracking (notice-only model)
         try {
-          return JSON.parse(raw);
+          return JSON.parse(raw) === 'declined';
         } catch {
-          return raw;
+          return raw === 'declined';
         }
       } catch {
-        return null;
+        return false;
       }
     };
 
@@ -40,17 +39,9 @@ export default function Analytics() {
     };
 
     const loadAnalytics = () => {
-      const consent = getConsent();
-      
-      // Don't load if consent is explicitly declined
-      if (consent === 'declined') {
-        console.log('[GA4] User declined cookies');
-        return;
-      }
-
-      // Don't load if no consent given yet
-      if (consent !== 'accepted') {
-        console.log('[GA4] Waiting for cookie consent');
+      // Only skip if user has explicitly opted out
+      if (hasOptedOut()) {
+        console.log('[GA4] User opted out of cookies');
         return;
       }
 
@@ -60,9 +51,9 @@ export default function Analytics() {
       // Initialize gtag
       initGtag();
       
-      // Set initial consent state
+      // Set consent state - granted by default (notice-only model)
       window.gtag!('consent', 'default', {
-        analytics_storage: 'denied',
+        analytics_storage: 'granted',
         ad_storage: 'denied',
       });
 
@@ -70,7 +61,7 @@ export default function Analytics() {
       window.gtag!('js', new Date());
       window.gtag!('config', id, {
         anonymize_ip: true,
-        send_page_view: false, // We'll send manually after script loads
+        send_page_view: false,
         debug_mode: import.meta.env.DEV,
       });
 
@@ -88,11 +79,6 @@ export default function Analytics() {
       script.onload = () => {
         console.log('[GA4] Script loaded successfully');
         
-        // Grant consent after script loads
-        window.gtag!('consent', 'update', {
-          analytics_storage: 'granted',
-        });
-        
         // Send initial page view
         window.gtag!('event', 'page_view', {
           page_title: document.title,
@@ -109,24 +95,20 @@ export default function Analytics() {
       document.head.appendChild(script);
     };
 
-    // Listen for consent changes
-    const handleConsentChange = (event?: Event) => {
-      const consent = getConsent();
-      console.log('[GA4] Consent status:', consent);
-      
-      if (consent === 'accepted' && !hasLoadedRef.current) {
-        loadAnalytics();
-      } else if (consent === 'declined' && window.gtag) {
+    // Listen for opt-out changes
+    const handleConsentChange = () => {
+      if (hasOptedOut() && window.gtag) {
+        console.log('[GA4] User opted out');
         window.gtag('consent', 'update', {
           analytics_storage: 'denied',
         });
       }
     };
 
-    // Check consent on mount
-    handleConsentChange();
+    // Load immediately (notice-only model)
+    loadAnalytics();
 
-    // Listen for storage changes (consent updates)
+    // Listen for storage changes (if user opts out later)
     window.addEventListener('storage', handleConsentChange);
     window.addEventListener('cookie-consent-changed', handleConsentChange);
 
