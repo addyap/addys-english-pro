@@ -60,6 +60,8 @@ const ConditionalExerciseDetail = lazy(() => import("./pages/ConditionalExercise
 const PronunciationExerciseDetail = lazy(() => import("./pages/PronunciationExerciseDetail"));
 const ParagraphOrderingExerciseDetail = lazy(() => import("./pages/ParagraphOrderingExerciseDetail"));
 const TranslationExerciseDetail = lazy(() => import("./pages/TranslationExerciseDetail"));
+const ErrorCorrectionExerciseDetail = lazy(() => import("./pages/ErrorCorrectionExerciseDetail"));
+const SentenceBuildingExerciseDetail = lazy(() => import("./pages/SentenceBuildingExerciseDetail"));
 
 const PageLoader = () => (
   <div className="min-h-screen bg-background py-12">
@@ -112,6 +114,8 @@ export const AppRoutes = () => (
     <Route path="/exercices/pronunciation/:id" element={<PronunciationExerciseDetail />} />
     <Route path="/exercices/paragraph-ordering/:id" element={<ParagraphOrderingExerciseDetail />} />
     <Route path="/exercices/translation/:id" element={<TranslationExerciseDetail />} />
+    <Route path="/exercices/error-correction/:id" element={<ErrorCorrectionExerciseDetail />} />
+    <Route path="/exercices/sentence-building/:id" element={<SentenceBuildingExerciseDetail />} />
     <Route path="/mentions-legales" element={<LegalNotices />} />
     <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
     <Route path="/install" element={<Install />} />
