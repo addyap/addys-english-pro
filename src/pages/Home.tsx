@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Globe, Users, Award, BookOpen, MessageSquare, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, MapPin, Headphones, GripVertical, PenLine, Sparkles, MessageCircle, Mail } from 'lucide-react';
+import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, MapPin, Headphones, Sparkles, MessageCircle, Mail } from 'lucide-react';
 import SEOHead, { jsonLdWebsite, jsonLdOrganization, jsonLdPerson } from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import OptimizedHero from '../components/OptimizedHero';
@@ -8,20 +8,28 @@ import { TypingText } from '../components/TypingText';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { LazyClientCarousel } from '@/components/LazySwiper';
 
-// Static exercise counts - avoids importing large data files on homepage
-// Update these when exercise data changes significantly
+// Accurate exercise counts based on actual data files
 const EXERCISE_COUNTS = {
-  grammar: 48,
-  vocabulary: 120,
-  reading: 15,
-  listening: 12,
-  dragDrop: 10,
-  writing: 30,
-  idioms: 25,
-  phrasalVerbs: 20,
-  collocations: 15,
+  grammar: 60,        // grammarCategories - 60 lessons
+  vocabulary: 150,    // exercises 1-150 in allExercises
+  reading: 12,        // readingPassages
+  listening: 20,      // listeningExercises  
+  dragDrop: 12,       // dragDropExercises
+  writing: 9,         // writingExercises
+  idioms: 6,          // idiomExercises (6 sets)
+  phrasalVerbs: 5,    // phrasalVerbExercises (5 sets)
+  collocations: 6,    // collocationExercises (6 sets)
+  dictation: 6,       // dictationExercises
+  translation: 6,     // translationExercises
+  stories: 5,         // interactiveStories
   get total() {
-    return this.grammar + this.vocabulary + this.reading + this.listening + this.dragDrop + this.writing + this.idioms + this.phrasalVerbs + this.collocations;
+    return this.grammar + this.vocabulary + this.reading + this.listening + 
+           this.dragDrop + this.writing + this.idioms + this.phrasalVerbs + 
+           this.collocations + this.dictation + this.translation + this.stories;
+  },
+  get questions() {
+    // Rough estimate: 10 questions per exercise on average
+    return this.total * 10;
   }
 };
 
@@ -216,24 +224,27 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Quick Exercises CTA Banner */}
-        <section className="py-8 bg-accent text-accent-foreground">
+        {/* Quick Exercises CTA Banner - More subtle, value-focused */}
+        <section className="py-6 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
           <div className="max-w-6xl mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-4">
-                <div className="bg-white/20 rounded-full p-3">
-                  <Sparkles className="h-6 w-6" />
+                <div className="bg-white/20 rounded-full p-2.5 animate-pulse">
+                  <Award className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="font-bold text-lg">🎯 Pratiquez votre anglais maintenant !</p>
-                  <p className="text-sm text-accent-foreground/90">{EXERCISE_COUNTS.total}+ exercices interactifs gratuits — Grammaire, Vocabulaire, Écoute, Lecture</p>
+                  <p className="font-bold text-lg flex items-center gap-2">
+                    <span className="bg-white/20 px-2 py-0.5 rounded text-sm">100% GRATUIT</span>
+                    Ressources pédagogiques en accès libre
+                  </p>
+                  <p className="text-sm text-white/90">{EXERCISE_COUNTS.total}+ exercices • {EXERCISE_COUNTS.questions.toLocaleString()}+ questions • Créés par un formateur certifié</p>
                 </div>
               </div>
               <Link 
                 to="/exercices" 
-                className="bg-white text-accent px-6 py-3 rounded-lg font-bold hover:bg-white/90 transition-colors flex items-center gap-2 whitespace-nowrap shadow-lg"
+                className="bg-white text-emerald-700 px-5 py-2.5 rounded-lg font-bold hover:bg-white/90 transition-all flex items-center gap-2 whitespace-nowrap shadow-lg hover:scale-105"
               >
-                Commencer les exercices
+                Commencer maintenant
                 <ExternalLink className="h-4 w-4" />
               </Link>
             </div>
@@ -280,123 +291,120 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Interactive Exercises Section - PROMINENT */}
-        <section className="py-20 bg-gradient-to-br from-primary via-primary/95 to-primary/90 text-primary-foreground relative overflow-hidden">
-          {/* Background decoration */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl" />
-            <div className="absolute bottom-10 right-10 w-48 h-48 bg-white rounded-full blur-3xl" />
+        {/* Interactive Exercises Section - ENGAGING & VALUE-FOCUSED */}
+        <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
+          {/* Animated background elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-20 left-[10%] w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-3xl" />
           </div>
           
           <div className="max-w-6xl mx-auto px-4 relative z-10">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 rounded-full mb-6">
-                <BookOpen className="h-10 w-10" />
+            {/* Header with FREE badge */}
+            <div className="text-center mb-14">
+              <div className="inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-500/30 rounded-full px-4 py-2 mb-6">
+                <Sparkles className="h-4 w-4 text-emerald-400" />
+                <span className="text-emerald-400 font-semibold text-sm">Accès libre • Aucune inscription requise</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 font-heading">
-                Exercices d'Anglais Interactifs
+              <h2 className="text-4xl md:text-5xl font-bold mb-5 font-heading bg-gradient-to-r from-white via-white to-gray-300 bg-clip-text text-transparent">
+                Améliorez votre anglais gratuitement
               </h2>
-              <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto font-body">
-                6 types d'exercices pour maîtriser l'anglais : grammaire, vocabulaire, lecture, écoute, et plus encore
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto font-body leading-relaxed">
+                Des centaines d'exercices interactifs conçus par un formateur britannique certifié. 
+                Grammaire, vocabulaire, compréhension — progressez à votre rythme.
               </p>
             </div>
 
-            {/* Exercise Category Cards - Clickable with animated icons */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
+            {/* Big stats row */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10 hover:border-emerald-500/30 transition-colors group">
+                <p className="text-4xl md:text-5xl font-bold text-emerald-400 mb-2 group-hover:scale-110 transition-transform">{EXERCISE_COUNTS.total}+</p>
+                <p className="text-gray-400 text-sm font-medium">Exercices</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10 hover:border-blue-500/30 transition-colors group">
+                <p className="text-4xl md:text-5xl font-bold text-blue-400 mb-2 group-hover:scale-110 transition-transform">{EXERCISE_COUNTS.questions.toLocaleString()}+</p>
+                <p className="text-gray-400 text-sm font-medium">Questions</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10 hover:border-purple-500/30 transition-colors group">
+                <p className="text-4xl md:text-5xl font-bold text-purple-400 mb-2 group-hover:scale-110 transition-transform">12</p>
+                <p className="text-gray-400 text-sm font-medium">Catégories</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10 hover:border-amber-500/30 transition-colors group">
+                <p className="text-4xl md:text-5xl font-bold text-amber-400 mb-2 group-hover:scale-110 transition-transform">A1→C1</p>
+                <p className="text-gray-400 text-sm font-medium">Tous niveaux</p>
+              </div>
+            </div>
+
+            {/* Exercise Category Cards - Clean grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
               <Link 
                 to="/exercices?tab=grammar" 
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
+                className="bg-gradient-to-br from-blue-600/20 to-blue-800/20 backdrop-blur-sm rounded-xl p-4 text-center hover:from-blue-600/30 hover:to-blue-800/30 transition-all cursor-pointer group border border-blue-500/20 hover:border-blue-500/40 hover:scale-[1.02]"
               >
-                <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
-                  <GraduationCap className="h-6 w-6 animate-[bounce_2s_ease-in-out_infinite]" style={{ animationDelay: '0s' }} />
-                </div>
-                <p className="text-2xl font-bold mb-1">{EXERCISE_COUNTS.grammar}</p>
-                <p className="text-sm font-medium">Grammar</p>
-                <p className="text-xs text-primary-foreground/70 mt-1">Leçons & exercices</p>
+                <GraduationCap className="h-7 w-7 mx-auto mb-2 text-blue-400 group-hover:scale-110 transition-transform" />
+                <p className="text-xl font-bold mb-0.5">{EXERCISE_COUNTS.grammar}</p>
+                <p className="text-xs text-gray-400">Grammaire</p>
               </Link>
               
               <Link 
                 to="/exercices?tab=vocabulary" 
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
+                className="bg-gradient-to-br from-emerald-600/20 to-emerald-800/20 backdrop-blur-sm rounded-xl p-4 text-center hover:from-emerald-600/30 hover:to-emerald-800/30 transition-all cursor-pointer group border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-[1.02]"
               >
-                <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
-                  <Sparkles className="h-6 w-6 animate-[pulse_2s_ease-in-out_infinite]" style={{ animationDelay: '0.3s' }} />
-                </div>
-                <p className="text-2xl font-bold mb-1">{EXERCISE_COUNTS.vocabulary}</p>
-                <p className="text-sm font-medium">Vocabulary</p>
-                <p className="text-xs text-primary-foreground/70 mt-1">QCM interactifs</p>
-              </Link>
-              
-              <Link 
-                to="/reading" 
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
-              >
-                <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
-                  <BookOpen className="h-6 w-6 animate-[bounce_2s_ease-in-out_infinite]" style={{ animationDelay: '0.6s' }} />
-                </div>
-                <p className="text-2xl font-bold mb-1">{EXERCISE_COUNTS.reading}</p>
-                <p className="text-sm font-medium">Reading</p>
-                <p className="text-xs text-primary-foreground/70 mt-1">Compréhension écrite</p>
+                <Sparkles className="h-7 w-7 mx-auto mb-2 text-emerald-400 group-hover:scale-110 transition-transform" />
+                <p className="text-xl font-bold mb-0.5">{EXERCISE_COUNTS.vocabulary}</p>
+                <p className="text-xs text-gray-400">Vocabulaire</p>
               </Link>
               
               <Link 
                 to="/exercices/listening" 
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
+                className="bg-gradient-to-br from-purple-600/20 to-purple-800/20 backdrop-blur-sm rounded-xl p-4 text-center hover:from-purple-600/30 hover:to-purple-800/30 transition-all cursor-pointer group border border-purple-500/20 hover:border-purple-500/40 hover:scale-[1.02]"
               >
-                <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
-                  <Headphones className="h-6 w-6 animate-[pulse_2s_ease-in-out_infinite]" style={{ animationDelay: '0.9s' }} />
-                </div>
-                <p className="text-2xl font-bold mb-1">{EXERCISE_COUNTS.listening}</p>
-                <p className="text-sm font-medium">Listening</p>
-                <p className="text-xs text-primary-foreground/70 mt-1">Compréhension orale</p>
+                <Headphones className="h-7 w-7 mx-auto mb-2 text-purple-400 group-hover:scale-110 transition-transform" />
+                <p className="text-xl font-bold mb-0.5">{EXERCISE_COUNTS.listening}</p>
+                <p className="text-xs text-gray-400">Écoute</p>
               </Link>
               
               <Link 
-                to="/exercices?tab=dragdrop" 
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
+                to="/reading" 
+                className="bg-gradient-to-br from-amber-600/20 to-amber-800/20 backdrop-blur-sm rounded-xl p-4 text-center hover:from-amber-600/30 hover:to-amber-800/30 transition-all cursor-pointer group border border-amber-500/20 hover:border-amber-500/40 hover:scale-[1.02]"
               >
-                <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
-                  <GripVertical className="h-6 w-6 animate-[bounce_2s_ease-in-out_infinite]" style={{ animationDelay: '1.2s' }} />
-                </div>
-                <p className="text-2xl font-bold mb-1">{EXERCISE_COUNTS.dragDrop}</p>
-                <p className="text-sm font-medium">Drag & Drop</p>
-                <p className="text-xs text-primary-foreground/70 mt-1">Ordre des mots</p>
-              </Link>
-              
-              <Link 
-                to="/exercices?tab=writing" 
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center hover:bg-white/25 hover:scale-105 transition-all cursor-pointer group border border-white/10 hover:border-white/30"
-              >
-                <div className="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3 group-hover:bg-white/30 transition-colors">
-                  <PenLine className="h-6 w-6 animate-[pulse_2s_ease-in-out_infinite]" style={{ animationDelay: '1.5s' }} />
-                </div>
-                <p className="text-2xl font-bold mb-1">{EXERCISE_COUNTS.writing}</p>
-                <p className="text-sm font-medium">Writing</p>
-                <p className="text-xs text-primary-foreground/70 mt-1">Expression écrite</p>
+                <BookOpen className="h-7 w-7 mx-auto mb-2 text-amber-400 group-hover:scale-110 transition-transform" />
+                <p className="text-xl font-bold mb-0.5">{EXERCISE_COUNTS.reading + EXERCISE_COUNTS.stories}</p>
+                <p className="text-xs text-gray-400">Lecture</p>
               </Link>
             </div>
 
-            {/* Features */}
-            <div className="grid md:grid-cols-3 gap-6 mb-10">
-              <div className="flex items-start gap-3">
-                <CheckCircle className="h-6 w-6 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-semibold">Explications bilingues</p>
-                  <p className="text-sm text-primary-foreground/80">Anglais avec traduction française</p>
+            {/* Value props - subtle expertise positioning */}
+            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 mb-10">
+              <div className="grid md:grid-cols-4 gap-6">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold text-sm">Bilingue EN/FR</p>
+                    <p className="text-xs text-gray-400">Explications claires</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="h-6 w-6 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-semibold">Feedback immédiat</p>
-                  <p className="text-sm text-primary-foreground/80">Correction et explications instantanées</p>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold text-sm">Feedback instantané</p>
+                    <p className="text-xs text-gray-400">Apprenez de vos erreurs</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="h-6 w-6 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-semibold">Suivi de progression</p>
-                  <p className="text-sm text-primary-foreground/80">Tableau de bord personnel</p>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold text-sm">Sans inscription</p>
+                    <p className="text-xs text-gray-400">Commencez tout de suite</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold text-sm">Conçu par un pro</p>
+                    <p className="text-xs text-gray-400">Formateur certifié FPA</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -405,17 +413,17 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link 
                 to="/exercices" 
-                className="inline-flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/90 transition-all shadow-lg hover:shadow-xl hover:scale-105"
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-emerald-600 hover:to-teal-600 transition-all shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:scale-105"
               >
                 <GraduationCap className="h-6 w-6" />
-                Tous les exercices
+                Explorer les exercices gratuits
               </Link>
               <Link 
-                to="/exercices/listening" 
-                className="inline-flex items-center gap-3 bg-white/20 text-primary-foreground border-2 border-white/50 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/30 transition-all"
+                to="/blog" 
+                className="inline-flex items-center gap-3 bg-white/10 text-white border border-white/20 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all"
               >
-                <Headphones className="h-6 w-6" />
-                Écoute & Compréhension
+                <BookOpen className="h-6 w-6" />
+                Lire les articles
               </Link>
             </div>
           </div>
