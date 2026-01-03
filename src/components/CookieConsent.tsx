@@ -6,33 +6,25 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 const CookieConsent: React.FC = () => {
   const [showBanner, setShowBanner] = useState(false);
-  const [consent, setConsent] = useLocalStorage('cookie-consent', null);
+  const [hasSeenNotice, setHasSeenNotice] = useLocalStorage('cookie-notice-seen', false);
+  const [, setConsent] = useLocalStorage('cookie-consent', 'accepted'); // Default to accepted
 
   useEffect(() => {
-    // Show banner after 1 second if consent not given
-    if (consent === null) {
-      const timer = setTimeout(() => setShowBanner(true), 1000);
+    // Show banner after 2 seconds if user hasn't seen the notice yet
+    if (!hasSeenNotice) {
+      const timer = setTimeout(() => setShowBanner(true), 2000);
       return () => clearTimeout(timer);
     }
-  }, [consent]);
+  }, [hasSeenNotice]);
 
-  const handleAccept = () => {
-    setConsent('accepted');
+  const handleDismiss = () => {
+    setHasSeenNotice(true);
     setShowBanner(false);
-
-    // Notify listeners (Analytics) about consent change
-    window.dispatchEvent(new CustomEvent('cookie-consent-changed', { detail: 'accepted' }));
-
-    // Enable analytics if available
-    if (window.gtag) {
-      window.gtag('consent', 'update', {
-        analytics_storage: 'granted',
-      });
-    }
   };
 
-  const handleDecline = () => {
+  const handleOptOut = () => {
     setConsent('declined');
+    setHasSeenNotice(true);
     setShowBanner(false);
 
     // Notify listeners (Analytics) about consent change
@@ -54,46 +46,47 @@ const CookieConsent: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-t border-border shadow-lg"
+          className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-md z-50 bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg"
         >
-          <div className="max-w-6xl mx-auto p-4 md:p-6">
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
-              <div className="flex items-start gap-3 flex-1">
-                <Cookie className="h-6 w-6 text-primary flex-shrink-0 mt-1" aria-hidden="true" />
-                <div className="flex-1">
-                  <h3 className="font-semibold text-foreground mb-1">
-                    Cookies et confidentialité
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    Nous utilisons des cookies pour améliorer votre expérience et analyser le trafic du site. 
-                    En continuant, vous acceptez notre{' '}
-                    <a 
-                      href="/politique-confidentialite" 
-                      className="text-primary hover:underline"
-                    >
-                      politique de confidentialité
-                    </a>.
-                  </p>
-                </div>
+          <div className="p-4">
+            <div className="flex items-start gap-3">
+              <Cookie className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
+              <div className="flex-1 min-w-0">
+                <p className="text-sm text-muted-foreground">
+                  Ce site utilise des cookies pour analyser le trafic.{' '}
+                  <a 
+                    href="/politique-confidentialite" 
+                    className="text-primary hover:underline"
+                  >
+                    En savoir plus
+                  </a>
+                </p>
               </div>
+              <button
+                onClick={handleDismiss}
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Fermer"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
 
-              <div className="flex gap-3 w-full md:w-auto">
-                <Button
-                  onClick={handleDecline}
-                  variant="outline"
-                  size="sm"
-                  className="flex-1 md:flex-none"
-                >
-                  Refuser
-                </Button>
-                <Button
-                  onClick={handleAccept}
-                  size="sm"
-                  className="flex-1 md:flex-none"
-                >
-                  Accepter
-                </Button>
-              </div>
+            <div className="flex gap-2 mt-3 justify-end">
+              <Button
+                onClick={handleOptOut}
+                variant="ghost"
+                size="sm"
+                className="text-xs"
+              >
+                Refuser les cookies
+              </Button>
+              <Button
+                onClick={handleDismiss}
+                size="sm"
+                className="text-xs"
+              >
+                OK
+              </Button>
             </div>
           </div>
         </motion.div>
