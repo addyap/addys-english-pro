@@ -52,6 +52,15 @@ const SitemapPage = lazy(() => import("./pages/SitemapPage"));
 const SEODiagnostics = lazy(() => import("./pages/SEODiagnostics"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
+// New exercise types
+const DictationExerciseDetail = lazy(() => import("./pages/DictationExerciseDetail"));
+const WordFormationExerciseDetail = lazy(() => import("./pages/WordFormationExerciseDetail"));
+const SynonymAntonymExerciseDetail = lazy(() => import("./pages/SynonymAntonymExerciseDetail"));
+const ConditionalExerciseDetail = lazy(() => import("./pages/ConditionalExerciseDetail"));
+const PronunciationExerciseDetail = lazy(() => import("./pages/PronunciationExerciseDetail"));
+const ParagraphOrderingExerciseDetail = lazy(() => import("./pages/ParagraphOrderingExerciseDetail"));
+const TranslationExerciseDetail = lazy(() => import("./pages/TranslationExerciseDetail"));
+
 const PageLoader = () => (
   <div className="min-h-screen bg-background py-12">
     <div className="max-w-4xl mx-auto px-4 space-y-8">
@@ -96,6 +105,13 @@ export const AppRoutes = () => (
     <Route path="/exercices/collocations/:id" element={<CollocationExerciseDetail />} />
     <Route path="/exercices/listening" element={<ListeningLibrary />} />
     <Route path="/exercices/listening/:slug" element={<ListeningExercise />} />
+    <Route path="/exercices/dictation/:id" element={<DictationExerciseDetail />} />
+    <Route path="/exercices/word-formation/:id" element={<WordFormationExerciseDetail />} />
+    <Route path="/exercices/synonyms-antonyms/:id" element={<SynonymAntonymExerciseDetail />} />
+    <Route path="/exercices/conditionals/:id" element={<ConditionalExerciseDetail />} />
+    <Route path="/exercices/pronunciation/:id" element={<PronunciationExerciseDetail />} />
+    <Route path="/exercices/paragraph-ordering/:id" element={<ParagraphOrderingExerciseDetail />} />
+    <Route path="/exercices/translation/:id" element={<TranslationExerciseDetail />} />
     <Route path="/mentions-legales" element={<LegalNotices />} />
     <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
     <Route path="/install" element={<Install />} />

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3, GripVertical, PenLine, Headphones, MessageCircle, ArrowRightLeft, Link2 } from 'lucide-react';
+import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3, GripVertical, PenLine, Headphones, MessageCircle, ArrowRightLeft, Link2, Volume2, Languages, GitCompare, List, Mic } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import AnimatedCard from '../components/AnimatedCard';
@@ -11,6 +11,13 @@ import { sentenceTransformExercises, errorCorrectionExercises, fillParagraphExer
 import { idiomExercises } from '../data/idiomExercises';
 import { phrasalVerbExercises } from '../data/phrasalVerbExercises';
 import { collocationExercises } from '../data/collocationExercises';
+import { dictationExercises } from '../data/dictationExercises';
+import { wordFormationExercises } from '../data/wordFormationExercises';
+import { synonymAntonymExercises } from '../data/synonymAntonymExercises';
+import { conditionalExercises } from '../data/conditionalExercises';
+import { pronunciationExercises } from '../data/pronunciationExercises';
+import { paragraphOrderingExercises } from '../data/paragraphOrderingExercises';
+import { translationExercises } from '../data/translationExercises';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import GrammarExplanation from '../components/GrammarExplanation';
@@ -255,42 +262,70 @@ const Exercises = () => {
         <section className="py-12">
           <div className="max-w-6xl mx-auto px-4">
             <Tabs defaultValue="grammar" className="w-full">
-              <TabsList className="grid w-full max-w-5xl mx-auto grid-cols-5 sm:grid-cols-9 mb-8">
-                <TabsTrigger value="grammar" className="gap-1 text-xs sm:text-sm">
+              <TabsList className="flex flex-wrap justify-center gap-1 h-auto p-2 mb-8">
+                <TabsTrigger value="grammar" className="gap-1 text-xs">
                   <GraduationCap className="h-4 w-4" />
                   <span className="hidden sm:inline">Grammar</span>
                 </TabsTrigger>
-                <TabsTrigger value="vocabulary" className="gap-1 text-xs sm:text-sm">
+                <TabsTrigger value="vocabulary" className="gap-1 text-xs">
                   <Sparkles className="h-4 w-4" />
                   <span className="hidden sm:inline">Vocabulary</span>
                 </TabsTrigger>
-                <TabsTrigger value="idioms" className="gap-1 text-xs sm:text-sm">
+                <TabsTrigger value="idioms" className="gap-1 text-xs">
                   <MessageCircle className="h-4 w-4" />
                   <span className="hidden sm:inline">Idioms</span>
                 </TabsTrigger>
-                <TabsTrigger value="phrasal-verbs" className="gap-1 text-xs sm:text-sm">
+                <TabsTrigger value="phrasal-verbs" className="gap-1 text-xs">
                   <ArrowRightLeft className="h-4 w-4" />
                   <span className="hidden sm:inline">Phrasal</span>
                 </TabsTrigger>
-                <TabsTrigger value="collocations" className="gap-1 text-xs sm:text-sm">
+                <TabsTrigger value="collocations" className="gap-1 text-xs">
                   <Link2 className="h-4 w-4" />
                   <span className="hidden sm:inline">Collocations</span>
                 </TabsTrigger>
-                <TabsTrigger value="reading" className="gap-1 text-xs sm:text-sm">
+                <TabsTrigger value="reading" className="gap-1 text-xs">
                   <BookOpen className="h-4 w-4" />
                   <span className="hidden sm:inline">Reading</span>
                 </TabsTrigger>
-                <TabsTrigger value="listening" className="gap-1 text-xs sm:text-sm">
+                <TabsTrigger value="listening" className="gap-1 text-xs">
                   <Headphones className="h-4 w-4" />
                   <span className="hidden sm:inline">Listening</span>
                 </TabsTrigger>
-                <TabsTrigger value="dragdrop" className="gap-1 text-xs sm:text-sm">
+                <TabsTrigger value="dragdrop" className="gap-1 text-xs">
                   <GripVertical className="h-4 w-4" />
                   <span className="hidden sm:inline">Drag & Drop</span>
                 </TabsTrigger>
-                <TabsTrigger value="writing" className="gap-1 text-xs sm:text-sm">
+                <TabsTrigger value="writing" className="gap-1 text-xs">
                   <PenLine className="h-4 w-4" />
                   <span className="hidden sm:inline">Writing</span>
+                </TabsTrigger>
+                <TabsTrigger value="dictation" className="gap-1 text-xs">
+                  <Volume2 className="h-4 w-4" />
+                  <span className="hidden sm:inline">Dictation</span>
+                </TabsTrigger>
+                <TabsTrigger value="word-formation" className="gap-1 text-xs">
+                  <Sparkles className="h-4 w-4" />
+                  <span className="hidden sm:inline">Word Form</span>
+                </TabsTrigger>
+                <TabsTrigger value="synonyms" className="gap-1 text-xs">
+                  <GitCompare className="h-4 w-4" />
+                  <span className="hidden sm:inline">Synonyms</span>
+                </TabsTrigger>
+                <TabsTrigger value="conditionals" className="gap-1 text-xs">
+                  <Target className="h-4 w-4" />
+                  <span className="hidden sm:inline">Conditionals</span>
+                </TabsTrigger>
+                <TabsTrigger value="pronunciation" className="gap-1 text-xs">
+                  <Mic className="h-4 w-4" />
+                  <span className="hidden sm:inline">Pronunciation</span>
+                </TabsTrigger>
+                <TabsTrigger value="paragraph-order" className="gap-1 text-xs">
+                  <List className="h-4 w-4" />
+                  <span className="hidden sm:inline">Ordering</span>
+                </TabsTrigger>
+                <TabsTrigger value="translation" className="gap-1 text-xs">
+                  <Languages className="h-4 w-4" />
+                  <span className="hidden sm:inline">Translation</span>
                 </TabsTrigger>
               </TabsList>
 
@@ -878,6 +913,145 @@ const Exercises = () => {
                             Commencer <ChevronRight className="h-4 w-4" />
                           </Button>
                         </Link>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+              {/* Dictation Tab */}
+              <TabsContent value="dictation" className="space-y-6">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-primary mb-2 font-heading">Dictation Exercises</h2>
+                  <p className="text-muted-foreground">{dictationExercises.length} exercises to improve listening and spelling</p>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {dictationExercises.map((ex) => (
+                    <Card key={ex.id} className="hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2">
+                        <CardTitle className="text-base">{ex.title}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-3">{ex.description}</p>
+                        <Badge variant="outline" className="mb-3">{ex.level}</Badge>
+                        <Link to={`/exercices/dictation/${ex.id}`}><Button size="sm" className="w-full gap-2">Commencer <ChevronRight className="h-4 w-4" /></Button></Link>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+
+              {/* Word Formation Tab */}
+              <TabsContent value="word-formation" className="space-y-6">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-primary mb-2 font-heading">Word Formation</h2>
+                  <p className="text-muted-foreground">{wordFormationExercises.length} exercises on suffixes and prefixes</p>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {wordFormationExercises.map((ex) => (
+                    <Card key={ex.id} className="hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2"><CardTitle className="text-base">{ex.title}</CardTitle></CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-3">{ex.description}</p>
+                        <Link to={`/exercices/word-formation/${ex.id}`}><Button size="sm" className="w-full gap-2">Commencer <ChevronRight className="h-4 w-4" /></Button></Link>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+
+              {/* Synonyms/Antonyms Tab */}
+              <TabsContent value="synonyms" className="space-y-6">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-primary mb-2 font-heading">Synonyms & Antonyms</h2>
+                  <p className="text-muted-foreground">{synonymAntonymExercises.length} vocabulary exercises</p>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {synonymAntonymExercises.map((ex) => (
+                    <Card key={ex.id} className="hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2"><CardTitle className="text-base">{ex.title}</CardTitle></CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-3">{ex.description}</p>
+                        <Badge variant="outline" className="mb-3">{ex.type}</Badge>
+                        <Link to={`/exercices/synonyms-antonyms/${ex.id}`}><Button size="sm" className="w-full gap-2">Commencer <ChevronRight className="h-4 w-4" /></Button></Link>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+
+              {/* Conditionals Tab */}
+              <TabsContent value="conditionals" className="space-y-6">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-primary mb-2 font-heading">Conditional Sentences</h2>
+                  <p className="text-muted-foreground">{conditionalExercises.length} exercises on if-clauses</p>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {conditionalExercises.map((ex) => (
+                    <Card key={ex.id} className="hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2"><CardTitle className="text-base">{ex.title}</CardTitle></CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-3">{ex.description}</p>
+                        <Badge variant="outline" className="mb-3">{ex.conditionalType}</Badge>
+                        <Link to={`/exercices/conditionals/${ex.id}`}><Button size="sm" className="w-full gap-2">Commencer <ChevronRight className="h-4 w-4" /></Button></Link>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+
+              {/* Pronunciation Tab */}
+              <TabsContent value="pronunciation" className="space-y-6">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-primary mb-2 font-heading">Pronunciation (Minimal Pairs)</h2>
+                  <p className="text-muted-foreground">{pronunciationExercises.length} exercises on sound discrimination</p>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {pronunciationExercises.map((ex) => (
+                    <Card key={ex.id} className="hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2"><CardTitle className="text-base">{ex.title}</CardTitle></CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-3">{ex.description}</p>
+                        <Link to={`/exercices/pronunciation/${ex.id}`}><Button size="sm" className="w-full gap-2">Commencer <ChevronRight className="h-4 w-4" /></Button></Link>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+
+              {/* Paragraph Ordering Tab */}
+              <TabsContent value="paragraph-order" className="space-y-6">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-primary mb-2 font-heading">Paragraph Ordering</h2>
+                  <p className="text-muted-foreground">{paragraphOrderingExercises.length} logic and coherence exercises</p>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {paragraphOrderingExercises.map((ex) => (
+                    <Card key={ex.id} className="hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2"><CardTitle className="text-base">{ex.title}</CardTitle></CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-3">{ex.description}</p>
+                        <Badge variant="outline" className="mb-3">{ex.level}</Badge>
+                        <Link to={`/exercices/paragraph-ordering/${ex.id}`}><Button size="sm" className="w-full gap-2">Commencer <ChevronRight className="h-4 w-4" /></Button></Link>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+
+              {/* Translation Tab */}
+              <TabsContent value="translation" className="space-y-6">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-primary mb-2 font-heading">Translation Exercises</h2>
+                  <p className="text-muted-foreground">{translationExercises.length} FR↔EN translation practice</p>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {translationExercises.map((ex) => (
+                    <Card key={ex.id} className="hover:shadow-md transition-shadow">
+                      <CardHeader className="pb-2"><CardTitle className="text-base">{ex.title}</CardTitle></CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-3">{ex.description}</p>
+                        <div className="flex gap-2 mb-3"><Badge variant="outline">{ex.level}</Badge><Badge variant="secondary">{ex.direction}</Badge></div>
+                        <Link to={`/exercices/translation/${ex.id}`}><Button size="sm" className="w-full gap-2">Commencer <ChevronRight className="h-4 w-4" /></Button></Link>
                       </CardContent>
                     </Card>
                   ))}
