@@ -7,7 +7,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import Breadcrumbs from '@/components/Breadcrumbs';
-
+import { usePageTracking } from '@/hooks/usePageTracking';
 interface LayoutProps {
   children: React.ReactNode;
   breadcrumbTitle?: string;
@@ -19,6 +19,9 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const year = new Date().getFullYear();
   const { user, signOut, loading } = useAuth();
+  
+  // Server-side page tracking (works even with ad blockers)
+  usePageTracking();
 
   const handleSignOut = async () => {
     const { error } = await signOut();
