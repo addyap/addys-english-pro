@@ -5,8 +5,14 @@ import { Sparkles, X } from 'lucide-react';
 export default function FloatingExerciseCTA() {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if mobile
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     // Show after scrolling past hero section
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -20,7 +26,10 @@ export default function FloatingExerciseCTA() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, [isDismissed]);
 
   const handleDismiss = (e: React.MouseEvent) => {
@@ -30,12 +39,7 @@ export default function FloatingExerciseCTA() {
     setIsVisible(false);
   };
 
-  // Only show on mobile
-  if (typeof window !== 'undefined' && window.innerWidth > 768) {
-    return null;
-  }
-
-  if (!isVisible || isDismissed) {
+  if (!isMobile || !isVisible || isDismissed) {
     return null;
   }
 
