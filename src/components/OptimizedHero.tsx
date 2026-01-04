@@ -11,11 +11,11 @@ export default function OptimizedHero() {
       aria-label="Section principale de présentation"
     >
       {/* Optimized background image with Ken Burns animation */}
-      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-slate-800">
         <img
           src="/assets/hero-image.png"
           alt="Formation en anglais professionnel avec Antony Addy"
-          className="absolute inset-0 w-full h-full object-cover animate-ken-burns"
+          className="absolute inset-0 w-full h-full object-contain animate-ken-burns"
           loading="eager"
           decoding="async"
         />
