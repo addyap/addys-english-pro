@@ -8,7 +8,7 @@ import { TypingText } from '../components/TypingText';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { LazyClientCarousel } from '@/components/LazySwiper';
 import FloatingExerciseCTA from '@/components/FloatingExerciseCTA';
-import ExerciseTeaser from '@/components/ExerciseTeaser';
+
 
 // Accurate exercise counts based on actual data files
 const EXERCISE_COUNTS = {
@@ -512,8 +512,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Exercise Teaser - Interactive sample */}
-        <ExerciseTeaser />
 
         {/* Contact CTA Section - Appel à l'action */}
         <section className="py-16 bg-red-600 text-white">
