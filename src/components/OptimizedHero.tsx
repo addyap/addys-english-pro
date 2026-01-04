@@ -9,20 +9,22 @@ export default function OptimizedHero() {
       role="banner"
       aria-label="Section principale de présentation"
     >
-      {/* Background image (restored) */}
+      {/* Background image with WebP optimization */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-primary">
-        {/* eslint-disable-next-line react/no-unknown-property */}
-        <img
-          src="/assets/hero-image.png"
-          alt="Formation en anglais professionnel avec Antony Addy"
-          className="absolute inset-0 w-full h-full object-cover animate-ken-burns opacity-80"
-          width={1920}
-          height={1080}
-          loading="eager"
-          decoding="async"
-          // @ts-ignore - fetchpriority is valid HTML but not typed in React 18
-          fetchpriority="high"
-        />
+        <picture>
+          <source srcSet="/assets/hero-image.webp" type="image/webp" />
+          <img
+            src="/assets/hero-image.png"
+            alt="Formation en anglais professionnel avec Antony Addy"
+            className="absolute inset-0 w-full h-full object-cover animate-ken-burns opacity-80"
+            width={1920}
+            height={1080}
+            loading="eager"
+            decoding="async"
+            // @ts-ignore - fetchpriority is valid HTML but not typed in React 18
+            fetchpriority="high"
+          />
+        </picture>
       </div>
 
       {/* Overlay to optimize text readability */}
