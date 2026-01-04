@@ -57,34 +57,38 @@ export const LazyClientCarousel = memo<LazyClientCarouselProps>(({ logos }) => {
 
   return (
     <Swiper
-      spaceBetween={40}
-      slidesPerView={1}
+      spaceBetween={20}
+      slidesPerView={2}
       breakpoints={{
-        640: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-        1280: { slidesPerView: 4 }
+        480: { slidesPerView: 2, spaceBetween: 30 },
+        640: { slidesPerView: 3, spaceBetween: 30 },
+        1024: { slidesPerView: 4, spaceBetween: 40 }
       }}
-      loop={false}
+      loop={true}
+      speed={3000}
       autoplay={{
-        delay: 3000,
-        disableOnInteraction: false
+        delay: 0,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true
       }}
       modules={[Autoplay]}
       className="pb-8"
+      style={{ '--swiper-wrapper-transition-timing-function': 'linear' } as React.CSSProperties}
     >
-      {logos.map((logo, index) => (
+      {/* Duplicate logos for seamless infinite loop */}
+      {[...logos, ...logos].map((logo, index) => (
         <SwiperSlide key={index}>
           <div className="flex flex-col items-center">
             <img
               src={logo.src}
               alt={logo.alt}
-              className="h-24 object-contain mb-2"
+              className="h-20 sm:h-24 object-contain mb-2"
               width="96"
               height="96"
               loading="lazy"
               decoding="async"
             />
-            <p className="text-sm font-medium text-primary">{logo.name}</p>
+            <p className="text-xs sm:text-sm font-medium text-primary text-center">{logo.name}</p>
           </div>
         </SwiperSlide>
       ))}
