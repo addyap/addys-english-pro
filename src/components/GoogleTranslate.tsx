@@ -45,8 +45,8 @@ const GoogleTranslate: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex items-center gap-2">
-      <Globe className="h-4 w-4 text-gray-400" />
+    <div className="flex items-center gap-2 bg-muted/50 px-3 py-1.5 rounded-lg border border-border hover:border-primary/30 transition-colors">
+      <Globe className="h-4 w-4 text-muted-foreground" />
       <div id="google_translate_element" className="google-translate-container" />
     </div>
   );
