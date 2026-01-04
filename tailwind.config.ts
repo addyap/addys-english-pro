@@ -73,6 +73,7 @@ export default {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fadeIn 0.8s ease-out',
+				'ken-burns': 'ken-burns 20s ease-in-out infinite alternate',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -94,6 +95,10 @@ export default {
 				fadeIn: {
 					'0%': { opacity: '0', transform: 'translateY(10px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' },
+				},
+				'ken-burns': {
+					'0%': { transform: 'scale(1) translate(0, 0)' },
+					'100%': { transform: 'scale(1.1) translate(-2%, -1%)' },
 				},
 			}
 		}

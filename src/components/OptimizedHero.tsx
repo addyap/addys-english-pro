@@ -1,104 +1,25 @@
 
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { TypingText } from "./TypingText";
 
-const VIDEO_ID = "WRe3F6Ejb6E";
-
-// Preconnect to YouTube for faster loading
-const preconnectYouTube = () => {
-  if (typeof document !== 'undefined') {
-    const link = document.createElement('link');
-    link.rel = 'preconnect';
-    link.href = 'https://www.youtube-nocookie.com';
-    document.head.appendChild(link);
-  }
-};
-
 export default function OptimizedHero() {
-  const [showVideo, setShowVideo] = useState(false);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  const [hasError, setHasError] = useState(false);
-
-  // Optimized video URL with better performance parameters
-  const videoUrl = useMemo(() => {
-    const origin = typeof window !== 'undefined' ? window.location.origin : '';
-    return `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0&start=0&end=0&origin=${origin}&enablejsapi=0`;
-  }, []);
-
-  const handleVideoLoad = useCallback(() => {
-    setIsVideoLoaded(true);
-    setHasError(false);
-  }, []);
-
-  const handleVideoError = useCallback(() => {
-    setHasError(true);
-    setIsVideoLoaded(true);
-  }, []);
-
-  useEffect(() => {
-    // Preconnect to YouTube for faster loading
-    preconnectYouTube();
-    
-    // Respect user's motion preferences
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const delay = prefersReducedMotion ? 100 : 300;
-    
-    // Delay video loading for better initial page performance
-    const timer = setTimeout(() => {
-      setShowVideo(true);
-    }, delay);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <section 
       className="relative hero-section overflow-hidden text-white min-h-screen"
       role="banner"
       aria-label="Section principale de présentation"
     >
-      {/* Fallback background for video errors */}
-      {hasError && (
-        <div 
-          className="absolute inset-0 bg-gradient-to-br from-primary via-primary-foreground to-secondary z-0"
-          role="img"
-          aria-label="Arrière-plan dégradé de secours"
+      {/* Optimized background image with Ken Burns animation */}
+      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+        <img
+          src="/assets/hero-poster.jpg"
+          alt="Formation en anglais professionnel avec Antony Addy"
+          className="absolute inset-0 w-full h-full object-cover animate-ken-burns"
+          fetchPriority="high"
+          decoding="async"
         />
-      )}
-
-      {/* Loading state for video */}
-      {showVideo && !isVideoLoaded && !hasError && (
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/40 z-0">
-          <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-        </div>
-      )}
-
-      {/* YouTube background video */}
-      {showVideo && !hasError && (
-        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-          <iframe
-            className="absolute top-1/2 left-1/2"
-            src={videoUrl}
-            title="Vidéo de présentation des formations en anglais professionnel"
-            allow="autoplay; encrypted-media"
-            allowFullScreen={false}
-            loading="lazy"
-            onLoad={handleVideoLoad}
-            onError={handleVideoError}
-            style={{
-              border: 'none',
-              pointerEvents: 'none',
-              // Cover technique to eliminate side gaps
-              width: '177.78vh',
-              height: '100vh',
-              minWidth: '100%',
-              minHeight: '56.25vw',
-              transform: 'translate(-50%, -50%)'
-            }}
-          />
-        </div>
-      )}
+      </div>
 
       {/* Enhanced overlay with gradient for better readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/50 z-5" />
