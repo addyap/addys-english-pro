@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useLocalStorage } from './useLocalStorage';
-import { supabase } from '@/integrations/supabase/client';
 
 export interface ExerciseResult {
   exerciseId: string;
@@ -23,19 +22,6 @@ const STORAGE_KEY = 'exercise-progress';
 
 export function useExerciseProgress() {
   const [progress, setProgress] = useLocalStorage<ExerciseResult[]>(STORAGE_KEY, []);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setIsAuthenticated(!!session);
-    });
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setIsAuthenticated(!!session);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
 
   const saveResult = useCallback((result: Omit<ExerciseResult, 'completedAt'>) => {
     const newResult: ExerciseResult = {
@@ -97,6 +83,5 @@ export function useExerciseProgress() {
     getResult,
     getStats,
     clearProgress,
-    isAuthenticated,
   };
 }

@@ -33,7 +33,6 @@ const ExerciseDetail = lazy(() => import("./pages/ExerciseDetail"));
 const LegalNotices = lazy(() => import("./pages/LegalNotices"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Install = lazy(() => import("./pages/Install"));
-const Auth = lazy(() => import("./pages/Auth"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Reading = lazy(() => import("./pages/Reading"));
 const ReadingDetail = lazy(() => import("./pages/ReadingDetail"));
@@ -122,7 +121,6 @@ export const AppRoutes = () => (
     <Route path="/mentions-legales" element={<LegalNotices />} />
     <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
     <Route path="/install" element={<Install />} />
-    <Route path="/auth" element={<Auth />} />
     <Route path="/dashboard" element={<Dashboard />} />
     <Route path="/reading" element={<Reading />} />
     <Route path="/reading/:id" element={<ReadingDetail />} />
