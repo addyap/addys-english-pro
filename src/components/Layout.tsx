@@ -29,7 +29,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
     { name: 'Contact', href: '/contact', current: location.pathname === '/contact' },
     { name: 'Blog', href: '/blog', current: location.pathname === '/blog' },
     { name: 'Exercices', href: '/exercices', current: location.pathname === '/exercices' },
-    { name: 'Ressources en ligne', href: '/anglaisadistance', current: location.pathname === '/anglaisadistance' },
+    
   ];
 
   const toggleMobileMenu = () => {
@@ -250,25 +250,9 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                   </Link>
                 </li>
                 <li>
-                  <Link to="/anglaisadistance" className="text-gray-400 hover:text-white transition-colors">
-                    Ressources en ligne
-                  </Link>
-                </li>
-                <li>
                   <Link to="/dashboard" className="text-gray-400 hover:text-white transition-colors">
                     Mon tableau de bord
                   </Link>
-                </li>
-                <li>
-                  <a
-                    href="https://anglaisadistance.fr"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors flex items-center gap-1"
-                  >
-                    anglaisadistance.fr
-                    <ExternalLink className="h-3 w-3" />
-                  </a>
                 </li>
               </ul>
             </nav>

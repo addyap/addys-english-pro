@@ -66,7 +66,6 @@ async function generateReport() {
     console.log('\n🎯 PRESERVED ROUTES (UNCHANGED):');
     console.log('   - /blog (indexable)');
     console.log('   - /temoignages (indexable)'); 
-    console.log('   - /anglaisadistance (indexable)');
     console.log('   - /politique-confidentialite (indexable)');
 
     console.log('\n🚫 EXCLUDED FROM INDEXING:');

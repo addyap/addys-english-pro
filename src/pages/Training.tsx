@@ -268,16 +268,14 @@ const Training = () => {
               
               <p className="text-muted-foreground">
                 <span className="text-lg mr-2">🎓</span>
-                En parallèle de mes formations, je mets à disposition des ressources gratuites sur{' '}
-                <a 
-                  href="https://anglaisadistance.fr" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+                En parallèle de mes formations, je mets à disposition des{' '}
+                <Link 
+                  to="/exercices"
                   className="font-semibold text-accent hover:text-accent/80 transition-colors"
                 >
-                  anglaisadistance.fr
-                </a>
-                {' '}— un site dédié à l'apprentissage de l'anglais en autonomie : grammaire claire, vocabulaire utile, dialogues pratiques, quiz interactifs, et bien plus.
+                  ressources gratuites
+                </Link>
+                {' '}— grammaire claire, vocabulaire utile, dialogues pratiques, quiz interactifs, et bien plus.
               </p>
             </div>
           </FadeInSection>

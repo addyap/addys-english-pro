@@ -6,7 +6,7 @@
     { "path": "/contact", "priority": 0.9, "changefreq": "monthly", "title": "Contact" },
     { "path": "/offres-de-formation", "priority": 0.9, "changefreq": "weekly", "title": "Offres de formation" },
     { "path": "/temoignages", "priority": 0.8, "changefreq": "monthly", "title": "Témoignages" },
-    { "path": "/anglaisadistance", "priority": 0.8, "changefreq": "monthly", "title": "Anglais à distance" },
+    
     { "path": "/blog", "priority": 0.8, "changefreq": "weekly", "title": "Blog" },
     { "path": "/exercices", "priority": 0.8, "changefreq": "weekly", "title": "Exercices" },
     { "path": "/reading", "priority": 0.8, "changefreq": "weekly", "title": "Lecture" },

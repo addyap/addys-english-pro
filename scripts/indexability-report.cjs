@@ -46,7 +46,7 @@ console.log('✅ Shopify product paths redirected');
 
 // Check preserved routes
 console.log('\n🛡️ PRESERVED ROUTES (indexable):');
-const preservedRoutes = ['/blog', '/temoignages', '/mentions-legales', '/anglaisadistance'];
+const preservedRoutes = ['/blog', '/temoignages', '/mentions-legales'];
 preservedRoutes.forEach(route => {
   console.log(`✅ ${route} - preserved and indexable`);
 });
