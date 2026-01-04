@@ -983,6 +983,106 @@ const Exercises = () => {
           </div>
         );
 
+      case 'crossword':
+        return (
+          <div className="space-y-6">
+            <button onClick={() => setActiveSubTab(null)} className="text-primary hover:underline flex items-center gap-1">
+              ← Retour aux catégories
+            </button>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-primary mb-2 font-heading">Crossword Puzzles</h2>
+              <p className="text-muted-foreground">{crosswordExercises.length} vocabulary puzzles</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {crosswordExercises.map((ex) => (
+                <Card key={ex.id} className="hover:shadow-md transition-shadow">
+                  <CardHeader className="pb-2"><CardTitle className="text-base">{ex.title}</CardTitle></CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground mb-3">{ex.description}</p>
+                    <Badge variant="outline" className="mb-3">{ex.difficulty}</Badge>
+                    <Link to={`/exercices/crossword/${ex.id}`}><Button size="sm" className="w-full gap-2">Commencer <ChevronRight className="h-4 w-4" /></Button></Link>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        );
+
+      case 'matching':
+        return (
+          <div className="space-y-6">
+            <button onClick={() => setActiveSubTab(null)} className="text-primary hover:underline flex items-center gap-1">
+              ← Retour aux catégories
+            </button>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-primary mb-2 font-heading">Matching Exercises</h2>
+              <p className="text-muted-foreground">{matchingExercises.length} pair matching exercises</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {matchingExercises.map((ex) => (
+                <Card key={ex.id} className="hover:shadow-md transition-shadow">
+                  <CardHeader className="pb-2"><CardTitle className="text-base">{ex.title}</CardTitle></CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground mb-3">{ex.description}</p>
+                    <Badge variant="outline" className="mb-3">{ex.pairs.length} pairs</Badge>
+                    <Link to={`/exercices/matching/${ex.id}`}><Button size="sm" className="w-full gap-2">Commencer <ChevronRight className="h-4 w-4" /></Button></Link>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        );
+
+      case 'dialogue':
+        return (
+          <div className="space-y-6">
+            <button onClick={() => setActiveSubTab(null)} className="text-primary hover:underline flex items-center gap-1">
+              ← Retour aux catégories
+            </button>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-primary mb-2 font-heading">Dialogue Completion</h2>
+              <p className="text-muted-foreground">{dialogueExercises.length} conversation exercises</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {dialogueExercises.map((ex) => (
+                <Card key={ex.id} className="hover:shadow-md transition-shadow">
+                  <CardHeader className="pb-2"><CardTitle className="text-base">{ex.title}</CardTitle></CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground mb-3">{ex.description}</p>
+                    <Badge variant="outline" className="mb-3">{ex.difficulty}</Badge>
+                    <Link to={`/exercices/dialogue/${ex.id}`}><Button size="sm" className="w-full gap-2">Commencer <ChevronRight className="h-4 w-4" /></Button></Link>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        );
+
+      case 'prepositions':
+        return (
+          <div className="space-y-6">
+            <button onClick={() => setActiveSubTab(null)} className="text-primary hover:underline flex items-center gap-1">
+              ← Retour aux catégories
+            </button>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-primary mb-2 font-heading">Preposition Practice</h2>
+              <p className="text-muted-foreground">{prepositionExercises.length} preposition exercises</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {prepositionExercises.map((ex) => (
+                <Card key={ex.id} className="hover:shadow-md transition-shadow">
+                  <CardHeader className="pb-2"><CardTitle className="text-base">{ex.title}</CardTitle></CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground mb-3">{ex.description}</p>
+                    <Badge variant="outline" className="mb-3">{ex.difficulty}</Badge>
+                    <Link to={`/exercices/prepositions/${ex.id}`}><Button size="sm" className="w-full gap-2">Commencer <ChevronRight className="h-4 w-4" /></Button></Link>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        );
+
       default:
         return null;
     }
@@ -1275,6 +1375,36 @@ const Exercises = () => {
                         count={fillInTypingExercises.length}
                         colorClass="border-slate-300 bg-slate-50 hover:border-slate-500 hover:bg-slate-100 text-slate-700 dark:border-slate-700 dark:bg-slate-900/20 dark:hover:bg-slate-900/40 dark:text-slate-300"
                         onClick={() => setActiveSubTab('fill-typing')}
+                      />
+                      <CategoryCard 
+                        icon={Puzzle} 
+                        title="Crossword" 
+                        count={crosswordExercises.length}
+                        colorClass="border-fuchsia-300 bg-fuchsia-50 hover:border-fuchsia-500 hover:bg-fuchsia-100 text-fuchsia-700 dark:border-fuchsia-700 dark:bg-fuchsia-900/20 dark:hover:bg-fuchsia-900/40 dark:text-fuchsia-300"
+                        onClick={() => setActiveSubTab('crossword')}
+                      />
+                      <CategoryCard 
+                        icon={Link2} 
+                        title="Matching" 
+                        count={matchingExercises.length}
+                        colorClass="border-lime-300 bg-lime-50 hover:border-lime-500 hover:bg-lime-100 text-lime-700 dark:border-lime-700 dark:bg-lime-900/20 dark:hover:bg-lime-900/40 dark:text-lime-300"
+                        onClick={() => setActiveSubTab('matching')}
+                      />
+                      <CategoryCard 
+                        icon={MessageCircle} 
+                        title="Dialogue" 
+                        count={dialogueExercises.length}
+                        colorClass="border-sky-300 bg-sky-50 hover:border-sky-500 hover:bg-sky-100 text-sky-700 dark:border-sky-700 dark:bg-sky-900/20 dark:hover:bg-sky-900/40 dark:text-sky-300"
+                        onClick={() => setActiveSubTab('dialogue')}
+                      />
+                    </div>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                      <CategoryCard 
+                        icon={Target} 
+                        title="Prépositions" 
+                        count={prepositionExercises.length}
+                        colorClass="border-rose-300 bg-rose-50 hover:border-rose-500 hover:bg-rose-100 text-rose-700 dark:border-rose-700 dark:bg-rose-900/20 dark:hover:bg-rose-900/40 dark:text-rose-300"
+                        onClick={() => setActiveSubTab('prepositions')}
                       />
                     </div>
                   </>

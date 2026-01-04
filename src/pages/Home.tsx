@@ -24,10 +24,15 @@ const EXERCISE_COUNTS = {
   dictation: 6,       // dictationExercises
   translation: 6,     // translationExercises
   stories: 5,         // interactiveStories
+  crossword: 4,       // crosswordExercises
+  matching: 4,        // matchingExercises
+  dialogue: 4,        // dialogueExercises
+  prepositions: 4,    // prepositionExercises
   get total() {
     return this.grammar + this.vocabulary + this.reading + this.listening + 
            this.dragDrop + this.writing + this.idioms + this.phrasalVerbs + 
-           this.collocations + this.dictation + this.translation + this.stories;
+           this.collocations + this.dictation + this.translation + this.stories +
+           this.crossword + this.matching + this.dialogue + this.prepositions;
   },
   get questions() {
     // Rough estimate: 10 questions per exercise on average
