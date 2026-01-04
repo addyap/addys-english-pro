@@ -2170,6 +2170,800 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     description: 'Maîtrisez unless, as long as et provided pour exprimer des conditions en anglais.',
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
     relatedExerciseId: 'unless-as-long-as-provided'
+  },
+  // ============== NEW VOCABULARY & ADVANCED ARTICLES 2026 ==============
+  {
+    id: 'make-vs-do',
+    title: 'Make vs Do : Quelle différence en anglais ?',
+    excerpt: 'Make et Do sont souvent confondus par les francophones. Découvrez les règles simples pour ne plus jamais les confondre.',
+    content: `
+      <p>Les verbes <strong>MAKE</strong> et <strong>DO</strong> se traduisent tous deux par "faire" en français, ce qui crée beaucoup de confusion. Voici comment les différencier.</p>
+
+      <h2>DO : activités et tâches</h2>
+      <p>Utilisez <strong>DO</strong> pour :</p>
+      <ul>
+        <li><strong>Les tâches ménagères</strong> : do the dishes, do the laundry, do the housework</li>
+        <li><strong>Le travail</strong> : do homework, do a job, do business</li>
+        <li><strong>Les activités générales</strong> : do exercise, do sport, do yoga</li>
+        <li><strong>Les expressions avec nothing/something/anything</strong> : do nothing, do something</li>
+      </ul>
+
+      <h2>MAKE : création et production</h2>
+      <p>Utilisez <strong>MAKE</strong> pour :</p>
+      <ul>
+        <li><strong>Créer quelque chose</strong> : make a cake, make dinner, make a dress</li>
+        <li><strong>Sons et paroles</strong> : make a noise, make a speech, make a comment</li>
+        <li><strong>Argent</strong> : make money, make a profit, make a living</li>
+        <li><strong>Décisions et plans</strong> : make a decision, make plans, make a choice</li>
+      </ul>
+
+      <h2>Expressions idiomatiques courantes</h2>
+      <ul>
+        <li><strong>DO</strong> : do your best, do a favor, do harm, do good</li>
+        <li><strong>MAKE</strong> : make a mistake, make friends, make progress, make sense</li>
+      </ul>
+
+      <h2>Astuce mémorisation</h2>
+      <p><strong>MAKE</strong> = vous créez un résultat tangible ou visible<br/>
+      <strong>DO</strong> = vous accomplissez une action ou une tâche</p>
+    `,
+    date: '2026-01-04',
+    author: 'Antony Addy',
+    category: 'Vocabulaire',
+    readTime: '5 min',
+    description: 'Apprenez à différencier Make et Do en anglais avec des règles claires et des exemples pratiques.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'make-vs-do'
+  },
+  {
+    id: 'say-vs-tell',
+    title: 'Say vs Tell : Comment les utiliser correctement',
+    excerpt: 'Say et Tell posent souvent problème. Découvrez la règle simple qui vous aidera à choisir le bon verbe à chaque fois.',
+    content: `
+      <p>La différence entre <strong>SAY</strong> et <strong>TELL</strong> est simple une fois que vous connaissez la règle de base.</p>
+
+      <h2>La règle fondamentale</h2>
+      <ul>
+        <li><strong>SAY</strong> : ne nécessite PAS de complément de personne</li>
+        <li><strong>TELL</strong> : nécessite TOUJOURS un complément de personne</li>
+      </ul>
+
+      <h2>Exemples avec SAY</h2>
+      <ul>
+        <li>He <strong>said</strong> (that) he was tired.</li>
+        <li>She <strong>said</strong> hello.</li>
+        <li>"I'm leaving," he <strong>said</strong>.</li>
+        <li>He <strong>said to me</strong> that... (avec "to" si on ajoute la personne)</li>
+      </ul>
+
+      <h2>Exemples avec TELL</h2>
+      <ul>
+        <li>He <strong>told me</strong> (that) he was tired.</li>
+        <li>She <strong>told him</strong> to wait.</li>
+        <li>They <strong>told us</strong> a story.</li>
+        <li>❌ He told that he was tired. (INCORRECT - il manque "me/him/her")</li>
+      </ul>
+
+      <h2>Expressions figées</h2>
+      <ul>
+        <li><strong>TELL</strong> : tell a story, tell a lie, tell the truth, tell a joke, tell the time</li>
+        <li><strong>SAY</strong> : say sorry, say goodbye, say a prayer, say a word</li>
+      </ul>
+
+      <h2>Astuce</h2>
+      <p>Si vous pouvez placer "somebody" après le verbe → utilisez TELL<br/>
+      Sinon → utilisez SAY</p>
+    `,
+    date: '2026-01-03',
+    author: 'Antony Addy',
+    category: 'Vocabulaire',
+    readTime: '4 min',
+    description: 'Maîtrisez la différence entre Say et Tell avec cette règle simple et des exemples concrets.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'say-vs-tell'
+  },
+  {
+    id: 'bring-vs-take',
+    title: 'Bring vs Take : Une question de direction',
+    excerpt: 'Bring et Take dépendent de la direction du mouvement. Apprenez à choisir le bon verbe selon le contexte.',
+    content: `
+      <p>La distinction entre <strong>BRING</strong> et <strong>TAKE</strong> repose sur la direction du mouvement par rapport au locuteur.</p>
+
+      <h2>La règle de base</h2>
+      <ul>
+        <li><strong>BRING</strong> : mouvement VERS le locuteur ou le lieu de référence</li>
+        <li><strong>TAKE</strong> : mouvement LOIN du locuteur ou du lieu de référence</li>
+      </ul>
+
+      <h2>Exemples avec BRING (vers moi)</h2>
+      <ul>
+        <li>"<strong>Bring</strong> me a glass of water, please." (apporte vers moi)</li>
+        <li>"Can you <strong>bring</strong> your notes to the meeting?" (vers le lieu de la réunion)</li>
+        <li>"Don't forget to <strong>bring</strong> your passport." (ici, où je suis)</li>
+      </ul>
+
+      <h2>Exemples avec TAKE (loin de moi)</h2>
+      <ul>
+        <li>"<strong>Take</strong> this book to the library." (emmène loin d'ici)</li>
+        <li>"I'll <strong>take</strong> you to the airport." (emmener vers un autre lieu)</li>
+        <li>"Don't forget to <strong>take</strong> your umbrella." (emporter en partant)</li>
+      </ul>
+
+      <h2>Astuce visuelle</h2>
+      <p>Imaginez une flèche :</p>
+      <ul>
+        <li>→ vers vous = BRING</li>
+        <li>← loin de vous = TAKE</li>
+      </ul>
+
+      <h2>Attention au contexte</h2>
+      <p>"Can I <strong>bring</strong> a friend to the party?" (le locuteur sera à la fête)<br/>
+      "Can I <strong>take</strong> a friend to the party?" (le locuteur parle depuis un autre lieu)</p>
+    `,
+    date: '2026-01-02',
+    author: 'Antony Addy',
+    category: 'Vocabulaire',
+    readTime: '4 min',
+    description: 'Comprenez la différence entre Bring et Take selon la direction du mouvement.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'bring-vs-take'
+  },
+  {
+    id: 'lend-vs-borrow',
+    title: 'Lend vs Borrow : Qui donne et qui reçoit ?',
+    excerpt: 'Lend et Borrow sont souvent inversés. Découvrez la différence simple entre ces deux verbes.',
+    content: `
+      <p>La confusion entre <strong>LEND</strong> et <strong>BORROW</strong> vient du fait qu'ils décrivent la même action mais de perspectives opposées.</p>
+
+      <h2>La différence fondamentale</h2>
+      <ul>
+        <li><strong>LEND</strong> = prêter (je donne temporairement)</li>
+        <li><strong>BORROW</strong> = emprunter (je reçois temporairement)</li>
+      </ul>
+
+      <h2>Exemples avec LEND</h2>
+      <ul>
+        <li>"Can you <strong>lend</strong> me £20?" (peux-tu me prêter)</li>
+        <li>"I <strong>lent</strong> him my car." (je lui ai prêté)</li>
+        <li>"The bank <strong>lends</strong> money." (la banque prête)</li>
+      </ul>
+
+      <h2>Exemples avec BORROW</h2>
+      <ul>
+        <li>"Can I <strong>borrow</strong> your pen?" (puis-je emprunter)</li>
+        <li>"She <strong>borrowed</strong> a book from the library." (elle a emprunté)</li>
+        <li>"He always <strong>borrows</strong> money from his friends." (il emprunte toujours)</li>
+      </ul>
+
+      <h2>Structure importante</h2>
+      <ul>
+        <li><strong>LEND</strong> something <strong>TO</strong> someone</li>
+        <li><strong>BORROW</strong> something <strong>FROM</strong> someone</li>
+      </ul>
+
+      <h2>Astuce mémorisation</h2>
+      <p>Pensez à la direction de l'objet :<br/>
+      <strong>LEND</strong> → l'objet part de moi<br/>
+      <strong>BORROW</strong> → l'objet vient vers moi</p>
+    `,
+    date: '2026-01-01',
+    author: 'Antony Addy',
+    category: 'Vocabulaire',
+    readTime: '4 min',
+    description: 'Ne confondez plus Lend et Borrow grâce à cette explication claire.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'lend-vs-borrow'
+  },
+  {
+    id: 'learn-vs-teach',
+    title: 'Learn vs Teach : Apprendre ou enseigner ?',
+    excerpt: 'Learn et Teach sont parfois confondus. Découvrez comment les utiliser correctement.',
+    content: `
+      <p>En français, "apprendre" peut signifier à la fois "learn" et "teach". En anglais, ces deux verbes sont bien distincts.</p>
+
+      <h2>La différence</h2>
+      <ul>
+        <li><strong>LEARN</strong> = apprendre (acquérir des connaissances)</li>
+        <li><strong>TEACH</strong> = enseigner/apprendre à quelqu'un (transmettre des connaissances)</li>
+      </ul>
+
+      <h2>Exemples avec LEARN</h2>
+      <ul>
+        <li>"I'm <strong>learning</strong> English." (J'apprends l'anglais)</li>
+        <li>"She <strong>learned</strong> to drive last year." (Elle a appris à conduire)</li>
+        <li>"We <strong>learn</strong> from our mistakes." (On apprend de nos erreurs)</li>
+      </ul>
+
+      <h2>Exemples avec TEACH</h2>
+      <ul>
+        <li>"She <strong>teaches</strong> English." (Elle enseigne l'anglais)</li>
+        <li>"My father <strong>taught</strong> me to swim." (Mon père m'a appris à nager)</li>
+        <li>"Can you <strong>teach</strong> me how to do this?" (Peux-tu m'apprendre ?)</li>
+      </ul>
+
+      <h2>Erreur fréquente</h2>
+      <p>❌ "He learned me English." → ✅ "He taught me English."<br/>
+      ❌ "I will teach to drive." → ✅ "I will learn to drive."</p>
+
+      <h2>Astuce</h2>
+      <p>Si vous êtes l'élève → LEARN<br/>
+      Si vous êtes le professeur → TEACH</p>
+    `,
+    date: '2025-12-31',
+    author: 'Antony Addy',
+    category: 'Vocabulaire',
+    readTime: '4 min',
+    description: 'Maîtrisez la différence entre Learn et Teach pour ne plus les confondre.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'learn-vs-teach'
+  },
+  {
+    id: 'look-see-watch',
+    title: 'Look, See, Watch : Trois façons de regarder',
+    excerpt: 'Ces trois verbes signifient "regarder" mais s\'utilisent dans des contextes différents. Découvrez leurs nuances.',
+    content: `
+      <p>En anglais, <strong>LOOK</strong>, <strong>SEE</strong> et <strong>WATCH</strong> expriment l'action de voir mais avec des nuances importantes.</p>
+
+      <h2>SEE : perception passive</h2>
+      <p><strong>SEE</strong> = voir (sans effort particulier, involontairement)</p>
+      <ul>
+        <li>"I can <strong>see</strong> the mountains from here." (Je vois)</li>
+        <li>"Did you <strong>see</strong> that car?" (As-tu vu)</li>
+        <li>"I <strong>saw</strong> him at the supermarket." (Je l'ai vu par hasard)</li>
+      </ul>
+
+      <h2>LOOK : regarder activement</h2>
+      <p><strong>LOOK</strong> = regarder (effort volontaire, attention dirigée)</p>
+      <ul>
+        <li>"<strong>Look</strong> at this photo!" (Regarde cette photo !)</li>
+        <li>"She <strong>looked</strong> out of the window." (Elle a regardé par la fenêtre)</li>
+        <li>"I'm <strong>looking</strong> for my keys." (Je cherche)</li>
+      </ul>
+
+      <h2>WATCH : observer avec attention</h2>
+      <p><strong>WATCH</strong> = regarder quelque chose qui bouge ou change</p>
+      <ul>
+        <li>"We <strong>watched</strong> a film last night." (Nous avons regardé un film)</li>
+        <li>"I love <strong>watching</strong> football." (J'aime regarder le foot)</li>
+        <li>"<strong>Watch</strong> the children while I'm out." (Surveille les enfants)</li>
+      </ul>
+
+      <h2>Résumé</h2>
+      <ul>
+        <li><strong>SEE</strong> = perception involontaire</li>
+        <li><strong>LOOK</strong> = diriger son regard (moment bref)</li>
+        <li><strong>WATCH</strong> = observer avec attention (durée)</li>
+      </ul>
+    `,
+    date: '2025-12-30',
+    author: 'Antony Addy',
+    category: 'Vocabulaire',
+    readTime: '5 min',
+    description: 'Apprenez à différencier Look, See et Watch selon le contexte et l\'intention.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'look-see-watch'
+  },
+  {
+    id: 'hear-vs-listen',
+    title: 'Hear vs Listen : Entendre ou écouter ?',
+    excerpt: 'La différence entre Hear et Listen est simple mais essentielle. Découvrez comment les utiliser.',
+    content: `
+      <p>Comme pour Look/See/Watch, la différence entre <strong>HEAR</strong> et <strong>LISTEN</strong> repose sur l'intention et l'attention.</p>
+
+      <h2>HEAR : perception passive</h2>
+      <p><strong>HEAR</strong> = entendre (perception automatique, sans effort)</p>
+      <ul>
+        <li>"I can <strong>hear</strong> music." (J'entends de la musique)</li>
+        <li>"Did you <strong>hear</strong> that noise?" (As-tu entendu ce bruit ?)</li>
+        <li>"I <strong>heard</strong> someone calling my name." (J'ai entendu quelqu'un)</li>
+      </ul>
+
+      <h2>LISTEN : attention active</h2>
+      <p><strong>LISTEN (TO)</strong> = écouter (effort conscient, attention dirigée)</p>
+      <ul>
+        <li>"I'm <strong>listening to</strong> music." (J'écoute de la musique)</li>
+        <li>"<strong>Listen</strong> carefully!" (Écoute bien !)</li>
+        <li>"She never <strong>listens to</strong> my advice." (Elle n'écoute jamais mes conseils)</li>
+      </ul>
+
+      <h2>Structure importante</h2>
+      <ul>
+        <li>HEAR + objet direct : "I hear music."</li>
+        <li>LISTEN + TO + objet : "I listen to music."</li>
+      </ul>
+
+      <h2>Exemples comparatifs</h2>
+      <ul>
+        <li>"I <strong>heard</strong> the doorbell ring." (perception involontaire)</li>
+        <li>"Were you <strong>listening</strong>?" (Est-ce que tu écoutais attentivement ?)</li>
+        <li>"I <strong>heard</strong> what you said, but I wasn't really <strong>listening</strong>." (J'ai entendu, mais je n'écoutais pas vraiment)</li>
+      </ul>
+    `,
+    date: '2025-12-29',
+    author: 'Antony Addy',
+    category: 'Vocabulaire',
+    readTime: '4 min',
+    description: 'Comprenez la différence entre Hear et Listen selon l\'intention et l\'attention.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'hear-vs-listen'
+  },
+  {
+    id: 'speak-vs-talk',
+    title: 'Speak vs Talk : Quand les utiliser ?',
+    excerpt: 'Speak et Talk sont proches mais pas interchangeables. Découvrez leurs différences subtiles.',
+    content: `
+      <p><strong>SPEAK</strong> et <strong>TALK</strong> signifient tous deux "parler" mais ont des nuances d'usage importantes.</p>
+
+      <h2>SPEAK : plus formel</h2>
+      <p><strong>SPEAK</strong> est souvent plus formel et utilisé pour :</p>
+      <ul>
+        <li><strong>Les langues</strong> : "I speak French and English."</li>
+        <li><strong>Discours officiels</strong> : "The CEO spoke at the conference."</li>
+        <li><strong>Au téléphone</strong> : "May I speak to Mr. Smith?"</li>
+        <li><strong>Capacité générale</strong> : "She can speak three languages."</li>
+      </ul>
+
+      <h2>TALK : plus informel</h2>
+      <p><strong>TALK</strong> implique généralement une conversation :</p>
+      <ul>
+        <li><strong>Conversations</strong> : "We talked for hours."</li>
+        <li><strong>Sujets spécifiques</strong> : "Let's talk about the project."</li>
+        <li><strong>Discussions</strong> : "I need to talk to you."</li>
+        <li><strong>Bavardage</strong> : "They were talking during the film."</li>
+      </ul>
+
+      <h2>Expressions figées</h2>
+      <ul>
+        <li><strong>SPEAK</strong> : speak your mind, speak up, speak volumes</li>
+        <li><strong>TALK</strong> : talk nonsense, talk sense, talk shop, small talk</li>
+      </ul>
+
+      <h2>Résumé</h2>
+      <p><strong>SPEAK</strong> = acte de parler (unilatéral ou formel)<br/>
+      <strong>TALK</strong> = échanger (bilatéral, conversation)</p>
+    `,
+    date: '2025-12-28',
+    author: 'Antony Addy',
+    category: 'Vocabulaire',
+    readTime: '4 min',
+    description: 'Maîtrisez les nuances entre Speak et Talk pour parler anglais naturellement.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'speak-vs-talk'
+  },
+  {
+    id: 'rise-vs-raise',
+    title: 'Rise vs Raise : Transitif ou intransitif ?',
+    excerpt: 'Rise et Raise sont souvent confondus. La clé est de comprendre si le verbe a un objet direct ou non.',
+    content: `
+      <p>La différence entre <strong>RISE</strong> et <strong>RAISE</strong> repose sur une règle grammaticale simple.</p>
+
+      <h2>La règle fondamentale</h2>
+      <ul>
+        <li><strong>RISE</strong> (intransitif) = monter/s'élever (PAS d'objet direct)</li>
+        <li><strong>RAISE</strong> (transitif) = lever/augmenter (AVEC objet direct)</li>
+      </ul>
+
+      <h2>RISE : le sujet monte lui-même</h2>
+      <ul>
+        <li>"The sun <strong>rises</strong> in the east." (Le soleil se lève)</li>
+        <li>"Prices are <strong>rising</strong>." (Les prix augmentent)</li>
+        <li>"She <strong>rose</strong> from her chair." (Elle s'est levée)</li>
+        <li>Conjugaison : rise - rose - risen</li>
+      </ul>
+
+      <h2>RAISE : le sujet fait monter quelque chose</h2>
+      <ul>
+        <li>"<strong>Raise</strong> your hand." (Lève ta main)</li>
+        <li>"They <strong>raised</strong> prices." (Ils ont augmenté les prix)</li>
+        <li>"He <strong>raised</strong> the flag." (Il a hissé le drapeau)</li>
+        <li>Conjugaison : raise - raised - raised</li>
+      </ul>
+
+      <h2>Autres sens de RAISE</h2>
+      <ul>
+        <li>Élever des enfants : "She raised three children."</li>
+        <li>Collecter des fonds : "We raised £5000 for charity."</li>
+        <li>Soulever une question : "He raised an important issue."</li>
+      </ul>
+    `,
+    date: '2025-12-27',
+    author: 'Antony Addy',
+    category: 'Vocabulaire',
+    readTime: '4 min',
+    description: 'Apprenez à distinguer Rise (intransitif) et Raise (transitif) facilement.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'rise-vs-raise'
+  },
+  {
+    id: 'lie-vs-lay',
+    title: 'Lie vs Lay : Le piège grammatical classique',
+    excerpt: 'Même les anglophones natifs confondent Lie et Lay. Voici comment ne plus faire cette erreur.',
+    content: `
+      <p>La confusion entre <strong>LIE</strong> et <strong>LAY</strong> est si courante qu'elle pose problème même aux anglophones natifs.</p>
+
+      <h2>La règle</h2>
+      <ul>
+        <li><strong>LIE</strong> (intransitif) = être allongé (PAS d'objet)</li>
+        <li><strong>LAY</strong> (transitif) = poser/déposer (AVEC objet)</li>
+      </ul>
+
+      <h2>LIE : s'allonger, être couché</h2>
+      <ul>
+        <li>"I need to <strong>lie</strong> down." (Je dois m'allonger)</li>
+        <li>"The book <strong>lies</strong> on the table." (Le livre est posé sur)</li>
+        <li>"She was <strong>lying</strong> on the sofa." (Elle était allongée)</li>
+        <li>Conjugaison : lie - lay - lain (attention au passé !)</li>
+      </ul>
+
+      <h2>LAY : poser quelque chose</h2>
+      <ul>
+        <li>"<strong>Lay</strong> the book on the table." (Pose le livre)</li>
+        <li>"She <strong>laid</strong> the baby in the crib." (Elle a posé le bébé)</li>
+        <li>"Hens <strong>lay</strong> eggs." (Les poules pondent des œufs)</li>
+        <li>Conjugaison : lay - laid - laid</li>
+      </ul>
+
+      <h2>La source de confusion</h2>
+      <p>Le passé de LIE (lay) est identique au présent de LAY !</p>
+      <ul>
+        <li>"I <strong>lay</strong> on the beach yesterday." (passé de lie = j'étais allongé)</li>
+        <li>"I <strong>lay</strong> the towel on the sand." (présent de lay = je pose)</li>
+      </ul>
+    `,
+    date: '2025-12-26',
+    author: 'Antony Addy',
+    category: 'Vocabulaire',
+    readTime: '5 min',
+    description: 'Maîtrisez enfin la différence entre Lie et Lay avec cette explication détaillée.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'lie-vs-lay'
+  },
+  {
+    id: 'fun-vs-funny',
+    title: 'Fun vs Funny : Amusant ou drôle ?',
+    excerpt: 'Fun et Funny sont souvent confondus. Découvrez leurs différences de sens et d\'usage.',
+    content: `
+      <p>Bien que <strong>FUN</strong> et <strong>FUNNY</strong> se traduisent souvent par "amusant", ils ont des sens distincts.</p>
+
+      <h2>FUN : agréable, divertissant</h2>
+      <p><strong>FUN</strong> décrit quelque chose d'agréable et plaisant :</p>
+      <ul>
+        <li>"The party was <strong>fun</strong>." (La fête était amusante)</li>
+        <li>"We had <strong>fun</strong> at the beach." (On s'est bien amusés)</li>
+        <li>"It's <strong>fun</strong> to play video games." (C'est amusant de jouer)</li>
+        <li>FUN est souvent un nom : "Have fun!" (Amuse-toi !)</li>
+      </ul>
+
+      <h2>FUNNY : qui fait rire / étrange</h2>
+      <p><strong>FUNNY</strong> a deux sens :</p>
+      <ul>
+        <li><strong>Drôle, comique</strong> : "He told a <strong>funny</strong> joke." (une blague drôle)</li>
+        <li><strong>Bizarre, étrange</strong> : "There's something <strong>funny</strong> about him." (quelque chose de bizarre)</li>
+        <li>"That's <strong>funny</strong>!" peut signifier "C'est drôle !" ou "C'est bizarre !"</li>
+      </ul>
+
+      <h2>Comparaison</h2>
+      <ul>
+        <li>"The film was <strong>fun</strong>." (agréable à regarder, divertissant)</li>
+        <li>"The film was <strong>funny</strong>." (il m'a fait rire)</li>
+        <li>"It was <strong>fun</strong> to be with him." (agréable)</li>
+        <li>"He's very <strong>funny</strong>." (il me fait rire / il est bizarre)</li>
+      </ul>
+    `,
+    date: '2025-12-25',
+    author: 'Antony Addy',
+    category: 'Vocabulaire',
+    readTime: '4 min',
+    description: 'Comprenez la différence entre Fun (agréable) et Funny (drôle/bizarre).',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'fun-vs-funny'
+  },
+  {
+    id: 'still-yet-already',
+    title: 'Still, Yet, Already : Maîtriser ces adverbes de temps',
+    excerpt: 'Ces trois adverbes expriment des nuances temporelles importantes. Découvrez comment les utiliser.',
+    content: `
+      <p><strong>STILL</strong>, <strong>YET</strong> et <strong>ALREADY</strong> sont essentiels pour exprimer des nuances temporelles.</p>
+
+      <h2>STILL : toujours, encore (continuation)</h2>
+      <p>Exprime qu'une situation continue :</p>
+      <ul>
+        <li>"He's <strong>still</strong> sleeping." (Il dort encore)</li>
+        <li>"I <strong>still</strong> love you." (Je t'aime toujours)</li>
+        <li>"Do you <strong>still</strong> work there?" (Tu travailles toujours là-bas ?)</li>
+        <li>Position : avant le verbe principal</li>
+      </ul>
+
+      <h2>YET : déjà / encore (questions et négations)</h2>
+      <p>Utilisé principalement en questions et négations :</p>
+      <ul>
+        <li>"Have you finished <strong>yet</strong>?" (Tu as déjà fini ?)</li>
+        <li>"I haven't eaten <strong>yet</strong>." (Je n'ai pas encore mangé)</li>
+        <li>"Is she here <strong>yet</strong>?" (Elle est déjà là ?)</li>
+        <li>Position : en fin de phrase</li>
+      </ul>
+
+      <h2>ALREADY : déjà (affirmation)</h2>
+      <p>Exprime que quelque chose s'est produit plus tôt que prévu :</p>
+      <ul>
+        <li>"I've <strong>already</strong> finished." (J'ai déjà fini)</li>
+        <li>"She's <strong>already</strong> here!" (Elle est déjà là !)</li>
+        <li>"I <strong>already</strong> know." (Je sais déjà)</li>
+        <li>Position : avant le verbe principal</li>
+      </ul>
+
+      <h2>Résumé</h2>
+      <p><strong>STILL</strong> = ça continue<br/>
+      <strong>YET</strong> = pas encore / déjà ? (négations/questions)<br/>
+      <strong>ALREADY</strong> = c'est fait (plus tôt que prévu)</p>
+    `,
+    date: '2025-12-24',
+    author: 'Antony Addy',
+    category: 'Vocabulaire',
+    readTime: '5 min',
+    description: 'Maîtrisez Still, Yet et Already pour exprimer les nuances temporelles en anglais.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'still-yet-already'
+  },
+  {
+    id: 'actually-currently',
+    title: 'Actually vs Currently : Les faux amis à éviter',
+    excerpt: 'Actually ne signifie pas "actuellement" ! Découvrez ce faux ami classique et comment l\'éviter.',
+    content: `
+      <p><strong>ACTUALLY</strong> est l'un des faux amis les plus courants entre le français et l'anglais.</p>
+
+      <h2>ACTUALLY ≠ Actuellement</h2>
+      <p><strong>ACTUALLY</strong> = en fait, vraiment, à vrai dire</p>
+      <ul>
+        <li>"<strong>Actually</strong>, I don't agree." (En fait, je ne suis pas d'accord)</li>
+        <li>"It was <strong>actually</strong> quite good." (C'était vraiment assez bien)</li>
+        <li>"What <strong>actually</strong> happened?" (Que s'est-il vraiment passé ?)</li>
+      </ul>
+
+      <h2>CURRENTLY = Actuellement</h2>
+      <p><strong>CURRENTLY</strong> = en ce moment, actuellement</p>
+      <ul>
+        <li>"I'm <strong>currently</strong> working on a project." (Je travaille actuellement sur un projet)</li>
+        <li>"She's <strong>currently</strong> in London." (Elle est actuellement à Londres)</li>
+        <li>"We <strong>currently</strong> have 50 employees." (Nous avons actuellement 50 employés)</li>
+      </ul>
+
+      <h2>Autres équivalents de "actuellement"</h2>
+      <ul>
+        <li><strong>At the moment</strong> : "I'm busy at the moment."</li>
+        <li><strong>Right now</strong> : "I can't talk right now."</li>
+        <li><strong>Presently</strong> (formel) : "The CEO is presently unavailable."</li>
+      </ul>
+
+      <h2>Erreur classique</h2>
+      <p>❌ "I'm actually living in Paris." (ça veut dire "en fait, je vis à Paris")<br/>
+      ✅ "I'm currently living in Paris." (actuellement)</p>
+    `,
+    date: '2025-12-23',
+    author: 'Antony Addy',
+    category: 'Vocabulaire',
+    readTime: '4 min',
+    description: 'Évitez le faux ami Actually vs Currently et parlez anglais plus naturellement.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'actually-currently'
+  },
+  {
+    id: 'fairly-quite-rather',
+    title: 'Fairly, Quite, Rather : Nuances d\'intensité',
+    excerpt: 'Ces trois adverbes modifient l\'intensité des adjectifs. Découvrez leurs différences subtiles.',
+    content: `
+      <p><strong>FAIRLY</strong>, <strong>QUITE</strong> et <strong>RATHER</strong> sont des modificateurs d'intensité souvent mal utilisés.</p>
+
+      <h2>FAIRLY : assez (modéré)</h2>
+      <p><strong>FAIRLY</strong> exprime une intensité modérée, neutre :</p>
+      <ul>
+        <li>"The film was <strong>fairly</strong> good." (Le film était assez bien)</li>
+        <li>"It's <strong>fairly</strong> easy." (C'est assez facile)</li>
+        <li>"She's <strong>fairly</strong> tall." (Elle est assez grande)</li>
+        <li>Intensité : environ 60-70%</li>
+      </ul>
+
+      <h2>QUITE : plutôt / assez (peut être fort)</h2>
+      <p><strong>QUITE</strong> peut avoir deux sens selon le contexte :</p>
+      <ul>
+        <li>Avec adjectifs gradables : "It's <strong>quite</strong> good." (assez bien)</li>
+        <li>Avec adjectifs absolus : "It's <strong>quite</strong> amazing!" (vraiment incroyable)</li>
+        <li>Intensité variable : 70-90%</li>
+      </ul>
+
+      <h2>RATHER : plutôt (plus fort, parfois négatif)</h2>
+      <p><strong>RATHER</strong> est plus fort et peut exprimer une surprise ou une nuance négative :</p>
+      <ul>
+        <li>"It was <strong>rather</strong> expensive." (C'était plutôt cher - un peu trop)</li>
+        <li>"I'm <strong>rather</strong> tired." (Je suis plutôt fatigué)</li>
+        <li>"The book was <strong>rather</strong> boring." (Le livre était plutôt ennuyeux)</li>
+        <li>Intensité : 75-85%</li>
+      </ul>
+
+      <h2>Échelle d'intensité</h2>
+      <p>FAIRLY < QUITE < RATHER < VERY</p>
+    `,
+    date: '2025-12-22',
+    author: 'Antony Addy',
+    category: 'Vocabulaire',
+    readTime: '5 min',
+    description: 'Maîtrisez Fairly, Quite et Rather pour nuancer vos descriptions en anglais.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'fairly-quite-rather'
+  },
+  {
+    id: 'classic-vs-classical',
+    title: 'Classic vs Classical : Une différence importante',
+    excerpt: 'Classic et Classical ne sont pas interchangeables. Découvrez quand utiliser chacun.',
+    content: `
+      <p><strong>CLASSIC</strong> et <strong>CLASSICAL</strong> ont des sens distincts malgré leur apparence similaire.</p>
+
+      <h2>CLASSIC : typique, emblématique, intemporel</h2>
+      <p>Quelque chose de reconnu comme excellent ou typique :</p>
+      <ul>
+        <li>"It's a <strong>classic</strong> mistake." (une erreur typique/classique)</li>
+        <li>"Casablanca is a <strong>classic</strong> film." (un film emblématique)</li>
+        <li>"That's <strong>classic</strong> John!" (C'est bien John !)</li>
+        <li>"<strong>Classic</strong> car" (voiture de collection, emblématique)</li>
+      </ul>
+
+      <h2>CLASSICAL : lié à l'Antiquité ou à la tradition formelle</h2>
+      <p>Se réfère à une tradition formelle ou à l'Antiquité :</p>
+      <ul>
+        <li>"<strong>Classical</strong> music" (musique classique - Mozart, Beethoven)</li>
+        <li>"<strong>Classical</strong> architecture" (architecture gréco-romaine)</li>
+        <li>"<strong>Classical</strong> languages" (grec et latin)</li>
+        <li>"<strong>Classical</strong> ballet" (ballet classique traditionnel)</li>
+      </ul>
+
+      <h2>Comparaison directe</h2>
+      <ul>
+        <li>"<strong>Classic</strong> rock" (rock emblématique des années 70-80)</li>
+        <li>"<strong>Classical</strong> music" (musique savante occidentale)</li>
+        <li>"A <strong>classic</strong> example" (un exemple typique)</li>
+        <li>"<strong>Classical</strong> studies" (études des civilisations antiques)</li>
+      </ul>
+    `,
+    date: '2025-12-21',
+    author: 'Antony Addy',
+    category: 'Vocabulaire',
+    readTime: '4 min',
+    description: 'Comprenez la différence entre Classic (typique) et Classical (traditionnel/antique).',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'classic-vs-classical'
+  },
+  {
+    id: 'economic-vs-economical',
+    title: 'Economic vs Economical : Ne les confondez plus',
+    excerpt: 'Ces deux adjectifs ont des sens très différents. Découvrez comment les distinguer.',
+    content: `
+      <p><strong>ECONOMIC</strong> et <strong>ECONOMICAL</strong> sont souvent confondus mais ont des sens bien distincts.</p>
+
+      <h2>ECONOMIC : lié à l'économie</h2>
+      <p>Relatif à l'économie, aux finances, au système économique :</p>
+      <ul>
+        <li>"The <strong>economic</strong> crisis" (la crise économique)</li>
+        <li>"<strong>Economic</strong> growth" (la croissance économique)</li>
+        <li>"<strong>Economic</strong> policy" (la politique économique)</li>
+        <li>"<strong>Economic</strong> forecast" (prévisions économiques)</li>
+      </ul>
+
+      <h2>ECONOMICAL : rentable, qui fait des économies</h2>
+      <p>Qui permet d'économiser de l'argent ou des ressources :</p>
+      <ul>
+        <li>"This car is very <strong>economical</strong>." (cette voiture est économique/consomme peu)</li>
+        <li>"An <strong>economical</strong> solution" (une solution rentable)</li>
+        <li>"It's more <strong>economical</strong> to buy in bulk." (plus économique d'acheter en gros)</li>
+        <li>"She's very <strong>economical</strong> with her money." (elle est économe)</li>
+      </ul>
+
+      <h2>Astuce mémorisation</h2>
+      <p><strong>ECONOMIC</strong> = "of the economy" (de l'économie)<br/>
+      <strong>ECONOMICAL</strong> = "saves money" (qui économise)</p>
+
+      <h2>Expressions courantes</h2>
+      <ul>
+        <li>"<strong>Economic</strong> development" (développement économique)</li>
+        <li>"<strong>Economical</strong> with the truth" (qui enjolive la vérité)</li>
+      </ul>
+    `,
+    date: '2025-12-20',
+    author: 'Antony Addy',
+    category: 'Vocabulaire',
+    readTime: '4 min',
+    description: 'Maîtrisez la différence entre Economic (économie) et Economical (économique/rentable).',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'economic-vs-economical'
+  },
+  {
+    id: 'historic-vs-historical',
+    title: 'Historic vs Historical : Quelle différence ?',
+    excerpt: 'Historic et Historical ne sont pas synonymes. Apprenez à les utiliser correctement.',
+    content: `
+      <p><strong>HISTORIC</strong> et <strong>HISTORICAL</strong> sont souvent interchangés à tort.</p>
+
+      <h2>HISTORIC : important dans l'histoire</h2>
+      <p>Quelque chose qui a marqué l'histoire, qui est mémorable :</p>
+      <ul>
+        <li>"A <strong>historic</strong> moment" (un moment historique, mémorable)</li>
+        <li>"The <strong>historic</strong> moon landing" (l'alunissage historique)</li>
+        <li>"A <strong>historic</strong> victory" (une victoire historique)</li>
+        <li>"This is a <strong>historic</strong> occasion." (une occasion mémorable)</li>
+      </ul>
+
+      <h2>HISTORICAL : relatif à l'histoire</h2>
+      <p>Qui concerne l'histoire comme discipline ou le passé :</p>
+      <ul>
+        <li>"<strong>Historical</strong> documents" (documents historiques)</li>
+        <li>"A <strong>historical</strong> novel" (un roman historique)</li>
+        <li>"<strong>Historical</strong> accuracy" (exactitude historique)</li>
+        <li>"<strong>Historical</strong> research" (recherche historique)</li>
+      </ul>
+
+      <h2>Comparaison</h2>
+      <ul>
+        <li>"A <strong>historic</strong> building" (bâtiment qui a marqué l'histoire)</li>
+        <li>"A <strong>historical</strong> building" (bâtiment ancien, du passé)</li>
+        <li>"<strong>Historic</strong> speech" (discours mémorable)</li>
+        <li>"<strong>Historical</strong> speech" (discours du passé, dans un contexte historique)</li>
+      </ul>
+
+      <h2>Astuce</h2>
+      <p><strong>HISTORIC</strong> = "made history" (a fait l'histoire)<br/>
+      <strong>HISTORICAL</strong> = "about history" (à propos de l'histoire)</p>
+    `,
+    date: '2025-12-19',
+    author: 'Antony Addy',
+    category: 'Vocabulaire',
+    readTime: '4 min',
+    description: 'Distinguez Historic (mémorable) et Historical (relatif à l\'histoire).',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'historic-vs-historical'
+  },
+  {
+    id: 'used-to-be-used-to',
+    title: 'Used to vs Be used to : Habitudes passées et présentes',
+    excerpt: 'Ces deux expressions sont souvent confondues. Découvrez leurs différences de sens et de structure.',
+    content: `
+      <p><strong>USED TO</strong> et <strong>BE USED TO</strong> expriment des concepts différents liés aux habitudes.</p>
+
+      <h2>USED TO : habitude passée (qui n'existe plus)</h2>
+      <p>Structure : <strong>used to + infinitif</strong></p>
+      <ul>
+        <li>"I <strong>used to</strong> smoke." (Je fumais - je ne fume plus)</li>
+        <li>"She <strong>used to</strong> live in Paris." (Elle vivait à Paris)</li>
+        <li>"We <strong>used to</strong> play together." (On jouait ensemble)</li>
+        <li>Négation : "I didn't use to like coffee."</li>
+        <li>Question : "Did you use to work here?"</li>
+      </ul>
+
+      <h2>BE USED TO : être habitué à</h2>
+      <p>Structure : <strong>be used to + nom/gérondif (-ing)</strong></p>
+      <ul>
+        <li>"I <strong>am used to</strong> the noise." (Je suis habitué au bruit)</li>
+        <li>"She <strong>is used to</strong> working late." (Elle est habituée à travailler tard)</li>
+        <li>"I'm not <strong>used to</strong> driving on the left." (Je ne suis pas habitué à...)</li>
+      </ul>
+
+      <h2>GET USED TO : s'habituer à</h2>
+      <p>Pour exprimer le processus d'habituation :</p>
+      <ul>
+        <li>"I'm <strong>getting used to</strong> my new job." (Je m'habitue à...)</li>
+        <li>"You'll <strong>get used to</strong> it." (Tu t'y habitueras)</li>
+      </ul>
+
+      <h2>Résumé</h2>
+      <p><strong>USED TO</strong> + infinitif = habitude passée<br/>
+      <strong>BE USED TO</strong> + -ing/nom = être habitué<br/>
+      <strong>GET USED TO</strong> + -ing/nom = s'habituer</p>
+    `,
+    date: '2025-12-18',
+    author: 'Antony Addy',
+    category: 'Grammaire - Structures',
+    readTime: '5 min',
+    description: 'Maîtrisez Used to et Be used to pour parler des habitudes en anglais.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
+    relatedExerciseId: 'used-to-be-used-to'
   }
 ];
 
