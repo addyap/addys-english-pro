@@ -1,4 +1,4 @@
-const VERSION = 'v2.0.0';
+const VERSION = 'v2.1.0';
 const CACHE_NAME = `antonyaddy-${VERSION}`;
 const STATIC_CACHE = `${CACHE_NAME}-static`;
 const DYNAMIC_CACHE = `${CACHE_NAME}-dynamic`;
@@ -75,17 +75,20 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
 
-  // Static cache strategy for SPA routing (HTML)
+  // Network-first strategy for navigation requests (HTML) to prevent stale content
   if (event.request.mode === 'navigate' || url.pathname === '/' || url.pathname.endsWith('.html')) {
     event.respondWith(
-      caches.match(event.request)
-        .then(response => {
-          return response || fetch(event.request).then(networkResponse => {
-            caches.open(STATIC_CACHE).then(cache => {
-              cache.put(event.request, networkResponse.clone());
-            });
-            return networkResponse;
+      fetch(event.request)
+        .then(networkResponse => {
+          // Cache the fresh response for offline use
+          caches.open(STATIC_CACHE).then(cache => {
+            cache.put(event.request, networkResponse.clone());
           });
+          return networkResponse;
+        })
+        .catch(() => {
+          // Only use cache as fallback when offline
+          return caches.match(event.request) || caches.match('/index.html');
         })
     );
     return;
