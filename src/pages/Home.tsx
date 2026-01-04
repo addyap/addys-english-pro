@@ -295,8 +295,10 @@ const Home = () => {
               ))}
             </div>
 
-            {/* Lazy-loaded client logos carousel */}
-            <LazyClientCarousel logos={CLIENT_LOGOS} />
+            {/* Lazy-loaded client logos carousel - fixed height prevents CLS */}
+            <div className="min-h-[140px]">
+              <LazyClientCarousel logos={CLIENT_LOGOS} />
+            </div>
           </div>
         </section>
 

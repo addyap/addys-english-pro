@@ -186,13 +186,9 @@ All colors MUST be HSL.
   display: block !important;
 }
 
-/* Hide Google Translate top bar */
+/* Google Translate top bar - prevent layout shift */
 .goog-te-banner-frame {
   display: none !important;
-}
-
-body {
-  top: 0 !important;
 }
 
 /* Google Translate dropdown menu styling */
