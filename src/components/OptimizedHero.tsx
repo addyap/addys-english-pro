@@ -14,7 +14,7 @@ export default function OptimizedHero() {
         <img
           src="/assets/hero-image.png"
           alt="Formation en anglais professionnel avec Antony Addy"
-          className="absolute inset-0 w-full h-full object-contain animate-ken-burns opacity-80"
+          className="absolute inset-0 w-full h-full object-cover animate-ken-burns opacity-80"
           loading="eager"
           decoding="async"
           fetchPriority="high"
