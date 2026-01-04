@@ -11,15 +11,17 @@ export default function OptimizedHero() {
     >
       {/* Background image (restored) */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-primary">
+        {/* eslint-disable-next-line react/no-unknown-property */}
         <img
           src="/assets/hero-image.png"
           alt="Formation en anglais professionnel avec Antony Addy"
           className="absolute inset-0 w-full h-full object-cover animate-ken-burns opacity-80"
-          width="1920"
-          height="1080"
+          width={1920}
+          height={1080}
           loading="eager"
           decoding="async"
-          fetchPriority="high"
+          // @ts-ignore - fetchpriority is valid HTML but not typed in React 18
+          fetchpriority="high"
         />
       </div>
 
