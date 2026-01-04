@@ -50,7 +50,7 @@ export default function FloatingExerciseCTA() {
         className="group flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-5 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
       >
         <Sparkles className="h-5 w-5 animate-pulse" />
-        <span className="font-semibold">Essayer gratuit</span>
+        <span className="font-semibold">Exercices gratuits</span>
       </Link>
       <button
         onClick={handleDismiss}
