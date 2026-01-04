@@ -10,8 +10,16 @@ export default function OptimizedHero() {
       role="banner"
       aria-label="Section principale de présentation"
     >
-      {/* Background - replace with your hero image */}
-      <div className="absolute inset-0 w-full h-full z-0 bg-gradient-to-br from-primary via-primary/80 to-secondary" />
+      {/* Optimized background image with Ken Burns animation */}
+      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+        <img
+          src="/assets/hero-image.png"
+          alt="Formation en anglais professionnel avec Antony Addy"
+          className="absolute inset-0 w-full h-full object-cover animate-ken-burns"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
 
       {/* Enhanced overlay with gradient for better readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/50 z-5" />
