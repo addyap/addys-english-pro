@@ -10,13 +10,13 @@ interface LazyClientCarouselProps {
   logos: ClientLogo[];
 }
 
-// Placeholder while Swiper loads
+// Placeholder while Swiper loads - matches final carousel height
 const CarouselSkeleton = memo(() => (
-  <div className="flex gap-8 overflow-hidden pb-8 justify-center">
+  <div className="flex gap-4 overflow-hidden pb-8 justify-center h-[140px] items-center">
     {[...Array(4)].map((_, i) => (
-      <div key={i} className="flex flex-col items-center min-w-[200px]">
-        <div className="h-24 w-24 bg-muted animate-pulse rounded-lg mb-2" />
-        <div className="h-4 w-32 bg-muted animate-pulse rounded" />
+      <div key={i} className="flex flex-col items-center min-w-[120px]">
+        <div className="h-20 w-20 bg-muted animate-pulse rounded-lg mb-2" />
+        <div className="h-4 w-24 bg-muted animate-pulse rounded" />
       </div>
     ))}
   </div>
