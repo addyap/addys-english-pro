@@ -38,22 +38,17 @@ export default function OptimizedHero() {
       </a>
 
       {/* Content (height now driven by content, not min-h-screen) */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 py-20 md:py-28 text-center hero-title-wrap">
-        <header className="mb-10">
-          <p className="text-lg md:text-xl font-medium tracking-wide uppercase text-primary-foreground/80 mb-4 drop-shadow-lg">
-            Formateur Professionnel d'Adultes depuis 2017
-          </p>
-          
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading leading-[1.1] mb-8 hero-title drop-shadow-2xl text-primary-foreground">
-            Spécialiste en
-            <span className="block text-accent mt-2">anglais professionnel</span>
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-20 text-center hero-title-wrap">
+        <header className="mb-8">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-tight mb-6 hero-title drop-shadow-2xl text-primary-foreground">
+            Spécialiste en anglais professionnel – Formateur Professionnel d'Adultes depuis 2017
           </h1>
 
-          <p className="text-xl md:text-2xl mb-6 font-body drop-shadow-xl max-w-3xl mx-auto text-primary-foreground/90 leading-relaxed">
+          <p className="text-xl md:text-2xl mb-4 font-body drop-shadow-xl max-w-4xl mx-auto text-primary-foreground/90">
             Des formations sur-mesure et plus de 300 exercices gratuits pour progresser à votre rythme.
           </p>
 
-          <p className="text-base md:text-lg mb-10 font-body drop-shadow-lg max-w-2xl mx-auto text-primary-foreground/70">
+          <p className="text-lg mb-8 italic font-body drop-shadow-lg max-w-3xl mx-auto text-primary-foreground/80">
             Formateur britannique – Présentiel dans les Alpes-Maritimes, à distance partout en France
           </p>
         </header>
