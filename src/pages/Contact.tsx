@@ -1,9 +1,9 @@
-
 import React, { useState } from 'react';
 import { MessageSquare, Mail, MapPin, Clock, CheckCircle2 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { trackFormSubmission, trackFormError, trackWhatsAppClick, trackEmailClick } from '@/lib/analytics';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
+import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
   const contactJsonLd = {
@@ -70,10 +70,21 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      console.log('Form submitted:', formData);
+      // Call the edge function to send email
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          prenom: formData.prenom.trim(),
+          nom: formData.nom.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim()
+        }
+      });
+
+      if (error) {
+        throw new Error(error.message || 'Erreur lors de l\'envoi');
+      }
+
+      console.log('Contact form submitted successfully:', data);
       trackFormSubmission('contact', true);
       
       setSubmitSuccess(true);
