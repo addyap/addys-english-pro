@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { usePageTracking } from '@/hooks/usePageTracking';
+import GoogleTranslate from '@/components/GoogleTranslate';
 interface LayoutProps {
   children: React.ReactNode;
   breadcrumbTitle?: string;
@@ -375,17 +376,20 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
             <p className="text-gray-500 text-xs">
               © {year} Antony Addy. Tous droits réservés. Formateur Professionnel d'Adultes certifié.
             </p>
-            <p className="text-gray-600 text-xs">
-              Site hébergé par{" "}
-              <a
-                href="https://www.bluehost.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-gray-400 transition-colors"
-              >
-                Bluehost
-              </a>
-            </p>
+            <div className="flex items-center gap-4">
+              <GoogleTranslate />
+              <p className="text-gray-600 text-xs">
+                Site hébergé par{" "}
+                <a
+                  href="https://www.bluehost.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-gray-400 transition-colors"
+                >
+                  Bluehost
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </footer>
