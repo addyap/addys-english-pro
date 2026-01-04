@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { TypingText } from "./TypingText";
 
 export default function OptimizedHero() {
   return (
@@ -41,16 +40,8 @@ export default function OptimizedHero() {
       {/* Content (height now driven by content, not min-h-screen) */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-20 text-center hero-title-wrap">
         <header className="mb-8">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold font-heading leading-tight mb-6 hero-title drop-shadow-2xl">
-            <TypingText
-              texts={[
-                "Spécialiste en anglais professionnel – Formateur Professionnel d'Adultes depuis 2017",
-              ]}
-              speed={50}
-              pause={3000}
-              className="text-primary-foreground drop-shadow-2xl"
-              prioritizeLCP
-            />
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold font-heading leading-tight mb-6 hero-title drop-shadow-2xl text-primary-foreground">
+            Spécialiste en anglais professionnel – Formateur Professionnel d'Adultes depuis 2017
           </h1>
 
           <p className="text-xl md:text-2xl mb-4 font-body drop-shadow-xl max-w-4xl mx-auto text-primary-foreground/90">
