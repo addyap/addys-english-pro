@@ -13,10 +13,10 @@ export default function OptimizedHero() {
       {/* Optimized background image with Ken Burns animation */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
         <img
-          src="/assets/hero-poster.jpg"
+          src="/lovable-uploads/4f23bec7-7b78-424d-b6f3-785c8c85f2c2.png"
           alt="Formation en anglais professionnel avec Antony Addy"
           className="absolute inset-0 w-full h-full object-cover animate-ken-burns"
-          fetchPriority="high"
+          loading="eager"
           decoding="async"
         />
       </div>
