@@ -127,7 +127,7 @@ export default function OptimizedHero() {
           </h1>
           
           <p className="text-xl md:text-2xl mb-4 text-white font-body drop-shadow-xl max-w-4xl mx-auto">
-            Des formations sur-mesure et plus de 1 000 exercices gratuits pour progresser à votre rythme.
+            Des formations sur-mesure et plus de 300 exercices gratuits pour progresser à votre rythme.
           </p>
           
           <p className="text-lg mb-8 text-white/90 italic font-body drop-shadow-lg max-w-3xl mx-auto">
