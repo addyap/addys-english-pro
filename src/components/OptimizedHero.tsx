@@ -6,23 +6,15 @@ import { TypingText } from "./TypingText";
 export default function OptimizedHero() {
   return (
     <section 
-      className="relative hero-section overflow-hidden text-white min-h-screen"
+      className="relative hero-section overflow-hidden text-white"
       role="banner"
       aria-label="Section principale de présentation"
     >
-      {/* Optimized background image with Ken Burns animation */}
-      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-slate-800">
-        <img
-          src="/assets/hero-image.png"
-          alt="Formation en anglais professionnel avec Antony Addy"
-          className="absolute inset-0 w-full h-full object-contain animate-ken-burns"
-          loading="eager"
-          decoding="async"
-        />
-      </div>
+      {/* Dark background for optimal text contrast */}
+      <div className="absolute inset-0 w-full h-full z-0 bg-slate-900" />
 
-      {/* Enhanced overlay with gradient for better readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/50 z-5" />
+      {/* Subtle gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/10 z-5" />
 
       {/* Skip to content link for accessibility */}
       <a 
