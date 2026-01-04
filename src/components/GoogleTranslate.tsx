@@ -45,8 +45,11 @@ const GoogleTranslate: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex items-center cursor-pointer hover:opacity-80 transition-opacity" title="Translate page">
-      <Globe className="h-4 w-4 text-muted-foreground" />
+    <div className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity group" title="Translate this page / Traduire cette page">
+      <Globe className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+      <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors hidden sm:inline">
+        Translate
+      </span>
       <div id="google_translate_element" className="google-translate-container" />
     </div>
   );
