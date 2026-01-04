@@ -62,6 +62,10 @@ const ErrorCorrectionExerciseDetail = lazy(() => import("./pages/ErrorCorrection
 const SentenceBuildingExerciseDetail = lazy(() => import("./pages/SentenceBuildingExerciseDetail"));
 const FlashcardExerciseDetail = lazy(() => import("./pages/FlashcardExerciseDetail"));
 const FillInTypingExerciseDetail = lazy(() => import("./pages/FillInTypingExerciseDetail"));
+const CrosswordExerciseDetail = lazy(() => import("./pages/CrosswordExerciseDetail"));
+const MatchingExerciseDetail = lazy(() => import("./pages/MatchingExerciseDetail"));
+const DialogueExerciseDetail = lazy(() => import("./pages/DialogueExerciseDetail"));
+const PrepositionExerciseDetail = lazy(() => import("./pages/PrepositionExerciseDetail"));
 
 const PageLoader = () => (
   <div className="min-h-screen bg-background py-12">
@@ -118,6 +122,10 @@ export const AppRoutes = () => (
     <Route path="/exercices/sentence-building/:id" element={<SentenceBuildingExerciseDetail />} />
     <Route path="/exercices/flashcards/:id" element={<FlashcardExerciseDetail />} />
     <Route path="/exercices/fill-in-typing/:id" element={<FillInTypingExerciseDetail />} />
+    <Route path="/exercices/crossword/:id" element={<CrosswordExerciseDetail />} />
+    <Route path="/exercices/matching/:id" element={<MatchingExerciseDetail />} />
+    <Route path="/exercices/dialogue/:id" element={<DialogueExerciseDetail />} />
+    <Route path="/exercices/prepositions/:id" element={<PrepositionExerciseDetail />} />
     <Route path="/mentions-legales" element={<LegalNotices />} />
     <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
     <Route path="/install" element={<Install />} />
