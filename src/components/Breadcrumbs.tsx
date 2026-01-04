@@ -15,7 +15,7 @@ const routeConfig: Record<string, { label: string; section?: string; sectionPath
   '/blog': { label: 'Blog' },
   '/exercices': { label: 'Exercices' },
   '/reading': { label: 'Compréhension écrite' },
-  '/anglaisadistance': { label: 'Ressources en ligne' },
+  
   '/dashboard': { label: 'Tableau de bord' },
   '/mentions-legales': { label: 'Mentions légales' },
   '/politique-confidentialite': { label: 'Politique de confidentialité' },

@@ -9,7 +9,6 @@ const BUILD_DIRS = ["out", "dist", "build"];
 // Key routes to check (removed /mentions-legales as it should not be indexed)
 const ROUTES_TO_CHECK = [
   "/",
-  "/anglaisadistance", 
   "/blog",
   "/temoignages"
 ];

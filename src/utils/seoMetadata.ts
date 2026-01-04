@@ -85,14 +85,6 @@ export const seoMetadata: Record<string, SEOMetadata> = {
     keywords: ["compréhension orale anglais", "listening anglais", "exercices écoute", "audio anglais"],
     ogImage: DEFAULT_IMAGE
   },
-  anglaisadistance: {
-    title: "anglaisadistance.fr – Ressources Gratuites | Antony Addy",
-    description: "Plateforme gratuite : grammaire, vocabulaire, dialogues, quiz interactifs. Créée par Antony Addy, formateur professionnel.",
-    canonical: `${SITE_URL}/anglaisadistance`,
-    h1: "Ressources gratuites d'anglais",
-    keywords: ["anglais à distance", "ressources gratuites", "grammaire anglaise", "vocabulaire anglais"],
-    ogImage: DEFAULT_IMAGE
-  },
   dashboard: {
     title: "Mon Tableau de Bord | Antony Addy",
     description: "Suivez votre progression dans les exercices d'anglais. Scores, leçons complétées et statistiques.",

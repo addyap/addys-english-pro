@@ -27,7 +27,7 @@ const Testimonials = lazy(() => import("./pages/Testimonials"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogArticle = lazy(() => import("./pages/BlogArticle"));
-const AnglaisADistance = lazy(() => import("./pages/AnglaisADistance"));
+
 const Exercises = lazy(() => import("./pages/Exercises"));
 const ExerciseDetail = lazy(() => import("./pages/ExerciseDetail"));
 const LegalNotices = lazy(() => import("./pages/LegalNotices"));
@@ -97,7 +97,7 @@ export const AppRoutes = () => (
     <Route path="/contact" element={<Contact />} />
     <Route path="/blog" element={<Blog />} />
     <Route path="/blog/:id" element={<BlogArticle />} />
-    <Route path="/anglaisadistance" element={<AnglaisADistance />} />
+    
     <Route path="/exercices" element={<Exercises />} />
     <Route path="/exercices/:id" element={<ExerciseDetail />} />
     <Route path="/exercices/drag-drop/:id" element={<DragDropExerciseDetail />} />

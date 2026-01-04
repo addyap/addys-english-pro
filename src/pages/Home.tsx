@@ -433,31 +433,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* anglaisadistance.fr Block */}
-        <section className="py-16 bg-muted">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-border">
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="flex-shrink-0">
-                  <img src="/lovable-uploads/d96440ab-4b9c-4f42-9910-75051d4f8b0e.png" alt="Logo anglaisadistance.fr - Plateforme gratuite de ressources pédagogiques en anglais créée par Antony Addy" className="h-24 w-auto" width="96" height="96" loading="lazy" />
-                </div>
-                <div className="flex-1 text-center md:text-left">
-                  <h2 className="text-3xl font-bold text-primary mb-4 font-heading">
-                    Des ressources gratuites en anglais — à votre rythme
-                  </h2>
-                  <p className="text-lg text-muted-foreground mb-6 font-body">
-                    J'ai créé anglaisadistance.fr pour offrir gratuitement des ressources fiables et accessibles à tous : grammaire, vocabulaire, dialogues, jeux...
-                  </p>
-                  <a href="https://anglaisadistance.fr" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors font-body">
-                    Découvrir les ressources
-                    <ExternalLink className="h-4 w-4" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Services Section */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
