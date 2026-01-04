@@ -153,7 +153,7 @@ const About = () => {
               {/* Link to exercises */}
               <div className="mt-6 p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg">
                 <p className="text-sm text-muted-foreground">
-                  <span className="font-medium text-primary">En complément de mes formations</span>, j'ai créé plus de <Link to="/exercices" className="text-accent hover:underline font-semibold">150 exercices d'anglais gratuits</Link> et des <Link to="/reading" className="text-accent hover:underline font-semibold">textes de compréhension écrite</Link> pour permettre à chacun de progresser en autonomie.
+                  <span className="font-medium text-primary">En complément de mes formations</span>, j'ai créé plus de <Link to="/exercices" className="text-accent hover:underline font-semibold">300 exercices d'anglais gratuits</Link> et des <Link to="/reading" className="text-accent hover:underline font-semibold">textes de compréhension écrite</Link> pour permettre à chacun de progresser en autonomie.
                 </p>
               </div>
             </div>
