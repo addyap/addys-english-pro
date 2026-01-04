@@ -65,9 +65,9 @@ export const LazyClientCarousel = memo<LazyClientCarouselProps>(({ logos }) => {
         1024: { slidesPerView: 4, spaceBetween: 40 }
       }}
       loop={true}
-      speed={3000}
+      speed={800}
       autoplay={{
-        delay: 0,
+        delay: 2500,
         disableOnInteraction: false,
         pauseOnMouseEnter: true
       }}
