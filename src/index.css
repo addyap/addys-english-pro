@@ -152,6 +152,9 @@ All colors MUST be HSL.
 .google-translate-container {
   display: inline-flex;
   align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  justify-content: center;
 }
 
 .google-translate-container .goog-te-gadget {
@@ -163,10 +166,14 @@ All colors MUST be HSL.
 .google-translate-container .goog-te-gadget-simple {
   background-color: transparent !important;
   border: none !important;
-  padding: 0 !important;
+  padding: 12px !important;
   cursor: pointer;
   display: flex !important;
   align-items: center !important;
+  min-width: 44px;
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 /* Hide all text, show only dropdown arrow */
@@ -178,11 +185,11 @@ All colors MUST be HSL.
   display: none !important;
 }
 
-/* Style the dropdown arrow only */
+/* Style the dropdown arrow - larger for mobile touch */
 .google-translate-container .goog-te-gadget-simple img {
-  width: 8px !important;
-  height: 8px !important;
-  opacity: 0.5;
+  width: 12px !important;
+  height: 12px !important;
+  opacity: 0.7;
   display: block !important;
 }
 
