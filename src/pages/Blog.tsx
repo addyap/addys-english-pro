@@ -98,15 +98,15 @@ const Blog = () => {
         ]}
       />
       
-      <div className="min-h-screen bg-gray-50 py-12">
+      <div className="min-h-screen bg-muted/30 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-4xl font-bold text-foreground mb-4">
               Blog
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Conseils et ressources pour progresser en anglais professionnel
             </p>
           </div>
@@ -116,24 +116,24 @@ const Blog = () => {
 
           {/* Featured Article */}
           {filteredArticles.length > 0 && (
-          <AnimatedCard className="bg-white shadow-lg mb-12 overflow-hidden" hoverScale={1.01}>
+          <AnimatedCard className="bg-card shadow-lg mb-12 overflow-hidden" hoverScale={1.01}>
             <div className="p-8">
-              <div className="flex items-center mb-4 text-sm text-gray-500">
-                <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full font-medium">
+              <div className="flex items-center mb-4 text-sm text-muted-foreground">
+                <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">
                   Article mis en avant
                 </span>
               </div>
               
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl font-bold text-card-foreground mb-4">
                 {filteredArticles[0].title}
               </h2>
               
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-lg text-muted-foreground mb-6">
                 {filteredArticles[0].excerpt}
               </p>
               
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4 text-sm text-gray-500">
+              <div className="flex items-center justify-between flex-wrap gap-4">
+                <div className="flex items-center space-x-4 text-sm text-muted-foreground">
                   <div className="flex items-center">
                     <Calendar className="h-4 w-4 mr-1" />
                     {new Date(filteredArticles[0].date).toLocaleDateString('fr-FR', { 
@@ -151,7 +151,7 @@ const Blog = () => {
                 
                 <Link
                   to={`/blog/${filteredArticles[0].id}`}
-                  className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all hover:scale-105 active:scale-95"
+                  className="inline-flex items-center bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all hover:scale-105 active:scale-95"
                 >
                   Lire l'article
                   <ArrowRight className="h-4 w-4 ml-2" />
@@ -165,25 +165,25 @@ const Blog = () => {
           {filteredArticles.length > 1 && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {filteredArticles.slice(1).map((article, index) => (
-              <AnimatedCard key={article.id} className="bg-white shadow-md" delay={index * 0.1}>
+              <AnimatedCard key={article.id} className="bg-card shadow-md" delay={index * 0.1}>
                 <article className="overflow-hidden h-full">
                 <div className="p-6">
                   <div className="flex items-center mb-3">
-                    <span className="bg-green-100 text-green-600 px-2 py-1 rounded text-sm font-medium">
+                    <span className="bg-accent/20 text-accent-foreground px-2 py-1 rounded text-sm font-medium">
                       {article.category}
                     </span>
                   </div>
                   
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
+                  <h3 className="text-xl font-semibold text-card-foreground mb-3 line-clamp-2">
                     {article.title}
                   </h3>
                   
-                  <p className="text-gray-600 mb-4 line-clamp-3">
+                  <p className="text-muted-foreground mb-4 line-clamp-3">
                     {article.excerpt}
                   </p>
                   
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2 text-sm text-gray-500">
+                    <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                       <Calendar className="h-4 w-4" />
                       <span>
                         {new Date(article.date).toLocaleDateString('fr-FR', { 
@@ -195,7 +195,7 @@ const Blog = () => {
                     
                     <Link
                       to={`/blog/${article.id}`}
-                      className="text-blue-600 hover:text-blue-800 font-medium flex items-center"
+                      className="text-primary hover:text-primary/80 font-medium flex items-center"
                     >
                       Lire plus
                       <ArrowRight className="h-4 w-4 ml-1" />
@@ -210,28 +210,28 @@ const Blog = () => {
 
           {/* No Results Message */}
           {filteredArticles.length === 0 && (
-            <div className="text-center py-12 bg-white rounded-lg shadow-md">
-              <p className="text-xl text-gray-600 mb-4">
+            <div className="text-center py-12 bg-card rounded-lg shadow-md">
+              <p className="text-xl text-muted-foreground mb-4">
                 Aucun article ne correspond à vos critères de recherche
               </p>
-              <p className="text-gray-500">
+              <p className="text-muted-foreground/70">
                 Essayez de modifier votre recherche ou vos filtres
               </p>
             </div>
           )}
 
           {/* Newsletter CTA */}
-          <div className="bg-blue-900 text-white rounded-lg p-8 text-center">
+          <div className="bg-primary text-primary-foreground rounded-lg p-8 text-center">
             <h2 className="text-2xl font-bold mb-4">
               Restez informé des derniers conseils
             </h2>
-            <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+            <p className="text-primary-foreground/80 mb-6 max-w-2xl mx-auto">
               Recevez mes meilleurs conseils pour progresser en anglais professionnel 
               directement dans votre boîte email
             </p>
             <Link
               to="/contact"
-              className="inline-block bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              className="inline-block bg-background text-foreground px-8 py-3 rounded-lg font-semibold hover:bg-background/90 transition-colors"
             >
               Me contacter pour plus d'informations
             </Link>
