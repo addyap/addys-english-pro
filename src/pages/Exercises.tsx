@@ -1102,8 +1102,8 @@ const Exercises = () => {
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "LearningResource",
-          name: "150 Exercices d'Anglais",
-          description: "Collection de 150 exercices d'anglais couvrant la grammaire, le vocabulaire et les pièges courants",
+          name: "300+ Exercices d'Anglais",
+          description: "Collection de plus de 300 exercices d'anglais couvrant la grammaire, le vocabulaire et les pièges courants",
           author: {
             "@type": "Person",
             name: "Antony Addy",
