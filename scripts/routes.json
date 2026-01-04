@@ -107,6 +107,21 @@
     { "path": "/story/3", "priority": 0.6, "changefreq": "monthly", "title": "Story: Mystery at the Museum" },
     { "path": "/exercices/listening/customer-service-call", "priority": 0.6, "changefreq": "monthly", "title": "Listening: Customer Service" },
     { "path": "/exercices/listening/job-interview", "priority": 0.6, "changefreq": "monthly", "title": "Listening: Job Interview" },
-    { "path": "/exercices/listening/travel-booking", "priority": 0.6, "changefreq": "monthly", "title": "Listening: Travel Booking" }
+    { "path": "/exercices/listening/travel-booking", "priority": 0.6, "changefreq": "monthly", "title": "Listening: Travel Booking" },
+    { "path": "/blog/bring-vs-take", "priority": 0.7, "changefreq": "monthly", "title": "Bring vs Take" },
+    { "path": "/blog/lend-vs-borrow", "priority": 0.7, "changefreq": "monthly", "title": "Lend vs Borrow" },
+    { "path": "/blog/learn-vs-teach", "priority": 0.7, "changefreq": "monthly", "title": "Learn vs Teach" },
+    { "path": "/blog/look-see-watch", "priority": 0.7, "changefreq": "monthly", "title": "Look See Watch" },
+    { "path": "/blog/hear-vs-listen", "priority": 0.7, "changefreq": "monthly", "title": "Hear vs Listen" },
+    { "path": "/blog/speak-vs-talk", "priority": 0.7, "changefreq": "monthly", "title": "Speak vs Talk" },
+    { "path": "/blog/rise-vs-raise", "priority": 0.7, "changefreq": "monthly", "title": "Rise vs Raise" },
+    { "path": "/blog/lie-vs-lay", "priority": 0.7, "changefreq": "monthly", "title": "Lie vs Lay" },
+    { "path": "/blog/fun-vs-funny", "priority": 0.7, "changefreq": "monthly", "title": "Fun vs Funny" },
+    { "path": "/blog/actually-vs-currently", "priority": 0.7, "changefreq": "monthly", "title": "Actually vs Currently" },
+    { "path": "/blog/fairly-quite-rather", "priority": 0.7, "changefreq": "monthly", "title": "Fairly Quite Rather" },
+    { "path": "/blog/classic-vs-classical", "priority": 0.7, "changefreq": "monthly", "title": "Classic vs Classical" },
+    { "path": "/blog/economic-vs-economical", "priority": 0.7, "changefreq": "monthly", "title": "Economic vs Economical" },
+    { "path": "/blog/historic-vs-historical", "priority": 0.7, "changefreq": "monthly", "title": "Historic vs Historical" },
+    { "path": "/blog/used-to-vs-be-used-to", "priority": 0.7, "changefreq": "monthly", "title": "Used To vs Be Used To" }
   ]
 }
