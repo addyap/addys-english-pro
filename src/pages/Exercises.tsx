@@ -22,6 +22,10 @@ import { errorCorrectionExercises as errorCorrectionData } from '../data/errorCo
 import { sentenceBuildingExercises } from '../data/sentenceBuildingExercises';
 import { flashcardSets } from '../data/flashcardExercises';
 import { fillInTypingExercises } from '../data/fillInTypingExercises';
+import { crosswordExercises } from '../data/crosswordExercises';
+import { matchingExercises } from '../data/matchingExercises';
+import { dialogueExercises } from '../data/dialogueExercises';
+import { prepositionExercises } from '../data/prepositionExercises';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import GrammarExplanation from '../components/GrammarExplanation';
