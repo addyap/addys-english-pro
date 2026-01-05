@@ -853,7 +853,7 @@ const Exercises = () => {
                       <span className="flex items-center gap-1"><Target className="h-3 w-3" />{story.totalEndings} fins possibles</span>
                       <Badge variant="outline" className="text-xs">{story.themeFr}</Badge>
                     </div>
-                    <Link to={`/interactive-stories/${story.id}`}>
+                    <Link to={`/story/${story.id}`}>
                       <Button size="sm" className="w-full gap-2">Commencer l'aventure <ChevronRight className="h-4 w-4" /></Button>
                     </Link>
                   </CardContent>
