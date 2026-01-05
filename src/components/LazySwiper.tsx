@@ -30,23 +30,36 @@ export const LazyClientCarousel = memo<LazyClientCarouselProps>(({ logos }) => {
   } | null>(null);
 
   useEffect(() => {
+    let mounted = true;
+    
     // Dynamically import Swiper when component mounts
-    Promise.all([
-      import('swiper/react'),
-      import('swiper/modules'),
-    ]).then(([swiperMod, modulesMod]) => {
-      // Import CSS after JS modules
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css';
-      document.head.appendChild(link);
-      
-      setSwiperComponents({
-        Swiper: swiperMod.Swiper,
-        SwiperSlide: swiperMod.SwiperSlide,
-        Autoplay: modulesMod.Autoplay,
-      });
-    });
+    const loadSwiper = async () => {
+      try {
+        // Import CSS first (bundled, not from CDN)
+        await import('swiper/swiper-bundle.css');
+        
+        const [swiperMod, modulesMod] = await Promise.all([
+          import('swiper/react'),
+          import('swiper/modules'),
+        ]);
+        
+        if (mounted) {
+          setSwiperComponents({
+            Swiper: swiperMod.Swiper,
+            SwiperSlide: swiperMod.SwiperSlide,
+            Autoplay: modulesMod.Autoplay,
+          });
+        }
+      } catch (err) {
+        console.error('Failed to load Swiper:', err);
+      }
+    };
+    
+    loadSwiper();
+    
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   if (!SwiperComponents) {
