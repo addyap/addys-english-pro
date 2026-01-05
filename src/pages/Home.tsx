@@ -305,6 +305,9 @@ const Home = () => {
           </div>
         </section>
 
+        {/* Avis Clients Section - Testimonials right after trust signals */}
+        <AvisClients />
+
         {/* Interactive Exercises Section - ENGAGING & VALUE-FOCUSED */}
         <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
           {/* Animated background elements */}
@@ -499,8 +502,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Avis Clients Section */}
-        <AvisClients />
 
         {/* Post-Testimonials CTA - Capture warm leads */}
         <section className="py-12 bg-gradient-to-r from-primary/5 to-accent/5">
