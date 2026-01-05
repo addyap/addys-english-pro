@@ -138,31 +138,31 @@ const Training = () => {
           <FadeInSection>
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold text-primary mb-4">
-                Offres de formation en anglais
+                Formations d'anglais professionnel
               </h1>
-              <p className="text-xl text-muted-foreground">
-                Formations en face à face ou à distance, avec un formateur professionnel, natif britannique
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Des formations concrètes pour communiquer avec confiance en anglais dans votre vie professionnelle
               </p>
             </div>
           </FadeInSection>
 
           <hr className="border-t border-border mb-12" />
 
-          {/* Je vous accompagne */}
+          {/* Pour qui */}
           <FadeInSection>
             <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
-              <div className="flex items-center mb-6">
-                <span className="text-2xl mr-3">👋</span>
-                <h2 className="text-2xl font-bold text-primary">Je vous accompagne en anglais</h2>
-              </div>
+              <h2 className="text-2xl font-bold text-primary mb-4">Pour qui ?</h2>
               
               <p className="text-muted-foreground mb-4">
-                Je propose des formations d'anglais sur mesure pour adultes, avec un accompagnement sérieux, motivant et professionnel.
+                <strong className="text-primary">Professionnels en poste</strong> qui ont besoin de l'anglais au quotidien : réunions, emails, appels clients, présentations.
+              </p>
+              
+              <p className="text-muted-foreground mb-4">
+                <strong className="text-primary">Personnes en reconversion</strong> ou recherche d'emploi, accompagnées par France Travail ou un OPCO, qui veulent valoriser leur profil.
               </p>
               
               <p className="text-muted-foreground">
-                <span className="text-lg mr-2">👉</span>
-                Que vous soyez salarié·e, indépendant·e, étudiant·e ou en reconversion, je vous aide à progresser efficacement.
+                <strong className="text-primary">Étudiants en école de commerce ou formation continue</strong> qui préparent leur entrée dans le monde professionnel.
               </p>
             </div>
           </FadeInSection>
@@ -283,35 +283,35 @@ const Training = () => {
           {/* Contact */}
           <FadeInSection>
             <div className="bg-white rounded-lg shadow-lg p-8 text-center">
-              <div className="flex items-center justify-center mb-6">
-                <span className="text-2xl mr-3">📞</span>
-                <h2 className="text-2xl font-bold text-primary">Discutons ensemble de vos besoins</h2>
-              </div>
+              <h2 className="text-2xl font-bold text-primary mb-4">Commencer</h2>
               
-              <p className="text-muted-foreground mb-6">
-                Je réponds rapidement à toutes vos demandes. Vous pouvez me contacter directement ici :
+              <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+                Prenez contact pour un premier échange gratuit. Je vous aide à définir vos objectifs et à choisir la formule adaptée.
               </p>
               
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center justify-center text-muted-foreground">
-                  <Mail className="h-5 w-5 mr-3" />
-                  <span>formations@antonyaddy.com</span>
-                </div>
-                <div className="flex items-center justify-center text-muted-foreground">
-                  <Phone className="h-5 w-5 mr-3" />
-                  <span>WhatsApp : +33 6 49 82 98 26</span>
-                </div>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact" className="bg-accent text-accent-foreground px-8 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">
-                  <span className="mr-2">💬</span>
-                  Parlons de votre projet
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+                <Link to="/contact" className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-lg">
+                  Réserver un premier échange
                 </Link>
-                <a href="https://wa.me/33649829826" className="animate-pulse ring ring-yellow-400 ring-offset-2 bg-[#25D366] hover:bg-[#1EBE5C] text-white px-8 py-3 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/33649829826" className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-8 py-4 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
                   WhatsApp direct
                 </a>
               </div>
+              
+              <div className="space-y-2 text-sm text-muted-foreground">
+                <div className="flex items-center justify-center">
+                  <Mail className="h-4 w-4 mr-2" />
+                  <span>formations@antonyaddy.com</span>
+                </div>
+                <div className="flex items-center justify-center">
+                  <Phone className="h-4 w-4 mr-2" />
+                  <span>+33 6 49 82 98 26</span>
+                </div>
+              </div>
+              
+              <p className="text-xs text-muted-foreground mt-4">
+                Réponse sous 24h • Sans engagement • Devis gratuit
+              </p>
             </div>
           </FadeInSection>
         </div>

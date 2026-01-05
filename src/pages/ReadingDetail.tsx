@@ -262,7 +262,7 @@ export default function ReadingDetail() {
           )}
 
           {/* Navigation */}
-          <div className="flex justify-between">
+          <div className="flex justify-between mb-12">
             {prevPassage ? (
               <Link to={`/reading/${prevPassage.id}`}>
                 <Button variant="outline" className="gap-2">
@@ -279,6 +279,21 @@ export default function ReadingDetail() {
                 </Button>
               </Link>
             )}
+          </div>
+
+          {/* Soft CTA Section */}
+          <div className="border-t border-border pt-8 text-center">
+            <p className="text-muted-foreground mb-4 font-body">
+              Envie de progresser plus vite ? Ces textes complètent mes formations d'anglais professionnel pour adultes.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/exercices" className="text-accent hover:text-accent/80 font-medium transition-colors">
+                Voir les exercices de grammaire →
+              </Link>
+              <Link to="/offres-de-formation" className="text-muted-foreground hover:text-foreground font-medium transition-colors">
+                Découvrir les formations
+              </Link>
+            </div>
           </div>
         </div>
       </div>

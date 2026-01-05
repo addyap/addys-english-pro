@@ -1414,26 +1414,18 @@ const Exercises = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-12 bg-muted/50">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <h2 className="text-2xl font-bold text-foreground mb-4 font-heading">
-              Besoin d'un accompagnement personnalisé ?
-            </h2>
-            <p className="text-muted-foreground mb-6 font-body">
-              Découvrez mes offres de formation adaptées à vos objectifs
+        {/* Soft CTA Section */}
+        <section className="py-10 bg-muted/30">
+          <div className="max-w-3xl mx-auto px-4 text-center">
+            <p className="text-muted-foreground mb-4 font-body">
+              Ces ressources gratuites complètent mes formations. Pour un parcours structuré adapté à vos objectifs professionnels, je propose des formations individuelles ou en groupe.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/offres-de-formation">
-                <Button size="lg" className="gap-2">
-                  <GraduationCap className="h-5 w-5" />
-                  Voir les formations
-                </Button>
+              <Link to="/offres-de-formation" className="text-primary hover:text-primary/80 font-medium transition-colors">
+                Découvrir les formations →
               </Link>
-              <Link to="/contact">
-                <Button variant="outline" size="lg">
-                  Me contacter
-                </Button>
+              <Link to="/contact" className="text-muted-foreground hover:text-foreground font-medium transition-colors">
+                Me contacter
               </Link>
             </div>
           </div>

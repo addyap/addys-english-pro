@@ -143,10 +143,10 @@ const Contact = () => {
           {/* Header */}
           <header className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Contactez-moi pour vos formations d'anglais
+              Prenons contact
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discutons ensemble de vos besoins en formation d'anglais professionnel
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Premier échange gratuit et sans engagement pour définir vos objectifs en anglais professionnel
             </p>
           </header>
 
@@ -254,15 +254,15 @@ const Contact = () => {
                 <button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98]" 
+                  className="w-full bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed text-lg" 
                   aria-label="Envoyer le message de contact"
                 >
-                  {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
+                  {isSubmitting ? 'Envoi en cours...' : 'Envoyer mon message'}
                 </button>
               </form>
               
               <p className="text-sm text-gray-500 mt-4 text-center">
-                Réponse rapide. Présentiel dans le Var & les Alpes-Maritimes. Distanciel France entière.
+                Réponse sous 24h • Présentiel Alpes-Maritimes • Distanciel France entière
               </p>
             </div>
 

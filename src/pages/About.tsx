@@ -86,7 +86,9 @@ const About = () => {
               <h1 className="text-4xl font-bold text-primary mb-6">
                 Qui je suis
               </h1>
-              <TypingText texts={["Un formateur engagé pour votre réussite.", "Spécialiste de l'anglais professionnel.", "Formateur Professionnel d'Adultes depuis 2017."]} className="text-xl font-semibold text-primary" />
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Formateur britannique certifié, spécialisé dans l'anglais professionnel pour adultes en France
+              </p>
             </div>
           </FadeInSection>
 
@@ -94,7 +96,6 @@ const About = () => {
           <FadeInSection>
             <div className="bg-white rounded-lg shadow-lg p-8">
               <div className="flex items-center mb-6">
-                <span className="text-2xl mr-3">👋</span>
                 <h2 className="text-2xl font-bold text-primary">Antony Addy</h2>
               </div>
               
@@ -105,13 +106,21 @@ const About = () => {
 
               <div className="text-lg text-muted-foreground leading-relaxed mb-6 font-body space-y-4">
                 <p>
-                  Formateur Professionnel d'Adultes certifié depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais, j'interviens auprès de publics variés à travers la France.
+                  <strong className="text-primary">Britannique de naissance</strong>, je vis et travaille en France depuis plus de vingt ans. J'enseigne l'anglais à des adultes dans des contextes professionnels exigeants : entreprises, écoles de commerce, organismes de formation, et accompagnement de demandeurs d'emploi via France Travail.
                 </p>
                 <p>
-                  <strong className="text-primary">Britannique natif</strong>, j'apporte une perspective authentique de la langue anglaise. Mon parcours m'a conduit à travailler avec des profils très différents : cadres en entreprise, étudiants en école de commerce, salariés en reconversion, demandeurs d'emploi accompagnés par France Travail.
+                  Ma certification <strong className="text-primary">Formateur Professionnel d'Adultes (FPA)</strong>, obtenue en 2017, atteste d'une pédagogie rigoureuse, centrée sur les résultats. Je ne vous fais pas mémoriser des règles abstraites — je vous aide à <em>parler, écrire et comprendre</em> l'anglais dans votre quotidien professionnel.
                 </p>
                 <p>
-                  Ma certification <strong className="text-primary">FPA (Formateur Professionnel d'Adultes)</strong> garantit une approche pédagogique adaptée aux adultes : méthodes actives, progression personnalisée, objectifs concrets. Je ne me contente pas d'enseigner la grammaire — je vous aide à <em>communiquer efficacement</em> dans votre contexte professionnel.
+                  J'attends de mes apprenants une implication active. Pas de formule magique : vous progresserez parce que vous pratiquerez. En retour, je m'engage à créer un cadre exigeant mais bienveillant, où chaque erreur devient un levier d'apprentissage.
+                </p>
+              </div>
+
+              {/* Philosophy - moved up for emphasis */}
+              <div className="border-l-4 border-accent pl-4 mb-6">
+                <h3 className="font-semibold text-primary mb-2">Ce que je crois</h3>
+                <p className="text-muted-foreground">
+                  L'anglais professionnel ne s'apprend pas dans un manuel. Il se construit dans la pratique : simuler une réunion, rédiger un email réel, répondre à un appel difficile. C'est cette approche concrète qui fait la différence pour des adultes occupés.
                 </p>
               </div>
 
@@ -120,12 +129,12 @@ const About = () => {
                 <div className="bg-primary/5 rounded-lg p-4">
                   <h3 className="font-semibold text-primary mb-2 flex items-center gap-2">
                     <Award className="h-5 w-5" />
-                    Certifications & Qualifications
+                    Certifications
                   </h3>
                   <ul className="text-muted-foreground space-y-1 text-sm">
-                    <li>• Titre professionnel FPA (niveau 5)</li>
-                    <li>• Spécialisation anglais professionnel</li>
-                    <li>• Formation continue pédagogique</li>
+                    <li>• Titre professionnel FPA (niveau 5, 2017)</li>
+                    <li>• 20+ années d'enseignement en France</li>
+                    <li>• Anglophone natif (Royaume-Uni)</li>
                   </ul>
                 </div>
                 
@@ -135,25 +144,17 @@ const About = () => {
                     Spécialisations
                   </h3>
                   <ul className="text-muted-foreground space-y-1 text-sm">
-                    <li>• Anglais des affaires & commercial</li>
+                    <li>• Anglais des affaires et commercial</li>
                     <li>• Préparation TOEIC, CLOE, Bright</li>
-                    <li>• Anglais téléphonique & rédactionnel</li>
+                    <li>• Communication téléphonique et écrite</li>
                   </ul>
                 </div>
               </div>
-
-              {/* Philosophy */}
-              <div className="border-l-4 border-accent pl-4 mt-6">
-                <h3 className="font-semibold text-primary mb-2">Ma philosophie d'enseignement</h3>
-                <p className="text-muted-foreground text-sm">
-                  L'apprentissage d'une langue doit être <strong>motivant et concret</strong>. Je privilégie les mises en situation réelles, les exercices pratiques et une atmosphère bienveillante où l'erreur est un tremplin vers le progrès. Mes apprenants progressent parce qu'ils <em>pratiquent</em>, pas parce qu'ils mémorisent.
-                </p>
-              </div>
               
               {/* Link to exercises */}
-              <div className="mt-6 p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg">
+              <div className="p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg">
                 <p className="text-sm text-muted-foreground">
-                  <span className="font-medium text-primary">En complément de mes formations</span>, j'ai créé plus de <Link to="/exercices" className="text-accent hover:underline font-semibold">300 exercices d'anglais gratuits</Link> et des <Link to="/reading" className="text-accent hover:underline font-semibold">textes de compréhension écrite</Link> pour permettre à chacun de progresser en autonomie.
+                  <span className="font-medium text-primary">Pour vous entraîner en autonomie</span>, j'ai créé plus de <Link to="/exercices" className="text-accent hover:underline font-semibold">300 exercices d'anglais gratuits</Link> et des <Link to="/reading" className="text-accent hover:underline font-semibold">textes de compréhension écrite</Link>. Pas d'inscription, accès libre.
                 </p>
               </div>
             </div>
@@ -245,35 +246,35 @@ const About = () => {
           {/* Contact */}
           <FadeInSection>
             <div className="bg-white rounded-lg shadow-lg p-8 mt-12 text-center">
-              <div className="flex items-center justify-center mb-6">
-                <span className="text-2xl mr-3">📞</span>
-                <h2 className="text-2xl font-bold text-primary">Discutons ensemble de vos besoins</h2>
-              </div>
+              <h2 className="text-2xl font-bold text-primary mb-4">Prêt à progresser ?</h2>
               
-              <p className="text-muted-foreground mb-6">
-                Je réponds rapidement à toutes vos demandes. Vous pouvez me contacter directement ici :
+              <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+                Un premier échange sans engagement pour comprendre vos besoins et voir si nous pouvons travailler ensemble.
               </p>
               
-              <div className="space-y-4 mb-8">
+              <div className="space-y-3 mb-8 text-sm">
                 <div className="flex items-center justify-center text-muted-foreground">
-                  <Mail className="h-5 w-5 mr-3" />
+                  <Mail className="h-4 w-4 mr-2" />
                   <span>formations@antonyaddy.com</span>
                 </div>
                 <div className="flex items-center justify-center text-muted-foreground">
-                  <Phone className="h-5 w-5 mr-3" />
+                  <Phone className="h-4 w-4 mr-2" />
                   <span>WhatsApp : +33 6 49 82 98 26</span>
                 </div>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact" className="bg-accent text-accent-foreground px-8 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">
-                  <span className="mr-2">💬</span>
-                  Parlons de votre projet
+                <Link to="/contact" className="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors">
+                  Prendre contact
                 </Link>
-                <a href="https://wa.me/33649829826" className="animate-pulse ring ring-yellow-400 ring-offset-2 bg-[#25D366] hover:bg-[#1EBE5C] text-white px-8 py-3 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/33649829826" className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-8 py-3 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
                   WhatsApp direct
                 </a>
               </div>
+              
+              <p className="text-xs text-muted-foreground mt-4">
+                Réponse sous 24h • Aucun engagement
+              </p>
             </div>
           </FadeInSection>
         </div>

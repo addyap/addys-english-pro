@@ -55,28 +55,28 @@ const Home = () => {
 
   const features = [{
     icon: Globe,
-    title: 'Anglais authentique avec un formateur britannique natif',
-    description: 'Apprenez avec un native speaker pour une prononciation et une expression naturelles'
+    title: 'Formateur britannique natif',
+    description: 'Prononciation authentique, expressions naturelles et compréhension culturelle d\'un anglophone de naissance'
   }, {
     icon: Target,
-    title: 'Cours adaptés aux besoins concrets des adultes',
-    description: 'Formations ciblées selon vos objectifs professionnels et personnels'
+    title: 'Formations orientées résultats',
+    description: 'Objectifs concrets : réunions, présentations, emails, appels — vous progressez sur ce qui compte pour votre métier'
   }, {
     icon: Award,
-    title: 'Formateur Professionnel d\'Adultes certifié',
-    description: 'Certification officielle FPA pour une pédagogie adaptée aux adultes'
+    title: 'Certifié Formateur Professionnel d\'Adultes',
+    description: 'Pédagogie adaptée aux adultes actifs : méthodes actives, progression mesurable, respect de votre temps'
   }, {
     icon: Users,
-    title: 'Approche humaine et motivante',
-    description: 'Un accompagnement personnalisé qui respecte votre rythme d\'apprentissage'
+    title: '20+ ans d\'expérience avec des professionnels',
+    description: 'Cadres, indépendants, équipes commerciales — des profils variés avec des besoins exigeants'
   }, {
     icon: Building,
-    title: 'Expérience avec écoles, entreprises, et centres de formation',
-    description: 'Partenariats établis avec de nombreuses institutions et organismes'
+    title: 'Partenaire d\'écoles et d\'entreprises',
+    description: 'ESCCOM, ITEC, IGY Vieux-Port, et de nombreux centres de formation me font confiance'
   }, {
     icon: CheckCircle,
-    title: 'Disponible en présentiel (PACA) ou à distance (France entière)',
-    description: 'Flexibilité géographique pour s\'adapter à vos contraintes'
+    title: 'Présentiel ou distanciel, selon vos contraintes',
+    description: 'Alpes-Maritimes en face à face, toute la France à distance — flexibilité totale'
   }];
 
   const services = [{
@@ -197,7 +197,7 @@ const Home = () => {
         {/* Qui je suis Section - Updated with split layout */}
         <section className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-primary mb-12 text-center font-heading">Qui je suis</h2>
+            <h2 className="text-3xl font-bold text-primary mb-12 text-center font-heading">Votre formateur</h2>
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Image Side */}
               <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start">
@@ -213,20 +213,22 @@ const Home = () => {
                     fetchPriority="high"
                   />
                   <p className="text-sm text-muted-foreground mt-3 text-center lg:text-left font-body italic">
-                    Formateur en action
+                    En formation avec des professionnels
                   </p>
                 </div>
               </div>
               
               {/* Content Side */}
               <div className="order-1 lg:order-2">
+                <p className="text-lg text-muted-foreground leading-relaxed mb-4 font-body">
+                  <strong className="text-primary">Antony Addy</strong> — Britannique, certifié Formateur Professionnel d'Adultes depuis 2017, plus de 20 ans d'expérience en formation d'anglais.
+                </p>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
-                  <TypingText texts={["Formateur Professionnel d'Adultes depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais."]} speed={40} pause={3000} className="text-muted-foreground" />
-                  {" "}Mon approche ? L'humour, l'adaptabilité, et la clarté. Je travaille avec tous types de profils — des écoles de commerce aux auto-entrepreneurs — toujours dans un esprit pratique et motivant.
+                  J'aide les professionnels à communiquer avec confiance en anglais : réunions, négociations, présentations. Mon approche est directe, bienveillante et adaptée à vos enjeux réels.
                 </p>
                 <div className="text-center lg:text-left">
                   <Link to="/qui-je-suis" className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body">
-                    En savoir plus
+                    En savoir plus sur mon parcours
                   </Link>
                 </div>
               </div>
