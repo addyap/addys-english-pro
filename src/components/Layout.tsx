@@ -104,8 +104,8 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               WhatsApp
             </a>
 
-            {/* Google Translate - Desktop */}
-            <div className="hidden lg:block ml-2">
+            {/* Google Translate - Always visible */}
+            <div className="ml-2">
               <GoogleTranslate />
             </div>
 
@@ -129,11 +129,6 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                     {item.name}
                   </Link>
                 ))}
-                
-                {/* Google Translate - Mobile */}
-                <div className="px-4 py-3 border-t border-gray-200 mt-2">
-                  <GoogleTranslate />
-                </div>
               </nav>
             </div>
           )}
