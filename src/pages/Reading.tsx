@@ -254,20 +254,17 @@ export default function Reading() {
             </TabsContent>
           </Tabs>
 
-          {/* CTA Section */}
-          <div className="mt-12 bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-8 text-center border border-primary/20">
-            <h2 className="text-2xl font-bold text-foreground mb-3 font-heading">
-              Envie de progresser davantage ?
-            </h2>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Complétez votre entraînement avec nos <Link to="/exercices" className="text-accent hover:underline font-medium">exercices de grammaire et vocabulaire</Link>, ou découvrez les <Link to="/offres-de-formation" className="text-accent hover:underline font-medium">formations personnalisées</Link> d'Antony Addy.
+          {/* Soft CTA Section */}
+          <div className="mt-12 border-t border-border pt-10 text-center">
+            <p className="text-muted-foreground mb-4 max-w-2xl mx-auto">
+              Ces ressources gratuites vous permettent de vous entraîner en autonomie. Pour un parcours structuré adapté à vos objectifs professionnels, je propose des formations individuelles.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/exercices" className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">
-                Voir les exercices
+              <Link to="/exercices" className="text-accent hover:text-accent/80 font-medium transition-colors">
+                Voir les exercices de grammaire →
               </Link>
-              <Link to="/contact" className="bg-card border border-border text-foreground px-6 py-3 rounded-lg font-semibold hover:bg-muted transition-colors">
-                Me contacter
+              <Link to="/offres-de-formation" className="text-muted-foreground hover:text-foreground font-medium transition-colors">
+                Découvrir les formations
               </Link>
             </div>
           </div>

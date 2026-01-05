@@ -41,15 +41,15 @@ export default function OptimizedHero() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-20 text-center hero-title-wrap">
         <header className="mb-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-tight mb-6 hero-title drop-shadow-2xl text-primary-foreground">
-            Spécialiste en anglais professionnel – Formateur Professionnel d'Adultes depuis 2017
+            Formateur d'anglais professionnel pour adultes en France
           </h1>
 
           <p className="text-xl md:text-2xl mb-4 font-body drop-shadow-xl max-w-4xl mx-auto text-primary-foreground/90">
-            Des formations sur-mesure et plus de 300 exercices gratuits pour progresser à votre rythme.
+            Communiquez avec confiance en anglais dans votre vie professionnelle. Formations personnalisées par un formateur britannique certifié FPA depuis 2017.
           </p>
 
-          <p className="text-lg mb-8 italic font-body drop-shadow-lg max-w-3xl mx-auto text-primary-foreground/80">
-            Formateur britannique – Présentiel dans les Alpes-Maritimes, à distance partout en France
+          <p className="text-lg mb-8 font-body drop-shadow-lg max-w-3xl mx-auto text-primary-foreground/80">
+            Présentiel Alpes-Maritimes • Distanciel France entière • CPF & entreprises
           </p>
         </header>
 
@@ -58,30 +58,30 @@ export default function OptimizedHero() {
           aria-label="Actions principales"
         >
           <Link
-            to="/offres-de-formation"
-            className="group relative overflow-hidden bg-background text-primary px-8 py-3 rounded-lg font-semibold hover:bg-background/90 hover:shadow-2xl transition-all duration-300 shadow-xl font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-ring/30 active:scale-100"
-            aria-label="Découvrir les offres de formation en anglais professionnel"
+            to="/contact"
+            className="group relative overflow-hidden bg-background text-primary px-8 py-4 rounded-lg font-semibold hover:bg-background/90 hover:shadow-2xl transition-all duration-300 shadow-xl font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-ring/30 active:scale-100"
+            aria-label="Réserver un premier échange gratuit avec Antony Addy"
           >
-            <span className="relative z-10">Découvrir mes offres</span>
+            <span className="relative z-10">Réserver un premier échange</span>
             <span className="absolute inset-0 bg-primary/5 scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
           </Link>
 
           <Link
-            to="/exercices"
-            className="group relative overflow-hidden bg-accent/95 text-accent-foreground px-8 py-3 rounded-lg font-semibold hover:bg-accent hover:shadow-2xl transition-all duration-300 shadow-xl font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-accent/30 active:scale-100"
-            aria-label="Accéder aux exercices gratuits d'anglais"
+            to="/offres-de-formation"
+            className="group relative overflow-hidden border-2 border-primary-foreground/80 text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all duration-300 font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-ring/30 active:scale-100"
+            aria-label="Voir les offres de formation en anglais professionnel"
           >
-            <span className="relative z-10">Exercices gratuits</span>
-            <span className="absolute inset-0 bg-background/10 scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
+            <span className="relative z-10">Voir les formations</span>
+            <span className="absolute inset-0 bg-primary-foreground/5 scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
           </Link>
 
           <Link
-            to="/contact"
-            className="group relative overflow-hidden border-2 border-primary-foreground/80 text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all duration-300 font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-ring/30 active:scale-100"
-            aria-label="Contacter Antony Addy pour une formation personnalisée"
+            to="/exercices"
+            className="group relative overflow-hidden bg-accent/95 text-accent-foreground px-8 py-4 rounded-lg font-semibold hover:bg-accent hover:shadow-2xl transition-all duration-300 shadow-xl font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-accent/30 active:scale-100"
+            aria-label="Accéder aux exercices gratuits d'anglais"
           >
-            <span className="relative z-10">Me contacter</span>
-            <span className="absolute inset-0 bg-primary-foreground/5 scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
+            <span className="relative z-10">300+ exercices gratuits</span>
+            <span className="absolute inset-0 bg-background/10 scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
           </Link>
         </nav>
       </div>

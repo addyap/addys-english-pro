@@ -211,28 +211,18 @@ const ExerciseDetail = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-16 bg-muted">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <BookOpen className="h-12 w-12 text-primary mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-primary mb-4 font-heading">
-              Besoin d'un accompagnement personnalisé ?
-            </h2>
-            <p className="text-muted-foreground mb-6 font-body">
-              Ces exercices sont conçus pour compléter mes formations. Pour un apprentissage structuré, contactez-moi.
+        {/* Soft CTA Section */}
+        <section className="py-12 bg-muted/50">
+          <div className="max-w-3xl mx-auto px-4 text-center">
+            <p className="text-muted-foreground mb-4 font-body">
+              Ces exercices gratuits vous permettent de progresser en autonomie. Si vous souhaitez un accompagnement structuré pour atteindre vos objectifs professionnels, je peux vous aider.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
                 to="/contact"
-                className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors inline-block"
+                className="text-primary hover:text-primary/80 font-medium transition-colors"
               >
-                Me contacter
-              </Link>
-              <Link
-                to="/offres-de-formation"
-                className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors inline-block"
-              >
-                Voir les formations
+                En savoir plus sur les formations →
               </Link>
             </div>
           </div>
