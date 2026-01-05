@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3, GripVertical, PenLine, Headphones, MessageCircle, ArrowRightLeft, Link2, Volume2, Languages, GitCompare, List, Mic, AlertTriangle, Puzzle, CreditCard, Keyboard } from 'lucide-react';
+import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3, GripVertical, PenLine, Headphones, MessageCircle, ArrowRightLeft, Link2, Volume2, Languages, GitCompare, List, Mic, AlertTriangle, Puzzle, CreditCard, Keyboard, BookMarked } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import AnimatedCard from '../components/AnimatedCard';
@@ -26,6 +26,7 @@ import { crosswordExercises } from '../data/crosswordExercises';
 import { matchingExercises } from '../data/matchingExercises';
 import { dialogueExercises } from '../data/dialogueExercises';
 import { prepositionExercises } from '../data/prepositionExercises';
+import { interactiveStories } from '../data/interactiveStories';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import GrammarExplanation from '../components/GrammarExplanation';
@@ -797,6 +798,71 @@ const Exercises = () => {
           </div>
         );
 
+      case 'interactive-stories':
+        return (
+          <div className="space-y-6">
+            <button onClick={() => setActiveSubTab(null)} className="text-primary hover:underline flex items-center gap-1">
+              ← Retour aux catégories
+            </button>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-primary mb-2 font-heading">Interactive Stories</h2>
+              <p className="text-muted-foreground">{interactiveStories.length} choose-your-own-adventure stories</p>
+            </div>
+            <div className="grid grid-cols-3 gap-4 mb-6">
+              <Card className="text-center border-green-200 bg-green-50/50">
+                <CardContent className="pt-4 pb-3">
+                  <p className="text-2xl font-bold text-green-600">{interactiveStories.filter(s => s.difficulty === 'easy').length}</p>
+                  <p className="text-xs text-green-700">Facile (A1-A2)</p>
+                </CardContent>
+              </Card>
+              <Card className="text-center border-yellow-200 bg-yellow-50/50">
+                <CardContent className="pt-4 pb-3">
+                  <p className="text-2xl font-bold text-yellow-600">{interactiveStories.filter(s => s.difficulty === 'medium').length}</p>
+                  <p className="text-xs text-yellow-700">Intermédiaire (B1-B2)</p>
+                </CardContent>
+              </Card>
+              <Card className="text-center border-red-200 bg-red-50/50">
+                <CardContent className="pt-4 pb-3">
+                  <p className="text-2xl font-bold text-red-600">{interactiveStories.filter(s => s.difficulty === 'hard').length}</p>
+                  <p className="text-xs text-red-700">Avancé (C1)</p>
+                </CardContent>
+              </Card>
+            </div>
+            <div className="grid md:grid-cols-2 gap-4">
+              {interactiveStories.map((story) => (
+                <Card key={story.id} className="hover:shadow-md transition-shadow">
+                  <CardHeader className="pb-2">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <CardTitle className="text-lg">{story.title}</CardTitle>
+                        <p className="text-sm text-muted-foreground">{story.titleFr}</p>
+                      </div>
+                      <Badge className={
+                        story.difficulty === 'easy' ? 'bg-green-100 text-green-700 border-green-200' :
+                        story.difficulty === 'medium' ? 'bg-yellow-100 text-yellow-700 border-yellow-200' :
+                        'bg-red-100 text-red-700 border-red-200'
+                      }>
+                        {story.difficulty === 'easy' ? 'Facile' : story.difficulty === 'medium' ? 'Inter.' : 'Avancé'}
+                      </Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground mb-3">{story.descriptionFr}</p>
+                    <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
+                      <span className="flex items-center gap-1"><Clock className="h-3 w-3" />{story.estimatedTime} min</span>
+                      <span className="flex items-center gap-1"><Target className="h-3 w-3" />{story.totalEndings} fins possibles</span>
+                      <Badge variant="outline" className="text-xs">{story.themeFr}</Badge>
+                    </div>
+                    <Link to={`/interactive-stories/${story.id}`}>
+                      <Button size="sm" className="w-full gap-2">Commencer l'aventure <ChevronRight className="h-4 w-4" /></Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        );
+
       // WRITING & PRACTICE SUB-TABS
       case 'writing':
         return (
@@ -1322,6 +1388,13 @@ const Exercises = () => {
                         count={pronunciationExercises.length}
                         colorClass="border-rose-300 bg-rose-50 hover:border-rose-500 hover:bg-rose-100 text-rose-700 dark:border-rose-700 dark:bg-rose-900/20 dark:hover:bg-rose-900/40 dark:text-rose-300"
                         onClick={() => setActiveSubTab('pronunciation')}
+                      />
+                      <CategoryCard 
+                        icon={BookMarked} 
+                        title="Interactive Stories" 
+                        count={interactiveStories.length}
+                        colorClass="border-indigo-300 bg-indigo-50 hover:border-indigo-500 hover:bg-indigo-100 text-indigo-700 dark:border-indigo-700 dark:bg-indigo-900/20 dark:hover:bg-indigo-900/40 dark:text-indigo-300"
+                        onClick={() => setActiveSubTab('interactive-stories')}
                       />
                     </div>
                   </>
