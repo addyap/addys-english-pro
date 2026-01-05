@@ -176,8 +176,8 @@ All colors MUST be HSL.
   touch-action: manipulation;
 }
 
-/* Hide all text, show only dropdown arrow */
-.google-translate-container .goog-te-gadget-simple span {
+/* Hide the "Select Language" text but keep the dropdown functional */
+.google-translate-container .goog-te-gadget-simple > span:first-child {
   display: none !important;
 }
 
@@ -187,10 +187,17 @@ All colors MUST be HSL.
 
 /* Style the dropdown arrow - larger for mobile touch */
 .google-translate-container .goog-te-gadget-simple img {
-  width: 12px !important;
-  height: 12px !important;
-  opacity: 0.7;
+  width: 20px !important;
+  height: 20px !important;
+  opacity: 0.8;
   display: block !important;
+}
+
+/* Ensure the select link is visible and clickable */
+.google-translate-container .goog-te-gadget-simple a {
+  display: flex !important;
+  align-items: center !important;
+  padding: 8px !important;
 }
 
 /* Google Translate top bar - prevent layout shift */
