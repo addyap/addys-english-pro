@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import { Globe } from 'lucide-react';
 
 declare global {
@@ -12,16 +12,10 @@ declare global {
   }
 }
 
-// Singleton: only one translate element across all instances
-let isInitialized = false;
-
 const GoogleTranslate: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    // Only initialize once globally
-    if (isInitialized || document.getElementById('google-translate-script')) return;
-    isInitialized = true;
+    // Only initialize once
+    if (document.getElementById('google-translate-script')) return;
 
     window.googleTranslateElementInit = () => {
       if (window.google?.translate) {
@@ -42,33 +36,18 @@ const GoogleTranslate: React.FC = () => {
     script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
     script.async = true;
     document.body.appendChild(script);
-  }, []);
 
-  // Handle click/tap to trigger the Google Translate dropdown
-  const handleClick = useCallback(() => {
-    const selectElement = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-    if (selectElement) {
-      // Focus and trigger dropdown on mobile
-      selectElement.focus();
-      // Create and dispatch a mouse event to open dropdown
-      const event = new MouseEvent('mousedown', { bubbles: true, cancelable: true });
-      selectElement.dispatchEvent(event);
-    }
+    return () => {
+      // Cleanup on unmount
+      const existingScript = document.getElementById('google-translate-script');
+      if (existingScript) existingScript.remove();
+    };
   }, []);
 
   return (
-    <div 
-      ref={containerRef}
-      onClick={handleClick}
-      onTouchEnd={handleClick}
-      className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity group min-h-[44px] min-w-[44px] touch-manipulation" 
-      title="Translate this page / Traduire cette page"
-      role="button"
-      tabIndex={0}
-      aria-label="Translate page"
-    >
-      <Globe className="h-5 w-5 text-muted-foreground group-hover:text-foreground transition-colors" />
-      <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+    <div className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity group" title="Translate this page / Traduire cette page">
+      <Globe className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+      <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors hidden sm:inline">
         Translate
       </span>
       <div id="google_translate_element" className="google-translate-container" />
