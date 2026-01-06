@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3, GripVertical, PenLine, Headphones, MessageCircle, ArrowRightLeft, Link2, Volume2, Languages, GitCompare, List, Mic, AlertTriangle, Puzzle, CreditCard, Keyboard, BookMarked } from 'lucide-react';
+import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3, GripVertical, PenLine, Headphones, MessageCircle, ArrowRightLeft, Link2, Volume2, Languages, GitCompare, List, Mic, AlertTriangle, Puzzle, CreditCard, Keyboard, BookMarked, Award } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import AnimatedCard from '../components/AnimatedCard';
@@ -27,6 +27,7 @@ import { matchingExercises } from '../data/matchingExercises';
 import { dialogueExercises } from '../data/dialogueExercises';
 import { prepositionExercises } from '../data/prepositionExercises';
 import { interactiveStories } from '../data/interactiveStories';
+import { cloeExercises } from '../data/cloeExercises';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import GrammarExplanation from '../components/GrammarExplanation';
@@ -1479,6 +1480,29 @@ const Exercises = () => {
                         colorClass="border-rose-300 bg-rose-50 hover:border-rose-500 hover:bg-rose-100 text-rose-700 dark:border-rose-700 dark:bg-rose-900/20 dark:hover:bg-rose-900/40 dark:text-rose-300"
                         onClick={() => setActiveSubTab('prepositions')}
                       />
+                    </div>
+
+                    {/* CLOE Certification Prep - Special Section */}
+                    <div className="mt-8 pt-6 border-t border-border">
+                      <div className="text-center mb-4">
+                        <Badge variant="outline" className="mb-2 border-primary/50 text-primary">
+                          <Award className="h-3 w-3 mr-1" />
+                          Certification
+                        </Badge>
+                        <h3 className="text-lg font-semibold text-foreground font-heading">Préparation aux examens</h3>
+                      </div>
+                      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <Link to="/exercices/cloe-preparation" className="block">
+                          <div className="p-4 rounded-xl border-2 text-left transition-all hover:shadow-lg hover:-translate-y-0.5 border-primary bg-gradient-to-br from-primary/10 to-accent/10 hover:border-primary hover:from-primary/20 hover:to-accent/20">
+                            <div className="flex items-center gap-3 mb-2">
+                              <Award className="h-5 w-5 text-primary" />
+                              <span className="font-semibold font-heading text-primary">CLOE Anglais</span>
+                            </div>
+                            <p className="text-sm text-muted-foreground">{cloeExercises.length} exercices</p>
+                            <p className="text-xs text-muted-foreground mt-1">Format examen officiel</p>
+                          </div>
+                        </Link>
+                      </div>
                     </div>
                   </>
                 )}
