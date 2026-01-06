@@ -392,6 +392,44 @@ const CLOEOverview = () => {
           </div>
         </section>
 
+        {/* Interactive Exercises Highlight */}
+        <section className="py-12 bg-background">
+          <div className="max-w-5xl mx-auto px-4">
+            <Card className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 border-amber-200 dark:border-amber-700">
+              <CardContent className="pt-6">
+                <div className="flex flex-col md:flex-row items-center gap-6">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Badge className="bg-amber-500 text-white">Format examen réel</Badge>
+                      <Badge variant="outline" className="border-green-500 text-green-600">Gratuit</Badge>
+                    </div>
+                    <h3 className="text-xl font-bold mb-2 font-heading">Exercices interactifs "Ordre des mots"</h3>
+                    <p className="text-muted-foreground text-sm mb-4">
+                      Le CLOE utilise des exercices de type "banque de mots" et "phrases dans le désordre". 
+                      Entraînez-vous avec nos 10 exercices interactifs de glisser-déposer qui reproduisent ce format.
+                    </p>
+                    <Link to="/exercices/drag-drop/1">
+                      <Button className="gap-2">
+                        <Target className="h-4 w-4" />
+                        Essayer le format interactif
+                      </Button>
+                    </Link>
+                  </div>
+                  <div className="grid grid-cols-5 gap-2">
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                      <Link key={num} to={`/exercices/drag-drop/${num}`}>
+                        <div className="w-10 h-10 rounded-lg bg-white dark:bg-gray-800 border-2 border-amber-300 dark:border-amber-600 flex items-center justify-center font-bold text-amber-600 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-colors text-sm">
+                          {num}
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-12 bg-gradient-to-r from-primary/10 to-accent/10">
           <div className="max-w-3xl mx-auto px-4 text-center">

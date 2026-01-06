@@ -290,11 +290,12 @@ const CLOEPreparation = () => {
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
                     <Badge className="bg-amber-500 text-white">Format examen</Badge>
+                    <Badge variant="outline" className="border-green-500 text-green-600">Gratuit</Badge>
                   </div>
                   <h3 className="text-xl font-bold mb-2 font-heading">Exercices interactifs : Ordre des mots</h3>
                   <p className="text-muted-foreground text-sm mb-4">
                     Entraînez-vous au format "banque de mots" et "phrases dans le désordre" du CLOE 
-                    avec nos exercices de glisser-déposer adaptés aux contextes professionnels.
+                    avec nos 10 exercices de glisser-déposer adaptés aux contextes professionnels.
                   </p>
                   <Link to="/exercices/drag-drop/1">
                     <Button className="gap-2">
@@ -303,10 +304,10 @@ const CLOEPreparation = () => {
                     </Button>
                   </Link>
                 </div>
-                <div className="flex gap-2 flex-wrap justify-center">
-                  {[1, 2, 3, 4, 5].map((num) => (
+                <div className="grid grid-cols-5 gap-2">
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
                     <Link key={num} to={`/exercices/drag-drop/${num}`}>
-                      <div className="w-12 h-12 rounded-lg bg-white dark:bg-gray-800 border-2 border-amber-300 dark:border-amber-600 flex items-center justify-center font-bold text-amber-600 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-colors">
+                      <div className="w-11 h-11 rounded-lg bg-white dark:bg-gray-800 border-2 border-amber-300 dark:border-amber-600 flex items-center justify-center font-bold text-amber-600 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-colors text-sm">
                         {num}
                       </div>
                     </Link>
