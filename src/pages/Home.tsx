@@ -327,8 +327,8 @@ const Home = () => {
                 Préparation Certification CLOE
               </h2>
               <p className="text-xl text-indigo-200 max-w-3xl mx-auto font-body leading-relaxed">
-                Préparez-vous à la certification CLOE (Compétences Linguistiques Orales et Écrites) avec des exercices 
-                inspirés du format réel de l'examen. <strong className="text-white">Éligible CPF</strong>.
+                Préparez-vous <strong className="text-white">gratuitement</strong> à la certification CLOE (Compétences Linguistiques Orales et Écrites) 
+                avec des exercices inspirés du format réel de l'examen. <strong className="text-white">Éligible CPF</strong>.
               </p>
             </div>
 
