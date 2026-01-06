@@ -895,7 +895,7 @@ Marketing Director`,
       { id: 5, type: 'fill-blank', question: 'Complete:', context: 'We will discuss this _____ detail at the next meeting.', correctAnswer: 'in', explanation: '"In detail" is a fixed expression meaning thoroughly.', explanationFr: '"In detail" est une expression fixe signifiant en détail.' },
       { id: 6, type: 'mcq', question: 'Which is correct?', context: 'The office is located _____ the third floor _____ the city center.', options: ['on / in', 'at / on', 'in / at', 'on / on'], correctAnswer: 'on / in', explanation: '"On" for floors, "in" for areas/cities.', explanationFr: '"On" pour les étages, "in" pour les zones/villes.' },
       { id: 7, type: 'mcq', question: 'Choose the correct preposition:', context: 'I\'ll get back to you _____ a few days.', options: ['in', 'on', 'at', 'by'], correctAnswer: 'in', explanation: '"In" is used for future time periods.', explanationFr: '"In" est utilisé pour les périodes futures.' },
-      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'The conference takes place _____ Paris _____ June.', correctAnswer: ['in', 'in'], explanation: '"In" is used for cities and months.', explanationFr: '"In" est utilisé pour les villes et les mois.' }
+      { id: 8, type: 'mcq', question: 'Complete:', context: 'The conference takes place _____ Paris _____ June.', options: ['in / in', 'at / in', 'in / on', 'at / on'], correctAnswer: 'in / in', explanation: '"In" is used for cities and months.', explanationFr: '"In" est utilisé pour les villes et les mois.' }
     ]
   },
   {
