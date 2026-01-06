@@ -309,6 +309,89 @@ const CLOEOverview = () => {
           </div>
         </section>
 
+        {/* Practical Tips Section */}
+        <section className="py-12 bg-muted/30">
+          <div className="max-w-5xl mx-auto px-4">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-foreground mb-2 font-heading">
+                Conseils pratiques pour réussir
+              </h2>
+              <p className="text-muted-foreground">Préparez-vous efficacement avec ces recommandations</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Card className="border-green-200 dark:border-green-800">
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-2 mb-3 text-green-600">
+                    <CheckCircle className="h-5 w-5" />
+                    <h3 className="font-semibold font-heading">Avant l'examen</h3>
+                  </div>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li>• Vérifiez votre connexion internet et webcam</li>
+                    <li>• Choisissez un environnement calme et bien éclairé</li>
+                    <li>• Préparez une pièce d'identité valide</li>
+                    <li>• Fermez toutes les applications inutiles</li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="border-blue-200 dark:border-blue-800">
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-2 mb-3 text-blue-600">
+                    <Clock className="h-5 w-5" />
+                    <h3 className="font-semibold font-heading">Pendant l'écrit</h3>
+                  </div>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li>• Lisez chaque question attentivement</li>
+                    <li>• Ne passez pas trop de temps sur une question</li>
+                    <li>• Le test s'adapte : restez concentré</li>
+                    <li>• Faites confiance à votre première intuition</li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="border-purple-200 dark:border-purple-800">
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-2 mb-3 text-purple-600">
+                    <MessageSquare className="h-5 w-5" />
+                    <h3 className="font-semibold font-heading">Pour l'oral</h3>
+                  </div>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li>• Parlez clairement et naturellement</li>
+                    <li>• N'hésitez pas à demander de répéter</li>
+                    <li>• Développez vos réponses avec des exemples</li>
+                    <li>• Restez détendu et positif</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card className="mt-8 bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
+              <CardContent className="pt-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-primary/10 rounded-full p-3 flex-shrink-0">
+                    <Target className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2 font-heading">Comment utiliser ces exercices ?</h4>
+                    <p className="text-sm text-muted-foreground mb-3">
+                      Commencez par un exercice de chaque catégorie pour évaluer vos points forts et axes de progression. 
+                      Utilisez le filtre par niveau pour adapter la difficulté à votre profil. 
+                      Visez la régularité : 15-20 minutes par jour sont plus efficaces qu'une longue session hebdomadaire.
+                    </p>
+                    <Link to="/exercices/cloe-preparation">
+                      <Button size="sm" className="gap-1">
+                        Accéder aux exercices
+                        <ChevronRight className="h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-12 bg-gradient-to-r from-primary/10 to-accent/10">
           <div className="max-w-3xl mx-auto px-4 text-center">
