@@ -308,6 +308,101 @@ const Home = () => {
         {/* Avis Clients Section - Testimonials right after trust signals */}
         <AvisClients />
 
+        {/* NEW: CLOE Certification Preparation - Featured Section */}
+        <section className="py-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-900 text-white relative overflow-hidden">
+          {/* Animated background */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-10 right-[15%] w-80 h-80 bg-yellow-500/10 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-10 left-[10%] w-96 h-96 bg-indigo-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
+          </div>
+          
+          <div className="max-w-6xl mx-auto px-4 relative z-10">
+            {/* NEW badge */}
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-yellow-500/20 border border-yellow-500/40 rounded-full px-5 py-2 mb-6 animate-pulse">
+                <Sparkles className="h-5 w-5 text-yellow-400" />
+                <span className="text-yellow-400 font-bold text-sm uppercase tracking-wider">Nouveau • Certification professionnelle</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-5 font-heading bg-gradient-to-r from-white via-yellow-100 to-white bg-clip-text text-transparent">
+                Préparation Certification CLOE
+              </h2>
+              <p className="text-xl text-indigo-200 max-w-3xl mx-auto font-body leading-relaxed">
+                Préparez-vous à la certification CLOE (Compétences Linguistiques Orales et Écrites) avec des exercices 
+                inspirés du format réel de l'examen. <strong className="text-white">Éligible CPF</strong>.
+              </p>
+            </div>
+
+            {/* Stats row */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/20 hover:border-yellow-500/40 transition-colors group">
+                <p className="text-4xl font-bold text-yellow-400 mb-1 group-hover:scale-110 transition-transform">43+</p>
+                <p className="text-indigo-200 text-sm">Exercices écrits</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/20 hover:border-yellow-500/40 transition-colors group">
+                <p className="text-4xl font-bold text-yellow-400 mb-1 group-hover:scale-110 transition-transform">280+</p>
+                <p className="text-indigo-200 text-sm">Questions</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/20 hover:border-yellow-500/40 transition-colors group">
+                <p className="text-4xl font-bold text-yellow-400 mb-1 group-hover:scale-110 transition-transform">5</p>
+                <p className="text-indigo-200 text-sm">Compétences</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/20 hover:border-yellow-500/40 transition-colors group">
+                <p className="text-4xl font-bold text-yellow-400 mb-1 group-hover:scale-110 transition-transform">A1→C1</p>
+                <p className="text-indigo-200 text-sm">Tous niveaux</p>
+              </div>
+            </div>
+
+            {/* Content categories */}
+            <div className="grid md:grid-cols-3 gap-4 mb-10">
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-white/10 hover:border-indigo-400/40 transition-colors">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="bg-indigo-500/30 rounded-full p-2">
+                    <Briefcase className="h-5 w-5 text-indigo-300" />
+                  </div>
+                  <h3 className="font-bold text-lg">Vocabulaire professionnel</h3>
+                </div>
+                <p className="text-sm text-indigo-200">Contrats, terminologie juridique, reporting financier, expressions professionnelles</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-white/10 hover:border-indigo-400/40 transition-colors">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="bg-indigo-500/30 rounded-full p-2">
+                    <GraduationCap className="h-5 w-5 text-indigo-300" />
+                  </div>
+                  <h3 className="font-bold text-lg">Grammaire & syntaxe</h3>
+                </div>
+                <p className="text-sm text-indigo-200">Temps verbaux, structures complexes, correction d'erreurs, style professionnel</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-white/10 hover:border-indigo-400/40 transition-colors">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="bg-indigo-500/30 rounded-full p-2">
+                    <BookOpen className="h-5 w-5 text-indigo-300" />
+                  </div>
+                  <h3 className="font-bold text-lg">Compréhension écrite</h3>
+                </div>
+                <p className="text-sm text-indigo-200">E-mails, rapports financiers, contrats de service, comptes-rendus de réunion</p>
+              </div>
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link 
+                to="/exercices/cloe-preparation" 
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-500 to-amber-500 text-gray-900 px-8 py-4 rounded-xl font-bold text-lg hover:from-yellow-400 hover:to-amber-400 transition-all shadow-lg shadow-yellow-500/25 hover:shadow-yellow-500/40 hover:scale-105"
+              >
+                <Award className="h-6 w-6" />
+                Commencer la préparation CLOE
+              </Link>
+              <Link 
+                to="/exercices/cloe-preparation/overview" 
+                className="inline-flex items-center gap-3 bg-white/10 text-white border border-white/30 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all"
+              >
+                En savoir plus sur CLOE
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Interactive Exercises Section - ENGAGING & VALUE-FOCUSED */}
         <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
           {/* Animated background elements */}
