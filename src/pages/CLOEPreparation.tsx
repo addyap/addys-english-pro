@@ -283,6 +283,37 @@ const CLOEPreparation = () => {
                 );
               })}
             </Tabs>
+
+            {/* Interactive Exercises Section */}
+            <div className="mt-12 p-6 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-xl border border-amber-200 dark:border-amber-700">
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Badge className="bg-amber-500 text-white">Format examen</Badge>
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 font-heading">Exercices interactifs : Ordre des mots</h3>
+                  <p className="text-muted-foreground text-sm mb-4">
+                    Entraînez-vous au format "banque de mots" et "phrases dans le désordre" du CLOE 
+                    avec nos exercices de glisser-déposer adaptés aux contextes professionnels.
+                  </p>
+                  <Link to="/exercices/drag-drop/1">
+                    <Button className="gap-2">
+                      <ChevronRight className="h-4 w-4" />
+                      Essayer le format interactif
+                    </Button>
+                  </Link>
+                </div>
+                <div className="flex gap-2 flex-wrap justify-center">
+                  {[1, 2, 3, 4, 5].map((num) => (
+                    <Link key={num} to={`/exercices/drag-drop/${num}`}>
+                      <div className="w-12 h-12 rounded-lg bg-white dark:bg-gray-800 border-2 border-amber-300 dark:border-amber-600 flex items-center justify-center font-bold text-amber-600 dark:text-amber-400 hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-colors">
+                        {num}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
