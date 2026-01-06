@@ -17,7 +17,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import Breadcrumbs from '@/components/Breadcrumbs';
 import { cloeExercises, cloeCategories, cloeLevels } from '@/data/cloeExercises';
 
 const getCategoryIcon = (categoryId: string) => {
@@ -44,11 +43,6 @@ const getDifficultyColor = (difficulty: string) => {
 
 const CLOEPreparation = () => {
   const [selectedLevel, setSelectedLevel] = useState<string | null>(null);
-  
-  const breadcrumbItems = [
-    { label: 'Exercices', href: '/exercices' },
-    { label: 'Préparation CLOE' }
-  ];
 
   const filteredExercises = selectedLevel 
     ? cloeExercises.filter(ex => ex.difficulty === selectedLevel)
@@ -70,7 +64,6 @@ const CLOEPreparation = () => {
       </Helmet>
 
       <div className="min-h-screen bg-background">
-        <Breadcrumbs items={breadcrumbItems} />
 
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-primary/5 via-background to-accent/5 py-10 md:py-14">

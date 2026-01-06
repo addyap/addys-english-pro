@@ -20,7 +20,6 @@ import { Progress } from '@/components/ui/progress';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
-import Breadcrumbs from '@/components/Breadcrumbs';
 import { getCloeExerciseById, cloeExercises, CloeQuestion } from '@/data/cloeExercises';
 
 const getDifficultyColor = (difficulty: string) => {
@@ -48,12 +47,6 @@ const CLOEExerciseDetail = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [questionStates, setQuestionStates] = useState<Record<number, QuestionState>>({});
   const [showResults, setShowResults] = useState(false);
-
-  const breadcrumbItems = [
-    { label: 'Exercices', href: '/exercices' },
-    { label: 'Préparation CLOE', href: '/exercices/cloe-preparation' },
-    { label: exercise?.titleFr || 'Exercice' }
-  ];
 
   if (!exercise) {
     return (
@@ -139,7 +132,6 @@ const CLOEExerciseDetail = () => {
         </Helmet>
 
         <div className="min-h-screen bg-background">
-          <Breadcrumbs items={breadcrumbItems} />
 
           <div className="max-w-3xl mx-auto px-4 py-10">
             <Card className="text-center">
@@ -206,7 +198,6 @@ const CLOEExerciseDetail = () => {
       </Helmet>
 
       <div className="min-h-screen bg-background">
-        <Breadcrumbs items={breadcrumbItems} />
 
         {/* Header */}
         <div className="bg-gradient-to-r from-primary/5 to-accent/5 py-6 border-b">

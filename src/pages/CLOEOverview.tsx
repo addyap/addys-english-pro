@@ -18,14 +18,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import Breadcrumbs from '@/components/Breadcrumbs';
-
 const CLOEOverview = () => {
-  const breadcrumbItems = [
-    { label: 'Exercices', href: '/exercices' },
-    { label: 'Préparation CLOE', href: '/exercices/cloe-preparation' },
-    { label: 'Présentation' }
-  ];
 
   const writtenSkills = [
     { icon: BookOpen, title: 'Vocabulaire', titleEn: 'Vocabulary', questions: 10 },
@@ -61,7 +54,6 @@ const CLOEOverview = () => {
       </Helmet>
 
       <div className="min-h-screen bg-background">
-        <Breadcrumbs items={breadcrumbItems} />
 
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-primary/5 via-background to-accent/5 py-12 md:py-16">
