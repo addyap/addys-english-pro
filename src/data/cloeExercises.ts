@@ -876,6 +876,201 @@ Marketing Director`,
       { id: 5, type: 'fill-blank', question: 'Complete:', context: 'The meeting went _____ (BAD) than expected.', correctAnswer: 'worse', explanation: '"Bad" has an irregular comparative: bad → worse → worst.', explanationFr: '"Bad" a un comparatif irrégulier : bad → worse → worst.' },
       { id: 6, type: 'mcq', question: 'Choose the correct form:', context: 'Of all the candidates, she was the _____', options: ['most qualified', 'more qualified', 'qualifiedest', 'most qualifier'], correctAnswer: 'most qualified', explanation: 'Superlative of long adjectives = "the most + adjective".', explanationFr: 'Superlatif des adjectifs longs = "the most + adjectif".' }
     ]
+  },
+  // ============= ADDITIONAL WRITTEN EXERCISES FOR CLOE =============
+  {
+    id: 'cloe-grammar-7',
+    title: 'Grammar: Prepositions of Time & Place',
+    titleFr: 'Grammaire : Prépositions de temps et de lieu',
+    category: 'grammar',
+    difficulty: 'B1',
+    description: 'Master prepositions commonly tested in CLOE exams.',
+    descriptionFr: 'Maîtrisez les prépositions couramment testées aux examens CLOE.',
+    estimatedTime: 10,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Choose the correct preposition:', context: 'The meeting is scheduled _____ Monday _____ 10 AM.', options: ['on / at', 'in / at', 'at / on', 'on / in'], correctAnswer: 'on / at', explanation: 'We use "on" for days and "at" for specific times.', explanationFr: 'On utilise "on" pour les jours et "at" pour les heures précises.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'I have been working here _____ 2019.', correctAnswer: 'since', explanation: '"Since" is used with a specific point in time.', explanationFr: '"Since" est utilisé avec un moment précis dans le temps.' },
+      { id: 3, type: 'mcq', question: 'Select the correct option:', context: 'She arrived _____ the office _____ time for the presentation.', options: ['at / in', 'in / on', 'to / at', 'at / at'], correctAnswer: 'at / in', explanation: 'We arrive "at" a place and are "in time" (not late).', explanationFr: 'On arrive "at" un endroit et on est "in time" (à l\'heure).' },
+      { id: 4, type: 'mcq', question: 'Choose correctly:', context: 'The report must be submitted _____ the end of the week.', options: ['by', 'until', 'on', 'in'], correctAnswer: 'by', explanation: '"By" means no later than a deadline.', explanationFr: '"By" signifie au plus tard à une date limite.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'We will discuss this _____ detail at the next meeting.', correctAnswer: 'in', explanation: '"In detail" is a fixed expression meaning thoroughly.', explanationFr: '"In detail" est une expression fixe signifiant en détail.' },
+      { id: 6, type: 'mcq', question: 'Which is correct?', context: 'The office is located _____ the third floor _____ the city center.', options: ['on / in', 'at / on', 'in / at', 'on / on'], correctAnswer: 'on / in', explanation: '"On" for floors, "in" for areas/cities.', explanationFr: '"On" pour les étages, "in" pour les zones/villes.' },
+      { id: 7, type: 'mcq', question: 'Choose the correct preposition:', context: 'I\'ll get back to you _____ a few days.', options: ['in', 'on', 'at', 'by'], correctAnswer: 'in', explanation: '"In" is used for future time periods.', explanationFr: '"In" est utilisé pour les périodes futures.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'The conference takes place _____ Paris _____ June.', correctAnswer: ['in', 'in'], explanation: '"In" is used for cities and months.', explanationFr: '"In" est utilisé pour les villes et les mois.' }
+    ]
+  },
+  {
+    id: 'cloe-grammar-8',
+    title: 'Grammar: Connectors & Linking Words',
+    titleFr: 'Grammaire : Connecteurs et mots de liaison',
+    category: 'grammar',
+    difficulty: 'B2',
+    description: 'Use linking words to create coherent professional writing.',
+    descriptionFr: 'Utilisez les mots de liaison pour créer des écrits professionnels cohérents.',
+    estimatedTime: 12,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Choose the best connector:', context: 'Sales increased last quarter; _____, profits remained low due to rising costs.', options: ['however', 'therefore', 'furthermore', 'because'], correctAnswer: 'however', explanation: '"However" introduces a contrast or unexpected result.', explanationFr: '"However" introduit un contraste ou un résultat inattendu.' },
+      { id: 2, type: 'mcq', question: 'Select the correct linking word:', context: 'The project was completed on time _____ the team faced numerous challenges.', options: ['although', 'because', 'so', 'and'], correctAnswer: 'although', explanation: '"Although" introduces a concession (despite the fact that).', explanationFr: '"Although" introduit une concession (malgré le fait que).' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'The deadline has been extended. _____, all reports must be submitted by Friday.', correctAnswer: 'Nevertheless', explanation: '"Nevertheless" means despite that / even so.', explanationFr: '"Nevertheless" signifie malgré cela / même ainsi.' },
+      { id: 4, type: 'mcq', question: 'Choose the correct option:', context: '_____ to the economic downturn, the company had to reduce its workforce.', options: ['Due', 'Despite', 'Although', 'However'], correctAnswer: 'Due', explanation: '"Due to" introduces a cause/reason.', explanationFr: '"Due to" introduit une cause/raison.' },
+      { id: 5, type: 'mcq', question: 'Select the appropriate connector:', context: 'First, we need to analyze the data. _____, we can develop a strategy.', options: ['Then', 'However', 'Although', 'Despite'], correctAnswer: 'Then', explanation: '"Then" indicates sequence or next step.', explanationFr: '"Then" indique la séquence ou l\'étape suivante.' },
+      { id: 6, type: 'fill-blank', question: 'Complete:', context: 'The product is expensive; _____, it offers excellent value for money.', correctAnswer: 'however', explanation: '"However" introduces a contrasting point.', explanationFr: '"However" introduit un point contrastant.' },
+      { id: 7, type: 'mcq', question: 'Which connector is correct?', context: 'We need to cut costs. _____, we should also look for new revenue streams.', options: ['In addition', 'However', 'Therefore', 'Despite'], correctAnswer: 'In addition', explanation: '"In addition" adds more information on the same topic.', explanationFr: '"In addition" ajoute plus d\'informations sur le même sujet.' },
+      { id: 8, type: 'mcq', question: 'Choose the best option:', context: 'The meeting was cancelled _____ the manager\'s illness.', options: ['due to', 'despite', 'although', 'however'], correctAnswer: 'due to', explanation: '"Due to" explains the reason/cause.', explanationFr: '"Due to" explique la raison/cause.' }
+    ]
+  },
+  {
+    id: 'cloe-grammar-9',
+    title: 'Grammar: Conditionals in Business',
+    titleFr: 'Grammaire : Les conditionnels en entreprise',
+    category: 'grammar',
+    difficulty: 'B2',
+    description: 'Practice all conditional forms in professional contexts.',
+    descriptionFr: 'Pratiquez toutes les formes conditionnelles en contexte professionnel.',
+    estimatedTime: 12,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Choose the correct form (Zero conditional):', context: 'If you _____ the "send" button, the email _____ immediately.', options: ['press / goes', 'pressed / goes', 'press / will go', 'will press / goes'], correctAnswer: 'press / goes', explanation: 'Zero conditional uses present simple in both clauses for facts.', explanationFr: 'Le conditionnel zéro utilise le présent simple dans les deux propositions pour les faits.' },
+      { id: 2, type: 'mcq', question: 'First conditional - Select correctly:', context: 'If you _____ the training, you _____ more opportunities.', options: ['complete / will have', 'will complete / have', 'completed / would have', 'complete / would have'], correctAnswer: 'complete / will have', explanation: 'First conditional: if + present simple, will + verb.', explanationFr: 'Premier conditionnel : if + présent simple, will + verbe.' },
+      { id: 3, type: 'fill-blank', question: 'Complete (Second conditional):', context: 'If we _____ (HAVE) more budget, we would hire additional staff.', correctAnswer: 'had', explanation: 'Second conditional uses past simple in the if-clause for hypothetical situations.', explanationFr: 'Le deuxième conditionnel utilise le passé simple dans la proposition "if" pour des situations hypothétiques.' },
+      { id: 4, type: 'mcq', question: 'Third conditional - Choose correctly:', context: 'If they _____ the report earlier, we _____ the deadline.', options: ['had submitted / would have met', 'submitted / would meet', 'had submitted / would meet', 'would submit / had met'], correctAnswer: 'had submitted / would have met', explanation: 'Third conditional: if + past perfect, would have + past participle.', explanationFr: 'Troisième conditionnel : if + past perfect, would have + participe passé.' },
+      { id: 5, type: 'mcq', question: 'Mixed conditional - Select the correct form:', context: 'If I _____ French, I _____ the Paris office job now.', options: ['had learned / would have', 'learned / would have', 'had learned / would have had', 'learn / will have'], correctAnswer: 'had learned / would have', explanation: 'Mixed conditional: past unreal condition + present result.', explanationFr: 'Conditionnel mixte : condition irréelle passée + résultat présent.' },
+      { id: 6, type: 'fill-blank', question: 'Complete:', context: 'If I _____ (BE) you, I would accept the offer.', correctAnswer: 'were', explanation: 'In formal English, we use "were" for all persons in second conditional.', explanationFr: 'En anglais formel, on utilise "were" pour toutes les personnes au deuxième conditionnel.' },
+      { id: 7, type: 'mcq', question: 'Choose the correct conditional:', context: 'Unless you _____ the form correctly, your application _____ rejected.', options: ['fill in / will be', 'filled in / would be', 'fill in / is', 'will fill in / will be'], correctAnswer: 'fill in / will be', explanation: '"Unless" = "if not" - first conditional structure.', explanationFr: '"Unless" = "if not" - structure du premier conditionnel.' },
+      { id: 8, type: 'mcq', question: 'Select the appropriate form:', context: 'I wish I _____ more time to prepare for the presentation.', options: ['had', 'have', 'would have', 'will have'], correctAnswer: 'had', explanation: '"Wish" + past simple expresses a desire for a different present situation.', explanationFr: '"Wish" + passé simple exprime un désir pour une situation présente différente.' }
+    ]
+  },
+  {
+    id: 'cloe-reading-4',
+    title: 'Reading: Business Report Extract',
+    titleFr: 'Compréhension écrite : Extrait de rapport',
+    category: 'reading',
+    difficulty: 'B2',
+    description: 'Analyze a business report and answer comprehension questions.',
+    descriptionFr: 'Analysez un rapport d\'entreprise et répondez aux questions de compréhension.',
+    estimatedTime: 15,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Read the report extract and answer:', context: 'QUARTERLY SALES REPORT - Q3 2024\n\nExecutive Summary\n\nThis report presents the sales performance for Q3 2024. Overall, the company achieved a 12% increase in revenue compared to the previous quarter, exceeding our targets by 4%.\n\nKey Findings:\n• Online sales grew by 23%, driven by the new e-commerce platform\n• Retail store performance remained stable with a slight 2% decline\n• The European market showed the strongest growth at 18%\n• Customer acquisition costs decreased by 8%\n\nChallenges:\n• Supply chain disruptions affected delivery times\n• Staff turnover in the customer service department impacted response times\n\nRecommendations:\n1. Invest further in digital marketing to capitalize on online growth\n2. Review retail strategy to address declining in-store sales\n3. Implement retention initiatives for customer service staff\n\nThe outlook for Q4 remains positive, with the holiday season expected to drive additional growth.', options: ['12%', '23%', '18%', '8%'], correctAnswer: '12%', explanation: 'The report states "the company achieved a 12% increase in revenue".', explanationFr: 'Le rapport indique "l\'entreprise a réalisé une augmentation de 12% du chiffre d\'affaires".' },
+      { id: 2, type: 'mcq', question: 'Which area showed the strongest growth?', context: '', options: ['European market', 'Online sales', 'Retail stores', 'Customer service'], correctAnswer: 'European market', explanation: 'The report mentions "The European market showed the strongest growth at 18%".', explanationFr: 'Le rapport mentionne "Le marché européen a montré la plus forte croissance à 18%".' },
+      { id: 3, type: 'fill-blank', question: 'Complete based on the text:', context: 'Online sales growth was driven by the new _____ platform.', correctAnswer: 'e-commerce', explanation: 'The report states online sales "driven by the new e-commerce platform".', explanationFr: 'Le rapport indique que les ventes en ligne ont été "portées par la nouvelle plateforme e-commerce".' },
+      { id: 4, type: 'mcq', question: 'What challenge affected delivery times?', context: '', options: ['Supply chain disruptions', 'Staff turnover', 'Digital marketing issues', 'Customer complaints'], correctAnswer: 'Supply chain disruptions', explanation: 'The report lists "Supply chain disruptions affected delivery times" as a challenge.', explanationFr: 'Le rapport liste "Les perturbations de la chaîne d\'approvisionnement ont affecté les délais de livraison" comme défi.' },
+      { id: 5, type: 'mcq', question: 'How did retail store performance change?', context: '', options: ['Slight 2% decline', 'Increased by 12%', 'Grew by 23%', 'No change'], correctAnswer: 'Slight 2% decline', explanation: 'The report notes "Retail store performance remained stable with a slight 2% decline".', explanationFr: 'Le rapport note "La performance des magasins de détail est restée stable avec une légère baisse de 2%".' },
+      { id: 6, type: 'mcq', question: 'What is recommended for customer service staff?', context: '', options: ['Retention initiatives', 'Salary cuts', 'More training only', 'Outsourcing'], correctAnswer: 'Retention initiatives', explanation: 'Recommendation 3 states "Implement retention initiatives for customer service staff".', explanationFr: 'La recommandation 3 indique "Mettre en œuvre des initiatives de rétention pour le personnel du service client".' }
+    ]
+  },
+  {
+    id: 'cloe-reading-5',
+    title: 'Reading: Contract Terms',
+    titleFr: 'Compréhension écrite : Termes contractuels',
+    category: 'reading',
+    difficulty: 'B2',
+    description: 'Understand key clauses in business contracts.',
+    descriptionFr: 'Comprenez les clauses clés des contrats commerciaux.',
+    estimatedTime: 12,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Read the contract extract and answer:', context: 'SERVICE AGREEMENT\n\nBetween: TechPro Solutions Ltd ("the Provider")\nAnd: Global Enterprises Inc ("the Client")\n\n1. Term of Agreement\nThis agreement shall commence on January 1, 2025, and continue for a period of 24 months unless terminated earlier in accordance with Clause 7.\n\n2. Services\nThe Provider agrees to deliver monthly IT maintenance services as outlined in Schedule A.\n\n3. Payment Terms\nThe Client shall pay a monthly fee of €2,500 within 30 days of receiving the invoice. Late payments will incur a 2% monthly interest charge.\n\n4. Confidentiality\nBoth parties agree to maintain strict confidentiality of all proprietary information exchanged during the term of this agreement.\n\n5. Liability\nThe Provider\'s liability shall not exceed the total fees paid in the 12 months preceding any claim.\n\n6. Force Majeure\nNeither party shall be liable for delays caused by circumstances beyond reasonable control.\n\n7. Termination\nEither party may terminate this agreement with 90 days written notice.', options: ['24 months', '12 months', '90 days', '30 days'], correctAnswer: '24 months', explanation: 'The contract states it "continue for a period of 24 months".', explanationFr: 'Le contrat indique qu\'il "continue pour une période de 24 mois".' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'Payment is due within _____ days of receiving the invoice.', correctAnswer: '30', explanation: 'The payment terms specify "within 30 days of receiving the invoice".', explanationFr: 'Les conditions de paiement précisent "dans les 30 jours suivant la réception de la facture".' },
+      { id: 3, type: 'mcq', question: 'What is the monthly fee?', context: '', options: ['€2,500', '€25,000', '€250', '€2,000'], correctAnswer: '€2,500', explanation: 'The contract states "a monthly fee of €2,500".', explanationFr: 'Le contrat indique "des frais mensuels de 2 500 €".' },
+      { id: 4, type: 'mcq', question: 'What is the late payment penalty?', context: '', options: ['2% monthly interest', '5% one-time fee', 'Service suspension', 'No penalty mentioned'], correctAnswer: '2% monthly interest', explanation: 'The contract mentions "Late payments will incur a 2% monthly interest charge".', explanationFr: 'Le contrat mentionne "Les paiements en retard entraîneront des intérêts mensuels de 2%".' },
+      { id: 5, type: 'mcq', question: 'How much notice is required for termination?', context: '', options: ['90 days', '30 days', '24 months', 'No notice needed'], correctAnswer: '90 days', explanation: 'Clause 7 states "Either party may terminate this agreement with 90 days written notice".', explanationFr: 'L\'article 7 indique "Chaque partie peut résilier cet accord avec un préavis écrit de 90 jours".' },
+      { id: 6, type: 'fill-blank', question: 'Complete:', context: 'The Provider\'s liability is limited to fees paid in the preceding _____ months.', correctAnswer: '12', explanation: 'The contract states liability "shall not exceed the total fees paid in the 12 months preceding any claim".', explanationFr: 'Le contrat indique que la responsabilité "ne dépassera pas les frais totaux payés au cours des 12 mois précédant toute réclamation".' }
+    ]
+  },
+  {
+    id: 'cloe-vocab-8',
+    title: 'Vocabulary: Email Writing',
+    titleFr: 'Vocabulaire : Rédaction d\'emails',
+    category: 'vocabulary',
+    difficulty: 'B1',
+    description: 'Essential phrases for professional email communication.',
+    descriptionFr: 'Phrases essentielles pour la communication par email professionnel.',
+    estimatedTime: 10,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Which opening is most appropriate for a formal email to someone you have not met?', context: '', options: ['Dear Mr. Johnson,', 'Hey Johnson,', 'Hi there,', 'To Johnson:'], correctAnswer: 'Dear Mr. Johnson,', explanation: '"Dear" followed by title and surname is the standard formal opening.', explanationFr: '"Dear" suivi du titre et du nom de famille est l\'ouverture formelle standard.' },
+      { id: 2, type: 'fill-blank', question: 'Complete the formal phrase:', context: 'I am writing to _____ about your advertisement in the Times.', correctAnswer: 'inquire', explanation: '"I am writing to inquire" is a formal way to ask for information.', explanationFr: '"I am writing to inquire" est une manière formelle de demander des informations.' },
+      { id: 3, type: 'mcq', question: 'What does "Please find attached" mean?', context: '', options: ['There is a file attached to this email', 'Please search for the file', 'I have lost the attachment', 'Please attach a file'], correctAnswer: 'There is a file attached to this email', explanation: 'This phrase indicates a file accompanies the email.', explanationFr: 'Cette phrase indique qu\'un fichier accompagne l\'email.' },
+      { id: 4, type: 'mcq', question: 'Which phrase is used to follow up on a previous email?', context: '', options: ['Further to my email of 15th March...', 'More of my email...', 'After my email...', 'Since I emailed...'], correctAnswer: 'Further to my email of 15th March...', explanation: '"Further to" is a formal way to reference previous correspondence.', explanationFr: '"Further to" est une manière formelle de faire référence à une correspondance précédente.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'I would be _____ if you could send me the information by Friday.', correctAnswer: 'grateful', explanation: '"I would be grateful if" is a polite way to make requests.', explanationFr: '"I would be grateful if" est une manière polie de faire des demandes.' },
+      { id: 6, type: 'mcq', question: 'Which closing is most appropriate for a formal email?', context: '', options: ['Yours faithfully,', 'Cheers!', 'Later,', 'Bye for now,'], correctAnswer: 'Yours faithfully,', explanation: '"Yours faithfully" is used when you do not know the recipient\'s name.', explanationFr: '"Yours faithfully" est utilisé quand vous ne connaissez pas le nom du destinataire.' },
+      { id: 7, type: 'mcq', question: 'What does "I look forward to hearing from you" express?', context: '', options: ['You expect a reply', 'You will call them', 'You are ending the relationship', 'You have heard enough'], correctAnswer: 'You expect a reply', explanation: 'This phrase politely indicates you anticipate a response.', explanationFr: 'Cette phrase indique poliment que vous anticipez une réponse.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'Should you have any questions, please do not _____ to contact me.', correctAnswer: 'hesitate', explanation: '"Do not hesitate to contact me" is a common polite offer of help.', explanationFr: '"Do not hesitate to contact me" est une offre d\'aide polie courante.' }
+    ]
+  },
+  {
+    id: 'cloe-vocab-9',
+    title: 'Vocabulary: Formal vs Informal Register',
+    titleFr: 'Vocabulaire : Registre formel vs informel',
+    category: 'vocabulary',
+    difficulty: 'B2',
+    description: 'Distinguish between formal and informal language for CLOE exams.',
+    descriptionFr: 'Distinguez le langage formel et informel pour les examens CLOE.',
+    estimatedTime: 10,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Which is the formal equivalent of "get"?', context: 'I need to _____ the manager\'s approval.', options: ['obtain', 'grab', 'get', 'take'], correctAnswer: 'obtain', explanation: '"Obtain" is more formal than "get" in professional contexts.', explanationFr: '"Obtain" est plus formel que "get" en contexte professionnel.' },
+      { id: 2, type: 'mcq', question: 'Choose the formal alternative to "We need to talk about..."', context: '', options: ['We need to discuss...', 'We gotta chat about...', 'Let\'s have a word about...', 'We should mention...'], correctAnswer: 'We need to discuss...', explanation: '"Discuss" is more formal than "talk about".', explanationFr: '"Discuss" est plus formel que "talk about".' },
+      { id: 3, type: 'fill-blank', question: 'Complete with the formal word:', context: 'Informal: "I\'m sorry for the mistake." Formal: "I _____ for the error."', correctAnswer: 'apologize', explanation: '"Apologize" is more formal than "sorry".', explanationFr: '"Apologize" est plus formel que "sorry".' },
+      { id: 4, type: 'mcq', question: 'Which is the formal equivalent of "help"?', context: 'Can you _____ me with this report?', options: ['assist', 'help out', 'give a hand', 'help'], correctAnswer: 'assist', explanation: '"Assist" is more formal than "help" in business English.', explanationFr: '"Assist" est plus formel que "help" en anglais des affaires.' },
+      { id: 5, type: 'mcq', question: 'Choose the formal phrase:', context: 'Instead of "Thanks for your email", in a formal letter you would write:', options: ['Thank you for your correspondence', 'Thanks a lot for writing', 'Cheers for the email', 'Great to hear from you'], correctAnswer: 'Thank you for your correspondence', explanation: '"Correspondence" is more formal than "email" in business writing.', explanationFr: '"Correspondence" est plus formel que "email" dans la rédaction professionnelle.' },
+      { id: 6, type: 'fill-blank', question: 'Complete with the formal word:', context: 'Informal: "I want to know..." Formal: "I would like to _____ ..."', correctAnswer: 'inquire', explanation: '"Inquire" is the formal equivalent of "ask" or "want to know".', explanationFr: '"Inquire" est l\'équivalent formel de "ask" ou "want to know".' },
+      { id: 7, type: 'mcq', question: 'Which is more formal?', context: '', options: ['Prior to the meeting', 'Before the meeting', 'Ahead of the meeting', 'Earlier than the meeting'], correctAnswer: 'Prior to the meeting', explanation: '"Prior to" is more formal than "before".', explanationFr: '"Prior to" est plus formel que "before".' },
+      { id: 8, type: 'mcq', question: 'Choose the formal equivalent of "buy":', context: 'The company plans to _____ new equipment.', options: ['purchase', 'buy', 'get', 'pick up'], correctAnswer: 'purchase', explanation: '"Purchase" is the formal equivalent of "buy".', explanationFr: '"Purchase" est l\'équivalent formel de "buy".' }
+    ]
+  },
+  {
+    id: 'cloe-expressions-4',
+    title: 'Expressions: Opinions & Diplomacy',
+    titleFr: 'Expressions : Opinions et diplomatie',
+    category: 'expressions',
+    difficulty: 'B2',
+    description: 'Diplomatic phrases for expressing opinions professionally.',
+    descriptionFr: 'Phrases diplomatiques pour exprimer des opinions professionnellement.',
+    estimatedTime: 10,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Which phrase is the most diplomatic way to disagree?', context: '', options: ['I see your point, but I wonder if...', 'You\'re wrong about that.', 'That\'s not correct.', 'No, I disagree.'], correctAnswer: 'I see your point, but I wonder if...', explanation: 'Acknowledging the other\'s view before introducing yours is diplomatic.', explanationFr: 'Reconnaître le point de vue de l\'autre avant d\'introduire le vôtre est diplomatique.' },
+      { id: 2, type: 'fill-blank', question: 'Complete the diplomatic phrase:', context: 'With all due _____, I think we should consider another approach.', correctAnswer: 'respect', explanation: '"With all due respect" is a polite way to introduce a differing opinion.', explanationFr: '"With all due respect" est une manière polie d\'introduire une opinion différente.' },
+      { id: 3, type: 'mcq', question: 'How do you politely express uncertainty about a proposal?', context: '', options: ['I\'m not entirely convinced that...', 'That\'s a stupid idea.', 'This will never work.', 'Are you serious?'], correctAnswer: 'I\'m not entirely convinced that...', explanation: '"Not entirely convinced" expresses doubt without being offensive.', explanationFr: '"Not entirely convinced" exprime le doute sans être offensant.' },
+      { id: 4, type: 'mcq', question: 'Which phrase softens a criticism?', context: '', options: ['Perhaps we could improve this by...', 'This is badly done.', 'You need to fix this.', 'This is wrong.'], correctAnswer: 'Perhaps we could improve this by...', explanation: 'Suggesting improvement is more diplomatic than criticizing directly.', explanationFr: 'Suggérer une amélioration est plus diplomatique que critiquer directement.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'If I may _____ a suggestion, we could try a different approach.', correctAnswer: 'make', explanation: '"If I may make a suggestion" politely introduces an idea.', explanationFr: '"If I may make a suggestion" introduit poliment une idée.' },
+      { id: 6, type: 'mcq', question: 'How do you express strong agreement diplomatically?', context: '', options: ['I couldn\'t agree more.', 'Obviously!', 'Duh!', 'Of course I agree!'], correctAnswer: 'I couldn\'t agree more.', explanation: 'This phrase expresses complete agreement professionally.', explanationFr: 'Cette phrase exprime un accord complet de manière professionnelle.' },
+      { id: 7, type: 'mcq', question: 'Which is the most diplomatic way to say someone is wrong?', context: '', options: ['I think there might be some confusion here.', 'You\'re mistaken.', 'That\'s incorrect.', 'You\'ve got it wrong.'], correctAnswer: 'I think there might be some confusion here.', explanation: 'Attributing it to "confusion" avoids directly blaming the person.', explanationFr: 'L\'attribuer à une "confusion" évite de blâmer directement la personne.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'From my _____ of view, we should proceed with caution.', correctAnswer: 'point', explanation: '"From my point of view" introduces a personal opinion politely.', explanationFr: '"From my point of view" introduit poliment une opinion personnelle.' }
+    ]
+  },
+  {
+    id: 'cloe-reading-6',
+    title: 'Reading: Meeting Minutes',
+    titleFr: 'Compréhension écrite : Compte-rendu de réunion',
+    category: 'reading',
+    difficulty: 'B1',
+    description: 'Understand key information from meeting minutes.',
+    descriptionFr: 'Comprenez les informations clés d\'un compte-rendu de réunion.',
+    estimatedTime: 12,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Read the minutes and answer:', context: 'MEETING MINUTES\n\nDate: March 15, 2025\nTime: 14:00 - 15:30\nLocation: Conference Room B\nAttendees: J. Martinez (Chair), P. Wong, R. Dubois, S. Andersen\nApologies: T. Nakamura\n\nAgenda Items:\n\n1. Review of Q1 Results\nJ. Martinez presented the Q1 figures. Sales exceeded targets by 8%. Action: P. Wong to prepare detailed analysis by March 22.\n\n2. New Product Launch\nR. Dubois outlined the marketing plan for the April launch. Budget approved at €45,000. Action: R. Dubois to finalize creative materials by March 25.\n\n3. Office Renovation\nS. Andersen reported that renovation will begin May 1 and last approximately 6 weeks. Staff will temporarily relocate to Floor 3.\n\n4. AOB (Any Other Business)\nP. Wong raised concerns about parking availability. Action: J. Martinez to discuss with Building Management.\n\nNext Meeting: March 29, 2025, 14:00, Conference Room B', options: ['J. Martinez', 'P. Wong', 'T. Nakamura', 'R. Dubois'], correctAnswer: 'J. Martinez', explanation: 'The minutes show "J. Martinez (Chair)" indicating they led the meeting.', explanationFr: 'Le compte-rendu montre "J. Martinez (Chair)" indiquant qu\'il/elle a dirigé la réunion.' },
+      { id: 2, type: 'mcq', question: 'Who was absent from the meeting?', context: '', options: ['T. Nakamura', 'J. Martinez', 'P. Wong', 'S. Andersen'], correctAnswer: 'T. Nakamura', explanation: 'The "Apologies" section lists T. Nakamura as absent.', explanationFr: 'La section "Apologies" liste T. Nakamura comme absent.' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'The marketing budget for the new product launch is €_____', correctAnswer: '45,000', explanation: 'The minutes state "Budget approved at €45,000".', explanationFr: 'Le compte-rendu indique "Budget approuvé à 45 000 €".' },
+      { id: 4, type: 'mcq', question: 'When will the office renovation begin?', context: '', options: ['May 1', 'March 15', 'April 1', 'March 25'], correctAnswer: 'May 1', explanation: 'The minutes state "renovation will begin May 1".', explanationFr: 'Le compte-rendu indique "la rénovation commencera le 1er mai".' },
+      { id: 5, type: 'mcq', question: 'What action was assigned to P. Wong?', context: '', options: ['Prepare detailed Q1 analysis', 'Finalize creative materials', 'Discuss parking with Building Management', 'Lead the renovation project'], correctAnswer: 'Prepare detailed Q1 analysis', explanation: 'The action assigned to P. Wong is "to prepare detailed analysis by March 22".', explanationFr: 'L\'action assignée à P. Wong est "préparer une analyse détaillée d\'ici le 22 mars".' },
+      { id: 6, type: 'mcq', question: 'Where will staff relocate during renovation?', context: '', options: ['Floor 3', 'Conference Room B', 'Home office', 'A different building'], correctAnswer: 'Floor 3', explanation: 'The minutes state "Staff will temporarily relocate to Floor 3".', explanationFr: 'Le compte-rendu indique "Le personnel sera temporairement relocalisé à l\'étage 3".' }
+    ]
+  },
+  {
+    id: 'cloe-grammar-10',
+    title: 'Grammar: Common Error Correction',
+    titleFr: 'Grammaire : Correction d\'erreurs courantes',
+    category: 'grammar',
+    difficulty: 'B1',
+    description: 'Identify and correct common grammatical errors.',
+    descriptionFr: 'Identifiez et corrigez les erreurs grammaticales courantes.',
+    estimatedTime: 10,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Which sentence is correct?', context: '', options: ['The information is confidential.', 'The informations are confidential.', 'The information are confidential.', 'The informations is confidential.'], correctAnswer: 'The information is confidential.', explanation: '"Information" is uncountable and takes a singular verb.', explanationFr: '"Information" est indénombrable et prend un verbe singulier.' },
+      { id: 2, type: 'mcq', question: 'Identify the correct sentence:', context: '', options: ['I have been to London twice.', 'I have been in London twice.', 'I went to London twice already.', 'I have went to London twice.'], correctAnswer: 'I have been to London twice.', explanation: 'Present perfect with "been to" for visiting places; "twice" suggests completed experiences.', explanationFr: 'Present perfect avec "been to" pour visiter des endroits ; "twice" suggère des expériences accomplies.' },
+      { id: 3, type: 'mcq', question: 'Which is grammatically correct?', context: '', options: ['He suggested that I apply for the position.', 'He suggested me to apply for the position.', 'He suggested me applying for the position.', 'He suggested I to apply for the position.'], correctAnswer: 'He suggested that I apply for the position.', explanation: '"Suggest" is followed by "that + subject + base verb" (subjunctive).', explanationFr: '"Suggest" est suivi de "that + sujet + verbe base" (subjonctif).' },
+      { id: 4, type: 'mcq', question: 'Choose the correct sentence:', context: '', options: ['Despite the rain, we continued working.', 'Despite of the rain, we continued working.', 'Despite it rained, we continued working.', 'Despite the rain, we continued to working.'], correctAnswer: 'Despite the rain, we continued working.', explanation: '"Despite" is followed by a noun/gerund, not "of" or a clause.', explanationFr: '"Despite" est suivi d\'un nom/gérondif, pas de "of" ou d\'une proposition.' },
+      { id: 5, type: 'mcq', question: 'Which sentence is correct?', context: '', options: ['I look forward to hearing from you.', 'I look forward to hear from you.', 'I am looking forward to hear from you.', 'I look forward hearing from you.'], correctAnswer: 'I look forward to hearing from you.', explanation: '"Look forward to" is followed by a gerund (-ing form).', explanationFr: '"Look forward to" est suivi d\'un gérondif (forme en -ing).' },
+      { id: 6, type: 'mcq', question: 'Identify the error-free sentence:', context: '', options: ['The meeting, which was scheduled for Monday, has been cancelled.', 'The meeting which was scheduled for Monday, has been cancelled.', 'The meeting, that was scheduled for Monday, has been cancelled.', 'The meeting what was scheduled for Monday has been cancelled.'], correctAnswer: 'The meeting, which was scheduled for Monday, has been cancelled.', explanation: 'Non-defining relative clauses use "which" with commas, not "that".', explanationFr: 'Les propositions relatives non-définitives utilisent "which" avec des virgules, pas "that".' },
+      { id: 7, type: 'mcq', question: 'Which is correct?', context: '', options: ['Each of the employees has received a bonus.', 'Each of the employees have received a bonus.', 'Each of the employee has received a bonus.', 'Each the employees has received a bonus.'], correctAnswer: 'Each of the employees has received a bonus.', explanation: '"Each" takes a singular verb even when referring to multiple items.', explanationFr: '"Each" prend un verbe singulier même quand il fait référence à plusieurs éléments.' },
+      { id: 8, type: 'mcq', question: 'Select the correct sentence:', context: '', options: ['Neither the manager nor the staff were informed.', 'Neither the manager nor the staff was informed.', 'Neither the manager or the staff were informed.', 'Neither the manager nor the staff wasn\'t informed.'], correctAnswer: 'Neither the manager nor the staff were informed.', explanation: 'With "neither...nor", the verb agrees with the nearest subject (staff = plural).', explanationFr: 'Avec "neither...nor", le verbe s\'accorde avec le sujet le plus proche (staff = pluriel).' }
+    ]
   }
 ];
 
