@@ -11,13 +11,16 @@ import {
   Award,
   Clock,
   Filter,
-  Info
+  Info,
+  CheckCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cloeExercises, cloeCategories, cloeLevels } from '@/data/cloeExercises';
+import { CLOEProgressTracker } from '@/components/CLOEProgressTracker';
+import { useCLOEProgress } from '@/hooks/useCLOEProgress';
 
 const getCategoryIcon = (categoryId: string) => {
   switch (categoryId) {
@@ -43,6 +46,7 @@ const getDifficultyColor = (difficulty: string) => {
 
 const CLOEPreparation = () => {
   const [selectedLevel, setSelectedLevel] = useState<string | null>(null);
+  const { isCompleted, getScoreForExercise } = useCLOEProgress();
 
   const filteredExercises = selectedLevel 
     ? cloeExercises.filter(ex => ex.difficulty === selectedLevel)
@@ -138,6 +142,11 @@ const CLOEPreparation = () => {
         {/* Main Content */}
         <section className="py-10">
           <div className="max-w-5xl mx-auto px-4">
+            {/* Progress Tracker */}
+            <div className="mb-8">
+              <CLOEProgressTracker />
+            </div>
+
             <Tabs defaultValue="all" className="w-full">
               <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6 mb-8">
                 <TabsTrigger value="all">Tous</TabsTrigger>
@@ -170,10 +179,22 @@ const CLOEPreparation = () => {
                       </div>
                       
                       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {exercises.map((exercise) => (
-                          <Card key={exercise.id} className="hover:shadow-md transition-all hover:border-primary/30 group">
+                        {exercises.map((exercise) => {
+                          const completed = isCompleted(exercise.id);
+                          const score = getScoreForExercise(exercise.id);
+                          
+                          return (
+                          <Card key={exercise.id} className={`hover:shadow-md transition-all hover:border-primary/30 group relative ${completed ? 'border-green-200 dark:border-green-800' : ''}`}>
+                            {completed && (
+                              <div className="absolute top-2 right-2 z-10">
+                                <div className="flex items-center gap-1 bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-400 text-xs font-medium px-2 py-0.5 rounded-full">
+                                  <CheckCircle className="h-3 w-3" />
+                                  {score}%
+                                </div>
+                              </div>
+                            )}
                             <CardHeader className="pb-2">
-                              <div className="flex items-start justify-between">
+                              <div className="flex items-start justify-between pr-14">
                                 <CardTitle className="text-base font-heading group-hover:text-primary transition-colors">
                                   {exercise.title}
                                 </CardTitle>
@@ -200,14 +221,15 @@ const CLOEPreparation = () => {
                                 </div>
                                 <Link to={`/exercices/cloe/${exercise.id}`}>
                                   <Button size="sm" variant="ghost" className="gap-1 group-hover:bg-primary group-hover:text-primary-foreground">
-                                    Commencer
+                                    {completed ? 'Refaire' : 'Commencer'}
                                     <ChevronRight className="h-4 w-4" />
                                   </Button>
                                 </Link>
                               </div>
                             </CardContent>
                           </Card>
-                        ))}
+                          );
+                        })}
                       </div>
                     </div>
                   );

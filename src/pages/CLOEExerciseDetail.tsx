@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { 
@@ -21,6 +21,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { getCloeExerciseById, cloeExercises, CloeQuestion } from '@/data/cloeExercises';
+import { useCLOEProgress } from '@/hooks/useCLOEProgress';
 
 const getDifficultyColor = (difficulty: string) => {
   switch (difficulty) {
@@ -43,10 +44,12 @@ interface QuestionState {
 const CLOEExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
   const exercise = getCloeExerciseById(id || '');
+  const { saveResult } = useCLOEProgress();
   
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [questionStates, setQuestionStates] = useState<Record<number, QuestionState>>({});
   const [showResults, setShowResults] = useState(false);
+  const [resultSaved, setResultSaved] = useState(false);
 
   if (!exercise) {
     return (
@@ -113,6 +116,7 @@ const CLOEExerciseDetail = () => {
     setQuestionStates({});
     setCurrentQuestionIndex(0);
     setShowResults(false);
+    setResultSaved(false);
   };
 
   const currentState = questionStates[currentQuestion.id];
@@ -121,6 +125,21 @@ const CLOEExerciseDetail = () => {
   const currentExerciseIndex = cloeExercises.findIndex(ex => ex.id === id);
   const prevExercise = currentExerciseIndex > 0 ? cloeExercises[currentExerciseIndex - 1] : null;
   const nextExercise = currentExerciseIndex < cloeExercises.length - 1 ? cloeExercises[currentExerciseIndex + 1] : null;
+
+  // Save result when showing results
+  useEffect(() => {
+    if (showResults && !resultSaved && exercise) {
+      saveResult({
+        exerciseId: exercise.id,
+        category: exercise.category,
+        difficulty: exercise.difficulty,
+        score: correctCount,
+        totalQuestions: totalQuestions,
+        title: exercise.title,
+      });
+      setResultSaved(true);
+    }
+  }, [showResults, resultSaved, exercise, correctCount, totalQuestions, saveResult]);
 
   if (showResults) {
     const percentage = Math.round((correctCount / totalQuestions) * 100);
