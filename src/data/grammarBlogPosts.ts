@@ -2964,6 +2964,112 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     description: 'Maîtrisez Used to et Be used to pour parler des habitudes en anglais.',
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
     relatedExerciseId: 'used-to-be-used-to'
+  },
+  {
+    id: 'certification-cloe-anglais-guide-complet',
+    title: 'Certification CLOE Anglais : Guide Complet pour Réussir',
+    excerpt: 'Tout savoir sur la certification CLOE : format de l\'examen, compétences évaluées, niveaux CECRL, et conseils pratiques pour réussir. Accédez à nos exercices gratuits.',
+    content: `
+      <p>La <strong>certification CLOE</strong> (Compétences Linguistiques Orales et Écrites) est une référence en France pour attester de son niveau d'anglais professionnel. <strong>Éligible au CPF</strong>, elle est particulièrement prisée par les entreprises et les professionnels souhaitant valoriser leurs compétences linguistiques.</p>
+
+      <h2>Qu'est-ce que la certification CLOE ?</h2>
+      <p>CLOE est une certification professionnelle qui évalue vos compétences en anglais selon le <strong>Cadre Européen Commun de Référence pour les Langues (CECRL)</strong>, de A1 (débutant) à C2 (maîtrise). Elle se distingue par :</p>
+      <ul>
+        <li><strong>Sa reconnaissance professionnelle</strong> : Très appréciée des entreprises françaises</li>
+        <li><strong>Son éligibilité CPF</strong> : Finançable via votre Compte Personnel de Formation</li>
+        <li><strong>Son format adaptatif</strong> : Questions ajustées à votre niveau</li>
+        <li><strong>Sa validité</strong> : 2 ans (comme la plupart des certifications linguistiques)</li>
+      </ul>
+
+      <h2>Format de l'examen CLOE</h2>
+      <p>L'examen CLOE se compose de <strong>deux parties distinctes</strong> :</p>
+
+      <h3>1. Épreuve écrite (en ligne)</h3>
+      <ul>
+        <li><strong>Durée</strong> : Environ 60 minutes</li>
+        <li><strong>Compréhension écrite</strong> : Lecture de textes professionnels, emails, rapports</li>
+        <li><strong>Expression écrite</strong> : Vocabulaire, grammaire, syntaxe</li>
+        <li><strong>Types de questions</strong> : QCM, textes à trous, remise en ordre</li>
+      </ul>
+
+      <h3>2. Épreuve orale (avec un examinateur)</h3>
+      <ul>
+        <li><strong>Durée</strong> : 15-20 minutes</li>
+        <li><strong>Compréhension orale</strong> : Écoute de dialogues et présentations</li>
+        <li><strong>Expression orale</strong> : Conversation avec l'examinateur</li>
+        <li><strong>Contexte</strong> : Situations professionnelles réalistes</li>
+      </ul>
+
+      <h2>Les 5 compétences évaluées</h2>
+      <p>La certification CLOE évalue de manière équilibrée :</p>
+      <ul>
+        <li><strong>Vocabulaire professionnel</strong> : Termes business, juridiques, financiers</li>
+        <li><strong>Grammaire et syntaxe</strong> : Structures correctes et naturelles</li>
+        <li><strong>Expressions idiomatiques</strong> : Phrasal verbs, collocations</li>
+        <li><strong>Compréhension écrite</strong> : Analyse de documents professionnels</li>
+        <li><strong>Compréhension et expression orale</strong> : Fluidité et précision</li>
+      </ul>
+
+      <h2>Les niveaux CECRL</h2>
+      <p>Votre score CLOE sera converti en niveau CECRL :</p>
+      <ul>
+        <li><strong>A1-A2</strong> : Niveau élémentaire - Communication basique</li>
+        <li><strong>B1</strong> : Niveau intermédiaire - Autonomie dans des situations courantes</li>
+        <li><strong>B2</strong> : Niveau intermédiaire supérieur - Aisance professionnelle</li>
+        <li><strong>C1-C2</strong> : Niveau avancé - Maîtrise proche du natif</li>
+      </ul>
+      <p>💡 <strong>Objectif recommandé</strong> : Un niveau B2 est généralement requis pour des postes à responsabilité internationale.</p>
+
+      <h2>Conseils pour réussir</h2>
+      <p>Voici nos recommandations pour optimiser votre préparation :</p>
+      <ul>
+        <li><strong>Entraînez-vous régulièrement</strong> : 20-30 minutes par jour valent mieux que 3 heures une fois par semaine</li>
+        <li><strong>Focalisez-vous sur le vocabulaire professionnel</strong> : Termes de contrats, emails, réunions</li>
+        <li><strong>Pratiquez les exercices au format examen</strong> : QCM, textes à trous, remise en ordre de mots</li>
+        <li><strong>Travaillez votre compréhension orale</strong> : Podcasts, vidéos professionnelles en anglais</li>
+        <li><strong>Révisez les points de grammaire clés</strong> : Temps, conditionnels, voix passive</li>
+      </ul>
+
+      <h2>Préparez-vous gratuitement</h2>
+      <p>Sur ce site, vous avez accès à une <strong>section complète de préparation CLOE</strong> entièrement gratuite :</p>
+      <ul>
+        <li><strong>40+ exercices écrits</strong> couvrant les 5 compétences</li>
+        <li><strong>280+ questions</strong> au format de l'examen</li>
+        <li><strong>10 exercices interactifs</strong> de remise en ordre de mots</li>
+        <li><strong>Filtrage par niveau</strong> (A1 à C1)</li>
+        <li><strong>Suivi de progression</strong> personnalisé</li>
+      </ul>
+      <p>👉 <a href="/exercices/cloe-preparation">Accéder aux exercices CLOE gratuits</a></p>
+
+      <h2>CLOE vs autres certifications</h2>
+      <p>Comment se positionne CLOE par rapport aux autres certifications ?</p>
+      <ul>
+        <li><strong>CLOE vs TOEIC</strong> : CLOE est plus orienté contexte professionnel français, TOEIC est plus international</li>
+        <li><strong>CLOE vs Linguaskill</strong> : Formats similaires, CLOE est plus reconnu en France</li>
+        <li><strong>CLOE vs Cambridge</strong> : Cambridge est plus académique, CLOE plus professionnel</li>
+      </ul>
+      <p>Le choix dépend de vos objectifs : pour une carrière en France, CLOE est souvent le meilleur choix.</p>
+
+      <h2>Financement CPF</h2>
+      <p>La certification CLOE est <strong>100% finançable par le CPF</strong>. Pour utiliser votre CPF :</p>
+      <ul>
+        <li>Connectez-vous sur <strong>moncompteformation.gouv.fr</strong></li>
+        <li>Recherchez "CLOE anglais" ou contactez un organisme agréé</li>
+        <li>Vérifiez votre solde CPF disponible</li>
+        <li>Inscrivez-vous à une formation incluant le passage de la certification</li>
+      </ul>
+
+      <h2>Prêt à commencer ?</h2>
+      <p>N'attendez plus pour préparer votre certification CLOE. Commencez dès maintenant avec nos exercices gratuits et suivez votre progression jusqu'au jour de l'examen !</p>
+      <p>👉 <a href="/exercices/cloe-preparation">Commencer la préparation CLOE</a></p>
+      <p>👉 <a href="/exercices/cloe-preparation/overview">En savoir plus sur l'examen CLOE</a></p>
+    `,
+    date: '2026-01-06',
+    author: 'Antony Addy',
+    category: 'Conseils carrière',
+    readTime: '8 min',
+    description: 'Guide complet de la certification CLOE anglais : format d\'examen, niveaux CECRL, conseils de préparation et exercices gratuits. Éligible CPF.',
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
   }
 ];
 
