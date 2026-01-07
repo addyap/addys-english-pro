@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { CheckCircle, XCircle, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Exercise, Question } from '@/data/exercisesData';
 import { useExerciseProgress } from '@/hooks/useExerciseProgress';
+import { shuffleArray } from '@/utils/shuffleArray';
 
 interface GrammarExerciseProps {
   exercise: Exercise;
@@ -125,6 +126,9 @@ const QuestionItem: React.FC<QuestionItemProps> = ({
   onAnswerChange
 }) => {
   const isCorrect = answer === question.correctAnswer;
+  
+  // Shuffle options once per question
+  const shuffledOptions = useMemo(() => shuffleArray(question.options), [question.id]);
 
   return (
     <div className={`p-4 rounded-lg border ${
@@ -150,7 +154,7 @@ const QuestionItem: React.FC<QuestionItemProps> = ({
               <SelectValue placeholder="Select answer..." />
             </SelectTrigger>
             <SelectContent>
-              {question.options.map((option) => (
+              {shuffledOptions.map((option) => (
                 <SelectItem key={option} value={option}>
                   {option}
                 </SelectItem>

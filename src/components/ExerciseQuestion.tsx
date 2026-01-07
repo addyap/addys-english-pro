@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Check, X, HelpCircle } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import { Question } from '@/data/exercisesData';
+import { shuffleArray } from '@/utils/shuffleArray';
 
 interface ExerciseQuestionProps {
   question: Question;
@@ -14,6 +15,9 @@ const ExerciseQuestion: React.FC<ExerciseQuestionProps> = ({ question, questionN
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
   const [showResult, setShowResult] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
+  
+  // Shuffle options once when question changes
+  const shuffledOptions = useMemo(() => shuffleArray(question.options), [question.id]);
 
   const handleCheck = () => {
     if (selectedAnswer) {
@@ -47,7 +51,7 @@ const ExerciseQuestion: React.FC<ExerciseQuestionProps> = ({ question, questionN
                 <SelectValue placeholder="Choisissez une réponse..." />
               </SelectTrigger>
               <SelectContent className="bg-background z-50">
-                {question.options.map((option, index) => (
+                {shuffledOptions.map((option, index) => (
                   <SelectItem key={index} value={option} className="cursor-pointer">
                     {option}
                   </SelectItem>

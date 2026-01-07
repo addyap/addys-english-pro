@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Check, X, BookOpen, RotateCcw, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { phrasalVerbExercises } from "@/data/phrasalVerbExercises";
 import SEOHead from "@/components/SEOHead";
+import { shuffleArray } from "@/utils/shuffleArray";
 
 const PhrasalVerbExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -73,6 +74,15 @@ const PhrasalVerbExerciseDetail = () => {
     setScore(0);
     setAnsweredQuestions([]);
   };
+
+  // Shuffle options for each question once per exercise load
+  const shuffledOptionsMap = useMemo(() => {
+    const map: Record<number, string[]> = {};
+    exercise.questions.forEach((q, index) => {
+      map[index] = shuffleArray(q.options);
+    });
+    return map;
+  }, [exercise.id]);
 
   const isQuizComplete = answeredQuestions.length === exercise.questions.length;
 
@@ -176,7 +186,7 @@ const PhrasalVerbExerciseDetail = () => {
                 <p className="text-lg mb-6">{question.sentence}</p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-                  {question.options.map((option) => {
+                  {shuffledOptionsMap[currentQuestion].map((option) => {
                     const isSelected = selectedAnswer === option;
                     const isCorrect = option === question.correctAnswer;
                     const showCorrect = showResult && isCorrect;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, CheckCircle, XCircle, RotateCcw } from "lucide-react";
 import { conditionalExercises } from "@/data/conditionalExercises";
+import { shuffleArray } from "@/utils/shuffleArray";
 
 const ConditionalExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -33,6 +34,15 @@ const ConditionalExerciseDetail = () => {
     setAnswers({});
     setSubmitted(false);
   };
+
+  // Shuffle options for each question once per exercise load
+  const shuffledOptionsMap = useMemo(() => {
+    const map: Record<number, string[]> = {};
+    exercise.questions.forEach((q, index) => {
+      map[index] = shuffleArray(q.options);
+    });
+    return map;
+  }, [exercise.id]);
 
   const score = submitted 
     ? exercise.questions.filter((q, i) => answers[i] === q.answer).length 
@@ -84,7 +94,7 @@ const ConditionalExerciseDetail = () => {
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 ml-6">
-                    {question.options.map((option) => (
+                    {shuffledOptionsMap[index].map((option) => (
                       <Button
                         key={option}
                         variant={

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Check, X, RotateCcw, MapPin, ChevronRight } from 'lucide-react';
@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { shuffleArray } from '@/utils/shuffleArray';
 
 const PrepositionExerciseDetail = () => {
   const { id } = useParams();
@@ -53,6 +54,15 @@ const PrepositionExerciseDetail = () => {
     setAnswers({});
     setSubmitted(false);
   };
+
+  // Shuffle options for each question once per exercise load
+  const shuffledOptionsMap = useMemo(() => {
+    const map: Record<number, string[]> = {};
+    exercise.questions.forEach(q => {
+      map[q.id] = shuffleArray(q.options);
+    });
+    return map;
+  }, [exercise.id]);
 
   const score = submitted 
     ? exercise.questions.filter(q => answers[q.id] === q.correctAnswer).length 
@@ -163,7 +173,7 @@ const PrepositionExerciseDetail = () => {
                       </p>
                       
                       <div className="flex flex-wrap gap-2 mb-3">
-                        {question.options.map((option) => (
+                        {shuffledOptionsMap[question.id].map((option) => (
                           <button
                             key={option}
                             onClick={() => handleAnswerSelect(question.id, option)}

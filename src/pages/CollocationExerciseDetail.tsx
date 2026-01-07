@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { collocationExercises } from "@/data/collocationExercises";
 import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, ArrowRight, RotateCcw, Check, X, ChevronLeft, Languages, Link2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { shuffleArray } from "@/utils/shuffleArray";
 
 const CollocationExerciseDetail = () => {
   const { id } = useParams();
@@ -74,6 +75,15 @@ const CollocationExerciseDetail = () => {
     setScore(0);
     setQuizComplete(false);
   };
+
+  // Shuffle options for each question once per exercise load
+  const shuffledOptionsMap = useMemo(() => {
+    const map: Record<number, string[]> = {};
+    exercise.questions.forEach((q, index) => {
+      map[index] = shuffleArray(q.options);
+    });
+    return map;
+  }, [exercise.id]);
 
   return (
     <>
@@ -182,7 +192,7 @@ const CollocationExerciseDetail = () => {
                 <p className="text-lg font-medium">{exercise.questions[currentQuestion].question}</p>
 
                 <div className="grid gap-3">
-                  {exercise.questions[currentQuestion].options.map((option, index) => {
+                  {shuffledOptionsMap[currentQuestion].map((option, index) => {
                     const isCorrect = option === exercise.questions[currentQuestion].correctAnswer;
                     const isSelected = option === selectedAnswer;
 
