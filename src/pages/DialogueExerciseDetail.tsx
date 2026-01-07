@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Check, X, RotateCcw, MessageCircle, User, Users } from 'lucide-react';
@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from 'sonner';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { shuffleArray } from '@/utils/shuffleArray';
 
 const DialogueExerciseDetail = () => {
   const { id } = useParams();
@@ -61,6 +62,17 @@ const DialogueExerciseDetail = () => {
     setAnswers({});
     setSubmitted(false);
   };
+
+  // Shuffle options for each blank line once per exercise load
+  const shuffledOptionsMap = useMemo(() => {
+    const map: Record<number, string[]> = {};
+    exercise.dialogue.forEach((line, index) => {
+      if (line.isBlank && line.options) {
+        map[index] = shuffleArray(line.options);
+      }
+    });
+    return map;
+  }, [exercise.id]);
 
   const score = submitted 
     ? exercise.dialogue
@@ -176,7 +188,7 @@ const DialogueExerciseDetail = () => {
                               <SelectValue placeholder="Choisissez une réponse..." />
                             </SelectTrigger>
                             <SelectContent>
-                              {line.options?.map((option, optIndex) => (
+                              {shuffledOptionsMap[index]?.map((option, optIndex) => (
                                 <SelectItem key={optIndex} value={option}>
                                   {option}
                                 </SelectItem>

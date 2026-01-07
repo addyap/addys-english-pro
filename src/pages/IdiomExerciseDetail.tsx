@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, XCircle, RotateCcw, BookOpen, Lightbulb, Globe } from 'lucide-react';
 import SEOHead from '@/components/SEOHead';
@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { getIdiomExerciseById } from '@/data/idiomExercises';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
+import { shuffleArray } from '@/utils/shuffleArray';
 
 const IdiomExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -45,6 +46,15 @@ const IdiomExerciseDetail = () => {
     setAnswers({});
     setShowResults(false);
   };
+
+  // Shuffle options for each question once per exercise load
+  const shuffledOptionsMap = useMemo(() => {
+    const map: Record<number, string[]> = {};
+    exercise.questions.forEach(q => {
+      map[q.id] = shuffleArray(q.options);
+    });
+    return map;
+  }, [exercise.id]);
 
   const score = exercise.questions.filter(
     q => answers[q.id] === q.correctAnswer
@@ -164,7 +174,7 @@ const IdiomExerciseDetail = () => {
                         {question.question}
                       </p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        {question.options.map((option) => {
+                        {shuffledOptionsMap[question.id].map((option) => {
                           const isSelected = answers[question.id] === option;
                           const isCorrectOption = option === question.correctAnswer;
 
