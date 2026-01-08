@@ -162,6 +162,24 @@
     { "path": "/exercices/cloe/cloe-listening-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Business Phone Call" },
     { "path": "/exercices/cloe/cloe-listening-2", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Meeting Extract" },
     { "path": "/exercices/cloe/cloe-listening-3", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Voicemail Message" },
-    { "path": "/exercices/cloe/cloe-listening-4", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Office Announcement" }
+    { "path": "/exercices/cloe/cloe-listening-4", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Office Announcement" },
+    { "path": "/exercices/cloe/cloe-vocab-a1-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Basic Greetings & Introductions" },
+    { "path": "/exercices/cloe/cloe-vocab-a1-2", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Numbers and Days" },
+    { "path": "/exercices/cloe/cloe-vocab-a2-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Shopping & Prices" },
+    { "path": "/exercices/cloe/cloe-vocab-b1-2", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Health & Medical" },
+    { "path": "/exercices/cloe/cloe-vocab-c1-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Strategic Business Terms" },
+    { "path": "/exercices/cloe/cloe-grammar-a1-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: To Be - Present Simple" },
+    { "path": "/exercices/cloe/cloe-grammar-a2-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Past Simple - Regular Verbs" },
+    { "path": "/exercices/cloe/cloe-grammar-b2-2", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Conditionals - Mixed" },
+    { "path": "/exercices/cloe/cloe-grammar-c1-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Advanced Subjunctive" },
+    { "path": "/exercices/cloe/cloe-grammar-10", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Common Error Correction" },
+    { "path": "/exercices/cloe/cloe-vocab-contract-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Contract Language Fundamentals" },
+    { "path": "/exercices/cloe/cloe-vocab-contract-2", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Advanced Contract Terms" },
+    { "path": "/exercices/cloe/cloe-expressions-b1-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Telephone Conversations" },
+    { "path": "/exercices/cloe/cloe-expressions-c1-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Negotiation Language" },
+    { "path": "/exercices/cloe/cloe-reading-b2-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Job Advertisement Analysis" },
+    { "path": "/exercices/cloe/cloe-reading-b1-2", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Hotel Booking Confirmation" },
+    { "path": "/exercices/cloe/cloe-reading-contract-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Service Agreement Excerpt" },
+    { "path": "/exercices/cloe/cloe-reading-finance-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Quarterly Financial Report" }
   ]
 }

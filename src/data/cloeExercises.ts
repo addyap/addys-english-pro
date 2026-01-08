@@ -1248,6 +1248,255 @@ Marketing Director`,
       { id: 5, type: 'mcq', question: 'What is the new full-year revenue guidance?', context: '', options: ['€940-960 million', '€245.3 million', '€98.1 million', '€31.2 million'], correctAnswer: '€940-960 million', explanation: 'The outlook section states guidance is raised "to €940-960 million".', explanationFr: 'La section perspectives indique que les prévisions sont relevées "à 940-960 millions d\'euros".' },
       { id: 6, type: 'mcq', question: 'What is the expected Q4 operating margin range?', context: '', options: ['17-18%', '40%', '12%', '22%'], correctAnswer: '17-18%', explanation: 'The outlook states "Q4 operating margins to remain stable at 17-18%".', explanationFr: 'Les perspectives indiquent "marges opérationnelles du T4 stables à 17-18%".' }
     ]
+  },
+  // ============= NEW EXPANDED CLOE EXERCISES 2026 =============
+  // A1 Level - Beginner Exercises
+  {
+    id: 'cloe-vocab-a1-1',
+    title: 'Vocabulary: Basic Greetings & Introductions',
+    titleFr: 'Vocabulaire : Salutations et présentations de base',
+    category: 'vocabulary',
+    difficulty: 'A1',
+    description: 'Learn essential greetings and how to introduce yourself in English.',
+    descriptionFr: 'Apprenez les salutations essentielles et comment vous présenter en anglais.',
+    estimatedTime: 6,
+    questions: [
+      { id: 1, type: 'mcq', question: 'How do you greet someone in the morning?', context: '', options: ['Good morning', 'Good night', 'Good evening', 'Goodbye'], correctAnswer: 'Good morning', explanation: '"Good morning" is used as a greeting before noon.', explanationFr: '"Good morning" est utilisé comme salutation avant midi.' },
+      { id: 2, type: 'mcq', question: 'What do you say when you meet someone for the first time?', context: '', options: ['Nice to meet you', 'See you later', 'Take care', 'Goodbye'], correctAnswer: 'Nice to meet you', explanation: '"Nice to meet you" is the standard phrase when meeting someone new.', explanationFr: '"Nice to meet you" est la phrase standard quand on rencontre quelqu\'un pour la première fois.' },
+      { id: 3, type: 'fill-blank', question: 'Complete the introduction:', context: 'Hello, my _____ is Sarah.', correctAnswer: 'name', explanation: 'We say "My name is..." to introduce ourselves.', explanationFr: 'On dit "My name is..." pour se présenter.' },
+      { id: 4, type: 'mcq', question: 'Which response is polite when someone says "How are you?"', context: '', options: ['I\'m fine, thank you. And you?', 'What?', 'Nothing', 'I don\'t know'], correctAnswer: 'I\'m fine, thank you. And you?', explanation: 'The polite response includes thanking and asking back.', explanationFr: 'La réponse polie inclut un remerciement et une question en retour.' },
+      { id: 5, type: 'mcq', question: 'What do you say when leaving?', context: '', options: ['Goodbye', 'Hello', 'Good morning', 'Nice to meet you'], correctAnswer: 'Goodbye', explanation: '"Goodbye" is used when leaving or ending a conversation.', explanationFr: '"Goodbye" est utilisé quand on part ou termine une conversation.' },
+      { id: 6, type: 'fill-blank', question: 'Complete:', context: 'I am _____ (FROM) France.', correctAnswer: 'from', explanation: 'We use "from" to indicate our origin country.', explanationFr: 'On utilise "from" pour indiquer notre pays d\'origine.' }
+    ]
+  },
+  {
+    id: 'cloe-grammar-a1-1',
+    title: 'Grammar: To Be - Present Simple',
+    titleFr: 'Grammaire : Le verbe To Be au présent',
+    category: 'grammar',
+    difficulty: 'A1',
+    description: 'Master the verb "to be" in present simple tense.',
+    descriptionFr: 'Maîtrisez le verbe "to be" au présent simple.',
+    estimatedTime: 8,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Choose the correct form:', context: 'I _____ a student.', options: ['am', 'is', 'are', 'be'], correctAnswer: 'am', explanation: 'With "I", we use "am".', explanationFr: 'Avec "I", on utilise "am".' },
+      { id: 2, type: 'mcq', question: 'Select the correct answer:', context: 'She _____ from London.', options: ['is', 'am', 'are', 'be'], correctAnswer: 'is', explanation: 'With he/she/it, we use "is".', explanationFr: 'Avec he/she/it, on utilise "is".' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'We _____ friends.', correctAnswer: 'are', explanation: 'With we/you/they, we use "are".', explanationFr: 'Avec we/you/they, on utilise "are".' },
+      { id: 4, type: 'mcq', question: 'Which sentence is correct?', context: '', options: ['They are happy.', 'They is happy.', 'They am happy.', 'They be happy.'], correctAnswer: 'They are happy.', explanation: '"They" takes the verb "are".', explanationFr: '"They" prend le verbe "are".' },
+      { id: 5, type: 'mcq', question: 'Choose the negative form:', context: 'He _____ at home.', options: ['is not', 'am not', 'are not', 'not is'], correctAnswer: 'is not', explanation: 'The negative of "is" is "is not" or "isn\'t".', explanationFr: 'La forme négative de "is" est "is not" ou "isn\'t".' },
+      { id: 6, type: 'fill-blank', question: 'Complete the question:', context: '_____ you a teacher?', correctAnswer: 'Are', explanation: 'Questions with "you" start with "Are".', explanationFr: 'Les questions avec "you" commencent par "Are".' }
+    ]
+  },
+  {
+    id: 'cloe-vocab-a1-2',
+    title: 'Vocabulary: Numbers and Days',
+    titleFr: 'Vocabulaire : Nombres et jours',
+    category: 'vocabulary',
+    difficulty: 'A1',
+    description: 'Learn numbers and days of the week in English.',
+    descriptionFr: 'Apprenez les nombres et les jours de la semaine en anglais.',
+    estimatedTime: 6,
+    questions: [
+      { id: 1, type: 'mcq', question: 'How do you write 15 in letters?', context: '', options: ['fifteen', 'fiveteen', 'fifthteen', 'fithteen'], correctAnswer: 'fifteen', explanation: 'The number 15 is spelled "fifteen".', explanationFr: 'Le nombre 15 s\'écrit "fifteen".' },
+      { id: 2, type: 'mcq', question: 'What day comes after Tuesday?', context: '', options: ['Wednesday', 'Monday', 'Thursday', 'Friday'], correctAnswer: 'Wednesday', explanation: 'The order is: Monday, Tuesday, Wednesday...', explanationFr: 'L\'ordre est : Monday, Tuesday, Wednesday...' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'There are _____ days in a week.', correctAnswer: 'seven', explanation: 'A week has 7 days.', explanationFr: 'Une semaine a 7 jours.' },
+      { id: 4, type: 'mcq', question: 'Which day starts the work week?', context: '', options: ['Monday', 'Sunday', 'Saturday', 'Friday'], correctAnswer: 'Monday', explanation: 'In most countries, Monday starts the work week.', explanationFr: 'Dans la plupart des pays, lundi commence la semaine de travail.' },
+      { id: 5, type: 'mcq', question: 'What is 20 + 30?', context: '', options: ['fifty', 'fourty', 'forty', 'sixty'], correctAnswer: 'fifty', explanation: '20 + 30 = 50, spelled "fifty".', explanationFr: '20 + 30 = 50, qui s\'écrit "fifty".' },
+      { id: 6, type: 'fill-blank', question: 'Complete:', context: 'The weekend includes Saturday and _____.', correctAnswer: 'Sunday', explanation: 'The weekend is Saturday and Sunday.', explanationFr: 'Le week-end comprend samedi et dimanche.' }
+    ]
+  },
+  // A2 Level - Elementary Exercises
+  {
+    id: 'cloe-vocab-a2-1',
+    title: 'Vocabulary: Shopping & Prices',
+    titleFr: 'Vocabulaire : Achats et prix',
+    category: 'vocabulary',
+    difficulty: 'A2',
+    description: 'Essential vocabulary for shopping situations.',
+    descriptionFr: 'Vocabulaire essentiel pour les situations d\'achat.',
+    estimatedTime: 8,
+    questions: [
+      { id: 1, type: 'mcq', question: 'What do you say to ask about price?', context: '', options: ['How much does it cost?', 'What is it?', 'Where is it?', 'Why is it?'], correctAnswer: 'How much does it cost?', explanation: 'We ask "How much does it cost?" or "How much is it?" for prices.', explanationFr: 'On demande "How much does it cost?" ou "How much is it?" pour les prix.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'Can I pay by credit _____?', correctAnswer: 'card', explanation: '"Credit card" is a common payment method.', explanationFr: '"Credit card" (carte de crédit) est un mode de paiement courant.' },
+      { id: 3, type: 'mcq', question: 'What is a "receipt"?', context: '', options: ['A paper showing what you bought', 'A shopping bag', 'A price tag', 'A credit card'], correctAnswer: 'A paper showing what you bought', explanation: 'A receipt is proof of purchase.', explanationFr: 'Un reçu est une preuve d\'achat.' },
+      { id: 4, type: 'mcq', question: 'Choose the correct phrase:', context: 'You want to try on clothes. You say:', options: ['Can I try this on?', 'Can I buy this on?', 'Can I take this on?', 'Can I have this on?'], correctAnswer: 'Can I try this on?', explanation: '"Try on" means to test clothes before buying.', explanationFr: '"Try on" signifie essayer des vêtements avant d\'acheter.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'The item is on _____ (SALE) - 50% off!', correctAnswer: 'sale', explanation: '"On sale" means the price is reduced.', explanationFr: '"On sale" signifie que le prix est réduit.' },
+      { id: 6, type: 'mcq', question: 'What does "out of stock" mean?', context: '', options: ['Not available anymore', 'Very expensive', 'New arrival', 'On discount'], correctAnswer: 'Not available anymore', explanation: '"Out of stock" means the item is not available.', explanationFr: '"Out of stock" signifie que l\'article n\'est pas disponible.' }
+    ]
+  },
+  {
+    id: 'cloe-grammar-a2-1',
+    title: 'Grammar: Past Simple - Regular Verbs',
+    titleFr: 'Grammaire : Passé simple - Verbes réguliers',
+    category: 'grammar',
+    difficulty: 'A2',
+    description: 'Practice forming the past simple with regular verbs.',
+    descriptionFr: 'Pratiquez la formation du passé simple avec les verbes réguliers.',
+    estimatedTime: 8,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Choose the correct past form:', context: 'I _____ the movie yesterday.', options: ['watched', 'watch', 'watches', 'watching'], correctAnswer: 'watched', explanation: 'Regular past tense adds -ed: watch → watched.', explanationFr: 'Le passé régulier ajoute -ed : watch → watched.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'She _____ (WORK) until 6 PM yesterday.', correctAnswer: 'worked', explanation: 'Past simple of "work" is "worked".', explanationFr: 'Le passé simple de "work" est "worked".' },
+      { id: 3, type: 'mcq', question: 'Which sentence is correct?', context: '', options: ['They played tennis last week.', 'They play tennis last week.', 'They plaied tennis last week.', 'They playing tennis last week.'], correctAnswer: 'They played tennis last week.', explanation: '"Last week" requires past simple: played.', explanationFr: '"Last week" exige le passé simple : played.' },
+      { id: 4, type: 'mcq', question: 'Select the negative form:', context: 'He _____ the email.', options: ['didn\'t receive', 'doesn\'t receive', 'not received', 'didn\'t received'], correctAnswer: 'didn\'t receive', explanation: 'Negative past: did not (didn\'t) + base form.', explanationFr: 'Passé négatif : did not (didn\'t) + forme de base.' },
+      { id: 5, type: 'fill-blank', question: 'Complete the question:', context: '_____ you finish your homework?', correctAnswer: 'Did', explanation: 'Past questions start with "Did".', explanationFr: 'Les questions au passé commencent par "Did".' },
+      { id: 6, type: 'mcq', question: 'Choose the correct form:', context: 'The meeting _____ at 2 PM.', options: ['started', 'start', 'starts', 'starting'], correctAnswer: 'started', explanation: 'Past simple of "start" is "started".', explanationFr: 'Le passé simple de "start" est "started".' }
+    ]
+  },
+  // More B1 Level Exercises
+  {
+    id: 'cloe-vocab-b1-2',
+    title: 'Vocabulary: Health & Medical',
+    titleFr: 'Vocabulaire : Santé et médical',
+    category: 'vocabulary',
+    difficulty: 'B1',
+    description: 'Medical vocabulary for professional contexts.',
+    descriptionFr: 'Vocabulaire médical pour les contextes professionnels.',
+    estimatedTime: 10,
+    questions: [
+      { id: 1, type: 'mcq', question: 'What is a "prescription"?', context: '', options: ['A doctor\'s written order for medicine', 'A hospital bill', 'An appointment card', 'A medical test'], correctAnswer: 'A doctor\'s written order for medicine', explanation: 'A prescription is a doctor\'s order for medication.', explanationFr: 'Une ordonnance est un ordre médical pour des médicaments.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'I need to make an _____ with the doctor.', correctAnswer: 'appointment', explanation: 'We make "appointments" to see doctors.', explanationFr: 'On prend des "rendez-vous" pour voir des médecins.' },
+      { id: 3, type: 'mcq', question: 'What does "symptoms" mean?', context: '', options: ['Signs of illness', 'Types of medicine', 'Medical equipment', 'Hospital departments'], correctAnswer: 'Signs of illness', explanation: 'Symptoms are physical signs that indicate illness.', explanationFr: 'Les symptômes sont des signes physiques indiquant une maladie.' },
+      { id: 4, type: 'mcq', question: 'Choose the correct word:', context: 'The doctor will _____ you now.', options: ['see', 'look', 'watch', 'view'], correctAnswer: 'see', explanation: 'Doctors "see" patients during appointments.', explanationFr: 'Les médecins "voient" les patients pendant les rendez-vous.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'You should take this medicine three times a _____.', correctAnswer: 'day', explanation: 'Medicine dosage is often given per day.', explanationFr: 'La posologie est souvent donnée par jour.' },
+      { id: 6, type: 'mcq', question: 'What is an "allergy"?', context: '', options: ['A negative reaction to something', 'A type of medicine', 'A medical test', 'A hospital room'], correctAnswer: 'A negative reaction to something', explanation: 'An allergy is a harmful reaction to foods, medicines, etc.', explanationFr: 'Une allergie est une réaction négative à des aliments, médicaments, etc.' }
+    ]
+  },
+  {
+    id: 'cloe-expressions-b1-1',
+    title: 'Expressions: Telephone Conversations',
+    titleFr: 'Expressions : Conversations téléphoniques',
+    category: 'expressions',
+    difficulty: 'B1',
+    description: 'Essential phrases for professional phone calls.',
+    descriptionFr: 'Phrases essentielles pour les appels téléphoniques professionnels.',
+    estimatedTime: 10,
+    questions: [
+      { id: 1, type: 'mcq', question: 'How do you answer a business call?', context: '', options: ['Good morning, [Company name], how may I help you?', 'Yeah, what?', 'Hello, it\'s me.', 'Who is this?'], correctAnswer: 'Good morning, [Company name], how may I help you?', explanation: 'Professional call answering includes greeting, company name, and offer to help.', explanationFr: 'Répondre professionnellement inclut salutation, nom de l\'entreprise et offre d\'aide.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'Could you _____ (HOLD) for a moment, please?', correctAnswer: 'hold', explanation: '"Hold" means to wait on the phone.', explanationFr: '"Hold" signifie patienter au téléphone.' },
+      { id: 3, type: 'mcq', question: 'What do you say when you can\'t hear well?', context: '', options: ['I\'m sorry, could you repeat that?', 'What did you say?', 'Speak louder!', 'I can\'t hear you!'], correctAnswer: 'I\'m sorry, could you repeat that?', explanation: 'This is the polite way to ask for repetition.', explanationFr: 'C\'est la manière polie de demander une répétition.' },
+      { id: 4, type: 'mcq', question: 'How do you transfer a call?', context: '', options: ['Let me put you through to...', 'I\'ll send you to...', 'Go to the other person.', 'Wait, I\'ll find someone.'], correctAnswer: 'Let me put you through to...', explanation: '"Put through" means to connect/transfer a call.', explanationFr: '"Put through" signifie transférer un appel.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'I\'m _____ (CALL) to inquire about your services.', correctAnswer: 'calling', explanation: '"I\'m calling" is the phrase to explain why you\'re phoning.', explanationFr: '"I\'m calling" explique pourquoi vous téléphonez.' },
+      { id: 6, type: 'mcq', question: 'How do you end a professional call?', context: '', options: ['Thank you for your time. Goodbye.', 'Bye bye!', 'Okay, that\'s it.', 'I\'m hanging up now.'], correctAnswer: 'Thank you for your time. Goodbye.', explanation: 'Professional calls end with thanks and a formal goodbye.', explanationFr: 'Les appels professionnels se terminent par des remerciements et un au revoir formel.' }
+    ]
+  },
+  // More B2 Level Exercises
+  {
+    id: 'cloe-grammar-b2-2',
+    title: 'Grammar: Conditionals - Mixed',
+    titleFr: 'Grammaire : Conditionnels - Mixte',
+    category: 'grammar',
+    difficulty: 'B2',
+    description: 'Practice all types of conditional sentences.',
+    descriptionFr: 'Pratiquez tous les types de phrases conditionnelles.',
+    estimatedTime: 12,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Choose the correct conditional:', context: 'If I _____ you, I would accept the offer.', options: ['were', 'am', 'would be', 'was being'], correctAnswer: 'were', explanation: 'Second conditional uses "were" for all subjects (formal).', explanationFr: 'Le deuxième conditionnel utilise "were" pour tous les sujets (formel).' },
+      { id: 2, type: 'mcq', question: 'Select the correct form:', context: 'If the weather is nice, we _____ to the park.', options: ['will go', 'would go', 'went', 'go'], correctAnswer: 'will go', explanation: 'First conditional: If + present, will + base verb.', explanationFr: 'Premier conditionnel : If + présent, will + verbe de base.' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'If I had known earlier, I _____ (TELL) you.', correctAnswer: 'would have told', explanation: 'Third conditional: would have + past participle.', explanationFr: 'Troisième conditionnel : would have + participe passé.' },
+      { id: 4, type: 'mcq', question: 'Which sentence is third conditional?', context: '', options: ['If she had studied, she would have passed.', 'If she studies, she will pass.', 'If she studied, she would pass.', 'If she studies, she passes.'], correctAnswer: 'If she had studied, she would have passed.', explanation: 'Third conditional describes unreal past situations.', explanationFr: 'Le troisième conditionnel décrit des situations passées irréelles.' },
+      { id: 5, type: 'mcq', question: 'Choose the zero conditional:', context: '', options: ['If you heat water to 100°C, it boils.', 'If you heated water, it would boil.', 'If you had heated water, it would have boiled.', 'If you will heat water, it boils.'], correctAnswer: 'If you heat water to 100°C, it boils.', explanation: 'Zero conditional expresses general truths: If + present, present.', explanationFr: 'Le conditionnel zéro exprime des vérités générales : If + présent, présent.' },
+      { id: 6, type: 'fill-blank', question: 'Complete:', context: 'Unless you _____ (HURRY), you will miss the train.', correctAnswer: 'hurry', explanation: '"Unless" means "if not" and takes present simple.', explanationFr: '"Unless" signifie "si...ne...pas" et prend le présent simple.' },
+      { id: 7, type: 'mcq', question: 'Which is a mixed conditional?', context: '', options: ['If I had taken that job, I would be rich now.', 'If I take the job, I will be rich.', 'If I took the job, I would be rich.', 'If I had taken the job, I would have been rich.'], correctAnswer: 'If I had taken that job, I would be rich now.', explanation: 'Mixed conditional: past action affecting present result.', explanationFr: 'Conditionnel mixte : action passée affectant un résultat présent.' },
+      { id: 8, type: 'mcq', question: 'Select the correct sentence:', context: '', options: ['Had I known, I would have helped.', 'If had I known, I would have helped.', 'Had I known, I would helped.', 'Had I know, I would have helped.'], correctAnswer: 'Had I known, I would have helped.', explanation: 'Inversion in third conditional: Had + subject + past participle.', explanationFr: 'Inversion au troisième conditionnel : Had + sujet + participe passé.' }
+    ]
+  },
+  {
+    id: 'cloe-reading-b2-1',
+    title: 'Reading: Job Advertisement',
+    titleFr: 'Lecture : Offre d\'emploi',
+    category: 'reading',
+    difficulty: 'B2',
+    description: 'Practice reading and understanding job postings.',
+    descriptionFr: 'Pratiquez la lecture et la compréhension des offres d\'emploi.',
+    estimatedTime: 12,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Read the job ad and answer:', context: 'MARKETING MANAGER\nLocation: Paris, France (Hybrid - 3 days office)\nSalary: €55,000 - €70,000 + bonus\n\nAbout Us:\nTechFlow Solutions is a fast-growing B2B SaaS company serving 500+ clients across Europe. We\'re looking for a creative Marketing Manager to lead our brand strategy.\n\nResponsibilities:\n• Develop and execute marketing campaigns\n• Manage a team of 4 marketing specialists\n• Oversee €200K annual marketing budget\n• Analyze campaign performance and ROI\n• Collaborate with Sales and Product teams\n\nRequirements:\n• 5+ years marketing experience, 2+ in management\n• Fluent English and French (German a plus)\n• Experience with HubSpot and Google Analytics\n• Bachelor\'s degree in Marketing or related field\n\nBenefits:\n• 28 days annual leave\n• Private health insurance\n• €1,500 training budget\n• Stock options after 1 year\n\nApply by: March 30, 2026', options: ['€55,000 - €70,000', '€200,000', '€1,500', '28 days'], correctAnswer: '€55,000 - €70,000', explanation: 'The salary range is listed as "€55,000 - €70,000 + bonus".', explanationFr: 'La fourchette salariale est indiquée "55 000 € - 70 000 € + bonus".' },
+      { id: 2, type: 'mcq', question: 'How many people will the Marketing Manager supervise?', context: '', options: ['4', '5', '500', '200'], correctAnswer: '4', explanation: 'The ad states "Manage a team of 4 marketing specialists".', explanationFr: 'L\'annonce indique "Gérer une équipe de 4 spécialistes marketing".' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'The work arrangement is _____ days in the office.', correctAnswer: '3', explanation: 'The location states "Hybrid - 3 days office".', explanationFr: 'Le lieu indique "Hybride - 3 jours au bureau".' },
+      { id: 4, type: 'mcq', question: 'What is NOT a requirement?', context: '', options: ['Master\'s degree', '5+ years experience', 'HubSpot experience', 'Fluent English'], correctAnswer: 'Master\'s degree', explanation: 'The requirements list "Bachelor\'s degree", not Master\'s.', explanationFr: 'Les exigences mentionnent "Licence", pas "Master".' },
+      { id: 5, type: 'mcq', question: 'When are stock options available?', context: '', options: ['After 1 year', 'Immediately', 'After 2 years', 'After 5 years'], correctAnswer: 'After 1 year', explanation: 'Benefits include "Stock options after 1 year".', explanationFr: 'Les avantages incluent "Stock options après 1 an".' },
+      { id: 6, type: 'mcq', question: 'What is TechFlow Solutions?', context: '', options: ['A B2B SaaS company', 'A recruitment agency', 'A training provider', 'A marketing agency'], correctAnswer: 'A B2B SaaS company', explanation: 'The ad describes it as "a fast-growing B2B SaaS company".', explanationFr: 'L\'annonce décrit l\'entreprise comme "une société B2B SaaS en croissance rapide".' }
+    ]
+  },
+  // C1 Level - Advanced Exercises
+  {
+    id: 'cloe-grammar-c1-1',
+    title: 'Grammar: Advanced Subjunctive',
+    titleFr: 'Grammaire : Subjonctif avancé',
+    category: 'grammar',
+    difficulty: 'C1',
+    description: 'Master subjunctive mood in formal English.',
+    descriptionFr: 'Maîtrisez le subjonctif en anglais formel.',
+    estimatedTime: 12,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Choose the correct subjunctive:', context: 'It is essential that he _____ on time.', options: ['be', 'is', 'was', 'were'], correctAnswer: 'be', explanation: 'Subjunctive uses base form after "it is essential that".', explanationFr: 'Le subjonctif utilise la forme de base après "it is essential that".' },
+      { id: 2, type: 'mcq', question: 'Select the correct form:', context: 'The manager insisted that the report _____ completed today.', options: ['be', 'is', 'was', 'would be'], correctAnswer: 'be', explanation: '"Insist that" is followed by subjunctive (base form).', explanationFr: '"Insist that" est suivi du subjonctif (forme de base).' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'If I _____ (BE) in your position, I would resign.', correctAnswer: 'were', explanation: 'Subjunctive "were" is used for hypothetical situations with all subjects.', explanationFr: 'Le subjonctif "were" est utilisé pour les situations hypothétiques avec tous les sujets.' },
+      { id: 4, type: 'mcq', question: 'Which sentence uses correct subjunctive?', context: '', options: ['I recommend that she take the course.', 'I recommend that she takes the course.', 'I recommend that she took the course.', 'I recommend that she will take the course.'], correctAnswer: 'I recommend that she take the course.', explanation: '"Recommend that" requires subjunctive (base form).', explanationFr: '"Recommend that" exige le subjonctif (forme de base).' },
+      { id: 5, type: 'mcq', question: 'Choose the correct form:', context: 'It is vital that every employee _____ the training.', options: ['attend', 'attends', 'attended', 'will attend'], correctAnswer: 'attend', explanation: '"It is vital that" triggers subjunctive.', explanationFr: '"It is vital that" déclenche le subjonctif.' },
+      { id: 6, type: 'mcq', question: 'Which is correct?', context: '', options: ['The board demanded that the CEO resign.', 'The board demanded that the CEO resigns.', 'The board demanded that the CEO resigned.', 'The board demanded the CEO to resign.'], correctAnswer: 'The board demanded that the CEO resign.', explanation: '"Demand that" is followed by subjunctive.', explanationFr: '"Demand that" est suivi du subjonctif.' },
+      { id: 7, type: 'fill-blank', question: 'Complete:', context: 'It is imperative that she _____ (NOT MISS) this opportunity.', correctAnswer: 'not miss', explanation: 'Negative subjunctive: not + base form.', explanationFr: 'Subjonctif négatif : not + forme de base.' },
+      { id: 8, type: 'mcq', question: 'Select the correct subjunctive:', context: 'Lest we _____ the deadline, we should start now.', options: ['miss', 'should miss', 'missed', 'will miss'], correctAnswer: 'miss', explanation: '"Lest" is followed by subjunctive base form.', explanationFr: '"Lest" est suivi du subjonctif (forme de base).' }
+    ]
+  },
+  {
+    id: 'cloe-vocab-c1-1',
+    title: 'Vocabulary: Strategic Business Terms',
+    titleFr: 'Vocabulaire : Termes stratégiques d\'entreprise',
+    category: 'vocabulary',
+    difficulty: 'C1',
+    description: 'Advanced vocabulary for corporate strategy discussions.',
+    descriptionFr: 'Vocabulaire avancé pour les discussions de stratégie d\'entreprise.',
+    estimatedTime: 12,
+    questions: [
+      { id: 1, type: 'mcq', question: 'What is "market penetration"?', context: '', options: ['Strategy to increase market share with existing products', 'Entering a new market', 'Developing new products', 'Acquiring competitors'], correctAnswer: 'Strategy to increase market share with existing products', explanation: 'Market penetration focuses on selling more of current products to current markets.', explanationFr: 'La pénétration de marché consiste à vendre plus de produits actuels sur les marchés actuels.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'The company achieved a competitive _____ through innovation.', correctAnswer: 'advantage', explanation: '"Competitive advantage" is what sets a company apart from rivals.', explanationFr: 'Un "avantage concurrentiel" distingue une entreprise de ses rivaux.' },
+      { id: 3, type: 'mcq', question: 'What does "synergy" mean in business?', context: '', options: ['Combined effect greater than individual parts', 'A type of merger', 'Cost reduction', 'Revenue increase'], correctAnswer: 'Combined effect greater than individual parts', explanation: 'Synergy means 2+2=5; combined entities create more value together.', explanationFr: 'La synergie signifie 2+2=5 ; les entités combinées créent plus de valeur ensemble.' },
+      { id: 4, type: 'mcq', question: 'What is "due diligence"?', context: '', options: ['Thorough investigation before a business decision', 'Regular audit', 'Daily operations', 'Customer service'], correctAnswer: 'Thorough investigation before a business decision', explanation: 'Due diligence is research done before acquisitions, investments, or partnerships.', explanationFr: 'La due diligence est une recherche effectuée avant acquisitions, investissements ou partenariats.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'The CEO outlined the company\'s five-year _____ plan.', correctAnswer: 'strategic', explanation: 'A "strategic plan" outlines long-term goals and how to achieve them.', explanationFr: 'Un "plan stratégique" définit les objectifs à long terme et comment les atteindre.' },
+      { id: 6, type: 'mcq', question: 'What is "vertical integration"?', context: '', options: ['Owning multiple stages of production/distribution', 'Expanding into new markets', 'Launching new products', 'Hiring more staff'], correctAnswer: 'Owning multiple stages of production/distribution', explanation: 'Vertical integration means controlling suppliers or distributors.', explanationFr: 'L\'intégration verticale signifie contrôler fournisseurs ou distributeurs.' },
+      { id: 7, type: 'mcq', question: 'What does "scalability" refer to?', context: '', options: ['Ability to grow without proportional cost increase', 'Company size', 'Production capacity', 'Employee count'], correctAnswer: 'Ability to grow without proportional cost increase', explanation: 'A scalable business can grow revenue without equivalent cost increases.', explanationFr: 'Une entreprise évolutive peut augmenter ses revenus sans augmentation proportionnelle des coûts.' },
+      { id: 8, type: 'mcq', question: 'What is a "pivot" in business strategy?', context: '', options: ['Fundamental change in business direction', 'Quarterly report', 'Management restructuring', 'Product launch'], correctAnswer: 'Fundamental change in business direction', explanation: 'A pivot is when a company significantly changes its business model or product.', explanationFr: 'Un pivot est quand une entreprise change significativement son modèle d\'affaires ou produit.' }
+    ]
+  },
+  {
+    id: 'cloe-expressions-c1-1',
+    title: 'Expressions: Negotiation Language',
+    titleFr: 'Expressions : Langage de négociation',
+    category: 'expressions',
+    difficulty: 'C1',
+    description: 'Advanced phrases for professional negotiations.',
+    descriptionFr: 'Phrases avancées pour les négociations professionnelles.',
+    estimatedTime: 12,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Which phrase opens a negotiation diplomatically?', context: '', options: ['I\'d like to explore the possibility of...', 'Give me a better price.', 'I want...', 'You must accept...'], correctAnswer: 'I\'d like to explore the possibility of...', explanation: 'This phrase is open and non-confrontational.', explanationFr: 'Cette phrase est ouverte et non-confrontationnelle.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'We\'re willing to meet you _____ (HALFWAY) on the price.', correctAnswer: 'halfway', explanation: '"Meet halfway" means to compromise, each side giving something.', explanationFr: '"Meet halfway" signifie faire un compromis, chaque partie cédant quelque chose.' },
+      { id: 3, type: 'mcq', question: 'How do you express flexibility professionally?', context: '', options: ['There\'s room for maneuver on certain points.', 'I can change everything.', 'Do whatever you want.', 'Nothing is fixed.'], correctAnswer: 'There\'s room for maneuver on certain points.', explanation: 'This phrase indicates flexibility while maintaining structure.', explanationFr: 'Cette phrase indique de la flexibilité tout en maintenant une structure.' },
+      { id: 4, type: 'mcq', question: 'Which phrase rejects an offer politely?', context: '', options: ['I\'m afraid that\'s not something we can agree to.', 'No way!', 'That\'s ridiculous.', 'Absolutely not.'], correctAnswer: 'I\'m afraid that\'s not something we can agree to.', explanation: 'Softening with "I\'m afraid" makes rejection more diplomatic.', explanationFr: 'Adoucir avec "I\'m afraid" rend le refus plus diplomatique.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'Let\'s look at the _____ (BIG) picture here.', correctAnswer: 'big', explanation: '"The big picture" means the overall situation, not just details.', explanationFr: '"The big picture" signifie la situation globale, pas seulement les détails.' },
+      { id: 6, type: 'mcq', question: 'How do you propose a trade-off?', context: '', options: ['If we agree to X, would you consider Y?', 'You give me X and I\'ll think about Y.', 'Just do X.', 'X or nothing.'], correctAnswer: 'If we agree to X, would you consider Y?', explanation: 'This structure proposes mutual concessions professionally.', explanationFr: 'Cette structure propose des concessions mutuelles de manière professionnelle.' },
+      { id: 7, type: 'mcq', question: 'Which phrase closes a deal professionally?', context: '', options: ['I think we\'ve reached an agreement in principle.', 'Done!', 'Okay, whatever.', 'Fine, I accept.'], correctAnswer: 'I think we\'ve reached an agreement in principle.', explanation: '"Agreement in principle" indicates general consensus pending final details.', explanationFr: '"Agreement in principle" indique un consensus général en attendant les détails finaux.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'We need to find a _____ (WIN-WIN) solution for both parties.', correctAnswer: 'win-win', explanation: 'A "win-win" solution benefits all parties involved.', explanationFr: 'Une solution "win-win" bénéficie à toutes les parties impliquées.' }
+    ]
+  },
+  // Additional Reading Comprehension
+  {
+    id: 'cloe-reading-b1-2',
+    title: 'Reading: Hotel Booking Confirmation',
+    titleFr: 'Lecture : Confirmation de réservation d\'hôtel',
+    category: 'reading',
+    difficulty: 'B1',
+    description: 'Practice understanding travel booking documents.',
+    descriptionFr: 'Pratiquez la compréhension des documents de réservation de voyage.',
+    estimatedTime: 10,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Read the confirmation and answer:', context: 'BOOKING CONFIRMATION\n\nConfirmation Number: HB-2025-78452\nGuest Name: Mr. David Chen\n\nHotel: Grand Palace Hotel\nAddress: 45 Victoria Street, Manchester, M2 4QR\nCheck-in: Friday, April 11, 2025 (from 3:00 PM)\nCheck-out: Monday, April 14, 2025 (by 11:00 AM)\n\nRoom Type: Executive Double Room\nNumber of Nights: 3\nRate: £145 per night\nTotal: £435 (breakfast included)\n\nPayment: Deposit of £145 charged to credit card ending 4521. Remaining £290 due at check-out.\n\nAmenities: Free WiFi, Gym, 24-hour room service, Parking (£15/day extra)\n\nCancellation Policy: Free cancellation until April 8, 2025. After this date, one night\'s charge applies.\n\nFor inquiries: reservations@grandpalace.co.uk or +44 161 555 0190', options: ['3 nights', '2 nights', '4 nights', '5 nights'], correctAnswer: '3 nights', explanation: 'The booking shows "Number of Nights: 3".', explanationFr: 'La réservation indique "Number of Nights: 3".' },
+      { id: 2, type: 'mcq', question: 'What time must the guest leave on April 14?', context: '', options: ['11:00 AM', '3:00 PM', '12:00 PM', '2:00 PM'], correctAnswer: '11:00 AM', explanation: 'Check-out is "by 11:00 AM".', explanationFr: 'Le départ est "avant 11h00".' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'The deposit paid was £_____', correctAnswer: '145', explanation: 'The payment section states "Deposit of £145 charged".', explanationFr: 'La section paiement indique "Dépôt de 145 £ débité".' },
+      { id: 4, type: 'mcq', question: 'What is NOT included in the room rate?', context: '', options: ['Parking', 'Breakfast', 'WiFi', 'Gym'], correctAnswer: 'Parking', explanation: 'Parking is listed as "£15/day extra".', explanationFr: 'Le parking est indiqué "15 £/jour en supplément".' },
+      { id: 5, type: 'mcq', question: 'Until when can the guest cancel for free?', context: '', options: ['April 8, 2025', 'April 11, 2025', 'April 14, 2025', 'No free cancellation'], correctAnswer: 'April 8, 2025', explanation: 'Free cancellation is available "until April 8, 2025".', explanationFr: 'L\'annulation gratuite est possible "jusqu\'au 8 avril 2025".' },
+      { id: 6, type: 'mcq', question: 'How much does the guest still owe?', context: '', options: ['£290', '£145', '£435', '£15'], correctAnswer: '£290', explanation: 'The booking states "Remaining £290 due at check-out".', explanationFr: 'La réservation indique "Restant 290 £ dû au départ".' }
+    ]
   }
 ];
 
