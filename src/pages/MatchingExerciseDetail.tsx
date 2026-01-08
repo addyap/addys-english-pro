@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { shuffleArray } from '@/utils/shuffleArray';
 
 const MatchingExerciseDetail = () => {
   const { id } = useParams();
@@ -20,9 +21,8 @@ const MatchingExerciseDetail = () => {
 
   useEffect(() => {
     if (exercise) {
-      // Shuffle definitions for the exercise
-      const shuffled = [...exercise.pairs].sort(() => Math.random() - 0.5);
-      setShuffledDefinitions(shuffled);
+      // Shuffle definitions using proper shuffle algorithm
+      setShuffledDefinitions(shuffleArray([...exercise.pairs]));
     }
   }, [exercise]);
 
@@ -77,8 +77,8 @@ const MatchingExerciseDetail = () => {
     setSelectedWord(null);
     setMatches({});
     setSubmitted(false);
-    const shuffled = [...exercise.pairs].sort(() => Math.random() - 0.5);
-    setShuffledDefinitions(shuffled);
+    // Use proper shuffle algorithm
+    setShuffledDefinitions(shuffleArray([...exercise.pairs]));
   };
 
   const removeMatch = (wordId: number) => {

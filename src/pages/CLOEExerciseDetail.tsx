@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { 
@@ -22,6 +22,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { getCloeExerciseById, cloeExercises, CloeQuestion } from '@/data/cloeExercises';
 import { useCLOEProgress } from '@/hooks/useCLOEProgress';
+import { seededShuffle } from '@/utils/shuffleArray';
 
 const getDifficultyColor = (difficulty: string) => {
   switch (difficulty) {
@@ -272,39 +273,43 @@ const CLOEExerciseDetail = () => {
             </CardHeader>
             <CardContent className="space-y-4">
               {/* MCQ Type */}
-              {currentQuestion.type === 'mcq' && currentQuestion.options && (
-                <RadioGroup 
-                  value={currentState?.userAnswer || ''} 
-                  onValueChange={handleAnswer}
-                  disabled={currentState?.answered}
-                >
-                  {currentQuestion.options.map((option, index) => (
-                    <div 
-                      key={index} 
-                      className={`flex items-center space-x-3 p-3 rounded-lg border transition-colors ${
-                        currentState?.answered
-                          ? option === currentQuestion.correctAnswer
-                            ? 'bg-green-50 border-green-300 dark:bg-green-900/20 dark:border-green-700'
-                            : currentState.userAnswer === option
-                              ? 'bg-red-50 border-red-300 dark:bg-red-900/20 dark:border-red-700'
-                              : 'opacity-50'
-                          : 'hover:bg-muted cursor-pointer'
-                      }`}
-                    >
-                      <RadioGroupItem value={option} id={`option-${index}`} />
-                      <Label htmlFor={`option-${index}`} className="flex-1 cursor-pointer">
-                        {option}
-                      </Label>
-                      {currentState?.answered && option === currentQuestion.correctAnswer && (
-                        <CheckCircle className="h-5 w-5 text-green-600" />
-                      )}
-                      {currentState?.answered && currentState.userAnswer === option && option !== currentQuestion.correctAnswer && (
-                        <XCircle className="h-5 w-5 text-red-600" />
-                      )}
-                    </div>
-                  ))}
-                </RadioGroup>
-              )}
+              {currentQuestion.type === 'mcq' && currentQuestion.options && (() => {
+                // Shuffle options using question ID as seed for consistency
+                const shuffledOptions = seededShuffle(currentQuestion.options, currentQuestion.id);
+                return (
+                  <RadioGroup 
+                    value={currentState?.userAnswer || ''} 
+                    onValueChange={handleAnswer}
+                    disabled={currentState?.answered}
+                  >
+                    {shuffledOptions.map((option, index) => (
+                      <div 
+                        key={index} 
+                        className={`flex items-center space-x-3 p-3 rounded-lg border transition-colors ${
+                          currentState?.answered
+                            ? option === currentQuestion.correctAnswer
+                              ? 'bg-green-50 border-green-300 dark:bg-green-900/20 dark:border-green-700'
+                              : currentState.userAnswer === option
+                                ? 'bg-red-50 border-red-300 dark:bg-red-900/20 dark:border-red-700'
+                                : 'opacity-50'
+                            : 'hover:bg-muted cursor-pointer'
+                        }`}
+                      >
+                        <RadioGroupItem value={option} id={`option-${index}`} />
+                        <Label htmlFor={`option-${index}`} className="flex-1 cursor-pointer">
+                          {option}
+                        </Label>
+                        {currentState?.answered && option === currentQuestion.correctAnswer && (
+                          <CheckCircle className="h-5 w-5 text-green-600" />
+                        )}
+                        {currentState?.answered && currentState.userAnswer === option && option !== currentQuestion.correctAnswer && (
+                          <XCircle className="h-5 w-5 text-red-600" />
+                        )}
+                      </div>
+                    ))}
+                  </RadioGroup>
+                );
+              })()}
 
               {/* Fill-in-blank Type */}
               {currentQuestion.type === 'fill-blank' && (
@@ -343,39 +348,43 @@ const CLOEExerciseDetail = () => {
               )}
 
               {/* Word Bank Type */}
-              {currentQuestion.type === 'word-bank' && currentQuestion.options && (
-                <div className="space-y-4">
-                  <div className="flex flex-wrap gap-2">
-                    {currentQuestion.options.map((word, index) => (
-                      <Button 
-                        key={index}
-                        variant="outline"
-                        size="sm"
-                        disabled={currentState?.answered}
-                        onClick={() => handleAnswer(word)}
-                        className={currentState?.answered 
-                          ? Array.isArray(currentQuestion.correctAnswer) && currentQuestion.correctAnswer.includes(word)
-                            ? 'bg-green-100 border-green-300 text-green-700'
-                            : 'opacity-50'
-                          : 'hover:bg-primary hover:text-primary-foreground'
-                        }
-                      >
-                        {word}
-                      </Button>
-                    ))}
+              {currentQuestion.type === 'word-bank' && currentQuestion.options && (() => {
+                // Shuffle word bank options using question ID as seed
+                const shuffledWords = seededShuffle(currentQuestion.options, currentQuestion.id + 1000);
+                return (
+                  <div className="space-y-4">
+                    <div className="flex flex-wrap gap-2">
+                      {shuffledWords.map((word, index) => (
+                        <Button 
+                          key={index}
+                          variant="outline"
+                          size="sm"
+                          disabled={currentState?.answered}
+                          onClick={() => handleAnswer(word)}
+                          className={currentState?.answered 
+                            ? Array.isArray(currentQuestion.correctAnswer) && currentQuestion.correctAnswer.includes(word)
+                              ? 'bg-green-100 border-green-300 text-green-700'
+                              : 'opacity-50'
+                            : 'hover:bg-primary hover:text-primary-foreground'
+                          }
+                        >
+                          {word}
+                        </Button>
+                      ))}
+                    </div>
+                    {currentState?.answered && (
+                      <p className="text-sm text-muted-foreground">
+                        Réponses : <span className="font-semibold text-green-600">
+                          {Array.isArray(currentQuestion.correctAnswer) 
+                            ? currentQuestion.correctAnswer.join(', ')
+                            : currentQuestion.correctAnswer
+                          }
+                        </span>
+                      </p>
+                    )}
                   </div>
-                  {currentState?.answered && (
-                    <p className="text-sm text-muted-foreground">
-                      Réponses : <span className="font-semibold text-green-600">
-                        {Array.isArray(currentQuestion.correctAnswer) 
-                          ? currentQuestion.correctAnswer.join(', ')
-                          : currentQuestion.correctAnswer
-                        }
-                      </span>
-                    </p>
-                  )}
-                </div>
-              )}
+                );
+              })()}
 
               {/* Explanation */}
               {currentState?.answered && (
