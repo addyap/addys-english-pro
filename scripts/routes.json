@@ -180,6 +180,18 @@
     { "path": "/exercices/cloe/cloe-reading-b2-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Job Advertisement Analysis" },
     { "path": "/exercices/cloe/cloe-reading-b1-2", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Hotel Booking Confirmation" },
     { "path": "/exercices/cloe/cloe-reading-contract-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Service Agreement Excerpt" },
-    { "path": "/exercices/cloe/cloe-reading-finance-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Quarterly Financial Report" }
+    { "path": "/exercices/cloe/cloe-reading-finance-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Quarterly Financial Report" },
+    { "path": "/exercices/cloe/cloe-grammar-c1-2", "priority": 0.7, "changefreq": "monthly", "title": "CLOE C1: Cleft Sentences & Emphasis" },
+    { "path": "/exercices/cloe/cloe-vocab-c1-2", "priority": 0.7, "changefreq": "monthly", "title": "CLOE C1: Financial Terminology" },
+    { "path": "/exercices/cloe/cloe-reading-c1-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE C1: Executive Summary Analysis" },
+    { "path": "/exercices/cloe/cloe-expressions-c1-2", "priority": 0.7, "changefreq": "monthly", "title": "CLOE C1: Diplomatic Disagreement" },
+    { "path": "/exercices/cloe/cloe-grammar-c2-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE C2: Advanced Discourse Markers" },
+    { "path": "/exercices/cloe/cloe-vocab-c2-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE C2: Nuanced Business Terminology" },
+    { "path": "/exercices/cloe/cloe-expressions-c2-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE C2: Boardroom Rhetoric" },
+    { "path": "/exercices/cloe/cloe-reading-c2-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE C2: Legal Contract Analysis" },
+    { "path": "/exercices/cloe/cloe-grammar-c2-2", "priority": 0.7, "changefreq": "monthly", "title": "CLOE C2: Nominalizations & Academic Style" },
+    { "path": "/exercices/cloe/cloe-vocab-c2-2", "priority": 0.7, "changefreq": "monthly", "title": "CLOE C2: Cross-Cultural Business Communication" },
+    { "path": "/exercices/cloe/cloe-expressions-c2-2", "priority": 0.7, "changefreq": "monthly", "title": "CLOE C2: Crisis Communication" },
+    { "path": "/exercices/cloe/cloe-reading-c2-2", "priority": 0.7, "changefreq": "monthly", "title": "CLOE C2: Annual Report Analysis" }
   ]
 }

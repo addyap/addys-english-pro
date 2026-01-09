@@ -18,7 +18,7 @@ export interface CloeExercise {
   title: string;
   titleFr: string;
   category: 'vocabulary' | 'grammar' | 'expressions' | 'reading' | 'listening';
-  difficulty: 'A1' | 'A2' | 'B1' | 'B2' | 'C1';
+  difficulty: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
   description: string;
   descriptionFr: string;
   questions: CloeQuestion[];
@@ -1497,6 +1497,248 @@ Marketing Director`,
       { id: 5, type: 'mcq', question: 'Until when can the guest cancel for free?', context: '', options: ['April 8, 2025', 'April 11, 2025', 'April 14, 2025', 'No free cancellation'], correctAnswer: 'April 8, 2025', explanation: 'Free cancellation is available "until April 8, 2025".', explanationFr: 'L\'annulation gratuite est possible "jusqu\'au 8 avril 2025".' },
       { id: 6, type: 'mcq', question: 'How much does the guest still owe?', context: '', options: ['£290', '£145', '£435', '£15'], correctAnswer: '£290', explanation: 'The booking states "Remaining £290 due at check-out".', explanationFr: 'La réservation indique "Restant 290 £ dû au départ".' }
     ]
+  },
+  // C1/C2 Advanced Professional English
+  {
+    id: 'cloe-grammar-c1-2',
+    title: 'Grammar: Cleft Sentences & Emphasis',
+    titleFr: 'Grammaire : Phrases clivées et emphase',
+    category: 'grammar',
+    difficulty: 'C1',
+    description: 'Master advanced emphasis structures for professional communication.',
+    descriptionFr: 'Maîtrisez les structures d\'emphase avancées pour la communication professionnelle.',
+    estimatedTime: 12,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Choose the correct cleft sentence:', context: 'The CEO resigned because of the scandal.', options: ['It was because of the scandal that the CEO resigned.', 'It was the scandal because the CEO resigned.', 'Because of the scandal it was the CEO resigned.', 'The CEO it was resigned because of the scandal.'], correctAnswer: 'It was because of the scandal that the CEO resigned.', explanation: 'It-cleft structure: It + be + focused element + that clause.', explanationFr: 'Structure clivée : It + be + élément focalisé + proposition en that.' },
+      { id: 2, type: 'fill-blank', question: 'Complete the wh-cleft:', context: '_____ we need is a complete restructuring of the department.', correctAnswer: 'What', explanation: 'Wh-clefts use what/where/when to emphasize the following element.', explanationFr: 'Les clivées en wh- utilisent what/where/when pour mettre en emphase.' },
+      { id: 3, type: 'mcq', question: 'Which sentence correctly emphasizes the time?', context: 'We finalized the deal last Tuesday.', options: ['It was last Tuesday that we finalized the deal.', 'Last Tuesday it was we finalized the deal.', 'We finalized it was last Tuesday the deal.', 'The deal last Tuesday was finalized it.'], correctAnswer: 'It was last Tuesday that we finalized the deal.', explanation: 'Cleft sentences can emphasize time expressions.', explanationFr: 'Les phrases clivées peuvent mettre en emphase les expressions temporelles.' },
+      { id: 4, type: 'mcq', question: 'Select the correct emphasis structure:', context: '', options: ['What concerns me most is the lack of transparency.', 'Most concerns me what is the lack of transparency.', 'The lack of transparency what concerns me most.', 'Concerns me what is most the lack of transparency.'], correctAnswer: 'What concerns me most is the lack of transparency.', explanation: 'What-clause + be + emphasized element.', explanationFr: 'Proposition en what + be + élément mis en emphase.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'It was the finance director _____ raised the issue first.', correctAnswer: 'who', explanation: 'Use "who" for people in cleft sentences.', explanationFr: 'Utilisez "who" pour les personnes dans les phrases clivées.' },
+      { id: 6, type: 'mcq', question: 'Which sentence uses inversion for emphasis?', context: '', options: ['Never before had the company faced such a crisis.', 'The company never before had faced such a crisis.', 'Had never before the company faced such a crisis.', 'Such a crisis the company never before had faced.'], correctAnswer: 'Never before had the company faced such a crisis.', explanation: 'Negative adverbials trigger subject-auxiliary inversion.', explanationFr: 'Les adverbes négatifs déclenchent l\'inversion sujet-auxiliaire.' },
+      { id: 7, type: 'mcq', question: 'Choose the correct emphatic structure:', context: 'We need investment above all else.', options: ['What we need above all else is investment.', 'Investment what we need above all else.', 'Above all else what we need investment.', 'We need what is investment above all else.'], correctAnswer: 'What we need above all else is investment.', explanation: 'Wh-cleft brings the focused element to the end.', explanationFr: 'La clivée en wh- place l\'élément focalisé à la fin.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'Only after reviewing all options _____ (DO) we make the decision.', correctAnswer: 'did', explanation: 'Inversion after "only + adverbial": Only after X did we...', explanationFr: 'Inversion après "only + adverbial" : Only after X did we...' }
+    ]
+  },
+  {
+    id: 'cloe-vocab-c1-2',
+    title: 'Vocabulary: Financial Terminology',
+    titleFr: 'Vocabulaire : Terminologie financière',
+    category: 'vocabulary',
+    difficulty: 'C1',
+    description: 'Advanced financial vocabulary for corporate communications.',
+    descriptionFr: 'Vocabulaire financier avancé pour les communications d\'entreprise.',
+    estimatedTime: 12,
+    questions: [
+      { id: 1, type: 'mcq', question: 'What is "EBITDA"?', context: '', options: ['Earnings Before Interest, Taxes, Depreciation, and Amortization', 'European Business Investment and Trade Development Agency', 'Economic Balance in Trade and Development Analysis', 'Equity-Based Investment for Tax Deduction Allowance'], correctAnswer: 'Earnings Before Interest, Taxes, Depreciation, and Amortization', explanation: 'EBITDA is a key profitability metric used in financial analysis.', explanationFr: 'L\'EBITDA est une mesure de rentabilité clé utilisée en analyse financière.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'The company\'s _____ increased by 15%, indicating better use of assets.', correctAnswer: 'ROI', explanation: 'ROI (Return on Investment) measures efficiency of investments.', explanationFr: 'Le ROI (retour sur investissement) mesure l\'efficacité des investissements.' },
+      { id: 3, type: 'mcq', question: 'What does "liquidity" refer to?', context: '', options: ['Ability to meet short-term financial obligations', 'Total company value', 'Amount of debt', 'Revenue growth rate'], correctAnswer: 'Ability to meet short-term financial obligations', explanation: 'Liquidity is how easily assets can be converted to cash.', explanationFr: 'La liquidité est la facilité avec laquelle les actifs peuvent être convertis en espèces.' },
+      { id: 4, type: 'mcq', question: 'What is a "hostile takeover"?', context: '', options: ['Acquisition against the target company\'s wishes', 'Friendly merger', 'Joint venture', 'Strategic partnership'], correctAnswer: 'Acquisition against the target company\'s wishes', explanation: 'A hostile takeover bypasses management approval.', explanationFr: 'Une OPA hostile contourne l\'approbation de la direction.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'The company issued _____ to raise capital without diluting ownership.', correctAnswer: 'bonds', explanation: 'Bonds are debt instruments that don\'t affect equity ownership.', explanationFr: 'Les obligations sont des instruments de dette qui n\'affectent pas l\'actionnariat.' },
+      { id: 6, type: 'mcq', question: 'What is "amortization" in finance?', context: '', options: ['Gradual reduction of intangible asset value', 'Rapid asset sale', 'Stock split', 'Dividend payment'], correctAnswer: 'Gradual reduction of intangible asset value', explanation: 'Amortization spreads the cost of intangible assets over time.', explanationFr: 'L\'amortissement répartit le coût des actifs incorporels dans le temps.' },
+      { id: 7, type: 'mcq', question: 'What does "leverage" mean in corporate finance?', context: '', options: ['Use of borrowed money to increase potential returns', 'Company reputation', 'Market share', 'Customer loyalty'], correctAnswer: 'Use of borrowed money to increase potential returns', explanation: 'Leverage amplifies both gains and losses.', explanationFr: 'L\'effet de levier amplifie à la fois les gains et les pertes.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'The _____ (CASH) flow statement shows money entering and leaving the business.', correctAnswer: 'cash', explanation: 'The cash flow statement is one of three essential financial statements.', explanationFr: 'Le tableau des flux de trésorerie est l\'un des trois états financiers essentiels.' }
+    ]
+  },
+  {
+    id: 'cloe-reading-c1-1',
+    title: 'Reading: Executive Summary Analysis',
+    titleFr: 'Lecture : Analyse de résumé exécutif',
+    category: 'reading',
+    difficulty: 'C1',
+    description: 'Practice understanding complex business documents and reports.',
+    descriptionFr: 'Pratiquez la compréhension de documents commerciaux et rapports complexes.',
+    estimatedTime: 15,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Read the executive summary and answer:', context: 'EXECUTIVE SUMMARY: Q4 Strategic Review\n\nFollowing an exhaustive analysis of our market position, we recommend a phased approach to digital transformation over the next 18 months. The competitive landscape has shifted dramatically, with two major players capturing 45% of the market through aggressive pricing strategies. Our current market share of 23% has remained stagnant, while operational costs have increased 12% year-over-year.\n\nKey Recommendations:\n1. Implement cloud-based infrastructure (Est. savings: €2.1M annually)\n2. Launch AI-powered customer service platform (ROI projection: 340% over 3 years)\n3. Strategic acquisition of TechStart Inc. (Valuation: €15M, expected synergies: €4M/year)\n4. Workforce upskilling program (Investment: €800K, productivity gain: 18%)\n\nRisks: Currency fluctuation exposure, regulatory changes in data protection, and potential integration challenges with acquisition target.\n\nConclusion: Without immediate action, we project further market share erosion of 5-7% within 24 months. The proposed initiatives require board approval and total investment of €28M over the implementation period.', options: ['23%', '45%', '12%', '18%'], correctAnswer: '23%', explanation: 'The text states "Our current market share of 23%".', explanationFr: 'Le texte indique "Notre part de marché actuelle de 23%".' },
+      { id: 2, type: 'mcq', question: 'What is the projected ROI of the AI platform?', context: '', options: ['340% over 3 years', '18% productivity gain', '€2.1M annually', '€4M/year'], correctAnswer: '340% over 3 years', explanation: 'The AI customer service platform has "ROI projection: 340% over 3 years".', explanationFr: 'La plateforme d\'IA a une "projection de ROI : 340% sur 3 ans".' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'The total investment required is €_____ million.', correctAnswer: '28', explanation: 'The conclusion mentions "total investment of €28M".', explanationFr: 'La conclusion mentionne "investissement total de 28 M€".' },
+      { id: 4, type: 'mcq', question: 'What is NOT listed as a risk?', context: '', options: ['Staff turnover', 'Currency fluctuation', 'Regulatory changes', 'Integration challenges'], correctAnswer: 'Staff turnover', explanation: 'The risks listed are currency, regulation, and integration—not staff turnover.', explanationFr: 'Les risques listés sont la devise, la réglementation et l\'intégration—pas la rotation du personnel.' },
+      { id: 5, type: 'mcq', question: 'What is the valuation of TechStart Inc.?', context: '', options: ['€15M', '€28M', '€4M', '€2.1M'], correctAnswer: '€15M', explanation: 'TechStart Inc. has "Valuation: €15M".', explanationFr: 'TechStart Inc. a une "Valorisation : 15 M€".' },
+      { id: 6, type: 'mcq', question: 'What timeframe is proposed for transformation?', context: '', options: ['18 months', '24 months', '3 years', '12 months'], correctAnswer: '18 months', explanation: 'The summary recommends "a phased approach... over the next 18 months".', explanationFr: 'Le résumé recommande "une approche par phases... sur les 18 prochains mois".' },
+      { id: 7, type: 'fill-blank', question: 'Complete:', context: 'Without action, market share could drop by _____-7% in 24 months.', correctAnswer: '5', explanation: 'The text predicts "market share erosion of 5-7%".', explanationFr: 'Le texte prédit "une érosion de part de marché de 5-7%".' },
+      { id: 8, type: 'mcq', question: 'How much could cloud infrastructure save annually?', context: '', options: ['€2.1M', '€4M', '€800K', '€15M'], correctAnswer: '€2.1M', explanation: 'Cloud infrastructure has "Est. savings: €2.1M annually".', explanationFr: 'L\'infrastructure cloud a des "économies estimées : 2,1 M€ par an".' }
+    ]
+  },
+  {
+    id: 'cloe-expressions-c1-2',
+    title: 'Expressions: Diplomatic Disagreement',
+    titleFr: 'Expressions : Désaccord diplomatique',
+    category: 'expressions',
+    difficulty: 'C1',
+    description: 'Learn to express disagreement professionally in high-stakes situations.',
+    descriptionFr: 'Apprenez à exprimer son désaccord professionnellement dans des situations à enjeux élevés.',
+    estimatedTime: 10,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Which phrase diplomatically expresses strong disagreement?', context: '', options: ['I\'m afraid I have reservations about that approach.', 'That\'s wrong.', 'I disagree completely.', 'No, absolutely not.'], correctAnswer: 'I\'m afraid I have reservations about that approach.', explanation: 'Softening with "I\'m afraid" and "reservations" maintains professionalism.', explanationFr: 'Adoucir avec "I\'m afraid" et "reservations" maintient le professionnalisme.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'With all due _____, I believe there may be an alternative perspective.', correctAnswer: 'respect', explanation: '"With all due respect" is a formal preface to disagreement.', explanationFr: '"With all due respect" est une formule formelle avant un désaccord.' },
+      { id: 3, type: 'mcq', question: 'How do you challenge an idea constructively?', context: '', options: ['I see your point, but have we considered the implications of...?', 'That won\'t work.', 'You\'re missing the point.', 'Let me tell you why you\'re wrong.'], correctAnswer: 'I see your point, but have we considered the implications of...?', explanation: 'Acknowledge first, then introduce your perspective with a question.', explanationFr: 'Reconnaître d\'abord, puis introduire sa perspective avec une question.' },
+      { id: 4, type: 'mcq', question: 'Which phrase politely redirects a flawed proposal?', context: '', options: ['That\'s an interesting thought. Perhaps we could build on it by...', 'That\'s a bad idea.', 'Let\'s not waste time on that.', 'Moving on...'], correctAnswer: 'That\'s an interesting thought. Perhaps we could build on it by...', explanation: 'Validating then redirecting maintains collaboration.', explanationFr: 'Valider puis rediriger maintient la collaboration.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'I wonder if we might be _____ (OVERLOOK) some potential risks here.', correctAnswer: 'overlooking', explanation: '"I wonder if" softens the criticism about overlooking risks.', explanationFr: '"I wonder if" adoucit la critique sur les risques négligés.' },
+      { id: 6, type: 'mcq', question: 'How do you express doubt professionally?', context: '', options: ['I\'m not entirely convinced that this addresses our core issue.', 'I don\'t think so.', 'That\'s doubtful.', 'I have my doubts.'], correctAnswer: 'I\'m not entirely convinced that this addresses our core issue.', explanation: 'Being specific about concerns makes disagreement constructive.', explanationFr: 'Être spécifique sur les préoccupations rend le désaccord constructif.' },
+      { id: 7, type: 'mcq', question: 'Which phrase opens space for alternatives?', context: '', options: ['What if we were to approach this from a different angle?', 'Do it differently.', 'Change your approach.', 'Try again.'], correctAnswer: 'What if we were to approach this from a different angle?', explanation: '"What if" invites exploration without direct criticism.', explanationFr: '"What if" invite à l\'exploration sans critique directe.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'While I appreciate the sentiment, I would _____ (CAUTION) against moving too quickly.', correctAnswer: 'caution', explanation: '"Caution against" is a diplomatic way to express concern.', explanationFr: '"Caution against" est une manière diplomatique d\'exprimer une préoccupation.' }
+    ]
+  },
+  // C2 MASTERY LEVEL - Expert Professional English
+  {
+    id: 'cloe-grammar-c2-1',
+    title: 'Grammar: Advanced Discourse Markers',
+    titleFr: 'Grammaire : Marqueurs de discours avancés',
+    category: 'grammar',
+    difficulty: 'C2',
+    description: 'Master sophisticated connectors for academic and professional writing.',
+    descriptionFr: 'Maîtrisez les connecteurs sophistiqués pour l\'écriture académique et professionnelle.',
+    estimatedTime: 14,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Choose the most sophisticated connector:', context: 'The study found positive results. _____, we must acknowledge certain limitations.', options: ['Notwithstanding', 'But', 'However', 'Although'], correctAnswer: 'Notwithstanding', explanation: '"Notwithstanding" is more formal and nuanced than "however".', explanationFr: '"Notwithstanding" est plus formel et nuancé que "however".' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'The proposal has merit; _____ (BE) that as it may, implementation remains problematic.', correctAnswer: 'be', explanation: '"Be that as it may" is a formal concessive expression.', explanationFr: '"Be that as it may" est une expression concessive formelle.' },
+      { id: 3, type: 'mcq', question: 'Which connector indicates a nuanced addition?', context: '', options: ['Moreover, and perhaps more significantly,', 'Also,', 'And,', 'Plus,'], correctAnswer: 'Moreover, and perhaps more significantly,', explanation: 'This layered connector shows sophisticated argumentation.', explanationFr: 'Ce connecteur en couches montre une argumentation sophistiquée.' },
+      { id: 4, type: 'mcq', question: 'Select the appropriate formal concession:', context: '', options: ['Granted, the initial costs are substantial; nevertheless...', 'Okay, it\'s expensive, but...', 'Sure, it costs a lot, however...', 'Yes, expensive, though...'], correctAnswer: 'Granted, the initial costs are substantial; nevertheless...', explanation: '"Granted... nevertheless" is a formal concession-contrast pair.', explanationFr: '"Granted... nevertheless" est une paire concession-contraste formelle.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'The evidence points to X. By the same _____, one could argue Y.', correctAnswer: 'token', explanation: '"By the same token" means following the same logic.', explanationFr: '"By the same token" signifie suivant la même logique.' },
+      { id: 6, type: 'mcq', question: 'Which phrase introduces a counterargument elegantly?', context: '', options: ['One might argue, and not without justification, that...', 'Some people think...', 'Others say...', 'It could be said...'], correctAnswer: 'One might argue, and not without justification, that...', explanation: 'This acknowledges validity while introducing opposition.', explanationFr: 'Cela reconnaît la validité tout en introduisant une opposition.' },
+      { id: 7, type: 'mcq', question: 'Choose the sophisticated causal connector:', context: '', options: ['This being the case, we must reconsider our position.', 'So, we should think again.', 'Because of this, we rethink.', 'Therefore, rethink.'], correctAnswer: 'This being the case, we must reconsider our position.', explanation: '"This being the case" is a formal causal expression.', explanationFr: '"This being the case" est une expression causale formelle.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'The findings, _____ (INSOFAR) as they can be generalized, suggest...', correctAnswer: 'insofar', explanation: '"Insofar as" indicates a qualified scope or extent.', explanationFr: '"Insofar as" indique une portée ou un degré qualifié.' }
+    ]
+  },
+  {
+    id: 'cloe-vocab-c2-1',
+    title: 'Vocabulary: Nuanced Business Terminology',
+    titleFr: 'Vocabulaire : Terminologie d\'affaires nuancée',
+    category: 'vocabulary',
+    difficulty: 'C2',
+    description: 'Master subtle distinctions in high-level professional vocabulary.',
+    descriptionFr: 'Maîtrisez les distinctions subtiles dans le vocabulaire professionnel de haut niveau.',
+    estimatedTime: 14,
+    questions: [
+      { id: 1, type: 'mcq', question: 'What is the difference between "efficacy" and "efficiency"?', context: '', options: ['Efficacy = achieving desired result; Efficiency = optimal resource use', 'They mean the same thing', 'Efficacy = speed; Efficiency = quality', 'Efficacy = quantity; Efficiency = cost'], correctAnswer: 'Efficacy = achieving desired result; Efficiency = optimal resource use', explanation: 'Efficacy focuses on outcomes; efficiency on resource optimization.', explanationFr: 'L\'efficacité se concentre sur les résultats ; l\'efficience sur l\'optimisation des ressources.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'The company\'s _____ behavior raised ethical concerns among stakeholders.', correctAnswer: 'duplicitous', explanation: '"Duplicitous" means deliberately deceptive in business dealings.', explanationFr: '"Duplicitous" signifie délibérément trompeur dans les affaires.' },
+      { id: 3, type: 'mcq', question: 'What does "to obviate" mean?', context: '', options: ['To prevent or make unnecessary', 'To make obvious', 'To obstruct', 'To observe'], correctAnswer: 'To prevent or make unnecessary', explanation: '"Obviate" means to remove a problem or make it unnecessary.', explanationFr: '"Obviate" signifie éliminer un problème ou le rendre inutile.' },
+      { id: 4, type: 'mcq', question: 'Distinguish "comprised of" vs "composed of":', context: '', options: ['Comprised of is often considered incorrect; composed of is preferred', 'They are identical in all contexts', 'Comprised of is for people only', 'Composed of is informal'], correctAnswer: 'Comprised of is often considered incorrect; composed of is preferred', explanation: 'Traditional grammar: "comprise" means "consist of", not "is comprised of".', explanationFr: 'Grammaire traditionnelle : "comprise" signifie "consiste en", pas "is comprised of".' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'The executive\'s _____ remarks undermined the otherwise productive meeting.', correctAnswer: 'disparaging', explanation: '"Disparaging" means belittling or disrespectful.', explanationFr: '"Disparaging" signifie dénigrant ou irrespectueux.' },
+      { id: 6, type: 'mcq', question: 'What is "fiduciary duty"?', context: '', options: ['Legal obligation to act in another\'s best interest', 'Financial reporting requirement', 'Employee contract terms', 'Tax compliance obligation'], correctAnswer: 'Legal obligation to act in another\'s best interest', explanation: 'Fiduciary duty requires acting in beneficiaries\' best interests.', explanationFr: 'Le devoir fiduciaire exige d\'agir dans l\'intérêt des bénéficiaires.' },
+      { id: 7, type: 'mcq', question: 'What does "to vitiate" a contract mean?', context: '', options: ['To make it legally invalid or ineffective', 'To sign it officially', 'To review it carefully', 'To extend its duration'], correctAnswer: 'To make it legally invalid or ineffective', explanation: '"Vitiate" means to impair or invalidate legally.', explanationFr: '"Vitiate" signifie altérer ou invalider juridiquement.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'The _____ nature of negotiations required exceptional diplomatic skills.', correctAnswer: 'fraught', explanation: '"Fraught" describes situations full of difficulty or tension.', explanationFr: '"Fraught" décrit des situations pleines de difficulté ou de tension.' }
+    ]
+  },
+  {
+    id: 'cloe-expressions-c2-1',
+    title: 'Expressions: Boardroom Rhetoric',
+    titleFr: 'Expressions : Rhétorique de conseil d\'administration',
+    category: 'expressions',
+    difficulty: 'C2',
+    description: 'Master sophisticated expressions for executive-level communication.',
+    descriptionFr: 'Maîtrisez les expressions sophistiquées pour la communication au niveau exécutif.',
+    estimatedTime: 14,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Which phrase elegantly defers a difficult decision?', context: '', options: ['Perhaps this warrants further deliberation before we commit.', 'Let\'s think about it.', 'We\'ll decide later.', 'Not now.'], correctAnswer: 'Perhaps this warrants further deliberation before we commit.', explanation: 'Formal language with "warrants" and "deliberation" suits boardroom settings.', explanationFr: 'Le langage formel avec "warrants" et "deliberation" convient aux conseils d\'administration.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'I\'d like to play devil\'s _____ for a moment and consider the alternatives.', correctAnswer: 'advocate', explanation: '"Play devil\'s advocate" means to argue the opposing view.', explanationFr: '"Play devil\'s advocate" signifie défendre le point de vue opposé.' },
+      { id: 3, type: 'mcq', question: 'How do you introduce a radical proposal diplomatically?', context: '', options: ['At the risk of being provocative, might I suggest...', 'Here\'s a crazy idea...', 'What about just...', 'Let\'s completely change...'], correctAnswer: 'At the risk of being provocative, might I suggest...', explanation: 'Signaling awareness of boldness while maintaining confidence.', explanationFr: 'Signaler la conscience de l\'audace tout en maintenant la confiance.' },
+      { id: 4, type: 'mcq', question: 'Which phrase tactfully implies poor judgment?', context: '', options: ['With hindsight, perhaps a more circumspect approach might have served us better.', 'That was a bad decision.', 'Someone made a mistake.', 'We were wrong.'], correctAnswer: 'With hindsight, perhaps a more circumspect approach might have served us better.', explanation: '"Circumspect approach" subtly criticizes without blaming.', explanationFr: '"Circumspect approach" critique subtilement sans blâmer.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'Let us not throw the baby out with the bath _____ in our pursuit of change.', correctAnswer: 'water', explanation: 'This idiom warns against discarding valuable elements.', explanationFr: 'Cet idiome met en garde contre l\'abandon d\'éléments précieux.' },
+      { id: 6, type: 'mcq', question: 'How do you elegantly request more resources?', context: '', options: ['If we are to deliver on our ambitious targets, we shall require commensurate investment.', 'We need more money.', 'Give us a bigger budget.', 'This isn\'t enough.'], correctAnswer: 'If we are to deliver on our ambitious targets, we shall require commensurate investment.', explanation: '"Commensurate" means proportionate, linking resources to expectations.', explanationFr: '"Commensurate" signifie proportionnel, liant ressources et attentes.' },
+      { id: 7, type: 'mcq', question: 'Which phrase introduces a sensitive topic?', context: '', options: ['There is an elephant in the room that we would be remiss not to address.', 'We have a big problem.', 'Nobody wants to talk about this, but...', 'Here\'s the issue.'], correctAnswer: 'There is an elephant in the room that we would be remiss not to address.', explanation: '"Elephant in the room" + "remiss" shows sophisticated awareness.', explanationFr: '"Elephant in the room" + "remiss" montre une conscience sophistiquée.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'Rather than relitigate past decisions, let us focus on the path _____ (FORWARD).', correctAnswer: 'forward', explanation: '"Relitigate" means reargue; "path forward" is constructive.', explanationFr: '"Relitigate" signifie re-argumenter ; "path forward" est constructif.' }
+    ]
+  },
+  {
+    id: 'cloe-reading-c2-1',
+    title: 'Reading: Legal Contract Analysis',
+    titleFr: 'Lecture : Analyse de contrat juridique',
+    category: 'reading',
+    difficulty: 'C2',
+    description: 'Practice understanding complex legal and contractual language.',
+    descriptionFr: 'Pratiquez la compréhension du langage juridique et contractuel complexe.',
+    estimatedTime: 18,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Read the contract excerpt and answer:', context: 'SERVICE LEVEL AGREEMENT (EXCERPT)\n\n4.1 Service Availability\nThe Provider shall ensure that the Platform maintains an uptime of no less than 99.9% measured on a monthly basis, excluding scheduled maintenance windows communicated with 72 hours\' prior notice.\n\n4.2 Force Majeure\nNeither party shall be liable for any failure or delay in performing their obligations where such failure or delay results from Force Majeure Events, including but not limited to: acts of God, natural disasters, war, terrorism, civil unrest, government action, or failures of third-party telecommunications providers beyond the reasonable control of the affected party.\n\n4.3 Indemnification\nThe Client shall indemnify and hold harmless the Provider against any claims, damages, losses, or expenses (including reasonable legal fees) arising from: (a) the Client\'s breach of this Agreement; (b) the Client\'s negligent or wrongful acts; (c) any third-party claims relating to the Client\'s use of the Services in violation of applicable laws.\n\n4.4 Limitation of Liability\nNotwithstanding anything to the contrary herein, the Provider\'s aggregate liability shall not exceed the total fees paid by the Client in the twelve (12) months preceding the claim. In no event shall either party be liable for indirect, incidental, consequential, or punitive damages.', options: ['99.9%', '72%', '99%', '100%'], correctAnswer: '99.9%', explanation: 'Section 4.1 specifies "uptime of no less than 99.9%".', explanationFr: 'La section 4.1 spécifie "disponibilité d\'au moins 99,9%".' },
+      { id: 2, type: 'mcq', question: 'How much notice is required for maintenance?', context: '', options: ['72 hours', '24 hours', '48 hours', '1 week'], correctAnswer: '72 hours', explanation: 'The text requires "72 hours\' prior notice" for maintenance.', explanationFr: 'Le texte exige "72 heures de préavis" pour la maintenance.' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'The maximum liability is limited to fees from the preceding _____ months.', correctAnswer: '12', explanation: 'Section 4.4 limits liability to "twelve (12) months" of fees.', explanationFr: 'La section 4.4 limite la responsabilité aux honoraires de "douze (12) mois".' },
+      { id: 4, type: 'mcq', question: 'Which damages are explicitly excluded?', context: '', options: ['Consequential and punitive damages', 'Direct damages', 'Legal fees', 'All damages'], correctAnswer: 'Consequential and punitive damages', explanation: 'Section 4.4 excludes "indirect, incidental, consequential, or punitive damages".', explanationFr: 'La section 4.4 exclut les "dommages indirects, accessoires, consécutifs ou punitifs".' },
+      { id: 5, type: 'mcq', question: 'Who must indemnify whom according to 4.3?', context: '', options: ['Client indemnifies Provider', 'Provider indemnifies Client', 'Mutual indemnification', 'No indemnification required'], correctAnswer: 'Client indemnifies Provider', explanation: 'Section 4.3: "The Client shall indemnify... the Provider".', explanationFr: 'Section 4.3 : "Le Client doit indemniser... le Fournisseur".' },
+      { id: 6, type: 'mcq', question: 'What is NOT listed as a Force Majeure event?', context: '', options: ['Economic recession', 'Natural disasters', 'War', 'Government action'], correctAnswer: 'Economic recession', explanation: 'The Force Majeure list doesn\'t include economic conditions.', explanationFr: 'La liste de Force Majeure n\'inclut pas les conditions économiques.' },
+      { id: 7, type: 'fill-blank', question: 'Complete:', context: 'Failure due to Force Majeure must be beyond the _____ control of the party.', correctAnswer: 'reasonable', explanation: 'The clause specifies "beyond the reasonable control".', explanationFr: 'La clause spécifie "au-delà du contrôle raisonnable".' },
+      { id: 8, type: 'mcq', question: 'What triggers Client indemnification under 4.3(c)?', context: '', options: ['Third-party claims from illegal use of Services', 'Any service interruption', 'Provider negligence', 'Force Majeure events'], correctAnswer: 'Third-party claims from illegal use of Services', explanation: 'Section 4.3(c) covers "third-party claims... in violation of applicable laws".', explanationFr: 'La section 4.3(c) couvre les "réclamations de tiers... en violation des lois applicables".' }
+    ]
+  },
+  {
+    id: 'cloe-grammar-c2-2',
+    title: 'Grammar: Nominalizations & Academic Style',
+    titleFr: 'Grammaire : Nominalisations et style académique',
+    category: 'grammar',
+    difficulty: 'C2',
+    description: 'Master nominalization for formal academic and professional writing.',
+    descriptionFr: 'Maîtrisez la nominalisation pour l\'écriture académique et professionnelle formelle.',
+    estimatedTime: 14,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Select the most formal nominalized version:', context: 'We decided to implement the new policy.', options: ['The decision to implement the new policy was made.', 'We made the decision to implement the new policy.', 'Implementing the new policy was decided.', 'The new policy was decided to be implemented.'], correctAnswer: 'The decision to implement the new policy was made.', explanation: '"Decision" (noun) + passive creates formal academic style.', explanationFr: '"Decision" (nom) + passif crée un style académique formel.' },
+      { id: 2, type: 'fill-blank', question: 'Nominalize:', context: 'The fact that they failed (FAIL) to comply resulted in penalties.', correctAnswer: 'failure', explanation: '"Failure to comply" nominalizes "failed to comply".', explanationFr: '"Failure to comply" nominalise "failed to comply".' },
+      { id: 3, type: 'mcq', question: 'Which sentence shows academic nominalization?', context: '', options: ['The proliferation of digital technologies has facilitated the dissemination of information.', 'Digital technologies have spread and made it easier to share information.', 'There are more digital technologies now and information spreads more easily.', 'Technology spreads information.'], correctAnswer: 'The proliferation of digital technologies has facilitated the dissemination of information.', explanation: '"Proliferation" and "dissemination" are formal nominalizations.', explanationFr: '"Proliferation" et "dissemination" sont des nominalisations formelles.' },
+      { id: 4, type: 'mcq', question: 'Transform to formal style:', context: 'The company acquired a competitor.', options: ['The acquisition of a competitor by the company occurred.', 'The company did an acquisition.', 'A competitor was acquired.', 'Acquiring happened.'], correctAnswer: 'The acquisition of a competitor by the company occurred.', explanation: 'Full nominalization with clear agency.', explanationFr: 'Nominalisation complète avec agentivité claire.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'The _____ (ALLOCATE) of resources requires careful consideration.', correctAnswer: 'allocation', explanation: '"Allocation" is the noun form of "allocate".', explanationFr: '"Allocation" est la forme nominale de "allocate".' },
+      { id: 6, type: 'mcq', question: 'Identify the properly nominalized sentence:', context: '', options: ['The emergence of new competitors necessitated a strategic reassessment.', 'New competitors appeared so we had to think again about strategy.', 'When new competitors emerged, reassessing strategy was necessary.', 'New competitors meant we needed new strategies.'], correctAnswer: 'The emergence of new competitors necessitated a strategic reassessment.', explanation: '"Emergence" and "reassessment" create formal register.', explanationFr: '"Emergence" et "reassessment" créent un registre formel.' },
+      { id: 7, type: 'fill-blank', question: 'Nominalize:', context: 'There was a sudden _____ (DETERIORATE) in market conditions.', correctAnswer: 'deterioration', explanation: '"Deterioration" nominalizes "deteriorate".', explanationFr: '"Deterioration" nominalise "deteriorate".' },
+      { id: 8, type: 'mcq', question: 'Which uses appropriate hedging language?', context: '', options: ['The evidence would appear to suggest a correlation.', 'The evidence shows a correlation.', 'There is definitely a correlation.', 'Correlation exists.'], correctAnswer: 'The evidence would appear to suggest a correlation.', explanation: '"Would appear to suggest" uses double hedging for caution.', explanationFr: '"Would appear to suggest" utilise une double couverture pour la prudence.' }
+    ]
+  },
+  {
+    id: 'cloe-vocab-c2-2',
+    title: 'Vocabulary: Cross-Cultural Business Communication',
+    titleFr: 'Vocabulaire : Communication d\'affaires interculturelle',
+    category: 'vocabulary',
+    difficulty: 'C2',
+    description: 'Master vocabulary for navigating international business contexts.',
+    descriptionFr: 'Maîtrisez le vocabulaire pour naviguer dans les contextes commerciaux internationaux.',
+    estimatedTime: 14,
+    questions: [
+      { id: 1, type: 'mcq', question: 'What does "high-context culture" mean in business?', context: '', options: ['Communication relies heavily on implicit messages and relationships', 'Formal written contracts are essential', 'Direct verbal communication is preferred', 'Hierarchy is minimal'], correctAnswer: 'Communication relies heavily on implicit messages and relationships', explanation: 'High-context cultures (e.g., Japan) prioritize indirect communication.', explanationFr: 'Les cultures à contexte élevé (ex. Japon) privilégient la communication indirecte.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'The negotiation required considerable _____ (FACE) saving for all parties.', correctAnswer: 'face', explanation: '"Face-saving" refers to preserving dignity/reputation in negotiations.', explanationFr: '"Face-saving" désigne la préservation de la dignité/réputation dans les négociations.' },
+      { id: 3, type: 'mcq', question: 'What is "guanxi" in Chinese business culture?', context: '', options: ['System of social networks and influential relationships', 'Business card exchange ritual', 'Formal negotiation process', 'Legal contract requirement'], correctAnswer: 'System of social networks and influential relationships', explanation: 'Guanxi emphasizes personal connections in business dealings.', explanationFr: 'Le guanxi met l\'accent sur les relations personnelles dans les affaires.' },
+      { id: 4, type: 'mcq', question: 'What does "nemawashi" refer to in Japanese business?', context: '', options: ['Building consensus through informal discussions before formal meetings', 'Formal board approval process', 'Written proposal submission', 'Hierarchical decision-making'], correctAnswer: 'Building consensus through informal discussions before formal meetings', explanation: 'Nemawashi involves laying groundwork before formal decisions.', explanationFr: 'Le nemawashi implique de préparer le terrain avant les décisions formelles.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'The company\'s _____ (ETHNOCENTRISM) approach alienated international partners.', correctAnswer: 'ethnocentric', explanation: 'Ethnocentric means judging others by one\'s own cultural standards.', explanationFr: 'Ethnocentrique signifie juger les autres selon ses propres standards culturels.' },
+      { id: 6, type: 'mcq', question: 'What is "monochronic" time orientation?', context: '', options: ['Focus on one task at a time with strict schedules', 'Flexible approach to deadlines', 'Multiple tasks handled simultaneously', 'No fixed meeting times'], correctAnswer: 'Focus on one task at a time with strict schedules', explanation: 'Monochronic cultures (e.g., Germany) prioritize punctuality and linear tasks.', explanationFr: 'Les cultures monochroniques (ex. Allemagne) privilégient la ponctualité et les tâches linéaires.' },
+      { id: 7, type: 'mcq', question: 'What does "cognitive diversity" mean in teams?', context: '', options: ['Variety in thinking styles and problem-solving approaches', 'Speaking multiple languages', 'Different educational backgrounds only', 'Age diversity'], correctAnswer: 'Variety in thinking styles and problem-solving approaches', explanation: 'Cognitive diversity focuses on different ways of processing information.', explanationFr: 'La diversité cognitive se concentre sur différentes façons de traiter l\'information.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'Global teams require strong _____ (INTERCULTURAL) competence to function effectively.', correctAnswer: 'intercultural', explanation: 'Intercultural competence enables effective cross-cultural collaboration.', explanationFr: 'La compétence interculturelle permet une collaboration interculturelle efficace.' }
+    ]
+  },
+  {
+    id: 'cloe-expressions-c2-2',
+    title: 'Expressions: Crisis Communication',
+    titleFr: 'Expressions : Communication de crise',
+    category: 'expressions',
+    difficulty: 'C2',
+    description: 'Master language for managing corporate crises professionally.',
+    descriptionFr: 'Maîtrisez le langage pour gérer les crises d\'entreprise professionnellement.',
+    estimatedTime: 14,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Which phrase opens a crisis statement appropriately?', context: '', options: ['We have become aware of a situation that requires immediate transparency with our stakeholders.', 'Something bad happened.', 'We have a problem.', 'There\'s been an incident.'], correctAnswer: 'We have become aware of a situation that requires immediate transparency with our stakeholders.', explanation: 'Professional crisis language balances acknowledgment with composure.', explanationFr: 'Le langage de crise professionnel équilibre reconnaissance et sang-froid.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'We are taking full _____ (ACCOUNTABLE) for the circumstances that led to this outcome.', correctAnswer: 'accountability', explanation: '"Taking accountability" shows ownership without legal admission.', explanationFr: '"Taking accountability" montre la responsabilité sans admission légale.' },
+      { id: 3, type: 'mcq', question: 'How do you address affected parties professionally?', context: '', options: ['To those impacted, we extend our sincere apologies and commit to making this right.', 'Sorry to everyone affected.', 'We apologize to victims.', 'Our bad.'], correctAnswer: 'To those impacted, we extend our sincere apologies and commit to making this right.', explanation: 'Formal apology with commitment to remediation.', explanationFr: 'Excuses formelles avec engagement de remédiation.' },
+      { id: 4, type: 'mcq', question: 'Which phrase describes corrective action professionally?', context: '', options: ['We have instituted immediate remedial measures and enhanced our oversight protocols.', 'We fixed it.', 'We\'re doing something about it.', 'Changes are being made.'], correctAnswer: 'We have instituted immediate remedial measures and enhanced our oversight protocols.', explanation: '"Remedial measures" and "oversight protocols" sound executive.', explanationFr: '"Remedial measures" et "oversight protocols" sonnent exécutif.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'An independent investigation will be conducted to ensure full _____ (TRANSPARENT) of the findings.', correctAnswer: 'transparency', explanation: 'Committing to transparency builds stakeholder confidence.', explanationFr: 'S\'engager à la transparence renforce la confiance des parties prenantes.' },
+      { id: 6, type: 'mcq', question: 'How do you announce leadership changes during a crisis?', context: '', options: ['The Board has determined that new leadership is essential to restore stakeholder confidence.', 'The CEO was fired.', 'We\'re changing management.', 'The boss is leaving.'], correctAnswer: 'The Board has determined that new leadership is essential to restore stakeholder confidence.', explanation: 'Focus on governance and confidence rather than blame.', explanationFr: 'Se concentrer sur la gouvernance et la confiance plutôt que sur le blâme.' },
+      { id: 7, type: 'mcq', question: 'Which phrase maintains confidence while acknowledging challenges?', context: '', options: ['While we navigate this challenging period, our fundamental strengths remain intact.', 'Things are bad but we\'ll survive.', 'We\'re having problems.', 'It\'s difficult right now.'], correctAnswer: 'While we navigate this challenging period, our fundamental strengths remain intact.', explanation: 'Balances reality with reassurance.', explanationFr: 'Équilibre la réalité avec la réassurance.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'We have engaged external _____ (COUNSEL) to conduct a thorough review.', correctAnswer: 'counsel', explanation: '"External counsel" refers to outside legal/advisory support.', explanationFr: '"External counsel" désigne le soutien juridique/consultatif externe.' }
+    ]
+  },
+  {
+    id: 'cloe-reading-c2-2',
+    title: 'Reading: Annual Report Analysis',
+    titleFr: 'Lecture : Analyse de rapport annuel',
+    category: 'reading',
+    difficulty: 'C2',
+    description: 'Practice extracting key insights from complex corporate reports.',
+    descriptionFr: 'Pratiquez l\'extraction d\'informations clés de rapports d\'entreprise complexes.',
+    estimatedTime: 18,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Read the annual report excerpt and answer:', context: 'CHAIRMAN\'S STATEMENT (EXCERPT)\n\nFiscal Year 2025 presented unprecedented challenges, yet I am pleased to report that your Company has demonstrated remarkable resilience. Against a backdrop of geopolitical instability, supply chain disruptions, and inflationary pressures, we achieved revenue growth of 8.3% year-over-year, reaching €4.2 billion.\n\nOur strategic pivot towards sustainable solutions proved prescient. The Green Technology division now contributes 34% of total revenue, up from 22% in FY2024. This transformation has not been without cost—restructuring charges of €87 million impacted our bottom line, yet we maintain that these investments position us favorably for the decade ahead.\n\nRegrettably, we must report the departure of our Chief Operating Officer, Ms. Elena Vasquez, who led our operational transformation. The Board is conducting an executive search and expects to announce her successor in Q2 2026.\n\nLooking ahead, we have identified three strategic priorities: accelerating our digital transformation, expanding into emerging markets, and achieving carbon neutrality by 2030. The Board has approved a capital expenditure program of €500 million over the next three years to support these objectives.\n\nI extend my gratitude to our 12,000 employees worldwide whose dedication has been instrumental in navigating these turbulent times.', options: ['8.3%', '34%', '22%', '87%'], correctAnswer: '8.3%', explanation: 'Revenue growth was "8.3% year-over-year".', explanationFr: 'La croissance du chiffre d\'affaires était de "8,3% en glissement annuel".' },
+      { id: 2, type: 'mcq', question: 'What is the total revenue for FY2025?', context: '', options: ['€4.2 billion', '€500 million', '€87 million', '€4.2 million'], correctAnswer: '€4.2 billion', explanation: 'The text states "reaching €4.2 billion".', explanationFr: 'Le texte indique "atteignant 4,2 milliards d\'euros".' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'The Green Technology division grew from 22% to _____% of revenue.', correctAnswer: '34', explanation: 'Green Technology "now contributes 34% of total revenue".', explanationFr: 'Green Technology "contribue maintenant à 34% du chiffre d\'affaires total".' },
+      { id: 4, type: 'mcq', question: 'How much were restructuring charges?', context: '', options: ['€87 million', '€500 million', '€4.2 billion', '€22 million'], correctAnswer: '€87 million', explanation: 'The text mentions "restructuring charges of €87 million".', explanationFr: 'Le texte mentionne "des charges de restructuration de 87 millions d\'euros".' },
+      { id: 5, type: 'mcq', question: 'When is the new COO expected to be announced?', context: '', options: ['Q2 2026', 'FY2025', 'Q1 2026', '2030'], correctAnswer: 'Q2 2026', explanation: 'The Board "expects to announce her successor in Q2 2026".', explanationFr: 'Le Conseil "prévoit d\'annoncer son successeur au T2 2026".' },
+      { id: 6, type: 'fill-blank', question: 'Complete:', context: 'The company aims to achieve carbon neutrality by _____.', correctAnswer: '2030', explanation: 'One strategic priority is "achieving carbon neutrality by 2030".', explanationFr: 'Une priorité stratégique est "atteindre la neutralité carbone d\'ici 2030".' },
+      { id: 7, type: 'mcq', question: 'How many employees does the company have?', context: '', options: ['12,000', '3,000', '500', '87,000'], correctAnswer: '12,000', explanation: 'The Chairman thanks "our 12,000 employees worldwide".', explanationFr: 'Le Président remercie "nos 12 000 employés dans le monde".' },
+      { id: 8, type: 'mcq', question: 'What is NOT listed as a strategic priority?', context: '', options: ['Workforce reduction', 'Digital transformation', 'Emerging market expansion', 'Carbon neutrality'], correctAnswer: 'Workforce reduction', explanation: 'The three priorities are digital, emerging markets, and carbon neutrality.', explanationFr: 'Les trois priorités sont le numérique, les marchés émergents et la neutralité carbone.' }
+    ]
   }
 ];
 
@@ -1526,5 +1768,7 @@ export const cloeLevels = [
   { level: 'A2', description: 'Elementary', descriptionFr: 'Élémentaire' },
   { level: 'B1', description: 'Intermediate', descriptionFr: 'Intermédiaire' },
   { level: 'B2', description: 'Upper Intermediate', descriptionFr: 'Intermédiaire supérieur' },
+  { level: 'C1', description: 'Advanced', descriptionFr: 'Avancé' },
+  { level: 'C2', description: 'Mastery', descriptionFr: 'Maîtrise' },
   { level: 'C1', description: 'Advanced', descriptionFr: 'Avancé' }
 ] as const;
