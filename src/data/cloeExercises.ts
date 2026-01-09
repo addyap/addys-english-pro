@@ -1498,6 +1498,206 @@ Marketing Director`,
       { id: 6, type: 'mcq', question: 'How much does the guest still owe?', context: '', options: ['£290', '£145', '£435', '£15'], correctAnswer: '£290', explanation: 'The booking states "Remaining £290 due at check-out".', explanationFr: 'La réservation indique "Restant 290 £ dû au départ".' }
     ]
   },
+  // B1 Intermediate - Additional Exercises
+  {
+    id: 'cloe-grammar-b1-2',
+    title: 'Grammar: Modal Verbs in Business',
+    titleFr: 'Grammaire : Verbes modaux en affaires',
+    category: 'grammar',
+    difficulty: 'B1',
+    description: 'Practice using modal verbs for requests, suggestions, and obligations.',
+    descriptionFr: 'Pratiquez l\'utilisation des verbes modaux pour les demandes, suggestions et obligations.',
+    estimatedTime: 10,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Choose the most polite request:', context: 'You need a colleague to help you with a report.', options: ['Could you possibly help me with this report?', 'Help me with this report.', 'You must help me with this report.', 'Help me now.'], correctAnswer: 'Could you possibly help me with this report?', explanation: '"Could you possibly" is the most polite form for making requests.', explanationFr: '"Could you possibly" est la forme la plus polie pour faire des demandes.' },
+      { id: 2, type: 'mcq', question: 'Select the correct modal:', context: 'It\'s a company rule. Employees _____ wear ID badges at all times.', options: ['must', 'could', 'might', 'would'], correctAnswer: 'must', explanation: '"Must" expresses strong obligation or rules.', explanationFr: '"Must" exprime une obligation forte ou des règles.' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'You _____ (SHOULD) check your emails before the meeting.', correctAnswer: 'should', explanation: '"Should" gives advice or recommendations.', explanationFr: '"Should" donne des conseils ou recommandations.' },
+      { id: 4, type: 'mcq', question: 'Which expresses lack of necessity?', context: 'The meeting is optional.', options: ['You don\'t have to attend.', 'You mustn\'t attend.', 'You can\'t attend.', 'You shouldn\'t attend.'], correctAnswer: 'You don\'t have to attend.', explanation: '"Don\'t have to" means it\'s not necessary, not forbidden.', explanationFr: '"Don\'t have to" signifie que ce n\'est pas nécessaire, pas interdit.' },
+      { id: 5, type: 'mcq', question: 'Choose the correct modal for possibility:', context: 'The client _____ call this afternoon. We\'re not sure.', options: ['might', 'must', 'has to', 'shall'], correctAnswer: 'might', explanation: '"Might" expresses possibility or uncertainty.', explanationFr: '"Might" exprime la possibilité ou l\'incertitude.' },
+      { id: 6, type: 'mcq', question: 'Select the appropriate modal:', context: 'Making a suggestion in a meeting.', options: ['We could try a different approach.', 'We must try a different approach.', 'We can\'t try a different approach.', 'We have to try a different approach.'], correctAnswer: 'We could try a different approach.', explanation: '"Could" is used for polite suggestions.', explanationFr: '"Could" est utilisé pour des suggestions polies.' },
+      { id: 7, type: 'fill-blank', question: 'Complete:', context: 'I\'m sorry, but I _____ (NOT CAN) attend the meeting tomorrow.', correctAnswer: 'can\'t', explanation: '"Can\'t" expresses inability.', explanationFr: '"Can\'t" exprime l\'incapacité.' },
+      { id: 8, type: 'mcq', question: 'Which sentence offers help politely?', context: '', options: ['Shall I prepare the presentation for you?', 'I will prepare the presentation.', 'You must let me prepare the presentation.', 'Prepare the presentation yourself.'], correctAnswer: 'Shall I prepare the presentation for you?', explanation: '"Shall I" is used to offer help politely.', explanationFr: '"Shall I" est utilisé pour offrir de l\'aide poliment.' }
+    ]
+  },
+  {
+    id: 'cloe-vocab-b1-2',
+    title: 'Vocabulary: Customer Service',
+    titleFr: 'Vocabulaire : Service client',
+    category: 'vocabulary',
+    difficulty: 'B1',
+    description: 'Essential vocabulary for customer interactions and support.',
+    descriptionFr: 'Vocabulaire essentiel pour les interactions et le support client.',
+    estimatedTime: 10,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Choose the best word:', context: 'I\'d like to make a _____ about the service I received.', options: ['complaint', 'compliment', 'comment', 'command'], correctAnswer: 'complaint', explanation: 'A "complaint" is a formal expression of dissatisfaction.', explanationFr: 'Une "complaint" est une expression formelle de mécontentement.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'We apologize for the _____ (INCONVENIENT) caused.', correctAnswer: 'inconvenience', explanation: '"Inconvenience" is the noun form used in apologies.', explanationFr: '"Inconvenience" est la forme nominale utilisée dans les excuses.' },
+      { id: 3, type: 'mcq', question: 'Select the correct term:', context: 'We will _____ your order within 24 hours.', options: ['process', 'proceed', 'progress', 'produce'], correctAnswer: 'process', explanation: '"Process" means to handle or deal with an order officially.', explanationFr: '"Process" signifie traiter ou gérer une commande officiellement.' },
+      { id: 4, type: 'mcq', question: 'Which phrase is used to show empathy?', context: 'A customer is upset about a delayed delivery.', options: ['I understand your frustration.', 'That\'s not our fault.', 'You should have ordered earlier.', 'It will arrive when it arrives.'], correctAnswer: 'I understand your frustration.', explanation: 'Showing understanding builds customer rapport.', explanationFr: 'Montrer de la compréhension établit un rapport avec le client.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'We offer a full _____ (REFUND) if you\'re not satisfied.', correctAnswer: 'refund', explanation: 'A "refund" is money returned to a customer.', explanationFr: 'Un "refund" est l\'argent remboursé à un client.' },
+      { id: 6, type: 'mcq', question: 'Choose the professional response:', context: 'Customer: "This product is defective!"', options: ['I\'m sorry to hear that. Let me help you resolve this.', 'That\'s impossible.', 'Are you sure you used it correctly?', 'That\'s not my problem.'], correctAnswer: 'I\'m sorry to hear that. Let me help you resolve this.', explanation: 'Professional responses acknowledge and offer solutions.', explanationFr: 'Les réponses professionnelles reconnaissent et offrent des solutions.' },
+      { id: 7, type: 'mcq', question: 'What does "escalate" mean in customer service?', context: '', options: ['Transfer to a higher authority or manager', 'Make the customer wait', 'Ignore the problem', 'Offer a discount'], correctAnswer: 'Transfer to a higher authority or manager', explanation: '"Escalate" means to refer an issue to someone with more authority.', explanationFr: '"Escalate" signifie transférer un problème à quelqu\'un de plus haut placé.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'Your satisfaction is our top _____ (PRIOR).', correctAnswer: 'priority', explanation: '"Priority" means something of primary importance.', explanationFr: '"Priority" signifie quelque chose de première importance.' }
+    ]
+  },
+  {
+    id: 'cloe-expressions-b1-2',
+    title: 'Expressions: Email Writing Basics',
+    titleFr: 'Expressions : Bases de la rédaction d\'emails',
+    category: 'expressions',
+    difficulty: 'B1',
+    description: 'Learn essential phrases for professional email communication.',
+    descriptionFr: 'Apprenez les phrases essentielles pour la communication par email professionnel.',
+    estimatedTime: 10,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Choose the best email opening:', context: 'You are writing to someone you don\'t know.', options: ['Dear Mr. Johnson,', 'Hey!', 'Hi there,', 'Yo!'], correctAnswer: 'Dear Mr. Johnson,', explanation: '"Dear + Title + Name" is formal and appropriate for unknown recipients.', explanationFr: '"Dear + Titre + Nom" est formel et approprié pour des destinataires inconnus.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'I am writing to _____ (INQUIRE) about your services.', correctAnswer: 'inquire', explanation: '"Inquire" is formal for asking about something.', explanationFr: '"Inquire" est formel pour poser des questions.' },
+      { id: 3, type: 'mcq', question: 'Which phrase introduces the purpose of your email?', context: '', options: ['I am writing regarding...', 'So basically...', 'FYI...', 'Just wanted to say...'], correctAnswer: 'I am writing regarding...', explanation: '"I am writing regarding" clearly states the email\'s purpose.', explanationFr: '"I am writing regarding" indique clairement le but de l\'email.' },
+      { id: 4, type: 'mcq', question: 'Select the polite request:', context: '', options: ['I would appreciate it if you could send me the details.', 'Send me the details.', 'I need the details now.', 'Give me the details ASAP.'], correctAnswer: 'I would appreciate it if you could send me the details.', explanation: '"I would appreciate it if" is polite and professional.', explanationFr: '"I would appreciate it if" est poli et professionnel.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'Please find _____ (ATTACH) the requested documents.', correctAnswer: 'attached', explanation: '"Please find attached" is standard for sending documents.', explanationFr: '"Please find attached" est standard pour envoyer des documents.' },
+      { id: 6, type: 'mcq', question: 'How do you politely follow up?', context: '', options: ['I wanted to follow up on my previous email.', 'Why haven\'t you replied?', 'Hello?? Anyone there??', 'You never responded.'], correctAnswer: 'I wanted to follow up on my previous email.', explanation: 'This phrase is polite and professional for follow-ups.', explanationFr: 'Cette phrase est polie et professionnelle pour les relances.' },
+      { id: 7, type: 'mcq', question: 'Choose the appropriate closing:', context: 'Formal business email.', options: ['Best regards,', 'Cheers!', 'Later!', 'XOXO'], correctAnswer: 'Best regards,', explanation: '"Best regards" is professional and widely accepted.', explanationFr: '"Best regards" est professionnel et largement accepté.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'I look forward to _____ (HEAR) from you soon.', correctAnswer: 'hearing', explanation: '"Look forward to" is followed by gerund (-ing form).', explanationFr: '"Look forward to" est suivi du gérondif (-ing).' }
+    ]
+  },
+  {
+    id: 'cloe-reading-b1-3',
+    title: 'Reading: Company Newsletter',
+    titleFr: 'Lecture : Newsletter d\'entreprise',
+    category: 'reading',
+    difficulty: 'B1',
+    description: 'Practice understanding internal company communications.',
+    descriptionFr: 'Pratiquez la compréhension des communications internes d\'entreprise.',
+    estimatedTime: 10,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Read the newsletter and answer:', context: 'TECHCORP MONTHLY UPDATE - January 2026\n\nWelcome New Employees!\nPlease join us in welcoming 15 new team members who joined us this month. The orientation session will be held on February 3rd in Conference Room A.\n\nOffice Closure\nThe office will be closed on Monday, February 17th for a national holiday. Please plan your work accordingly.\n\nHealth & Wellness\nDon\'t forget to sign up for the company gym membership at a 50% discount. Forms are available at HR until February 10th.\n\nEmployee of the Month\nCongratulations to Maria Santos from the Sales department for exceeding her quarterly targets by 35%!\n\nUpcoming Training\n• Excel Advanced - Feb 5th (2-4 PM)\n• Communication Skills - Feb 12th (10 AM-12 PM)\n• Project Management Basics - Feb 19th (1-5 PM)\n\nContact HR for registration.', options: ['15', '35', '50', '17'], correctAnswer: '15', explanation: 'The newsletter states "15 new team members who joined us".', explanationFr: 'La newsletter indique "15 nouveaux membres de l\'équipe qui nous ont rejoints".' },
+      { id: 2, type: 'mcq', question: 'When is the orientation session?', context: '', options: ['February 3rd', 'February 10th', 'February 17th', 'January 2026'], correctAnswer: 'February 3rd', explanation: 'The orientation is "on February 3rd in Conference Room A".', explanationFr: 'L\'orientation est "le 3 février dans la salle de conférence A".' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'The gym membership discount is _____%.', correctAnswer: '50', explanation: 'The newsletter mentions "50% discount".', explanationFr: 'La newsletter mentionne "50% de réduction".' },
+      { id: 4, type: 'mcq', question: 'Why was Maria Santos recognized?', context: '', options: ['She exceeded sales targets by 35%', 'She organized the orientation', 'She manages the gym', 'She planned the training'], correctAnswer: 'She exceeded sales targets by 35%', explanation: 'Maria "exceeded her quarterly targets by 35%".', explanationFr: 'Maria "a dépassé ses objectifs trimestriels de 35%".' },
+      { id: 5, type: 'mcq', question: 'Which training is the longest?', context: '', options: ['Project Management Basics (4 hours)', 'Excel Advanced (2 hours)', 'Communication Skills (2 hours)', 'All are the same length'], correctAnswer: 'Project Management Basics (4 hours)', explanation: 'Project Management is from 1-5 PM (4 hours).', explanationFr: 'Project Management est de 13h à 17h (4 heures).' },
+      { id: 6, type: 'mcq', question: 'When is the deadline for gym membership forms?', context: '', options: ['February 10th', 'February 3rd', 'February 17th', 'February 19th'], correctAnswer: 'February 10th', explanation: 'Forms are available "until February 10th".', explanationFr: 'Les formulaires sont disponibles "jusqu\'au 10 février".' }
+    ]
+  },
+  // B2 Upper Intermediate - Additional Exercises
+  {
+    id: 'cloe-grammar-b2-2',
+    title: 'Grammar: Passive Constructions',
+    titleFr: 'Grammaire : Constructions passives',
+    category: 'grammar',
+    difficulty: 'B2',
+    description: 'Master passive voice for formal business communication.',
+    descriptionFr: 'Maîtrisez la voix passive pour la communication professionnelle formelle.',
+    estimatedTime: 12,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Transform to passive:', context: 'The team completed the project.', options: ['The project was completed by the team.', 'The project completed by the team.', 'The project has completed by the team.', 'By the team the project was completed.'], correctAnswer: 'The project was completed by the team.', explanation: 'Passive: Object + was/were + past participle + by + agent.', explanationFr: 'Passif : Objet + was/were + participe passé + by + agent.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'The decision _____ (MAKE) by the board last week.', correctAnswer: 'was made', explanation: 'Past passive: was/were + past participle.', explanationFr: 'Passif passé : was/were + participe passé.' },
+      { id: 3, type: 'mcq', question: 'Choose the correct passive form:', context: 'They are currently reviewing the proposal.', options: ['The proposal is currently being reviewed.', 'The proposal is currently reviewed.', 'The proposal currently is being reviewed.', 'The proposal was being reviewed.'], correctAnswer: 'The proposal is currently being reviewed.', explanation: 'Present continuous passive: is/are + being + past participle.', explanationFr: 'Passif présent continu : is/are + being + participe passé.' },
+      { id: 4, type: 'mcq', question: 'Which sentence uses passive appropriately?', context: 'Formal report writing.', options: ['The results were analyzed thoroughly.', 'We analyzed the results thoroughly.', 'I thoroughly analyzed the results.', 'They did a thorough analysis.'], correctAnswer: 'The results were analyzed thoroughly.', explanation: 'Passive is preferred in formal writing to emphasize results.', explanationFr: 'Le passif est préféré dans l\'écriture formelle pour mettre l\'accent sur les résultats.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'All employees will _____ (INFORM) about the changes.', correctAnswer: 'be informed', explanation: 'Future passive: will + be + past participle.', explanationFr: 'Passif futur : will + be + participe passé.' },
+      { id: 6, type: 'mcq', question: 'Select the correct causative passive:', context: 'The company hired someone to redesign the website.', options: ['The company had the website redesigned.', 'The company has the website redesign.', 'The company was redesigned the website.', 'The website had the company redesign.'], correctAnswer: 'The company had the website redesigned.', explanation: 'Causative: have + object + past participle.', explanationFr: 'Causatif : have + objet + participe passé.' },
+      { id: 7, type: 'mcq', question: 'Which passive is correct?', context: 'Present perfect.', options: ['The contract has been signed.', 'The contract have been signed.', 'The contract has been sign.', 'The contract was been signed.'], correctAnswer: 'The contract has been signed.', explanation: 'Present perfect passive: has/have + been + past participle.', explanationFr: 'Passif présent parfait : has/have + been + participe passé.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'The report should _____ (SUBMIT) by Friday.', correctAnswer: 'be submitted', explanation: 'Modal passive: modal + be + past participle.', explanationFr: 'Passif modal : modal + be + participe passé.' }
+    ]
+  },
+  {
+    id: 'cloe-vocab-b2-2',
+    title: 'Vocabulary: Project Management',
+    titleFr: 'Vocabulaire : Gestion de projet',
+    category: 'vocabulary',
+    difficulty: 'B2',
+    description: 'Essential vocabulary for managing and discussing projects.',
+    descriptionFr: 'Vocabulaire essentiel pour gérer et discuter des projets.',
+    estimatedTime: 12,
+    questions: [
+      { id: 1, type: 'mcq', question: 'What is a "deliverable"?', context: '', options: ['A tangible output or result of a project', 'A type of delivery truck', 'An email attachment', 'A meeting invitation'], correctAnswer: 'A tangible output or result of a project', explanation: 'Deliverables are specific outputs that must be completed.', explanationFr: 'Les livrables sont des résultats spécifiques qui doivent être complétés.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'We need to set a _____ (DEAD) for the first phase.', correctAnswer: 'deadline', explanation: 'A "deadline" is the final date for completing something.', explanationFr: 'Une "deadline" est la date finale pour compléter quelque chose.' },
+      { id: 3, type: 'mcq', question: 'What does "scope creep" mean?', context: '', options: ['Uncontrolled expansion of project requirements', 'Moving the project location', 'Reducing the project team', 'Finishing ahead of schedule'], correctAnswer: 'Uncontrolled expansion of project requirements', explanation: 'Scope creep occurs when project boundaries expand without approval.', explanationFr: 'Le scope creep survient quand les limites du projet s\'étendent sans approbation.' },
+      { id: 4, type: 'mcq', question: 'What is a "milestone"?', context: '', options: ['A significant checkpoint in a project', 'A unit of distance', 'A type of stone', 'A project budget'], correctAnswer: 'A significant checkpoint in a project', explanation: 'Milestones mark important stages of project progress.', explanationFr: 'Les jalons marquent des étapes importantes de l\'avancement du projet.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'The project manager needs to _____ (ALLOCATE) resources effectively.', correctAnswer: 'allocate', explanation: '"Allocate" means to distribute resources for specific purposes.', explanationFr: '"Allocate" signifie distribuer des ressources pour des buts spécifiques.' },
+      { id: 6, type: 'mcq', question: 'What does "stakeholder" mean?', context: '', options: ['Anyone with an interest in the project', 'The project manager only', 'External investors only', 'The CEO'], correctAnswer: 'Anyone with an interest in the project', explanation: 'Stakeholders include all parties affected by the project.', explanationFr: 'Les parties prenantes incluent toutes les parties affectées par le projet.' },
+      { id: 7, type: 'mcq', question: 'What is "resource allocation"?', context: '', options: ['Assigning people, money, or materials to tasks', 'Firing employees', 'Ordering office supplies', 'Setting up meetings'], correctAnswer: 'Assigning people, money, or materials to tasks', explanation: 'Resource allocation distributes available assets effectively.', explanationFr: 'L\'allocation des ressources distribue les actifs disponibles efficacement.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'We need to conduct a risk _____ (ASSESS) before starting.', correctAnswer: 'assessment', explanation: 'A "risk assessment" evaluates potential problems.', explanationFr: 'Une "évaluation des risques" évalue les problèmes potentiels.' }
+    ]
+  },
+  {
+    id: 'cloe-expressions-b2-2',
+    title: 'Expressions: Meeting Management',
+    titleFr: 'Expressions : Gestion de réunions',
+    category: 'expressions',
+    difficulty: 'B2',
+    description: 'Key phrases for leading and participating in meetings.',
+    descriptionFr: 'Phrases clés pour diriger et participer à des réunions.',
+    estimatedTime: 12,
+    questions: [
+      { id: 1, type: 'mcq', question: 'How do you open a meeting professionally?', context: '', options: ['Let\'s get started. Thank you all for joining.', 'OK, let\'s go!', 'Finally, everyone\'s here.', 'Start talking.'], correctAnswer: 'Let\'s get started. Thank you all for joining.', explanation: 'This opening is professional and acknowledges participants.', explanationFr: 'Cette ouverture est professionnelle et reconnaît les participants.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'Could we please move _____ (ON) to the next agenda item?', correctAnswer: 'on', explanation: '"Move on" means to proceed to the next topic.', explanationFr: '"Move on" signifie passer au sujet suivant.' },
+      { id: 3, type: 'mcq', question: 'How do you invite opinions?', context: '', options: ['I\'d like to hear your thoughts on this.', 'What do you think? Come on.', 'Say something.', 'Anyone?'], correctAnswer: 'I\'d like to hear your thoughts on this.', explanation: 'This phrase politely invites participation.', explanationFr: 'Cette phrase invite poliment à la participation.' },
+      { id: 4, type: 'mcq', question: 'How do you politely interrupt?', context: '', options: ['Sorry to interrupt, but may I add something?', 'Wait! I have something to say.', 'Stop! Listen to me.', 'Hey!'], correctAnswer: 'Sorry to interrupt, but may I add something?', explanation: 'Apologizing before interrupting is professional.', explanationFr: 'S\'excuser avant d\'interrompre est professionnel.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'Let me _____ (SUMMARIZE) what we\'ve discussed so far.', correctAnswer: 'summarize', explanation: '"Summarize" means to briefly review main points.', explanationFr: '"Summarize" signifie résumer brièvement les points principaux.' },
+      { id: 6, type: 'mcq', question: 'How do you redirect a discussion?', context: 'The discussion is going off-topic.', options: ['Perhaps we could come back to this later. Let\'s focus on...', 'That\'s not what we\'re talking about.', 'Stop! Wrong topic.', 'Nobody cares about that.'], correctAnswer: 'Perhaps we could come back to this later. Let\'s focus on...', explanation: 'This phrase redirects tactfully without dismissing.', explanationFr: 'Cette phrase redirige avec tact sans rejeter.' },
+      { id: 7, type: 'mcq', question: 'How do you close a meeting?', context: '', options: ['Thank you all for your time. Let\'s reconvene next week.', 'OK, we\'re done here.', 'Finally it\'s over.', 'Meeting ended.'], correctAnswer: 'Thank you all for your time. Let\'s reconvene next week.', explanation: 'This closing thanks participants and sets expectations.', explanationFr: 'Cette clôture remercie les participants et établit les attentes.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'Before we finish, are there any other _____ (MATTER) to discuss?', correctAnswer: 'matters', explanation: '"Matters" refers to issues or topics for discussion.', explanationFr: '"Matters" désigne des questions ou sujets à discuter.' }
+    ]
+  },
+  {
+    id: 'cloe-reading-b2-2',
+    title: 'Reading: Business Report Summary',
+    titleFr: 'Lecture : Résumé de rapport d\'affaires',
+    category: 'reading',
+    difficulty: 'B2',
+    description: 'Practice understanding business reports and recommendations.',
+    descriptionFr: 'Pratiquez la compréhension des rapports d\'affaires et recommandations.',
+    estimatedTime: 12,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Read the report summary and answer:', context: 'MARKETING PERFORMANCE REPORT - Q4 2025\n\nExecutive Summary\nDigital marketing efforts exceeded expectations in Q4, with a 28% increase in website traffic and a 15% improvement in conversion rates compared to Q3. Social media engagement grew by 42%, driven primarily by our new video content strategy.\n\nKey Metrics:\n• Total website visitors: 1.2 million\n• Email open rate: 24% (industry average: 18%)\n• Cost per acquisition: €32 (down from €45 in Q3)\n• Customer lifetime value: €485\n\nChallenges:\n• Mobile bounce rate remains high at 65%\n• Organic search traffic declined by 8% due to algorithm changes\n\nRecommendations:\n1. Invest €50,000 in mobile optimization\n2. Increase content production by 30%\n3. Partner with 3 industry influencers for Q1 campaigns\n\nBudget Request: €120,000 for Q1 2026 initiatives', options: ['28%', '42%', '15%', '24%'], correctAnswer: '28%', explanation: 'Website traffic increased by 28%.', explanationFr: 'Le trafic du site a augmenté de 28%.' },
+      { id: 2, type: 'mcq', question: 'By how much did social media engagement grow?', context: '', options: ['42%', '28%', '15%', '8%'], correctAnswer: '42%', explanation: 'Social media engagement "grew by 42%".', explanationFr: 'L\'engagement sur les réseaux sociaux "a augmenté de 42%".' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'The email open rate was ____% above industry average.', correctAnswer: '6', explanation: 'Company rate (24%) - industry average (18%) = 6%.', explanationFr: 'Taux de l\'entreprise (24%) - moyenne du secteur (18%) = 6%.' },
+      { id: 4, type: 'mcq', question: 'What is NOT listed as a challenge?', context: '', options: ['Low email open rates', 'High mobile bounce rate', 'Organic search decline', 'Algorithm changes'], correctAnswer: 'Low email open rates', explanation: 'Email rates exceeded the industry average.', explanationFr: 'Les taux d\'emails dépassaient la moyenne du secteur.' },
+      { id: 5, type: 'mcq', question: 'How much did cost per acquisition decrease?', context: '', options: ['€13 (from €45 to €32)', '€32', '€45', '€15'], correctAnswer: '€13 (from €45 to €32)', explanation: 'CPA went from €45 to €32, a decrease of €13.', explanationFr: 'Le CPA est passé de 45€ à 32€, une baisse de 13€.' },
+      { id: 6, type: 'fill-blank', question: 'Complete:', context: 'The Q1 2026 budget request is €_____ thousand.', correctAnswer: '120', explanation: 'The budget request is "€120,000 for Q1 2026".', explanationFr: 'La demande de budget est "120 000 € pour le T1 2026".' },
+      { id: 7, type: 'mcq', question: 'How many influencers are recommended for partnerships?', context: '', options: ['3', '30', '50', '42'], correctAnswer: '3', explanation: 'Recommendation 3 suggests partnering with "3 industry influencers".', explanationFr: 'La recommandation 3 suggère de s\'associer à "3 influenceurs du secteur".' },
+      { id: 8, type: 'mcq', question: 'What drove social media growth?', context: '', options: ['Video content strategy', 'Email campaigns', 'Mobile optimization', 'Influencer partnerships'], correctAnswer: 'Video content strategy', explanation: 'Growth was "driven primarily by our new video content strategy".', explanationFr: 'La croissance était "principalement due à notre nouvelle stratégie de contenu vidéo".' }
+    ]
+  },
+  {
+    id: 'cloe-grammar-b1-3',
+    title: 'Grammar: Reported Speech in Business',
+    titleFr: 'Grammaire : Discours indirect en affaires',
+    category: 'grammar',
+    difficulty: 'B1',
+    description: 'Practice reporting what others said in professional contexts.',
+    descriptionFr: 'Pratiquez le rapport des propos d\'autrui dans des contextes professionnels.',
+    estimatedTime: 10,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Transform to reported speech:', context: '"I will send the report tomorrow." (He said...)', options: ['He said he would send the report the next day.', 'He said he will send the report tomorrow.', 'He said I would send the report tomorrow.', 'He said he sends the report the next day.'], correctAnswer: 'He said he would send the report the next day.', explanation: '"Will" becomes "would", "tomorrow" becomes "the next day".', explanationFr: '"Will" devient "would", "tomorrow" devient "the next day".' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'She told me she _____ (BE) busy that week.', correctAnswer: 'was', explanation: 'In reported speech, "am" becomes "was".', explanationFr: 'Dans le discours indirect, "am" devient "was".' },
+      { id: 3, type: 'mcq', question: 'Report this question:', context: '"Where is the meeting room?" (She asked...)', options: ['She asked where the meeting room was.', 'She asked where is the meeting room.', 'She asked where the meeting room is.', 'She asked where was the meeting room.'], correctAnswer: 'She asked where the meeting room was.', explanation: 'Reported questions use statement word order.', explanationFr: 'Les questions rapportées utilisent l\'ordre des mots affirmatif.' },
+      { id: 4, type: 'mcq', question: 'Choose the correct reported speech:', context: '"I have finished the project." (He said...)', options: ['He said he had finished the project.', 'He said he has finished the project.', 'He said I have finished the project.', 'He said he finished the project.'], correctAnswer: 'He said he had finished the project.', explanation: 'Present perfect becomes past perfect in reported speech.', explanationFr: 'Le present perfect devient past perfect au discours indirect.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'The manager asked if I _____ (CAN) work overtime.', correctAnswer: 'could', explanation: '"Can" becomes "could" in reported speech.', explanationFr: '"Can" devient "could" au discours indirect.' },
+      { id: 6, type: 'mcq', question: 'Report this instruction:', context: '"Please submit your report by Friday." (The manager told us...)', options: ['The manager told us to submit our report by Friday.', 'The manager told us submit your report by Friday.', 'The manager told us please submit our report by Friday.', 'The manager said to submit your report by Friday.'], correctAnswer: 'The manager told us to submit our report by Friday.', explanation: 'Commands become infinitive: told + object + to + verb.', explanationFr: 'Les ordres deviennent infinitif : told + objet + to + verbe.' },
+      { id: 7, type: 'mcq', question: 'Which is correct reported speech?', context: '"We are reviewing the contract now." (They said...)', options: ['They said they were reviewing the contract then.', 'They said they are reviewing the contract now.', 'They said we were reviewing the contract then.', 'They said they reviewing the contract then.'], correctAnswer: 'They said they were reviewing the contract then.', explanation: '"Are" becomes "were", "now" becomes "then".', explanationFr: '"Are" devient "were", "now" devient "then".' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'She asked me what time the meeting _____ (START).', correctAnswer: 'started', explanation: 'Present simple becomes past simple in reported questions.', explanationFr: 'Le présent simple devient passé simple dans les questions rapportées.' }
+    ]
+  },
+  {
+    id: 'cloe-vocab-b2-3',
+    title: 'Vocabulary: Marketing & Sales',
+    titleFr: 'Vocabulaire : Marketing et ventes',
+    category: 'vocabulary',
+    difficulty: 'B2',
+    description: 'Advanced vocabulary for marketing and sales professionals.',
+    descriptionFr: 'Vocabulaire avancé pour les professionnels du marketing et des ventes.',
+    estimatedTime: 12,
+    questions: [
+      { id: 1, type: 'mcq', question: 'What is "brand awareness"?', context: '', options: ['Recognition of a brand by consumers', 'The brand\'s financial value', 'A brand\'s customer database', 'Brand logo design'], correctAnswer: 'Recognition of a brand by consumers', explanation: 'Brand awareness measures how well consumers recognize a brand.', explanationFr: 'La notoriété de marque mesure la reconnaissance par les consommateurs.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'We need to identify our target _____ (AUDIENCE) before launching.', correctAnswer: 'audience', explanation: '"Target audience" means the intended group of consumers.', explanationFr: '"Target audience" désigne le groupe de consommateurs visé.' },
+      { id: 3, type: 'mcq', question: 'What is a "lead" in sales?', context: '', options: ['A potential customer who has shown interest', 'The sales manager', 'A completed sale', 'A refund request'], correctAnswer: 'A potential customer who has shown interest', explanation: 'Leads are prospective customers who may convert to buyers.', explanationFr: 'Les leads sont des clients potentiels qui peuvent devenir acheteurs.' },
+      { id: 4, type: 'mcq', question: 'What does "ROI" stand for?', context: '', options: ['Return on Investment', 'Rate of Increase', 'Revenue of Interest', 'Ranking of Importance'], correctAnswer: 'Return on Investment', explanation: 'ROI measures the profit relative to the cost of an investment.', explanationFr: 'Le ROI mesure le profit par rapport au coût d\'un investissement.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'The marketing _____ (CAMPAIGN) was a huge success.', correctAnswer: 'campaign', explanation: 'A "campaign" is a series of coordinated marketing activities.', explanationFr: 'Une "campagne" est une série d\'activités marketing coordonnées.' },
+      { id: 6, type: 'mcq', question: 'What is "conversion rate"?', context: '', options: ['Percentage of visitors who take a desired action', 'Currency exchange rate', 'Sales team efficiency', 'Website loading speed'], correctAnswer: 'Percentage of visitors who take a desired action', explanation: 'Conversion rate measures how many leads become customers.', explanationFr: 'Le taux de conversion mesure combien de leads deviennent clients.' },
+      { id: 7, type: 'mcq', question: 'What is a "value proposition"?', context: '', options: ['A promise of value to be delivered to customers', 'A price reduction offer', 'A sales quota', 'A marketing budget'], correctAnswer: 'A promise of value to be delivered to customers', explanation: 'Value proposition explains why customers should choose your product.', explanationFr: 'La proposition de valeur explique pourquoi les clients devraient choisir votre produit.' },
+      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'We need to analyze consumer _____ (BEHAVE) to improve our strategy.', correctAnswer: 'behavior', explanation: '"Consumer behavior" studies how people make buying decisions.', explanationFr: '"Consumer behavior" étudie comment les gens prennent des décisions d\'achat.' }
+    ]
+  },
   // C1/C2 Advanced Professional English
   {
     id: 'cloe-grammar-c1-2',
