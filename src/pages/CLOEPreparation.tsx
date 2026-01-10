@@ -12,7 +12,9 @@ import {
   Clock,
   Filter,
   Info,
-  CheckCircle
+  CheckCircle,
+  Trophy,
+  Timer
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -102,8 +104,15 @@ const CLOEPreparation = () => {
               </div>
             </div>
 
-            {/* Info Link */}
-            <div className="text-center mt-6">
+            {/* Practice Test CTA */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+              <Link to="/exercices/cloe-preparation/practice-test">
+                <Button size="lg" className="gap-2 bg-gradient-to-r from-primary to-accent hover:opacity-90">
+                  <Trophy className="h-5 w-5" />
+                  Lancer un Test de Pratique
+                  <Timer className="h-4 w-4 ml-1" />
+                </Button>
+              </Link>
               <Link to="/exercices/cloe-preparation/overview" className="inline-flex items-center gap-1 text-primary hover:underline text-sm">
                 <Info className="h-4 w-4" />
                 En savoir plus sur la certification CLOE
