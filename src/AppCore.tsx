@@ -69,6 +69,7 @@ const PrepositionExerciseDetail = lazy(() => import("./pages/PrepositionExercise
 const CLOEPreparation = lazy(() => import("./pages/CLOEPreparation"));
 const CLOEOverview = lazy(() => import("./pages/CLOEOverview"));
 const CLOEExerciseDetail = lazy(() => import("./pages/CLOEExerciseDetail"));
+const CLOEPracticeTestPage = lazy(() => import("./pages/CLOEPracticeTestPage"));
 const PageLoader = () => (
   <div className="min-h-screen bg-background py-12">
     <div className="max-w-4xl mx-auto px-4 space-y-8">
@@ -130,6 +131,7 @@ export const AppRoutes = () => (
     <Route path="/exercices/prepositions/:id" element={<PrepositionExerciseDetail />} />
     <Route path="/exercices/cloe-preparation" element={<CLOEPreparation />} />
     <Route path="/exercices/cloe-preparation/overview" element={<CLOEOverview />} />
+    <Route path="/exercices/cloe-preparation/practice-test" element={<CLOEPracticeTestPage />} />
     <Route path="/exercices/cloe/:id" element={<CLOEExerciseDetail />} />
     <Route path="/mentions-legales" element={<LegalNotices />} />
     <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
