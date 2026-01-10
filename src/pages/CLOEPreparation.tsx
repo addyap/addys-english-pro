@@ -14,7 +14,8 @@ import {
   Info,
   CheckCircle,
   Trophy,
-  Timer
+  Timer,
+  History
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -113,6 +114,14 @@ const CLOEPreparation = () => {
                   <Timer className="h-4 w-4 ml-1" />
                 </Button>
               </Link>
+              <Link to="/exercices/cloe-preparation/history">
+                <Button size="lg" variant="outline" className="gap-2">
+                  <History className="h-5 w-5" />
+                  Historique & Progression
+                </Button>
+              </Link>
+            </div>
+            <div className="text-center mt-4">
               <Link to="/exercices/cloe-preparation/overview" className="inline-flex items-center gap-1 text-primary hover:underline text-sm">
                 <Info className="h-4 w-4" />
                 En savoir plus sur la certification CLOE

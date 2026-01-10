@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Trophy, Clock, Target, CheckCircle2, XCircle, 
   ChevronRight, ChevronLeft, RotateCcw, Home,
-  Award, TrendingUp, Zap, BookOpen, AlertTriangle
+  Award, TrendingUp, Zap, BookOpen, AlertTriangle, History
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -686,8 +686,14 @@ export function CLOEPracticeTest() {
             <RotateCcw className="w-4 h-4 mr-2" />
             Nouveau Test
           </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link to="/exercices/cloe-preparation/history">
+              <History className="w-4 h-4 mr-2" />
+              Voir l'historique
+            </Link>
+          </Button>
           <Button asChild size="lg">
-            <Link to="/cloe-preparation">
+            <Link to="/exercices/cloe-preparation">
               <Home className="w-4 h-4 mr-2" />
               Retour à la préparation
             </Link>

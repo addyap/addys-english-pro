@@ -127,6 +127,7 @@
     { "path": "/exercices/cloe-preparation", "priority": 0.8, "changefreq": "weekly", "title": "Préparation CLOE - Exercices Gratuits" },
     { "path": "/exercices/cloe-preparation/overview", "priority": 0.8, "changefreq": "monthly", "title": "Guide Certification CLOE" },
     { "path": "/exercices/cloe-preparation/practice-test", "priority": 0.8, "changefreq": "weekly", "title": "Test de Pratique CLOE - Simulation d'Examen" },
+    { "path": "/exercices/cloe-preparation/history", "priority": 0.7, "changefreq": "weekly", "title": "Historique des Tests CLOE - Suivi de Progression" },
     { "path": "/exercices/cloe/cloe-vocab-1", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Business Vocabulary - The Office" },
     { "path": "/exercices/cloe/cloe-vocab-2", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Professional Communication" },
     { "path": "/exercices/cloe/cloe-vocab-3", "priority": 0.7, "changefreq": "monthly", "title": "CLOE: Travel & Transport" },
