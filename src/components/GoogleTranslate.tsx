@@ -1,5 +1,4 @@
 import React, { useEffect, useId, useMemo } from 'react';
-import { Globe } from 'lucide-react';
 
 declare global {
   interface Window {
@@ -73,13 +72,9 @@ const GoogleTranslate: React.FC = () => {
 
   return (
     <div
-      className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity group"
+      className="flex items-center cursor-pointer hover:opacity-80 transition-opacity"
       title="Translate this page / Traduire cette page"
     >
-      <Globe className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
-      <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors hidden sm:inline">
-        Translate
-      </span>
       <div id={elementId} className="google-translate-container" />
     </div>
   );
