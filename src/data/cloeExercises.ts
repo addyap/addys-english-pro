@@ -1250,7 +1250,260 @@ Marketing Director`,
     ]
   },
   // ============= NEW EXPANDED CLOE EXERCISES 2026 =============
-  // A1 Level - Beginner Exercises
+  // A1 Level - Beginner Exercises (Complete Foundation)
+  {
+    id: 'cloe-vocab-a1-colors',
+    title: 'Vocabulary: Colors and Shapes',
+    titleFr: 'Vocabulaire : Couleurs et formes',
+    category: 'vocabulary',
+    difficulty: 'A1',
+    description: 'Learn basic colors and shapes in English.',
+    descriptionFr: 'Apprenez les couleurs et formes de base en anglais.',
+    estimatedTime: 5,
+    questions: [
+      { id: 1, type: 'mcq', question: 'What color is the sky on a sunny day?', context: '', options: ['Blue', 'Red', 'Green', 'Yellow'], correctAnswer: 'Blue', explanation: 'The sky appears blue on clear, sunny days.', explanationFr: 'Le ciel apparaît bleu par temps clair et ensoleillé.' },
+      { id: 2, type: 'mcq', question: 'Which shape has 4 equal sides?', context: '', options: ['Square', 'Triangle', 'Circle', 'Oval'], correctAnswer: 'Square', explanation: 'A square has 4 equal sides and 4 right angles.', explanationFr: 'Un carré a 4 côtés égaux et 4 angles droits.' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'Grass is usually _____.', correctAnswer: 'green', explanation: 'Grass is typically green in color.', explanationFr: 'L\'herbe est généralement verte.' },
+      { id: 4, type: 'mcq', question: 'What color do you get mixing red and white?', context: '', options: ['Pink', 'Orange', 'Purple', 'Brown'], correctAnswer: 'Pink', explanation: 'Red + white = pink.', explanationFr: 'Rouge + blanc = rose.' },
+      { id: 5, type: 'mcq', question: 'A circle has how many sides?', context: '', options: ['Zero (no sides)', 'One', 'Three', 'Four'], correctAnswer: 'Zero (no sides)', explanation: 'A circle has no straight sides - it is curved.', explanationFr: 'Un cercle n\'a pas de côtés droits - il est courbé.' },
+      { id: 6, type: 'fill-blank', question: 'Complete:', context: 'The sun is _____.', correctAnswer: 'yellow', explanation: 'The sun appears yellow in drawings and perception.', explanationFr: 'Le soleil apparaît jaune dans les dessins.' }
+    ]
+  },
+  {
+    id: 'cloe-vocab-a1-family',
+    title: 'Vocabulary: Family Members',
+    titleFr: 'Vocabulaire : Membres de la famille',
+    category: 'vocabulary',
+    difficulty: 'A1',
+    description: 'Learn vocabulary for family relationships.',
+    descriptionFr: 'Apprenez le vocabulaire des relations familiales.',
+    estimatedTime: 6,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Your mother\'s mother is your...', context: '', options: ['Grandmother', 'Aunt', 'Sister', 'Cousin'], correctAnswer: 'Grandmother', explanation: 'Your parent\'s mother is your grandmother.', explanationFr: 'La mère de votre parent est votre grand-mère.' },
+      { id: 2, type: 'mcq', question: 'Your father\'s brother is your...', context: '', options: ['Uncle', 'Cousin', 'Nephew', 'Brother'], correctAnswer: 'Uncle', explanation: 'Your parent\'s brother is your uncle.', explanationFr: 'Le frère de votre parent est votre oncle.' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'My sister\'s son is my _____.', correctAnswer: 'nephew', explanation: 'Your sibling\'s son is your nephew.', explanationFr: 'Le fils de votre frère ou sœur est votre neveu.' },
+      { id: 4, type: 'mcq', question: 'What do you call your aunt\'s children?', context: '', options: ['Cousins', 'Siblings', 'Nephews', 'Grandchildren'], correctAnswer: 'Cousins', explanation: 'Your aunt\'s or uncle\'s children are your cousins.', explanationFr: 'Les enfants de votre tante ou oncle sont vos cousins.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'I have one brother and two _____s.', correctAnswer: 'sister', explanation: 'Sisters are female siblings.', explanationFr: 'Les sœurs sont des frères et sœurs féminins.' },
+      { id: 6, type: 'mcq', question: 'Your husband or wife is your...', context: '', options: ['Spouse', 'Parent', 'Child', 'Sibling'], correctAnswer: 'Spouse', explanation: '"Spouse" refers to a husband or wife.', explanationFr: '"Spouse" désigne un mari ou une femme.' }
+    ]
+  },
+  {
+    id: 'cloe-vocab-a1-food',
+    title: 'Vocabulary: Food and Drinks',
+    titleFr: 'Vocabulaire : Nourriture et boissons',
+    category: 'vocabulary',
+    difficulty: 'A1',
+    description: 'Basic vocabulary for food and beverages.',
+    descriptionFr: 'Vocabulaire de base pour la nourriture et les boissons.',
+    estimatedTime: 6,
+    questions: [
+      { id: 1, type: 'mcq', question: 'What is the most common breakfast drink?', context: '', options: ['Coffee', 'Wine', 'Beer', 'Whiskey'], correctAnswer: 'Coffee', explanation: 'Coffee is a popular morning beverage.', explanationFr: 'Le café est une boisson matinale populaire.' },
+      { id: 2, type: 'mcq', question: 'Which is a vegetable?', context: '', options: ['Carrot', 'Apple', 'Banana', 'Orange'], correctAnswer: 'Carrot', explanation: 'A carrot is a vegetable. The others are fruits.', explanationFr: 'La carotte est un légume. Les autres sont des fruits.' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'I drink _____ with my breakfast.', correctAnswer: 'milk', explanation: 'Milk is a common breakfast beverage.', explanationFr: 'Le lait est une boisson de petit-déjeuner courante.' },
+      { id: 4, type: 'mcq', question: 'What meal do you eat at noon?', context: '', options: ['Lunch', 'Breakfast', 'Dinner', 'Snack'], correctAnswer: 'Lunch', explanation: 'Lunch is typically eaten around noon.', explanationFr: 'Le déjeuner se prend généralement vers midi.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'I eat _____ and eggs for breakfast.', correctAnswer: 'bread', explanation: 'Bread is commonly eaten at breakfast.', explanationFr: 'Le pain se mange couramment au petit-déjeuner.' },
+      { id: 6, type: 'mcq', question: 'Which word means "very hungry"?', context: '', options: ['Starving', 'Tired', 'Thirsty', 'Happy'], correctAnswer: 'Starving', explanation: '"Starving" informally means very hungry.', explanationFr: '"Starving" signifie informellement avoir très faim.' }
+    ]
+  },
+  {
+    id: 'cloe-grammar-a1-pronouns',
+    title: 'Grammar: Personal Pronouns',
+    titleFr: 'Grammaire : Pronoms personnels',
+    category: 'grammar',
+    difficulty: 'A1',
+    description: 'Learn subject and object pronouns.',
+    descriptionFr: 'Apprenez les pronoms sujets et objets.',
+    estimatedTime: 7,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Choose the correct pronoun:', context: '_____ am a teacher.', options: ['I', 'Me', 'My', 'Mine'], correctAnswer: 'I', explanation: '"I" is the subject pronoun for first person.', explanationFr: '"I" est le pronom sujet pour la première personne.' },
+      { id: 2, type: 'mcq', question: 'Select the object pronoun:', context: 'Give the book to _____.', options: ['her', 'she', 'hers', 'herself'], correctAnswer: 'her', explanation: '"Her" is the object pronoun for "she".', explanationFr: '"Her" est le pronom objet pour "she".' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: '_____ are my friends.', correctAnswer: 'They', explanation: '"They" is used for multiple people.', explanationFr: '"They" est utilisé pour plusieurs personnes.' },
+      { id: 4, type: 'mcq', question: 'Replace "John and Mary" with a pronoun:', context: 'John and Mary are students.', options: ['They', 'We', 'You', 'It'], correctAnswer: 'They', explanation: 'Multiple people = "They".', explanationFr: 'Plusieurs personnes = "They".' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'Can you help _____?', correctAnswer: 'me', explanation: '"Me" is the object pronoun for "I".', explanationFr: '"Me" est le pronom objet pour "I".' },
+      { id: 6, type: 'mcq', question: 'Which is correct?', context: '', options: ['He likes pizza.', 'Him likes pizza.', 'His likes pizza.', 'Himself likes pizza.'], correctAnswer: 'He likes pizza.', explanation: '"He" is the subject pronoun.', explanationFr: '"He" est le pronom sujet.' }
+    ]
+  },
+  {
+    id: 'cloe-expressions-a1-time',
+    title: 'Expressions: Telling Time',
+    titleFr: 'Expressions : Dire l\'heure',
+    category: 'expressions',
+    difficulty: 'A1',
+    description: 'Learn how to tell and ask about time.',
+    descriptionFr: 'Apprenez à dire et demander l\'heure.',
+    estimatedTime: 6,
+    questions: [
+      { id: 1, type: 'mcq', question: 'How do you ask for the time?', context: '', options: ['What time is it?', 'What is time?', 'How time is it?', 'When time is it?'], correctAnswer: 'What time is it?', explanation: '"What time is it?" is the standard question.', explanationFr: '"What time is it?" est la question standard.' },
+      { id: 2, type: 'mcq', question: '3:30 is said as...', context: '', options: ['Half past three', 'Three and half', 'Three thirty half', 'Half three past'], correctAnswer: 'Half past three', explanation: ':30 = "half past" the hour.', explanationFr: ':30 = "half past" l\'heure.' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'It\'s _____ o\'clock.', correctAnswer: 'five', explanation: 'Say the number + o\'clock for exact hours.', explanationFr: 'Dites le nombre + o\'clock pour les heures exactes.' },
+      { id: 4, type: 'mcq', question: '2:15 is said as...', context: '', options: ['Quarter past two', 'Two fifteen quarter', 'Quarter two', 'Two and quarter'], correctAnswer: 'Quarter past two', explanation: ':15 = "quarter past" the hour.', explanationFr: ':15 = "quarter past" l\'heure.' },
+      { id: 5, type: 'mcq', question: '4:45 is said as...', context: '', options: ['Quarter to five', 'Quarter past four', 'Forty-five four', 'Four quarter'], correctAnswer: 'Quarter to five', explanation: ':45 = "quarter to" the next hour.', explanationFr: ':45 = "quarter to" l\'heure suivante.' },
+      { id: 6, type: 'fill-blank', question: 'Complete:', context: 'The meeting starts at _____ AM.', correctAnswer: 'nine', explanation: 'Times are often given with AM (morning) or PM (afternoon).', explanationFr: 'Les heures sont souvent données avec AM (matin) ou PM (après-midi).' }
+    ]
+  },
+  {
+    id: 'cloe-vocab-a1-places',
+    title: 'Vocabulary: Places in Town',
+    titleFr: 'Vocabulaire : Lieux en ville',
+    category: 'vocabulary',
+    difficulty: 'A1',
+    description: 'Learn vocabulary for common places.',
+    descriptionFr: 'Apprenez le vocabulaire des lieux communs.',
+    estimatedTime: 6,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Where do you buy medicine?', context: '', options: ['Pharmacy', 'Bakery', 'Library', 'Cinema'], correctAnswer: 'Pharmacy', explanation: 'A pharmacy sells medicine and health products.', explanationFr: 'Une pharmacie vend des médicaments et produits de santé.' },
+      { id: 2, type: 'mcq', question: 'Where do you borrow books?', context: '', options: ['Library', 'Bookshop', 'School', 'Office'], correctAnswer: 'Library', explanation: 'You borrow books from a library (free).', explanationFr: 'On emprunte des livres à la bibliothèque (gratuit).' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'I go to the _____ to buy bread.', correctAnswer: 'bakery', explanation: 'A bakery sells bread and pastries.', explanationFr: 'Une boulangerie vend du pain et des pâtisseries.' },
+      { id: 4, type: 'mcq', question: 'Where do you send letters?', context: '', options: ['Post office', 'Bank', 'Hospital', 'Restaurant'], correctAnswer: 'Post office', explanation: 'The post office handles mail and packages.', explanationFr: 'La poste gère le courrier et les colis.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'I need cash. I\'m going to the _____.', correctAnswer: 'bank', explanation: 'Banks handle money and financial services.', explanationFr: 'Les banques gèrent l\'argent et les services financiers.' },
+      { id: 6, type: 'mcq', question: 'Where do you watch films?', context: '', options: ['Cinema', 'Theatre', 'Museum', 'Stadium'], correctAnswer: 'Cinema', explanation: 'A cinema (movie theater) shows films.', explanationFr: 'Un cinéma projette des films.' }
+    ]
+  },
+  {
+    id: 'cloe-grammar-a1-articles',
+    title: 'Grammar: A, An, The',
+    titleFr: 'Grammaire : A, An, The',
+    category: 'grammar',
+    difficulty: 'A1',
+    description: 'Learn when to use articles a, an, and the.',
+    descriptionFr: 'Apprenez quand utiliser les articles a, an et the.',
+    estimatedTime: 7,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Choose the correct article:', context: 'I need _____ umbrella.', options: ['an', 'a', 'the', 'no article'], correctAnswer: 'an', explanation: 'Use "an" before vowel sounds (umbrella starts with "u" sound).', explanationFr: 'Utilisez "an" devant les sons de voyelles.' },
+      { id: 2, type: 'mcq', question: 'Select the correct article:', context: 'She is _____ doctor.', options: ['a', 'an', 'the', 'no article'], correctAnswer: 'a', explanation: 'Use "a" before consonant sounds.', explanationFr: 'Utilisez "a" devant les sons de consonnes.' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: '_____ sun is very bright today.', correctAnswer: 'The', explanation: 'Use "the" for unique things (only one sun).', explanationFr: 'Utilisez "the" pour les choses uniques (un seul soleil).' },
+      { id: 4, type: 'mcq', question: 'Which is correct?', context: '', options: ['I saw a movie yesterday.', 'I saw an movie yesterday.', 'I saw the movie yesterday.', 'I saw movie yesterday.'], correctAnswer: 'I saw a movie yesterday.', explanation: '"A" is used for first mention, non-specific.', explanationFr: '"A" est utilisé pour la première mention, non spécifique.' },
+      { id: 5, type: 'mcq', question: 'Choose the correct article:', context: 'She plays _____ piano.', options: ['the', 'a', 'an', 'no article'], correctAnswer: 'the', explanation: 'Use "the" with musical instruments.', explanationFr: 'Utilisez "the" avec les instruments de musique.' },
+      { id: 6, type: 'fill-blank', question: 'Complete:', context: 'I have _____ idea!', correctAnswer: 'an', explanation: '"Idea" starts with a vowel sound → "an".', explanationFr: '"Idea" commence par un son de voyelle → "an".' }
+    ]
+  },
+  {
+    id: 'cloe-expressions-a1-polite',
+    title: 'Expressions: Polite Phrases',
+    titleFr: 'Expressions : Phrases polies',
+    category: 'expressions',
+    difficulty: 'A1',
+    description: 'Essential polite expressions for everyday situations.',
+    descriptionFr: 'Expressions polies essentielles pour les situations quotidiennes.',
+    estimatedTime: 5,
+    questions: [
+      { id: 1, type: 'mcq', question: 'What do you say when someone helps you?', context: '', options: ['Thank you', 'Sorry', 'Hello', 'Goodbye'], correctAnswer: 'Thank you', explanation: '"Thank you" expresses gratitude.', explanationFr: '"Thank you" exprime la gratitude.' },
+      { id: 2, type: 'mcq', question: 'What do you say when you bump into someone?', context: '', options: ['Excuse me / Sorry', 'Thank you', 'Hello', 'Please'], correctAnswer: 'Excuse me / Sorry', explanation: '"Excuse me" or "Sorry" for minor mistakes.', explanationFr: '"Excuse me" ou "Sorry" pour les petites erreurs.' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'Can I have some water, _____?', correctAnswer: 'please', explanation: '"Please" makes requests polite.', explanationFr: '"Please" rend les demandes polies.' },
+      { id: 4, type: 'mcq', question: 'Someone thanks you. You respond:', context: '', options: ['You\'re welcome', 'Thank you too', 'Hello', 'Goodbye'], correctAnswer: 'You\'re welcome', explanation: '"You\'re welcome" is the polite response to thanks.', explanationFr: '"You\'re welcome" est la réponse polie aux remerciements.' },
+      { id: 5, type: 'mcq', question: 'How do you politely get someone\'s attention?', context: '', options: ['Excuse me', 'Hey!', 'Oi!', 'What?'], correctAnswer: 'Excuse me', explanation: '"Excuse me" is polite for getting attention.', explanationFr: '"Excuse me" est poli pour attirer l\'attention.' },
+      { id: 6, type: 'fill-blank', question: 'Complete:', context: 'I\'m _____ for being late.', correctAnswer: 'sorry', explanation: '"Sorry" is used to apologize.', explanationFr: '"Sorry" est utilisé pour s\'excuser.' }
+    ]
+  },
+  // A2 Level - Additional Elementary Exercises
+  {
+    id: 'cloe-vocab-a2-weather',
+    title: 'Vocabulary: Weather and Seasons',
+    titleFr: 'Vocabulaire : Météo et saisons',
+    category: 'vocabulary',
+    difficulty: 'A2',
+    description: 'Learn vocabulary for weather conditions and seasons.',
+    descriptionFr: 'Apprenez le vocabulaire de la météo et des saisons.',
+    estimatedTime: 7,
+    questions: [
+      { id: 1, type: 'mcq', question: 'What does "cloudy" mean?', context: '', options: ['The sky has many clouds', 'It\'s raining', 'It\'s sunny', 'It\'s windy'], correctAnswer: 'The sky has many clouds', explanation: '"Cloudy" = covered with clouds.', explanationFr: '"Cloudy" = couvert de nuages.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'In summer, the weather is usually _____.', correctAnswer: 'hot', explanation: 'Summer is typically the hottest season.', explanationFr: 'L\'été est généralement la saison la plus chaude.' },
+      { id: 3, type: 'mcq', question: 'Which season comes after winter?', context: '', options: ['Spring', 'Summer', 'Autumn', 'Winter'], correctAnswer: 'Spring', explanation: 'The order is: winter, spring, summer, autumn.', explanationFr: 'L\'ordre est : hiver, printemps, été, automne.' },
+      { id: 4, type: 'mcq', question: 'What do you need when it rains?', context: '', options: ['An umbrella', 'Sunglasses', 'A fan', 'Shorts'], correctAnswer: 'An umbrella', explanation: 'An umbrella protects you from rain.', explanationFr: 'Un parapluie vous protège de la pluie.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'It\'s _____ degrees outside today.', correctAnswer: 'twenty', explanation: 'Temperature is measured in degrees.', explanationFr: 'La température est mesurée en degrés.' },
+      { id: 6, type: 'mcq', question: 'What does "freezing" mean?', context: '', options: ['Very cold', 'Very hot', 'Very rainy', 'Very windy'], correctAnswer: 'Very cold', explanation: '"Freezing" means extremely cold (0°C or below).', explanationFr: '"Freezing" signifie extrêmement froid (0°C ou moins).' }
+    ]
+  },
+  {
+    id: 'cloe-grammar-a2-modals',
+    title: 'Grammar: Can and Could',
+    titleFr: 'Grammaire : Can et Could',
+    category: 'grammar',
+    difficulty: 'A2',
+    description: 'Learn to use can and could for ability and requests.',
+    descriptionFr: 'Apprenez à utiliser can et could pour les capacités et demandes.',
+    estimatedTime: 8,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Choose the correct modal:', context: 'I _____ speak French fluently.', options: ['can', 'could', 'must', 'should'], correctAnswer: 'can', explanation: '"Can" expresses present ability.', explanationFr: '"Can" exprime une capacité présente.' },
+      { id: 2, type: 'mcq', question: 'Which is more polite?', context: 'Asking someone to help:', options: ['Could you help me?', 'Can you help me?', 'Help me!', 'You help me.'], correctAnswer: 'Could you help me?', explanation: '"Could" is more polite than "can" for requests.', explanationFr: '"Could" est plus poli que "can" pour les demandes.' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'When I was young, I _____ run very fast.', correctAnswer: 'could', explanation: '"Could" expresses past ability.', explanationFr: '"Could" exprime une capacité passée.' },
+      { id: 4, type: 'mcq', question: 'Select the correct sentence:', context: '', options: ['She can\'t swim.', 'She can not swim.', 'She cann\'t swim.', 'She can\'t swims.'], correctAnswer: 'She can\'t swim.', explanation: 'Negative: can\'t + base verb.', explanationFr: 'Négatif : can\'t + verbe de base.' },
+      { id: 5, type: 'mcq', question: 'What is the question form?', context: 'He can drive.', options: ['Can he drive?', 'He can drive?', 'Does he can drive?', 'Can he drives?'], correctAnswer: 'Can he drive?', explanation: 'Question: Can + subject + base verb?', explanationFr: 'Question : Can + sujet + verbe de base ?' },
+      { id: 6, type: 'fill-blank', question: 'Complete:', context: '_____ I use your phone, please?', correctAnswer: 'Could', explanation: '"Could I...?" is polite for permission.', explanationFr: '"Could I...?" est poli pour demander la permission.' }
+    ]
+  },
+  {
+    id: 'cloe-vocab-a2-hobbies',
+    title: 'Vocabulary: Hobbies and Leisure',
+    titleFr: 'Vocabulaire : Loisirs et passe-temps',
+    category: 'vocabulary',
+    difficulty: 'A2',
+    description: 'Vocabulary for discussing free time activities.',
+    descriptionFr: 'Vocabulaire pour discuter des activités de temps libre.',
+    estimatedTime: 7,
+    questions: [
+      { id: 1, type: 'mcq', question: 'What hobby involves taking pictures?', context: '', options: ['Photography', 'Painting', 'Reading', 'Cooking'], correctAnswer: 'Photography', explanation: 'Photography is the art of taking photos.', explanationFr: 'La photographie est l\'art de prendre des photos.' },
+      { id: 2, type: 'fill-blank', question: 'Complete:', context: 'I like _____ books in my free time.', correctAnswer: 'reading', explanation: 'Reading is a popular leisure activity.', explanationFr: 'La lecture est une activité de loisir populaire.' },
+      { id: 3, type: 'mcq', question: 'What do you do at a gym?', context: '', options: ['Exercise', 'Sleep', 'Eat', 'Study'], correctAnswer: 'Exercise', explanation: 'A gym is for physical exercise.', explanationFr: 'Une salle de sport est pour l\'exercice physique.' },
+      { id: 4, type: 'mcq', question: 'Which is an outdoor hobby?', context: '', options: ['Hiking', 'Playing video games', 'Watching TV', 'Knitting'], correctAnswer: 'Hiking', explanation: 'Hiking is walking in nature, outdoors.', explanationFr: 'La randonnée se fait en plein air dans la nature.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'She plays the _____ in a band.', correctAnswer: 'guitar', explanation: 'Playing an instrument is a common hobby.', explanationFr: 'Jouer d\'un instrument est un passe-temps courant.' },
+      { id: 6, type: 'mcq', question: '"I\'m into gardening" means:', context: '', options: ['I really like gardening', 'I\'m in the garden', 'I hate gardening', 'I\'m going to the garden'], correctAnswer: 'I really like gardening', explanation: '"To be into" something = to really enjoy it.', explanationFr: '"To be into" quelque chose = vraiment l\'apprécier.' }
+    ]
+  },
+  {
+    id: 'cloe-grammar-a2-prepositions-time',
+    title: 'Grammar: Prepositions of Time',
+    titleFr: 'Grammaire : Prépositions de temps',
+    category: 'grammar',
+    difficulty: 'A2',
+    description: 'Master in, on, and at for time expressions.',
+    descriptionFr: 'Maîtrisez in, on et at pour les expressions temporelles.',
+    estimatedTime: 7,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Choose the correct preposition:', context: 'The meeting is _____ Monday.', options: ['on', 'in', 'at', 'to'], correctAnswer: 'on', explanation: 'Use "on" for days of the week.', explanationFr: 'Utilisez "on" pour les jours de la semaine.' },
+      { id: 2, type: 'mcq', question: 'Select the correct option:', context: 'I wake up _____ 7 AM.', options: ['at', 'on', 'in', 'to'], correctAnswer: 'at', explanation: 'Use "at" for specific times.', explanationFr: 'Utilisez "at" pour les heures précises.' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'We go on holiday _____ August.', correctAnswer: 'in', explanation: 'Use "in" for months, years, and seasons.', explanationFr: 'Utilisez "in" pour les mois, années et saisons.' },
+      { id: 4, type: 'mcq', question: 'Which is correct?', context: '', options: ['I was born in 1990.', 'I was born on 1990.', 'I was born at 1990.', 'I was born to 1990.'], correctAnswer: 'I was born in 1990.', explanation: 'Use "in" for years.', explanationFr: 'Utilisez "in" pour les années.' },
+      { id: 5, type: 'mcq', question: 'Choose the correct preposition:', context: 'Let\'s meet _____ the weekend.', options: ['at', 'on', 'in', 'during'], correctAnswer: 'at', explanation: 'British: "at the weekend" (American: "on the weekend").', explanationFr: 'Britannique : "at the weekend" (Américain : "on the weekend").' },
+      { id: 6, type: 'fill-blank', question: 'Complete:', context: 'The shop opens _____ 9 o\'clock.', correctAnswer: 'at', explanation: 'Use "at" for clock times.', explanationFr: 'Utilisez "at" pour les heures.' }
+    ]
+  },
+  {
+    id: 'cloe-expressions-a2-directions',
+    title: 'Expressions: Giving Directions',
+    titleFr: 'Expressions : Donner des directions',
+    category: 'expressions',
+    difficulty: 'A2',
+    description: 'Learn to ask for and give directions.',
+    descriptionFr: 'Apprenez à demander et donner des directions.',
+    estimatedTime: 7,
+    questions: [
+      { id: 1, type: 'mcq', question: 'How do you politely ask for directions?', context: '', options: ['Excuse me, how do I get to...?', 'Where is it?', 'Tell me the way!', 'I want directions!'], correctAnswer: 'Excuse me, how do I get to...?', explanation: 'Start with "Excuse me" and use "how do I get to".', explanationFr: 'Commencez par "Excuse me" et utilisez "how do I get to".' },
+      { id: 2, type: 'mcq', question: '"Turn left" means:', context: '', options: ['Go to the left side', 'Go straight', 'Go to the right side', 'Go back'], correctAnswer: 'Go to the left side', explanation: '"Turn left" = change direction to the left.', explanationFr: '"Turn left" = changer de direction vers la gauche.' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'Go _____ ahead until you see the bank.', correctAnswer: 'straight', explanation: '"Go straight ahead" means continue forward.', explanationFr: '"Go straight ahead" signifie continuer tout droit.' },
+      { id: 4, type: 'mcq', question: 'What does "It\'s on your right" mean?', context: '', options: ['It\'s on the right side of you', 'It\'s behind you', 'It\'s on your left', 'It\'s far away'], correctAnswer: 'It\'s on the right side of you', explanation: '"On your right" = on your right side.', explanationFr: '"On your right" = sur votre côté droit.' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'Take the first _____ on the left.', correctAnswer: 'turning', explanation: '"Take the first turning" = turn at the first road.', explanationFr: '"Take the first turning" = tourner à la première rue.' },
+      { id: 6, type: 'mcq', question: '"It\'s about 5 minutes on foot" means:', context: '', options: ['It takes 5 minutes to walk there', 'It\'s 5 kilometers away', 'It\'s very far', 'You need a car'], correctAnswer: 'It takes 5 minutes to walk there', explanation: '"On foot" means walking, not by car.', explanationFr: '"On foot" signifie à pied, pas en voiture.' }
+    ]
+  },
+  {
+    id: 'cloe-reading-a2-email',
+    title: 'Reading: Simple Emails',
+    titleFr: 'Lecture : E-mails simples',
+    category: 'reading',
+    difficulty: 'A2',
+    description: 'Practice reading and understanding simple emails.',
+    descriptionFr: 'Pratiquez la lecture et compréhension d\'e-mails simples.',
+    estimatedTime: 8,
+    questions: [
+      { id: 1, type: 'mcq', question: 'Read the email and answer:', context: 'Subject: Meeting Tomorrow\n\nHi Tom,\n\nJust a quick reminder that we have a meeting tomorrow at 10 AM in the conference room. Please bring the sales report and your laptop. If you have any problems, call me on 555-1234.\n\nSee you tomorrow!\nBest,\nSarah', options: ['10 AM', '2 PM', '9 AM', '11 AM'], correctAnswer: '10 AM', explanation: 'The email says "at 10 AM".', explanationFr: 'L\'e-mail dit "at 10 AM".' },
+      { id: 2, type: 'mcq', question: 'What should Tom bring?', context: '', options: ['Sales report and laptop', 'Coffee', 'Lunch', 'Phone'], correctAnswer: 'Sales report and laptop', explanation: 'The email mentions "the sales report and your laptop".', explanationFr: 'L\'e-mail mentionne "the sales report and your laptop".' },
+      { id: 3, type: 'fill-blank', question: 'Complete:', context: 'The meeting is in the _____ room.', correctAnswer: 'conference', explanation: 'The email says "in the conference room".', explanationFr: 'L\'e-mail dit "in the conference room".' },
+      { id: 4, type: 'mcq', question: 'Who wrote the email?', context: '', options: ['Sarah', 'Tom', 'The manager', 'The secretary'], correctAnswer: 'Sarah', explanation: 'The email is signed "Sarah".', explanationFr: 'L\'e-mail est signé "Sarah".' },
+      { id: 5, type: 'fill-blank', question: 'Complete:', context: 'If Tom has problems, he should _____ Sarah.', correctAnswer: 'call', explanation: 'The email says "call me on 555-1234".', explanationFr: 'L\'e-mail dit "call me on 555-1234".' },
+      { id: 6, type: 'mcq', question: 'What type of email is this?', context: '', options: ['A reminder', 'A complaint', 'An invitation', 'A thank you note'], correctAnswer: 'A reminder', explanation: 'It says "Just a quick reminder".', explanationFr: 'Il dit "Just a quick reminder".' }
+    ]
+  },
   {
     id: 'cloe-vocab-a1-1',
     title: 'Vocabulary: Basic Greetings & Introductions',
@@ -1969,6 +2222,5 @@ export const cloeLevels = [
   { level: 'B1', description: 'Intermediate', descriptionFr: 'Intermédiaire' },
   { level: 'B2', description: 'Upper Intermediate', descriptionFr: 'Intermédiaire supérieur' },
   { level: 'C1', description: 'Advanced', descriptionFr: 'Avancé' },
-  { level: 'C2', description: 'Mastery', descriptionFr: 'Maîtrise' },
-  { level: 'C1', description: 'Advanced', descriptionFr: 'Avancé' }
+  { level: 'C2', description: 'Mastery', descriptionFr: 'Maîtrise' }
 ] as const;

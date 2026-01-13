@@ -335,11 +335,11 @@ const Home = () => {
             {/* Stats row */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/20 hover:border-yellow-500/40 transition-colors group">
-                <p className="text-4xl font-bold text-yellow-400 mb-1 group-hover:scale-110 transition-transform">43+</p>
+                <p className="text-4xl font-bold text-yellow-400 mb-1 group-hover:scale-110 transition-transform">55+</p>
                 <p className="text-indigo-200 text-sm">Exercices écrits</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/20 hover:border-yellow-500/40 transition-colors group">
-                <p className="text-4xl font-bold text-yellow-400 mb-1 group-hover:scale-110 transition-transform">280+</p>
+                <p className="text-4xl font-bold text-yellow-400 mb-1 group-hover:scale-110 transition-transform">380+</p>
                 <p className="text-indigo-200 text-sm">Questions</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/20 hover:border-yellow-500/40 transition-colors group">
