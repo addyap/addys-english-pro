@@ -71,6 +71,7 @@ const CLOEOverview = lazy(() => import("./pages/CLOEOverview"));
 const CLOEExerciseDetail = lazy(() => import("./pages/CLOEExerciseDetail"));
 const CLOEPracticeTestPage = lazy(() => import("./pages/CLOEPracticeTestPage"));
 const CLOETestHistory = lazy(() => import("./pages/CLOETestHistory"));
+const SiteAnalytics = lazy(() => import("./pages/SiteAnalytics"));
 const PageLoader = () => (
   <div className="min-h-screen bg-background py-12">
     <div className="max-w-4xl mx-auto px-4 space-y-8">
@@ -146,6 +147,7 @@ export const AppRoutes = () => (
     <Route path="/admin/audio-cache" element={<AudioAdminTools />} />
     <Route path="/admin/listening-cache" element={<ListeningAudioCacheAdmin />} />
     <Route path="/admin/seo-diagnostics" element={<SEODiagnostics />} />
+    <Route path="/admin/analytics" element={<SiteAnalytics />} />
     <Route path="*" element={<NotFound />} />
   </Routes>
 );
