@@ -311,7 +311,6 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               © {year} Antony Addy. Tous droits réservés. Formateur Professionnel d'Adultes certifié.
             </p>
             <div className="flex items-center gap-4">
-              <GoogleTranslate />
               <p className="text-gray-600 text-xs">
                 Site hébergé par{" "}
                 <a
