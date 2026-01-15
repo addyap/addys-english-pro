@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Lock, CheckCircle, GraduationCap, ChevronRight, Sparkles, Star, Zap, Lightbulb, Target, Clock, BarChart3, GripVertical, PenLine, Headphones, MessageCircle, ArrowRightLeft, Link2, Volume2, Languages, GitCompare, List, Mic, AlertTriangle, Puzzle, CreditCard, Keyboard, BookMarked, Award } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { ExternalLink } from 'lucide-react';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import AnimatedCard from '../components/AnimatedCard';
 import { allExercisesData as exercisesData, allExercisesList as exercisesList } from '../data/allExercises';

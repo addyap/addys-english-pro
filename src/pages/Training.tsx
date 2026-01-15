@@ -258,6 +258,63 @@ const Training = () => {
             </div>
           </FadeInSection>
 
+          {/* Authority Resources Section */}
+          <FadeInSection>
+            <div className="bg-muted/50 border border-border rounded-lg p-8 mb-12">
+              <div className="flex items-center mb-6">
+                <span className="text-2xl mr-3">📚</span>
+                <h2 className="text-2xl font-bold text-primary">Ressources et références</h2>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <h3 className="font-semibold text-primary mb-2">Financement</h3>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li>
+                      <a href="https://www.moncompteformation.gouv.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                        Mon Compte Formation (CPF) ↗
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://travail-emploi.gouv.fr/formation-professionnelle/acteurs-cadre-et-qualite-de-la-formation-professionnelle/article/qualiopi-marque-de-certification-qualite-des-prestataires-de-formation" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                        Certification Qualiopi ↗
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.francetravail.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                        France Travail ↗
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-primary mb-2">Certifications reconnues</h3>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li>
+                      <a href="https://www.certificat-cloe.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                        Certification CLOE ↗
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.coe.int/en/web/common-european-framework-reference-languages/home" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                        Cadre Européen CECRL ↗
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.ets.org/toeic.html" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                        TOEIC ↗
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              <p className="text-xs text-muted-foreground border-t border-border pt-4">
+                <strong>Dernière mise à jour :</strong> Janvier 2026
+              </p>
+            </div>
+          </FadeInSection>
+
           {/* Et en attendant */}
           <FadeInSection>
             <div className="bg-primary/5 border border-primary/10 rounded-lg p-8 mb-12">
