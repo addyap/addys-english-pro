@@ -221,15 +221,35 @@ const Home = () => {
               {/* Content Side */}
               <div className="order-1 lg:order-2">
                 <p className="text-lg text-muted-foreground leading-relaxed mb-4 font-body">
-                  <strong className="text-primary">Antony Addy</strong> — Britannique, certifié Formateur Professionnel d'Adultes depuis 2017, plus de 20 ans d'expérience en formation d'anglais.
+                  <strong className="text-primary">Antony Addy</strong> — Britannique, certifié{' '}
+                  <a 
+                    href="https://www.afpa.fr/formation/titre-professionnel-formateur-professionnel-adultes" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-accent hover:underline"
+                  >
+                    Formateur Professionnel d'Adultes
+                  </a>{' '}
+                  depuis 2017, plus de 20 ans d'expérience en formation d'anglais.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
                   J'aide les professionnels à communiquer avec confiance en anglais : réunions, négociations, présentations. Mon approche est directe, bienveillante et adaptée à vos enjeux réels.
                 </p>
-                <div className="text-center lg:text-left">
+                <div className="flex flex-col sm:flex-row gap-3 text-center lg:text-left">
                   <Link to="/qui-je-suis" className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body">
                     En savoir plus sur mon parcours
                   </Link>
+                  <a 
+                    href="https://www.linkedin.com/in/antonyaddy/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="border border-primary text-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary/10 transition-colors font-body flex items-center justify-center gap-2"
+                  >
+                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    LinkedIn
+                  </a>
                 </div>
               </div>
             </div>
@@ -635,6 +655,37 @@ const Home = () => {
                 <Mail className="h-5 w-5" />
                 Email
               </a>
+            </div>
+          </div>
+        </section>
+        
+        {/* Footer Authority Links - E-E-A-T Signals */}
+        <section className="py-8 bg-muted/50 border-t">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="grid md:grid-cols-3 gap-8 text-sm">
+              <div>
+                <h3 className="font-semibold text-foreground mb-3">Références officielles</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li><a href="https://www.coe.int/en/web/common-european-framework-reference-languages/home" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Cadre Européen CECRL ↗</a></li>
+                  <li><a href="https://dictionary.cambridge.org/grammar/british-grammar/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Cambridge Grammar ↗</a></li>
+                  <li><a href="https://learnenglish.britishcouncil.org/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">British Council ↗</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold text-foreground mb-3">Certifications & Financement</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li><a href="https://www.moncompteformation.gouv.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Mon Compte Formation (CPF) ↗</a></li>
+                  <li><a href="https://www.certificat-cloe.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Certification CLOE ↗</a></li>
+                  <li><a href="https://www.francecompetences.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">France Compétences ↗</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold text-foreground mb-3">Dernière mise à jour</h3>
+                <p className="text-muted-foreground">Janvier 2026</p>
+                <p className="text-xs text-muted-foreground mt-2">
+                  Contenu créé par <a href="https://www.linkedin.com/in/antonyaddy/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Antony Addy</a>, formateur certifié FPA.
+                </p>
+              </div>
             </div>
           </div>
         </section>

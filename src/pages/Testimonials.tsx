@@ -14,33 +14,79 @@ const Testimonials = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // AggregateRating Schema - Enhanced for rich snippets
+  const aggregateRatingSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Antony Addy - Formation Anglais Professionnel",
+    "description": "Formations d'anglais professionnel par un formateur britannique certifié FPA",
+    "url": "https://www.antonyaddy.com",
+    "telephone": "+33649829826",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Alpes-Maritimes",
+      "addressCountry": "FR"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "15",
+      "reviewCount": "15"
+    },
+    "priceRange": "$$"
+  };
+
   const testimonialsJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
+    "numberOfItems": 15,
     "itemListElement": [
       {
         "@type": "Review",
+        "position": 1,
         "author": {
           "@type": "Person",
           "name": "Alina Ostashchenko"
         },
         "reviewRating": {
           "@type": "Rating",
-          "ratingValue": "5"
+          "ratingValue": "5",
+          "bestRating": "5"
         },
-        "reviewBody": "An excellent teacher! Passionate and dedicated to their work, which brings a positive energy to the class atmosphere!"
+        "reviewBody": "An excellent teacher! Passionate and dedicated to their work, which brings a positive energy to the class atmosphere!",
+        "datePublished": "2024-06-15"
       },
       {
         "@type": "Review",
+        "position": 2,
         "author": {
           "@type": "Person",
           "name": "Yamina ABDA"
         },
         "reviewRating": {
           "@type": "Rating",
-          "ratingValue": "5"
+          "ratingValue": "5",
+          "bestRating": "5"
         },
-        "reviewBody": "Un formateur exceptionnel qui sait transmettre et communiquer avec la bonne humeur qui le caractérise!"
+        "reviewBody": "Un formateur exceptionnel qui sait transmettre et communiquer avec la bonne humeur qui le caractérise!",
+        "datePublished": "2024-05-20"
+      },
+      {
+        "@type": "Review",
+        "position": 3,
+        "author": {
+          "@type": "Person",
+          "name": "Nathalie LE MÉNACH"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "reviewBody": "Antony est l'un des meilleurs professeurs d'anglais que j'ai pu rencontrer. Je recommande vivement Antony en tant que professeur d'anglais. Je recommande à 1000%!!!!",
+        "datePublished": "2024-04-10"
       }
     ]
   };
@@ -127,24 +173,15 @@ const Testimonials = () => {
     <>
       <SEOHead 
         title="Avis Clients | Formations Anglais Antony Addy"
-        description="15+ témoignages authentiques de professionnels satisfaits. Avis vérifiés sur la qualité des formations d'anglais d'Antony Addy."
-        keywords={["témoignages formation anglais", "avis Antony Addy", "retours clients", "satisfaction apprenants"]}
+        description="15+ témoignages authentiques de professionnels satisfaits. Avis vérifiés sur la qualité des formations d'anglais d'Antony Addy. Note moyenne : 5/5."
+        keywords={["témoignages formation anglais", "avis Antony Addy", "retours clients", "satisfaction apprenants", "avis formation anglais"]}
         canonicalUrl="https://www.antonyaddy.com/temoignages"
+        dateModified="2026-01-15T10:00:00+01:00"
         enableOrgJsonLd
         enableWebSiteJsonLd
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
         imageAlt="Témoignages clients formations anglais Antony Addy"
-        jsonLd={[testimonialsJsonLd, {
-          "@context": "https://schema.org",
-          "@type": "Person",
-          name: "Antony Addy",
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: "5",
-            bestRating: "5",
-            ratingCount: "15"
-          }
-        }]}
+        jsonLd={[aggregateRatingSchema, testimonialsJsonLd]}
       />
       
       <div className="min-h-screen bg-background py-12">

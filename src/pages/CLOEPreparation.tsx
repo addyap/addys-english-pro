@@ -68,6 +68,56 @@ const CLOEPreparation = () => {
         <title>Préparation CLOE Anglais - Exercices d'Entraînement | Antony Addy</title>
         <meta name="description" content="Préparez votre certification CLOE avec nos exercices gratuits : vocabulaire professionnel, grammaire, expressions, compréhension écrite et orale. Entraînement au format de l'examen." />
         <link rel="canonical" href="https://www.antonyaddy.com/exercices/cloe-preparation" />
+        <meta name="article:modified_time" content="2026-01-15T10:00:00+01:00" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Course",
+          "name": "Préparation Certification CLOE Anglais",
+          "description": "Exercices d'entraînement gratuits pour préparer la certification CLOE (Compétences Linguistiques Orales et Écrites)",
+          "provider": {
+            "@type": "Person",
+            "name": "Antony Addy",
+            "jobTitle": "Formateur Professionnel d'Adultes certifié",
+            "sameAs": "https://www.linkedin.com/in/antonyaddy/"
+          },
+          "educationalLevel": ["A1", "A2", "B1", "B2", "C1"],
+          "inLanguage": "en",
+          "isAccessibleForFree": true,
+          "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "online"
+          }
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Qu'est-ce que la certification CLOE ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "CLOE (Compétences Linguistiques Orales et Écrites) est une certification professionnelle reconnue inscrite au Répertoire Spécifique de France Compétences. Elle évalue les compétences en anglais professionnel et est éligible au CPF."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Les exercices de préparation CLOE sont-ils gratuits ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Oui, tous les exercices d'entraînement au format CLOE sur ce site sont entièrement gratuits. Ils couvrent les 5 compétences évaluées : vocabulaire, grammaire, expressions, compréhension écrite et orale."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "La certification CLOE est-elle éligible au CPF ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Oui, la certification CLOE est inscrite au Répertoire Spécifique et est éligible au financement via le Compte Personnel de Formation (CPF). Vous pouvez utiliser vos droits CPF pour passer l'examen officiel."
+              }
+            }
+          ]
+        })}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">
@@ -355,6 +405,50 @@ const CLOEPreparation = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Authority Links & Resources */}
+        <section className="py-8 border-t">
+          <div className="max-w-5xl mx-auto px-4">
+            <h2 className="text-lg font-semibold mb-4 text-foreground">Ressources officielles</h2>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <a 
+                href="https://www.certificat-cloe.fr/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
+              >
+                Site officiel CLOE ↗
+              </a>
+              <a 
+                href="https://www.moncompteformation.gouv.fr/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
+              >
+                Mon Compte Formation (CPF) ↗
+              </a>
+              <a 
+                href="https://www.coe.int/en/web/common-european-framework-reference-languages/level-descriptions" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
+              >
+                Cadre CECRL (Conseil de l'Europe) ↗
+              </a>
+              <a 
+                href="https://www.francecompetences.fr/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
+              >
+                France Compétences (RNCP) ↗
+              </a>
+            </div>
+            <p className="text-xs text-muted-foreground mt-3">
+              <strong>Dernière mise à jour :</strong> Janvier 2026
+            </p>
           </div>
         </section>
 
