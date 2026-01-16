@@ -76,8 +76,8 @@ const Training = () => {
   return (
     <>
       <SEOHead
-        title="Formations Anglais Professionnel | Antony Addy"
-        description="Formations d'anglais sur mesure : CPF, entreprises, particuliers. Présentiel Alpes-Maritimes ou distanciel France entière. Devis gratuit."
+        title="Formations Anglais CPF | Entreprises & Particuliers"
+        description="Formations anglais sur mesure : CPF, entreprises, particuliers. Présentiel Alpes-Maritimes ou distanciel France. Devis gratuit."
         canonicalUrl="https://www.antonyaddy.com/offres-de-formation"
         enableOrgJsonLd
         enableWebSiteJsonLd

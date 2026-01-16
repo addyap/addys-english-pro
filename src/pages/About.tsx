@@ -30,8 +30,8 @@ const About = () => {
 
   return <>
       <SEOHead 
-        title="Qui suis-je | Antony Addy, Formateur FPA"
-        description="Britannique natif certifié FPA depuis 2017, plus de 20 ans d'expérience en formation d'anglais professionnel. Découvrez mon parcours."
+        title="Antony Addy | Formateur Anglais FPA Certifié"
+        description="Britannique natif certifié FPA depuis 2017, plus de 20 ans d'expérience en formation anglais professionnel. Découvrez mon parcours."
         keywords={["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "formation adultes", "Alpes-Maritimes"]}
         canonicalUrl="https://www.antonyaddy.com/qui-je-suis"
         image="https://www.antonyaddy.com/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png"

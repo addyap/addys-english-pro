@@ -10,12 +10,39 @@ const ListeningLibrary: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Listening Lab – Exercices Écoute Anglais | Antony Addy"
+        title="Écoute Anglais | Exercices Audio Interactifs"
         description="Améliorez votre compréhension orale avec des exercices d'écoute interactifs. Transcriptions avec traductions instantanées."
         canonicalUrl="https://www.antonyaddy.com/exercices/listening"
         keywords={["compréhension orale anglais", "listening anglais", "exercices écoute", "audio anglais"]}
         enableOrgJsonLd
         enableWebSiteJsonLd
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          name: "Comment améliorer son écoute en anglais",
+          description: "Méthode efficace pour progresser en compréhension orale anglaise",
+          step: [
+            {
+              "@type": "HowToStep",
+              position: 1,
+              name: "Écouter sans lire",
+              text: "Écoutez l'audio une première fois sans regarder la transcription pour tester votre compréhension"
+            },
+            {
+              "@type": "HowToStep",
+              position: 2,
+              name: "Suivre avec la transcription",
+              text: "Réécoutez en suivant la transcription pour associer les sons aux mots écrits"
+            },
+            {
+              "@type": "HowToStep",
+              position: 3,
+              name: "Utiliser les traductions",
+              text: "Survolez les mots soulignés pour voir leur traduction et enrichir votre vocabulaire"
+            }
+          ],
+          totalTime: "PT8M"
+        }}
       />
 
       <div className="min-h-screen bg-background">
@@ -118,6 +145,20 @@ const ListeningLibrary: React.FC = () => {
                 <p className="text-sm text-muted-foreground">
                   Survolez les mots soulignés pour voir leur traduction
                 </p>
+              </div>
+            </div>
+            
+            {/* Related Resources - Internal Linking */}
+            <div className="mt-10 pt-6 border-t border-border">
+              <p className="text-sm text-muted-foreground mb-3">Continuez votre entraînement :</p>
+              <div className="flex flex-wrap gap-3 justify-center text-sm">
+                <Link to="/exercices" className="text-accent hover:underline">Exercices de grammaire</Link>
+                <span className="text-muted-foreground">•</span>
+                <Link to="/lecture" className="text-accent hover:underline">Compréhension écrite</Link>
+                <span className="text-muted-foreground">•</span>
+                <Link to="/exercices/cloe-preparation" className="text-accent hover:underline">Préparation CLOE</Link>
+                <span className="text-muted-foreground">•</span>
+                <Link to="/blog" className="text-accent hover:underline">Articles & conseils</Link>
               </div>
             </div>
           </div>

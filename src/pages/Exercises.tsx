@@ -1159,7 +1159,7 @@ const Exercises = () => {
   return (
     <>
       <SEOHead 
-        title="150+ Exercices Anglais Gratuits | Antony Addy"
+        title="300+ Exercices Anglais Gratuits | Quiz & Pratique"
         description="Exercices interactifs gratuits : grammaire, vocabulaire, lecture, écoute. Créés par un formateur professionnel certifié."
         canonicalUrl="https://www.antonyaddy.com/exercices"
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
@@ -1167,21 +1167,56 @@ const Exercises = () => {
         keywords={["exercices anglais gratuits", "grammaire anglaise", "vocabulaire anglais", "quiz anglais"]}
         enableOrgJsonLd
         enableWebSiteJsonLd
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "LearningResource",
-          name: "300+ Exercices d'Anglais",
-          description: "Collection de plus de 300 exercices d'anglais couvrant la grammaire, le vocabulaire et les pièges courants",
-          author: {
-            "@type": "Person",
-            name: "Antony Addy",
-            jobTitle: "Formateur Professionnel d'Adultes"
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "LearningResource",
+            name: "300+ Exercices d'Anglais Gratuits",
+            description: "Collection de plus de 300 exercices d'anglais couvrant la grammaire, le vocabulaire et les pièges courants",
+            author: {
+              "@type": "Person",
+              name: "Antony Addy",
+              jobTitle: "Formateur Professionnel d'Adultes"
+            },
+            educationalLevel: "Beginner to Advanced",
+            inLanguage: "fr",
+            learningResourceType: "Exercise",
+            isAccessibleForFree: true
           },
-          educationalLevel: "Beginner to Advanced",
-          inLanguage: "fr",
-          learningResourceType: "Exercise",
-          isAccessibleForFree: true
-        }}
+          {
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            name: "Comment utiliser les exercices d'anglais",
+            description: "Guide pour progresser efficacement avec les exercices d'anglais gratuits",
+            step: [
+              {
+                "@type": "HowToStep",
+                position: 1,
+                name: "Choisir votre niveau",
+                text: "Sélectionnez les exercices adaptés à votre niveau : débutant, intermédiaire ou avancé"
+              },
+              {
+                "@type": "HowToStep",
+                position: 2,
+                name: "Pratiquer régulièrement",
+                text: "Faites au moins un exercice par jour pour maintenir votre progression"
+              },
+              {
+                "@type": "HowToStep",
+                position: 3,
+                name: "Analyser vos erreurs",
+                text: "Consultez les explications après chaque exercice pour comprendre vos erreurs"
+              },
+              {
+                "@type": "HowToStep",
+                position: 4,
+                name: "Suivre votre progression",
+                text: "Utilisez le tableau de bord pour visualiser votre progression au fil du temps"
+              }
+            ],
+            totalTime: "PT15M"
+          }
+        ]}
       />
 
       <div className="min-h-screen bg-background">
@@ -1512,19 +1547,33 @@ const Exercises = () => {
           </div>
         </section>
 
-        {/* Soft CTA Section */}
+        {/* Soft CTA Section with Internal Links */}
         <section className="py-10 bg-muted/30">
           <div className="max-w-3xl mx-auto px-4 text-center">
             <p className="text-muted-foreground mb-4 font-body">
               Ces ressources gratuites complètent mes formations. Pour un parcours structuré adapté à vos objectifs professionnels, je propose des formations individuelles ou en groupe.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
               <Link to="/offres-de-formation" className="text-primary hover:text-primary/80 font-medium transition-colors">
                 Découvrir les formations →
               </Link>
               <Link to="/contact" className="text-muted-foreground hover:text-foreground font-medium transition-colors">
                 Me contacter
               </Link>
+            </div>
+            
+            {/* Related Resources - Internal Linking */}
+            <div className="border-t border-border pt-6 mt-6">
+              <p className="text-sm text-muted-foreground mb-3">Ressources complémentaires :</p>
+              <div className="flex flex-wrap gap-3 justify-center text-sm">
+                <Link to="/lecture" className="text-accent hover:underline">Compréhension écrite</Link>
+                <span className="text-muted-foreground">•</span>
+                <Link to="/exercices/listening" className="text-accent hover:underline">Exercices d'écoute</Link>
+                <span className="text-muted-foreground">•</span>
+                <Link to="/exercices/cloe-preparation" className="text-accent hover:underline">Préparation CLOE</Link>
+                <span className="text-muted-foreground">•</span>
+                <Link to="/blog" className="text-accent hover:underline">Articles & conseils</Link>
+              </div>
             </div>
           </div>
         </section>

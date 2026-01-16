@@ -44,12 +44,39 @@ export default function Reading() {
   return (
     <>
       <SEOHead
-        title="Compréhension Écrite Anglais | Antony Addy"
-        description="12 textes et histoires interactives pour améliorer votre lecture en anglais. Niveaux A2 à C1, créés par un formateur FPA."
+        title="Lecture Anglais | Textes & Histoires Interactives"
+        description="12 textes et histoires interactives pour améliorer votre lecture anglais. Niveaux A2 à C1, créés par un formateur FPA certifié."
         canonicalUrl="https://www.antonyaddy.com/lecture"
         keywords={["compréhension écrite anglais", "reading comprehension", "textes anglais", "lecture anglais"]}
         enableOrgJsonLd
         enableWebSiteJsonLd
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          name: "Comment améliorer sa compréhension écrite en anglais",
+          description: "Guide pratique pour progresser en lecture anglaise avec des textes interactifs",
+          step: [
+            {
+              "@type": "HowToStep",
+              position: 1,
+              name: "Lire le texte une première fois",
+              text: "Lisez le texte en entier sans vous arrêter sur les mots inconnus pour comprendre le sens général"
+            },
+            {
+              "@type": "HowToStep",
+              position: 2,
+              name: "Répondre aux questions",
+              text: "Testez votre compréhension avec les questions interactives sous chaque texte"
+            },
+            {
+              "@type": "HowToStep",
+              position: 3,
+              name: "Consulter la traduction",
+              text: "Utilisez la traduction française pour vérifier votre compréhension des passages difficiles"
+            }
+          ],
+          totalTime: "PT10M"
+        }}
       />
 
       <div className="min-h-screen bg-background py-12">
@@ -254,18 +281,27 @@ export default function Reading() {
             </TabsContent>
           </Tabs>
 
-          {/* Soft CTA Section */}
+          {/* Soft CTA Section with Internal Links */}
           <div className="mt-12 border-t border-border pt-10 text-center">
             <p className="text-muted-foreground mb-4 max-w-2xl mx-auto">
               Ces ressources gratuites vous permettent de vous entraîner en autonomie. Pour un parcours structuré adapté à vos objectifs professionnels, je propose des formations individuelles.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
               <Link to="/exercices" className="text-accent hover:text-accent/80 font-medium transition-colors">
                 Voir les exercices de grammaire →
               </Link>
               <Link to="/offres-de-formation" className="text-muted-foreground hover:text-foreground font-medium transition-colors">
                 Découvrir les formations
               </Link>
+            </div>
+            
+            {/* Related Resources */}
+            <div className="flex flex-wrap gap-3 justify-center text-sm text-muted-foreground">
+              <Link to="/exercices/listening" className="text-accent hover:underline">Exercices d'écoute</Link>
+              <span>•</span>
+              <Link to="/exercices/cloe-preparation" className="text-accent hover:underline">Préparation CLOE</Link>
+              <span>•</span>
+              <Link to="/blog" className="text-accent hover:underline">Articles & conseils</Link>
             </div>
           </div>
         </div>

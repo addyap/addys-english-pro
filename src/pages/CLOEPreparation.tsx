@@ -65,8 +65,8 @@ const CLOEPreparation = () => {
   return (
     <>
       <Helmet>
-        <title>Préparation CLOE Anglais - Exercices d'Entraînement | Antony Addy</title>
-        <meta name="description" content="Préparez votre certification CLOE avec nos exercices gratuits : vocabulaire professionnel, grammaire, expressions, compréhension écrite et orale. Entraînement au format de l'examen." />
+        <title>CLOE Anglais | 90+ Exercices Gratuits Certification</title>
+        <meta name="description" content="Préparez la certification CLOE avec 90+ exercices gratuits : vocabulaire, grammaire, expressions, compréhension. Format examen officiel." />
         <link rel="canonical" href="https://www.antonyaddy.com/exercices/cloe-preparation" />
         <meta name="article:modified_time" content="2026-01-15T10:00:00+01:00" />
         <script type="application/ld+json">{JSON.stringify({

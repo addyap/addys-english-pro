@@ -61,7 +61,7 @@ const Blog = () => {
   return (
     <>
       <SEOHead
-        title="Blog Anglais Professionnel | Antony Addy"
+        title="Blog Anglais | Grammaire, Vocabulaire & Conseils"
         description="Conseils d'expert pour progresser en anglais : grammaire, vocabulaire, erreurs courantes. Articles par un formateur FPA certifié."
         canonicalUrl="https://www.antonyaddy.com/blog"
         datePublished="2025-01-15T10:00:00+01:00"
