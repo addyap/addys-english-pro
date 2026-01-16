@@ -130,8 +130,8 @@ const Home = () => {
 
   return <>
       <SEOHead 
-        title="Formateur Anglais Professionnel | Antony Addy"
-        description="Formations d'anglais sur mesure avec un formateur britannique certifié FPA. CPF, entreprises, particuliers. Présentiel Alpes-Maritimes ou distanciel France."
+        title="Anglais Professionnel | Formateur FPA Certifié"
+        description="Formations anglais sur mesure avec un formateur britannique certifié FPA. CPF, entreprises, particuliers. Alpes-Maritimes ou distanciel."
         canonicalUrl="https://www.antonyaddy.com/"
         datePublished="2025-01-15T10:00:00+01:00"
         dateModified="2025-12-26T10:00:00+01:00"

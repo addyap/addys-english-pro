@@ -8,10 +8,10 @@ export default function CLOEPracticeTestPage() {
   return (
     <>
       <Helmet>
-        <title>Test de Pratique CLOE - Simulation d'Examen | Antony Music</title>
+        <title>Test CLOE Gratuit | Simulation Examen Chronométré</title>
         <meta 
           name="description" 
-          content="Simulez l'examen CLOE avec notre test de pratique chronométré. Questions mixtes, tous niveaux, résultats détaillés. Préparez-vous efficacement à la certification." 
+          content="Simulez l'examen CLOE avec notre test chronométré gratuit. Questions mixtes, tous niveaux A1-C1, résultats détaillés instantanés." 
         />
         <meta name="keywords" content="CLOE examen, test pratique, simulation certification, anglais professionnel, préparation CLOE" />
         <link rel="canonical" href="https://antonymusic.fr/cloe-practice-test" />
