@@ -19,7 +19,7 @@ const Blog = () => {
       id: 'anglais-professionnel-2025',
       title: 'Pourquoi l\'anglais professionnel est une compétence essentielle en 2025',
       excerpt: 'Dans un monde professionnel de plus en plus globalisé, maîtriser l\'anglais n\'est plus un atout mais une nécessité. Découvrez pourquoi et comment développer cette compétence clé.',
-      date: '2025-01-15',
+      date: '2026-01-15',
       author: 'Antony Addy',
       category: 'Conseils carrière',
       readTime: '5 min'
@@ -28,7 +28,7 @@ const Blog = () => {
       id: 'erreurs-francophones',
       title: 'Les erreurs fréquentes chez les francophones – et comment les éviter',
       excerpt: 'Faux-amis, structures grammaticales françaises traduites littéralement... Identifiez et corrigez les erreurs les plus communes des francophones en anglais.',
-      date: '2025-01-10',
+      date: '2026-01-10',
       author: 'Antony Addy',
       category: 'Grammaire & Vocabulaire',
       readTime: '7 min'
@@ -37,7 +37,7 @@ const Blog = () => {
       id: 'oral-vs-ecrit',
       title: 'Anglais oral vs écrit – adapter sa communication professionnelle',
       excerpt: 'L\'anglais professionnel diffère selon le canal de communication. Apprenez à adapter votre style entre emails, présentations orales et conversations téléphoniques.',
-      date: '2025-01-05',
+      date: '2026-01-05',
       author: 'Antony Addy',
       category: 'Communication',
       readTime: '6 min'
@@ -64,8 +64,8 @@ const Blog = () => {
         title="Blog Anglais | Grammaire, Vocabulaire & Conseils"
         description="Conseils d'expert pour progresser en anglais : grammaire, vocabulaire, erreurs courantes. Articles par un formateur FPA certifié."
         canonicalUrl="https://www.antonyaddy.com/blog"
-        datePublished="2025-01-15T10:00:00+01:00"
-        dateModified="2025-12-26T10:00:00+01:00"
+        datePublished="2026-01-15T10:00:00+01:00"
+        dateModified="2026-01-17T10:00:00+01:00"
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
         imageAlt="Blog anglais professionnel par Antony Addy"
         enableOrgJsonLd
