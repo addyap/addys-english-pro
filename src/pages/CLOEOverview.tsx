@@ -51,6 +51,8 @@ const CLOEOverview = () => {
         <title>Certification CLOE Anglais - Présentation et Format | Antony Addy</title>
         <meta name="description" content="Découvrez la certification CLOE (Compétences Linguistiques Orales et Ecrites) : format d'examen, compétences évaluées, niveaux CECRL et conseils de préparation pour réussir votre certification d'anglais professionnel." />
         <link rel="canonical" href="https://www.antonyaddy.com/exercices/cloe-preparation/overview" />
+        <meta property="og:image" content="https://www.antonyaddy.com/og/og-cloe.png" />
+        <meta name="twitter:image" content="https://www.antonyaddy.com/og/og-cloe.png" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

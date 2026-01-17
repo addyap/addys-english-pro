@@ -14,7 +14,9 @@ export default function CLOEPracticeTestPage() {
           content="Simulez l'examen CLOE avec notre test chronométré gratuit. Questions mixtes, tous niveaux A1-C1, résultats détaillés instantanés." 
         />
         <meta name="keywords" content="CLOE examen, test pratique, simulation certification, anglais professionnel, préparation CLOE" />
-        <link rel="canonical" href="https://antonymusic.fr/cloe-practice-test" />
+        <link rel="canonical" href="https://www.antonyaddy.com/cloe-practice-test" />
+        <meta property="og:image" content="https://www.antonyaddy.com/og/og-cloe.png" />
+        <meta name="twitter:image" content="https://www.antonyaddy.com/og/og-cloe.png" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

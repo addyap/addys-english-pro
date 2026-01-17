@@ -69,6 +69,8 @@ const CLOEPreparation = () => {
         <meta name="description" content="Préparez la certification CLOE avec 90+ exercices gratuits : vocabulaire, grammaire, expressions, compréhension. Format examen officiel." />
         <link rel="canonical" href="https://www.antonyaddy.com/exercices/cloe-preparation" />
         <meta name="article:modified_time" content="2026-01-15T10:00:00+01:00" />
+        <meta property="og:image" content="https://www.antonyaddy.com/og/og-cloe.png" />
+        <meta name="twitter:image" content="https://www.antonyaddy.com/og/og-cloe.png" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Course",

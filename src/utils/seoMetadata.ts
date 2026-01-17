@@ -12,6 +12,11 @@ interface SEOMetadata {
 const SITE_URL = "https://www.antonyaddy.com";
 const DEFAULT_IMAGE = `${SITE_URL}/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png`;
 
+// Section-specific OG images for better social sharing
+const OG_EXERCISES = `${SITE_URL}/og/og-exercises.png`;
+const OG_BLOG = `${SITE_URL}/og/og-blog.png`;
+const OG_CLOE = `${SITE_URL}/og/og-cloe.png`;
+
 export const seoMetadata: Record<string, SEOMetadata> = {
   home: {
     title: "Formateur Anglais Professionnel | Antony Addy",
@@ -59,7 +64,7 @@ export const seoMetadata: Record<string, SEOMetadata> = {
     canonical: `${SITE_URL}/blog`,
     h1: "Blog Anglais Professionnel",
     keywords: ["blog anglais", "conseils anglais", "grammaire anglaise", "vocabulaire professionnel"],
-    ogImage: DEFAULT_IMAGE
+    ogImage: OG_BLOG
   },
   exercises: {
     title: "150+ Exercices Anglais Gratuits | Antony Addy",
@@ -67,7 +72,7 @@ export const seoMetadata: Record<string, SEOMetadata> = {
     canonical: `${SITE_URL}/exercices`,
     h1: "Exercices d'Anglais Interactifs",
     keywords: ["exercices anglais gratuits", "grammaire anglaise", "vocabulaire anglais", "quiz anglais"],
-    ogImage: DEFAULT_IMAGE
+    ogImage: OG_EXERCISES
   },
   reading: {
     title: "Compréhension Écrite Anglais | Antony Addy",
