@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { Search, X } from 'lucide-react';
 
 interface Article {
@@ -19,6 +19,10 @@ interface BlogSearchProps {
 const BlogSearch: React.FC<BlogSearchProps> = ({ articles, onFilterChange }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  
+  // Store callback ref to avoid dependency issues
+  const onFilterChangeRef = useRef(onFilterChange);
+  onFilterChangeRef.current = onFilterChange;
 
   // Get unique categories
   const categories = useMemo(() => {
@@ -48,10 +52,10 @@ const BlogSearch: React.FC<BlogSearchProps> = ({ articles, onFilterChange }) => 
     return filtered;
   }, [articles, searchQuery, selectedCategory]);
 
-  // Update parent component when filters change
-  React.useEffect(() => {
-    onFilterChange(filteredArticles);
-  }, [filteredArticles, onFilterChange]);
+  // Update parent component when filters change - use ref to avoid callback dependency
+  useEffect(() => {
+    onFilterChangeRef.current(filteredArticles);
+  }, [filteredArticles]);
 
   const clearSearch = () => {
     setSearchQuery('');
@@ -59,24 +63,25 @@ const BlogSearch: React.FC<BlogSearchProps> = ({ articles, onFilterChange }) => 
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+    <div className="bg-card rounded-lg shadow-md p-6 mb-8">
       <div className="space-y-4">
         {/* Search Input */}
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <input
             type="text"
             placeholder="Rechercher un article..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+            className="w-full pl-10 pr-10 py-3 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
             aria-label="Rechercher dans les articles"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Effacer la recherche"
+              type="button"
             >
               <X className="h-5 w-5" />
             </button>
@@ -84,16 +89,18 @@ const BlogSearch: React.FC<BlogSearchProps> = ({ articles, onFilterChange }) => 
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Filtrer par catégorie">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
+              type="button"
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 selectedCategory === category
-                  ? 'bg-blue-600 text-white shadow-md'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-primary text-primary-foreground shadow-md'
+                  : 'bg-muted text-muted-foreground hover:bg-muted/80'
               }`}
+              aria-pressed={selectedCategory === category}
             >
               {category === 'all' ? 'Tous' : category}
             </button>
@@ -101,14 +108,15 @@ const BlogSearch: React.FC<BlogSearchProps> = ({ articles, onFilterChange }) => 
         </div>
 
         {/* Results Count & Clear */}
-        <div className="flex items-center justify-between text-sm text-gray-600">
-          <span>
+        <div className="flex items-center justify-between text-sm text-muted-foreground">
+          <span aria-live="polite">
             {filteredArticles.length} article{filteredArticles.length !== 1 ? 's' : ''} trouvé{filteredArticles.length !== 1 ? 's' : ''}
           </span>
           {(searchQuery || selectedCategory !== 'all') && (
             <button
               onClick={clearSearch}
-              className="text-blue-600 hover:text-blue-800 font-medium transition-colors"
+              type="button"
+              className="text-primary hover:text-primary/80 font-medium transition-colors"
             >
               Réinitialiser les filtres
             </button>

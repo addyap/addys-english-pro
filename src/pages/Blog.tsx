@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
@@ -14,7 +14,7 @@ const Blog = () => {
   useScrollTracking('blog');
   useTimeTracking('blog');
   
-  const baseArticles = [
+  const baseArticles = useMemo(() => [
     {
       id: 'anglais-professionnel-2025',
       title: 'Pourquoi l\'anglais professionnel est une compétence essentielle en 2025',
@@ -42,21 +42,38 @@ const Blog = () => {
       category: 'Communication',
       readTime: '6 min'
     }
-  ];
+  ], []);
 
-  // Combine base articles with grammar articles
-  const articles = [...baseArticles, ...grammarArticles].sort((a, b) => 
-    new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  // Combine base articles with grammar articles - memoized
+  const articles = useMemo(() => 
+    [...baseArticles, ...grammarArticles].sort((a, b) => 
+      new Date(b.date).getTime() - new Date(a.date).getTime()
+    ), [baseArticles]);
 
   // Run internal links audit in dev mode only (once)
   useEffect(() => {
     const allPosts = articles.map(a => ({ id: a.id, category: a.category }));
     runDevAudit(allPosts);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [articles]);
+
+  const [filteredArticles, setFilteredArticles] = useState<typeof articles>([]);
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // Initialize filtered articles on mount to avoid hydration mismatch
+  useEffect(() => {
+    if (!isInitialized) {
+      setFilteredArticles(articles);
+      setIsInitialized(true);
+    }
+  }, [articles, isInitialized]);
+
+  // Stable callback for filter changes
+  const handleFilterChange = useCallback((filtered: typeof articles) => {
+    setFilteredArticles(filtered);
   }, []);
 
-  const [filteredArticles, setFilteredArticles] = useState<typeof articles>(articles);
+  // Use articles as initial display before filters are applied
+  const displayArticles = isInitialized ? filteredArticles : articles;
 
   return (
     <>
@@ -112,10 +129,10 @@ const Blog = () => {
           </div>
 
           {/* Search and Filter */}
-          <BlogSearch articles={articles} onFilterChange={setFilteredArticles} />
+          <BlogSearch articles={articles} onFilterChange={handleFilterChange} />
 
           {/* Featured Article */}
-          {filteredArticles.length > 0 && (
+          {displayArticles.length > 0 && (
           <AnimatedCard className="bg-card shadow-lg mb-12 overflow-hidden" hoverScale={1.01}>
             <div className="p-8">
               <div className="flex items-center mb-4 text-sm text-muted-foreground">
@@ -125,18 +142,18 @@ const Blog = () => {
               </div>
               
               <h2 className="text-3xl font-bold text-card-foreground mb-4">
-                {filteredArticles[0].title}
+                {displayArticles[0].title}
               </h2>
               
               <p className="text-lg text-muted-foreground mb-6">
-                {filteredArticles[0].excerpt}
+                {displayArticles[0].excerpt}
               </p>
               
               <div className="flex items-center justify-between flex-wrap gap-4">
                 <div className="flex items-center space-x-4 text-sm text-muted-foreground">
                   <div className="flex items-center">
                     <Calendar className="h-4 w-4 mr-1" />
-                    {new Date(filteredArticles[0].date).toLocaleDateString('fr-FR', { 
+                    {new Date(displayArticles[0].date).toLocaleDateString('fr-FR', { 
                       year: 'numeric', 
                       month: 'long', 
                       day: 'numeric' 
@@ -144,13 +161,13 @@ const Blog = () => {
                   </div>
                   <div className="flex items-center">
                     <User className="h-4 w-4 mr-1" />
-                    {filteredArticles[0].author}
+                    {displayArticles[0].author}
                   </div>
-                  <span>{filteredArticles[0].readTime} de lecture</span>
+                  <span>{displayArticles[0].readTime} de lecture</span>
                 </div>
                 
                 <Link
-                  to={`/blog/${filteredArticles[0].id}`}
+                  to={`/blog/${displayArticles[0].id}`}
                   className="inline-flex items-center bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all hover:scale-105 active:scale-95"
                 >
                   Lire l'article
@@ -162,9 +179,9 @@ const Blog = () => {
           )}
 
           {/* Articles Grid */}
-          {filteredArticles.length > 1 && (
+          {displayArticles.length > 1 && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {filteredArticles.slice(1).map((article, index) => (
+            {displayArticles.slice(1).map((article, index) => (
               <AnimatedCard key={article.id} className="bg-card shadow-md" delay={index * 0.1}>
                 <article className="overflow-hidden h-full">
                 <div className="p-6">
@@ -209,7 +226,7 @@ const Blog = () => {
           )}
 
           {/* No Results Message */}
-          {filteredArticles.length === 0 && (
+          {displayArticles.length === 0 && isInitialized && (
             <div className="text-center py-12 bg-card rounded-lg shadow-md">
               <p className="text-xl text-muted-foreground mb-4">
                 Aucun article ne correspond à vos critères de recherche
