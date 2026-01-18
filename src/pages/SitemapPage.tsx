@@ -13,10 +13,10 @@ const SitemapPage = () => {
   ];
 
   const resourcePages = [
-    { href: '/exercices', label: 'Exercices d\'anglais', description: '150+ exercices interactifs' },
+    { href: '/exercices', label: 'Exercices d\'anglais', description: '300+ exercices interactifs' },
     { href: '/reading', label: 'Compréhension écrite', description: 'Textes et questions' },
+    { href: '/exercices/listening', label: 'Écoute & Compréhension', description: 'Exercices audio' },
     { href: '/blog', label: 'Blog', description: 'Articles et conseils' },
-    { href: '/anglaisadistance', label: 'Ressources en ligne', description: 'Plateforme gratuite' },
     { href: '/dashboard', label: 'Tableau de bord', description: 'Suivi de progression' },
   ];
 
