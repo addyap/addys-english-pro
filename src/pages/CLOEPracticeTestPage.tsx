@@ -14,7 +14,7 @@ export default function CLOEPracticeTestPage() {
           content="Simulez l'examen CLOE avec notre test chronométré gratuit. Questions mixtes, tous niveaux A1-C1, résultats détaillés instantanés." 
         />
         <meta name="keywords" content="CLOE examen, test pratique, simulation certification, anglais professionnel, préparation CLOE" />
-        <link rel="canonical" href="https://www.antonyaddy.com/cloe-practice-test" />
+        <link rel="canonical" href="https://www.antonyaddy.com/exercices/cloe-preparation/practice-test" />
         <meta property="og:image" content="https://www.antonyaddy.com/og/og-cloe.png" />
         <meta name="twitter:image" content="https://www.antonyaddy.com/og/og-cloe.png" />
       </Helmet>
@@ -23,7 +23,7 @@ export default function CLOEPracticeTestPage() {
         <div className="container mx-auto px-4 py-8 max-w-4xl">
           {/* Back navigation */}
           <Button asChild variant="ghost" className="mb-6 -ml-2">
-            <Link to="/cloe-preparation" className="flex items-center gap-2">
+            <Link to="/exercices/cloe-preparation" className="flex items-center gap-2">
               <ChevronLeft className="w-4 h-4" />
               Retour à la préparation CLOE
             </Link>
