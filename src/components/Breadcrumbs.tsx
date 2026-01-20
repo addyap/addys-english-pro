@@ -45,6 +45,7 @@ const sectionMappings: Record<string, { section: string; sectionPath: string }> 
   '/exercices/matching/': { section: 'Exercices d\'association', sectionPath: '/exercices' },
   '/exercices/crossword/': { section: 'Mots croisés', sectionPath: '/exercices' },
   '/exercices/flashcards/': { section: 'Flashcards', sectionPath: '/exercices' },
+  '/exercices/grammar/': { section: 'Leçons de Grammaire', sectionPath: '/exercices' },
   '/exercices/': { section: 'Exercices', sectionPath: '/exercices' },
   '/reading/': { section: 'Compréhension écrite', sectionPath: '/reading' },
   '/story/': { section: 'Histoires interactives', sectionPath: '/reading' },
