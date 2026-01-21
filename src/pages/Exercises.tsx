@@ -227,6 +227,14 @@ const Exercises = () => {
               {category.exercises.map((exercise) => (
                 <GrammarExercise key={exercise.id} exercise={exercise} />
               ))}
+              
+              {/* Link to dedicated lesson page */}
+              <Link 
+                to={`/exercices/grammar/${category.id}`}
+                className="mt-4 inline-flex items-center gap-2 text-primary hover:underline font-medium"
+              >
+                Voir la leçon complète →
+              </Link>
             </AccordionContent>
           </AccordionItem>
         ))}
