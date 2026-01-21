@@ -182,45 +182,49 @@ const Blog = () => {
           {displayArticles.length > 1 && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {displayArticles.slice(1).map((article, index) => (
-              <AnimatedCard key={article.id} className="bg-card shadow-md" delay={index * 0.1}>
-                <article className="overflow-hidden h-full">
-                <div className="p-6">
-                  <div className="flex items-center mb-3">
-                    <span className="bg-accent/20 text-accent-foreground px-2 py-1 rounded text-sm font-medium">
-                      {article.category}
-                    </span>
-                  </div>
-                  
-                  <h3 className="text-xl font-semibold text-card-foreground mb-3 line-clamp-2">
-                    {article.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground mb-4 line-clamp-3">
-                    {article.excerpt}
-                  </p>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                      <Calendar className="h-4 w-4" />
-                      <span>
-                        {new Date(article.date).toLocaleDateString('fr-FR', { 
-                          month: 'short', 
-                          day: 'numeric' 
-                        })}
-                      </span>
+              <Link
+                key={article.id}
+                to={`/blog/${article.id}`}
+                className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg"
+                aria-label={`Lire l'article : ${article.title}`}
+              >
+                <AnimatedCard className="bg-card shadow-md h-full" delay={index * 0.1}>
+                  <article className="overflow-hidden h-full">
+                    <div className="p-6">
+                      <div className="flex items-center mb-3">
+                        <span className="bg-accent/20 text-accent-foreground px-2 py-1 rounded text-sm font-medium">
+                          {article.category}
+                        </span>
+                      </div>
+                      
+                      <h3 className="text-xl font-semibold text-card-foreground mb-3 line-clamp-2">
+                        {article.title}
+                      </h3>
+                      
+                      <p className="text-muted-foreground mb-4 line-clamp-3">
+                        {article.excerpt}
+                      </p>
+                      
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                          <Calendar className="h-4 w-4" />
+                          <span>
+                            {new Date(article.date).toLocaleDateString('fr-FR', { 
+                              month: 'short', 
+                              day: 'numeric' 
+                            })}
+                          </span>
+                        </div>
+
+                        <span className="text-primary font-medium flex items-center">
+                          Lire plus
+                          <ArrowRight className="h-4 w-4 ml-1" />
+                        </span>
+                      </div>
                     </div>
-                    
-                    <Link
-                      to={`/blog/${article.id}`}
-                      className="text-primary hover:text-primary/80 font-medium flex items-center"
-                    >
-                      Lire plus
-                      <ArrowRight className="h-4 w-4 ml-1" />
-                    </Link>
-                  </div>
-                </div>
-              </article>
-              </AnimatedCard>
+                  </article>
+                </AnimatedCard>
+              </Link>
             ))}
           </div>
           )}
