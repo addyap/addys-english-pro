@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, CheckCircle, XCircle, RotateCcw } from "lucide-react";
 import { synonymAntonymExercises } from "@/data/synonymAntonymExercises";
 import { shuffleArray } from "@/utils/shuffleArray";
+import { SimilarExercises, SimilarExercise } from "@/components/SimilarExercises";
+import QuizJsonLd from "@/components/QuizJsonLd";
 
 const SynonymAntonymExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -14,6 +16,27 @@ const SynonymAntonymExerciseDetail = () => {
   
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
+
+  // Similar exercises
+  const similarExercises = useMemo((): SimilarExercise[] => {
+    return synonymAntonymExercises.map(ex => ({
+      id: ex.id,
+      title: ex.title,
+      description: ex.description,
+      type: 'synonym-antonym',
+      path: `/exercices/synonym-antonym/${ex.id}`
+    }));
+  }, []);
+
+  // Shuffle options for each question once per exercise load
+  const shuffledOptionsMap = useMemo(() => {
+    if (!exercise) return {};
+    const map: Record<number, string[]> = {};
+    exercise.questions.forEach((q, index) => {
+      map[index] = shuffleArray(q.options);
+    });
+    return map;
+  }, [exercise?.id]);
 
   if (!exercise) {
     return (
@@ -35,25 +58,26 @@ const SynonymAntonymExerciseDetail = () => {
     setSubmitted(false);
   };
 
-  // Shuffle options for each question once per exercise load
-  const shuffledOptionsMap = useMemo(() => {
-    const map: Record<number, string[]> = {};
-    exercise.questions.forEach((q, index) => {
-      map[index] = shuffleArray(q.options);
-    });
-    return map;
-  }, [exercise.id]);
-
   const score = submitted 
     ? exercise.questions.filter((q, i) => answers[i] === q.answer).length 
     : 0;
 
+  const canonicalUrl = `https://www.antonyaddy.com/exercices/synonym-antonym/${id}`;
+
   return (
     <>
       <Helmet>
-        <title>{exercise.title} - Synonymes & Antonymes | Antony Music</title>
+        <title>{exercise.title} - Synonymes & Antonymes | Antony Addy</title>
         <meta name="description" content={`Exercice de synonymes et antonymes: ${exercise.title}. ${exercise.description}`} />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
+      <QuizJsonLd
+        name={exercise.title}
+        description={exercise.description}
+        about="English Synonyms and Antonyms"
+        numberOfQuestions={exercise.questions.length}
+        url={canonicalUrl}
+      />
 
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         <Link to="/exercices" className="inline-flex items-center text-primary hover:underline mb-6">
@@ -99,7 +123,7 @@ const SynonymAntonymExerciseDetail = () => {
                   </div>
 
                   <div className="grid grid-cols-2 gap-2 ml-6">
-                    {shuffledOptionsMap[index].map((option) => (
+                    {shuffledOptionsMap[index]?.map((option) => (
                       <Button
                         key={option}
                         variant={
@@ -182,6 +206,13 @@ const SynonymAntonymExerciseDetail = () => {
             </Button>
           )}
         </div>
+
+        {/* Similar Exercises */}
+        <SimilarExercises
+          exercises={similarExercises}
+          currentId={Number(id)}
+          title="Autres exercices de vocabulaire"
+        />
       </div>
     </>
   );

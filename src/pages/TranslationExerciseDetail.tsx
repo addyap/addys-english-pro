@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, CheckCircle, XCircle, RotateCcw, Eye } from "lucide-react";
 import { translationExercises } from "@/data/translationExercises";
+import { SimilarExercises, SimilarExercise } from "@/components/SimilarExercises";
+import QuizJsonLd from "@/components/QuizJsonLd";
 
 const TranslationExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -17,6 +19,18 @@ const TranslationExerciseDetail = () => {
   const [showAnswer, setShowAnswer] = useState(false);
   const [selfScores, setSelfScores] = useState<Record<number, 'correct' | 'partial' | 'incorrect'>>({});
   const [completed, setCompleted] = useState<number[]>([]);
+
+  // Similar exercises
+  const similarExercises = useMemo((): SimilarExercise[] => {
+    return translationExercises.map(ex => ({
+      id: ex.id,
+      title: ex.title,
+      description: ex.description,
+      level: ex.level,
+      type: 'translation',
+      path: `/exercices/translation/${ex.id}`
+    }));
+  }, []);
 
   if (!exercise) {
     return (
@@ -59,13 +73,23 @@ const TranslationExerciseDetail = () => {
   const isFinished = completed.length === exercise.sentences.length;
   const correctCount = Object.values(selfScores).filter(s => s === 'correct').length;
   const partialCount = Object.values(selfScores).filter(s => s === 'partial').length;
+  const canonicalUrl = `https://www.antonyaddy.com/exercices/translation/${id}`;
 
   return (
     <>
       <Helmet>
-        <title>{exercise.title} - Traduction | Antony Music</title>
+        <title>{exercise.title} - Traduction | Antony Addy</title>
         <meta name="description" content={`Exercice de traduction: ${exercise.title}. ${exercise.description}`} />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
+      <QuizJsonLd
+        name={exercise.title}
+        description={exercise.description}
+        educationalLevel={exercise.level}
+        about="English-French Translation"
+        numberOfQuestions={exercise.sentences.length}
+        url={canonicalUrl}
+      />
 
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         <Link to="/exercices" className="inline-flex items-center text-primary hover:underline mb-6">
@@ -244,6 +268,13 @@ const TranslationExerciseDetail = () => {
             </Button>
           )}
         </div>
+
+        {/* Similar Exercises */}
+        <SimilarExercises
+          exercises={similarExercises}
+          currentId={Number(id)}
+          title="Autres exercices de traduction"
+        />
       </div>
     </>
   );

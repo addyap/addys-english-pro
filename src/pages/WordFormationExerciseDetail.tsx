@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, CheckCircle, XCircle, RotateCcw } from "lucide-react";
 import { wordFormationExercises } from "@/data/wordFormationExercises";
+import { SimilarExercises, SimilarExercise } from "@/components/SimilarExercises";
+import QuizJsonLd from "@/components/QuizJsonLd";
 
 const WordFormationExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -14,6 +15,17 @@ const WordFormationExerciseDetail = () => {
   
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
+
+  // Similar exercises
+  const similarExercises = useMemo((): SimilarExercise[] => {
+    return wordFormationExercises.map(ex => ({
+      id: ex.id,
+      title: ex.title,
+      description: ex.description,
+      type: 'word-formation',
+      path: `/exercices/word-formation/${ex.id}`
+    }));
+  }, []);
 
   if (!exercise) {
     return (
@@ -41,12 +53,22 @@ const WordFormationExerciseDetail = () => {
       ).length 
     : 0;
 
+  const canonicalUrl = `https://www.antonyaddy.com/exercices/word-formation/${id}`;
+
   return (
     <>
       <Helmet>
-        <title>{exercise.title} - Formation de mots | Antony Music</title>
+        <title>{exercise.title} - Formation de mots | Antony Addy</title>
         <meta name="description" content={`Exercice de formation de mots: ${exercise.title}. ${exercise.description}`} />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
+      <QuizJsonLd
+        name={exercise.title}
+        description={exercise.description}
+        about="English Word Formation"
+        numberOfQuestions={exercise.questions.length}
+        url={canonicalUrl}
+      />
 
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         <Link to="/exercices" className="inline-flex items-center text-primary hover:underline mb-6">
@@ -164,6 +186,13 @@ const WordFormationExerciseDetail = () => {
             </Button>
           )}
         </div>
+
+        {/* Similar Exercises */}
+        <SimilarExercises
+          exercises={similarExercises}
+          currentId={Number(id)}
+          title="Autres exercices de formation de mots"
+        />
       </div>
     </>
   );
