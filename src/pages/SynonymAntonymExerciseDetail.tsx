@@ -164,6 +164,24 @@ const SynonymAntonymExerciseDetail = () => {
             </div>
           </CardContent>
         </Card>
+
+        {/* Navigation between exercises */}
+        <div className="mt-8 flex justify-center gap-4">
+          {Number(id) > 1 && (
+            <Button variant="outline" asChild>
+              <Link to={`/exercices/synonym-antonym/${Number(id) - 1}`}>
+                ← Exercice précédent
+              </Link>
+            </Button>
+          )}
+          {Number(id) < synonymAntonymExercises.length && (
+            <Button variant="outline" asChild>
+              <Link to={`/exercices/synonym-antonym/${Number(id) + 1}`}>
+                Exercice suivant →
+              </Link>
+            </Button>
+          )}
+        </div>
       </div>
     </>
   );
