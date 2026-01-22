@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Volume2, CheckCircle, XCircle, RotateCcw } from "lucide-react";
 import { pronunciationExercises } from "@/data/pronunciationExercises";
+import { SimilarExercises, SimilarExercise } from "@/components/SimilarExercises";
+import QuizJsonLd from "@/components/QuizJsonLd";
 
 const PronunciationExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -16,6 +17,17 @@ const PronunciationExerciseDetail = () => {
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
   const [completed, setCompleted] = useState<number[]>([]);
+
+  // Similar exercises
+  const similarExercises = useMemo((): SimilarExercise[] => {
+    return pronunciationExercises.map(ex => ({
+      id: ex.id,
+      title: ex.title,
+      description: ex.description,
+      type: 'pronunciation',
+      path: `/exercices/pronunciation/${ex.id}`
+    }));
+  }, []);
 
   if (!exercise) {
     return (
@@ -29,7 +41,6 @@ const PronunciationExerciseDetail = () => {
   }
 
   const currentQuestion = exercise.questions[currentIndex];
-  const currentPair = exercise.pairs[currentIndex % exercise.pairs.length];
 
   const speakWord = (word: string) => {
     if ('speechSynthesis' in window) {
@@ -66,13 +77,22 @@ const PronunciationExerciseDetail = () => {
   };
 
   const isFinished = completed.length === exercise.questions.length;
+  const canonicalUrl = `https://www.antonyaddy.com/exercices/pronunciation/${id}`;
 
   return (
     <>
       <Helmet>
-        <title>{exercise.title} - Prononciation | Antony Music</title>
+        <title>{exercise.title} - Prononciation | Antony Addy</title>
         <meta name="description" content={`Exercice de prononciation: ${exercise.title}. ${exercise.description}`} />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
+      <QuizJsonLd
+        name={exercise.title}
+        description={exercise.description}
+        about="English Pronunciation - Minimal Pairs"
+        numberOfQuestions={exercise.questions.length}
+        url={canonicalUrl}
+      />
 
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         <Link to="/exercices" className="inline-flex items-center text-primary hover:underline mb-6">
@@ -234,6 +254,13 @@ const PronunciationExerciseDetail = () => {
             </Button>
           )}
         </div>
+
+        {/* Similar Exercises */}
+        <SimilarExercises
+          exercises={similarExercises}
+          currentId={Number(id)}
+          title="Autres exercices de prononciation"
+        />
       </div>
     </>
   );

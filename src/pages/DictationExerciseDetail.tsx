@@ -1,12 +1,14 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Play, Pause, CheckCircle, XCircle, RotateCcw, Volume2 } from "lucide-react";
+import { ArrowLeft, Pause, CheckCircle, XCircle, RotateCcw, Volume2 } from "lucide-react";
 import { dictationExercises } from "@/data/dictationExercises";
+import { SimilarExercises, SimilarExercise } from "@/components/SimilarExercises";
+import QuizJsonLd from "@/components/QuizJsonLd";
 
 const DictationExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -19,6 +21,18 @@ const DictationExerciseDetail = () => {
   const [completed, setCompleted] = useState<boolean[]>([]);
   const [isPlaying, setIsPlaying] = useState(false);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+
+  // Similar exercises based on level
+  const similarExercises = useMemo((): SimilarExercise[] => {
+    return dictationExercises.map(ex => ({
+      id: ex.id,
+      title: ex.title,
+      description: ex.description,
+      level: ex.level,
+      type: 'dictation',
+      path: `/exercices/dictation/${ex.id}`
+    }));
+  }, []);
 
   if (!exercise) {
     return (
@@ -81,13 +95,23 @@ const DictationExerciseDetail = () => {
   };
 
   const isFinished = completed.length === exercise.sentences.length && completed.every(Boolean);
+  const canonicalUrl = `https://www.antonyaddy.com/exercices/dictation/${id}`;
 
   return (
     <>
       <Helmet>
-        <title>{exercise.title} - Dictée | Antony Music</title>
+        <title>{exercise.title} - Dictée | Antony Addy</title>
         <meta name="description" content={`Exercice de dictée: ${exercise.title}. ${exercise.description}`} />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
+      <QuizJsonLd
+        name={exercise.title}
+        description={exercise.description}
+        educationalLevel={exercise.level}
+        about="English Dictation"
+        numberOfQuestions={exercise.sentences.length}
+        url={canonicalUrl}
+      />
 
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         <Link to="/exercices" className="inline-flex items-center text-primary hover:underline mb-6">
@@ -237,6 +261,13 @@ const DictationExerciseDetail = () => {
             </Button>
           )}
         </div>
+
+        {/* Similar Exercises */}
+        <SimilarExercises
+          exercises={similarExercises}
+          currentId={Number(id)}
+          title="Autres exercices de dictée"
+        />
       </div>
     </>
   );
