@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Check, X, RotateCcw, MessageCircle, User, Users } from 'lucide-react';
@@ -18,6 +18,13 @@ const DialogueExerciseDetail = () => {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [showTranslations, setShowTranslations] = useState(false);
+
+  // Reset state when exercise ID changes
+  useEffect(() => {
+    setAnswers({});
+    setSubmitted(false);
+    setShowTranslations(false);
+  }, [id]);
 
   if (!exercise) {
     return (
@@ -72,7 +79,7 @@ const DialogueExerciseDetail = () => {
       }
     });
     return map;
-  }, [exercise.id]);
+  }, [id, exercise.dialogue]);
 
   const score = submitted 
     ? exercise.dialogue

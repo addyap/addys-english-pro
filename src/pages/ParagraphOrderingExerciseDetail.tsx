@@ -14,6 +14,7 @@ const ParagraphOrderingExerciseDetail = () => {
   const [orderedParagraphs, setOrderedParagraphs] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
 
+  // Reset and shuffle on exercise ID change
   useEffect(() => {
     if (exercise) {
       // Shuffle paragraphs on load
@@ -22,8 +23,9 @@ const ParagraphOrderingExerciseDetail = () => {
         .sort((a, b) => a.sort - b.sort)
         .map(p => p.id);
       setOrderedParagraphs(shuffled);
+      setSubmitted(false);
     }
-  }, [exercise]);
+  }, [id, exercise]);
 
   if (!exercise) {
     return (

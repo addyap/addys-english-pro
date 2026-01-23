@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,12 @@ const ConditionalExerciseDetail = () => {
   
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
+
+  // Reset state when exercise ID changes
+  useEffect(() => {
+    setAnswers({});
+    setSubmitted(false);
+  }, [id]);
 
   if (!exercise) {
     return (
@@ -42,7 +48,7 @@ const ConditionalExerciseDetail = () => {
       map[index] = shuffleArray(q.options);
     });
     return map;
-  }, [exercise.id]);
+  }, [id, exercise.questions]);
 
   const score = submitted 
     ? exercise.questions.filter((q, i) => answers[i] === q.answer).length 

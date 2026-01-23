@@ -5,6 +5,8 @@ import { dragDropExercises } from '@/data/dragDropExercises';
 import { DragDropExerciseComponent } from '@/components/DragDropExercise';
 import SEOHead from '@/components/SEOHead';
 
+// Use key prop on DragDropExerciseComponent to force remount on ID change
+
 export default function DragDropExerciseDetail() {
   const { id } = useParams<{ id: string }>();
   const exerciseId = parseInt(id || '1', 10);
@@ -40,7 +42,7 @@ export default function DragDropExerciseDetail() {
             </Link>
           </Button>
 
-          <DragDropExerciseComponent exercise={exercise} />
+          <DragDropExerciseComponent key={exerciseId} exercise={exercise} />
 
           <div className="mt-8 flex justify-center gap-4">
             {exerciseId > 1 && (

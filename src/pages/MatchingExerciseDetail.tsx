@@ -19,12 +19,17 @@ const MatchingExerciseDetail = () => {
   const [shuffledDefinitions, setShuffledDefinitions] = useState<MatchingPair[]>([]);
   const [submitted, setSubmitted] = useState(false);
 
+  // Reset state when exercise ID changes
   useEffect(() => {
     if (exercise) {
       // Shuffle definitions using proper shuffle algorithm
       setShuffledDefinitions(shuffleArray([...exercise.pairs]));
+      // Reset all state
+      setSelectedWord(null);
+      setMatches({});
+      setSubmitted(false);
     }
-  }, [exercise]);
+  }, [id, exercise]);
 
   if (!exercise) {
     return (

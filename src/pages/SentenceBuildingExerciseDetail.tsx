@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ChevronLeft, ChevronRight, Check, X, RotateCcw, Shuffle, HelpCircle } from 'lucide-react';
@@ -16,6 +16,13 @@ const SentenceBuildingExerciseDetail: React.FC = () => {
   const [submitted, setSubmitted] = useState<Record<number, boolean>>({});
   const [showTranslation, setShowTranslation] = useState(false);
   const [showHints, setShowHints] = useState<Record<number, boolean>>({});
+
+  // Reset state when exercise ID changes
+  useEffect(() => {
+    setSelectedWords({});
+    setSubmitted({});
+    setShowHints({});
+  }, [id]);
 
   if (!exercise) {
     return (
