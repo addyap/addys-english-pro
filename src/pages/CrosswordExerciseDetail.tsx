@@ -19,6 +19,7 @@ const CrosswordExerciseDetail = () => {
   const [showHints, setShowHints] = useState<Set<number>>(new Set());
   const [submitted, setSubmitted] = useState(false);
 
+  // Reset state when exercise ID changes
   useEffect(() => {
     if (exercise) {
       const initialAnswers: Record<number, string> = {};
@@ -26,8 +27,11 @@ const CrosswordExerciseDetail = () => {
         initialAnswers[clue.id] = '';
       });
       setAnswers(initialAnswers);
+      setRevealed(new Set());
+      setShowHints(new Set());
+      setSubmitted(false);
     }
-  }, [exercise]);
+  }, [id, exercise]);
 
   if (!exercise) {
     return (

@@ -45,7 +45,9 @@ const ExerciseDetail = () => {
     }
   }, [completedQuestions, exercise, exerciseId, saveResult]);
 
+  // Reset state and scroll when exercise ID changes
   useEffect(() => {
+    setCompletedQuestions(new Map());
     window.scrollTo(0, 0);
   }, [exerciseId]);
 

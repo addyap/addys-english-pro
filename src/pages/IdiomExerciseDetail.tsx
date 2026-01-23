@@ -20,6 +20,12 @@ const IdiomExerciseDetail = () => {
   const [showResults, setShowResults] = useState(false);
   const [showTranslations, setShowTranslations] = useState(false);
 
+  // Reset state when exercise ID changes
+  React.useEffect(() => {
+    setAnswers({});
+    setShowResults(false);
+  }, [id]);
+
   if (!exercise) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -54,7 +60,7 @@ const IdiomExerciseDetail = () => {
       map[q.id] = shuffleArray(q.options);
     });
     return map;
-  }, [exercise.id]);
+  }, [id, exercise.questions]);
 
   const score = exercise.questions.filter(
     q => answers[q.id] === q.correctAnswer

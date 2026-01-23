@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Check, X, RotateCcw, MapPin, ChevronRight } from 'lucide-react';
@@ -17,6 +17,13 @@ const PrepositionExerciseDetail = () => {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [showExplanations, setShowExplanations] = useState(false);
+
+  // Reset state when exercise ID changes
+  useEffect(() => {
+    setAnswers({});
+    setSubmitted(false);
+    setShowExplanations(false);
+  }, [id]);
 
   if (!exercise) {
     return (
@@ -62,7 +69,7 @@ const PrepositionExerciseDetail = () => {
       map[q.id] = shuffleArray(q.options);
     });
     return map;
-  }, [exercise.id]);
+  }, [id, exercise.questions]);
 
   const score = submitted 
     ? exercise.questions.filter(q => answers[q.id] === q.correctAnswer).length 

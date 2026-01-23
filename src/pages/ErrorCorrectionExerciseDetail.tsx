@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ChevronLeft, ChevronRight, Check, X, RotateCcw, Eye, EyeOff, AlertTriangle } from 'lucide-react';
@@ -17,6 +17,13 @@ const ErrorCorrectionExerciseDetail: React.FC = () => {
   const [submitted, setSubmitted] = useState<Record<number, boolean>>({});
   const [showTranslation, setShowTranslation] = useState(false);
   const [showHints, setShowHints] = useState<Record<number, boolean>>({});
+
+  // Reset state when exercise ID changes
+  useEffect(() => {
+    setAnswers({});
+    setSubmitted({});
+    setShowHints({});
+  }, [id]);
 
   if (!exercise) {
     return (

@@ -32,6 +32,13 @@ const FillInTypingExerciseDetail = () => {
   const [showTranslations, setShowTranslations] = useState(false);
   const [isTimedMode, setIsTimedMode] = useState(false);
   const [timedModeSeconds, setTimedModeSeconds] = useState(0);
+
+  // Reset state when exercise ID changes
+  useEffect(() => {
+    setAnswers({});
+    setIsTimedMode(false);
+    setTimedModeSeconds(0);
+  }, [id]);
   
   const { recordExerciseCompletion, newBadges, clearNewBadges } = useGamification();
   

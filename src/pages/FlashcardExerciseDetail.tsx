@@ -20,6 +20,16 @@ const FlashcardExerciseDetail = () => {
   const [shuffledCards, setShuffledCards] = useState<Flashcard[]>([]);
   const [isShuffled, setIsShuffled] = useState(false);
 
+  // Reset state when exercise ID changes
+  React.useEffect(() => {
+    setCurrentIndex(0);
+    setIsFlipped(false);
+    setKnownCards(new Set());
+    setUnknownCards(new Set());
+    setShuffledCards([]);
+    setIsShuffled(false);
+  }, [id]);
+
   // Initialize cards
   const cards = useMemo(() => {
     if (!exercise) return [];

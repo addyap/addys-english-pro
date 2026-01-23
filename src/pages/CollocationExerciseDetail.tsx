@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { collocationExercises } from "@/data/collocationExercises";
 import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
@@ -21,6 +21,16 @@ const CollocationExerciseDetail = () => {
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
   const [quizComplete, setQuizComplete] = useState(false);
+
+  // Reset state when exercise ID changes
+  useEffect(() => {
+    setViewMode("list");
+    setCurrentQuestion(0);
+    setSelectedAnswer(null);
+    setShowResult(false);
+    setScore(0);
+    setQuizComplete(false);
+  }, [id]);
 
   if (!exercise) {
     return (
@@ -83,7 +93,7 @@ const CollocationExerciseDetail = () => {
       map[index] = shuffleArray(q.options);
     });
     return map;
-  }, [exercise.id]);
+  }, [id, exercise.questions]);
 
   return (
     <>

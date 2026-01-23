@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Check, X, BookOpen, RotateCcw, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -19,6 +19,16 @@ const PhrasalVerbExerciseDetail = () => {
   const [score, setScore] = useState(0);
   const [answeredQuestions, setAnsweredQuestions] = useState<number[]>([]);
   const [showVerbList, setShowVerbList] = useState(true);
+
+  // Reset state when exercise ID changes
+  useEffect(() => {
+    setCurrentQuestion(0);
+    setSelectedAnswer(null);
+    setShowResult(false);
+    setScore(0);
+    setAnsweredQuestions([]);
+    setShowVerbList(true);
+  }, [id]);
 
   if (!exercise) {
     return (
@@ -82,7 +92,7 @@ const PhrasalVerbExerciseDetail = () => {
       map[index] = shuffleArray(q.options);
     });
     return map;
-  }, [exercise.id]);
+  }, [id, exercise.questions]);
 
   const isQuizComplete = answeredQuestions.length === exercise.questions.length;
 
