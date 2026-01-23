@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { CheckCircle, XCircle, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -16,6 +16,13 @@ const GrammarExercise: React.FC<GrammarExerciseProps> = ({ exercise }) => {
   const [showResults, setShowResults] = useState(false);
   const [score, setScore] = useState(0);
   const { saveResult, getResult } = useExerciseProgress();
+
+  // Reset state when exercise changes
+  useEffect(() => {
+    setAnswers({});
+    setShowResults(false);
+    setScore(0);
+  }, [exercise.id]);
 
   // Check for previous result
   const previousResult = getResult(exercise.id.toString(), 'grammar');
@@ -80,9 +87,10 @@ const GrammarExercise: React.FC<GrammarExerciseProps> = ({ exercise }) => {
       <CardContent className="space-y-4">
         {exercise.questions.map((question, index) => (
           <QuestionItem
-            key={question.id}
+            key={`${exercise.id}-${question.id}`}
             question={question}
             index={index}
+            exerciseId={exercise.id}
             answer={answers[question.id]}
             showResults={showResults}
             onAnswerChange={(value) => handleAnswerChange(question.id, value)}
@@ -113,6 +121,7 @@ const GrammarExercise: React.FC<GrammarExerciseProps> = ({ exercise }) => {
 interface QuestionItemProps {
   question: Question;
   index: number;
+  exerciseId: number;
   answer?: string;
   showResults: boolean;
   onAnswerChange: (value: string) => void;
@@ -121,14 +130,15 @@ interface QuestionItemProps {
 const QuestionItem: React.FC<QuestionItemProps> = ({
   question,
   index,
+  exerciseId,
   answer,
   showResults,
   onAnswerChange
 }) => {
   const isCorrect = answer === question.correctAnswer;
   
-  // Shuffle options once per question
-  const shuffledOptions = useMemo(() => shuffleArray(question.options), [question.id]);
+  // Shuffle options - use question.options as dependency to ensure recalculation when question content changes
+  const shuffledOptions = useMemo(() => shuffleArray(question.options), [question.options, exerciseId]);
 
   return (
     <div className={`p-4 rounded-lg border ${

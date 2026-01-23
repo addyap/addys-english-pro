@@ -140,9 +140,10 @@ const ExerciseDetail = () => {
             <div className="space-y-6">
               {exercise.questions.map((question, index) => (
                 <ExerciseQuestion
-                  key={question.id}
+                  key={`${exerciseId}-${question.id}`}
                   question={question}
                   questionNumber={index + 1}
+                  exerciseId={exerciseId}
                   onComplete={(isCorrect) => handleQuestionComplete(question.id, isCorrect)}
                 />
               ))}
