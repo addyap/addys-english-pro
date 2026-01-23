@@ -8,16 +8,25 @@ import { shuffleArray } from '@/utils/shuffleArray';
 interface ExerciseQuestionProps {
   question: Question;
   questionNumber: number;
+  exerciseId?: number | string; // Add exerciseId to ensure unique memoization
   onComplete?: (isCorrect: boolean) => void;
 }
 
-const ExerciseQuestion: React.FC<ExerciseQuestionProps> = ({ question, questionNumber, onComplete }) => {
+const ExerciseQuestion: React.FC<ExerciseQuestionProps> = ({ question, questionNumber, exerciseId, onComplete }) => {
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
   const [showResult, setShowResult] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
   
-  // Shuffle options once when question changes
-  const shuffledOptions = useMemo(() => shuffleArray(question.options), [question.id]);
+  // Reset state when question or exercise changes
+  React.useEffect(() => {
+    setSelectedAnswer('');
+    setShowResult(false);
+    setShowExplanation(false);
+  }, [question.id, exerciseId]);
+  
+  // Shuffle options once when question or exercise changes - use question.options as dependency 
+  // to ensure new options are shuffled when the actual question content changes
+  const shuffledOptions = useMemo(() => shuffleArray(question.options), [question.options, exerciseId]);
 
   const handleCheck = () => {
     if (selectedAnswer) {
