@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo } from "react";
+import { useState, useRef, useMemo, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
@@ -21,6 +21,19 @@ const DictationExerciseDetail = () => {
   const [completed, setCompleted] = useState<boolean[]>([]);
   const [isPlaying, setIsPlaying] = useState(false);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+
+  // Reset state when exercise ID changes
+  useEffect(() => {
+    setCurrentIndex(0);
+    setUserInput("");
+    setShowResult(false);
+    setScore(0);
+    setCompleted([]);
+    setIsPlaying(false);
+    if (utteranceRef.current) {
+      window.speechSynthesis.cancel();
+    }
+  }, [id]);
 
   // Similar exercises based on level
   const similarExercises = useMemo((): SimilarExercise[] => {

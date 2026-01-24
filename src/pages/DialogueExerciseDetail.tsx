@@ -163,7 +163,7 @@ const DialogueExerciseDetail = () => {
               
               return (
                 <div 
-                  key={index} 
+                  key={`${id}-${index}`} 
                   className={`p-4 rounded-lg ${
                     isCorrect 
                       ? 'bg-green-50 border border-green-200' 

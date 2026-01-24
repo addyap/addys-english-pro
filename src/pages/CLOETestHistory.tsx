@@ -179,7 +179,7 @@ export default function CLOETestHistory() {
     return (
       <>
         <Helmet>
-          <title>Historique des Tests CLOE | Antony Music</title>
+          <title>Historique des Tests CLOE | Antony Addy</title>
           <meta name="description" content="Consultez votre historique de tests CLOE et suivez votre progression." />
         </Helmet>
 
@@ -218,7 +218,7 @@ export default function CLOETestHistory() {
   return (
     <>
       <Helmet>
-        <title>Historique des Tests CLOE - Suivi de Progression | Antony Music</title>
+        <title>Historique des Tests CLOE - Suivi de Progression | Antony Addy</title>
         <meta 
           name="description" 
           content="Consultez votre historique de tests CLOE, analysez vos performances par niveau et catégorie, et suivez votre progression dans le temps." 

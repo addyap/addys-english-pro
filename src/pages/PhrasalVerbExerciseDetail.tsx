@@ -99,7 +99,7 @@ const PhrasalVerbExerciseDetail = () => {
   return (
     <>
       <SEOHead
-        title={`${exercise.title} - Phrasal Verbs | Antony Music`}
+        title={`${exercise.title} - Phrasal Verbs | Antony Addy`}
         description={exercise.description}
         canonical={`https://www.antonyaddy.com/exercices/phrasal-verbs/${exercise.id}`}
       />

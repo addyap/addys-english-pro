@@ -57,7 +57,7 @@ const ConditionalExerciseDetail = () => {
   return (
     <>
       <Helmet>
-        <title>{exercise.title} - Conditionnels | Antony Music</title>
+        <title>{exercise.title} - Conditionnels | Antony Addy</title>
         <meta name="description" content={`Exercice sur les conditionnels: ${exercise.title}. ${exercise.description}`} />
       </Helmet>
 
@@ -87,7 +87,7 @@ const ConditionalExerciseDetail = () => {
               const isIncorrect = submitted && userAnswer !== question.answer;
 
               return (
-                <div key={index} className={`p-4 rounded-lg border ${
+                <div key={`${id}-${index}`} className={`p-4 rounded-lg border ${
                   isCorrect ? 'border-green-500/50 bg-green-500/5' :
                   isIncorrect ? 'border-red-500/50 bg-red-500/5' :
                   'border-border'
