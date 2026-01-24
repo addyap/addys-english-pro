@@ -166,7 +166,7 @@ const IdiomExerciseDetail = () => {
 
                   return (
                     <div 
-                      key={question.id} 
+                      key={`${id}-${question.id}`} 
                       className={`p-4 rounded-lg border ${
                         showResults 
                           ? isCorrect 

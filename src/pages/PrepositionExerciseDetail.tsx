@@ -163,7 +163,7 @@ const PrepositionExerciseDetail = () => {
               
               return (
                 <div 
-                  key={question.id} 
+                  key={`${id}-${question.id}`} 
                   className={`p-4 rounded-lg border ${
                     isCorrect 
                       ? 'bg-green-50 border-green-200' 

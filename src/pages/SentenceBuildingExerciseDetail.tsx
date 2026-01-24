@@ -103,7 +103,7 @@ const SentenceBuildingExerciseDetail: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>{exercise.title} - Sentence Building | Antony Music English</title>
+        <title>{exercise.title} - Sentence Building | Antony Addy English</title>
         <meta name="description" content={exercise.description} />
       </Helmet>
 

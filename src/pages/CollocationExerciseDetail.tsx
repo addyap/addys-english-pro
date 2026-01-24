@@ -162,7 +162,7 @@ const CollocationExerciseDetail = () => {
           {viewMode === "list" && (
             <div className="space-y-4">
               {exercise.collocations.map((collocation, index) => (
-                <Card key={index} className="overflow-hidden">
+                <Card key={`${id}-${index}`} className="overflow-hidden">
                   <CardHeader className="pb-2 bg-primary/5">
                     <CardTitle className="text-lg flex items-center gap-2">
                       <span className="text-primary font-bold">{collocation.collocation}</span>

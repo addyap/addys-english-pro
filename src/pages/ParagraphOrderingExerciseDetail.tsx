@@ -72,7 +72,7 @@ const ParagraphOrderingExerciseDetail = () => {
   return (
     <>
       <Helmet>
-        <title>{exercise.title} - Organisation de paragraphes | Antony Music</title>
+        <title>{exercise.title} - Organisation de paragraphes | Antony Addy</title>
         <meta name="description" content={`Exercice d'organisation: ${exercise.title}. ${exercise.description}`} />
       </Helmet>
 

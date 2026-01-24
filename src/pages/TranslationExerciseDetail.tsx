@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
@@ -19,6 +19,15 @@ const TranslationExerciseDetail = () => {
   const [showAnswer, setShowAnswer] = useState(false);
   const [selfScores, setSelfScores] = useState<Record<number, 'correct' | 'partial' | 'incorrect'>>({});
   const [completed, setCompleted] = useState<number[]>([]);
+
+  // Reset state when exercise ID changes
+  useEffect(() => {
+    setCurrentIndex(0);
+    setUserTranslation("");
+    setShowAnswer(false);
+    setSelfScores({});
+    setCompleted([]);
+  }, [id]);
 
   // Similar exercises
   const similarExercises = useMemo((): SimilarExercise[] => {

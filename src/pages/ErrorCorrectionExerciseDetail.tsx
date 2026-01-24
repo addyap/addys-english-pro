@@ -78,7 +78,7 @@ const ErrorCorrectionExerciseDetail: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>{exercise.title} - Error Correction | Antony Music English</title>
+        <title>{exercise.title} - Error Correction | Antony Addy English</title>
         <meta name="description" content={exercise.description} />
       </Helmet>
 

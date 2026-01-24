@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Check, X, RotateCcw, Languages, Lightbulb, PenLine } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -19,6 +19,13 @@ function SentenceTransformExercise({ exerciseId }: { exerciseId: number }) {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [showResults, setShowResults] = useState(false);
   const [showHints, setShowHints] = useState<Record<number, boolean>>({});
+
+  // Reset state when exercise ID changes
+  useEffect(() => {
+    setAnswers({});
+    setShowResults(false);
+    setShowHints({});
+  }, [exerciseId]);
 
   if (!exercise) return <div>Exercise not found</div>;
 
@@ -45,7 +52,7 @@ function SentenceTransformExercise({ exerciseId }: { exerciseId: number }) {
         {exercise.sentences.map((sentence, idx) => {
           const isCorrect = checkAnswer(answers[sentence.id] || '', sentence.answer);
           return (
-            <div key={sentence.id} className={cn(
+            <div key={`${exerciseId}-${sentence.id}`} className={cn(
               "p-4 rounded-lg border-2 transition-all",
               showResults && isCorrect && "border-green-500 bg-green-50 dark:bg-green-950/20",
               showResults && !isCorrect && "border-red-500 bg-red-50 dark:bg-red-950/20",
@@ -98,6 +105,12 @@ function ErrorCorrectionExercise({ exerciseId }: { exerciseId: number }) {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [showResults, setShowResults] = useState(false);
 
+  // Reset state when exercise ID changes
+  useEffect(() => {
+    setAnswers({});
+    setShowResults(false);
+  }, [exerciseId]);
+
   if (!exercise) return <div>Exercise not found</div>;
 
   const checkAnswer = (userAnswer: string, correctAnswer: string) => {
@@ -122,7 +135,7 @@ function ErrorCorrectionExercise({ exerciseId }: { exerciseId: number }) {
         {exercise.sentences.map((sentence, idx) => {
           const isCorrect = checkAnswer(answers[sentence.id] || '', sentence.correct);
           return (
-            <div key={sentence.id} className={cn(
+            <div key={`${exerciseId}-${sentence.id}`} className={cn(
               "p-4 rounded-lg border-2 transition-all",
               showResults && isCorrect && "border-green-500 bg-green-50 dark:bg-green-950/20",
               showResults && !isCorrect && "border-red-500 bg-red-50 dark:bg-red-950/20",
@@ -176,6 +189,14 @@ function FillParagraphExercise({ exerciseId }: { exerciseId: number }) {
   const [showTranslation, setShowTranslation] = useState(false);
   const [showHints, setShowHints] = useState(false);
 
+  // Reset state when exercise ID changes
+  useEffect(() => {
+    setAnswers({});
+    setShowResults(false);
+    setShowTranslation(false);
+    setShowHints(false);
+  }, [exerciseId]);
+
   if (!exercise) return <div>Exercise not found</div>;
 
   const checkAnswer = (userAnswer: string, blank: { answer: string; alternatives?: string[] }) => {
@@ -203,7 +224,7 @@ function FillParagraphExercise({ exerciseId }: { exerciseId: number }) {
         if (!blank) return null;
         const isCorrect = checkAnswer(answers[blankNum] || '', blank);
         return (
-          <span key={idx} className="inline-flex items-center mx-1">
+          <span key={`${exerciseId}-blank-${idx}`} className="inline-flex items-center mx-1">
             <Input
               className={cn(
                 "w-32 h-8 text-center inline-block",
@@ -221,7 +242,7 @@ function FillParagraphExercise({ exerciseId }: { exerciseId: number }) {
           </span>
         );
       }
-      return <span key={idx}>{part}</span>;
+      return <span key={`${exerciseId}-text-${idx}`}>{part}</span>;
     });
   };
 
@@ -339,9 +360,10 @@ export default function WritingExerciseDetail() {
             </Link>
           </Button>
 
-          {type === 'transform' && <SentenceTransformExercise exerciseId={exerciseId} />}
-          {type === 'error' && <ErrorCorrectionExercise exerciseId={exerciseId} />}
-          {type === 'fill' && <FillParagraphExercise exerciseId={exerciseId} />}
+          {/* Use key prop to force remount on exercise change */}
+          {type === 'transform' && <SentenceTransformExercise key={`transform-${exerciseId}`} exerciseId={exerciseId} />}
+          {type === 'error' && <ErrorCorrectionExercise key={`error-${exerciseId}`} exerciseId={exerciseId} />}
+          {type === 'fill' && <FillParagraphExercise key={`fill-${exerciseId}`} exerciseId={exerciseId} />}
 
           <div className="mt-8 flex justify-center gap-4">
             {exerciseId > 1 && (

@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
@@ -17,6 +17,12 @@ const SynonymAntonymExerciseDetail = () => {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
 
+  // Reset state when exercise ID changes
+  useEffect(() => {
+    setAnswers({});
+    setSubmitted(false);
+  }, [id]);
+
   // Similar exercises
   const similarExercises = useMemo((): SimilarExercise[] => {
     return synonymAntonymExercises.map(ex => ({
@@ -28,7 +34,7 @@ const SynonymAntonymExerciseDetail = () => {
     }));
   }, []);
 
-  // Shuffle options for each question once per exercise load
+  // Shuffle options for each question once per exercise load - use id (URL param) as dependency
   const shuffledOptionsMap = useMemo(() => {
     if (!exercise) return {};
     const map: Record<number, string[]> = {};
@@ -36,7 +42,7 @@ const SynonymAntonymExerciseDetail = () => {
       map[index] = shuffleArray(q.options);
     });
     return map;
-  }, [exercise?.id]);
+  }, [id, exercise?.questions]);
 
   if (!exercise) {
     return (
