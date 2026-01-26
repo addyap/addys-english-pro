@@ -55,13 +55,13 @@ const ExerciseQuestion: React.FC<ExerciseQuestionProps> = ({ question, questionN
           <p className="text-base font-medium text-foreground mb-4">{question.question}</p>
           
           <div className="space-y-4">
-            <Select value={selectedAnswer} onValueChange={setSelectedAnswer} disabled={showResult}>
+            <Select key={`select-${exerciseId}-${question.id}`} value={selectedAnswer} onValueChange={setSelectedAnswer} disabled={showResult}>
               <SelectTrigger className="w-full max-w-xs bg-background">
                 <SelectValue placeholder="Choisissez une réponse..." />
               </SelectTrigger>
               <SelectContent className="bg-background z-50">
                 {shuffledOptions.map((option, index) => (
-                  <SelectItem key={index} value={option} className="cursor-pointer">
+                  <SelectItem key={`${exerciseId}-${question.id}-${index}`} value={option} className="cursor-pointer">
                     {option}
                   </SelectItem>
                 ))}
