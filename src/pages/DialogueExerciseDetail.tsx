@@ -187,6 +187,7 @@ const DialogueExerciseDetail = () => {
                       {isBlank ? (
                         <div className="space-y-2">
                           <Select
+                            key={`select-${id}-${index}`}
                             value={answers[index] || ''}
                             onValueChange={(value) => handleAnswerChange(index, value)}
                             disabled={submitted}
@@ -196,7 +197,7 @@ const DialogueExerciseDetail = () => {
                             </SelectTrigger>
                             <SelectContent>
                               {shuffledOptionsMap[index]?.map((option, optIndex) => (
-                                <SelectItem key={optIndex} value={option}>
+                                <SelectItem key={`${id}-${index}-${optIndex}`} value={option}>
                                   {option}
                                 </SelectItem>
                               ))}

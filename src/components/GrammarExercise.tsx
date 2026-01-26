@@ -156,6 +156,7 @@ const QuestionItem: React.FC<QuestionItemProps> = ({
           <p className="font-body text-foreground">{question.question}</p>
           
           <Select
+            key={`select-${exerciseId}-${question.id}`}
             value={answer || ''}
             onValueChange={onAnswerChange}
             disabled={showResults}
@@ -165,7 +166,7 @@ const QuestionItem: React.FC<QuestionItemProps> = ({
             </SelectTrigger>
             <SelectContent>
               {shuffledOptions.map((option) => (
-                <SelectItem key={option} value={option}>
+                <SelectItem key={`${exerciseId}-${question.id}-${option}`} value={option}>
                   {option}
                 </SelectItem>
               ))}
