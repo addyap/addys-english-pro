@@ -22,11 +22,16 @@ const ExerciseQuestion: React.FC<ExerciseQuestionProps> = ({ question, questionN
     setSelectedAnswer('');
     setShowResult(false);
     setShowExplanation(false);
-  }, [question.id, exerciseId]);
+    // NOTE: Some exercise datasets reuse numeric IDs across exercises.
+    // We include question content in deps to guarantee a reset even if exerciseId isn't provided.
+  }, [question.id, question.question, question.correctAnswer, exerciseId]);
   
   // Shuffle options once when question or exercise changes - use question.options as dependency 
   // to ensure new options are shuffled when the actual question content changes
-  const shuffledOptions = useMemo(() => shuffleArray(question.options), [question.options, exerciseId]);
+  const shuffledOptions = useMemo(
+    () => shuffleArray(question.options),
+    [question.options, question.question, question.correctAnswer, exerciseId]
+  );
 
   const handleCheck = () => {
     if (selectedAnswer) {
@@ -55,13 +60,22 @@ const ExerciseQuestion: React.FC<ExerciseQuestionProps> = ({ question, questionN
           <p className="text-base font-medium text-foreground mb-4">{question.question}</p>
           
           <div className="space-y-4">
-            <Select key={`select-${exerciseId}-${question.id}`} value={selectedAnswer} onValueChange={setSelectedAnswer} disabled={showResult}>
+            <Select
+              key={`select-${exerciseId ?? 'noex'}-${question.id}-${question.question}`}
+              value={selectedAnswer}
+              onValueChange={setSelectedAnswer}
+              disabled={showResult}
+            >
               <SelectTrigger className="w-full max-w-xs bg-background">
                 <SelectValue placeholder="Choisissez une réponse..." />
               </SelectTrigger>
               <SelectContent className="bg-background z-50">
                 {shuffledOptions.map((option, index) => (
-                  <SelectItem key={`${exerciseId}-${question.id}-${index}`} value={option} className="cursor-pointer">
+                  <SelectItem
+                    key={`${exerciseId ?? 'noex'}-${question.id}-${option}-${index}`}
+                    value={option}
+                    className="cursor-pointer"
+                  >
                     {option}
                   </SelectItem>
                 ))}
