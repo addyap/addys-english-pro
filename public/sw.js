@@ -1,9 +1,16 @@
-const VERSION = 'v2.1.0';
+const VERSION = 'v2.1.1';
 const CACHE_NAME = `antonyaddy-${VERSION}`;
 const STATIC_CACHE = `${CACHE_NAME}-static`;
 const DYNAMIC_CACHE = `${CACHE_NAME}-dynamic`;
 const OFFLINE_CACHE = `${CACHE_NAME}-offline`;
 const MAX_CACHE_SIZE = 100; // Maximum items in dynamic cache
+
+// Allow the app to trigger immediate activation of a newly installed SW.
+self.addEventListener('message', (event) => {
+  if (event.data === 'SKIP_WAITING' || event.data?.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
 
 // Critical app shell files
 const STATIC_FILES = [

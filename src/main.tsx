@@ -10,6 +10,45 @@ const rootElement = document.getElementById("root")!;
 
 if (import.meta.env.PROD) {
   hydrateRoot(rootElement, <App />);
+
+  // Ensure users don't stay stuck on an old cached build (common on custom/live domains with a SW).
+  if ('serviceWorker' in navigator) {
+    let refreshed = false;
+
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (refreshed) return;
+      refreshed = true;
+      window.location.reload();
+    });
+
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.getRegistration().then((reg) => {
+        if (!reg) return;
+
+        // Force an update check every load
+        reg.update().catch(() => undefined);
+
+        const requestSkipWaiting = (worker?: ServiceWorker | null) => {
+          if (!worker) return;
+          worker.postMessage('SKIP_WAITING');
+        };
+
+        // If an update is already waiting, activate it immediately
+        requestSkipWaiting(reg.waiting);
+
+        reg.addEventListener('updatefound', () => {
+          const newWorker = reg.installing;
+          if (!newWorker) return;
+
+          newWorker.addEventListener('statechange', () => {
+            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              requestSkipWaiting(newWorker);
+            }
+          });
+        });
+      });
+    });
+  }
 } else {
   createRoot(rootElement).render(<App />);
 }
