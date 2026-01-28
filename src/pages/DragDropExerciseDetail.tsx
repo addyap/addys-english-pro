@@ -60,6 +60,26 @@ export default function DragDropExerciseDetail() {
               </Button>
             )}
           </div>
+
+          {/* Related Resources Section */}
+          <div className="border-t border-border pt-8 mt-8 text-center">
+            <p className="text-muted-foreground mb-4">
+              Complétez votre entraînement avec d'autres exercices créés par un formateur FPA certifié.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm">
+              <Link to="/exercices" className="text-primary hover:underline">
+                Tous les exercices
+              </Link>
+              <span className="text-muted-foreground">•</span>
+              <Link to="/reading" className="text-primary hover:underline">
+                Compréhension écrite
+              </Link>
+              <span className="text-muted-foreground">•</span>
+              <Link to="/exercices/cloe-preparation" className="text-primary hover:underline">
+                Préparation CLOE
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </>

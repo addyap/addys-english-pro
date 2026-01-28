@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import { seoMetadata } from '../utils/seoMetadata';
 
@@ -67,6 +68,19 @@ const LegalNotices = () => {
                   formations@antonyaddy.com
                 </a>
               </p>
+
+              {/* Internal Links */}
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <h2 className="text-xl font-semibold text-primary mb-3">
+                  Explorer le site
+                </h2>
+                <div className="flex flex-wrap gap-4 text-sm">
+                  <Link to="/" className="text-blue-600 hover:underline">Accueil</Link>
+                  <Link to="/contact" className="text-blue-600 hover:underline">Contact</Link>
+                  <Link to="/politique-confidentialite" className="text-blue-600 hover:underline">Politique de confidentialité</Link>
+                  <Link to="/offres-de-formation" className="text-blue-600 hover:underline">Formations</Link>
+                </div>
+              </div>
             </section>
           </div>
         </div>

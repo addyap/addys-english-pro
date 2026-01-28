@@ -14,6 +14,7 @@ const SitemapPage = () => {
 
   const resourcePages = [
     { href: '/exercices', label: 'Exercices d\'anglais', description: '300+ exercices interactifs' },
+    { href: '/exercices/cloe-preparation', label: 'Préparation CLOE', description: 'Certification professionnelle' },
     { href: '/reading', label: 'Compréhension écrite', description: 'Textes et questions' },
     { href: '/exercices/listening', label: 'Écoute & Compréhension', description: 'Exercices audio' },
     { href: '/blog', label: 'Blog', description: 'Articles et conseils' },

@@ -255,6 +255,26 @@ export default function InteractiveStory() {
               Recommencer
             </Button>
           </div>
+
+          {/* Related Resources Section */}
+          <div className="border-t border-border pt-8 mt-8 text-center">
+            <p className="text-muted-foreground mb-4">
+              Complétez votre entraînement avec d'autres ressources gratuites.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm">
+              <Link to="/reading" className="text-primary hover:underline">
+                Autres textes de lecture
+              </Link>
+              <span className="text-muted-foreground">•</span>
+              <Link to="/exercices" className="text-primary hover:underline">
+                Exercices de grammaire
+              </Link>
+              <span className="text-muted-foreground">•</span>
+              <Link to="/exercices/listening" className="text-primary hover:underline">
+                Listening Lab
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </>
