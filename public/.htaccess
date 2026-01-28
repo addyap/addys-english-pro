@@ -30,6 +30,19 @@
   <FilesMatch "\.(js|css|woff2?|png|jpe?g|gif|svg|webp|avif)$">
     Header set Cache-Control "public, max-age=2592000, immutable"
   </FilesMatch>
+
+  # IMPORTANT: Service worker must NEVER be long-term cached, otherwise
+  # users can get stuck on old app code even after deployments.
+  <Files "sw.js">
+    Header always set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+    Header always set Pragma "no-cache"
+  </Files>
+  <Files "manifest.webmanifest">
+    Header always set Cache-Control "max-age=0, must-revalidate"
+  </Files>
+  <Files "manifest.json">
+    Header always set Cache-Control "max-age=0, must-revalidate"
+  </Files>
   
   # HTML: no long-term cache
   <FilesMatch "\.(html|htm)$">
