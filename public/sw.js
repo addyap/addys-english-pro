@@ -1,4 +1,4 @@
-const VERSION = 'v2.1.1';
+const VERSION = 'v2.1.2';
 const CACHE_NAME = `antonyaddy-${VERSION}`;
 const STATIC_CACHE = `${CACHE_NAME}-static`;
 const DYNAMIC_CACHE = `${CACHE_NAME}-dynamic`;

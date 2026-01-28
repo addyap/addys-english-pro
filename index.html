@@ -67,11 +67,12 @@
     <!-- iOS Splash Screens -->
     <link rel="apple-touch-startup-image" href="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png">
     
-    <!-- Service Worker Registration -->
+    <!-- Service Worker Registration with cache-busting -->
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
+          // Cache-bust: append version to bypass HTTP caching on any host
+          navigator.serviceWorker.register('/sw.js?v=2.1.1')
             .then(reg => console.log('Service Worker registered', reg))
             .catch(err => console.error('Service Worker registration failed', err));
         });
