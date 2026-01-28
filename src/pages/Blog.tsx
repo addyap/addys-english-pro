@@ -121,10 +121,10 @@ const Blog = () => {
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-foreground mb-4">
-              Blog
+              Blog Anglais Professionnel
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Conseils et ressources pour progresser en anglais professionnel
+              Conseils d'expert, astuces pratiques et ressources pour progresser en anglais. Articles rédigés par un formateur britannique certifié FPA, avec plus de 20 ans d'expérience.
             </p>
           </div>
 

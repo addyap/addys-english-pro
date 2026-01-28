@@ -462,12 +462,25 @@ const CLOEExerciseDetail = () => {
         {/* Soft CTA */}
         <section className="py-8 bg-muted/30 border-t">
           <div className="max-w-3xl mx-auto px-4 text-center">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground mb-4">
               Ces exercices sont inspirés du format CLOE. 
               <Link to="/exercices/cloe-preparation/overview" className="text-primary hover:underline ml-1">
                 En savoir plus sur la certification
               </Link>
             </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm">
+              <Link to="/exercices/cloe-preparation" className="text-primary hover:underline">
+                Tous les exercices CLOE
+              </Link>
+              <span className="text-muted-foreground">•</span>
+              <Link to="/exercices" className="text-primary hover:underline">
+                Grammaire et vocabulaire
+              </Link>
+              <span className="text-muted-foreground">•</span>
+              <Link to="/offres-de-formation" className="text-primary hover:underline">
+                Formations personnalisées
+              </Link>
+            </div>
           </div>
         </section>
       </div>
