@@ -81,7 +81,7 @@ const Install = () => {
     <>
       <SEOHead
         title="Installer l'Application | Antony Addy"
-        description="Installez l'application Antony Addy sur votre appareil pour accéder aux exercices d'anglais hors ligne."
+        description="Installez l'application Antony Addy pour accéder aux exercices d'anglais hors ligne. Application progressive légère et rapide."
         canonicalUrl="https://www.antonyaddy.com/install"
         noIndex={true}
       />

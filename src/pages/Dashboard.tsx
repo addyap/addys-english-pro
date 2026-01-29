@@ -48,7 +48,7 @@ const Dashboard = () => {
     <>
       <SEOHead
         title="Mon Tableau de Bord | Antony Addy"
-        description="Suivez votre progression dans les exercices d'anglais. Consultez vos scores et les leçons complétées."
+        description="Suivez votre progression dans les exercices d'anglais. Consultez vos scores, vos leçons complétées et débloquez des badges de réussite."
         canonicalUrl="https://www.antonyaddy.com/dashboard"
         noIndex={true}
       />

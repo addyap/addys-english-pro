@@ -20,7 +20,7 @@ const OG_CLOE = `${SITE_URL}/og/og-cloe.png`;
 export const seoMetadata: Record<string, SEOMetadata> = {
   home: {
     title: "Formateur Anglais Professionnel | Antony Addy",
-    description: "Formations d'anglais sur mesure avec un formateur britannique certifié FPA. CPF, entreprises, particuliers. Présentiel Alpes-Maritimes ou distanciel France.",
+    description: "Formations d'anglais professionnel sur mesure avec un formateur britannique certifié FPA. CPF, entreprises, particuliers. Alpes-Maritimes ou distanciel France.",
     canonical: `${SITE_URL}/`,
     h1: "Formateur d'anglais professionnel pour adultes",
     keywords: ["formateur anglais", "formation anglais professionnel", "CPF anglais", "formateur FPA", "cours anglais adultes", "Alpes-Maritimes"],
@@ -28,7 +28,7 @@ export const seoMetadata: Record<string, SEOMetadata> = {
   },
   about: {
     title: "Qui suis-je | Antony Addy, Formateur FPA",
-    description: "Britannique natif certifié FPA depuis 2017, plus de 20 ans d'expérience en formation d'anglais professionnel. Découvrez mon parcours.",
+    description: "Britannique natif certifié Formateur Professionnel d'Adultes depuis 2017. Plus de 20 ans d'expérience en formation d'anglais professionnel.",
     canonical: `${SITE_URL}/qui-je-suis`,
     h1: "Antony Addy – Formateur Professionnel d'Adultes",
     keywords: ["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "formation adultes"],
@@ -36,7 +36,7 @@ export const seoMetadata: Record<string, SEOMetadata> = {
   },
   training: {
     title: "Formations Anglais Professionnel | Antony Addy",
-    description: "Formations d'anglais sur mesure : CPF, entreprises, particuliers. Présentiel Alpes-Maritimes ou distanciel France entière. Devis gratuit.",
+    description: "Formations d'anglais professionnel sur mesure : CPF, entreprises, particuliers. Présentiel Alpes-Maritimes ou distanciel France entière. Devis gratuit.",
     canonical: `${SITE_URL}/offres-de-formation`,
     h1: "Offres de formation en anglais",
     keywords: ["formation anglais", "CPF anglais", "cours entreprise", "formation à distance", "anglais Alpes-Maritimes"],
@@ -52,7 +52,7 @@ export const seoMetadata: Record<string, SEOMetadata> = {
   },
   contact: {
     title: "Contact | Antony Addy Formateur Anglais",
-    description: "Contactez Antony Addy pour vos formations d'anglais. Réponse sous 24h par email, WhatsApp ou formulaire. Devis gratuit.",
+    description: "Contactez Antony Addy pour vos formations d'anglais professionnel. Réponse sous 24h par email, WhatsApp ou formulaire. Devis gratuit.",
     canonical: `${SITE_URL}/contact`,
     h1: "Contactez-moi",
     keywords: ["contact formateur anglais", "devis formation", "WhatsApp", "email formations"],
@@ -68,7 +68,7 @@ export const seoMetadata: Record<string, SEOMetadata> = {
   },
   exercises: {
     title: "150+ Exercices Anglais Gratuits | Antony Addy",
-    description: "Exercices interactifs gratuits : grammaire, vocabulaire, lecture, écoute. Créés par un formateur professionnel certifié.",
+    description: "Plus de 150 exercices interactifs gratuits : grammaire, vocabulaire, lecture, écoute. Créés par un formateur professionnel certifié FPA.",
     canonical: `${SITE_URL}/exercices`,
     h1: "Exercices d'Anglais Interactifs",
     keywords: ["exercices anglais gratuits", "grammaire anglaise", "vocabulaire anglais", "quiz anglais"],
@@ -76,7 +76,7 @@ export const seoMetadata: Record<string, SEOMetadata> = {
   },
   reading: {
     title: "Compréhension Écrite Anglais | Antony Addy",
-    description: "12 textes et histoires interactives pour améliorer votre lecture en anglais. Niveaux A2 à C1, créés par un formateur FPA.",
+    description: "Améliorez votre compréhension écrite avec 12 textes et histoires interactives en anglais. Niveaux A2 à C1, créés par un formateur FPA certifié.",
     canonical: `${SITE_URL}/reading`,
     h1: "Compréhension Écrite",
     keywords: ["compréhension écrite anglais", "reading comprehension", "textes anglais", "lecture anglais"],
@@ -84,7 +84,7 @@ export const seoMetadata: Record<string, SEOMetadata> = {
   },
   listening: {
     title: "Listening Lab – Exercices Écoute Anglais | Antony Addy",
-    description: "Améliorez votre compréhension orale avec des exercices d'écoute interactifs. Transcriptions avec traductions instantanées.",
+    description: "Améliorez votre compréhension orale anglaise avec des exercices d'écoute interactifs. Transcriptions avec traductions instantanées.",
     canonical: `${SITE_URL}/exercices/listening`,
     h1: "Listening Lab",
     keywords: ["compréhension orale anglais", "listening anglais", "exercices écoute", "audio anglais"],

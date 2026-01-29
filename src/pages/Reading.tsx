@@ -45,8 +45,8 @@ export default function Reading() {
     <>
       <SEOHead
         title="Lecture Anglais | Textes & Histoires Interactives"
-        description="12 textes et histoires interactives pour améliorer votre lecture anglais. Niveaux A2 à C1, créés par un formateur FPA certifié."
-        canonicalUrl="https://www.antonyaddy.com/lecture"
+        description="Améliorez votre compréhension écrite avec 12 textes et histoires interactives en anglais. Niveaux A2 à C1."
+        canonicalUrl="https://www.antonyaddy.com/reading"
         keywords={["compréhension écrite anglais", "reading comprehension", "textes anglais", "lecture anglais"]}
         enableOrgJsonLd
         enableWebSiteJsonLd
