@@ -11,7 +11,7 @@ const ListeningLibrary: React.FC = () => {
     <>
       <SEOHead
         title="Écoute Anglais | Exercices Audio Interactifs"
-        description="Améliorez votre compréhension orale avec des exercices d'écoute interactifs. Transcriptions avec traductions instantanées."
+        description="Améliorez votre compréhension orale anglaise avec des exercices d'écoute interactifs. Transcriptions avec traductions instantanées."
         canonicalUrl="https://www.antonyaddy.com/exercices/listening"
         keywords={["compréhension orale anglais", "listening anglais", "exercices écoute", "audio anglais"]}
         enableOrgJsonLd
@@ -154,7 +154,7 @@ const ListeningLibrary: React.FC = () => {
               <div className="flex flex-wrap gap-3 justify-center text-sm">
                 <Link to="/exercices" className="text-accent hover:underline">Exercices de grammaire</Link>
                 <span className="text-muted-foreground">•</span>
-                <Link to="/lecture" className="text-accent hover:underline">Compréhension écrite</Link>
+                <Link to="/reading" className="text-accent hover:underline">Compréhension écrite</Link>
                 <span className="text-muted-foreground">•</span>
                 <Link to="/exercices/cloe-preparation" className="text-accent hover:underline">Préparation CLOE</Link>
                 <span className="text-muted-foreground">•</span>

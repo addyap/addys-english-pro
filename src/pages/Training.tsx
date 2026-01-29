@@ -77,7 +77,7 @@ const Training = () => {
     <>
       <SEOHead
         title="Formations Anglais CPF | Entreprises & Particuliers"
-        description="Formations anglais sur mesure : CPF, entreprises, particuliers. Présentiel Alpes-Maritimes ou distanciel France. Devis gratuit."
+        description="Formations d'anglais professionnel sur mesure : CPF, entreprises, particuliers. Présentiel Alpes-Maritimes ou distanciel France entière. Devis gratuit."
         canonicalUrl="https://www.antonyaddy.com/offres-de-formation"
         enableOrgJsonLd
         enableWebSiteJsonLd

@@ -173,7 +173,7 @@ const Testimonials = () => {
     <>
       <SEOHead 
         title="Avis Clients | Formations Anglais Antony Addy"
-        description="15+ témoignages authentiques de professionnels satisfaits. Avis vérifiés sur la qualité des formations d'anglais d'Antony Addy. Note moyenne : 5/5."
+        description="Découvrez 15+ témoignages authentiques de professionnels satisfaits. Avis vérifiés sur la qualité des formations d'anglais d'Antony Addy. Note : 5/5."
         keywords={["témoignages formation anglais", "avis Antony Addy", "retours clients", "satisfaction apprenants", "avis formation anglais"]}
         canonicalUrl="https://www.antonyaddy.com/temoignages"
         dateModified="2026-01-15T10:00:00+01:00"

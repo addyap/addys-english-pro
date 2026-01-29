@@ -1,7 +1,5 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation, Link } from "react-router-dom";
-import { useEffect } from "react";
 import { Home, BookOpen, MessageSquare, User, GraduationCap } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 
@@ -27,7 +25,7 @@ const NotFound = () => {
     <>
       <SEOHead 
         title="Page non trouvée - 404 | Antony Addy"
-        description="La page que vous cherchez n'existe pas. Retournez à l'accueil du site d'Antony Addy, formateur d'anglais professionnel."
+        description="La page recherchée n'existe pas ou a été déplacée. Retrouvez les exercices d'anglais gratuits, le blog et les formations d'Antony Addy."
         noIndex={true}
       />
       

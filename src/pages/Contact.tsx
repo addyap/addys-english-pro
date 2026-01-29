@@ -117,7 +117,7 @@ const Contact = () => {
   return <>
       <SEOHead 
         title="Contact | Devis Formation Anglais Gratuit"
-        description="Contactez Antony Addy pour vos formations anglais. Réponse sous 24h par email, WhatsApp ou formulaire. Devis gratuit."
+        description="Contactez Antony Addy pour vos formations d'anglais professionnel. Réponse sous 24h par email, WhatsApp ou formulaire. Devis gratuit."
         keywords={["contact formateur anglais", "devis formation", "WhatsApp", "email formations"]}
         canonicalUrl="https://www.antonyaddy.com/contact"
         image="https://www.antonyaddy.com/lovable-uploads/200e88ab-2bbf-4168-85ad-8123b07c44ac.png"
