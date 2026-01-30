@@ -193,6 +193,21 @@ const Home = () => {
       {/* Optimized Hero Section */}
       <OptimizedHero />
 
+      {/* SEO: Crawlable introductory text for search engines */}
+      <section className="bg-muted py-6 border-b border-border">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <p className="text-muted-foreground text-sm leading-relaxed font-body">
+            Antony Addy propose des <strong className="text-primary">formations d'anglais pour adultes</strong> adaptées aux professionnels, 
+            en présentiel dans les Alpes-Maritimes (Cannes, Antibes, Nice, Monaco) ou à distance partout en France. 
+            Britannique natif et certifié Formateur Professionnel d'Adultes depuis 2017, il accompagne particuliers, 
+            entreprises et centres de formation dans l'amélioration de leurs compétences en anglais professionnel. 
+            Formations éligibles CPF via des organismes partenaires certifiés Qualiopi.{' '}
+            <Link to="/offres-de-formation" className="text-accent hover:underline font-medium">Découvrir les formations</Link>{' • '}
+            <Link to="/contact" className="text-accent hover:underline font-medium">Demander un devis gratuit</Link>
+          </p>
+        </div>
+      </section>
+
       <main id="main-content">
         {/* Qui je suis Section - Updated with split layout */}
         <section className="py-16 bg-white">
