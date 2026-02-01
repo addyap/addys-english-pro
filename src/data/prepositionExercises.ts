@@ -33,7 +33,7 @@ export const prepositionExercises: PrepositionExercise[] = [
       { id: 7, sentence: "I usually wake up early ___ the morning.", options: ["in", "on", "at", "by"], correctAnswer: "in", explanation: "We use 'in' with parts of the day (morning, afternoon, evening).", explanationFr: "On utilise 'in' avec les parties de la journée (matin, après-midi, soir)." },
       { id: 8, sentence: "They got married ___ Christmas Day.", options: ["in", "on", "at", "by"], correctAnswer: "on", explanation: "We use 'on' with specific holidays when mentioning the day.", explanationFr: "On utilise 'on' avec les jours fériés spécifiques quand on mentionne le jour." },
       { id: 9, sentence: "I'll be there ___ 5 minutes.", options: ["in", "on", "at", "by"], correctAnswer: "in", explanation: "We use 'in' to indicate duration before something happens.", explanationFr: "On utilise 'in' pour indiquer la durée avant que quelque chose se passe." },
-      { id: 10, sentence: "The shop closes ___ the weekend.", options: ["in", "on", "at", "by"], correctAnswer: "at", explanation: "We use 'at' with 'the weekend' (British English) or 'on the weekend' (American English).", explanationFr: "On utilise 'at' avec 'the weekend' (anglais britannique) ou 'on the weekend' (anglais américain)." },
+      { id: 10, sentence: "The shop closes ___ the weekend. (British English)", options: ["in", "on", "at", "by"], correctAnswer: "at", explanation: "We use 'at the weekend' in British English.", explanationFr: "On utilise 'at the weekend' en anglais britannique." },
     ]
   },
   {
