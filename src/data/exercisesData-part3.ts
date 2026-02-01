@@ -41,7 +41,7 @@ export const exercisesData101to150: Exercise[] = [
     title: "SPEAK vs TALK",
     description: "SPEAK (plus formel) vs TALK (conversation).",
     questions: [
-      { id: 1, question: "Can I ___ to you for a minute?", options: ["speak", "talk"], correctAnswer: "speak", explanation: "SPEAK to = parler à (formel)." },
+      { id: 1, question: "May I ___ to you for a moment, sir? (formal request)", options: ["speak", "talk"], correctAnswer: "speak", explanation: "SPEAK to is more formal, used in professional or polite requests." },
       { id: 2, question: "We were ___ about the weather.", options: ["speaking", "talking"], correctAnswer: "talking", explanation: "TALK about = discuter de." },
       { id: 3, question: "She ___ three languages.", options: ["speaks", "talks"], correctAnswer: "speaks", explanation: "SPEAK a language." },
       { id: 4, question: "Stop ___ and listen!", options: ["speaking", "talking"], correctAnswer: "talking", explanation: "TALK = bavarder." },
@@ -50,7 +50,7 @@ export const exercisesData101to150: Exercise[] = [
       { id: 7, question: "He ___ in public very well.", options: ["speaks", "talks"], correctAnswer: "speaks", explanation: "SPEAK in public = discours." },
       { id: 8, question: "We need to ___.", options: ["speak", "talk"], correctAnswer: "talk", explanation: "TALK = avoir une conversation." },
       { id: 9, question: "She ___ English fluently.", options: ["speaks", "talks"], correctAnswer: "speaks", explanation: "SPEAK a language fluently." },
-      { id: 10, question: "Don't ___ to strangers.", options: ["speak", "talk"], correctAnswer: "talk", explanation: "TALK to = conversation." }
+      { id: 10, question: "The children were ___ loudly in the playground.", options: ["speaking", "talking"], correctAnswer: "talking", explanation: "TALK = casual conversation, especially children chatting." }
     ]
   },
   {

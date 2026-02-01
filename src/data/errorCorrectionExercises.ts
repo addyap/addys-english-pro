@@ -410,10 +410,10 @@ export const errorCorrectionExercises: ErrorCorrectionExercise[] = [
       },
       {
         id: 3,
-        incorrectSentence: "Everyone should bring their own lunch.",
-        correctSentence: "Everyone should bring his or her own lunch.",
-        errorType: "Pronoun agreement",
-        explanation: "'Everyone' is singular; traditionally use 'his or her' (though 'their' is increasingly accepted).",
+        incorrectSentence: "Everyone should bring lunch with themselves.",
+        correctSentence: "Everyone should bring their own lunch.",
+        errorType: "Reflexive pronoun error",
+        explanation: "'Themselves' is incorrect here; 'their own' correctly shows possession. Singular 'they/their' is now standard.",
         explanationFr: "'Everyone' est singulier ; traditionnellement utilisez 'his or her' (bien que 'their' soit de plus en plus accepté)."
       },
       {
