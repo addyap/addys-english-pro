@@ -1574,7 +1574,7 @@ const Exercises = () => {
             <div className="border-t border-border pt-6 mt-6">
               <p className="text-sm text-muted-foreground mb-3">Ressources complémentaires :</p>
               <div className="flex flex-wrap gap-3 justify-center text-sm">
-                <Link to="/lecture" className="text-accent hover:underline">Compréhension écrite</Link>
+                <Link to="/reading" className="text-accent hover:underline">Compréhension écrite</Link>
                 <span className="text-muted-foreground">•</span>
                 <Link to="/exercices/listening" className="text-accent hover:underline">Exercices d'écoute</Link>
                 <span className="text-muted-foreground">•</span>

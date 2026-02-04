@@ -23,11 +23,10 @@ const PRIORITY_ROUTES = [
   '/contact',
   '/blog',
   '/exercices',
-  '/lecture',
-  '/listening',
-  '/anglais-a-distance',
+  '/reading',
+  '/exercices/listening',
   '/mentions-legales',
-  '/politique-de-confidentialite',
+  '/politique-confidentialite',
 ];
 
 // Site configuration
