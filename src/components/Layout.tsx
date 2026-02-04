@@ -240,7 +240,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                   </Link>
                 </li>
                 <li>
-                  <Link to="/exercices/writing/email/1" className="text-gray-400 hover:text-white transition-colors">
+                  <Link to="/exercices/writing/transform/1" className="text-gray-400 hover:text-white transition-colors">
                     Exercices d'écriture
                   </Link>
                 </li>

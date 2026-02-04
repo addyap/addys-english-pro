@@ -107,7 +107,7 @@
     { "path": "/story/3", "priority": 0.6, "changefreq": "monthly", "title": "Story: Mystery at the Museum" },
     { "path": "/exercices/listening/customer-service-call", "priority": 0.6, "changefreq": "monthly", "title": "Listening: Customer Service" },
     { "path": "/exercices/listening/job-interview", "priority": 0.6, "changefreq": "monthly", "title": "Listening: Job Interview" },
-    { "path": "/exercices/listening/travel-booking", "priority": 0.6, "changefreq": "monthly", "title": "Listening: Travel Booking" },
+    
     { "path": "/blog/bring-vs-take", "priority": 0.7, "changefreq": "monthly", "title": "Bring vs Take" },
     { "path": "/blog/lend-vs-borrow", "priority": 0.7, "changefreq": "monthly", "title": "Lend vs Borrow" },
     { "path": "/blog/learn-vs-teach", "priority": 0.7, "changefreq": "monthly", "title": "Learn vs Teach" },
