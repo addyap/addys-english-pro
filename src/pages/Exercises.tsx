@@ -1051,7 +1051,7 @@ const Exercises = () => {
                   <CardHeader className="pb-2"><CardTitle className="text-base">{ex.title}</CardTitle></CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground mb-3">{ex.description}</p>
-                    <Link to={`/exercices/fill-typing/${ex.id}`}><Button size="sm" className="w-full gap-2">Commencer <ChevronRight className="h-4 w-4" /></Button></Link>
+                    <Link to={`/exercices/fill-in-typing/${ex.id}`}><Button size="sm" className="w-full gap-2">Commencer <ChevronRight className="h-4 w-4" /></Button></Link>
                   </CardContent>
                 </Card>
               ))}
