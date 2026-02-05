@@ -40,7 +40,7 @@
       "name": "Exercises",
       "short_name": "Exercises",
       "description": "Access English exercises",
-      "url": "/exercices-anglais",
+      "url": "/exercices",
       "icons": [{ "src": "/lovable-uploads/2fd5760c-9208-4295-a1b5-87b41963111b.png", "sizes": "192x192" }]
     },
     {

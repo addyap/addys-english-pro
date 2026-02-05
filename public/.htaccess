@@ -89,7 +89,8 @@
   RewriteRule ^velit-et-eum-id-nobis-velit/?$ / [R=301,L]
   RewriteRule ^aut-quo-eos-qui-odit-amet/?$ / [R=301,L]
   RewriteRule ^velit-cumque-quos-harum-aut/?$ / [R=301,L]
-  RewriteRule ^jeux-anglais/?$ /anglaisadistance [R=301,L]
+  RewriteRule ^jeux-anglais/?$ /exercices [R=301,L]
+  RewriteRule ^anglaisadistance/?$ /offres-de-formation [R=301,L]
 
   # Catch-all for any /products/* routes (Shopify legacy)
   RewriteRule ^products/.*$ / [R=301,L]
