@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import { AppErrorBoundary } from "./components/AppErrorBoundary";
 import DiagnosticsPanel from "./components/DiagnosticsPanel";
@@ -150,6 +150,16 @@ export const AppRoutes = () => (
     <Route path="/admin/listening-cache" element={<ListeningAudioCacheAdmin />} />
     <Route path="/admin/seo-diagnostics" element={<SEODiagnostics />} />
     <Route path="/admin/analytics" element={<SiteAnalytics />} />
+
+    {/* Legacy/alias routes (prevent user-facing 404s from older internal links) */}
+    <Route path="/lecture" element={<Navigate to="/reading" replace />} />
+    <Route path="/listening" element={<Navigate to="/exercices/listening" replace />} />
+    <Route path="/politique-de-confidentialite" element={<Navigate to="/politique-confidentialite" replace />} />
+    <Route path="/exercices/ecoute" element={<Navigate to="/exercices/listening" replace />} />
+    <Route path="/exercices/ecoute-comprehension" element={<Navigate to="/exercices/listening" replace />} />
+    <Route path="/exercices/comprehension-ecrite" element={<Navigate to="/reading" replace />} />
+    <Route path="/exercices/ecriture" element={<Navigate to="/exercices/writing/transform/1" replace />} />
+
     <Route path="*" element={<NotFound />} />
   </Routes>
 );
