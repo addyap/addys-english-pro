@@ -22,7 +22,10 @@ function isInternal(url) {
     const url = new URL(path, BASE).toString();
     const resp = await page.goto(url, { waitUntil: "domcontentloaded" }).catch(()=>null);
     if (!resp || !resp.ok()) bad.push({ url, status: resp ? resp.status() : "NO_RESP" });
-    const links = await page.$$eval("a[href]", as => as.map(a => (a as HTMLAnchorElement).getAttribute("href")||""));
+    const links = await page.$$eval(
+      "a[href]",
+      as => as.map(a => a.getAttribute("href") || "")
+    );
     links.filter(Boolean).forEach(href => {
       if (!isInternal(href)) return;
       const u = new URL(href, BASE);
