@@ -579,10 +579,10 @@ export const grammarCategories: GrammarCategory[] = [
           },
           {
             id: 10,
-            question: "Next month, the company ___ its new product.",
+            question: "This time next month, the company ___ its new product.",
             options: ["will launch", "will be launching"],
             correctAnswer: "will be launching",
-            explanation: "Both are possible but 'will launch' is more natural for a planned event."
+            explanation: "Future Continuous with 'this time next month' for action in progress at a future point."
           }
         ]
       }
@@ -3051,10 +3051,10 @@ Ils sont suivis de la base verbale (sans "to").
           },
           {
             id: 10,
-            question: "I tried ___ the door, but it was stuck.",
+            question: "The door was stuck, so I tried ___ it harder, but nothing worked.",
             options: ["push", "pushing", "to push"],
             correctAnswer: "pushing",
-            explanation: "'Try + gerund' = experiment with a method."
+            explanation: "'Try + gerund' = experiment with a different method. The context 'nothing worked' confirms trying various approaches."
           }
         ]
       }
@@ -7913,7 +7913,7 @@ Soulignent souvent l'action ou ce dont on a besoin.
           {
             id: 9,
             question: "The reason ___ I called is to apologize.",
-            options: ["why", "that", "which"],
+            options: ["why", "what", "which"],
             correctAnswer: "why",
             explanation: "'The reason why' is the standard structure."
           },
