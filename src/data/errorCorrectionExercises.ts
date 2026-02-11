@@ -451,10 +451,10 @@ export const errorCorrectionExercises: ErrorCorrectionExercise[] = [
       {
         id: 8,
         incorrectSentence: "Each of the students have their own desk.",
-        correctSentence: "Each of the students has his or her own desk.",
-        errorType: "Agreement",
-        explanation: "'Each' is singular, requiring 'has' and singular possessive.",
-        explanationFr: "'Each' est singulier, nécessitant 'has' et un possessif singulier."
+        correctSentence: "Each of the students has their own desk.",
+        errorType: "Subject-verb agreement",
+        explanation: "'Each' is singular, requiring 'has' (not 'have'). Singular 'their' is standard modern English.",
+        explanationFr: "'Each' est singulier, nécessitant 'has' (pas 'have'). Le 'their' singulier est accepté en anglais moderne."
       },
       {
         id: 9,

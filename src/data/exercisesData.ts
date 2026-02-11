@@ -420,7 +420,7 @@ export const exercisesData: Exercise[] = [
       },
       {
         id: 3,
-        question: "She ___ English in Japan.",
+        question: "She ___ English in Japan as her full-time job.",
         options: ["learns", "teaches"],
         correctAnswer: "teaches",
         explanation: "Elle enseigne l'anglais (elle est professeur)."
@@ -1191,16 +1191,16 @@ export const exercisesData: Exercise[] = [
     title: "CHAQUE : EACH ou EVERY",
     description: "Distinguez EACH (chacun individuellement) et EVERY (tous sans exception).",
     questions: [
-      { id: 1, question: "___ student has a book.", options: ["Each", "Every"], correctAnswer: "Every", explanation: "EVERY = tous les étudiants (collectif)." },
-      { id: 2, question: "___ of them received a gift.", options: ["Each", "Every"], correctAnswer: "Each", explanation: "EACH OF + pronom." },
-      { id: 3, question: "I see her ___ day.", options: ["each", "every"], correctAnswer: "every", explanation: "EVERY day = tous les jours." },
-      { id: 4, question: "___ room is different.", options: ["Each", "Every"], correctAnswer: "Each", explanation: "EACH souligne l'individualité." },
-      { id: 5, question: "___ child needs love.", options: ["Each", "Every"], correctAnswer: "Every", explanation: "EVERY = tous les enfants en général." },
-      { id: 6, question: "I gave ___ person a copy.", options: ["each", "every"], correctAnswer: "each", explanation: "EACH = à chaque personne individuellement." },
-      { id: 7, question: "I go there ___ week.", options: ["each", "every"], correctAnswer: "every", explanation: "EVERY week = chaque semaine régulièrement." },
-      { id: 8, question: "___ of us has responsibilities.", options: ["Each", "Every"], correctAnswer: "Each", explanation: "EACH OF + pronom." },
-      { id: 9, question: "Not ___ student passed.", options: ["each", "every"], correctAnswer: "every", explanation: "NOT EVERY = pas tous." },
-      { id: 10, question: "I read ___ page carefully.", options: ["each", "every"], correctAnswer: "each", explanation: "EACH page = chaque page individuellement." }
+      { id: 1, question: "___ single student in the school has a book.", options: ["Each", "Every"], correctAnswer: "Every", explanation: "EVERY = tous sans exception (collectif, renforcé par 'single')." },
+      { id: 2, question: "___ of them received a gift.", options: ["Each", "Every"], correctAnswer: "Each", explanation: "EACH OF + pronom (seule forme grammaticalement possible)." },
+      { id: 3, question: "I see her ___ single day without exception.", options: ["each", "every"], correctAnswer: "every", explanation: "EVERY = tous les jours sans exception (renforcé par 'single')." },
+      { id: 4, question: "___ of the five rooms is painted a different colour.", options: ["Each", "Every"], correctAnswer: "Each", explanation: "EACH OF + article (seule forme grammaticalement possible ici)." },
+      { id: 5, question: "Not ___ child likes vegetables.", options: ["each", "every"], correctAnswer: "every", explanation: "NOT EVERY = pas tous (seule combinaison possible avec 'not')." },
+      { id: 6, question: "I gave ___ of the students a copy.", options: ["each", "every"], correctAnswer: "each", explanation: "EACH OF + article (seule forme grammaticalement possible)." },
+      { id: 7, question: "The bus comes ___ ten minutes.", options: ["each", "every"], correctAnswer: "every", explanation: "EVERY + durée = régularité fixe." },
+      { id: 8, question: "___ of us has responsibilities.", options: ["Each", "Every"], correctAnswer: "Each", explanation: "EACH OF + pronom (seule forme grammaticalement possible)." },
+      { id: 9, question: "Not ___ student passed the exam.", options: ["each", "every"], correctAnswer: "every", explanation: "NOT EVERY = pas tous (NOT + EACH n'est pas idiomatique)." },
+      { id: 10, question: "___ of the ten pages was checked carefully.", options: ["each", "every"], correctAnswer: "each", explanation: "EACH OF + article (seule forme grammaticalement possible)." }
     ]
   },
   {
@@ -1246,7 +1246,7 @@ export const exercisesData: Exercise[] = [
       { id: 2, question: "___ are you?", options: ["How", "What"], correctAnswer: "How", explanation: "HOW = comment vas-tu." },
       { id: 3, question: "___ do you do?", options: ["How", "What"], correctAnswer: "What", explanation: "WHAT do you do = profession." },
       { id: 4, question: "___ old are you?", options: ["How", "What"], correctAnswer: "How", explanation: "HOW old = quel âge." },
-      { id: 5, question: "___ does it cost?", options: ["How", "What"], correctAnswer: "How", explanation: "HOW much (implicite)." },
+      { id: 5, question: "___ much does it cost?", options: ["How", "What"], correctAnswer: "How", explanation: "HOW MUCH = combien ça coûte." },
       { id: 6, question: "___ time is it?", options: ["How", "What"], correctAnswer: "What", explanation: "WHAT time = quelle heure." },
       { id: 7, question: "___ do you spell it?", options: ["How", "What"], correctAnswer: "How", explanation: "HOW = de quelle manière." },
       { id: 8, question: "___ is he like?", options: ["How", "What"], correctAnswer: "What", explanation: "WHAT... like = comment est-il (description)." },
