@@ -70,7 +70,7 @@ export const prepositionExercises: PrepositionExercise[] = [
       { id: 6, sentence: "The bird flew ___ the roof.", options: ["to", "into", "onto", "at"], correctAnswer: "onto", explanation: "'Onto' indicates landing on a surface.", explanationFr: "'Onto' indique l'atterrissage sur une surface." },
       { id: 7, sentence: "I'm traveling ___ London next week.", options: ["to", "into", "onto", "at"], correctAnswer: "to", explanation: "'To' is used before destinations.", explanationFr: "'To' est utilisé avant les destinations." },
       { id: 8, sentence: "She fell ___ the pool.", options: ["to", "into", "onto", "at"], correctAnswer: "into", explanation: "'Into' indicates falling inside something.", explanationFr: "'Into' indique tomber dans quelque chose." },
-      { id: 9, sentence: "He climbed ___ the ladder.", options: ["to", "into", "onto", "at"], correctAnswer: "onto", explanation: "'Onto' is used when getting on something.", explanationFr: "'Onto' est utilisé quand on monte sur quelque chose." },
+      { id: 9, sentence: "The cat jumped ___ the shelf.", options: ["to", "into", "onto", "at"], correctAnswer: "onto", explanation: "'Onto' indicates movement to a surface.", explanationFr: "'Onto' indique un mouvement vers une surface." },
       { id: 10, sentence: "We need to get ___ the meeting room.", options: ["to", "into", "onto", "at"], correctAnswer: "to", explanation: "'To' indicates the destination.", explanationFr: "'To' indique la destination." },
     ]
   },
