@@ -1835,7 +1835,7 @@ Marketing Director`,
   },
   // B2 Upper Intermediate - Additional Exercises
   {
-    id: 'cloe-grammar-b2-2',
+    id: 'cloe-grammar-b2-3',
     title: 'Grammar: Passive Constructions',
     titleFr: 'Grammaire : Constructions passives',
     category: 'grammar',
@@ -2173,7 +2173,7 @@ Marketing Director`,
       { id: 5, type: 'fill-blank', question: 'Complete:', context: 'An independent investigation will be conducted to ensure full _____ of the findings.', correctAnswer: 'transparency', explanation: 'Committing to transparency builds stakeholder confidence.', explanationFr: 'S\'engager à la transparence renforce la confiance des parties prenantes.' },
       { id: 6, type: 'mcq', question: 'How do you announce leadership changes during a crisis?', context: '', options: ['The Board has determined that new leadership is essential to restore stakeholder confidence.', 'The CEO was fired.', 'We\'re changing management.', 'The boss is leaving.'], correctAnswer: 'The Board has determined that new leadership is essential to restore stakeholder confidence.', explanation: 'Focus on governance and confidence rather than blame.', explanationFr: 'Se concentrer sur la gouvernance et la confiance plutôt que sur le blâme.' },
       { id: 7, type: 'mcq', question: 'Which phrase maintains confidence while acknowledging challenges?', context: '', options: ['While we navigate this challenging period, our fundamental strengths remain intact.', 'Things are bad but we\'ll survive.', 'We\'re having problems.', 'It\'s difficult right now.'], correctAnswer: 'While we navigate this challenging period, our fundamental strengths remain intact.', explanation: 'Balances reality with reassurance.', explanationFr: 'Équilibre la réalité avec la réassurance.' },
-      { id: 8, type: 'fill-blank', question: 'Complete:', context: 'We have engaged external _____ to conduct a thorough review.', correctAnswer: 'counsel', explanation: '"External counsel" refers to outside legal/advisory support.', explanationFr: '"External counsel" désigne le soutien juridique/consultatif externe.' }
+      { id: 8, type: 'mcq', question: 'Complete:', context: 'We have engaged external _____ to conduct a thorough review.', options: ['counsel', 'staff', 'customers', 'media'], correctAnswer: 'counsel', explanation: '"External counsel" refers to outside legal/advisory support.', explanationFr: '"External counsel" désigne le soutien juridique/consultatif externe.' }
     ]
   },
   {
