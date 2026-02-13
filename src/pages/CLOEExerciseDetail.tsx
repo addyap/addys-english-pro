@@ -71,12 +71,18 @@ const CLOEExerciseDetail = () => {
   const correctCount = Object.values(questionStates).filter(s => s.correct).length;
   const progress = (answeredCount / totalQuestions) * 100;
 
+  // Normalize answer: trim whitespace, strip trailing punctuation (., !, ?)
+  const normalizeAnswer = (text: string): string => {
+    return text.trim().replace(/[.!?]+$/, '').trim().toLowerCase();
+  };
+
   const handleAnswer = (answer: string) => {
     if (questionStates[currentQuestion.id]?.answered) return;
 
+    const normalizedUserAnswer = normalizeAnswer(answer);
     const isCorrect = Array.isArray(currentQuestion.correctAnswer)
-      ? currentQuestion.correctAnswer.some(a => a.toLowerCase() === answer.toLowerCase())
-      : currentQuestion.correctAnswer.toLowerCase() === answer.toLowerCase();
+      ? currentQuestion.correctAnswer.some(a => normalizeAnswer(a) === normalizedUserAnswer)
+      : normalizeAnswer(currentQuestion.correctAnswer) === normalizedUserAnswer;
 
     setQuestionStates(prev => ({
       ...prev,
@@ -342,6 +348,53 @@ const CLOEExerciseDetail = () => {
                   {currentState?.answered && !currentState.correct && (
                     <p className="text-sm text-muted-foreground">
                       Réponse correcte : <span className="font-semibold text-green-600">{currentQuestion.correctAnswer}</span>
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {/* Sentence Order Type */}
+              {currentQuestion.type === 'sentence-order' && (
+                <div className="space-y-4">
+                  {currentQuestion.context && (
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {currentQuestion.context.split(' / ').map((word, i) => (
+                        <Badge key={i} variant="outline" className="text-sm px-3 py-1">{word}</Badge>
+                      ))}
+                    </div>
+                  )}
+                  <div className="flex gap-2">
+                    <Input 
+                      placeholder="Réorganisez les mots pour former une phrase..."
+                      disabled={currentState?.answered}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          handleAnswer((e.target as HTMLInputElement).value);
+                        }
+                      }}
+                      className={currentState?.answered 
+                        ? currentState.correct 
+                          ? 'border-green-500 bg-green-50 dark:bg-green-900/20' 
+                          : 'border-red-500 bg-red-50 dark:bg-red-900/20'
+                        : ''
+                      }
+                    />
+                    {!currentState?.answered && (
+                      <Button onClick={(e) => {
+                        const input = (e.target as HTMLElement).parentElement?.querySelector('input');
+                        if (input) handleAnswer(input.value);
+                      }}>
+                        Vérifier
+                      </Button>
+                    )}
+                  </div>
+                  {currentState?.answered && !currentState.correct && (
+                    <p className="text-sm text-muted-foreground">
+                      Réponse correcte : <span className="font-semibold text-green-600">
+                        {Array.isArray(currentQuestion.correctAnswer) 
+                          ? currentQuestion.correctAnswer[0] 
+                          : currentQuestion.correctAnswer}
+                      </span>
                     </p>
                   )}
                 </div>
