@@ -71,9 +71,17 @@ const CLOEExerciseDetail = () => {
   const correctCount = Object.values(questionStates).filter(s => s.correct).length;
   const progress = (answeredCount / totalQuestions) * 100;
 
-  // Normalize answer: trim whitespace, strip trailing punctuation (., !, ?)
+  // Normalize answer: trim whitespace, collapse spaces, normalize apostrophes,
+  // strip trailing punctuation (., !, ?) and lowercase for comparison
   const normalizeAnswer = (text: string): string => {
-    return text.trim().replace(/[.!?]+$/, '').trim().toLowerCase();
+    return text
+      .trim()
+      .replace(/[\u2018\u2019\u2032\u0060]/g, "'") // smart/curly apostrophes → straight
+      .replace(/[\u201C\u201D]/g, '"') // smart quotes → straight
+      .replace(/\s+/g, ' ') // collapse multiple spaces
+      .replace(/[.!?]+$/, '') // strip trailing punctuation
+      .trim()
+      .toLowerCase();
   };
 
   const handleAnswer = (answer: string) => {
