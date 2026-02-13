@@ -371,11 +371,11 @@ const Home = () => {
             {/* Stats row */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/20 hover:border-yellow-500/40 transition-colors group">
-                <p className="text-4xl font-bold text-yellow-400 mb-1 group-hover:scale-110 transition-transform">55+</p>
-                <p className="text-indigo-200 text-sm">Exercices écrits</p>
+              <p className="text-4xl font-bold text-yellow-400 mb-1 group-hover:scale-110 transition-transform">90+</p>
+                <p className="text-indigo-200 text-sm">Exercices</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/20 hover:border-yellow-500/40 transition-colors group">
-                <p className="text-4xl font-bold text-yellow-400 mb-1 group-hover:scale-110 transition-transform">380+</p>
+              <p className="text-4xl font-bold text-yellow-400 mb-1 group-hover:scale-110 transition-transform">620+</p>
                 <p className="text-indigo-200 text-sm">Questions</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/20 hover:border-yellow-500/40 transition-colors group">
@@ -383,7 +383,7 @@ const Home = () => {
                 <p className="text-indigo-200 text-sm">Compétences</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/20 hover:border-yellow-500/40 transition-colors group">
-                <p className="text-4xl font-bold text-yellow-400 mb-1 group-hover:scale-110 transition-transform">A1→C1</p>
+              <p className="text-4xl font-bold text-yellow-400 mb-1 group-hover:scale-110 transition-transform">A1→C2</p>
                 <p className="text-indigo-200 text-sm">Tous niveaux</p>
               </div>
             </div>
@@ -697,7 +697,7 @@ const Home = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-foreground mb-3">Dernière mise à jour</h3>
-                <p className="text-muted-foreground">Janvier 2026</p>
+                <p className="text-muted-foreground">Février 2026</p>
                 <p className="text-xs text-muted-foreground mt-2">
                   Contenu créé par <a href="https://www.linkedin.com/in/antonyaddy/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Antony Addy</a>, formateur certifié FPA.
                 </p>
