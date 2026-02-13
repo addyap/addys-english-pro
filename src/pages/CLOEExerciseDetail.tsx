@@ -286,8 +286,8 @@ const CLOEExerciseDetail = () => {
               )}
             </CardHeader>
             <CardContent className="space-y-4">
-              {/* MCQ Type */}
-              {currentQuestion.type === 'mcq' && currentQuestion.options && (() => {
+              {/* MCQ Type (also handles listening questions which have the same structure) */}
+              {(currentQuestion.type === 'mcq' || currentQuestion.type === 'listening') && currentQuestion.options && (() => {
                 // Shuffle options using question ID as seed for consistency
                 const shuffledOptions = seededShuffle(currentQuestion.options, currentQuestion.id);
                 return (

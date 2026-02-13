@@ -195,15 +195,27 @@ export function CLOEPracticeTest() {
     return seededShuffle(currentQuestion.options, testSeed + currentIndex);
   }, [currentQuestion, testSeed, currentIndex]);
 
+  // Normalize answer: trim, collapse spaces, normalize apostrophes, strip trailing punctuation
+  const normalizeAnswer = (text: string): string => {
+    return text
+      .trim()
+      .replace(/[\u2018\u2019\u2032\u0060]/g, "'")
+      .replace(/[\u201C\u201D]/g, '"')
+      .replace(/\s+/g, ' ')
+      .replace(/[.!?]+$/, '')
+      .trim()
+      .toLowerCase();
+  };
+
   const submitAnswer = () => {
     if (!currentQuestion) return;
     
     const answer = currentQuestion.type === 'fill-blank' ? fillAnswer.trim() : selectedAnswer;
-    const correctAnswer = Array.isArray(currentQuestion.correctAnswer) 
-      ? currentQuestion.correctAnswer[0] 
-      : currentQuestion.correctAnswer;
+    const normalizedUserAnswer = normalizeAnswer(answer);
     
-    const isCorrect = answer.toLowerCase() === correctAnswer.toLowerCase();
+    const isCorrect = Array.isArray(currentQuestion.correctAnswer)
+      ? currentQuestion.correctAnswer.some(a => normalizeAnswer(a) === normalizedUserAnswer)
+      : normalizeAnswer(currentQuestion.correctAnswer) === normalizedUserAnswer;
     const timeSpent = (Date.now() - questionStartTime) / 1000;
     
     const result: TestResult = {

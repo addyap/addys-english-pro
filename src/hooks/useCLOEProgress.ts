@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useLocalStorage } from './useLocalStorage';
+import { cloeExercises } from '@/data/cloeExercises';
 
 export interface CLOEResult {
   exerciseId: string;
@@ -79,9 +80,11 @@ export function useCLOEProgress() {
     });
 
     const byCategory: CLOEProgressStats['byCategory'] = {};
-    const categoryTotals: Record<string, number> = {
-      vocabulary: 15, grammar: 10, expressions: 7, reading: 5, listening: 5
-    };
+    // Dynamically count exercises per category from actual data
+    const categoryTotals: Record<string, number> = {};
+    cloeExercises.forEach(ex => {
+      categoryTotals[ex.category] = (categoryTotals[ex.category] || 0) + 1;
+    });
     
     Object.entries(categoryStats).forEach(([cat, data]) => {
       byCategory[cat] = {
