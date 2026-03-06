@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      conversation_sessions: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          feedback: Json | null
+          id: string
+          messages: Json
+          scenario: string
+          session_id: string | null
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          feedback?: Json | null
+          id?: string
+          messages?: Json
+          scenario: string
+          session_id?: string | null
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          feedback?: Json | null
+          id?: string
+          messages?: Json
+          scenario?: string
+          session_id?: string | null
+        }
+        Relationships: []
+      }
       page_views: {
         Row: {
           country: string | null
