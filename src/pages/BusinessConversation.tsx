@@ -260,7 +260,7 @@ const BusinessConversation: React.FC = () => {
         <SEOHead
           title="AI Business Conversation Trainer | Antony Addy"
           description="Practice professional English conversations with an AI partner. Choose a business scenario and get instant feedback on fluency, grammar, vocabulary and professional tone."
-          path="/conversation-trainer"
+          canonicalUrl="https://www.antonyaddy.com/conversation-trainer"
           keywords={["business English", "conversation practice", "professional English", "AI trainer"]}
         />
         <div className="min-h-[80vh] flex flex-col items-center justify-center px-4 py-12">
