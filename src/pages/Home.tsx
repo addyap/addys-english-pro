@@ -439,7 +439,42 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Interactive Exercises Section - ENGAGING & VALUE-FOCUSED */}
+        {/* AI Conversation Trainer CTA */}
+        <section className="py-16 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 relative overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-10 right-[15%] w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 left-[10%] w-48 h-48 bg-primary/8 rounded-full blur-3xl" />
+          </div>
+          <div className="max-w-4xl mx-auto px-4 relative z-10">
+            <div className="bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/20 p-8 md:p-10 flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-1 space-y-4 text-center md:text-left">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold">
+                  <Sparkles className="w-4 h-4" />
+                  Nouveau — IA Conversationnelle
+                </div>
+                <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
+                  Entraînez-vous à parler anglais professionnel
+                </h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  Pratiquez des conversations réalistes avec un partenaire IA : accueil client, réunion, réclamation, networking. 
+                  Recevez un feedback détaillé sur votre aisance, grammaire, vocabulaire et ton professionnel.
+                </p>
+                <Link
+                  to="/conversation-trainer"
+                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold hover:bg-primary/90 transition-all hover:scale-105 shadow-lg shadow-primary/20"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Essayer gratuitement
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+              <div className="shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <MessageCircle className="w-16 h-16 md:w-20 md:h-20 text-primary/60" />
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
           {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden">
