@@ -7,19 +7,16 @@ const corsHeaders = {
 };
 
 const SCENARIOS: Record<string, string> = {
-  // Business English
   "meeting-client": `You are Sarah Mitchell, Director of Operations at a logistics company. You're meeting the user for the first time to discuss English training for your team.`,
   "negotiating-price": `You are Daniel Harris, procurement manager at a retail company. You're negotiating the price of a training package with the user. Push for a better deal but stay professional.`,
   "small-talk": `You are Marie Dupont, a colleague waiting for a meeting to start. Make natural small talk about the weather, weekend plans, or office topics.`,
   "presenting-product": `You are a potential buyer named Laura Chen attending a product presentation. Ask questions about features, benefits, pricing, and delivery timelines.`,
   "handling-complaint": `You are David Chen, an unhappy client. Your company ordered a training programme that started late and materials were incomplete. Be firm but professional.`,
-  // Professional Communication
   "job-interview": `You are an HR manager named Rachel Adams conducting a job interview. Ask standard interview questions about experience, strengths, and motivation.`,
   "project-update": `You are a senior manager named Tom Bradley. The user is giving you a project status update. Ask about progress, deadlines, risks, and next steps.`,
   "asking-clarification": `You are a colleague named Sophie Laurent who just gave a briefing. The user wants to ask you clarification questions. Answer clearly and check their understanding.`,
   "networking-event": `You are Alex Rivera, a marketing manager at a tech startup, attending a networking event. Be curious about what the user does.`,
   "telephone-followup": `You are James Porter, a client the user spoke to last week. You're on a phone call to follow up on a proposal. Ask about details, timelines, and costs.`,
-  // Everyday Professional English
   "talking-about-job": `You are a new colleague named Emma Wilson. Ask the user about their job, what they do daily, and what they enjoy about their work.`,
   "talking-responsibilities": `You are a team lead named Mark Stevens onboarding the user. Ask about their responsibilities, team structure, and how they organise their work.`,
   "travel-for-work": `You are a colleague named Lisa Park chatting at the airport before a business trip. Talk about travel plans, destinations, and work travel experiences.`,
@@ -44,7 +41,7 @@ const MODE_INSTRUCTIONS: Record<string, string> = {
 - Number each question clearly (Question 1/5, Question 2/5, etc.)
 - Do NOT coach, help, or encourage during the conversation
 - Maintain a formal, professional tone
-- After Question 5, say: "Thank you. This concludes the assessment."
+- After Question 5 and the user's answer, say exactly: "Thank you. This concludes the assessment."
 - Keep each question under 30 words`,
 };
 
@@ -93,7 +90,8 @@ serve(async (req) => {
         .map((m: { role: string; content: string }) => `${m.role}: ${m.content}`)
         .join("\n");
 
-      const feedbackPrompt = FEEDBACK_PROMPT_BASE + FEEDBACK_SCHEMAS[feedbackMode] || FEEDBACK_SCHEMAS["practice"];
+      const feedbackSchema = FEEDBACK_SCHEMAS[feedbackMode] || FEEDBACK_SCHEMAS["practice"];
+      const feedbackPrompt = FEEDBACK_PROMPT_BASE + feedbackSchema;
 
       const response = await fetch(
         "https://ai.gateway.lovable.dev/v1/chat/completions",

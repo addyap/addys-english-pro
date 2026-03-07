@@ -119,16 +119,35 @@ const MODES: { id: Mode; label: string; description: string; icon: React.Element
   },
 ];
 
+const EXAM_MAX_QUESTIONS = 5;
 const MIN_TURNS_FOR_FEEDBACK = 3;
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/business-chat`;
 
-// Find scenario label from categories
 function getScenarioMeta(scenarioId: string) {
   for (const cat of CATEGORIES) {
     const s = cat.scenarios.find(sc => sc.id === scenarioId);
     if (s) return { ...s, category: cat };
   }
   return null;
+}
+
+/**
+ * Count real learner turns, excluding the initial bootstrap "Hello." message.
+ * The first user message is always "Hello." used to start the AI — we skip it.
+ */
+function countRealUserTurns(msgs: Msg[]): number {
+  let count = 0;
+  let skippedFirst = false;
+  for (const m of msgs) {
+    if (m.role === "user") {
+      if (!skippedFirst) {
+        skippedFirst = true;
+        continue; // skip the bootstrap "Hello."
+      }
+      count++;
+    }
+  }
+  return count;
 }
 
 const BusinessConversation: React.FC = () => {
@@ -140,17 +159,40 @@ const BusinessConversation: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [isFeedbackLoading, setIsFeedbackLoading] = useState(false);
-  const [sessionId] = useState(() => crypto.randomUUID());
+  const [sessionId, setSessionId] = useState(() => crypto.randomUUID());
+  const [examComplete, setExamComplete] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  // Ref to prevent double-triggering auto-feedback in exam mode
+  const examFeedbackTriggeredRef = useRef(false);
 
-  const userTurnCount = messages.filter(m => m.role === "user").length;
+  const realUserTurns = countRealUserTurns(messages);
 
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages]);
+
+  // Exam mode: auto-trigger feedback after user answers question 5
+  useEffect(() => {
+    if (
+      mode === "exam" &&
+      realUserTurns >= EXAM_MAX_QUESTIONS &&
+      !feedback &&
+      !isFeedbackLoading &&
+      !examComplete &&
+      !examFeedbackTriggeredRef.current
+    ) {
+      examFeedbackTriggeredRef.current = true;
+      setExamComplete(true);
+      // Small delay to let the last AI response stream in
+      const timer = setTimeout(() => {
+        triggerFeedback();
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [realUserTurns, mode, feedback, isFeedbackLoading, examComplete]);
 
   const selectScenario = (scenarioId: string) => {
     setScenario(scenarioId);
@@ -163,9 +205,14 @@ const BusinessConversation: React.FC = () => {
   };
 
   const startConversation = useCallback(async (scenarioId: string, selectedMode: Mode) => {
+    // Fresh session ID for each new conversation
+    const newSessionId = crypto.randomUUID();
+    setSessionId(newSessionId);
     setStep("chat");
     setMessages([]);
     setFeedback(null);
+    setExamComplete(false);
+    examFeedbackTriggeredRef.current = false;
     setIsLoading(true);
 
     try {
@@ -231,13 +278,20 @@ const BusinessConversation: React.FC = () => {
 
   const sendMessage = useCallback(async () => {
     if (!input.trim() || isLoading || !scenario) return;
+    // Block sending if exam is complete
+    if (mode === "exam" && examComplete) return;
 
     const userMsg: Msg = { role: "user", content: input.trim() };
     const updatedMessages = [...messages, userMsg];
     setMessages(updatedMessages);
     setInput("");
-    setIsLoading(true);
 
+    // In exam mode, check if this was the last allowed answer
+    const newRealTurns = countRealUserTurns(updatedMessages);
+    const isLastExamAnswer = mode === "exam" && newRealTurns >= EXAM_MAX_QUESTIONS;
+
+    // If this is the last exam answer, still send to get AI's closing response, then auto-end
+    setIsLoading(true);
     let assistantSoFar = "";
 
     try {
@@ -292,12 +346,25 @@ const BusinessConversation: React.FC = () => {
       toast.error(e.message || "Failed to send message");
     } finally {
       setIsLoading(false);
-      inputRef.current?.focus();
+      if (!isLastExamAnswer) {
+        inputRef.current?.focus();
+      }
     }
-  }, [input, isLoading, scenario, messages, mode]);
+  }, [input, isLoading, scenario, messages, mode, examComplete]);
 
-  const requestFeedback = useCallback(async () => {
-    if (messages.length < 2) return;
+  const triggerFeedback = useCallback(async () => {
+    // Use latest messages from state via functional ref pattern
+    setIsFeedbackLoading(true);
+
+    // We need latest messages — use a small trick: read from DOM-adjacent state
+    // Actually we call this from useEffect which has access to `messages` via closure
+    // But since this is called via setTimeout, we use a ref approach
+  }, []);
+
+  // The actual feedback request — using messages from state at call time
+  const requestFeedback = useCallback(async (msgsOverride?: Msg[]) => {
+    const msgsToUse = msgsOverride || messages;
+    if (msgsToUse.length < 2) return;
     setIsFeedbackLoading(true);
 
     try {
@@ -307,7 +374,7 @@ const BusinessConversation: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages, action: "feedback", mode }),
+        body: JSON.stringify({ messages: msgsToUse, action: "feedback", mode }),
       });
 
       if (!resp.ok) {
@@ -318,10 +385,11 @@ const BusinessConversation: React.FC = () => {
       const data = await resp.json();
       setFeedback(data.feedback);
 
-      // Save to DB
+      // Save to DB with mode
       await supabase.from("conversation_sessions" as any).insert({
         scenario,
-        messages: JSON.stringify(messages),
+        mode,
+        messages: JSON.stringify(msgsToUse),
         feedback: JSON.stringify(data.feedback),
         session_id: sessionId,
         completed_at: new Date().toISOString(),
@@ -333,7 +401,25 @@ const BusinessConversation: React.FC = () => {
     }
   }, [messages, scenario, sessionId, mode]);
 
+  // Replace the stub triggerFeedback with one that uses current messages
+  // We use useEffect to auto-trigger for exam, and manual button for others
+  // For exam auto-trigger, we need a stable ref to messages
+  const messagesRef = useRef(messages);
+  messagesRef.current = messages;
+
+  // Actual exam auto-feedback trigger (called from useEffect timeout)
+  useEffect(() => {
+    if (examComplete && isFeedbackLoading === false && feedback === null && examFeedbackTriggeredRef.current) {
+      // Only trigger once when examComplete first becomes true
+      const shouldTrigger = messagesRef.current.length >= 2;
+      if (shouldTrigger) {
+        requestFeedback(messagesRef.current);
+      }
+    }
+  }, [examComplete]);
+
   const endConversation = useCallback(() => {
+    setExamComplete(true);
     requestFeedback();
   }, [requestFeedback]);
 
@@ -344,6 +430,8 @@ const BusinessConversation: React.FC = () => {
     setMessages([]);
     setFeedback(null);
     setInput("");
+    setExamComplete(false);
+    examFeedbackTriggeredRef.current = false;
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -352,6 +440,15 @@ const BusinessConversation: React.FC = () => {
       sendMessage();
     }
   };
+
+  // Whether input should be disabled
+  const inputDisabled = isLoading || !!feedback || (mode === "exam" && examComplete);
+
+  // Whether the "End & Get Feedback" button should show
+  const canEndConversation = realUserTurns >= MIN_TURNS_FOR_FEEDBACK && !feedback && !examComplete;
+
+  // Exam progress indicator
+  const examProgress = mode === "exam" ? Math.min(realUserTurns, EXAM_MAX_QUESTIONS) : 0;
 
   const ScoreBar = ({ score, label, comment }: { score: number; label: string; comment: string }) => (
     <div className="space-y-1.5">
@@ -493,12 +590,18 @@ const BusinessConversation: React.FC = () => {
               <currentMode.icon className="w-3.5 h-3.5 mr-1" />
               {currentMode.label}
             </Badge>
-            <Badge variant="secondary" className="text-xs">
-              {userTurnCount} turn{userTurnCount !== 1 ? "s" : ""}
-            </Badge>
+            {mode === "exam" ? (
+              <Badge variant="secondary" className="text-xs">
+                Question {examProgress}/{EXAM_MAX_QUESTIONS}
+              </Badge>
+            ) : (
+              <Badge variant="secondary" className="text-xs">
+                {realUserTurns} turn{realUserTurns !== 1 ? "s" : ""}
+              </Badge>
+            )}
           </div>
           <div className="flex gap-2">
-            {userTurnCount >= MIN_TURNS_FOR_FEEDBACK && !feedback && (
+            {canEndConversation && (
               <Button
                 size="sm"
                 onClick={endConversation}
@@ -509,12 +612,23 @@ const BusinessConversation: React.FC = () => {
                 End & Get Feedback
               </Button>
             )}
+            {isFeedbackLoading && examComplete && (
+              <Badge variant="secondary" className="text-xs flex items-center gap-1">
+                <Loader2 className="w-3 h-3 animate-spin" />
+                Generating feedback…
+              </Badge>
+            )}
             <Button size="sm" variant="outline" onClick={resetConversation} className="gap-1.5">
               <RotateCcw className="w-3.5 h-3.5" />
               New
             </Button>
           </div>
         </div>
+
+        {/* Exam progress bar */}
+        {mode === "exam" && !feedback && (
+          <Progress value={(examProgress / EXAM_MAX_QUESTIONS) * 100} className="h-1.5" />
+        )}
 
         {/* Chat */}
         <Card className="border overflow-hidden">
@@ -548,15 +662,15 @@ const BusinessConversation: React.FC = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Type your reply in English…"
+                placeholder={inputDisabled && examComplete ? "Exam complete — generating feedback…" : "Type your reply in English…"}
                 className="min-h-[44px] max-h-[120px] resize-none text-sm border-0 focus-visible:ring-0 shadow-none p-2"
-                disabled={isLoading}
+                disabled={inputDisabled}
                 rows={1}
               />
               <Button
                 size="icon"
                 onClick={sendMessage}
-                disabled={!input.trim() || isLoading}
+                disabled={!input.trim() || inputDisabled}
                 className="shrink-0 h-10 w-10"
               >
                 <Send className="w-4 h-4" />
@@ -667,9 +781,9 @@ const BusinessConversation: React.FC = () => {
         )}
 
         {/* Hint */}
-        {!feedback && userTurnCount > 0 && userTurnCount < MIN_TURNS_FOR_FEEDBACK && (
+        {!feedback && !examComplete && realUserTurns > 0 && realUserTurns < MIN_TURNS_FOR_FEEDBACK && mode !== "exam" && (
           <p className="text-center text-xs text-muted-foreground">
-            Continue the conversation ({MIN_TURNS_FOR_FEEDBACK - userTurnCount} more turn{MIN_TURNS_FOR_FEEDBACK - userTurnCount !== 1 ? "s" : ""} needed for feedback)
+            Continue the conversation ({MIN_TURNS_FOR_FEEDBACK - realUserTurns} more turn{MIN_TURNS_FOR_FEEDBACK - realUserTurns !== 1 ? "s" : ""} needed for feedback)
           </p>
         )}
       </div>
