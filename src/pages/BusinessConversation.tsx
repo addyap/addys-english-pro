@@ -9,34 +9,132 @@ import SEOHead from "@/components/SEOHead";
 import { supabase } from "@/integrations/supabase/client";
 import {
   MessageCircle, Send, RotateCcw, Award, Briefcase, Users,
-  ShieldAlert, Coffee, Handshake, Loader2, ChevronRight
+  ShieldAlert, Coffee, Handshake, Loader2, ChevronRight,
+  Phone, Mic, Building2, Globe, UserCheck, ClipboardList,
+  HelpCircle, Presentation, DollarSign, BookOpen, Target, GraduationCap,
+  CheckCircle2, AlertTriangle, Lightbulb, ArrowLeft, Square
 } from "lucide-react";
 import { toast } from "sonner";
 
 type Msg = { role: "user" | "assistant"; content: string };
+
+interface Correction {
+  wrong: string;
+  correct: string;
+  explanation: string;
+}
 
 interface Feedback {
   fluency: { score: number; comment: string };
   grammar: { score: number; comment: string };
   vocabulary: { score: number; comment: string };
   tone: { rating: string; comment: string };
+  corrections?: Correction[];
+  suggestions?: string[];
+  overallLevel?: string;
+  strengths?: string;
+  needsImprovement?: string;
   overall: string;
 }
 
-const SCENARIOS = [
-  { id: "meeting-client", label: "Meeting a New Client", icon: Briefcase, color: "bg-blue-500/10 text-blue-700 border-blue-200" },
-  { id: "welcoming-customer", label: "Welcoming a Customer", icon: Users, color: "bg-green-500/10 text-green-700 border-green-200" },
-  { id: "handling-complaint", label: "Handling a Complaint", icon: ShieldAlert, color: "bg-red-500/10 text-red-700 border-red-200" },
-  { id: "small-talk", label: "Small Talk Before a Meeting", icon: Coffee, color: "bg-amber-500/10 text-amber-700 border-amber-200" },
-  { id: "networking", label: "Networking at a Trade Fair", icon: Handshake, color: "bg-purple-500/10 text-purple-700 border-purple-200" },
+type Mode = "practice" | "challenge" | "exam";
+
+interface ScenarioItem {
+  id: string;
+  label: string;
+  icon: React.ElementType;
+}
+
+interface Category {
+  id: string;
+  label: string;
+  icon: React.ElementType;
+  color: string;
+  scenarios: ScenarioItem[];
+}
+
+const CATEGORIES: Category[] = [
+  {
+    id: "business",
+    label: "Business English",
+    icon: Briefcase,
+    color: "bg-blue-500/10 text-blue-700 border-blue-200 dark:text-blue-400 dark:border-blue-800",
+    scenarios: [
+      { id: "meeting-client", label: "Meeting a New Client", icon: Users },
+      { id: "negotiating-price", label: "Negotiating a Price", icon: DollarSign },
+      { id: "small-talk", label: "Small Talk Before a Meeting", icon: Coffee },
+      { id: "presenting-product", label: "Presenting a Product", icon: Presentation },
+      { id: "handling-complaint", label: "Handling a Complaint", icon: ShieldAlert },
+    ],
+  },
+  {
+    id: "professional",
+    label: "Professional Communication",
+    icon: ClipboardList,
+    color: "bg-emerald-500/10 text-emerald-700 border-emerald-200 dark:text-emerald-400 dark:border-emerald-800",
+    scenarios: [
+      { id: "job-interview", label: "Job Interview", icon: UserCheck },
+      { id: "project-update", label: "Giving a Project Update", icon: ClipboardList },
+      { id: "asking-clarification", label: "Asking for Clarification", icon: HelpCircle },
+      { id: "networking-event", label: "Networking Event", icon: Handshake },
+      { id: "telephone-followup", label: "Telephone Follow-up", icon: Phone },
+    ],
+  },
+  {
+    id: "everyday",
+    label: "Everyday Professional English",
+    icon: Globe,
+    color: "bg-amber-500/10 text-amber-700 border-amber-200 dark:text-amber-400 dark:border-amber-800",
+    scenarios: [
+      { id: "talking-about-job", label: "Talking About Your Job", icon: Mic },
+      { id: "talking-responsibilities", label: "Talking About Responsibilities", icon: ClipboardList },
+      { id: "travel-for-work", label: "Travel for Work", icon: Globe },
+      { id: "introducing-yourself", label: "Introducing Yourself", icon: Users },
+      { id: "describing-company", label: "Describing Your Company", icon: Building2 },
+    ],
+  },
+];
+
+const MODES: { id: Mode; label: string; description: string; icon: React.ElementType; color: string }[] = [
+  {
+    id: "practice",
+    label: "Practice",
+    description: "Supportive training with guidance and encouragement",
+    icon: BookOpen,
+    color: "bg-emerald-500/10 text-emerald-700 border-emerald-300 dark:text-emerald-400 dark:border-emerald-800",
+  },
+  {
+    id: "challenge",
+    label: "Challenge",
+    description: "Realistic interaction — more demanding, less help",
+    icon: Target,
+    color: "bg-amber-500/10 text-amber-700 border-amber-300 dark:text-amber-400 dark:border-amber-800",
+  },
+  {
+    id: "exam",
+    label: "Exam",
+    description: "5-question structured assessment with CEFR level",
+    icon: GraduationCap,
+    color: "bg-red-500/10 text-red-700 border-red-300 dark:text-red-400 dark:border-red-800",
+  },
 ];
 
 const MIN_TURNS_FOR_FEEDBACK = 3;
-
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/business-chat`;
+
+// Find scenario label from categories
+function getScenarioMeta(scenarioId: string) {
+  for (const cat of CATEGORIES) {
+    const s = cat.scenarios.find(sc => sc.id === scenarioId);
+    if (s) return { ...s, category: cat };
+  }
+  return null;
+}
 
 const BusinessConversation: React.FC = () => {
   const [scenario, setScenario] = useState<string | null>(null);
+  const [mode, setMode] = useState<Mode>("practice");
+  const [step, setStep] = useState<"scenario" | "mode" | "chat">("scenario");
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -48,21 +146,29 @@ const BusinessConversation: React.FC = () => {
 
   const userTurnCount = messages.filter(m => m.role === "user").length;
 
-  // Auto-scroll
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages]);
 
-  const startConversation = useCallback(async (scenarioId: string) => {
+  const selectScenario = (scenarioId: string) => {
     setScenario(scenarioId);
+    setStep("mode");
+  };
+
+  const selectMode = (m: Mode) => {
+    setMode(m);
+    startConversation(scenario!, m);
+  };
+
+  const startConversation = useCallback(async (scenarioId: string, selectedMode: Mode) => {
+    setStep("chat");
     setMessages([]);
     setFeedback(null);
     setIsLoading(true);
 
     try {
-      // Send an initial empty user message to get the AI to start
       const initMessages: Msg[] = [{ role: "user", content: "Hello." }];
       let assistantSoFar = "";
 
@@ -72,7 +178,7 @@ const BusinessConversation: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: initMessages, scenario: scenarioId }),
+        body: JSON.stringify({ messages: initMessages, scenario: scenarioId, mode: selectedMode }),
       });
 
       if (!resp.ok || !resp.body) {
@@ -84,11 +190,10 @@ const BusinessConversation: React.FC = () => {
       const decoder = new TextDecoder();
       let buffer = "";
 
-      const initialMessages: Msg[] = [
+      setMessages([
         { role: "user", content: "Hello." },
         { role: "assistant", content: "" },
-      ];
-      setMessages(initialMessages);
+      ]);
 
       while (true) {
         const { done, value } = await reader.read();
@@ -142,7 +247,7 @@ const BusinessConversation: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: updatedMessages, scenario }),
+        body: JSON.stringify({ messages: updatedMessages, scenario, mode }),
       });
 
       if (!resp.ok || !resp.body) {
@@ -189,7 +294,7 @@ const BusinessConversation: React.FC = () => {
       setIsLoading(false);
       inputRef.current?.focus();
     }
-  }, [input, isLoading, scenario, messages]);
+  }, [input, isLoading, scenario, messages, mode]);
 
   const requestFeedback = useCallback(async () => {
     if (messages.length < 2) return;
@@ -202,7 +307,7 @@ const BusinessConversation: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages, action: "feedback" }),
+        body: JSON.stringify({ messages, action: "feedback", mode }),
       });
 
       if (!resp.ok) {
@@ -226,10 +331,16 @@ const BusinessConversation: React.FC = () => {
     } finally {
       setIsFeedbackLoading(false);
     }
-  }, [messages, scenario, sessionId]);
+  }, [messages, scenario, sessionId, mode]);
+
+  const endConversation = useCallback(() => {
+    requestFeedback();
+  }, [requestFeedback]);
 
   const resetConversation = () => {
     setScenario(null);
+    setMode("practice");
+    setStep("scenario");
     setMessages([]);
     setFeedback(null);
     setInput("");
@@ -253,19 +364,23 @@ const BusinessConversation: React.FC = () => {
     </div>
   );
 
-  // Scenario selection screen
-  if (!scenario) {
+  const seoHead = (
+    <SEOHead
+      title="AI Business Conversation Trainer | Antony Addy"
+      description="Practice professional English conversations with an AI partner. Choose a business scenario and get instant feedback on fluency, grammar, vocabulary and professional tone."
+      canonicalUrl="https://www.antonyaddy.com/conversation-trainer"
+      keywords={["business English", "conversation practice", "professional English", "AI trainer"]}
+    />
+  );
+
+  // ─── STEP 1: Scenario selection ───
+  if (step === "scenario") {
     return (
       <>
-        <SEOHead
-          title="AI Business Conversation Trainer | Antony Addy"
-          description="Practice professional English conversations with an AI partner. Choose a business scenario and get instant feedback on fluency, grammar, vocabulary and professional tone."
-          canonicalUrl="https://www.antonyaddy.com/conversation-trainer"
-          keywords={["business English", "conversation practice", "professional English", "AI trainer"]}
-        />
+        {seoHead}
         <div className="min-h-[80vh] flex flex-col items-center justify-center px-4 py-12">
-          <div className="max-w-2xl w-full text-center space-y-8">
-            <div className="space-y-3">
+          <div className="max-w-3xl w-full space-y-8">
+            <div className="text-center space-y-3">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
                 <MessageCircle className="w-4 h-4" />
                 AI Conversation Trainer
@@ -274,20 +389,80 @@ const BusinessConversation: React.FC = () => {
                 Practice Business English
               </h1>
               <p className="text-muted-foreground text-lg max-w-lg mx-auto">
-                Choose a professional scenario below and have a realistic conversation with an AI partner. Get detailed feedback when you're done.
+                Choose a professional scenario and have a realistic conversation with an AI partner. Get detailed coaching feedback when you're done.
               </p>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              {SCENARIOS.map((s) => (
+            <div className="space-y-6">
+              {CATEGORIES.map((cat) => (
+                <div key={cat.id} className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <cat.icon className="w-5 h-5 text-muted-foreground" />
+                    <h2 className="font-heading font-semibold text-foreground">{cat.label}</h2>
+                  </div>
+                  <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                    {cat.scenarios.map((s) => (
+                      <button
+                        key={s.id}
+                        onClick={() => selectScenario(s.id)}
+                        className={`group flex items-center gap-3 p-3.5 rounded-xl border text-left transition-all hover:shadow-md hover:scale-[1.02] ${cat.color}`}
+                      >
+                        <s.icon className="w-4.5 h-4.5 shrink-0" />
+                        <span className="font-medium text-sm flex-1">{s.label}</span>
+                        <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  // ─── STEP 2: Mode selection ───
+  if (step === "mode") {
+    const meta = getScenarioMeta(scenario!);
+    return (
+      <>
+        {seoHead}
+        <div className="min-h-[80vh] flex flex-col items-center justify-center px-4 py-12">
+          <div className="max-w-xl w-full space-y-8">
+            <div className="text-center space-y-3">
+              <button
+                onClick={() => setStep("scenario")}
+                className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back to scenarios
+              </button>
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
+                Choose Your Mode
+              </h2>
+              {meta && (
+                <p className="text-muted-foreground">
+                  Scenario: <span className="font-medium text-foreground">{meta.label}</span>
+                </p>
+              )}
+            </div>
+
+            <div className="grid gap-3">
+              {MODES.map((m) => (
                 <button
-                  key={s.id}
-                  onClick={() => startConversation(s.id)}
-                  className={`group flex items-center gap-3 p-4 rounded-xl border text-left transition-all hover:shadow-md hover:scale-[1.02] ${s.color}`}
+                  key={m.id}
+                  onClick={() => selectMode(m.id)}
+                  className={`group flex items-center gap-4 p-5 rounded-xl border text-left transition-all hover:shadow-md hover:scale-[1.01] ${m.color}`}
                 >
-                  <s.icon className="w-5 h-5 shrink-0" />
-                  <span className="font-medium text-sm flex-1">{s.label}</span>
-                  <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="p-2.5 rounded-lg bg-background/60">
+                    <m.icon className="w-5 h-5" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-semibold text-foreground">{m.label} Mode</p>
+                    <p className="text-sm text-muted-foreground">{m.description}</p>
+                  </div>
+                  <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-foreground" />
                 </button>
               ))}
             </div>
@@ -297,26 +472,27 @@ const BusinessConversation: React.FC = () => {
     );
   }
 
-  const currentScenario = SCENARIOS.find(s => s.id === scenario);
+  // ─── STEP 3: Chat ───
+  const scenarioMeta = getScenarioMeta(scenario!);
+  const currentMode = MODES.find(m => m.id === mode)!;
 
   return (
     <>
-      <SEOHead
-        title="AI Business Conversation Trainer | Antony Addy"
-        description="Practice professional English conversations with an AI partner."
-        canonicalUrl="https://www.antonyaddy.com/conversation-trainer"
-        keywords={["business English", "conversation practice"]}
-      />
+      {seoHead}
       <div className="max-w-3xl mx-auto px-4 py-6 space-y-4">
         {/* Header */}
         <div className="flex items-center justify-between flex-wrap gap-2">
-          <div className="flex items-center gap-2">
-            {currentScenario && (
-              <Badge variant="outline" className={currentScenario.color}>
-                <currentScenario.icon className="w-3.5 h-3.5 mr-1" />
-                {currentScenario.label}
+          <div className="flex items-center gap-2 flex-wrap">
+            {scenarioMeta && (
+              <Badge variant="outline" className={scenarioMeta.category.color}>
+                <scenarioMeta.icon className="w-3.5 h-3.5 mr-1" />
+                {scenarioMeta.label}
               </Badge>
             )}
+            <Badge variant="outline" className={currentMode.color}>
+              <currentMode.icon className="w-3.5 h-3.5 mr-1" />
+              {currentMode.label}
+            </Badge>
             <Badge variant="secondary" className="text-xs">
               {userTurnCount} turn{userTurnCount !== 1 ? "s" : ""}
             </Badge>
@@ -325,17 +501,17 @@ const BusinessConversation: React.FC = () => {
             {userTurnCount >= MIN_TURNS_FOR_FEEDBACK && !feedback && (
               <Button
                 size="sm"
-                onClick={requestFeedback}
+                onClick={endConversation}
                 disabled={isFeedbackLoading}
                 className="gap-1.5"
               >
-                {isFeedbackLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Award className="w-3.5 h-3.5" />}
-                Get Feedback
+                {isFeedbackLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Square className="w-3.5 h-3.5" />}
+                End & Get Feedback
               </Button>
             )}
             <Button size="sm" variant="outline" onClick={resetConversation} className="gap-1.5">
               <RotateCcw className="w-3.5 h-3.5" />
-              New Scenario
+              New
             </Button>
           </div>
         </div>
@@ -365,36 +541,44 @@ const BusinessConversation: React.FC = () => {
           </ScrollArea>
 
           {/* Input */}
-          <div className="border-t p-3 flex gap-2 items-end bg-background">
-            <Textarea
-              ref={inputRef}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Type your reply in English…"
-              className="min-h-[44px] max-h-[120px] resize-none text-sm border-0 focus-visible:ring-0 shadow-none p-2"
-              disabled={isLoading || !!feedback}
-              rows={1}
-            />
-            <Button
-              size="icon"
-              onClick={sendMessage}
-              disabled={!input.trim() || isLoading || !!feedback}
-              className="shrink-0 h-10 w-10"
-            >
-              <Send className="w-4 h-4" />
-            </Button>
-          </div>
+          {!feedback && (
+            <div className="border-t p-3 flex gap-2 items-end bg-background">
+              <Textarea
+                ref={inputRef}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Type your reply in English…"
+                className="min-h-[44px] max-h-[120px] resize-none text-sm border-0 focus-visible:ring-0 shadow-none p-2"
+                disabled={isLoading}
+                rows={1}
+              />
+              <Button
+                size="icon"
+                onClick={sendMessage}
+                disabled={!input.trim() || isLoading}
+                className="shrink-0 h-10 w-10"
+              >
+                <Send className="w-4 h-4" />
+              </Button>
+            </div>
+          )}
         </Card>
 
         {/* Feedback */}
         {feedback && (
           <Card className="p-6 space-y-5 border-primary/20 bg-primary/5">
-            <div className="flex items-center gap-2">
-              <Award className="w-5 h-5 text-primary" />
-              <h2 className="font-heading font-bold text-lg text-foreground">Your Performance</h2>
+            <div className="flex items-center justify-between flex-wrap gap-2">
+              <div className="flex items-center gap-2">
+                <Award className="w-5 h-5 text-primary" />
+                <h2 className="font-heading font-bold text-lg text-foreground">Conversation Feedback</h2>
+              </div>
+              {feedback.overallLevel && (
+                <Badge className="text-sm px-3 py-1">{feedback.overallLevel}</Badge>
+              )}
             </div>
 
+            {/* Scores */}
             <div className="space-y-4">
               {feedback.fluency && <ScoreBar score={feedback.fluency.score} label="Fluency" comment={feedback.fluency.comment} />}
               {feedback.grammar && <ScoreBar score={feedback.grammar.score} label="Grammar" comment={feedback.grammar.comment} />}
@@ -413,6 +597,62 @@ const BusinessConversation: React.FC = () => {
               </div>
             )}
 
+            {/* Corrections */}
+            {feedback.corrections && feedback.corrections.length > 0 && (
+              <div className="space-y-3 pt-3 border-t">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <h3 className="font-semibold text-sm text-foreground">Corrections</h3>
+                </div>
+                <div className="space-y-2.5">
+                  {feedback.corrections.map((c, i) => (
+                    <div key={i} className="bg-background rounded-lg p-3 space-y-1 text-sm">
+                      <p className="text-destructive line-through">"{c.wrong}"</p>
+                      <p className="text-emerald-700 dark:text-emerald-400 font-medium">→ "{c.correct}"</p>
+                      {c.explanation && <p className="text-xs text-muted-foreground">{c.explanation}</p>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Suggestions */}
+            {feedback.suggestions && feedback.suggestions.length > 0 && (
+              <div className="space-y-2 pt-3 border-t">
+                <div className="flex items-center gap-2">
+                  <Lightbulb className="w-4 h-4 text-amber-600" />
+                  <h3 className="font-semibold text-sm text-foreground">Suggestions</h3>
+                </div>
+                <ul className="space-y-1.5">
+                  {feedback.suggestions.map((s, i) => (
+                    <li key={i} className="text-sm text-muted-foreground flex gap-2">
+                      <span className="text-amber-500 shrink-0">•</span>
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Exam-specific: strengths / needs improvement */}
+            {(feedback.strengths || feedback.needsImprovement) && (
+              <div className="space-y-2 pt-3 border-t">
+                {feedback.strengths && (
+                  <div className="flex gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <p className="text-foreground"><span className="font-medium">Strengths:</span> {feedback.strengths}</p>
+                  </div>
+                )}
+                {feedback.needsImprovement && (
+                  <div className="flex gap-2 text-sm">
+                    <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                    <p className="text-foreground"><span className="font-medium">Needs improvement:</span> {feedback.needsImprovement}</p>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Overall */}
             {feedback.overall && (
               <div className="pt-3 border-t">
                 <p className="text-sm text-foreground italic">{feedback.overall}</p>
