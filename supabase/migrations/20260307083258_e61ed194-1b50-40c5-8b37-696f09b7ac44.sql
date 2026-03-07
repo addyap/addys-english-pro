@@ -1,0 +1,1 @@
+ALTER TABLE public.conversation_sessions ADD COLUMN IF NOT EXISTS mode text DEFAULT 'practice';

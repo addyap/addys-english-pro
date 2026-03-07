@@ -21,6 +21,7 @@ export type Database = {
           feedback: Json | null
           id: string
           messages: Json
+          mode: string | null
           scenario: string
           session_id: string | null
         }
@@ -30,6 +31,7 @@ export type Database = {
           feedback?: Json | null
           id?: string
           messages?: Json
+          mode?: string | null
           scenario: string
           session_id?: string | null
         }
@@ -39,6 +41,7 @@ export type Database = {
           feedback?: Json | null
           id?: string
           messages?: Json
+          mode?: string | null
           scenario?: string
           session_id?: string | null
         }
