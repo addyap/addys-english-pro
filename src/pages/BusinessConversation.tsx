@@ -396,7 +396,12 @@ const BusinessConversation: React.FC = () => {
       }
 
       const data = await resp.json();
-      const fb = data.feedback as Feedback;
+      const fb = data?.feedback as Feedback | undefined;
+
+      if (!fb || typeof fb !== "object") {
+        throw new Error("Invalid feedback response");
+      }
+
       setFeedback(fb);
 
       // Persist session with metadata (only once per session)
@@ -419,6 +424,9 @@ const BusinessConversation: React.FC = () => {
       }
     } catch (e: any) {
       setFeedbackError(true);
+      if (mode !== "exam") {
+        setExamComplete(false);
+      }
       toast.error(e.message || "Could not generate feedback. Please try again.");
     } finally {
       setIsFeedbackLoading(false);
@@ -426,9 +434,11 @@ const BusinessConversation: React.FC = () => {
   }, [messages, scenario, sessionId, mode, isFeedbackLoading, sessionSaved, startedAt]);
 
   const endConversation = useCallback(() => {
-    setExamComplete(true);
+    if (mode === "exam") {
+      setExamComplete(true);
+    }
     requestFeedback();
-  }, [requestFeedback]);
+  }, [mode, requestFeedback]);
 
   const retryFeedback = useCallback(() => {
     setFeedbackError(false);
@@ -475,7 +485,7 @@ const BusinessConversation: React.FC = () => {
   };
 
   const inputDisabled = isLoading || !!feedback || (mode === "exam" && examComplete) || isFeedbackLoading;
-  const canEndConversation = realUserTurns >= MIN_TURNS_FOR_FEEDBACK && !feedback && !examComplete && !isFeedbackLoading;
+  const canEndConversation = realUserTurns >= MIN_TURNS_FOR_FEEDBACK && !feedback && !examComplete && !isFeedbackLoading && !isLoading;
   const examProgress = mode === "exam" ? Math.min(realUserTurns, EXAM_MAX_QUESTIONS) : 0;
 
   const seoHead = (
