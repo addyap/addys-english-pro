@@ -1566,7 +1566,7 @@ const Exercises = () => {
               <h2 className="text-2xl font-bold text-foreground font-heading">Outils d'entraînement avec IA</h2>
               <p className="text-muted-foreground text-sm mt-1">Pratiquez l'anglais professionnel avec un feedback IA personnalisé</p>
             </div>
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-3 gap-4">
               <Link to="/conversation-trainer" className="block">
                 <Card className="h-full hover:shadow-lg hover:-translate-y-0.5 transition-all border-primary/20 hover:border-primary/40">
                   <CardContent className="p-5 flex items-start gap-4">
@@ -1575,7 +1575,7 @@ const Exercises = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold font-heading text-foreground mb-1">AI Conversation Trainer</h3>
-                      <p className="text-sm text-muted-foreground">Entraînez-vous à parler anglais professionnel avec un partenaire IA dans 15 scénarios réalistes.</p>
+                      <p className="text-sm text-muted-foreground">Entraînez-vous à parler anglais professionnel avec un partenaire IA.</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -1588,7 +1588,20 @@ const Exercises = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold font-heading text-foreground mb-1">AI Email Reply Trainer</h3>
-                      <p className="text-sm text-muted-foreground">Rédigez des e-mails professionnels et recevez un feedback IA détaillé sur votre écriture.</p>
+                      <p className="text-sm text-muted-foreground">Rédigez des e-mails professionnels avec feedback IA détaillé.</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link to="/presentation-trainer" className="block">
+                <Card className="h-full hover:shadow-lg hover:-translate-y-0.5 transition-all border-primary/20 hover:border-primary/40">
+                  <CardContent className="p-5 flex items-start gap-4">
+                    <div className="shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Sparkles className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold font-heading text-foreground mb-1">AI Presentation Trainer</h3>
+                      <p className="text-sm text-muted-foreground">Pratiquez des présentations professionnelles avec coaching IA.</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -1626,6 +1639,8 @@ const Exercises = () => {
                 <Link to="/conversation-trainer" className="text-accent hover:underline">AI Conversation Trainer</Link>
                 <span className="text-muted-foreground">•</span>
                 <Link to="/email-trainer" className="text-accent hover:underline">AI Email Reply Trainer</Link>
+                <span className="text-muted-foreground">•</span>
+                <Link to="/presentation-trainer" className="text-accent hover:underline">AI Presentation Trainer</Link>
               </div>
             </div>
           </div>

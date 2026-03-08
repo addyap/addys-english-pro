@@ -264,6 +264,11 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                     AI Email Reply Trainer
                   </Link>
                 </li>
+                <li>
+                  <Link to="/presentation-trainer" className="text-gray-400 hover:text-white transition-colors">
+                    AI Presentation Trainer
+                  </Link>
+                </li>
               </ul>
             </nav>
 

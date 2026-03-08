@@ -131,6 +131,51 @@ export type Database = {
         }
         Relationships: []
       }
+      presentation_training_sessions: {
+        Row: {
+          category: string | null
+          completed_at: string | null
+          created_at: string
+          feedback: Json | null
+          id: string
+          improved_presentation: string | null
+          model_presentation: string | null
+          overall_level: string | null
+          presentation_text: string | null
+          scenario: string
+          session_id: string | null
+          started_at: string | null
+        }
+        Insert: {
+          category?: string | null
+          completed_at?: string | null
+          created_at?: string
+          feedback?: Json | null
+          id?: string
+          improved_presentation?: string | null
+          model_presentation?: string | null
+          overall_level?: string | null
+          presentation_text?: string | null
+          scenario: string
+          session_id?: string | null
+          started_at?: string | null
+        }
+        Update: {
+          category?: string | null
+          completed_at?: string | null
+          created_at?: string
+          feedback?: Json | null
+          id?: string
+          improved_presentation?: string | null
+          model_presentation?: string | null
+          overall_level?: string | null
+          presentation_text?: string | null
+          scenario?: string
+          session_id?: string | null
+          started_at?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null

@@ -137,6 +137,14 @@ export const seoMetadata: Record<string, SEOMetadata> = {
     h1: "AI Email Reply Trainer",
     keywords: ["email anglais professionnel", "rédaction email business English", "AI email feedback", "professional email writing"],
     ogImage: DEFAULT_IMAGE
+  },
+  presentationTrainer: {
+    title: "AI Presentation Trainer | Business English Practice",
+    description: "Practice professional presentations in English and receive instant AI feedback on clarity, structure, vocabulary, and persuasion.",
+    canonical: `${SITE_URL}/presentation-trainer`,
+    h1: "AI Presentation Trainer",
+    keywords: ["presentation anglais", "business English presentation", "AI presentation feedback", "professional speaking practice"],
+    ogImage: DEFAULT_IMAGE
   }
 };
 
