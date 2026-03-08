@@ -35,8 +35,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
     { name: 'Témoignages', href: '/temoignages', current: location.pathname === '/temoignages' },
     { name: 'Contact', href: '/contact', current: location.pathname === '/contact' },
     { name: 'Blog', href: '/blog', current: location.pathname === '/blog' },
-    { name: 'Exercices', href: '/exercices', current: location.pathname === '/exercices' },
-    
+    { name: 'Ressources Gratuites', href: '/ressources-gratuites', current: location.pathname === '/ressources-gratuites' },
   ];
 
   const toggleMobileMenu = () => {

@@ -154,6 +154,7 @@ export const AppRoutes = () => (
     <Route path="/reading" element={<Reading />} />
     <Route path="/reading/:id" element={<ReadingDetail />} />
     <Route path="/story/:id" element={<InteractiveStory />} />
+    <Route path="/ressources-gratuites" element={<RessourcesGratuites />} />
     <Route path="/sitemap-page" element={<SitemapPage />} />
     <Route path="/admin/audio-cache" element={<AudioAdminTools />} />
     <Route path="/admin/listening-cache" element={<ListeningAudioCacheAdmin />} />
