@@ -163,7 +163,7 @@ const AIWritingCoach = () => {
 
               <StrengthsBlock strengths={feedback.strengths} needsImprovement={feedback.needsImprovement} />
               <CorrectionsList corrections={feedback.corrections} />
-              <VocabUpgrades upgrades={feedback.advancedVocabulary} />
+              <VocabUpgrades items={feedback.advancedVocabulary} />
               <SuggestionsList suggestions={feedback.suggestions} />
 
               {/* Improved version */}
