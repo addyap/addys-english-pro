@@ -19,6 +19,7 @@ import {
   Mail, ArrowRight, ArrowLeft, Send, RotateCcw, Sparkles, CheckCircle,
   AlertCircle, Eye, Wand2, FileText, ChevronDown, ChevronUp
 } from "lucide-react";
+import { toast } from "sonner";
 
 // ── Types ──────────────────────────────────────────────────────────
 
