@@ -81,6 +81,7 @@ const AISpeakingPractice = lazy(() => import("./pages/AISpeakingPractice"));
 const AIWritingCoach = lazy(() => import("./pages/AIWritingCoach"));
 const AIInterviewSimulator = lazy(() => import("./pages/AIInterviewSimulator"));
 const AIGrammarExplainer = lazy(() => import("./pages/AIGrammarExplainer"));
+const RessourcesGratuites = lazy(() => import("./pages/RessourcesGratuites"));
 const PageLoader = () => (
   <div className="min-h-screen bg-background py-12">
     <div className="max-w-4xl mx-auto px-4 space-y-8">
@@ -153,6 +154,7 @@ export const AppRoutes = () => (
     <Route path="/reading" element={<Reading />} />
     <Route path="/reading/:id" element={<ReadingDetail />} />
     <Route path="/story/:id" element={<InteractiveStory />} />
+    <Route path="/ressources-gratuites" element={<RessourcesGratuites />} />
     <Route path="/sitemap-page" element={<SitemapPage />} />
     <Route path="/admin/audio-cache" element={<AudioAdminTools />} />
     <Route path="/admin/listening-cache" element={<ListeningAudioCacheAdmin />} />
