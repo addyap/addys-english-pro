@@ -102,8 +102,8 @@ const handler = async (req: Request): Promise<Response> => {
           
           <p>En attendant, n'hésitez pas à :</p>
           <ul>
-            <li><a href="https://antonyaddy.com/exercises" style="color: #1e40af;">Découvrir nos exercices gratuits</a></li>
-            <li><a href="https://antonyaddy.com/blog" style="color: #1e40af;">Lire nos articles sur la grammaire anglaise</a></li>
+            <li><a href="https://www.antonyaddy.com/exercices" style="color: #1e40af;">Découvrir nos exercices gratuits</a></li>
+            <li><a href="https://www.antonyaddy.com/blog" style="color: #1e40af;">Lire nos articles sur la grammaire anglaise</a></li>
             <li><a href="https://wa.me/33649829826" style="color: #16a34a;">Me contacter sur WhatsApp</a> pour une réponse plus rapide</li>
           </ul>
           
