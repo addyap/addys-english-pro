@@ -110,6 +110,7 @@ const FUNC_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/presentation
 
 // ── Main Component ────────────────────────────────────
 const AIPresentationTrainer: React.FC = () => {
+  const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("presentation");
   const [step, setStep] = useState<"select" | "write" | "feedback">("select");
   const [scenario, setScenario] = useState<Scenario | null>(null);
   const [presentationText, setPresentationText] = useState("");
