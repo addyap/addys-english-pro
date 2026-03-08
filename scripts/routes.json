@@ -427,6 +427,7 @@
     { "path": "/exercices/dialogue/3", "priority": 0.6, "changefreq": "monthly", "title": "Dialogue 3" },
     { "path": "/exercices/dialogue/4", "priority": 0.6, "changefreq": "monthly", "title": "Dialogue 4" },
     { "path": "/exercices/dialogue/5", "priority": 0.6, "changefreq": "monthly", "title": "Dialogue 5" },
+    { "path": "/exercices/dialogue/6", "priority": 0.6, "changefreq": "monthly", "title": "Dialogue 6" },
 
     { "path": "/exercices/prepositions/1", "priority": 0.6, "changefreq": "monthly", "title": "Prepositions 1" },
     { "path": "/exercices/prepositions/2", "priority": 0.6, "changefreq": "monthly", "title": "Prepositions 2" },
