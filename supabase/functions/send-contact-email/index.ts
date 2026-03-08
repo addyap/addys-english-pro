@@ -102,8 +102,8 @@ const handler = async (req: Request): Promise<Response> => {
           
           <p>En attendant, n'hésitez pas à :</p>
           <ul>
-            <li><a href="https://antonyaddy.com/exercises" style="color: #1e40af;">Découvrir nos exercices gratuits</a></li>
-            <li><a href="https://antonyaddy.com/blog" style="color: #1e40af;">Lire nos articles sur la grammaire anglaise</a></li>
+            <li><a href="https://www.antonyaddy.com/exercices" style="color: #1e40af;">Découvrir nos exercices gratuits</a></li>
+            <li><a href="https://www.antonyaddy.com/blog" style="color: #1e40af;">Lire nos articles sur la grammaire anglaise</a></li>
             <li><a href="https://wa.me/33649829826" style="color: #16a34a;">Me contacter sur WhatsApp</a> pour une réponse plus rapide</li>
           </ul>
           
@@ -115,7 +115,7 @@ const handler = async (req: Request): Promise<Response> => {
           <p style="color: #6b7280; font-size: 12px;">
             Antony Addy - Formations d'anglais professionnel<br>
             Email: formations@antonyaddy.com<br>
-            Site: <a href="https://antonyaddy.com" style="color: #1e40af;">antonyaddy.com</a>
+            Site: <a href="https://www.antonyaddy.com" style="color: #1e40af;">antonyaddy.com</a>
           </p>
         </div>
       `,

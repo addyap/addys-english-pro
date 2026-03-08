@@ -214,7 +214,7 @@ const BlogArticle = () => {
   const articleSEO = {
     title: `${article.title} - Blog Antony Addy`,
     description: article.description,
-    canonicalUrl: `https://antonyaddy.com/blog/${id}`,
+    canonicalUrl: `https://www.antonyaddy.com/blog/${id}`,
     ogImage: article.ogImage,
     keywords: [
       "article anglais",
@@ -239,8 +239,8 @@ const BlogArticle = () => {
         description={article.description}
         image={article.ogImage}
         datePublished={article.date}
-        author={{ name: article.author, url: 'https://antonyaddy.com/qui-je-suis' }}
-        publisher={{ name: 'Antony Addy', logo: 'https://antonyaddy.com/assets/logo.svg' }}
+        author={{ name: article.author, url: 'https://www.antonyaddy.com/qui-je-suis' }}
+        publisher={{ name: 'Antony Addy', logo: 'https://www.antonyaddy.com/assets/logo.svg' }}
       />
       <ReadingProgress />
       

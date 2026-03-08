@@ -274,6 +274,26 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                     AI Negotiation Trainer
                   </Link>
                 </li>
+                <li>
+                  <Link to="/speaking-practice" className="text-gray-400 hover:text-white transition-colors">
+                    AI Speaking Practice
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/writing-coach" className="text-gray-400 hover:text-white transition-colors">
+                    AI Writing Coach
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/interview-simulator" className="text-gray-400 hover:text-white transition-colors">
+                    AI Interview Simulator
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/grammar-explainer" className="text-gray-400 hover:text-white transition-colors">
+                    AI Grammar Explainer
+                  </Link>
+                </li>
               </ul>
             </nav>
 

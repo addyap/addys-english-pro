@@ -153,6 +153,38 @@ export const seoMetadata: Record<string, SEOMetadata> = {
     h1: "AI Negotiation Trainer",
     keywords: ["negotiation anglais", "business English negotiation", "AI negotiation feedback", "professional negotiation practice"],
     ogImage: DEFAULT_IMAGE
+  },
+  speakingPractice: {
+    title: "AI Speaking Practice — Entraînement Oral Anglais | Antony Addy",
+    description: "Parlez en anglais avec un partenaire IA. Reconnaissance vocale, synthèse vocale et feedback sur la prononciation et la fluidité.",
+    canonical: `${SITE_URL}/speaking-practice`,
+    h1: "AI Speaking Practice",
+    keywords: ["speaking practice anglais", "prononciation anglais", "entraînement oral", "AI speaking feedback"],
+    ogImage: DEFAULT_IMAGE
+  },
+  writingCoach: {
+    title: "AI Writing Coach — Correction Anglais Écrit | Antony Addy",
+    description: "Soumettez un texte en anglais et recevez un feedback IA détaillé : grammaire, vocabulaire, style et version améliorée.",
+    canonical: `${SITE_URL}/writing-coach`,
+    h1: "AI Writing Coach",
+    keywords: ["writing coach anglais", "correction texte anglais", "AI writing feedback", "améliorer rédaction anglais"],
+    ogImage: DEFAULT_IMAGE
+  },
+  interviewSimulator: {
+    title: "AI Interview Simulator — Entretien Anglais | Antony Addy",
+    description: "Simulez un entretien d'embauche en anglais avec un recruteur IA. 8 secteurs, 3 types d'entretien, feedback CECRL détaillé.",
+    canonical: `${SITE_URL}/interview-simulator`,
+    h1: "AI Interview Simulator",
+    keywords: ["entretien anglais", "interview simulator", "AI job interview", "préparation entretien anglais"],
+    ogImage: DEFAULT_IMAGE
+  },
+  grammarExplainer: {
+    title: "AI Grammar Explainer — Analyse Grammaticale | Antony Addy",
+    description: "Collez une phrase en anglais et obtenez une analyse grammaticale complète par IA : nature des mots, règles et conseils pratiques.",
+    canonical: `${SITE_URL}/grammar-explainer`,
+    h1: "AI Grammar Explainer",
+    keywords: ["grammar explainer", "analyse grammaticale anglais", "AI grammar", "règles grammaire anglaise"],
+    ogImage: DEFAULT_IMAGE
   }
 };
 
