@@ -12,7 +12,7 @@ const About = () => {
     "name": "Antony Addy",
     "jobTitle": "Formateur Professionnel d'Adultes certifié",
     "description": "Formateur d'anglais professionnel avec plus de 20 ans d'expérience",
-    "url": "https://antonyaddy.com/qui-je-suis",
+    "url": "https://www.antonyaddy.com/qui-je-suis",
     "email": "formations@antonyaddy.com",
     "areaServed": {
       "@type": "Place",

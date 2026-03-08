@@ -11,7 +11,7 @@ const Contact = () => {
     "@type": "ContactPage",
     "name": "Contact - Antony Addy",
     "description": "Contactez Antony Addy pour vos besoins en formation d'anglais professionnel",
-    "url": "https://antonyaddy.com/contact"
+    "url": "https://www.antonyaddy.com/contact"
   };
 
   useScrollTracking('/contact');
