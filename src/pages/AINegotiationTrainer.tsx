@@ -180,6 +180,9 @@ const AINegotiationTrainer: React.FC = () => {
   const [sessionSaved, setSessionSaved] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const { isListening, startListening, stopListening, speechSupported } = useSpeechRecognition(
+    useCallback((text: string) => setInput(text), [])
+  );
 
   const realUserTurns = countRealUserTurns(messages);
 
