@@ -1555,7 +1555,48 @@ const Exercises = () => {
           </div>
         </section>
 
-        {/* Soft CTA Section with Internal Links */}
+        {/* AI Trainers Section */}
+        <section className="py-12 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="text-center mb-6">
+              <Badge variant="outline" className="mb-2 border-primary/50 text-primary">
+                <Sparkles className="h-3 w-3 mr-1" />
+                Entraînement IA
+              </Badge>
+              <h2 className="text-2xl font-bold text-foreground font-heading">Outils d'entraînement avec IA</h2>
+              <p className="text-muted-foreground text-sm mt-1">Pratiquez l'anglais professionnel avec un feedback IA personnalisé</p>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <Link to="/conversation-trainer" className="block">
+                <Card className="h-full hover:shadow-lg hover:-translate-y-0.5 transition-all border-primary/20 hover:border-primary/40">
+                  <CardContent className="p-5 flex items-start gap-4">
+                    <div className="shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <MessageCircle className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold font-heading text-foreground mb-1">AI Conversation Trainer</h3>
+                      <p className="text-sm text-muted-foreground">Entraînez-vous à parler anglais professionnel avec un partenaire IA dans 15 scénarios réalistes.</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link to="/email-trainer" className="block">
+                <Card className="h-full hover:shadow-lg hover:-translate-y-0.5 transition-all border-primary/20 hover:border-primary/40">
+                  <CardContent className="p-5 flex items-start gap-4">
+                    <div className="shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold font-heading text-foreground mb-1">AI Email Reply Trainer</h3>
+                      <p className="text-sm text-muted-foreground">Rédigez des e-mails professionnels et recevez un feedback IA détaillé sur votre écriture.</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <section className="py-10 bg-muted/30">
           <div className="max-w-3xl mx-auto px-4 text-center">
             <p className="text-muted-foreground mb-4 font-body">
@@ -1581,6 +1622,10 @@ const Exercises = () => {
                 <Link to="/exercices/cloe-preparation" className="text-accent hover:underline">Préparation CLOE</Link>
                 <span className="text-muted-foreground">•</span>
                 <Link to="/blog" className="text-accent hover:underline">Articles & conseils</Link>
+                <span className="text-muted-foreground">•</span>
+                <Link to="/conversation-trainer" className="text-accent hover:underline">AI Conversation Trainer</Link>
+                <span className="text-muted-foreground">•</span>
+                <Link to="/email-trainer" className="text-accent hover:underline">AI Email Reply Trainer</Link>
               </div>
             </div>
           </div>
