@@ -431,8 +431,6 @@
     { "path": "/exercices/prepositions/3", "priority": 0.6, "changefreq": "monthly", "title": "Prepositions 3" },
     { "path": "/exercices/prepositions/4", "priority": 0.6, "changefreq": "monthly", "title": "Prepositions 4" },
     { "path": "/exercices/prepositions/5", "priority": 0.6, "changefreq": "monthly", "title": "Prepositions 5" },
-    { "path": "/exercices/prepositions/6", "priority": 0.6, "changefreq": "monthly", "title": "Prepositions 6" },
-
-    { "path": "/negotiation-trainer", "priority": 0.8, "changefreq": "monthly", "title": "AI Negotiation Trainer" }
+    { "path": "/exercices/prepositions/6", "priority": 0.6, "changefreq": "monthly", "title": "Prepositions 6" }
   ]
 }
