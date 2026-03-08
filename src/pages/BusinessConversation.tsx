@@ -397,15 +397,20 @@ const BusinessConversation: React.FC = () => {
       const fb = data.feedback as Feedback;
       setFeedback(fb);
 
-      // Persist session with metadata
-      await supabase.from("conversation_sessions" as any).insert({
-        scenario,
-        mode,
-        messages: JSON.stringify(msgsToUse),
-        feedback: JSON.stringify(fb),
-        session_id: sessionId,
-        completed_at: new Date().toISOString(),
-      } as any);
+      // Persist session with metadata (only once per session)
+      if (!sessionSaved) {
+        setSessionSaved(true);
+        await supabase.from("conversation_sessions" as any).insert({
+          scenario,
+          mode,
+          messages: JSON.stringify(msgsToUse),
+          feedback: JSON.stringify(fb),
+          session_id: sessionId,
+          started_at: startedAt,
+          completed_at: new Date().toISOString(),
+          overall_level: fb.overallLevel || null,
+        } as any);
+      }
     } catch (e: any) {
       setFeedbackError(true);
       toast.error(e.message || "Could not generate feedback. Please try again.");
