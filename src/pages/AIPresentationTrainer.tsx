@@ -106,34 +106,7 @@ const SCENARIOS: Scenario[] = [
 // ── Helpers ───────────────────────────────────────────
 const FUNC_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/presentation-trainer`;
 
-const ScoreBar = ({ label, score, max = 10 }: { label: string; score: number; max?: number }) => (
-  <div className="space-y-1">
-    <div className="flex justify-between text-sm">
-      <span className="font-medium text-foreground">{label}</span>
-      <span className="font-bold text-foreground">{score}/{max}</span>
-    </div>
-    <Progress value={(score / max) * 100} className="h-2" />
-    <div className="h-1" />
-  </div>
-);
-
-const RatingBadge = ({ label, rating, comment }: { label: string; rating: string; comment: string }) => {
-  if (!rating && !comment) return null;
-  const color = rating === "Excellent" ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300"
-    : rating === "Good" ? "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
-    : rating === "Acceptable" ? "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
-    : rating === "Appropriate" ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300"
-    : "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300";
-  return (
-    <div className="space-y-1">
-      <div className="flex items-center justify-between">
-        <span className="font-medium text-sm text-foreground">{label}</span>
-        {rating && <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${color}`}>{rating}</span>}
-      </div>
-      {comment && <p className="text-sm text-muted-foreground">{comment}</p>}
-    </div>
-  );
-};
+// ScoreBar and RatingBadge now imported from shared components
 
 // ── Main Component ────────────────────────────────────
 const AIPresentationTrainer: React.FC = () => {
