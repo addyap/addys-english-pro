@@ -417,7 +417,7 @@ const BusinessConversation: React.FC = () => {
     } finally {
       setIsFeedbackLoading(false);
     }
-  }, [messages, scenario, sessionId, mode, isFeedbackLoading]);
+  }, [messages, scenario, sessionId, mode, isFeedbackLoading, sessionSaved, startedAt]);
 
   const endConversation = useCallback(() => {
     setExamComplete(true);
