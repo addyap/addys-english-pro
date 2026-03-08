@@ -750,87 +750,10 @@ const EmailReplyTrainer: React.FC = () => {
               </CardContent>
             </Card>
 
-            {/* Corrections */}
-            {feedback.corrections.length > 0 && (
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="font-heading font-semibold text-foreground text-lg mb-3">Corrections</h3>
-                  <div className="space-y-3">
-                    {feedback.corrections.map((c, i) => (
-                      <div key={i} className="bg-muted/50 rounded-lg p-3">
-                        <div className="flex flex-wrap gap-2 items-center text-sm mb-1">
-                          <span className="line-through text-destructive">{c.wrong}</span>
-                          <ArrowRight className="w-3 h-3 text-muted-foreground" />
-                          <span className="font-medium text-primary">{c.correct}</span>
-                        </div>
-                        {c.explanation && <p className="text-xs text-muted-foreground">{c.explanation}</p>}
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Suggestions */}
-            {feedback.suggestions.length > 0 && (
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="font-heading font-semibold text-foreground text-lg mb-3">Suggestions</h3>
-                  <ul className="space-y-2">
-                    {feedback.suggestions.map((s, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm">
-                        <Sparkles className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
-                        <span>{s}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Vocabulary Upgrades */}
-            {feedback.advancedVocabulary.length > 0 && (
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="font-heading font-semibold text-foreground text-lg mb-3">Vocabulary Upgrades</h3>
-                  <div className="grid gap-2">
-                    {feedback.advancedVocabulary.map((v, i) => (
-                      <div key={i} className="flex items-center gap-2 text-sm bg-muted/50 rounded-lg px-3 py-2">
-                        <span className="text-muted-foreground">{v.basic}</span>
-                        <ArrowRight className="w-3 h-3 text-muted-foreground" />
-                        <span className="font-medium text-primary">{v.advanced}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Strengths & Improvement */}
-            {(feedback.strengths || feedback.needsImprovement || feedback.overall) && (
-              <Card>
-                <CardContent className="p-6 space-y-4">
-                  {feedback.strengths && (
-                    <div>
-                      <h4 className="font-semibold text-foreground text-sm mb-1">✅ Strengths</h4>
-                      <p className="text-sm text-muted-foreground">{feedback.strengths}</p>
-                    </div>
-                  )}
-                  {feedback.needsImprovement && (
-                    <div>
-                      <h4 className="font-semibold text-foreground text-sm mb-1">🔧 Needs Improvement</h4>
-                      <p className="text-sm text-muted-foreground">{feedback.needsImprovement}</p>
-                    </div>
-                  )}
-                  {feedback.overall && (
-                    <div>
-                      <h4 className="font-semibold text-foreground text-sm mb-1">📊 Overall</h4>
-                      <p className="text-sm text-muted-foreground">{feedback.overall}</p>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            )}
+            <CorrectionsList corrections={feedback.corrections} variant="card" />
+            <SuggestionsList suggestions={feedback.suggestions} variant="card" />
+            <VocabUpgrades items={feedback.advancedVocabulary} variant="card" />
+            <StrengthsBlock strengths={feedback.strengths} needsImprovement={feedback.needsImprovement} overall={feedback.overall} variant="card" />
 
             {/* Model Answer */}
             <div className="space-y-3">

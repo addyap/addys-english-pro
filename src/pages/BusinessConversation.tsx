@@ -748,79 +748,10 @@ const BusinessConversation: React.FC = () => {
               </div>
             )}
 
-            {/* Corrections */}
-            {feedback.corrections && feedback.corrections.length > 0 && (
-              <div className="space-y-3 pt-3 border-t">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  <h3 className="font-semibold text-sm text-foreground">Corrections</h3>
-                </div>
-                <div className="space-y-2.5">
-                  {feedback.corrections.map((c, i) => (
-                    <div key={i} className="bg-background rounded-lg p-3 space-y-1 text-sm">
-                      {c.wrong && <p className="text-destructive line-through">"{c.wrong}"</p>}
-                      {c.correct && <p className="text-emerald-700 dark:text-emerald-400 font-medium">→ "{c.correct}"</p>}
-                      {c.explanation && <p className="text-xs text-muted-foreground">{c.explanation}</p>}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Suggestions */}
-            {feedback.suggestions && feedback.suggestions.length > 0 && (
-              <div className="space-y-2 pt-3 border-t">
-                <div className="flex items-center gap-2">
-                  <Lightbulb className="w-4 h-4 text-amber-600" />
-                  <h3 className="font-semibold text-sm text-foreground">Suggestions</h3>
-                </div>
-                <ul className="space-y-1.5">
-                  {feedback.suggestions.map((s, i) => (
-                    <li key={i} className="text-sm text-muted-foreground flex gap-2">
-                      <span className="text-amber-500 shrink-0">•</span>
-                      {s}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Strengths / Needs improvement */}
-            {(feedback.strengths || feedback.needsImprovement) && (
-              <div className="space-y-2 pt-3 border-t">
-                {feedback.strengths && (
-                  <div className="flex gap-2 text-sm">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                    <p className="text-foreground"><span className="font-medium">Strengths:</span> {feedback.strengths}</p>
-                  </div>
-                )}
-                {feedback.needsImprovement && (
-                  <div className="flex gap-2 text-sm">
-                    <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                    <p className="text-foreground"><span className="font-medium">Needs improvement:</span> {feedback.needsImprovement}</p>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Advanced Vocabulary */}
-            {feedback.advancedVocabulary && feedback.advancedVocabulary.length > 0 && (
-              <div className="space-y-2 pt-3 border-t">
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="w-4 h-4 text-primary" />
-                  <h3 className="font-semibold text-sm text-foreground">Vocabulary Upgrades</h3>
-                </div>
-                <div className="space-y-1.5">
-                  {feedback.advancedVocabulary.map((v, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm">
-                      <span className="text-muted-foreground">{v.basic}</span>
-                      <span className="text-muted-foreground">→</span>
-                      <span className="font-medium text-primary">{v.advanced}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            <CorrectionsList corrections={feedback.corrections || []} />
+            <SuggestionsList suggestions={feedback.suggestions || []} />
+            <StrengthsBlock strengths={feedback.strengths} needsImprovement={feedback.needsImprovement} overall={feedback.overall} />
+            <VocabUpgrades items={feedback.advancedVocabulary || []} />
 
             {/* Speaking Time */}
             {feedback.estimatedSpeakingTime && (
@@ -829,13 +760,6 @@ const BusinessConversation: React.FC = () => {
                   <Clock className="w-4 h-4" />
                   <span>Est. speaking time: <span className="font-medium text-foreground">{feedback.estimatedSpeakingTime}</span></span>
                 </div>
-              </div>
-            )}
-
-            {/* Overall */}
-            {feedback.overall && (
-              <div className="pt-3 border-t">
-                <p className="text-sm text-foreground italic">{feedback.overall}</p>
               </div>
             )}
 

@@ -398,81 +398,10 @@ const AIPresentationTrainer: React.FC = () => {
               </CardContent>
             </Card>
 
-            {/* Corrections */}
-            {feedback.corrections.length > 0 && (
-              <Card>
-                <CardContent className="p-5 space-y-4">
-                  <h2 className="font-bold text-lg text-foreground">Corrections</h2>
-                  {feedback.corrections.map((c, i) => (
-                    <div key={i} className="space-y-1.5 pb-3 border-b border-border last:border-0 last:pb-0">
-                      <p className="text-sm text-destructive line-through">{c.wrong}</p>
-                      <p className="text-sm font-medium text-foreground">→ {c.correct}</p>
-                      <p className="text-xs text-muted-foreground">{c.explanation}</p>
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Suggestions */}
-            {feedback.suggestions.length > 0 && (
-              <Card>
-                <CardContent className="p-5 space-y-3">
-                  <h2 className="font-bold text-lg text-foreground">Suggestions</h2>
-                  <ul className="space-y-2">
-                    {feedback.suggestions.map((s, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <Sparkles className="w-4 h-4 text-primary shrink-0 mt-0.5" /> {s}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Vocabulary Upgrades */}
-            {feedback.advancedVocabulary.length > 0 && (
-              <Card>
-                <CardContent className="p-5 space-y-3">
-                  <h2 className="font-bold text-lg text-foreground">Vocabulary Upgrades</h2>
-                  <div className="grid gap-2">
-                    {feedback.advancedVocabulary.map((v, i) => (
-                      <div key={i} className="flex items-center gap-2 text-sm">
-                        <span className="text-muted-foreground">{v.basic}</span>
-                        <span className="text-primary">→</span>
-                        <span className="font-medium text-foreground">{v.advanced}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Strengths & Improvement */}
-            {(feedback.strengths || feedback.needsImprovement || feedback.overall) && (
-              <Card>
-                <CardContent className="p-5 space-y-4">
-                  {feedback.strengths && (
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">💪 Strengths</h3>
-                      <p className="text-sm text-muted-foreground">{feedback.strengths}</p>
-                    </div>
-                  )}
-                  {feedback.needsImprovement && (
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">🎯 Needs Improvement</h3>
-                      <p className="text-sm text-muted-foreground">{feedback.needsImprovement}</p>
-                    </div>
-                  )}
-                  {feedback.overall && (
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">📊 Overall</h3>
-                      <p className="text-sm text-muted-foreground">{feedback.overall}</p>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            )}
+            <CorrectionsList corrections={feedback.corrections} variant="card" />
+            <SuggestionsList suggestions={feedback.suggestions} variant="card" />
+            <VocabUpgrades items={feedback.advancedVocabulary} variant="card" />
+            <StrengthsBlock strengths={feedback.strengths} needsImprovement={feedback.needsImprovement} overall={feedback.overall} variant="card" />
 
             {/* Model Presentation */}
             {modelPresentation && (
