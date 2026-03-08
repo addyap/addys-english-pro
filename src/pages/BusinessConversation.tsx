@@ -710,6 +710,18 @@ const BusinessConversation: React.FC = () => {
                 disabled={inputDisabled}
                 rows={1}
               />
+              {speechSupported && (
+                <Button
+                  size="icon"
+                  variant={isListening ? "destructive" : "outline"}
+                  onClick={isListening ? stopListening : startListening}
+                  disabled={inputDisabled}
+                  className="shrink-0 h-10 w-10"
+                  title={isListening ? "Arrêter" : "Parler"}
+                >
+                  <Mic className="w-4 h-4" />
+                </Button>
+              )}
               <Button
                 size="icon"
                 onClick={sendMessage}

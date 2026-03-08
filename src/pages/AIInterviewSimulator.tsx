@@ -335,6 +335,17 @@ const AIInterviewSimulator = () => {
             className="min-h-[44px] max-h-[120px] resize-none"
             onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); } }}
           />
+          {speechSupported && (
+            <Button
+              size="icon"
+              variant={isListening ? "destructive" : "outline"}
+              onClick={isListening ? stopListening : startListening}
+              disabled={isStreaming}
+              title={isListening ? "Arrêter" : "Parler"}
+            >
+              <Mic className="w-4 h-4" />
+            </Button>
+          )}
           <Button onClick={sendMessage} disabled={!input.trim() || isStreaming} size="icon">
             <Send className="w-4 h-4" />
           </Button>
