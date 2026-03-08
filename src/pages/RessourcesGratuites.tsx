@@ -111,7 +111,7 @@ export default function RessourcesGratuites() {
         title="Ressources Gratuites pour Apprendre l'Anglais | Antony Addy"
         description="Découvrez plus de 400 exercices gratuits, 8 outils IA et la préparation CLOE pour progresser en anglais professionnel. Tous niveaux A1-C2."
         canonicalUrl="https://www.antonyaddy.com/ressources-gratuites"
-        keywords="exercices anglais gratuits, outils IA anglais, préparation CLOE, apprendre anglais professionnel, ressources gratuites anglais"
+        keywords={["exercices anglais gratuits", "outils IA anglais", "préparation CLOE", "apprendre anglais professionnel", "ressources gratuites anglais"]}
       />
 
       {/* Hero */}
