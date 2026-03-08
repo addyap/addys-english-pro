@@ -5,17 +5,19 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
-import { Progress } from "@/components/ui/progress";
 import SEOHead from "@/components/SEOHead";
 import { supabase } from "@/integrations/supabase/client";
+import ScoreBar from "@/components/ai-trainer/ScoreBar";
+import RatingBadge from "@/components/ai-trainer/RatingBadge";
+import CorrectionsList from "@/components/ai-trainer/CorrectionsList";
+import SuggestionsList from "@/components/ai-trainer/SuggestionsList";
+import VocabUpgrades from "@/components/ai-trainer/VocabUpgrades";
+import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
+import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
+import type { Correction, VocabUpgrade as VocabUpgradeType, ScoreField, RatingField } from "@/types/ai-trainers";
 import { toast } from "sonner";
 
 // ── Types ─────────────────────────────────────────────
-interface ScoreField { score: number; comment: string }
-interface RatingField { rating: string; comment: string }
-interface Correction { wrong: string; correct: string; explanation: string }
-interface VocabUpgrade { basic: string; advanced: string }
-
 interface Feedback {
   taskAchievement: ScoreField;
   clarity: ScoreField;
@@ -27,7 +29,7 @@ interface Feedback {
   overallLevel: string;
   corrections: Correction[];
   suggestions: string[];
-  advancedVocabulary: VocabUpgrade[];
+  advancedVocabulary: VocabUpgradeType[];
   strengths: string;
   needsImprovement: string;
   overall: string;
@@ -104,37 +106,11 @@ const SCENARIOS: Scenario[] = [
 // ── Helpers ───────────────────────────────────────────
 const FUNC_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/presentation-trainer`;
 
-const ScoreBar = ({ label, score, max = 10 }: { label: string; score: number; max?: number }) => (
-  <div className="space-y-1">
-    <div className="flex justify-between text-sm">
-      <span className="font-medium text-foreground">{label}</span>
-      <span className="font-bold text-foreground">{score}/{max}</span>
-    </div>
-    <Progress value={(score / max) * 100} className="h-2" />
-    <div className="h-1" />
-  </div>
-);
-
-const RatingBadge = ({ label, rating, comment }: { label: string; rating: string; comment: string }) => {
-  if (!rating && !comment) return null;
-  const color = rating === "Excellent" ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300"
-    : rating === "Good" ? "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
-    : rating === "Acceptable" ? "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
-    : rating === "Appropriate" ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300"
-    : "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300";
-  return (
-    <div className="space-y-1">
-      <div className="flex items-center justify-between">
-        <span className="font-medium text-sm text-foreground">{label}</span>
-        {rating && <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${color}`}>{rating}</span>}
-      </div>
-      {comment && <p className="text-sm text-muted-foreground">{comment}</p>}
-    </div>
-  );
-};
+// ScoreBar and RatingBadge now imported from shared components
 
 // ── Main Component ────────────────────────────────────
 const AIPresentationTrainer: React.FC = () => {
+  const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("presentation");
   const [step, setStep] = useState<"select" | "write" | "feedback">("select");
   const [scenario, setScenario] = useState<Scenario | null>(null);
   const [presentationText, setPresentationText] = useState("");
@@ -189,6 +165,11 @@ const AIPresentationTrainer: React.FC = () => {
 
   const submitForFeedback = async () => {
     if (!scenario || loading) return;
+    if (limitReached) {
+      toast.error(`Daily limit reached (${DAILY_LIMIT} sessions per 24h). Please come back tomorrow!`);
+      return;
+    }
+    recordSession();
     setLoading(true);
     try {
       const resp = await fetch(FUNC_URL, {
@@ -417,81 +398,10 @@ const AIPresentationTrainer: React.FC = () => {
               </CardContent>
             </Card>
 
-            {/* Corrections */}
-            {feedback.corrections.length > 0 && (
-              <Card>
-                <CardContent className="p-5 space-y-4">
-                  <h2 className="font-bold text-lg text-foreground">Corrections</h2>
-                  {feedback.corrections.map((c, i) => (
-                    <div key={i} className="space-y-1.5 pb-3 border-b border-border last:border-0 last:pb-0">
-                      <p className="text-sm text-destructive line-through">{c.wrong}</p>
-                      <p className="text-sm font-medium text-foreground">→ {c.correct}</p>
-                      <p className="text-xs text-muted-foreground">{c.explanation}</p>
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Suggestions */}
-            {feedback.suggestions.length > 0 && (
-              <Card>
-                <CardContent className="p-5 space-y-3">
-                  <h2 className="font-bold text-lg text-foreground">Suggestions</h2>
-                  <ul className="space-y-2">
-                    {feedback.suggestions.map((s, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <Sparkles className="w-4 h-4 text-primary shrink-0 mt-0.5" /> {s}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Vocabulary Upgrades */}
-            {feedback.advancedVocabulary.length > 0 && (
-              <Card>
-                <CardContent className="p-5 space-y-3">
-                  <h2 className="font-bold text-lg text-foreground">Vocabulary Upgrades</h2>
-                  <div className="grid gap-2">
-                    {feedback.advancedVocabulary.map((v, i) => (
-                      <div key={i} className="flex items-center gap-2 text-sm">
-                        <span className="text-muted-foreground">{v.basic}</span>
-                        <span className="text-primary">→</span>
-                        <span className="font-medium text-foreground">{v.advanced}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Strengths & Improvement */}
-            {(feedback.strengths || feedback.needsImprovement || feedback.overall) && (
-              <Card>
-                <CardContent className="p-5 space-y-4">
-                  {feedback.strengths && (
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">💪 Strengths</h3>
-                      <p className="text-sm text-muted-foreground">{feedback.strengths}</p>
-                    </div>
-                  )}
-                  {feedback.needsImprovement && (
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">🎯 Needs Improvement</h3>
-                      <p className="text-sm text-muted-foreground">{feedback.needsImprovement}</p>
-                    </div>
-                  )}
-                  {feedback.overall && (
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">📊 Overall</h3>
-                      <p className="text-sm text-muted-foreground">{feedback.overall}</p>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            )}
+            <CorrectionsList corrections={feedback.corrections} variant="card" />
+            <SuggestionsList suggestions={feedback.suggestions} variant="card" />
+            <VocabUpgrades items={feedback.advancedVocabulary} variant="card" />
+            <StrengthsBlock strengths={feedback.strengths} needsImprovement={feedback.needsImprovement} overall={feedback.overall} variant="card" />
 
             {/* Model Presentation */}
             {modelPresentation && (

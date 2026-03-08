@@ -7,10 +7,19 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
+import ScoreBar from "@/components/ai-trainer/ScoreBar";
+import RatingBadge from "@/components/ai-trainer/RatingBadge";
+import CorrectionsList from "@/components/ai-trainer/CorrectionsList";
+import SuggestionsList from "@/components/ai-trainer/SuggestionsList";
+import VocabUpgrades from "@/components/ai-trainer/VocabUpgrades";
+import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
+import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
+import type { Correction, VocabUpgrade as VocabUpgradeType, ScoreField, RatingField } from "@/types/ai-trainers";
 import {
   Mail, ArrowRight, ArrowLeft, Send, RotateCcw, Sparkles, CheckCircle,
   AlertCircle, Eye, Wand2, FileText, ChevronDown, ChevronUp
 } from "lucide-react";
+import { toast } from "sonner";
 
 // ── Types ──────────────────────────────────────────────────────────
 
@@ -31,11 +40,6 @@ interface Scenario {
   recommendedWords: [number, number];
 }
 
-interface ScoreField { score: number; comment: string }
-interface RatingField { rating: string; comment: string }
-interface Correction { wrong: string; correct: string; explanation: string }
-interface VocabUpgrade { basic: string; advanced: string }
-
 interface Feedback {
   taskAchievement: ScoreField;
   clarity: ScoreField;
@@ -49,7 +53,7 @@ interface Feedback {
   closing: RatingField;
   corrections: Correction[];
   suggestions: string[];
-  advancedVocabulary: VocabUpgrade[];
+  advancedVocabulary: VocabUpgradeType[];
   strengths: string;
   needsImprovement: string;
   overall: string;
@@ -272,6 +276,7 @@ const FN_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/email-reply-tr
 type Step = "select" | "write" | "feedback";
 
 const EmailReplyTrainer: React.FC = () => {
+  const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("email");
   const [step, setStep] = useState<Step>("select");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [scenario, setScenario] = useState<Scenario | null>(null);
@@ -346,6 +351,11 @@ const EmailReplyTrainer: React.FC = () => {
 
   const submitForFeedback = async () => {
     if (!scenario) return;
+    if (limitReached) {
+      toast.error(`Daily limit reached (${DAILY_LIMIT} sessions per 24h). Please come back tomorrow!`);
+      return;
+    }
+    recordSession();
     setLoading(true);
     setError(null);
     try {
@@ -450,29 +460,7 @@ const EmailReplyTrainer: React.FC = () => {
 
   // ── Render helpers ─────────────────────────────────────
 
-  const ScoreBar = ({ score, label }: { score: number; label: string }) => (
-    <div className="space-y-1">
-      <div className="flex justify-between text-sm">
-        <span className="font-medium text-foreground">{label}</span>
-        <span className="font-bold text-foreground">{score}/10</span>
-      </div>
-      <div className="h-2 rounded-full bg-muted overflow-hidden">
-        <div
-          className="h-full rounded-full transition-all duration-500"
-          style={{
-            width: `${score * 10}%`,
-            backgroundColor: score >= 8 ? "hsl(var(--primary))" : score >= 5 ? "hsl(45 90% 50%)" : "hsl(0 70% 55%)",
-          }}
-        />
-      </div>
-    </div>
-  );
-
-  const RatingBadge = ({ rating }: { rating: string }) => {
-    if (!rating) return null;
-    const variant = rating === "Excellent" || rating === "Appropriate" ? "default" : "secondary";
-    return <Badge variant={variant} className="text-xs">{rating}</Badge>;
-  };
+  // ScoreBar and RatingBadge now imported from shared components
 
   // ── Scenario Selection ─────────────────────────────────
 
@@ -730,120 +718,17 @@ const EmailReplyTrainer: React.FC = () => {
             <Card>
               <CardContent className="p-6 space-y-4">
                 <h3 className="font-heading font-semibold text-foreground text-lg">Tone & Formatting</h3>
-                {feedback.tone.rating && (
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">Tone</span>
-                    <div className="flex items-center gap-2">
-                      <RatingBadge rating={feedback.tone.rating} />
-                    </div>
-                  </div>
-                )}
-                {feedback.tone.comment && <p className="text-xs text-muted-foreground">{feedback.tone.comment}</p>}
-                {feedback.subjectLine.rating && (
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">Subject Line</span>
-                    <RatingBadge rating={feedback.subjectLine.rating} />
-                  </div>
-                )}
-                {feedback.subjectLine.comment && <p className="text-xs text-muted-foreground">{feedback.subjectLine.comment}</p>}
-                {feedback.greeting.rating && (
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">Greeting</span>
-                    <RatingBadge rating={feedback.greeting.rating} />
-                  </div>
-                )}
-                {feedback.greeting.comment && <p className="text-xs text-muted-foreground">{feedback.greeting.comment}</p>}
-                {feedback.closing.rating && (
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">Closing</span>
-                    <RatingBadge rating={feedback.closing.rating} />
-                  </div>
-                )}
-                {feedback.closing.comment && <p className="text-xs text-muted-foreground">{feedback.closing.comment}</p>}
+                <RatingBadge label="Tone" rating={feedback.tone.rating} comment={feedback.tone.comment} />
+                <RatingBadge label="Subject Line" rating={feedback.subjectLine.rating} comment={feedback.subjectLine.comment} />
+                <RatingBadge label="Greeting" rating={feedback.greeting.rating} comment={feedback.greeting.comment} />
+                <RatingBadge label="Closing" rating={feedback.closing.rating} comment={feedback.closing.comment} />
               </CardContent>
             </Card>
 
-            {/* Corrections */}
-            {feedback.corrections.length > 0 && (
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="font-heading font-semibold text-foreground text-lg mb-3">Corrections</h3>
-                  <div className="space-y-3">
-                    {feedback.corrections.map((c, i) => (
-                      <div key={i} className="bg-muted/50 rounded-lg p-3">
-                        <div className="flex flex-wrap gap-2 items-center text-sm mb-1">
-                          <span className="line-through text-destructive">{c.wrong}</span>
-                          <ArrowRight className="w-3 h-3 text-muted-foreground" />
-                          <span className="font-medium text-primary">{c.correct}</span>
-                        </div>
-                        {c.explanation && <p className="text-xs text-muted-foreground">{c.explanation}</p>}
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Suggestions */}
-            {feedback.suggestions.length > 0 && (
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="font-heading font-semibold text-foreground text-lg mb-3">Suggestions</h3>
-                  <ul className="space-y-2">
-                    {feedback.suggestions.map((s, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm">
-                        <Sparkles className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
-                        <span>{s}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Vocabulary Upgrades */}
-            {feedback.advancedVocabulary.length > 0 && (
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="font-heading font-semibold text-foreground text-lg mb-3">Vocabulary Upgrades</h3>
-                  <div className="grid gap-2">
-                    {feedback.advancedVocabulary.map((v, i) => (
-                      <div key={i} className="flex items-center gap-2 text-sm bg-muted/50 rounded-lg px-3 py-2">
-                        <span className="text-muted-foreground">{v.basic}</span>
-                        <ArrowRight className="w-3 h-3 text-muted-foreground" />
-                        <span className="font-medium text-primary">{v.advanced}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Strengths & Improvement */}
-            {(feedback.strengths || feedback.needsImprovement || feedback.overall) && (
-              <Card>
-                <CardContent className="p-6 space-y-4">
-                  {feedback.strengths && (
-                    <div>
-                      <h4 className="font-semibold text-foreground text-sm mb-1">✅ Strengths</h4>
-                      <p className="text-sm text-muted-foreground">{feedback.strengths}</p>
-                    </div>
-                  )}
-                  {feedback.needsImprovement && (
-                    <div>
-                      <h4 className="font-semibold text-foreground text-sm mb-1">🔧 Needs Improvement</h4>
-                      <p className="text-sm text-muted-foreground">{feedback.needsImprovement}</p>
-                    </div>
-                  )}
-                  {feedback.overall && (
-                    <div>
-                      <h4 className="font-semibold text-foreground text-sm mb-1">📊 Overall</h4>
-                      <p className="text-sm text-muted-foreground">{feedback.overall}</p>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            )}
+            <CorrectionsList corrections={feedback.corrections} variant="card" />
+            <SuggestionsList suggestions={feedback.suggestions} variant="card" />
+            <VocabUpgrades items={feedback.advancedVocabulary} variant="card" />
+            <StrengthsBlock strengths={feedback.strengths} needsImprovement={feedback.needsImprovement} overall={feedback.overall} variant="card" />
 
             {/* Model Answer */}
             <div className="space-y-3">

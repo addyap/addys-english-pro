@@ -7,6 +7,13 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import SEOHead from "@/components/SEOHead";
 import { supabase } from "@/integrations/supabase/client";
+import ScoreBar from "@/components/ai-trainer/ScoreBar";
+import CorrectionsList from "@/components/ai-trainer/CorrectionsList";
+import SuggestionsList from "@/components/ai-trainer/SuggestionsList";
+import VocabUpgrades from "@/components/ai-trainer/VocabUpgrades";
+import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
+import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
+import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
   Send, RotateCcw, Award, Briefcase, Users,
   Loader2, ChevronRight, DollarSign, BookOpen, Target,
@@ -18,9 +25,6 @@ import { toast } from "sonner";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
-interface Correction { wrong: string; correct: string; explanation: string }
-interface VocabUpgrade { basic: string; advanced: string }
-
 interface Feedback {
   persuasion: { score: number; comment: string };
   clarity: { score: number; comment: string };
@@ -30,7 +34,7 @@ interface Feedback {
   professionalism: { score: number; comment: string };
   corrections: Correction[];
   suggestions: string[];
-  advancedVocabulary: VocabUpgrade[];
+  advancedVocabulary: VocabUpgradeType[];
   overallLevel: string;
   strengths: string;
   needsImprovement: string;
@@ -160,6 +164,7 @@ function countRealUserTurns(msgs: Msg[]): number {
 }
 
 const AINegotiationTrainer: React.FC = () => {
+  const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("negotiation");
   const [scenario, setScenario] = useState<string | null>(null);
   const [mode, setMode] = useState<Mode>("practice");
   const [step, setStep] = useState<"scenario" | "mode" | "chat">("scenario");
@@ -189,7 +194,12 @@ const AINegotiationTrainer: React.FC = () => {
   };
 
   const selectMode = (m: Mode) => {
+    if (limitReached) {
+      toast.error(`Daily limit reached (${DAILY_LIMIT} sessions per 24h). Please come back tomorrow!`);
+      return;
+    }
     setMode(m);
+    recordSession();
     startConversation(scenario!, m);
   };
 
@@ -429,16 +439,7 @@ const AINegotiationTrainer: React.FC = () => {
   const inputDisabled = isLoading || !!feedback || isFeedbackLoading;
   const canEndConversation = realUserTurns >= MIN_TURNS_FOR_FEEDBACK && !feedback && !isFeedbackLoading;
 
-  const ScoreBar = ({ score, label, comment }: { score: number; label: string; comment: string }) => (
-    <div className="space-y-1.5">
-      <div className="flex items-center justify-between">
-        <span className="text-sm font-medium text-foreground">{label}</span>
-        <span className="text-sm font-bold text-primary">{score}/10</span>
-      </div>
-      <Progress value={score * 10} className="h-2" />
-      {comment && <p className="text-xs text-muted-foreground">{comment}</p>}
-    </div>
-  );
+  // ScoreBar now imported from shared components
 
   const seoHead = (
     <SEOHead
@@ -687,86 +688,10 @@ const AINegotiationTrainer: React.FC = () => {
               {feedback.professionalism?.score > 0 && <ScoreBar score={feedback.professionalism.score} label="Professionalism" comment={feedback.professionalism.comment || ""} />}
             </div>
 
-            {/* Corrections */}
-            {feedback.corrections && feedback.corrections.length > 0 && (
-              <div className="space-y-3 pt-3 border-t">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  <h3 className="font-semibold text-sm text-foreground">Corrections</h3>
-                </div>
-                <div className="space-y-2.5">
-                  {feedback.corrections.map((c, i) => (
-                    <div key={i} className="bg-background rounded-lg p-3 space-y-1 text-sm">
-                      {c.wrong && <p className="text-destructive line-through">"{c.wrong}"</p>}
-                      {c.correct && <p className="text-emerald-700 dark:text-emerald-400 font-medium">→ "{c.correct}"</p>}
-                      {c.explanation && <p className="text-xs text-muted-foreground">{c.explanation}</p>}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Suggestions */}
-            {feedback.suggestions && feedback.suggestions.length > 0 && (
-              <div className="space-y-2 pt-3 border-t">
-                <div className="flex items-center gap-2">
-                  <Lightbulb className="w-4 h-4 text-amber-600" />
-                  <h3 className="font-semibold text-sm text-foreground">Suggestions</h3>
-                </div>
-                <ul className="space-y-1.5">
-                  {feedback.suggestions.map((s, i) => (
-                    <li key={i} className="text-sm text-muted-foreground flex gap-2">
-                      <span className="text-amber-500 shrink-0">•</span>
-                      {s}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Strengths / Needs improvement */}
-            {(feedback.strengths || feedback.needsImprovement) && (
-              <div className="space-y-2 pt-3 border-t">
-                {feedback.strengths && (
-                  <div className="flex gap-2 text-sm">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                    <p className="text-foreground"><span className="font-medium">Strengths:</span> {feedback.strengths}</p>
-                  </div>
-                )}
-                {feedback.needsImprovement && (
-                  <div className="flex gap-2 text-sm">
-                    <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                    <p className="text-foreground"><span className="font-medium">Needs improvement:</span> {feedback.needsImprovement}</p>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Vocabulary Upgrades */}
-            {feedback.advancedVocabulary && feedback.advancedVocabulary.length > 0 && (
-              <div className="space-y-2 pt-3 border-t">
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="w-4 h-4 text-primary" />
-                  <h3 className="font-semibold text-sm text-foreground">Vocabulary Upgrades</h3>
-                </div>
-                <div className="space-y-1.5">
-                  {feedback.advancedVocabulary.map((v, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm">
-                      <span className="text-muted-foreground">{v.basic}</span>
-                      <span className="text-muted-foreground">→</span>
-                      <span className="font-medium text-primary">{v.advanced}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Overall */}
-            {feedback.overall && (
-              <div className="pt-3 border-t">
-                <p className="text-sm text-foreground italic">{feedback.overall}</p>
-              </div>
-            )}
+            <CorrectionsList corrections={feedback.corrections || []} />
+            <SuggestionsList suggestions={feedback.suggestions || []} />
+            <StrengthsBlock strengths={feedback.strengths} needsImprovement={feedback.needsImprovement} overall={feedback.overall} />
+            <VocabUpgrades items={feedback.advancedVocabulary || []} />
 
             {/* Post-feedback CTAs */}
             <div className="pt-3 border-t grid gap-2 sm:grid-cols-3">
