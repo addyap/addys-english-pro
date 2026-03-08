@@ -164,6 +164,7 @@ function countRealUserTurns(msgs: Msg[]): number {
 }
 
 const AINegotiationTrainer: React.FC = () => {
+  const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("negotiation");
   const [scenario, setScenario] = useState<string | null>(null);
   const [mode, setMode] = useState<Mode>("practice");
   const [step, setStep] = useState<"scenario" | "mode" | "chat">("scenario");
