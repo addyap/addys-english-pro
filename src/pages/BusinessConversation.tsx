@@ -774,6 +774,37 @@ const BusinessConversation: React.FC = () => {
               </div>
             )}
 
+            {/* Advanced Vocabulary */}
+            {feedback.advancedVocabulary && feedback.advancedVocabulary.length > 0 && (
+              <div className="space-y-2 pt-3 border-t">
+                <div className="flex items-center gap-2">
+                  <TrendingUp className="w-4 h-4 text-primary" />
+                  <h3 className="font-semibold text-sm text-foreground">Vocabulary Upgrades</h3>
+                </div>
+                <div className="space-y-1.5">
+                  {feedback.advancedVocabulary.map((v, i) => (
+                    <div key={i} className="flex items-center gap-2 text-sm">
+                      <span className="text-muted-foreground">{v.basic}</span>
+                      <span className="text-muted-foreground">→</span>
+                      <span className="font-medium text-primary">{v.advanced}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Speaking Time + CEFR Level summary row */}
+            {(feedback.estimatedSpeakingTime || feedback.overallLevel) && (
+              <div className="flex items-center gap-4 pt-3 border-t flex-wrap">
+                {feedback.estimatedSpeakingTime && (
+                  <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                    <Clock className="w-4 h-4" />
+                    <span>Est. speaking time: <span className="font-medium text-foreground">{feedback.estimatedSpeakingTime}</span></span>
+                  </div>
+                )}
+              </div>
+            )}
+
             {/* Overall */}
             {feedback.overall && (
               <div className="pt-3 border-t">
