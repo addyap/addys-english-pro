@@ -74,6 +74,7 @@ const CLOETestHistory = lazy(() => import("./pages/CLOETestHistory"));
 const SiteAnalytics = lazy(() => import("./pages/SiteAnalytics"));
 const GrammarLessonDetail = lazy(() => import("./pages/GrammarLessonDetail"));
 const BusinessConversation = lazy(() => import("./pages/BusinessConversation"));
+const EmailReplyTrainer = lazy(() => import("./pages/EmailReplyTrainer"));
 const PageLoader = () => (
   <div className="min-h-screen bg-background py-12">
     <div className="max-w-4xl mx-auto px-4 space-y-8">
