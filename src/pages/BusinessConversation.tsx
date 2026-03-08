@@ -5,6 +5,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { Separator } from "@/components/ui/separator";
 import SEOHead from "@/components/SEOHead";
 import { supabase } from "@/integrations/supabase/client";
 import {
@@ -12,7 +13,7 @@ import {
   ShieldAlert, Coffee, Handshake, Loader2, ChevronRight,
   Phone, Mic, Building2, Globe, UserCheck, ClipboardList,
   HelpCircle, Presentation, DollarSign, BookOpen, Target, GraduationCap,
-  CheckCircle2, AlertTriangle, Lightbulb, ArrowLeft, Square
+  CheckCircle2, AlertTriangle, Lightbulb, ArrowLeft, Square, Clock, TrendingUp
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -24,6 +25,11 @@ interface Correction {
   explanation: string;
 }
 
+interface VocabUpgrade {
+  basic: string;
+  advanced: string;
+}
+
 interface Feedback {
   fluency: { score: number; comment: string };
   grammar: { score: number; comment: string };
@@ -31,6 +37,8 @@ interface Feedback {
   tone: { rating: string; comment: string };
   corrections?: Correction[];
   suggestions?: string[];
+  advancedVocabulary?: VocabUpgrade[];
+  estimatedSpeakingTime?: string;
   overallLevel?: string;
   strengths?: string;
   needsImprovement?: string;
@@ -761,6 +769,37 @@ const BusinessConversation: React.FC = () => {
                   <div className="flex gap-2 text-sm">
                     <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
                     <p className="text-foreground"><span className="font-medium">Needs improvement:</span> {feedback.needsImprovement}</p>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Advanced Vocabulary */}
+            {feedback.advancedVocabulary && feedback.advancedVocabulary.length > 0 && (
+              <div className="space-y-2 pt-3 border-t">
+                <div className="flex items-center gap-2">
+                  <TrendingUp className="w-4 h-4 text-primary" />
+                  <h3 className="font-semibold text-sm text-foreground">Vocabulary Upgrades</h3>
+                </div>
+                <div className="space-y-1.5">
+                  {feedback.advancedVocabulary.map((v, i) => (
+                    <div key={i} className="flex items-center gap-2 text-sm">
+                      <span className="text-muted-foreground">{v.basic}</span>
+                      <span className="text-muted-foreground">→</span>
+                      <span className="font-medium text-primary">{v.advanced}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Speaking Time + CEFR Level summary row */}
+            {(feedback.estimatedSpeakingTime || feedback.overallLevel) && (
+              <div className="flex items-center gap-4 pt-3 border-t flex-wrap">
+                {feedback.estimatedSpeakingTime && (
+                  <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                    <Clock className="w-4 h-4" />
+                    <span>Est. speaking time: <span className="font-medium text-foreground">{feedback.estimatedSpeakingTime}</span></span>
                   </div>
                 )}
               </div>
