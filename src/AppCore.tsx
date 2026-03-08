@@ -76,6 +76,7 @@ const GrammarLessonDetail = lazy(() => import("./pages/GrammarLessonDetail"));
 const BusinessConversation = lazy(() => import("./pages/BusinessConversation"));
 const EmailReplyTrainer = lazy(() => import("./pages/EmailReplyTrainer"));
 const AIPresentationTrainer = lazy(() => import("./pages/AIPresentationTrainer"));
+const AINegotiationTrainer = lazy(() => import("./pages/AINegotiationTrainer"));
 const PageLoader = () => (
   <div className="min-h-screen bg-background py-12">
     <div className="max-w-4xl mx-auto px-4 space-y-8">
@@ -156,6 +157,7 @@ export const AppRoutes = () => (
     <Route path="/conversation-trainer" element={<BusinessConversation />} />
     <Route path="/email-trainer" element={<EmailReplyTrainer />} />
     <Route path="/presentation-trainer" element={<AIPresentationTrainer />} />
+    <Route path="/negotiation-trainer" element={<AINegotiationTrainer />} />
 
     {/* Legacy/alias routes (prevent user-facing 404s from older internal links) */}
     <Route path="/lecture" element={<Navigate to="/reading" replace />} />
