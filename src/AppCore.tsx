@@ -81,6 +81,7 @@ const AISpeakingPractice = lazy(() => import("./pages/AISpeakingPractice"));
 const AIWritingCoach = lazy(() => import("./pages/AIWritingCoach"));
 const AIInterviewSimulator = lazy(() => import("./pages/AIInterviewSimulator"));
 const AIGrammarExplainer = lazy(() => import("./pages/AIGrammarExplainer"));
+const RessourcesGratuites = lazy(() => import("./pages/RessourcesGratuites"));
 const PageLoader = () => (
   <div className="min-h-screen bg-background py-12">
     <div className="max-w-4xl mx-auto px-4 space-y-8">
