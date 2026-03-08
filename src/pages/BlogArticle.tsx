@@ -348,7 +348,7 @@ const BlogArticle = () => {
             {/* Article Content */}
             <div 
               className="prose prose-lg max-w-none text-gray-700"
-              dangerouslySetInnerHTML={{ __html: article.content }}
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article.content) }}
             />
 
             {/* Practice Section - Internal Linking */}
