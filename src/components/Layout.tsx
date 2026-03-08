@@ -4,8 +4,15 @@ import { MessageSquare, Menu, X, ExternalLink } from 'lucide-react';
 import { ScrollProgressBar } from "@/components/Effects";
 import SiteLogo from "@/components/SiteLogo";
 import Breadcrumbs from '@/components/Breadcrumbs';
+import AIToolsNav from '@/components/AIToolsNav';
 import { usePageTracking } from '@/hooks/usePageTracking';
 import GoogleTranslate from '@/components/GoogleTranslate';
+
+const AI_TOOL_PATHS = [
+  '/conversation-trainer', '/writing-coach', '/speaking-practice',
+  '/grammar-explainer', '/email-trainer', '/presentation-trainer',
+  '/negotiation-trainer', '/interview-simulator',
+];
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -142,6 +149,9 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
 
       {/* Breadcrumbs */}
       <Breadcrumbs customTitle={breadcrumbTitle} customSection={breadcrumbSection} />
+
+      {/* AI Tools Navigation */}
+      {AI_TOOL_PATHS.includes(location.pathname) && <AIToolsNav />}
 
       {/* Main Content */}
       <main>{children}</main>
