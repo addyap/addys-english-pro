@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Volume2, CheckCircle, XCircle, RotateCcw } from "lucide-react";
 import { pronunciationExercises } from "@/data/pronunciationExercises";
+import { shuffleArray } from "@/utils/shuffleArray";
 import { SimilarExercises, SimilarExercise } from "@/components/SimilarExercises";
 import QuizJsonLd from "@/components/QuizJsonLd";
 
