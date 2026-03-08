@@ -1,0 +1,1 @@
+DROP POLICY IF EXISTS "Allow anonymous update own session" ON public.conversation_sessions;
