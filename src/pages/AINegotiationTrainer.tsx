@@ -25,9 +25,6 @@ import { toast } from "sonner";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
-interface Correction { wrong: string; correct: string; explanation: string }
-interface VocabUpgrade { basic: string; advanced: string }
-
 interface Feedback {
   persuasion: { score: number; comment: string };
   clarity: { score: number; comment: string };
@@ -37,7 +34,7 @@ interface Feedback {
   professionalism: { score: number; comment: string };
   corrections: Correction[];
   suggestions: string[];
-  advancedVocabulary: VocabUpgrade[];
+  advancedVocabulary: VocabUpgradeType[];
   overallLevel: string;
   strengths: string;
   needsImprovement: string;
