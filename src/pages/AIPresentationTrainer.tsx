@@ -18,11 +18,6 @@ import type { Correction, VocabUpgrade as VocabUpgradeType, ScoreField, RatingFi
 import { toast } from "sonner";
 
 // ── Types ─────────────────────────────────────────────
-interface ScoreField { score: number; comment: string }
-interface RatingField { rating: string; comment: string }
-interface Correction { wrong: string; correct: string; explanation: string }
-interface VocabUpgrade { basic: string; advanced: string }
-
 interface Feedback {
   taskAchievement: ScoreField;
   clarity: ScoreField;
@@ -34,7 +29,7 @@ interface Feedback {
   overallLevel: string;
   corrections: Correction[];
   suggestions: string[];
-  advancedVocabulary: VocabUpgrade[];
+  advancedVocabulary: VocabUpgradeType[];
   strengths: string;
   needsImprovement: string;
   overall: string;
