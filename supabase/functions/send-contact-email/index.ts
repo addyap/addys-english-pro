@@ -54,10 +54,10 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send notification email to Antony
     const notificationResponse = await resend.emails.send({
-      from: "Contact Form <contact@antonyaddy.com>",
+      from: `${prenom} ${nom} via Contact <contact@antonyaddy.com>`,
       to: ["formations@antonyaddy.com"],
       replyTo: email,
-      subject: `Nouveau message de ${prenom} ${nom}`,
+      subject: `Nouveau message de ${prenom} ${nom} (${email})`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h1 style="color: #1e40af; border-bottom: 2px solid #1e40af; padding-bottom: 10px;">
