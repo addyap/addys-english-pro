@@ -459,29 +459,7 @@ const EmailReplyTrainer: React.FC = () => {
 
   // ── Render helpers ─────────────────────────────────────
 
-  const ScoreBar = ({ score, label }: { score: number; label: string }) => (
-    <div className="space-y-1">
-      <div className="flex justify-between text-sm">
-        <span className="font-medium text-foreground">{label}</span>
-        <span className="font-bold text-foreground">{score}/10</span>
-      </div>
-      <div className="h-2 rounded-full bg-muted overflow-hidden">
-        <div
-          className="h-full rounded-full transition-all duration-500"
-          style={{
-            width: `${score * 10}%`,
-            backgroundColor: score >= 8 ? "hsl(var(--primary))" : score >= 5 ? "hsl(45 90% 50%)" : "hsl(0 70% 55%)",
-          }}
-        />
-      </div>
-    </div>
-  );
-
-  const RatingBadge = ({ rating }: { rating: string }) => {
-    if (!rating) return null;
-    const variant = rating === "Excellent" || rating === "Appropriate" ? "default" : "secondary";
-    return <Badge variant={variant} className="text-xs">{rating}</Badge>;
-  };
+  // ScoreBar and RatingBadge now imported from shared components
 
   // ── Scenario Selection ─────────────────────────────────
 
