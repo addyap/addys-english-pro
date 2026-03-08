@@ -8,7 +8,10 @@ import './monitor/vitals.ts'
 
 const rootElement = document.getElementById("root")!;
 
-if (import.meta.env.PROD) {
+// Only hydrate if the server actually pre-rendered content; otherwise mount fresh.
+const hasSSRContent = rootElement.childNodes.length > 0;
+
+if (import.meta.env.PROD && hasSSRContent) {
   hydrateRoot(rootElement, <App />);
 
   // Ensure users don't stay stuck on an old cached build (common on custom/live domains with a SW).
