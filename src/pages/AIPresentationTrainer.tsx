@@ -5,9 +5,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
-import { Progress } from "@/components/ui/progress";
 import SEOHead from "@/components/SEOHead";
 import { supabase } from "@/integrations/supabase/client";
+import ScoreBar from "@/components/ai-trainer/ScoreBar";
+import RatingBadge from "@/components/ai-trainer/RatingBadge";
+import CorrectionsList from "@/components/ai-trainer/CorrectionsList";
+import SuggestionsList from "@/components/ai-trainer/SuggestionsList";
+import VocabUpgrades from "@/components/ai-trainer/VocabUpgrades";
+import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
+import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
+import type { Correction, VocabUpgrade as VocabUpgradeType, ScoreField, RatingField } from "@/types/ai-trainers";
 import { toast } from "sonner";
 
 // ── Types ─────────────────────────────────────────────
