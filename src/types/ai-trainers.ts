@@ -69,4 +69,45 @@ export interface NegotiationFeedback extends BaseFeedback {
   professionalism: ScoreField;
 }
 
-export type TrainerType = "conversation" | "email" | "presentation" | "negotiation";
+/** Speaking practice feedback */
+export interface SpeakingFeedback extends BaseFeedback {
+  fluency: ScoreField;
+  pronunciation: ScoreField;
+  tone: RatingField;
+}
+
+/** Writing coach feedback */
+export interface WritingCoachFeedback extends BaseFeedback {
+  taskAchievement: ScoreField;
+  clarity: ScoreField;
+  coherence: ScoreField;
+  style: RatingField;
+}
+
+/** Interview simulator feedback */
+export interface InterviewFeedback extends BaseFeedback {
+  clarity: ScoreField;
+  relevance: ScoreField;
+  confidence: RatingField;
+  structure: ScoreField;
+}
+
+/** Grammar explainer result */
+export interface GrammarExplainerResult {
+  sentence: string;
+  breakdown: Array<{
+    word: string;
+    partOfSpeech: string;
+    role: string;
+    explanation: string;
+  }>;
+  rules: Array<{
+    name: string;
+    explanation: string;
+    example: string;
+  }>;
+  level: string;
+  tips: string[];
+}
+
+export type TrainerType = "conversation" | "email" | "presentation" | "negotiation" | "speaking" | "writing-coach" | "interview" | "grammar-explainer";
