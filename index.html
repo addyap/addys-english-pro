@@ -72,7 +72,7 @@
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           // Cache-bust: append version to bypass HTTP caching on any host
-          navigator.serviceWorker.register('/sw.js?v=2.1.1')
+          navigator.serviceWorker.register('/sw.js?v=2.1.2')
             .then(reg => console.log('Service Worker registered', reg))
             .catch(err => console.error('Service Worker registration failed', err));
         });
