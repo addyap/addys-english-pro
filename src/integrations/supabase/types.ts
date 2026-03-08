@@ -53,6 +53,54 @@ export type Database = {
         }
         Relationships: []
       }
+      email_training_sessions: {
+        Row: {
+          category: string | null
+          completed_at: string | null
+          created_at: string
+          feedback: Json | null
+          id: string
+          improved_reply: string | null
+          learner_reply: string | null
+          learner_subject: string | null
+          model_answer: string | null
+          overall_level: string | null
+          scenario: string
+          session_id: string | null
+          started_at: string | null
+        }
+        Insert: {
+          category?: string | null
+          completed_at?: string | null
+          created_at?: string
+          feedback?: Json | null
+          id?: string
+          improved_reply?: string | null
+          learner_reply?: string | null
+          learner_subject?: string | null
+          model_answer?: string | null
+          overall_level?: string | null
+          scenario: string
+          session_id?: string | null
+          started_at?: string | null
+        }
+        Update: {
+          category?: string | null
+          completed_at?: string | null
+          created_at?: string
+          feedback?: Json | null
+          id?: string
+          improved_reply?: string | null
+          learner_reply?: string | null
+          learner_subject?: string | null
+          model_answer?: string | null
+          overall_level?: string | null
+          scenario?: string
+          session_id?: string | null
+          started_at?: string | null
+        }
+        Relationships: []
+      }
       page_views: {
         Row: {
           country: string | null
