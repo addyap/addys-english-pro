@@ -15,7 +15,7 @@ import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
-  Send, RotateCcw, ArrowLeft, Loader2, ChevronRight,
+  Send, RotateCcw, ArrowLeft, Loader2, ChevronRight, Mic,
   Briefcase, Building2, TrendingUp, Heart, GraduationCap, Truck,
   Monitor, Palette, Utensils, Users
 } from "lucide-react";
