@@ -254,6 +254,16 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                     Mon tableau de bord
                   </Link>
                 </li>
+                <li>
+                  <Link to="/conversation-trainer" className="text-gray-400 hover:text-white transition-colors">
+                    AI Conversation Trainer
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/email-trainer" className="text-gray-400 hover:text-white transition-colors">
+                    AI Email Reply Trainer
+                  </Link>
+                </li>
               </ul>
             </nav>
 

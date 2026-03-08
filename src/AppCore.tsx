@@ -153,6 +153,7 @@ export const AppRoutes = () => (
     <Route path="/admin/seo-diagnostics" element={<SEODiagnostics />} />
     <Route path="/admin/analytics" element={<SiteAnalytics />} />
     <Route path="/conversation-trainer" element={<BusinessConversation />} />
+    <Route path="/email-trainer" element={<EmailReplyTrainer />} />
 
     {/* Legacy/alias routes (prevent user-facing 404s from older internal links) */}
     <Route path="/lecture" element={<Navigate to="/reading" replace />} />
