@@ -17,3 +17,9 @@ verify_jwt = false
 
 [functions.email-reply-trainer]
 verify_jwt = false
+
+[functions.presentation-trainer]
+verify_jwt = false
+
+[functions.negotiation-trainer]
+verify_jwt = false
