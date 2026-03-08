@@ -165,6 +165,11 @@ const AIPresentationTrainer: React.FC = () => {
 
   const submitForFeedback = async () => {
     if (!scenario || loading) return;
+    if (limitReached) {
+      toast.error(`Daily limit reached (${DAILY_LIMIT} sessions per 24h). Please come back tomorrow!`);
+      return;
+    }
+    recordSession();
     setLoading(true);
     try {
       const resp = await fetch(FUNC_URL, {
