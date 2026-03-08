@@ -9,6 +9,7 @@
     
     { "path": "/blog", "priority": 0.8, "changefreq": "weekly", "title": "Blog" },
     { "path": "/exercices", "priority": 0.8, "changefreq": "weekly", "title": "Exercices" },
+    { "path": "/ressources-gratuites", "priority": 0.9, "changefreq": "weekly", "title": "Ressources Gratuites" },
     { "path": "/reading", "priority": 0.8, "changefreq": "weekly", "title": "Lecture" },
     { "path": "/exercices/listening", "priority": 0.8, "changefreq": "weekly", "title": "Listening" },
     { "path": "/mentions-legales", "priority": 0.3, "changefreq": "yearly", "title": "Mentions légales" },
