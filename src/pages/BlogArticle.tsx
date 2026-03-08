@@ -214,7 +214,7 @@ const BlogArticle = () => {
   const articleSEO = {
     title: `${article.title} - Blog Antony Addy`,
     description: article.description,
-    canonicalUrl: `https://antonyaddy.com/blog/${id}`,
+    canonicalUrl: `https://www.antonyaddy.com/blog/${id}`,
     ogImage: article.ogImage,
     keywords: [
       "article anglais",
