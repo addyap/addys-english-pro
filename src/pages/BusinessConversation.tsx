@@ -184,6 +184,9 @@ const BusinessConversation: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const examFeedbackTriggeredRef = useRef(false);
+  const { isListening, startListening, stopListening, speechSupported } = useSpeechRecognition(
+    useCallback((text: string) => setInput(text), [])
+  );
 
   const realUserTurns = countRealUserTurns(messages);
 
