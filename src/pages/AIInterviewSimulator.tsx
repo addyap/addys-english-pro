@@ -72,6 +72,9 @@ const AIInterviewSimulator = () => {
   const [loadingFeedback, setLoadingFeedback] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { remaining, limitReached, recordSession } = useAIDailyLimit("interview");
+  const { isListening, startListening, stopListening, speechSupported } = useSpeechRecognition(
+    useCallback((text: string) => setInput(text), [])
+  );
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
