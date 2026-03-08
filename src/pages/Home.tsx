@@ -465,10 +465,10 @@ const Home = () => {
                 { to: "/email-trainer", icon: Mail, title: "Rédaction d'e-mails", desc: "Répondez à des e-mails professionnels réalistes. Feedback IA sur la clarté, le ton et la structure." },
                 { to: "/presentation-trainer", icon: Sparkles, title: "Présentation professionnelle", desc: "Rédigez des présentations en anglais et recevez un feedback sur la structure et le vocabulaire." },
                 { to: "/negotiation-trainer", icon: Handshake, title: "Négociation commerciale", desc: "Pratiquez des négociations réalistes avec feedback sur la persuasion et la stratégie." },
-                { to: "/speaking-practice", icon: Mic, title: "Speaking Practice 🎙️", desc: "Parlez en anglais avec reconnaissance vocale et synthèse vocale. Feedback prononciation et fluidité.", isNew: true },
-                { to: "/writing-coach", icon: PenTool, title: "Writing Coach ✍️", desc: "Soumettez un texte et recevez un feedback détaillé avec version améliorée automatique.", isNew: true },
-                { to: "/interview-simulator", icon: UserCheck, title: "Interview Simulator 💼", desc: "Simulez un entretien d'embauche en anglais. 8 secteurs, 3 types d'entretien, feedback CECRL.", isNew: true },
-                { to: "/grammar-explainer", icon: Search, title: "Grammar Explainer 📖", desc: "Collez une phrase et obtenez une analyse grammaticale complète avec règles et conseils.", isNew: true },
+                { to: "/speaking-practice", icon: Mic, title: "Speaking Practice 🎙️", desc: "Parlez en anglais avec reconnaissance vocale et synthèse vocale. Feedback prononciation et fluidité." },
+                { to: "/writing-coach", icon: PenTool, title: "Writing Coach ✍️", desc: "Soumettez un texte et recevez un feedback détaillé avec version améliorée automatique." },
+                { to: "/interview-simulator", icon: UserCheck, title: "Interview Simulator 💼", desc: "Simulez un entretien d'embauche en anglais. 8 secteurs, 3 types d'entretien, feedback CECRL." },
+                { to: "/grammar-explainer", icon: Search, title: "Grammar Explainer 📖", desc: "Collez une phrase et obtenez une analyse grammaticale complète avec règles et conseils." },
               ].map(item => (
                 <Link key={item.to} to={item.to} className="group bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/15 p-6 md:p-8 flex items-start gap-5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all hover:-translate-y-1 relative">
                   {item.isNew && (
