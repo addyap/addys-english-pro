@@ -181,7 +181,8 @@ const BusinessConversation: React.FC = () => {
   const [feedbackError, setFeedbackError] = useState(false);
   const [sessionId, setSessionId] = useState(() => crypto.randomUUID());
   const [examComplete, setExamComplete] = useState(false);
-  const [startedAt] = useState(() => new Date().toISOString());
+  const [startedAt, setStartedAt] = useState(() => new Date().toISOString());
+  const [sessionSaved, setSessionSaved] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const examFeedbackTriggeredRef = useRef(false);
@@ -224,6 +225,8 @@ const BusinessConversation: React.FC = () => {
   const startConversation = useCallback(async (scenarioId: string, selectedMode: Mode) => {
     const newSessionId = crypto.randomUUID();
     setSessionId(newSessionId);
+    setStartedAt(new Date().toISOString());
+    setSessionSaved(false);
     setStep("chat");
     setMessages([]);
     setFeedback(null);
@@ -394,22 +397,27 @@ const BusinessConversation: React.FC = () => {
       const fb = data.feedback as Feedback;
       setFeedback(fb);
 
-      // Persist session with metadata
-      await supabase.from("conversation_sessions" as any).insert({
-        scenario,
-        mode,
-        messages: JSON.stringify(msgsToUse),
-        feedback: JSON.stringify(fb),
-        session_id: sessionId,
-        completed_at: new Date().toISOString(),
-      } as any);
+      // Persist session with metadata (only once per session)
+      if (!sessionSaved) {
+        setSessionSaved(true);
+        await supabase.from("conversation_sessions" as any).insert({
+          scenario,
+          mode,
+          messages: JSON.stringify(msgsToUse),
+          feedback: JSON.stringify(fb),
+          session_id: sessionId,
+          started_at: startedAt,
+          completed_at: new Date().toISOString(),
+          overall_level: fb.overallLevel || null,
+        } as any);
+      }
     } catch (e: any) {
       setFeedbackError(true);
       toast.error(e.message || "Could not generate feedback. Please try again.");
     } finally {
       setIsFeedbackLoading(false);
     }
-  }, [messages, scenario, sessionId, mode, isFeedbackLoading]);
+  }, [messages, scenario, sessionId, mode, isFeedbackLoading, sessionSaved, startedAt]);
 
   const endConversation = useCallback(() => {
     setExamComplete(true);
@@ -430,6 +438,7 @@ const BusinessConversation: React.FC = () => {
     setFeedbackError(false);
     setInput("");
     setExamComplete(false);
+    setSessionSaved(false);
     examFeedbackTriggeredRef.current = false;
   };
 
