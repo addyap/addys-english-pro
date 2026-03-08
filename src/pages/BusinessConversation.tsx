@@ -645,7 +645,13 @@ const BusinessConversation: React.FC = () => {
                 {mode === "exam" ? "Assessing your answers…" : "Generating feedback…"}
               </Badge>
             )}
-            <Button size="sm" variant="outline" onClick={resetConversation} className="gap-1.5">
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={resetConversation}
+              disabled={isFeedbackLoading}
+              className="gap-1.5"
+            >
               <RotateCcw className="w-3.5 h-3.5" />
               New
             </Button>
