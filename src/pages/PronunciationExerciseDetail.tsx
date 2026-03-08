@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Volume2, CheckCircle, XCircle, RotateCcw } from "lucide-react";
 import { pronunciationExercises } from "@/data/pronunciationExercises";
+import { shuffleArray } from "@/utils/shuffleArray";
 import { SimilarExercises, SimilarExercise } from "@/components/SimilarExercises";
 import QuizJsonLd from "@/components/QuizJsonLd";
 
@@ -27,7 +28,16 @@ const PronunciationExerciseDetail = () => {
     setCompleted([]);
   }, [id]);
 
-  // Similar exercises
+  // Shuffle options for each question once per exercise load
+  const shuffledOptionsMap = useMemo(() => {
+    const map: Record<number, string[]> = {};
+    exercise.questions.forEach((q, index) => {
+      map[index] = shuffleArray(q.options);
+    });
+    return map;
+  }, [id, exercise.questions]);
+
+
   const similarExercises = useMemo((): SimilarExercise[] => {
     return pronunciationExercises.map(ex => ({
       id: ex.id,
@@ -160,7 +170,7 @@ const PronunciationExerciseDetail = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                {currentQuestion.options.map((option) => (
+                {shuffledOptionsMap[currentIndex]?.map((option) => (
                   <Button
                     key={option}
                     variant={
