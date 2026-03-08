@@ -746,7 +746,7 @@ const Home = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-foreground mb-3">Dernière mise à jour</h3>
-                <p className="text-muted-foreground">Février 2026</p>
+                <p className="text-muted-foreground">Mars 2026</p>
                 <p className="text-xs text-muted-foreground mt-2">
                   Contenu créé par <a href="https://www.linkedin.com/in/antonyaddy/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Antony Addy</a>, formateur certifié FPA.
                 </p>

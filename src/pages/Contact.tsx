@@ -305,7 +305,7 @@ const Contact = () => {
                     <div>
                       <p className="font-medium text-gray-900">Email</p>
                       <a 
-                        href="mailto:hello@antonyaddy.com" 
+                        href="mailto:formations@antonyaddy.com" 
                         className="text-blue-600 hover:text-blue-800 transition-colors"
                         onClick={trackEmailClick}
                       >
