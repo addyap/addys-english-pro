@@ -162,6 +162,10 @@ export const AppRoutes = () => (
     <Route path="/email-trainer" element={<EmailReplyTrainer />} />
     <Route path="/presentation-trainer" element={<AIPresentationTrainer />} />
     <Route path="/negotiation-trainer" element={<AINegotiationTrainer />} />
+    <Route path="/speaking-practice" element={<AISpeakingPractice />} />
+    <Route path="/writing-coach" element={<AIWritingCoach />} />
+    <Route path="/interview-simulator" element={<AIInterviewSimulator />} />
+    <Route path="/grammar-explainer" element={<AIGrammarExplainer />} />
 
     {/* Legacy/alias routes (prevent user-facing 404s from older internal links) */}
     <Route path="/lecture" element={<Navigate to="/reading" replace />} />
