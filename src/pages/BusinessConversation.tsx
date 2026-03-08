@@ -14,6 +14,7 @@ import SuggestionsList from "@/components/ai-trainer/SuggestionsList";
 import VocabUpgrades from "@/components/ai-trainer/VocabUpgrades";
 import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
+import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
   MessageCircle, Send, RotateCcw, Award, Briefcase, Users,
@@ -183,6 +184,9 @@ const BusinessConversation: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const examFeedbackTriggeredRef = useRef(false);
+  const { isListening, startListening, stopListening, speechSupported } = useSpeechRecognition(
+    useCallback((text: string) => setInput(text), [])
+  );
 
   const realUserTurns = countRealUserTurns(messages);
 
@@ -706,6 +710,18 @@ const BusinessConversation: React.FC = () => {
                 disabled={inputDisabled}
                 rows={1}
               />
+              {speechSupported && (
+                <Button
+                  size="icon"
+                  variant={isListening ? "destructive" : "outline"}
+                  onClick={isListening ? stopListening : startListening}
+                  disabled={inputDisabled}
+                  className="shrink-0 h-10 w-10"
+                  title={isListening ? "Arrêter" : "Parler"}
+                >
+                  <Mic className="w-4 h-4" />
+                </Button>
+              )}
               <Button
                 size="icon"
                 onClick={sendMessage}

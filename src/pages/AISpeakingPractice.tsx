@@ -11,6 +11,7 @@ import SuggestionsList from "@/components/ai-trainer/SuggestionsList";
 import VocabUpgrades from "@/components/ai-trainer/VocabUpgrades";
 import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
+import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
   Mic, MicOff, Send, RotateCcw, ArrowLeft, ArrowRight, Loader2,
@@ -66,14 +67,13 @@ const AISpeakingPractice = () => {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
-  const [isListening, setIsListening] = useState(false);
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [loadingFeedback, setLoadingFeedback] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const recognitionRef = useRef<any>(null);
   const { remaining, limitReached, recordSession } = useAIDailyLimit("speaking");
-
-  const speechSupported = typeof window !== "undefined" && ("SpeechRecognition" in window || "webkitSpeechRecognition" in window);
+  const { isListening, startListening, stopListening, speechSupported } = useSpeechRecognition(
+    useCallback((text: string) => setInput(text), [])
+  );
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -158,37 +158,7 @@ const AISpeakingPractice = () => {
     streamMessage(newMsgs, scenario, mode);
   };
 
-  const startListening = () => {
-    if (!speechSupported) { toast.error("Votre navigateur ne supporte pas la reconnaissance vocale."); return; }
-    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
-    recognition.lang = "en-US";
-    recognition.interimResults = true;
-    recognition.continuous = false;
-
-    recognition.onresult = (event: any) => {
-      const transcript = Array.from(event.results).map((r: any) => r[0].transcript).join("");
-      setInput(transcript);
-    };
-    recognition.onend = () => setIsListening(false);
-    recognition.onerror = (e: any) => {
-      setIsListening(false);
-      if (e.error === "not-allowed") {
-        toast.error("Accès au micro refusé. Autorisez le micro dans les paramètres de votre navigateur, ou ouvrez le site dans un nouvel onglet.", { duration: 6000 });
-      } else {
-        toast.error("Erreur de reconnaissance vocale. Réessayez ou utilisez la saisie texte.");
-      }
-    };
-
-    recognitionRef.current = recognition;
-    recognition.start();
-    setIsListening(true);
-  };
-
-  const stopListening = () => {
-    recognitionRef.current?.stop();
-    setIsListening(false);
-  };
+  // Speech recognition now handled by useSpeechRecognition hook
 
   const speakText = (text: string) => {
     if (!("speechSynthesis" in window)) return;

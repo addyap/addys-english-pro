@@ -11,10 +11,11 @@ import CorrectionsList from "@/components/ai-trainer/CorrectionsList";
 import SuggestionsList from "@/components/ai-trainer/SuggestionsList";
 import VocabUpgrades from "@/components/ai-trainer/VocabUpgrades";
 import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
+import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
-  Send, RotateCcw, ArrowLeft, Loader2, ChevronRight,
+  Send, RotateCcw, ArrowLeft, Loader2, ChevronRight, Mic,
   Briefcase, Building2, TrendingUp, Heart, GraduationCap, Truck,
   Monitor, Palette, Utensils, Users
 } from "lucide-react";
@@ -71,6 +72,9 @@ const AIInterviewSimulator = () => {
   const [loadingFeedback, setLoadingFeedback] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { remaining, limitReached, recordSession } = useAIDailyLimit("interview");
+  const { isListening, startListening, stopListening, speechSupported } = useSpeechRecognition(
+    useCallback((text: string) => setInput(text), [])
+  );
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -331,6 +335,17 @@ const AIInterviewSimulator = () => {
             className="min-h-[44px] max-h-[120px] resize-none"
             onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); } }}
           />
+          {speechSupported && (
+            <Button
+              size="icon"
+              variant={isListening ? "destructive" : "outline"}
+              onClick={isListening ? stopListening : startListening}
+              disabled={isStreaming}
+              title={isListening ? "Arrêter" : "Parler"}
+            >
+              <Mic className="w-4 h-4" />
+            </Button>
+          )}
           <Button onClick={sendMessage} disabled={!input.trim() || isStreaming} size="icon">
             <Send className="w-4 h-4" />
           </Button>
