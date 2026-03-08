@@ -225,6 +225,8 @@ const BusinessConversation: React.FC = () => {
   const startConversation = useCallback(async (scenarioId: string, selectedMode: Mode) => {
     const newSessionId = crypto.randomUUID();
     setSessionId(newSessionId);
+    setStartedAt(new Date().toISOString());
+    setSessionSaved(false);
     setStep("chat");
     setMessages([]);
     setFeedback(null);
