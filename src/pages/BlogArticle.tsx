@@ -1,5 +1,6 @@
 
 import React, { useRef } from 'react';
+import DOMPurify from 'dompurify';
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, User, ArrowLeft, BookOpen, GraduationCap, ArrowRight } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
