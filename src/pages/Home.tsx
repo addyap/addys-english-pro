@@ -471,9 +471,6 @@ const Home = () => {
                 { to: "/grammar-explainer", icon: Search, title: "Grammar Explainer 📖", desc: "Collez une phrase et obtenez une analyse grammaticale complète avec règles et conseils." },
               ].map(item => (
                 <Link key={item.to} to={item.to} className="group bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/15 p-6 md:p-8 flex items-start gap-5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all hover:-translate-y-1 relative">
-                  {item.isNew && (
-                    <span className="absolute top-3 right-3 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-0.5 rounded-full">NEW</span>
-                  )}
                   <div className="shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <item.icon className="w-7 h-7 text-primary" />
                   </div>
