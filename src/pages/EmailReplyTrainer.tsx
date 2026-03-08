@@ -275,6 +275,7 @@ const FN_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/email-reply-tr
 type Step = "select" | "write" | "feedback";
 
 const EmailReplyTrainer: React.FC = () => {
+  const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("email");
   const [step, setStep] = useState<Step>("select");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [scenario, setScenario] = useState<Scenario | null>(null);
