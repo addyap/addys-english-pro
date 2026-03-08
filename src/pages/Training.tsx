@@ -127,7 +127,7 @@ const Training = () => {
         description="Formations personnalisées en anglais professionnel pour adultes, éligibles CPF, en ligne ou en présentiel dans les Alpes-Maritimes."
         provider={{
           name: "Antony Addy",
-          url: "https://antonyaddy.com"
+          url: "https://www.antonyaddy.com"
         }}
       />
       
