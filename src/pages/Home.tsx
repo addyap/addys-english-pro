@@ -24,9 +24,9 @@ const EXERCISE_COUNTS = {
   dictation: 6,       // dictationExercises
   translation: 6,     // translationExercises
   stories: 5,         // interactiveStories
-  crossword: 4,       // crosswordExercises
-  matching: 4,        // matchingExercises
-  dialogue: 4,        // dialogueExercises
+  crossword: 6,       // crosswordExercises
+  matching: 6,        // matchingExercises
+  dialogue: 6,        // dialogueExercises
   prepositions: 4,    // prepositionExercises
   get total() {
     return this.grammar + this.vocabulary + this.reading + this.listening + 
