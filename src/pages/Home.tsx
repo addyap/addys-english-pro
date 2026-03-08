@@ -455,7 +455,7 @@ const Home = () => {
                 8 outils IA pour progresser en anglais professionnel
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-                Pratiquez des situations réelles avec un partenaire IA et recevez un feedback détaillé instantané — vocabulaire, grammaire, ton et plus. <span className="font-semibold text-primary">4 nouveaux outils !</span>
+                Pratiquez des situations réelles avec un partenaire IA et recevez un feedback détaillé instantané — vocabulaire, grammaire, ton et plus.
               </p>
             </div>
 
