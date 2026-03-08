@@ -150,6 +150,9 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
       {/* Breadcrumbs */}
       <Breadcrumbs customTitle={breadcrumbTitle} customSection={breadcrumbSection} />
 
+      {/* AI Tools Navigation */}
+      {AI_TOOL_PATHS.includes(location.pathname) && <AIToolsNav />}
+
       {/* Main Content */}
       <main>{children}</main>
 
