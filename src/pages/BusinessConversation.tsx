@@ -438,6 +438,7 @@ const BusinessConversation: React.FC = () => {
     setFeedbackError(false);
     setInput("");
     setExamComplete(false);
+    setSessionSaved(false);
     examFeedbackTriggeredRef.current = false;
   };
 
