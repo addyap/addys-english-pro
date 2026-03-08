@@ -522,8 +522,8 @@ const Home = () => {
                 <p className="text-gray-400 text-sm font-medium">Questions</p>
               </div>
               <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10 hover:border-purple-500/30 transition-colors group">
-                <p className="text-4xl md:text-5xl font-bold text-purple-400 mb-2 group-hover:scale-110 transition-transform">12</p>
-                <p className="text-gray-400 text-sm font-medium">Catégories</p>
+                <p className="text-4xl md:text-5xl font-bold text-purple-400 mb-2 group-hover:scale-110 transition-transform">8</p>
+                <p className="text-gray-400 text-sm font-medium">Outils IA</p>
               </div>
               <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10 hover:border-amber-500/30 transition-colors group">
                 <p className="text-4xl md:text-5xl font-bold text-amber-400 mb-2 group-hover:scale-110 transition-transform">A1→C1</p>
