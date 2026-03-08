@@ -7,6 +7,13 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import SEOHead from "@/components/SEOHead";
 import { supabase } from "@/integrations/supabase/client";
+import ScoreBar from "@/components/ai-trainer/ScoreBar";
+import CorrectionsList from "@/components/ai-trainer/CorrectionsList";
+import SuggestionsList from "@/components/ai-trainer/SuggestionsList";
+import VocabUpgrades from "@/components/ai-trainer/VocabUpgrades";
+import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
+import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
+import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
   Send, RotateCcw, Award, Briefcase, Users,
   Loader2, ChevronRight, DollarSign, BookOpen, Target,
