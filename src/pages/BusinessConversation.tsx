@@ -24,6 +24,11 @@ interface Correction {
   explanation: string;
 }
 
+interface VocabUpgrade {
+  basic: string;
+  advanced: string;
+}
+
 interface Feedback {
   fluency: { score: number; comment: string };
   grammar: { score: number; comment: string };
@@ -31,6 +36,8 @@ interface Feedback {
   tone: { rating: string; comment: string };
   corrections?: Correction[];
   suggestions?: string[];
+  advancedVocabulary?: VocabUpgrade[];
+  estimatedSpeakingTime?: string;
   overallLevel?: string;
   strengths?: string;
   needsImprovement?: string;
