@@ -39,11 +39,6 @@ interface Scenario {
   recommendedWords: [number, number];
 }
 
-interface ScoreField { score: number; comment: string }
-interface RatingField { rating: string; comment: string }
-interface Correction { wrong: string; correct: string; explanation: string }
-interface VocabUpgrade { basic: string; advanced: string }
-
 interface Feedback {
   taskAchievement: ScoreField;
   clarity: ScoreField;
@@ -57,7 +52,7 @@ interface Feedback {
   closing: RatingField;
   corrections: Correction[];
   suggestions: string[];
-  advancedVocabulary: VocabUpgrade[];
+  advancedVocabulary: VocabUpgradeType[];
   strengths: string;
   needsImprovement: string;
   overall: string;
