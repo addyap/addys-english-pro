@@ -439,16 +439,7 @@ const AINegotiationTrainer: React.FC = () => {
   const inputDisabled = isLoading || !!feedback || isFeedbackLoading;
   const canEndConversation = realUserTurns >= MIN_TURNS_FOR_FEEDBACK && !feedback && !isFeedbackLoading;
 
-  const ScoreBar = ({ score, label, comment }: { score: number; label: string; comment: string }) => (
-    <div className="space-y-1.5">
-      <div className="flex items-center justify-between">
-        <span className="text-sm font-medium text-foreground">{label}</span>
-        <span className="text-sm font-bold text-primary">{score}/10</span>
-      </div>
-      <Progress value={score * 10} className="h-2" />
-      {comment && <p className="text-xs text-muted-foreground">{comment}</p>}
-    </div>
-  );
+  // ScoreBar now imported from shared components
 
   const seoHead = (
     <SEOHead
