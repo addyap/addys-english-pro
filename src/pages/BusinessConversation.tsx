@@ -13,7 +13,8 @@ import {
   ShieldAlert, Coffee, Handshake, Loader2, ChevronRight,
   Phone, Mic, Building2, Globe, UserCheck, ClipboardList,
   HelpCircle, Presentation, DollarSign, BookOpen, Target, GraduationCap,
-  CheckCircle2, AlertTriangle, Lightbulb, ArrowLeft, Square, Clock, TrendingUp
+  CheckCircle2, AlertTriangle, Lightbulb, ArrowLeft, Square, Clock, TrendingUp,
+  RefreshCw, ArrowRight
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -35,13 +36,13 @@ interface Feedback {
   grammar: { score: number; comment: string };
   vocabulary: { score: number; comment: string };
   tone: { rating: string; comment: string };
-  corrections?: Correction[];
-  suggestions?: string[];
-  advancedVocabulary?: VocabUpgrade[];
-  estimatedSpeakingTime?: string;
-  overallLevel?: string;
-  strengths?: string;
-  needsImprovement?: string;
+  corrections: Correction[];
+  suggestions: string[];
+  advancedVocabulary: VocabUpgrade[];
+  estimatedSpeakingTime: string;
+  overallLevel: string;
+  strengths: string;
+  needsImprovement: string;
   overall: string;
 }
 
@@ -129,6 +130,7 @@ const MODES: { id: Mode; label: string; description: string; icon: React.Element
 
 const EXAM_MAX_QUESTIONS = 5;
 const MIN_TURNS_FOR_FEEDBACK = 3;
+const EXAM_CLOSING_SENTENCE = "Thank you. This concludes the assessment.";
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/business-chat`;
 
 function getScenarioMeta(scenarioId: string) {
@@ -141,7 +143,6 @@ function getScenarioMeta(scenarioId: string) {
 
 /**
  * Count real learner turns, excluding the initial bootstrap "Hello." message.
- * The first user message is always "Hello." used to start the AI — we skip it.
  */
 function countRealUserTurns(msgs: Msg[]): number {
   let count = 0;
@@ -150,12 +151,22 @@ function countRealUserTurns(msgs: Msg[]): number {
     if (m.role === "user") {
       if (!skippedFirst) {
         skippedFirst = true;
-        continue; // skip the bootstrap "Hello."
+        continue;
       }
       count++;
     }
   }
   return count;
+}
+
+/** Check if the final assistant message contains the exam closing sentence */
+function hasExamClosingSentence(msgs: Msg[]): boolean {
+  for (let i = msgs.length - 1; i >= 0; i--) {
+    if (msgs[i].role === "assistant") {
+      return msgs[i].content.includes(EXAM_CLOSING_SENTENCE);
+    }
+  }
+  return false;
 }
 
 const BusinessConversation: React.FC = () => {
@@ -167,11 +178,12 @@ const BusinessConversation: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [isFeedbackLoading, setIsFeedbackLoading] = useState(false);
+  const [feedbackError, setFeedbackError] = useState(false);
   const [sessionId, setSessionId] = useState(() => crypto.randomUUID());
   const [examComplete, setExamComplete] = useState(false);
+  const [startedAt] = useState(() => new Date().toISOString());
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  // Ref to prevent double-triggering auto-feedback in exam mode
   const examFeedbackTriggeredRef = useRef(false);
 
   const realUserTurns = countRealUserTurns(messages);
@@ -182,25 +194,22 @@ const BusinessConversation: React.FC = () => {
     }
   }, [messages]);
 
-  // Exam mode: auto-trigger feedback after user answers question 5
+  // Exam mode: auto-trigger feedback after user answers question 5 AND closing sentence streams in
   useEffect(() => {
     if (
       mode === "exam" &&
       realUserTurns >= EXAM_MAX_QUESTIONS &&
       !feedback &&
       !isFeedbackLoading &&
-      !examComplete &&
-      !examFeedbackTriggeredRef.current
+      !examFeedbackTriggeredRef.current &&
+      !isLoading && // wait for streaming to finish
+      hasExamClosingSentence(messages) // ensure closing sentence present
     ) {
       examFeedbackTriggeredRef.current = true;
       setExamComplete(true);
-      // Small delay to let the last AI response stream in
-      const timer = setTimeout(() => {
-        triggerFeedback();
-      }, 2000);
-      return () => clearTimeout(timer);
+      requestFeedback(messages);
     }
-  }, [realUserTurns, mode, feedback, isFeedbackLoading, examComplete]);
+  }, [realUserTurns, mode, feedback, isFeedbackLoading, isLoading, messages]);
 
   const selectScenario = (scenarioId: string) => {
     setScenario(scenarioId);
@@ -213,12 +222,12 @@ const BusinessConversation: React.FC = () => {
   };
 
   const startConversation = useCallback(async (scenarioId: string, selectedMode: Mode) => {
-    // Fresh session ID for each new conversation
     const newSessionId = crypto.randomUUID();
     setSessionId(newSessionId);
     setStep("chat");
     setMessages([]);
     setFeedback(null);
+    setFeedbackError(false);
     setExamComplete(false);
     examFeedbackTriggeredRef.current = false;
     setIsLoading(true);
@@ -286,7 +295,6 @@ const BusinessConversation: React.FC = () => {
 
   const sendMessage = useCallback(async () => {
     if (!input.trim() || isLoading || !scenario) return;
-    // Block sending if exam is complete
     if (mode === "exam" && examComplete) return;
 
     const userMsg: Msg = { role: "user", content: input.trim() };
@@ -298,7 +306,6 @@ const BusinessConversation: React.FC = () => {
     const newRealTurns = countRealUserTurns(updatedMessages);
     const isLastExamAnswer = mode === "exam" && newRealTurns >= EXAM_MAX_QUESTIONS;
 
-    // If this is the last exam answer, still send to get AI's closing response, then auto-end
     setIsLoading(true);
     let assistantSoFar = "";
 
@@ -360,20 +367,13 @@ const BusinessConversation: React.FC = () => {
     }
   }, [input, isLoading, scenario, messages, mode, examComplete]);
 
-  const triggerFeedback = useCallback(async () => {
-    // Use latest messages from state via functional ref pattern
-    setIsFeedbackLoading(true);
-
-    // We need latest messages — use a small trick: read from DOM-adjacent state
-    // Actually we call this from useEffect which has access to `messages` via closure
-    // But since this is called via setTimeout, we use a ref approach
-  }, []);
-
-  // The actual feedback request — using messages from state at call time
   const requestFeedback = useCallback(async (msgsOverride?: Msg[]) => {
     const msgsToUse = msgsOverride || messages;
     if (msgsToUse.length < 2) return;
+    if (isFeedbackLoading) return; // prevent duplicate requests
+
     setIsFeedbackLoading(true);
+    setFeedbackError(false);
 
     try {
       const resp = await fetch(CHAT_URL, {
@@ -391,45 +391,35 @@ const BusinessConversation: React.FC = () => {
       }
 
       const data = await resp.json();
-      setFeedback(data.feedback);
+      const fb = data.feedback as Feedback;
+      setFeedback(fb);
 
-      // Save to DB with mode
+      // Persist session with metadata
       await supabase.from("conversation_sessions" as any).insert({
         scenario,
         mode,
         messages: JSON.stringify(msgsToUse),
-        feedback: JSON.stringify(data.feedback),
+        feedback: JSON.stringify(fb),
         session_id: sessionId,
         completed_at: new Date().toISOString(),
       } as any);
     } catch (e: any) {
-      toast.error(e.message || "Failed to generate feedback");
+      setFeedbackError(true);
+      toast.error(e.message || "Could not generate feedback. Please try again.");
     } finally {
       setIsFeedbackLoading(false);
     }
-  }, [messages, scenario, sessionId, mode]);
-
-  // Replace the stub triggerFeedback with one that uses current messages
-  // We use useEffect to auto-trigger for exam, and manual button for others
-  // For exam auto-trigger, we need a stable ref to messages
-  const messagesRef = useRef(messages);
-  messagesRef.current = messages;
-
-  // Actual exam auto-feedback trigger (called from useEffect timeout)
-  useEffect(() => {
-    if (examComplete && isFeedbackLoading === false && feedback === null && examFeedbackTriggeredRef.current) {
-      // Only trigger once when examComplete first becomes true
-      const shouldTrigger = messagesRef.current.length >= 2;
-      if (shouldTrigger) {
-        requestFeedback(messagesRef.current);
-      }
-    }
-  }, [examComplete]);
+  }, [messages, scenario, sessionId, mode, isFeedbackLoading]);
 
   const endConversation = useCallback(() => {
     setExamComplete(true);
     requestFeedback();
   }, [requestFeedback]);
+
+  const retryFeedback = useCallback(() => {
+    setFeedbackError(false);
+    requestFeedback(messages);
+  }, [requestFeedback, messages]);
 
   const resetConversation = () => {
     setScenario(null);
@@ -437,7 +427,27 @@ const BusinessConversation: React.FC = () => {
     setStep("scenario");
     setMessages([]);
     setFeedback(null);
+    setFeedbackError(false);
     setInput("");
+    setExamComplete(false);
+    examFeedbackTriggeredRef.current = false;
+  };
+
+  const retryScenario = () => {
+    if (scenario) {
+      setFeedback(null);
+      setFeedbackError(false);
+      setExamComplete(false);
+      examFeedbackTriggeredRef.current = false;
+      startConversation(scenario, mode);
+    }
+  };
+
+  const changeMode = () => {
+    setStep("mode");
+    setMessages([]);
+    setFeedback(null);
+    setFeedbackError(false);
     setExamComplete(false);
     examFeedbackTriggeredRef.current = false;
   };
@@ -449,13 +459,8 @@ const BusinessConversation: React.FC = () => {
     }
   };
 
-  // Whether input should be disabled
-  const inputDisabled = isLoading || !!feedback || (mode === "exam" && examComplete);
-
-  // Whether the "End & Get Feedback" button should show
-  const canEndConversation = realUserTurns >= MIN_TURNS_FOR_FEEDBACK && !feedback && !examComplete;
-
-  // Exam progress indicator
+  const inputDisabled = isLoading || !!feedback || (mode === "exam" && examComplete) || isFeedbackLoading;
+  const canEndConversation = realUserTurns >= MIN_TURNS_FOR_FEEDBACK && !feedback && !examComplete && !isFeedbackLoading;
   const examProgress = mode === "exam" ? Math.min(realUserTurns, EXAM_MAX_QUESTIONS) : 0;
 
   const ScoreBar = ({ score, label, comment }: { score: number; label: string; comment: string }) => (
@@ -465,7 +470,7 @@ const BusinessConversation: React.FC = () => {
         <span className="text-sm font-bold text-primary">{score}/10</span>
       </div>
       <Progress value={score * 10} className="h-2" />
-      <p className="text-xs text-muted-foreground">{comment}</p>
+      {comment && <p className="text-xs text-muted-foreground">{comment}</p>}
     </div>
   );
 
@@ -616,14 +621,14 @@ const BusinessConversation: React.FC = () => {
                 disabled={isFeedbackLoading}
                 className="gap-1.5"
               >
-                {isFeedbackLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Square className="w-3.5 h-3.5" />}
+                <Square className="w-3.5 h-3.5" />
                 End & Get Feedback
               </Button>
             )}
-            {isFeedbackLoading && examComplete && (
+            {isFeedbackLoading && (
               <Badge variant="secondary" className="text-xs flex items-center gap-1">
                 <Loader2 className="w-3 h-3 animate-spin" />
-                Generating feedback…
+                {mode === "exam" ? "Assessing your answers…" : "Generating feedback…"}
               </Badge>
             )}
             <Button size="sm" variant="outline" onClick={resetConversation} className="gap-1.5">
@@ -662,15 +667,21 @@ const BusinessConversation: React.FC = () => {
             </div>
           </ScrollArea>
 
-          {/* Input */}
-          {!feedback && (
+          {/* Input area */}
+          {!feedback && !feedbackError && (
             <div className="border-t p-3 flex gap-2 items-end bg-background">
               <Textarea
                 ref={inputRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder={inputDisabled && examComplete ? "Exam complete — generating feedback…" : "Type your reply in English…"}
+                placeholder={
+                  inputDisabled && examComplete
+                    ? (isFeedbackLoading ? "Assessing your answers…" : "Exam complete.")
+                    : inputDisabled
+                    ? "Please wait…"
+                    : "Type your reply in English…"
+                }
                 className="min-h-[44px] max-h-[120px] resize-none text-sm border-0 focus-visible:ring-0 shadow-none p-2"
                 disabled={inputDisabled}
                 rows={1}
@@ -687,6 +698,20 @@ const BusinessConversation: React.FC = () => {
           )}
         </Card>
 
+        {/* Feedback error with retry */}
+        {feedbackError && !feedback && (
+          <Card className="p-5 border-destructive/30 bg-destructive/5 space-y-3">
+            <div className="flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5 text-destructive" />
+              <p className="text-sm font-medium text-foreground">Could not generate feedback. Please try again.</p>
+            </div>
+            <Button onClick={retryFeedback} disabled={isFeedbackLoading} size="sm" className="gap-1.5">
+              {isFeedbackLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RefreshCw className="w-3.5 h-3.5" />}
+              Retry Feedback
+            </Button>
+          </Card>
+        )}
+
         {/* Feedback */}
         {feedback && (
           <Card className="p-6 space-y-5 border-primary/20 bg-primary/5">
@@ -702,12 +727,12 @@ const BusinessConversation: React.FC = () => {
 
             {/* Scores */}
             <div className="space-y-4">
-              {feedback.fluency && <ScoreBar score={feedback.fluency.score} label="Fluency" comment={feedback.fluency.comment} />}
-              {feedback.grammar && <ScoreBar score={feedback.grammar.score} label="Grammar" comment={feedback.grammar.comment} />}
-              {feedback.vocabulary && <ScoreBar score={feedback.vocabulary.score} label="Vocabulary" comment={feedback.vocabulary.comment} />}
+              {feedback.fluency?.score > 0 && <ScoreBar score={feedback.fluency.score} label="Fluency" comment={feedback.fluency.comment || ""} />}
+              {feedback.grammar?.score > 0 && <ScoreBar score={feedback.grammar.score} label="Grammar" comment={feedback.grammar.comment || ""} />}
+              {feedback.vocabulary?.score > 0 && <ScoreBar score={feedback.vocabulary.score} label="Vocabulary" comment={feedback.vocabulary.comment || ""} />}
             </div>
 
-            {feedback.tone && (
+            {feedback.tone?.rating && (
               <div className="space-y-1">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-foreground">Professional Tone</span>
@@ -715,7 +740,7 @@ const BusinessConversation: React.FC = () => {
                     {feedback.tone.rating}
                   </Badge>
                 </div>
-                <p className="text-xs text-muted-foreground">{feedback.tone.comment}</p>
+                {feedback.tone.comment && <p className="text-xs text-muted-foreground">{feedback.tone.comment}</p>}
               </div>
             )}
 
@@ -729,8 +754,8 @@ const BusinessConversation: React.FC = () => {
                 <div className="space-y-2.5">
                   {feedback.corrections.map((c, i) => (
                     <div key={i} className="bg-background rounded-lg p-3 space-y-1 text-sm">
-                      <p className="text-destructive line-through">"{c.wrong}"</p>
-                      <p className="text-emerald-700 dark:text-emerald-400 font-medium">→ "{c.correct}"</p>
+                      {c.wrong && <p className="text-destructive line-through">"{c.wrong}"</p>}
+                      {c.correct && <p className="text-emerald-700 dark:text-emerald-400 font-medium">→ "{c.correct}"</p>}
                       {c.explanation && <p className="text-xs text-muted-foreground">{c.explanation}</p>}
                     </div>
                   ))}
@@ -756,7 +781,7 @@ const BusinessConversation: React.FC = () => {
               </div>
             )}
 
-            {/* Exam-specific: strengths / needs improvement */}
+            {/* Strengths / Needs improvement */}
             {(feedback.strengths || feedback.needsImprovement) && (
               <div className="space-y-2 pt-3 border-t">
                 {feedback.strengths && (
@@ -793,15 +818,13 @@ const BusinessConversation: React.FC = () => {
               </div>
             )}
 
-            {/* Speaking Time + CEFR Level summary row */}
-            {(feedback.estimatedSpeakingTime || feedback.overallLevel) && (
+            {/* Speaking Time */}
+            {feedback.estimatedSpeakingTime && (
               <div className="flex items-center gap-4 pt-3 border-t flex-wrap">
-                {feedback.estimatedSpeakingTime && (
-                  <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                    <Clock className="w-4 h-4" />
-                    <span>Est. speaking time: <span className="font-medium text-foreground">{feedback.estimatedSpeakingTime}</span></span>
-                  </div>
-                )}
+                <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                  <Clock className="w-4 h-4" />
+                  <span>Est. speaking time: <span className="font-medium text-foreground">{feedback.estimatedSpeakingTime}</span></span>
+                </div>
               </div>
             )}
 
@@ -812,15 +835,26 @@ const BusinessConversation: React.FC = () => {
               </div>
             )}
 
-            <Button onClick={resetConversation} className="w-full gap-2">
-              <RotateCcw className="w-4 h-4" />
-              Try Another Scenario
-            </Button>
+            {/* Post-feedback CTAs */}
+            <div className="pt-3 border-t grid gap-2 sm:grid-cols-3">
+              <Button onClick={retryScenario} variant="outline" className="gap-1.5">
+                <RefreshCw className="w-4 h-4" />
+                Retry Scenario
+              </Button>
+              <Button onClick={changeMode} variant="outline" className="gap-1.5">
+                <Target className="w-4 h-4" />
+                Change Mode
+              </Button>
+              <Button onClick={resetConversation} className="gap-1.5">
+                <ArrowRight className="w-4 h-4" />
+                New Scenario
+              </Button>
+            </div>
           </Card>
         )}
 
         {/* Hint */}
-        {!feedback && !examComplete && realUserTurns > 0 && realUserTurns < MIN_TURNS_FOR_FEEDBACK && mode !== "exam" && (
+        {!feedback && !feedbackError && !examComplete && realUserTurns > 0 && realUserTurns < MIN_TURNS_FOR_FEEDBACK && mode !== "exam" && (
           <p className="text-center text-xs text-muted-foreground">
             Continue the conversation ({MIN_TURNS_FOR_FEEDBACK - realUserTurns} more turn{MIN_TURNS_FOR_FEEDBACK - realUserTurns !== 1 ? "s" : ""} needed for feedback)
           </p>
