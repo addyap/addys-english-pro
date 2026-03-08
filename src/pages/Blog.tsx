@@ -16,6 +16,15 @@ const Blog = () => {
   
   const baseArticles = useMemo(() => [
     {
+      id: 'outils-ia-anglais-professionnel',
+      title: '8 outils IA gratuits pour progresser en anglais professionnel',
+      excerpt: "Découvrez 8 outils IA gratuits pour pratiquer l'anglais professionnel : conversation, e-mails, négociation, entretien, grammaire et plus. Feedback instantané CECRL.",
+      date: '2026-03-08',
+      author: 'Antony Addy',
+      category: 'Outils & ressources',
+      readTime: '6 min'
+    },
+    {
       id: 'anglais-professionnel-2025',
       title: 'Pourquoi l\'anglais professionnel est une compétence essentielle en 2025',
       excerpt: 'Dans un monde professionnel de plus en plus globalisé, maîtriser l\'anglais n\'est plus un atout mais une nécessité. Découvrez pourquoi et comment développer cette compétence clé.',
