@@ -115,7 +115,7 @@ const handler = async (req: Request): Promise<Response> => {
           <p style="color: #6b7280; font-size: 12px;">
             Antony Addy - Formations d'anglais professionnel<br>
             Email: formations@antonyaddy.com<br>
-            Site: <a href="https://antonyaddy.com" style="color: #1e40af;">antonyaddy.com</a>
+            Site: <a href="https://www.antonyaddy.com" style="color: #1e40af;">antonyaddy.com</a>
           </p>
         </div>
       `,
