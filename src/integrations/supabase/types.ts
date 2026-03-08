@@ -101,6 +101,45 @@ export type Database = {
         }
         Relationships: []
       }
+      negotiation_training_sessions: {
+        Row: {
+          category: string | null
+          completed_at: string | null
+          created_at: string
+          feedback: Json | null
+          id: string
+          messages: Json
+          overall_level: string | null
+          scenario: string
+          session_id: string | null
+          started_at: string | null
+        }
+        Insert: {
+          category?: string | null
+          completed_at?: string | null
+          created_at?: string
+          feedback?: Json | null
+          id?: string
+          messages?: Json
+          overall_level?: string | null
+          scenario: string
+          session_id?: string | null
+          started_at?: string | null
+        }
+        Update: {
+          category?: string | null
+          completed_at?: string | null
+          created_at?: string
+          feedback?: Json | null
+          id?: string
+          messages?: Json
+          overall_level?: string | null
+          scenario?: string
+          session_id?: string | null
+          started_at?: string | null
+        }
+        Relationships: []
+      }
       page_views: {
         Row: {
           country: string | null
