@@ -1639,6 +1639,8 @@ const Exercises = () => {
                 <Link to="/conversation-trainer" className="text-accent hover:underline">AI Conversation Trainer</Link>
                 <span className="text-muted-foreground">•</span>
                 <Link to="/email-trainer" className="text-accent hover:underline">AI Email Reply Trainer</Link>
+                <span className="text-muted-foreground">•</span>
+                <Link to="/presentation-trainer" className="text-accent hover:underline">AI Presentation Trainer</Link>
               </div>
             </div>
           </div>
