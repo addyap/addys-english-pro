@@ -399,8 +399,7 @@ const BusinessConversation: React.FC = () => {
 
       // Persist session with metadata (only once per session)
       if (!sessionSaved) {
-        setSessionSaved(true);
-        await supabase.from("conversation_sessions" as any).insert({
+        const { error: insertError } = await supabase.from("conversation_sessions" as any).insert({
           scenario,
           mode,
           messages: JSON.stringify(msgsToUse),
@@ -410,6 +409,11 @@ const BusinessConversation: React.FC = () => {
           completed_at: new Date().toISOString(),
           overall_level: fb.overallLevel || null,
         } as any);
+        if (!insertError) {
+          setSessionSaved(true);
+        } else {
+          console.warn("[session] DB insert failed, will retry on next feedback request:", insertError.message);
+        }
       }
     } catch (e: any) {
       setFeedbackError(true);
