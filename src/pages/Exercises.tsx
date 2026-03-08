@@ -1622,6 +1622,10 @@ const Exercises = () => {
                 <Link to="/exercices/cloe-preparation" className="text-accent hover:underline">Préparation CLOE</Link>
                 <span className="text-muted-foreground">•</span>
                 <Link to="/blog" className="text-accent hover:underline">Articles & conseils</Link>
+                <span className="text-muted-foreground">•</span>
+                <Link to="/conversation-trainer" className="text-accent hover:underline">AI Conversation Trainer</Link>
+                <span className="text-muted-foreground">•</span>
+                <Link to="/email-trainer" className="text-accent hover:underline">AI Email Reply Trainer</Link>
               </div>
             </div>
           </div>
