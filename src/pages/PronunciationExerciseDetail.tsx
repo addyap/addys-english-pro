@@ -170,7 +170,7 @@ const PronunciationExerciseDetail = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                {currentQuestion.options.map((option) => (
+                {shuffledOptionsMap[currentIndex]?.map((option) => (
                   <Button
                     key={option}
                     variant={
