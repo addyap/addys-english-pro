@@ -171,7 +171,14 @@ const AISpeakingPractice = () => {
       setInput(transcript);
     };
     recognition.onend = () => setIsListening(false);
-    recognition.onerror = () => { setIsListening(false); toast.error("Erreur micro. Vérifiez les permissions."); };
+    recognition.onerror = (e: any) => {
+      setIsListening(false);
+      if (e.error === "not-allowed") {
+        toast.error("Accès au micro refusé. Autorisez le micro dans les paramètres de votre navigateur, ou ouvrez le site dans un nouvel onglet.", { duration: 6000 });
+      } else {
+        toast.error("Erreur de reconnaissance vocale. Réessayez ou utilisez la saisie texte.");
+      }
+    };
 
     recognitionRef.current = recognition;
     recognition.start();
