@@ -77,6 +77,10 @@ const BusinessConversation = lazy(() => import("./pages/BusinessConversation"));
 const EmailReplyTrainer = lazy(() => import("./pages/EmailReplyTrainer"));
 const AIPresentationTrainer = lazy(() => import("./pages/AIPresentationTrainer"));
 const AINegotiationTrainer = lazy(() => import("./pages/AINegotiationTrainer"));
+const AISpeakingPractice = lazy(() => import("./pages/AISpeakingPractice"));
+const AIWritingCoach = lazy(() => import("./pages/AIWritingCoach"));
+const AIInterviewSimulator = lazy(() => import("./pages/AIInterviewSimulator"));
+const AIGrammarExplainer = lazy(() => import("./pages/AIGrammarExplainer"));
 const PageLoader = () => (
   <div className="min-h-screen bg-background py-12">
     <div className="max-w-4xl mx-auto px-4 space-y-8">
@@ -158,6 +162,10 @@ export const AppRoutes = () => (
     <Route path="/email-trainer" element={<EmailReplyTrainer />} />
     <Route path="/presentation-trainer" element={<AIPresentationTrainer />} />
     <Route path="/negotiation-trainer" element={<AINegotiationTrainer />} />
+    <Route path="/speaking-practice" element={<AISpeakingPractice />} />
+    <Route path="/writing-coach" element={<AIWritingCoach />} />
+    <Route path="/interview-simulator" element={<AIInterviewSimulator />} />
+    <Route path="/grammar-explainer" element={<AIGrammarExplainer />} />
 
     {/* Legacy/alias routes (prevent user-facing 404s from older internal links) */}
     <Route path="/lecture" element={<Navigate to="/reading" replace />} />

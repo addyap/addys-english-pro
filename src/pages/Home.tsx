@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, MapPin, Headphones, Sparkles, MessageCircle, Mail, ArrowRight, Handshake } from 'lucide-react';
+import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, MapPin, Headphones, Sparkles, MessageCircle, Mail, ArrowRight, Handshake, Mic, PenTool, UserCheck, Search } from 'lucide-react';
 import SEOHead, { jsonLdWebsite, jsonLdOrganization, jsonLdPerson } from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import OptimizedHero from '../components/OptimizedHero';
@@ -452,69 +452,40 @@ const Home = () => {
                 Entraînement IA — Gratuit
               </div>
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-3">
-                4 outils IA pour progresser en anglais professionnel
+                8 outils IA pour progresser en anglais professionnel
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-                Pratiquez des situations réelles avec un partenaire IA et recevez un feedback détaillé instantané — vocabulaire, grammaire, ton et plus.
+                Pratiquez des situations réelles avec un partenaire IA et recevez un feedback détaillé instantané — vocabulaire, grammaire, ton et plus. <span className="font-semibold text-primary">4 nouveaux outils !</span>
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-5">
-              {/* Conversation */}
-              <Link to="/conversation-trainer" className="group bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/15 p-6 md:p-8 flex items-start gap-5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all hover:-translate-y-1">
-                <div className="shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <MessageCircle className="w-7 h-7 text-primary" />
-                </div>
-                <div className="flex-1 space-y-2">
-                  <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-primary transition-colors">Conversation professionnelle</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">Accueil client, réunion, réclamation, networking — 15 scénarios réalistes avec feedback CECRL.</p>
-                  <span className="inline-flex items-center gap-1 text-primary text-sm font-semibold">
-                    Essayer <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </div>
-              </Link>
-
-              {/* Email */}
-              <Link to="/email-trainer" className="group bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/15 p-6 md:p-8 flex items-start gap-5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all hover:-translate-y-1">
-                <div className="shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <Mail className="w-7 h-7 text-primary" />
-                </div>
-                <div className="flex-1 space-y-2">
-                  <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-primary transition-colors">Rédaction d'e-mails</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">Répondez à des e-mails professionnels réalistes. Feedback IA sur la clarté, le ton et la structure.</p>
-                  <span className="inline-flex items-center gap-1 text-primary text-sm font-semibold">
-                    Essayer <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </div>
-              </Link>
-
-              {/* Presentation */}
-              <Link to="/presentation-trainer" className="group bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/15 p-6 md:p-8 flex items-start gap-5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all hover:-translate-y-1">
-                <div className="shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <Sparkles className="w-7 h-7 text-primary" />
-                </div>
-                <div className="flex-1 space-y-2">
-                  <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-primary transition-colors">Présentation professionnelle</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">Rédigez des présentations en anglais et recevez un feedback sur la structure, la persuasion et le vocabulaire.</p>
-                  <span className="inline-flex items-center gap-1 text-primary text-sm font-semibold">
-                    Essayer <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </div>
-              </Link>
-
-              {/* Negotiation */}
-              <Link to="/negotiation-trainer" className="group bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/15 p-6 md:p-8 flex items-start gap-5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all hover:-translate-y-1">
-                <div className="shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <Handshake className="w-7 h-7 text-primary" />
-                </div>
-                <div className="flex-1 space-y-2">
-                  <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-primary transition-colors">Négociation commerciale</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">Pratiquez des négociations réalistes avec un partenaire IA. Feedback sur la persuasion, stratégie et communication.</p>
-                  <span className="inline-flex items-center gap-1 text-primary text-sm font-semibold">
-                    Essayer <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </div>
-              </Link>
+              {[
+                { to: "/conversation-trainer", icon: MessageCircle, title: "Conversation professionnelle", desc: "Accueil client, réunion, réclamation, networking — 15 scénarios réalistes avec feedback CECRL." },
+                { to: "/email-trainer", icon: Mail, title: "Rédaction d'e-mails", desc: "Répondez à des e-mails professionnels réalistes. Feedback IA sur la clarté, le ton et la structure." },
+                { to: "/presentation-trainer", icon: Sparkles, title: "Présentation professionnelle", desc: "Rédigez des présentations en anglais et recevez un feedback sur la structure et le vocabulaire." },
+                { to: "/negotiation-trainer", icon: Handshake, title: "Négociation commerciale", desc: "Pratiquez des négociations réalistes avec feedback sur la persuasion et la stratégie." },
+                { to: "/speaking-practice", icon: Mic, title: "Speaking Practice 🎙️", desc: "Parlez en anglais avec reconnaissance vocale et synthèse vocale. Feedback prononciation et fluidité.", isNew: true },
+                { to: "/writing-coach", icon: PenTool, title: "Writing Coach ✍️", desc: "Soumettez un texte et recevez un feedback détaillé avec version améliorée automatique.", isNew: true },
+                { to: "/interview-simulator", icon: UserCheck, title: "Interview Simulator 💼", desc: "Simulez un entretien d'embauche en anglais. 8 secteurs, 3 types d'entretien, feedback CECRL.", isNew: true },
+                { to: "/grammar-explainer", icon: Search, title: "Grammar Explainer 📖", desc: "Collez une phrase et obtenez une analyse grammaticale complète avec règles et conseils.", isNew: true },
+              ].map(item => (
+                <Link key={item.to} to={item.to} className="group bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/15 p-6 md:p-8 flex items-start gap-5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all hover:-translate-y-1 relative">
+                  {item.isNew && (
+                    <span className="absolute top-3 right-3 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-0.5 rounded-full">NEW</span>
+                  )}
+                  <div className="shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <item.icon className="w-7 h-7 text-primary" />
+                  </div>
+                  <div className="flex-1 space-y-2">
+                    <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-primary transition-colors">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                    <span className="inline-flex items-center gap-1 text-primary text-sm font-semibold">
+                      Essayer <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
