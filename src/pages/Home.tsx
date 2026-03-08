@@ -455,7 +455,7 @@ const Home = () => {
                 8 outils IA pour progresser en anglais professionnel
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-                Pratiquez des situations réelles avec un partenaire IA et recevez un feedback détaillé instantané — vocabulaire, grammaire, ton et plus. <span className="font-semibold text-primary">4 nouveaux outils !</span>
+                Pratiquez des situations réelles avec un partenaire IA et recevez un feedback détaillé instantané — vocabulaire, grammaire, ton et plus.
               </p>
             </div>
 
@@ -465,15 +465,12 @@ const Home = () => {
                 { to: "/email-trainer", icon: Mail, title: "Rédaction d'e-mails", desc: "Répondez à des e-mails professionnels réalistes. Feedback IA sur la clarté, le ton et la structure." },
                 { to: "/presentation-trainer", icon: Sparkles, title: "Présentation professionnelle", desc: "Rédigez des présentations en anglais et recevez un feedback sur la structure et le vocabulaire." },
                 { to: "/negotiation-trainer", icon: Handshake, title: "Négociation commerciale", desc: "Pratiquez des négociations réalistes avec feedback sur la persuasion et la stratégie." },
-                { to: "/speaking-practice", icon: Mic, title: "Speaking Practice 🎙️", desc: "Parlez en anglais avec reconnaissance vocale et synthèse vocale. Feedback prononciation et fluidité.", isNew: true },
-                { to: "/writing-coach", icon: PenTool, title: "Writing Coach ✍️", desc: "Soumettez un texte et recevez un feedback détaillé avec version améliorée automatique.", isNew: true },
-                { to: "/interview-simulator", icon: UserCheck, title: "Interview Simulator 💼", desc: "Simulez un entretien d'embauche en anglais. 8 secteurs, 3 types d'entretien, feedback CECRL.", isNew: true },
-                { to: "/grammar-explainer", icon: Search, title: "Grammar Explainer 📖", desc: "Collez une phrase et obtenez une analyse grammaticale complète avec règles et conseils.", isNew: true },
+                { to: "/speaking-practice", icon: Mic, title: "Speaking Practice 🎙️", desc: "Parlez en anglais avec reconnaissance vocale et synthèse vocale. Feedback prononciation et fluidité." },
+                { to: "/writing-coach", icon: PenTool, title: "Writing Coach ✍️", desc: "Soumettez un texte et recevez un feedback détaillé avec version améliorée automatique." },
+                { to: "/interview-simulator", icon: UserCheck, title: "Interview Simulator 💼", desc: "Simulez un entretien d'embauche en anglais. 8 secteurs, 3 types d'entretien, feedback CECRL." },
+                { to: "/grammar-explainer", icon: Search, title: "Grammar Explainer 📖", desc: "Collez une phrase et obtenez une analyse grammaticale complète avec règles et conseils." },
               ].map(item => (
                 <Link key={item.to} to={item.to} className="group bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/15 p-6 md:p-8 flex items-start gap-5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all hover:-translate-y-1 relative">
-                  {item.isNew && (
-                    <span className="absolute top-3 right-3 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-0.5 rounded-full">NEW</span>
-                  )}
                   <div className="shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <item.icon className="w-7 h-7 text-primary" />
                   </div>
@@ -525,8 +522,8 @@ const Home = () => {
                 <p className="text-gray-400 text-sm font-medium">Questions</p>
               </div>
               <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10 hover:border-purple-500/30 transition-colors group">
-                <p className="text-4xl md:text-5xl font-bold text-purple-400 mb-2 group-hover:scale-110 transition-transform">12</p>
-                <p className="text-gray-400 text-sm font-medium">Catégories</p>
+                <p className="text-4xl md:text-5xl font-bold text-purple-400 mb-2 group-hover:scale-110 transition-transform">8</p>
+                <p className="text-gray-400 text-sm font-medium">Outils IA</p>
               </div>
               <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10 hover:border-amber-500/30 transition-colors group">
                 <p className="text-4xl md:text-5xl font-bold text-amber-400 mb-2 group-hover:scale-110 transition-transform">A1→C1</p>
