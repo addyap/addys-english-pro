@@ -27,17 +27,6 @@ import { toast } from "sonner";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
-interface Correction {
-  wrong: string;
-  correct: string;
-  explanation: string;
-}
-
-interface VocabUpgrade {
-  basic: string;
-  advanced: string;
-}
-
 interface Feedback {
   fluency: { score: number; comment: string };
   grammar: { score: number; comment: string };
@@ -45,7 +34,7 @@ interface Feedback {
   tone: { rating: string; comment: string };
   corrections: Correction[];
   suggestions: string[];
-  advancedVocabulary: VocabUpgrade[];
+  advancedVocabulary: VocabUpgradeType[];
   estimatedSpeakingTime: string;
   overallLevel: string;
   strengths: string;
