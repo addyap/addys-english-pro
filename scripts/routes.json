@@ -13,6 +13,7 @@
     { "path": "/exercices/listening", "priority": 0.8, "changefreq": "weekly", "title": "Listening" },
     { "path": "/mentions-legales", "priority": 0.3, "changefreq": "yearly", "title": "Mentions légales" },
     { "path": "/politique-confidentialite", "priority": 0.3, "changefreq": "yearly", "title": "Politique de confidentialité" },
+    { "path": "/email-trainer", "priority": 0.8, "changefreq": "monthly", "title": "AI Email Reply Trainer" },
     { "path": "/blog/present-simple-vs-present-continuous", "priority": 0.7, "changefreq": "monthly", "title": "Present Simple vs Present Continuous" },
     { "path": "/blog/past-simple-vs-present-perfect", "priority": 0.7, "changefreq": "monthly", "title": "Past Simple vs Present Perfect" },
     { "path": "/blog/past-simple-vs-past-continuous", "priority": 0.7, "changefreq": "monthly", "title": "Past Simple vs Past Continuous" },
