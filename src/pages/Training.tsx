@@ -310,7 +310,7 @@ const Training = () => {
               </div>
               
               <p className="text-xs text-muted-foreground border-t border-border pt-4">
-                <strong>Dernière mise à jour :</strong> Janvier 2026
+                <strong>Dernière mise à jour :</strong> Mars 2026
               </p>
             </div>
           </FadeInSection>
