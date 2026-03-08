@@ -215,7 +215,12 @@ const BusinessConversation: React.FC = () => {
   };
 
   const selectMode = (m: Mode) => {
+    if (limitReached) {
+      toast.error(`Daily limit reached (${DAILY_LIMIT} sessions per 24h). Please come back tomorrow!`);
+      return;
+    }
     setMode(m);
+    recordSession();
     startConversation(scenario!, m);
   };
 
