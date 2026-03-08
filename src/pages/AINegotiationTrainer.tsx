@@ -16,7 +16,7 @@ import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
-  Send, RotateCcw, Award, Briefcase, Users,
+  Send, RotateCcw, Award, Briefcase, Users, Mic,
   Loader2, ChevronRight, DollarSign, BookOpen, Target,
   CheckCircle2, AlertTriangle, Lightbulb, ArrowLeft, Square,
   TrendingUp, RefreshCw, ArrowRight, Handshake, Shield, Building2,
