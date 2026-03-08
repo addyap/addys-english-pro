@@ -129,6 +129,14 @@ export const seoMetadata: Record<string, SEOMetadata> = {
     h1: "Installer l'application",
     keywords: ["installer application", "PWA", "application mobile"],
     ogImage: DEFAULT_IMAGE
+  },
+  emailTrainer: {
+    title: "AI Email Reply Trainer — Professional Email Writing | Antony Addy",
+    description: "Améliorez vos e-mails professionnels en anglais avec un feedback IA détaillé. Entraînez-vous à rédiger des réponses claires et professionnelles.",
+    canonical: `${SITE_URL}/email-trainer`,
+    h1: "AI Email Reply Trainer",
+    keywords: ["email anglais professionnel", "rédaction email business English", "AI email feedback", "professional email writing"],
+    ogImage: DEFAULT_IMAGE
   }
 };
 
