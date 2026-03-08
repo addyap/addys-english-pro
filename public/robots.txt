@@ -1,5 +1,5 @@
 # Robots.txt for antonyaddy.com
-# Last updated: 2025-01-18
+# Last updated: 2026-03-08
 
 User-agent: *
 Allow: /
@@ -8,6 +8,7 @@ Allow: /
 Disallow: /auth
 Disallow: /dashboard
 Disallow: /install
+Disallow: /admin
 
 # Block query parameters that might create duplicate content
 Disallow: /*?*

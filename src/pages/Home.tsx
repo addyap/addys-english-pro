@@ -24,9 +24,9 @@ const EXERCISE_COUNTS = {
   dictation: 6,       // dictationExercises
   translation: 6,     // translationExercises
   stories: 5,         // interactiveStories
-  crossword: 4,       // crosswordExercises
-  matching: 4,        // matchingExercises
-  dialogue: 4,        // dialogueExercises
+  crossword: 6,       // crosswordExercises
+  matching: 6,        // matchingExercises
+  dialogue: 6,        // dialogueExercises
   prepositions: 4,    // prepositionExercises
   get total() {
     return this.grammar + this.vocabulary + this.reading + this.listening + 
@@ -134,7 +134,7 @@ const Home = () => {
         description="Formations d'anglais professionnel sur mesure avec un formateur britannique certifié FPA. CPF, entreprises, particuliers. Alpes-Maritimes ou distanciel France."
         canonicalUrl="https://www.antonyaddy.com/"
         datePublished="2025-01-15T10:00:00+01:00"
-        dateModified="2025-12-26T10:00:00+01:00"
+        dateModified="2026-03-08T10:00:00+01:00"
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
         enableOrgJsonLd
         enableWebSiteJsonLd
