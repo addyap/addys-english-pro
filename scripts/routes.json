@@ -69,6 +69,7 @@
     { "path": "/blog/adjective-order", "priority": 0.7, "changefreq": "monthly", "title": "Adjective Order" },
     { "path": "/blog/determiners", "priority": 0.7, "changefreq": "monthly", "title": "Determiners" },
     { "path": "/blog/demonstratives-this-that-these-those", "priority": 0.7, "changefreq": "monthly", "title": "Demonstratives" },
+    { "path": "/blog/outils-ia-anglais-professionnel", "priority": 0.8, "changefreq": "monthly", "title": "8 outils IA anglais professionnel" },
     { "path": "/blog/anglais-professionnel-2025", "priority": 0.7, "changefreq": "monthly", "title": "Anglais Professionnel 2025" },
     { "path": "/blog/erreurs-francophones", "priority": 0.7, "changefreq": "monthly", "title": "Erreurs Francophones" },
     { "path": "/blog/oral-vs-ecrit", "priority": 0.7, "changefreq": "monthly", "title": "Oral vs Ecrit" },
