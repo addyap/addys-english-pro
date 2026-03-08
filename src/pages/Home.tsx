@@ -439,143 +439,82 @@ const Home = () => {
           </div>
         </section>
 
-        {/* AI Conversation Trainer CTA */}
-        <section className="py-16 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 relative overflow-hidden">
+        {/* AI Training Hub — Unified Section */}
+        <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-accent/5 relative overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-10 right-[15%] w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-10 left-[10%] w-48 h-48 bg-primary/8 rounded-full blur-3xl" />
+            <div className="absolute top-10 right-[15%] w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 left-[10%] w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
           </div>
-          <div className="max-w-4xl mx-auto px-4 relative z-10">
-            <div className="bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/20 p-8 md:p-10 flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-1 space-y-4 text-center md:text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold">
-                  <Sparkles className="w-4 h-4" />
-                  Nouveau — IA Conversationnelle
-                </div>
-                <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
-                  Entraînez-vous à parler anglais professionnel
-                </h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  Pratiquez des conversations réalistes avec un partenaire IA : accueil client, réunion, réclamation, networking. 
-                  Recevez un feedback détaillé sur votre aisance, grammaire, vocabulaire et ton professionnel.
-                </p>
-                <Link
-                  to="/conversation-trainer"
-                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold hover:bg-primary/90 transition-all hover:scale-105 shadow-lg shadow-primary/20"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  Essayer gratuitement
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+          <div className="max-w-6xl mx-auto px-4 relative z-10">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
+                <Sparkles className="w-4 h-4" />
+                Entraînement IA — Gratuit
               </div>
-              <div className="shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-primary/10 flex items-center justify-center">
-                <MessageCircle className="w-16 h-16 md:w-20 md:h-20 text-primary/60" />
-              </div>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-3">
+                4 outils IA pour progresser en anglais professionnel
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
+                Pratiquez des situations réelles avec un partenaire IA et recevez un feedback détaillé instantané — vocabulaire, grammaire, ton et plus.
+              </p>
             </div>
-          </div>
-        </section>
 
-        {/* AI Email Reply Trainer CTA */}
-        <section className="py-16 bg-gradient-to-r from-accent/5 via-accent/10 to-accent/5 relative overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-10 left-[15%] w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-10 right-[10%] w-48 h-48 bg-accent/8 rounded-full blur-3xl" />
-          </div>
-          <div className="max-w-4xl mx-auto px-4 relative z-10">
-            <div className="bg-background/80 backdrop-blur-sm rounded-2xl border border-accent/20 p-8 md:p-10 flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-1 space-y-4 text-center md:text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent-foreground text-sm font-semibold">
-                  <Mail className="w-4 h-4" />
-                  Nouveau — Rédaction E-mail IA
+            <div className="grid md:grid-cols-2 gap-5">
+              {/* Conversation */}
+              <Link to="/conversation-trainer" className="group bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/15 p-6 md:p-8 flex items-start gap-5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all hover:-translate-y-1">
+                <div className="shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <MessageCircle className="w-7 h-7 text-primary" />
                 </div>
-                <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
-                  Entraînez-vous à rédiger des e-mails professionnels
-                </h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  Lisez un e-mail professionnel réaliste, rédigez votre réponse en anglais, et recevez un feedback IA détaillé sur votre clarté, grammaire, ton et vocabulaire.
-                </p>
-                <Link
-                  to="/email-trainer"
-                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold hover:bg-primary/90 transition-all hover:scale-105 shadow-lg shadow-primary/20"
-                >
-                  <Mail className="w-5 h-5" />
-                  Essayer gratuitement
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-              <div className="shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-accent/10 flex items-center justify-center">
-                <Mail className="w-16 h-16 md:w-20 md:h-20 text-primary/60" />
-              </div>
-            </div>
-          </div>
-        </section>
+                <div className="flex-1 space-y-2">
+                  <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-primary transition-colors">Conversation professionnelle</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">Accueil client, réunion, réclamation, networking — 15 scénarios réalistes avec feedback CECRL.</p>
+                  <span className="inline-flex items-center gap-1 text-primary text-sm font-semibold">
+                    Essayer <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </Link>
 
-        {/* AI Presentation Trainer CTA */}
-        <section className="py-16 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 relative overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-10 right-[20%] w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-10 left-[15%] w-48 h-48 bg-primary/8 rounded-full blur-3xl" />
-          </div>
-          <div className="max-w-4xl mx-auto px-4 relative z-10">
-            <div className="bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/20 p-8 md:p-10 flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-1 space-y-4 text-center md:text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold">
-                  <Sparkles className="w-4 h-4" />
-                  Nouveau — Présentations IA
+              {/* Email */}
+              <Link to="/email-trainer" className="group bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/15 p-6 md:p-8 flex items-start gap-5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all hover:-translate-y-1">
+                <div className="shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <Mail className="w-7 h-7 text-primary" />
                 </div>
-                <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
-                  Entraînez-vous aux présentations professionnelles
-                </h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  Rédigez des présentations professionnelles en anglais et recevez un feedback IA détaillé sur la structure, la clarté, le vocabulaire et la persuasion.
-                </p>
-                <Link
-                  to="/presentation-trainer"
-                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold hover:bg-primary/90 transition-all hover:scale-105 shadow-lg shadow-primary/20"
-                >
-                  <Sparkles className="w-5 h-5" />
-                  Essayer gratuitement
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-              <div className="shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-primary/10 flex items-center justify-center">
-                <Sparkles className="w-16 h-16 md:w-20 md:h-20 text-primary/60" />
-              </div>
-            </div>
-          </div>
-        </section>
+                <div className="flex-1 space-y-2">
+                  <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-primary transition-colors">Rédaction d'e-mails</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">Répondez à des e-mails professionnels réalistes. Feedback IA sur la clarté, le ton et la structure.</p>
+                  <span className="inline-flex items-center gap-1 text-primary text-sm font-semibold">
+                    Essayer <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </Link>
 
-        {/* AI Negotiation Trainer CTA */}
-        <section className="py-16 bg-gradient-to-r from-accent/5 via-accent/10 to-accent/5 relative overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-10 left-[20%] w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-10 right-[15%] w-48 h-48 bg-accent/8 rounded-full blur-3xl" />
-          </div>
-          <div className="max-w-4xl mx-auto px-4 relative z-10">
-            <div className="bg-background/80 backdrop-blur-sm rounded-2xl border border-accent/20 p-8 md:p-10 flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-1 space-y-4 text-center md:text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent-foreground text-sm font-semibold">
-                  <Handshake className="w-4 h-4" />
-                  Nouveau — Négociation IA
+              {/* Presentation */}
+              <Link to="/presentation-trainer" className="group bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/15 p-6 md:p-8 flex items-start gap-5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all hover:-translate-y-1">
+                <div className="shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <Sparkles className="w-7 h-7 text-primary" />
                 </div>
-                <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
-                  Entraînez-vous à la négociation professionnelle
-                </h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  Pratiquez des négociations réalistes avec un partenaire IA. Recevez un feedback détaillé sur votre persuasion, stratégie et communication professionnelle.
-                </p>
-                <Link
-                  to="/negotiation-trainer"
-                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold hover:bg-primary/90 transition-all hover:scale-105 shadow-lg shadow-primary/20"
-                >
-                  <Handshake className="w-5 h-5" />
-                  Essayer gratuitement
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-              <div className="shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-accent/10 flex items-center justify-center">
-                <Handshake className="w-16 h-16 md:w-20 md:h-20 text-primary/60" />
-              </div>
+                <div className="flex-1 space-y-2">
+                  <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-primary transition-colors">Présentation professionnelle</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">Rédigez des présentations en anglais et recevez un feedback sur la structure, la persuasion et le vocabulaire.</p>
+                  <span className="inline-flex items-center gap-1 text-primary text-sm font-semibold">
+                    Essayer <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </Link>
+
+              {/* Negotiation */}
+              <Link to="/negotiation-trainer" className="group bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/15 p-6 md:p-8 flex items-start gap-5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all hover:-translate-y-1">
+                <div className="shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <Handshake className="w-7 h-7 text-primary" />
+                </div>
+                <div className="flex-1 space-y-2">
+                  <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-primary transition-colors">Négociation commerciale</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">Pratiquez des négociations réalistes avec un partenaire IA. Feedback sur la persuasion, stratégie et communication.</p>
+                  <span className="inline-flex items-center gap-1 text-primary text-sm font-semibold">
+                    Essayer <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </Link>
             </div>
           </div>
         </section>
@@ -774,7 +713,6 @@ const Home = () => {
         </section>
 
 
-        {/* Post-Testimonials CTA - Capture warm leads */}
         <section className="py-12 bg-gradient-to-r from-primary/5 to-accent/5">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h3 className="text-2xl md:text-3xl font-bold text-primary mb-4 font-heading">
