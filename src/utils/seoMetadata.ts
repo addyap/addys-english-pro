@@ -145,6 +145,14 @@ export const seoMetadata: Record<string, SEOMetadata> = {
     h1: "AI Presentation Trainer",
     keywords: ["presentation anglais", "business English presentation", "AI presentation feedback", "professional speaking practice"],
     ogImage: DEFAULT_IMAGE
+  },
+  negotiationTrainer: {
+    title: "AI Negotiation Trainer | Business English Practice",
+    description: "Practice professional negotiations in English and receive instant AI feedback on persuasion, vocabulary, and negotiation strategy.",
+    canonical: `${SITE_URL}/negotiation-trainer`,
+    h1: "AI Negotiation Trainer",
+    keywords: ["negotiation anglais", "business English negotiation", "AI negotiation feedback", "professional negotiation practice"],
+    ogImage: DEFAULT_IMAGE
   }
 };
 
