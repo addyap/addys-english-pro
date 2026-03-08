@@ -22,8 +22,10 @@ export type Database = {
           id: string
           messages: Json
           mode: string | null
+          overall_level: string | null
           scenario: string
           session_id: string | null
+          started_at: string | null
         }
         Insert: {
           completed_at?: string | null
@@ -32,8 +34,10 @@ export type Database = {
           id?: string
           messages?: Json
           mode?: string | null
+          overall_level?: string | null
           scenario: string
           session_id?: string | null
+          started_at?: string | null
         }
         Update: {
           completed_at?: string | null
@@ -42,8 +46,10 @@ export type Database = {
           id?: string
           messages?: Json
           mode?: string | null
+          overall_level?: string | null
           scenario?: string
           session_id?: string | null
+          started_at?: string | null
         }
         Relationships: []
       }

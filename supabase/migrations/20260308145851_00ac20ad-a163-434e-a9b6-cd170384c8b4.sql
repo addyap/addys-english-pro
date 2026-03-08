@@ -1,0 +1,3 @@
+ALTER TABLE public.conversation_sessions 
+ADD COLUMN IF NOT EXISTS started_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+ADD COLUMN IF NOT EXISTS overall_level TEXT DEFAULT NULL;
