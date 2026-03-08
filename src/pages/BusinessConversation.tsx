@@ -13,7 +13,7 @@ import {
   ShieldAlert, Coffee, Handshake, Loader2, ChevronRight,
   Phone, Mic, Building2, Globe, UserCheck, ClipboardList,
   HelpCircle, Presentation, DollarSign, BookOpen, Target, GraduationCap,
-  CheckCircle2, AlertTriangle, Lightbulb, ArrowLeft, Square
+  CheckCircle2, AlertTriangle, Lightbulb, ArrowLeft, Square, Clock, TrendingUp
 } from "lucide-react";
 import { toast } from "sonner";
 
