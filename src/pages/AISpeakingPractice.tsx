@@ -67,14 +67,13 @@ const AISpeakingPractice = () => {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
-  const [isListening, setIsListening] = useState(false);
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [loadingFeedback, setLoadingFeedback] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const recognitionRef = useRef<any>(null);
   const { remaining, limitReached, recordSession } = useAIDailyLimit("speaking");
-
-  const speechSupported = typeof window !== "undefined" && ("SpeechRecognition" in window || "webkitSpeechRecognition" in window);
+  const { isListening, startListening, stopListening, speechSupported } = useSpeechRecognition(
+    useCallback((text: string) => setInput(text), [])
+  );
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
