@@ -718,36 +718,10 @@ const EmailReplyTrainer: React.FC = () => {
             <Card>
               <CardContent className="p-6 space-y-4">
                 <h3 className="font-heading font-semibold text-foreground text-lg">Tone & Formatting</h3>
-                {feedback.tone.rating && (
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">Tone</span>
-                    <div className="flex items-center gap-2">
-                      <RatingBadge rating={feedback.tone.rating} />
-                    </div>
-                  </div>
-                )}
-                {feedback.tone.comment && <p className="text-xs text-muted-foreground">{feedback.tone.comment}</p>}
-                {feedback.subjectLine.rating && (
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">Subject Line</span>
-                    <RatingBadge rating={feedback.subjectLine.rating} />
-                  </div>
-                )}
-                {feedback.subjectLine.comment && <p className="text-xs text-muted-foreground">{feedback.subjectLine.comment}</p>}
-                {feedback.greeting.rating && (
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">Greeting</span>
-                    <RatingBadge rating={feedback.greeting.rating} />
-                  </div>
-                )}
-                {feedback.greeting.comment && <p className="text-xs text-muted-foreground">{feedback.greeting.comment}</p>}
-                {feedback.closing.rating && (
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">Closing</span>
-                    <RatingBadge rating={feedback.closing.rating} />
-                  </div>
-                )}
-                {feedback.closing.comment && <p className="text-xs text-muted-foreground">{feedback.closing.comment}</p>}
+                <RatingBadge label="Tone" rating={feedback.tone.rating} comment={feedback.tone.comment} />
+                <RatingBadge label="Subject Line" rating={feedback.subjectLine.rating} comment={feedback.subjectLine.comment} />
+                <RatingBadge label="Greeting" rating={feedback.greeting.rating} comment={feedback.greeting.comment} />
+                <RatingBadge label="Closing" rating={feedback.closing.rating} comment={feedback.closing.comment} />
               </CardContent>
             </Card>
 
