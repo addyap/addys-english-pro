@@ -1606,6 +1606,19 @@ const Exercises = () => {
                   </CardContent>
                 </Card>
               </Link>
+              <Link to="/negotiation-trainer" className="block">
+                <Card className="h-full hover:shadow-lg hover:-translate-y-0.5 transition-all border-primary/20 hover:border-primary/40">
+                  <CardContent className="p-5 flex items-start gap-4">
+                    <div className="shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14h2"/><path d="M11 4c-3.29.37-5.7 2.33-6.72 4.94a3 3 0 0 0 0 2.12A7.26 7.26 0 0 0 9 15"/></svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold font-heading text-foreground mb-1">AI Negotiation Trainer</h3>
+                      <p className="text-sm text-muted-foreground">Pratiquez la négociation professionnelle avec feedback IA.</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             </div>
           </div>
         </section>
