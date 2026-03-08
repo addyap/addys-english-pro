@@ -290,6 +290,12 @@ serve(async (req) => {
       // Always return a fully validated, complete feedback object
       const feedback = sanitizeFeedback(parsed);
 
+      // Monitor degraded feedback: log when AI returned mostly empty/default data
+      const isDegrade = feedback.fluency.score === 0 && feedback.grammar.score === 0 && feedback.vocabulary.score === 0;
+      if (isDegrade) {
+        console.warn("[business-chat] sanitizeFeedback returned mostly defaults. Raw content length:", content.length, "Parsed:", parsed !== null);
+      }
+
       return new Response(JSON.stringify({ feedback }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });

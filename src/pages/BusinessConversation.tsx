@@ -181,7 +181,8 @@ const BusinessConversation: React.FC = () => {
   const [feedbackError, setFeedbackError] = useState(false);
   const [sessionId, setSessionId] = useState(() => crypto.randomUUID());
   const [examComplete, setExamComplete] = useState(false);
-  const [startedAt] = useState(() => new Date().toISOString());
+  const [startedAt, setStartedAt] = useState(() => new Date().toISOString());
+  const [sessionSaved, setSessionSaved] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const examFeedbackTriggeredRef = useRef(false);
