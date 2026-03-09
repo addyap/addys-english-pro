@@ -73,6 +73,7 @@ const AISpeakingPractice = () => {
   const [loadingFeedback, setLoadingFeedback] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { remaining, limitReached, recordSession } = useAIDailyLimit("speaking");
+  const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const { isListening, startListening, stopListening, speechSupported } = useSpeechRecognition(
     useCallback((text: string) => setInput(text), [])
   );
