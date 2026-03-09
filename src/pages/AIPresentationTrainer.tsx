@@ -16,6 +16,8 @@ import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import type { Correction, VocabUpgrade as VocabUpgradeType, ScoreField, RatingField } from "@/types/ai-trainers";
 import { toast } from "sonner";
+import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
+import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 
 // ── Types ─────────────────────────────────────────────
 interface Feedback {
