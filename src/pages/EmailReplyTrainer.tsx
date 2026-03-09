@@ -368,7 +368,7 @@ const EmailReplyTrainer: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ action: "feedback", ...requestPayload() }),
+        body: JSON.stringify({ action: "feedback", ...requestPayload(), feedbackLanguage: feedbackLang }),
       });
       if (!res.ok) {
         const d = await res.json().catch(() => ({}));
