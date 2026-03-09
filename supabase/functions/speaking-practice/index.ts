@@ -52,7 +52,15 @@ When the learner uses speech-to-text, be aware that errors may come from pronunc
 If a word seems oddly transcribed, gently clarify: "Did you mean [word]? That's a common pronunciation challenge!"
 `;
 
-const FEEDBACK_PROMPT = `Analyse the learner's performance and return a JSON object:
+// ── Language instructions ──────────────────────────────────────────────────
+const LANGUAGE_INSTRUCTIONS: Record<string, string> = {
+  en: "Write ALL feedback, comments, explanations, and suggestions in ENGLISH.",
+  fr: "Écris TOUS les commentaires, explications et suggestions en FRANÇAIS. Seuls les exemples de corrections (wrong/correct) restent en anglais.",
+};
+
+const FEEDBACK_PROMPT = (lang: string) => `${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
+
+Analyse the learner's performance and return a JSON object:
 {
   "fluency": {"score": 0-10, "comment": "..."},
   "pronunciation": {"score": 0-10, "comment": "... note any words that seemed mispronounced based on transcription errors"},
