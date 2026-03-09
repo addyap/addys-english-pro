@@ -235,7 +235,8 @@ serve(async (req) => {
   }
 
   try {
-    const { messages, scenario, mode = "practice", action } = await req.json();
+    const { messages, scenario, mode = "practice", action, feedbackLanguage } = await req.json();
+    const lang = feedbackLanguage === "fr" ? "fr" : "en";
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
@@ -247,7 +248,7 @@ serve(async (req) => {
         .join("\n");
 
       const feedbackSchema = FEEDBACK_SCHEMAS[feedbackMode] || FEEDBACK_SCHEMAS["practice"];
-      const feedbackPrompt = FEEDBACK_PROMPT_BASE + feedbackSchema;
+      const feedbackPrompt = FEEDBACK_PROMPT_BASE(lang) + feedbackSchema;
 
       const response = await fetch(
         "https://ai.gateway.lovable.dev/v1/chat/completions",

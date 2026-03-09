@@ -194,7 +194,8 @@ serve(async (req) => {
 
   try {
     const body = await req.json();
-    const { action, brief, presentationText, scenarioLabel } = body;
+    const { action, brief, presentationText, scenarioLabel, feedbackLanguage } = body;
+    const lang = feedbackLanguage === "fr" ? "fr" : "en";
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
@@ -234,7 +235,7 @@ serve(async (req) => {
 
     if (action === "feedback") {
       const userPrompt = `PRESENTATION BRIEF:\n${scenarioLabel}\n\n${brief}\n\nLEARNER'S PRESENTATION:\n${presentationText || "(empty presentation)"}`;
-      const result = await callAI(FEEDBACK_PROMPT, userPrompt);
+      const result = await callAI(FEEDBACK_PROMPT(lang), userPrompt);
 
       if ("error" in result) {
         return new Response(JSON.stringify({ error: result.error }), {

@@ -122,7 +122,8 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { messages, scenario, mode, action } = await req.json();
+    const { messages, scenario, mode, action, feedbackLanguage } = await req.json();
+    const lang = feedbackLanguage === "fr" ? "fr" : "en";
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
@@ -136,7 +137,7 @@ serve(async (req) => {
         body: JSON.stringify({
           model: "google/gemini-2.5-flash",
           messages: [
-            { role: "system", content: FEEDBACK_PROMPT },
+            { role: "system", content: FEEDBACK_PROMPT(lang) },
             { role: "user", content: `Here is the conversation:\n${JSON.stringify(messages)}` },
           ],
         }),
