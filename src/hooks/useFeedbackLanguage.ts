@@ -12,7 +12,6 @@ export function useFeedbackLanguage(): [FeedbackLang, (lang: FeedbackLang) => vo
     const browserLang = (navigator.language || "").toLowerCase();
     return browserLang.startsWith("fr") ? "fr" : "en";
   });
-  });
 
   const setLang = (l: FeedbackLang) => {
     setLangState(l);
