@@ -54,6 +54,7 @@ const AIWritingCoach = () => {
   const [loading, setLoading] = useState(false);
   const [showImproved, setShowImproved] = useState(false);
   const { remaining, limitReached, recordSession } = useAIDailyLimit("writing-coach");
+  const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
 
   const submit = async () => {
     if (text.trim().length < 20) { toast.error("Écrivez au moins 20 caractères."); return; }
