@@ -185,7 +185,7 @@ const AISpeakingPractice = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages, scenario, mode, action: "feedback" }),
+        body: JSON.stringify({ messages, scenario, mode, action: "feedback", feedbackLanguage: feedbackLang }),
       });
       if (!resp.ok) throw new Error("Feedback error");
       const data = await resp.json();
