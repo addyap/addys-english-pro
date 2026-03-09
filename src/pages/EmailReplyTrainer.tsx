@@ -395,7 +395,7 @@ const EmailReplyTrainer: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ action: "model-answer", ...requestPayload() }),
+        body: JSON.stringify({ action: "model-answer", ...requestPayload(), feedbackLanguage: feedbackLang }),
       });
       if (!res.ok) throw new Error("Failed");
       const data = await res.json();
