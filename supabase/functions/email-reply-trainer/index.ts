@@ -186,7 +186,9 @@ Write a model reply to the incoming email below. The reply should:
 
 Return ONLY the model email text, nothing else.`;
 
-const IMPROVE_REPLY_PROMPT = `You are a professional Business English writing coach.
+const IMPROVE_REPLY_PROMPT = (lang: string) => `You are a professional Business English writing coach.
+
+${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
 
 Rewrite the learner's email reply into a stronger, more professional version. You must:
 - Preserve the learner's intended meaning and key points

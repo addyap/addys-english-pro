@@ -177,7 +177,9 @@ Write a model presentation for the brief below. The presentation should:
 
 Return ONLY the model presentation text, nothing else.`;
 
-const IMPROVE_PROMPT = `You are a professional Business English presentation coach.
+const IMPROVE_PROMPT = (lang: string) => `You are a professional Business English presentation coach.
+
+${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
 
 Rewrite the learner's presentation into a stronger, more professional version. You must:
 - Preserve the learner's intended meaning and key points
