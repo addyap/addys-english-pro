@@ -227,7 +227,7 @@ const AIPresentationTrainer: React.FC = () => {
       const resp = await fetch(FUNC_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}` },
-        body: JSON.stringify({ action: "improve-presentation", brief: scenario.brief, presentationText, scenarioLabel: scenario.label }),
+        body: JSON.stringify({ action: "improve-presentation", brief: scenario.brief, presentationText, scenarioLabel: scenario.label, feedbackLanguage: feedbackLang }),
       });
       if (!resp.ok) { toast.error("Failed to improve presentation."); return; }
       const data = await resp.json();
