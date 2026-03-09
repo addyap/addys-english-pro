@@ -19,6 +19,8 @@ import {
   Building2, Globe, Plane, ShoppingCart, ChevronRight
 } from "lucide-react";
 import { toast } from "sonner";
+import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
+import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
