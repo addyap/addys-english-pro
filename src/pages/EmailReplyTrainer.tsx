@@ -20,6 +20,8 @@ import {
   AlertCircle, Eye, Wand2, FileText, ChevronDown, ChevronUp
 } from "lucide-react";
 import { toast } from "sonner";
+import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
+import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 
 // ── Types ──────────────────────────────────────────────────────────
 
