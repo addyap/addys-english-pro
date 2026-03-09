@@ -25,6 +25,7 @@ const AIGrammarExplainer = () => {
   const [result, setResult] = useState<GrammarExplainerResult | null>(null);
   const [loading, setLoading] = useState(false);
   const { remaining, limitReached, recordSession } = useAIDailyLimit("grammar-explainer");
+  const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
 
   const analyse = async (text?: string) => {
     const s = (text || sentence).trim();
