@@ -163,7 +163,9 @@ Return your response as valid JSON matching this exact structure:
 
 Return ONLY the JSON object, no extra text.`;
 
-const MODEL_PROMPT = `You are a professional Business English presentation coach.
+const MODEL_PROMPT = (lang: string) => `You are a professional Business English presentation coach.
+
+${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
 
 Write a model presentation for the brief below. The presentation should:
 - Be professional, clear, and well-structured
@@ -175,7 +177,9 @@ Write a model presentation for the brief below. The presentation should:
 
 Return ONLY the model presentation text, nothing else.`;
 
-const IMPROVE_PROMPT = `You are a professional Business English presentation coach.
+const IMPROVE_PROMPT = (lang: string) => `You are a professional Business English presentation coach.
+
+${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
 
 Rewrite the learner's presentation into a stronger, more professional version. You must:
 - Preserve the learner's intended meaning and key points
@@ -259,7 +263,7 @@ serve(async (req) => {
 
     if (action === "model-presentation") {
       const userPrompt = `PRESENTATION BRIEF:\n${scenarioLabel}\n\n${brief}`;
-      const result = await callAI(MODEL_PROMPT, userPrompt);
+      const result = await callAI(MODEL_PROMPT(lang), userPrompt);
 
       if ("error" in result) {
         return new Response(JSON.stringify({ error: result.error }), {
@@ -274,7 +278,7 @@ serve(async (req) => {
 
     if (action === "improve-presentation") {
       const userPrompt = `PRESENTATION BRIEF:\n${scenarioLabel}\n\n${brief}\n\nLEARNER'S ORIGINAL PRESENTATION:\n${presentationText}`;
-      const result = await callAI(IMPROVE_PROMPT, userPrompt);
+      const result = await callAI(IMPROVE_PROMPT(lang), userPrompt);
 
       if ("error" in result) {
         return new Response(JSON.stringify({ error: result.error }), {

@@ -171,7 +171,9 @@ Return your response as valid JSON matching this exact structure:
 
 Return ONLY the JSON object, no extra text.`;
 
-const MODEL_ANSWER_PROMPT = `You are a professional Business English writing coach.
+const MODEL_ANSWER_PROMPT = (lang: string) => `You are a professional Business English writing coach.
+
+${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
 
 Write a model reply to the incoming email below. The reply should:
 - Be professional, clear, and well-structured
@@ -184,7 +186,9 @@ Write a model reply to the incoming email below. The reply should:
 
 Return ONLY the model email text, nothing else.`;
 
-const IMPROVE_REPLY_PROMPT = `You are a professional Business English writing coach.
+const IMPROVE_REPLY_PROMPT = (lang: string) => `You are a professional Business English writing coach.
+
+${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
 
 Rewrite the learner's email reply into a stronger, more professional version. You must:
 - Preserve the learner's intended meaning and key points
@@ -275,7 +279,7 @@ serve(async (req) => {
         body: JSON.stringify({
           model: "google/gemini-2.5-flash",
           messages: [
-            { role: "system", content: MODEL_ANSWER_PROMPT },
+            { role: "system", content: MODEL_ANSWER_PROMPT(lang) },
             { role: "user", content: userPrompt },
           ],
           stream: false,
@@ -308,7 +312,7 @@ serve(async (req) => {
         body: JSON.stringify({
           model: "google/gemini-2.5-flash",
           messages: [
-            { role: "system", content: IMPROVE_REPLY_PROMPT },
+            { role: "system", content: IMPROVE_REPLY_PROMPT(lang) },
             { role: "user", content: userPrompt },
           ],
           stream: false,
