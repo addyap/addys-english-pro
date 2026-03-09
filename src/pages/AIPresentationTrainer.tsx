@@ -186,6 +186,7 @@ const AIPresentationTrainer: React.FC = () => {
           brief: scenario.brief,
           presentationText,
           scenarioLabel: scenario.label,
+          feedbackLanguage: feedbackLang,
         }),
       });
       if (!resp.ok) {
