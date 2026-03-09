@@ -171,7 +171,9 @@ Return your response as valid JSON matching this exact structure:
 
 Return ONLY the JSON object, no extra text.`;
 
-const MODEL_ANSWER_PROMPT = `You are a professional Business English writing coach.
+const MODEL_ANSWER_PROMPT = (lang: string) => `You are a professional Business English writing coach.
+
+${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
 
 Write a model reply to the incoming email below. The reply should:
 - Be professional, clear, and well-structured
