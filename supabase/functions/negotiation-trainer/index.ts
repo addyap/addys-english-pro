@@ -91,8 +91,16 @@ Do NOT reformulate or correct the learner's mistakes during the conversation.
 ${SHARED_RULES}`,
 };
 
+// ── Language instructions ──────────────────────────────────────────────────
+const LANGUAGE_INSTRUCTIONS: Record<string, string> = {
+  en: "Write ALL feedback, comments, explanations, and suggestions in ENGLISH.",
+  fr: "Écris TOUS les commentaires, explications et suggestions en FRANÇAIS. Seuls les exemples de corrections (wrong/correct) restent en anglais.",
+};
+
 // ── Feedback ──────────────────────────────────────────────────────────────
-const FEEDBACK_PROMPT = `You are an expert Business English coach specializing in negotiation skills. Analyse the following negotiation conversation between a learner (role: user) and an AI negotiation partner (role: assistant).
+const FEEDBACK_PROMPT = (lang: string) => `You are an expert Business English coach specializing in negotiation skills. Analyse the following negotiation conversation between a learner (role: user) and an AI negotiation partner (role: assistant).
+
+${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
 
 Evaluate the LEARNER's messages ONLY.
 
