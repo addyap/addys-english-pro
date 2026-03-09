@@ -66,7 +66,7 @@ const AIWritingCoach = () => {
 
     try {
       const { data, error } = await supabase.functions.invoke("writing-coach", {
-        body: { text: text.trim(), writingType },
+        body: { text: text.trim(), writingType, feedbackLanguage: feedbackLang },
       });
       if (error) throw error;
       setFeedback(data.feedback);
