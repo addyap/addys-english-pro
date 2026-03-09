@@ -9,6 +9,8 @@ import type { GrammarExplainerResult } from "@/types/ai-trainers";
 import { Search, RotateCcw, Loader2, BookOpen, Lightbulb, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
+import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 
 const EXAMPLE_SENTENCES = [
   "If I had known about the meeting, I would have prepared a report.",
