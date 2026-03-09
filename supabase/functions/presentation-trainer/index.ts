@@ -274,7 +274,7 @@ serve(async (req) => {
 
     if (action === "improve-presentation") {
       const userPrompt = `PRESENTATION BRIEF:\n${scenarioLabel}\n\n${brief}\n\nLEARNER'S ORIGINAL PRESENTATION:\n${presentationText}`;
-      const result = await callAI(IMPROVE_PROMPT, userPrompt);
+      const result = await callAI(IMPROVE_PROMPT(lang), userPrompt);
 
       if ("error" in result) {
         return new Response(JSON.stringify({ error: result.error }), {
