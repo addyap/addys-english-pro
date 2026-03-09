@@ -8,7 +8,10 @@ export function useFeedbackLanguage(): [FeedbackLang, (lang: FeedbackLang) => vo
       const stored = localStorage.getItem("feedbackLanguage");
       if (stored === "en" || stored === "fr") return stored;
     } catch {}
-    return "fr";
+    // Auto-detect from browser language
+    const browserLang = (navigator.language || "").toLowerCase();
+    return browserLang.startsWith("fr") ? "fr" : "en";
+  });
   });
 
   const setLang = (l: FeedbackLang) => {
