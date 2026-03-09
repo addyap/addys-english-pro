@@ -6,7 +6,14 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const SYSTEM_PROMPT = `You are an expert English writing coach specialising in professional and academic writing for non-native speakers.
+const LANGUAGE_INSTRUCTIONS: Record<string, string> = {
+  en: "Write ALL feedback, comments, explanations, suggestions, and the improved version in ENGLISH.",
+  fr: "Écris TOUS les commentaires, explications, suggestions et la version améliorée en FRANÇAIS. Seuls les exemples de corrections (wrong/correct) restent en anglais.",
+};
+
+const SYSTEM_PROMPT = (lang: string) => `You are an expert English writing coach specialising in professional and academic writing for non-native speakers.
+
+${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
 
 The user will send you a piece of writing along with the type (email, essay, report, cover letter, LinkedIn post, etc.).
 
