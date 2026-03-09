@@ -104,7 +104,15 @@ function sanitizeFeedback(raw: unknown): typeof SAFE_FEEDBACK_DEFAULTS {
   return safe;
 }
 
-const FEEDBACK_PROMPT = `You are a professional Business English presentation coach.
+// ── Language instructions ──────────────────────────────────────────────────
+const LANGUAGE_INSTRUCTIONS: Record<string, string> = {
+  en: "Write ALL feedback, comments, explanations, and suggestions in ENGLISH.",
+  fr: "Écris TOUS les commentaires, explications et suggestions en FRANÇAIS. Seuls les exemples de corrections (wrong/correct) restent en anglais.",
+};
+
+const FEEDBACK_PROMPT = (lang: string) => `You are a professional Business English presentation coach.
+
+${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
 
 You will receive:
 1. A presentation brief (the scenario)
