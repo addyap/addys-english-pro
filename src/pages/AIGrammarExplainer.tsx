@@ -38,7 +38,7 @@ const AIGrammarExplainer = () => {
 
     try {
       const { data, error } = await supabase.functions.invoke("grammar-explainer", {
-        body: { sentence: s },
+        body: { sentence: s, feedbackLanguage: feedbackLang },
       });
       if (error) throw error;
       setResult(data.result);
