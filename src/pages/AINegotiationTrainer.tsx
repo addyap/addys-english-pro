@@ -23,6 +23,8 @@ import {
   Globe, UserCheck, Scale
 } from "lucide-react";
 import { toast } from "sonner";
+import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
+import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
