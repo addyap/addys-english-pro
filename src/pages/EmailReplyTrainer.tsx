@@ -279,6 +279,7 @@ type Step = "select" | "write" | "feedback";
 
 const EmailReplyTrainer: React.FC = () => {
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("email");
+  const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const [step, setStep] = useState<Step>("select");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [scenario, setScenario] = useState<Scenario | null>(null);
