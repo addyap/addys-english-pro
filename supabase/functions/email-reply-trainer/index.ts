@@ -275,7 +275,7 @@ serve(async (req) => {
         body: JSON.stringify({
           model: "google/gemini-2.5-flash",
           messages: [
-            { role: "system", content: MODEL_ANSWER_PROMPT },
+            { role: "system", content: MODEL_ANSWER_PROMPT(lang) },
             { role: "user", content: userPrompt },
           ],
           stream: false,
