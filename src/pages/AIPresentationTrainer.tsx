@@ -16,6 +16,8 @@ import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import type { Correction, VocabUpgrade as VocabUpgradeType, ScoreField, RatingField } from "@/types/ai-trainers";
 import { toast } from "sonner";
+import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
+import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 
 // ── Types ─────────────────────────────────────────────
 interface Feedback {
@@ -111,6 +113,7 @@ const FUNC_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/presentation
 // ── Main Component ────────────────────────────────────
 const AIPresentationTrainer: React.FC = () => {
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("presentation");
+  const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const [step, setStep] = useState<"select" | "write" | "feedback">("select");
   const [scenario, setScenario] = useState<Scenario | null>(null);
   const [presentationText, setPresentationText] = useState("");
@@ -183,6 +186,7 @@ const AIPresentationTrainer: React.FC = () => {
           brief: scenario.brief,
           presentationText,
           scenarioLabel: scenario.label,
+          feedbackLanguage: feedbackLang,
         }),
       });
       if (!resp.ok) {
@@ -208,7 +212,7 @@ const AIPresentationTrainer: React.FC = () => {
       const resp = await fetch(FUNC_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}` },
-        body: JSON.stringify({ action: "model-presentation", brief: scenario.brief, scenarioLabel: scenario.label }),
+        body: JSON.stringify({ action: "model-presentation", brief: scenario.brief, scenarioLabel: scenario.label, feedbackLanguage: feedbackLang }),
       });
       if (!resp.ok) { toast.error("Failed to generate model presentation."); return; }
       const data = await resp.json();
@@ -223,7 +227,7 @@ const AIPresentationTrainer: React.FC = () => {
       const resp = await fetch(FUNC_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}` },
-        body: JSON.stringify({ action: "improve-presentation", brief: scenario.brief, presentationText, scenarioLabel: scenario.label }),
+        body: JSON.stringify({ action: "improve-presentation", brief: scenario.brief, presentationText, scenarioLabel: scenario.label, feedbackLanguage: feedbackLang }),
       });
       if (!resp.ok) { toast.error("Failed to improve presentation."); return; }
       const data = await resp.json();
@@ -257,11 +261,13 @@ const AIPresentationTrainer: React.FC = () => {
     return (
       <>
         <SEOHead title="AI Presentation Trainer | Business English Practice" description="Practice professional presentations in English and receive instant AI feedback on clarity, structure, vocabulary, and persuasion." noIndex={false} />
+        {/* Language toggle is shown in the header area */}
         <div className="min-h-screen bg-background py-6 md:py-10">
           <div className="max-w-3xl mx-auto px-4 space-y-6">
             <div className="text-center space-y-3">
               <Badge variant="outline" className="border-primary/50 text-primary"><Presentation className="w-3 h-3 mr-1" /> AI Presentation Trainer</Badge>
               <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground">Practice Professional Presentations</h1>
+              <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} />
               <p className="text-muted-foreground max-w-xl mx-auto">Choose a scenario, write your presentation, and receive detailed AI coaching feedback on structure, clarity, vocabulary, and persuasion.</p>
             </div>
 

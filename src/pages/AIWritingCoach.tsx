@@ -16,6 +16,8 @@ import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-tr
 import { Send, RotateCcw, Loader2, ArrowLeft, FileText, Wand2, Eye, ChevronDown, ChevronUp } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
+import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 
 interface Feedback {
   taskAchievement: { score: number; comment: string };
@@ -52,6 +54,7 @@ const AIWritingCoach = () => {
   const [loading, setLoading] = useState(false);
   const [showImproved, setShowImproved] = useState(false);
   const { remaining, limitReached, recordSession } = useAIDailyLimit("writing-coach");
+  const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
 
   const submit = async () => {
     if (text.trim().length < 20) { toast.error("Écrivez au moins 20 caractères."); return; }
@@ -63,7 +66,7 @@ const AIWritingCoach = () => {
 
     try {
       const { data, error } = await supabase.functions.invoke("writing-coach", {
-        body: { text: text.trim(), writingType },
+        body: { text: text.trim(), writingType, feedbackLanguage: feedbackLang },
       });
       if (error) throw error;
       setFeedback(data.feedback);
@@ -90,9 +93,12 @@ const AIWritingCoach = () => {
       <div className="min-h-screen bg-background py-10">
         <div className="max-w-3xl mx-auto px-4 space-y-6">
           <div className="text-center">
-            <Badge variant="secondary" className="mb-3">
-              <FileText className="w-3 h-3 mr-1" /> {remaining}/{10} sessions restantes
-            </Badge>
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <Badge variant="secondary">
+                <FileText className="w-3 h-3 mr-1" /> {remaining}/{10} sessions restantes
+              </Badge>
+              <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} />
+            </div>
             <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-3">
               ✍️ AI Writing Coach
             </h1>

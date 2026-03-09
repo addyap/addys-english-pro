@@ -19,6 +19,8 @@ import {
   Building2, Globe, Plane, ShoppingCart, ChevronRight
 } from "lucide-react";
 import { toast } from "sonner";
+import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
+import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -71,6 +73,7 @@ const AISpeakingPractice = () => {
   const [loadingFeedback, setLoadingFeedback] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { remaining, limitReached, recordSession } = useAIDailyLimit("speaking");
+  const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const { isListening, startListening, stopListening, speechSupported } = useSpeechRecognition(
     useCallback((text: string) => setInput(text), [])
   );
@@ -99,7 +102,7 @@ const AISpeakingPractice = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: msgs, scenario: sc, mode: md }),
+        body: JSON.stringify({ messages: msgs, scenario: sc, mode: md, feedbackLanguage: feedbackLang }),
       });
 
       if (!resp.ok) {
@@ -182,7 +185,7 @@ const AISpeakingPractice = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages, scenario, mode, action: "feedback" }),
+        body: JSON.stringify({ messages, scenario, mode, action: "feedback", feedbackLanguage: feedbackLang }),
       });
       if (!resp.ok) throw new Error("Feedback error");
       const data = await resp.json();
@@ -209,9 +212,12 @@ const AISpeakingPractice = () => {
         <div className="min-h-screen bg-background py-10">
           <div className="max-w-4xl mx-auto px-4">
             <div className="text-center mb-10">
-              <Badge variant="secondary" className="mb-3">
-                <Mic className="w-3 h-3 mr-1" /> {remaining}/{10} sessions restantes
-              </Badge>
+              <div className="flex items-center justify-center gap-3 mb-3">
+                <Badge variant="secondary">
+                  <Mic className="w-3 h-3 mr-1" /> {remaining}/{10} sessions restantes
+                </Badge>
+                <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} />
+              </div>
               <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-3">
                 🎙️ AI Speaking Practice
               </h1>

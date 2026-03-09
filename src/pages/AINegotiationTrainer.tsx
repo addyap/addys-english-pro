@@ -23,6 +23,8 @@ import {
   Globe, UserCheck, Scale
 } from "lucide-react";
 import { toast } from "sonner";
+import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
+import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -166,6 +168,7 @@ function countRealUserTurns(msgs: Msg[]): number {
 
 const AINegotiationTrainer: React.FC = () => {
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("negotiation");
+  const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const [scenario, setScenario] = useState<string | null>(null);
   const [mode, setMode] = useState<Mode>("practice");
   const [step, setStep] = useState<"scenario" | "mode" | "chat">("scenario");
@@ -228,7 +231,7 @@ const AINegotiationTrainer: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: initMessages, scenario: scenarioId, mode: selectedMode }),
+        body: JSON.stringify({ messages: initMessages, scenario: scenarioId, mode: selectedMode, feedbackLanguage: feedbackLang }),
       });
 
       if (!resp.ok || !resp.body) {
@@ -296,7 +299,7 @@ const AINegotiationTrainer: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: updatedMessages, scenario, mode }),
+        body: JSON.stringify({ messages: updatedMessages, scenario, mode, feedbackLanguage: feedbackLang }),
       });
 
       if (!resp.ok || !resp.body) {
@@ -360,7 +363,7 @@ const AINegotiationTrainer: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: msgsToUse, action: "feedback", mode }),
+        body: JSON.stringify({ messages: msgsToUse, action: "feedback", mode, feedbackLanguage: feedbackLang }),
       });
 
       if (!resp.ok) {
@@ -469,6 +472,7 @@ const AINegotiationTrainer: React.FC = () => {
               <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
                 Practice Business Negotiations
               </h1>
+              <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} className="mt-2" />
               <p className="text-muted-foreground text-lg max-w-lg mx-auto">
                 Choose a negotiation scenario and practice with an AI partner. Get detailed feedback on persuasion, strategy, and professional language.
               </p>

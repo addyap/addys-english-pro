@@ -9,6 +9,8 @@ import type { GrammarExplainerResult } from "@/types/ai-trainers";
 import { Search, RotateCcw, Loader2, BookOpen, Lightbulb, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
+import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 
 const EXAMPLE_SENTENCES = [
   "If I had known about the meeting, I would have prepared a report.",
@@ -23,6 +25,7 @@ const AIGrammarExplainer = () => {
   const [result, setResult] = useState<GrammarExplainerResult | null>(null);
   const [loading, setLoading] = useState(false);
   const { remaining, limitReached, recordSession } = useAIDailyLimit("grammar-explainer");
+  const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
 
   const analyse = async (text?: string) => {
     const s = (text || sentence).trim();
@@ -35,7 +38,7 @@ const AIGrammarExplainer = () => {
 
     try {
       const { data, error } = await supabase.functions.invoke("grammar-explainer", {
-        body: { sentence: s },
+        body: { sentence: s, feedbackLanguage: feedbackLang },
       });
       if (error) throw error;
       setResult(data.result);
@@ -75,9 +78,12 @@ const AIGrammarExplainer = () => {
       <div className="min-h-screen bg-background py-10">
         <div className="max-w-3xl mx-auto px-4 space-y-6">
           <div className="text-center">
-            <Badge variant="secondary" className="mb-3">
-              <BookOpen className="w-3 h-3 mr-1" /> {remaining}/{10} sessions restantes
-            </Badge>
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <Badge variant="secondary">
+                <BookOpen className="w-3 h-3 mr-1" /> {remaining}/{10} sessions restantes
+              </Badge>
+              <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} />
+            </div>
             <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-3">
               📖 AI Grammar Explainer
             </h1>

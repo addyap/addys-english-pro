@@ -20,6 +20,8 @@ import {
   AlertCircle, Eye, Wand2, FileText, ChevronDown, ChevronUp
 } from "lucide-react";
 import { toast } from "sonner";
+import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
+import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 
 // ── Types ──────────────────────────────────────────────────────────
 
@@ -277,6 +279,7 @@ type Step = "select" | "write" | "feedback";
 
 const EmailReplyTrainer: React.FC = () => {
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("email");
+  const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const [step, setStep] = useState<Step>("select");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [scenario, setScenario] = useState<Scenario | null>(null);
@@ -365,7 +368,7 @@ const EmailReplyTrainer: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ action: "feedback", ...requestPayload() }),
+        body: JSON.stringify({ action: "feedback", ...requestPayload(), feedbackLanguage: feedbackLang }),
       });
       if (!res.ok) {
         const d = await res.json().catch(() => ({}));
@@ -392,7 +395,7 @@ const EmailReplyTrainer: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ action: "model-answer", ...requestPayload() }),
+        body: JSON.stringify({ action: "model-answer", ...requestPayload(), feedbackLanguage: feedbackLang }),
       });
       if (!res.ok) throw new Error("Failed");
       const data = await res.json();
@@ -416,7 +419,7 @@ const EmailReplyTrainer: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ action: "improve-reply", ...requestPayload() }),
+        body: JSON.stringify({ action: "improve-reply", ...requestPayload(), feedbackLanguage: feedbackLang }),
       });
       if (!res.ok) throw new Error("Failed");
       const data = await res.json();
@@ -484,6 +487,7 @@ const EmailReplyTrainer: React.FC = () => {
               <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-3">
                 Practice Professional Email Writing
               </h1>
+              <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} className="mb-2" />
               <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
                 Read a realistic business email, write your reply, and get detailed AI feedback on your writing — grammar, tone, clarity, and more.
               </p>

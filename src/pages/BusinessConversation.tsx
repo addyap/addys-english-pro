@@ -25,6 +25,8 @@ import {
   RefreshCw, ArrowRight
 } from "lucide-react";
 import { toast } from "sonner";
+import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
+import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -168,6 +170,7 @@ function hasExamClosingSentence(msgs: Msg[]): boolean {
 
 const BusinessConversation: React.FC = () => {
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("conversation");
+  const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const [scenario, setScenario] = useState<string | null>(null);
   const [mode, setMode] = useState<Mode>("practice");
   const [step, setStep] = useState<"scenario" | "mode" | "chat">("scenario");
@@ -251,7 +254,7 @@ const BusinessConversation: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: initMessages, scenario: scenarioId, mode: selectedMode }),
+        body: JSON.stringify({ messages: initMessages, scenario: scenarioId, mode: selectedMode, feedbackLanguage: feedbackLang }),
       });
 
       if (!resp.ok || !resp.body) {
@@ -325,7 +328,7 @@ const BusinessConversation: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: updatedMessages, scenario, mode }),
+        body: JSON.stringify({ messages: updatedMessages, scenario, mode, feedbackLanguage: feedbackLang }),
       });
 
       if (!resp.ok || !resp.body) {
@@ -391,7 +394,7 @@ const BusinessConversation: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: msgsToUse, action: "feedback", mode }),
+        body: JSON.stringify({ messages: msgsToUse, action: "feedback", mode, feedbackLanguage: feedbackLang }),
       });
 
       if (!resp.ok) {
@@ -516,6 +519,7 @@ const BusinessConversation: React.FC = () => {
               <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
                 Practice Business English
               </h1>
+              <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} className="mt-2" />
               <p className="text-muted-foreground text-lg max-w-lg mx-auto">
                 Choose a professional scenario and have a realistic conversation with an AI partner. Get detailed coaching feedback when you're done.
               </p>
