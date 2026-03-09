@@ -173,7 +173,7 @@ const AIInterviewSimulator = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages, industry, interviewType, action: "feedback" }),
+        body: JSON.stringify({ messages, industry, interviewType, action: "feedback", feedbackLanguage: feedbackLang }),
       });
       if (!resp.ok) throw new Error();
       const data = await resp.json();
