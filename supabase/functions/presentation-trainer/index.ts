@@ -259,7 +259,7 @@ serve(async (req) => {
 
     if (action === "model-presentation") {
       const userPrompt = `PRESENTATION BRIEF:\n${scenarioLabel}\n\n${brief}`;
-      const result = await callAI(MODEL_PROMPT, userPrompt);
+      const result = await callAI(MODEL_PROMPT(lang), userPrompt);
 
       if ("error" in result) {
         return new Response(JSON.stringify({ error: result.error }), {
