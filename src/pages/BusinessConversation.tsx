@@ -394,7 +394,7 @@ const BusinessConversation: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: msgsToUse, action: "feedback", mode }),
+        body: JSON.stringify({ messages: msgsToUse, action: "feedback", mode, feedbackLanguage: feedbackLang }),
       });
 
       if (!resp.ok) {
