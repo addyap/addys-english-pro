@@ -16,6 +16,8 @@ import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-tr
 import { Send, RotateCcw, Loader2, ArrowLeft, FileText, Wand2, Eye, ChevronDown, ChevronUp } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
+import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 
 interface Feedback {
   taskAchievement: { score: number; comment: string };
