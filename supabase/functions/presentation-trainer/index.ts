@@ -163,7 +163,9 @@ Return your response as valid JSON matching this exact structure:
 
 Return ONLY the JSON object, no extra text.`;
 
-const MODEL_PROMPT = `You are a professional Business English presentation coach.
+const MODEL_PROMPT = (lang: string) => `You are a professional Business English presentation coach.
+
+${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
 
 Write a model presentation for the brief below. The presentation should:
 - Be professional, clear, and well-structured
