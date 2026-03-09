@@ -212,7 +212,7 @@ const AIPresentationTrainer: React.FC = () => {
       const resp = await fetch(FUNC_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}` },
-        body: JSON.stringify({ action: "model-presentation", brief: scenario.brief, scenarioLabel: scenario.label }),
+        body: JSON.stringify({ action: "model-presentation", brief: scenario.brief, scenarioLabel: scenario.label, feedbackLanguage: feedbackLang }),
       });
       if (!resp.ok) { toast.error("Failed to generate model presentation."); return; }
       const data = await resp.json();
