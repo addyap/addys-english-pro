@@ -108,7 +108,15 @@ function sanitizeFeedback(raw: unknown): typeof SAFE_FEEDBACK_DEFAULTS {
   return safe;
 }
 
-const FEEDBACK_PROMPT = `You are a professional Business English writing coach.
+// ── Language instructions ──────────────────────────────────────────────────
+const LANGUAGE_INSTRUCTIONS: Record<string, string> = {
+  en: "Write ALL feedback, comments, explanations, and suggestions in ENGLISH.",
+  fr: "Écris TOUS les commentaires, explications et suggestions en FRANÇAIS. Seuls les exemples de corrections (wrong/correct) restent en anglais.",
+};
+
+const FEEDBACK_PROMPT = (lang: string) => `You are a professional Business English writing coach.
+
+${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
 
 You will receive:
 1. An incoming professional email (the scenario)
@@ -195,7 +203,8 @@ serve(async (req) => {
 
   try {
     const body = await req.json();
-    const { action, incomingEmail, learnerReply, learnerSubject, scenarioGoal } = body;
+    const { action, incomingEmail, learnerReply, learnerSubject, scenarioGoal, feedbackLanguage } = body;
+    const lang = feedbackLanguage === "fr" ? "fr" : "en";
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
@@ -212,7 +221,7 @@ serve(async (req) => {
         body: JSON.stringify({
           model: "google/gemini-2.5-flash",
           messages: [
-            { role: "system", content: FEEDBACK_PROMPT },
+            { role: "system", content: FEEDBACK_PROMPT(lang) },
             { role: "user", content: userPrompt },
           ],
           stream: false,

@@ -91,8 +91,16 @@ Do NOT reformulate or correct the learner's mistakes during the conversation.
 ${SHARED_RULES}`,
 };
 
+// ── Language instructions ──────────────────────────────────────────────────
+const LANGUAGE_INSTRUCTIONS: Record<string, string> = {
+  en: "Write ALL feedback, comments, explanations, and suggestions in ENGLISH.",
+  fr: "Écris TOUS les commentaires, explications et suggestions en FRANÇAIS. Seuls les exemples de corrections (wrong/correct) restent en anglais.",
+};
+
 // ── Feedback ──────────────────────────────────────────────────────────────
-const FEEDBACK_PROMPT = `You are an expert Business English coach specializing in negotiation skills. Analyse the following negotiation conversation between a learner (role: user) and an AI negotiation partner (role: assistant).
+const FEEDBACK_PROMPT = (lang: string) => `You are an expert Business English coach specializing in negotiation skills. Analyse the following negotiation conversation between a learner (role: user) and an AI negotiation partner (role: assistant).
+
+${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
 
 Evaluate the LEARNER's messages ONLY.
 
@@ -178,7 +186,8 @@ serve(async (req) => {
   }
 
   try {
-    const { messages, scenario, mode = "practice", action } = await req.json();
+    const { messages, scenario, mode = "practice", action, feedbackLanguage } = await req.json();
+    const lang = feedbackLanguage === "fr" ? "fr" : "en";
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
@@ -197,7 +206,7 @@ serve(async (req) => {
         body: JSON.stringify({
           model: "google/gemini-3-flash-preview",
           messages: [
-            { role: "system", content: FEEDBACK_PROMPT },
+            { role: "system", content: FEEDBACK_PROMPT(lang) },
             { role: "user", content: conversationText },
           ],
         }),

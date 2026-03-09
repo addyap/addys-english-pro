@@ -6,7 +6,14 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const SYSTEM_PROMPT = `You are an expert English grammar teacher. The user will give you an English sentence.
+const LANGUAGE_INSTRUCTIONS: Record<string, string> = {
+  en: "Write ALL explanations, tips, and rule descriptions in ENGLISH.",
+  fr: "Écris TOUTES les explications, conseils et descriptions des règles en FRANÇAIS. Seuls les exemples et la phrase analysée restent en anglais.",
+};
+
+const SYSTEM_PROMPT = (lang: string) => `You are an expert English grammar teacher. The user will give you an English sentence.
+
+${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
 
 Analyse it and return a JSON object with this exact structure:
 {
@@ -41,7 +48,8 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { sentence } = await req.json();
+    const { sentence, feedbackLanguage } = await req.json();
+    const lang = feedbackLanguage === "fr" ? "fr" : "en";
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
@@ -57,7 +65,7 @@ serve(async (req) => {
       body: JSON.stringify({
         model: "google/gemini-2.5-flash",
         messages: [
-          { role: "system", content: SYSTEM_PROMPT },
+          { role: "system", content: SYSTEM_PROMPT(lang) },
           { role: "user", content: sentence.trim() },
         ],
       }),
