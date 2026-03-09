@@ -102,7 +102,7 @@ const AISpeakingPractice = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: msgs, scenario: sc, mode: md }),
+        body: JSON.stringify({ messages: msgs, scenario: sc, mode: md, feedbackLanguage: feedbackLang }),
       });
 
       if (!resp.ok) {
