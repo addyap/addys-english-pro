@@ -78,9 +78,12 @@ const AIGrammarExplainer = () => {
       <div className="min-h-screen bg-background py-10">
         <div className="max-w-3xl mx-auto px-4 space-y-6">
           <div className="text-center">
-            <Badge variant="secondary" className="mb-3">
-              <BookOpen className="w-3 h-3 mr-1" /> {remaining}/{10} sessions restantes
-            </Badge>
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <Badge variant="secondary">
+                <BookOpen className="w-3 h-3 mr-1" /> {remaining}/{10} sessions restantes
+              </Badge>
+              <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} />
+            </div>
             <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-3">
               📖 AI Grammar Explainer
             </h1>

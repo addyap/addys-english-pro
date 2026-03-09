@@ -472,6 +472,7 @@ const AINegotiationTrainer: React.FC = () => {
               <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
                 Practice Business Negotiations
               </h1>
+              <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} className="mt-2" />
               <p className="text-muted-foreground text-lg max-w-lg mx-auto">
                 Choose a negotiation scenario and practice with an AI partner. Get detailed feedback on persuasion, strategy, and professional language.
               </p>

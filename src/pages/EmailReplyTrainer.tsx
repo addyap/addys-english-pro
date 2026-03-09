@@ -487,6 +487,7 @@ const EmailReplyTrainer: React.FC = () => {
               <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-3">
                 Practice Professional Email Writing
               </h1>
+              <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} className="mb-2" />
               <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
                 Read a realistic business email, write your reply, and get detailed AI feedback on your writing — grammar, tone, clarity, and more.
               </p>

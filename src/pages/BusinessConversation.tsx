@@ -519,6 +519,7 @@ const BusinessConversation: React.FC = () => {
               <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
                 Practice Business English
               </h1>
+              <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} className="mt-2" />
               <p className="text-muted-foreground text-lg max-w-lg mx-auto">
                 Choose a professional scenario and have a realistic conversation with an AI partner. Get detailed coaching feedback when you're done.
               </p>

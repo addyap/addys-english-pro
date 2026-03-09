@@ -261,6 +261,7 @@ const AIPresentationTrainer: React.FC = () => {
     return (
       <>
         <SEOHead title="AI Presentation Trainer | Business English Practice" description="Practice professional presentations in English and receive instant AI feedback on clarity, structure, vocabulary, and persuasion." noIndex={false} />
+        {/* Language toggle is shown in the header area */}
         <div className="min-h-screen bg-background py-6 md:py-10">
           <div className="max-w-3xl mx-auto px-4 space-y-6">
             <div className="text-center space-y-3">
