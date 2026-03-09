@@ -6,7 +6,14 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const SYSTEM_PROMPT = `You are an expert English grammar teacher. The user will give you an English sentence.
+const LANGUAGE_INSTRUCTIONS: Record<string, string> = {
+  en: "Write ALL explanations, tips, and rule descriptions in ENGLISH.",
+  fr: "Écris TOUTES les explications, conseils et descriptions des règles en FRANÇAIS. Seuls les exemples et la phrase analysée restent en anglais.",
+};
+
+const SYSTEM_PROMPT = (lang: string) => `You are an expert English grammar teacher. The user will give you an English sentence.
+
+${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
 
 Analyse it and return a JSON object with this exact structure:
 {
