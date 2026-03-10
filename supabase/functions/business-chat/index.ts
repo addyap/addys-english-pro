@@ -102,16 +102,10 @@ Do NOT reformulate or correct the learner's mistakes during the conversation.
 ${SHARED_RULES}`,
 };
 
-// ── Language instructions ──────────────────────────────────────────────────
-const LANGUAGE_INSTRUCTIONS: Record<string, string> = {
-  en: "Write ALL feedback, comments, explanations, and suggestions in ENGLISH.",
-  fr: "Écris TOUS les commentaires, explications et suggestions en FRANÇAIS. Seuls les exemples de corrections (wrong/correct) restent en anglais.",
-};
-
 // ── Feedback prompt and schemas ────────────────────────────────────────────
-const FEEDBACK_PROMPT_BASE = (lang: string) => `You are an expert English language assessor and professional communication coach. Analyse the following conversation between a learner (role: user) and an AI partner (role: assistant).
+const FEEDBACK_PROMPT_BASE = `You are an expert English language assessor and professional communication coach. Analyse the following conversation between a learner (role: user) and an AI partner (role: assistant).
 
-${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
+Write ALL feedback, comments, explanations, and suggestions in ENGLISH.
 
 Evaluate the LEARNER's messages ONLY.
 
