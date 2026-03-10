@@ -229,8 +229,7 @@ serve(async (req) => {
   }
 
   try {
-    const { messages, scenario, mode = "practice", action, feedbackLanguage } = await req.json();
-    const lang = feedbackLanguage === "fr" ? "fr" : "en";
+    const { messages, scenario, mode = "practice", action } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
