@@ -43,13 +43,7 @@ CONTEXT MEMORY:
 Remember details the candidate shares and reference them in follow-up questions.
 `;
 
-// ── Language instructions ──────────────────────────────────────────────────
-const LANGUAGE_INSTRUCTIONS: Record<string, string> = {
-  en: "Write ALL feedback, comments, explanations, and suggestions in ENGLISH.",
-  fr: "Écris TOUS les commentaires, explications et suggestions en FRANÇAIS. Seuls les exemples de corrections (wrong/correct) restent en anglais.",
-};
-
-const FEEDBACK_PROMPT = (lang: string) => `${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
+const FEEDBACK_PROMPT = `Write ALL feedback, comments, explanations, and suggestions in ENGLISH.
 
 Analyse the interview performance and return a JSON object:
 {
@@ -115,8 +109,7 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { messages, industry, interviewType, action, feedbackLanguage } = await req.json();
-    const lang = feedbackLanguage === "fr" ? "fr" : "en";
+    const { messages, industry, interviewType, action } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
@@ -130,7 +123,7 @@ serve(async (req) => {
         body: JSON.stringify({
           model: "google/gemini-2.5-flash",
           messages: [
-            { role: "system", content: FEEDBACK_PROMPT(lang) },
+            { role: "system", content: FEEDBACK_PROMPT },
             { role: "user", content: `Industry: ${industry}\nInterview type: ${interviewType}\n\nConversation:\n${JSON.stringify(messages)}` },
           ],
         }),
