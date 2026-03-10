@@ -23,3 +23,21 @@ verify_jwt = false
 
 [functions.negotiation-trainer]
 verify_jwt = false
+
+[functions.ai-feedback]
+verify_jwt = false
+
+[functions.speaking-practice]
+verify_jwt = false
+
+[functions.interview-simulator]
+verify_jwt = false
+
+[functions.grammar-explainer]
+verify_jwt = false
+
+[functions.writing-coach]
+verify_jwt = false
+
+[functions.site-analytics]
+verify_jwt = false

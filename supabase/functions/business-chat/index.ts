@@ -241,7 +241,7 @@ serve(async (req) => {
         .join("\n");
 
       const feedbackSchema = FEEDBACK_SCHEMAS[feedbackMode] || FEEDBACK_SCHEMAS["practice"];
-      const feedbackPrompt = FEEDBACK_PROMPT_BASE(lang) + feedbackSchema;
+      const feedbackPrompt = FEEDBACK_PROMPT_BASE + "\n\n" + feedbackSchema;
 
       const response = await fetch(
         "https://ai.gateway.lovable.dev/v1/chat/completions",
