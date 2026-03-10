@@ -104,15 +104,9 @@ function sanitizeFeedback(raw: unknown): typeof SAFE_FEEDBACK_DEFAULTS {
   return safe;
 }
 
-// ── Language instructions ──────────────────────────────────────────────────
-const LANGUAGE_INSTRUCTIONS: Record<string, string> = {
-  en: "Write ALL feedback, comments, explanations, and suggestions in ENGLISH.",
-  fr: "Écris TOUS les commentaires, explications et suggestions en FRANÇAIS. Seuls les exemples de corrections (wrong/correct) restent en anglais.",
-};
+const FEEDBACK_PROMPT = `You are a professional Business English presentation coach.
 
-const FEEDBACK_PROMPT = (lang: string) => `You are a professional Business English presentation coach.
-
-${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
+Write ALL feedback, comments, explanations, and suggestions in ENGLISH.
 
 You will receive:
 1. A presentation brief (the scenario)
@@ -163,9 +157,9 @@ Return your response as valid JSON matching this exact structure:
 
 Return ONLY the JSON object, no extra text.`;
 
-const MODEL_PROMPT = (lang: string) => `You are a professional Business English presentation coach.
+const MODEL_PROMPT = `You are a professional Business English presentation coach.
 
-${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
+Write ALL content in ENGLISH.
 
 Write a model presentation for the brief below. The presentation should:
 - Be professional, clear, and well-structured
@@ -177,9 +171,9 @@ Write a model presentation for the brief below. The presentation should:
 
 Return ONLY the model presentation text, nothing else.`;
 
-const IMPROVE_PROMPT = (lang: string) => `You are a professional Business English presentation coach.
+const IMPROVE_PROMPT = `You are a professional Business English presentation coach.
 
-${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
+Write ALL content in ENGLISH.
 
 Rewrite the learner's presentation into a stronger, more professional version. You must:
 - Preserve the learner's intended meaning and key points
@@ -198,8 +192,7 @@ serve(async (req) => {
 
   try {
     const body = await req.json();
-    const { action, brief, presentationText, scenarioLabel, feedbackLanguage } = body;
-    const lang = feedbackLanguage === "fr" ? "fr" : "en";
+    const { action, brief, presentationText, scenarioLabel } = body;
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
@@ -239,7 +232,7 @@ serve(async (req) => {
 
     if (action === "feedback") {
       const userPrompt = `PRESENTATION BRIEF:\n${scenarioLabel}\n\n${brief}\n\nLEARNER'S PRESENTATION:\n${presentationText || "(empty presentation)"}`;
-      const result = await callAI(FEEDBACK_PROMPT(lang), userPrompt);
+      const result = await callAI(FEEDBACK_PROMPT, userPrompt);
 
       if ("error" in result) {
         return new Response(JSON.stringify({ error: result.error }), {
@@ -263,7 +256,7 @@ serve(async (req) => {
 
     if (action === "model-presentation") {
       const userPrompt = `PRESENTATION BRIEF:\n${scenarioLabel}\n\n${brief}`;
-      const result = await callAI(MODEL_PROMPT(lang), userPrompt);
+      const result = await callAI(MODEL_PROMPT, userPrompt);
 
       if ("error" in result) {
         return new Response(JSON.stringify({ error: result.error }), {
@@ -278,7 +271,7 @@ serve(async (req) => {
 
     if (action === "improve-presentation") {
       const userPrompt = `PRESENTATION BRIEF:\n${scenarioLabel}\n\n${brief}\n\nLEARNER'S ORIGINAL PRESENTATION:\n${presentationText}`;
-      const result = await callAI(IMPROVE_PROMPT(lang), userPrompt);
+      const result = await callAI(IMPROVE_PROMPT, userPrompt);
 
       if ("error" in result) {
         return new Response(JSON.stringify({ error: result.error }), {

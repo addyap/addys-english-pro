@@ -6,14 +6,9 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const LANGUAGE_INSTRUCTIONS: Record<string, string> = {
-  en: "Write ALL feedback, comments, explanations, suggestions, and the improved version in ENGLISH.",
-  fr: "Écris TOUS les commentaires, explications, suggestions et la version améliorée en FRANÇAIS. Seuls les exemples de corrections (wrong/correct) restent en anglais.",
-};
+const SYSTEM_PROMPT = `You are an expert English writing coach specialising in professional and academic writing for non-native speakers.
 
-const SYSTEM_PROMPT = (lang: string) => `You are an expert English writing coach specialising in professional and academic writing for non-native speakers.
-
-${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
+Write ALL feedback, comments, explanations, suggestions, and the improved version in ENGLISH.
 
 The user will send you a piece of writing along with the type (email, essay, report, cover letter, LinkedIn post, etc.).
 
@@ -88,8 +83,7 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { text, writingType, feedbackLanguage } = await req.json();
-    const lang = feedbackLanguage === "fr" ? "fr" : "en";
+    const { text, writingType } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
@@ -99,7 +93,7 @@ serve(async (req) => {
       body: JSON.stringify({
         model: "google/gemini-2.5-flash",
         messages: [
-          { role: "system", content: SYSTEM_PROMPT(lang) },
+          { role: "system", content: SYSTEM_PROMPT },
           { role: "user", content: `Writing type: ${writingType || "general"}\n\nText to analyse:\n${text}` },
         ],
       }),

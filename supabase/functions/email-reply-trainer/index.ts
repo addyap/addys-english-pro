@@ -94,7 +94,6 @@ function sanitizeFeedback(raw: unknown): typeof SAFE_FEEDBACK_DEFAULTS {
       .slice(0, 10);
   }
 
-  // Monitor: log if mostly defaults
   const allScoresZero =
     safe.taskAchievement.score === 0 &&
     safe.clarity.score === 0 &&
@@ -108,15 +107,9 @@ function sanitizeFeedback(raw: unknown): typeof SAFE_FEEDBACK_DEFAULTS {
   return safe;
 }
 
-// ── Language instructions ──────────────────────────────────────────────────
-const LANGUAGE_INSTRUCTIONS: Record<string, string> = {
-  en: "Write ALL feedback, comments, explanations, and suggestions in ENGLISH.",
-  fr: "Écris TOUS les commentaires, explications et suggestions en FRANÇAIS. Seuls les exemples de corrections (wrong/correct) restent en anglais.",
-};
+const FEEDBACK_PROMPT = `You are a professional Business English writing coach.
 
-const FEEDBACK_PROMPT = (lang: string) => `You are a professional Business English writing coach.
-
-${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
+Write ALL feedback, comments, explanations, and suggestions in ENGLISH.
 
 You will receive:
 1. An incoming professional email (the scenario)
@@ -171,9 +164,9 @@ Return your response as valid JSON matching this exact structure:
 
 Return ONLY the JSON object, no extra text.`;
 
-const MODEL_ANSWER_PROMPT = (lang: string) => `You are a professional Business English writing coach.
+const MODEL_ANSWER_PROMPT = `You are a professional Business English writing coach.
 
-${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
+Write ALL feedback and content in ENGLISH.
 
 Write a model reply to the incoming email below. The reply should:
 - Be professional, clear, and well-structured
@@ -186,9 +179,9 @@ Write a model reply to the incoming email below. The reply should:
 
 Return ONLY the model email text, nothing else.`;
 
-const IMPROVE_REPLY_PROMPT = (lang: string) => `You are a professional Business English writing coach.
+const IMPROVE_REPLY_PROMPT = `You are a professional Business English writing coach.
 
-${LANGUAGE_INSTRUCTIONS[lang] || LANGUAGE_INSTRUCTIONS.en}
+Write ALL feedback and content in ENGLISH.
 
 Rewrite the learner's email reply into a stronger, more professional version. You must:
 - Preserve the learner's intended meaning and key points
@@ -207,8 +200,7 @@ serve(async (req) => {
 
   try {
     const body = await req.json();
-    const { action, incomingEmail, learnerReply, learnerSubject, scenarioGoal, feedbackLanguage } = body;
-    const lang = feedbackLanguage === "fr" ? "fr" : "en";
+    const { action, incomingEmail, learnerReply, learnerSubject, scenarioGoal } = body;
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
@@ -225,7 +217,7 @@ serve(async (req) => {
         body: JSON.stringify({
           model: "google/gemini-2.5-flash",
           messages: [
-            { role: "system", content: FEEDBACK_PROMPT(lang) },
+            { role: "system", content: FEEDBACK_PROMPT },
             { role: "user", content: userPrompt },
           ],
           stream: false,
@@ -279,7 +271,7 @@ serve(async (req) => {
         body: JSON.stringify({
           model: "google/gemini-2.5-flash",
           messages: [
-            { role: "system", content: MODEL_ANSWER_PROMPT(lang) },
+            { role: "system", content: MODEL_ANSWER_PROMPT },
             { role: "user", content: userPrompt },
           ],
           stream: false,
@@ -312,7 +304,7 @@ serve(async (req) => {
         body: JSON.stringify({
           model: "google/gemini-2.5-flash",
           messages: [
-            { role: "system", content: IMPROVE_REPLY_PROMPT(lang) },
+            { role: "system", content: IMPROVE_REPLY_PROMPT },
             { role: "user", content: userPrompt },
           ],
           stream: false,
