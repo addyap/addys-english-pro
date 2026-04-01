@@ -56,7 +56,7 @@ const ErrorFallback: React.FC<ErrorFallbackProps> = ({
           Nous sommes désolés pour ce désagrément. Une erreur inattendue s'est produite.
         </p>
 
-        {error && process.env.NODE_ENV === 'development' && (
+        {error && import.meta.env.DEV && (
           <details className="mb-6 text-left">
             <summary className="cursor-pointer text-sm font-medium text-muted-foreground hover:text-foreground">
               Détails de l'erreur (mode développement)
