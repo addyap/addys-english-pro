@@ -11,10 +11,24 @@ export function useSpeechRecognition(onTranscript: (text: string) => void) {
 
   const startListening = useCallback(() => {
     if (!speechSupported) {
-      toast.error("Votre navigateur ne supporte pas la reconnaissance vocale.");
+      toast.error("Your browser does not support speech recognition.");
       return;
     }
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+
+    // Stop any previous instance before creating a new one —
+    // mobile browsers only allow one active SpeechRecognition at a time.
+    if (recognitionRef.current) {
+      try {
+        recognitionRef.current.abort();
+      } catch (_) {
+        /* ignore */
+      }
+      recognitionRef.current = null;
+    }
+
+    const SR =
+      (window as any).SpeechRecognition ||
+      (window as any).webkitSpeechRecognition;
     const recognition = new SR();
     recognition.lang = "en-US";
     recognition.interimResults = true;
@@ -26,26 +40,68 @@ export function useSpeechRecognition(onTranscript: (text: string) => void) {
         .join("");
       onTranscript(transcript);
     };
+
     recognition.onend = () => setIsListening(false);
+
     recognition.onerror = (e: any) => {
+      console.warn("[SpeechRecognition] error:", e.error, e.message);
       setIsListening(false);
-      if (e.error === "not-allowed") {
-        toast.error(
-          "Accès au micro refusé. Autorisez le micro dans les paramètres de votre navigateur, ou ouvrez le site dans un nouvel onglet.",
-          { duration: 6000 }
-        );
-      } else {
-        toast.error("Erreur de reconnaissance vocale. Réessayez ou utilisez la saisie texte.");
+
+      switch (e.error) {
+        case "not-allowed":
+          toast.error(
+            "Microphone access denied. Please allow microphone access in your browser settings, then try again.",
+            { duration: 6000 }
+          );
+          break;
+        case "no-speech":
+          toast.info("No speech detected. Please try again.");
+          break;
+        case "aborted":
+          // Silently ignore — happens when we abort a previous instance
+          break;
+        case "audio-capture":
+        case "not-found":
+          toast.error(
+            "No microphone found. Please connect a microphone and try again."
+          );
+          break;
+        case "network":
+          toast.error(
+            "Network error during speech recognition. Please check your connection."
+          );
+          break;
+        default:
+          toast.error(
+            "Speech recognition error. You can continue typing instead."
+          );
+          break;
       }
     };
 
     recognitionRef.current = recognition;
-    recognition.start();
-    setIsListening(true);
+
+    try {
+      recognition.start();
+      setIsListening(true);
+    } catch (err: any) {
+      console.error("[SpeechRecognition] start() threw:", err);
+      setIsListening(false);
+      recognitionRef.current = null;
+      toast.error(
+        "Could not start speech recognition. You can continue typing instead."
+      );
+    }
   }, [speechSupported, onTranscript]);
 
   const stopListening = useCallback(() => {
-    recognitionRef.current?.stop();
+    if (recognitionRef.current) {
+      try {
+        recognitionRef.current.stop();
+      } catch (_) {
+        /* ignore */
+      }
+    }
     setIsListening(false);
   }, []);
 
