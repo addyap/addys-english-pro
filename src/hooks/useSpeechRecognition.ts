@@ -41,7 +41,12 @@ export function useSpeechRecognition(onTranscript: (text: string) => void) {
       onTranscript(transcript);
     };
 
-    recognition.onend = () => setIsListening(false);
+    recognition.onend = () => {
+      if (recognitionRef.current === recognition) {
+        recognitionRef.current = null;
+      }
+      setIsListening(false);
+    };
 
     recognition.onerror = (e: any) => {
       console.warn("[SpeechRecognition] error:", e.error, e.message);
