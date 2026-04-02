@@ -50,6 +50,9 @@ export function useSpeechRecognition(onTranscript: (text: string) => void) {
 
     recognition.onerror = (e: any) => {
       console.warn("[SpeechRecognition] error:", e.error, e.message);
+      if (recognitionRef.current === recognition) {
+        recognitionRef.current = null;
+      }
       setIsListening(false);
 
       switch (e.error) {
