@@ -109,6 +109,7 @@ export function useSpeechRecognition(onTranscript: (text: string) => void) {
       } catch (_) {
         /* ignore */
       }
+      recognitionRef.current = null;
     }
     setIsListening(false);
   }, []);
