@@ -13,6 +13,9 @@ import VocabUpgrades from "@/components/ai-trainer/VocabUpgrades";
 import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
 import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
+import { useStreamingChat, type Msg } from "@/lib/ai/useStreamingChat";
+import { invokeAI } from "@/lib/ai/streamChat";
+import { t, type UILang } from "@/lib/ai/i18n";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
   Send, RotateCcw, ArrowLeft, Loader2, ChevronRight, Mic,
@@ -22,8 +25,6 @@ import {
 import { toast } from "sonner";
 import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
-
-type Msg = { role: "user" | "assistant"; content: string };
 
 interface Feedback {
   clarity: { score: number; comment: string };
@@ -67,14 +68,19 @@ const AIInterviewSimulator = () => {
   const [step, setStep] = useState<"select" | "chat" | "feedback">("select");
   const [industry, setIndustry] = useState("");
   const [interviewType, setInterviewType] = useState("behavioral");
-  const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
-  const [isStreaming, setIsStreaming] = useState(false);
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [loadingFeedback, setLoadingFeedback] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { remaining, limitReached, recordSession } = useAIDailyLimit("interview");
+  const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("interview");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
+  const uiLang = feedbackLang as UILang;
+
+  const { messages, isStreaming, startConversation, resetMessages, stream } = useStreamingChat({
+    url: FUNC_URL,
+    extraBody: { feedbackLanguage: feedbackLang },
+  });
+
   const { isListening, startListening, stopListening, speechSupported } = useSpeechRecognition(
     useCallback((text: string) => setInput(text), [])
   );
@@ -84,103 +90,46 @@ const AIInterviewSimulator = () => {
   }, [messages]);
 
   const startInterview = (ind: string) => {
-    if (limitReached) { toast.error("Limite quotidienne atteinte (10 sessions / 24h)"); return; }
+    if (limitReached) {
+      toast.error(t("daily.limit.reached", uiLang, DAILY_LIMIT));
+      return;
+    }
     setIndustry(ind);
-    setMessages([]);
     setFeedback(null);
     setStep("chat");
     recordSession();
-    streamMessage([], ind, interviewType);
+    startConversation("Hello.", { industry: ind, interviewType });
   };
 
-  const streamMessage = async (msgs: Msg[], ind: string, iType: string) => {
-    setIsStreaming(true);
-    try {
-      const resp = await fetch(FUNC_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-        },
-        body: JSON.stringify({ messages: msgs, industry: ind, interviewType: iType, feedbackLanguage: feedbackLang }),
-      });
-
-      if (!resp.ok) {
-        if (resp.status === 429) { toast.error("Trop de requêtes."); return; }
-        if (resp.status === 402) { toast.error("Crédits IA épuisés."); return; }
-        throw new Error("Stream error");
-      }
-
-      const reader = resp.body!.getReader();
-      const decoder = new TextDecoder();
-      let buffer = "";
-      let assistantText = "";
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-        let nl: number;
-        while ((nl = buffer.indexOf("\n")) !== -1) {
-          let line = buffer.slice(0, nl);
-          buffer = buffer.slice(nl + 1);
-          if (line.endsWith("\r")) line = line.slice(0, -1);
-          if (!line.startsWith("data: ")) continue;
-          const json = line.slice(6).trim();
-          if (json === "[DONE]") break;
-          try {
-            const parsed = JSON.parse(json);
-            const content = parsed.choices?.[0]?.delta?.content;
-            if (content) {
-              assistantText += content;
-              setMessages(prev => {
-                const last = prev[prev.length - 1];
-                if (last?.role === "assistant") {
-                  return prev.map((m, i) => i === prev.length - 1 ? { ...m, content: assistantText } : m);
-                }
-                return [...prev, { role: "assistant", content: assistantText }];
-              });
-            }
-          } catch {}
-        }
-      }
-    } catch {
-      toast.error("Erreur de connexion.");
-    } finally {
-      setIsStreaming(false);
-    }
-  };
-
-  const sendMessage = () => {
-    const t = input.trim();
-    if (!t || isStreaming) return;
-    const newMsgs: Msg[] = [...messages, { role: "user", content: t }];
-    setMessages(newMsgs);
+  const handleSendMessage = () => {
+    const text = input.trim();
+    if (!text || isStreaming) return;
     setInput("");
-    streamMessage(newMsgs, industry, interviewType);
+    const updatedMsgs: Msg[] = [...messages, { role: "user", content: text }];
+    stream(updatedMsgs, { industry, interviewType });
   };
 
   const requestFeedback = async () => {
     if (messages.filter(m => m.role === "user").length < 2) {
-      toast.error("Répondez à au moins 2 questions avant de demander le feedback.");
+      toast.error(t("error.min_messages", uiLang, 2));
       return;
     }
     setLoadingFeedback(true);
     try {
-      const resp = await fetch(FUNC_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-        },
-        body: JSON.stringify({ messages, industry, interviewType, action: "feedback", feedbackLanguage: feedbackLang }),
+      const { data, error } = await invokeAI<{ feedback: Feedback }>(FUNC_URL, {
+        messages,
+        industry,
+        interviewType,
+        action: "feedback",
+        feedbackLanguage: feedbackLang,
       });
-      if (!resp.ok) throw new Error();
-      const data = await resp.json();
-      setFeedback(data.feedback);
-      setStep("feedback");
+      if (error) { toast.error(error.message); return; }
+      if (data?.feedback) {
+        setFeedback(data.feedback);
+        setStep("feedback");
+      }
     } catch {
-      toast.error("Erreur lors du feedback.");
+      toast.error(t("error.feedback", uiLang));
     } finally {
       setLoadingFeedback(false);
     }
@@ -202,7 +151,7 @@ const AIInterviewSimulator = () => {
             <div className="text-center mb-10">
               <div className="flex items-center justify-center gap-3 mb-3">
                 <Badge variant="secondary">
-                  <Briefcase className="w-3 h-3 mr-1" /> {remaining}/{10} sessions restantes
+                  <Briefcase className="w-3 h-3 mr-1" /> {t("sessions.remaining", uiLang, remaining, DAILY_LIMIT)}
                 </Badge>
                 <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} />
               </div>
@@ -210,28 +159,28 @@ const AIInterviewSimulator = () => {
                 💼 AI Interview Simulator
               </h1>
               <p className="text-muted-foreground max-w-xl mx-auto">
-                Préparez vos entretiens d'embauche en anglais avec un recruteur IA. Choisissez votre secteur et le type d'entretien.
+                {t("speaking.desc", uiLang)}
               </p>
             </div>
 
             <div className="mb-8">
-              <h3 className="font-semibold text-foreground mb-3 text-center">Type d'entretien</h3>
+              <h3 className="font-semibold text-foreground mb-3 text-center">{t("step.choose_mode", uiLang)}</h3>
               <div className="flex flex-wrap items-center justify-center gap-3">
-                {INTERVIEW_TYPES.map(t => (
+                {INTERVIEW_TYPES.map(iType => (
                   <Button
-                    key={t.id}
-                    variant={interviewType === t.id ? "default" : "outline"}
-                    onClick={() => setInterviewType(t.id)}
+                    key={iType.id}
+                    variant={interviewType === iType.id ? "default" : "outline"}
+                    onClick={() => setInterviewType(iType.id)}
                     className="flex-col h-auto py-3"
                   >
-                    <span className="font-semibold">{t.label}</span>
-                    <span className="text-xs opacity-70">{t.desc}</span>
+                    <span className="font-semibold">{iType.label}</span>
+                    <span className="text-xs opacity-70">{iType.desc}</span>
                   </Button>
                 ))}
               </div>
             </div>
 
-            <h3 className="font-semibold text-foreground mb-3 text-center">Choisissez un secteur</h3>
+            <h3 className="font-semibold text-foreground mb-3 text-center">{t("step.choose_scenario", uiLang)}</h3>
             <div className="grid sm:grid-cols-2 gap-3">
               {INDUSTRIES.map(ind => (
                 <button
@@ -259,10 +208,10 @@ const AIInterviewSimulator = () => {
     return (
       <div className="min-h-screen bg-background py-10">
         <div className="max-w-3xl mx-auto px-4 space-y-6">
-          <Button variant="ghost" onClick={() => setStep("select")}>
-            <ArrowLeft className="w-4 h-4 mr-2" /> Nouveau secteur
+          <Button variant="ghost" onClick={() => { setStep("select"); resetMessages(); }}>
+            <ArrowLeft className="w-4 h-4 mr-2" /> {t("btn.new_scenario", uiLang)}
           </Button>
-          <h2 className="text-2xl font-heading font-bold">📊 Feedback d'entretien</h2>
+          <h2 className="text-2xl font-heading font-bold">📊 {t("feedback.title", uiLang)}</h2>
           <Badge className="text-lg px-4 py-1">{feedback.overallLevel}</Badge>
 
           <div className="grid gap-4">
@@ -283,12 +232,12 @@ const AIInterviewSimulator = () => {
           <SuggestionsList suggestions={feedback.suggestions} />
 
           <Card className="p-4 bg-primary/5 border-primary/20">
-            <p className="font-semibold mb-1">Overall</p>
+            <p className="font-semibold mb-1">{t("feedback.overall", uiLang)}</p>
             <p className="text-sm">{feedback.overall}</p>
           </Card>
 
-          <Button onClick={() => setStep("select")} className="w-full">
-            <RotateCcw className="w-4 h-4 mr-2" /> Nouvel entretien
+          <Button onClick={() => { setStep("select"); resetMessages(); }} className="w-full">
+            <RotateCcw className="w-4 h-4 mr-2" /> {t("btn.new_session", uiLang)}
           </Button>
         </div>
       </div>
@@ -299,12 +248,12 @@ const AIInterviewSimulator = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <div className="border-b border-border bg-card px-4 py-3 flex items-center justify-between">
-        <Button variant="ghost" size="sm" onClick={() => setStep("select")}>
-          <ArrowLeft className="w-4 h-4 mr-1" /> Retour
+        <Button variant="ghost" size="sm" onClick={() => { setStep("select"); resetMessages(); }}>
+          <ArrowLeft className="w-4 h-4 mr-1" /> {t("btn.back", uiLang)}
         </Button>
         <Badge variant="outline">{INDUSTRIES.find(i => i.id === industry)?.label}</Badge>
         <Button variant="outline" size="sm" onClick={requestFeedback} disabled={loadingFeedback || userMsgCount < 2}>
-          {loadingFeedback ? <Loader2 className="w-4 h-4 animate-spin" /> : "📊 Feedback"}
+          {loadingFeedback ? <Loader2 className="w-4 h-4 animate-spin" /> : `📊 ${t("btn.feedback", uiLang)}`}
         </Button>
       </div>
 
@@ -337,9 +286,9 @@ const AIInterviewSimulator = () => {
           <Textarea
             value={input}
             onChange={e => setInput(e.target.value)}
-            placeholder="Type your answer..."
+            placeholder={t("chat.placeholder.typing", uiLang)}
             className="min-h-[44px] max-h-[120px] resize-none"
-            onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); } }}
+            onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSendMessage(); } }}
           />
           {speechSupported && (
             <Button
@@ -347,12 +296,11 @@ const AIInterviewSimulator = () => {
               variant={isListening ? "destructive" : "outline"}
               onClick={isListening ? stopListening : startListening}
               disabled={isStreaming}
-              title={isListening ? "Arrêter" : "Parler"}
             >
               <Mic className="w-4 h-4" />
             </Button>
           )}
-          <Button onClick={sendMessage} disabled={!input.trim() || isStreaming} size="icon">
+          <Button onClick={handleSendMessage} disabled={!input.trim() || isStreaming} size="icon">
             <Send className="w-4 h-4" />
           </Button>
         </div>
