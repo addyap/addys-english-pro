@@ -12,17 +12,18 @@ import VocabUpgrades from "@/components/ai-trainer/VocabUpgrades";
 import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
+import { useStreamingChat, type Msg } from "@/lib/ai/useStreamingChat";
+import { invokeAI } from "@/lib/ai/streamChat";
+import { t, type UILang } from "@/lib/ai/i18n";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
-  Mic, MicOff, Send, RotateCcw, ArrowLeft, ArrowRight, Loader2,
+  Mic, MicOff, Send, RotateCcw, ArrowLeft, Loader2,
   Volume2, MessageCircle, Coffee, Phone, Briefcase, Users,
   Building2, Globe, Plane, ShoppingCart, ChevronRight
 } from "lucide-react";
 import { toast } from "sonner";
 import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
-
-type Msg = { role: "user" | "assistant"; content: string };
 
 interface Feedback {
   fluency: { score: number; comment: string };
@@ -66,14 +67,19 @@ const AISpeakingPractice = () => {
   const [step, setStep] = useState<"select" | "chat" | "feedback">("select");
   const [scenario, setScenario] = useState("");
   const [mode, setMode] = useState<Mode>("practice");
-  const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
-  const [isStreaming, setIsStreaming] = useState(false);
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [loadingFeedback, setLoadingFeedback] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { remaining, limitReached, recordSession } = useAIDailyLimit("speaking");
+  const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("speaking");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
+  const uiLang = feedbackLang as UILang;
+
+  const { messages, isStreaming, startConversation, resetMessages, stream } = useStreamingChat({
+    url: FUNC_URL,
+    extraBody: { feedbackLanguage: feedbackLang },
+  });
+
   const { isListening, startListening, stopListening, speechSupported } = useSpeechRecognition(
     useCallback((text: string) => setInput(text), [])
   );
@@ -83,85 +89,37 @@ const AISpeakingPractice = () => {
   }, [messages]);
 
   const startScenario = (scenarioId: string) => {
-    if (limitReached) { toast.error("Limite quotidienne atteinte (10 sessions / 24h)"); return; }
+    if (limitReached) {
+      toast.error(t("daily.limit.reached", uiLang, DAILY_LIMIT));
+      return;
+    }
     setScenario(scenarioId);
-    setMessages([]);
     setFeedback(null);
     setStep("chat");
     recordSession();
-    // Send initial empty to get AI greeting
-    streamMessage([], scenarioId, mode);
-  };
-
-  const streamMessage = async (msgs: Msg[], sc: string, md: Mode) => {
-    setIsStreaming(true);
-    try {
-      const resp = await fetch(FUNC_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-        },
-        body: JSON.stringify({ messages: msgs, scenario: sc, mode: md, feedbackLanguage: feedbackLang }),
-      });
-
-      if (!resp.ok) {
-        if (resp.status === 429) { toast.error("Trop de requêtes. Réessayez dans un instant."); return; }
-        if (resp.status === 402) { toast.error("Crédits IA épuisés."); return; }
-        throw new Error("Stream error");
-      }
-
-      const reader = resp.body!.getReader();
-      const decoder = new TextDecoder();
-      let buffer = "";
-      let assistantText = "";
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-
-        let nl: number;
-        while ((nl = buffer.indexOf("\n")) !== -1) {
-          let line = buffer.slice(0, nl);
-          buffer = buffer.slice(nl + 1);
-          if (line.endsWith("\r")) line = line.slice(0, -1);
-          if (!line.startsWith("data: ")) continue;
-          const json = line.slice(6).trim();
-          if (json === "[DONE]") break;
-          try {
-            const parsed = JSON.parse(json);
-            const content = parsed.choices?.[0]?.delta?.content;
-            if (content) {
-              assistantText += content;
-              setMessages(prev => {
-                const last = prev[prev.length - 1];
-                if (last?.role === "assistant") {
-                  return prev.map((m, i) => i === prev.length - 1 ? { ...m, content: assistantText } : m);
-                }
-                return [...prev, { role: "assistant", content: assistantText }];
-              });
-            }
-          } catch {}
-        }
-      }
-    } catch (e) {
-      toast.error("Erreur de connexion. Réessayez.");
-    } finally {
-      setIsStreaming(false);
-    }
+    startConversation("Hello.", { scenario: scenarioId, mode });
   };
 
   const sendMessage = () => {
     const text = input.trim();
     if (!text || isStreaming) return;
     const newMsgs: Msg[] = [...messages, { role: "user", content: text }];
-    setMessages(newMsgs);
     setInput("");
-    streamMessage(newMsgs, scenario, mode);
+    // Update messages via stream
+    stream(newMsgs, { scenario, mode });
   };
 
-  // Speech recognition now handled by useSpeechRecognition hook
+  // We need to manually set messages before streaming since useStreamingChat
+  // manages its own messages state via stream()
+  const handleSendMessage = () => {
+    const text = input.trim();
+    if (!text || isStreaming) return;
+    setInput("");
+    const userMsg: Msg = { role: "user", content: text };
+    const updatedMsgs = [...messages, userMsg];
+    // The stream function will handle setting the messages
+    stream(updatedMsgs, { scenario, mode });
+  };
 
   const speakText = (text: string) => {
     if (!("speechSynthesis" in window)) return;
@@ -174,25 +132,28 @@ const AISpeakingPractice = () => {
 
   const requestFeedback = async () => {
     if (messages.filter(m => m.role === "user").length < 2) {
-      toast.error("Envoyez au moins 2 messages avant de demander le feedback.");
+      toast.error(t("error.min_messages", uiLang, 2));
       return;
     }
     setLoadingFeedback(true);
     try {
-      const resp = await fetch(FUNC_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-        },
-        body: JSON.stringify({ messages, scenario, mode, action: "feedback", feedbackLanguage: feedbackLang }),
+      const { data, error } = await invokeAI<{ feedback: Feedback }>(FUNC_URL, {
+        messages,
+        scenario,
+        mode,
+        action: "feedback",
+        feedbackLanguage: feedbackLang,
       });
-      if (!resp.ok) throw new Error("Feedback error");
-      const data = await resp.json();
-      setFeedback(data.feedback);
-      setStep("feedback");
+      if (error) {
+        toast.error(error.message);
+        return;
+      }
+      if (data?.feedback) {
+        setFeedback(data.feedback);
+        setStep("feedback");
+      }
     } catch {
-      toast.error("Erreur lors de la génération du feedback.");
+      toast.error(t("error.feedback", uiLang));
     } finally {
       setLoadingFeedback(false);
     }
@@ -214,7 +175,7 @@ const AISpeakingPractice = () => {
             <div className="text-center mb-10">
               <div className="flex items-center justify-center gap-3 mb-3">
                 <Badge variant="secondary">
-                  <Mic className="w-3 h-3 mr-1" /> {remaining}/{10} sessions restantes
+                  <Mic className="w-3 h-3 mr-1" /> {t("sessions.remaining", uiLang, remaining, DAILY_LIMIT)}
                 </Badge>
                 <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} />
               </div>
@@ -222,16 +183,16 @@ const AISpeakingPractice = () => {
                 🎙️ AI Speaking Practice
               </h1>
               <p className="text-muted-foreground max-w-xl mx-auto">
-                Parlez en anglais avec un partenaire IA. Utilisez votre micro pour pratiquer l'oral et recevez un feedback sur la prononciation, la fluidité et le vocabulaire.
+                {t("speaking.desc", uiLang)}
               </p>
             </div>
 
             <div className="flex items-center justify-center gap-3 mb-8">
               <Button variant={mode === "practice" ? "default" : "outline"} onClick={() => setMode("practice")}>
-                🎯 Practice
+                🎯 {t("mode.practice", uiLang)}
               </Button>
               <Button variant={mode === "challenge" ? "default" : "outline"} onClick={() => setMode("challenge")}>
-                🔥 Challenge
+                🔥 {t("mode.challenge", uiLang)}
               </Button>
             </div>
 
@@ -262,11 +223,11 @@ const AISpeakingPractice = () => {
     return (
       <div className="min-h-screen bg-background py-10">
         <div className="max-w-3xl mx-auto px-4 space-y-6">
-          <Button variant="ghost" onClick={() => setStep("select")}>
-            <ArrowLeft className="w-4 h-4 mr-2" /> Nouveau scénario
+          <Button variant="ghost" onClick={() => { setStep("select"); resetMessages(); }}>
+            <ArrowLeft className="w-4 h-4 mr-2" /> {t("btn.new_scenario", uiLang)}
           </Button>
 
-          <h2 className="text-2xl font-heading font-bold text-foreground">📊 Votre feedback</h2>
+          <h2 className="text-2xl font-heading font-bold text-foreground">📊 {t("feedback.title", uiLang)}</h2>
           <Badge className="text-lg px-4 py-1">{feedback.overallLevel}</Badge>
 
           <div className="grid gap-4">
@@ -288,12 +249,12 @@ const AISpeakingPractice = () => {
           <SuggestionsList suggestions={feedback.suggestions} />
 
           <Card className="p-4 bg-primary/5 border-primary/20">
-            <p className="font-semibold mb-1">Overall</p>
+            <p className="font-semibold mb-1">{t("feedback.overall", uiLang)}</p>
             <p className="text-sm">{feedback.overall}</p>
           </Card>
 
-          <Button onClick={() => setStep("select")} className="w-full">
-            <RotateCcw className="w-4 h-4 mr-2" /> Nouvel entraînement
+          <Button onClick={() => { setStep("select"); resetMessages(); }} className="w-full">
+            <RotateCcw className="w-4 h-4 mr-2" /> {t("btn.new_session", uiLang)}
           </Button>
         </div>
       </div>
@@ -304,8 +265,8 @@ const AISpeakingPractice = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <div className="border-b border-border bg-card px-4 py-3 flex items-center justify-between">
-        <Button variant="ghost" size="sm" onClick={() => setStep("select")}>
-          <ArrowLeft className="w-4 h-4 mr-1" /> Retour
+        <Button variant="ghost" size="sm" onClick={() => { setStep("select"); resetMessages(); }}>
+          <ArrowLeft className="w-4 h-4 mr-1" /> {t("btn.back", uiLang)}
         </Button>
         <Badge variant="outline">{SCENARIOS.find(s => s.id === scenario)?.label}</Badge>
         <div className="flex gap-2">
@@ -315,7 +276,7 @@ const AISpeakingPractice = () => {
             onClick={requestFeedback}
             disabled={loadingFeedback || userMsgCount < 2}
           >
-            {loadingFeedback ? <Loader2 className="w-4 h-4 animate-spin" /> : "📊 Feedback"}
+            {loadingFeedback ? <Loader2 className="w-4 h-4 animate-spin" /> : `📊 ${t("btn.feedback", uiLang)}`}
           </Button>
         </div>
       </div>
@@ -335,7 +296,7 @@ const AISpeakingPractice = () => {
                     onClick={() => speakText(m.content)}
                     className="mt-1 text-xs opacity-60 hover:opacity-100 flex items-center gap-1"
                   >
-                    <Volume2 className="w-3 h-3" /> Listen
+                    <Volume2 className="w-3 h-3" /> {t("btn.listen", uiLang)}
                   </button>
                 )}
               </div>
@@ -367,17 +328,17 @@ const AISpeakingPractice = () => {
           <Textarea
             value={input}
             onChange={e => setInput(e.target.value)}
-            placeholder={isListening ? "Listening..." : "Type or use the mic..."}
+            placeholder={isListening ? t("chat.placeholder.listening", uiLang) : t("chat.placeholder.typing", uiLang)}
             className="min-h-[44px] max-h-[120px] resize-none"
-            onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); } }}
+            onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSendMessage(); } }}
           />
-          <Button onClick={sendMessage} disabled={!input.trim() || isStreaming} size="icon">
+          <Button onClick={handleSendMessage} disabled={!input.trim() || isStreaming} size="icon">
             <Send className="w-4 h-4" />
           </Button>
         </div>
         {isListening && (
           <p className="text-center text-xs text-destructive mt-2 animate-pulse">
-            🎙️ Microphone actif — parlez en anglais...
+            {t("chat.mic.active", uiLang)}
           </p>
         )}
       </div>
