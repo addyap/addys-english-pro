@@ -38,6 +38,8 @@ export function useStreamingChat({ url, extraBody = {} }: UseStreamingChatOption
       const controller = new AbortController();
       abortRef.current = controller;
 
+      // Set all outgoing messages first so UI reflects the user message immediately
+      setMessages(outgoingMessages);
       setIsStreaming(true);
       let assistantSoFar = "";
 
