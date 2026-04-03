@@ -12,10 +12,11 @@ import SuggestionsList from "@/components/ai-trainer/SuggestionsList";
 import VocabUpgrades from "@/components/ai-trainer/VocabUpgrades";
 import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
+import { invokeAI } from "@/lib/ai/streamChat";
+import { t, type UILang } from "@/lib/ai/i18n";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
-import { Send, RotateCcw, Loader2, ArrowLeft, FileText, Wand2, Eye, ChevronDown, ChevronUp } from "lucide-react";
+import { Send, RotateCcw, Loader2, FileText, Wand2, Eye, ChevronDown, ChevronUp } from "lucide-react";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
 import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 
@@ -47,31 +48,42 @@ const WRITING_TYPES = [
   { value: "general", label: "General Writing" },
 ];
 
+const FUNC_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/writing-coach`;
+
 const AIWritingCoach = () => {
   const [text, setText] = useState("");
   const [writingType, setWritingType] = useState("email");
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [loading, setLoading] = useState(false);
   const [showImproved, setShowImproved] = useState(false);
-  const { remaining, limitReached, recordSession } = useAIDailyLimit("writing-coach");
+  const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("writing-coach");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
+  const uiLang = feedbackLang as UILang;
 
   const submit = async () => {
-    if (text.trim().length < 20) { toast.error("Écrivez au moins 20 caractères."); return; }
-    if (limitReached) { toast.error("Limite quotidienne atteinte (10 sessions / 24h)"); return; }
+    if (text.trim().length < 20) {
+      toast.error(t("error.min_chars", uiLang, 20));
+      return;
+    }
+    if (limitReached) {
+      toast.error(t("daily.limit.reached", uiLang, DAILY_LIMIT));
+      return;
+    }
 
     setLoading(true);
     setFeedback(null);
     recordSession();
 
     try {
-      const { data, error } = await supabase.functions.invoke("writing-coach", {
-        body: { text: text.trim(), writingType, feedbackLanguage: feedbackLang },
+      const { data, error } = await invokeAI<{ feedback: Feedback }>(FUNC_URL, {
+        text: text.trim(),
+        writingType,
+        feedbackLanguage: feedbackLang,
       });
-      if (error) throw error;
-      setFeedback(data.feedback);
-    } catch (e: any) {
-      toast.error("Erreur lors de l'analyse. Réessayez.");
+      if (error) { toast.error(error.message); return; }
+      if (data?.feedback) setFeedback(data.feedback);
+    } catch {
+      toast.error(t("error.feedback", uiLang));
     } finally {
       setLoading(false);
     }
@@ -95,7 +107,7 @@ const AIWritingCoach = () => {
           <div className="text-center">
             <div className="flex items-center justify-center gap-3 mb-3">
               <Badge variant="secondary">
-                <FileText className="w-3 h-3 mr-1" /> {remaining}/{10} sessions restantes
+                <FileText className="w-3 h-3 mr-1" /> {t("sessions.remaining", uiLang, remaining, DAILY_LIMIT)}
               </Badge>
               <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} />
             </div>
@@ -103,7 +115,7 @@ const AIWritingCoach = () => {
               ✍️ AI Writing Coach
             </h1>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Écrivez en anglais et recevez un feedback détaillé sur la grammaire, le vocabulaire, le style et la clarté — avec une version améliorée.
+              {t("speaking.desc", uiLang)}
             </p>
           </div>
 
@@ -111,19 +123,19 @@ const AIWritingCoach = () => {
             <Card>
               <CardContent className="pt-6 space-y-4">
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">Type de texte</label>
+                  <label className="text-sm font-medium text-foreground mb-2 block">{t("writing.type_label", uiLang)}</label>
                   <Select value={writingType} onValueChange={setWritingType}>
                     <SelectTrigger><SelectValue /></SelectTrigger>
                     <SelectContent>
-                      {WRITING_TYPES.map(t => (
-                        <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>
+                      {WRITING_TYPES.map(wt => (
+                        <SelectItem key={wt.value} value={wt.value}>{wt.label}</SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">Votre texte en anglais</label>
+                  <label className="text-sm font-medium text-foreground mb-2 block">{t("writing.input_label", uiLang)}</label>
                   <Textarea
                     value={text}
                     onChange={e => setText(e.target.value)}
@@ -140,9 +152,9 @@ const AIWritingCoach = () => {
                   className="w-full"
                 >
                   {loading ? (
-                    <><Loader2 className="w-4 h-4 animate-spin mr-2" /> Analyse en cours...</>
+                    <><Loader2 className="w-4 h-4 animate-spin mr-2" /> {t("btn.analysing", uiLang)}</>
                   ) : (
-                    <><Wand2 className="w-4 h-4 mr-2" /> Analyser mon texte</>
+                    <><Wand2 className="w-4 h-4 mr-2" /> {t("btn.analyse", uiLang)}</>
                   )}
                 </Button>
               </CardContent>
@@ -150,7 +162,7 @@ const AIWritingCoach = () => {
           ) : (
             <div className="space-y-6">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-heading font-bold">📊 Feedback</h2>
+                <h2 className="text-2xl font-heading font-bold">📊 {t("feedback.title", uiLang)}</h2>
                 <Badge className="text-lg px-4 py-1">{feedback.overallLevel}</Badge>
               </div>
 
@@ -177,7 +189,7 @@ const AIWritingCoach = () => {
                 <CardHeader className="cursor-pointer" onClick={() => setShowImproved(!showImproved)}>
                   <CardTitle className="flex items-center justify-between text-base">
                     <span className="flex items-center gap-2">
-                      <Eye className="w-4 h-4" /> Version améliorée
+                      <Eye className="w-4 h-4" /> {t("feedback.improved_version", uiLang)}
                     </span>
                     {showImproved ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   </CardTitle>
@@ -190,12 +202,12 @@ const AIWritingCoach = () => {
               </Card>
 
               <Card className="p-4 bg-primary/5 border-primary/20">
-                <p className="font-semibold mb-1">Overall</p>
+                <p className="font-semibold mb-1">{t("feedback.overall", uiLang)}</p>
                 <p className="text-sm">{feedback.overall}</p>
               </Card>
 
               <Button onClick={reset} className="w-full">
-                <RotateCcw className="w-4 h-4 mr-2" /> Nouveau texte
+                <RotateCcw className="w-4 h-4 mr-2" /> {t("btn.new_session", uiLang)}
               </Button>
             </div>
           )}
