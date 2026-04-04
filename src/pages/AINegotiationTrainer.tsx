@@ -17,7 +17,7 @@ import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import MicErrorBanner from "@/components/MicErrorBanner";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
-  Send, RotateCcw, Award, Briefcase, Users, Mic,
+  Send, RotateCcw, Award, Briefcase, Users, Mic, MicOff,
   Loader2, ChevronRight, DollarSign, BookOpen, Target,
   CheckCircle2, AlertTriangle, Lightbulb, ArrowLeft, Square,
   TrendingUp, RefreshCw, ArrowRight, Handshake, Shield, Building2,

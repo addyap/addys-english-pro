@@ -19,7 +19,7 @@ import { t, type UILang } from "@/lib/ai/i18n";
 import MicErrorBanner from "@/components/MicErrorBanner";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
-  Send, RotateCcw, ArrowLeft, Loader2, ChevronRight, Mic,
+  Send, RotateCcw, ArrowLeft, Loader2, ChevronRight, Mic, MicOff,
   Briefcase, Building2, TrendingUp, Heart, GraduationCap, Truck,
   Monitor, Palette, Utensils, Users
 } from "lucide-react";
