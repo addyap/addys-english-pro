@@ -15,6 +15,7 @@ import VocabUpgrades from "@/components/ai-trainer/VocabUpgrades";
 import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
+import MicErrorBanner from "@/components/MicErrorBanner";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
   MessageCircle, Send, RotateCcw, Award, Briefcase, Users,
@@ -698,22 +699,7 @@ const BusinessConversation: React.FC = () => {
           {/* Input area */}
           {!feedback && !feedbackError && (
             <div className="border-t bg-background">
-              {/* Inline mic error/recovery banner */}
-              {micError && micError.message && (
-                <div className="px-3 pt-2 pb-1 flex items-start gap-2 text-xs text-destructive">
-                  <AlertCircle className="w-3.5 h-3.5 mt-0.5 shrink-0" />
-                  <div className="flex-1 space-y-0.5">
-                    <p>{micError.message}</p>
-                    {micError.hint && <p className="text-muted-foreground">{micError.hint}</p>}
-                  </div>
-                  <div className="flex gap-1.5 shrink-0">
-                    {(micError.state === "error" || micError.state === "idle") && (
-                      <button onClick={() => { clearError(); startListening(); }} className="underline text-primary text-xs">Retry</button>
-                    )}
-                    <button onClick={clearError} className="underline text-muted-foreground text-xs">Dismiss</button>
-                  </div>
-                </div>
-              )}
+              <MicErrorBanner micError={micError} clearError={clearError} startListening={startListening} />
               <div className="p-3 flex gap-2 items-end">
                 <Textarea
                   ref={inputRef}

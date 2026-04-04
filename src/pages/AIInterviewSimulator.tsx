@@ -16,9 +16,10 @@ import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import { useStreamingChat, type Msg } from "@/lib/ai/useStreamingChat";
 import { invokeAI } from "@/lib/ai/streamChat";
 import { t, type UILang } from "@/lib/ai/i18n";
+import MicErrorBanner from "@/components/MicErrorBanner";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
-  Send, RotateCcw, ArrowLeft, Loader2, ChevronRight, Mic,
+  Send, RotateCcw, ArrowLeft, Loader2, ChevronRight, Mic, MicOff,
   Briefcase, Building2, TrendingUp, Heart, GraduationCap, Truck,
   Monitor, Palette, Utensils, Users
 } from "lucide-react";
@@ -81,7 +82,7 @@ const AIInterviewSimulator = () => {
     extraBody: { feedbackLanguage: feedbackLang },
   });
 
-  const { isListening, startListening, stopListening, speechSupported } = useSpeechRecognition(
+  const { isListening, startListening, stopListening, speechSupported, micState, micError, clearError } = useSpeechRecognition(
     useCallback((text: string) => setInput(text), [])
   );
 
@@ -281,28 +282,31 @@ const AIInterviewSimulator = () => {
         </div>
       </ScrollArea>
 
-      <div className="border-t border-border bg-card p-4">
-        <div className="max-w-2xl mx-auto flex gap-2">
-          <Textarea
-            value={input}
-            onChange={e => setInput(e.target.value)}
-            placeholder={t("chat.placeholder.typing", uiLang)}
-            className="min-h-[44px] max-h-[120px] resize-none"
-            onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSendMessage(); } }}
-          />
-          {speechSupported && (
-            <Button
-              size="icon"
-              variant={isListening ? "destructive" : "outline"}
-              onClick={isListening ? stopListening : startListening}
-              disabled={isStreaming}
-            >
-              <Mic className="w-4 h-4" />
+      <div className="border-t border-border bg-card">
+        <MicErrorBanner micError={micError} clearError={clearError} startListening={startListening} />
+        <div className="p-4">
+          <div className="max-w-2xl mx-auto flex gap-2">
+            <Textarea
+              value={input}
+              onChange={e => setInput(e.target.value)}
+              placeholder={t("chat.placeholder.typing", uiLang)}
+              className="min-h-[44px] max-h-[120px] resize-none"
+              onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSendMessage(); } }}
+            />
+            {speechSupported && (
+              <Button
+                size="icon"
+                variant={isListening ? "destructive" : "outline"}
+                onClick={isListening ? stopListening : startListening}
+                disabled={isStreaming || micState === "requesting-permission"}
+              >
+                {micState === "requesting-permission" ? <Loader2 className="w-4 h-4 animate-spin" /> : isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+              </Button>
+            )}
+            <Button onClick={handleSendMessage} disabled={!input.trim() || isStreaming} size="icon">
+              <Send className="w-4 h-4" />
             </Button>
-          )}
-          <Button onClick={handleSendMessage} disabled={!input.trim() || isStreaming} size="icon">
-            <Send className="w-4 h-4" />
-          </Button>
+          </div>
         </div>
       </div>
     </div>

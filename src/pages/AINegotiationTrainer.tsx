@@ -14,9 +14,10 @@ import VocabUpgrades from "@/components/ai-trainer/VocabUpgrades";
 import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
 import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
+import MicErrorBanner from "@/components/MicErrorBanner";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
-  Send, RotateCcw, Award, Briefcase, Users, Mic,
+  Send, RotateCcw, Award, Briefcase, Users, Mic, MicOff,
   Loader2, ChevronRight, DollarSign, BookOpen, Target,
   CheckCircle2, AlertTriangle, Lightbulb, ArrowLeft, Square,
   TrendingUp, RefreshCw, ArrowRight, Handshake, Shield, Building2,
@@ -183,7 +184,7 @@ const AINegotiationTrainer: React.FC = () => {
   const [sessionSaved, setSessionSaved] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  const { isListening, startListening, stopListening, speechSupported } = useSpeechRecognition(
+  const { isListening, startListening, stopListening, speechSupported, micState, micError, clearError } = useSpeechRecognition(
     useCallback((text: string) => setInput(text), [])
   );
 
@@ -636,37 +637,40 @@ const AINegotiationTrainer: React.FC = () => {
 
           {/* Input area */}
           {!feedback && !feedbackError && (
-            <div className="border-t p-3 flex gap-2 items-end bg-background">
-              <Textarea
-                ref={inputRef}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder={inputDisabled ? "Please wait…" : "Type your response…"}
-                className="min-h-[44px] max-h-[120px] resize-none text-sm border-0 focus-visible:ring-0 shadow-none p-2"
-                disabled={inputDisabled}
-                rows={1}
-              />
-              {speechSupported && (
+            <div className="border-t bg-background">
+              <MicErrorBanner micError={micError} clearError={clearError} startListening={startListening} />
+              <div className="p-3 flex gap-2 items-end">
+                <Textarea
+                  ref={inputRef}
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder={inputDisabled ? "Please wait…" : isListening ? "Listening… speak now" : "Type your response…"}
+                  className="min-h-[44px] max-h-[120px] resize-none text-sm border-0 focus-visible:ring-0 shadow-none p-2"
+                  disabled={inputDisabled}
+                  rows={1}
+                />
+                {speechSupported && (
+                  <Button
+                    size="icon"
+                    variant={isListening ? "destructive" : micState === "denied" || micState === "unavailable" ? "ghost" : "outline"}
+                    onClick={isListening ? stopListening : startListening}
+                    disabled={inputDisabled || micState === "requesting-permission"}
+                    className="shrink-0 h-10 w-10"
+                    title={isListening ? "Stop" : "Speak"}
+                  >
+                    {micState === "requesting-permission" ? <Loader2 className="w-4 h-4 animate-spin" /> : isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+                  </Button>
+                )}
                 <Button
                   size="icon"
-                  variant={isListening ? "destructive" : "outline"}
-                  onClick={isListening ? stopListening : startListening}
-                  disabled={inputDisabled}
+                  onClick={sendMessage}
+                  disabled={!input.trim() || inputDisabled}
                   className="shrink-0 h-10 w-10"
-                  title={isListening ? "Arrêter" : "Parler"}
                 >
-                  <Mic className="w-4 h-4" />
+                  <Send className="w-4 h-4" />
                 </Button>
-              )}
-              <Button
-                size="icon"
-                onClick={sendMessage}
-                disabled={!input.trim() || inputDisabled}
-                className="shrink-0 h-10 w-10"
-              >
-                <Send className="w-4 h-4" />
-              </Button>
+              </div>
             </div>
           )}
         </Card>
