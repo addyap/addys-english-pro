@@ -190,14 +190,17 @@ export function useSpeechRecognition(onTranscript: (text: string) => void) {
       }
     };
 
+    // Use onaudiostart to confirm the browser is truly capturing audio
+    recognition.onaudiostart = () => {
+      setMicState("listening");
+      startingRef.current = false;
+    };
+
     recognitionRef.current = recognition;
 
     try {
       recognition.start();
-      // If start() didn't throw, we're now waiting for audio.
-      // The actual "listening" state is set once we know it's live:
-      setMicState("listening");
-      startingRef.current = false;
+      // stay in "requesting-permission" until onaudiostart fires
     } catch (err: unknown) {
       recognitionRef.current = null;
       startingRef.current = false;
