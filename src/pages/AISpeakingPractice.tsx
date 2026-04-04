@@ -15,6 +15,7 @@ import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import { useStreamingChat, type Msg } from "@/lib/ai/useStreamingChat";
 import { invokeAI } from "@/lib/ai/streamChat";
 import { t, type UILang } from "@/lib/ai/i18n";
+import MicErrorBanner from "@/components/MicErrorBanner";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
   Mic, MicOff, Send, RotateCcw, ArrowLeft, Loader2,
