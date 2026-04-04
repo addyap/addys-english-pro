@@ -314,34 +314,37 @@ const AISpeakingPractice = () => {
         </div>
       </ScrollArea>
 
-      <div className="border-t border-border bg-card p-4">
-        <div className="max-w-2xl mx-auto flex gap-2">
-          {speechSupported && (
-            <Button
-              variant={isListening ? "destructive" : "outline"}
-              size="icon"
-              onClick={isListening ? stopListening : startListening}
-              disabled={isStreaming}
-            >
-              {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+      <div className="border-t border-border bg-card">
+        <MicErrorBanner micError={micError} clearError={clearError} startListening={startListening} />
+        <div className="p-4">
+          <div className="max-w-2xl mx-auto flex gap-2">
+            {speechSupported && (
+              <Button
+                variant={isListening ? "destructive" : micState === "requesting-permission" ? "outline" : "outline"}
+                size="icon"
+                onClick={isListening ? stopListening : startListening}
+                disabled={isStreaming || micState === "requesting-permission"}
+              >
+                {micState === "requesting-permission" ? <Loader2 className="w-4 h-4 animate-spin" /> : isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+              </Button>
+            )}
+            <Textarea
+              value={input}
+              onChange={e => setInput(e.target.value)}
+              placeholder={isListening ? t("chat.placeholder.listening", uiLang) : t("chat.placeholder.typing", uiLang)}
+              className="min-h-[44px] max-h-[120px] resize-none"
+              onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSendMessage(); } }}
+            />
+            <Button onClick={handleSendMessage} disabled={!input.trim() || isStreaming} size="icon">
+              <Send className="w-4 h-4" />
             </Button>
+          </div>
+          {isListening && (
+            <p className="text-center text-xs text-destructive mt-2 animate-pulse">
+              {t("chat.mic.active", uiLang)}
+            </p>
           )}
-          <Textarea
-            value={input}
-            onChange={e => setInput(e.target.value)}
-            placeholder={isListening ? t("chat.placeholder.listening", uiLang) : t("chat.placeholder.typing", uiLang)}
-            className="min-h-[44px] max-h-[120px] resize-none"
-            onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSendMessage(); } }}
-          />
-          <Button onClick={handleSendMessage} disabled={!input.trim() || isStreaming} size="icon">
-            <Send className="w-4 h-4" />
-          </Button>
         </div>
-        {isListening && (
-          <p className="text-center text-xs text-destructive mt-2 animate-pulse">
-            {t("chat.mic.active", uiLang)}
-          </p>
-        )}
       </div>
     </div>
   );
