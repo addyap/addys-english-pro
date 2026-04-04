@@ -81,7 +81,7 @@ const AIInterviewSimulator = () => {
     extraBody: { feedbackLanguage: feedbackLang },
   });
 
-  const { isListening, startListening, stopListening, speechSupported } = useSpeechRecognition(
+  const { isListening, startListening, stopListening, speechSupported, micState, micError, clearError } = useSpeechRecognition(
     useCallback((text: string) => setInput(text), [])
   );
 
