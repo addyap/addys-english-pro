@@ -19,10 +19,10 @@ import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-tr
 import {
   MessageCircle, Send, RotateCcw, Award, Briefcase, Users,
   ShieldAlert, Coffee, Handshake, Loader2, ChevronRight,
-  Phone, Mic, Building2, Globe, UserCheck, ClipboardList,
+  Phone, Mic, MicOff, Building2, Globe, UserCheck, ClipboardList,
   HelpCircle, Presentation, DollarSign, BookOpen, Target, GraduationCap,
   CheckCircle2, AlertTriangle, Lightbulb, ArrowLeft, Square, Clock, TrendingUp,
-  RefreshCw, ArrowRight
+  RefreshCw, ArrowRight, AlertCircle, Keyboard
 } from "lucide-react";
 import { toast } from "sonner";
 import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
