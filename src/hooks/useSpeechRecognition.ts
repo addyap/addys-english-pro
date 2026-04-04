@@ -27,7 +27,7 @@ export interface MicError {
 
 /* ── helpers ─────────────────────────────────────────────── */
 
-const getSR = (): (new () => SpeechRecognition) | null => {
+const getSR = (): (new () => any) | null => {
   if (typeof window === "undefined") return null;
   return (
     (window as any).SpeechRecognition ??
