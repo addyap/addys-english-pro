@@ -697,43 +697,69 @@ const BusinessConversation: React.FC = () => {
 
           {/* Input area */}
           {!feedback && !feedbackError && (
-            <div className="border-t p-3 flex gap-2 items-end bg-background">
-              <Textarea
-                ref={inputRef}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder={
-                  inputDisabled && examComplete
-                    ? (isFeedbackLoading ? "Assessing your answers…" : "Exam complete.")
-                    : inputDisabled
-                    ? "Please wait…"
-                    : "Type your reply in English…"
-                }
-                className="min-h-[44px] max-h-[120px] resize-none text-sm border-0 focus-visible:ring-0 shadow-none p-2"
-                disabled={inputDisabled}
-                rows={1}
-              />
-              {speechSupported && (
+            <div className="border-t bg-background">
+              {/* Inline mic error/recovery banner */}
+              {micError && micError.message && (
+                <div className="px-3 pt-2 pb-1 flex items-start gap-2 text-xs text-destructive">
+                  <AlertCircle className="w-3.5 h-3.5 mt-0.5 shrink-0" />
+                  <div className="flex-1 space-y-0.5">
+                    <p>{micError.message}</p>
+                    {micError.hint && <p className="text-muted-foreground">{micError.hint}</p>}
+                  </div>
+                  <div className="flex gap-1.5 shrink-0">
+                    {(micError.state === "error" || micError.state === "idle") && (
+                      <button onClick={() => { clearError(); startListening(); }} className="underline text-primary text-xs">Retry</button>
+                    )}
+                    <button onClick={clearError} className="underline text-muted-foreground text-xs">Dismiss</button>
+                  </div>
+                </div>
+              )}
+              <div className="p-3 flex gap-2 items-end">
+                <Textarea
+                  ref={inputRef}
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder={
+                    inputDisabled && examComplete
+                      ? (isFeedbackLoading ? "Assessing your answers…" : "Exam complete.")
+                      : inputDisabled
+                      ? "Please wait…"
+                      : isListening
+                      ? "Listening… speak now"
+                      : "Type your reply in English…"
+                  }
+                  className="min-h-[44px] max-h-[120px] resize-none text-sm border-0 focus-visible:ring-0 shadow-none p-2"
+                  disabled={inputDisabled}
+                  rows={1}
+                />
+                {speechSupported && (
+                  <Button
+                    size="icon"
+                    variant={isListening ? "destructive" : micState === "denied" || micState === "unavailable" ? "ghost" : "outline"}
+                    onClick={isListening ? stopListening : startListening}
+                    disabled={inputDisabled || micState === "requesting-permission"}
+                    className="shrink-0 h-10 w-10"
+                    title={isListening ? "Stop listening" : micState === "denied" ? "Mic blocked — tap to retry" : "Speak"}
+                  >
+                    {micState === "requesting-permission" ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : isListening ? (
+                      <MicOff className="w-4 h-4" />
+                    ) : (
+                      <Mic className="w-4 h-4" />
+                    )}
+                  </Button>
+                )}
                 <Button
                   size="icon"
-                  variant={isListening ? "destructive" : "outline"}
-                  onClick={isListening ? stopListening : startListening}
-                  disabled={inputDisabled}
+                  onClick={sendMessage}
+                  disabled={!input.trim() || inputDisabled}
                   className="shrink-0 h-10 w-10"
-                  title={isListening ? "Arrêter" : "Parler"}
                 >
-                  <Mic className="w-4 h-4" />
+                  <Send className="w-4 h-4" />
                 </Button>
-              )}
-              <Button
-                size="icon"
-                onClick={sendMessage}
-                disabled={!input.trim() || inputDisabled}
-                className="shrink-0 h-10 w-10"
-              >
-                <Send className="w-4 h-4" />
-              </Button>
+              </div>
             </div>
           )}
         </Card>
