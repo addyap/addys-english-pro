@@ -16,6 +16,7 @@ import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import { useStreamingChat, type Msg } from "@/lib/ai/useStreamingChat";
 import { invokeAI } from "@/lib/ai/streamChat";
 import { t, type UILang } from "@/lib/ai/i18n";
+import MicErrorBanner from "@/components/MicErrorBanner";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
   Send, RotateCcw, ArrowLeft, Loader2, ChevronRight, Mic,
