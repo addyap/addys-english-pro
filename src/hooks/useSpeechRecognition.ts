@@ -92,7 +92,7 @@ export function useSpeechRecognition(onTranscript: (text: string) => void) {
     isSpeechSupported() ? "idle" : "unsupported"
   );
   const [micError, setMicError] = useState<MicError | null>(null);
-  const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const recognitionRef = useRef<any>(null);
   // Guard against rapid double-taps
   const startingRef = useRef(false);
 
