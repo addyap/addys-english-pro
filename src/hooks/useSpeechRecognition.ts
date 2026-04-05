@@ -117,7 +117,7 @@ export function useSpeechRecognition(onTranscript: (text: string) => void) {
 
   const clearError = useCallback(() => setMicError(null), []);
 
-  const startListening = useCallback(() => {
+  const startListening = useCallback(async () => {
     // ── pre-checks ──
     if (!speechSupported) {
       const err: MicError = {
@@ -153,6 +153,60 @@ export function useSpeechRecognition(onTranscript: (text: string) => void) {
     startingRef.current = true;
     setMicState("requesting-permission");
 
+    // ── Step 1: Request mic permission via getUserMedia ──
+    // This triggers the real browser permission prompt on mobile
+    let permStream: MediaStream | null = null;
+    try {
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        permStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        // Release tracks immediately — we only needed the permission grant
+        permStream.getTracks().forEach(t => t.stop());
+        permStream = null;
+      }
+    } catch (mediaErr: unknown) {
+      startingRef.current = false;
+
+      if (mediaErr instanceof DOMException) {
+        if (mediaErr.name === "NotAllowedError" || mediaErr.name === "PermissionDeniedError") {
+          const micErr: MicError = {
+            state: "denied",
+            message: "Microphone access is blocked. Please allow microphone access in your browser settings and try again.",
+            hint: "Check your browser site settings and phone app permissions.",
+          };
+          setMicState("denied");
+          setMicError(micErr);
+          return;
+        }
+        if (mediaErr.name === "NotFoundError" || mediaErr.name === "OverconstrainedError") {
+          const micErr: MicError = {
+            state: "unavailable",
+            message: "No microphone was detected on this device.",
+          };
+          setMicState("unavailable");
+          setMicError(micErr);
+          return;
+        }
+        if (mediaErr.name === "NotReadableError" || mediaErr.name === "AbortError") {
+          const micErr: MicError = {
+            state: "unavailable",
+            message: "The microphone is busy or could not be accessed. Close other apps using the mic and try again.",
+          };
+          setMicState("unavailable");
+          setMicError(micErr);
+          return;
+        }
+      }
+      // Fallback for unknown getUserMedia errors
+      const micErr: MicError = {
+        state: "error",
+        message: "The microphone could not start. Please try again.",
+      };
+      setMicState("error");
+      setMicError(micErr);
+      return;
+    }
+
+    // ── Step 2: Start SpeechRecognition (permission already granted) ──
     const SR = getSR()!;
     const recognition = new SR();
     recognition.lang = "en-US";
