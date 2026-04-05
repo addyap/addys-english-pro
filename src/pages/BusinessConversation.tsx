@@ -406,6 +406,7 @@ const BusinessConversation: React.FC = () => {
     const isLastExamAnswer = mode === "exam" && newRealTurns >= EXAM_MAX_QUESTIONS;
 
     setIsLoading(true);
+    stopTTS();
     let assistantSoFar = "";
 
     try {
