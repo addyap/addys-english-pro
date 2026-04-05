@@ -15,6 +15,7 @@ import VocabUpgrades from "@/components/ai-trainer/VocabUpgrades";
 import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
+import { useBrowserTTS } from "@/hooks/useBrowserTTS";
 import MicErrorBanner from "@/components/MicErrorBanner";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
@@ -23,7 +24,7 @@ import {
   Phone, Mic, MicOff, Building2, Globe, UserCheck, ClipboardList,
   HelpCircle, Presentation, DollarSign, BookOpen, Target, GraduationCap,
   CheckCircle2, AlertTriangle, Lightbulb, ArrowLeft, Square, Clock, TrendingUp,
-  RefreshCw, ArrowRight, AlertCircle, Keyboard, ShoppingCart
+  RefreshCw, ArrowRight, AlertCircle, Keyboard, ShoppingCart, Volume2, VolumeX
 } from "lucide-react";
 import { toast } from "sonner";
 import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
