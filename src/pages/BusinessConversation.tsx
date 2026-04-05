@@ -330,7 +330,7 @@ const BusinessConversation: React.FC = () => {
     setExamComplete(false);
     examFeedbackTriggeredRef.current = false;
     setIsLoading(true);
-
+    stopTTS();
     try {
       const initMessages: Msg[] = [{ role: "user", content: "Hello." }];
       let assistantSoFar = "";
