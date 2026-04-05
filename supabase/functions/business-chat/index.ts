@@ -83,7 +83,7 @@ const SCENARIOS: Record<string, string> = {
   "thanking-someone": `You are a colleague who helped the user with a big project last week. The user wants to thank you properly. Be gracious but realistic. Objective: practise expressing gratitude beyond just "thank you".`,
   "handling-misunderstanding": `You are a shop assistant. There's been a misunderstanding about the user's order — wrong item, wrong size, or wrong date. Work together to resolve it calmly. Objective: practise clarifying, correcting misunderstandings, and staying polite.`,
 
-  // ── Legacy (kept for backward compat) ──
+  // ── Legacy ──
   "talking-about-job": `You are Emma Wilson, a new colleague. You are friendly and genuinely interested. Ask the user about their job, daily tasks, and what they enjoy about their work. Objective: get to know the user professionally.`,
   "talking-responsibilities": `You are Mark Stevens, a team lead onboarding the user. You are organized and supportive. Ask about their responsibilities, team structure, and how they organise their work.`,
   "travel-for-work": `You are Lisa Park, a colleague chatting at the airport before a business trip. You are relaxed and talkative. Discuss travel plans, destinations, and work travel experiences.`,
@@ -168,12 +168,68 @@ Do NOT reformulate or correct the learner's mistakes during the conversation.
 ${SHARED_RULES}`,
 };
 
+// ── Language name mapping for feedback prompt ─────────────────────────────
+const LANG_NAMES: Record<string, string> = {
+  en: "English",
+  fr: "French",
+  es: "Spanish",
+  de: "German",
+  it: "Italian",
+  pt: "Portuguese",
+  ru: "Russian",
+  ar: "Arabic",
+  pl: "Polish",
+  uk: "Ukrainian",
+  zh: "Chinese (Simplified)",
+  ja: "Japanese",
+};
+
 // ── Feedback prompt and schemas ────────────────────────────────────────────
-const FEEDBACK_PROMPT_BASE = `You are an expert English language assessor and professional communication coach. Analyse the following conversation between a learner (role: user) and an AI partner (role: assistant).
+function buildFeedbackPrompt(feedbackLanguage: string, mode: string): string {
+  const langName = LANG_NAMES[feedbackLanguage] || "English";
 
-Write ALL feedback, comments, explanations, and suggestions in ENGLISH.
+  const levelAdaptation = `
+LEVEL-ADAPTIVE FEEDBACK RULES:
+After analysing the learner's messages, estimate their CEFR level, then adapt your feedback:
 
-Evaluate the LEARNER's messages ONLY.
+- A1–A2 learner: Use simple, encouraging language. Focus on communication success. Mention only the 1–2 most important corrections. Keep suggestions very short and practical. Celebrate effort.
+- B1–B1+ learner: Balanced corrections. Suggest clearer wording and practical grammar improvements. Be encouraging but point out patterns to fix.
+- B2 learner: More precise corrections. Focus on accuracy, register, natural collocations, and more professional phrasing. Be constructive.
+- C1+ learner: Focus on nuance, style, fluency, advanced vocabulary, natural idiomatic usage. Be concise and precise. Avoid over-praising.`;
+
+  const modeAdaptation: Record<string, string> = {
+    practice: `
+MODE-SPECIFIC TONE: PRACTICE
+- Be warm, supportive, and confidence-building
+- Highlight what the learner did well before mentioning areas to improve
+- Use encouraging language ("Great effort!", "You're on the right track")
+- Limit corrections to the 2–3 most useful ones`,
+    challenge: `
+MODE-SPECIFIC TONE: CHALLENGE
+- Be balanced and professional
+- Clearly identify weak areas alongside strengths
+- Push the learner to aim higher — suggest more advanced alternatives
+- Do not over-praise; be honest and constructive`,
+    exam: `
+MODE-SPECIFIC TONE: EXAM
+- Be neutral and evaluator-style
+- No encouragement or hand-holding
+- Focus on objective assessment
+- Keep feedback concise and factual
+- State the CEFR level estimate clearly`,
+  };
+
+  const modeBlock = modeAdaptation[mode] || modeAdaptation.practice;
+
+  return `You are an expert English language assessor and professional communication coach.
+
+CRITICAL: Write ALL feedback text — every comment, explanation, suggestion, correction explanation, strengths, needsImprovement, and overall summary — in ${langName}. The JSON keys must remain in English, but ALL string values must be in ${langName}.
+
+Evaluate the LEARNER's messages ONLY (role: user).
+
+${levelAdaptation}
+
+${modeBlock}
 
 IMPORTANT SCORING GUIDELINES:
 - Be precise and evidence-based. Quote actual learner sentences for corrections.
@@ -183,42 +239,19 @@ IMPORTANT SCORING GUIDELINES:
 - For corrections, use ONLY sentences the learner actually wrote.
 
 Return a JSON object with exactly this structure (no markdown, no code fences):
-`;
-
-const FEEDBACK_SCHEMAS: Record<string, string> = {
-  practice: `{"fluency":{"score":0,"comment":""},"grammar":{"score":0,"comment":""},"vocabulary":{"score":0,"comment":""},"tone":{"rating":"","comment":""},"overallLevel":"","corrections":[{"wrong":"","correct":"","explanation":""}],"suggestions":[""],"advancedVocabulary":[{"basic":"","advanced":""}],"estimatedSpeakingTime":"","strengths":"","needsImprovement":"","overall":""}
-
-Scores are 1-10. Tone rating is one of: "Excellent","Good","Needs improvement","Poor".
-overallLevel should be a CEFR estimate like "A2","B1","B1+","B2","C1".
-Provide 2-3 corrections from the learner's actual sentences.
-Provide 2-3 actionable suggestions.
-Provide 2-3 advancedVocabulary upgrades (basic word the learner used → more professional alternative).
-strengths: 1-2 sentences about what the learner does well.
-needsImprovement: 1-2 sentences about specific areas to work on.
-Overall is 2-3 sentences: be warm, encouraging, and specific. Highlight what went well.`,
-
-  challenge: `{"fluency":{"score":0,"comment":""},"grammar":{"score":0,"comment":""},"vocabulary":{"score":0,"comment":""},"tone":{"rating":"","comment":""},"overallLevel":"","corrections":[{"wrong":"","correct":"","explanation":""}],"suggestions":[""],"advancedVocabulary":[{"basic":"","advanced":""}],"estimatedSpeakingTime":"","strengths":"","needsImprovement":"","overall":""}
+{"fluency":{"score":0,"comment":""},"grammar":{"score":0,"comment":""},"vocabulary":{"score":0,"comment":""},"tone":{"rating":"","comment":""},"overallLevel":"","corrections":[{"wrong":"","correct":"","explanation":""}],"suggestions":[""],"advancedVocabulary":[{"basic":"","advanced":""}],"estimatedSpeakingTime":"","strengths":"","needsImprovement":"","overall":""}
 
 Scores are 1-10. Tone rating is one of: "Excellent","Good","Needs improvement","Poor".
 overallLevel should be a CEFR estimate like "A2","B1","B1+","B2","C1".
 Provide 2-3 corrections from the learner's actual sentences.
 Provide 2-3 actionable suggestions.
 Provide 2-3 advancedVocabulary upgrades.
-strengths: 1 sentence about what the learner does well.
-needsImprovement: 1 sentence about what needs work.
-Overall is 2-3 sentences: be balanced and professional. Clearly highlight weak areas alongside strengths.`,
+strengths: 1-2 sentences.
+needsImprovement: 1-2 sentences.
+overall: 2-3 sentences summary.
 
-  exam: `{"fluency":{"score":0,"comment":""},"grammar":{"score":0,"comment":""},"vocabulary":{"score":0,"comment":""},"tone":{"rating":"","comment":""},"overallLevel":"","corrections":[{"wrong":"","correct":"","explanation":""}],"suggestions":[""],"advancedVocabulary":[{"basic":"","advanced":""}],"estimatedSpeakingTime":"","strengths":"","needsImprovement":"","overall":""}
-
-Scores are 1-10. Tone rating is one of: "Excellent","Good","Needs improvement","Poor".
-overallLevel should be a CEFR estimate like "A2","B1","B1+","B2","C1".
-Provide 2-3 corrections.
-Provide 2-3 suggestions.
-Provide 2-3 advancedVocabulary upgrades.
-strengths: 1 sentence about what the learner does well.
-needsImprovement: 1 sentence about what needs work.
-Overall is a short examiner-style summary (2 sentences max).`,
-};
+REMEMBER: All text values must be in ${langName}.`;
+}
 
 // ── Safe feedback defaults ─────────────────────────────────────────────────
 const SAFE_FEEDBACK_DEFAULTS = {
@@ -236,7 +269,6 @@ const SAFE_FEEDBACK_DEFAULTS = {
   overall: "",
 };
 
-/** Validate and fill missing fields so frontend never receives partial data */
 function sanitizeFeedback(raw: unknown): typeof SAFE_FEEDBACK_DEFAULTS {
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
     return { ...SAFE_FEEDBACK_DEFAULTS };
@@ -244,7 +276,6 @@ function sanitizeFeedback(raw: unknown): typeof SAFE_FEEDBACK_DEFAULTS {
   const obj = raw as Record<string, unknown>;
   const safe = { ...SAFE_FEEDBACK_DEFAULTS };
 
-  // Score fields
   for (const key of ["fluency", "grammar", "vocabulary"] as const) {
     if (obj[key] && typeof obj[key] === "object") {
       const field = obj[key] as Record<string, unknown>;
@@ -255,7 +286,6 @@ function sanitizeFeedback(raw: unknown): typeof SAFE_FEEDBACK_DEFAULTS {
     }
   }
 
-  // Tone
   if (obj.tone && typeof obj.tone === "object") {
     const t = obj.tone as Record<string, unknown>;
     safe.tone = {
@@ -264,14 +294,12 @@ function sanitizeFeedback(raw: unknown): typeof SAFE_FEEDBACK_DEFAULTS {
     };
   }
 
-  // Strings
   for (const key of ["overallLevel", "estimatedSpeakingTime", "strengths", "needsImprovement", "overall"] as const) {
     if (typeof obj[key] === "string") {
       (safe as any)[key] = obj[key];
     }
   }
 
-  // Arrays
   if (Array.isArray(obj.corrections)) {
     safe.corrections = obj.corrections.filter(
       (c: any) => c && typeof c === "object" && typeof c.wrong === "string"
@@ -295,7 +323,7 @@ serve(async (req) => {
   }
 
   try {
-    const { messages, scenario, mode = "practice", action } = await req.json();
+    const { messages, scenario, mode = "practice", action, feedbackLanguage = "en" } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
@@ -306,8 +334,7 @@ serve(async (req) => {
         .map((m: { role: string; content: string }) => `${m.role}: ${m.content}`)
         .join("\n");
 
-      const feedbackSchema = FEEDBACK_SCHEMAS[feedbackMode] || FEEDBACK_SCHEMAS["practice"];
-      const feedbackPrompt = FEEDBACK_PROMPT_BASE + "\n\n" + feedbackSchema;
+      const feedbackPrompt = buildFeedbackPrompt(feedbackLanguage, feedbackMode);
 
       const response = await fetch(
         "https://ai.gateway.lovable.dev/v1/chat/completions",
@@ -355,10 +382,8 @@ serve(async (req) => {
         parsed = null;
       }
 
-      // Always return a fully validated, complete feedback object
       const feedback = sanitizeFeedback(parsed);
 
-      // Monitor degraded feedback: log when AI returned mostly empty/default data
       const isDegrade = feedback.fluency.score === 0 && feedback.grammar.score === 0 && feedback.vocabulary.score === 0;
       if (isDegrade) {
         console.warn("[business-chat] sanitizeFeedback returned mostly defaults. Raw content length:", content.length, "Parsed:", parsed !== null);

@@ -15,6 +15,7 @@ import VocabUpgrades from "@/components/ai-trainer/VocabUpgrades";
 import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
+import { useBrowserTTS } from "@/hooks/useBrowserTTS";
 import MicErrorBanner from "@/components/MicErrorBanner";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import {
@@ -23,7 +24,7 @@ import {
   Phone, Mic, MicOff, Building2, Globe, UserCheck, ClipboardList,
   HelpCircle, Presentation, DollarSign, BookOpen, Target, GraduationCap,
   CheckCircle2, AlertTriangle, Lightbulb, ArrowLeft, Square, Clock, TrendingUp,
-  RefreshCw, ArrowRight, AlertCircle, Keyboard, ShoppingCart
+  RefreshCw, ArrowRight, AlertCircle, Keyboard, ShoppingCart, Volume2, VolumeX
 } from "lucide-react";
 import { toast } from "sonner";
 import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
@@ -251,6 +252,31 @@ const BusinessConversation: React.FC = () => {
   const { isListening, startListening, stopListening, speechSupported, micState, micError, clearError } = useSpeechRecognition(
     useCallback((text: string) => setInput(text), [])
   );
+  const { speak, stop: stopTTS, state: ttsState, supported: ttsSupported } = useBrowserTTS("en");
+  const [speakingMsgIdx, setSpeakingMsgIdx] = useState<number | null>(null);
+
+  const handleSpeak = useCallback((text: string, idx: number) => {
+    if (ttsState === "speaking" && speakingMsgIdx === idx) {
+      stopTTS();
+      setSpeakingMsgIdx(null);
+    } else {
+      stopTTS();
+      setSpeakingMsgIdx(idx);
+      speak(text, "en");
+    }
+  }, [ttsState, speakingMsgIdx, speak, stopTTS]);
+
+  // Clear speaking index when TTS finishes
+  useEffect(() => {
+    if (ttsState === "idle" || ttsState === "error") {
+      setSpeakingMsgIdx(null);
+    }
+  }, [ttsState]);
+
+  // Stop TTS on unmount / navigation
+  useEffect(() => {
+    return () => { stopTTS(); };
+  }, [stopTTS]);
 
   const realUserTurns = countRealUserTurns(messages);
 
@@ -304,7 +330,7 @@ const BusinessConversation: React.FC = () => {
     setExamComplete(false);
     examFeedbackTriggeredRef.current = false;
     setIsLoading(true);
-
+    stopTTS();
     try {
       const initMessages: Msg[] = [{ role: "user", content: "Hello." }];
       let assistantSoFar = "";
@@ -380,6 +406,7 @@ const BusinessConversation: React.FC = () => {
     const isLastExamAnswer = mode === "exam" && newRealTurns >= EXAM_MAX_QUESTIONS;
 
     setIsLoading(true);
+    stopTTS();
     let assistantSoFar = "";
 
     try {
@@ -738,17 +765,31 @@ const BusinessConversation: React.FC = () => {
             <div className="p-4 space-y-4">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div
-                    className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
-                      msg.role === "user"
-                        ? "bg-primary text-primary-foreground rounded-br-md"
-                        : "bg-muted text-foreground rounded-bl-md"
-                    }`}
-                  >
-                    {msg.content || (
-                      <span className="inline-flex items-center gap-1 text-muted-foreground">
-                        <Loader2 className="w-3 h-3 animate-spin" /> Typing…
-                      </span>
+                  <div className={`max-w-[80%] flex flex-col gap-1`}>
+                    <div
+                      className={`rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                        msg.role === "user"
+                          ? "bg-primary text-primary-foreground rounded-br-md"
+                          : "bg-muted text-foreground rounded-bl-md"
+                      }`}
+                    >
+                      {msg.content || (
+                        <span className="inline-flex items-center gap-1 text-muted-foreground">
+                          <Loader2 className="w-3 h-3 animate-spin" /> Typing…
+                        </span>
+                      )}
+                    </div>
+                    {msg.role === "assistant" && msg.content && ttsSupported && (
+                      <button
+                        type="button"
+                        onClick={() => handleSpeak(msg.content, i)}
+                        className="self-start ml-2 p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                        title={ttsState === "speaking" && speakingMsgIdx === i ? "Stop" : "Listen"}
+                      >
+                        {ttsState === "speaking" && speakingMsgIdx === i
+                          ? <VolumeX className="w-3.5 h-3.5" />
+                          : <Volume2 className="w-3.5 h-3.5" />}
+                      </button>
                     )}
                   </div>
                 </div>
