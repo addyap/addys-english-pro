@@ -764,17 +764,31 @@ const BusinessConversation: React.FC = () => {
             <div className="p-4 space-y-4">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div
-                    className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
-                      msg.role === "user"
-                        ? "bg-primary text-primary-foreground rounded-br-md"
-                        : "bg-muted text-foreground rounded-bl-md"
-                    }`}
-                  >
-                    {msg.content || (
-                      <span className="inline-flex items-center gap-1 text-muted-foreground">
-                        <Loader2 className="w-3 h-3 animate-spin" /> Typing…
-                      </span>
+                  <div className={`max-w-[80%] flex flex-col gap-1`}>
+                    <div
+                      className={`rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                        msg.role === "user"
+                          ? "bg-primary text-primary-foreground rounded-br-md"
+                          : "bg-muted text-foreground rounded-bl-md"
+                      }`}
+                    >
+                      {msg.content || (
+                        <span className="inline-flex items-center gap-1 text-muted-foreground">
+                          <Loader2 className="w-3 h-3 animate-spin" /> Typing…
+                        </span>
+                      )}
+                    </div>
+                    {msg.role === "assistant" && msg.content && ttsSupported && (
+                      <button
+                        type="button"
+                        onClick={() => handleSpeak(msg.content, i)}
+                        className="self-start ml-2 p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                        title={ttsState === "speaking" && speakingMsgIdx === i ? "Stop" : "Listen"}
+                      >
+                        {ttsState === "speaking" && speakingMsgIdx === i
+                          ? <VolumeX className="w-3.5 h-3.5" />
+                          : <Volume2 className="w-3.5 h-3.5" />}
+                      </button>
                     )}
                   </div>
                 </div>
