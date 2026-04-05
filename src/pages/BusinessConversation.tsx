@@ -252,6 +252,31 @@ const BusinessConversation: React.FC = () => {
   const { isListening, startListening, stopListening, speechSupported, micState, micError, clearError } = useSpeechRecognition(
     useCallback((text: string) => setInput(text), [])
   );
+  const { speak, stop: stopTTS, state: ttsState, supported: ttsSupported } = useBrowserTTS("en");
+  const [speakingMsgIdx, setSpeakingMsgIdx] = useState<number | null>(null);
+
+  const handleSpeak = useCallback((text: string, idx: number) => {
+    if (ttsState === "speaking" && speakingMsgIdx === idx) {
+      stopTTS();
+      setSpeakingMsgIdx(null);
+    } else {
+      stopTTS();
+      setSpeakingMsgIdx(idx);
+      speak(text, "en");
+    }
+  }, [ttsState, speakingMsgIdx, speak, stopTTS]);
+
+  // Clear speaking index when TTS finishes
+  useEffect(() => {
+    if (ttsState === "idle" || ttsState === "error") {
+      setSpeakingMsgIdx(null);
+    }
+  }, [ttsState]);
+
+  // Stop TTS on unmount / navigation
+  useEffect(() => {
+    return () => { stopTTS(); };
+  }, [stopTTS]);
 
   const realUserTurns = countRealUserTurns(messages);
 
