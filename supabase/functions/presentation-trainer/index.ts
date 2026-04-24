@@ -192,10 +192,18 @@ serve(async (req) => {
 
   try {
     const body = await req.json();
-    const { action, brief, presentationText, scenarioLabel } = body;
+    const { action, brief, presentationText, scenarioLabel, feedbackLanguage = "en" } = body;
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
+
+    const LANG_NAMES: Record<string, string> = {
+      en: "English", fr: "French", ru: "Russian", uk: "Ukrainian",
+      ar: "Arabic", ro: "Romanian", it: "Italian", es: "Spanish",
+      de: "German", pt: "Portuguese", pl: "Polish", zh: "Chinese", ja: "Japanese",
+    };
+    const langName = LANG_NAMES[feedbackLanguage] || "English";
+    const langInstruction = `\n\nLANGUAGE RULE: Write feedback, explanations, coaching notes, summaries, vocabulary meanings and next steps in ${langName}. Keep the English presentation, corrections and model presentations in English.`;
 
     const callAI = async (systemPrompt: string, userPrompt: string) => {
       const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
@@ -232,7 +240,7 @@ serve(async (req) => {
 
     if (action === "feedback") {
       const userPrompt = `PRESENTATION BRIEF:\n${scenarioLabel}\n\n${brief}\n\nLEARNER'S PRESENTATION:\n${presentationText || "(empty presentation)"}`;
-      const result = await callAI(FEEDBACK_PROMPT, userPrompt);
+      const result = await callAI(FEEDBACK_PROMPT + langInstruction, userPrompt);
 
       if ("error" in result) {
         return new Response(JSON.stringify({ error: result.error }), {
