@@ -791,6 +791,9 @@ const BusinessConversation: React.FC = () => {
                           : <Volume2 className="w-3.5 h-3.5" />}
                       </button>
                     )}
+                    {msg.role === "assistant" && msg.content && (
+                      <SupportActions text={msg.content} />
+                    )}
                   </div>
                 </div>
               ))}
