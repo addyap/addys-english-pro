@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { MessageSquare, Mail, MapPin, Clock, CheckCircle2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { MessageSquare, Mail, MapPin, Clock, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { trackFormSubmission, trackFormError, trackWhatsAppClick, trackEmailClick } from '@/lib/analytics';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
@@ -15,6 +16,7 @@ const Contact = () => {
   };
 
   useScrollTracking('/contact');
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     prenom: '',
@@ -27,6 +29,7 @@ const Contact = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitErrorBanner, setSubmitErrorBanner] = useState<string | null>(null);
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -68,6 +71,7 @@ const Contact = () => {
     }
 
     setIsSubmitting(true);
+    setSubmitErrorBanner(null);
 
     try {
       // Call the edge function to send email
@@ -86,7 +90,7 @@ const Contact = () => {
 
       console.log('Contact form submitted successfully:', data);
       trackFormSubmission('contact', true);
-      
+
       setSubmitSuccess(true);
       setFormData({
         prenom: '',
@@ -96,12 +100,21 @@ const Contact = () => {
         honeypot: ''
       });
 
-      // Reset success message after 5 seconds
-      setTimeout(() => setSubmitSuccess(false), 5000);
+      // Scroll to top so the persistent success banner is visible
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+
+      // Redirect to /thank-you after 2 seconds (banner stays visible until then)
+      window.setTimeout(() => {
+        navigate('/thank-you');
+      }, 2000);
     } catch (error) {
       console.error('Form submission error:', error);
       trackFormError('contact', 'submission_failed');
+      const msg = '❌ Something went wrong. Please try again or use WhatsApp.';
       setErrors({ submit: 'Une erreur est survenue. Veuillez réessayer.' });
+      setSubmitErrorBanner(msg);
+      // Scroll to top so the error banner is visible
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     } finally {
       setIsSubmitting(false);
     }
@@ -139,7 +152,32 @@ const Contact = () => {
       
       <div className="min-h-screen bg-gray-50 py-12">
         <div className="max-w-6xl mx-auto px-4">
-          
+
+          {/* Persistent top banners (success / error) */}
+          {submitSuccess && (
+            <div
+              role="status"
+              aria-live="polite"
+              className="mb-6 p-4 bg-green-50 border border-green-300 rounded-lg text-green-800 flex items-center gap-3 shadow-sm animate-fade-in"
+            >
+              <CheckCircle2 className="h-6 w-6 text-green-600 shrink-0" aria-hidden="true" />
+              <span className="font-medium">
+                ✅ Message received! I will reply within 24 hours.
+              </span>
+            </div>
+          )}
+
+          {submitErrorBanner && !submitSuccess && (
+            <div
+              role="alert"
+              aria-live="assertive"
+              className="mb-6 p-4 bg-red-50 border border-red-300 rounded-lg text-red-800 flex items-center gap-3 shadow-sm animate-fade-in"
+            >
+              <AlertCircle className="h-6 w-6 text-red-600 shrink-0" aria-hidden="true" />
+              <span className="font-medium">{submitErrorBanner}</span>
+            </div>
+          )}
+
           {/* Header */}
           <header className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -257,7 +295,14 @@ const Contact = () => {
                   className="w-full bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed text-lg" 
                   aria-label="Envoyer le message de contact"
                 >
-                  {isSubmitting ? 'Envoi en cours...' : 'Envoyer mon message'}
+                  {isSubmitting ? (
+                    <span className="inline-flex items-center justify-center gap-2">
+                      <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />
+                      Sending...
+                    </span>
+                  ) : (
+                    'Envoyer mon message'
+                  )}
                 </button>
               </form>
               

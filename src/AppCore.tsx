@@ -82,6 +82,7 @@ const AIWritingCoach = lazy(() => import("./pages/AIWritingCoach"));
 const AIInterviewSimulator = lazy(() => import("./pages/AIInterviewSimulator"));
 const AIGrammarExplainer = lazy(() => import("./pages/AIGrammarExplainer"));
 const RessourcesGratuites = lazy(() => import("./pages/RessourcesGratuites"));
+const ThankYou = lazy(() => import("./pages/ThankYou"));
 const PageLoader = () => (
   <div className="min-h-screen bg-background py-12">
     <div className="max-w-4xl mx-auto px-4 space-y-8">
@@ -114,6 +115,7 @@ export const AppRoutes = () => (
     <Route path="/offres-de-formation" element={<Training />} />
     <Route path="/temoignages" element={<Testimonials />} />
     <Route path="/contact" element={<Contact />} />
+    <Route path="/thank-you" element={<ThankYou />} />
     <Route path="/blog" element={<Blog />} />
     <Route path="/blog/:id" element={<BlogArticle />} />
     

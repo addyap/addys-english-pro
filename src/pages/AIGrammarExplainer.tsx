@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
+import AIToolLoadingSkeleton from "@/components/ai-trainer/AIToolLoadingSkeleton";
 
 const EXAMPLE_SENTENCES = [
   "If I had known about the meeting, I would have prepared a report.",
@@ -35,12 +36,18 @@ const AIGrammarExplainer = () => {
     setLoading(true);
     setResult(null);
     recordSession();
+    const startedAt = Date.now();
 
     try {
       const { data, error } = await supabase.functions.invoke("grammar-explainer", {
         body: { sentence: s, feedbackLanguage: feedbackLang },
       });
       if (error) throw error;
+      // Enforce a minimum loading display time of 1.5s to avoid flicker
+      const elapsed = Date.now() - startedAt;
+      if (elapsed < 1500) {
+        await new Promise((r) => setTimeout(r, 1500 - elapsed));
+      }
       setResult(data.result);
       setSentence(s);
     } catch {
@@ -102,6 +109,7 @@ const AIGrammarExplainer = () => {
                   placeholder="Type or paste an English sentence..."
                   maxLength={500}
                   onKeyDown={e => { if (e.key === "Enter") analyse(); }}
+                  disabled={loading}
                 />
                 <Button onClick={() => analyse()} disabled={loading || sentence.trim().length < 3 || limitReached}>
                   {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
@@ -115,7 +123,8 @@ const AIGrammarExplainer = () => {
                     <button
                       key={i}
                       onClick={() => { setSentence(ex); analyse(ex); }}
-                      className="text-xs px-3 py-1.5 bg-muted rounded-full hover:bg-muted/80 text-foreground transition-colors text-left"
+                      disabled={loading}
+                      className="text-xs px-3 py-1.5 bg-muted rounded-full hover:bg-muted/80 text-foreground transition-colors text-left disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {ex.length > 50 ? ex.slice(0, 50) + "..." : ex}
                     </button>
@@ -124,6 +133,18 @@ const AIGrammarExplainer = () => {
               </div>
             </CardContent>
           </Card>
+
+          {/* Loading skeleton (no empty space while AI is processing) */}
+          {loading && !result && (
+            <AIToolLoadingSkeleton
+              headline="Analyzing your English..."
+              steps={[
+                "Reading the sentence...",
+                "Analyzing grammar...",
+                "Preparing explanation...",
+              ]}
+            />
+          )}
 
           {/* Results */}
           {result && (
