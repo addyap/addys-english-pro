@@ -53,37 +53,56 @@ export default function OptimizedHero() {
           </p>
         </header>
 
+        {/* Trust metric — strongest credibility signal, above the fold */}
+        <div className="flex justify-center mb-6">
+          <span
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background/15 border border-primary-foreground/30 backdrop-blur-sm text-sm md:text-base font-medium text-primary-foreground shadow-lg"
+            aria-label="Indicateur de confiance"
+          >
+            <span aria-hidden="true">⭐</span>
+            700+ English exercises and AI-powered practice tools
+          </span>
+        </div>
+
         <nav
-          className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap"
+          className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap items-stretch sm:items-center"
           aria-label="Actions principales"
         >
+          {/* PRIMARY CTA — strongest visual weight */}
           <Link
             to="/contact"
-            className="group relative overflow-hidden bg-background text-primary px-8 py-4 rounded-lg font-semibold hover:bg-background/90 hover:shadow-2xl transition-all duration-300 shadow-xl font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-ring/30 active:scale-100"
-            aria-label="Réserver un premier échange gratuit avec Antony Addy"
+            className="group relative overflow-hidden bg-accent text-accent-foreground px-10 py-5 rounded-lg font-bold text-lg hover:bg-accent/90 hover:shadow-2xl transition-all duration-300 shadow-2xl font-body transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-accent/40 active:scale-100 ring-2 ring-accent/40"
+            aria-label="Démarrer votre progression en anglais — contacter Antony Addy"
           >
-            <span className="relative z-10">Réserver un premier échange</span>
-            <span className="absolute inset-0 bg-primary/5 scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
-          </Link>
-
-          <Link
-            to="/offres-de-formation"
-            className="group relative overflow-hidden border-2 border-primary-foreground/80 text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all duration-300 font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-ring/30 active:scale-100"
-            aria-label="Voir les offres de formation en anglais professionnel"
-          >
-            <span className="relative z-10">Voir les formations</span>
-            <span className="absolute inset-0 bg-primary-foreground/5 scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
-          </Link>
-
-          <Link
-            to="/exercices"
-            className="group relative overflow-hidden bg-accent/95 text-accent-foreground px-8 py-4 rounded-lg font-semibold hover:bg-accent hover:shadow-2xl transition-all duration-300 shadow-xl font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-accent/30 active:scale-100"
-            aria-label="Accéder aux exercices gratuits d'anglais"
-          >
-            <span className="relative z-10">300+ exercices gratuits</span>
+            <span className="relative z-10">Start Your English Upgrade</span>
             <span className="absolute inset-0 bg-background/10 scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
           </Link>
+
+          {/* SECONDARY CTA — outline / ghost styling */}
+          <Link
+            to="/ressources-gratuites"
+            className="group relative overflow-hidden border-2 border-primary-foreground/80 text-primary-foreground bg-transparent px-8 py-4 rounded-lg font-semibold hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all duration-300 font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-ring/30 active:scale-100"
+            aria-label="Explorer les ressources gratuites d'anglais"
+          >
+            <span className="relative z-10">Explore Free Resources</span>
+          </Link>
         </nav>
+
+        {/* Microcopy reassurance under CTAs */}
+        <p className="mt-4 text-sm md:text-base text-primary-foreground/85 font-body drop-shadow">
+          Personalized English coaching, practical exercises, and fast contact.
+        </p>
+
+        {/* Tertiary discovery link — preserves access to formations without competing visually */}
+        <div className="mt-3">
+          <Link
+            to="/offres-de-formation"
+            className="inline-block text-sm text-primary-foreground/80 hover:text-primary-foreground underline underline-offset-4 font-body focus:outline-none focus:ring-2 focus:ring-ring/30 rounded"
+            aria-label="Voir les offres de formation en anglais professionnel"
+          >
+            Voir les offres de formation →
+          </Link>
+        </div>
       </div>
 
       {/* JSON-LD structured data for SEO */}
