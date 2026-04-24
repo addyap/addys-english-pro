@@ -62,7 +62,15 @@
     "failedImprovePresentation": "Не удалось улучшить презентацию.",
     "networkError": "Ошибка сети. Попробуйте снова.",
     "copied": "Скопировано!",
-    "copyFailed": "Не удалось скопировать. Выделите текст вручную."
+    "copyFailed": "Не удалось скопировать. Выделите текст вручную.",
+    "grammarPlaceholder": "Введите или вставьте предложение на английском...",
+    "grammarTryThis": "Попробуйте:",
+    "grammarExample1": "Исправь моё деловое письмо",
+    "grammarExample2": "Объясни present perfect",
+    "grammarExample3": "Улучши это предложение",
+    "presentationPlaceholder": "Напишите здесь свою профессиональную презентацию...",
+    "emailSubjectPlaceholder": "Re: ...",
+    "emailReplyPlaceholder": "Напишите здесь свой профессиональный ответ на email..."
   },
   "common": {
     "language": "Язык",
