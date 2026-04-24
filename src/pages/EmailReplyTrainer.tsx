@@ -756,6 +756,7 @@ const EmailReplyTrainer: React.FC = () => {
                     <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed bg-primary/5 rounded-lg p-4">
                       {modelAnswer}
                     </div>
+                    <SupportActions text={modelAnswer} />
                   </CardContent>
                 </Card>
               )}
@@ -779,6 +780,7 @@ const EmailReplyTrainer: React.FC = () => {
                     <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed bg-primary/5 rounded-lg p-4">
                       {improvedReply}
                     </div>
+                    <SupportActions text={improvedReply} />
                   </CardContent>
                 </Card>
               )}

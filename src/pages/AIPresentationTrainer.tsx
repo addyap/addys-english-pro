@@ -416,6 +416,7 @@ const AIPresentationTrainer: React.FC = () => {
                 <CardContent className="p-5 space-y-3">
                   <h2 className="font-bold text-lg text-foreground flex items-center gap-2"><Eye className="w-5 h-5" /> Model Presentation</h2>
                   <div className="bg-muted/50 rounded-lg p-4 text-sm whitespace-pre-line leading-relaxed">{modelPresentation}</div>
+                  <SupportActions text={modelPresentation} />
                 </CardContent>
               </Card>
             )}
@@ -426,6 +427,7 @@ const AIPresentationTrainer: React.FC = () => {
                 <CardContent className="p-5 space-y-3">
                   <h2 className="font-bold text-lg text-foreground flex items-center gap-2"><Wand2 className="w-5 h-5" /> Improved Version of Your Presentation</h2>
                   <div className="bg-muted/50 rounded-lg p-4 text-sm whitespace-pre-line leading-relaxed">{improvedPresentation}</div>
+                  <SupportActions text={improvedPresentation} />
                 </CardContent>
               </Card>
             )}
