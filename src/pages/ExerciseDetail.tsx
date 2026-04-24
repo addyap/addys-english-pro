@@ -264,8 +264,8 @@ const ExerciseDetail = () => {
 
             {/* Conversion bridge to AI tools / contact */}
             <ExerciseConversionCTA
-              aiToolPath="/grammar-explainer"
-              aiToolLabel="Try the AI Grammar Trainer"
+              aiToolPath={aiTrainer.path}
+              aiToolLabel={aiTrainer.label}
             />
           </div>
         </section>
