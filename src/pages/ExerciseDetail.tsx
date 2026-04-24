@@ -54,6 +54,19 @@ const ExerciseDetail = () => {
     window.scrollTo(0, 0);
   }, [exerciseId]);
 
+  // Build the related-exercises pool from the same data source.
+  // Declared before any early return so hook order stays stable.
+  const relatedPool: RelatedExerciseItem[] = useMemo(
+    () =>
+      exercisesData.map((ex) => ({
+        id: ex.id,
+        title: ex.title,
+        description: ex.description,
+        path: `/exercices/${ex.id}`,
+      })),
+    []
+  );
+
   if (!exercise) {
     return (
       <div className="min-h-screen bg-background py-16">
@@ -81,26 +94,12 @@ const ExerciseDetail = () => {
   };
 
   // Build SEO/H1 title with structured, keyword-rich format.
-  // Base Exercise type has no explicit category/level, so we use the
-  // generic "English Exercise" label and the exercise title as the topic.
   const seoTitleParts = {
     categoryLabel: 'English Exercise',
     topic: exercise.title,
   };
   const h1Title = buildExerciseTitle(seoTitleParts);
   const metaTitle = buildExerciseMetaTitle(seoTitleParts);
-
-  // Build the related-exercises pool from the same data source.
-  const relatedPool: RelatedExerciseItem[] = useMemo(
-    () =>
-      exercisesData.map((ex) => ({
-        id: ex.id,
-        title: ex.title,
-        description: ex.description,
-        path: `/exercices/${ex.id}`,
-      })),
-    []
-  );
 
   return (
     <>
