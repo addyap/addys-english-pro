@@ -56,5 +56,10 @@
     "save": "Salva",
     "cancel": "Annulla",
     "close": "Chiudi"
+  },
+  "onboarding": {
+    "title": "Scegli le tue lingue",
+    "subtitle": "Seleziona la lingua dell'interfaccia e quella del feedback dell'IA. Puoi modificarle in qualsiasi momento.",
+    "continue": "Continua"
   }
 }

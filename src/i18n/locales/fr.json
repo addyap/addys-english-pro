@@ -56,5 +56,10 @@
     "save": "Enregistrer",
     "cancel": "Annuler",
     "close": "Fermer"
+  },
+  "onboarding": {
+    "title": "Choisissez vos langues",
+    "subtitle": "Sélectionnez la langue de l'interface et celle des retours de l'IA. Vous pouvez les modifier à tout moment.",
+    "continue": "Continuer"
   }
 }
