@@ -56,5 +56,10 @@
     "save": "Save",
     "cancel": "Cancel",
     "close": "Close"
+  },
+  "onboarding": {
+    "title": "Choose your languages",
+    "subtitle": "Pick your interface language and your AI feedback language. You can change these anytime.",
+    "continue": "Continue"
   }
 }

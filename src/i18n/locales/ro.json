@@ -56,5 +56,10 @@
     "save": "Salvează",
     "cancel": "Anulează",
     "close": "Închide"
+  },
+  "onboarding": {
+    "title": "Alege limbile tale",
+    "subtitle": "Selectează limba interfeței și limba feedbackului AI. Le poți schimba oricând.",
+    "continue": "Continuă"
   }
 }
