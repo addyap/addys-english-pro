@@ -204,16 +204,16 @@ function handleWarm(supabase: any, slugs: string[]) {
   return processSlug(0);
 }
 
-function handlePurge(supabase, slugs) {
-  var deleted = [];
-  var failed = [];
-  var promises = [];
+function handlePurge(supabase: any, slugs: string[]) {
+  var deleted: string[] = [];
+  var failed: any[] = [];
+  var promises: Promise<any>[] = [];
 
   for (var i = 0; i < slugs.length; i++) {
-    (function(slug) {
+    (function(slug: string) {
       var filePath = slug + ".mp3";
 
-      var p = supabase.storage.from(BUCKET).remove([filePath]).then(function(result) {
+      var p = supabase.storage.from(BUCKET).remove([filePath]).then(function(result: any) {
         if (result.error) {
           failed.push({ slug: slug, error: result.error.message });
         } else {
