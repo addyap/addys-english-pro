@@ -223,6 +223,7 @@ export const AppProviders = ({
         <TooltipProvider>
           <A11yProvider>
             <LanguageProvider>
+              <LanguageOnboardingModal />
               <Analytics />
               <Toaster />
               <Sonner />
