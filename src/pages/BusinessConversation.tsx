@@ -233,6 +233,7 @@ function hasExamClosingSentence(msgs: Msg[]): boolean {
 }
 
 const BusinessConversation: React.FC = () => {
+  const { t: tr } = useTranslation();
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("conversation");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const [scenario, setScenario] = useState<string | null>(null);

@@ -60,6 +60,7 @@ const WRITING_TYPES = [
 const FUNC_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/writing-coach`;
 
 const AIWritingCoach = () => {
+  const { t: tr } = useTranslation();
   const [text, setText] = useState("");
   const [writingType, setWritingType] = useState("email");
   const [feedback, setFeedback] = useState<Feedback | null>(null);

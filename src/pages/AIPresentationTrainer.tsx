@@ -114,6 +114,7 @@ const FUNC_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/presentation
 
 // ── Main Component ────────────────────────────────────
 const AIPresentationTrainer: React.FC = () => {
+  const { t: tr } = useTranslation();
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("presentation");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const [step, setStep] = useState<"select" | "write" | "feedback">("select");
