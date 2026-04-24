@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Acasă",
+    "about": "Despre mine",
+    "training": "Programe de formare",
+    "testimonials": "Mărturii",
+    "contact": "Contact",
+    "blog": "Blog",
+    "resources": "Resurse gratuite",
+    "openMenu": "Deschide meniul",
+    "closeMenu": "Închide meniul"
+  },
+  "footer": {
+    "tagline": "Formator certificat de engleză profesională (FPA). Peste 20 de ani de experiență în formarea adulților, companiilor și instituțiilor.",
+    "navigation": "Navigare",
+    "resources": "Resurse gratuite",
+    "exercises": "Exerciții de engleză",
+    "listening": "Ascultare și înțelegere",
+    "reading": "Lectură",
+    "writing": "Exerciții de scriere",
+    "stories": "Povești interactive",
+    "dashboard": "Tabloul meu",
+    "contact": "Contact",
+    "location": "Alpes-Maritimes, Franța",
+    "legal": "Informații legale",
+    "legalNotices": "Mențiuni legale",
+    "privacy": "Politică de confidențialitate",
+    "sitemap": "Harta site-ului",
+    "rights": "Toate drepturile rezervate. Formator certificat pentru adulți.",
+    "hostedBy": "Site găzduit de"
+  },
+  "settings": {
+    "title": "Setări de limbă",
+    "interfaceLanguage": "Limba interfeței",
+    "feedbackLanguage": "Limba feedbackului AI",
+    "interfaceHelp": "Controlează meniurile, butoanele și formularele.",
+    "feedbackHelp": "Controlează limba corecțiilor și explicațiilor AI. Conversația cu AI rămâne în engleză."
+  },
+  "ai": {
+    "translateAnswer": "Tradu acest răspuns",
+    "explainInMyLanguage": "Explică în limba mea",
+    "showVocab": "Arată vocabularul cheie",
+    "feedbackLanguageNote": "Feedbackul va fi afișat în {{lang}}."
+  },
+  "common": {
+    "language": "Limbă",
+    "save": "Salvează",
+    "cancel": "Anulează",
+    "close": "Închide"
+  }
+}

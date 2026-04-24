@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Chi sono",
+    "training": "Programmi di formazione",
+    "testimonials": "Testimonianze",
+    "contact": "Contatti",
+    "blog": "Blog",
+    "resources": "Risorse gratuite",
+    "openMenu": "Apri il menu",
+    "closeMenu": "Chiudi il menu"
+  },
+  "footer": {
+    "tagline": "Formatore di inglese professionale certificato (FPA). Oltre 20 anni di esperienza nella formazione di adulti, aziende e istituzioni.",
+    "navigation": "Navigazione",
+    "resources": "Risorse gratuite",
+    "exercises": "Esercizi di inglese",
+    "listening": "Ascolto e comprensione",
+    "reading": "Lettura",
+    "writing": "Esercizi di scrittura",
+    "stories": "Storie interattive",
+    "dashboard": "La mia dashboard",
+    "contact": "Contatti",
+    "location": "Alpi Marittime, Francia",
+    "legal": "Informazioni legali",
+    "legalNotices": "Note legali",
+    "privacy": "Informativa sulla privacy",
+    "sitemap": "Mappa del sito",
+    "rights": "Tutti i diritti riservati. Formatore certificato per adulti.",
+    "hostedBy": "Sito ospitato da"
+  },
+  "settings": {
+    "title": "Impostazioni lingua",
+    "interfaceLanguage": "Lingua dell'interfaccia",
+    "feedbackLanguage": "Lingua del feedback AI",
+    "interfaceHelp": "Controlla menu, pulsanti e moduli.",
+    "feedbackHelp": "Controlla la lingua delle correzioni e spiegazioni dell'AI. La conversazione con l'AI resta in inglese."
+  },
+  "ai": {
+    "translateAnswer": "Traduci questa risposta",
+    "explainInMyLanguage": "Spiega nella mia lingua",
+    "showVocab": "Mostra il vocabolario chiave",
+    "feedbackLanguageNote": "Il feedback verrà mostrato in {{lang}}."
+  },
+  "common": {
+    "language": "Lingua",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "close": "Chiudi"
+  }
+}
