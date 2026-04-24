@@ -106,7 +106,7 @@ const RelatedExercises: React.FC<RelatedExercisesProps> = ({
                   trackEvent("related_exercise_click", {
                     exercise_id: ex.id,
                     target: ex.path,
-                    category: ex.category,
+                    exercise_category: ex.category,
                     level: ex.level,
                   })
                 }
