@@ -93,7 +93,10 @@ const AIWritingCoach = () => {
       if (elapsed < 1500) {
         await new Promise((r) => setTimeout(r, 1500 - elapsed));
       }
-      if (data?.feedback) setFeedback(data.feedback);
+      if (data?.feedback) {
+        setFeedback(data.feedback);
+        addHistoryItem(text.trim(), data.feedback.improvedVersion || "");
+      }
     } catch {
       toast.error(t("error.feedback", uiLang));
     } finally {
@@ -105,6 +108,42 @@ const AIWritingCoach = () => {
     setText("");
     setFeedback(null);
     setShowImproved(false);
+  };
+
+  const tryAgain = () => {
+    setFeedback(null);
+    setShowImproved(false);
+    setTimeout(() => {
+      inputRef.current?.focus();
+      inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 50);
+  };
+
+  const restoreFromHistory = (item: SessionHistoryItem) => {
+    setText(item.input);
+    setFeedback(null);
+    setShowImproved(false);
+    setTimeout(() => {
+      inputRef.current?.focus();
+      inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 50);
+  };
+
+  const copyImproved = async () => {
+    const improved = feedback?.improvedVersion?.trim();
+    if (!improved) return;
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(improved);
+      } else {
+        throw new Error("no clipboard");
+      }
+      setCopied(true);
+      toast.success("Copied!");
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      toast.error("Unable to copy, please select text manually");
+    }
   };
 
   return (
