@@ -34,8 +34,6 @@ export function SupportActions({ text, context, className = "" }: SupportActions
 
   const isRTL = getLangMeta(feedbackLang).dir === "rtl";
 
-  if (!text || !text.trim()) return null;
-
   const run = useCallback(async (action: Action) => {
     setLoading(action);
     setError(null);
@@ -63,6 +61,8 @@ export function SupportActions({ text, context, className = "" }: SupportActions
       setLoading(null);
     }
   }, [text, context, feedbackLang]);
+
+  if (!text || !text.trim()) return null;
 
   const dirAttr = isRTL ? { dir: "rtl" as const } : {};
   const textAlignClass = isRTL ? "text-right" : "text-left";
