@@ -52,7 +52,17 @@
     "supportActionsGroup": "Multilingual support actions",
     "grammarEnterSentence": "Please enter an English sentence.",
     "dailyLimitReached": "Daily limit reached (10 sessions / 24h).",
-    "grammarAnalyzeError": "Analysis failed. Please try again."
+    "grammarAnalyzeError": "Analysis failed. Please try again.",
+    "dailyLimitReachedHours": "Daily limit reached ({{count}} sessions per 24h). Please come back tomorrow!",
+    "failedStartConversation": "Failed to start conversation.",
+    "failedStartNegotiation": "Failed to start negotiation.",
+    "failedSendMessage": "Failed to send message.",
+    "failedFeedback": "Could not generate feedback. Please try again.",
+    "failedModelPresentation": "Failed to generate model presentation.",
+    "failedImprovePresentation": "Failed to improve presentation.",
+    "networkError": "Network error. Please try again.",
+    "copied": "Copied!",
+    "copyFailed": "Unable to copy. Please select the text manually."
   },
   "common": {
     "language": "Language",

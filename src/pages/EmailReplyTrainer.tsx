@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import SupportActions from "@/components/ai-trainer/SupportActions";
@@ -279,6 +280,7 @@ const FN_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/email-reply-tr
 type Step = "select" | "write" | "feedback";
 
 const EmailReplyTrainer: React.FC = () => {
+  const { t: tr } = useTranslation();
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("email");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const [step, setStep] = useState<Step>("select");
@@ -356,7 +358,7 @@ const EmailReplyTrainer: React.FC = () => {
   const submitForFeedback = async () => {
     if (!scenario) return;
     if (limitReached) {
-      toast.error(`Daily limit reached (${DAILY_LIMIT} sessions per 24h). Please come back tomorrow!`);
+      toast.error(tr("ai.dailyLimitReachedHours", { count: DAILY_LIMIT }));
       return;
     }
     recordSession();

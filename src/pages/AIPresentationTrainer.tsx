@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Send, Sparkles, RotateCcw, Eye, Wand2, CheckCircle, Presentation, Briefcase, TrendingUp, User, Crown, CalendarDays } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -113,6 +114,7 @@ const FUNC_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/presentation
 
 // ── Main Component ────────────────────────────────────
 const AIPresentationTrainer: React.FC = () => {
+  const { t: tr } = useTranslation();
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("presentation");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const [step, setStep] = useState<"select" | "write" | "feedback">("select");
@@ -170,7 +172,7 @@ const AIPresentationTrainer: React.FC = () => {
   const submitForFeedback = async () => {
     if (!scenario || loading) return;
     if (limitReached) {
-      toast.error(`Daily limit reached (${DAILY_LIMIT} sessions per 24h). Please come back tomorrow!`);
+      toast.error(tr("ai.dailyLimitReachedHours", { count: DAILY_LIMIT }));
       return;
     }
     recordSession();
@@ -192,7 +194,7 @@ const AIPresentationTrainer: React.FC = () => {
       });
       if (!resp.ok) {
         const err = await resp.json().catch(() => ({}));
-        toast.error((err as any).error || "Failed to get feedback. Please try again.");
+        toast.error((err as any).error || tr("ai.failedFeedback"));
         return;
       }
       const data = await resp.json();
@@ -200,7 +202,7 @@ const AIPresentationTrainer: React.FC = () => {
       setStep("feedback");
       saveSession(data.feedback);
     } catch (e) {
-      toast.error("Network error. Please try again.");
+      toast.error(tr("ai.networkError"));
     } finally {
       setLoading(false);
     }
@@ -215,10 +217,10 @@ const AIPresentationTrainer: React.FC = () => {
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}` },
         body: JSON.stringify({ action: "model-presentation", brief: scenario.brief, scenarioLabel: scenario.label, feedbackLanguage: feedbackLang }),
       });
-      if (!resp.ok) { toast.error("Failed to generate model presentation."); return; }
+      if (!resp.ok) { toast.error(tr("ai.failedModelPresentation")); return; }
       const data = await resp.json();
       setModelPresentation(data.modelPresentation || "");
-    } catch { toast.error("Network error."); } finally { setLoadingModel(false); }
+    } catch { toast.error(tr("ai.networkError")); } finally { setLoadingModel(false); }
   };
 
   const fetchImprovedPresentation = async () => {
@@ -230,10 +232,10 @@ const AIPresentationTrainer: React.FC = () => {
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}` },
         body: JSON.stringify({ action: "improve-presentation", brief: scenario.brief, presentationText, scenarioLabel: scenario.label, feedbackLanguage: feedbackLang }),
       });
-      if (!resp.ok) { toast.error("Failed to improve presentation."); return; }
+      if (!resp.ok) { toast.error(tr("ai.failedImprovePresentation")); return; }
       const data = await resp.json();
       setImprovedPresentation(data.improvedPresentation || "");
-    } catch { toast.error("Network error."); } finally { setLoadingImprove(false); }
+    } catch { toast.error(tr("ai.networkError")); } finally { setLoadingImprove(false); }
   };
 
   const retryPresentation = () => {

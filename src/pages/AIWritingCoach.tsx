@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
@@ -59,6 +60,7 @@ const WRITING_TYPES = [
 const FUNC_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/writing-coach`;
 
 const AIWritingCoach = () => {
+  const { t: tr } = useTranslation();
   const [text, setText] = useState("");
   const [writingType, setWritingType] = useState("email");
   const [feedback, setFeedback] = useState<Feedback | null>(null);
@@ -155,11 +157,11 @@ const AIWritingCoach = () => {
         throw new Error("no clipboard");
       }
       setCopied(true);
-      toast.success("Copied!");
+      toast.success(tr("ai.copied"));
       trackEvent("ai_copy_click", { tool: "writing", page: "writing-coach" });
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      toast.error("Unable to copy, please select text manually");
+      toast.error(tr("ai.copyFailed"));
     }
   };
 

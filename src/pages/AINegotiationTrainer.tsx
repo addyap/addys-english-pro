@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -169,6 +170,7 @@ function countRealUserTurns(msgs: Msg[]): number {
 }
 
 const AINegotiationTrainer: React.FC = () => {
+  const { t: tr } = useTranslation();
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("negotiation");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const [scenario, setScenario] = useState<string | null>(null);
@@ -204,7 +206,7 @@ const AINegotiationTrainer: React.FC = () => {
 
   const selectMode = (m: Mode) => {
     if (limitReached) {
-      toast.error(`Daily limit reached (${DAILY_LIMIT} sessions per 24h). Please come back tomorrow!`);
+      toast.error(tr("ai.dailyLimitReachedHours", { count: DAILY_LIMIT }));
       return;
     }
     setMode(m);
@@ -277,7 +279,7 @@ const AINegotiationTrainer: React.FC = () => {
         }
       }
     } catch (e: any) {
-      toast.error(e.message || "Failed to start negotiation");
+      toast.error(e.message || tr("ai.failedStartNegotiation"));
     } finally {
       setIsLoading(false);
       inputRef.current?.focus();
@@ -343,7 +345,7 @@ const AINegotiationTrainer: React.FC = () => {
         }
       }
     } catch (e: any) {
-      toast.error(e.message || "Failed to send message");
+      toast.error(e.message || tr("ai.failedSendMessage"));
     } finally {
       setIsLoading(false);
       inputRef.current?.focus();
@@ -397,7 +399,7 @@ const AINegotiationTrainer: React.FC = () => {
       }
     } catch (e: any) {
       setFeedbackError(true);
-      toast.error(e.message || "Could not generate feedback. Please try again.");
+      toast.error(e.message || tr("ai.failedFeedback"));
     } finally {
       setIsFeedbackLoading(false);
     }
