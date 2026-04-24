@@ -40,6 +40,13 @@ export function LanguageOnboardingModal() {
     }
   }, [interfaceLang, feedbackLang]);
 
+  // Live preview: applying interface language immediately updates i18n + dir via LanguageContext.
+  // We intentionally do NOT preview the feedback language (it never affects layout direction).
+  const handleInterfaceChange = (v: SupportedLangCode) => {
+    setUiChoice(v);
+    setInterfaceLang(v);
+  };
+
   const handleContinue = () => {
     setInterfaceLang(uiChoice); // applies i18n + RTL via LanguageContext effect
     setFeedbackLang(fbChoice);
