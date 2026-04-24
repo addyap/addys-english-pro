@@ -80,13 +80,35 @@ const ExerciseDetail = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Build SEO/H1 title with structured, keyword-rich format.
+  // Base Exercise type has no explicit category/level, so we use the
+  // generic "English Exercise" label and the exercise title as the topic.
+  const seoTitleParts = {
+    categoryLabel: 'English Exercise',
+    topic: exercise.title,
+  };
+  const h1Title = buildExerciseTitle(seoTitleParts);
+  const metaTitle = buildExerciseMetaTitle(seoTitleParts);
+
+  // Build the related-exercises pool from the same data source.
+  const relatedPool: RelatedExerciseItem[] = useMemo(
+    () =>
+      exercisesData.map((ex) => ({
+        id: ex.id,
+        title: ex.title,
+        description: ex.description,
+        path: `/exercices/${ex.id}`,
+      })),
+    []
+  );
+
   return (
     <>
-      <SEOHead 
-        title={`${exercise.title} - Exercices d'anglais`}
+      <SEOHead
+        title={metaTitle}
         description={exercise.description}
         canonicalPath={`/exercices/${exerciseId}`}
-        keywords={["Exercice d'anglais", exercise.title, "Grammaire anglaise", "Antony Addy"]}
+        keywords={["English exercise", exercise.title, "Grammaire anglaise", "Antony Addy"]}
       />
 
       <div className="min-h-screen bg-background">
