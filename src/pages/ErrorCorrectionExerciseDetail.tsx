@@ -26,14 +26,7 @@ const ErrorCorrectionExerciseDetail: React.FC = () => {
   }, [id]);
 
   if (!exercise) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <p className="text-center text-muted-foreground">Exercise not found.</p>
-        <Link to="/exercices" className="text-primary hover:underline block text-center mt-4">
-          Return to exercises
-        </Link>
-      </div>
-    );
+    return <ExerciseNotAvailable />;
   }
 
   const currentIndex = errorCorrectionExercises.findIndex(ex => ex.id === exercise.id);

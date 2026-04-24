@@ -27,16 +27,7 @@ const IdiomExerciseDetail = () => {
   }, [id]);
 
   if (!exercise) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-foreground mb-4">Exercice non trouvé</h1>
-          <Link to="/exercices?tab=idioms" className="text-primary hover:underline">
-            Retour aux exercices
-          </Link>
-        </div>
-      </div>
-    );
+    return <ExerciseNotAvailable />;
   }
 
   const handleAnswer = (questionId: number, answer: string) => {

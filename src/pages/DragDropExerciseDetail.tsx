@@ -13,16 +13,7 @@ export default function DragDropExerciseDetail() {
   const exercise = dragDropExercises.find(e => e.id === exerciseId);
 
   if (!exercise) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Exercice non trouvé</h1>
-          <Button asChild>
-            <Link to="/exercices">Retour aux exercices</Link>
-          </Button>
-        </div>
-      </div>
-    );
+    return <ExerciseNotAvailable />;
   }
 
   return (
