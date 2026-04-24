@@ -339,14 +339,6 @@ const AIGrammarExplainer = () => {
               </div>
             </div>
           )}
-
-          {!result && (
-            <RecentPractice
-              items={history}
-              onRestore={restoreFromHistory}
-              onClear={clearHistory}
-            />
-          )}
         </div>
 
         {/* Mobile floating analyse button */}
