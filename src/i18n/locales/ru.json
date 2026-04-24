@@ -52,7 +52,17 @@
     "supportActionsGroup": "Многоязычные действия поддержки",
     "grammarEnterSentence": "Введите предложение на английском.",
     "dailyLimitReached": "Дневной лимит исчерпан (10 сессий / 24 ч).",
-    "grammarAnalyzeError": "Анализ не удался. Попробуйте снова."
+    "grammarAnalyzeError": "Анализ не удался. Попробуйте снова.",
+    "dailyLimitReachedHours": "Дневной лимит исчерпан ({{count}} сессий / 24 ч). Возвращайтесь завтра!",
+    "failedStartConversation": "Не удалось начать разговор.",
+    "failedStartNegotiation": "Не удалось начать переговоры.",
+    "failedSendMessage": "Не удалось отправить сообщение.",
+    "failedFeedback": "Не удалось сгенерировать обратную связь. Попробуйте снова.",
+    "failedModelPresentation": "Не удалось сгенерировать образец презентации.",
+    "failedImprovePresentation": "Не удалось улучшить презентацию.",
+    "networkError": "Ошибка сети. Попробуйте снова.",
+    "copied": "Скопировано!",
+    "copyFailed": "Не удалось скопировать. Выделите текст вручную."
   },
   "common": {
     "language": "Язык",

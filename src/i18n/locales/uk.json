@@ -52,7 +52,17 @@
     "supportActionsGroup": "Багатомовні дії підтримки",
     "grammarEnterSentence": "Введіть речення англійською.",
     "dailyLimitReached": "Денний ліміт вичерпано (10 сесій / 24 год).",
-    "grammarAnalyzeError": "Аналіз не вдався. Спробуйте ще раз."
+    "grammarAnalyzeError": "Аналіз не вдався. Спробуйте ще раз.",
+    "dailyLimitReachedHours": "Денний ліміт вичерпано ({{count}} сесій / 24 год). Поверніться завтра!",
+    "failedStartConversation": "Не вдалося розпочати розмову.",
+    "failedStartNegotiation": "Не вдалося розпочати переговори.",
+    "failedSendMessage": "Не вдалося надіслати повідомлення.",
+    "failedFeedback": "Не вдалося згенерувати відгук. Спробуйте ще раз.",
+    "failedModelPresentation": "Не вдалося згенерувати зразок презентації.",
+    "failedImprovePresentation": "Не вдалося покращити презентацію.",
+    "networkError": "Помилка мережі. Спробуйте ще раз.",
+    "copied": "Скопійовано!",
+    "copyFailed": "Не вдалося скопіювати. Виділіть текст вручну."
   },
   "common": {
     "language": "Мова",

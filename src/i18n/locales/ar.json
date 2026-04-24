@@ -52,7 +52,17 @@
     "supportActionsGroup": "إجراءات الدعم متعدد اللغات",
     "grammarEnterSentence": "يرجى إدخال جملة باللغة الإنجليزية.",
     "dailyLimitReached": "تم الوصول إلى الحد اليومي (10 جلسات / 24 ساعة).",
-    "grammarAnalyzeError": "فشل التحليل. حاول مرة أخرى."
+    "grammarAnalyzeError": "فشل التحليل. حاول مرة أخرى.",
+    "dailyLimitReachedHours": "تم الوصول إلى الحد اليومي ({{count}} جلسات / 24 ساعة). يرجى العودة غداً!",
+    "failedStartConversation": "فشل بدء المحادثة.",
+    "failedStartNegotiation": "فشل بدء التفاوض.",
+    "failedSendMessage": "فشل إرسال الرسالة.",
+    "failedFeedback": "تعذر إنشاء التعليقات. يرجى المحاولة مرة أخرى.",
+    "failedModelPresentation": "فشل إنشاء العرض النموذجي.",
+    "failedImprovePresentation": "فشل تحسين العرض.",
+    "networkError": "خطأ في الشبكة. يرجى المحاولة مرة أخرى.",
+    "copied": "تم النسخ!",
+    "copyFailed": "تعذر النسخ. يرجى تحديد النص يدوياً."
   },
   "common": {
     "language": "اللغة",

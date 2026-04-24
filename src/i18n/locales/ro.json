@@ -52,7 +52,17 @@
     "supportActionsGroup": "Acțiuni de asistență multilingvă",
     "grammarEnterSentence": "Introdu o propoziție în engleză.",
     "dailyLimitReached": "Limită zilnică atinsă (10 sesiuni / 24h).",
-    "grammarAnalyzeError": "Analiza a eșuat. Încearcă din nou."
+    "grammarAnalyzeError": "Analiza a eșuat. Încearcă din nou.",
+    "dailyLimitReachedHours": "Limită zilnică atinsă ({{count}} sesiuni / 24h). Revino mâine!",
+    "failedStartConversation": "Nu s-a putut începe conversația.",
+    "failedStartNegotiation": "Nu s-a putut începe negocierea.",
+    "failedSendMessage": "Nu s-a putut trimite mesajul.",
+    "failedFeedback": "Nu s-a putut genera feedbackul. Încearcă din nou.",
+    "failedModelPresentation": "Nu s-a putut genera prezentarea model.",
+    "failedImprovePresentation": "Nu s-a putut îmbunătăți prezentarea.",
+    "networkError": "Eroare de rețea. Încearcă din nou.",
+    "copied": "Copiat!",
+    "copyFailed": "Nu se poate copia. Selectează textul manual."
   },
   "common": {
     "language": "Limbă",
