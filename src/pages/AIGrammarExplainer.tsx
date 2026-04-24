@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import SEOHead from "@/components/SEOHead";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import type { GrammarExplainerResult } from "@/types/ai-trainers";
-import { Search, RotateCcw, Loader2, BookOpen, Lightbulb, ArrowRight, Copy, Check, RefreshCw } from "lucide-react";
+import { Search, RotateCcw, Loader2, BookOpen, Lightbulb, ArrowRight, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
@@ -14,6 +14,9 @@ import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 import AIToolLoadingSkeleton from "@/components/ai-trainer/AIToolLoadingSkeleton";
 import { useSessionHistory, type SessionHistoryItem } from "@/hooks/useSessionHistory";
 import RecentPractice from "@/components/ai-trainer/RecentPractice";
+import UsageCounterBadge from "@/components/ai-trainer/UsageCounterBadge";
+import ResultUtilityBar from "@/components/ai-trainer/ResultUtilityBar";
+import { incrementUsageCounter, saveSession } from "@/lib/session-memory";
 import { trackEvent } from "@/lib/analytics";
 
 const EXAMPLE_SENTENCES = [
@@ -28,7 +31,7 @@ const AIGrammarExplainer = () => {
   const [sentence, setSentence] = useState("");
   const [result, setResult] = useState<GrammarExplainerResult | null>(null);
   const [loading, setLoading] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [usageTick, setUsageTick] = useState(0);
   const { remaining, limitReached, recordSession } = useAIDailyLimit("grammar-explainer");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const { items: history, addItem: addHistoryItem, clear: clearHistory } = useSessionHistory("grammar-explainer");
@@ -64,6 +67,9 @@ const AIGrammarExplainer = () => {
         (data?.result?.tips?.[0] as string) ||
         s;
       addHistoryItem(s, summary);
+      saveSession("grammar-explainer", s, summary.slice(0, 240));
+      incrementUsageCounter();
+      setUsageTick((n) => n + 1);
     } catch {
       toast.error("Erreur lors de l'analyse.");
     } finally {
@@ -77,47 +83,24 @@ const AIGrammarExplainer = () => {
   };
 
   const tryAgain = () => {
+    trackEvent("ai_retry_click", { tool: "grammar", page: "grammar-explainer" });
     setResult(null);
     setTimeout(() => {
       inputRef.current?.focus();
       inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      inputRef.current?.classList.add("ring-2", "ring-primary");
+      setTimeout(() => inputRef.current?.classList.remove("ring-2", "ring-primary"), 1200);
     }, 50);
   };
 
   const restoreFromHistory = (item: SessionHistoryItem) => {
+    trackEvent("ai_session_resume", { tool: "grammar", page: "grammar-explainer" });
     setSentence(item.input);
     setResult(null);
     setTimeout(() => {
       inputRef.current?.focus();
       inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
     }, 50);
-  };
-
-  const copySummary = async () => {
-    if (!result) return;
-    const text = [
-      `Sentence: ${sentence}`,
-      `Level: ${result.level}`,
-      "",
-      "Rules:",
-      ...result.rules.map((r) => `• ${r.name} — ${r.explanation}`),
-      "",
-      "Tips:",
-      ...result.tips.map((t) => `• ${t}`),
-    ].join("\n");
-    try {
-      if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(text);
-      } else {
-        throw new Error("no clipboard");
-      }
-      setCopied(true);
-      toast.success("Copied!");
-      trackEvent("ai_copy_click", { tool: "grammar", page: "grammar-explainer" });
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      toast.error("Unable to copy, please select text manually");
-    }
   };
 
   const POS_COLORS: Record<string, string> = {
@@ -156,6 +139,17 @@ const AIGrammarExplainer = () => {
               Collez une phrase en anglais et obtenez une analyse grammaticale complète — nature des mots, règles, et conseils pratiques.
             </p>
           </div>
+
+          {!result && (
+            <>
+              <UsageCounterBadge refreshKey={usageTick} />
+              <RecentPractice
+                items={history}
+                onRestore={restoreFromHistory}
+                onClear={clearHistory}
+              />
+            </>
+          )}
 
           {/* Input */}
           <Card>
@@ -208,9 +202,9 @@ const AIGrammarExplainer = () => {
             <AIToolLoadingSkeleton
               headline="Analyzing your English..."
               steps={[
-                "Reading the sentence...",
-                "Analyzing grammar...",
-                "Preparing explanation...",
+                "Checking grammar...",
+                "Improving tone...",
+                "Making it natural...",
               ]}
             />
           )}
@@ -290,30 +284,32 @@ const AIGrammarExplainer = () => {
                 </CardContent>
               </Card>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <Button onClick={copySummary} variant="outline" className="w-full">
-                  {copied ? (
-                    <><Check className="w-4 h-4 mr-2" /> Copied!</>
-                  ) : (
-                    <><Copy className="w-4 h-4 mr-2" /> Copy explanation</>
-                  )}
-                </Button>
+              <ResultUtilityBar
+                text={[
+                  `Sentence: ${sentence}`,
+                  `Level: ${result.level}`,
+                  "",
+                  "Rules:",
+                  ...result.rules.map((r) => `• ${r.name} — ${r.explanation}`),
+                  "",
+                  "Tips:",
+                  ...result.tips.map((tip) => `• ${tip}`),
+                ].join("\n")}
+                tool="grammar"
+                page="grammar-explainer"
+                fileName="ai-grammar-explanation"
+                copyLabel="Copy Explanation"
+              />
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <Button onClick={tryAgain} variant="outline" className="w-full">
-                  <RefreshCw className="w-4 h-4 mr-2" /> Try again
+                  <RefreshCw className="w-4 h-4 mr-2" /> Try again with this feedback
                 </Button>
                 <Button onClick={reset} className="w-full">
                   <RotateCcw className="w-4 h-4 mr-2" /> Nouvelle phrase
                 </Button>
               </div>
             </div>
-          )}
-
-          {!result && (
-            <RecentPractice
-              items={history}
-              onRestore={restoreFromHistory}
-              onClear={clearHistory}
-            />
           )}
         </div>
 

@@ -80,7 +80,7 @@ const ExerciseDetail = () => {
               <Link to="/ressources-gratuites">Ressources gratuites</Link>
             </Button>
             <Button asChild variant="outline">
-              <Link to="/conversation-trainer">Try the AI Trainer</Link>
+              <Link to="/conversation-trainer">Continue your English practice →</Link>
             </Button>
             <Button asChild variant="ghost">
               <Link to="/contact">Contact Antony</Link>
@@ -124,7 +124,7 @@ const ExerciseDetail = () => {
     if (hasAny(['grammar', 'tense', 'preposition', 'article', 'modal', 'conditional', 'passive', 'grammaire', 'temps', 'préposition', 'conditionnel'])) {
       return { path: '/grammar-explainer', label: 'Try the Grammar Explainer' };
     }
-    return { path: '/conversation-trainer', label: 'Try the AI Trainer' };
+    return { path: '/conversation-trainer', label: 'Continue your English practice →' };
   };
   const aiTrainer = pickAiTrainer(exercise.title, exercise.description);
 

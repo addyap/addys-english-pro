@@ -56,7 +56,7 @@ const SynonymAntonymExerciseDetail = () => {
             <Link to="/ressources-gratuites">Ressources gratuites</Link>
           </Button>
           <Button asChild variant="outline">
-            <Link to="/conversation-trainer">Try the AI Trainer</Link>
+            <Link to="/conversation-trainer">Continue your English practice →</Link>
           </Button>
           <Button asChild variant="ghost">
             <Link to="/contact">Contact Antony</Link>

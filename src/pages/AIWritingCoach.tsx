@@ -22,6 +22,9 @@ import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 import AIToolLoadingSkeleton from "@/components/ai-trainer/AIToolLoadingSkeleton";
 import { useSessionHistory, type SessionHistoryItem } from "@/hooks/useSessionHistory";
 import RecentPractice from "@/components/ai-trainer/RecentPractice";
+import UsageCounterBadge from "@/components/ai-trainer/UsageCounterBadge";
+import ResultUtilityBar from "@/components/ai-trainer/ResultUtilityBar";
+import { incrementUsageCounter, saveSession } from "@/lib/session-memory";
 import { trackEvent } from "@/lib/analytics";
 
 interface Feedback {
@@ -61,6 +64,7 @@ const AIWritingCoach = () => {
   const [loading, setLoading] = useState(false);
   const [showImproved, setShowImproved] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [usageTick, setUsageTick] = useState(0);
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("writing-coach");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const uiLang = feedbackLang as UILang;
@@ -98,6 +102,9 @@ const AIWritingCoach = () => {
       if (data?.feedback) {
         setFeedback(data.feedback);
         addHistoryItem(text.trim(), data.feedback.improvedVersion || "");
+        saveSession("writing-coach", text.trim(), (data.feedback.improvedVersion || "").slice(0, 240));
+        incrementUsageCounter();
+        setUsageTick((n) => n + 1);
         trackEvent("ai_result_received", { tool: "writing", page: "writing-coach" });
       }
     } catch {
@@ -114,15 +121,20 @@ const AIWritingCoach = () => {
   };
 
   const tryAgain = () => {
+    trackEvent("ai_retry_click", { tool: "writing", page: "writing-coach" });
     setFeedback(null);
     setShowImproved(false);
     setTimeout(() => {
       inputRef.current?.focus();
       inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      // brief highlight
+      inputRef.current?.classList.add("ring-2", "ring-primary");
+      setTimeout(() => inputRef.current?.classList.remove("ring-2", "ring-primary"), 1200);
     }, 50);
   };
 
   const restoreFromHistory = (item: SessionHistoryItem) => {
+    trackEvent("ai_session_resume", { tool: "writing", page: "writing-coach" });
     setText(item.input);
     setFeedback(null);
     setShowImproved(false);
@@ -176,6 +188,12 @@ const AIWritingCoach = () => {
 
           {!feedback ? (
             <>
+              <UsageCounterBadge refreshKey={usageTick} />
+              <RecentPractice
+                items={history}
+                onRestore={restoreFromHistory}
+                onClear={clearHistory}
+              />
               <Card>
                 <CardContent className="pt-6 space-y-4">
                   <div>
@@ -232,18 +250,12 @@ const AIWritingCoach = () => {
                 <AIToolLoadingSkeleton
                   headline="Analyzing your English..."
                   steps={[
-                    "Reading your text...",
-                    "Analyzing grammar & vocabulary...",
-                    "Preparing personalized feedback...",
+                    "Checking grammar...",
+                    "Improving tone...",
+                    "Making it natural...",
                   ]}
                 />
               )}
-
-              <RecentPractice
-                items={history}
-                onRestore={restoreFromHistory}
-                onClear={clearHistory}
-              />
             </>
           ) : (
             <div className="space-y-6">
@@ -305,20 +317,15 @@ const AIWritingCoach = () => {
                 <p className="text-sm">{feedback.overall}</p>
               </Card>
 
-              {/* Persistent copy CTA outside the collapsible too */}
-              {!showImproved && feedback.improvedVersion && (
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={copyImproved}
-                  className="w-full"
-                >
-                  {copied ? (
-                    <><Check className="w-4 h-4 mr-2" /> Copied!</>
-                  ) : (
-                    <><Copy className="w-4 h-4 mr-2" /> Copy improved version</>
-                  )}
-                </Button>
+              {/* Result utility bar (copy / download / share) */}
+              {feedback.improvedVersion && (
+                <ResultUtilityBar
+                  text={feedback.improvedVersion}
+                  tool="writing"
+                  page="writing-coach"
+                  fileName="ai-writing-improved"
+                  copyLabel="Copy Improved Text"
+                />
               )}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

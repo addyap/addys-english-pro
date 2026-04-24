@@ -39,11 +39,11 @@ export default function ExerciseNotAvailable() {
             <Button asChild variant="outline">
               <Link
                 to="/conversation-trainer"
-                onClick={() => handleClick("/conversation-trainer", "Try the AI Trainer")}
+                onClick={() => handleClick("/conversation-trainer", "Continue your English practice")}
                 className="gap-2"
               >
                 <Bot className="w-4 h-4" />
-                Try the AI Trainer
+                Continue your English practice →
               </Link>
             </Button>
             <Button asChild variant="outline">
