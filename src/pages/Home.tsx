@@ -345,6 +345,223 @@ const Home = () => {
         {/* Avis Clients Section - Testimonials right after trust signals */}
         <AvisClients />
 
+        {/* ──────────────────────────────────────────────────────────────
+            AI ENGLISH TRAINING — Positioning block (mobile-first)
+            Purpose: make the offer immediately clear in <5 seconds.
+            Sections: Promise → Who it's for → How it works → Benefits → Use cases → Trainer → CTA
+        ────────────────────────────────────────────────────────────── */}
+        <section
+          id="ai-english-training"
+          aria-labelledby="ai-training-positioning-heading"
+          className="py-16 sm:py-20 bg-background border-y border-border"
+        >
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            {/* Promise */}
+            <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider">
+                <Sparkles className="w-3 h-3" aria-hidden="true" /> AI English Training
+              </span>
+              <h2
+                id="ai-training-positioning-heading"
+                className="mt-4 text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground leading-tight"
+              >
+                Parlez anglais avec confiance dans les vraies situations
+              </h2>
+              <p className="mt-4 text-base sm:text-lg text-muted-foreground">
+                Entraînez-vous avec des conversations IA conçues pour des scénarios réels :
+                travail, entretiens, ventes et communication quotidienne.
+              </p>
+              <div className="mt-7 flex flex-col sm:flex-row gap-3 justify-center">
+                <Link
+                  to="/ressources-gratuites"
+                  onClick={() => trackEvent('positioning_cta_click', { target: 'start_practice', location: 'home_positioning_hero' })}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-90 transition shadow-sm"
+                >
+                  <Sparkles className="w-4 h-4" /> Commencer à pratiquer
+                </Link>
+                <Link
+                  to="/contact"
+                  onClick={() => trackEvent('positioning_cta_click', { target: 'contact', location: 'home_positioning_hero' })}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-border bg-card text-foreground font-semibold hover:bg-muted transition"
+                >
+                  <MessageCircle className="w-4 h-4" /> Contacter Antony
+                </Link>
+              </div>
+            </div>
+
+            {/* Who it's for */}
+            <div className="mb-14 sm:mb-16">
+              <h3 className="text-center text-sm font-semibold tracking-wider text-muted-foreground uppercase mb-6">
+                Pour qui&nbsp;?
+              </h3>
+              <div className="grid gap-4 sm:gap-6 md:grid-cols-3">
+                {[
+                  {
+                    icon: GraduationCap,
+                    title: 'Étudiants',
+                    desc: 'Préparez-vous aux examens, aux présentations et aux conversations réelles.',
+                  },
+                  {
+                    icon: Briefcase,
+                    title: 'Professionnels',
+                    desc: 'Améliorez votre anglais pour les réunions, les e-mails et votre carrière.',
+                  },
+                  {
+                    icon: Handshake,
+                    title: 'Vente & relation client',
+                    desc: 'Maîtrisez l\'anglais pour les interactions clients et les situations commerciales.',
+                  },
+                ].map(({ icon: Icon, title, desc }) => (
+                  <div
+                    key={title}
+                    className="p-5 sm:p-6 rounded-xl border border-border bg-card hover:shadow-md transition"
+                  >
+                    <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                      <Icon className="w-5 h-5 text-primary" aria-hidden="true" />
+                    </div>
+                    <h4 className="font-heading font-semibold text-lg text-foreground mb-1.5">{title}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* How it works */}
+            <div className="mb-14 sm:mb-16">
+              <h3 className="text-center text-sm font-semibold tracking-wider text-muted-foreground uppercase mb-6">
+                Comment ça marche
+              </h3>
+              <ol className="grid gap-4 sm:gap-6 md:grid-cols-3 list-none">
+                {[
+                  { n: '1', title: 'Choisissez un scénario', desc: 'Conversation, entretien, vente, présentation…' },
+                  { n: '2', title: 'Parlez ou écrivez en anglais', desc: 'Au micro ou au clavier, à votre rythme.' },
+                  { n: '3', title: 'Recevez un feedback IA', desc: 'Corrections instantanées et personnalisées.' },
+                ].map((step) => (
+                  <li
+                    key={step.n}
+                    className="relative p-5 sm:p-6 rounded-xl bg-muted/40 border border-border"
+                  >
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="w-8 h-8 rounded-full bg-primary text-primary-foreground font-bold flex items-center justify-center text-sm">
+                        {step.n}
+                      </span>
+                      <h4 className="font-heading font-semibold text-foreground">{step.title}</h4>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed pl-11">{step.desc}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            {/* Benefits + Use cases — 2 columns on desktop, stacked on mobile */}
+            <div className="grid gap-8 md:grid-cols-2 mb-14 sm:mb-16">
+              {/* Benefits */}
+              <div className="p-6 sm:p-8 rounded-2xl border border-border bg-card">
+                <h3 className="font-heading text-xl font-bold text-foreground mb-4">
+                  Pourquoi cet entraînement
+                </h3>
+                <ul className="space-y-3">
+                  {[
+                    'Vraie pratique conversationnelle, pas de la théorie',
+                    'Feedback personnalisé et instantané',
+                    'Pratiquez quand vous voulez, où vous voulez',
+                    'Conçu par un vrai formateur d\'anglais',
+                    'Support multilingue pour comprendre les retours',
+                  ].map((b) => (
+                    <li key={b} className="flex items-start gap-3 text-sm text-foreground">
+                      <CheckCircle className="w-4 h-4 text-primary mt-0.5 shrink-0" aria-hidden="true" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Use cases */}
+              <div className="p-6 sm:p-8 rounded-2xl border border-border bg-card">
+                <h3 className="font-heading text-xl font-bold text-foreground mb-4">
+                  Cas d'usage concrets
+                </h3>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {[
+                    { icon: UserCheck, label: 'Entretiens d\'embauche' },
+                    { icon: Handshake, label: 'Conversations de vente' },
+                    { icon: MessageCircle, label: 'Service client' },
+                    { icon: Users, label: 'Réunions & présentations' },
+                    { icon: GraduationCap, label: 'Préparation aux examens' },
+                    { icon: Mail, label: 'E-mails professionnels' },
+                  ].map(({ icon: Icon, label }) => (
+                    <li key={label} className="flex items-center gap-2.5 text-sm text-foreground">
+                      <Icon className="w-4 h-4 text-primary shrink-0" aria-hidden="true" />
+                      <span>{label}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* About the trainer — text-only, credibility-focused */}
+            <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-14 p-6 sm:p-8 rounded-2xl bg-muted/40 border border-border">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <Award className="w-5 h-5 text-primary" aria-hidden="true" />
+              </div>
+              <h3 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-3">
+                Conçu par un vrai formateur d'anglais
+              </h3>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                AI English Training conçu par <strong className="text-foreground">Antony Addy</strong>,
+                formateur d'anglais avec une véritable expérience en classe et auprès de professionnels.
+                Approche pédagogique ancrée dans la vie réelle&nbsp;: ce qui marche en cours marche ici.
+              </p>
+              <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs">
+                <span className="px-3 py-1 rounded-full bg-card border border-border text-muted-foreground">
+                  Étudiants &amp; professionnels
+                </span>
+                <span className="px-3 py-1 rounded-full bg-card border border-border text-muted-foreground">
+                  Formateur Professionnel d'Adultes certifié
+                </span>
+                <span className="px-3 py-1 rounded-full bg-card border border-border text-muted-foreground">
+                  20+ ans d'expérience
+                </span>
+              </div>
+            </div>
+
+            {/* Final CTA */}
+            <div className="text-center">
+              <h3 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mb-3">
+                Prêt à parler anglais avec confiance&nbsp;?
+              </h3>
+              <p className="text-muted-foreground mb-6 max-w-xl mx-auto text-sm sm:text-base">
+                Commencez gratuitement, ou contactez Antony pour une session personnalisée.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link
+                  to="/ressources-gratuites"
+                  onClick={() => trackEvent('positioning_cta_click', { target: 'start_free', location: 'home_positioning_final' })}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-90 transition shadow-sm"
+                >
+                  <Sparkles className="w-4 h-4" /> Pratiquer gratuitement
+                </Link>
+                <a
+                  href="https://wa.me/33649829826"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent('positioning_cta_click', { target: 'whatsapp', location: 'home_positioning_final' })}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition shadow-sm"
+                >
+                  <MessageCircle className="w-4 h-4" /> Contacter via WhatsApp
+                </a>
+                <Link
+                  to="/contact"
+                  onClick={() => trackEvent('positioning_cta_click', { target: 'book_session', location: 'home_positioning_final' })}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-border bg-card text-foreground font-semibold hover:bg-muted transition"
+                >
+                  <Mail className="w-4 h-4" /> Réserver une session
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* NEW: CLOE Certification Preparation - Featured Section */}
         <section className="py-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-900 text-white relative overflow-hidden">
           {/* Animated background */}
