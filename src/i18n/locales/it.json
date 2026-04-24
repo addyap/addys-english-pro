@@ -49,7 +49,10 @@
     "loadingAction": "Elaborazione:",
     "tryAgain": "Riprova",
     "noVocab": "Nessun elemento di vocabolario trovato.",
-    "supportActionsGroup": "Azioni di supporto multilingua"
+    "supportActionsGroup": "Azioni di supporto multilingua",
+    "grammarEnterSentence": "Inserisci una frase in inglese.",
+    "dailyLimitReached": "Limite giornaliero raggiunto (10 sessioni / 24h).",
+    "grammarAnalyzeError": "Analisi non riuscita. Riprova."
   },
   "common": {
     "language": "Lingua",

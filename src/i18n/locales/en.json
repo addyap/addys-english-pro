@@ -49,7 +49,10 @@
     "loadingAction": "Working on",
     "tryAgain": "Try again",
     "noVocab": "No vocabulary items found.",
-    "supportActionsGroup": "Multilingual support actions"
+    "supportActionsGroup": "Multilingual support actions",
+    "grammarEnterSentence": "Please enter an English sentence.",
+    "dailyLimitReached": "Daily limit reached (10 sessions / 24h).",
+    "grammarAnalyzeError": "Analysis failed. Please try again."
   },
   "common": {
     "language": "Language",

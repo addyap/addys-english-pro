@@ -49,7 +49,10 @@
     "loadingAction": "Выполняется:",
     "tryAgain": "Повторить",
     "noVocab": "Лексика не найдена.",
-    "supportActionsGroup": "Многоязычные действия поддержки"
+    "supportActionsGroup": "Многоязычные действия поддержки",
+    "grammarEnterSentence": "Введите предложение на английском.",
+    "dailyLimitReached": "Дневной лимит исчерпан (10 сессий / 24 ч).",
+    "grammarAnalyzeError": "Анализ не удался. Попробуйте снова."
   },
   "common": {
     "language": "Язык",

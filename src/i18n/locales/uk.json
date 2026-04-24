@@ -49,7 +49,10 @@
     "loadingAction": "Обробка:",
     "tryAgain": "Спробувати знову",
     "noVocab": "Лексику не знайдено.",
-    "supportActionsGroup": "Багатомовні дії підтримки"
+    "supportActionsGroup": "Багатомовні дії підтримки",
+    "grammarEnterSentence": "Введіть речення англійською.",
+    "dailyLimitReached": "Денний ліміт вичерпано (10 сесій / 24 год).",
+    "grammarAnalyzeError": "Аналіз не вдався. Спробуйте ще раз."
   },
   "common": {
     "language": "Мова",

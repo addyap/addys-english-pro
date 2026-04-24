@@ -49,7 +49,10 @@
     "loadingAction": "جارٍ المعالجة:",
     "tryAgain": "حاول مرة أخرى",
     "noVocab": "لم يتم العثور على مفردات.",
-    "supportActionsGroup": "إجراءات الدعم متعدد اللغات"
+    "supportActionsGroup": "إجراءات الدعم متعدد اللغات",
+    "grammarEnterSentence": "يرجى إدخال جملة باللغة الإنجليزية.",
+    "dailyLimitReached": "تم الوصول إلى الحد اليومي (10 جلسات / 24 ساعة).",
+    "grammarAnalyzeError": "فشل التحليل. حاول مرة أخرى."
   },
   "common": {
     "language": "اللغة",

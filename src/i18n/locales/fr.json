@@ -49,7 +49,10 @@
     "loadingAction": "Traitement en cours :",
     "tryAgain": "Réessayer",
     "noVocab": "Aucun élément de vocabulaire trouvé.",
-    "supportActionsGroup": "Actions de support multilingue"
+    "supportActionsGroup": "Actions de support multilingue",
+    "grammarEnterSentence": "Entrez une phrase en anglais.",
+    "dailyLimitReached": "Limite quotidienne atteinte (10 sessions / 24h).",
+    "grammarAnalyzeError": "Erreur lors de l'analyse."
   },
   "common": {
     "language": "Langue",
