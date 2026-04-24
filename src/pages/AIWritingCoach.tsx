@@ -22,6 +22,7 @@ import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 import AIToolLoadingSkeleton from "@/components/ai-trainer/AIToolLoadingSkeleton";
 import { useSessionHistory, type SessionHistoryItem } from "@/hooks/useSessionHistory";
 import RecentPractice from "@/components/ai-trainer/RecentPractice";
+import { trackEvent } from "@/lib/analytics";
 
 interface Feedback {
   taskAchievement: { score: number; comment: string };
@@ -79,6 +80,7 @@ const AIWritingCoach = () => {
     setLoading(true);
     setFeedback(null);
     recordSession();
+    trackEvent("ai_submit", { tool: "writing", page: "writing-coach", writingType });
     const startedAt = Date.now();
 
     try {
@@ -96,6 +98,7 @@ const AIWritingCoach = () => {
       if (data?.feedback) {
         setFeedback(data.feedback);
         addHistoryItem(text.trim(), data.feedback.improvedVersion || "");
+        trackEvent("ai_result_received", { tool: "writing", page: "writing-coach" });
       }
     } catch {
       toast.error(t("error.feedback", uiLang));
@@ -140,6 +143,7 @@ const AIWritingCoach = () => {
       }
       setCopied(true);
       toast.success("Copied!");
+      trackEvent("ai_copy_click", { tool: "writing", page: "writing-coach" });
       setTimeout(() => setCopied(false), 2000);
     } catch {
       toast.error("Unable to copy, please select text manually");

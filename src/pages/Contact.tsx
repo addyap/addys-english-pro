@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MessageSquare, Mail, MapPin, Clock, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
-import { trackFormSubmission, trackFormError, trackWhatsAppClick, trackEmailClick } from '@/lib/analytics';
+import { trackFormSubmission, trackFormError, trackWhatsAppClick, trackEmailClick, trackEvent } from '@/lib/analytics';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -90,6 +90,7 @@ const Contact = () => {
 
       console.log('Contact form submitted successfully:', data);
       trackFormSubmission('contact', true);
+      trackEvent('contact_submit_success', { page: 'contact' });
 
       setSubmitSuccess(true);
       setFormData({
