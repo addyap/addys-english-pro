@@ -40,6 +40,11 @@
     "translateAnswer": "Tradu acest răspuns",
     "explainInMyLanguage": "Explică în limba mea",
     "showVocab": "Arată vocabularul cheie",
+    "translateShort": "Tradu",
+    "explainShort": "Explică",
+    "vocabShort": "Vocabular",
+    "supportHelp": "Ai nevoie de ajutor? Tradu, explică sau învață vocabularul în limba ta.",
+    "supportError": "A apărut o eroare. Te rugăm să încerci din nou.",
     "feedbackLanguageNote": "Feedbackul va fi afișat în {{lang}}."
   },
   "common": {

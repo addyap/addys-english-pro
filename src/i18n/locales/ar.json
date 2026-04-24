@@ -40,6 +40,11 @@
     "translateAnswer": "ترجم هذه الإجابة",
     "explainInMyLanguage": "اشرح بلغتي",
     "showVocab": "أظهر المفردات الأساسية",
+    "translateShort": "ترجمة",
+    "explainShort": "شرح",
+    "vocabShort": "مفردات",
+    "supportHelp": "هل تحتاج إلى مساعدة؟ ترجم أو اشرح أو ادرس المفردات بلغتك.",
+    "supportError": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
     "feedbackLanguageNote": "ستُعرض التعليقات بـ {{lang}}."
   },
   "common": {

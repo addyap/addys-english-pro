@@ -40,6 +40,11 @@
     "translateAnswer": "Перекласти цю відповідь",
     "explainInMyLanguage": "Пояснити моєю мовою",
     "showVocab": "Показати ключову лексику",
+    "translateShort": "Перекласти",
+    "explainShort": "Пояснити",
+    "vocabShort": "Лексика",
+    "supportHelp": "Потрібна допомога? Перекладіть, поясніть або вивчайте лексику своєю мовою.",
+    "supportError": "Сталася помилка. Спробуйте ще раз.",
     "feedbackLanguageNote": "Відгук буде показано: {{lang}}."
   },
   "common": {
