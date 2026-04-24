@@ -14,6 +14,7 @@ import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 import AIToolLoadingSkeleton from "@/components/ai-trainer/AIToolLoadingSkeleton";
 import { useSessionHistory, type SessionHistoryItem } from "@/hooks/useSessionHistory";
 import RecentPractice from "@/components/ai-trainer/RecentPractice";
+import { trackEvent } from "@/lib/analytics";
 
 const EXAMPLE_SENTENCES = [
   "If I had known about the meeting, I would have prepared a report.",
@@ -41,6 +42,7 @@ const AIGrammarExplainer = () => {
     setLoading(true);
     setResult(null);
     recordSession();
+    trackEvent("ai_submit", { tool: "grammar", page: "grammar-explainer" });
     const startedAt = Date.now();
 
     try {
@@ -55,6 +57,7 @@ const AIGrammarExplainer = () => {
       }
       setResult(data.result);
       setSentence(s);
+      trackEvent("ai_result_received", { tool: "grammar", page: "grammar-explainer" });
       // Build a compact summary for history (rules + tips fallback)
       const summary =
         (data?.result?.rules?.[0]?.example as string) ||
@@ -110,6 +113,7 @@ const AIGrammarExplainer = () => {
       }
       setCopied(true);
       toast.success("Copied!");
+      trackEvent("ai_copy_click", { tool: "grammar", page: "grammar-explainer" });
       setTimeout(() => setCopied(false), 2000);
     } catch {
       toast.error("Unable to copy, please select text manually");
