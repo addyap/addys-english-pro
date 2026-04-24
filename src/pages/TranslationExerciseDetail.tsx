@@ -9,6 +9,7 @@ import { ArrowLeft, CheckCircle, XCircle, RotateCcw, Eye } from "lucide-react";
 import { translationExercises } from "@/data/translationExercises";
 import { SimilarExercises, SimilarExercise } from "@/components/SimilarExercises";
 import QuizJsonLd from "@/components/QuizJsonLd";
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const TranslationExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();

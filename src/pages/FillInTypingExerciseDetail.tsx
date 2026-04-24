@@ -14,6 +14,7 @@ import { GamificationStats } from '@/components/GamificationStats';
 import { BadgeNotification } from '@/components/BadgeNotification';
 import { useQuizTimer } from '@/hooks/useQuizTimer';
 import { useGamification } from '@/hooks/useGamification';
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 interface AnswerState {
   [key: number]: {

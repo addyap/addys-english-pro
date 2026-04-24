@@ -11,6 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { fetchListeningAudio } from '@/lib/listeningAudio';
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const ListeningExerciseContent: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();

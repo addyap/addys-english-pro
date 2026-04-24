@@ -9,6 +9,7 @@ import { ArrowLeft, Pause, CheckCircle, XCircle, RotateCcw, Volume2 } from "luci
 import { dictationExercises } from "@/data/dictationExercises";
 import { SimilarExercises, SimilarExercise } from "@/components/SimilarExercises";
 import QuizJsonLd from "@/components/QuizJsonLd";
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const DictationExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();

@@ -8,6 +8,7 @@ import { ArrowLeft, CheckCircle, XCircle, RotateCcw } from "lucide-react";
 import { wordFormationExercises } from "@/data/wordFormationExercises";
 import { SimilarExercises, SimilarExercise } from "@/components/SimilarExercises";
 import QuizJsonLd from "@/components/QuizJsonLd";
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const WordFormationExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();

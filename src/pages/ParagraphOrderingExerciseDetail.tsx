@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, CheckCircle, XCircle, RotateCcw, GripVertical, ArrowUp, ArrowDown } from "lucide-react";
 import { paragraphOrderingExercises } from "@/data/paragraphOrderingExercises";
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const ParagraphOrderingExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();

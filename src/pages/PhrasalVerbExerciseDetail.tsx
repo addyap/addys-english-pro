@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { phrasalVerbExercises } from "@/data/phrasalVerbExercises";
 import SEOHead from "@/components/SEOHead";
 import { shuffleArray } from "@/utils/shuffleArray";
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const PhrasalVerbExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();

@@ -23,6 +23,7 @@ import { Input } from '@/components/ui/input';
 import { getCloeExerciseById, cloeExercises, CloeQuestion } from '@/data/cloeExercises';
 import { useCLOEProgress } from '@/hooks/useCLOEProgress';
 import { seededShuffle } from '@/utils/shuffleArray';
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const getDifficultyColor = (difficulty: string) => {
   switch (difficulty) {

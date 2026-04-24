@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { shuffleArray } from '@/utils/shuffleArray';
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const PrepositionExerciseDetail = () => {
   const { id } = useParams();

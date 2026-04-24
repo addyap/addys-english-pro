@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, ArrowRight, RotateCcw, Check, X, ChevronLeft, Languages, Link2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { shuffleArray } from "@/utils/shuffleArray";
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const CollocationExerciseDetail = () => {
   const { id } = useParams();

@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { flashcardSets, Flashcard } from '@/data/flashcardExercises';
 import { motion, AnimatePresence } from 'framer-motion';
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const FlashcardExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();

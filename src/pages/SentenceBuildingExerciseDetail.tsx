@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { sentenceBuildingExercises, getSentenceBuildingExerciseById } from '@/data/sentenceBuildingExercises';
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const SentenceBuildingExerciseDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();

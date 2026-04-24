@@ -8,6 +8,7 @@ import { pronunciationExercises } from "@/data/pronunciationExercises";
 import { shuffleArray } from "@/utils/shuffleArray";
 import { SimilarExercises, SimilarExercise } from "@/components/SimilarExercises";
 import QuizJsonLd from "@/components/QuizJsonLd";
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const PronunciationExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
