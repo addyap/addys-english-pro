@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import SEOHead from "@/components/SEOHead";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import type { GrammarExplainerResult } from "@/types/ai-trainers";
-import { Search, RotateCcw, Loader2, BookOpen, Lightbulb, ArrowRight, Copy, Check, RefreshCw } from "lucide-react";
+import { Search, RotateCcw, Loader2, BookOpen, Lightbulb, ArrowRight, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
@@ -31,7 +31,6 @@ const AIGrammarExplainer = () => {
   const [sentence, setSentence] = useState("");
   const [result, setResult] = useState<GrammarExplainerResult | null>(null);
   const [loading, setLoading] = useState(false);
-  const [copied, setCopied] = useState(false);
   const [usageTick, setUsageTick] = useState(0);
   const { remaining, limitReached, recordSession } = useAIDailyLimit("grammar-explainer");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
