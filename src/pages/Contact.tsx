@@ -41,14 +41,14 @@ const Contact = () => {
       newErrors.nom = 'Le nom est requis';
     }
     if (!formData.email.trim()) {
-      newErrors.email = 'L\'email est requis';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Email invalide';
+      newErrors.email = 'Please enter a valid email address';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      newErrors.email = 'Please enter a valid email address';
     }
     if (!formData.message.trim()) {
-      newErrors.message = 'Le message est requis';
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Le message doit contenir au moins 10 caractères';
+      newErrors.message = 'Please write at least 20 characters';
+    } else if (formData.message.trim().length < 20) {
+      newErrors.message = 'Please write at least 20 characters';
     }
 
     setErrors(newErrors);
