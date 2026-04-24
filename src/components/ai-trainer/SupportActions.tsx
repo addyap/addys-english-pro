@@ -115,7 +115,9 @@ export function SupportActions({ text, context, className = "" }: SupportActions
       )}
 
       {error && (
-        <div className="text-xs text-destructive bg-destructive/10 rounded p-2">{error}</div>
+        <div className="text-xs text-destructive bg-destructive/10 rounded p-2" role="alert">
+          {t("ai.supportError", "Something went wrong. Please try again.")}
+        </div>
       )}
 
       {translation && (
