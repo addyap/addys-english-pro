@@ -67,7 +67,7 @@ export function LanguageOnboardingModal() {
         <div className="space-y-4 py-2">
           <div className="space-y-1.5">
             <Label htmlFor="ob-interface">{t("settings.interfaceLanguage", "Interface language")}</Label>
-            <Select value={uiChoice} onValueChange={(v) => setUiChoice(v as SupportedLangCode)}>
+            <Select value={uiChoice} onValueChange={(v) => handleInterfaceChange(v as SupportedLangCode)}>
               <SelectTrigger id="ob-interface" className="w-full">
                 <SelectValue />
               </SelectTrigger>
