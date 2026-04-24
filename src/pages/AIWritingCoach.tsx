@@ -19,6 +19,7 @@ import { Send, RotateCcw, Loader2, FileText, Wand2, Eye, ChevronDown, ChevronUp 
 import { toast } from "sonner";
 import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
+import AIToolLoadingSkeleton from "@/components/ai-trainer/AIToolLoadingSkeleton";
 
 interface Feedback {
   taskAchievement: { score: number; comment: string };
@@ -73,6 +74,7 @@ const AIWritingCoach = () => {
     setLoading(true);
     setFeedback(null);
     recordSession();
+    const startedAt = Date.now();
 
     try {
       const { data, error } = await invokeAI<{ feedback: Feedback }>(FUNC_URL, {
@@ -81,6 +83,11 @@ const AIWritingCoach = () => {
         feedbackLanguage: feedbackLang,
       });
       if (error) { toast.error(error.message); return; }
+      // Enforce a minimum loading display time of 1.5s to avoid flicker
+      const elapsed = Date.now() - startedAt;
+      if (elapsed < 1500) {
+        await new Promise((r) => setTimeout(r, 1500 - elapsed));
+      }
       if (data?.feedback) setFeedback(data.feedback);
     } catch {
       toast.error(t("error.feedback", uiLang));
