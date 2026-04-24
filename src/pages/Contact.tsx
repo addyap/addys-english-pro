@@ -152,7 +152,32 @@ const Contact = () => {
       
       <div className="min-h-screen bg-gray-50 py-12">
         <div className="max-w-6xl mx-auto px-4">
-          
+
+          {/* Persistent top banners (success / error) */}
+          {submitSuccess && (
+            <div
+              role="status"
+              aria-live="polite"
+              className="mb-6 p-4 bg-green-50 border border-green-300 rounded-lg text-green-800 flex items-center gap-3 shadow-sm animate-fade-in"
+            >
+              <CheckCircle2 className="h-6 w-6 text-green-600 shrink-0" aria-hidden="true" />
+              <span className="font-medium">
+                ✅ Message received! I will reply within 24 hours.
+              </span>
+            </div>
+          )}
+
+          {submitErrorBanner && !submitSuccess && (
+            <div
+              role="alert"
+              aria-live="assertive"
+              className="mb-6 p-4 bg-red-50 border border-red-300 rounded-lg text-red-800 flex items-center gap-3 shadow-sm animate-fade-in"
+            >
+              <AlertCircle className="h-6 w-6 text-red-600 shrink-0" aria-hidden="true" />
+              <span className="font-medium">{submitErrorBanner}</span>
+            </div>
+          )}
+
           {/* Header */}
           <header className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
