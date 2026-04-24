@@ -7,6 +7,10 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import AIToolsNav from '@/components/AIToolsNav';
 import { usePageTracking } from '@/hooks/usePageTracking';
 import GoogleTranslate from '@/components/GoogleTranslate';
+import { trackEvent } from '@/lib/analytics';
+
+const WHATSAPP_URL = 'https://wa.me/33649829826';
+const trackWA = (location: string) => trackEvent('whatsapp_cta_click', { page: 'Layout', target: WHATSAPP_URL, location });
 
 const AI_TOOL_PATHS = [
   '/conversation-trainer', '/writing-coach', '/speaking-practice',
@@ -83,6 +87,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 className="bg-green-500 text-white px-3 py-2 rounded-lg flex items-center gap-1 hover:bg-green-600 transition-colors text-sm font-body"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWA('header-mobile')}
               >
                 <MessageSquare className="h-4 w-4" />
                 WhatsApp
@@ -109,6 +114,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               className="hidden lg:flex bg-green-500 text-white px-4 py-2 rounded-lg items-center gap-2 hover:bg-green-600 transition-colors font-body ml-4"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWA('header-desktop')}
             >
               <MessageSquare className="h-4 w-4" />
               WhatsApp
@@ -181,6 +187,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                   rel="noopener noreferrer"
                   className="bg-green-600 hover:bg-green-700 px-3 py-2 rounded-lg text-xs font-medium transition-colors"
                   aria-label="Contactez-nous sur WhatsApp"
+                  onClick={() => trackWA('footer-social')}
                 >
                   💬 WhatsApp
                 </a>
@@ -328,6 +335,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors"
+                    onClick={() => trackWA('footer-contact')}
                   >
                     💬 +33 6 49 82 98 26
                   </a>
