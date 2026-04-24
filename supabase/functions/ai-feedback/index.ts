@@ -60,7 +60,7 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { userAnswer, correctAnswer, exerciseType, contextPrompt, expectedSkill, metadata } = await req.json();
+    const { userAnswer, correctAnswer, exerciseType, contextPrompt, expectedSkill, metadata, feedbackLanguage } = await req.json();
 
     console.log("AI feedback request", {
       exerciseType,
@@ -105,7 +105,7 @@ Return structured JSON matching the required output schema.`;
       body: JSON.stringify({
         model: "google/gemini-3-flash-preview",
         messages: [
-          { role: "system", content: SYSTEM_PROMPT },
+          { role: "system", content: buildSystemPrompt(typeof feedbackLanguage === "string" ? feedbackLanguage : "en") },
           { role: "user", content: userPrompt },
         ],
       }),
