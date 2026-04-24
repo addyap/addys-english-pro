@@ -69,7 +69,7 @@ const ExerciseQuestion: React.FC<ExerciseQuestionProps> = ({ question, questionN
               <SelectTrigger className="w-full max-w-xs bg-background">
                 <SelectValue placeholder="Choisissez une réponse..." />
               </SelectTrigger>
-              <SelectContent className="bg-background z-50">
+              <SelectContent className="bg-background z-dropdown">
                 {shuffledOptions.map((option, index) => (
                   <SelectItem
                     key={`${exerciseId ?? 'noex'}-${question.id}-${option}-${index}`}
