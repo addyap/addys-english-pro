@@ -317,20 +317,15 @@ const AIWritingCoach = () => {
                 <p className="text-sm">{feedback.overall}</p>
               </Card>
 
-              {/* Persistent copy CTA outside the collapsible too */}
-              {!showImproved && feedback.improvedVersion && (
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={copyImproved}
-                  className="w-full"
-                >
-                  {copied ? (
-                    <><Check className="w-4 h-4 mr-2" /> Copied!</>
-                  ) : (
-                    <><Copy className="w-4 h-4 mr-2" /> Copy improved version</>
-                  )}
-                </Button>
+              {/* Result utility bar (copy / download / share) */}
+              {feedback.improvedVersion && (
+                <ResultUtilityBar
+                  text={feedback.improvedVersion}
+                  tool="writing"
+                  page="writing-coach"
+                  fileName="ai-writing-improved"
+                  copyLabel="Copy Improved Text"
+                />
               )}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
