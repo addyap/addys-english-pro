@@ -55,6 +55,12 @@ const AIGrammarExplainer = () => {
       }
       setResult(data.result);
       setSentence(s);
+      // Build a compact summary for history (rules + tips fallback)
+      const summary =
+        (data?.result?.rules?.[0]?.example as string) ||
+        (data?.result?.tips?.[0] as string) ||
+        s;
+      addHistoryItem(s, summary);
     } catch {
       toast.error("Erreur lors de l'analyse.");
     } finally {
@@ -65,6 +71,49 @@ const AIGrammarExplainer = () => {
   const reset = () => {
     setSentence("");
     setResult(null);
+  };
+
+  const tryAgain = () => {
+    setResult(null);
+    setTimeout(() => {
+      inputRef.current?.focus();
+      inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 50);
+  };
+
+  const restoreFromHistory = (item: SessionHistoryItem) => {
+    setSentence(item.input);
+    setResult(null);
+    setTimeout(() => {
+      inputRef.current?.focus();
+      inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 50);
+  };
+
+  const copySummary = async () => {
+    if (!result) return;
+    const text = [
+      `Sentence: ${sentence}`,
+      `Level: ${result.level}`,
+      "",
+      "Rules:",
+      ...result.rules.map((r) => `• ${r.name} — ${r.explanation}`),
+      "",
+      "Tips:",
+      ...result.tips.map((t) => `• ${t}`),
+    ].join("\n");
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        throw new Error("no clipboard");
+      }
+      setCopied(true);
+      toast.success("Copied!");
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      toast.error("Unable to copy, please select text manually");
+    }
   };
 
   const POS_COLORS: Record<string, string> = {
