@@ -470,7 +470,7 @@ const Home = () => {
                 { to: "/interview-simulator", icon: UserCheck, title: "Interview Simulator 💼", desc: "Simulez un entretien d'embauche en anglais. 8 secteurs, 3 types d'entretien, feedback CECRL." },
                 { to: "/grammar-explainer", icon: Search, title: "Grammar Explainer 📖", desc: "Collez une phrase et obtenez une analyse grammaticale complète avec règles et conseils." },
               ].map(item => (
-                <Link key={item.to} to={item.to} className="group bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/15 p-6 md:p-8 flex items-start gap-5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all hover:-translate-y-1 relative">
+                <Link key={item.to} to={item.to} className="group bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/15 p-6 md:p-8 flex items-start gap-5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all hover:-translate-y-1 active:scale-[0.98] cursor-pointer relative min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                   <div className="shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <item.icon className="w-7 h-7 text-primary" />
                   </div>
@@ -535,7 +535,8 @@ const Home = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
               <Link 
                 to="/exercices?tab=grammar" 
-                className="bg-gradient-to-br from-blue-600/20 to-blue-800/20 backdrop-blur-sm rounded-xl p-4 text-center hover:from-blue-600/30 hover:to-blue-800/30 transition-all cursor-pointer group border border-blue-500/20 hover:border-blue-500/40 hover:scale-[1.02]"
+                className="bg-gradient-to-br from-blue-600/20 to-blue-800/20 backdrop-blur-sm rounded-xl p-4 text-center hover:from-blue-600/30 hover:to-blue-800/30 transition-all cursor-pointer group border border-blue-500/20 hover:border-blue-500/40 hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex flex-col items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+                aria-label={`Exercices de grammaire — ${EXERCISE_COUNTS.grammar} disponibles`}
               >
                 <GraduationCap className="h-7 w-7 mx-auto mb-2 text-blue-400 group-hover:scale-110 transition-transform" />
                 <p className="text-xl font-bold mb-0.5">{EXERCISE_COUNTS.grammar}</p>
@@ -544,7 +545,8 @@ const Home = () => {
               
               <Link 
                 to="/exercices?tab=vocabulary" 
-                className="bg-gradient-to-br from-emerald-600/20 to-emerald-800/20 backdrop-blur-sm rounded-xl p-4 text-center hover:from-emerald-600/30 hover:to-emerald-800/30 transition-all cursor-pointer group border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-[1.02]"
+                className="bg-gradient-to-br from-emerald-600/20 to-emerald-800/20 backdrop-blur-sm rounded-xl p-4 text-center hover:from-emerald-600/30 hover:to-emerald-800/30 transition-all cursor-pointer group border border-emerald-500/20 hover:border-emerald-500/40 hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex flex-col items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+                aria-label={`Exercices de vocabulaire — ${EXERCISE_COUNTS.vocabulary} disponibles`}
               >
                 <Sparkles className="h-7 w-7 mx-auto mb-2 text-emerald-400 group-hover:scale-110 transition-transform" />
                 <p className="text-xl font-bold mb-0.5">{EXERCISE_COUNTS.vocabulary}</p>
@@ -553,7 +555,8 @@ const Home = () => {
               
               <Link 
                 to="/exercices/listening" 
-                className="bg-gradient-to-br from-purple-600/20 to-purple-800/20 backdrop-blur-sm rounded-xl p-4 text-center hover:from-purple-600/30 hover:to-purple-800/30 transition-all cursor-pointer group border border-purple-500/20 hover:border-purple-500/40 hover:scale-[1.02]"
+                className="bg-gradient-to-br from-purple-600/20 to-purple-800/20 backdrop-blur-sm rounded-xl p-4 text-center hover:from-purple-600/30 hover:to-purple-800/30 transition-all cursor-pointer group border border-purple-500/20 hover:border-purple-500/40 hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex flex-col items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+                aria-label={`Exercices d'écoute — ${EXERCISE_COUNTS.listening} disponibles`}
               >
                 <Headphones className="h-7 w-7 mx-auto mb-2 text-purple-400 group-hover:scale-110 transition-transform" />
                 <p className="text-xl font-bold mb-0.5">{EXERCISE_COUNTS.listening}</p>
@@ -562,7 +565,8 @@ const Home = () => {
               
               <Link 
                 to="/reading" 
-                className="bg-gradient-to-br from-amber-600/20 to-amber-800/20 backdrop-blur-sm rounded-xl p-4 text-center hover:from-amber-600/30 hover:to-amber-800/30 transition-all cursor-pointer group border border-amber-500/20 hover:border-amber-500/40 hover:scale-[1.02]"
+                className="bg-gradient-to-br from-amber-600/20 to-amber-800/20 backdrop-blur-sm rounded-xl p-4 text-center hover:from-amber-600/30 hover:to-amber-800/30 transition-all cursor-pointer group border border-amber-500/20 hover:border-amber-500/40 hover:scale-[1.02] active:scale-[0.98] min-h-[44px] flex flex-col items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+                aria-label={`Exercices de lecture — ${EXERCISE_COUNTS.reading + EXERCISE_COUNTS.stories} disponibles`}
               >
                 <BookOpen className="h-7 w-7 mx-auto mb-2 text-amber-400 group-hover:scale-110 transition-transform" />
                 <p className="text-xl font-bold mb-0.5">{EXERCISE_COUNTS.reading + EXERCISE_COUNTS.stories}</p>
