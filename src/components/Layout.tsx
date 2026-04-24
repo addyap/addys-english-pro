@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { MessageSquare, Menu, X, ExternalLink } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { MessageSquare, Menu, X } from 'lucide-react';
 import { ScrollProgressBar } from "@/components/Effects";
 import SiteLogo from "@/components/SiteLogo";
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AIToolsNav from '@/components/AIToolsNav';
 import { usePageTracking } from '@/hooks/usePageTracking';
 import GoogleTranslate from '@/components/GoogleTranslate';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { trackEvent } from '@/lib/analytics';
 
 const WHATSAPP_URL = 'https://wa.me/33649829826';
@@ -26,48 +28,46 @@ interface LayoutProps {
 
 const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) => {
   const location = useLocation();
+  const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const year = new Date().getFullYear();
-  
-  // Server-side page tracking (works even with ad blockers)
+
   usePageTracking();
 
   const navigation = [
-    { name: 'Accueil', href: '/', current: location.pathname === '/' },
-    { name: 'Qui je suis', href: '/qui-je-suis', current: location.pathname === '/qui-je-suis' },
-    { name: 'Offres de formation', href: '/offres-de-formation', current: location.pathname === '/offres-de-formation' },
-    { name: 'Témoignages', href: '/temoignages', current: location.pathname === '/temoignages' },
-    { name: 'Contact', href: '/contact', current: location.pathname === '/contact' },
-    { name: 'Blog', href: '/blog', current: location.pathname === '/blog' },
-    { name: 'Ressources Gratuites', href: '/ressources-gratuites', current: location.pathname === '/ressources-gratuites' },
+    { name: t('nav.home'), href: '/', current: location.pathname === '/' },
+    { name: t('nav.about'), href: '/qui-je-suis', current: location.pathname === '/qui-je-suis' },
+    { name: t('nav.training'), href: '/offres-de-formation', current: location.pathname === '/offres-de-formation' },
+    { name: t('nav.testimonials'), href: '/temoignages', current: location.pathname === '/temoignages' },
+    { name: t('nav.contact'), href: '/contact', current: location.pathname === '/contact' },
+    { name: t('nav.blog'), href: '/blog', current: location.pathname === '/blog' },
+    { name: t('nav.resources'), href: '/ressources-gratuites', current: location.pathname === '/ressources-gratuites' },
   ];
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
     <div className="min-h-screen bg-background font-body">
       <ScrollProgressBar />
-      
+
       {/* Header */}
       <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
-              <SiteLogo height={40} className="mr-3" alt="Antony Addy" />
+              <SiteLogo height={40} className="me-3" alt="Antony Addy" />
               <div className="flex flex-col">
                 <Link to="/" className="text-lg font-bold text-primary font-heading">
                   Antony Addy
                 </Link>
               </div>
             </div>
-            
+
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-1">
               {navigation.map((item) => (
                 <Link
-                  key={item.name}
+                  key={item.href}
                   to={item.href}
                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 font-body border ${
                     item.current
@@ -80,51 +80,48 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               ))}
             </nav>
 
-            {/* Mobile menu button */}
-            <div className="lg:hidden flex items-center gap-3">
+            {/* Mobile menu button + language + WhatsApp */}
+            <div className="lg:hidden flex items-center gap-2">
+              <LanguageSwitcher />
               <a
-                href="https://wa.me/33649829826"
+                href={WHATSAPP_URL}
                 className="bg-green-500 text-white px-3 py-2 rounded-lg flex items-center gap-1 hover:bg-green-600 transition-colors text-sm font-body"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWA('header-mobile')}
+                aria-label="WhatsApp"
               >
                 <MessageSquare className="h-4 w-4" />
-                WhatsApp
               </a>
               <button
                 type="button"
                 onClick={toggleMobileMenu}
-                aria-label={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+                aria-label={isMobileMenuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-navigation"
                 className="text-primary hover:text-primary/80 p-2.5 min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-lg active:scale-[0.95] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
               >
-                {isMobileMenuOpen ? (
-                  <X className="h-6 w-6" aria-hidden="true" />
-                ) : (
-                  <Menu className="h-6 w-6" aria-hidden="true" />
-                )}
+                {isMobileMenuOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
               </button>
             </div>
 
-            {/* Desktop WhatsApp button */}
-            <a
-              href="https://wa.me/33649829826"
-              className="hidden lg:flex bg-green-500 text-white px-4 py-2 rounded-lg items-center gap-2 hover:bg-green-600 transition-colors font-body ml-4"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackWA('header-desktop')}
-            >
-              <MessageSquare className="h-4 w-4" />
-              WhatsApp
-            </a>
-
-            {/* Google Translate - Desktop */}
-            <div className="hidden lg:block ml-2">
-              <GoogleTranslate />
+            {/* Desktop language + WhatsApp */}
+            <div className="hidden lg:flex items-center gap-2 ms-4">
+              <LanguageSwitcher />
+              <a
+                href={WHATSAPP_URL}
+                className="bg-green-500 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-green-600 transition-colors font-body"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackWA('header-desktop')}
+              >
+                <MessageSquare className="h-4 w-4" />
+                WhatsApp
+              </a>
+              <div className="ms-2">
+                <GoogleTranslate />
+              </div>
             </div>
-
           </div>
 
           {/* Mobile Navigation Menu */}
@@ -133,7 +130,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               <nav className="flex flex-col space-y-2">
                 {navigation.map((item) => (
                   <Link
-                    key={item.name}
+                    key={item.href}
                     to={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`flex items-center min-h-[44px] px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 font-body border active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
@@ -145,8 +142,6 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                     {item.name}
                   </Link>
                 ))}
-                
-                {/* Google Translate - Mobile */}
                 <div className="px-4 py-3 border-t border-gray-200 mt-2">
                   <GoogleTranslate />
                 </div>
@@ -156,37 +151,28 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
         </div>
       </header>
 
-      {/* Breadcrumbs */}
       <Breadcrumbs customTitle={breadcrumbTitle} customSection={breadcrumbSection} />
-
-      {/* AI Tools Navigation */}
       {AI_TOOL_PATHS.includes(location.pathname) && <AIToolsNav />}
 
-      {/* Main Content */}
       <main>{children}</main>
 
-      {/* Footer - Comprehensive Internal Linking */}
+      {/* Footer */}
       <footer className="bg-slate-900 text-white text-sm py-12 px-4">
         <div className="max-w-6xl mx-auto">
-          {/* Main Footer Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
-            {/* Brand & About */}
             <div className="lg:col-span-2">
               <Link to="/" className="flex items-center gap-2 mb-4">
                 <SiteLogo height={32} className="brightness-0 invert" alt="Antony Addy" />
                 <span className="font-bold text-lg">Antony Addy</span>
               </Link>
-              <p className="text-gray-400 mb-4 leading-relaxed">
-                Formateur d'anglais professionnel certifié FPA. Plus de 20 ans d'expérience 
-                dans la formation d'anglais pour adultes, entreprises et institutions.
-              </p>
+              <p className="text-gray-400 mb-4 leading-relaxed">{t('footer.tagline')}</p>
               <div className="flex gap-3">
                 <a
-                  href="https://wa.me/33649829826"
+                  href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-600 hover:bg-green-700 px-3 py-2 rounded-lg text-xs font-medium transition-colors"
-                  aria-label="Contactez-nous sur WhatsApp"
+                  aria-label="WhatsApp"
                   onClick={() => trackWA('footer-social')}
                 >
                   💬 WhatsApp
@@ -196,142 +182,56 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded-lg text-xs font-medium transition-colors"
-                  aria-label="Suivez-nous sur LinkedIn"
+                  aria-label="LinkedIn"
                 >
                   LinkedIn
                 </a>
               </div>
             </div>
 
-            {/* Navigation */}
-            <nav aria-label="Navigation principale">
-              <h3 className="font-semibold mb-3 text-white">Navigation</h3>
+            <nav aria-label={t('footer.navigation')}>
+              <h3 className="font-semibold mb-3 text-white">{t('footer.navigation')}</h3>
               <ul className="space-y-2">
-                <li>
-                  <Link to="/" className="text-gray-400 hover:text-white transition-colors">
-                    Accueil
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/qui-je-suis" className="text-gray-400 hover:text-white transition-colors">
-                    Qui je suis
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/offres-de-formation" className="text-gray-400 hover:text-white transition-colors">
-                    Offres de formation
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/temoignages" className="text-gray-400 hover:text-white transition-colors">
-                    Témoignages
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="text-gray-400 hover:text-white transition-colors">
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/blog" className="text-gray-400 hover:text-white transition-colors">
-                    Blog
-                  </Link>
-                </li>
+                <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">{t('nav.home')}</Link></li>
+                <li><Link to="/qui-je-suis" className="text-gray-400 hover:text-white transition-colors">{t('nav.about')}</Link></li>
+                <li><Link to="/offres-de-formation" className="text-gray-400 hover:text-white transition-colors">{t('nav.training')}</Link></li>
+                <li><Link to="/temoignages" className="text-gray-400 hover:text-white transition-colors">{t('nav.testimonials')}</Link></li>
+                <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">{t('nav.contact')}</Link></li>
+                <li><Link to="/blog" className="text-gray-400 hover:text-white transition-colors">{t('nav.blog')}</Link></li>
               </ul>
             </nav>
 
-            {/* Ressources Gratuites */}
-            <nav aria-label="Ressources gratuites">
-              <h3 className="font-semibold mb-3 text-white">Ressources Gratuites</h3>
+            <nav aria-label={t('footer.resources')}>
+              <h3 className="font-semibold mb-3 text-white">{t('footer.resources')}</h3>
               <ul className="space-y-2">
-                <li>
-                  <Link to="/exercices" className="text-gray-400 hover:text-white transition-colors">
-                    Exercices d'anglais
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/exercices/listening" className="text-gray-400 hover:text-white transition-colors">
-                    Écoute & Compréhension
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/reading" className="text-gray-400 hover:text-white transition-colors">
-                    Compréhension écrite
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/exercices/writing/transform/1" className="text-gray-400 hover:text-white transition-colors">
-                    Exercices d'écriture
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/story/1" className="text-gray-400 hover:text-white transition-colors">
-                    Histoires interactives
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/dashboard" className="text-gray-400 hover:text-white transition-colors">
-                    Mon tableau de bord
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/conversation-trainer" className="text-gray-400 hover:text-white transition-colors">
-                    AI Conversation Trainer
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/email-trainer" className="text-gray-400 hover:text-white transition-colors">
-                    AI Email Reply Trainer
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/presentation-trainer" className="text-gray-400 hover:text-white transition-colors">
-                    AI Presentation Trainer
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/negotiation-trainer" className="text-gray-400 hover:text-white transition-colors">
-                    AI Negotiation Trainer
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/speaking-practice" className="text-gray-400 hover:text-white transition-colors">
-                    AI Speaking Practice
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/writing-coach" className="text-gray-400 hover:text-white transition-colors">
-                    AI Writing Coach
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/interview-simulator" className="text-gray-400 hover:text-white transition-colors">
-                    AI Interview Simulator
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/grammar-explainer" className="text-gray-400 hover:text-white transition-colors">
-                    AI Grammar Explainer
-                  </Link>
-                </li>
+                <li><Link to="/exercices" className="text-gray-400 hover:text-white transition-colors">{t('footer.exercises')}</Link></li>
+                <li><Link to="/exercices/listening" className="text-gray-400 hover:text-white transition-colors">{t('footer.listening')}</Link></li>
+                <li><Link to="/reading" className="text-gray-400 hover:text-white transition-colors">{t('footer.reading')}</Link></li>
+                <li><Link to="/exercices/writing/transform/1" className="text-gray-400 hover:text-white transition-colors">{t('footer.writing')}</Link></li>
+                <li><Link to="/story/1" className="text-gray-400 hover:text-white transition-colors">{t('footer.stories')}</Link></li>
+                <li><Link to="/dashboard" className="text-gray-400 hover:text-white transition-colors">{t('footer.dashboard')}</Link></li>
+                <li><Link to="/conversation-trainer" className="text-gray-400 hover:text-white transition-colors">AI Conversation Trainer</Link></li>
+                <li><Link to="/email-trainer" className="text-gray-400 hover:text-white transition-colors">AI Email Reply Trainer</Link></li>
+                <li><Link to="/presentation-trainer" className="text-gray-400 hover:text-white transition-colors">AI Presentation Trainer</Link></li>
+                <li><Link to="/negotiation-trainer" className="text-gray-400 hover:text-white transition-colors">AI Negotiation Trainer</Link></li>
+                <li><Link to="/speaking-practice" className="text-gray-400 hover:text-white transition-colors">AI Speaking Practice</Link></li>
+                <li><Link to="/writing-coach" className="text-gray-400 hover:text-white transition-colors">AI Writing Coach</Link></li>
+                <li><Link to="/interview-simulator" className="text-gray-400 hover:text-white transition-colors">AI Interview Simulator</Link></li>
+                <li><Link to="/grammar-explainer" className="text-gray-400 hover:text-white transition-colors">AI Grammar Explainer</Link></li>
               </ul>
             </nav>
 
-            {/* Contact & Legal */}
             <div>
-              <h3 className="font-semibold mb-3 text-white">Contact</h3>
+              <h3 className="font-semibold mb-3 text-white">{t('footer.contact')}</h3>
               <ul className="space-y-2 mb-6">
                 <li>
-                  <a
-                    href="mailto:formations@antonyaddy.com"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
+                  <a href="mailto:formations@antonyaddy.com" className="text-gray-400 hover:text-white transition-colors">
                     📧 formations@antonyaddy.com
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://wa.me/33649829826"
+                    href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors"
@@ -340,46 +240,26 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                     💬 +33 6 49 82 98 26
                   </a>
                 </li>
-                <li className="text-gray-400">
-                  📍 Alpes-Maritimes, France
-                </li>
+                <li className="text-gray-400">📍 {t('footer.location')}</li>
               </ul>
-              
-              <h4 className="font-semibold mb-2 text-white text-xs uppercase tracking-wider">Informations légales</h4>
+
+              <h4 className="font-semibold mb-2 text-white text-xs uppercase tracking-wider">{t('footer.legal')}</h4>
               <ul className="space-y-1">
-                <li>
-                  <Link to="/mentions-legales" className="text-gray-400 hover:text-white transition-colors text-xs">
-                    Mentions légales
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/politique-confidentialite" className="text-gray-400 hover:text-white transition-colors text-xs">
-                    Politique de confidentialité
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/sitemap-page" className="text-gray-400 hover:text-white transition-colors text-xs">
-                    Plan du site
-                  </Link>
-                </li>
+                <li><Link to="/mentions-legales" className="text-gray-400 hover:text-white transition-colors text-xs">{t('footer.legalNotices')}</Link></li>
+                <li><Link to="/politique-confidentialite" className="text-gray-400 hover:text-white transition-colors text-xs">{t('footer.privacy')}</Link></li>
+                <li><Link to="/sitemap-page" className="text-gray-400 hover:text-white transition-colors text-xs">{t('footer.sitemap')}</Link></li>
               </ul>
             </div>
           </div>
 
-          {/* Bottom Bar */}
           <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-xs">
-              © {year} Antony Addy. Tous droits réservés. Formateur Professionnel d'Adultes certifié.
+              © {year} Antony Addy. {t('footer.rights')}
             </p>
             <div className="flex items-center gap-4">
               <p className="text-gray-600 text-xs">
-                Site hébergé par{" "}
-                <a
-                  href="https://www.bluehost.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-gray-400 transition-colors"
-                >
+                {t('footer.hostedBy')}{" "}
+                <a href="https://www.bluehost.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 transition-colors">
                   Bluehost
                 </a>
               </p>

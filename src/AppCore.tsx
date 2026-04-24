@@ -12,6 +12,7 @@ import Analytics from "./components/Analytics";
 import OfflineBanner from "./components/OfflineBanner";
 import A11yProvider from "./components/A11yProvider";
 import CookieConsent from "./components/CookieConsent";
+import { LanguageProvider } from "./contexts/LanguageContext";
 
 import Layout from "./components/Layout";
 import PrefetchRoutes from "./components/PrefetchRoutes";
@@ -220,14 +221,16 @@ export const AppProviders = ({
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <A11yProvider>
-            <Analytics />
-            <Toaster />
-            <Sonner />
-            <DiagnosticsPanel />
-            <OfflineBanner />
-            <CookieConsent />
-            <PWAInstallPrompt />
-            {children}
+            <LanguageProvider>
+              <Analytics />
+              <Toaster />
+              <Sonner />
+              <DiagnosticsPanel />
+              <OfflineBanner />
+              <CookieConsent />
+              <PWAInstallPrompt />
+              {children}
+            </LanguageProvider>
           </A11yProvider>
         </TooltipProvider>
       </QueryClientProvider>

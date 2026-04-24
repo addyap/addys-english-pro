@@ -3,6 +3,9 @@ import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 
+// Initialize i18n (must run before App renders)
+import './i18n'
+
 // Initialize Core Web Vitals monitoring
 import './monitor/vitals.ts'
 

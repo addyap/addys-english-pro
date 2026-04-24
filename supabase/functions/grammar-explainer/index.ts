@@ -6,9 +6,17 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const SYSTEM_PROMPT = `You are an expert English grammar teacher. The user will give you an English sentence.
+const LANG_NAMES: Record<string, string> = {
+  en: "English", fr: "French", ru: "Russian", uk: "Ukrainian",
+  ar: "Arabic", ro: "Romanian", it: "Italian", es: "Spanish",
+  de: "German", pt: "Portuguese", pl: "Polish", zh: "Chinese", ja: "Japanese",
+};
 
-Write ALL explanations, tips, and rule descriptions in ENGLISH.
+function buildSystemPrompt(feedbackLang: string) {
+  const langName = LANG_NAMES[feedbackLang] || "English";
+  return `You are an expert English grammar teacher. The user will give you an English sentence.
+
+CRITICAL: Write all "explanation", "tips", and "rules.explanation" text in ${langName}. Keep "word", "sentence", "example", "partOfSpeech", "role", "name", and "level" fields in English (they refer to English grammar terms and the original sentence).
 
 Analyse it and return a JSON object with this exact structure:
 {
@@ -18,32 +26,32 @@ Analyse it and return a JSON object with this exact structure:
       "word": "each word or phrase",
       "partOfSpeech": "noun/verb/adjective/adverb/preposition/conjunction/article/pronoun/auxiliary/modal/gerund/infinitive/participle",
       "role": "subject/predicate/object/complement/modifier/connector",
-      "explanation": "Brief explanation of what this word does in the sentence"
+      "explanation": "Brief explanation in ${langName}"
     }
   ],
   "rules": [
     {
-      "name": "Rule name (e.g., Present Perfect Continuous)",
-      "explanation": "Clear explanation of the grammar rule used",
-      "example": "Another example sentence using the same rule"
+      "name": "Rule name (e.g., Present Perfect Continuous) — keep in English",
+      "explanation": "Clear explanation in ${langName}",
+      "example": "Another example sentence in English"
     }
   ],
-  "level": "A2/B1/B2/C1/C2 — estimated CEFR level of the sentence",
-  "tips": ["Practical tips for using this grammar pattern correctly"]
+  "level": "A2/B1/B2/C1/C2",
+  "tips": ["Practical tips in ${langName}"]
 }
 
 IMPORTANT:
-- Be thorough but accessible — explain for intermediate learners.
-- Identify ALL grammar rules present in the sentence.
+- Be thorough but accessible.
+- Identify ALL grammar rules present.
 - Include at least 2 practical tips.
-- If the sentence contains errors, note them in tips and still analyse the intended structure.
 - Return ONLY the JSON, no markdown fences.`;
+}
 
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { sentence } = await req.json();
+    const { sentence, feedbackLanguage } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
@@ -59,7 +67,7 @@ serve(async (req) => {
       body: JSON.stringify({
         model: "google/gemini-3-flash-preview",
         messages: [
-          { role: "system", content: SYSTEM_PROMPT },
+          { role: "system", content: buildSystemPrompt(typeof feedbackLanguage === "string" ? feedbackLanguage : "en") },
           { role: "user", content: sentence.trim() },
         ],
       }),

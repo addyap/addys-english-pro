@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "training": "Training",
+    "testimonials": "Testimonials",
+    "contact": "Contact",
+    "blog": "Blog",
+    "resources": "Free Resources",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "footer": {
+    "tagline": "Certified professional English trainer (FPA). Over 20 years of experience teaching English to adults, companies and institutions.",
+    "navigation": "Navigation",
+    "resources": "Free Resources",
+    "exercises": "English exercises",
+    "listening": "Listening & Comprehension",
+    "reading": "Reading comprehension",
+    "writing": "Writing exercises",
+    "stories": "Interactive stories",
+    "dashboard": "My dashboard",
+    "contact": "Contact",
+    "location": "Alpes-Maritimes, France",
+    "legal": "Legal",
+    "legalNotices": "Legal notices",
+    "privacy": "Privacy policy",
+    "sitemap": "Sitemap",
+    "rights": "All rights reserved. Certified Professional Adult Trainer.",
+    "hostedBy": "Site hosted by"
+  },
+  "settings": {
+    "title": "Language settings",
+    "interfaceLanguage": "Interface language",
+    "feedbackLanguage": "AI feedback language",
+    "interfaceHelp": "Controls menus, buttons and forms.",
+    "feedbackHelp": "Controls AI corrections and explanations. The AI conversation stays in English."
+  },
+  "ai": {
+    "translateAnswer": "Translate this answer",
+    "explainInMyLanguage": "Explain in my language",
+    "showVocab": "Show key vocabulary",
+    "feedbackLanguageNote": "Feedback will be shown in {{lang}}."
+  },
+  "common": {
+    "language": "Language",
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close"
+  }
+}

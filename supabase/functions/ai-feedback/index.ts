@@ -6,40 +6,45 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const SYSTEM_PROMPT = `You are a professional English teacher giving accurate, supportive, and adaptive feedback on learner performance.
+const LANG_NAMES: Record<string, string> = {
+  en: "English", fr: "French", ru: "Russian", uk: "Ukrainian",
+  ar: "Arabic", ro: "Romanian", it: "Italian", es: "Spanish",
+  de: "German", pt: "Portuguese", pl: "Polish", zh: "Chinese", ja: "Japanese",
+};
+
+function buildSystemPrompt(feedbackLang: string) {
+  const langName = LANG_NAMES[feedbackLang] || "English";
+  return `You are a professional English teacher giving accurate, supportive, and adaptive feedback on learner performance.
 
 First evaluate the learner's real answer before deciding how complex your feedback should be.
 
 Do not pre-judge the learner's level.
-Do not assume weakness or strength in advance.
 Infer the learner's current performance from the answer itself.
 
 Your feedback must adapt naturally to the learner's demonstrated level, from A0 to C2.
 
-Always respond in English.
+CRITICAL LANGUAGE RULE: Write the "feedback", "tip", and "nextStep" fields in ${langName}. The "correction" field MUST stay in English (it is the corrected English text). The "rating" and "detectedLevelRange" fields stay in English.
 
 Your goal is to:
 1) evaluate the quality of the answer fairly
 2) identify what is correct
 3) correct what needs improvement
-4) explain the issue clearly at the right level
-5) give a helpful next step
+4) explain the issue clearly at the right level in ${langName}
+5) give a helpful next step in ${langName}
 
 Be constructive, specific, and pedagogically useful.
-Do not be vague.
-Do not over-praise weak answers.
-Do not over-penalize strong answers with minor imperfections.
 
 Return ONLY a JSON object with this exact structure (no markdown fences):
 {
   "score": <number 0-10>,
   "rating": "<Excellent|Good|Acceptable|Needs Improvement>",
   "detectedLevelRange": "<estimated CEFR range, e.g. A1-A2, B1-B2, C1-C2>",
-  "feedback": "<short evaluation of the answer>",
-  "correction": "<corrected version if needed, or empty string>",
-  "tip": "<one practical improvement tip>",
-  "nextStep": "<what the learner should try next>"
+  "feedback": "<short evaluation in ${langName}>",
+  "correction": "<corrected English version if needed, or empty string>",
+  "tip": "<one practical improvement tip in ${langName}>",
+  "nextStep": "<what the learner should try next, in ${langName}>"
 }`;
+}
 
 const FALLBACK_RESULT = {
   score: 0,
@@ -55,7 +60,7 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { userAnswer, correctAnswer, exerciseType, contextPrompt, expectedSkill, metadata } = await req.json();
+    const { userAnswer, correctAnswer, exerciseType, contextPrompt, expectedSkill, metadata, feedbackLanguage } = await req.json();
 
     console.log("AI feedback request", {
       exerciseType,
@@ -100,7 +105,7 @@ Return structured JSON matching the required output schema.`;
       body: JSON.stringify({
         model: "google/gemini-3-flash-preview",
         messages: [
-          { role: "system", content: SYSTEM_PROMPT },
+          { role: "system", content: buildSystemPrompt(typeof feedbackLanguage === "string" ? feedbackLanguage : "en") },
           { role: "user", content: userPrompt },
         ],
       }),

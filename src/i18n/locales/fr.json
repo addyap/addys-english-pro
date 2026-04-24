@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "Qui je suis",
+    "training": "Offres de formation",
+    "testimonials": "Témoignages",
+    "contact": "Contact",
+    "blog": "Blog",
+    "resources": "Ressources Gratuites",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
+  },
+  "footer": {
+    "tagline": "Formateur d'anglais professionnel certifié FPA. Plus de 20 ans d'expérience dans la formation d'anglais pour adultes, entreprises et institutions.",
+    "navigation": "Navigation",
+    "resources": "Ressources Gratuites",
+    "exercises": "Exercices d'anglais",
+    "listening": "Écoute & Compréhension",
+    "reading": "Compréhension écrite",
+    "writing": "Exercices d'écriture",
+    "stories": "Histoires interactives",
+    "dashboard": "Mon tableau de bord",
+    "contact": "Contact",
+    "location": "Alpes-Maritimes, France",
+    "legal": "Informations légales",
+    "legalNotices": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "sitemap": "Plan du site",
+    "rights": "Tous droits réservés. Formateur Professionnel d'Adultes certifié.",
+    "hostedBy": "Site hébergé par"
+  },
+  "settings": {
+    "title": "Paramètres de langue",
+    "interfaceLanguage": "Langue de l'interface",
+    "feedbackLanguage": "Langue du feedback IA",
+    "interfaceHelp": "Contrôle les menus, boutons et formulaires.",
+    "feedbackHelp": "Contrôle les corrections et explications de l'IA. La conversation IA reste en anglais."
+  },
+  "ai": {
+    "translateAnswer": "Traduire cette réponse",
+    "explainInMyLanguage": "Expliquer dans ma langue",
+    "showVocab": "Afficher le vocabulaire clé",
+    "feedbackLanguageNote": "Le feedback sera affiché en {{lang}}."
+  },
+  "common": {
+    "language": "Langue",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "close": "Fermer"
+  }
+}
