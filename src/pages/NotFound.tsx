@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useLocation, Link } from "react-router-dom";
-import { Home, BookOpen, MessageSquare, User, GraduationCap } from 'lucide-react';
+import { Home, BookOpen, Sparkles, Mail } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { Button } from '@/components/ui/button';
 
 const NotFound = () => {
   const location = useLocation();
@@ -13,55 +14,44 @@ const NotFound = () => {
     );
   }, [location.pathname]);
 
-  const popularPages = [
-    { href: '/', label: 'Accueil', icon: Home },
-    { href: '/exercices', label: 'Exercices gratuits', icon: BookOpen },
-    { href: '/offres-de-formation', label: 'Formations', icon: GraduationCap },
-    { href: '/qui-je-suis', label: 'À propos', icon: User },
-    { href: '/contact', label: 'Contact', icon: MessageSquare },
+  const recoveryActions = [
+    { href: '/', label: 'Back to Home', icon: Home, variant: 'default' as const },
+    { href: '/ressources-gratuites', label: 'Explore Free Resources', icon: BookOpen, variant: 'outline' as const },
+    { href: '/conversation-trainer', label: 'Try the AI Trainer', icon: Sparkles, variant: 'outline' as const },
+    { href: '/contact', label: 'Contact Antony', icon: Mail, variant: 'ghost' as const },
   ];
 
   return (
     <>
-      <SEOHead 
-        title="Page non trouvée - 404 | Antony Addy"
-        description="La page recherchée n'existe pas ou a été déplacée. Retrouvez les exercices d'anglais gratuits, le blog et les formations d'Antony Addy."
+      <SEOHead
+        title="Page not found — 404 | Antony Addy"
+        description="The page you're looking for doesn't exist or has been moved. Browse free English exercises, the AI trainer, or get in touch with Antony."
         noIndex={true}
       />
-      
+
       <div className="min-h-screen flex items-center justify-center bg-muted/30">
         <div className="max-w-2xl mx-auto px-4 text-center">
-          <h1 className="text-7xl font-bold text-primary mb-4">404</h1>
-          <h2 className="text-2xl font-semibold text-foreground mb-4">Page non trouvée</h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Oups ! La page que vous cherchez n'existe pas ou a été déplacée.
+          <p className="text-7xl font-bold text-primary mb-4">404</p>
+          <h1 className="text-2xl font-semibold text-foreground mb-3">Page not found</h1>
+          <p className="text-base text-muted-foreground mb-8 max-w-md mx-auto">
+            The page you're looking for doesn't exist or has been moved.
+            Pick one of the options below to keep going.
           </p>
-          
-          {/* Primary CTA */}
-          <Link 
-            to="/" 
-            className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors mb-10"
-          >
-            Retour à l'accueil
-          </Link>
-          
-          {/* Popular Pages */}
-          <div className="border-t border-border pt-8">
-            <h3 className="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">
-              Pages populaires
-            </h3>
-            <div className="flex flex-wrap justify-center gap-3">
-              {popularPages.map((page) => (
-                <Link
-                  key={page.href}
-                  to={page.href}
-                  className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-lg text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
-                >
-                  <page.icon className="h-4 w-4" />
-                  {page.label}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg mx-auto">
+            {recoveryActions.map((a) => (
+              <Button
+                key={a.href}
+                asChild
+                variant={a.variant}
+                className="w-full justify-start"
+              >
+                <Link to={a.href}>
+                  <a.icon className="w-4 h-4 mr-2" />
+                  {a.label}
                 </Link>
-              ))}
-            </div>
+              </Button>
+            ))}
           </div>
         </div>
       </div>
