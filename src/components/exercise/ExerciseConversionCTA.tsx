@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Mail } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 interface ExerciseConversionCTAProps {
   /** Heading. Defaults to "Want personalized feedback?". */
@@ -32,13 +33,29 @@ const ExerciseConversionCTA: React.FC<ExerciseConversionCTAProps> = ({
         )}
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Button asChild>
-            <Link to={aiToolPath}>
+            <Link
+              to={aiToolPath}
+              onClick={() =>
+                trackEvent("exercise_cta_click", {
+                  target: aiToolPath,
+                  label: aiToolLabel,
+                })
+              }
+            >
               <Sparkles className="w-4 h-4 mr-2" />
               {aiToolLabel}
             </Link>
           </Button>
           <Button asChild variant="outline">
-            <Link to="/contact">
+            <Link
+              to="/contact"
+              onClick={() =>
+                trackEvent("exercise_cta_click", {
+                  target: "/contact",
+                  label: "Contact Antony",
+                })
+              }
+            >
               <Mail className="w-4 h-4 mr-2" />
               Contact Antony
             </Link>

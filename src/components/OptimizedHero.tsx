@@ -92,6 +92,7 @@ export default function OptimizedHero() {
           {/* PRIMARY CTA — strongest visual weight */}
           <Link
             to="/contact"
+            onClick={() => trackEvent('hero_cta_click', { page: 'home', target: '/contact' })}
             className="group relative overflow-hidden bg-accent text-accent-foreground px-10 py-5 rounded-lg font-bold text-lg hover:bg-accent/90 hover:shadow-2xl transition-all duration-300 shadow-2xl font-body transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-accent/40 active:scale-100 ring-2 ring-accent/40"
             aria-label="Démarrer votre progression en anglais — contacter Antony Addy"
           >
@@ -102,6 +103,7 @@ export default function OptimizedHero() {
           {/* SECONDARY CTA — outline / ghost styling */}
           <Link
             to="/ressources-gratuites"
+            onClick={() => trackEvent('resources_cta_click', { page: 'home', target: '/ressources-gratuites' })}
             className="group relative overflow-hidden border-2 border-primary-foreground/80 text-primary-foreground bg-transparent px-8 py-4 rounded-lg font-semibold hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all duration-300 font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-ring/30 active:scale-100"
             aria-label="Explorer les ressources gratuites d'anglais"
           >

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 export interface RelatedExerciseItem {
   id: number | string;
@@ -101,6 +102,14 @@ const RelatedExercises: React.FC<RelatedExercisesProps> = ({
             <li key={ex.id}>
               <Link
                 to={ex.path}
+                onClick={() =>
+                  trackEvent("related_exercise_click", {
+                    exercise_id: ex.id,
+                    target: ex.path,
+                    category: ex.category,
+                    level: ex.level,
+                  })
+                }
                 className="flex items-start justify-between gap-3 p-3 rounded-lg border border-border hover:border-primary/50 hover:bg-accent/40 transition-colors group h-full"
                 aria-label={`Open related exercise: ${ex.title}`}
               >

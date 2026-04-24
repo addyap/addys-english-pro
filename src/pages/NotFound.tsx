@@ -3,6 +3,7 @@ import { useLocation, Link } from "react-router-dom";
 import { Home, BookOpen, Sparkles, Mail } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { Button } from '@/components/ui/button';
+import { trackEvent } from '@/lib/analytics';
 
 const NotFound = () => {
   const location = useLocation();
@@ -46,7 +47,17 @@ const NotFound = () => {
                 variant={a.variant}
                 className="w-full justify-start"
               >
-                <Link to={a.href}>
+                <Link
+                  to={a.href}
+                  onClick={() =>
+                    trackEvent('404_cta_click', {
+                      source: 'not_found_page',
+                      from: location.pathname,
+                      target: a.href,
+                      label: a.label,
+                    })
+                  }
+                >
                   <a.icon className="w-4 h-4 mr-2" />
                   {a.label}
                 </Link>
