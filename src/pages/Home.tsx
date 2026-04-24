@@ -358,7 +358,9 @@ const Home = () => {
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             {/* Promise */}
             <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-              <Badge label="AI English Training" />
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider">
+                <Sparkles className="w-3 h-3" aria-hidden="true" /> AI English Training
+              </span>
               <h2
                 id="ai-training-positioning-heading"
                 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground leading-tight"
