@@ -62,7 +62,15 @@
     "failedImprovePresentation": "Impossibile migliorare la presentazione.",
     "networkError": "Errore di rete. Riprova.",
     "copied": "Copiato!",
-    "copyFailed": "Impossibile copiare. Seleziona il testo manualmente."
+    "copyFailed": "Impossibile copiare. Seleziona il testo manualmente.",
+    "grammarPlaceholder": "Digita o incolla una frase in inglese...",
+    "grammarTryThis": "Prova così:",
+    "grammarExample1": "Correggi la mia email di lavoro",
+    "grammarExample2": "Spiega il present perfect",
+    "grammarExample3": "Migliora questa frase",
+    "presentationPlaceholder": "Scrivi qui la tua presentazione professionale...",
+    "emailSubjectPlaceholder": "Re: ...",
+    "emailReplyPlaceholder": "Scrivi qui la tua risposta email professionale..."
   },
   "common": {
     "language": "Lingua",

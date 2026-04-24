@@ -62,7 +62,15 @@
     "failedImprovePresentation": "Nu s-a putut îmbunătăți prezentarea.",
     "networkError": "Eroare de rețea. Încearcă din nou.",
     "copied": "Copiat!",
-    "copyFailed": "Nu se poate copia. Selectează textul manual."
+    "copyFailed": "Nu se poate copia. Selectează textul manual.",
+    "grammarPlaceholder": "Tastează sau lipește o propoziție în engleză...",
+    "grammarTryThis": "Încearcă asta:",
+    "grammarExample1": "Corectează emailul meu de afaceri",
+    "grammarExample2": "Explică present perfect",
+    "grammarExample3": "Îmbunătățește această propoziție",
+    "presentationPlaceholder": "Scrie aici prezentarea ta profesională...",
+    "emailSubjectPlaceholder": "Re: ...",
+    "emailReplyPlaceholder": "Scrie aici răspunsul tău profesional pe email..."
   },
   "common": {
     "language": "Limbă",

@@ -353,7 +353,7 @@ const AIPresentationTrainer: React.FC = () => {
                 <Textarea
                   value={presentationText}
                   onChange={e => setPresentationText(e.target.value)}
-                  placeholder="Write your professional presentation here..."
+                  placeholder={tr("ai.presentationPlaceholder", "Write your professional presentation here...")}
                   className="min-h-[200px] resize-y"
                 />
                 <p className={`text-xs ${wordCount < scenario.recommendedWords[0] ? "text-amber-600" : wordCount > scenario.recommendedWords[1] ? "text-amber-600" : "text-emerald-600"}`}>
