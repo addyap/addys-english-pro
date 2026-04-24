@@ -136,7 +136,7 @@ const AIGrammarExplainer = () => {
         description="Collez une phrase en anglais et obtenez une analyse grammaticale complète par IA : nature des mots, règles utilisées et conseils."
         canonical="/grammar-explainer"
       />
-      <div className="min-h-screen bg-background py-10">
+      <div className="min-h-screen bg-background py-10 pb-32 md:pb-10">
         <div className="max-w-3xl mx-auto px-4 space-y-6">
           <div className="text-center">
             <div className="flex items-center justify-center gap-3 mb-3">
@@ -168,6 +168,7 @@ const AIGrammarExplainer = () => {
               )}
               <div className="flex gap-2">
                 <Input
+                  ref={inputRef}
                   value={sentence}
                   onChange={e => setSentence(e.target.value)}
                   placeholder="Type or paste an English sentence..."
@@ -175,7 +176,7 @@ const AIGrammarExplainer = () => {
                   onKeyDown={e => { if (e.key === "Enter") analyse(); }}
                   disabled={loading}
                 />
-                <Button onClick={() => analyse()} disabled={loading || sentence.trim().length < 3 || limitReached}>
+                <Button onClick={() => analyse()} disabled={loading || sentence.trim().length < 3 || limitReached} className="hidden sm:inline-flex">
                   {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
                 </Button>
               </div>
@@ -285,12 +286,50 @@ const AIGrammarExplainer = () => {
                 </CardContent>
               </Card>
 
-              <Button onClick={reset} variant="outline" className="w-full">
-                <RotateCcw className="w-4 h-4 mr-2" /> Nouvelle phrase
-              </Button>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <Button onClick={copySummary} variant="outline" className="w-full">
+                  {copied ? (
+                    <><Check className="w-4 h-4 mr-2" /> Copied!</>
+                  ) : (
+                    <><Copy className="w-4 h-4 mr-2" /> Copy explanation</>
+                  )}
+                </Button>
+                <Button onClick={tryAgain} variant="outline" className="w-full">
+                  <RefreshCw className="w-4 h-4 mr-2" /> Try again
+                </Button>
+                <Button onClick={reset} className="w-full">
+                  <RotateCcw className="w-4 h-4 mr-2" /> Nouvelle phrase
+                </Button>
+              </div>
             </div>
           )}
+
+          {!result && (
+            <RecentPractice
+              items={history}
+              onRestore={restoreFromHistory}
+              onClear={clearHistory}
+            />
+          )}
         </div>
+
+        {/* Mobile floating analyse button */}
+        {!result && (
+          <div className="md:hidden fixed bottom-0 inset-x-0 z-40 p-3 bg-background/95 backdrop-blur border-t border-border pb-[calc(env(safe-area-inset-bottom)+0.75rem)]">
+            <Button
+              onClick={() => analyse()}
+              disabled={loading || sentence.trim().length < 3 || limitReached}
+              className="w-full"
+              size="lg"
+            >
+              {loading ? (
+                <><Loader2 className="w-4 h-4 animate-spin mr-2" /> Analyzing...</>
+              ) : (
+                <><Search className="w-4 h-4 mr-2" /> Analyze</>
+              )}
+            </Button>
+          </div>
+        )}
       </div>
     </>
   );
