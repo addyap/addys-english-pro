@@ -6,35 +6,43 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const SYSTEM_PROMPT = `You are an expert English writing coach specialising in professional and academic writing for non-native speakers.
+const LANG_NAMES: Record<string, string> = {
+  en: "English", fr: "French", ru: "Russian", uk: "Ukrainian",
+  ar: "Arabic", ro: "Romanian", it: "Italian", es: "Spanish",
+  de: "German", pt: "Portuguese", pl: "Polish", zh: "Chinese", ja: "Japanese",
+};
 
-Write ALL feedback, comments, explanations, suggestions, and the improved version in ENGLISH.
+function buildSystemPrompt(feedbackLang: string) {
+  const langName = LANG_NAMES[feedbackLang] || "English";
+  return `You are an expert English writing coach specialising in professional and academic writing for non-native speakers.
+
+CRITICAL: Write all "comment", "explanation", "suggestions", "strengths", "needsImprovement", and "overall" text in ${langName}. Keep "wrong", "correct", "basic", "advanced", and "improvedVersion" in English (they are English text samples). Keep "rating" and "overallLevel" labels in English.
 
 The user will send you a piece of writing along with the type (email, essay, report, cover letter, LinkedIn post, etc.).
 
 Analyse the writing and return a JSON object with this exact structure:
 {
-  "taskAchievement": {"score": 0-10, "comment": "How well the text achieves its purpose"},
-  "clarity": {"score": 0-10, "comment": "How clear and easy to understand"},
-  "coherence": {"score": 0-10, "comment": "Logical flow and paragraph structure"},
-  "grammar": {"score": 0-10, "comment": "Grammar accuracy"},
-  "vocabulary": {"score": 0-10, "comment": "Range and appropriateness of vocabulary"},
-  "style": {"rating": "formal/neutral/informal/academic/inconsistent", "comment": "Register and tone analysis"},
+  "taskAchievement": {"score": 0-10, "comment": "in ${langName}"},
+  "clarity": {"score": 0-10, "comment": "in ${langName}"},
+  "coherence": {"score": 0-10, "comment": "in ${langName}"},
+  "grammar": {"score": 0-10, "comment": "in ${langName}"},
+  "vocabulary": {"score": 0-10, "comment": "in ${langName}"},
+  "style": {"rating": "formal/neutral/informal/academic/inconsistent", "comment": "in ${langName}"},
   "overallLevel": "A2/B1/B1+/B2/C1/C2",
-  "corrections": [{"wrong": "original phrase", "correct": "improved phrase", "explanation": "why"}],
-  "suggestions": ["specific actionable suggestion"],
-  "advancedVocabulary": [{"basic": "simple word used", "advanced": "better alternative"}],
-  "strengths": "What the writer does well",
-  "needsImprovement": "Main areas to work on",
-  "overall": "Summary assessment",
-  "improvedVersion": "The full text rewritten with all corrections applied and improvements made"
+  "corrections": [{"wrong": "original English phrase", "correct": "improved English phrase", "explanation": "in ${langName}"}],
+  "suggestions": ["actionable suggestion in ${langName}"],
+  "advancedVocabulary": [{"basic": "simple English word", "advanced": "better English alternative"}],
+  "strengths": "in ${langName}",
+  "needsImprovement": "in ${langName}",
+  "overall": "in ${langName}",
+  "improvedVersion": "Full text rewritten in English"
 }
 
 IMPORTANT:
 - Be encouraging but honest.
 - Provide at least 3 corrections and 3 vocabulary upgrades when possible.
-- The improved version should maintain the writer's voice while fixing errors and enhancing quality.
 - Return ONLY the JSON, no markdown fences.`;
+}
 
 function sanitizeFeedback(raw: unknown) {
   const fb = (typeof raw === "object" && raw !== null ? raw : {}) as Record<string, unknown>;
@@ -83,7 +91,7 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { text, writingType } = await req.json();
+    const { text, writingType, feedbackLanguage } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
@@ -93,7 +101,7 @@ serve(async (req) => {
       body: JSON.stringify({
         model: "google/gemini-3-flash-preview",
         messages: [
-          { role: "system", content: SYSTEM_PROMPT },
+          { role: "system", content: buildSystemPrompt(typeof feedbackLanguage === "string" ? feedbackLanguage : "en") },
           { role: "user", content: `Writing type: ${writingType || "general"}\n\nText to analyse:\n${text}` },
         ],
       }),
