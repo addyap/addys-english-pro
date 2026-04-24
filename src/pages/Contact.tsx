@@ -111,6 +111,7 @@ const Contact = () => {
     } catch (error) {
       console.error('Form submission error:', error);
       trackFormError('contact', 'submission_failed');
+      trackEvent('contact_submit_error', { page: 'contact', reason: 'submission_failed' });
       const msg = '❌ Something went wrong. Please try again or use WhatsApp.';
       setErrors({ submit: 'Une erreur est survenue. Veuillez réessayer.' });
       setSubmitErrorBanner(msg);
