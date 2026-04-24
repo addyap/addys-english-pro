@@ -40,6 +40,11 @@
     "translateAnswer": "Traduci questa risposta",
     "explainInMyLanguage": "Spiega nella mia lingua",
     "showVocab": "Mostra il vocabolario chiave",
+    "translateShort": "Traduci",
+    "explainShort": "Spiega",
+    "vocabShort": "Vocabolario",
+    "supportHelp": "Hai bisogno di aiuto? Traduci, spiega o studia il vocabolario nella tua lingua.",
+    "supportError": "Qualcosa è andato storto. Riprova.",
     "feedbackLanguageNote": "Il feedback verrà mostrato in {{lang}}."
   },
   "common": {
