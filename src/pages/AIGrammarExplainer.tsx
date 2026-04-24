@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -6,12 +6,14 @@ import { Badge } from "@/components/ui/badge";
 import SEOHead from "@/components/SEOHead";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import type { GrammarExplainerResult } from "@/types/ai-trainers";
-import { Search, RotateCcw, Loader2, BookOpen, Lightbulb, ArrowRight } from "lucide-react";
+import { Search, RotateCcw, Loader2, BookOpen, Lightbulb, ArrowRight, Copy, Check, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 import AIToolLoadingSkeleton from "@/components/ai-trainer/AIToolLoadingSkeleton";
+import { useSessionHistory, type SessionHistoryItem } from "@/hooks/useSessionHistory";
+import RecentPractice from "@/components/ai-trainer/RecentPractice";
 
 const EXAMPLE_SENTENCES = [
   "If I had known about the meeting, I would have prepared a report.",
@@ -25,8 +27,11 @@ const AIGrammarExplainer = () => {
   const [sentence, setSentence] = useState("");
   const [result, setResult] = useState<GrammarExplainerResult | null>(null);
   const [loading, setLoading] = useState(false);
+  const [copied, setCopied] = useState(false);
   const { remaining, limitReached, recordSession } = useAIDailyLimit("grammar-explainer");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
+  const { items: history, addItem: addHistoryItem, clear: clearHistory } = useSessionHistory("grammar-explainer");
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const analyse = async (text?: string) => {
     const s = (text || sentence).trim();
@@ -50,6 +55,12 @@ const AIGrammarExplainer = () => {
       }
       setResult(data.result);
       setSentence(s);
+      // Build a compact summary for history (rules + tips fallback)
+      const summary =
+        (data?.result?.rules?.[0]?.example as string) ||
+        (data?.result?.tips?.[0] as string) ||
+        s;
+      addHistoryItem(s, summary);
     } catch {
       toast.error("Erreur lors de l'analyse.");
     } finally {
@@ -60,6 +71,49 @@ const AIGrammarExplainer = () => {
   const reset = () => {
     setSentence("");
     setResult(null);
+  };
+
+  const tryAgain = () => {
+    setResult(null);
+    setTimeout(() => {
+      inputRef.current?.focus();
+      inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 50);
+  };
+
+  const restoreFromHistory = (item: SessionHistoryItem) => {
+    setSentence(item.input);
+    setResult(null);
+    setTimeout(() => {
+      inputRef.current?.focus();
+      inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 50);
+  };
+
+  const copySummary = async () => {
+    if (!result) return;
+    const text = [
+      `Sentence: ${sentence}`,
+      `Level: ${result.level}`,
+      "",
+      "Rules:",
+      ...result.rules.map((r) => `• ${r.name} — ${r.explanation}`),
+      "",
+      "Tips:",
+      ...result.tips.map((t) => `• ${t}`),
+    ].join("\n");
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        throw new Error("no clipboard");
+      }
+      setCopied(true);
+      toast.success("Copied!");
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      toast.error("Unable to copy, please select text manually");
+    }
   };
 
   const POS_COLORS: Record<string, string> = {
@@ -82,7 +136,7 @@ const AIGrammarExplainer = () => {
         description="Collez une phrase en anglais et obtenez une analyse grammaticale complète par IA : nature des mots, règles utilisées et conseils."
         canonical="/grammar-explainer"
       />
-      <div className="min-h-screen bg-background py-10">
+      <div className="min-h-screen bg-background py-10 pb-32 md:pb-10">
         <div className="max-w-3xl mx-auto px-4 space-y-6">
           <div className="text-center">
             <div className="flex items-center justify-center gap-3 mb-3">
@@ -114,6 +168,7 @@ const AIGrammarExplainer = () => {
               )}
               <div className="flex gap-2">
                 <Input
+                  ref={inputRef}
                   value={sentence}
                   onChange={e => setSentence(e.target.value)}
                   placeholder="Type or paste an English sentence..."
@@ -121,7 +176,7 @@ const AIGrammarExplainer = () => {
                   onKeyDown={e => { if (e.key === "Enter") analyse(); }}
                   disabled={loading}
                 />
-                <Button onClick={() => analyse()} disabled={loading || sentence.trim().length < 3 || limitReached}>
+                <Button onClick={() => analyse()} disabled={loading || sentence.trim().length < 3 || limitReached} className="hidden sm:inline-flex">
                   {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
                 </Button>
               </div>
@@ -231,12 +286,50 @@ const AIGrammarExplainer = () => {
                 </CardContent>
               </Card>
 
-              <Button onClick={reset} variant="outline" className="w-full">
-                <RotateCcw className="w-4 h-4 mr-2" /> Nouvelle phrase
-              </Button>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <Button onClick={copySummary} variant="outline" className="w-full">
+                  {copied ? (
+                    <><Check className="w-4 h-4 mr-2" /> Copied!</>
+                  ) : (
+                    <><Copy className="w-4 h-4 mr-2" /> Copy explanation</>
+                  )}
+                </Button>
+                <Button onClick={tryAgain} variant="outline" className="w-full">
+                  <RefreshCw className="w-4 h-4 mr-2" /> Try again
+                </Button>
+                <Button onClick={reset} className="w-full">
+                  <RotateCcw className="w-4 h-4 mr-2" /> Nouvelle phrase
+                </Button>
+              </div>
             </div>
           )}
+
+          {!result && (
+            <RecentPractice
+              items={history}
+              onRestore={restoreFromHistory}
+              onClear={clearHistory}
+            />
+          )}
         </div>
+
+        {/* Mobile floating analyse button */}
+        {!result && (
+          <div className="md:hidden fixed bottom-0 inset-x-0 z-40 p-3 bg-background/95 backdrop-blur border-t border-border pb-[calc(env(safe-area-inset-bottom)+0.75rem)]">
+            <Button
+              onClick={() => analyse()}
+              disabled={loading || sentence.trim().length < 3 || limitReached}
+              className="w-full"
+              size="lg"
+            >
+              {loading ? (
+                <><Loader2 className="w-4 h-4 animate-spin mr-2" /> Analyzing...</>
+              ) : (
+                <><Search className="w-4 h-4 mr-2" /> Analyze</>
+              )}
+            </Button>
+          </div>
+        )}
       </div>
     </>
   );

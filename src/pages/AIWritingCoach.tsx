@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,11 +15,13 @@ import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import { invokeAI } from "@/lib/ai/streamChat";
 import { t, type UILang } from "@/lib/ai/i18n";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
-import { Send, RotateCcw, Loader2, FileText, Wand2, Eye, ChevronDown, ChevronUp } from "lucide-react";
+import { Send, RotateCcw, Loader2, FileText, Wand2, Eye, ChevronDown, ChevronUp, Copy, Check, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 import AIToolLoadingSkeleton from "@/components/ai-trainer/AIToolLoadingSkeleton";
+import { useSessionHistory, type SessionHistoryItem } from "@/hooks/useSessionHistory";
+import RecentPractice from "@/components/ai-trainer/RecentPractice";
 
 interface Feedback {
   taskAchievement: { score: number; comment: string };
@@ -57,9 +59,12 @@ const AIWritingCoach = () => {
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [loading, setLoading] = useState(false);
   const [showImproved, setShowImproved] = useState(false);
+  const [copied, setCopied] = useState(false);
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("writing-coach");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const uiLang = feedbackLang as UILang;
+  const { items: history, addItem: addHistoryItem, clear: clearHistory } = useSessionHistory("writing-coach");
+  const inputRef = useRef<HTMLTextAreaElement | null>(null);
 
   const submit = async () => {
     if (text.trim().length < 20) {
@@ -88,7 +93,10 @@ const AIWritingCoach = () => {
       if (elapsed < 1500) {
         await new Promise((r) => setTimeout(r, 1500 - elapsed));
       }
-      if (data?.feedback) setFeedback(data.feedback);
+      if (data?.feedback) {
+        setFeedback(data.feedback);
+        addHistoryItem(text.trim(), data.feedback.improvedVersion || "");
+      }
     } catch {
       toast.error(t("error.feedback", uiLang));
     } finally {
@@ -102,6 +110,42 @@ const AIWritingCoach = () => {
     setShowImproved(false);
   };
 
+  const tryAgain = () => {
+    setFeedback(null);
+    setShowImproved(false);
+    setTimeout(() => {
+      inputRef.current?.focus();
+      inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 50);
+  };
+
+  const restoreFromHistory = (item: SessionHistoryItem) => {
+    setText(item.input);
+    setFeedback(null);
+    setShowImproved(false);
+    setTimeout(() => {
+      inputRef.current?.focus();
+      inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 50);
+  };
+
+  const copyImproved = async () => {
+    const improved = feedback?.improvedVersion?.trim();
+    if (!improved) return;
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(improved);
+      } else {
+        throw new Error("no clipboard");
+      }
+      setCopied(true);
+      toast.success("Copied!");
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      toast.error("Unable to copy, please select text manually");
+    }
+  };
+
   return (
     <>
       <SEOHead
@@ -109,7 +153,7 @@ const AIWritingCoach = () => {
         description="Soumettez un texte en anglais et recevez un feedback IA détaillé : grammaire, vocabulaire, style et version améliorée."
         canonical="/writing-coach"
       />
-      <div className="min-h-screen bg-background py-10">
+      <div className="min-h-screen bg-background py-10 pb-32 md:pb-10">
         <div className="max-w-3xl mx-auto px-4 space-y-6">
           <div className="text-center">
             <div className="flex items-center justify-center gap-3 mb-3">
@@ -155,6 +199,7 @@ const AIWritingCoach = () => {
                       </div>
                     )}
                     <Textarea
+                      ref={inputRef}
                       value={text}
                       onChange={e => setText(e.target.value)}
                       placeholder="Write your text in English here..."
@@ -189,6 +234,12 @@ const AIWritingCoach = () => {
                   ]}
                 />
               )}
+
+              <RecentPractice
+                items={history}
+                onRestore={restoreFromHistory}
+                onClear={clearHistory}
+              />
             </>
           ) : (
             <div className="space-y-6">
@@ -226,8 +277,21 @@ const AIWritingCoach = () => {
                   </CardTitle>
                 </CardHeader>
                 {showImproved && (
-                  <CardContent>
+                  <CardContent className="space-y-3">
                     <p className="text-sm whitespace-pre-wrap bg-primary/5 p-4 rounded-lg">{feedback.improvedVersion}</p>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={copyImproved}
+                      className="w-full sm:w-auto"
+                    >
+                      {copied ? (
+                        <><Check className="w-4 h-4 mr-2" /> Copied!</>
+                      ) : (
+                        <><Copy className="w-4 h-4 mr-2" /> Copy improved version</>
+                      )}
+                    </Button>
                   </CardContent>
                 )}
               </Card>
@@ -237,12 +301,51 @@ const AIWritingCoach = () => {
                 <p className="text-sm">{feedback.overall}</p>
               </Card>
 
-              <Button onClick={reset} className="w-full">
-                <RotateCcw className="w-4 h-4 mr-2" /> {t("btn.new_session", uiLang)}
-              </Button>
+              {/* Persistent copy CTA outside the collapsible too */}
+              {!showImproved && feedback.improvedVersion && (
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={copyImproved}
+                  className="w-full"
+                >
+                  {copied ? (
+                    <><Check className="w-4 h-4 mr-2" /> Copied!</>
+                  ) : (
+                    <><Copy className="w-4 h-4 mr-2" /> Copy improved version</>
+                  )}
+                </Button>
+              )}
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <Button onClick={tryAgain} variant="outline" className="w-full">
+                  <RefreshCw className="w-4 h-4 mr-2" /> Try again
+                </Button>
+                <Button onClick={reset} className="w-full">
+                  <RotateCcw className="w-4 h-4 mr-2" /> {t("btn.new_session", uiLang)}
+                </Button>
+              </div>
             </div>
           )}
         </div>
+
+        {/* Mobile floating submit (hidden once feedback is shown) */}
+        {!feedback && (
+          <div className="md:hidden fixed bottom-0 inset-x-0 z-40 p-3 bg-background/95 backdrop-blur border-t border-border pb-[calc(env(safe-area-inset-bottom)+0.75rem)]">
+            <Button
+              onClick={submit}
+              disabled={loading || text.trim().length < 20 || limitReached}
+              className="w-full"
+              size="lg"
+            >
+              {loading ? (
+                <><Loader2 className="w-4 h-4 animate-spin mr-2" /> {t("btn.analysing", uiLang)}</>
+              ) : (
+                <><Wand2 className="w-4 h-4 mr-2" /> {t("btn.analyse", uiLang)}</>
+              )}
+            </Button>
+          </div>
+        )}
       </div>
     </>
   );
