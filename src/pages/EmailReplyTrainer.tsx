@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import SupportActions from "@/components/ai-trainer/SupportActions";

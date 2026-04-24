@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Send, Sparkles, RotateCcw, Eye, Wand2, CheckCircle, Presentation, Briefcase, TrendingUp, User, Crown, CalendarDays } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
