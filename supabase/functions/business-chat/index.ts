@@ -254,7 +254,20 @@ REMEMBER: All text values must be in ${langName}.`;
 }
 
 // ── Safe feedback defaults ─────────────────────────────────────────────────
-const SAFE_FEEDBACK_DEFAULTS = {
+const SAFE_FEEDBACK_DEFAULTS: {
+  fluency: { score: number; comment: string };
+  grammar: { score: number; comment: string };
+  vocabulary: { score: number; comment: string };
+  tone: { rating: string; comment: string };
+  overallLevel: string;
+  corrections: Array<{ wrong: string; correct?: string; explanation?: string }>;
+  suggestions: string[];
+  advancedVocabulary: Array<{ basic: string; advanced?: string }>;
+  estimatedSpeakingTime: string;
+  strengths: string;
+  needsImprovement: string;
+  overall: string;
+} = {
   fluency: { score: 0, comment: "" },
   grammar: { score: 0, comment: "" },
   vocabulary: { score: 0, comment: "" },
