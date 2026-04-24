@@ -121,7 +121,7 @@ function handleStatus(supabase: any, supabaseUrl: string, slugs: string[]) {
   });
 }
 
-function handleWarm(supabase, slugs) {
+function handleWarm(supabase: any, slugs: string[]) {
   var elevenlabsApiKey = Deno.env.get("ELEVENLABS_API_KEY");
   if (!elevenlabsApiKey) {
     return Promise.resolve(new Response(
@@ -130,11 +130,11 @@ function handleWarm(supabase, slugs) {
     ));
   }
 
-  var warmed = [];
-  var skipped = [];
-  var failed = [];
+  var warmed: string[] = [];
+  var skipped: string[] = [];
+  var failed: any[] = [];
 
-  function processSlug(index) {
+  function processSlug(index: number): Promise<Response> {
     if (index >= slugs.length) {
       return Promise.resolve(new Response(
         JSON.stringify({ warmed: warmed, skipped: skipped, failed: failed }),
@@ -145,19 +145,19 @@ function handleWarm(supabase, slugs) {
     var slug = slugs[index];
     var filePath = slug + ".mp3";
 
-    return supabase.storage.from(BUCKET).download(filePath).then(function(result) {
+    return supabase.storage.from(BUCKET).download(filePath).then(function(result: any) {
       if (result.data && !result.error) {
         skipped.push(slug);
         return processSlug(index + 1);
       }
 
-      var text = EXERCISE_TEXTS[slug];
-      var voiceId = VOICE_IDS[slug] || "EXAVITQu4vr4xnSDxMaL";
+      var text = (EXERCISE_TEXTS as Record<string, string>)[slug];
+      var voiceId = (VOICE_IDS as Record<string, string>)[slug] || "EXAVITQu4vr4xnSDxMaL";
 
       return fetch("https://api.elevenlabs.io/v1/text-to-speech/" + voiceId, {
         method: "POST",
         headers: {
-          "xi-api-key": elevenlabsApiKey,
+          "xi-api-key": elevenlabsApiKey!,
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
@@ -184,7 +184,7 @@ function handleWarm(supabase, slugs) {
           return supabase.storage.from(BUCKET).upload(filePath, audioBuffer, {
             contentType: "audio/mpeg",
             upsert: true
-          }).then(function(uploadResult) {
+          }).then(function(uploadResult: any) {
             if (uploadResult.error) {
               failed.push({ slug: slug, error: "Upload error: " + uploadResult.error.message });
             } else {
@@ -193,7 +193,7 @@ function handleWarm(supabase, slugs) {
             return processSlug(index + 1);
           });
         });
-      }).catch(function(err) {
+      }).catch(function(err: unknown) {
         var message = err instanceof Error ? err.message : String(err);
         failed.push({ slug: slug, error: message });
         return processSlug(index + 1);
