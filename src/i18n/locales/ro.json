@@ -45,7 +45,10 @@
     "vocabShort": "Vocabular",
     "supportHelp": "Ai nevoie de ajutor? Tradu, explică sau învață vocabularul în limba ta.",
     "supportError": "A apărut o eroare. Te rugăm să încerci din nou.",
-    "feedbackLanguageNote": "Feedbackul va fi afișat în {{lang}}."
+    "feedbackLanguageNote": "Feedbackul va fi afișat în {{lang}}.",
+    "loadingAction": "Se procesează:",
+    "tryAgain": "Încearcă din nou",
+    "noVocab": "Nu s-au găsit elemente de vocabular."
   },
   "common": {
     "language": "Limbă",

@@ -45,7 +45,10 @@
     "vocabShort": "Vocabulaire",
     "supportHelp": "Besoin d'aide ? Traduisez, expliquez ou étudiez le vocabulaire dans votre langue.",
     "supportError": "Une erreur est survenue. Veuillez réessayer.",
-    "feedbackLanguageNote": "Le feedback sera affiché en {{lang}}."
+    "feedbackLanguageNote": "Le feedback sera affiché en {{lang}}.",
+    "loadingAction": "Traitement en cours :",
+    "tryAgain": "Réessayer",
+    "noVocab": "Aucun élément de vocabulaire trouvé."
   },
   "common": {
     "language": "Langue",

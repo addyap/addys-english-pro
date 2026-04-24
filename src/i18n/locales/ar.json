@@ -45,7 +45,10 @@
     "vocabShort": "مفردات",
     "supportHelp": "هل تحتاج إلى مساعدة؟ ترجم أو اشرح أو ادرس المفردات بلغتك.",
     "supportError": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
-    "feedbackLanguageNote": "ستُعرض التعليقات بـ {{lang}}."
+    "feedbackLanguageNote": "ستُعرض التعليقات بـ {{lang}}.",
+    "loadingAction": "جارٍ المعالجة:",
+    "tryAgain": "حاول مرة أخرى",
+    "noVocab": "لم يتم العثور على مفردات."
   },
   "common": {
     "language": "اللغة",

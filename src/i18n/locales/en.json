@@ -45,7 +45,10 @@
     "vocabShort": "Vocabulary",
     "supportHelp": "Need help? Translate, explain, or study vocabulary in your support language.",
     "supportError": "Something went wrong. Please try again.",
-    "feedbackLanguageNote": "Feedback will be shown in {{lang}}."
+    "feedbackLanguageNote": "Feedback will be shown in {{lang}}.",
+    "loadingAction": "Working on",
+    "tryAgain": "Try again",
+    "noVocab": "No vocabulary items found."
   },
   "common": {
     "language": "Language",
