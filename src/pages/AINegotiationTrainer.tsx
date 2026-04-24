@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import SEOHead from "@/components/SEOHead";
+import SupportActions from "@/components/ai-trainer/SupportActions";
 import { supabase } from "@/integrations/supabase/client";
 import ScoreBar from "@/components/ai-trainer/ScoreBar";
 import CorrectionsList from "@/components/ai-trainer/CorrectionsList";
@@ -616,7 +617,7 @@ const AINegotiationTrainer: React.FC = () => {
           <ScrollArea className="h-[50vh] md:h-[55vh]" ref={scrollRef as any}>
             <div className="p-4 space-y-4">
               {messages.map((msg, i) => (
-                <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                <div key={i} className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"}`}>
                   <div
                     className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
                       msg.role === "user"
@@ -630,6 +631,9 @@ const AINegotiationTrainer: React.FC = () => {
                       </span>
                     )}
                   </div>
+                  {msg.role === "assistant" && msg.content && (
+                    <div className="max-w-[80%] w-full"><SupportActions text={msg.content} /></div>
+                  )}
                 </div>
               ))}
             </div>

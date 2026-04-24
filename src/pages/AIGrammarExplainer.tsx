@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import SEOHead from "@/components/SEOHead";
+import SupportActions from "@/components/ai-trainer/SupportActions";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import type { GrammarExplainerResult } from "@/types/ai-trainers";
 import { Search, RotateCcw, Loader2, BookOpen, Lightbulb, ArrowRight, RefreshCw } from "lucide-react";

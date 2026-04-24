@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import SEOHead from "@/components/SEOHead";
+import SupportActions from "@/components/ai-trainer/SupportActions";
 import { supabase } from "@/integrations/supabase/client";
 import ScoreBar from "@/components/ai-trainer/ScoreBar";
 import CorrectionsList from "@/components/ai-trainer/CorrectionsList";
@@ -790,6 +791,9 @@ const BusinessConversation: React.FC = () => {
                           ? <VolumeX className="w-3.5 h-3.5" />
                           : <Volume2 className="w-3.5 h-3.5" />}
                       </button>
+                    )}
+                    {msg.role === "assistant" && msg.content && (
+                      <SupportActions text={msg.content} />
                     )}
                   </div>
                 </div>

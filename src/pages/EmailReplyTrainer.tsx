@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useCallback } from "react";
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import SupportActions from "@/components/ai-trainer/SupportActions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -755,6 +756,7 @@ const EmailReplyTrainer: React.FC = () => {
                     <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed bg-primary/5 rounded-lg p-4">
                       {modelAnswer}
                     </div>
+                    <SupportActions text={modelAnswer} />
                   </CardContent>
                 </Card>
               )}
@@ -778,6 +780,7 @@ const EmailReplyTrainer: React.FC = () => {
                     <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed bg-primary/5 rounded-lg p-4">
                       {improvedReply}
                     </div>
+                    <SupportActions text={improvedReply} />
                   </CardContent>
                 </Card>
               )}

@@ -5,6 +5,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import SEOHead from "@/components/SEOHead";
+import SupportActions from "@/components/ai-trainer/SupportActions";
 import ScoreBar from "@/components/ai-trainer/ScoreBar";
 import RatingBadge from "@/components/ai-trainer/RatingBadge";
 import CorrectionsList from "@/components/ai-trainer/CorrectionsList";
@@ -261,7 +262,7 @@ const AIInterviewSimulator = () => {
       <ScrollArea className="flex-1 p-4">
         <div className="max-w-2xl mx-auto space-y-4">
           {messages.map((m, i) => (
-            <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
+            <div key={i} className={`flex flex-col ${m.role === "user" ? "items-end" : "items-start"}`}>
               <div className={`max-w-[80%] rounded-2xl px-4 py-3 ${
                 m.role === "user"
                   ? "bg-primary text-primary-foreground rounded-br-md"
@@ -269,6 +270,9 @@ const AIInterviewSimulator = () => {
               }`}>
                 <p className="text-sm whitespace-pre-wrap">{m.content}</p>
               </div>
+              {m.role === "assistant" && m.content && (
+                <div className="max-w-[80%] w-full"><SupportActions text={m.content} /></div>
+              )}
             </div>
           ))}
           {isStreaming && messages[messages.length - 1]?.role !== "assistant" && (
