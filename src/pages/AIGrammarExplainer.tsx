@@ -102,6 +102,16 @@ const AIGrammarExplainer = () => {
           {/* Input */}
           <Card>
             <CardContent className="pt-6 space-y-4">
+              {sentence.length === 0 && !loading && (
+                <div className="p-3 rounded-md border border-dashed border-border bg-muted/40 text-sm text-muted-foreground">
+                  <p className="font-medium text-foreground/80 mb-1">Try this:</p>
+                  <ul className="list-disc list-inside space-y-0.5">
+                    <li>Correct my business email</li>
+                    <li>Explain present perfect</li>
+                    <li>Improve this sentence</li>
+                  </ul>
+                </div>
+              )}
               <div className="flex gap-2">
                 <Input
                   value={sentence}
