@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { dragDropExercises } from '@/data/dragDropExercises';
 import { DragDropExerciseComponent } from '@/components/DragDropExercise';
 import SEOHead from '@/components/SEOHead';
+import ExerciseNotAvailable from '@/components/exercise/ExerciseNotAvailable';
 
 // Use key prop on DragDropExerciseComponent to force remount on ID change
 

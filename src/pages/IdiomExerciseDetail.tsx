@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { getIdiomExerciseById } from '@/data/idiomExercises';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { shuffleArray } from '@/utils/shuffleArray';
+import ExerciseNotAvailable from '@/components/exercise/ExerciseNotAvailable';
 
 const IdiomExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();

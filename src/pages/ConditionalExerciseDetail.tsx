@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, CheckCircle, XCircle, RotateCcw } from "lucide-react";
 import { conditionalExercises } from "@/data/conditionalExercises";
 import { shuffleArray } from "@/utils/shuffleArray";
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const ConditionalExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();

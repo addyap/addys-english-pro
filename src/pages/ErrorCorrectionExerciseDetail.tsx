@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { errorCorrectionExercises, getErrorCorrectionExerciseById } from '@/data/errorCorrectionExercises';
+import ExerciseNotAvailable from '@/components/exercise/ExerciseNotAvailable';
 
 const ErrorCorrectionExerciseDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();

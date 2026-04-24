@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import ExerciseNotAvailable from '@/components/exercise/ExerciseNotAvailable';
 
 const CrosswordExerciseDetail = () => {
   const { id } = useParams();
