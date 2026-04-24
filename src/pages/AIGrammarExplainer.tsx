@@ -14,6 +14,9 @@ import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 import AIToolLoadingSkeleton from "@/components/ai-trainer/AIToolLoadingSkeleton";
 import { useSessionHistory, type SessionHistoryItem } from "@/hooks/useSessionHistory";
 import RecentPractice from "@/components/ai-trainer/RecentPractice";
+import UsageCounterBadge from "@/components/ai-trainer/UsageCounterBadge";
+import ResultUtilityBar from "@/components/ai-trainer/ResultUtilityBar";
+import { incrementUsageCounter, saveSession } from "@/lib/session-memory";
 import { trackEvent } from "@/lib/analytics";
 
 const EXAMPLE_SENTENCES = [
@@ -29,6 +32,7 @@ const AIGrammarExplainer = () => {
   const [result, setResult] = useState<GrammarExplainerResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [usageTick, setUsageTick] = useState(0);
   const { remaining, limitReached, recordSession } = useAIDailyLimit("grammar-explainer");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const { items: history, addItem: addHistoryItem, clear: clearHistory } = useSessionHistory("grammar-explainer");
@@ -64,6 +68,9 @@ const AIGrammarExplainer = () => {
         (data?.result?.tips?.[0] as string) ||
         s;
       addHistoryItem(s, summary);
+      saveSession("grammar-explainer", s, summary.slice(0, 240));
+      incrementUsageCounter();
+      setUsageTick((n) => n + 1);
     } catch {
       toast.error("Erreur lors de l'analyse.");
     } finally {
@@ -77,14 +84,18 @@ const AIGrammarExplainer = () => {
   };
 
   const tryAgain = () => {
+    trackEvent("ai_retry_click", { tool: "grammar", page: "grammar-explainer" });
     setResult(null);
     setTimeout(() => {
       inputRef.current?.focus();
       inputRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      inputRef.current?.classList.add("ring-2", "ring-primary");
+      setTimeout(() => inputRef.current?.classList.remove("ring-2", "ring-primary"), 1200);
     }, 50);
   };
 
   const restoreFromHistory = (item: SessionHistoryItem) => {
+    trackEvent("ai_session_resume", { tool: "grammar", page: "grammar-explainer" });
     setSentence(item.input);
     setResult(null);
     setTimeout(() => {
