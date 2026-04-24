@@ -188,6 +188,12 @@ const AIWritingCoach = () => {
 
           {!feedback ? (
             <>
+              <UsageCounterBadge refreshKey={usageTick} />
+              <RecentPractice
+                items={history}
+                onRestore={restoreFromHistory}
+                onClear={clearHistory}
+              />
               <Card>
                 <CardContent className="pt-6 space-y-4">
                   <div>
@@ -244,18 +250,12 @@ const AIWritingCoach = () => {
                 <AIToolLoadingSkeleton
                   headline="Analyzing your English..."
                   steps={[
-                    "Reading your text...",
-                    "Analyzing grammar & vocabulary...",
-                    "Preparing personalized feedback...",
+                    "Checking grammar...",
+                    "Improving tone...",
+                    "Making it natural...",
                   ]}
                 />
               )}
-
-              <RecentPractice
-                items={history}
-                onRestore={restoreFromHistory}
-                onClear={clearHistory}
-              />
             </>
           ) : (
             <div className="space-y-6">
