@@ -13,6 +13,7 @@ import OfflineBanner from "./components/OfflineBanner";
 import A11yProvider from "./components/A11yProvider";
 import CookieConsent from "./components/CookieConsent";
 import { LanguageProvider } from "./contexts/LanguageContext";
+import LanguageOnboardingModal from "./components/LanguageOnboardingModal";
 
 import Layout from "./components/Layout";
 import PrefetchRoutes from "./components/PrefetchRoutes";
