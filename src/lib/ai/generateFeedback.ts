@@ -17,6 +17,8 @@ export interface GenerateFeedbackInput {
   contextPrompt?: string;
   expectedSkill?: string;
   metadata?: Record<string, unknown>;
+  /** Language code for the feedback text (en, fr, ru, uk, ar, ro, it, ...) */
+  feedbackLanguage?: string;
 }
 
 const FALLBACK_FEEDBACK: FeedbackResult = {
@@ -72,6 +74,7 @@ export async function generateFeedback(input: GenerateFeedbackInput): Promise<Fe
         contextPrompt: input.contextPrompt,
         expectedSkill: input.expectedSkill,
         metadata: input.metadata,
+        feedbackLanguage: input.feedbackLanguage,
       },
     });
 
