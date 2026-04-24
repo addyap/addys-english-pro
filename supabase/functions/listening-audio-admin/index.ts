@@ -96,16 +96,16 @@ serve(function(req) {
   });
 });
 
-function handleStatus(supabase, supabaseUrl, slugs) {
-  var items = [];
-  var promises = [];
+function handleStatus(supabase: any, supabaseUrl: string, slugs: string[]) {
+  var items: any[] = [];
+  var promises: Promise<any>[] = [];
 
   for (var i = 0; i < slugs.length; i++) {
-    (function(slug) {
+    (function(slug: string) {
       var filePath = slug + ".mp3";
       var publicUrl = supabaseUrl + "/storage/v1/object/public/" + BUCKET + "/" + filePath;
 
-      var p = supabase.storage.from(BUCKET).download(filePath).then(function(result) {
+      var p = supabase.storage.from(BUCKET).download(filePath).then(function(result: any) {
         var exists = !!result.data && !result.error;
         items.push({ slug: slug, exists: exists, publicUrl: publicUrl });
       });
