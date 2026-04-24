@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useParams } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import { AppErrorBoundary } from "./components/AppErrorBoundary";
 import DiagnosticsPanel from "./components/DiagnosticsPanel";
@@ -179,6 +179,8 @@ export const AppRoutes = () => (
     <Route path="/exercices/ecoute-comprehension" element={<Navigate to="/exercices/listening" replace />} />
     <Route path="/exercices/comprehension-ecrite" element={<Navigate to="/reading" replace />} />
     <Route path="/exercices/ecriture" element={<Navigate to="/exercices/writing/transform/1" replace />} />
+    {/* Legacy singular path for synonyms/antonyms — redirect to current plural route */}
+    <Route path="/exercices/synonym-antonym/:id" element={<RedirectSynonymAntonym />} />
 
     <Route path="*" element={<NotFound />} />
   </Routes>
