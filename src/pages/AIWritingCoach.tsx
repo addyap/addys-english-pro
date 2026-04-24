@@ -127,45 +127,59 @@ const AIWritingCoach = () => {
           </div>
 
           {!feedback ? (
-            <Card>
-              <CardContent className="pt-6 space-y-4">
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">{t("writing.type_label", uiLang)}</label>
-                  <Select value={writingType} onValueChange={setWritingType}>
-                    <SelectTrigger><SelectValue /></SelectTrigger>
-                    <SelectContent>
-                      {WRITING_TYPES.map(wt => (
-                        <SelectItem key={wt.value} value={wt.value}>{wt.label}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+            <>
+              <Card>
+                <CardContent className="pt-6 space-y-4">
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-2 block">{t("writing.type_label", uiLang)}</label>
+                    <Select value={writingType} onValueChange={setWritingType} disabled={loading}>
+                      <SelectTrigger><SelectValue /></SelectTrigger>
+                      <SelectContent>
+                        {WRITING_TYPES.map(wt => (
+                          <SelectItem key={wt.value} value={wt.value}>{wt.label}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
 
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-2 block">{t("writing.input_label", uiLang)}</label>
-                  <Textarea
-                    value={text}
-                    onChange={e => setText(e.target.value)}
-                    placeholder="Write your text in English here..."
-                    className="min-h-[200px]"
-                    maxLength={3000}
-                  />
-                  <p className="text-xs text-muted-foreground mt-1 text-right">{text.length}/3000</p>
-                </div>
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-2 block">{t("writing.input_label", uiLang)}</label>
+                    <Textarea
+                      value={text}
+                      onChange={e => setText(e.target.value)}
+                      placeholder="Write your text in English here..."
+                      className="min-h-[200px]"
+                      maxLength={3000}
+                      disabled={loading}
+                    />
+                    <p className="text-xs text-muted-foreground mt-1 text-right">{text.length}/3000</p>
+                  </div>
 
-                <Button
-                  onClick={submit}
-                  disabled={loading || text.trim().length < 20 || limitReached}
-                  className="w-full"
-                >
-                  {loading ? (
-                    <><Loader2 className="w-4 h-4 animate-spin mr-2" /> {t("btn.analysing", uiLang)}</>
-                  ) : (
-                    <><Wand2 className="w-4 h-4 mr-2" /> {t("btn.analyse", uiLang)}</>
-                  )}
-                </Button>
-              </CardContent>
-            </Card>
+                  <Button
+                    onClick={submit}
+                    disabled={loading || text.trim().length < 20 || limitReached}
+                    className="w-full"
+                  >
+                    {loading ? (
+                      <><Loader2 className="w-4 h-4 animate-spin mr-2" /> {t("btn.analysing", uiLang)}</>
+                    ) : (
+                      <><Wand2 className="w-4 h-4 mr-2" /> {t("btn.analyse", uiLang)}</>
+                    )}
+                  </Button>
+                </CardContent>
+              </Card>
+
+              {loading && (
+                <AIToolLoadingSkeleton
+                  headline="Analyzing your English..."
+                  steps={[
+                    "Reading your text...",
+                    "Analyzing grammar & vocabulary...",
+                    "Preparing personalized feedback...",
+                  ]}
+                />
+              )}
+            </>
           ) : (
             <div className="space-y-6">
               <div className="flex items-center justify-between">
