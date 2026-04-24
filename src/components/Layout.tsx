@@ -123,7 +123,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
 
           {/* Mobile Navigation Menu */}
           {isMobileMenuOpen && (
-            <div className="lg:hidden border-t border-gray-200 py-4">
+            <div id="mobile-navigation" className="lg:hidden border-t border-gray-200 py-4">
               <nav className="flex flex-col space-y-2">
                 {navigation.map((item) => (
                   <Link
