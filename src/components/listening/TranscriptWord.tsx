@@ -42,7 +42,7 @@ const TranscriptWord: React.FC<TranscriptWordProps> = ({ word, glossary }) => {
         </span>
       </TooltipTrigger>
       <TooltipContent 
-        className="bg-popover text-popover-foreground border border-border shadow-lg z-50"
+        className="bg-popover text-popover-foreground border border-border shadow-lg z-tooltip"
         sideOffset={5}
       >
         <p className="font-medium">{translation}</p>

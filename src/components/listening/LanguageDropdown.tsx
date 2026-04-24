@@ -20,7 +20,7 @@ const LanguageDropdown: React.FC = () => {
         <SelectTrigger className="w-[160px] bg-background">
           <SelectValue placeholder="Select language" />
         </SelectTrigger>
-        <SelectContent className="bg-background border border-border z-50">
+        <SelectContent className="bg-background border border-border z-dropdown">
           {(Object.entries(LANGUAGE_LABELS) as [SupportedLanguage, string][]).map(([code, label]) => (
             <SelectItem key={code} value={code}>
               {label}

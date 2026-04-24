@@ -19,6 +19,13 @@ export default {
 			}
 		},
 		extend: {
+			zIndex: {
+				'header': '50',
+				'dropdown': '100',
+				'modal': '1000',
+				'toast': '1100',
+				'tooltip': '1200',
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
