@@ -30,6 +30,7 @@ const EXAMPLE_SENTENCES = [
 ];
 
 const AIGrammarExplainer = () => {
+  const { t } = useTranslation();
   const [sentence, setSentence] = useState("");
   const [result, setResult] = useState<GrammarExplainerResult | null>(null);
   const [loading, setLoading] = useState(false);
@@ -41,8 +42,8 @@ const AIGrammarExplainer = () => {
 
   const analyse = async (text?: string) => {
     const s = (text || sentence).trim();
-    if (s.length < 3) { toast.error("Entrez une phrase en anglais."); return; }
-    if (limitReached) { toast.error("Limite quotidienne atteinte (10 sessions / 24h)"); return; }
+    if (s.length < 3) { toast.error(t("ai.grammarEnterSentence", "Please enter an English sentence.")); return; }
+    if (limitReached) { toast.error(t("ai.dailyLimitReached", "Daily limit reached (10 sessions / 24h).")); return; }
 
     setLoading(true);
     setResult(null);
