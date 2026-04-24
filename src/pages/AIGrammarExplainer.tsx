@@ -168,6 +168,17 @@ const AIGrammarExplainer = () => {
             </p>
           </div>
 
+          {!result && (
+            <>
+              <UsageCounterBadge refreshKey={usageTick} />
+              <RecentPractice
+                items={history}
+                onRestore={restoreFromHistory}
+                onClear={clearHistory}
+              />
+            </>
+          )}
+
           {/* Input */}
           <Card>
             <CardContent className="pt-6 space-y-4">
@@ -219,9 +230,9 @@ const AIGrammarExplainer = () => {
             <AIToolLoadingSkeleton
               headline="Analyzing your English..."
               steps={[
-                "Reading the sentence...",
-                "Analyzing grammar...",
-                "Preparing explanation...",
+                "Checking grammar...",
+                "Improving tone...",
+                "Making it natural...",
               ]}
             />
           )}
