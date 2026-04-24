@@ -8,6 +8,7 @@ import { TypingText } from '../components/TypingText';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { LazyClientCarousel } from '@/components/LazySwiper';
 import FloatingExerciseCTA from '@/components/FloatingExerciseCTA';
+import { trackEvent } from '@/lib/analytics';
 
 
 // Accurate exercise counts based on actual data files
@@ -647,7 +648,7 @@ const Home = () => {
             </div>
             <div className="text-center mt-8">
               <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-6">
-                <a href="https://wa.me/33649829826" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-5 py-3 rounded-full text-base font-semibold shadow transition">
+                <a href="https://wa.me/33649829826" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('whatsapp_cta_click', { page: 'Home', target: 'https://wa.me/33649829826', location: 'mid-section' })} className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-5 py-3 rounded-full text-base font-semibold shadow transition">
                   💬 Discutons sur WhatsApp
                 </a>
                 <Link to="/contact" className="text-[#1A1A63] hover:underline text-base font-medium">
@@ -713,7 +714,7 @@ const Home = () => {
               Discutons de votre projet de formation. Je suis à votre écoute !
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://wa.me/33649829826" className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-2 font-body" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/33649829826" onClick={() => trackEvent('whatsapp_cta_click', { page: 'Home', target: 'https://wa.me/33649829826', location: 'final-cta' })} className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-2 font-body" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="h-5 w-5" />
                 WhatsApp
               </a>
