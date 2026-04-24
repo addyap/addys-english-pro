@@ -206,7 +206,7 @@ const AINegotiationTrainer: React.FC = () => {
 
   const selectMode = (m: Mode) => {
     if (limitReached) {
-      toast.error(`Daily limit reached (${DAILY_LIMIT} sessions per 24h). Please come back tomorrow!`);
+      toast.error(tr("ai.dailyLimitReachedHours", { count: DAILY_LIMIT }));
       return;
     }
     setMode(m);
@@ -279,7 +279,7 @@ const AINegotiationTrainer: React.FC = () => {
         }
       }
     } catch (e: any) {
-      toast.error(e.message || "Failed to start negotiation");
+      toast.error(e.message || tr("ai.failedStartNegotiation"));
     } finally {
       setIsLoading(false);
       inputRef.current?.focus();
@@ -345,7 +345,7 @@ const AINegotiationTrainer: React.FC = () => {
         }
       }
     } catch (e: any) {
-      toast.error(e.message || "Failed to send message");
+      toast.error(e.message || tr("ai.failedSendMessage"));
     } finally {
       setIsLoading(false);
       inputRef.current?.focus();
@@ -399,7 +399,7 @@ const AINegotiationTrainer: React.FC = () => {
       }
     } catch (e: any) {
       setFeedbackError(true);
-      toast.error(e.message || "Could not generate feedback. Please try again.");
+      toast.error(e.message || tr("ai.failedFeedback"));
     } finally {
       setIsFeedbackLoading(false);
     }

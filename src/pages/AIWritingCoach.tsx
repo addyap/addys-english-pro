@@ -157,11 +157,11 @@ const AIWritingCoach = () => {
         throw new Error("no clipboard");
       }
       setCopied(true);
-      toast.success("Copied!");
+      toast.success(tr("ai.copied"));
       trackEvent("ai_copy_click", { tool: "writing", page: "writing-coach" });
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      toast.error("Unable to copy, please select text manually");
+      toast.error(tr("ai.copyFailed"));
     }
   };
 

@@ -313,7 +313,7 @@ const BusinessConversation: React.FC = () => {
 
   const selectMode = (m: Mode) => {
     if (limitReached) {
-      toast.error(`Daily limit reached (${DAILY_LIMIT} sessions per 24h). Please come back tomorrow!`);
+      toast.error(tr("ai.dailyLimitReachedHours", { count: DAILY_LIMIT }));
       return;
     }
     setMode(m);
@@ -388,7 +388,7 @@ const BusinessConversation: React.FC = () => {
         }
       }
     } catch (e: any) {
-      toast.error(e.message || "Failed to start conversation");
+      toast.error(e.message || tr("ai.failedStartConversation"));
     } finally {
       setIsLoading(false);
       inputRef.current?.focus();
@@ -461,7 +461,7 @@ const BusinessConversation: React.FC = () => {
         }
       }
     } catch (e: any) {
-      toast.error(e.message || "Failed to send message");
+      toast.error(e.message || tr("ai.failedSendMessage"));
     } finally {
       setIsLoading(false);
       if (!isLastExamAnswer) {
@@ -525,7 +525,7 @@ const BusinessConversation: React.FC = () => {
       if (mode !== "exam") {
         setExamComplete(false);
       }
-      toast.error(e.message || "Could not generate feedback. Please try again.");
+      toast.error(e.message || tr("ai.failedFeedback"));
     } finally {
       setIsFeedbackLoading(false);
     }

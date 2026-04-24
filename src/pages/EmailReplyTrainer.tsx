@@ -358,7 +358,7 @@ const EmailReplyTrainer: React.FC = () => {
   const submitForFeedback = async () => {
     if (!scenario) return;
     if (limitReached) {
-      toast.error(`Daily limit reached (${DAILY_LIMIT} sessions per 24h). Please come back tomorrow!`);
+      toast.error(tr("ai.dailyLimitReachedHours", { count: DAILY_LIMIT }));
       return;
     }
     recordSession();
