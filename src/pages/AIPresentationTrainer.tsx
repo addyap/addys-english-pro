@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import SEOHead from "@/components/SEOHead";
+import SupportActions from "@/components/ai-trainer/SupportActions";
 import { supabase } from "@/integrations/supabase/client";
 import ScoreBar from "@/components/ai-trainer/ScoreBar";
 import RatingBadge from "@/components/ai-trainer/RatingBadge";

@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import SEOHead from "@/components/SEOHead";
+import SupportActions from "@/components/ai-trainer/SupportActions";
 import ScoreBar from "@/components/ai-trainer/ScoreBar";
 import RatingBadge from "@/components/ai-trainer/RatingBadge";
 import CorrectionsList from "@/components/ai-trainer/CorrectionsList";

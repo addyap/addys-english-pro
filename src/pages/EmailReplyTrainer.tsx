@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useCallback } from "react";
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import SupportActions from "@/components/ai-trainer/SupportActions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

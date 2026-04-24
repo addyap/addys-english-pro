@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import SEOHead from "@/components/SEOHead";
+import SupportActions from "@/components/ai-trainer/SupportActions";
 import { supabase } from "@/integrations/supabase/client";
 import ScoreBar from "@/components/ai-trainer/ScoreBar";
 import CorrectionsList from "@/components/ai-trainer/CorrectionsList";
