@@ -109,6 +109,7 @@ const AIGrammarExplainer = () => {
                   placeholder="Type or paste an English sentence..."
                   maxLength={500}
                   onKeyDown={e => { if (e.key === "Enter") analyse(); }}
+                  disabled={loading}
                 />
                 <Button onClick={() => analyse()} disabled={loading || sentence.trim().length < 3 || limitReached}>
                   {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
@@ -122,7 +123,8 @@ const AIGrammarExplainer = () => {
                     <button
                       key={i}
                       onClick={() => { setSentence(ex); analyse(ex); }}
-                      className="text-xs px-3 py-1.5 bg-muted rounded-full hover:bg-muted/80 text-foreground transition-colors text-left"
+                      disabled={loading}
+                      className="text-xs px-3 py-1.5 bg-muted rounded-full hover:bg-muted/80 text-foreground transition-colors text-left disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {ex.length > 50 ? ex.slice(0, 50) + "..." : ex}
                     </button>
@@ -131,6 +133,18 @@ const AIGrammarExplainer = () => {
               </div>
             </CardContent>
           </Card>
+
+          {/* Loading skeleton (no empty space while AI is processing) */}
+          {loading && !result && (
+            <AIToolLoadingSkeleton
+              headline="Analyzing your English..."
+              steps={[
+                "Reading the sentence...",
+                "Analyzing grammar...",
+                "Preparing explanation...",
+              ]}
+            />
+          )}
 
           {/* Results */}
           {result && (
