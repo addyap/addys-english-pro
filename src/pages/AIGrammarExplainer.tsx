@@ -312,16 +312,26 @@ const AIGrammarExplainer = () => {
                 </CardContent>
               </Card>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <Button onClick={copySummary} variant="outline" className="w-full">
-                  {copied ? (
-                    <><Check className="w-4 h-4 mr-2" /> Copied!</>
-                  ) : (
-                    <><Copy className="w-4 h-4 mr-2" /> Copy explanation</>
-                  )}
-                </Button>
+              <ResultUtilityBar
+                text={[
+                  `Sentence: ${sentence}`,
+                  `Level: ${result.level}`,
+                  "",
+                  "Rules:",
+                  ...result.rules.map((r) => `• ${r.name} — ${r.explanation}`),
+                  "",
+                  "Tips:",
+                  ...result.tips.map((tip) => `• ${tip}`),
+                ].join("\n")}
+                tool="grammar"
+                page="grammar-explainer"
+                fileName="ai-grammar-explanation"
+                copyLabel="Copy Explanation"
+              />
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <Button onClick={tryAgain} variant="outline" className="w-full">
-                  <RefreshCw className="w-4 h-4 mr-2" /> Try again
+                  <RefreshCw className="w-4 h-4 mr-2" /> Try again with this feedback
                 </Button>
                 <Button onClick={reset} className="w-full">
                   <RotateCcw className="w-4 h-4 mr-2" /> Nouvelle phrase
