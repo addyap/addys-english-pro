@@ -74,7 +74,7 @@ const AIGrammarExplainer = () => {
       incrementUsageCounter();
       setUsageTick((n) => n + 1);
     } catch {
-      toast.error("Erreur lors de l'analyse.");
+      toast.error(t("ai.grammarAnalyzeError", "Analysis failed. Please try again."));
     } finally {
       setLoading(false);
     }
