@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -29,6 +30,7 @@ const EXAMPLE_SENTENCES = [
 ];
 
 const AIGrammarExplainer = () => {
+  const { t } = useTranslation();
   const [sentence, setSentence] = useState("");
   const [result, setResult] = useState<GrammarExplainerResult | null>(null);
   const [loading, setLoading] = useState(false);
@@ -40,8 +42,8 @@ const AIGrammarExplainer = () => {
 
   const analyse = async (text?: string) => {
     const s = (text || sentence).trim();
-    if (s.length < 3) { toast.error("Entrez une phrase en anglais."); return; }
-    if (limitReached) { toast.error("Limite quotidienne atteinte (10 sessions / 24h)"); return; }
+    if (s.length < 3) { toast.error(t("ai.grammarEnterSentence", "Please enter an English sentence.")); return; }
+    if (limitReached) { toast.error(t("ai.dailyLimitReached", "Daily limit reached (10 sessions / 24h).")); return; }
 
     setLoading(true);
     setResult(null);
@@ -72,7 +74,7 @@ const AIGrammarExplainer = () => {
       incrementUsageCounter();
       setUsageTick((n) => n + 1);
     } catch {
-      toast.error("Erreur lors de l'analyse.");
+      toast.error(t("ai.grammarAnalyzeError", "Analysis failed. Please try again."));
     } finally {
       setLoading(false);
     }

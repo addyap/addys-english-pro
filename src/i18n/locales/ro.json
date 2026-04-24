@@ -49,7 +49,10 @@
     "loadingAction": "Se procesează:",
     "tryAgain": "Încearcă din nou",
     "noVocab": "Nu s-au găsit elemente de vocabular.",
-    "supportActionsGroup": "Acțiuni de asistență multilingvă"
+    "supportActionsGroup": "Acțiuni de asistență multilingvă",
+    "grammarEnterSentence": "Introdu o propoziție în engleză.",
+    "dailyLimitReached": "Limită zilnică atinsă (10 sesiuni / 24h).",
+    "grammarAnalyzeError": "Analiza a eșuat. Încearcă din nou."
   },
   "common": {
     "language": "Limbă",
