@@ -179,9 +179,17 @@ serve(async (req) => {
   }
 
   try {
-    const { messages, scenario, mode = "practice", action } = await req.json();
+    const { messages, scenario, mode = "practice", action, feedbackLanguage = "en" } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
+
+    const LANG_NAMES: Record<string, string> = {
+      en: "English", fr: "French", ru: "Russian", uk: "Ukrainian",
+      ar: "Arabic", ro: "Romanian", it: "Italian", es: "Spanish",
+      de: "German", pt: "Portuguese", pl: "Polish", zh: "Chinese", ja: "Japanese",
+    };
+    const langName = LANG_NAMES[feedbackLanguage] || "English";
+    const langInstruction = `\n\nLANGUAGE RULE: Write feedback, explanations, coaching notes, summaries, vocabulary meanings and next steps in ${langName}. Keep the English conversation, corrections and model answers in English. Ignore punctuation, capitalization and spelling artefacts caused by speech-to-text — focus on grammar, fluency, vocabulary, clarity and pronunciation.`;
 
     // ── Feedback mode ──────────────────────────────────────────────────
     if (action === "feedback") {
@@ -198,7 +206,7 @@ serve(async (req) => {
         body: JSON.stringify({
           model: "google/gemini-3-flash-preview",
           messages: [
-            { role: "system", content: FEEDBACK_PROMPT },
+            { role: "system", content: FEEDBACK_PROMPT + langInstruction },
             { role: "user", content: conversationText },
           ],
         }),
