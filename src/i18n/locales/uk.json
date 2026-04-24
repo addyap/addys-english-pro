@@ -45,7 +45,10 @@
     "vocabShort": "Лексика",
     "supportHelp": "Потрібна допомога? Перекладіть, поясніть або вивчайте лексику своєю мовою.",
     "supportError": "Сталася помилка. Спробуйте ще раз.",
-    "feedbackLanguageNote": "Відгук буде показано: {{lang}}."
+    "feedbackLanguageNote": "Відгук буде показано: {{lang}}.",
+    "loadingAction": "Обробка:",
+    "tryAgain": "Спробувати знову",
+    "noVocab": "Лексику не знайдено."
   },
   "common": {
     "language": "Мова",
