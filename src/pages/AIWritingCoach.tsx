@@ -199,6 +199,7 @@ const AIWritingCoach = () => {
                       </div>
                     )}
                     <Textarea
+                      ref={inputRef}
                       value={text}
                       onChange={e => setText(e.target.value)}
                       placeholder="Write your text in English here..."
@@ -233,6 +234,12 @@ const AIWritingCoach = () => {
                   ]}
                 />
               )}
+
+              <RecentPractice
+                items={history}
+                onRestore={restoreFromHistory}
+                onClear={clearHistory}
+              />
             </>
           ) : (
             <div className="space-y-6">
@@ -270,8 +277,21 @@ const AIWritingCoach = () => {
                   </CardTitle>
                 </CardHeader>
                 {showImproved && (
-                  <CardContent>
+                  <CardContent className="space-y-3">
                     <p className="text-sm whitespace-pre-wrap bg-primary/5 p-4 rounded-lg">{feedback.improvedVersion}</p>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={copyImproved}
+                      className="w-full sm:w-auto"
+                    >
+                      {copied ? (
+                        <><Check className="w-4 h-4 mr-2" /> Copied!</>
+                      ) : (
+                        <><Copy className="w-4 h-4 mr-2" /> Copy improved version</>
+                      )}
+                    </Button>
                   </CardContent>
                 )}
               </Card>
@@ -281,12 +301,51 @@ const AIWritingCoach = () => {
                 <p className="text-sm">{feedback.overall}</p>
               </Card>
 
-              <Button onClick={reset} className="w-full">
-                <RotateCcw className="w-4 h-4 mr-2" /> {t("btn.new_session", uiLang)}
-              </Button>
+              {/* Persistent copy CTA outside the collapsible too */}
+              {!showImproved && feedback.improvedVersion && (
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={copyImproved}
+                  className="w-full"
+                >
+                  {copied ? (
+                    <><Check className="w-4 h-4 mr-2" /> Copied!</>
+                  ) : (
+                    <><Copy className="w-4 h-4 mr-2" /> Copy improved version</>
+                  )}
+                </Button>
+              )}
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <Button onClick={tryAgain} variant="outline" className="w-full">
+                  <RefreshCw className="w-4 h-4 mr-2" /> Try again
+                </Button>
+                <Button onClick={reset} className="w-full">
+                  <RotateCcw className="w-4 h-4 mr-2" /> {t("btn.new_session", uiLang)}
+                </Button>
+              </div>
             </div>
           )}
         </div>
+
+        {/* Mobile floating submit (hidden once feedback is shown) */}
+        {!feedback && (
+          <div className="md:hidden fixed bottom-0 inset-x-0 z-40 p-3 bg-background/95 backdrop-blur border-t border-border pb-[calc(env(safe-area-inset-bottom)+0.75rem)]">
+            <Button
+              onClick={submit}
+              disabled={loading || text.trim().length < 20 || limitReached}
+              className="w-full"
+              size="lg"
+            >
+              {loading ? (
+                <><Loader2 className="w-4 h-4 animate-spin mr-2" /> {t("btn.analysing", uiLang)}</>
+              ) : (
+                <><Wand2 className="w-4 h-4 mr-2" /> {t("btn.analyse", uiLang)}</>
+              )}
+            </Button>
+          </div>
+        )}
       </div>
     </>
   );
