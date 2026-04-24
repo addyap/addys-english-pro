@@ -48,7 +48,8 @@
     "feedbackLanguageNote": "Le feedback sera affiché en {{lang}}.",
     "loadingAction": "Traitement en cours :",
     "tryAgain": "Réessayer",
-    "noVocab": "Aucun élément de vocabulaire trouvé."
+    "noVocab": "Aucun élément de vocabulaire trouvé.",
+    "supportActionsGroup": "Actions de support multilingue"
   },
   "common": {
     "language": "Langue",

@@ -48,7 +48,8 @@
     "feedbackLanguageNote": "Feedback will be shown in {{lang}}.",
     "loadingAction": "Working on",
     "tryAgain": "Try again",
-    "noVocab": "No vocabulary items found."
+    "noVocab": "No vocabulary items found.",
+    "supportActionsGroup": "Multilingual support actions"
   },
   "common": {
     "language": "Language",

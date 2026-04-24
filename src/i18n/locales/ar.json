@@ -48,7 +48,8 @@
     "feedbackLanguageNote": "ستُعرض التعليقات بـ {{lang}}.",
     "loadingAction": "جارٍ المعالجة:",
     "tryAgain": "حاول مرة أخرى",
-    "noVocab": "لم يتم العثور على مفردات."
+    "noVocab": "لم يتم العثور على مفردات.",
+    "supportActionsGroup": "إجراءات الدعم متعدد اللغات"
   },
   "common": {
     "language": "اللغة",
