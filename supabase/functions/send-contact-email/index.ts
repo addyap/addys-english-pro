@@ -56,7 +56,7 @@ const handler = async (req: Request): Promise<Response> => {
     const notificationResponse = await resend.emails.send({
       from: `${prenom} ${nom} via Contact <contact@antonyaddy.com>`,
       to: ["formations@antonyaddy.com"],
-      replyTo: email,
+      reply_to: email,
       subject: `Nouveau message de ${prenom} ${nom} (${email})`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
