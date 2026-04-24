@@ -158,7 +158,7 @@ export default function RessourcesGratuites() {
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {EXERCISE_CATEGORIES.map((cat) => (
-              <Link key={cat.path} to={cat.path} className="group">
+              <Link key={cat.path} to={cat.path} className="group block cursor-pointer transition-transform active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg" aria-label={`${cat.title} — ${cat.description}`}>
                 <Card className="h-full hover:shadow-md transition-all hover:border-primary/30">
                   <CardContent className="p-5">
                     <div className="flex items-start gap-3">
@@ -200,7 +200,7 @@ export default function RessourcesGratuites() {
             Préparez-vous gratuitement avec nos exercices ciblés et tests blancs chronométrés.
           </p>
           <div className="grid md:grid-cols-3 gap-4">
-            <Link to="/exercices/cloe-preparation" className="group">
+            <Link to="/exercices/cloe-preparation" className="group block cursor-pointer transition-transform active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg" aria-label="Exercices CLOE — 90+ exercices par niveau et catégorie">
               <Card className="h-full hover:shadow-md transition-all hover:border-primary/30">
                 <CardContent className="p-5 text-center">
                   <Award className="w-8 h-8 text-primary mx-auto mb-3" />
@@ -209,7 +209,7 @@ export default function RessourcesGratuites() {
                 </CardContent>
               </Card>
             </Link>
-            <Link to="/exercices/cloe-preparation/practice-test" className="group">
+            <Link to="/exercices/cloe-preparation/practice-test" className="group block cursor-pointer transition-transform active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg" aria-label="Tests blancs CLOE — Simulations chronométrées en conditions réelles">
               <Card className="h-full hover:shadow-md transition-all hover:border-primary/30">
                 <CardContent className="p-5 text-center">
                   <Brain className="w-8 h-8 text-primary mx-auto mb-3" />
@@ -218,7 +218,7 @@ export default function RessourcesGratuites() {
                 </CardContent>
               </Card>
             </Link>
-            <Link to="/exercices/cloe-preparation/overview" className="group">
+            <Link to="/exercices/cloe-preparation/overview" className="group block cursor-pointer transition-transform active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg" aria-label="Guide CLOE — Tout savoir sur la certification CLOE">
               <Card className="h-full hover:shadow-md transition-all hover:border-primary/30">
                 <CardContent className="p-5 text-center">
                   <BookOpen className="w-8 h-8 text-primary mx-auto mb-3" />
@@ -241,7 +241,7 @@ export default function RessourcesGratuites() {
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             {AI_TOOLS.map((tool) => (
-              <Link key={tool.path} to={tool.path} className="group">
+              <Link key={tool.path} to={tool.path} className="group block cursor-pointer transition-transform active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg" aria-label={`${tool.title} — ${tool.description}`}>
                 <Card className="h-full hover:shadow-md transition-all hover:border-primary/30">
                   <CardContent className="p-4 flex items-start gap-3">
                     <div className="p-2 rounded-lg bg-primary/10 text-primary">
