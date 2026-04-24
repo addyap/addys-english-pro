@@ -101,6 +101,25 @@ const ExerciseDetail = () => {
   const h1Title = buildExerciseTitle(seoTitleParts);
   const metaTitle = buildExerciseMetaTitle(seoTitleParts);
 
+  // Pick the most relevant AI trainer based on simple keyword matching
+  // against the exercise title + description. Local to this page on purpose.
+  const pickAiTrainer = (title: string, description: string) => {
+    const haystack = `${title} ${description}`.toLowerCase();
+    const hasAny = (words: string[]) => words.some((w) => haystack.includes(w));
+
+    if (hasAny(['email', 'writing', 'write', 'letter', 'essay', 'écrire', 'écrit', 'rédaction', 'lettre'])) {
+      return { path: '/writing-coach', label: 'Try the Writing Coach' };
+    }
+    if (hasAny(['speaking', 'pronunciation', 'pronounc', 'oral', 'interview', 'presentation', 'prononciation', 'entretien', 'présentation'])) {
+      return { path: '/conversation-trainer', label: 'Try the Speaking Trainer' };
+    }
+    if (hasAny(['grammar', 'tense', 'preposition', 'article', 'modal', 'conditional', 'passive', 'grammaire', 'temps', 'préposition', 'conditionnel'])) {
+      return { path: '/grammar-explainer', label: 'Try the Grammar Explainer' };
+    }
+    return { path: '/conversation-trainer', label: 'Try the AI Trainer' };
+  };
+  const aiTrainer = pickAiTrainer(exercise.title, exercise.description);
+
   return (
     <>
       <SEOHead
@@ -245,8 +264,8 @@ const ExerciseDetail = () => {
 
             {/* Conversion bridge to AI tools / contact */}
             <ExerciseConversionCTA
-              aiToolPath="/grammar-explainer"
-              aiToolLabel="Try the AI Grammar Trainer"
+              aiToolPath={aiTrainer.path}
+              aiToolLabel={aiTrainer.label}
             />
           </div>
         </section>
