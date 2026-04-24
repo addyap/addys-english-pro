@@ -41,14 +41,14 @@ const Contact = () => {
       newErrors.nom = 'Le nom est requis';
     }
     if (!formData.email.trim()) {
-      newErrors.email = 'L\'email est requis';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Email invalide';
+      newErrors.email = 'Please enter a valid email address';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      newErrors.email = 'Please enter a valid email address';
     }
     if (!formData.message.trim()) {
-      newErrors.message = 'Le message est requis';
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Le message doit contenir au moins 10 caractères';
+      newErrors.message = 'Please write at least 20 characters';
+    } else if (formData.message.trim().length < 20) {
+      newErrors.message = 'Please write at least 20 characters';
     }
 
     setErrors(newErrors);
@@ -121,10 +121,23 @@ const Contact = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+
+    // Live inline validation: only re-validate fields that already showed an error
+    setErrors(prev => {
+      if (!prev[name]) return prev;
+      const next = { ...prev };
+      const v = value.trim();
+      if (name === 'email') {
+        if (v && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) delete next.email;
+      } else if (name === 'message') {
+        if (v.length >= 20) delete next.message;
+      } else if (name === 'prenom' || name === 'nom') {
+        if (v) delete next[name];
+      }
+      return next;
+    });
   };
 
   return <>

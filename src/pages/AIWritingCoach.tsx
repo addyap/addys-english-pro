@@ -144,6 +144,16 @@ const AIWritingCoach = () => {
 
                   <div>
                     <label className="text-sm font-medium text-foreground mb-2 block">{t("writing.input_label", uiLang)}</label>
+                    {text.length === 0 && !loading && (
+                      <div className="mb-3 p-3 rounded-md border border-dashed border-border bg-muted/40 text-sm text-muted-foreground">
+                        <p className="font-medium text-foreground/80 mb-1">Try this:</p>
+                        <ul className="list-disc list-inside space-y-0.5">
+                          <li>Correct my business email</li>
+                          <li>Explain present perfect</li>
+                          <li>Improve this sentence</li>
+                        </ul>
+                      </div>
+                    )}
                     <Textarea
                       value={text}
                       onChange={e => setText(e.target.value)}
