@@ -107,6 +107,12 @@ interface AppCoreProps {
   helmetContext?: { helmet?: any };
 }
 
+// Tiny redirect helper that preserves the :id param when the URL slug changed.
+const RedirectSynonymAntonym = () => {
+  const { id } = useParams<{ id: string }>();
+  return <Navigate to={`/exercices/synonyms-antonyms/${id ?? ''}`} replace />;
+};
+
 // Routes component extracted for reuse
 export const AppRoutes = () => (
   <Routes>
