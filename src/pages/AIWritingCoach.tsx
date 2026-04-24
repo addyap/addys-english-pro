@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,11 +15,13 @@ import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import { invokeAI } from "@/lib/ai/streamChat";
 import { t, type UILang } from "@/lib/ai/i18n";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
-import { Send, RotateCcw, Loader2, FileText, Wand2, Eye, ChevronDown, ChevronUp } from "lucide-react";
+import { Send, RotateCcw, Loader2, FileText, Wand2, Eye, ChevronDown, ChevronUp, Copy, Check, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 import AIToolLoadingSkeleton from "@/components/ai-trainer/AIToolLoadingSkeleton";
+import { useSessionHistory, type SessionHistoryItem } from "@/hooks/useSessionHistory";
+import RecentPractice from "@/components/ai-trainer/RecentPractice";
 
 interface Feedback {
   taskAchievement: { score: number; comment: string };
@@ -57,9 +59,12 @@ const AIWritingCoach = () => {
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [loading, setLoading] = useState(false);
   const [showImproved, setShowImproved] = useState(false);
+  const [copied, setCopied] = useState(false);
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("writing-coach");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const uiLang = feedbackLang as UILang;
+  const { items: history, addItem: addHistoryItem, clear: clearHistory } = useSessionHistory("writing-coach");
+  const inputRef = useRef<HTMLTextAreaElement | null>(null);
 
   const submit = async () => {
     if (text.trim().length < 20) {
