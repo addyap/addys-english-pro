@@ -33,19 +33,7 @@ const CollocationExerciseDetail = () => {
   }, [id]);
 
   if (!exercise) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Card className="p-6 text-center">
-          <p className="text-lg text-muted-foreground mb-4">Exercise not found</p>
-          <Link to="/exercices">
-            <Button>
-              <ChevronLeft className="mr-2 h-4 w-4" />
-              Back to Exercises
-            </Button>
-          </Link>
-        </Card>
-      </div>
-    );
+    return <ExerciseNotAvailable />;
   }
 
   const prevExercise = collocationExercises.find((ex) => ex.id === exerciseId - 1);

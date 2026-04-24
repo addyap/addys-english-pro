@@ -53,16 +53,7 @@ const CLOEExerciseDetail = () => {
   const [resultSaved, setResultSaved] = useState(false);
 
   if (!exercise) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Exercice non trouvé</h1>
-          <Link to="/exercices/cloe-preparation">
-            <Button>Retour aux exercices CLOE</Button>
-          </Link>
-        </div>
-      </div>
-    );
+    return <ExerciseNotAvailable />;
   }
 
   const currentQuestion = exercise.questions[currentQuestionIndex];

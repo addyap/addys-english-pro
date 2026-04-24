@@ -173,16 +173,7 @@ const FillInTypingExerciseDetail = () => {
   };
 
   if (!exercise) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Exercice non trouvé</h1>
-          <Link to="/exercices">
-            <Button>Retour aux exercices</Button>
-          </Link>
-        </div>
-      </div>
-    );
+    return <ExerciseNotAvailable />;
   }
 
   const difficultyColor = {

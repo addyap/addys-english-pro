@@ -49,14 +49,7 @@ const PronunciationExerciseDetail = () => {
   }, []);
 
   if (!exercise) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <p className="text-center text-muted-foreground">Exercice non trouvé</p>
-        <Link to="/exercices" className="text-primary hover:underline block text-center mt-4">
-          Retour aux exercices
-        </Link>
-      </div>
-    );
+    return <ExerciseNotAvailable />;
   }
 
   const currentQuestion = exercise.questions[currentIndex];

@@ -27,7 +27,7 @@ function SentenceTransformExercise({ exerciseId }: { exerciseId: number }) {
     setShowHints({});
   }, [exerciseId]);
 
-  if (!exercise) return <div>Exercise not found</div>;
+  if (!exercise) return <ExerciseNotAvailable />;
 
   const checkAnswer = (userAnswer: string, correctAnswer: string) => {
     return userAnswer.toLowerCase().trim() === correctAnswer.toLowerCase().trim();

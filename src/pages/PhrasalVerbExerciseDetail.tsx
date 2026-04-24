@@ -31,16 +31,7 @@ const PhrasalVerbExerciseDetail = () => {
   }, [id]);
 
   if (!exercise) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Exercise not found</h1>
-          <Link to="/exercices">
-            <Button>Back to Exercises</Button>
-          </Link>
-        </div>
-      </div>
-    );
+    return <ExerciseNotAvailable />;
   }
 
   const currentExerciseIndex = phrasalVerbExercises.findIndex((e) => e.id === id);
