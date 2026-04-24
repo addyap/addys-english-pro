@@ -18,7 +18,7 @@ const NotFound = () => {
   const recoveryActions = [
     { href: '/', label: 'Back to Home', icon: Home, variant: 'default' as const },
     { href: '/ressources-gratuites', label: 'Explore Free Resources', icon: BookOpen, variant: 'outline' as const },
-    { href: '/conversation-trainer', label: 'Try the AI Trainer', icon: Sparkles, variant: 'outline' as const },
+    { href: '/conversation-trainer', label: 'Continue your English practice →', icon: Sparkles, variant: 'outline' as const },
     { href: '/contact', label: 'Contact Antony', icon: Mail, variant: 'ghost' as const },
   ];
 
