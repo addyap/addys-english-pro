@@ -20,7 +20,7 @@ const ExerciseConversionCTA: React.FC<ExerciseConversionCTAProps> = ({
   title = "Want personalized feedback?",
   description = "Practice with an AI trainer or get a real human review from Antony.",
   aiToolPath = "/writing-coach",
-  aiToolLabel = "Try the AI Trainer",
+  aiToolLabel = "Continue your English practice →",
 }) => {
   return (
     <Card className="mt-8 border-primary/20 bg-primary/5">
