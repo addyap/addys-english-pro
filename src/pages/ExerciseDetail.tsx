@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, BookOpen, ChevronLeft, ChevronRight, Trophy, RotateCcw, CheckCircle } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
@@ -8,6 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { useExerciseProgress } from '@/hooks/useExerciseProgress';
+import RelatedExercises, { type RelatedExerciseItem } from '@/components/exercise/RelatedExercises';
+import ExerciseConversionCTA from '@/components/exercise/ExerciseConversionCTA';
+import { buildExerciseTitle, buildExerciseMetaTitle } from '@/utils/exerciseSeoTitle';
 
 const ExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -51,6 +54,19 @@ const ExerciseDetail = () => {
     window.scrollTo(0, 0);
   }, [exerciseId]);
 
+  // Build the related-exercises pool from the same data source.
+  // Declared before any early return so hook order stays stable.
+  const relatedPool: RelatedExerciseItem[] = useMemo(
+    () =>
+      exercisesData.map((ex) => ({
+        id: ex.id,
+        title: ex.title,
+        description: ex.description,
+        path: `/exercices/${ex.id}`,
+      })),
+    []
+  );
+
   if (!exercise) {
     return (
       <div className="min-h-screen bg-background py-16">
@@ -77,13 +93,21 @@ const ExerciseDetail = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Build SEO/H1 title with structured, keyword-rich format.
+  const seoTitleParts = {
+    categoryLabel: 'English Exercise',
+    topic: exercise.title,
+  };
+  const h1Title = buildExerciseTitle(seoTitleParts);
+  const metaTitle = buildExerciseMetaTitle(seoTitleParts);
+
   return (
     <>
-      <SEOHead 
-        title={`${exercise.title} - Exercices d'anglais`}
+      <SEOHead
+        title={metaTitle}
         description={exercise.description}
         canonicalPath={`/exercices/${exerciseId}`}
-        keywords={["Exercice d'anglais", exercise.title, "Grammaire anglaise", "Antony Addy"]}
+        keywords={["English exercise", exercise.title, "Grammaire anglaise", "Antony Addy"]}
       />
 
       <div className="min-h-screen bg-background">
@@ -104,7 +128,7 @@ const ExerciseDetail = () => {
               </div>
               <div className="flex-1">
                 <h1 className="text-3xl md:text-4xl font-bold mb-2 font-heading">
-                  {exercise.title}
+                  {h1Title}
                 </h1>
                 <p className="text-lg text-primary-foreground/90 font-body">
                   {exercise.description}
@@ -211,6 +235,19 @@ const ExerciseDetail = () => {
                 <div />
               )}
             </div>
+
+            {/* Related exercises (SEO + retention) */}
+            <RelatedExercises
+              pool={relatedPool}
+              currentId={exerciseId}
+              limit={4}
+            />
+
+            {/* Conversion bridge to AI tools / contact */}
+            <ExerciseConversionCTA
+              aiToolPath="/grammar-explainer"
+              aiToolLabel="Try the AI Grammar Trainer"
+            />
           </div>
         </section>
 
