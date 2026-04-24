@@ -153,7 +153,7 @@ const AIWritingCoach = () => {
         description="Soumettez un texte en anglais et recevez un feedback IA détaillé : grammaire, vocabulaire, style et version améliorée."
         canonical="/writing-coach"
       />
-      <div className="min-h-screen bg-background py-10">
+      <div className="min-h-screen bg-background py-10 pb-32 md:pb-10">
         <div className="max-w-3xl mx-auto px-4 space-y-6">
           <div className="text-center">
             <div className="flex items-center justify-center gap-3 mb-3">

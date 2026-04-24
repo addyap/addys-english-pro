@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -6,12 +6,14 @@ import { Badge } from "@/components/ui/badge";
 import SEOHead from "@/components/SEOHead";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import type { GrammarExplainerResult } from "@/types/ai-trainers";
-import { Search, RotateCcw, Loader2, BookOpen, Lightbulb, ArrowRight } from "lucide-react";
+import { Search, RotateCcw, Loader2, BookOpen, Lightbulb, ArrowRight, Copy, Check, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 import AIToolLoadingSkeleton from "@/components/ai-trainer/AIToolLoadingSkeleton";
+import { useSessionHistory, type SessionHistoryItem } from "@/hooks/useSessionHistory";
+import RecentPractice from "@/components/ai-trainer/RecentPractice";
 
 const EXAMPLE_SENTENCES = [
   "If I had known about the meeting, I would have prepared a report.",
@@ -25,8 +27,11 @@ const AIGrammarExplainer = () => {
   const [sentence, setSentence] = useState("");
   const [result, setResult] = useState<GrammarExplainerResult | null>(null);
   const [loading, setLoading] = useState(false);
+  const [copied, setCopied] = useState(false);
   const { remaining, limitReached, recordSession } = useAIDailyLimit("grammar-explainer");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
+  const { items: history, addItem: addHistoryItem, clear: clearHistory } = useSessionHistory("grammar-explainer");
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const analyse = async (text?: string) => {
     const s = (text || sentence).trim();
