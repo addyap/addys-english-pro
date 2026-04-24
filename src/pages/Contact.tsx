@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { MessageSquare, Mail, MapPin, Clock, CheckCircle2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { MessageSquare, Mail, MapPin, Clock, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { trackFormSubmission, trackFormError, trackWhatsAppClick, trackEmailClick } from '@/lib/analytics';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
@@ -15,6 +16,7 @@ const Contact = () => {
   };
 
   useScrollTracking('/contact');
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     prenom: '',
@@ -27,6 +29,7 @@ const Contact = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitErrorBanner, setSubmitErrorBanner] = useState<string | null>(null);
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -68,6 +71,7 @@ const Contact = () => {
     }
 
     setIsSubmitting(true);
+    setSubmitErrorBanner(null);
 
     try {
       // Call the edge function to send email
@@ -86,7 +90,7 @@ const Contact = () => {
 
       console.log('Contact form submitted successfully:', data);
       trackFormSubmission('contact', true);
-      
+
       setSubmitSuccess(true);
       setFormData({
         prenom: '',
@@ -96,12 +100,21 @@ const Contact = () => {
         honeypot: ''
       });
 
-      // Reset success message after 5 seconds
-      setTimeout(() => setSubmitSuccess(false), 5000);
+      // Scroll to top so the persistent success banner is visible
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+
+      // Redirect to /thank-you after 2 seconds (banner stays visible until then)
+      window.setTimeout(() => {
+        navigate('/thank-you');
+      }, 2000);
     } catch (error) {
       console.error('Form submission error:', error);
       trackFormError('contact', 'submission_failed');
+      const msg = '❌ Something went wrong. Please try again or use WhatsApp.';
       setErrors({ submit: 'Une erreur est survenue. Veuillez réessayer.' });
+      setSubmitErrorBanner(msg);
+      // Scroll to top so the error banner is visible
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     } finally {
       setIsSubmitting(false);
     }
