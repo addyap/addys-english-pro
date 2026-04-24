@@ -159,11 +159,11 @@ const AIGrammarExplainer = () => {
             <CardContent className="pt-6 space-y-4">
               {sentence.length === 0 && !loading && (
                 <div className="p-3 rounded-md border border-dashed border-border bg-muted/40 text-sm text-muted-foreground">
-                  <p className="font-medium text-foreground/80 mb-1">Try this:</p>
+                  <p className="font-medium text-foreground/80 mb-1">{t("ai.grammarTryThis", "Try this:")}</p>
                   <ul className="list-disc list-inside space-y-0.5">
-                    <li>Correct my business email</li>
-                    <li>Explain present perfect</li>
-                    <li>Improve this sentence</li>
+                    <li>{t("ai.grammarExample1", "Correct my business email")}</li>
+                    <li>{t("ai.grammarExample2", "Explain present perfect")}</li>
+                    <li>{t("ai.grammarExample3", "Improve this sentence")}</li>
                   </ul>
                 </div>
               )}
@@ -172,7 +172,7 @@ const AIGrammarExplainer = () => {
                   ref={inputRef}
                   value={sentence}
                   onChange={e => setSentence(e.target.value)}
-                  placeholder="Type or paste an English sentence..."
+                  placeholder={t("ai.grammarPlaceholder", "Type or paste an English sentence...")}
                   maxLength={500}
                   onKeyDown={e => { if (e.key === "Enter") analyse(); }}
                   disabled={loading}

@@ -625,7 +625,7 @@ const EmailReplyTrainer: React.FC = () => {
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1 block">Subject line (optional)</label>
                   <Input
-                    placeholder="Re: ..."
+                    placeholder={t("ai.emailSubjectPlaceholder", "Re: ...")}
                     value={learnerSubject}
                     onChange={(e) => setLearnerSubject(e.target.value)}
                   />
@@ -633,7 +633,7 @@ const EmailReplyTrainer: React.FC = () => {
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1 block">Your email reply</label>
                   <Textarea
-                    placeholder="Write your professional email reply here..."
+                    placeholder={t("ai.emailReplyPlaceholder", "Write your professional email reply here...")}
                     value={learnerReply}
                     onChange={(e) => setLearnerReply(e.target.value)}
                     rows={10}
