@@ -22,6 +22,15 @@ const ConditionalExerciseDetail = () => {
     setSubmitted(false);
   }, [id]);
 
+  // Shuffle options for each question once per exercise load (hook must run before early returns)
+  const shuffledOptionsMap = useMemo(() => {
+    const map: Record<number, string[]> = {};
+    exercise?.questions.forEach((q, index) => {
+      map[index] = shuffleArray(q.options);
+    });
+    return map;
+  }, [id, exercise?.questions]);
+
   if (!exercise) {
     return <ExerciseNotAvailable />;
   }
@@ -34,15 +43,6 @@ const ConditionalExerciseDetail = () => {
     setAnswers({});
     setSubmitted(false);
   };
-
-  // Shuffle options for each question once per exercise load
-  const shuffledOptionsMap = useMemo(() => {
-    const map: Record<number, string[]> = {};
-    exercise.questions.forEach((q, index) => {
-      map[index] = shuffleArray(q.options);
-    });
-    return map;
-  }, [id, exercise.questions]);
 
   const score = submitted 
     ? exercise.questions.filter((q, i) => answers[i] === q.answer).length 
