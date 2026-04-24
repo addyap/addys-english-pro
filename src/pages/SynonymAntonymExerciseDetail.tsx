@@ -30,7 +30,7 @@ const SynonymAntonymExerciseDetail = () => {
       title: ex.title,
       description: ex.description,
       type: 'synonym-antonym',
-      path: `/exercices/synonym-antonym/${ex.id}`
+      path: `/exercices/synonyms-antonyms/${ex.id}`
     }));
   }, []);
 
@@ -46,11 +46,22 @@ const SynonymAntonymExerciseDetail = () => {
 
   if (!exercise) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <p className="text-center text-muted-foreground">Exercice non trouvé</p>
-        <Link to="/exercices" className="text-primary hover:underline block text-center mt-4">
-          Retour aux exercices
-        </Link>
+      <div className="container mx-auto px-4 py-12 max-w-xl text-center">
+        <h1 className="text-2xl font-bold mb-3">Exercice non trouvé</h1>
+        <p className="text-muted-foreground mb-6">
+          Cet exercice n'existe pas ou a été déplacé. Voici quelques pistes utiles :
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Button asChild>
+            <Link to="/ressources-gratuites">Ressources gratuites</Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link to="/conversation-trainer">Try the AI Trainer</Link>
+          </Button>
+          <Button asChild variant="ghost">
+            <Link to="/contact">Contact Antony</Link>
+          </Button>
+        </div>
       </div>
     );
   }
@@ -68,7 +79,7 @@ const SynonymAntonymExerciseDetail = () => {
     ? exercise.questions.filter((q, i) => answers[i] === q.answer).length 
     : 0;
 
-  const canonicalUrl = `https://www.antonyaddy.com/exercices/synonym-antonym/${id}`;
+  const canonicalUrl = `https://www.antonyaddy.com/exercices/synonyms-antonyms/${id}`;
 
   return (
     <>
@@ -199,14 +210,14 @@ const SynonymAntonymExerciseDetail = () => {
         <div className="mt-8 flex justify-center gap-4">
           {Number(id) > 1 && (
             <Button variant="outline" asChild>
-              <Link to={`/exercices/synonym-antonym/${Number(id) - 1}`}>
+              <Link to={`/exercices/synonyms-antonyms/${Number(id) - 1}`}>
                 ← Exercice précédent
               </Link>
             </Button>
           )}
           {Number(id) < synonymAntonymExercises.length && (
             <Button variant="outline" asChild>
-              <Link to={`/exercices/synonym-antonym/${Number(id) + 1}`}>
+              <Link to={`/exercices/synonyms-antonyms/${Number(id) + 1}`}>
                 Exercice suivant →
               </Link>
             </Button>
