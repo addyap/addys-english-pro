@@ -8,11 +8,11 @@ import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import SEOHead from '@/components/SEOHead';
 import { 
-import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
   sentenceTransformExercises, 
   errorCorrectionExercises, 
   fillParagraphExercises 
 } from '@/data/writingExercises';
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 // Sentence Transformation Component
 function SentenceTransformExercise({ exerciseId }: { exerciseId: number }) {
