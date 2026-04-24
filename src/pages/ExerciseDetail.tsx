@@ -128,7 +128,7 @@ const ExerciseDetail = () => {
               </div>
               <div className="flex-1">
                 <h1 className="text-3xl md:text-4xl font-bold mb-2 font-heading">
-                  {exercise.title}
+                  {h1Title}
                 </h1>
                 <p className="text-lg text-primary-foreground/90 font-body">
                   {exercise.description}
@@ -235,6 +235,19 @@ const ExerciseDetail = () => {
                 <div />
               )}
             </div>
+
+            {/* Related exercises (SEO + retention) */}
+            <RelatedExercises
+              pool={relatedPool}
+              currentId={exerciseId}
+              limit={4}
+            />
+
+            {/* Conversion bridge to AI tools / contact */}
+            <ExerciseConversionCTA
+              aiToolPath="/grammar-explainer"
+              aiToolLabel="Try the AI Grammar Trainer"
+            />
           </div>
         </section>
 
