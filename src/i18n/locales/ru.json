@@ -48,7 +48,8 @@
     "feedbackLanguageNote": "Обратная связь будет отображаться на: {{lang}}.",
     "loadingAction": "Выполняется:",
     "tryAgain": "Повторить",
-    "noVocab": "Лексика не найдена."
+    "noVocab": "Лексика не найдена.",
+    "supportActionsGroup": "Многоязычные действия поддержки"
   },
   "common": {
     "language": "Язык",

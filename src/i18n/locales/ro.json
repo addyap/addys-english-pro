@@ -48,7 +48,8 @@
     "feedbackLanguageNote": "Feedbackul va fi afișat în {{lang}}.",
     "loadingAction": "Se procesează:",
     "tryAgain": "Încearcă din nou",
-    "noVocab": "Nu s-au găsit elemente de vocabular."
+    "noVocab": "Nu s-au găsit elemente de vocabular.",
+    "supportActionsGroup": "Acțiuni de asistență multilingvă"
   },
   "common": {
     "language": "Limbă",

@@ -48,7 +48,8 @@
     "feedbackLanguageNote": "Il feedback verrà mostrato in {{lang}}.",
     "loadingAction": "Elaborazione:",
     "tryAgain": "Riprova",
-    "noVocab": "Nessun elemento di vocabolario trovato."
+    "noVocab": "Nessun elemento di vocabolario trovato.",
+    "supportActionsGroup": "Azioni di supporto multilingua"
   },
   "common": {
     "language": "Lingua",

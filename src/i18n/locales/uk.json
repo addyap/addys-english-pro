@@ -48,7 +48,8 @@
     "feedbackLanguageNote": "Відгук буде показано: {{lang}}.",
     "loadingAction": "Обробка:",
     "tryAgain": "Спробувати знову",
-    "noVocab": "Лексику не знайдено."
+    "noVocab": "Лексику не знайдено.",
+    "supportActionsGroup": "Багатомовні дії підтримки"
   },
   "common": {
     "language": "Мова",
