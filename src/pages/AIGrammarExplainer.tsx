@@ -103,33 +103,6 @@ const AIGrammarExplainer = () => {
     }, 50);
   };
 
-  const copySummary = async () => {
-    if (!result) return;
-    const text = [
-      `Sentence: ${sentence}`,
-      `Level: ${result.level}`,
-      "",
-      "Rules:",
-      ...result.rules.map((r) => `• ${r.name} — ${r.explanation}`),
-      "",
-      "Tips:",
-      ...result.tips.map((t) => `• ${t}`),
-    ].join("\n");
-    try {
-      if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(text);
-      } else {
-        throw new Error("no clipboard");
-      }
-      setCopied(true);
-      toast.success("Copied!");
-      trackEvent("ai_copy_click", { tool: "grammar", page: "grammar-explainer" });
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      toast.error("Unable to copy, please select text manually");
-    }
-  };
-
   const POS_COLORS: Record<string, string> = {
     noun: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
     verb: "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300",
