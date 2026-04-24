@@ -70,14 +70,22 @@ const ExerciseDetail = () => {
   if (!exercise) {
     return (
       <div className="min-h-screen bg-background py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-2xl font-bold text-primary mb-4">Exercice non disponible</h1>
+        <div className="max-w-2xl mx-auto px-4 text-center">
+          <h1 className="text-2xl font-bold text-primary mb-3">Exercice non disponible</h1>
           <p className="text-muted-foreground mb-8">
-            Cet exercice n'est pas encore disponible ou n'existe pas.
+            Cet exercice n'est pas encore disponible ou n'existe pas. Voici quelques pistes utiles :
           </p>
-          <Link to="/exercices" className="text-primary hover:underline">
-            Retour aux exercices
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Button asChild>
+              <Link to="/ressources-gratuites">Ressources gratuites</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link to="/conversation-trainer">Try the AI Trainer</Link>
+            </Button>
+            <Button asChild variant="ghost">
+              <Link to="/contact">Contact Antony</Link>
+            </Button>
+          </div>
         </div>
       </div>
     );
