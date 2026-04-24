@@ -296,6 +296,7 @@ const AIWritingCoach = () => {
                 {showImproved && (
                   <CardContent className="space-y-3">
                     <p className="text-sm whitespace-pre-wrap bg-primary/5 p-4 rounded-lg">{feedback.improvedVersion}</p>
+                    <SupportActions text={feedback.improvedVersion} />
                     <Button
                       type="button"
                       variant="outline"
