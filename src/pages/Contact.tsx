@@ -121,10 +121,23 @@ const Contact = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+
+    // Live inline validation: only re-validate fields that already showed an error
+    setErrors(prev => {
+      if (!prev[name]) return prev;
+      const next = { ...prev };
+      const v = value.trim();
+      if (name === 'email') {
+        if (v && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) delete next.email;
+      } else if (name === 'message') {
+        if (v.length >= 20) delete next.message;
+      } else if (name === 'prenom' || name === 'nom') {
+        if (v) delete next[name];
+      }
+      return next;
+    });
   };
 
   return <>
