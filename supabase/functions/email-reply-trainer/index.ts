@@ -200,10 +200,18 @@ serve(async (req) => {
 
   try {
     const body = await req.json();
-    const { action, incomingEmail, learnerReply, learnerSubject, scenarioGoal } = body;
+    const { action, incomingEmail, learnerReply, learnerSubject, scenarioGoal, feedbackLanguage = "en" } = body;
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
+
+    const LANG_NAMES: Record<string, string> = {
+      en: "English", fr: "French", ru: "Russian", uk: "Ukrainian",
+      ar: "Arabic", ro: "Romanian", it: "Italian", es: "Spanish",
+      de: "German", pt: "Portuguese", pl: "Polish", zh: "Chinese", ja: "Japanese",
+    };
+    const langName = LANG_NAMES[feedbackLanguage] || "English";
+    const langInstruction = `\n\nLANGUAGE RULE: Write feedback, explanations, coaching notes, summaries, vocabulary meanings and next steps in ${langName}. Keep the English email body, corrections and model answers in English.`;
 
     if (action === "feedback") {
       const userPrompt = `INCOMING EMAIL:\nSubject: ${incomingEmail.subject}\nFrom: ${incomingEmail.sender}\n\n${incomingEmail.body}\n\nSCENARIO GOAL: ${scenarioGoal}\n\nLEARNER'S SUBJECT LINE: ${learnerSubject || "(none provided)"}\n\nLEARNER'S REPLY:\n${learnerReply || "(empty reply)"}`;
@@ -217,7 +225,7 @@ serve(async (req) => {
         body: JSON.stringify({
           model: "google/gemini-3-flash-preview",
           messages: [
-            { role: "system", content: FEEDBACK_PROMPT },
+            { role: "system", content: FEEDBACK_PROMPT + langInstruction },
             { role: "user", content: userPrompt },
           ],
           stream: false,
