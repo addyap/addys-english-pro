@@ -295,7 +295,14 @@ const Contact = () => {
                   className="w-full bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed text-lg" 
                   aria-label="Envoyer le message de contact"
                 >
-                  {isSubmitting ? 'Envoi en cours...' : 'Envoyer mon message'}
+                  {isSubmitting ? (
+                    <span className="inline-flex items-center justify-center gap-2">
+                      <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />
+                      Sending...
+                    </span>
+                  ) : (
+                    'Envoyer mon message'
+                  )}
                 </button>
               </form>
               
