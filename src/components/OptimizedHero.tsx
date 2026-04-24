@@ -48,9 +48,30 @@ export default function OptimizedHero() {
             Communiquez avec confiance en anglais dans votre vie professionnelle. Formations personnalisées par un formateur britannique certifié FPA depuis 2017.
           </p>
 
-          <p className="text-lg mb-8 font-body drop-shadow-lg max-w-3xl mx-auto text-primary-foreground/80">
+          <p className="text-lg mb-6 font-body drop-shadow-lg max-w-3xl mx-auto text-primary-foreground/80">
             Présentiel Alpes-Maritimes • Distanciel France entière • CPF & entreprises
           </p>
+
+          {/* Credential strip — authority signals */}
+          <ul
+            className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-6 text-sm md:text-base font-body text-primary-foreground/85"
+            aria-label="Credentials"
+          >
+            <li className="inline-flex items-center gap-2">
+              <span aria-hidden="true">🇬🇧</span>
+              <span>British native</span>
+            </li>
+            <li aria-hidden="true" className="hidden md:inline text-primary-foreground/40">•</li>
+            <li className="inline-flex items-center gap-2">
+              <span aria-hidden="true">🎓</span>
+              <span>FPA-certified since 2017</span>
+            </li>
+            <li aria-hidden="true" className="hidden md:inline text-primary-foreground/40">•</li>
+            <li className="inline-flex items-center gap-2">
+              <span aria-hidden="true">📅</span>
+              <span>20+ years teaching in France</span>
+            </li>
+          </ul>
         </header>
 
         {/* Trust metric — strongest credibility signal, above the fold */}
