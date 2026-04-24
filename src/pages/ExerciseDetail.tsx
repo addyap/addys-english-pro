@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, BookOpen, ChevronLeft, ChevronRight, Trophy, RotateCcw, CheckCircle } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
@@ -8,6 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { useExerciseProgress } from '@/hooks/useExerciseProgress';
+import RelatedExercises, { type RelatedExerciseItem } from '@/components/exercise/RelatedExercises';
+import ExerciseConversionCTA from '@/components/exercise/ExerciseConversionCTA';
+import { buildExerciseTitle, buildExerciseMetaTitle } from '@/utils/exerciseSeoTitle';
 
 const ExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
