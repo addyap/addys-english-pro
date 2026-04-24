@@ -126,7 +126,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                     key={item.name}
                     to={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 font-body border ${
+                    className={`flex items-center min-h-[44px] px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 font-body border active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
                       item.current
                         ? 'text-accent-foreground bg-accent border-accent'
                         : 'text-primary hover:text-accent-foreground hover:bg-accent border-transparent hover:border-accent'
