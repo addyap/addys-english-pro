@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { Languages, BookOpen, Sparkles, Loader2 } from "lucide-react";
+import { Languages, BookOpen, Sparkles, Loader2, RotateCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 import { getLangMeta } from "@/i18n";
@@ -27,7 +27,7 @@ export function SupportActions({ text, context, className = "" }: SupportActions
   const { t } = useTranslation();
   const [feedbackLang] = useFeedbackLanguage();
   const [loading, setLoading] = useState<Action | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<{ action: Action; message: string } | null>(null);
   const [translation, setTranslation] = useState<string | null>(null);
   const [explanation, setExplanation] = useState<string | null>(null);
   const [vocab, setVocab] = useState<VocabItem[] | null>(null);
@@ -36,7 +36,7 @@ export function SupportActions({ text, context, className = "" }: SupportActions
 
   if (!text || !text.trim()) return null;
 
-  const run = async (action: Action) => {
+  const run = useCallback(async (action: Action) => {
     setLoading(action);
     setError(null);
     try {
@@ -53,21 +53,29 @@ export function SupportActions({ text, context, className = "" }: SupportActions
         throw new Error(body?.error || `Request failed (${resp.status})`);
       }
       const data = await resp.json();
+      // Replace (not append) — repeated clicks update the same panel
       if (action === "translate") setTranslation(data.result || "");
       else if (action === "explain") setExplanation(data.result || "");
       else setVocab(Array.isArray(data.items) ? data.items : []);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Action failed");
+      setError({ action, message: e instanceof Error ? e.message : "Action failed" });
     } finally {
       setLoading(null);
     }
-  };
+  }, [text, context, feedbackLang]);
 
   const dirAttr = isRTL ? { dir: "rtl" as const } : {};
+  const textAlignClass = isRTL ? "text-right" : "text-left";
+
+  const loadingLabel =
+    loading === "translate" ? t("ai.translateShort", "Translate")
+    : loading === "explain" ? t("ai.explainShort", "Explain")
+    : loading === "vocabulary" ? t("ai.vocabShort", "Vocabulary")
+    : "";
 
   return (
-    <div className={`mt-2 space-y-2 ${className}`}>
-      <div className="flex flex-wrap gap-1.5">
+    <div className={`mt-2 space-y-2 ${className}`} dir={isRTL ? "rtl" : undefined}>
+      <div className={`flex flex-wrap gap-1.5 ${isRTL ? "flex-row-reverse justify-end" : ""}`}>
         <Button
           type="button"
           variant="outline"
@@ -75,6 +83,7 @@ export function SupportActions({ text, context, className = "" }: SupportActions
           onClick={() => run("translate")}
           disabled={loading !== null}
           aria-label={t("ai.translateAnswer")}
+          aria-busy={loading === "translate"}
           title={t("ai.translateAnswer")}
           className="h-8 px-2.5 text-xs"
         >
@@ -88,6 +97,7 @@ export function SupportActions({ text, context, className = "" }: SupportActions
           onClick={() => run("explain")}
           disabled={loading !== null}
           aria-label={t("ai.explainInMyLanguage")}
+          aria-busy={loading === "explain"}
           title={t("ai.explainInMyLanguage")}
           className="h-8 px-2.5 text-xs"
         >
@@ -101,6 +111,7 @@ export function SupportActions({ text, context, className = "" }: SupportActions
           onClick={() => run("vocabulary")}
           disabled={loading !== null}
           aria-label={t("ai.showVocab")}
+          aria-busy={loading === "vocabulary"}
           title={t("ai.showVocab")}
           className="h-8 px-2.5 text-xs"
         >
@@ -108,20 +119,47 @@ export function SupportActions({ text, context, className = "" }: SupportActions
           {t("ai.vocabShort", "Vocabulary")}
         </Button>
       </div>
-      {!translation && !explanation && !vocab && !error && (
+
+      {!translation && !explanation && !vocab && !error && !loading && (
         <p className="text-[11px] text-muted-foreground leading-snug">
           {t("ai.supportHelp", "Need help? Translate, explain, or study vocabulary in your support language.")}
         </p>
       )}
 
+      {/* Mobile-clear loading banner */}
+      {loading && (
+        <div
+          className="flex items-center gap-2 text-xs text-muted-foreground bg-muted/40 border border-border rounded p-2"
+          role="status"
+          aria-live="polite"
+        >
+          <Loader2 className="h-3.5 w-3.5 animate-spin shrink-0" />
+          <span>{t("ai.loadingAction", "Working on")} <span className="font-medium">{loadingLabel}</span>…</span>
+        </div>
+      )}
+
       {error && (
-        <div className="text-xs text-destructive bg-destructive/10 rounded p-2" role="alert">
-          {t("ai.supportError", "Something went wrong. Please try again.")}
+        <div
+          className="flex flex-wrap items-center gap-2 text-xs bg-destructive/10 text-destructive rounded p-2"
+          role="alert"
+        >
+          <span className="flex-1 min-w-0">{t("ai.supportError", "Something went wrong. Please try again.")}</span>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => run(error.action)}
+            className="h-7 px-2 text-xs"
+            aria-label={t("ai.tryAgain", "Try again")}
+          >
+            <RotateCw className="h-3 w-3 mr-1" />
+            {t("ai.tryAgain", "Try again")}
+          </Button>
         </div>
       )}
 
       {translation && (
-        <div className="text-sm bg-muted/50 border border-border rounded p-3" {...dirAttr}>
+        <div className={`text-sm bg-muted/50 border border-border rounded p-3 ${textAlignClass}`} {...dirAttr}>
           <div className="text-[10px] uppercase tracking-wide text-muted-foreground mb-1">
             {t("ai.translateAnswer")}
           </div>
@@ -130,7 +168,7 @@ export function SupportActions({ text, context, className = "" }: SupportActions
       )}
 
       {explanation && (
-        <div className="text-sm bg-muted/50 border border-border rounded p-3" {...dirAttr}>
+        <div className={`text-sm bg-muted/50 border border-border rounded p-3 ${textAlignClass}`} {...dirAttr}>
           <div className="text-[10px] uppercase tracking-wide text-muted-foreground mb-1">
             {t("ai.explainInMyLanguage")}
           </div>
@@ -145,9 +183,9 @@ export function SupportActions({ text, context, className = "" }: SupportActions
           </div>
           <ul className="space-y-2">
             {vocab.map((it, i) => (
-              <li key={i} className="border-b border-border/50 last:border-0 pb-2 last:pb-0">
+              <li key={`${it.term}-${i}`} className="border-b border-border/50 last:border-0 pb-2 last:pb-0">
                 <div className="font-semibold">{it.term}</div>
-                <div className="text-muted-foreground" {...dirAttr}>{it.meaning}</div>
+                <div className={`text-muted-foreground ${textAlignClass}`} {...dirAttr}>{it.meaning}</div>
                 {it.example && <div className="text-xs italic mt-1">“{it.example}”</div>}
               </li>
             ))}
@@ -155,7 +193,7 @@ export function SupportActions({ text, context, className = "" }: SupportActions
         </div>
       )}
       {vocab && vocab.length === 0 && (
-        <div className="text-xs text-muted-foreground">—</div>
+        <div className="text-xs text-muted-foreground">{t("ai.noVocab", "No vocabulary items found.")}</div>
       )}
     </div>
   );
