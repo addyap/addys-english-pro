@@ -67,17 +67,19 @@ export function SupportActions({ text, context, className = "" }: SupportActions
 
   return (
     <div className={`mt-2 space-y-2 ${className}`}>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-1.5">
         <Button
           type="button"
           variant="outline"
           size="sm"
           onClick={() => run("translate")}
           disabled={loading !== null}
-          className="h-7 text-xs"
+          aria-label={t("ai.translateAnswer")}
+          title={t("ai.translateAnswer")}
+          className="h-8 px-2.5 text-xs"
         >
-          {loading === "translate" ? <Loader2 className="h-3 w-3 animate-spin mr-1" /> : <Languages className="h-3 w-3 mr-1" />}
-          {t("ai.translateAnswer")}
+          {loading === "translate" ? <Loader2 className="h-3.5 w-3.5 animate-spin mr-1" /> : <Languages className="h-3.5 w-3.5 mr-1" />}
+          {t("ai.translateShort", "Translate")}
         </Button>
         <Button
           type="button"
@@ -85,10 +87,12 @@ export function SupportActions({ text, context, className = "" }: SupportActions
           size="sm"
           onClick={() => run("explain")}
           disabled={loading !== null}
-          className="h-7 text-xs"
+          aria-label={t("ai.explainInMyLanguage")}
+          title={t("ai.explainInMyLanguage")}
+          className="h-8 px-2.5 text-xs"
         >
-          {loading === "explain" ? <Loader2 className="h-3 w-3 animate-spin mr-1" /> : <Sparkles className="h-3 w-3 mr-1" />}
-          {t("ai.explainInMyLanguage")}
+          {loading === "explain" ? <Loader2 className="h-3.5 w-3.5 animate-spin mr-1" /> : <Sparkles className="h-3.5 w-3.5 mr-1" />}
+          {t("ai.explainShort", "Explain")}
         </Button>
         <Button
           type="button"
@@ -96,12 +100,19 @@ export function SupportActions({ text, context, className = "" }: SupportActions
           size="sm"
           onClick={() => run("vocabulary")}
           disabled={loading !== null}
-          className="h-7 text-xs"
+          aria-label={t("ai.showVocab")}
+          title={t("ai.showVocab")}
+          className="h-8 px-2.5 text-xs"
         >
-          {loading === "vocabulary" ? <Loader2 className="h-3 w-3 animate-spin mr-1" /> : <BookOpen className="h-3 w-3 mr-1" />}
-          {t("ai.showVocab")}
+          {loading === "vocabulary" ? <Loader2 className="h-3.5 w-3.5 animate-spin mr-1" /> : <BookOpen className="h-3.5 w-3.5 mr-1" />}
+          {t("ai.vocabShort", "Vocabulary")}
         </Button>
       </div>
+      {!translation && !explanation && !vocab && !error && (
+        <p className="text-[11px] text-muted-foreground leading-snug">
+          {t("ai.supportHelp", "Need help? Translate, explain, or study vocabulary in your support language.")}
+        </p>
+      )}
 
       {error && (
         <div className="text-xs text-destructive bg-destructive/10 rounded p-2">{error}</div>
