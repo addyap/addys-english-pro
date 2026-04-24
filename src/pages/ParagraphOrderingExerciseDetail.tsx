@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, CheckCircle, XCircle, RotateCcw, GripVertical, ArrowUp, ArrowDown } from "lucide-react";
 import { paragraphOrderingExercises } from "@/data/paragraphOrderingExercises";
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const ParagraphOrderingExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -28,14 +29,7 @@ const ParagraphOrderingExerciseDetail = () => {
   }, [id, exercise]);
 
   if (!exercise) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <p className="text-center text-muted-foreground">Exercice non trouvé</p>
-        <Link to="/exercices" className="text-primary hover:underline block text-center mt-4">
-          Retour aux exercices
-        </Link>
-      </div>
-    );
+    return <ExerciseNotAvailable />;
   }
 
   const moveParagraph = (index: number, direction: 'up' | 'down') => {

@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { errorCorrectionExercises, getErrorCorrectionExerciseById } from '@/data/errorCorrectionExercises';
+import ExerciseNotAvailable from '@/components/exercise/ExerciseNotAvailable';
 
 const ErrorCorrectionExerciseDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -26,14 +27,7 @@ const ErrorCorrectionExerciseDetail: React.FC = () => {
   }, [id]);
 
   if (!exercise) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <p className="text-center text-muted-foreground">Exercise not found.</p>
-        <Link to="/exercices" className="text-primary hover:underline block text-center mt-4">
-          Return to exercises
-        </Link>
-      </div>
-    );
+    return <ExerciseNotAvailable />;
   }
 
   const currentIndex = errorCorrectionExercises.findIndex(ex => ex.id === exercise.id);

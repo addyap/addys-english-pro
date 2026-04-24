@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { flashcardSets, Flashcard } from '@/data/flashcardExercises';
 import { motion, AnimatePresence } from 'framer-motion';
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const FlashcardExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -109,16 +110,7 @@ const FlashcardExerciseDetail = () => {
   }, []);
 
   if (!exercise) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Exercice non trouvé</h1>
-          <Link to="/exercices">
-            <Button>Retour aux exercices</Button>
-          </Link>
-        </div>
-      </div>
-    );
+    return <ExerciseNotAvailable />;
   }
 
   const difficultyColor = {

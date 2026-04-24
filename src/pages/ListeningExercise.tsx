@@ -11,6 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { fetchListeningAudio } from '@/lib/listeningAudio';
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const ListeningExerciseContent: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -45,19 +46,7 @@ const ListeningExerciseContent: React.FC = () => {
   }, [slug]);
 
   if (!exercise) {
-    return (
-      <div className="min-h-screen bg-background py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-2xl font-bold text-primary mb-4">Exercice non trouvé</h1>
-          <p className="text-muted-foreground mb-8">
-            Cet exercice d'écoute n'existe pas.
-          </p>
-          <Link to="/exercices/listening" className="text-primary hover:underline">
-            Retour au Listening Lab
-          </Link>
-        </div>
-      </div>
-    );
+    return <ExerciseNotAvailable />;
   }
 
   // Get prev/next exercises

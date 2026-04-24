@@ -9,6 +9,7 @@ import { ArrowLeft, CheckCircle, XCircle, RotateCcw, Eye } from "lucide-react";
 import { translationExercises } from "@/data/translationExercises";
 import { SimilarExercises, SimilarExercise } from "@/components/SimilarExercises";
 import QuizJsonLd from "@/components/QuizJsonLd";
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const TranslationExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -42,14 +43,7 @@ const TranslationExerciseDetail = () => {
   }, []);
 
   if (!exercise) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <p className="text-center text-muted-foreground">Exercice non trouvé</p>
-        <Link to="/exercices" className="text-primary hover:underline block text-center mt-4">
-          Retour aux exercices
-        </Link>
-      </div>
-    );
+    return <ExerciseNotAvailable />;
   }
 
   const currentSentence = exercise.sentences[currentIndex];

@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { toast } from 'sonner';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { shuffleArray } from '@/utils/shuffleArray';
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const DialogueExerciseDetail = () => {
   const { id } = useParams();
@@ -27,16 +28,7 @@ const DialogueExerciseDetail = () => {
   }, [id]);
 
   if (!exercise) {
-    return (
-      <div className="min-h-screen bg-background py-12">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-2xl font-bold text-foreground">Exercice non trouvé</h1>
-          <Link to="/exercices" className="text-primary hover:underline mt-4 inline-block">
-            Retour aux exercices
-          </Link>
-        </div>
-      </div>
-    );
+    return <ExerciseNotAvailable />;
   }
 
   const blankLines = exercise.dialogue.filter(line => line.isBlank);

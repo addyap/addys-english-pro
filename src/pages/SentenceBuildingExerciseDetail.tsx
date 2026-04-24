@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { sentenceBuildingExercises, getSentenceBuildingExerciseById } from '@/data/sentenceBuildingExercises';
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const SentenceBuildingExerciseDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -25,14 +26,7 @@ const SentenceBuildingExerciseDetail: React.FC = () => {
   }, [id]);
 
   if (!exercise) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <p className="text-center text-muted-foreground">Exercise not found.</p>
-        <Link to="/exercices" className="text-primary hover:underline block text-center mt-4">
-          Return to exercises
-        </Link>
-      </div>
-    );
+    return <ExerciseNotAvailable />;
   }
 
   const currentIndex = sentenceBuildingExercises.findIndex(ex => ex.id === exercise.id);

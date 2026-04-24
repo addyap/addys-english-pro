@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, CheckCircle, XCircle, RotateCcw } from "lucide-react";
 import { conditionalExercises } from "@/data/conditionalExercises";
 import { shuffleArray } from "@/utils/shuffleArray";
+import ExerciseNotAvailable from "@/components/exercise/ExerciseNotAvailable";
 
 const ConditionalExerciseDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -21,15 +22,17 @@ const ConditionalExerciseDetail = () => {
     setSubmitted(false);
   }, [id]);
 
+  // Shuffle options for each question once per exercise load (hook must run before early returns)
+  const shuffledOptionsMap = useMemo(() => {
+    const map: Record<number, string[]> = {};
+    exercise?.questions.forEach((q, index) => {
+      map[index] = shuffleArray(q.options);
+    });
+    return map;
+  }, [id, exercise?.questions]);
+
   if (!exercise) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <p className="text-center text-muted-foreground">Exercice non trouvé</p>
-        <Link to="/exercices" className="text-primary hover:underline block text-center mt-4">
-          Retour aux exercices
-        </Link>
-      </div>
-    );
+    return <ExerciseNotAvailable />;
   }
 
   const handleSubmit = () => {
@@ -40,15 +43,6 @@ const ConditionalExerciseDetail = () => {
     setAnswers({});
     setSubmitted(false);
   };
-
-  // Shuffle options for each question once per exercise load
-  const shuffledOptionsMap = useMemo(() => {
-    const map: Record<number, string[]> = {};
-    exercise.questions.forEach((q, index) => {
-      map[index] = shuffleArray(q.options);
-    });
-    return map;
-  }, [id, exercise.questions]);
 
   const score = submitted 
     ? exercise.questions.filter((q, i) => answers[i] === q.answer).length 
