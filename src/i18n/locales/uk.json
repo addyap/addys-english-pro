@@ -62,7 +62,15 @@
     "failedImprovePresentation": "Не вдалося покращити презентацію.",
     "networkError": "Помилка мережі. Спробуйте ще раз.",
     "copied": "Скопійовано!",
-    "copyFailed": "Не вдалося скопіювати. Виділіть текст вручну."
+    "copyFailed": "Не вдалося скопіювати. Виділіть текст вручну.",
+    "grammarPlaceholder": "Введіть або вставте речення англійською...",
+    "grammarTryThis": "Спробуйте:",
+    "grammarExample1": "Виправ мій діловий лист",
+    "grammarExample2": "Поясни present perfect",
+    "grammarExample3": "Покращ це речення",
+    "presentationPlaceholder": "Напишіть тут свою професійну презентацію...",
+    "emailSubjectPlaceholder": "Re: ...",
+    "emailReplyPlaceholder": "Напишіть тут свою професійну відповідь на email..."
   },
   "common": {
     "language": "Мова",

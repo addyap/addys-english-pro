@@ -62,7 +62,15 @@
     "failedImprovePresentation": "فشل تحسين العرض.",
     "networkError": "خطأ في الشبكة. يرجى المحاولة مرة أخرى.",
     "copied": "تم النسخ!",
-    "copyFailed": "تعذر النسخ. يرجى تحديد النص يدوياً."
+    "copyFailed": "تعذر النسخ. يرجى تحديد النص يدوياً.",
+    "grammarPlaceholder": "اكتب أو الصق جملة باللغة الإنجليزية...",
+    "grammarTryThis": "جرب هذا:",
+    "grammarExample1": "صحّح بريدي الإلكتروني المهني",
+    "grammarExample2": "اشرح present perfect",
+    "grammarExample3": "حسّن هذه الجملة",
+    "presentationPlaceholder": "اكتب عرضك التقديمي المهني هنا...",
+    "emailSubjectPlaceholder": "Re: ...",
+    "emailReplyPlaceholder": "اكتب ردك على البريد الإلكتروني المهني هنا..."
   },
   "common": {
     "language": "اللغة",

@@ -62,7 +62,15 @@
     "failedImprovePresentation": "Failed to improve presentation.",
     "networkError": "Network error. Please try again.",
     "copied": "Copied!",
-    "copyFailed": "Unable to copy. Please select the text manually."
+    "copyFailed": "Unable to copy. Please select the text manually.",
+    "grammarPlaceholder": "Type or paste an English sentence...",
+    "grammarTryThis": "Try this:",
+    "grammarExample1": "Correct my business email",
+    "grammarExample2": "Explain present perfect",
+    "grammarExample3": "Improve this sentence",
+    "presentationPlaceholder": "Write your professional presentation here...",
+    "emailSubjectPlaceholder": "Re: ...",
+    "emailReplyPlaceholder": "Write your professional email reply here..."
   },
   "common": {
     "language": "Language",
