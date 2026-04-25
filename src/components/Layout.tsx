@@ -30,6 +30,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
   const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const year = new Date().getFullYear();
+  const isAITool = AI_TOOL_PATHS.includes(location.pathname);
 
   usePageTracking();
 
