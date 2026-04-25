@@ -139,9 +139,11 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                     {item.name}
                   </Link>
                 ))}
-                <div className="px-4 py-3 border-t border-gray-200 mt-2">
-                  <LanguageSwitcher fullWidth />
-                </div>
+                {isAITool && (
+                  <div className="px-4 py-3 border-t border-gray-200 mt-2">
+                    <LanguageSwitcher fullWidth />
+                  </div>
+                )}
               </nav>
             </div>
           )}
