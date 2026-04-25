@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { useChatAutoScroll } from "@/hooks/useChatAutoScroll";
 import JumpToLatestButton from "@/components/chat/JumpToLatestButton";
 
@@ -75,7 +76,8 @@ const AISpeakingPractice = () => {
   const [loadingFeedback, setLoadingFeedback] = useState(false);
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("speaking");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
-  const uiLang = feedbackLang as UILang;
+  const { interfaceLang } = useLanguage();
+  const uiLang = interfaceLang as UILang;
 
   const { messages, isStreaming, startConversation, resetMessages, stream } = useStreamingChat({
     url: FUNC_URL,

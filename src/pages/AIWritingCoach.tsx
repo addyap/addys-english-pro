@@ -20,6 +20,7 @@ import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-tr
 import { Send, RotateCcw, Loader2, FileText, Wand2, Eye, ChevronDown, ChevronUp, Copy, Check, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
+import { useLanguage } from "@/contexts/LanguageContext";
 import AIToolLoadingSkeleton from "@/components/ai-trainer/AIToolLoadingSkeleton";
 import { useSessionHistory, type SessionHistoryItem } from "@/hooks/useSessionHistory";
 import RecentPractice from "@/components/ai-trainer/RecentPractice";
@@ -69,7 +70,8 @@ const AIWritingCoach = () => {
   const [usageTick, setUsageTick] = useState(0);
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("writing-coach");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
-  const uiLang = feedbackLang as UILang;
+  const { interfaceLang } = useLanguage();
+  const uiLang = interfaceLang as UILang;
   const { items: history, addItem: addHistoryItem, clear: clearHistory } = useSessionHistory("writing-coach");
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
 
