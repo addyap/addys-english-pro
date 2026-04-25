@@ -6,19 +6,22 @@ import TestimonialCarousel from './TestimonialCarousel';
 const AvisClients = () => {
   const testimonials = [
     {
-      quote: "Antony est un super professeur. À l'écoute, dans l'échange et très pédagogue, il s'adapte à nos besoins.",
+      quote: "Antony est un super professeur. À l'écoute, dans l'échange et très pédagogue, il s'adapte à nos besoins et rend chaque séance utile et concrète.",
       name: "Loan MIRMONT",
-      role: "Préparateur physique N2 – Gérant PPR-Formance",
+      role: "Préparateur physique N2 — Gérant PPR-Formance",
+      company: "Professionnel · cours individuels",
     },
     {
-      quote: "Moi qui ne parlais pas un mot d'anglais, Anthony m'a poussé à m'améliorer à chaque cours.",
-      name: "Paula Giusto",
+      quote: "Moi qui ne parlais pas un mot d'anglais, Antony m'a poussée à m'améliorer à chaque cours. Aujourd'hui, je tiens une conversation avec mes clients internationaux.",
+      name: "Paula GIUSTO",
       role: "Conseillère de Vente en Produits de Luxe",
+      company: "Débutante · anglais professionnel",
     },
     {
-      quote: "Anthony excels in creating an engaging and inclusive learning environment.",
+      quote: "Antony excelle à créer un environnement d'apprentissage engageant et inclusif. Ses cours m'ont aidée à gagner en confiance lors de mes échanges commerciaux.",
       name: "Chia Min HSU",
-      role: "Conseillère commerciale – marché sinophone",
+      role: "Conseillère commerciale — marché sinophone",
+      company: "Professionnelle · anglais des affaires",
     },
   ];
 
