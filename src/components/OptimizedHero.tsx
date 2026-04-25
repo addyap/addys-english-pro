@@ -82,7 +82,7 @@ export default function OptimizedHero() {
             aria-label="Indicateur de confiance"
           >
             <span aria-hidden="true">⭐</span>
-            700+ exercices d'anglais et outils de pratique propulsés par l'IA
+            Premier échange gratuit · Sans engagement · Réponse sous 24h
           </span>
         </div>
 
@@ -90,41 +90,43 @@ export default function OptimizedHero() {
           className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap items-stretch sm:items-center"
           aria-label="Actions principales"
         >
-          {/* PRIMARY CTA — strongest visual weight */}
-          <Link
-            to="/contact"
-            onClick={() => trackEvent('hero_cta_click', { page: 'home', target: '/contact' })}
-            className="group relative overflow-hidden bg-accent text-accent-foreground px-10 py-5 rounded-lg font-bold text-lg hover:bg-accent/90 hover:shadow-2xl transition-all duration-300 shadow-2xl font-body transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-accent/40 active:scale-100 ring-2 ring-accent/40"
-            aria-label="Démarrer votre progression en anglais — contacter Antony Addy"
+          {/* PRIMARY CTA — WhatsApp, lowest-friction conversion */}
+          <a
+            href="https://wa.me/33649829826"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackEvent('whatsapp_cta_click', { page: 'home', location: 'hero' })}
+            className="group relative overflow-hidden bg-accent text-accent-foreground px-10 py-5 rounded-lg font-bold text-lg hover:bg-accent/90 hover:shadow-2xl transition-all duration-300 shadow-2xl font-body transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-accent/40 active:scale-100 ring-2 ring-accent/40 inline-flex items-center justify-center gap-2"
+            aria-label="Prendre contact sur WhatsApp avec Antony Addy"
           >
-            <span className="relative z-10">Booster votre anglais</span>
-            <span className="absolute inset-0 bg-background/10 scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
-          </Link>
+            <span aria-hidden="true">💬</span>
+            <span className="relative z-10">Prendre contact sur WhatsApp</span>
+          </a>
 
-          {/* SECONDARY CTA — outline / ghost styling */}
+          {/* SECONDARY CTA — Voir les formations */}
           <Link
-            to="/ressources-gratuites"
-            onClick={() => trackEvent('resources_cta_click', { page: 'home', target: '/ressources-gratuites' })}
+            to="/offres-de-formation"
+            onClick={() => trackEvent('hero_secondary_cta_click', { page: 'home', target: '/offres-de-formation' })}
             className="group relative overflow-hidden border-2 border-primary-foreground/80 text-primary-foreground bg-transparent px-8 py-4 rounded-lg font-semibold hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all duration-300 font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-ring/30 active:scale-100"
-            aria-label="Explorer les ressources gratuites d'anglais"
+            aria-label="Voir les offres de formation en anglais professionnel"
           >
-            <span className="relative z-10">Explorer les ressources gratuites</span>
+            <span className="relative z-10">Voir les formations</span>
           </Link>
         </nav>
 
         {/* Microcopy reassurance under CTAs */}
         <p className="mt-4 text-sm md:text-base text-primary-foreground/85 font-body drop-shadow">
-          Coaching d'anglais personnalisé, exercices pratiques et contact rapide.
+          100% personnalisé · Adapté à votre niveau · Réponse rapide garantie
         </p>
 
-        {/* Tertiary discovery link — preserves access to formations without competing visually */}
+        {/* Tertiary discovery link */}
         <div className="mt-3">
           <Link
-            to="/offres-de-formation"
+            to="/ressources-gratuites"
             className="inline-block text-sm text-primary-foreground/80 hover:text-primary-foreground underline underline-offset-4 font-body focus:outline-none focus:ring-2 focus:ring-ring/30 rounded"
-            aria-label="Voir les offres de formation en anglais professionnel"
+            aria-label="Explorer les ressources gratuites d'anglais"
           >
-            Voir les offres de formation →
+            Explorer les ressources gratuites →
           </Link>
         </div>
       </div>
