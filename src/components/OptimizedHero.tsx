@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { trackEvent } from "@/lib/analytics";
+import { WHATSAPP_PREFILLED_URL } from "@/lib/whatsapp";
 
 export default function OptimizedHero() {
   return (
@@ -92,7 +93,7 @@ export default function OptimizedHero() {
         >
           {/* PRIMARY CTA — WhatsApp with prefilled message, lowest-friction conversion */}
           <a
-            href={`https://wa.me/33649829826?text=${encodeURIComponent('Bonjour Antony, je souhaite améliorer mon anglais. Mon objectif est : [à compléter]. Pouvez-vous me conseiller ?')}`}
+            href={WHATSAPP_PREFILLED_URL}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackEvent('whatsapp_cta_click', { page: 'home', location: 'hero', prefilled: true })}
