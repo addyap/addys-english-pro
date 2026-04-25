@@ -203,7 +203,7 @@ serve(async (req) => {
       de: "German", pt: "Portuguese", pl: "Polish", zh: "Chinese", ja: "Japanese",
     };
     const langName = LANG_NAMES[feedbackLanguage] || "English";
-    const langInstruction = `\n\nLANGUAGE RULE: Write feedback, explanations, coaching notes, summaries, vocabulary meanings and next steps in ${langName}. Keep the English presentation, corrections and model presentations in English.`;
+    const langInstruction = `\n\nLANGUAGE RULE: Write feedback, explanations, coaching notes, summaries, vocabulary meanings and next steps in ${langName}. Keep the English presentation, corrections and model presentations in English.\n\nINPUT SCOPE RULE: Only evaluate the learner/user's own input. Never correct AI-generated text. For speech or voice input, ignore capitalization, punctuation, and minor transcription/spelling artefacts. Focus on grammar, vocabulary, fluency, natural phrasing, clarity, and task completion.`;
 
     const callAI = async (systemPrompt: string, userPrompt: string) => {
       const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {

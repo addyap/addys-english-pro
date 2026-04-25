@@ -44,7 +44,7 @@ IMPORTANT:
 - Be thorough but accessible.
 - Identify ALL grammar rules present.
 - Include at least 2 practical tips.
-- Return ONLY the JSON, no markdown fences.`;
+- Return ONLY the JSON, no markdown fences.\n\nINPUT SCOPE RULE: Only evaluate the learner/user's own input. Never correct AI-generated text. For speech or voice input, ignore capitalization, punctuation, and minor transcription/spelling artefacts. Focus on grammar, vocabulary, fluency, natural phrasing, clarity, and task completion.`;
 }
 
 serve(async (req) => {

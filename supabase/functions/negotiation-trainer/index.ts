@@ -189,7 +189,7 @@ serve(async (req) => {
       de: "German", pt: "Portuguese", pl: "Polish", zh: "Chinese", ja: "Japanese",
     };
     const langName = LANG_NAMES[feedbackLanguage] || "English";
-    const langInstruction = `\n\nLANGUAGE RULE: Write feedback, explanations, coaching notes, summaries, vocabulary meanings and next steps in ${langName}. Keep the English conversation, corrections and model answers in English. Ignore punctuation, capitalization and spelling artefacts caused by speech-to-text — focus on grammar, fluency, vocabulary, clarity and pronunciation.`;
+    const langInstruction = `\n\nLANGUAGE RULE: Write feedback, explanations, coaching notes, summaries, vocabulary meanings and next steps in ${langName}. Keep the English conversation, corrections and model answers in English. Ignore punctuation, capitalization and spelling artefacts caused by speech-to-text — focus on grammar, fluency, vocabulary, clarity and pronunciation.\n\nINPUT SCOPE RULE: Only evaluate the learner/user's own input. Never correct AI-generated text. For speech or voice input, ignore capitalization, punctuation, and minor transcription/spelling artefacts. Focus on grammar, vocabulary, fluency, natural phrasing, clarity, and task completion.`;
 
     // ── Feedback mode ──────────────────────────────────────────────────
     if (action === "feedback") {
