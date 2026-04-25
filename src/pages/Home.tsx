@@ -427,24 +427,38 @@ const Home = () => {
 
         {/* Contact CTA Section - Conversion-focused, WhatsApp-first */}
         <section className="py-16 bg-red-600 text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl font-bold mb-4 font-heading">Prêt à améliorer votre anglais professionnel ?</h2>
-            <p className="text-xl mb-2 font-body">
-              Discutons de votre projet de formation — premier échange gratuit et sans engagement.
+            <p className="text-lg md:text-xl mb-3 font-body">
+              Expliquez-moi votre objectif, je vous réponds rapidement avec une proposition adaptée.
             </p>
             <p className="text-base mb-8 font-body text-white/90">
-              💬 Réponse rapide sous 24h · 100% personnalisé · Adapté à votre niveau
+              💬 Premier échange gratuit · Sans engagement · Réponse sous 24h
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://wa.me/33649829826" onClick={() => trackEvent('whatsapp_cta_click', { page: 'Home', target: 'https://wa.me/33649829826', location: 'final-cta' })} className="bg-white text-red-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-all hover:scale-105 flex items-center justify-center gap-2 font-body shadow-lg" target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="h-5 w-5" />
+              <a
+                href="https://wa.me/33649829826"
+                onClick={() => trackEvent('whatsapp_cta_click', { page: 'Home', target: 'https://wa.me/33649829826', location: 'final-cta' })}
+                className="bg-white text-red-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-all hover:scale-105 flex items-center justify-center gap-2 font-body shadow-lg"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Contacter Antony Addy sur WhatsApp"
+              >
+                <MessageCircle className="h-5 w-5" aria-hidden="true" />
                 Contact WhatsApp · Réponse sous 24h
               </a>
-              <Link to="/contact" className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors flex items-center justify-center gap-2 font-body">
-                <Mail className="h-5 w-5" />
+              <Link
+                to="/contact"
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors flex items-center justify-center gap-2 font-body"
+                aria-label="Aller au formulaire de contact"
+              >
+                <Mail className="h-5 w-5" aria-hidden="true" />
                 Formulaire de contact
               </Link>
             </div>
+            <p className="mt-5 text-sm text-white/80 font-body">
+              100% personnalisé · Adapté à votre niveau
+            </p>
           </div>
         </section>
         
