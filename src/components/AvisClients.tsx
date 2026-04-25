@@ -30,7 +30,7 @@ const AvisClients = () => {
             Avis clients
           </h2>
           <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl mx-auto font-body">
-            Ils ont progressé avec un accompagnement personnalisé.
+            Ils nous font confiance.
           </p>
 
           <TestimonialCarousel testimonials={testimonials} />
