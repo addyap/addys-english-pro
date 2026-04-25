@@ -198,6 +198,27 @@ const Training = () => {
 
           <hr className="border-t border-border mb-12" />
 
+          {/* Quick audience shortcuts */}
+          <FadeInSection>
+            <div className="grid sm:grid-cols-3 gap-4 mb-12">
+              {audienceShortcuts.map((a) => (
+                <button
+                  key={a.title}
+                  type="button"
+                  onClick={() => handleScrollTo(a.target)}
+                  className="text-left bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-5 border border-border"
+                >
+                  <div className="flex items-center mb-2">
+                    <span className="text-2xl mr-2" aria-hidden="true">{a.emoji}</span>
+                    <h2 className="text-lg font-semibold text-primary">{a.title}</h2>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-3">{a.desc}</p>
+                  <span className="text-sm font-medium text-accent">Voir les formations ↓</span>
+                </button>
+              ))}
+            </div>
+          </FadeInSection>
+
           {/* Pour qui */}
           <FadeInSection>
             <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
@@ -219,7 +240,7 @@ const Training = () => {
 
           {/* Formation categories with Accordion */}
           <FadeInSection>
-            <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
+            <div id="formations" className="bg-white rounded-lg shadow-lg p-8 mb-12 scroll-mt-24">
               <div className="flex items-center mb-6">
                 <span className="text-2xl mr-3">📚</span>
                 <h2 className="text-2xl font-bold text-primary">Types de formations</h2>
