@@ -420,14 +420,18 @@ const Training = () => {
                 Prenez contact pour un premier échange gratuit. Je vous aide à définir vos objectifs et à choisir la formule adaptée.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-3">
                 <Link to="/contact" className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-lg">
                   Réserver un premier échange
                 </Link>
-                <a href={WHATSAPP_PREFILLED_URL} onClick={() => trackEvent('whatsapp_cta_click', { page: 'Training', target: WHATSAPP_PREFILLED_URL, prefilled: true })} className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-8 py-4 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
+                <a href={WHATSAPP_PREFILLED_URL} onClick={() => trackEvent('whatsapp_cta_click', { page: 'Training', target: WHATSAPP_PREFILLED_URL, prefilled: true, location: 'final-cta' })} className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-8 py-4 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
                   WhatsApp direct
                 </a>
               </div>
+
+              <p className="text-sm text-muted-foreground mb-6">
+                💬 Premier échange gratuit · Sans engagement · Réponse sous 24h
+              </p>
               
               <div className="space-y-2 text-sm text-muted-foreground">
                 <div className="flex items-center justify-center">
