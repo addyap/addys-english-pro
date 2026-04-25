@@ -299,24 +299,24 @@ const Home = () => {
         </section>
 
         {/* Quick Exercises CTA Banner - More subtle, value-focused */}
-        <section className="py-6 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+        <section className="py-5 sm:py-6 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-4">
-                <div className="bg-white/20 rounded-full p-2.5 animate-pulse">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4">
+              <div className="flex items-center gap-3 sm:gap-4 w-full md:w-auto">
+                <div className="bg-white/20 rounded-full p-2 sm:p-2.5 animate-pulse shrink-0">
                   <Award className="h-5 w-5" />
                 </div>
-                <div>
-                  <p className="font-bold text-lg flex items-center gap-2">
-                    <span className="bg-white/20 px-2 py-0.5 rounded text-sm">100% GRATUIT</span>
-                    Ressources pédagogiques en accès libre
+                <div className="min-w-0">
+                  <p className="font-bold text-base sm:text-lg flex flex-wrap items-center gap-x-2 gap-y-1 leading-tight">
+                    <span className="bg-white/20 px-2 py-0.5 rounded text-xs sm:text-sm">100% GRATUIT</span>
+                    <span>Ressources pédagogiques en accès libre</span>
                   </p>
-                  <p className="text-sm text-white/90">{EXERCISE_COUNTS.total}+ exercices • {EXERCISE_COUNTS.questions.toLocaleString()}+ questions • Créés par un formateur certifié</p>
+                  <p className="text-xs sm:text-sm text-white/90 mt-1">{EXERCISE_COUNTS.total}+ exercices • {EXERCISE_COUNTS.questions.toLocaleString()}+ questions • Créés par un formateur certifié</p>
                 </div>
               </div>
               <Link 
                 to="/exercices" 
-                className="bg-white text-emerald-700 px-5 py-2.5 rounded-lg font-bold hover:bg-white/90 transition-all flex items-center gap-2 whitespace-nowrap shadow-lg hover:scale-105"
+                className="bg-white text-emerald-700 px-5 py-2.5 rounded-lg font-bold text-sm sm:text-base hover:bg-white/90 transition-all flex items-center gap-2 whitespace-nowrap shadow-lg hover:scale-105 w-full md:w-auto justify-center"
               >
                 Commencer maintenant
                 <ExternalLink className="h-4 w-4" />
