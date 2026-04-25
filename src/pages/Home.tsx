@@ -437,12 +437,12 @@ const Home = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://wa.me/33649829826"
-                onClick={() => trackEvent('whatsapp_cta_click', { page: 'Home', target: 'https://wa.me/33649829826', location: 'final-cta' })}
+                href={`https://wa.me/33649829826?text=${encodeURIComponent('Bonjour Antony, je souhaite améliorer mon anglais. Mon objectif est : [à compléter]. Pouvez-vous me conseiller ?')}`}
+                onClick={() => trackEvent('whatsapp_cta_click', { page: 'Home', location: 'final-cta', prefilled: true })}
                 className="bg-white text-red-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-all hover:scale-105 flex items-center justify-center gap-2 font-body shadow-lg"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Contacter Antony Addy sur WhatsApp"
+                aria-label="Contacter Antony Addy sur WhatsApp (message pré-rempli)"
               >
                 <MessageCircle className="h-5 w-5" aria-hidden="true" />
                 Contact WhatsApp · Réponse sous 24h
