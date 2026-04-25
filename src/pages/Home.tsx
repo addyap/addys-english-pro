@@ -195,26 +195,26 @@ const Home = () => {
       <OptimizedHero />
 
       {/* Trust / authority strip — instant credibility under the hero */}
-      <section className="bg-background py-8 border-b border-border" aria-label="Indicateurs de confiance">
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <section className="bg-background py-6 sm:py-8 border-b border-border" aria-label="Indicateurs de confiance">
+        <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
           <div>
-            <p className="text-3xl md:text-4xl font-extrabold text-primary font-heading">20+</p>
-            <p className="text-sm text-muted-foreground font-body mt-1">Années d'expérience</p>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">20+</p>
+            <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Années d'expérience</p>
           </div>
           <div>
-            <p className="text-3xl md:text-4xl font-extrabold text-primary font-heading">500+</p>
-            <p className="text-sm text-muted-foreground font-body mt-1">Apprenants accompagnés</p>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">500+</p>
+            <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Apprenants accompagnés</p>
           </div>
           <div>
-            <p className="text-3xl md:text-4xl font-extrabold text-primary font-heading">FPA</p>
-            <p className="text-sm text-muted-foreground font-body mt-1">Certifié depuis 2017</p>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">FPA</p>
+            <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Certifié depuis 2017</p>
           </div>
           <div>
-            <p className="text-3xl md:text-4xl font-extrabold text-primary font-heading">24h</p>
-            <p className="text-sm text-muted-foreground font-body mt-1">Réponse garantie</p>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">24h</p>
+            <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Réponse garantie</p>
           </div>
         </div>
-        <p className="max-w-4xl mx-auto px-4 mt-6 text-center text-sm text-muted-foreground font-body">
+        <p className="max-w-4xl mx-auto px-4 mt-4 sm:mt-6 text-center text-xs sm:text-sm text-muted-foreground font-body leading-relaxed">
           Particuliers, salariés, étudiants (BTS, Bachelor, Master), cadres et équipes : préparation aux entretiens, examens, réunions et présentations en anglais.
         </p>
       </section>
