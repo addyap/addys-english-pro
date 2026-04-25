@@ -5,6 +5,7 @@ import {
   MessageCircle, PenTool, Mic, BookOpen, Mail,
   Presentation, Handshake, Users
 } from "lucide-react";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const AI_TOOLS = [
   { path: "/conversation-trainer", label: "Conversation", icon: MessageCircle },
