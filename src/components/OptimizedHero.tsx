@@ -56,21 +56,21 @@ export default function OptimizedHero() {
           {/* Credential strip — authority signals */}
           <ul
             className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-6 text-sm md:text-base font-body text-primary-foreground/85"
-            aria-label="Credentials"
+            aria-label="Qualifications"
           >
             <li className="inline-flex items-center gap-2">
               <span aria-hidden="true">🇬🇧</span>
-              <span>British native</span>
+              <span>Britannique natif</span>
             </li>
             <li aria-hidden="true" className="hidden md:inline text-primary-foreground/40">•</li>
             <li className="inline-flex items-center gap-2">
               <span aria-hidden="true">🎓</span>
-              <span>FPA-certified since 2017</span>
+              <span>Certifié FPA depuis 2017</span>
             </li>
             <li aria-hidden="true" className="hidden md:inline text-primary-foreground/40">•</li>
             <li className="inline-flex items-center gap-2">
               <span aria-hidden="true">📅</span>
-              <span>20+ years teaching in France</span>
+              <span>20+ ans d'enseignement en France</span>
             </li>
           </ul>
         </header>
