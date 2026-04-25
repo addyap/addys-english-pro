@@ -112,22 +112,33 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
             }}
             className="absolute w-full text-center px-4"
           >
-            <blockquote className="text-xl md:text-2xl text-gray-800 italic mb-8 leading-relaxed">
-              "{testimonials[currentIndex].quote}"
+            {testimonials[currentIndex].company && (
+              <div className="mb-5">
+                <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs md:text-sm font-semibold uppercase tracking-wide">
+                  {testimonials[currentIndex].company}
+                </span>
+              </div>
+            )}
+
+            <div className="flex justify-center gap-1 mb-4 text-amber-500" aria-label="Note 5 sur 5">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <svg key={i} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 md:h-5 md:w-5">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.957a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.367 2.446a1 1 0 00-.364 1.118l1.287 3.957c.3.922-.755 1.688-1.54 1.118l-3.366-2.446a1 1 0 00-1.176 0l-3.367 2.446c-.784.57-1.838-.196-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.075 9.384c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.274-3.957z" />
+                </svg>
+              ))}
+            </div>
+
+            <blockquote className="text-xl md:text-2xl text-gray-800 italic mb-6 leading-relaxed">
+              «&nbsp;{testimonials[currentIndex].quote}&nbsp;»
             </blockquote>
 
-            <div className="space-y-2">
+            <div className="space-y-1">
               <p className="font-bold text-lg text-gray-900">
                 {testimonials[currentIndex].name}
               </p>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-sm md:text-base">
                 {testimonials[currentIndex].role}
               </p>
-              {testimonials[currentIndex].company && (
-                <p className="text-blue-600 font-medium">
-                  {testimonials[currentIndex].company}
-                </p>
-              )}
             </div>
           </motion.div>
         </AnimatePresence>
