@@ -9,6 +9,7 @@ import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { LazyClientCarousel } from '@/components/LazySwiper';
 import FloatingExerciseCTA from '@/components/FloatingExerciseCTA';
 import { trackEvent } from '@/lib/analytics';
+import { WHATSAPP_PREFILLED_URL } from '@/lib/whatsapp';
 
 
 // Accurate exercise counts based on actual data files
