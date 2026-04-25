@@ -18,6 +18,8 @@ import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import MicErrorBanner from "@/components/MicErrorBanner";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
+import { useChatAutoScroll } from "@/hooks/useChatAutoScroll";
+import JumpToLatestButton from "@/components/chat/JumpToLatestButton";
 import {
   Send, RotateCcw, Award, Briefcase, Users, Mic, MicOff,
   Loader2, ChevronRight, DollarSign, BookOpen, Target,
@@ -184,7 +186,6 @@ const AINegotiationTrainer: React.FC = () => {
   const [sessionId, setSessionId] = useState(() => crypto.randomUUID());
   const [startedAt, setStartedAt] = useState(() => new Date().toISOString());
   const [sessionSaved, setSessionSaved] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const { isListening, startListening, stopListening, speechSupported, micState, micError, clearError } = useSpeechRecognition(
     useCallback((text: string) => setInput(text), [])
@@ -192,11 +193,12 @@ const AINegotiationTrainer: React.FC = () => {
 
   const realUserTurns = countRealUserTurns(messages);
 
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
-  }, [messages]);
+  const lastMsg = messages[messages.length - 1];
+  const { scrollRef, endRef, isAtBottom, scrollToBottom } = useChatAutoScroll([
+    messages.length,
+    lastMsg?.content,
+    isLoading,
+  ]);
 
   const selectScenario = (scenarioId: string) => {
     setScenario(scenarioId);
@@ -613,9 +615,9 @@ const AINegotiationTrainer: React.FC = () => {
         </div>
 
         {/* Chat */}
-        <Card className="border overflow-hidden">
-          <ScrollArea className="h-[50vh] md:h-[55vh]" ref={scrollRef as any}>
-            <div className="p-4 space-y-4">
+        <Card className="border overflow-hidden relative">
+          <ScrollArea className="h-[50vh] md:h-[55vh]">
+            <div ref={scrollRef} className="p-4 space-y-4">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"}`}>
                   <div
@@ -636,8 +638,10 @@ const AINegotiationTrainer: React.FC = () => {
                   )}
                 </div>
               ))}
+              <div ref={endRef} aria-hidden="true" />
             </div>
           </ScrollArea>
+          <JumpToLatestButton show={!isAtBottom} onClick={() => scrollToBottom("smooth")} />
 
           {/* Input area */}
           {!feedback && !feedbackError && (

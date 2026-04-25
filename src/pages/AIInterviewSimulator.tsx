@@ -26,6 +26,8 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
+import { useChatAutoScroll } from "@/hooks/useChatAutoScroll";
+import JumpToLatestButton from "@/components/chat/JumpToLatestButton";
 
 interface Feedback {
   clarity: { score: number; comment: string };
@@ -72,7 +74,6 @@ const AIInterviewSimulator = () => {
   const [input, setInput] = useState("");
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [loadingFeedback, setLoadingFeedback] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("interview");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const uiLang = feedbackLang as UILang;
@@ -86,9 +87,12 @@ const AIInterviewSimulator = () => {
     useCallback((text: string) => setInput(text), [])
   );
 
-  useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  const lastMsg = messages[messages.length - 1];
+  const { scrollRef, endRef, isAtBottom, scrollToBottom } = useChatAutoScroll([
+    messages.length,
+    lastMsg?.content,
+    isStreaming,
+  ]);
 
   const startInterview = (ind: string) => {
     if (limitReached) {
@@ -257,32 +261,35 @@ const AIInterviewSimulator = () => {
         </Button>
       </div>
 
-      <ScrollArea className="flex-1 p-4">
-        <div className="max-w-2xl mx-auto space-y-4">
-          {messages.map((m, i) => (
-            <div key={i} className={`flex flex-col ${m.role === "user" ? "items-end" : "items-start"}`}>
-              <div className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-                m.role === "user"
-                  ? "bg-primary text-primary-foreground rounded-br-md"
-                  : "bg-muted text-foreground rounded-bl-md"
-              }`}>
-                <p className="text-sm whitespace-pre-wrap">{m.content}</p>
+      <div className="relative flex-1 flex flex-col">
+        <ScrollArea className="flex-1 p-4">
+          <div ref={scrollRef} className="max-w-2xl mx-auto space-y-4">
+            {messages.map((m, i) => (
+              <div key={i} className={`flex flex-col ${m.role === "user" ? "items-end" : "items-start"}`}>
+                <div className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+                  m.role === "user"
+                    ? "bg-primary text-primary-foreground rounded-br-md"
+                    : "bg-muted text-foreground rounded-bl-md"
+                }`}>
+                  <p className="text-sm whitespace-pre-wrap">{m.content}</p>
+                </div>
+                {m.role === "assistant" && m.content && (
+                  <div className="max-w-[80%] w-full"><SupportActions text={m.content} /></div>
+                )}
               </div>
-              {m.role === "assistant" && m.content && (
-                <div className="max-w-[80%] w-full"><SupportActions text={m.content} /></div>
-              )}
-            </div>
-          ))}
-          {isStreaming && messages[messages.length - 1]?.role !== "assistant" && (
-            <div className="flex justify-start">
-              <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-3">
-                <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+            ))}
+            {isStreaming && messages[messages.length - 1]?.role !== "assistant" && (
+              <div className="flex justify-start">
+                <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-3">
+                  <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+                </div>
               </div>
-            </div>
-          )}
-          <div ref={scrollRef} />
-        </div>
-      </ScrollArea>
+            )}
+            <div ref={endRef} aria-hidden="true" />
+          </div>
+        </ScrollArea>
+        <JumpToLatestButton show={!isAtBottom} onClick={() => scrollToBottom("smooth")} />
+      </div>
 
       <div className="border-t border-border bg-card">
         <MicErrorBanner micError={micError} clearError={clearError} startListening={startListening} />

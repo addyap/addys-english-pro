@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -10,6 +11,13 @@ import { SUPPORTED_LANGS, type SupportedLangCode } from "@/i18n";
 const INTERFACE_KEY = "interfaceLanguage";
 const FEEDBACK_KEY = "feedbackLanguage";
 const ONBOARDED_KEY = "languageOnboarded";
+
+// Onboarding only triggers when the user enters an AI tool — not on public pages.
+const AI_TOOL_PATHS = new Set([
+  "/conversation-trainer", "/writing-coach", "/speaking-practice",
+  "/grammar-explainer", "/email-trainer", "/presentation-trainer",
+  "/negotiation-trainer", "/interview-simulator",
+]);
 
 function alreadyOnboarded(): boolean {
   try {
@@ -25,20 +33,22 @@ function alreadyOnboarded(): boolean {
 
 export function LanguageOnboardingModal() {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
   const { interfaceLang, feedbackLang, setInterfaceLang, setFeedbackLang } = useLanguage();
   const [open, setOpen] = useState(false);
   const [uiChoice, setUiChoice] = useState<SupportedLangCode>(interfaceLang);
   const [fbChoice, setFbChoice] = useState<SupportedLangCode>(feedbackLang);
 
   useEffect(() => {
+    // Only prompt on AI tool routes — keep public pages clean.
+    if (!AI_TOOL_PATHS.has(pathname)) return;
     if (!alreadyOnboarded()) {
       setUiChoice(interfaceLang);
       setFbChoice(feedbackLang);
-      // Defer one tick so context + i18n are mounted
       const id = window.setTimeout(() => setOpen(true), 200);
       return () => window.clearTimeout(id);
     }
-  }, [interfaceLang, feedbackLang]);
+  }, [pathname, interfaceLang, feedbackLang]);
 
   // Live preview: applying interface language immediately updates i18n + dir via LanguageContext.
   // We intentionally do NOT preview the feedback language (it never affects layout direction).

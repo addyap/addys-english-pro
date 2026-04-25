@@ -30,6 +30,8 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
+import { useChatAutoScroll } from "@/hooks/useChatAutoScroll";
+import JumpToLatestButton from "@/components/chat/JumpToLatestButton";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -248,7 +250,6 @@ const BusinessConversation: React.FC = () => {
   const [examComplete, setExamComplete] = useState(false);
   const [startedAt, setStartedAt] = useState(() => new Date().toISOString());
   const [sessionSaved, setSessionSaved] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const examFeedbackTriggeredRef = useRef(false);
   const { isListening, startListening, stopListening, speechSupported, micState, micError, clearError } = useSpeechRecognition(
@@ -282,11 +283,13 @@ const BusinessConversation: React.FC = () => {
 
   const realUserTurns = countRealUserTurns(messages);
 
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
-  }, [messages]);
+  // Auto-scroll on new messages and during streaming; pauses if user scrolls up.
+  const lastMsg = messages[messages.length - 1];
+  const { scrollRef, endRef, isAtBottom, scrollToBottom } = useChatAutoScroll([
+    messages.length,
+    lastMsg?.content,
+    isLoading,
+  ]);
 
   // Exam mode: auto-trigger feedback after user answers question 5 AND closing sentence streams in
   useEffect(() => {
@@ -761,9 +764,9 @@ const BusinessConversation: React.FC = () => {
         )}
 
         {/* Chat */}
-        <Card className="border overflow-hidden">
-          <ScrollArea className="h-[50vh] md:h-[55vh]" ref={scrollRef as any}>
-            <div className="p-4 space-y-4">
+        <Card className="border overflow-hidden relative">
+          <ScrollArea className="h-[50vh] md:h-[55vh]">
+            <div ref={scrollRef} className="p-4 space-y-4">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                   <div className={`max-w-[80%] flex flex-col gap-1`}>
@@ -798,8 +801,10 @@ const BusinessConversation: React.FC = () => {
                   </div>
                 </div>
               ))}
+              <div ref={endRef} aria-hidden="true" />
             </div>
           </ScrollArea>
+          <JumpToLatestButton show={!isAtBottom} onClick={() => scrollToBottom("smooth")} />
 
           {/* Input area */}
           {!feedback && !feedbackError && (
