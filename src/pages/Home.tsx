@@ -300,6 +300,38 @@ const Home = () => {
           </div>
         </section>
 
+        {/* AI English Training — supporting feature card */}
+        <section className="py-12 bg-background" aria-labelledby="ai-training-heading">
+          <div className="max-w-4xl mx-auto px-4">
+            <article className="relative overflow-hidden bg-card border border-border rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-lg transition-shadow">
+              <div className="flex flex-col md:flex-row md:items-center gap-6">
+                <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 text-primary shrink-0">
+                  <Sparkles className="h-8 w-8" aria-hidden="true" />
+                </div>
+                <div className="flex-1">
+                  <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-accent/15 text-accent text-xs font-semibold mb-2">
+                    Nouveauté · 100% gratuit
+                  </div>
+                  <h2 id="ai-training-heading" className="text-2xl md:text-3xl font-bold font-heading text-primary mb-2">
+                    Entraînement à l'anglais avec l'IA
+                  </h2>
+                  <p className="text-muted-foreground font-body mb-4">
+                    Pratiquez l'expression orale, l'écrit, les entretiens et l'anglais professionnel avec un feedback IA instantané — une ressource gratuite pour soutenir votre apprentissage.
+                  </p>
+                  <Link
+                    to="/speaking-practice"
+                    onClick={() => trackEvent('home_ai_card_cta_click', { target: '/speaking-practice' })}
+                    className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                  >
+                    Essayer les outils IA
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
         {/* Features Section - 6 blocks in 2x3 grid */}
         <section className="py-16 bg-muted" aria-labelledby="features-heading">
           <div className="max-w-6xl mx-auto px-4">
