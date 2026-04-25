@@ -361,19 +361,19 @@ const Home = () => {
         </section>
 
         {/* Features Section - 6 blocks in 2x3 grid */}
-        <section className="py-16 bg-muted" aria-labelledby="features-heading">
+        <section className="py-12 sm:py-16 bg-muted" aria-labelledby="features-heading">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 id="features-heading" className="text-3xl font-bold text-center text-primary mb-12 font-heading">
+            <h2 id="features-heading" className="text-2xl sm:text-3xl font-bold text-center text-primary mb-8 sm:mb-12 font-heading">
               Pourquoi choisir mes formations ?
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8" role="list">
               {features.map((feature, index) => (
-                <article key={index} className="text-center p-6 rounded-lg bg-white hover:shadow-lg transition-shadow" role="listitem">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 text-accent rounded-full mb-4" aria-hidden="true">
-                    <feature.icon className="h-8 w-8" />
+                <article key={index} className="text-center p-5 sm:p-6 rounded-lg bg-white hover:shadow-lg transition-shadow" role="listitem">
+                  <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-accent/10 text-accent rounded-full mb-3 sm:mb-4" aria-hidden="true">
+                    <feature.icon className="h-7 w-7 sm:h-8 sm:w-8" />
                   </div>
-                  <h3 className="text-xl font-semibold text-primary mb-3 font-heading">{feature.title}</h3>
-                  <p className="text-muted-foreground font-body">{feature.description}</p>
+                  <h3 className="text-lg sm:text-xl font-semibold text-primary mb-2 sm:mb-3 font-heading">{feature.title}</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground font-body leading-relaxed">{feature.description}</p>
                 </article>
               ))}
             </div>
