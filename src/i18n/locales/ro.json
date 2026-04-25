@@ -34,7 +34,8 @@
     "interfaceLanguage": "Limba interfeței",
     "feedbackLanguage": "Limba feedbackului AI",
     "interfaceHelp": "Controlează meniurile, butoanele și formularele.",
-    "feedbackHelp": "Controlează limba corecțiilor și explicațiilor AI. Conversația cu AI rămâne în engleză."
+    "feedbackHelp": "Controlează limba corecțiilor și explicațiilor AI. Conversația cu AI rămâne în engleză.",
+    "aiSettings": "Setări AI"
   },
   "ai": {
     "translateAnswer": "Tradu acest răspuns",
@@ -82,5 +83,16 @@
     "title": "Alege limbile tale",
     "subtitle": "Selectează limba interfeței și limba feedbackului AI. Le poți schimba oricând.",
     "continue": "Continuă"
+  },
+  "aiTools": {
+    "conversation": "Conversație",
+    "writingCoach": "Antrenor de scriere",
+    "speaking": "Vorbire",
+    "grammar": "Gramatică",
+    "email": "E-mail",
+    "presentation": "Prezentare",
+    "negotiation": "Negociere",
+    "interview": "Interviu",
+    "navLabel": "Unelte AI"
   }
 }
