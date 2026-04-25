@@ -340,8 +340,11 @@ const Home = () => {
                   <h2 id="ai-training-heading" className="text-2xl md:text-3xl font-bold font-heading text-primary mb-2">
                     Entraînement à l'anglais avec l'IA
                   </h2>
-                  <p className="text-muted-foreground font-body mb-4">
-                    Pratiquez l'expression orale, l'écrit, les entretiens et l'anglais professionnel avec un feedback IA instantané — une ressource gratuite pour soutenir votre apprentissage.
+                  <p className="text-muted-foreground font-body mb-2">
+                    Pratiquez l'expression orale, l'écrit, les entretiens et l'anglais professionnel avec un feedback IA instantané.
+                  </p>
+                  <p className="text-sm font-semibold text-accent font-body mb-4">
+                    ✨ Testez gratuitement votre niveau — sans inscription
                   </p>
                   <Link
                     to="/speaking-practice"
