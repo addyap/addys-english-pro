@@ -689,54 +689,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* AI Training Hub — Unified Section */}
-        <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-accent/5 relative overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-10 right-[15%] w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-10 left-[10%] w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
-          </div>
-          <div className="max-w-6xl mx-auto px-4 relative z-10">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
-                <Sparkles className="w-4 h-4" />
-                Entraînement IA — Gratuit
-              </div>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-3">
-                8 outils IA pour progresser en anglais professionnel
-              </h2>
-              <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-                Pratiquez des situations réelles avec un partenaire IA et recevez un feedback détaillé instantané — vocabulaire, grammaire, ton et plus.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-5">
-              {[
-                { to: "/conversation-trainer", icon: MessageCircle, title: "Conversation professionnelle", desc: "Accueil client, réunion, réclamation, networking — 15 scénarios réalistes avec feedback CECRL." },
-                { to: "/email-trainer", icon: Mail, title: "Rédaction d'e-mails", desc: "Répondez à des e-mails professionnels réalistes. Feedback IA sur la clarté, le ton et la structure." },
-                { to: "/presentation-trainer", icon: Sparkles, title: "Présentation professionnelle", desc: "Rédigez des présentations en anglais et recevez un feedback sur la structure et le vocabulaire." },
-                { to: "/negotiation-trainer", icon: Handshake, title: "Négociation commerciale", desc: "Pratiquez des négociations réalistes avec feedback sur la persuasion et la stratégie." },
-                { to: "/speaking-practice", icon: Mic, title: "Speaking Practice 🎙️", desc: "Parlez en anglais avec reconnaissance vocale et synthèse vocale. Feedback prononciation et fluidité." },
-                { to: "/writing-coach", icon: PenTool, title: "Writing Coach ✍️", desc: "Soumettez un texte et recevez un feedback détaillé avec version améliorée automatique." },
-                { to: "/interview-simulator", icon: UserCheck, title: "Interview Simulator 💼", desc: "Simulez un entretien d'embauche en anglais. 8 secteurs, 3 types d'entretien, feedback CECRL." },
-                { to: "/grammar-explainer", icon: Search, title: "Grammar Explainer 📖", desc: "Collez une phrase et obtenez une analyse grammaticale complète avec règles et conseils." },
-              ].map(item => (
-                <Link key={item.to} to={item.to} className="group bg-background/80 backdrop-blur-sm rounded-2xl border border-primary/15 p-6 md:p-8 flex items-start gap-5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all hover:-translate-y-1 active:scale-[0.98] cursor-pointer relative min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
-                  <div className="shrink-0 w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <item.icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <div className="flex-1 space-y-2">
-                    <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-primary transition-colors">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                    <span className="inline-flex items-center gap-1 text-primary text-sm font-semibold">
-                      Essayer <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
           {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden">
