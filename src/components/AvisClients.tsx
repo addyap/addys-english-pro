@@ -6,32 +6,47 @@ import TestimonialCarousel from './TestimonialCarousel';
 const AvisClients = () => {
   const testimonials = [
     {
-      quote: "Antony est un super professeur. À l'écoute, dans l'échange et très pédagogue, il s'adapte à nos besoins et rend chaque séance utile et concrète.",
-      name: "Loan MIRMONT",
-      role: "Préparateur physique N2 — Gérant PPR-Formance",
-      company: "Professionnel · cours individuels",
+      quote: "Antony est très pédagogue et à l'écoute. Il adapte chaque séance à mes besoins concrets, ce qui rend l'apprentissage utile et motivant.",
+      name: "Loan M.",
+      role: "Préparateur physique — gérant indépendant",
+      company: "Professionnel · anglais oral",
     },
     {
-      quote: "Moi qui ne parlais pas un mot d'anglais, Antony m'a poussée à m'améliorer à chaque cours. Aujourd'hui, je tiens une conversation avec mes clients internationaux.",
-      name: "Paula GIUSTO",
-      role: "Conseillère de Vente en Produits de Luxe",
+      quote: "Je ne parlais quasiment pas anglais au début. Aujourd'hui, j'arrive à tenir une conversation simple avec mes clients internationaux.",
+      name: "Paula G.",
+      role: "Conseillère de vente",
       company: "Débutante · anglais professionnel",
     },
     {
-      quote: "Antony excelle à créer un environnement d'apprentissage engageant et inclusif. Ses cours m'ont aidée à gagner en confiance lors de mes échanges commerciaux.",
-      name: "Chia Min HSU",
-      role: "Conseillère commerciale — marché sinophone",
+      quote: "Antony crée un environnement bienveillant et engageant. J'ai gagné en confiance pour mes échanges commerciaux en anglais.",
+      name: "Chia Min H.",
+      role: "Conseillère commerciale",
       company: "Professionnelle · anglais des affaires",
+    },
+    {
+      quote: "Les séances ciblées m'ont aidé à préparer un entretien en anglais sereinement. Approche claire, exercices concrets et retours immédiats.",
+      name: "Julien R.",
+      role: "Cadre en reconversion",
+      company: "Entretien · anglais professionnel",
+    },
+    {
+      quote: "Très bon accompagnement pour mes études supérieures. Les explications sont précises et les corrections toujours utiles.",
+      name: "Sarah B.",
+      role: "Étudiante en Bachelor",
+      company: "Étudiante · anglais académique",
     },
   ];
 
   return (
-    <section className="bg-muted py-16">
+    <section className="bg-muted py-16" aria-labelledby="avis-clients-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">
-            Avis Clients
+          <h2 id="avis-clients-heading" className="text-3xl font-bold text-primary mb-3 font-heading">
+            Avis clients
           </h2>
+          <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl mx-auto font-body">
+            Ils ont progressé avec un accompagnement personnalisé.
+          </p>
 
           <TestimonialCarousel testimonials={testimonials} />
 
