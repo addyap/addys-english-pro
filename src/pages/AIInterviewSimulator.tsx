@@ -74,7 +74,6 @@ const AIInterviewSimulator = () => {
   const [input, setInput] = useState("");
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [loadingFeedback, setLoadingFeedback] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("interview");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const uiLang = feedbackLang as UILang;
@@ -88,9 +87,12 @@ const AIInterviewSimulator = () => {
     useCallback((text: string) => setInput(text), [])
   );
 
-  useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  const lastMsg = messages[messages.length - 1];
+  const { scrollRef, endRef, isAtBottom, scrollToBottom } = useChatAutoScroll([
+    messages.length,
+    lastMsg?.content,
+    isStreaming,
+  ]);
 
   const startInterview = (ind: string) => {
     if (limitReached) {
