@@ -764,9 +764,9 @@ const BusinessConversation: React.FC = () => {
         )}
 
         {/* Chat */}
-        <Card className="border overflow-hidden">
-          <ScrollArea className="h-[50vh] md:h-[55vh]" ref={scrollRef as any}>
-            <div className="p-4 space-y-4">
+        <Card className="border overflow-hidden relative">
+          <ScrollArea className="h-[50vh] md:h-[55vh]">
+            <div ref={scrollRef} className="p-4 space-y-4">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                   <div className={`max-w-[80%] flex flex-col gap-1`}>
@@ -801,8 +801,11 @@ const BusinessConversation: React.FC = () => {
                   </div>
                 </div>
               ))}
+              <div ref={endRef} aria-hidden="true" />
             </div>
           </ScrollArea>
+          <JumpToLatestButton show={!isAtBottom} onClick={() => scrollToBottom("smooth")} />
+        </Card>
 
           {/* Input area */}
           {!feedback && !feedbackError && (
