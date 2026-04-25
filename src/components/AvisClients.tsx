@@ -26,12 +26,15 @@ const AvisClients = () => {
   ];
 
   return (
-    <section className="bg-muted py-16">
+    <section className="bg-muted py-16" aria-labelledby="avis-clients-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-center text-primary mb-12 font-heading">
-            Avis Clients
+          <h2 id="avis-clients-heading" className="text-3xl font-bold text-primary mb-3 font-heading">
+            Avis clients
           </h2>
+          <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl mx-auto font-body">
+            Ils ont progressé avec un accompagnement personnalisé.
+          </p>
 
           <TestimonialCarousel testimonials={testimonials} />
 
