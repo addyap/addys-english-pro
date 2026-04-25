@@ -19,7 +19,6 @@ import { t, type UILang } from "@/lib/ai/i18n";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import { Send, RotateCcw, Loader2, FileText, Wand2, Eye, ChevronDown, ChevronUp, Copy, Check, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
-import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 import AIToolLoadingSkeleton from "@/components/ai-trainer/AIToolLoadingSkeleton";
 import { useSessionHistory, type SessionHistoryItem } from "@/hooks/useSessionHistory";
@@ -179,7 +178,6 @@ const AIWritingCoach = () => {
               <Badge variant="secondary">
                 <FileText className="w-3 h-3 mr-1" /> {t("sessions.remaining", uiLang, remaining, DAILY_LIMIT)}
               </Badge>
-              <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} />
             </div>
             <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-3">
               ✍️ AI Writing Coach
