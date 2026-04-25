@@ -26,6 +26,8 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
+import { useChatAutoScroll } from "@/hooks/useChatAutoScroll";
+import JumpToLatestButton from "@/components/chat/JumpToLatestButton";
 
 interface Feedback {
   clarity: { score: number; comment: string };
