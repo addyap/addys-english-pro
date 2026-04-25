@@ -18,7 +18,7 @@ const AvisClients = () => {
     {
       quote: "Anthony excels in creating an engaging and inclusive learning environment.",
       name: "Chia Min HSU",
-      role: "Sales Assistant Sinophone Market",
+      role: "Conseillère commerciale – marché sinophone",
     },
   ];
 
