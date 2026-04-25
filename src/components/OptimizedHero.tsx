@@ -39,23 +39,23 @@ export default function OptimizedHero() {
       </a>
 
       {/* Content (height now driven by content, not min-h-screen) */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-20 text-center hero-title-wrap">
-        <header className="mb-8">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-tight mb-6 hero-title drop-shadow-2xl text-primary-foreground">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-10 sm:py-14 md:py-20 text-center hero-title-wrap">
+        <header className="mb-6 sm:mb-8">
+          <h1 className="text-[1.75rem] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-4 sm:mb-6 hero-title drop-shadow-2xl text-primary-foreground">
             Formateur d'anglais pour adultes – <span className="whitespace-nowrap">Antony Addy</span>
           </h1>
 
-          <p className="text-xl md:text-2xl mb-4 font-body drop-shadow-xl max-w-4xl mx-auto text-primary-foreground/90">
+          <p className="text-base sm:text-xl md:text-2xl mb-3 sm:mb-4 font-body drop-shadow-xl max-w-4xl mx-auto text-primary-foreground/90 leading-snug">
             Communiquez avec confiance en anglais dans votre vie professionnelle. Formations personnalisées par un formateur britannique certifié FPA depuis 2017.
           </p>
 
-          <p className="text-lg mb-6 font-body drop-shadow-lg max-w-3xl mx-auto text-primary-foreground/80">
+          <p className="text-sm sm:text-lg mb-4 sm:mb-6 font-body drop-shadow-lg max-w-3xl mx-auto text-primary-foreground/80">
             Présentiel Alpes-Maritimes • Distanciel France entière • CPF & entreprises
           </p>
 
           {/* Credential strip — authority signals */}
           <ul
-            className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-6 text-sm md:text-base font-body text-primary-foreground/85"
+            className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-6 gap-y-1.5 mb-4 sm:mb-6 text-xs sm:text-sm md:text-base font-body text-primary-foreground/85"
             aria-label="Qualifications"
           >
             <li className="inline-flex items-center gap-2">
