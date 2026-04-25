@@ -30,6 +30,8 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
+import { useChatAutoScroll } from "@/hooks/useChatAutoScroll";
+import JumpToLatestButton from "@/components/chat/JumpToLatestButton";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -248,7 +250,6 @@ const BusinessConversation: React.FC = () => {
   const [examComplete, setExamComplete] = useState(false);
   const [startedAt, setStartedAt] = useState(() => new Date().toISOString());
   const [sessionSaved, setSessionSaved] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const examFeedbackTriggeredRef = useRef(false);
   const { isListening, startListening, stopListening, speechSupported, micState, micError, clearError } = useSpeechRecognition(
@@ -282,11 +283,13 @@ const BusinessConversation: React.FC = () => {
 
   const realUserTurns = countRealUserTurns(messages);
 
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
-  }, [messages]);
+  // Auto-scroll on new messages and during streaming; pauses if user scrolls up.
+  const lastMsg = messages[messages.length - 1];
+  const { scrollRef, endRef, isAtBottom, scrollToBottom } = useChatAutoScroll([
+    messages.length,
+    lastMsg?.content,
+    isLoading,
+  ]);
 
   // Exam mode: auto-trigger feedback after user answers question 5 AND closing sentence streams in
   useEffect(() => {
