@@ -6,34 +6,19 @@ import TestimonialCarousel from './TestimonialCarousel';
 const AvisClients = () => {
   const testimonials = [
     {
-      quote: "Antony est très pédagogue et à l'écoute. Il adapte chaque séance à mes besoins concrets, ce qui rend l'apprentissage utile et motivant.",
-      name: "Loan M.",
-      role: "Préparateur physique — gérant indépendant",
-      company: "Professionnel · anglais oral",
+      quote: "Antony est un super professeur. À l'écoute, dans l'échange et très pédagogue, il s'adapte à nos besoins.",
+      name: "Loan MIRMONT",
+      role: "Préparateur physique N2 – Gérant PPR-Formance",
     },
     {
-      quote: "Je ne parlais quasiment pas anglais au début. Aujourd'hui, j'arrive à tenir une conversation simple avec mes clients internationaux.",
-      name: "Paula G.",
-      role: "Conseillère de vente",
-      company: "Débutante · anglais professionnel",
+      quote: "Moi qui ne parlais pas un mot d'anglais, Anthony m'a poussé à m'améliorer à chaque cours.",
+      name: "Paula Giusto",
+      role: "Conseillère de Vente en Produits de Luxe",
     },
     {
-      quote: "Antony crée un environnement bienveillant et engageant. J'ai gagné en confiance pour mes échanges commerciaux en anglais.",
-      name: "Chia Min H.",
-      role: "Conseillère commerciale",
-      company: "Professionnelle · anglais des affaires",
-    },
-    {
-      quote: "Les séances ciblées m'ont aidé à préparer un entretien en anglais sereinement. Approche claire, exercices concrets et retours immédiats.",
-      name: "Julien R.",
-      role: "Cadre en reconversion",
-      company: "Entretien · anglais professionnel",
-    },
-    {
-      quote: "Très bon accompagnement pour mes études supérieures. Les explications sont précises et les corrections toujours utiles.",
-      name: "Sarah B.",
-      role: "Étudiante en Bachelor",
-      company: "Étudiante · anglais académique",
+      quote: "Anthony excels in creating an engaging and inclusive learning environment.",
+      name: "Chia Min HSU",
+      role: "Conseillère commerciale – marché sinophone",
     },
   ];
 
@@ -45,7 +30,7 @@ const AvisClients = () => {
             Avis clients
           </h2>
           <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl mx-auto font-body">
-            Ils ont progressé avec un accompagnement personnalisé.
+            Ils nous font confiance.
           </p>
 
           <TestimonialCarousel testimonials={testimonials} />
