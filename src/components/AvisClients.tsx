@@ -6,22 +6,34 @@ import TestimonialCarousel from './TestimonialCarousel';
 const AvisClients = () => {
   const testimonials = [
     {
-      quote: "Antony est un super professeur. À l'écoute, dans l'échange et très pédagogue, il s'adapte à nos besoins et rend chaque séance utile et concrète.",
-      name: "Loan MIRMONT",
-      role: "Préparateur physique N2 — Gérant PPR-Formance",
-      company: "Professionnel · cours individuels",
+      quote: "Antony est très pédagogue et à l'écoute. Il adapte chaque séance à mes besoins concrets, ce qui rend l'apprentissage utile et motivant.",
+      name: "Loan M.",
+      role: "Préparateur physique — gérant indépendant",
+      company: "Professionnel · anglais oral",
     },
     {
-      quote: "Moi qui ne parlais pas un mot d'anglais, Antony m'a poussée à m'améliorer à chaque cours. Aujourd'hui, je tiens une conversation avec mes clients internationaux.",
-      name: "Paula GIUSTO",
-      role: "Conseillère de Vente en Produits de Luxe",
+      quote: "Je ne parlais quasiment pas anglais au début. Aujourd'hui, j'arrive à tenir une conversation simple avec mes clients internationaux.",
+      name: "Paula G.",
+      role: "Conseillère de vente",
       company: "Débutante · anglais professionnel",
     },
     {
-      quote: "Antony excelle à créer un environnement d'apprentissage engageant et inclusif. Ses cours m'ont aidée à gagner en confiance lors de mes échanges commerciaux.",
-      name: "Chia Min HSU",
-      role: "Conseillère commerciale — marché sinophone",
+      quote: "Antony crée un environnement bienveillant et engageant. J'ai gagné en confiance pour mes échanges commerciaux en anglais.",
+      name: "Chia Min H.",
+      role: "Conseillère commerciale",
       company: "Professionnelle · anglais des affaires",
+    },
+    {
+      quote: "Les séances ciblées m'ont aidé à préparer un entretien en anglais sereinement. Approche claire, exercices concrets et retours immédiats.",
+      name: "Julien R.",
+      role: "Cadre en reconversion",
+      company: "Entretien · anglais professionnel",
+    },
+    {
+      quote: "Très bon accompagnement pour mes études supérieures. Les explications sont précises et les corrections toujours utiles.",
+      name: "Sarah B.",
+      role: "Étudiante en Bachelor",
+      company: "Étudiante · anglais académique",
     },
   ];
 
