@@ -7,8 +7,8 @@ const AI_TOOLS = [
   {
     icon: Mic,
     emoji: "🗣️",
-    title: "Speak with AI",
-    desc: "Practice real conversations",
+    title: "Parler avec l'IA",
+    desc: "Pratiquez de vraies conversations",
     to: "/speaking-practice",
     accent: "from-blue-500/15 to-cyan-500/15",
     iconColor: "text-blue-600",
@@ -16,8 +16,8 @@ const AI_TOOLS = [
   {
     icon: PenTool,
     emoji: "✍️",
-    title: "Improve your writing",
-    desc: "Get corrections instantly",
+    title: "Améliorer votre écrit",
+    desc: "Recevez des corrections instantanées",
     to: "/writing-coach",
     accent: "from-emerald-500/15 to-teal-500/15",
     iconColor: "text-emerald-600",
@@ -25,8 +25,8 @@ const AI_TOOLS = [
   {
     icon: Briefcase,
     emoji: "💼",
-    title: "Prepare interviews",
-    desc: "Answer like a pro",
+    title: "Préparer un entretien",
+    desc: "Répondez comme un pro",
     to: "/interview-simulator",
     accent: "from-amber-500/15 to-orange-500/15",
     iconColor: "text-amber-600",
@@ -34,8 +34,8 @@ const AI_TOOLS = [
   {
     icon: MessageCircle,
     emoji: "🤝",
-    title: "Business English",
-    desc: "Real-life scenarios",
+    title: "Anglais professionnel",
+    desc: "Scénarios de la vie réelle",
     to: "/conversation-trainer",
     accent: "from-violet-500/15 to-purple-500/15",
     iconColor: "text-violet-600",
