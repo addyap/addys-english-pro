@@ -805,7 +805,6 @@ const BusinessConversation: React.FC = () => {
             </div>
           </ScrollArea>
           <JumpToLatestButton show={!isAtBottom} onClick={() => scrollToBottom("smooth")} />
-        </Card>
 
           {/* Input area */}
           {!feedback && !feedbackError && (
