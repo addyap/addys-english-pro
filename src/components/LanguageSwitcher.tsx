@@ -1,5 +1,5 @@
 import React from "react";
-import { Globe } from "lucide-react";
+import { Settings } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
@@ -29,15 +29,18 @@ const LanguageSwitcher: React.FC<Props> = ({ className = "", fullWidth = false }
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant="outline"
-          size="sm"
-          className={`gap-1.5 ${fullWidth ? "w-full justify-start" : ""} ${className}`}
-          aria-label={t("settings.title")}
+          variant="ghost"
+          size="icon"
+          className={`${fullWidth ? "w-full justify-start gap-2" : ""} ${className}`}
+          aria-label={t("settings.title", "Settings")}
+          title={t("settings.title", "Settings")}
         >
-          <Globe className="h-4 w-4" aria-hidden="true" />
-          <span className="text-sm font-medium">
-            {meta.flag} {meta.code.toUpperCase()}
-          </span>
+          <Settings className="h-5 w-5" aria-hidden="true" />
+          {fullWidth && (
+            <span className="text-sm font-medium">
+              {t("settings.title", "Settings")} · {meta.flag} {meta.code.toUpperCase()}
+            </span>
+          )}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-72 z-[60]" align="end">

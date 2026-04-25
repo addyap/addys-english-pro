@@ -7,7 +7,6 @@ import SiteLogo from "@/components/SiteLogo";
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AIToolsNav from '@/components/AIToolsNav';
 import { usePageTracking } from '@/hooks/usePageTracking';
-import GoogleTranslate from '@/components/GoogleTranslate';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { trackEvent } from '@/lib/analytics';
 
@@ -118,9 +117,6 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 <MessageSquare className="h-4 w-4" />
                 WhatsApp
               </a>
-              <div className="ms-2">
-                <GoogleTranslate />
-              </div>
             </div>
           </div>
 
@@ -143,7 +139,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                   </Link>
                 ))}
                 <div className="px-4 py-3 border-t border-gray-200 mt-2">
-                  <GoogleTranslate />
+                  <LanguageSwitcher fullWidth />
                 </div>
               </nav>
             </div>

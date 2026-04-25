@@ -11,7 +11,6 @@ import type { GrammarExplainerResult } from "@/types/ai-trainers";
 import { Search, RotateCcw, Loader2, BookOpen, Lightbulb, ArrowRight, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 import AIToolLoadingSkeleton from "@/components/ai-trainer/AIToolLoadingSkeleton";
 import { useSessionHistory, type SessionHistoryItem } from "@/hooks/useSessionHistory";
@@ -133,7 +132,6 @@ const AIGrammarExplainer = () => {
               <Badge variant="secondary">
                 <BookOpen className="w-3 h-3 mr-1" /> {remaining}/{10} sessions restantes
               </Badge>
-              <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} />
             </div>
             <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-3">
               📖 AI Grammar Explainer

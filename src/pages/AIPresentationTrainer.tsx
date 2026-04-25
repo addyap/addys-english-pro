@@ -18,7 +18,6 @@ import StrengthsBlock from "@/components/ai-trainer/StrengthsBlock";
 import { useAIDailyLimit } from "@/hooks/useAIDailyLimit";
 import type { Correction, VocabUpgrade as VocabUpgradeType, ScoreField, RatingField } from "@/types/ai-trainers";
 import { toast } from "sonner";
-import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 
 // ── Types ─────────────────────────────────────────────
@@ -270,7 +269,6 @@ const AIPresentationTrainer: React.FC = () => {
             <div className="text-center space-y-3">
               <Badge variant="outline" className="border-primary/50 text-primary"><Presentation className="w-3 h-3 mr-1" /> AI Presentation Trainer</Badge>
               <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground">Practice Professional Presentations</h1>
-              <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} />
               <p className="text-muted-foreground max-w-xl mx-auto">Choose a scenario, write your presentation, and receive detailed AI coaching feedback on structure, clarity, vocabulary, and persuasion.</p>
             </div>
 

@@ -24,7 +24,6 @@ import {
   Building2, Globe, Plane, ShoppingCart, ChevronRight
 } from "lucide-react";
 import { toast } from "sonner";
-import FeedbackLanguageToggle from "@/components/ai-trainer/FeedbackLanguageToggle";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 
 interface Feedback {
@@ -179,7 +178,6 @@ const AISpeakingPractice = () => {
                 <Badge variant="secondary">
                   <Mic className="w-3 h-3 mr-1" /> {t("sessions.remaining", uiLang, remaining, DAILY_LIMIT)}
                 </Badge>
-                <FeedbackLanguageToggle value={feedbackLang} onChange={setFeedbackLang} />
               </div>
               <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-3">
                 🎙️ AI Speaking Practice
