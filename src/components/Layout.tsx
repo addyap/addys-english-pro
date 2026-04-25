@@ -48,6 +48,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
     { name: t('nav.contact'), href: '/contact', current: location.pathname === '/contact' },
     { name: t('nav.blog'), href: '/blog', current: location.pathname === '/blog' },
     { name: t('nav.resources'), href: '/ressources-gratuites', current: location.pathname === '/ressources-gratuites' },
+    { name: 'Outils IA', href: '/speaking-practice', current: isAITool },
   ];
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
