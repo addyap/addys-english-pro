@@ -51,10 +51,10 @@ export default function FloatingAICTA() {
         to="/speaking-practice"
         onClick={() => trackEvent("home_floating_ai_cta_click")}
         className="group flex items-center gap-2 bg-gradient-to-r from-primary to-accent text-primary-foreground px-5 py-3 rounded-full shadow-xl hover:shadow-2xl transition-all hover:scale-105"
-        aria-label="Start AI Practice"
+        aria-label="Démarrer la pratique IA"
       >
         <Mic className="h-5 w-5 animate-pulse" aria-hidden="true" />
-        <span className="font-semibold">👉 Start AI Practice</span>
+        <span className="font-semibold">👉 Démarrer l'IA</span>
       </Link>
       <button
         onClick={handleDismiss}
