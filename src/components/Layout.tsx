@@ -7,7 +7,7 @@ import SiteLogo from "@/components/SiteLogo";
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AIToolsNav from '@/components/AIToolsNav';
 import { usePageTracking } from '@/hooks/usePageTracking';
-import LanguageSwitcher from '@/components/LanguageSwitcher';
+
 import { trackEvent } from '@/lib/analytics';
 
 const WHATSAPP_URL = 'https://wa.me/33649829826';
