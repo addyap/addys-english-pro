@@ -426,20 +426,20 @@ const Home = () => {
 
 
         {/* Contact CTA Section - Conversion-focused, WhatsApp-first */}
-        <section className="py-16 bg-red-600 text-white">
+        <section className="py-12 sm:py-16 bg-red-600 text-white">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold mb-4 font-heading">Prêt à améliorer votre anglais professionnel ?</h2>
-            <p className="text-lg md:text-xl mb-3 font-body">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 font-heading leading-tight">Prêt à améliorer votre anglais professionnel ?</h2>
+            <p className="text-base sm:text-lg md:text-xl mb-3 font-body leading-relaxed">
               Expliquez-moi votre objectif, je vous réponds rapidement avec une proposition adaptée.
             </p>
-            <p className="text-base mb-8 font-body text-white/90">
+            <p className="text-sm sm:text-base mb-6 sm:mb-8 font-body text-white/90">
               💬 Premier échange gratuit · Sans engagement · Réponse sous 24h
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <a
                 href={`https://wa.me/33649829826?text=${encodeURIComponent('Bonjour Antony, je souhaite améliorer mon anglais. Mon objectif est : [à compléter]. Pouvez-vous me conseiller ?')}`}
                 onClick={() => trackEvent('whatsapp_cta_click', { page: 'Home', location: 'final-cta', prefilled: true })}
-                className="bg-white text-red-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-all hover:scale-105 flex items-center justify-center gap-2 font-body shadow-lg"
+                className="bg-white text-red-600 px-6 py-3.5 sm:px-8 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-gray-100 transition-all hover:scale-105 flex items-center justify-center gap-2 font-body shadow-lg"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Contacter Antony Addy sur WhatsApp (message pré-rempli)"
@@ -449,14 +449,14 @@ const Home = () => {
               </a>
               <Link
                 to="/contact"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors flex items-center justify-center gap-2 font-body"
+                className="border-2 border-white text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-base hover:bg-white hover:text-red-600 transition-colors flex items-center justify-center gap-2 font-body"
                 aria-label="Aller au formulaire de contact"
               >
                 <Mail className="h-5 w-5" aria-hidden="true" />
                 Formulaire de contact
               </Link>
             </div>
-            <p className="mt-5 text-sm text-white/80 font-body">
+            <p className="mt-4 sm:mt-5 text-xs sm:text-sm text-white/80 font-body">
               100% personnalisé · Adapté à votre niveau
             </p>
           </div>
