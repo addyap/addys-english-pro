@@ -8,8 +8,6 @@ import { TypingText } from '../components/TypingText';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { LazyClientCarousel } from '@/components/LazySwiper';
 import FloatingExerciseCTA from '@/components/FloatingExerciseCTA';
-import FloatingAICTA from '@/components/FloatingAICTA';
-import AIHomepageHero from '@/components/AIHomepageHero';
 import { trackEvent } from '@/lib/analytics';
 
 
