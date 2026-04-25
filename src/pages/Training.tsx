@@ -55,25 +55,73 @@ const Training = () => {
   const formations = [
     {
       title: 'Anglais général',
-      description: 'Pour améliorer votre fluidité, votre compréhension et votre confiance dans les échanges quotidiens.'
+      pourQui: 'Adultes souhaitant gagner en aisance au quotidien.',
+      objectif: 'Améliorer fluidité, compréhension et confiance.',
+      format: 'Visio ou présentiel · individuel ou petit groupe.',
+      resultat: 'Conversations naturelles sans blocage.'
     },
     {
       title: 'Anglais professionnel',
-      description: 'Pour travailler efficacement en anglais dans votre métier (réunions, appels, présentations, rédaction).'
+      pourQui: 'Professionnels en poste utilisant l\'anglais au travail.',
+      objectif: 'Maîtriser réunions, appels, présentations, rédaction.',
+      format: 'Sessions ciblées sur vos situations réelles.',
+      resultat: 'Communication efficace avec clients et collègues.'
     },
     {
       title: 'Anglais téléphonique et email',
-      description: 'Pour parler avec clarté au téléphone et rédiger des messages professionnels sans stress.'
+      pourQui: 'Métiers en relation client, support, commerce.',
+      objectif: 'Parler clairement au téléphone et écrire sans stress.',
+      format: 'Mises en situation et modèles d\'emails utiles.',
+      resultat: 'Échanges pros plus rapides et plus clairs.'
     },
     {
       title: 'Anglais spécialisé',
-      description: 'Formation adaptée à votre secteur : Vente, RH, Immobilier, Hôtellerie, Accueil, etc.'
+      pourQui: 'Vente, RH, immobilier, hôtellerie, accueil, etc.',
+      objectif: 'Acquérir le vocabulaire métier et les bons réflexes.',
+      format: 'Contenus 100% adaptés à votre secteur.',
+      resultat: 'Crédibilité immédiate dans votre domaine.'
     },
     {
       title: 'Préparation à une certification',
-      description: 'Accompagnement structuré pour réussir le TOEIC, CLOE, Bright ou autre test selon vos objectifs.'
+      pourQui: 'Candidats TOEIC, CLOE, Bright ou équivalent.',
+      objectif: 'Atteindre le score visé avec une méthode structurée.',
+      format: 'Plan d\'entraînement + tests blancs corrigés.',
+      resultat: 'Certification obtenue avec confiance.'
+    },
+    {
+      title: 'Préparation aux entretiens en anglais',
+      pourQui: 'Candidats à un poste, une école ou une promotion.',
+      objectif: 'Répondre avec aisance aux questions clés en anglais.',
+      format: 'Simulations d\'entretien + feedback personnalisé.',
+      resultat: 'Entretien passé sereinement et avec impact.'
     }
   ];
+
+  const audienceShortcuts = [
+    {
+      emoji: '💼',
+      title: 'Professionnels',
+      desc: 'Réunions, emails, appels clients en anglais.',
+      target: 'formations'
+    },
+    {
+      emoji: '🎓',
+      title: 'Étudiants',
+      desc: 'Préparer vos études et votre entrée en entreprise.',
+      target: 'formations'
+    },
+    {
+      emoji: '🎤',
+      title: 'Entretiens',
+      desc: 'Réussir un entretien d\'embauche ou d\'école en anglais.',
+      target: 'formations'
+    }
+  ];
+
+  const handleScrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
     <>
