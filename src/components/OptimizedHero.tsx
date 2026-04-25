@@ -39,23 +39,23 @@ export default function OptimizedHero() {
       </a>
 
       {/* Content (height now driven by content, not min-h-screen) */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-20 text-center hero-title-wrap">
-        <header className="mb-8">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-tight mb-6 hero-title drop-shadow-2xl text-primary-foreground">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-10 sm:py-14 md:py-20 text-center hero-title-wrap">
+        <header className="mb-6 sm:mb-8">
+          <h1 className="text-[1.75rem] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-4 sm:mb-6 hero-title drop-shadow-2xl text-primary-foreground">
             Formateur d'anglais pour adultes – <span className="whitespace-nowrap">Antony Addy</span>
           </h1>
 
-          <p className="text-xl md:text-2xl mb-4 font-body drop-shadow-xl max-w-4xl mx-auto text-primary-foreground/90">
+          <p className="text-base sm:text-xl md:text-2xl mb-3 sm:mb-4 font-body drop-shadow-xl max-w-4xl mx-auto text-primary-foreground/90 leading-snug">
             Communiquez avec confiance en anglais dans votre vie professionnelle. Formations personnalisées par un formateur britannique certifié FPA depuis 2017.
           </p>
 
-          <p className="text-lg mb-6 font-body drop-shadow-lg max-w-3xl mx-auto text-primary-foreground/80">
+          <p className="text-sm sm:text-lg mb-4 sm:mb-6 font-body drop-shadow-lg max-w-3xl mx-auto text-primary-foreground/80">
             Présentiel Alpes-Maritimes • Distanciel France entière • CPF & entreprises
           </p>
 
           {/* Credential strip — authority signals */}
           <ul
-            className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-6 text-sm md:text-base font-body text-primary-foreground/85"
+            className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-6 gap-y-1.5 mb-4 sm:mb-6 text-xs sm:text-sm md:text-base font-body text-primary-foreground/85"
             aria-label="Qualifications"
           >
             <li className="inline-flex items-center gap-2">
@@ -76,9 +76,9 @@ export default function OptimizedHero() {
         </header>
 
         {/* Trust metric — strongest credibility signal, above the fold */}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-5 sm:mb-6">
           <span
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background/15 border border-primary-foreground/30 backdrop-blur-sm text-sm md:text-base font-medium text-primary-foreground shadow-lg"
+            className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-background/15 border border-primary-foreground/30 backdrop-blur-sm text-xs sm:text-sm md:text-base font-medium text-primary-foreground shadow-lg text-center"
             aria-label="Indicateur de confiance"
           >
             <span aria-hidden="true">⭐</span>
@@ -87,7 +87,7 @@ export default function OptimizedHero() {
         </div>
 
         <nav
-          className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap items-stretch sm:items-center"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center flex-wrap items-stretch sm:items-center"
           aria-label="Actions principales"
         >
           {/* PRIMARY CTA — WhatsApp with prefilled message, lowest-friction conversion */}
@@ -96,7 +96,7 @@ export default function OptimizedHero() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackEvent('whatsapp_cta_click', { page: 'home', location: 'hero', prefilled: true })}
-            className="group relative overflow-hidden bg-accent text-accent-foreground px-10 py-5 rounded-lg font-bold text-lg hover:bg-accent/90 hover:shadow-2xl transition-all duration-300 shadow-2xl font-body transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-accent/40 active:scale-100 ring-2 ring-accent/40 inline-flex items-center justify-center gap-2"
+            className="group relative overflow-hidden bg-accent text-accent-foreground px-6 py-3.5 sm:px-10 sm:py-5 rounded-lg font-bold text-base sm:text-lg hover:bg-accent/90 hover:shadow-2xl transition-all duration-300 shadow-2xl font-body transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-accent/40 active:scale-100 ring-2 ring-accent/40 inline-flex items-center justify-center gap-2"
             aria-label="Prendre contact sur WhatsApp avec Antony Addy (message pré-rempli)"
           >
             <span aria-hidden="true">💬</span>
@@ -107,7 +107,7 @@ export default function OptimizedHero() {
           <Link
             to="/offres-de-formation"
             onClick={() => trackEvent('hero_secondary_cta_click', { page: 'home', target: '/offres-de-formation' })}
-            className="group relative overflow-hidden border-2 border-primary-foreground/80 text-primary-foreground bg-transparent px-8 py-4 rounded-lg font-semibold hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all duration-300 font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-ring/30 active:scale-100"
+            className="group relative overflow-hidden border-2 border-primary-foreground/80 text-primary-foreground bg-transparent px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-base hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all duration-300 font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-ring/30 active:scale-100"
             aria-label="Voir les offres de formation en anglais professionnel"
           >
             <span className="relative z-10">Voir les formations</span>
@@ -115,7 +115,7 @@ export default function OptimizedHero() {
         </nav>
 
         {/* Microcopy reassurance under CTAs */}
-        <p className="mt-4 text-sm md:text-base text-primary-foreground/85 font-body drop-shadow">
+        <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base text-primary-foreground/85 font-body drop-shadow">
           100% personnalisé · Adapté à votre niveau · Réponse rapide garantie
         </p>
 

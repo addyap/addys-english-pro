@@ -195,26 +195,26 @@ const Home = () => {
       <OptimizedHero />
 
       {/* Trust / authority strip — instant credibility under the hero */}
-      <section className="bg-background py-8 border-b border-border" aria-label="Indicateurs de confiance">
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <section className="bg-background py-6 sm:py-8 border-b border-border" aria-label="Indicateurs de confiance">
+        <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
           <div>
-            <p className="text-3xl md:text-4xl font-extrabold text-primary font-heading">20+</p>
-            <p className="text-sm text-muted-foreground font-body mt-1">Années d'expérience</p>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">20+</p>
+            <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Années d'expérience</p>
           </div>
           <div>
-            <p className="text-3xl md:text-4xl font-extrabold text-primary font-heading">500+</p>
-            <p className="text-sm text-muted-foreground font-body mt-1">Apprenants accompagnés</p>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">500+</p>
+            <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Apprenants accompagnés</p>
           </div>
           <div>
-            <p className="text-3xl md:text-4xl font-extrabold text-primary font-heading">FPA</p>
-            <p className="text-sm text-muted-foreground font-body mt-1">Certifié depuis 2017</p>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">FPA</p>
+            <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Certifié depuis 2017</p>
           </div>
           <div>
-            <p className="text-3xl md:text-4xl font-extrabold text-primary font-heading">24h</p>
-            <p className="text-sm text-muted-foreground font-body mt-1">Réponse garantie</p>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">24h</p>
+            <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Réponse garantie</p>
           </div>
         </div>
-        <p className="max-w-4xl mx-auto px-4 mt-6 text-center text-sm text-muted-foreground font-body">
+        <p className="max-w-4xl mx-auto px-4 mt-4 sm:mt-6 text-center text-xs sm:text-sm text-muted-foreground font-body leading-relaxed">
           Particuliers, salariés, étudiants (BTS, Bachelor, Master), cadres et équipes : préparation aux entretiens, examens, réunions et présentations en anglais.
         </p>
       </section>
@@ -299,24 +299,24 @@ const Home = () => {
         </section>
 
         {/* Quick Exercises CTA Banner - More subtle, value-focused */}
-        <section className="py-6 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+        <section className="py-5 sm:py-6 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-4">
-                <div className="bg-white/20 rounded-full p-2.5 animate-pulse">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4">
+              <div className="flex items-center gap-3 sm:gap-4 w-full md:w-auto">
+                <div className="bg-white/20 rounded-full p-2 sm:p-2.5 animate-pulse shrink-0">
                   <Award className="h-5 w-5" />
                 </div>
-                <div>
-                  <p className="font-bold text-lg flex items-center gap-2">
-                    <span className="bg-white/20 px-2 py-0.5 rounded text-sm">100% GRATUIT</span>
-                    Ressources pédagogiques en accès libre
+                <div className="min-w-0">
+                  <p className="font-bold text-base sm:text-lg flex flex-wrap items-center gap-x-2 gap-y-1 leading-tight">
+                    <span className="bg-white/20 px-2 py-0.5 rounded text-xs sm:text-sm">100% GRATUIT</span>
+                    <span>Ressources pédagogiques en accès libre</span>
                   </p>
-                  <p className="text-sm text-white/90">{EXERCISE_COUNTS.total}+ exercices • {EXERCISE_COUNTS.questions.toLocaleString()}+ questions • Créés par un formateur certifié</p>
+                  <p className="text-xs sm:text-sm text-white/90 mt-1">{EXERCISE_COUNTS.total}+ exercices • {EXERCISE_COUNTS.questions.toLocaleString()}+ questions • Créés par un formateur certifié</p>
                 </div>
               </div>
               <Link 
                 to="/exercices" 
-                className="bg-white text-emerald-700 px-5 py-2.5 rounded-lg font-bold hover:bg-white/90 transition-all flex items-center gap-2 whitespace-nowrap shadow-lg hover:scale-105"
+                className="bg-white text-emerald-700 px-5 py-2.5 rounded-lg font-bold text-sm sm:text-base hover:bg-white/90 transition-all flex items-center gap-2 whitespace-nowrap shadow-lg hover:scale-105 w-full md:w-auto justify-center"
               >
                 Commencer maintenant
                 <ExternalLink className="h-4 w-4" />
@@ -361,19 +361,19 @@ const Home = () => {
         </section>
 
         {/* Features Section - 6 blocks in 2x3 grid */}
-        <section className="py-16 bg-muted" aria-labelledby="features-heading">
+        <section className="py-12 sm:py-16 bg-muted" aria-labelledby="features-heading">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 id="features-heading" className="text-3xl font-bold text-center text-primary mb-12 font-heading">
+            <h2 id="features-heading" className="text-2xl sm:text-3xl font-bold text-center text-primary mb-8 sm:mb-12 font-heading">
               Pourquoi choisir mes formations ?
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" role="list">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8" role="list">
               {features.map((feature, index) => (
-                <article key={index} className="text-center p-6 rounded-lg bg-white hover:shadow-lg transition-shadow" role="listitem">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 text-accent rounded-full mb-4" aria-hidden="true">
-                    <feature.icon className="h-8 w-8" />
+                <article key={index} className="text-center p-5 sm:p-6 rounded-lg bg-white hover:shadow-lg transition-shadow" role="listitem">
+                  <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-accent/10 text-accent rounded-full mb-3 sm:mb-4" aria-hidden="true">
+                    <feature.icon className="h-7 w-7 sm:h-8 sm:w-8" />
                   </div>
-                  <h3 className="text-xl font-semibold text-primary mb-3 font-heading">{feature.title}</h3>
-                  <p className="text-muted-foreground font-body">{feature.description}</p>
+                  <h3 className="text-lg sm:text-xl font-semibold text-primary mb-2 sm:mb-3 font-heading">{feature.title}</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground font-body leading-relaxed">{feature.description}</p>
                 </article>
               ))}
             </div>
@@ -426,20 +426,20 @@ const Home = () => {
 
 
         {/* Contact CTA Section - Conversion-focused, WhatsApp-first */}
-        <section className="py-16 bg-red-600 text-white">
+        <section className="py-12 sm:py-16 bg-red-600 text-white">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold mb-4 font-heading">Prêt à améliorer votre anglais professionnel ?</h2>
-            <p className="text-lg md:text-xl mb-3 font-body">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 font-heading leading-tight">Prêt à améliorer votre anglais professionnel ?</h2>
+            <p className="text-base sm:text-lg md:text-xl mb-3 font-body leading-relaxed">
               Expliquez-moi votre objectif, je vous réponds rapidement avec une proposition adaptée.
             </p>
-            <p className="text-base mb-8 font-body text-white/90">
+            <p className="text-sm sm:text-base mb-6 sm:mb-8 font-body text-white/90">
               💬 Premier échange gratuit · Sans engagement · Réponse sous 24h
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <a
                 href={`https://wa.me/33649829826?text=${encodeURIComponent('Bonjour Antony, je souhaite améliorer mon anglais. Mon objectif est : [à compléter]. Pouvez-vous me conseiller ?')}`}
                 onClick={() => trackEvent('whatsapp_cta_click', { page: 'Home', location: 'final-cta', prefilled: true })}
-                className="bg-white text-red-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-all hover:scale-105 flex items-center justify-center gap-2 font-body shadow-lg"
+                className="bg-white text-red-600 px-6 py-3.5 sm:px-8 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-gray-100 transition-all hover:scale-105 flex items-center justify-center gap-2 font-body shadow-lg"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Contacter Antony Addy sur WhatsApp (message pré-rempli)"
@@ -449,14 +449,14 @@ const Home = () => {
               </a>
               <Link
                 to="/contact"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors flex items-center justify-center gap-2 font-body"
+                className="border-2 border-white text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-base hover:bg-white hover:text-red-600 transition-colors flex items-center justify-center gap-2 font-body"
                 aria-label="Aller au formulaire de contact"
               >
                 <Mail className="h-5 w-5" aria-hidden="true" />
                 Formulaire de contact
               </Link>
             </div>
-            <p className="mt-5 text-sm text-white/80 font-body">
+            <p className="mt-4 sm:mt-5 text-xs sm:text-sm text-white/80 font-body">
               100% personnalisé · Adapté à votre niveau
             </p>
           </div>
