@@ -200,6 +200,7 @@ export const AppContent = () => {
     <>
       <ScrollToTop />
       <PrefetchRoutes />
+      <LanguageOnboardingModal />
       <Layout>
         <Suspense fallback={<PageLoader />}>
           <AppRoutes />
@@ -223,7 +224,6 @@ export const AppProviders = ({
         <TooltipProvider>
           <A11yProvider>
             <LanguageProvider>
-              <LanguageOnboardingModal />
               <Analytics />
               <Toaster />
               <Sonner />
