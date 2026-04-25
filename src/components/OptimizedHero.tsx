@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { trackEvent } from "@/lib/analytics";
+import { WHATSAPP_PREFILLED_URL } from "@/lib/whatsapp";
 
 export default function OptimizedHero() {
   return (
