@@ -211,7 +211,7 @@ serve(async (req) => {
       de: "German", pt: "Portuguese", pl: "Polish", zh: "Chinese", ja: "Japanese",
     };
     const langName = LANG_NAMES[feedbackLanguage] || "English";
-    const langInstruction = `\n\nLANGUAGE RULE: Write feedback, explanations, coaching notes, summaries, vocabulary meanings and next steps in ${langName}. Keep the English email body, corrections and model answers in English.`;
+    const langInstruction = `\n\nLANGUAGE RULE: Write feedback, explanations, coaching notes, summaries, vocabulary meanings and next steps in ${langName}. Keep the English email body, corrections and model answers in English.\n\nINPUT SCOPE RULE: Only evaluate the learner/user's own input. Never correct AI-generated text. For speech or voice input, ignore capitalization, punctuation, and minor transcription/spelling artefacts. Focus on grammar, vocabulary, fluency, natural phrasing, clarity, and task completion.`;
 
     if (action === "feedback") {
       const userPrompt = `INCOMING EMAIL:\nSubject: ${incomingEmail.subject}\nFrom: ${incomingEmail.sender}\n\n${incomingEmail.body}\n\nSCENARIO GOAL: ${scenarioGoal}\n\nLEARNER'S SUBJECT LINE: ${learnerSubject || "(none provided)"}\n\nLEARNER'S REPLY:\n${learnerReply || "(empty reply)"}`;

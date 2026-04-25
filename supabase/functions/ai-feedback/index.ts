@@ -43,7 +43,7 @@ Return ONLY a JSON object with this exact structure (no markdown fences):
   "correction": "<corrected English version if needed, or empty string>",
   "tip": "<one practical improvement tip in ${langName}>",
   "nextStep": "<what the learner should try next, in ${langName}>"
-}`;
+}\n\nINPUT SCOPE RULE: Only evaluate the learner/user's own input. Never correct AI-generated text. For speech or voice input, ignore capitalization, punctuation, and minor transcription/spelling artefacts. Focus on grammar, vocabulary, fluency, natural phrasing, clarity, and task completion.`;
 }
 
 const FALLBACK_RESULT = {

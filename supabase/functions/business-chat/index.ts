@@ -227,6 +227,8 @@ CRITICAL: Write ALL feedback text — every comment, explanation, suggestion, co
 
 Evaluate the LEARNER's messages ONLY (role: user).
 
+INPUT SCOPE RULE: Only evaluate the learner/user's own input. Never correct AI-generated text (role: assistant). For speech or voice input, ignore capitalization, punctuation, and minor transcription/spelling artefacts. Focus on grammar, vocabulary, fluency, natural phrasing, clarity, and task completion.
+
 ${levelAdaptation}
 
 ${modeBlock}

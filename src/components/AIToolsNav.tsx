@@ -48,7 +48,7 @@ export default function AIToolsNav() {
           </ul>
         </div>
         <div className="flex-shrink-0 py-1">
-          <LanguageSwitcher />
+          <LanguageSwitcher fullWidth />
         </div>
       </div>
     </nav>
