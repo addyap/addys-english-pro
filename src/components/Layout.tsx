@@ -80,9 +80,8 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               ))}
             </nav>
 
-            {/* Mobile menu button + language (AI tools only) + WhatsApp */}
+            {/* Mobile menu button + WhatsApp */}
             <div className="lg:hidden flex items-center gap-2">
-              {isAITool && <LanguageSwitcher />}
               <a
                 href={WHATSAPP_URL}
                 className="bg-green-500 text-white px-3 py-2 rounded-lg flex items-center gap-1 hover:bg-green-600 transition-colors text-sm font-body"
