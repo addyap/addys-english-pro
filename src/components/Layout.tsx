@@ -80,9 +80,9 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               ))}
             </nav>
 
-            {/* Mobile menu button + language + WhatsApp */}
+            {/* Mobile menu button + language (AI tools only) + WhatsApp */}
             <div className="lg:hidden flex items-center gap-2">
-              <LanguageSwitcher />
+              {isAITool && <LanguageSwitcher />}
               <a
                 href={WHATSAPP_URL}
                 className="bg-green-500 text-white px-3 py-2 rounded-lg flex items-center gap-1 hover:bg-green-600 transition-colors text-sm font-body"
@@ -105,9 +105,9 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               </button>
             </div>
 
-            {/* Desktop language + WhatsApp */}
+            {/* Desktop language (AI tools only) + WhatsApp */}
             <div className="hidden lg:flex items-center gap-2 ms-4">
-              <LanguageSwitcher />
+              {isAITool && <LanguageSwitcher />
               <a
                 href={WHATSAPP_URL}
                 className="bg-green-500 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-green-600 transition-colors font-body"
