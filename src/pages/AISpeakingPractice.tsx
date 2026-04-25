@@ -285,40 +285,43 @@ const AISpeakingPractice = () => {
         </div>
       </div>
 
-      <ScrollArea className="flex-1 p-4">
-        <div className="max-w-2xl mx-auto space-y-4">
-          {messages.map((m, i) => (
-            <div key={i} className={`flex flex-col ${m.role === "user" ? "items-end" : "items-start"}`}>
-              <div className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-                m.role === "user"
-                  ? "bg-primary text-primary-foreground rounded-br-md"
-                  : "bg-muted text-foreground rounded-bl-md"
-              }`}>
-                <p className="text-sm whitespace-pre-wrap">{m.content}</p>
-                {m.role === "assistant" && (
-                  <button
-                    onClick={() => speakText(m.content)}
-                    className="mt-1 text-xs opacity-60 hover:opacity-100 flex items-center gap-1"
-                  >
-                    <Volume2 className="w-3 h-3" /> {t("btn.listen", uiLang)}
-                  </button>
+      <div className="relative flex-1 flex flex-col">
+        <ScrollArea className="flex-1 p-4">
+          <div ref={scrollRef} className="max-w-2xl mx-auto space-y-4">
+            {messages.map((m, i) => (
+              <div key={i} className={`flex flex-col ${m.role === "user" ? "items-end" : "items-start"}`}>
+                <div className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+                  m.role === "user"
+                    ? "bg-primary text-primary-foreground rounded-br-md"
+                    : "bg-muted text-foreground rounded-bl-md"
+                }`}>
+                  <p className="text-sm whitespace-pre-wrap">{m.content}</p>
+                  {m.role === "assistant" && (
+                    <button
+                      onClick={() => speakText(m.content)}
+                      className="mt-1 text-xs opacity-60 hover:opacity-100 flex items-center gap-1"
+                    >
+                      <Volume2 className="w-3 h-3" /> {t("btn.listen", uiLang)}
+                    </button>
+                  )}
+                </div>
+                {m.role === "assistant" && m.content && (
+                  <div className="max-w-[80%] w-full"><SupportActions text={m.content} /></div>
                 )}
               </div>
-              {m.role === "assistant" && m.content && (
-                <div className="max-w-[80%] w-full"><SupportActions text={m.content} /></div>
-              )}
-            </div>
-          ))}
-          {isStreaming && messages[messages.length - 1]?.role !== "assistant" && (
-            <div className="flex justify-start">
-              <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-3">
-                <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+            ))}
+            {isStreaming && messages[messages.length - 1]?.role !== "assistant" && (
+              <div className="flex justify-start">
+                <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-3">
+                  <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+                </div>
               </div>
-            </div>
-          )}
-          <div ref={scrollRef} />
-        </div>
-      </ScrollArea>
+            )}
+            <div ref={endRef} aria-hidden="true" />
+          </div>
+        </ScrollArea>
+        <JumpToLatestButton show={!isAtBottom} onClick={() => scrollToBottom("smooth")} />
+      </div>
 
       <div className="border-t border-border bg-card">
         <MicErrorBanner micError={micError} clearError={clearError} startListening={startListening} />
