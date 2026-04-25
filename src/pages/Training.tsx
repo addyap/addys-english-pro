@@ -280,9 +280,12 @@ const Training = () => {
                     <h3 className="font-semibold text-primary mb-2">
                       {formation.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm">
-                      {formation.description}
-                    </p>
+                    <ul className="text-muted-foreground text-sm space-y-1">
+                      <li><span className="font-medium text-primary">Pour qui :</span> {formation.pourQui}</li>
+                      <li><span className="font-medium text-primary">Objectif :</span> {formation.objectif}</li>
+                      <li><span className="font-medium text-primary">Format :</span> {formation.format}</li>
+                      <li><span className="font-medium text-primary">Résultat :</span> {formation.resultat}</li>
+                    </ul>
                   </div>
                 ))}
               </div>
