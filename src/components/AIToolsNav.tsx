@@ -22,29 +22,34 @@ export default function AIToolsNav() {
   const { pathname } = useLocation();
 
   return (
-    <nav aria-label="AI Tools" className="w-full bg-muted/40 border-b border-border overflow-x-auto">
-      <div className="max-w-7xl mx-auto px-4">
-        <ul className="flex items-center gap-1 py-2 min-w-max">
-          {AI_TOOLS.map(({ path, label, icon: Icon }) => {
-            const isActive = pathname === path;
-            return (
-              <li key={path}>
-                <Link
-                  to={path}
-                  className={cn(
-                    "flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap",
-                    isActive
-                      ? "bg-primary text-primary-foreground shadow-sm"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                  )}
-                >
-                  <Icon className="h-4 w-4 flex-shrink-0" />
-                  <span className="hidden sm:inline">{label}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+    <nav aria-label="AI Tools" className="w-full bg-muted/40 border-b border-border">
+      <div className="max-w-7xl mx-auto px-4 flex items-center gap-2">
+        <div className="flex-1 overflow-x-auto">
+          <ul className="flex items-center gap-1 py-2 min-w-max">
+            {AI_TOOLS.map(({ path, label, icon: Icon }) => {
+              const isActive = pathname === path;
+              return (
+                <li key={path}>
+                  <Link
+                    to={path}
+                    className={cn(
+                      "flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap",
+                      isActive
+                        ? "bg-primary text-primary-foreground shadow-sm"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    )}
+                  >
+                    <Icon className="h-4 w-4 flex-shrink-0" />
+                    <span className="hidden sm:inline">{label}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div className="flex-shrink-0 py-1">
+          <LanguageSwitcher />
+        </div>
       </div>
     </nav>
   );
