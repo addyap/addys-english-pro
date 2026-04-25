@@ -9,9 +9,10 @@ import AIToolsNav from '@/components/AIToolsNav';
 import { usePageTracking } from '@/hooks/usePageTracking';
 
 import { trackEvent } from '@/lib/analytics';
+import { WHATSAPP_PREFILLED_URL } from '@/lib/whatsapp';
 
-const WHATSAPP_URL = 'https://wa.me/33649829826';
-const trackWA = (location: string) => trackEvent('whatsapp_cta_click', { page: 'Layout', target: WHATSAPP_URL, location });
+const WHATSAPP_URL = WHATSAPP_PREFILLED_URL;
+const trackWA = (location: string) => trackEvent('whatsapp_cta_click', { page: 'Layout', target: WHATSAPP_URL, location, prefilled: true });
 
 const AI_TOOL_PATHS = [
   '/conversation-trainer', '/writing-coach', '/speaking-practice',
