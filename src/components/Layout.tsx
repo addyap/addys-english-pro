@@ -27,10 +27,16 @@ interface LayoutProps {
 
 const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) => {
   const location = useLocation();
-  const { t } = useTranslation();
+  const { t: tRaw } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const year = new Date().getFullYear();
   const isAITool = AI_TOOL_PATHS.includes(location.pathname);
+
+  // Public site (header, mobile menu, footer) is always French.
+  // Only AI tool pages follow the user's selected interface language.
+  const t = isAITool
+    ? tRaw
+    : ((key: string, fallback?: string) => tRaw(key, { lng: 'fr', defaultValue: fallback }) as string);
 
   usePageTracking();
 
