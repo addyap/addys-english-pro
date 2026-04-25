@@ -32,12 +32,12 @@ const LanguageSwitcher: React.FC<Props> = ({ className = "", fullWidth = false }
           variant="outline"
           size="sm"
           className={`gap-1.5 ${fullWidth ? "w-full justify-start" : ""} ${className}`}
-          aria-label="AI Settings"
-          title="AI Settings"
+          aria-label={t("settings.aiSettings", "AI Settings")}
+          title={t("settings.aiSettings", "AI Settings")}
         >
           <Settings className="h-4 w-4" aria-hidden="true" />
           <span className="text-xs font-medium">
-            AI Settings · {meta.flag} {meta.code.toUpperCase()}
+            {t("settings.aiSettings", "AI Settings")} · {meta.flag} {meta.code.toUpperCase()}
           </span>
         </Button>
       </PopoverTrigger>

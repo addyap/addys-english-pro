@@ -34,7 +34,8 @@
     "interfaceLanguage": "Lingua dell'interfaccia",
     "feedbackLanguage": "Lingua del feedback AI",
     "interfaceHelp": "Controlla menu, pulsanti e moduli.",
-    "feedbackHelp": "Controlla la lingua delle correzioni e spiegazioni dell'AI. La conversazione con l'AI resta in inglese."
+    "feedbackHelp": "Controlla la lingua delle correzioni e spiegazioni dell'AI. La conversazione con l'AI resta in inglese.",
+    "aiSettings": "Impostazioni IA"
   },
   "ai": {
     "translateAnswer": "Traduci questa risposta",
@@ -82,5 +83,16 @@
     "title": "Scegli le tue lingue",
     "subtitle": "Seleziona la lingua dell'interfaccia e quella del feedback dell'IA. Puoi modificarle in qualsiasi momento.",
     "continue": "Continua"
+  },
+  "aiTools": {
+    "conversation": "Conversazione",
+    "writingCoach": "Coach di scrittura",
+    "speaking": "Conversazione orale",
+    "grammar": "Grammatica",
+    "email": "Email",
+    "presentation": "Presentazione",
+    "negotiation": "Negoziazione",
+    "interview": "Colloquio",
+    "navLabel": "Strumenti IA"
   }
 }

@@ -34,7 +34,8 @@
     "interfaceLanguage": "Interface language",
     "feedbackLanguage": "AI feedback language",
     "interfaceHelp": "Controls menus, buttons and forms.",
-    "feedbackHelp": "Controls AI corrections and explanations. The AI conversation stays in English."
+    "feedbackHelp": "Controls AI corrections and explanations. The AI conversation stays in English.",
+    "aiSettings": "AI Settings"
   },
   "ai": {
     "translateAnswer": "Translate this answer",
@@ -82,5 +83,16 @@
     "title": "Choose your languages",
     "subtitle": "Pick your interface language and your AI feedback language. You can change these anytime.",
     "continue": "Continue"
+  },
+  "aiTools": {
+    "conversation": "Conversation",
+    "writingCoach": "Writing Coach",
+    "speaking": "Speaking",
+    "grammar": "Grammar",
+    "email": "Email",
+    "presentation": "Presentation",
+    "negotiation": "Negotiation",
+    "interview": "Interview",
+    "navLabel": "AI Tools"
   }
 }
