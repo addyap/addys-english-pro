@@ -425,22 +425,25 @@ const Home = () => {
         </section>
 
 
-        {/* Contact CTA Section - Appel à l'action */}
+        {/* Contact CTA Section - Conversion-focused, WhatsApp-first */}
         <section className="py-16 bg-red-600 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl font-bold mb-4 font-heading">Prêt à améliorer votre anglais professionnel ?</h2>
-            <p className="text-xl mb-8 font-body">
-              Discutons de votre projet de formation. Je suis à votre écoute !
+            <p className="text-xl mb-2 font-body">
+              Discutons de votre projet de formation — premier échange gratuit et sans engagement.
+            </p>
+            <p className="text-base mb-8 font-body text-white/90">
+              💬 Réponse rapide sous 24h · 100% personnalisé · Adapté à votre niveau
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://wa.me/33649829826" onClick={() => trackEvent('whatsapp_cta_click', { page: 'Home', target: 'https://wa.me/33649829826', location: 'final-cta' })} className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center gap-2 font-body" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/33649829826" onClick={() => trackEvent('whatsapp_cta_click', { page: 'Home', target: 'https://wa.me/33649829826', location: 'final-cta' })} className="bg-white text-red-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-all hover:scale-105 flex items-center justify-center gap-2 font-body shadow-lg" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="h-5 w-5" />
-                WhatsApp
+                Contact WhatsApp · Réponse sous 24h
               </a>
-              <a href="mailto:formations@antonyaddy.com" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors flex items-center justify-center gap-2 font-body">
+              <Link to="/contact" className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-red-600 transition-colors flex items-center justify-center gap-2 font-body">
                 <Mail className="h-5 w-5" />
-                Email
-              </a>
+                Formulaire de contact
+              </Link>
             </div>
           </div>
         </section>
