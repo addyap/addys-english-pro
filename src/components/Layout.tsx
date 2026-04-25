@@ -7,7 +7,7 @@ import SiteLogo from "@/components/SiteLogo";
 import Breadcrumbs from '@/components/Breadcrumbs';
 import AIToolsNav from '@/components/AIToolsNav';
 import { usePageTracking } from '@/hooks/usePageTracking';
-import LanguageSwitcher from '@/components/LanguageSwitcher';
+
 import { trackEvent } from '@/lib/analytics';
 
 const WHATSAPP_URL = 'https://wa.me/33649829826';
@@ -80,9 +80,8 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               ))}
             </nav>
 
-            {/* Mobile menu button + language (AI tools only) + WhatsApp */}
+            {/* Mobile menu button + WhatsApp */}
             <div className="lg:hidden flex items-center gap-2">
-              {isAITool && <LanguageSwitcher />}
               <a
                 href={WHATSAPP_URL}
                 className="bg-green-500 text-white px-3 py-2 rounded-lg flex items-center gap-1 hover:bg-green-600 transition-colors text-sm font-body"
@@ -105,9 +104,8 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               </button>
             </div>
 
-            {/* Desktop language (AI tools only) + WhatsApp */}
+            {/* Desktop WhatsApp */}
             <div className="hidden lg:flex items-center gap-2 ms-4">
-              {isAITool && <LanguageSwitcher />}
               <a
                 href={WHATSAPP_URL}
                 className="bg-green-500 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-green-600 transition-colors font-body"
@@ -139,11 +137,6 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                     {item.name}
                   </Link>
                 ))}
-                {isAITool && (
-                  <div className="px-4 py-3 border-t border-gray-200 mt-2">
-                    <LanguageSwitcher fullWidth />
-                  </div>
-                )}
               </nav>
             </div>
           )}
