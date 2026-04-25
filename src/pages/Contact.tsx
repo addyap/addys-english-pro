@@ -5,6 +5,7 @@ import SEOHead from '../components/SEOHead';
 import { trackFormSubmission, trackFormError, trackWhatsAppClick, trackEmailClick, trackEvent } from '@/lib/analytics';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
 import { supabase } from '@/integrations/supabase/client';
+import { WHATSAPP_PREFILLED_URL } from '@/lib/whatsapp';
 
 const Contact = () => {
   const contactJsonLd = {
@@ -358,7 +359,7 @@ const Contact = () => {
                   Pour une réponse immédiate, contactez-moi directement sur WhatsApp
                 </p>
                 <a 
-                  href="https://wa.me/33649829826" 
+                  href={WHATSAPP_PREFILLED_URL} 
                   className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 hover:scale-105 active:scale-95" 
                   target="_blank" 
                   rel="noopener noreferrer" 
