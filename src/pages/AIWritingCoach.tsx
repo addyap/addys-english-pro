@@ -61,7 +61,14 @@ const FUNC_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/writing-coac
 
 const AIWritingCoach = () => {
   const { t: tr } = useTranslation();
-  const [text, setText] = useState("");
+  const initialText = (() => {
+    if (typeof window === "undefined") return "";
+    try {
+      const sp = new URLSearchParams(window.location.search);
+      return sp.get("text") || "";
+    } catch { return ""; }
+  })();
+  const [text, setText] = useState(initialText);
   const [writingType, setWritingType] = useState("email");
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [loading, setLoading] = useState(false);

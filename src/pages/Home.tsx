@@ -8,6 +8,8 @@ import { TypingText } from '../components/TypingText';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { LazyClientCarousel } from '@/components/LazySwiper';
 import FloatingExerciseCTA from '@/components/FloatingExerciseCTA';
+import FloatingAICTA from '@/components/FloatingAICTA';
+import AIHomepageHero from '@/components/AIHomepageHero';
 import { trackEvent } from '@/lib/analytics';
 
 
@@ -188,10 +190,14 @@ const Home = () => {
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded-lg z-50">
         Aller au contenu principal
       </a>
-      {/* Floating CTA for mobile */}
+      {/* Floating CTAs for mobile */}
+      <FloatingAICTA />
       <FloatingExerciseCTA />
 
-      {/* Optimized Hero Section */}
+      {/* AI-first hero: Train your English with AI + Try It Now + AI Tools grid + value prop */}
+      <AIHomepageHero />
+
+      {/* Original brand hero — kept below AI section as secondary trainer presentation */}
       <OptimizedHero />
 
       {/* SEO: Crawlable introductory text for search engines */}
