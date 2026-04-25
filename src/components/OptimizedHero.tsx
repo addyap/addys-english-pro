@@ -82,7 +82,7 @@ export default function OptimizedHero() {
             aria-label="Indicateur de confiance"
           >
             <span aria-hidden="true">⭐</span>
-            700+ English exercises and AI-powered practice tools
+            700+ exercices d'anglais et outils de pratique propulsés par l'IA
           </span>
         </div>
 
@@ -97,7 +97,7 @@ export default function OptimizedHero() {
             className="group relative overflow-hidden bg-accent text-accent-foreground px-10 py-5 rounded-lg font-bold text-lg hover:bg-accent/90 hover:shadow-2xl transition-all duration-300 shadow-2xl font-body transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-accent/40 active:scale-100 ring-2 ring-accent/40"
             aria-label="Démarrer votre progression en anglais — contacter Antony Addy"
           >
-            <span className="relative z-10">Start Your English Upgrade</span>
+            <span className="relative z-10">Booster votre anglais</span>
             <span className="absolute inset-0 bg-background/10 scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
           </Link>
 
@@ -108,13 +108,13 @@ export default function OptimizedHero() {
             className="group relative overflow-hidden border-2 border-primary-foreground/80 text-primary-foreground bg-transparent px-8 py-4 rounded-lg font-semibold hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all duration-300 font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-ring/30 active:scale-100"
             aria-label="Explorer les ressources gratuites d'anglais"
           >
-            <span className="relative z-10">Explore Free Resources</span>
+            <span className="relative z-10">Explorer les ressources gratuites</span>
           </Link>
         </nav>
 
         {/* Microcopy reassurance under CTAs */}
         <p className="mt-4 text-sm md:text-base text-primary-foreground/85 font-body drop-shadow">
-          Personalized English coaching, practical exercises, and fast contact.
+          Coaching d'anglais personnalisé, exercices pratiques et contact rapide.
         </p>
 
         {/* Tertiary discovery link — preserves access to formations without competing visually */}
