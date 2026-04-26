@@ -36,14 +36,15 @@ export default function AIToolsNav() {
                   <Link
                     to={path}
                     className={cn(
-                      "flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap",
+                      "flex items-center gap-1.5 px-3 py-2 min-h-[44px] rounded-md text-sm font-medium transition-colors whitespace-nowrap",
                       isActive
                         ? "bg-primary text-primary-foreground shadow-sm"
                         : "text-muted-foreground hover:text-foreground hover:bg-muted"
                     )}
+                    aria-label={label}
                   >
-                    <Icon className="h-4 w-4 flex-shrink-0" />
-                    <span className="hidden sm:inline">{label}</span>
+                    <Icon className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
+                    <span>{label}</span>
                   </Link>
                 </li>
               );
