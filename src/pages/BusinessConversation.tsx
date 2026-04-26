@@ -619,6 +619,45 @@ const BusinessConversation: React.FC = () => {
               </p>
             </div>
 
+            {/* Professional training context (optional) */}
+            <div className="space-y-3">
+              <div className="flex items-baseline justify-between gap-2">
+                <h2 className="font-heading font-semibold text-foreground text-sm uppercase tracking-wide text-muted-foreground">
+                  Professional context (optional)
+                </h2>
+                {professionalContext && (
+                  <button
+                    type="button"
+                    onClick={() => setProfessionalContext(null)}
+                    className="text-xs text-muted-foreground hover:text-foreground underline"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
+              <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+                {PROFESSIONAL_CONTEXTS.map((ctx) => {
+                  const Icon = ctx.icon;
+                  const active = professionalContext === ctx.id;
+                  return (
+                    <button
+                      key={ctx.id}
+                      type="button"
+                      onClick={() => setProfessionalContext(active ? null : ctx.id)}
+                      aria-pressed={active}
+                      className={`group flex items-start gap-2 p-3 rounded-xl border text-left transition-all hover:shadow-sm ${ctx.color} ${active ? "ring-2 ring-primary ring-offset-1 ring-offset-background" : "opacity-90 hover:opacity-100"}`}
+                    >
+                      <Icon className="w-4 h-4 shrink-0 mt-0.5" />
+                      <div className="space-y-0.5">
+                        <div className="font-semibold text-xs">{ctx.shortLabel}</div>
+                        <div className="text-[11px] leading-snug opacity-80">{ctx.description}</div>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
             <div className="space-y-6">
               {CATEGORIES.map((cat) => (
                 <div key={cat.id} className="space-y-3">
