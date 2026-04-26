@@ -32,6 +32,7 @@ import { toast } from "sonner";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 import { useChatAutoScroll } from "@/hooks/useChatAutoScroll";
 import JumpToLatestButton from "@/components/chat/JumpToLatestButton";
+import { PROFESSIONAL_CONTEXTS, getProfessionalContext, type ProfessionalContextId } from "@/lib/ai/professionalContexts";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -239,6 +240,7 @@ const BusinessConversation: React.FC = () => {
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const [scenario, setScenario] = useState<string | null>(null);
   const [mode, setMode] = useState<Mode>("practice");
+  const [professionalContext, setProfessionalContext] = useState<ProfessionalContextId | null>(null);
   const [step, setStep] = useState<"scenario" | "mode" | "chat">("scenario");
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
@@ -346,7 +348,7 @@ const BusinessConversation: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: initMessages, scenario: scenarioId, mode: selectedMode, feedbackLanguage: feedbackLang }),
+        body: JSON.stringify({ messages: initMessages, scenario: scenarioId, mode: selectedMode, feedbackLanguage: feedbackLang, professionalContext }),
       });
 
       if (!resp.ok || !resp.body) {
@@ -395,7 +397,7 @@ const BusinessConversation: React.FC = () => {
       setIsLoading(false);
       inputRef.current?.focus();
     }
-  }, []);
+  }, [professionalContext, feedbackLang, tr]);
 
   const sendMessage = useCallback(async () => {
     if (!input.trim() || isLoading || !scenario) return;
@@ -421,7 +423,7 @@ const BusinessConversation: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: updatedMessages, scenario, mode, feedbackLanguage: feedbackLang }),
+        body: JSON.stringify({ messages: updatedMessages, scenario, mode, feedbackLanguage: feedbackLang, professionalContext }),
       });
 
       if (!resp.ok || !resp.body) {
