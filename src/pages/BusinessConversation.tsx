@@ -383,6 +383,7 @@ const BusinessConversation: React.FC = () => {
   const selectScenario = (scenarioId: string) => {
     setScenario(scenarioId);
     setStep("mode");
+    requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "instant" }));
   };
 
   const selectMode = (m: Mode) => {
@@ -659,6 +660,23 @@ const BusinessConversation: React.FC = () => {
   const inputDisabled = isLoading || !!feedback || (mode === "exam" && examComplete) || isFeedbackLoading;
   const canEndConversation = realUserTurns >= MIN_TURNS_FOR_FEEDBACK && !feedback && !examComplete && !isFeedbackLoading && !isLoading;
   const examProgress = mode === "exam" ? Math.min(realUserTurns, EXAM_MAX_QUESTIONS) : 0;
+  const isActiveChat = step === "chat" && !feedback && !feedbackError;
+
+  useEffect(() => {
+    if (!isActiveChat) return;
+
+    const { style } = document.body;
+    const previousOverflow = style.overflow;
+    const previousOverscrollBehavior = style.overscrollBehavior;
+
+    style.overflow = "hidden";
+    style.overscrollBehavior = "none";
+
+    return () => {
+      style.overflow = previousOverflow;
+      style.overscrollBehavior = previousOverscrollBehavior;
+    };
+  }, [isActiveChat]);
 
   const seoHead = (
     <SEOHead
@@ -674,8 +692,8 @@ const BusinessConversation: React.FC = () => {
     return (
       <>
         {seoHead}
-        <div className="min-h-[80vh] flex flex-col items-center justify-center px-4 py-12">
-          <div className="max-w-3xl w-full space-y-8">
+        <div className="min-h-[80vh] overflow-x-hidden px-4 py-12">
+          <div className="max-w-3xl w-full mx-auto space-y-8">
             <div className="text-center space-y-3">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
                 <MessageCircle className="w-4 h-4" />
@@ -801,10 +819,10 @@ const BusinessConversation: React.FC = () => {
                             <button
                               key={s.id}
                               onClick={() => selectScenario(s.id)}
-                              className={`group flex items-center gap-3 p-3.5 rounded-xl border text-left transition-all hover:shadow-md hover:scale-[1.02] ${cat.color}`}
+                              className={`group flex items-center gap-3 p-3.5 rounded-xl border text-left transition-all hover:shadow-md sm:hover:scale-[1.02] ${cat.color}`}
                             >
                               <s.icon className="w-4.5 h-4.5 shrink-0" />
-                              <span className="font-medium text-sm flex-1">{s.label}</span>
+                              <span className="font-medium text-sm flex-1 min-w-0 break-words">{s.label}</span>
                               <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                             </button>
                           ))}
@@ -827,7 +845,7 @@ const BusinessConversation: React.FC = () => {
     return (
       <>
         {seoHead}
-        <div className="min-h-[80vh] flex flex-col items-center justify-center px-4 py-12">
+        <div className="min-h-[80vh] overflow-x-hidden px-4 py-12 flex flex-col items-center justify-center">
           <div className="max-w-xl w-full space-y-8">
             <div className="text-center space-y-3">
               <button
@@ -879,10 +897,11 @@ const BusinessConversation: React.FC = () => {
   return (
     <>
       {seoHead}
-      <div className="max-w-3xl mx-auto px-4 py-6 space-y-4">
+      <div className={isActiveChat ? "fixed inset-0 z-[60] h-dvh max-h-dvh overflow-hidden bg-background" : "max-w-3xl mx-auto px-4 py-6 space-y-4 overflow-x-hidden"}>
+        <div className={isActiveChat ? "mx-auto flex h-full min-h-0 w-full max-w-3xl flex-col gap-3 px-3 py-3 sm:px-4 sm:py-4" : "contents"}>
         {/* Session objective banner */}
         {profCtx && (
-          <div className={`flex items-start gap-2 rounded-lg border px-3 py-2 text-sm ${profCtx.color}`}>
+          <div className={`shrink-0 flex items-start gap-2 rounded-lg border px-3 py-2 text-sm ${profCtx.color}`}>
             <span aria-hidden="true" className="text-base leading-tight">🎯</span>
             <div className="flex-1 min-w-0">
               <span className="font-semibold">Objective ({profCtx.shortLabel}):</span>{" "}
@@ -892,7 +911,7 @@ const BusinessConversation: React.FC = () => {
         )}
 
         {/* Header */}
-        <div className="flex items-center justify-between flex-wrap gap-2">
+        <div className="shrink-0 flex items-center justify-between flex-wrap gap-2">
           <div className="flex items-center gap-2 flex-wrap">
             {scenarioMeta && (
               <Badge variant="outline" className={scenarioMeta.category.color}>
@@ -947,18 +966,18 @@ const BusinessConversation: React.FC = () => {
 
         {/* Exam progress bar */}
         {mode === "exam" && !feedback && (
-          <Progress value={(examProgress / EXAM_MAX_QUESTIONS) * 100} className="h-1.5" />
+          <Progress value={(examProgress / EXAM_MAX_QUESTIONS) * 100} className="h-1.5 shrink-0" />
         )}
 
         {/* Chat */}
-        <Card className="border overflow-hidden relative">
-          <ScrollArea className="h-[50vh] md:h-[55vh]">
-            <div ref={scrollRef} className="p-4 space-y-4">
+        <Card className={isActiveChat ? "relative flex min-h-0 flex-1 flex-col overflow-hidden border" : "border overflow-hidden relative"}>
+          <ScrollArea className={isActiveChat ? "min-h-0 flex-1" : "h-[50vh] md:h-[55vh]"}>
+            <div ref={scrollRef} className="p-4 space-y-4 overflow-x-hidden">
               {messages.map((msg, i) => (
                 <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`max-w-[80%] flex flex-col gap-1`}>
+                  <div className={`max-w-[80%] min-w-0 flex flex-col gap-1`}>
                     <div
-                      className={`rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                      className={`break-words rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
                         msg.role === "user"
                           ? "bg-primary text-primary-foreground rounded-br-md"
                           : "bg-muted text-foreground rounded-bl-md"
@@ -995,7 +1014,7 @@ const BusinessConversation: React.FC = () => {
 
           {/* Input area */}
           {!feedback && !feedbackError && (
-            <div className="border-t bg-background">
+            <div className="shrink-0 border-t bg-background pb-[env(safe-area-inset-bottom)]">
               <MicErrorBanner micError={micError} clearError={clearError} startListening={startListening} />
               <div className="p-3 flex gap-2 items-end">
                 <Textarea
@@ -1128,10 +1147,11 @@ const BusinessConversation: React.FC = () => {
 
         {/* Hint */}
         {!feedback && !feedbackError && !examComplete && realUserTurns > 0 && realUserTurns < MIN_TURNS_FOR_FEEDBACK && mode !== "exam" && (
-          <p className="text-center text-xs text-muted-foreground">
+          <p className="shrink-0 text-center text-xs text-muted-foreground">
             Continue the conversation ({MIN_TURNS_FOR_FEEDBACK - realUserTurns} more turn{MIN_TURNS_FOR_FEEDBACK - realUserTurns !== 1 ? "s" : ""} needed for feedback)
           </p>
         )}
+        </div>
       </div>
     </>
   );
