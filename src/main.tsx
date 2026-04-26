@@ -9,6 +9,10 @@ import './i18n'
 // Initialize Core Web Vitals monitoring
 import './monitor/vitals.ts'
 
+// Install global TTS lifecycle guards (cancel speech on tab hide / page unload)
+import { installTTSLifecycleGuards } from './lib/ai/ttsLifecycle'
+installTTSLifecycleGuards()
+
 const rootElement = document.getElementById("root")!;
 
 // Only hydrate if the server actually pre-rendered content; otherwise mount fresh.
