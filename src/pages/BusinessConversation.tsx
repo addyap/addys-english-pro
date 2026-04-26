@@ -740,11 +740,23 @@ const BusinessConversation: React.FC = () => {
   // ─── STEP 3: Chat ───
   const scenarioMeta = getScenarioMeta(scenario!);
   const currentMode = MODES.find(m => m.id === mode)!;
+  const profCtx = getProfessionalContext(professionalContext);
 
   return (
     <>
       {seoHead}
       <div className="max-w-3xl mx-auto px-4 py-6 space-y-4">
+        {/* Session objective banner */}
+        {profCtx && (
+          <div className={`flex items-start gap-2 rounded-lg border px-3 py-2 text-sm ${profCtx.color}`}>
+            <span aria-hidden="true" className="text-base leading-tight">🎯</span>
+            <div className="flex-1 min-w-0">
+              <span className="font-semibold">Objective ({profCtx.shortLabel}):</span>{" "}
+              <span className="opacity-90">{profCtx.objective}</span>
+            </div>
+          </div>
+        )}
+
         {/* Header */}
         <div className="flex items-center justify-between flex-wrap gap-2">
           <div className="flex items-center gap-2 flex-wrap">
