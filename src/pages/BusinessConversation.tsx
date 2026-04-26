@@ -787,27 +787,45 @@ const BusinessConversation: React.FC = () => {
             </div>
 
             <div id="scenarios-list" className="space-y-6 scroll-mt-24">
-              {CATEGORIES.map((cat) => (
-                <div key={cat.id} className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <cat.icon className="w-5 h-5 text-muted-foreground" />
-                    <h2 className="font-heading font-semibold text-foreground">{cat.label}</h2>
-                  </div>
-                  <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                    {cat.scenarios.map((s) => (
-                      <button
-                        key={s.id}
-                        onClick={() => selectScenario(s.id)}
-                        className={`group flex items-center gap-3 p-3.5 rounded-xl border text-left transition-all hover:shadow-md hover:scale-[1.02] ${cat.color}`}
-                      >
-                        <s.icon className="w-4.5 h-4.5 shrink-0" />
-                        <span className="font-medium text-sm flex-1">{s.label}</span>
-                        <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </button>
+              {(() => {
+                const activeCategories: Category[] = professionalContext
+                  ? [PROFESSIONAL_SCENARIOS[professionalContext]]
+                  : CATEGORIES;
+                const headingPrefix = professionalContext
+                  ? `Choose your ${professionalContext} training situation`
+                  : null;
+                return (
+                  <>
+                    {headingPrefix && (
+                      <div className="rounded-lg border border-primary/30 bg-primary/5 px-3 py-2 text-sm text-primary">
+                        <span className="font-semibold">{headingPrefix}</span>
+                        <span className="opacity-75"> — pick one to start the chat.</span>
+                      </div>
+                    )}
+                    {activeCategories.map((cat) => (
+                      <div key={cat.id} className="space-y-3">
+                        <div className="flex items-center gap-2">
+                          <cat.icon className="w-5 h-5 text-muted-foreground" />
+                          <h2 className="font-heading font-semibold text-foreground">{cat.label}</h2>
+                        </div>
+                        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                          {cat.scenarios.map((s) => (
+                            <button
+                              key={s.id}
+                              onClick={() => selectScenario(s.id)}
+                              className={`group flex items-center gap-3 p-3.5 rounded-xl border text-left transition-all hover:shadow-md hover:scale-[1.02] ${cat.color}`}
+                            >
+                              <s.icon className="w-4.5 h-4.5 shrink-0" />
+                              <span className="font-medium text-sm flex-1">{s.label}</span>
+                              <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </button>
+                          ))}
+                        </div>
+                      </div>
                     ))}
-                  </div>
-                </div>
-              ))}
+                  </>
+                );
+              })()}
             </div>
           </div>
         </div>
