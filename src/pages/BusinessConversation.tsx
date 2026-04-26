@@ -472,7 +472,7 @@ const BusinessConversation: React.FC = () => {
         inputRef.current?.focus();
       }
     }
-  }, [input, isLoading, scenario, messages, mode, examComplete]);
+  }, [input, isLoading, scenario, messages, mode, examComplete, professionalContext, feedbackLang, stopTTS, tr]);
 
   const requestFeedback = useCallback(async (msgsOverride?: Msg[]) => {
     const msgsToUse = msgsOverride || messages;
