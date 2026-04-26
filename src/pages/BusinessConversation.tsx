@@ -633,7 +633,7 @@ const BusinessConversation: React.FC = () => {
             <div className="space-y-3">
               <div className="flex items-baseline justify-between gap-2">
                 <h2 className="font-heading font-semibold text-foreground text-sm uppercase tracking-wide text-muted-foreground">
-                  Professional context (optional)
+                  Choose your professional context (optional)
                 </h2>
                 {professionalContext && (
                   <button
@@ -645,7 +645,32 @@ const BusinessConversation: React.FC = () => {
                   </button>
                 )}
               </div>
-              <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+
+              {/* Mobile: native dropdown */}
+              <div className="sm:hidden">
+                <label htmlFor="prof-ctx-select" className="sr-only">
+                  Choose your professional context
+                </label>
+                <select
+                  id="prof-ctx-select"
+                  value={professionalContext ?? ""}
+                  onChange={(e) => {
+                    const v = e.target.value;
+                    setProfessionalContext(v ? (v as ProfessionalContextId) : null);
+                  }}
+                  className="w-full min-h-[48px] px-3 py-2 rounded-lg border border-border bg-background text-foreground text-base focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  <option value="">— General conversation (no specific context) —</option>
+                  {PROFESSIONAL_CONTEXTS.map((ctx) => (
+                    <option key={ctx.id} value={ctx.id}>
+                      {ctx.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Tablet/Desktop: cards */}
+              <div className="hidden sm:grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
                 {PROFESSIONAL_CONTEXTS.map((ctx) => {
                   const Icon = ctx.icon;
                   const active = professionalContext === ctx.id;
@@ -666,9 +691,42 @@ const BusinessConversation: React.FC = () => {
                   );
                 })}
               </div>
+
+              {/* Selected context: objective + Start button */}
+              {professionalContext && (() => {
+                const ctx = getProfessionalContext(professionalContext)!;
+                return (
+                  <div className={`mt-3 rounded-xl border p-4 space-y-3 ${ctx.color}`}>
+                    <div className="flex items-start gap-2">
+                      <span aria-hidden="true" className="text-base leading-tight">🎯</span>
+                      <div className="flex-1 min-w-0">
+                        <div className="font-semibold text-sm">
+                          Objective ({ctx.shortLabel})
+                        </div>
+                        <div className="text-sm opacity-90">{ctx.objective}</div>
+                      </div>
+                    </div>
+                    <Button
+                      type="button"
+                      size="lg"
+                      className="w-full sm:w-auto min-h-[48px]"
+                      onClick={() => {
+                        const el = document.getElementById("scenarios-list");
+                        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                      }}
+                    >
+                      Start this professional training
+                      <ChevronRight className="w-4 h-4 ml-1" />
+                    </Button>
+                    <p className="text-xs opacity-75">
+                      Pick a scenario below to begin — your professional context will shape the conversation.
+                    </p>
+                  </div>
+                );
+              })()}
             </div>
 
-            <div className="space-y-6">
+            <div id="scenarios-list" className="space-y-6 scroll-mt-24">
               {CATEGORIES.map((cat) => (
                 <div key={cat.id} className="space-y-3">
                   <div className="flex items-center gap-2">
