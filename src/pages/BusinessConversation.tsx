@@ -169,6 +169,62 @@ const CATEGORIES: Category[] = [
   },
 ];
 
+// Profession-specific scenario sets shown ONLY when a professional context is active.
+const PROFESSIONAL_SCENARIOS: Record<"ACOM" | "VPL" | "AD" | "MEDICAL", Category> = {
+  ACOM: {
+    id: "acom",
+    label: "ACOM — Trade Fair / Business",
+    icon: Briefcase,
+    color: "bg-blue-500/10 text-blue-700 border-blue-200 dark:text-blue-400 dark:border-blue-800",
+    scenarios: [
+      { id: "acom-welcome-fair-visitor", label: "Welcome a visitor at an international trade fair", icon: Handshake },
+      { id: "acom-present-product-range", label: "Present your company's product range", icon: Presentation },
+      { id: "acom-qualify-distributor", label: "Qualify a potential distributor", icon: UserCheck },
+      { id: "acom-delivery-and-moq", label: "Discuss delivery times and minimum order quantities", icon: ClipboardList },
+      { id: "acom-post-fair-followup", label: "Arrange a post-fair follow-up call", icon: Phone },
+    ],
+  },
+  VPL: {
+    id: "vpl",
+    label: "VPL — Luxury Sales",
+    icon: ShoppingCart,
+    color: "bg-amber-500/10 text-amber-700 border-amber-200 dark:text-amber-400 dark:border-amber-800",
+    scenarios: [
+      { id: "vpl-welcome-boutique-client", label: "Welcome a high-end client in a boutique", icon: Users },
+      { id: "vpl-identify-preferences", label: "Identify a client's preferences discreetly", icon: HelpCircle },
+      { id: "vpl-storytelling-premium-product", label: "Present a premium product using storytelling", icon: Presentation },
+      { id: "vpl-handle-price-objection", label: "Handle a price objection politely", icon: DollarSign },
+      { id: "vpl-suggest-additional-service", label: "Suggest an additional luxury service or product", icon: Lightbulb },
+    ],
+  },
+  AD: {
+    id: "ad",
+    label: "Assistant de Direction",
+    icon: Phone,
+    color: "bg-emerald-500/10 text-emerald-700 border-emerald-200 dark:text-emerald-400 dark:border-emerald-800",
+    scenarios: [
+      { id: "ad-filter-call-for-manager", label: "Filter a call for the manager", icon: Phone },
+      { id: "ad-take-detailed-message", label: "Take a detailed professional phone message", icon: ClipboardList },
+      { id: "ad-reschedule-meeting", label: "Reschedule a meeting with a client", icon: Clock },
+      { id: "ad-confirm-agenda", label: "Confirm agenda details by phone", icon: ClipboardList },
+      { id: "ad-followup-message-after-call", label: "Send a clear follow-up message after a call", icon: MessageCircle },
+    ],
+  },
+  MEDICAL: {
+    id: "medical",
+    label: "Secrétaire Médicale",
+    icon: Building2,
+    color: "bg-rose-500/10 text-rose-700 border-rose-200 dark:text-rose-400 dark:border-rose-800",
+    scenarios: [
+      { id: "medical-book-appointment", label: "Book a patient appointment", icon: ClipboardList },
+      { id: "medical-register-new-patient", label: "Register a new patient", icon: UserCheck },
+      { id: "medical-reschedule-consultation", label: "Reschedule a consultation", icon: Clock },
+      { id: "medical-reassure-anxious-patient", label: "Reassure an anxious patient on the phone", icon: HelpCircle },
+      { id: "medical-take-message-for-doctor", label: "Take a message for the doctor", icon: Phone },
+    ],
+  },
+};
+
 const MODES: { id: Mode; label: string; description: string; icon: React.ElementType; color: string }[] = [
   {
     id: "practice",
@@ -200,6 +256,10 @@ const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/business-cha
 
 function getScenarioMeta(scenarioId: string) {
   for (const cat of CATEGORIES) {
+    const s = cat.scenarios.find(sc => sc.id === scenarioId);
+    if (s) return { ...s, category: cat };
+  }
+  for (const cat of Object.values(PROFESSIONAL_SCENARIOS)) {
     const s = cat.scenarios.find(sc => sc.id === scenarioId);
     if (s) return { ...s, category: cat };
   }
@@ -727,27 +787,45 @@ const BusinessConversation: React.FC = () => {
             </div>
 
             <div id="scenarios-list" className="space-y-6 scroll-mt-24">
-              {CATEGORIES.map((cat) => (
-                <div key={cat.id} className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <cat.icon className="w-5 h-5 text-muted-foreground" />
-                    <h2 className="font-heading font-semibold text-foreground">{cat.label}</h2>
-                  </div>
-                  <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                    {cat.scenarios.map((s) => (
-                      <button
-                        key={s.id}
-                        onClick={() => selectScenario(s.id)}
-                        className={`group flex items-center gap-3 p-3.5 rounded-xl border text-left transition-all hover:shadow-md hover:scale-[1.02] ${cat.color}`}
-                      >
-                        <s.icon className="w-4.5 h-4.5 shrink-0" />
-                        <span className="font-medium text-sm flex-1">{s.label}</span>
-                        <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </button>
+              {(() => {
+                const activeCategories: Category[] = professionalContext
+                  ? [PROFESSIONAL_SCENARIOS[professionalContext]]
+                  : CATEGORIES;
+                const headingPrefix = professionalContext
+                  ? `Choose your ${professionalContext} training situation`
+                  : null;
+                return (
+                  <>
+                    {headingPrefix && (
+                      <div className="rounded-lg border border-primary/30 bg-primary/5 px-3 py-2 text-sm text-primary">
+                        <span className="font-semibold">{headingPrefix}</span>
+                        <span className="opacity-75"> — pick one to start the chat.</span>
+                      </div>
+                    )}
+                    {activeCategories.map((cat) => (
+                      <div key={cat.id} className="space-y-3">
+                        <div className="flex items-center gap-2">
+                          <cat.icon className="w-5 h-5 text-muted-foreground" />
+                          <h2 className="font-heading font-semibold text-foreground">{cat.label}</h2>
+                        </div>
+                        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                          {cat.scenarios.map((s) => (
+                            <button
+                              key={s.id}
+                              onClick={() => selectScenario(s.id)}
+                              className={`group flex items-center gap-3 p-3.5 rounded-xl border text-left transition-all hover:shadow-md hover:scale-[1.02] ${cat.color}`}
+                            >
+                              <s.icon className="w-4.5 h-4.5 shrink-0" />
+                              <span className="font-medium text-sm flex-1">{s.label}</span>
+                              <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </button>
+                          ))}
+                        </div>
+                      </div>
                     ))}
-                  </div>
-                </div>
-              ))}
+                  </>
+                );
+              })()}
             </div>
           </div>
         </div>
