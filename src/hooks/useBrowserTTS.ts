@@ -86,8 +86,16 @@ export function useBrowserTTS(lang: string = "en") {
   const [state, setState] = useState<TTSState>("idle");
   const [supported, setSupported] = useState(false);
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
-  const [selectedVoiceURI, setSelectedVoiceURI] = useState<string | null>(() => readStoredVoiceURI());
-  const [rate, setRateState] = useState<number>(() => readStoredRate());
+  const [selectedVoiceURI, setSelectedVoiceURI] = useState<string | null>(null);
+  const [rate, setRateState] = useState<number>(0.95);
+
+  // Hydrate from localStorage after mount (SSR-safe)
+  useEffect(() => {
+    const v = readStoredVoiceURI();
+    if (v) setSelectedVoiceURI(v);
+    const r = readStoredRate();
+    if (r !== 0.95) setRateState(r);
+  }, []);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
   const mountedRef = useRef(true);
 
