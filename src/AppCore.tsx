@@ -13,7 +13,7 @@ import OfflineBanner from "./components/OfflineBanner";
 import A11yProvider from "./components/A11yProvider";
 import CookieConsent from "./components/CookieConsent";
 import { LanguageProvider } from "./contexts/LanguageContext";
-import LanguageOnboardingModal from "./components/LanguageOnboardingModal";
+// LanguageOnboardingModal removed — language is selectable via header dropdown only
 
 import Layout from "./components/Layout";
 import PrefetchRoutes from "./components/PrefetchRoutes";
@@ -200,7 +200,7 @@ export const AppContent = () => {
     <>
       <ScrollToTop />
       <PrefetchRoutes />
-      <LanguageOnboardingModal />
+      
       <Layout>
         <Suspense fallback={<PageLoader />}>
           <AppRoutes />
