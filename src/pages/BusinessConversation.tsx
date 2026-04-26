@@ -32,6 +32,7 @@ import { toast } from "sonner";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 import { useChatAutoScroll } from "@/hooks/useChatAutoScroll";
 import JumpToLatestButton from "@/components/chat/JumpToLatestButton";
+import VoiceSettings from "@/components/ai-trainer/VoiceSettings";
 import { PROFESSIONAL_CONTEXTS, getProfessionalContext, type ProfessionalContextId } from "@/lib/ai/professionalContexts";
 
 type Msg = { role: "user" | "assistant"; content: string };
@@ -933,7 +934,8 @@ const BusinessConversation: React.FC = () => {
               </Badge>
             )}
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
+            {ttsSupported && <VoiceSettings lang="en" className="h-8 px-2" />}
             {canEndConversation && (
               <Button
                 size="sm"
