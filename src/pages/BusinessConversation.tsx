@@ -766,18 +766,6 @@ const BusinessConversation: React.FC = () => {
                         <div className="text-sm opacity-90">{ctx.objective}</div>
                       </div>
                     </div>
-                    <Button
-                      type="button"
-                      size="lg"
-                      className="w-full sm:w-auto min-h-[48px]"
-                      onClick={() => {
-                        const el = document.getElementById("scenarios-list");
-                        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-                      }}
-                    >
-                      Start this professional training
-                      <ChevronRight className="w-4 h-4 ml-1" />
-                    </Button>
                     <p className="text-xs opacity-75">
                       Pick a scenario below to begin — your professional context will shape the conversation.
                     </p>
