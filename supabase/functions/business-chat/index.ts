@@ -396,7 +396,7 @@ serve(async (req) => {
   }
 
   try {
-    const { messages, scenario, mode = "practice", action, feedbackLanguage = "en" } = await req.json();
+    const { messages, scenario, mode = "practice", action, feedbackLanguage = "en", professionalContext } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
@@ -470,10 +470,11 @@ serve(async (req) => {
     // ── Chat mode - streaming ──────────────────────────────────────────
     const scenarioPrompt = SCENARIOS[scenario] || SCENARIOS["meeting-client"];
     const modeInstructions = MODE_INSTRUCTIONS[mode] || MODE_INSTRUCTIONS["practice"];
+    const contextBlock = buildProfessionalContextBlock(professionalContext);
 
     const fullSystem = `${scenarioPrompt}
 
-${modeInstructions}`;
+${modeInstructions}${contextBlock}`;
 
     const response = await fetch(
       "https://ai.gateway.lovable.dev/v1/chat/completions",
