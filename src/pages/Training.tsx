@@ -219,7 +219,80 @@ const Training = () => {
             </div>
           </FadeInSection>
 
-          {/* Pour qui */}
+          {/* Formations professionnelles spécialisées (AI-powered) */}
+          <FadeInSection>
+            <div id="formations-professionnelles" className="bg-white rounded-lg shadow-lg p-6 sm:p-8 mb-12 scroll-mt-24">
+              <div className="flex items-center mb-4">
+                <span className="text-2xl mr-3" aria-hidden="true">🎯</span>
+                <h2 className="text-2xl font-bold text-primary">Formations professionnelles spécialisées</h2>
+              </div>
+              <p className="text-muted-foreground mb-6">
+                Entraînez-vous à votre métier avec un partenaire IA qui adapte le vocabulaire, le ton et les scénarios à votre secteur.
+              </p>
+
+              <ul className="grid sm:grid-cols-2 gap-3">
+                <li>
+                  <Link
+                    to="/conversation-trainer?ctx=ACOM"
+                    className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
+                  >
+                    <span className="text-xl shrink-0" aria-hidden="true">💼</span>
+                    <div>
+                      <div className="font-semibold text-primary">ACOM — Salons & commerce international</div>
+                      <div className="text-sm text-muted-foreground">Accueil visiteurs, prospection B2B, négociation.</div>
+                    </div>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/conversation-trainer?ctx=VPL"
+                    className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
+                  >
+                    <span className="text-xl shrink-0" aria-hidden="true">💎</span>
+                    <div>
+                      <div className="font-semibold text-primary">VPL — Vente luxe</div>
+                      <div className="text-sm text-muted-foreground">Conseil clientèle haut de gamme en boutique.</div>
+                    </div>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/conversation-trainer?ctx=AD"
+                    className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
+                  >
+                    <span className="text-xl shrink-0" aria-hidden="true">📞</span>
+                    <div>
+                      <div className="font-semibold text-primary">Assistant de Direction</div>
+                      <div className="text-sm text-muted-foreground">Téléphone professionnel, prise de message, agenda.</div>
+                    </div>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/conversation-trainer?ctx=MEDICAL"
+                    className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
+                  >
+                    <span className="text-xl shrink-0" aria-hidden="true">🩺</span>
+                    <div>
+                      <div className="font-semibold text-primary">Secrétaire Médicale</div>
+                      <div className="text-sm text-muted-foreground">Accueil patient, prise de rendez-vous, réassurance.</div>
+                    </div>
+                  </Link>
+                </li>
+              </ul>
+
+              <div className="mt-5 pt-5 border-t border-border">
+                <Link
+                  to="/conversation-trainer"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
+                >
+                  → IA d'entraînement professionnel (tous contextes)
+                </Link>
+              </div>
+            </div>
+          </FadeInSection>
+
+
           <FadeInSection>
             <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
               <h2 className="text-2xl font-bold text-primary mb-4">Pour qui ?</h2>

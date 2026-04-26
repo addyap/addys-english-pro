@@ -234,13 +234,23 @@ function hasExamClosingSentence(msgs: Msg[]): boolean {
   return false;
 }
 
+const VALID_CTX_IDS: ReadonlyArray<ProfessionalContextId> = ["ACOM", "VPL", "AD", "MEDICAL"];
+
+const readCtxFromUrl = (): ProfessionalContextId | null => {
+  if (typeof window === "undefined") return null;
+  const raw = new URLSearchParams(window.location.search).get("ctx")?.toUpperCase();
+  return raw && (VALID_CTX_IDS as ReadonlyArray<string>).includes(raw)
+    ? (raw as ProfessionalContextId)
+    : null;
+};
+
 const BusinessConversation: React.FC = () => {
   const { t: tr } = useTranslation();
   const { remaining, limitReached, recordSession, DAILY_LIMIT } = useAIDailyLimit("conversation");
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const [scenario, setScenario] = useState<string | null>(null);
   const [mode, setMode] = useState<Mode>("practice");
-  const [professionalContext, setProfessionalContext] = useState<ProfessionalContextId | null>(null);
+  const [professionalContext, setProfessionalContext] = useState<ProfessionalContextId | null>(readCtxFromUrl);
   const [step, setStep] = useState<"scenario" | "mode" | "chat">("scenario");
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
