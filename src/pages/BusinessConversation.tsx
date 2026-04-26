@@ -259,6 +259,10 @@ function getScenarioMeta(scenarioId: string) {
     const s = cat.scenarios.find(sc => sc.id === scenarioId);
     if (s) return { ...s, category: cat };
   }
+  for (const cat of Object.values(PROFESSIONAL_SCENARIOS)) {
+    const s = cat.scenarios.find(sc => sc.id === scenarioId);
+    if (s) return { ...s, category: cat };
+  }
   return null;
 }
 
