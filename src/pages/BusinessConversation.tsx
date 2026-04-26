@@ -383,6 +383,7 @@ const BusinessConversation: React.FC = () => {
   const selectScenario = (scenarioId: string) => {
     setScenario(scenarioId);
     setStep("mode");
+    requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "instant" }));
   };
 
   const selectMode = (m: Mode) => {
