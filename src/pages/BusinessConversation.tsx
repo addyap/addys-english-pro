@@ -32,6 +32,7 @@ import { toast } from "sonner";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 import { useChatAutoScroll } from "@/hooks/useChatAutoScroll";
 import JumpToLatestButton from "@/components/chat/JumpToLatestButton";
+import { PROFESSIONAL_CONTEXTS, getProfessionalContext, type ProfessionalContextId } from "@/lib/ai/professionalContexts";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -239,6 +240,7 @@ const BusinessConversation: React.FC = () => {
   const [feedbackLang, setFeedbackLang] = useFeedbackLanguage();
   const [scenario, setScenario] = useState<string | null>(null);
   const [mode, setMode] = useState<Mode>("practice");
+  const [professionalContext, setProfessionalContext] = useState<ProfessionalContextId | null>(null);
   const [step, setStep] = useState<"scenario" | "mode" | "chat">("scenario");
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
@@ -346,7 +348,7 @@ const BusinessConversation: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: initMessages, scenario: scenarioId, mode: selectedMode, feedbackLanguage: feedbackLang }),
+        body: JSON.stringify({ messages: initMessages, scenario: scenarioId, mode: selectedMode, feedbackLanguage: feedbackLang, professionalContext }),
       });
 
       if (!resp.ok || !resp.body) {
@@ -395,7 +397,7 @@ const BusinessConversation: React.FC = () => {
       setIsLoading(false);
       inputRef.current?.focus();
     }
-  }, []);
+  }, [professionalContext, feedbackLang, tr]);
 
   const sendMessage = useCallback(async () => {
     if (!input.trim() || isLoading || !scenario) return;
@@ -421,7 +423,7 @@ const BusinessConversation: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: updatedMessages, scenario, mode, feedbackLanguage: feedbackLang }),
+        body: JSON.stringify({ messages: updatedMessages, scenario, mode, feedbackLanguage: feedbackLang, professionalContext }),
       });
 
       if (!resp.ok || !resp.body) {
@@ -470,7 +472,7 @@ const BusinessConversation: React.FC = () => {
         inputRef.current?.focus();
       }
     }
-  }, [input, isLoading, scenario, messages, mode, examComplete]);
+  }, [input, isLoading, scenario, messages, mode, examComplete, professionalContext, feedbackLang, stopTTS, tr]);
 
   const requestFeedback = useCallback(async (msgsOverride?: Msg[]) => {
     const msgsToUse = msgsOverride || messages;
@@ -617,6 +619,45 @@ const BusinessConversation: React.FC = () => {
               </p>
             </div>
 
+            {/* Professional training context (optional) */}
+            <div className="space-y-3">
+              <div className="flex items-baseline justify-between gap-2">
+                <h2 className="font-heading font-semibold text-foreground text-sm uppercase tracking-wide text-muted-foreground">
+                  Professional context (optional)
+                </h2>
+                {professionalContext && (
+                  <button
+                    type="button"
+                    onClick={() => setProfessionalContext(null)}
+                    className="text-xs text-muted-foreground hover:text-foreground underline"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
+              <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+                {PROFESSIONAL_CONTEXTS.map((ctx) => {
+                  const Icon = ctx.icon;
+                  const active = professionalContext === ctx.id;
+                  return (
+                    <button
+                      key={ctx.id}
+                      type="button"
+                      onClick={() => setProfessionalContext(active ? null : ctx.id)}
+                      aria-pressed={active}
+                      className={`group flex items-start gap-2 p-3 rounded-xl border text-left transition-all hover:shadow-sm ${ctx.color} ${active ? "ring-2 ring-primary ring-offset-1 ring-offset-background" : "opacity-90 hover:opacity-100"}`}
+                    >
+                      <Icon className="w-4 h-4 shrink-0 mt-0.5" />
+                      <div className="space-y-0.5">
+                        <div className="font-semibold text-xs">{ctx.shortLabel}</div>
+                        <div className="text-[11px] leading-snug opacity-80">{ctx.description}</div>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
             <div className="space-y-6">
               {CATEGORIES.map((cat) => (
                 <div key={cat.id} className="space-y-3">
@@ -699,11 +740,23 @@ const BusinessConversation: React.FC = () => {
   // ─── STEP 3: Chat ───
   const scenarioMeta = getScenarioMeta(scenario!);
   const currentMode = MODES.find(m => m.id === mode)!;
+  const profCtx = getProfessionalContext(professionalContext);
 
   return (
     <>
       {seoHead}
       <div className="max-w-3xl mx-auto px-4 py-6 space-y-4">
+        {/* Session objective banner */}
+        {profCtx && (
+          <div className={`flex items-start gap-2 rounded-lg border px-3 py-2 text-sm ${profCtx.color}`}>
+            <span aria-hidden="true" className="text-base leading-tight">🎯</span>
+            <div className="flex-1 min-w-0">
+              <span className="font-semibold">Objective ({profCtx.shortLabel}):</span>{" "}
+              <span className="opacity-90">{profCtx.objective}</span>
+            </div>
+          </div>
+        )}
+
         {/* Header */}
         <div className="flex items-center justify-between flex-wrap gap-2">
           <div className="flex items-center gap-2 flex-wrap">
