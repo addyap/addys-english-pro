@@ -18,6 +18,7 @@ import RecentPractice from "@/components/ai-trainer/RecentPractice";
 import UsageCounterBadge from "@/components/ai-trainer/UsageCounterBadge";
 import ResultUtilityBar from "@/components/ai-trainer/ResultUtilityBar";
 import { incrementUsageCounter, saveSession } from "@/lib/session-memory";
+import ContinueLearning from "@/components/seo/ContinueLearning";
 import { trackEvent } from "@/lib/analytics";
 
 const EXAMPLE_SENTENCES = [
@@ -313,6 +314,15 @@ const AIGrammarExplainer = () => {
             </div>
           )}
         </div>
+
+        <ContinueLearning
+          links={[
+            { to: "/writing-coach", label: "AI Writing Coach" },
+            { to: "/exercices", label: "Exercices d'anglais gratuits" },
+            { to: "/blog", label: "Blog grammaire & vocabulaire" },
+          ]}
+          cta={{ to: "/offres-de-formation", label: "Découvrir les formations" }}
+        />
 
         {/* Mobile floating analyse button */}
         {!result && (

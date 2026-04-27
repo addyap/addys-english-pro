@@ -18,6 +18,7 @@ import { invokeAI } from "@/lib/ai/streamChat";
 import { t, type UILang } from "@/lib/ai/i18n";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import { Send, RotateCcw, Loader2, FileText, Wand2, Eye, ChevronDown, ChevronUp, Copy, Check, RefreshCw } from "lucide-react";
+import ContinueLearning from "@/components/seo/ContinueLearning";
 import { toast } from "sonner";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -350,6 +351,15 @@ const AIWritingCoach = () => {
             </div>
           )}
         </div>
+
+        <ContinueLearning
+          links={[
+            { to: "/email-reply-trainer", label: "AI Email Reply Trainer" },
+            { to: "/grammar-explainer", label: "AI Grammar Explainer" },
+            { to: "/exercices", label: "Exercices d'écriture" },
+          ]}
+          cta={{ to: "/offres-de-formation", label: "Formations anglais professionnel" }}
+        />
 
         {/* Mobile floating submit (hidden once feedback is shown) */}
         {!feedback && (
