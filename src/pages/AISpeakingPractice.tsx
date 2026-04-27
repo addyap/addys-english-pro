@@ -173,8 +173,8 @@ const AISpeakingPractice = () => {
     return (
       <>
         <SEOHead
-          title="AI Speaking Practice — Entraînement oral anglais | Addy's English"
-          description="Pratiquez l'anglais oral avec un partenaire IA. Reconnaissance vocale, synthèse vocale et feedback détaillé."
+          title="AI Speaking Practice — Entraînement oral anglais"
+          description="Pratiquez l'anglais oral avec un partenaire IA d'Antony Addy : reconnaissance vocale, synthèse vocale et feedback détaillé pour professionnels."
           canonical="/speaking-practice"
         />
         <div className="min-h-screen bg-background py-10">

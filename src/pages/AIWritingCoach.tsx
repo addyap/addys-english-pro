@@ -176,8 +176,8 @@ const AIWritingCoach = () => {
   return (
     <>
       <SEOHead
-        title="AI Writing Coach — Correction anglais écrit | Addy's English"
-        description="Soumettez un texte en anglais et recevez un feedback IA détaillé : grammaire, vocabulaire, style et version améliorée."
+        title="AI Writing Coach — Correction anglais écrit"
+        description="Soumettez un texte en anglais et recevez un feedback IA d'Antony Addy : grammaire, vocabulaire, style et version améliorée. Outil gratuit."
         canonical="/writing-coach"
       />
       <div className="min-h-screen bg-background py-10 pb-32 md:pb-10">

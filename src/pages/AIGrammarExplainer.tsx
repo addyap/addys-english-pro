@@ -121,8 +121,8 @@ const AIGrammarExplainer = () => {
   return (
     <>
       <SEOHead
-        title="AI Grammar Explainer — Analyse grammaticale anglais | Addy's English"
-        description="Collez une phrase en anglais et obtenez une analyse grammaticale complète par IA : nature des mots, règles utilisées et conseils."
+        title="AI Grammar Explainer — Analyse grammaticale anglais"
+        description="Analysez vos phrases anglaises avec l'IA d'Antony Addy : nature des mots, règles, conseils. Outil gratuit pour professionnels en France."
         canonical="/grammar-explainer"
       />
       <div className="min-h-screen bg-background py-10 pb-32 md:pb-10">
