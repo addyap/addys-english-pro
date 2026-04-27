@@ -18,6 +18,7 @@ import { invokeAI } from "@/lib/ai/streamChat";
 import { t, type UILang } from "@/lib/ai/i18n";
 import type { Correction, VocabUpgrade as VocabUpgradeType } from "@/types/ai-trainers";
 import { Send, RotateCcw, Loader2, FileText, Wand2, Eye, ChevronDown, ChevronUp, Copy, Check, RefreshCw } from "lucide-react";
+import ContinueLearning from "@/components/seo/ContinueLearning";
 import { toast } from "sonner";
 import { useFeedbackLanguage } from "@/hooks/useFeedbackLanguage";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -176,8 +177,8 @@ const AIWritingCoach = () => {
   return (
     <>
       <SEOHead
-        title="AI Writing Coach — Correction anglais écrit | Addy's English"
-        description="Soumettez un texte en anglais et recevez un feedback IA détaillé : grammaire, vocabulaire, style et version améliorée."
+        title="AI Writing Coach — Correction anglais écrit"
+        description="Soumettez un texte en anglais et recevez un feedback IA d'Antony Addy : grammaire, vocabulaire, style et version améliorée. Outil gratuit."
         canonical="/writing-coach"
       />
       <div className="min-h-screen bg-background py-10 pb-32 md:pb-10">
@@ -350,6 +351,15 @@ const AIWritingCoach = () => {
             </div>
           )}
         </div>
+
+        <ContinueLearning
+          links={[
+            { to: "/email-reply-trainer", label: "AI Email Reply Trainer" },
+            { to: "/grammar-explainer", label: "AI Grammar Explainer" },
+            { to: "/exercices", label: "Exercices d'écriture" },
+          ]}
+          cta={{ to: "/offres-de-formation", label: "Formations anglais professionnel" }}
+        />
 
         {/* Mobile floating submit (hidden once feedback is shown) */}
         {!feedback && (

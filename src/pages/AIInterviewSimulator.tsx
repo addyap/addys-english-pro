@@ -149,8 +149,8 @@ const AIInterviewSimulator = () => {
     return (
       <>
         <SEOHead
-          title="AI Interview Simulator — Entraînement entretien anglais | Addy's English"
-          description="Simulez un entretien d'embauche en anglais avec un recruteur IA. 8 industries, 3 types d'entretien, feedback détaillé."
+          title="AI Interview Simulator — Entraînement entretien anglais"
+          description="Simulez un entretien d'embauche en anglais avec l'IA d'Antony Addy : 8 industries, 3 types d'entretien, feedback détaillé pour réussir en France."
           canonical="/interview-simulator"
         />
         <div className="min-h-screen bg-background py-10">

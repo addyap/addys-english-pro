@@ -18,6 +18,7 @@ import RecentPractice from "@/components/ai-trainer/RecentPractice";
 import UsageCounterBadge from "@/components/ai-trainer/UsageCounterBadge";
 import ResultUtilityBar from "@/components/ai-trainer/ResultUtilityBar";
 import { incrementUsageCounter, saveSession } from "@/lib/session-memory";
+import ContinueLearning from "@/components/seo/ContinueLearning";
 import { trackEvent } from "@/lib/analytics";
 
 const EXAMPLE_SENTENCES = [
@@ -121,8 +122,8 @@ const AIGrammarExplainer = () => {
   return (
     <>
       <SEOHead
-        title="AI Grammar Explainer — Analyse grammaticale anglais | Addy's English"
-        description="Collez une phrase en anglais et obtenez une analyse grammaticale complète par IA : nature des mots, règles utilisées et conseils."
+        title="AI Grammar Explainer — Analyse grammaticale anglais"
+        description="Analysez vos phrases anglaises avec l'IA d'Antony Addy : nature des mots, règles, conseils. Outil gratuit pour professionnels en France."
         canonical="/grammar-explainer"
       />
       <div className="min-h-screen bg-background py-10 pb-32 md:pb-10">
@@ -313,6 +314,15 @@ const AIGrammarExplainer = () => {
             </div>
           )}
         </div>
+
+        <ContinueLearning
+          links={[
+            { to: "/writing-coach", label: "AI Writing Coach" },
+            { to: "/exercices", label: "Exercices d'anglais gratuits" },
+            { to: "/blog", label: "Blog grammaire & vocabulaire" },
+          ]}
+          cta={{ to: "/offres-de-formation", label: "Découvrir les formations" }}
+        />
 
         {/* Mobile floating analyse button */}
         {!result && (
