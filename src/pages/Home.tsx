@@ -326,33 +326,35 @@ const Home = () => {
           </div>
         </section>
 
-        {/* AI English Training — supporting feature card */}
+        {/* AI English Training — positioned as Antony's own training system, not a standalone tool */}
         <section className="py-12 bg-background" aria-labelledby="ai-training-heading">
           <div className="max-w-4xl mx-auto px-4">
             <article className="relative overflow-hidden bg-card border border-border rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-lg transition-shadow">
-              <div className="flex flex-col md:flex-row md:items-center gap-6">
+              <div className="flex flex-col md:flex-row md:items-start gap-6">
                 <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 text-primary shrink-0">
                   <Sparkles className="h-8 w-8" aria-hidden="true" />
                 </div>
                 <div className="flex-1">
-                  <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-accent/15 text-accent text-xs font-semibold mb-2">
-                    Nouveauté · 100% gratuit
+                  <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-2">
+                    Ma méthode · Entraînement IA
                   </div>
                   <h2 id="ai-training-heading" className="text-2xl md:text-3xl font-bold font-heading text-primary mb-2">
-                    Entraînement à l'anglais avec l'IA
+                    Mon système d'entraînement IA pour l'anglais professionnel
                   </h2>
-                  <p className="text-muted-foreground font-body mb-2">
-                    Pratiquez l'expression orale, l'écrit, les entretiens et l'anglais professionnel avec un feedback IA instantané.
+                  <p className="text-muted-foreground font-body mb-4">
+                    Entraînez-vous avec mon système IA, conçu autour de situations professionnelles réelles : réunions, négociations, entretiens, présentations.
                   </p>
-                  <p className="text-sm font-semibold text-accent font-body mb-4">
-                    ✨ Testez gratuitement votre niveau — sans inscription
-                  </p>
+                  <ul className="text-sm text-muted-foreground font-body space-y-2 mb-5 list-disc pl-5">
+                    <li>Scénarios professionnels réalistes (ACOM, VPL, AD)</li>
+                    <li>Feedback et corrections immédiats, adaptés à mon approche pédagogique</li>
+                    <li>Adapté à votre niveau, du A1 au C2</li>
+                  </ul>
                   <Link
                     to="/speaking-practice"
                     onClick={() => trackEvent('home_ai_card_cta_click', { target: '/speaking-practice' })}
                     className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
                   >
-                    Essayer les outils IA
+                    Démarrer avec mon système IA
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </div>
