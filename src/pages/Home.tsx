@@ -341,8 +341,14 @@ const Home = () => {
                   <h2 id="ai-training-heading" className="text-2xl md:text-3xl font-bold font-heading text-primary mb-2">
                     Mon système d'entraînement IA pour l'anglais professionnel
                   </h2>
+                  <p className="text-xs sm:text-sm text-muted-foreground/90 font-body mb-3 italic">
+                    Formateur Professionnel d'Adultes certifié depuis 2017 · Coaching structuré · Approche adaptée aux apprenants francophones
+                  </p>
                   <p className="text-muted-foreground font-body mb-4">
                     Entraînez-vous avec mon système IA, conçu autour de situations professionnelles réelles : réunions, négociations, entretiens, présentations.
+                  </p>
+                  <p className="text-sm text-foreground/80 font-body mb-4">
+                    Mon système d'entraînement IA combine pédagogie, correction ciblée et mises en situation professionnelles pour développer une communication naturelle et efficace.
                   </p>
                   <ul className="text-sm text-muted-foreground font-body space-y-2 mb-5 list-disc pl-5">
                     <li>Scénarios professionnels réalistes (ACOM, VPL, AD)</li>
@@ -352,11 +358,38 @@ const Home = () => {
                   <Link
                     to="/speaking-practice"
                     onClick={() => trackEvent('home_ai_card_cta_click', { target: '/speaking-practice' })}
-                    className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                    className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 min-h-[44px] rounded-lg font-semibold hover:bg-primary/90 transition-colors"
                   >
                     Démarrer avec mon système IA
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
+                  <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5 text-xs sm:text-sm text-muted-foreground font-body" aria-label="Garanties">
+                    <li className="inline-flex items-center gap-1.5"><span className="text-primary" aria-hidden="true">✓</span>Exercices pratiques</li>
+                    <li className="inline-flex items-center gap-1.5"><span className="text-primary" aria-hidden="true">✓</span>Feedback personnalisé</li>
+                    <li className="inline-flex items-center gap-1.5"><span className="text-primary" aria-hidden="true">✓</span>Progression adaptée à votre niveau</li>
+                  </ul>
+                  <div className="mt-6 pt-5 border-t border-border">
+                    <p className="text-sm text-muted-foreground font-body mb-3">
+                      Vous souhaitez un accompagnement plus structuré ? Découvrez mes formations individuelles et professionnelles.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-2.5">
+                      <Link
+                        to="/offres-de-formation"
+                        onClick={() => trackEvent('home_ai_secondary_cta_click', { target: '/offres-de-formation' })}
+                        className="inline-flex items-center justify-center gap-2 border border-primary text-primary bg-transparent px-5 py-3 min-h-[44px] rounded-lg font-semibold hover:bg-primary/10 transition-colors text-sm"
+                      >
+                        Découvrir mes formations
+                        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                      </Link>
+                      <Link
+                        to="/contact"
+                        onClick={() => trackEvent('home_ai_secondary_cta_click', { target: '/contact' })}
+                        className="inline-flex items-center justify-center gap-2 text-primary px-3 py-3 min-h-[44px] rounded-lg font-semibold hover:underline text-sm"
+                      >
+                        Me contacter
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             </article>
