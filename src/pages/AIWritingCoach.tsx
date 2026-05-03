@@ -354,7 +354,7 @@ const AIWritingCoach = () => {
 
         <ContinueLearning
           links={[
-            { to: "/email-reply-trainer", label: "AI Email Reply Trainer" },
+            { to: "/email-trainer", label: "AI Email Reply Trainer" },
             { to: "/grammar-explainer", label: "AI Grammar Explainer" },
             { to: "/exercices", label: "Exercices d'écriture" },
           ]}
