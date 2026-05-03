@@ -142,6 +142,31 @@ const AIGrammarExplainer = () => {
             </p>
           </div>
 
+          <section aria-labelledby="grammar-intro" className="max-w-2xl mx-auto text-sm text-muted-foreground space-y-3">
+            <h2 id="grammar-intro" className="sr-only">À propos de l'AI Grammar Explainer</h2>
+            <p>
+              L'AI Grammar Explainer décompose une phrase anglaise mot par mot : il identifie la nature grammaticale (verbe, déterminant, préposition…), explique la règle qui s'applique, et propose un exemple plus naturel quand votre tournure peut être améliorée. Conçu par <Link to="/qui-je-suis" className="text-primary hover:underline">Antony Addy, formateur certifié depuis 2017</Link>, l'outil cible précisément les difficultés rencontrées par les professionnels francophones : temps verbaux, articles, prépositions, ordre des mots, accord sujet-verbe.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4 pt-2">
+              <div>
+                <p className="font-semibold text-foreground mb-1">Pour qui ?</p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Cadres et managers en contexte international</li>
+                  <li>Étudiants préparant un examen (TOEIC, BULATS, CLOE)</li>
+                  <li>Professionnels qui rédigent en anglais au quotidien</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-semibold text-foreground mb-1">Ce que vous pratiquez</p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Analyse mot par mot et nature grammaticale</li>
+                  <li>Règles expliquées en français</li>
+                  <li>Reformulation idiomatique professionnelle</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
           {!result && (
             <>
               <UsageCounterBadge refreshKey={usageTick} />
