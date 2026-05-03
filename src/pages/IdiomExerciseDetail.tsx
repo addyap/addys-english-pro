@@ -74,7 +74,7 @@ const IdiomExerciseDetail = () => {
           {/* Header */}
           <div className="mb-8">
             <Link 
-              to="/exercices?tab=idioms" 
+              to="/exercices" 
               className="inline-flex items-center text-muted-foreground hover:text-primary mb-4 transition-colors"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
