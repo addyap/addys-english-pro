@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import ContinueLearning from "@/components/seo/ContinueLearning";
 import { ArrowLeft, Send, Sparkles, RotateCcw, Eye, Wand2, CheckCircle, Presentation, Briefcase, TrendingUp, User, Crown, CalendarDays } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
