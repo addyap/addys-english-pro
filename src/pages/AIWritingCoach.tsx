@@ -197,6 +197,31 @@ const AIWritingCoach = () => {
             </p>
           </div>
 
+          <section aria-labelledby="writing-intro" className="max-w-2xl mx-auto text-sm text-muted-foreground space-y-3">
+            <h2 id="writing-intro" className="sr-only">À propos de l'AI Writing Coach</h2>
+            <p>
+              L'AI Writing Coach analyse votre texte anglais — email, rapport, post LinkedIn, message client — et renvoie un retour structuré : score sur la grammaire, le vocabulaire, le ton et la clarté, corrections ciblées et version réécrite plus naturelle. L'outil est calibré sur la pédagogie d'<Link to="/qui-je-suis" className="text-primary hover:underline">Antony Addy</Link>, formateur d'anglais professionnel, et privilégie les tournures attendues dans un contexte business international plutôt qu'un anglais scolaire.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4 pt-2">
+              <div>
+                <p className="font-semibold text-foreground mb-1">Pour qui ?</p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Cadres rédigeant des emails à un client international</li>
+                  <li>Commerciaux et chefs de projet en environnement anglophone</li>
+                  <li>Toute personne préparant un document écrit important</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-semibold text-foreground mb-1">Ce que vous pratiquez</p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Clarté, ton et concision professionnels</li>
+                  <li>Vocabulaire d'affaires précis et idiomatique</li>
+                  <li>Réécriture comparative pour progresser plus vite</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
           {!feedback ? (
             <>
               <UsageCounterBadge refreshKey={usageTick} />
