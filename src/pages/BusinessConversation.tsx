@@ -860,6 +860,15 @@ const BusinessConversation: React.FC = () => {
                 );
               })()}
             </div>
+
+            <ContinueLearning
+              links={[
+                { to: "/speaking-practice", label: "AI Speaking Practice" },
+                { to: "/email-trainer", label: "AI Email Reply Trainer" },
+                { to: "/negotiation-trainer", label: "AI Negotiation Trainer" },
+              ]}
+              cta={{ to: "/offres-de-formation", label: "Découvrir les formations" }}
+            />
           </div>
         </div>
       </>
