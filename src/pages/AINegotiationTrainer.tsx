@@ -482,6 +482,31 @@ const AINegotiationTrainer: React.FC = () => {
               </p>
             </div>
 
+            <section aria-labelledby="negotiation-intro" className="max-w-2xl mx-auto text-sm text-muted-foreground space-y-3">
+              <h2 id="negotiation-intro" className="sr-only">About the AI Negotiation Trainer</h2>
+              <p>
+                The AI Negotiation Trainer simulates real B2B negotiations in English: salary discussions, vendor pricing, contract terms, partnership deals. You choose a scenario and a difficulty mode, the AI plays a realistic counterpart with their own objectives, and a structured report scores your persuasion, clarity, strategy and professional tone — based on the framework <Link to="/qui-je-suis" className="text-primary hover:underline">Antony Addy</Link> uses in executive coaching.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4 pt-2 text-left">
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Who is it for?</p>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Sales, procurement and account managers</li>
+                    <li>Founders and consultants closing English-language deals</li>
+                    <li>Executives preparing a high-stakes conversation</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground mb-1">What you'll practise</p>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Diplomatic, assertive business English</li>
+                    <li>Anchoring, concessions and counter-offers</li>
+                    <li>Handling pushback under pressure</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
             <div className="space-y-6">
               {CATEGORIES.map((cat) => (
                 <div key={cat.id} className="space-y-3">
@@ -508,6 +533,15 @@ const AINegotiationTrainer: React.FC = () => {
                 </div>
               ))}
             </div>
+
+            <ContinueLearning
+              links={[
+                { to: "/conversation-trainer", label: "AI Business Conversation" },
+                { to: "/presentation-trainer", label: "AI Presentation Trainer" },
+                { to: "/writing-coach", label: "AI Writing Coach" },
+              ]}
+              cta={{ to: "/offres-de-formation", label: "Découvrir les formations" }}
+            />
           </div>
         </div>
       </>
