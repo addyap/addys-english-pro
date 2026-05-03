@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import ContinueLearning from "@/components/seo/ContinueLearning";
 import SEOHead from "@/components/SEOHead";
 import SupportActions from "@/components/ai-trainer/SupportActions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -494,6 +495,31 @@ const EmailReplyTrainer: React.FC = () => {
               </p>
             </div>
 
+            <section aria-labelledby="email-intro" className="max-w-2xl mx-auto text-sm text-muted-foreground space-y-3 text-left mb-8">
+              <h2 id="email-intro" className="sr-only">About the AI Email Reply Trainer</h2>
+              <p>
+                The AI Email Reply Trainer puts you in front of a realistic incoming business email — complaint, follow-up, scope change, escalation, internal request — and asks you to draft the reply. The AI then scores your message on grammar, professional tone, clarity, structure and politeness, and rewrites a stronger version when needed. Built around the writing standards <Link to="/qui-je-suis" className="text-primary hover:underline">Antony Addy</Link> uses with corporate clients.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4 pt-2">
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Who is it for?</p>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Anyone handling client or supplier emails in English</li>
+                    <li>Project managers and account managers</li>
+                    <li>Professionals who want their writing to sound native</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground mb-1">What you'll practise</p>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Replying with the right level of formality</li>
+                    <li>Saying difficult things diplomatically</li>
+                    <li>Concise, scannable email structure</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
             {/* Category filters */}
             <div className="flex flex-wrap justify-center gap-2 mb-8">
               <Button
@@ -550,6 +576,15 @@ const EmailReplyTrainer: React.FC = () => {
                 AI Conversation Trainer
               </Link>
             </div>
+
+            <ContinueLearning
+              links={[
+                { to: "/writing-coach", label: "AI Writing Coach" },
+                { to: "/grammar-explainer", label: "AI Grammar Explainer" },
+                { to: "/conversation-trainer", label: "AI Business Conversation" },
+              ]}
+              cta={{ to: "/offres-de-formation", label: "Découvrir les formations" }}
+            />
           </div>
         </div>
       </>

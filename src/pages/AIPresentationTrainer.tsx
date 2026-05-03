@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import ContinueLearning from "@/components/seo/ContinueLearning";
 import { ArrowLeft, Send, Sparkles, RotateCcw, Eye, Wand2, CheckCircle, Presentation, Briefcase, TrendingUp, User, Crown, CalendarDays } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -282,6 +283,31 @@ const AIPresentationTrainer: React.FC = () => {
               ))}
             </div>
 
+            <section aria-labelledby="presentation-intro" className="max-w-2xl mx-auto text-sm text-muted-foreground space-y-3 text-left">
+              <h2 id="presentation-intro" className="sr-only">About the AI Presentation Trainer</h2>
+              <p>
+                The AI Presentation Trainer helps you prepare a structured English-language presentation: project pitch, kickoff, sales demo, board update, conference talk. Choose a scenario, draft your opening or full segment, and receive coaching feedback on structure (hook, message, evidence, close), clarity, vocabulary and persuasion — calibrated on the methodology <Link to="/qui-je-suis" className="text-primary hover:underline">Antony Addy</Link> uses with executive clients.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4 pt-2">
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Who is it for?</p>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Managers presenting to international stakeholders</li>
+                    <li>Founders pitching investors or partners</li>
+                    <li>Speakers preparing a conference or webinar</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground mb-1">What you'll practise</p>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Strong openings and clear message hierarchy</li>
+                    <li>Persuasive, confident business English</li>
+                    <li>Concise wording suited to spoken delivery</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
             {/* Scenario Cards */}
             <div className="grid gap-3 sm:grid-cols-2">
               {filteredScenarios.map(s => (
@@ -302,6 +328,15 @@ const AIPresentationTrainer: React.FC = () => {
                 </Card>
               ))}
             </div>
+
+            <ContinueLearning
+              links={[
+                { to: "/conversation-trainer", label: "AI Business Conversation" },
+                { to: "/negotiation-trainer", label: "AI Negotiation Trainer" },
+                { to: "/writing-coach", label: "AI Writing Coach" },
+              ]}
+              cta={{ to: "/offres-de-formation", label: "Découvrir les formations" }}
+            />
           </div>
         </div>
       </>

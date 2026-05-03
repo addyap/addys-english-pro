@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
+import ContinueLearning from "@/components/seo/ContinueLearning";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -203,6 +205,40 @@ const AIInterviewSimulator = () => {
                 </button>
               ))}
             </div>
+
+            <section aria-labelledby="interview-intro" className="max-w-2xl mx-auto text-sm text-muted-foreground space-y-3 mt-10">
+              <h2 id="interview-intro" className="sr-only">À propos de l'AI Interview Simulator</h2>
+              <p>
+                L'AI Interview Simulator reproduit un entretien d'embauche en anglais : 8 secteurs (tech, finance, hôtellerie, santé, ingénierie…) et 3 formats (RH, technique, dirigeant). Vous recevez des questions adaptées au poste, vous répondez à l'écrit ou à l'oral, puis l'IA évalue clarté, structure de réponse (méthode STAR), vocabulaire métier et anglais professionnel — selon la grille utilisée par <Link to="/qui-je-suis" className="text-primary hover:underline">Antony Addy</Link> en coaching individuel.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4 pt-2 text-left">
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Pour qui ?</p>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Candidats à un poste à dimension internationale</li>
+                    <li>Cadres en mobilité interne dans une entreprise anglophone</li>
+                    <li>Étudiants en stage ou alternance à l'étranger</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Ce que vous pratiquez</p>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Réponses structurées (STAR, expériences, projets)</li>
+                    <li>Vocabulaire de votre secteur</li>
+                    <li>Gestion des questions difficiles ou inattendues</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <ContinueLearning
+              links={[
+                { to: "/speaking-practice", label: "AI Speaking Practice" },
+                { to: "/conversation-trainer", label: "AI Business Conversation" },
+                { to: "/writing-coach", label: "AI Writing Coach" },
+              ]}
+              cta={{ to: "/contact", label: "Coaching individuel sur mesure" }}
+            />
           </div>
         </div>
       </>

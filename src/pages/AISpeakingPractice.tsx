@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
+import ContinueLearning from "@/components/seo/ContinueLearning";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -218,6 +220,40 @@ const AISpeakingPractice = () => {
                 </button>
               ))}
             </div>
+
+            <section aria-labelledby="speaking-intro" className="max-w-2xl mx-auto text-sm text-muted-foreground space-y-3 mt-10">
+              <h2 id="speaking-intro" className="sr-only">À propos de l'AI Speaking Practice</h2>
+              <p>
+                L'AI Speaking Practice est un partenaire de conversation vocal calibré pour les situations professionnelles : meetings, présentations courtes, échanges client, négociations. Vous parlez via la reconnaissance vocale du navigateur, l'IA répond, et un rapport de fin de session note la fluidité, la prononciation, la grammaire et le vocabulaire — selon la grille pédagogique d'<Link to="/qui-je-suis" className="text-primary hover:underline">Antony Addy</Link>.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4 pt-2 text-left">
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Pour qui ?</p>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Professionnels manquant d'occasions de parler en anglais</li>
+                    <li>Personnes préparant une mission ou un poste à l'international</li>
+                    <li>Apprenants timides en groupe qui veulent s'entraîner seuls</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Ce que vous pratiquez</p>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Fluidité et débit naturel à l'oral</li>
+                    <li>Prononciation et choix lexical professionnel</li>
+                    <li>Réactivité dans des dialogues réalistes</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <ContinueLearning
+              links={[
+                { to: "/conversation-trainer", label: "AI Business Conversation" },
+                { to: "/interview-simulator", label: "AI Interview Simulator" },
+                { to: "/grammar-explainer", label: "AI Grammar Explainer" },
+              ]}
+              cta={{ to: "/offres-de-formation", label: "Découvrir les formations" }}
+            />
           </div>
         </div>
       </>

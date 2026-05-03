@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
+import ContinueLearning from "@/components/seo/ContinueLearning";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -708,6 +710,31 @@ const BusinessConversation: React.FC = () => {
               </p>
             </div>
 
+            <section aria-labelledby="convo-intro" className="max-w-2xl mx-auto text-sm text-muted-foreground space-y-3 text-left">
+              <h2 id="convo-intro" className="sr-only">About the AI Business Conversation Trainer</h2>
+              <p>
+                The AI Business Conversation Trainer puts you in real workplace dialogues in English: status meetings, client calls, performance reviews, onboarding, cross-team alignment. The AI plays a colleague, manager or client adapted to your professional context, and at the end of the session you get a coaching report on fluency, grammar, vocabulary and professional tone — using the evaluation grid <Link to="/qui-je-suis" className="text-primary hover:underline">Antony Addy</Link> applies in live coaching.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4 pt-2">
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Who is it for?</p>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Professionals working with English-speaking colleagues or clients</li>
+                    <li>Managers leading distributed or international teams</li>
+                    <li>Anyone preparing for a specific upcoming meeting</li>
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground mb-1">What you'll practise</p>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Conversational flow and turn-taking</li>
+                    <li>Polite, diplomatic phrasing in business contexts</li>
+                    <li>Active listening and clarifying questions</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
             {/* Professional training context (optional) */}
             <div className="space-y-3">
               <div className="flex items-baseline justify-between gap-2">
@@ -834,6 +861,15 @@ const BusinessConversation: React.FC = () => {
                 );
               })()}
             </div>
+
+            <ContinueLearning
+              links={[
+                { to: "/speaking-practice", label: "AI Speaking Practice" },
+                { to: "/email-trainer", label: "AI Email Reply Trainer" },
+                { to: "/negotiation-trainer", label: "AI Negotiation Trainer" },
+              ]}
+              cta={{ to: "/offres-de-formation", label: "Découvrir les formations" }}
+            />
           </div>
         </div>
       </>
