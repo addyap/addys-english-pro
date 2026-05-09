@@ -201,12 +201,23 @@ export const AppContent = () => {
     <>
       <ScrollToTop />
       <PrefetchRoutes />
-      
-      <Layout>
-        <Suspense fallback={<PageLoader />}>
-          <AppRoutes />
-        </Suspense>
-      </Layout>
+
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          {/* Standalone routes — rendered without the global Layout (no header/footer/nav) */}
+          <Route path="/questionnaire" element={<Questionnaire />} />
+
+          {/* All other routes use the standard Layout */}
+          <Route
+            path="*"
+            element={
+              <Layout>
+                <AppRoutes />
+              </Layout>
+            }
+          />
+        </Routes>
+      </Suspense>
     </>
   );
 };
