@@ -242,6 +242,90 @@ export type Database = {
         }
         Relationships: []
       }
+      reponses_questionnaire: {
+        Row: {
+          competences_faibles: Json | null
+          contexte_principal: string
+          created_at: string
+          creneaux_preferes: Json | null
+          date_demarrage: string | null
+          derniere_utilisation: string | null
+          echeance: string | null
+          email: string
+          experience_formation: string | null
+          format_seance: string
+          heures_par_semaine: number | null
+          id: string
+          langue_completion: string
+          langue_maternelle: string | null
+          niveau_cefr: string
+          nom: string
+          notes_finales: string | null
+          notes_objectifs: string | null
+          objectifs: Json | null
+          pays_residence: string | null
+          prenom: string
+          source: string | null
+          style_enseignement: Json | null
+          telephone: string | null
+          type_seance: string | null
+        }
+        Insert: {
+          competences_faibles?: Json | null
+          contexte_principal: string
+          created_at?: string
+          creneaux_preferes?: Json | null
+          date_demarrage?: string | null
+          derniere_utilisation?: string | null
+          echeance?: string | null
+          email: string
+          experience_formation?: string | null
+          format_seance: string
+          heures_par_semaine?: number | null
+          id?: string
+          langue_completion?: string
+          langue_maternelle?: string | null
+          niveau_cefr: string
+          nom: string
+          notes_finales?: string | null
+          notes_objectifs?: string | null
+          objectifs?: Json | null
+          pays_residence?: string | null
+          prenom: string
+          source?: string | null
+          style_enseignement?: Json | null
+          telephone?: string | null
+          type_seance?: string | null
+        }
+        Update: {
+          competences_faibles?: Json | null
+          contexte_principal?: string
+          created_at?: string
+          creneaux_preferes?: Json | null
+          date_demarrage?: string | null
+          derniere_utilisation?: string | null
+          echeance?: string | null
+          email?: string
+          experience_formation?: string | null
+          format_seance?: string
+          heures_par_semaine?: number | null
+          id?: string
+          langue_completion?: string
+          langue_maternelle?: string | null
+          niveau_cefr?: string
+          nom?: string
+          notes_finales?: string | null
+          notes_objectifs?: string | null
+          objectifs?: Json | null
+          pays_residence?: string | null
+          prenom?: string
+          source?: string | null
+          style_enseignement?: Json | null
+          telephone?: string | null
+          type_seance?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
