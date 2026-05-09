@@ -85,6 +85,7 @@ const AIInterviewSimulator = lazy(() => import("./pages/AIInterviewSimulator"));
 const AIGrammarExplainer = lazy(() => import("./pages/AIGrammarExplainer"));
 const RessourcesGratuites = lazy(() => import("./pages/RessourcesGratuites"));
 const ThankYou = lazy(() => import("./pages/ThankYou"));
+const Questionnaire = lazy(() => import("./pages/Questionnaire"));
 const PageLoader = () => (
   <div className="min-h-screen bg-background py-12">
     <div className="max-w-4xl mx-auto px-4 space-y-8">
@@ -200,12 +201,23 @@ export const AppContent = () => {
     <>
       <ScrollToTop />
       <PrefetchRoutes />
-      
-      <Layout>
-        <Suspense fallback={<PageLoader />}>
-          <AppRoutes />
-        </Suspense>
-      </Layout>
+
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          {/* Standalone routes — rendered without the global Layout (no header/footer/nav) */}
+          <Route path="/questionnaire" element={<Questionnaire />} />
+
+          {/* All other routes use the standard Layout */}
+          <Route
+            path="*"
+            element={
+              <Layout>
+                <AppRoutes />
+              </Layout>
+            }
+          />
+        </Routes>
+      </Suspense>
     </>
   );
 };
