@@ -26,14 +26,14 @@ const CookieConsent: React.FC = () => {
       {showBanner && (
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.6 }}
+          animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           className="fixed bottom-2 left-2 z-40"
         >
           <a 
             href="/politique-confidentialite"
-            className="text-[10px] text-muted-foreground/50 hover:text-muted-foreground transition-colors"
+            className="text-xs text-foreground/80 hover:text-foreground underline-offset-2 hover:underline transition-colors"
           >
             🍪 cookies
           </a>
