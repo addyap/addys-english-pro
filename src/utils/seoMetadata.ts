@@ -19,11 +19,11 @@ const OG_CLOE = `${SITE_URL}/og/og-cloe.png`;
 
 export const seoMetadata: Record<string, SEOMetadata> = {
   home: {
-    title: "Formateur Anglais Professionnel | Antony Addy",
-    description: "Formations d'anglais professionnel sur mesure avec un formateur britannique certifié FPA. CPF, entreprises, particuliers. Alpes-Maritimes ou distanciel France.",
+    title: "Cours d'anglais professionnel – Alpes-Maritimes | Antony Addy",
+    description: "Formateur natif britannique certifié FPA. Anglais adultes, étudiants et entreprises. CPF Qualiopi. Nice, Cannes, Antibes, Sophia Antipolis.",
     canonical: `${SITE_URL}/`,
     h1: "Formateur d'anglais professionnel pour adultes",
-    keywords: ["formateur anglais", "formation anglais professionnel", "CPF anglais", "formateur FPA", "cours anglais adultes", "Alpes-Maritimes"],
+    keywords: ["formateur anglais", "formation anglais professionnel", "CPF anglais", "formateur FPA", "cours anglais adultes", "Alpes-Maritimes", "Côte d'Azur", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "Var", "anglais entreprises", "anglais étudiants", "enseignement supérieur"],
     ogImage: DEFAULT_IMAGE
   },
   about: {
