@@ -132,16 +132,16 @@ const Home = () => {
 
   return <>
       <SEOHead 
-        title="Anglais Professionnel | Formateur FPA Certifié"
-        description="Formations d'anglais professionnel sur mesure avec un formateur britannique certifié FPA. CPF, entreprises, particuliers. Alpes-Maritimes ou distanciel France."
+        title="Cours d'anglais professionnel – Alpes-Maritimes | Antony Addy"
+        description="Formateur natif britannique certifié FPA. Anglais adultes, étudiants et entreprises. CPF Qualiopi. Nice, Cannes, Antibes, Sophia Antipolis."
         canonicalUrl="https://www.antonyaddy.com/"
         datePublished="2025-01-15T10:00:00+01:00"
-        dateModified="2026-03-08T10:00:00+01:00"
+        dateModified="2026-05-21T10:00:00+01:00"
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
         enableOrgJsonLd
         enableWebSiteJsonLd
         imageAlt="Antony Addy, formateur d'anglais professionnel certifié FPA"
-        keywords={["formateur anglais", "formation anglais professionnel", "CPF anglais", "formateur FPA", "cours anglais adultes", "Alpes-Maritimes", "formateur britannique"]}
+        keywords={["formateur anglais", "formation anglais professionnel", "CPF anglais", "formateur FPA", "cours anglais adultes", "Alpes-Maritimes", "Côte d'Azur", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "Var", "formateur britannique", "anglais entreprises", "anglais étudiants", "enseignement supérieur"]}
         jsonLd={[
           jsonLdWebsite(),
           jsonLdOrganization(),
