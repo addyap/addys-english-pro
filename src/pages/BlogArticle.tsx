@@ -182,8 +182,7 @@ const BlogArticle = () => {
       readTime: '6 min',
       description: "Apprenez à adapter votre style de communication en anglais selon le canal : emails, présentations orales, appels téléphoniques.",
       ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
-    },
-    },
+    }
   };
 
   // Merge base articles with grammar articles
