@@ -5,9 +5,9 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import en from "./locales/en.json";
 import fr from "./locales/fr.json";
 
-export const SUPPORTED_LANGS = [
-  { code: "fr", label: "Français", flag: "🇫🇷", dir: "ltr" as const, nativeName: "Français" },
-  { code: "en", label: "English", flag: "🇬🇧", dir: "ltr" as const, nativeName: "English" },
+export const SUPPORTED_LANGS: Array<{ code: string; label: string; flag: string; dir: "ltr" | "rtl"; nativeName: string }> = [
+  { code: "fr", label: "Français", flag: "🇫🇷", dir: "ltr", nativeName: "Français" },
+  { code: "en", label: "English", flag: "🇬🇧", dir: "ltr", nativeName: "English" },
 ];
 
 export const SUPPORTED_LANG_CODES = SUPPORTED_LANGS.map((l) => l.code);
