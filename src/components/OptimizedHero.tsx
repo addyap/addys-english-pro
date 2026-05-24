@@ -51,7 +51,7 @@ export default function OptimizedHero() {
           </p>
 
           <p className="text-sm sm:text-lg mb-4 sm:mb-6 font-body drop-shadow-lg max-w-3xl mx-auto text-primary-foreground/80">
-            Présentiel Alpes-Maritimes • Distanciel France entière • CPF & entreprises
+            Présentiel Var & Alpes-Maritimes • Distanciel France entière et international • Particuliers, cadres & entreprises
           </p>
 
           {/* Credential strip — authority signals */}
@@ -143,9 +143,18 @@ export default function OptimizedHero() {
             "Spécialiste en anglais professionnel depuis 2017, formations pour particuliers, professionnels et centres de formation",
           address: {
             "@type": "PostalAddress",
-            addressRegion: "Alpes-Maritimes",
+            streetAddress: "135 rue Henri Vadon",
+            addressLocality: "Fréjus",
+            postalCode: "83600",
+            addressRegion: "Provence-Alpes-Côte d'Azur",
             addressCountry: "FR",
           },
+          areaServed: [
+            { "@type": "AdministrativeArea", name: "Var" },
+            { "@type": "AdministrativeArea", name: "Alpes-Maritimes" },
+            { "@type": "Country", name: "France" },
+          ],
+          knowsLanguage: ["fr", "en"],
           offers: {
             "@type": "Service",
             name: "Formation en anglais professionnel",
