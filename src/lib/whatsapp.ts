@@ -1,9 +1,9 @@
 // Shared WhatsApp contact configuration.
 // Keeps the prefilled message in sync across all CTAs.
 
-export const WHATSAPP_NUMBER = "33649829826";
+const WHATSAPP_NUMBER = "33649829826";
 
-export const WHATSAPP_PREFILLED_MESSAGE = `Bonjour Antony,
+const WHATSAPP_PREFILLED_MESSAGE = `Bonjour Antony,
 
 Je souhaite améliorer mon anglais.
 
