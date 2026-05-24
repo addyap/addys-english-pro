@@ -319,13 +319,15 @@ const Home = () => {
                   <p className="text-xs sm:text-sm text-white/90 mt-1">{EXERCISE_COUNTS.total}+ exercices • {EXERCISE_COUNTS.questions.toLocaleString()}+ questions • Créés par un formateur certifié</p>
                 </div>
               </div>
-              <Link 
-                to="/exercices" 
+              <a
+                href="https://anglaisadistance.fr/grammaire-essentielle/contrastes"
+                target="_blank"
+                rel="noopener"
                 className="bg-white text-emerald-700 px-5 py-2.5 rounded-lg font-bold text-sm sm:text-base hover:bg-white/90 transition-all flex items-center gap-2 whitespace-nowrap shadow-lg hover:scale-105 w-full md:w-auto justify-center"
               >
-                Commencer maintenant
+                Commencer maintenant ↗
                 <ExternalLink className="h-4 w-4" />
-              </Link>
+              </a>
             </div>
           </div>
         </section>
@@ -384,14 +386,16 @@ const Home = () => {
                     <li>Feedback et corrections immédiats, adaptés à mon approche pédagogique</li>
                     <li>Adapté à votre niveau, du A1 au C2</li>
                   </ul>
-                  <Link
-                    to="/speaking-practice"
-                    onClick={() => trackEvent('home_ai_card_cta_click', { target: '/speaking-practice' })}
+                  <a
+                    href="https://anglaisadistance.fr/conversation-trainer"
+                    target="_blank"
+                    rel="noopener"
+                    onClick={() => trackEvent('home_ai_card_cta_click', { target: 'https://anglaisadistance.fr/conversation-trainer' })}
                     className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 min-h-[44px] rounded-lg font-semibold hover:bg-primary/90 transition-colors"
                   >
-                    Démarrer avec mon système IA
+                    Démarrer avec mon système IA ↗
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
+                  </a>
                   <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5 text-xs sm:text-sm text-muted-foreground font-body" aria-label="Garanties">
                     <li className="inline-flex items-center gap-1.5"><span className="text-primary" aria-hidden="true">✓</span>Exercices pratiques</li>
                     <li className="inline-flex items-center gap-1.5"><span className="text-primary" aria-hidden="true">✓</span>Feedback personnalisé</li>
@@ -478,14 +482,16 @@ const Home = () => {
             <p className="text-lg text-muted-foreground mb-6 font-body">
               Rejoignez des centaines d'apprenants. Commencez par un exercice gratuit — sans inscription.
             </p>
-            <Link
-              to="/exercices"
+            <a
+              href="https://anglaisadistance.fr/grammaire-essentielle/contrastes"
+              target="_blank"
+              rel="noopener"
               className="inline-flex items-center gap-2 bg-emerald-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-emerald-700 transition-all hover:scale-105 shadow-lg"
             >
               <Sparkles className="h-5 w-5" />
-              Essayer un exercice maintenant
+              Essayer un exercice maintenant ↗
               <ArrowRight className="h-5 w-5" />
-            </Link>
+            </a>
           </div>
         </section>
 
