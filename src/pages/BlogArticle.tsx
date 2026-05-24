@@ -312,21 +312,26 @@ const BlogArticle = () => {
                     {practiceSection}
                   </p>
                   <div className="flex flex-wrap gap-3 mb-6">
-                    <Link 
-                      to={exerciseLink.href}
+                    <a
+                      href={exerciseLink.href}
+                      target="_blank"
+                      rel="noopener"
                       className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-lg hover:bg-blue-100 transition-colors font-medium"
                     >
                       <GraduationCap className="h-4 w-4" />
-                      Accéder aux {exerciseLink.label}
-                    </Link>
-                    <Link 
-                      to={readingLink.href}
+                      Accéder aux {exerciseLink.label} ↗
+                    </a>
+                    <a
+                      href={readingLink.href}
+                      target="_blank"
+                      rel="noopener"
                       className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-lg hover:bg-green-100 transition-colors font-medium"
                     >
                       <BookOpen className="h-4 w-4" />
-                      {readingLink.label}
-                    </Link>
+                      {readingLink.label} ↗
+                    </a>
                   </div>
+                  
                   
                   {/* Related Blog Posts */}
                   {relatedTopics.length > 0 && (
