@@ -187,6 +187,18 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                   LinkedIn
                 </a>
               </div>
+              <p className="mt-4 text-xs italic text-gray-400 leading-relaxed">
+                Vous préférez apprendre en autonomie ? Découvrez ma plateforme
+                d'exercices d'anglais en ligne :{" "}
+                <a
+                  href="https://anglaisadistance.fr"
+                  target="_blank"
+                  rel="noopener"
+                  className="text-gray-200 hover:text-white underline underline-offset-2"
+                >
+                  anglaisadistance.fr ↗
+                </a>
+              </p>
             </div>
 
             <nav aria-label={t('footer.navigation')}>
