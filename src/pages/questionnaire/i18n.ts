@@ -146,7 +146,7 @@ const fr: Dict = {
   step5: {
     title: "Derniers détails",
     source: "Comment avez-vous entendu parler de mes services ?",
-    sourceOpts: { google: "Google / moteur de recherche", linkedin: "LinkedIn", word: "Bouche-à-oreille / recommandation", employer: "Mon employeur / service RH", instagram: "Instagram / réseaux sociaux", cpf: "Une plateforme de formation (CPF, etc.)", other: "Autre" },
+    sourceOpts: { google: "Google / moteur de recherche", linkedin: "LinkedIn", word: "Bouche-à-oreille / recommandation", employer: "Mon employeur / service RH", instagram: "Instagram / réseaux sociaux", cpf: "Une autre plateforme de formation", other: "Autre" },
     pastExperience: "Avez-vous déjà suivi une formation d'anglais ?",
     pastExperienceOpts: { firstTime: "Non, ce serait ma première fois", school: "Uniquement à l'école / université", private: "Oui, du coaching privé" },
     teachingStyle: "Quel style d'enseignement vous convient le mieux ?",
@@ -214,7 +214,7 @@ const en: Dict = {
   step5: {
     title: "Final details",
     source: "How did you hear about my services?",
-    sourceOpts: { google: "Google / search engine", linkedin: "LinkedIn", word: "Word of mouth / referral", employer: "My employer / HR", instagram: "Instagram / social media", cpf: "A training platform (CPF, etc.)", other: "Other" },
+    sourceOpts: { google: "Google / search engine", linkedin: "LinkedIn", word: "Word of mouth / referral", employer: "My employer / HR", instagram: "Instagram / social media", cpf: "Another training platform", other: "Other" },
     pastExperience: "Have you taken English training before?",
     pastExperienceOpts: { firstTime: "No, this would be my first time", school: "Only at school / university", private: "Yes, private coaching" },
     teachingStyle: "Which teaching style suits you best?",
@@ -282,7 +282,7 @@ const es: Dict = {
   step5: {
     title: "Últimos detalles",
     source: "¿Cómo conociste mis servicios?",
-    sourceOpts: { google: "Google / buscador", linkedin: "LinkedIn", word: "Boca a boca / recomendación", employer: "Mi empleador / RR. HH.", instagram: "Instagram / redes", cpf: "Plataforma de formación (CPF, etc.)", other: "Otro" },
+    sourceOpts: { google: "Google / buscador", linkedin: "LinkedIn", word: "Boca a boca / recomendación", employer: "Mi empleador / RR. HH.", instagram: "Instagram / redes", cpf: "Otra plataforma de formación", other: "Otro" },
     pastExperience: "¿Has hecho formación de inglés antes?",
     pastExperienceOpts: { firstTime: "No, sería la primera vez", school: "Solo en la escuela / universidad", private: "Sí, coaching privado" },
     teachingStyle: "¿Qué estilo de enseñanza te conviene más?",
@@ -350,7 +350,7 @@ const de: Dict = {
   step5: {
     title: "Letzte Details",
     source: "Wie haben Sie von mir erfahren?",
-    sourceOpts: { google: "Google / Suchmaschine", linkedin: "LinkedIn", word: "Empfehlung", employer: "Arbeitgeber / HR", instagram: "Instagram / Social Media", cpf: "Trainingsplattform (CPF usw.)", other: "Andere" },
+    sourceOpts: { google: "Google / Suchmaschine", linkedin: "LinkedIn", word: "Empfehlung", employer: "Arbeitgeber / HR", instagram: "Instagram / Social Media", cpf: "Eine andere Trainingsplattform", other: "Andere" },
     pastExperience: "Hatten Sie schon einmal Englischtraining?",
     pastExperienceOpts: { firstTime: "Nein, das wäre das erste Mal", school: "Nur in der Schule / Uni", private: "Ja, Privat-Coaching" },
     teachingStyle: "Welcher Stil passt am besten?",
@@ -418,7 +418,7 @@ const it: Dict = {
   step5: {
     title: "Ultimi dettagli",
     source: "Come hai conosciuto i miei servizi?",
-    sourceOpts: { google: "Google / motore di ricerca", linkedin: "LinkedIn", word: "Passaparola / referral", employer: "Datore di lavoro / HR", instagram: "Instagram / social", cpf: "Piattaforma di formazione (CPF, ecc.)", other: "Altro" },
+    sourceOpts: { google: "Google / motore di ricerca", linkedin: "LinkedIn", word: "Passaparola / referral", employer: "Datore di lavoro / HR", instagram: "Instagram / social", cpf: "Un'altra piattaforma di formazione", other: "Altro" },
     pastExperience: "Hai già seguito una formazione di inglese?",
     pastExperienceOpts: { firstTime: "No, sarebbe la prima volta", school: "Solo a scuola / università", private: "Sì, coaching privato" },
     teachingStyle: "Quale stile didattico ti si addice?",
@@ -486,7 +486,7 @@ const pt: Dict = {
   step5: {
     title: "Últimos detalhes",
     source: "Como soube dos meus serviços?",
-    sourceOpts: { google: "Google / motor de busca", linkedin: "LinkedIn", word: "Passa-palavra / recomendação", employer: "Empregador / RH", instagram: "Instagram / redes sociais", cpf: "Plataforma de formação (CPF, etc.)", other: "Outro" },
+    sourceOpts: { google: "Google / motor de busca", linkedin: "LinkedIn", word: "Passa-palavra / recomendação", employer: "Empregador / RH", instagram: "Instagram / redes sociais", cpf: "Outra plataforma de formação", other: "Outro" },
     pastExperience: "Já fez formação de inglês antes?",
     pastExperienceOpts: { firstTime: "Não, seria a primeira vez", school: "Apenas na escola / universidade", private: "Sim, coaching privado" },
     teachingStyle: "Que estilo de ensino lhe convém mais?",
@@ -554,7 +554,7 @@ const zh: Dict = {
   step5: {
     title: "最后细节",
     source: "您是怎么了解到我的服务的？",
-    sourceOpts: { google: "Google / 搜索引擎", linkedin: "LinkedIn", word: "口碑 / 推荐", employer: "雇主 / 人力资源", instagram: "Instagram / 社交媒体", cpf: "培训平台 (CPF 等)", other: "其他" },
+    sourceOpts: { google: "Google / 搜索引擎", linkedin: "LinkedIn", word: "口碑 / 推荐", employer: "雇主 / 人力资源", instagram: "Instagram / 社交媒体", cpf: "其他培训平台", other: "其他" },
     pastExperience: "您之前学过英语培训吗？",
     pastExperienceOpts: { firstTime: "没有，这将是第一次", school: "只在学校 / 大学", private: "有，私教辅导" },
     teachingStyle: "哪种教学风格最适合您？",
@@ -622,7 +622,7 @@ const ar: Dict = {
   step5: {
     title: "تفاصيل أخيرة",
     source: "كيف عرفت بخدماتي؟",
-    sourceOpts: { google: "Google / محرك بحث", linkedin: "LinkedIn", word: "توصية / تزكية", employer: "صاحب العمل / الموارد البشرية", instagram: "Instagram / وسائل التواصل", cpf: "منصة تدريب (CPF إلخ)", other: "أخرى" },
+    sourceOpts: { google: "Google / محرك بحث", linkedin: "LinkedIn", word: "توصية / تزكية", employer: "صاحب العمل / الموارد البشرية", instagram: "Instagram / وسائل التواصل", cpf: "منصة تدريب أخرى", other: "أخرى" },
     pastExperience: "هل سبق وحضرت تدريباً للغة الإنجليزية؟",
     pastExperienceOpts: { firstTime: "لا، ستكون المرة الأولى", school: "فقط في المدرسة / الجامعة", private: "نعم، تدريب خاص" },
     teachingStyle: "أي أسلوب تدريس يناسبك أكثر؟",
