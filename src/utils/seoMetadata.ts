@@ -13,9 +13,8 @@ const SITE_URL = "https://www.antonyaddy.com";
 const DEFAULT_IMAGE = `${SITE_URL}/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png`;
 
 // Section-specific OG images for better social sharing
-const OG_EXERCISES = `${SITE_URL}/og/og-exercises.png`;
 const OG_BLOG = `${SITE_URL}/og/og-blog.png`;
-const OG_CLOE = `${SITE_URL}/og/og-cloe.png`;
+
 
 export const seoMetadata: Record<string, SEOMetadata> = {
   home: {
