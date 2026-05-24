@@ -434,8 +434,8 @@ const Training = () => {
                   <h3 className="font-semibold text-primary mb-2">Certifications reconnues</h3>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li>
-                      <a href="https://www.certificat-cloe.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                        Certification CLOE ↗
+                      <a href="https://www.cambridgeenglish.org/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                        Cambridge English ↗
                       </a>
                     </li>
                     <li>
