@@ -154,7 +154,7 @@ const Training = () => {
               name: "Quels types de formations d'anglais proposez-vous ?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Je propose plusieurs types de formations : anglais général, anglais professionnel, anglais téléphonique et email, anglais spécialisé (vente, RH, immobilier, hôtellerie), et préparation aux certifications (TOEIC, CLOE, Bright)."
+                text: "Je propose plusieurs types de formations : anglais général, anglais professionnel, anglais téléphonique et email, anglais spécialisé (vente, RH, immobilier, hôtellerie), et préparation aux certifications professionnelles (TOEIC, Linguaskill, Cambridge)."
               }
             },
             {
