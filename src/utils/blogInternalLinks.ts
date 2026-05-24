@@ -262,50 +262,50 @@ export function getRelatedContent(postId: string, category: string): RelatedCont
 // Exercise link labels by category for anchor text variation
 const exerciseLinkVariants: Record<string, { href: string; label: string }[]> = {
   'Grammaire - Temps': [
-    { href: '/exercices', label: 'exercices de grammaire' },
-    { href: '/exercices', label: 'exercices sur les temps' },
-    { href: '/exercices', label: 'quiz interactifs de grammaire' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices de grammaire' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices sur les temps' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'quiz interactifs de grammaire' },
   ],
   'Grammaire - Prépositions': [
-    { href: '/exercices', label: 'exercices de vocabulaire' },
-    { href: '/exercices', label: 'exercices sur les prépositions' },
-    { href: '/exercices', label: 'quiz interactifs' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices de vocabulaire' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices sur les prépositions' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'quiz interactifs' },
   ],
   'Grammaire - Verbes': [
-    { href: '/exercices', label: 'exercices sur les verbes' },
-    { href: '/exercices', label: 'exercices de vocabulaire' },
-    { href: '/exercices', label: 'quiz de grammaire' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices sur les verbes' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices de vocabulaire' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'quiz de grammaire' },
   ],
   'Grammaire - Structures': [
-    { href: '/exercices', label: 'exercices de grammaire' },
-    { href: '/exercices', label: 'exercices interactifs' },
-    { href: '/exercices', label: 'quiz sur les structures' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices de grammaire' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices interactifs' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'quiz sur les structures' },
   ],
   'Grammaire - Pronoms': [
-    { href: '/exercices', label: 'exercices sur les pronoms' },
-    { href: '/exercices', label: 'exercices de grammaire' },
-    { href: '/exercices', label: 'quiz interactifs' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices sur les pronoms' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices de grammaire' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'quiz interactifs' },
   ],
   'Grammaire - Quantificateurs': [
-    { href: '/exercices', label: 'exercices sur les quantificateurs' },
-    { href: '/exercices', label: 'exercices interactifs' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices sur les quantificateurs' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices interactifs' },
   ],
   'Grammaire - Déterminants': [
-    { href: '/exercices', label: 'exercices sur les déterminants' },
-    { href: '/exercices', label: 'exercices de grammaire' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices sur les déterminants' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices de grammaire' },
   ],
   'default': [
-    { href: '/exercices', label: 'exercices interactifs' },
-    { href: '/exercices', label: 'exercices de grammaire' },
-    { href: '/exercices', label: 'quiz d\'anglais' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices interactifs' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices de grammaire' },
+    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'quiz d\'anglais' },
   ],
 };
 
 // Reading link variants for anchor text variation
 const readingLinkVariants = [
-  { href: '/reading', label: 'Textes de compréhension' },
-  { href: '/reading', label: 'Passages de lecture' },
-  { href: '/reading', label: 'Compréhension écrite' },
+  { href: 'https://anglaisadistance.fr/ai-reading-comprehension', label: 'Textes de compréhension' },
+  { href: 'https://anglaisadistance.fr/ai-reading-comprehension', label: 'Passages de lecture' },
+  { href: 'https://anglaisadistance.fr/ai-reading-comprehension', label: 'Compréhension écrite' },
 ];
 
 /**

@@ -266,15 +266,15 @@ const Testimonials = () => {
               Prêt à rejoindre ces apprenants satisfaits ?
             </h2>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Découvrez mes <Link to="/offres-de-formation" className="text-accent hover:underline font-medium">formations d'anglais personnalisées</Link> ou testez vos compétences avec nos <Link to="/exercices" className="text-accent hover:underline font-medium">exercices gratuits</Link>.
+              Découvrez mes <Link to="/offres-de-formation" className="text-accent hover:underline font-medium">formations d'anglais personnalisées</Link> ou testez vos compétences avec mes <a href="https://anglaisadistance.fr/grammaire-essentielle/contrastes" target="_blank" rel="noopener" className="text-accent hover:underline font-medium">exercices gratuits ↗</a>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">
                 Me contacter
               </Link>
-              <Link to="/exercices" className="bg-card border border-border text-foreground px-6 py-3 rounded-lg font-semibold hover:bg-muted transition-colors">
-                Essayer les exercices gratuits
-              </Link>
+              <a href="https://anglaisadistance.fr/grammaire-essentielle/contrastes" target="_blank" rel="noopener" className="bg-card border border-border text-foreground px-6 py-3 rounded-lg font-semibold hover:bg-muted transition-colors">
+                Essayer les exercices gratuits ↗
+              </a>
             </div>
           </div>
         </div>

@@ -4,11 +4,6 @@
  */
 
 export const AUTHORITY_LINKS = {
-  // CLOE Certification
-  cloe: {
-    official: "https://www.certificat-cloe.fr/",
-    franceTravail: "https://www.francetravail.fr/",
-  },
   
   // CEFR Framework (Council of Europe)
   cefr: {
