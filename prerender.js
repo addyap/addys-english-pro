@@ -90,7 +90,7 @@ function getRouteSEOData(route) {
   const seoMap = {
     '/': {
       title: 'Formateur d\'anglais pour adultes – Antony Addy',
-      description: 'Formations d\'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes. CPF via centres certifiés Qualiopi. Formateur natif britannique certifié FPA.',
+      description: 'Formations d\'anglais professionnel en présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde. Formateur natif britannique certifié FPA.',
       h1: 'Formateur d\'anglais pour adultes',
     },
     '/qui-je-suis': {
@@ -100,7 +100,7 @@ function getRouteSEOData(route) {
     },
     '/offres-de-formation': {
       title: 'Offres de Formation - Antony Addy',
-      description: 'Découvrez nos formations d\'anglais professionnel : cours en entreprise, formations individuelles, préparation certifications. CPF via centres Qualiopi.',
+      description: 'Découvrez nos formations d\'anglais professionnel : cours en entreprise, formations individuelles, préparation certifications. Présentiel Var & Alpes-Maritimes ou à distance.',
       h1: 'Offres de Formation',
     },
     '/temoignages': {
@@ -221,7 +221,7 @@ function getPageContent(route) {
     '/offres-de-formation': `
       <section>
         <h2>Nos formations d'anglais professionnel</h2>
-        <p>Des formations adaptées à vos besoins, éligibles au CPF via des centres de formation certifiés Qualiopi.</p>
+        <p>Des formations adaptées à vos besoins : individuelles, en entreprise ou pour centres de formation, en présentiel dans le Var et les Alpes-Maritimes ou à distance partout en France et dans le monde.</p>
         <h3>Formations en entreprise</h3>
         <p>Sessions personnalisées pour renforcer les compétences linguistiques de vos équipes : anglais professionnel, technique ou sectoriel.</p>
         <h3>Formations individuelles</h3>

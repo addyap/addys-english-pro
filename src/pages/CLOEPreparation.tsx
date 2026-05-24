@@ -99,7 +99,7 @@ const CLOEPreparation = () => {
               "name": "Qu'est-ce que la certification CLOE ?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "CLOE (Compétences Linguistiques Orales et Écrites) est une certification professionnelle reconnue inscrite au Répertoire Spécifique de France Compétences. Elle évalue les compétences en anglais professionnel et est éligible au CPF."
+                "text": "CLOE (Compétences Linguistiques Orales et Écrites) est une certification professionnelle reconnue inscrite au Répertoire Spécifique de France Compétences. Elle évalue les compétences en anglais professionnel."
               }
             },
             {
@@ -108,14 +108,6 @@ const CLOEPreparation = () => {
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Oui, tous les exercices d'entraînement au format CLOE sur ce site sont entièrement gratuits. Ils couvrent les 5 compétences évaluées : vocabulaire, grammaire, expressions, compréhension écrite et orale."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "La certification CLOE est-elle éligible au CPF ?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Oui, la certification CLOE est inscrite au Répertoire Spécifique et est éligible au financement via le Compte Personnel de Formation (CPF). Vous pouvez utiliser vos droits CPF pour passer l'examen officiel."
               }
             }
           ]
@@ -424,12 +416,12 @@ const CLOEPreparation = () => {
                 Site officiel CLOE ↗
               </a>
               <a 
-                href="https://www.moncompteformation.gouv.fr/" 
+                href="https://www.francecompetences.fr/recherche/rs/5847/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
               >
-                Mon Compte Formation (CPF) ↗
+                CLOE au Répertoire Spécifique ↗
               </a>
               <a 
                 href="https://www.coe.int/en/web/common-european-framework-reference-languages/level-descriptions" 
