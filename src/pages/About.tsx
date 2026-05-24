@@ -149,7 +149,7 @@ const About = () => {
                   </h3>
                   <ul className="text-muted-foreground space-y-1 text-sm">
                     <li>• Anglais des affaires et commercial</li>
-                    <li>• Préparation TOEIC, CLOE, Bright</li>
+                    <li>• Préparation aux certifications professionnelles</li>
                     <li>• Communication téléphonique et écrite</li>
                   </ul>
                 </div>
