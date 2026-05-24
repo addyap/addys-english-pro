@@ -37,13 +37,15 @@ const ThankYou: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              to="/conversation-trainer"
+            <a
+              href="https://anglaisadistance.fr/conversation-trainer"
+              target="_blank"
+              rel="noopener"
               className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             >
               <Sparkles className="w-5 h-5" aria-hidden="true" />
-              Try the AI Trainer
-            </Link>
+              Try the AI Trainer ↗
+            </a>
 
             <a
               href={WHATSAPP_PREFILLED_URL}

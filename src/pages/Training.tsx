@@ -228,62 +228,72 @@ const Training = () => {
 
               <ul className="grid sm:grid-cols-2 gap-3">
                 <li>
-                  <Link
-                    to="/conversation-trainer?ctx=ACOM"
+                  <a
+                    href="https://anglaisadistance.fr/conversation-trainer?ctx=ACOM"
+                    target="_blank"
+                    rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
                   >
                     <span className="text-xl shrink-0" aria-hidden="true">💼</span>
                     <div>
-                      <div className="font-semibold text-primary">ACOM — Salons & commerce international</div>
+                      <div className="font-semibold text-primary">ACOM — Salons & commerce international ↗</div>
                       <div className="text-sm text-muted-foreground">Accueil visiteurs, prospection B2B, négociation.</div>
                     </div>
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    to="/conversation-trainer?ctx=VPL"
+                  <a
+                    href="https://anglaisadistance.fr/conversation-trainer?ctx=VPL"
+                    target="_blank"
+                    rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
                   >
                     <span className="text-xl shrink-0" aria-hidden="true">💎</span>
                     <div>
-                      <div className="font-semibold text-primary">VPL — Vente luxe</div>
+                      <div className="font-semibold text-primary">VPL — Vente luxe ↗</div>
                       <div className="text-sm text-muted-foreground">Conseil clientèle haut de gamme en boutique.</div>
                     </div>
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    to="/conversation-trainer?ctx=AD"
+                  <a
+                    href="https://anglaisadistance.fr/conversation-trainer?ctx=AD"
+                    target="_blank"
+                    rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
                   >
                     <span className="text-xl shrink-0" aria-hidden="true">📞</span>
                     <div>
-                      <div className="font-semibold text-primary">Assistant de Direction</div>
+                      <div className="font-semibold text-primary">Assistant de Direction ↗</div>
                       <div className="text-sm text-muted-foreground">Téléphone professionnel, prise de message, agenda.</div>
                     </div>
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    to="/conversation-trainer?ctx=MEDICAL"
+                  <a
+                    href="https://anglaisadistance.fr/conversation-trainer?ctx=MEDICAL"
+                    target="_blank"
+                    rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
                   >
                     <span className="text-xl shrink-0" aria-hidden="true">🩺</span>
                     <div>
-                      <div className="font-semibold text-primary">Secrétaire Médicale</div>
+                      <div className="font-semibold text-primary">Secrétaire Médicale ↗</div>
                       <div className="text-sm text-muted-foreground">Accueil patient, prise de rendez-vous, réassurance.</div>
                     </div>
-                  </Link>
+                  </a>
                 </li>
               </ul>
 
               <div className="mt-5 pt-5 border-t border-border">
-                <Link
-                  to="/conversation-trainer"
+                <a
+                  href="https://anglaisadistance.fr/conversation-trainer"
+                  target="_blank"
+                  rel="noopener"
                   className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
                 >
-                  → IA d'entraînement professionnel (tous contextes)
-                </Link>
+                  → IA d'entraînement professionnel (tous contextes) ↗
+                </a>
               </div>
             </div>
           </FadeInSection>
@@ -469,12 +479,14 @@ const Training = () => {
               <p className="text-muted-foreground">
                 <span className="text-lg mr-2">🎓</span>
                 En parallèle de mes formations, je mets à disposition des{' '}
-                <Link 
-                  to="/exercices"
+                <a
+                  href="https://anglaisadistance.fr/grammaire-essentielle/contrastes"
+                  target="_blank"
+                  rel="noopener"
                   className="font-semibold text-accent hover:text-accent/80 transition-colors"
                 >
-                  ressources gratuites
-                </Link>
+                  ressources gratuites ↗
+                </a>
                 {' '}— grammaire claire, vocabulaire utile, dialogues pratiques, quiz interactifs, et bien plus.
               </p>
             </div>
