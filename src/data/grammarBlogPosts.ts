@@ -2970,13 +2970,13 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     title: 'Certification CLOE Anglais : Guide Complet pour Réussir',
     excerpt: 'Tout savoir sur la certification CLOE : format de l\'examen, compétences évaluées, niveaux CECRL, et conseils pratiques pour réussir. Accédez à nos exercices gratuits.',
     content: `
-      <p>La <strong>certification CLOE</strong> (Compétences Linguistiques Orales et Écrites) est une référence en France pour attester de son niveau d'anglais professionnel. <strong>Éligible au CPF</strong>, elle est particulièrement prisée par les entreprises et les professionnels souhaitant valoriser leurs compétences linguistiques.</p>
+      <p>La <strong>certification CLOE</strong> (Compétences Linguistiques Orales et Écrites) est une référence en France pour attester de son niveau d'anglais professionnel. Inscrite au <strong>Répertoire Spécifique de France Compétences</strong>, elle est particulièrement prisée par les entreprises et les professionnels souhaitant valoriser leurs compétences linguistiques.</p>
 
       <h2>Qu'est-ce que la certification CLOE ?</h2>
       <p>CLOE est une certification professionnelle qui évalue vos compétences en anglais selon le <strong>Cadre Européen Commun de Référence pour les Langues (CECRL)</strong>, de A1 (débutant) à C2 (maîtrise). Elle se distingue par :</p>
       <ul>
         <li><strong>Sa reconnaissance professionnelle</strong> : Très appréciée des entreprises françaises</li>
-        <li><strong>Son éligibilité CPF</strong> : Finançable via votre Compte Personnel de Formation</li>
+        <li><strong>Son inscription officielle</strong> : Au Répertoire Spécifique de France Compétences</li>
         <li><strong>Son format adaptatif</strong> : Questions ajustées à votre niveau</li>
         <li><strong>Sa validité</strong> : 2 ans (comme la plupart des certifications linguistiques)</li>
       </ul>
@@ -3050,15 +3050,6 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
       </ul>
       <p>Le choix dépend de vos objectifs : pour une carrière en France, CLOE est souvent le meilleur choix.</p>
 
-      <h2>Financement CPF</h2>
-      <p>La certification CLOE est <strong>100% finançable par le CPF</strong>. Pour utiliser votre CPF :</p>
-      <ul>
-        <li>Connectez-vous sur <strong>moncompteformation.gouv.fr</strong></li>
-        <li>Recherchez "CLOE anglais" ou contactez un organisme agréé</li>
-        <li>Vérifiez votre solde CPF disponible</li>
-        <li>Inscrivez-vous à une formation incluant le passage de la certification</li>
-      </ul>
-
       <h2>Prêt à commencer ?</h2>
       <p>N'attendez plus pour préparer votre certification CLOE. Commencez dès maintenant avec nos exercices gratuits et suivez votre progression jusqu'au jour de l'examen !</p>
       <p>👉 <a href="/exercices/cloe-preparation">Commencer la préparation CLOE</a></p>
@@ -3067,8 +3058,8 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     date: '2026-01-06',
     author: 'Antony Addy',
     category: 'Conseils carrière',
-    readTime: '8 min',
-    description: 'Guide complet de la certification CLOE anglais : format d\'examen, niveaux CECRL, conseils de préparation et exercices gratuits. Éligible CPF.',
+    readTime: '7 min',
+    description: 'Guide complet de la certification CLOE anglais : format d\'examen, niveaux CECRL, conseils de préparation et exercices gratuits.',
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
   }
 ];

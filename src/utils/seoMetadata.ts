@@ -19,11 +19,11 @@ const OG_CLOE = `${SITE_URL}/og/og-cloe.png`;
 
 export const seoMetadata: Record<string, SEOMetadata> = {
   home: {
-    title: "Cours d'anglais professionnel – Alpes-Maritimes | Antony Addy",
-    description: "Formateur natif britannique certifié FPA. Anglais adultes, étudiants et entreprises. CPF Qualiopi. Nice, Cannes, Antibes, Sophia Antipolis.",
+    title: "Cours d'anglais professionnel – Var & Alpes-Maritimes | Antony Addy",
+    description: "Formateur d'anglais natif britannique, certifié FPA. Cours pour entreprises, cadres et particuliers. En présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde.",
     canonical: `${SITE_URL}/`,
     h1: "Formateur d'anglais professionnel pour adultes",
-    keywords: ["formateur anglais", "formation anglais professionnel", "CPF anglais", "formateur FPA", "cours anglais adultes", "Alpes-Maritimes", "Côte d'Azur", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "Var", "anglais entreprises", "anglais étudiants", "enseignement supérieur"],
+    keywords: ["formateur anglais", "formation anglais professionnel", "formateur FPA", "cours anglais adultes", "Var", "Alpes-Maritimes", "Côte d'Azur", "Fréjus", "Saint-Raphaël", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "anglais à distance", "anglais entreprises", "anglais cadres", "anglais étudiants"],
     ogImage: DEFAULT_IMAGE
   },
   about: {
@@ -31,15 +31,15 @@ export const seoMetadata: Record<string, SEOMetadata> = {
     description: "Britannique natif certifié Formateur Professionnel d'Adultes depuis 2017. Plus de 20 ans d'expérience en formation d'anglais professionnel.",
     canonical: `${SITE_URL}/qui-je-suis`,
     h1: "Antony Addy – Formateur Professionnel d'Adultes",
-    keywords: ["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "formation adultes"],
+    keywords: ["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "formation adultes", "Var", "Alpes-Maritimes"],
     ogImage: DEFAULT_IMAGE
   },
   training: {
     title: "Formations Anglais Professionnel | Antony Addy",
-    description: "Formations d'anglais professionnel sur mesure : CPF, entreprises, particuliers. Présentiel Alpes-Maritimes ou distanciel France entière. Devis gratuit.",
+    description: "Formations d'anglais professionnel sur mesure pour entreprises, cadres et particuliers. Présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde. Devis gratuit.",
     canonical: `${SITE_URL}/offres-de-formation`,
     h1: "Offres de formation en anglais",
-    keywords: ["formation anglais", "CPF anglais", "cours entreprise", "formation à distance", "anglais Alpes-Maritimes"],
+    keywords: ["formation anglais", "cours entreprise", "formation à distance", "anglais Var", "anglais Alpes-Maritimes", "anglais Fréjus"],
     ogImage: DEFAULT_IMAGE
   },
   testimonials: {

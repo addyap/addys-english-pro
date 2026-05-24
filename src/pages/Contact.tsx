@@ -340,7 +340,7 @@ const Contact = () => {
               </form>
               
               <p className="text-sm text-gray-500 mt-4 text-center">
-                Réponse sous 24h • Présentiel Alpes-Maritimes • Distanciel France entière
+                Réponse sous 24h • Présentiel Var & Alpes-Maritimes • Distanciel France entière et international
               </p>
             </div>
 
@@ -397,8 +397,8 @@ const Contact = () => {
                     <div>
                       <p className="font-medium text-gray-900">Zone d'intervention</p>
                       <p className="text-gray-600">
-                        Présentiel : Alpes-Maritimes & Var<br />
-                        Distanciel : France entière
+                        Présentiel : Var & Alpes-Maritimes (basé à Fréjus)<br />
+                        Distanciel : France entière et international
                       </p>
                     </div>
                   </div>

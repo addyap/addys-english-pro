@@ -275,7 +275,6 @@ const BlogArticle = () => {
     keywords: [
       "article anglais",
       "anglais professionnel",
-      "formation CPF",
       "anglais des affaires",
       "formation continue",
       "trucs et astuces anglais",
@@ -424,7 +423,7 @@ const BlogArticle = () => {
               <SocialShare 
                 title={article.title}
                 description={article.description}
-                hashtags={['anglais', 'formation', 'CPF']}
+                hashtags={['anglais', 'formation', 'BusinessEnglish']}
               />
             </div>
           </article>

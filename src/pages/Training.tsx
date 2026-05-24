@@ -36,7 +36,10 @@ const Training = () => {
           "@type": "Place",
           "address": {
             "@type": "PostalAddress",
-            "addressRegion": "Alpes-Maritimes",
+            "streetAddress": "135 rue Henri Vadon",
+            "addressLocality": "Fréjus",
+            "postalCode": "83600",
+            "addressRegion": "Provence-Alpes-Côte d'Azur",
             "addressCountry": "FR"
           }
         }
@@ -126,8 +129,8 @@ const Training = () => {
   return (
     <>
       <SEOHead
-        title="Formations Anglais CPF | Entreprises & Particuliers"
-        description="Formations d'anglais professionnel sur mesure : CPF, entreprises, particuliers. Présentiel Alpes-Maritimes ou distanciel France entière. Devis gratuit."
+        title="Formations d'anglais professionnel | Antony Addy"
+        description="Formations d'anglais professionnel sur mesure pour entreprises, cadres et particuliers. Présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde. Devis gratuit."
         canonicalUrl="https://www.antonyaddy.com/offres-de-formation"
         enableOrgJsonLd
         enableWebSiteJsonLd
@@ -135,10 +138,11 @@ const Training = () => {
         imageAlt="Formations d'anglais professionnel par Antony Addy"
         keywords={[
           "formation anglais",
-          "CPF anglais",
           "cours entreprise",
           "formation à distance",
+          "anglais Var",
           "anglais Alpes-Maritimes",
+          "anglais Fréjus",
           "préparation TOEIC"
         ]}
         jsonLd={[trainingJsonLd, {
@@ -158,15 +162,7 @@ const Training = () => {
               name: "Les formations sont-elles disponibles en ligne ?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Oui, toutes les formations sont disponibles en ligne (visioconférence) pour toute la France, ou en présentiel dans les Alpes-Maritimes (Cannes, Antibes, Nice, Monaco)."
-              }
-            },
-            {
-              "@type": "Question",
-              name: "Puis-je financer ma formation avec mon CPF ?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Oui, les formations peuvent être financées via le CPF en passant par des organismes de formation certifiés Qualiopi partenaires."
+                text: "Oui, toutes les formations sont disponibles en ligne (visioconférence) partout en France et dans le monde, ou en présentiel dans le Var et les Alpes-Maritimes (Fréjus, Saint-Raphaël, Cannes, Antibes, Nice, Monaco)."
               }
             }
           ]
@@ -174,7 +170,7 @@ const Training = () => {
       />
       <CourseSchema
         name="Formations d'anglais professionnel"
-        description="Formations personnalisées en anglais professionnel pour adultes, éligibles CPF, en ligne ou en présentiel dans les Alpes-Maritimes."
+        description="Formations personnalisées en anglais professionnel pour adultes, en ligne partout en France et dans le monde ou en présentiel dans le Var et les Alpes-Maritimes."
         provider={{
           name: "Antony Addy",
           url: "https://www.antonyaddy.com"
@@ -319,8 +315,8 @@ const Training = () => {
                 <h2 className="text-2xl font-bold text-primary">Types de formations</h2>
               </div>
               
-              <Accordion title="Formations CPF">
-                <p>Formations éligibles au <span className="transition duration-300 hover:bg-yellow-100 rounded px-1">CPF</span>, personnalisées selon votre métier et vos besoins professionnels.</p>
+              <Accordion title="Formations individuelles & sur mesure">
+                <p>Parcours personnalisés selon votre métier, vos objectifs et votre niveau, en présentiel ou à distance.</p>
               </Accordion>
               <Accordion title="Formations en entreprise">
                 <p>Sessions de formation adaptées à vos équipes, sur site ou à distance, avec contenus sur mesure.</p>
@@ -393,7 +389,7 @@ const Training = () => {
                   <MapPin className="h-6 w-6 text-accent mr-3 mt-1" />
                   <div>
                     <h3 className="font-semibold text-primary mb-1">En présentiel</h3>
-                    <p className="text-muted-foreground text-sm">Cannes, Antibes, Nice, Monaco</p>
+                    <p className="text-muted-foreground text-sm">Var & Alpes-Maritimes (Fréjus, Saint-Raphaël, Cannes, Antibes, Nice, Monaco)</p>
                   </div>
                 </div>
               </div>
@@ -415,21 +411,21 @@ const Training = () => {
               
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <h3 className="font-semibold text-primary mb-2">Financement</h3>
+                  <h3 className="font-semibold text-primary mb-2">Références institutionnelles</h3>
                   <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>
-                      <a href="https://www.moncompteformation.gouv.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                        Mon Compte Formation (CPF) ↗
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://travail-emploi.gouv.fr/formation-professionnelle/acteurs-cadre-et-qualite-de-la-formation-professionnelle/article/qualiopi-marque-de-certification-qualite-des-prestataires-de-formation" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                        Certification Qualiopi ↗
-                      </a>
-                    </li>
                     <li>
                       <a href="https://www.francetravail.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                         France Travail ↗
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.francecompetences.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                        France Compétences ↗
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.afpa.fr/formation/titre-professionnel-formateur-professionnel-adultes" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                        Titre FPA (AFPA) ↗
                       </a>
                     </li>
                   </ul>

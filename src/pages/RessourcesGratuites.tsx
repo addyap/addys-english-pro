@@ -196,7 +196,7 @@ export default function RessourcesGratuites() {
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold text-primary mb-2 font-heading">🎯 Préparation CLOE</h2>
           <p className="text-muted-foreground mb-6">
-            La certification CLOE est éligible au CPF et reconnue par les employeurs. 
+            La certification CLOE est inscrite au Répertoire Spécifique de France Compétences et reconnue par les employeurs. 
             Préparez-vous gratuitement avec nos exercices ciblés et tests blancs chronométrés.
           </p>
           <div className="grid md:grid-cols-3 gap-4">

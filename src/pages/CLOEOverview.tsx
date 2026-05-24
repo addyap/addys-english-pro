@@ -111,11 +111,11 @@ const CLOEOverview = () => {
                   </p>
                   <p>
                     Cette certification est reconnue et inscrite au <strong>Répertoire Spécifique</strong> de 
-                    France Compétences, ce qui permet son financement via le <strong>CPF</strong> (Compte Personnel de Formation).
+                    France Compétences.
                   </p>
                   <div className="flex items-center gap-2 pt-2">
                     <CheckCircle className="h-4 w-4 text-green-600" />
-                    <span className="text-sm">Éligible au financement CPF</span>
+                    <span className="text-sm">Inscrite au Répertoire Spécifique de France Compétences</span>
                   </div>
                 </CardContent>
               </Card>

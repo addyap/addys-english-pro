@@ -78,7 +78,7 @@ const Home = () => {
   }, {
     icon: CheckCircle,
     title: 'Présentiel ou distanciel, selon vos contraintes',
-    description: 'Alpes-Maritimes en face à face, toute la France à distance — flexibilité totale'
+    description: 'Var et Alpes-Maritimes en face à face, toute la France et le monde à distance — flexibilité totale'
   }];
 
   const services = [{
@@ -132,16 +132,16 @@ const Home = () => {
 
   return <>
       <SEOHead 
-        title="Cours d'anglais professionnel – Alpes-Maritimes | Antony Addy"
-        description="Formateur natif britannique certifié FPA. Anglais adultes, étudiants et entreprises. CPF Qualiopi. Nice, Cannes, Antibes, Sophia Antipolis."
+        title="Cours d'anglais professionnel – Var & Alpes-Maritimes | Antony Addy"
+        description="Formateur d'anglais natif britannique, certifié FPA. Cours pour entreprises, cadres et particuliers. En présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde."
         canonicalUrl="https://www.antonyaddy.com/"
         datePublished="2025-01-15T10:00:00+01:00"
-        dateModified="2026-05-21T10:00:00+01:00"
+        dateModified="2026-05-24T10:00:00+01:00"
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
         enableOrgJsonLd
         enableWebSiteJsonLd
         imageAlt="Antony Addy, formateur d'anglais professionnel certifié FPA"
-        keywords={["formateur anglais", "formation anglais professionnel", "CPF anglais", "formateur FPA", "cours anglais adultes", "Alpes-Maritimes", "Côte d'Azur", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "Var", "formateur britannique", "anglais entreprises", "anglais étudiants", "enseignement supérieur"]}
+        keywords={["formateur anglais", "formation anglais professionnel", "formateur FPA", "cours anglais adultes", "Var", "Alpes-Maritimes", "Côte d'Azur", "Fréjus", "Saint-Raphaël", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "anglais à distance", "formateur britannique", "anglais entreprises", "anglais cadres", "anglais étudiants"]}
         jsonLd={[
           jsonLdWebsite(),
           jsonLdOrganization(),
@@ -150,14 +150,27 @@ const Home = () => {
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
             name: "Formation d'anglais professionnel",
-            description: "Services de formation en anglais professionnel, coaching linguistique et cours particuliers dispensés par un formateur natif britannique certifié",
+            description: "Services de formation en anglais professionnel, coaching linguistique et cours particuliers dispensés par un formateur natif britannique certifié FPA",
             provider: jsonLdOrganization(),
-            areaServed: { "@type": "Place", name: "France" },
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "135 rue Henri Vadon",
+              addressLocality: "Fréjus",
+              postalCode: "83600",
+              addressRegion: "Provence-Alpes-Côte d'Azur",
+              addressCountry: "FR"
+            },
+            areaServed: [
+              { "@type": "AdministrativeArea", name: "Var" },
+              { "@type": "AdministrativeArea", name: "Alpes-Maritimes" },
+              { "@type": "Country", name: "France" }
+            ],
+            availableLanguage: ["fr", "en"],
             serviceType: ["Formation d'anglais professionnel", "Coaching linguistique", "Cours particuliers d'anglais"],
             priceRange: "$$",
             availableChannel: [
-              { "@type": "ServiceChannel", serviceType: "En présentiel", availableLanguage: "fr" },
-              { "@type": "ServiceChannel", serviceType: "À distance", availableLanguage: "fr" }
+              { "@type": "ServiceChannel", serviceType: "En présentiel", availableLanguage: ["fr", "en"] },
+              { "@type": "ServiceChannel", serviceType: "À distance", availableLanguage: ["fr", "en"] }
             ]
           },
           {
@@ -169,15 +182,7 @@ const Home = () => {
                 name: "Où intervient Antony Addy pour les formations d'anglais ?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "En présentiel dans les Alpes-Maritimes (Cannes, Antibes, Nice, Monaco) et à distance partout en France."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Les formations sont-elles éligibles au CPF ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Oui, les formations peuvent être financées via le CPF en passant par des centres de formation certifiés Qualiopi partenaires."
+                  text: "En présentiel dans le Var et les Alpes-Maritimes (Fréjus, Saint-Raphaël, Cannes, Antibes, Nice, Monaco) et à distance partout en France et dans le monde."
                 }
               }
             ]
@@ -225,10 +230,9 @@ const Home = () => {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <p className="text-muted-foreground text-sm leading-relaxed font-body">
             Antony Addy propose des <strong className="text-primary">formations d'anglais pour adultes</strong> adaptées aux professionnels, 
-            en présentiel dans les Alpes-Maritimes (Cannes, Antibes, Nice, Monaco) ou à distance partout en France. 
-            Britannique natif et certifié Formateur Professionnel d'Adultes depuis 2017, il accompagne particuliers, 
-            entreprises et centres de formation dans l'amélioration de leurs compétences en anglais professionnel. 
-            Formations éligibles CPF via des organismes partenaires certifiés Qualiopi.{' '}
+            en présentiel dans le Var et les Alpes-Maritimes (Fréjus, Saint-Raphaël, Cannes, Antibes, Nice, Monaco) ou à distance partout en France et dans le monde. 
+            Britannique natif basé à Fréjus, certifié Formateur Professionnel d'Adultes depuis 2017 et fort de plus de 20 ans d'enseignement (notamment à l'EDJ Nice), il accompagne particuliers, 
+            cadres, entreprises et centres de formation dans l'amélioration de leurs compétences en anglais professionnel.{' '}
             <Link to="/offres-de-formation" className="text-accent hover:underline font-medium">Découvrir les formations</Link>{' • '}
             <Link to="/contact" className="text-accent hover:underline font-medium">Demander un devis gratuit</Link>
           </p>
@@ -536,11 +540,11 @@ const Home = () => {
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-foreground mb-3">Certifications & Financement</h3>
+                <h3 className="font-semibold text-foreground mb-3">Certifications reconnues</h3>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li><a href="https://www.moncompteformation.gouv.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Mon Compte Formation (CPF) ↗</a></li>
                   <li><a href="https://www.certificat-cloe.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Certification CLOE ↗</a></li>
                   <li><a href="https://www.francecompetences.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">France Compétences ↗</a></li>
+                  <li><a href="https://www.ets.org/toeic.html" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">TOEIC ↗</a></li>
                 </ul>
               </div>
               <div>
