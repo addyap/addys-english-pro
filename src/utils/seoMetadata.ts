@@ -82,28 +82,3 @@ export const seoMetadata: Record<string, SEOMetadata> = {
     ogImage: DEFAULT_IMAGE
   }
 };
-
-/**
- * Get SEO metadata for a page
- */
-export function getPageSEO(pageKey: string): SEOMetadata | undefined {
-  return seoMetadata[pageKey];
-}
-
-/**
- * Generate breadcrumb items for a page
- */
-export function generateBreadcrumbs(pagePath: string, pageTitle: string): Array<{ name: string; item: string }> {
-  const breadcrumbs = [
-    { name: "Accueil", item: SITE_URL }
-  ];
-  
-  if (pagePath !== "/" && pagePath !== "") {
-    breadcrumbs.push({
-      name: pageTitle,
-      item: `${SITE_URL}${pagePath}`
-    });
-  }
-  
-  return breadcrumbs;
-}
