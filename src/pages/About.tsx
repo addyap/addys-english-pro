@@ -158,7 +158,7 @@ const About = () => {
               {/* Link to exercises */}
               <div className="p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg">
                 <p className="text-sm text-muted-foreground">
-                  <span className="font-medium text-primary">Pour vous entraîner en autonomie</span>, j'ai créé plus de <Link to="/exercices" className="text-accent hover:underline font-semibold">300 exercices d'anglais gratuits</Link> et des <Link to="/reading" className="text-accent hover:underline font-semibold">textes de compréhension écrite</Link>. Pas d'inscription, accès libre.
+                  <span className="font-medium text-primary">Pour vous entraîner en autonomie</span>, j'ai créé une plateforme dédiée d'exercices interactifs : <a href="https://anglaisadistance.fr/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-semibold">anglaisadistance.fr</a>. Accès libre, sans inscription.
                 </p>
               </div>
             </div>
