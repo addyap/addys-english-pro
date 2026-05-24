@@ -542,9 +542,9 @@ const Home = () => {
               <div>
                 <h3 className="font-semibold text-foreground mb-3">Certifications reconnues</h3>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li><a href="https://www.certificat-cloe.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Certification CLOE ↗</a></li>
-                  <li><a href="https://www.francecompetences.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">France Compétences ↗</a></li>
+                  <li><a href="https://www.cambridgeenglish.org/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Cambridge English ↗</a></li>
                   <li><a href="https://www.ets.org/toeic.html" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">TOEIC ↗</a></li>
+                  <li><a href="https://www.cambridgeenglish.org/exams-and-tests/linguaskill/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Linguaskill ↗</a></li>
                 </ul>
               </div>
               <div>
