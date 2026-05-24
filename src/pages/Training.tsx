@@ -86,7 +86,7 @@ const Training = () => {
     },
     {
       title: 'Préparation à une certification',
-      pourQui: 'Candidats TOEIC, CLOE, Bright ou équivalent.',
+      pourQui: 'Candidats TOEIC, Linguaskill, Cambridge ou équivalent.',
       objectif: 'Atteindre le score visé avec une méthode structurée.',
       format: 'Plan d\'entraînement + tests blancs corrigés.',
       resultat: 'Certification obtenue avec confiance.'
