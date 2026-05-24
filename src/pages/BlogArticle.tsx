@@ -183,61 +183,7 @@ const BlogArticle = () => {
       description: "Apprenez à adapter votre style de communication en anglais selon le canal : emails, présentations orales, appels téléphoniques.",
       ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
     },
-    'outils-ia-anglais-professionnel': {
-      title: '8 outils IA gratuits pour progresser en anglais professionnel',
-      content: `
-        <p>Pratiquer l'anglais professionnel de manière autonome et efficace, c'est désormais possible grâce à l'intelligence artificielle. Sur antonyaddy.com, vous avez accès à <strong>8 outils IA gratuits</strong> qui simulent des situations réelles du monde du travail et vous fournissent un feedback instantané et personnalisé.</p>
-
-        <h2>Pourquoi utiliser l'IA pour apprendre l'anglais ?</h2>
-        <p>L'IA permet de s'entraîner sans pression, à tout moment, et de recevoir des corrections détaillées sur la grammaire, le vocabulaire, le ton et la structure. Chaque outil évalue votre niveau selon le <strong>CECRL (A1 à C2)</strong> et propose des axes d'amélioration concrets.</p>
-
-        <h2>Les 8 outils disponibles</h2>
-
-        <h3>1. <a href="/conversation-trainer">Conversation professionnelle</a></h3>
-        <p>Simulez des situations réalistes : accueil client, réunion d'équipe, réclamation, networking. 15 scénarios avec 3 modes (entraînement, défi, examen) et feedback CECRL complet.</p>
-
-        <h3>2. <a href="/email-trainer">Rédaction d'e-mails</a></h3>
-        <p>Répondez à des e-mails professionnels réalistes et recevez un feedback IA sur la clarté, le ton, la structure et le vocabulaire. L'IA génère aussi un modèle de réponse et une version améliorée de votre texte.</p>
-
-        <h3>3. <a href="/presentation-trainer">Présentation professionnelle</a></h3>
-        <p>Rédigez des présentations en anglais sur des sujets professionnels. Feedback détaillé sur la structure, les transitions, le vocabulaire technique et l'impact global.</p>
-
-        <h3>4. <a href="/negotiation-trainer">Négociation commerciale</a></h3>
-        <p>Pratiquez des négociations dans des contextes réalistes : contrats, budgets, partenariats. L'IA évalue votre stratégie, votre persuasion et votre vocabulaire de négociation.</p>
-
-        <h3>5. <a href="/speaking-practice">Speaking Practice 🎙️</a></h3>
-        <p>Parlez en anglais grâce à la reconnaissance vocale et recevez un feedback sur la prononciation, la fluidité et le vocabulaire utilisé. Idéal pour surmonter la barrière de l'oral.</p>
-
-        <h3>6. <a href="/writing-coach">Writing Coach ✍️</a></h3>
-        <p>Soumettez n'importe quel texte en anglais et recevez une analyse complète avec corrections, suggestions de vocabulaire avancé et une version améliorée automatique.</p>
-
-        <h3>7. <a href="/interview-simulator">Interview Simulator 💼</a></h3>
-        <p>Préparez vos entretiens d'embauche en anglais. 8 secteurs d'activité, 3 types d'entretien (comportemental, compétences, motivation) et un feedback CECRL détaillé.</p>
-
-        <h3>8. <a href="/grammar-explainer">Grammar Explainer 📖</a></h3>
-        <p>Collez n'importe quelle phrase en anglais et obtenez une analyse grammaticale complète : parties du discours, règles appliquées, niveau CECRL et conseils pratiques.</p>
-
-        <h2>Comment en profiter ?</h2>
-        <p>Tous les outils sont <strong>100 % gratuits</strong> et accessibles <strong>sans inscription</strong>. Il suffit de choisir un outil, de commencer à pratiquer et de lire le feedback détaillé fourni par l'IA. Vous pouvez utiliser jusqu'à 5 sessions par jour.</p>
-
-        <h2>À qui s'adressent ces outils ?</h2>
-        <ul>
-          <li><strong>Professionnels</strong> souhaitant améliorer leur anglais de travail</li>
-          <li><strong>Candidats</strong> préparant un entretien d'embauche en anglais</li>
-          <li><strong>Étudiants</strong> en formation professionnelle ou commerce international</li>
-          <li><strong>Tout apprenant</strong> de niveau A2 à C1 cherchant une pratique autonome</li>
-        </ul>
-
-        <h2>Conclusion</h2>
-        <p>Ces 8 outils IA complètent parfaitement une formation avec un formateur. Ils permettent de pratiquer entre les cours, de gagner en confiance et de progresser plus rapidement. <a href="/conversation-trainer">Commencez dès maintenant</a> !</p>
-      `,
-      date: '2026-03-08',
-      author: 'Antony Addy',
-      category: 'Outils & ressources',
-      readTime: '6 min',
-      description: "Découvrez 8 outils IA gratuits pour pratiquer l'anglais professionnel : conversation, e-mails, négociation, entretien, grammaire et plus.",
-      ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
-    }
+    },
   };
 
   // Merge base articles with grammar articles
