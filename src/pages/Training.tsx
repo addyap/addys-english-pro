@@ -86,7 +86,7 @@ const Training = () => {
     },
     {
       title: 'Préparation à une certification',
-      pourQui: 'Candidats TOEIC, CLOE, Bright ou équivalent.',
+      pourQui: 'Candidats TOEIC, Linguaskill, Cambridge ou équivalent.',
       objectif: 'Atteindre le score visé avec une méthode structurée.',
       format: 'Plan d\'entraînement + tests blancs corrigés.',
       resultat: 'Certification obtenue avec confiance.'
@@ -154,7 +154,7 @@ const Training = () => {
               name: "Quels types de formations d'anglais proposez-vous ?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Je propose plusieurs types de formations : anglais général, anglais professionnel, anglais téléphonique et email, anglais spécialisé (vente, RH, immobilier, hôtellerie), et préparation aux certifications (TOEIC, CLOE, Bright)."
+                text: "Je propose plusieurs types de formations : anglais général, anglais professionnel, anglais téléphonique et email, anglais spécialisé (vente, RH, immobilier, hôtellerie), et préparation aux certifications professionnelles (TOEIC, Linguaskill, Cambridge)."
               }
             },
             {
@@ -434,8 +434,8 @@ const Training = () => {
                   <h3 className="font-semibold text-primary mb-2">Certifications reconnues</h3>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li>
-                      <a href="https://www.certificat-cloe.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                        Certification CLOE ↗
+                      <a href="https://www.cambridgeenglish.org/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                        Cambridge English ↗
                       </a>
                     </li>
                     <li>

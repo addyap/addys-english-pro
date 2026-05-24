@@ -240,7 +240,7 @@ export default function SEOHead(props: SEOProps) {
 
         {/* Additional SEO meta tags */}
         <meta name="author" content={author} />
-        <meta name="geo.region" content="FR-93" />
+        <meta name="geo.region" content="FR-83" />
         <meta name="geo.placename" content="Fréjus, Var & Alpes-Maritimes, France" />
       </Helmet>
 

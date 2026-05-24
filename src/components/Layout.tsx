@@ -5,7 +5,6 @@ import { MessageSquare, Menu, X } from 'lucide-react';
 import { ScrollProgressBar } from "@/components/Effects";
 import SiteLogo from "@/components/SiteLogo";
 import Breadcrumbs from '@/components/Breadcrumbs';
-import AIToolsNav from '@/components/AIToolsNav';
 import { usePageTracking } from '@/hooks/usePageTracking';
 
 import { trackEvent } from '@/lib/analytics';
@@ -13,12 +12,6 @@ import { WHATSAPP_PREFILLED_URL } from '@/lib/whatsapp';
 
 const WHATSAPP_URL = WHATSAPP_PREFILLED_URL;
 const trackWA = (location: string) => trackEvent('whatsapp_cta_click', { page: 'Layout', target: WHATSAPP_URL, location, prefilled: true });
-
-const AI_TOOL_PATHS = [
-  '/conversation-trainer', '/writing-coach', '/speaking-practice',
-  '/grammar-explainer', '/email-trainer', '/presentation-trainer',
-  '/negotiation-trainer', '/interview-simulator',
-];
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -31,13 +24,10 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
   const { t: tRaw } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const year = new Date().getFullYear();
-  const isAITool = AI_TOOL_PATHS.includes(location.pathname);
 
-  // Public site (header, mobile menu, footer) is always French.
-  // Only AI tool pages follow the user's selected interface language.
-  const t = isAITool
-    ? tRaw
-    : ((key: string, fallback?: string) => tRaw(key, { lng: 'fr', defaultValue: fallback }) as string);
+  // Public marketing site is always French.
+  const t = (key: string, fallback?: string) =>
+    tRaw(key, { lng: 'fr', defaultValue: fallback }) as string;
 
   usePageTracking();
 
@@ -48,8 +38,6 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
     { name: t('nav.testimonials'), href: '/temoignages', current: location.pathname === '/temoignages' },
     { name: t('nav.contact'), href: '/contact', current: location.pathname === '/contact' },
     { name: t('nav.blog'), href: '/blog', current: location.pathname === '/blog' },
-    { name: t('nav.resources'), href: '/ressources-gratuites', current: location.pathname === '/ressources-gratuites' },
-    { name: 'Outils IA', href: '/speaking-practice', current: isAITool },
   ];
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -165,14 +153,13 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
       </header>
 
       <Breadcrumbs customTitle={breadcrumbTitle} customSection={breadcrumbSection} />
-      {AI_TOOL_PATHS.includes(location.pathname) && <AIToolsNav />}
 
       <main>{children}</main>
 
       {/* Footer */}
       <footer className="bg-slate-900 text-white text-sm py-12 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             <div className="lg:col-span-2">
               <Link to="/" className="flex items-center gap-2 mb-4">
                 <SiteLogo height={32} className="brightness-0 invert" alt="Antony Addy" />
@@ -215,26 +202,6 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               </ul>
             </nav>
 
-            <nav aria-label={t('footer.resources')}>
-              <h3 className="font-semibold mb-3 text-white">{t('footer.resources')}</h3>
-              <ul className="space-y-2">
-                <li><Link to="/exercices" className="text-gray-400 hover:text-white transition-colors">{t('footer.exercises')}</Link></li>
-                <li><Link to="/exercices/listening" className="text-gray-400 hover:text-white transition-colors">{t('footer.listening')}</Link></li>
-                <li><Link to="/reading" className="text-gray-400 hover:text-white transition-colors">{t('footer.reading')}</Link></li>
-                <li><Link to="/exercices/writing/transform/1" className="text-gray-400 hover:text-white transition-colors">{t('footer.writing')}</Link></li>
-                <li><Link to="/story/1" className="text-gray-400 hover:text-white transition-colors">{t('footer.stories')}</Link></li>
-                <li><Link to="/dashboard" className="text-gray-400 hover:text-white transition-colors">{t('footer.dashboard')}</Link></li>
-                <li><Link to="/conversation-trainer" className="text-gray-400 hover:text-white transition-colors">AI Conversation Trainer</Link></li>
-                <li><Link to="/email-trainer" className="text-gray-400 hover:text-white transition-colors">AI Email Reply Trainer</Link></li>
-                <li><Link to="/presentation-trainer" className="text-gray-400 hover:text-white transition-colors">AI Presentation Trainer</Link></li>
-                <li><Link to="/negotiation-trainer" className="text-gray-400 hover:text-white transition-colors">AI Negotiation Trainer</Link></li>
-                <li><Link to="/speaking-practice" className="text-gray-400 hover:text-white transition-colors">AI Speaking Practice</Link></li>
-                <li><Link to="/writing-coach" className="text-gray-400 hover:text-white transition-colors">AI Writing Coach</Link></li>
-                <li><Link to="/interview-simulator" className="text-gray-400 hover:text-white transition-colors">AI Interview Simulator</Link></li>
-                <li><Link to="/grammar-explainer" className="text-gray-400 hover:text-white transition-colors">AI Grammar Explainer</Link></li>
-              </ul>
-            </nav>
-
             <div>
               <h3 className="font-semibold mb-3 text-white">{t('footer.contact')}</h3>
               <ul className="space-y-2 mb-6">
@@ -261,7 +228,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               <ul className="space-y-1">
                 <li><Link to="/mentions-legales" className="text-gray-400 hover:text-white transition-colors text-xs">{t('footer.legalNotices')}</Link></li>
                 <li><Link to="/politique-confidentialite" className="text-gray-400 hover:text-white transition-colors text-xs">{t('footer.privacy')}</Link></li>
-                <li><Link to="/sitemap-page" className="text-gray-400 hover:text-white transition-colors text-xs">{t('footer.sitemap')}</Link></li>
+                <li><Link to="/cgv" className="text-gray-400 hover:text-white transition-colors text-xs">CGV</Link></li>
               </ul>
             </div>
           </div>
