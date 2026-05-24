@@ -1,11 +1,10 @@
-
 import React, { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Routes, Route, Navigate, useParams } from "react-router-dom";
-import { HelmetProvider } from 'react-helmet-async';
+import { Routes, Route, Navigate } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { AppErrorBoundary } from "./components/AppErrorBoundary";
 import DiagnosticsPanel from "./components/DiagnosticsPanel";
 import Analytics from "./components/Analytics";
@@ -13,79 +12,29 @@ import OfflineBanner from "./components/OfflineBanner";
 import A11yProvider from "./components/A11yProvider";
 import CookieConsent from "./components/CookieConsent";
 import { LanguageProvider } from "./contexts/LanguageContext";
-// LanguageOnboardingModal removed — language is selectable via header dropdown only
 
 import Layout from "./components/Layout";
 import PrefetchRoutes from "./components/PrefetchRoutes";
 import ScrollToTop from "./components/ScrollToTop";
 import { HeroSkeleton, CardSkeleton } from "./components/SkeletonLoader";
 import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
+import ExternalRedirect from "./components/ExternalRedirect";
 
-// Lazy load pages for better performance
+// Marketing pages (KEEP)
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Training = lazy(() => import("./pages/Training"));
 const Testimonials = lazy(() => import("./pages/Testimonials"));
 const Contact = lazy(() => import("./pages/Contact"));
+const ThankYou = lazy(() => import("./pages/ThankYou"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogArticle = lazy(() => import("./pages/BlogArticle"));
-
-const Exercises = lazy(() => import("./pages/Exercises"));
-const ExerciseDetail = lazy(() => import("./pages/ExerciseDetail"));
 const LegalNotices = lazy(() => import("./pages/LegalNotices"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
-const Install = lazy(() => import("./pages/Install"));
-const Dashboard = lazy(() => import("./pages/Dashboard"));
-const Reading = lazy(() => import("./pages/Reading"));
-const ReadingDetail = lazy(() => import("./pages/ReadingDetail"));
-const InteractiveStory = lazy(() => import("./pages/InteractiveStory"));
-const DragDropExerciseDetail = lazy(() => import("./pages/DragDropExerciseDetail"));
-const WritingExerciseDetail = lazy(() => import("./pages/WritingExerciseDetail"));
-const IdiomExerciseDetail = lazy(() => import("./pages/IdiomExerciseDetail"));
-const PhrasalVerbExerciseDetail = lazy(() => import("./pages/PhrasalVerbExerciseDetail"));
-const CollocationExerciseDetail = lazy(() => import("./pages/CollocationExerciseDetail"));
-const ListeningLibrary = lazy(() => import("./pages/ListeningLibrary"));
-const ListeningExercise = lazy(() => import("./pages/ListeningExercise"));
-const AudioAdminTools = lazy(() => import("./pages/AudioAdminTools"));
-const ListeningAudioCacheAdmin = lazy(() => import("./pages/admin/ListeningAudioCacheAdmin"));
-const SitemapPage = lazy(() => import("./pages/SitemapPage"));
-const SEODiagnostics = lazy(() => import("./pages/SEODiagnostics"));
+const CGV = lazy(() => import("./pages/CGV"));
+const Questionnaire = lazy(() => import("./pages/Questionnaire"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-// New exercise types
-const DictationExerciseDetail = lazy(() => import("./pages/DictationExerciseDetail"));
-const WordFormationExerciseDetail = lazy(() => import("./pages/WordFormationExerciseDetail"));
-const SynonymAntonymExerciseDetail = lazy(() => import("./pages/SynonymAntonymExerciseDetail"));
-const ConditionalExerciseDetail = lazy(() => import("./pages/ConditionalExerciseDetail"));
-const PronunciationExerciseDetail = lazy(() => import("./pages/PronunciationExerciseDetail"));
-const ParagraphOrderingExerciseDetail = lazy(() => import("./pages/ParagraphOrderingExerciseDetail"));
-const TranslationExerciseDetail = lazy(() => import("./pages/TranslationExerciseDetail"));
-const ErrorCorrectionExerciseDetail = lazy(() => import("./pages/ErrorCorrectionExerciseDetail"));
-const SentenceBuildingExerciseDetail = lazy(() => import("./pages/SentenceBuildingExerciseDetail"));
-const FlashcardExerciseDetail = lazy(() => import("./pages/FlashcardExerciseDetail"));
-const FillInTypingExerciseDetail = lazy(() => import("./pages/FillInTypingExerciseDetail"));
-const CrosswordExerciseDetail = lazy(() => import("./pages/CrosswordExerciseDetail"));
-const MatchingExerciseDetail = lazy(() => import("./pages/MatchingExerciseDetail"));
-const DialogueExerciseDetail = lazy(() => import("./pages/DialogueExerciseDetail"));
-const PrepositionExerciseDetail = lazy(() => import("./pages/PrepositionExerciseDetail"));
-const CLOEPreparation = lazy(() => import("./pages/CLOEPreparation"));
-const CLOEOverview = lazy(() => import("./pages/CLOEOverview"));
-const CLOEExerciseDetail = lazy(() => import("./pages/CLOEExerciseDetail"));
-const CLOEPracticeTestPage = lazy(() => import("./pages/CLOEPracticeTestPage"));
-const CLOETestHistory = lazy(() => import("./pages/CLOETestHistory"));
-const SiteAnalytics = lazy(() => import("./pages/SiteAnalytics"));
-const GrammarLessonDetail = lazy(() => import("./pages/GrammarLessonDetail"));
-const BusinessConversation = lazy(() => import("./pages/BusinessConversation"));
-const EmailReplyTrainer = lazy(() => import("./pages/EmailReplyTrainer"));
-const AIPresentationTrainer = lazy(() => import("./pages/AIPresentationTrainer"));
-const AINegotiationTrainer = lazy(() => import("./pages/AINegotiationTrainer"));
-const AISpeakingPractice = lazy(() => import("./pages/AISpeakingPractice"));
-const AIWritingCoach = lazy(() => import("./pages/AIWritingCoach"));
-const AIInterviewSimulator = lazy(() => import("./pages/AIInterviewSimulator"));
-const AIGrammarExplainer = lazy(() => import("./pages/AIGrammarExplainer"));
-const RessourcesGratuites = lazy(() => import("./pages/RessourcesGratuites"));
-const ThankYou = lazy(() => import("./pages/ThankYou"));
-const Questionnaire = lazy(() => import("./pages/Questionnaire"));
 const PageLoader = () => (
   <div className="min-h-screen bg-background py-12">
     <div className="max-w-4xl mx-auto px-4 space-y-8">
@@ -96,7 +45,6 @@ const PageLoader = () => (
   </div>
 );
 
-// Create a single QueryClient for SSR
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -110,15 +58,23 @@ interface AppCoreProps {
   helmetContext?: { helmet?: any };
 }
 
-// Tiny redirect helper that preserves the :id param when the URL slug changed.
-const RedirectSynonymAntonym = () => {
-  const { id } = useParams<{ id: string }>();
-  return <Navigate to={`/exercices/synonyms-antonyms/${id ?? ''}`} replace />;
+// External destination map — anglaisadistance.fr equivalents
+const ADD = "https://anglaisadistance.fr";
+const DEST = {
+  conversation: `${ADD}/conversation-trainer`,
+  grammar: `${ADD}/grammaire-essentielle`,
+  grammarCorrector: `${ADD}/ai-grammar-corrector`,
+  emailCoach: `${ADD}/ai-email-coach`,
+  reading: `${ADD}/ai-reading-comprehension`,
+  dialogues: `${ADD}/dialogues`,
+  interview: `${ADD}/dialogues/job-interview`,
+  exercises: `${ADD}/grammaire-essentielle/contrastes`,
+  home: `${ADD}/`,
 };
 
-// Routes component extracted for reuse
 export const AppRoutes = () => (
   <Routes>
+    {/* KEEP — focused trainer marketing site */}
     <Route path="/" element={<Home />} />
     <Route path="/qui-je-suis" element={<About />} />
     <Route path="/offres-de-formation" element={<Training />} />
@@ -127,75 +83,51 @@ export const AppRoutes = () => (
     <Route path="/thank-you" element={<ThankYou />} />
     <Route path="/blog" element={<Blog />} />
     <Route path="/blog/:id" element={<BlogArticle />} />
-    
-    <Route path="/exercices" element={<Exercises />} />
-    <Route path="/exercices/:id" element={<ExerciseDetail />} />
-    <Route path="/exercices/drag-drop/:id" element={<DragDropExerciseDetail />} />
-    <Route path="/exercices/writing/:type/:id" element={<WritingExerciseDetail />} />
-    <Route path="/exercices/idioms/:id" element={<IdiomExerciseDetail />} />
-    <Route path="/exercices/phrasal-verbs/:id" element={<PhrasalVerbExerciseDetail />} />
-    <Route path="/exercices/collocations/:id" element={<CollocationExerciseDetail />} />
-    <Route path="/exercices/listening" element={<ListeningLibrary />} />
-    <Route path="/exercices/listening/:slug" element={<ListeningExercise />} />
-    <Route path="/exercices/dictation/:id" element={<DictationExerciseDetail />} />
-    <Route path="/exercices/word-formation/:id" element={<WordFormationExerciseDetail />} />
-    <Route path="/exercices/synonyms-antonyms/:id" element={<SynonymAntonymExerciseDetail />} />
-    <Route path="/exercices/conditionals/:id" element={<ConditionalExerciseDetail />} />
-    <Route path="/exercices/pronunciation/:id" element={<PronunciationExerciseDetail />} />
-    <Route path="/exercices/paragraph-ordering/:id" element={<ParagraphOrderingExerciseDetail />} />
-    <Route path="/exercices/translation/:id" element={<TranslationExerciseDetail />} />
-    <Route path="/exercices/error-correction/:id" element={<ErrorCorrectionExerciseDetail />} />
-    <Route path="/exercices/sentence-building/:id" element={<SentenceBuildingExerciseDetail />} />
-    <Route path="/exercices/flashcards/:id" element={<FlashcardExerciseDetail />} />
-    <Route path="/exercices/fill-in-typing/:id" element={<FillInTypingExerciseDetail />} />
-    <Route path="/exercices/crossword/:id" element={<CrosswordExerciseDetail />} />
-    <Route path="/exercices/matching/:id" element={<MatchingExerciseDetail />} />
-    <Route path="/exercices/dialogue/:id" element={<DialogueExerciseDetail />} />
-    <Route path="/exercices/prepositions/:id" element={<PrepositionExerciseDetail />} />
-    <Route path="/exercices/grammar/:slug" element={<GrammarLessonDetail />} />
-    <Route path="/exercices/cloe-preparation" element={<CLOEPreparation />} />
-    <Route path="/exercices/cloe-preparation/overview" element={<CLOEOverview />} />
-    <Route path="/exercices/cloe-preparation/practice-test" element={<CLOEPracticeTestPage />} />
-    <Route path="/exercices/cloe-preparation/history" element={<CLOETestHistory />} />
-    <Route path="/exercices/cloe/:id" element={<CLOEExerciseDetail />} />
     <Route path="/mentions-legales" element={<LegalNotices />} />
     <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
-    <Route path="/install" element={<Install />} />
-    <Route path="/dashboard" element={<Dashboard />} />
-    <Route path="/reading" element={<Reading />} />
-    <Route path="/reading/:id" element={<ReadingDetail />} />
-    <Route path="/story/:id" element={<InteractiveStory />} />
-    <Route path="/ressources-gratuites" element={<RessourcesGratuites />} />
-    <Route path="/sitemap-page" element={<SitemapPage />} />
-    <Route path="/admin/audio-cache" element={<AudioAdminTools />} />
-    <Route path="/admin/listening-cache" element={<ListeningAudioCacheAdmin />} />
-    <Route path="/admin/seo-diagnostics" element={<SEODiagnostics />} />
-    <Route path="/admin/analytics" element={<SiteAnalytics />} />
-    <Route path="/conversation-trainer" element={<BusinessConversation />} />
-    <Route path="/email-trainer" element={<EmailReplyTrainer />} />
-    <Route path="/presentation-trainer" element={<AIPresentationTrainer />} />
-    <Route path="/negotiation-trainer" element={<AINegotiationTrainer />} />
-    <Route path="/speaking-practice" element={<AISpeakingPractice />} />
-    <Route path="/writing-coach" element={<AIWritingCoach />} />
-    <Route path="/interview-simulator" element={<AIInterviewSimulator />} />
-    <Route path="/grammar-explainer" element={<AIGrammarExplainer />} />
-
-    {/* Legacy/alias routes (prevent user-facing 404s from older internal links) */}
-    <Route path="/lecture" element={<Navigate to="/reading" replace />} />
-    <Route path="/listening" element={<Navigate to="/exercices/listening" replace />} />
     <Route path="/politique-de-confidentialite" element={<Navigate to="/politique-confidentialite" replace />} />
-    <Route path="/exercices/ecoute" element={<Navigate to="/exercices/listening" replace />} />
-    <Route path="/exercices/ecoute-comprehension" element={<Navigate to="/exercices/listening" replace />} />
-    <Route path="/exercices/comprehension-ecrite" element={<Navigate to="/reading" replace />} />
-    <Route path="/exercices/ecriture" element={<Navigate to="/exercices/writing/transform/1" replace />} />
-    {/* Legacy singular path for synonyms/antonyms — redirect to current plural route */}
-    <Route path="/exercices/synonym-antonym/:id" element={<RedirectSynonymAntonym />} />
+    <Route path="/cgv" element={<CGV />} />
+
+    {/* Internal: bookmarked sitemap page → home */}
+    <Route path="/sitemap-page" element={<Navigate to="/" replace />} />
+
+    {/* CLOE — intentionally 404 (no redirect) */}
+    <Route path="/exercices/cloe-preparation/*" element={<NotFound />} />
+    <Route path="/exercices/cloe/*" element={<NotFound />} />
+
+    {/* REDIRECT — exercises (grammar lessons go to a more specific page) */}
+    <Route path="/exercices/grammar/*" element={<ExternalRedirect to={DEST.grammar} />} />
+    <Route path="/exercices/comprehension-ecrite" element={<ExternalRedirect to={DEST.reading} />} />
+    <Route path="/exercices/*" element={<ExternalRedirect to={DEST.exercises} />} />
+    <Route path="/exercices" element={<ExternalRedirect to={DEST.exercises} />} />
+
+    {/* REDIRECT — reading & stories */}
+    <Route path="/reading" element={<ExternalRedirect to={DEST.reading} />} />
+    <Route path="/reading/*" element={<ExternalRedirect to={DEST.reading} />} />
+    <Route path="/lecture" element={<ExternalRedirect to={DEST.reading} />} />
+    <Route path="/story/*" element={<ExternalRedirect to={DEST.dialogues} />} />
+    <Route path="/story-trainer" element={<ExternalRedirect to={DEST.dialogues} />} />
+
+    {/* REDIRECT — listening legacy aliases */}
+    <Route path="/listening" element={<ExternalRedirect to={DEST.exercises} />} />
+
+    {/* REDIRECT — AI trainers */}
+    <Route path="/conversation-trainer" element={<ExternalRedirect to={DEST.conversation} />} />
+    <Route path="/speaking-practice" element={<ExternalRedirect to={DEST.conversation} />} />
+    <Route path="/grammar-explainer" element={<ExternalRedirect to={DEST.grammar} />} />
+    <Route path="/writing-coach" element={<ExternalRedirect to={DEST.grammarCorrector} />} />
+    <Route path="/email-trainer" element={<ExternalRedirect to={DEST.emailCoach} />} />
+    <Route path="/interview-simulator" element={<ExternalRedirect to={DEST.interview} />} />
+    <Route path="/presentation-trainer" element={<ExternalRedirect to={DEST.home} />} />
+    <Route path="/negotiation-trainer" element={<ExternalRedirect to={DEST.home} />} />
+
+    {/* REDIRECT — free resources hub */}
+    <Route path="/ressources-gratuites" element={<ExternalRedirect to={DEST.home} />} />
 
     <Route path="*" element={<NotFound />} />
   </Routes>
 );
 
-// Inner content that needs the Router context
 export const AppContent = () => {
   return (
     <>
@@ -204,7 +136,7 @@ export const AppContent = () => {
 
       <Suspense fallback={<PageLoader />}>
         <Routes>
-          {/* Standalone routes — rendered without the global Layout (no header/footer/nav) */}
+          {/* Standalone routes — rendered without the global Layout */}
           <Route path="/questionnaire" element={<Questionnaire />} />
 
           {/* All other routes use the standard Layout */}
@@ -222,11 +154,10 @@ export const AppContent = () => {
   );
 };
 
-// Full app wrapper with all providers (for client-side)
-export const AppProviders = ({ 
+export const AppProviders = ({
   children,
-  helmetContext
-}: { 
+  helmetContext,
+}: {
   children: React.ReactNode;
   helmetContext?: { helmet?: any };
 }) => (
@@ -252,7 +183,6 @@ export const AppProviders = ({
   </AppErrorBoundary>
 );
 
-// Core app component for SSR (without BrowserRouter - that's added by entry-server.tsx or App.tsx)
 const AppCore = ({ helmetContext }: AppCoreProps) => (
   <AppProviders helmetContext={helmetContext}>
     <AppContent />
