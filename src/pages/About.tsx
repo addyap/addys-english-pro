@@ -16,16 +16,18 @@ const About = () => {
     "description": "Formateur d'anglais professionnel avec plus de 20 ans d'expérience",
     "url": "https://www.antonyaddy.com/qui-je-suis",
     "email": "formations@antonyaddy.com",
-    "areaServed": {
-      "@type": "Place",
-      "name": "France"
-    },
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Var" },
+      { "@type": "AdministrativeArea", "name": "Alpes-Maritimes" },
+      { "@type": "Country", "name": "France" }
+    ],
+    "knowsLanguage": ["fr", "en"],
     "hasOccupation": {
       "@type": "Occupation",
       "name": "English Language Trainer",
       "occupationLocation": {
         "@type": "AdministrativeArea",
-        "name": "Alpes-Maritimes, France"
+        "name": "Var & Alpes-Maritimes, France"
       }
     }
   };
@@ -34,7 +36,7 @@ const About = () => {
       <SEOHead 
         title="Antony Addy | Formateur Anglais FPA Certifié"
         description="Britannique natif certifié Formateur Professionnel d'Adultes depuis 2017. Plus de 20 ans d'expérience en formation anglais professionnel."
-        keywords={["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "formation adultes", "Alpes-Maritimes"]}
+        keywords={["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "formation adultes", "Var", "Alpes-Maritimes", "Fréjus"]}
         canonicalUrl="https://www.antonyaddy.com/qui-je-suis"
         image="https://www.antonyaddy.com/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png"
         imageAlt="Antony Addy, formateur d'anglais certifié FPA"
@@ -238,7 +240,7 @@ const About = () => {
                     En présentiel
                   </h3>
                   <p className="text-muted-foreground">
-                    Cannes, Antibes, Nice, Monaco (Alpes-Maritimes)
+                    Var et Alpes-Maritimes : Fréjus, Saint-Raphaël, Cannes, Antibes, Nice, Monaco
                   </p>
                 </div>
               </div>

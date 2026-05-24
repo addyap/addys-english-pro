@@ -7,7 +7,6 @@ export const AUTHORITY_LINKS = {
   // CLOE Certification
   cloe: {
     official: "https://www.certificat-cloe.fr/",
-    cpf: "https://www.moncompteformation.gouv.fr/",
     franceTravail: "https://www.francetravail.fr/",
   },
   
@@ -27,7 +26,6 @@ export const AUTHORITY_LINKS = {
   
   // Professional Standards
   professional: {
-    qualiopi: "https://travail-emploi.gouv.fr/formation-professionnelle/acteurs-cadre-et-qualite-de-la-formation-professionnelle/article/qualiopi-marque-de-certification-qualite-des-prestataires-de-formation",
     fpa: "https://www.afpa.fr/formation/titre-professionnel-formateur-professionnel-adultes",
     rncp: "https://www.francecompetences.fr/",
   },

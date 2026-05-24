@@ -128,13 +128,15 @@ export const jsonLdOrganization = (opts?: {
   name: opts?.name ?? "Antony Addy — English Training",
   url: opts?.url ?? "https://www.antonyaddy.com",
   logo: opts?.logo ?? "https://www.antonyaddy.com/og/antonyaddy-card.png",
-  telephone: opts?.telephone ?? "+33 6 XX XX XX XX",
+  telephone: opts?.telephone ?? "+33649829826",
   email: opts?.email ?? "contact@antonyaddy.com",
   address: opts?.address ?? {
     "@type": "PostalAddress",
-    addressCountry: "FR",
+    streetAddress: "135 rue Henri Vadon",
+    addressLocality: "Fréjus",
+    postalCode: "83600",
     addressRegion: "Provence-Alpes-Côte d'Azur",
-    addressLocality: "Alpes-Maritimes",
+    addressCountry: "FR",
   },
   sameAs: opts?.sameAs ?? [
     "https://www.linkedin.com/in/antonyaddy",
@@ -148,7 +150,7 @@ export const jsonLdWebsite = () => ({
   name: "Antony Addy — Formateur d'anglais",
   url: "https://www.antonyaddy.com",
   description:
-    "Formations d'anglais professionnel à distance ou en présentiel dans les Alpes-Maritimes",
+    "Formations d'anglais professionnel en présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde",
   potentialAction: {
     "@type": "SearchAction",
     target: "https://www.antonyaddy.com/blog?q={search_term_string}",
@@ -163,7 +165,12 @@ export const jsonLdProfessionalService = () => ({
   description:
     "Services de formation en anglais professionnel, coaching linguistique et cours particuliers",
   provider: jsonLdOrganization(),
-  areaServed: { "@type": "Place", name: "France" },
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Var" },
+    { "@type": "AdministrativeArea", name: "Alpes-Maritimes" },
+    { "@type": "Country", name: "France" },
+  ],
+  availableLanguage: ["fr", "en"],
   serviceType: [
     "Formation d'anglais professionnel",
     "Coaching linguistique",

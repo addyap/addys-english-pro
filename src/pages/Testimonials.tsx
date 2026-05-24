@@ -24,9 +24,17 @@ const Testimonials = () => {
     "telephone": "+33649829826",
     "address": {
       "@type": "PostalAddress",
-      "addressRegion": "Alpes-Maritimes",
+      "streetAddress": "135 rue Henri Vadon",
+      "addressLocality": "Fréjus",
+      "postalCode": "83600",
+      "addressRegion": "Provence-Alpes-Côte d'Azur",
       "addressCountry": "FR"
     },
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Var" },
+      { "@type": "AdministrativeArea", "name": "Alpes-Maritimes" },
+      { "@type": "Country", "name": "France" }
+    ],
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5",
