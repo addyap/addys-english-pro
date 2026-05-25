@@ -241,7 +241,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
       {/* Footer */}
       <footer className="bg-slate-900 text-white text-sm py-12 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
             <div className="lg:col-span-2">
               <Link to="/" className="flex items-center gap-2 mb-4">
                 <SiteLogo height={32} className="brightness-0 invert" alt="Antony Addy" />
@@ -294,7 +294,31 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 <li><Link to="/blog" className="text-gray-400 hover:text-white transition-colors">{t('nav.blog')}</Link></li>
                 <li><Link to="/questionnaire" className="text-gray-400 hover:text-white transition-colors">Questionnaire de profil</Link></li>
               </ul>
+
+              <h4 className="font-semibold mt-6 mb-2 text-white text-xs uppercase tracking-wider">Pour qui</h4>
+              <ul className="space-y-1">
+                {AUDIENCE_LINKS.map(a => (
+                  <li key={a.href}>
+                    <Link to={a.href} className="text-gray-400 hover:text-white transition-colors text-xs">{a.name}</Link>
+                  </li>
+                ))}
+              </ul>
             </nav>
+
+            <div>
+              <h3 className="font-semibold mb-3 text-white">Zones d'intervention</h3>
+              <ul className="space-y-2">
+                {CITY_LINKS.map(c => (
+                  <li key={c.href}>
+                    <Link to={c.href} className="text-gray-400 hover:text-white transition-colors">{c.name}</Link>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-gray-500 text-xs mt-3 leading-relaxed">
+                Présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde.
+              </p>
+            </div>
+
 
             <div>
               <h3 className="font-semibold mb-3 text-white">{t('footer.contact')}</h3>
