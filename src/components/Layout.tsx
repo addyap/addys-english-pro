@@ -94,7 +94,48 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                   {item.name}
                 </Link>
               ))}
+
+              {/* Pour qui dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setIsAudienceOpen(true)}
+                onMouseLeave={() => setIsAudienceOpen(false)}
+              >
+                <button
+                  type="button"
+                  onClick={() => setIsAudienceOpen(o => !o)}
+                  aria-haspopup="true"
+                  aria-expanded={isAudienceOpen}
+                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 font-body border inline-flex items-center gap-1 ${
+                    audienceActive
+                      ? 'bg-accent text-accent-foreground border-accent'
+                      : 'text-primary hover:text-accent-foreground hover:bg-accent border-transparent hover:border-accent'
+                  }`}
+                >
+                  Pour qui
+                  <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
+                </button>
+                {isAudienceOpen && (
+                  <div className="absolute left-0 top-full mt-1 w-56 bg-white border border-border rounded-lg shadow-lg py-2 z-50">
+                    {AUDIENCE_LINKS.map(a => (
+                      <Link
+                        key={a.href}
+                        to={a.href}
+                        onClick={() => setIsAudienceOpen(false)}
+                        className={`block px-4 py-2 text-sm font-body transition-colors ${
+                          location.pathname === a.href
+                            ? 'bg-accent text-accent-foreground'
+                            : 'text-primary hover:bg-muted'
+                        }`}
+                      >
+                        {a.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             </nav>
+
 
             {/* Mobile menu button + WhatsApp */}
             <div className="lg:hidden flex items-center gap-2">
