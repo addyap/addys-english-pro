@@ -35,6 +35,20 @@ const CGV = lazy(() => import("./pages/CGV"));
 const Questionnaire = lazy(() => import("./pages/Questionnaire"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
+// Per-audience pages
+const AnglaisEntreprise = lazy(() => import("./pages/AnglaisEntreprise"));
+const AnglaisCadres = lazy(() => import("./pages/AnglaisCadres"));
+const AnglaisParticuliers = lazy(() => import("./pages/AnglaisParticuliers"));
+const AnglaisEtudiants = lazy(() => import("./pages/AnglaisEtudiants"));
+
+// Per-city pages
+const CoursAnglaisFrejus = lazy(() => import("./pages/CoursAnglaisFrejus"));
+const CoursAnglaisNice = lazy(() => import("./pages/CoursAnglaisNice"));
+const CoursAnglaisCannes = lazy(() => import("./pages/CoursAnglaisCannes"));
+const CoursAnglaisAntibes = lazy(() => import("./pages/CoursAnglaisAntibes"));
+const CoursAnglaisSophiaAntipolis = lazy(() => import("./pages/CoursAnglaisSophiaAntipolis"));
+
+
 const PageLoader = () => (
   <div className="min-h-screen bg-background py-12">
     <div className="max-w-4xl mx-auto px-4 space-y-8">
@@ -87,6 +101,20 @@ export const AppRoutes = () => (
     <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
     <Route path="/politique-de-confidentialite" element={<Navigate to="/politique-confidentialite" replace />} />
     <Route path="/cgv" element={<CGV />} />
+
+    {/* Per-audience landing pages */}
+    <Route path="/anglais-entreprise" element={<AnglaisEntreprise />} />
+    <Route path="/anglais-cadres" element={<AnglaisCadres />} />
+    <Route path="/anglais-particuliers" element={<AnglaisParticuliers />} />
+    <Route path="/anglais-etudiants" element={<AnglaisEtudiants />} />
+
+    {/* Per-city landing pages */}
+    <Route path="/cours-anglais-frejus" element={<CoursAnglaisFrejus />} />
+    <Route path="/cours-anglais-nice" element={<CoursAnglaisNice />} />
+    <Route path="/cours-anglais-cannes" element={<CoursAnglaisCannes />} />
+    <Route path="/cours-anglais-antibes" element={<CoursAnglaisAntibes />} />
+    <Route path="/cours-anglais-sophia-antipolis" element={<CoursAnglaisSophiaAntipolis />} />
+
 
     {/* Internal: bookmarked sitemap page → home */}
     <Route path="/sitemap-page" element={<Navigate to="/" replace />} />

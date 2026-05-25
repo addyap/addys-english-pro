@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MessageSquare, Menu, X } from 'lucide-react';
+import { MessageSquare, Menu, X, ChevronDown } from 'lucide-react';
+
 import { ScrollProgressBar } from "@/components/Effects";
 import SiteLogo from "@/components/SiteLogo";
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -19,10 +20,26 @@ interface LayoutProps {
   breadcrumbSection?: { label: string; path: string };
 }
 
+const AUDIENCE_LINKS = [
+  { name: 'Entreprises', href: '/anglais-entreprise' },
+  { name: 'Cadres & dirigeants', href: '/anglais-cadres' },
+  { name: 'Particuliers', href: '/anglais-particuliers' },
+  { name: 'Étudiants', href: '/anglais-etudiants' },
+];
+
+const CITY_LINKS = [
+  { name: 'Fréjus', href: '/cours-anglais-frejus' },
+  { name: 'Nice', href: '/cours-anglais-nice' },
+  { name: 'Cannes', href: '/cours-anglais-cannes' },
+  { name: 'Antibes', href: '/cours-anglais-antibes' },
+  { name: 'Sophia Antipolis', href: '/cours-anglais-sophia-antipolis' },
+];
+
 const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) => {
   const location = useLocation();
   const { t: tRaw } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAudienceOpen, setIsAudienceOpen] = useState(false);
   const year = new Date().getFullYear();
 
   // Public marketing site is always French.
@@ -30,6 +47,8 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
     tRaw(key, { lng: 'fr', defaultValue: fallback }) as string;
 
   usePageTracking();
+
+  const audienceActive = AUDIENCE_LINKS.some(a => a.href === location.pathname);
 
   const navigation = [
     { name: t('nav.home'), href: '/', current: location.pathname === '/' },
@@ -41,6 +60,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
   ];
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
 
   return (
     <div className="min-h-screen bg-background font-body">
@@ -74,7 +94,48 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                   {item.name}
                 </Link>
               ))}
+
+              {/* Pour qui dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setIsAudienceOpen(true)}
+                onMouseLeave={() => setIsAudienceOpen(false)}
+              >
+                <button
+                  type="button"
+                  onClick={() => setIsAudienceOpen(o => !o)}
+                  aria-haspopup="true"
+                  aria-expanded={isAudienceOpen}
+                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 font-body border inline-flex items-center gap-1 ${
+                    audienceActive
+                      ? 'bg-accent text-accent-foreground border-accent'
+                      : 'text-primary hover:text-accent-foreground hover:bg-accent border-transparent hover:border-accent'
+                  }`}
+                >
+                  Pour qui
+                  <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
+                </button>
+                {isAudienceOpen && (
+                  <div className="absolute left-0 top-full mt-1 w-56 bg-white border border-border rounded-lg shadow-lg py-2 z-50">
+                    {AUDIENCE_LINKS.map(a => (
+                      <Link
+                        key={a.href}
+                        to={a.href}
+                        onClick={() => setIsAudienceOpen(false)}
+                        className={`block px-4 py-2 text-sm font-body transition-colors ${
+                          location.pathname === a.href
+                            ? 'bg-accent text-accent-foreground'
+                            : 'text-primary hover:bg-muted'
+                        }`}
+                      >
+                        {a.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             </nav>
+
 
             {/* Mobile menu button + WhatsApp */}
             <div className="lg:hidden flex items-center gap-2">
@@ -139,6 +200,26 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                     {item.name}
                   </Link>
                 ))}
+
+                {/* Pour qui — mobile */}
+                <div className="pt-2 mt-2 border-t border-gray-100">
+                  <p className="px-4 pb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Pour qui</p>
+                  {AUDIENCE_LINKS.map(a => (
+                    <Link
+                      key={a.href}
+                      to={a.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`flex items-center min-h-[44px] px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 font-body border ${
+                        location.pathname === a.href
+                          ? 'text-accent-foreground bg-accent border-accent'
+                          : 'text-primary hover:text-accent-foreground hover:bg-accent border-transparent hover:border-accent'
+                      }`}
+                    >
+                      {a.name}
+                    </Link>
+                  ))}
+                </div>
+
                 <Link
                   to="/questionnaire"
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -146,6 +227,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 >
                   Évaluer mes besoins
                 </Link>
+
               </nav>
             </div>
           )}
@@ -159,7 +241,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
       {/* Footer */}
       <footer className="bg-slate-900 text-white text-sm py-12 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
             <div className="lg:col-span-2">
               <Link to="/" className="flex items-center gap-2 mb-4">
                 <SiteLogo height={32} className="brightness-0 invert" alt="Antony Addy" />
@@ -212,7 +294,31 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 <li><Link to="/blog" className="text-gray-400 hover:text-white transition-colors">{t('nav.blog')}</Link></li>
                 <li><Link to="/questionnaire" className="text-gray-400 hover:text-white transition-colors">Questionnaire de profil</Link></li>
               </ul>
+
+              <h4 className="font-semibold mt-6 mb-2 text-white text-xs uppercase tracking-wider">Pour qui</h4>
+              <ul className="space-y-1">
+                {AUDIENCE_LINKS.map(a => (
+                  <li key={a.href}>
+                    <Link to={a.href} className="text-gray-400 hover:text-white transition-colors text-xs">{a.name}</Link>
+                  </li>
+                ))}
+              </ul>
             </nav>
+
+            <div>
+              <h3 className="font-semibold mb-3 text-white">Zones d'intervention</h3>
+              <ul className="space-y-2">
+                {CITY_LINKS.map(c => (
+                  <li key={c.href}>
+                    <Link to={c.href} className="text-gray-400 hover:text-white transition-colors">{c.name}</Link>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-gray-500 text-xs mt-3 leading-relaxed">
+                Présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde.
+              </p>
+            </div>
+
 
             <div>
               <h3 className="font-semibold mb-3 text-white">{t('footer.contact')}</h3>
