@@ -215,6 +215,29 @@ const Training = () => {
             </div>
           </FadeInSection>
 
+          {/* Per-audience landing page links */}
+          <FadeInSection>
+            <div className="mb-12 bg-gradient-to-br from-primary/5 to-accent/5 rounded-lg p-6 sm:p-8 border border-border">
+              <h2 className="text-xl sm:text-2xl font-bold text-primary mb-2 font-heading">Voir le détail par profil</h2>
+              <p className="text-sm text-muted-foreground mb-5">Chaque profil a sa propre page dédiée avec FAQ et exemples concrets.</p>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                <Link to="/anglais-entreprise" className="block p-3 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+                  <span className="font-semibold text-primary text-sm">Entreprises →</span>
+                </Link>
+                <Link to="/anglais-cadres" className="block p-3 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+                  <span className="font-semibold text-primary text-sm">Cadres &amp; dirigeants →</span>
+                </Link>
+                <Link to="/anglais-particuliers" className="block p-3 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+                  <span className="font-semibold text-primary text-sm">Particuliers →</span>
+                </Link>
+                <Link to="/anglais-etudiants" className="block p-3 bg-white rounded-lg border border-border hover:border-accent transition-colors">
+                  <span className="font-semibold text-primary text-sm">Étudiants →</span>
+                </Link>
+              </div>
+            </div>
+          </FadeInSection>
+
+
           {/* Formations professionnelles spécialisées (AI-powered) */}
           <FadeInSection>
             <div id="formations-professionnelles" className="bg-white rounded-lg shadow-lg p-6 sm:p-8 mb-12 scroll-mt-24">
