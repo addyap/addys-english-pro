@@ -200,6 +200,26 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                     {item.name}
                   </Link>
                 ))}
+
+                {/* Pour qui — mobile */}
+                <div className="pt-2 mt-2 border-t border-gray-100">
+                  <p className="px-4 pb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Pour qui</p>
+                  {AUDIENCE_LINKS.map(a => (
+                    <Link
+                      key={a.href}
+                      to={a.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`flex items-center min-h-[44px] px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 font-body border ${
+                        location.pathname === a.href
+                          ? 'text-accent-foreground bg-accent border-accent'
+                          : 'text-primary hover:text-accent-foreground hover:bg-accent border-transparent hover:border-accent'
+                      }`}
+                    >
+                      {a.name}
+                    </Link>
+                  ))}
+                </div>
+
                 <Link
                   to="/questionnaire"
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -207,6 +227,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 >
                   Évaluer mes besoins
                 </Link>
+
               </nav>
             </div>
           )}
