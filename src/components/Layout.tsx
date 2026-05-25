@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MessageSquare, Menu, X } from 'lucide-react';
+import { MessageSquare, Menu, X, ChevronDown } from 'lucide-react';
+
 import { ScrollProgressBar } from "@/components/Effects";
 import SiteLogo from "@/components/SiteLogo";
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -19,10 +20,26 @@ interface LayoutProps {
   breadcrumbSection?: { label: string; path: string };
 }
 
+const AUDIENCE_LINKS = [
+  { name: 'Entreprises', href: '/anglais-entreprise' },
+  { name: 'Cadres & dirigeants', href: '/anglais-cadres' },
+  { name: 'Particuliers', href: '/anglais-particuliers' },
+  { name: 'Étudiants', href: '/anglais-etudiants' },
+];
+
+const CITY_LINKS = [
+  { name: 'Fréjus', href: '/cours-anglais-frejus' },
+  { name: 'Nice', href: '/cours-anglais-nice' },
+  { name: 'Cannes', href: '/cours-anglais-cannes' },
+  { name: 'Antibes', href: '/cours-anglais-antibes' },
+  { name: 'Sophia Antipolis', href: '/cours-anglais-sophia-antipolis' },
+];
+
 const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) => {
   const location = useLocation();
   const { t: tRaw } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAudienceOpen, setIsAudienceOpen] = useState(false);
   const year = new Date().getFullYear();
 
   // Public marketing site is always French.
@@ -30,6 +47,8 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
     tRaw(key, { lng: 'fr', defaultValue: fallback }) as string;
 
   usePageTracking();
+
+  const audienceActive = AUDIENCE_LINKS.some(a => a.href === location.pathname);
 
   const navigation = [
     { name: t('nav.home'), href: '/', current: location.pathname === '/' },
@@ -41,6 +60,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
   ];
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
 
   return (
     <div className="min-h-screen bg-background font-body">
