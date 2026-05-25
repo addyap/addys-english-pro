@@ -5,361 +5,415 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://www.antonyaddy.com/</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/qui-je-suis</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/contact</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/offres-de-formation</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/temoignages</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/mentions-legales</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/politique-confidentialite</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/cgv</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://www.antonyaddy.com/anglais-entreprise</loc>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.antonyaddy.com/anglais-cadres</loc>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.antonyaddy.com/anglais-particuliers</loc>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.antonyaddy.com/anglais-etudiants</loc>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.antonyaddy.com/cours-anglais-frejus</loc>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.antonyaddy.com/cours-anglais-nice</loc>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.antonyaddy.com/cours-anglais-cannes</loc>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.antonyaddy.com/cours-anglais-antibes</loc>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.antonyaddy.com/cours-anglais-sophia-antipolis</loc>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.antonyaddy.com/blog/present-simple-vs-present-continuous</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/past-simple-vs-present-perfect</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/past-simple-vs-past-continuous</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/past-simple-vs-past-perfect</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/past-perfect-continuous</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/future-continuous</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/future-perfect-continuous</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/will-vs-going-to</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/conditionals-zero-first-second-third</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/articles-a-an-the</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/prepositions-de-temps</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/prepositions-de-lieu</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/modal-verbs</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/passive-voice</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/reported-speech</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/relative-clauses</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/countable-uncountable-nouns</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/comparatifs-en-anglais</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/superlatifs-en-anglais</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/question-tags</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/phrasal-verbs</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/gerunds-vs-infinitives</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/wish-and-if-only</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/used-to-would</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/so-and-such</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/too-and-enough</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/much-many-a-lot-of</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/some-and-any</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/few-vs-little</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/either-neither</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/subject-object-pronouns</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/reflexive-pronouns</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/possessive-adjectives</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/possessive-pronouns</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/possessive-adjectives-vs-pronouns</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/adverbs-of-frequency</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/since-vs-for</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/been-vs-gone</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/still-yet-already</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/make-vs-do</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/say-vs-tell</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/causative-have-get</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/had-better-would-rather</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/although-despite-however</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/unless-as-long-as-provided</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/adjective-order</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/determiners</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/demonstratives-this-that-these-those</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/anglais-professionnel-2025</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/erreurs-francophones</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.antonyaddy.com/blog/oral-vs-ecrit</loc>
-    <lastmod>2026-05-25T15:08:36.618Z</lastmod>
+    <lastmod>2026-05-25T15:08:47.987Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
