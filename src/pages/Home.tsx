@@ -449,6 +449,41 @@ const Home = () => {
           </div>
         </section>
 
+        {/* Pour qui — per-audience landing page links */}
+        <section className="py-12 sm:py-16 bg-white" aria-labelledby="audience-heading">
+          <div className="max-w-6xl mx-auto px-4">
+            <h2 id="audience-heading" className="text-2xl sm:text-3xl font-bold text-center text-primary mb-3 font-heading">
+              Pour qui je travaille
+            </h2>
+            <p className="text-center text-muted-foreground mb-8 sm:mb-10 max-w-2xl mx-auto">
+              Chaque formation est conçue sur mesure. Voici les quatre profils que j'accompagne le plus souvent.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <Link to="/anglais-entreprise" className="block p-5 rounded-lg bg-muted hover:bg-accent/10 border border-border hover:border-accent transition-all">
+                <h3 className="text-lg font-semibold text-primary mb-2 font-heading">Entreprises</h3>
+                <p className="text-sm text-muted-foreground mb-3 leading-relaxed">Formations sur-mesure pour vos équipes, encadrées par convention de formation.</p>
+                <span className="text-sm font-medium text-accent">En savoir plus →</span>
+              </Link>
+              <Link to="/anglais-cadres" className="block p-5 rounded-lg bg-muted hover:bg-accent/10 border border-border hover:border-accent transition-all">
+                <h3 className="text-lg font-semibold text-primary mb-2 font-heading">Cadres &amp; dirigeants</h3>
+                <p className="text-sm text-muted-foreground mb-3 leading-relaxed">Accompagnement individuel et confidentiel autour de vos enjeux professionnels.</p>
+                <span className="text-sm font-medium text-accent">En savoir plus →</span>
+              </Link>
+              <Link to="/anglais-particuliers" className="block p-5 rounded-lg bg-muted hover:bg-accent/10 border border-border hover:border-accent transition-all">
+                <h3 className="text-lg font-semibold text-primary mb-2 font-heading">Particuliers</h3>
+                <p className="text-sm text-muted-foreground mb-3 leading-relaxed">Cours adaptés à votre niveau, votre rythme, et vos objectifs personnels.</p>
+                <span className="text-sm font-medium text-accent">En savoir plus →</span>
+              </Link>
+              <Link to="/anglais-etudiants" className="block p-5 rounded-lg bg-muted hover:bg-accent/10 border border-border hover:border-accent transition-all">
+                <h3 className="text-lg font-semibold text-primary mb-2 font-heading">Étudiants</h3>
+                <p className="text-sm text-muted-foreground mb-3 leading-relaxed">Lycéens, étudiants du supérieur, préparation aux examens (TOEIC, Cambridge, bac).</p>
+                <span className="text-sm font-medium text-accent">En savoir plus →</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+
         {/* Ils me font confiance Section - Updated with client categories */}
         <section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
