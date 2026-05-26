@@ -34,7 +34,7 @@ const LegalNotices = () => {
               <h2 className="text-2xl font-semibold text-primary mb-4">Organisme de formation</h2>
               <p className="mb-2">
                 <strong>Numéro de Déclaration d'Activité (NDA) :</strong>{" "}
-                [À CONFIRMER PAR ANTONY]
+                93 830 73 88 83
               </p>
               <p className="mb-2">
                 <strong>Autorité d'enregistrement :</strong> DREETS
@@ -55,9 +55,7 @@ const LegalNotices = () => {
                   rel="noopener noreferrer"
                 >
                   www.bluehost.com
-                </a>{" "}
-                [À CONFIRMER PAR ANTONY si la plateforme d'hébergement a
-                changé].
+                </a>
               </p>
 
               <h2 className="text-2xl font-semibold text-primary mb-4">Propriété intellectuelle</h2>
