@@ -19,7 +19,7 @@ const LegalNotices = () => {
 
               <h2 className="text-2xl font-semibold text-primary mb-4">Éditeur du site</h2>
               <p className="mb-2"><strong>Nom :</strong> Antony Addy</p>
-              <p className="mb-2"><strong>Statut juridique :</strong> [À CONFIRMER PAR ANTONY — auto-entrepreneur ou entreprise individuelle]</p>
+              <p className="mb-2"><strong>Statut juridique :</strong> Auto-Entrepreneur</p>
               <p className="mb-2"><strong>Adresse professionnelle :</strong> 135 rue Henri Vadon, 83600 Fréjus, France</p>
               <p className="mb-2"><strong>SIRET :</strong> 483 178 893 00028</p>
               <p className="mb-2"><strong>Téléphone :</strong> +33 6 49 82 98 26</p>
@@ -47,14 +47,14 @@ const LegalNotices = () => {
 
               <h2 className="text-2xl font-semibold text-primary mb-4">Hébergement</h2>
               <p className="mb-6">
-                <strong>Hébergeur :</strong> Bluehost —{" "}
+                <strong>Hébergeur :</strong> Vercel —{" "}
                 <a
-                  href="https://www.bluehost.com"
+                  href="https://vercel.com"
                   className="text-blue-600 underline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  www.bluehost.com
+                  vercel.com
                 </a>
               </p>
 
