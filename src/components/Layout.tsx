@@ -40,7 +40,23 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
   const { t: tRaw } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAudienceOpen, setIsAudienceOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const year = new Date().getFullYear();
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 50);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = prev; };
+    }
+  }, [isMobileMenuOpen]);
 
   // Public marketing site is always French.
   const t = (key: string, fallback?: string) =>
