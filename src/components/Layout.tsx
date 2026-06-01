@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MessageSquare, Menu, X, ChevronDown } from 'lucide-react';
+import { MessageSquare, Menu, X, ChevronDown, Linkedin, Mail } from 'lucide-react';
 
 import { ScrollProgressBar } from "@/components/Effects";
 import SiteLogo from "@/components/SiteLogo";
