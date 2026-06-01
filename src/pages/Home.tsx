@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, MapPin, Headphones, Sparkles, MessageCircle, Mail, ArrowRight, Handshake, Mic, PenTool, UserCheck, Search } from 'lucide-react';
 import SEOHead, { jsonLdWebsite, jsonLdOrganization, jsonLdPerson } from '../components/SEOHead';
@@ -54,6 +54,29 @@ const CLIENT_LOGOS = [
 const Home = () => {
   useScrollTracking('home');
   useTimeTracking('home');
+
+  // Reveal-on-scroll: fade-in + slide-up for every [data-reveal] node
+  useEffect(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const nodes = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+    if (reduced) {
+      nodes.forEach(n => n.setAttribute('data-revealed', 'true'));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.setAttribute('data-revealed', 'true');
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    nodes.forEach(n => io.observe(n));
+    return () => io.disconnect();
+  }, []);
 
   const features = [{
     icon: Globe,
@@ -241,7 +264,7 @@ const Home = () => {
 
       <main id="main-content">
         {/* Qui je suis Section - Updated with split layout */}
-        <section className="py-16 bg-white">
+        <section data-reveal className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-primary mb-12 text-center font-heading">Votre formateur</h2>
             <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -304,7 +327,7 @@ const Home = () => {
         </section>
 
         {/* Quick Exercises CTA Banner - More subtle, value-focused */}
-        <section className="py-5 sm:py-6 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+        <section data-reveal className="py-5 sm:py-6 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
           <div className="max-w-6xl mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4">
               <div className="flex items-center gap-3 sm:gap-4 w-full md:w-auto">
@@ -333,7 +356,7 @@ const Home = () => {
         </section>
 
         {/* Questionnaire CTA — qualified-lead capture */}
-        <section className="py-10 bg-background border-b border-border" aria-labelledby="questionnaire-cta-heading">
+        <section data-reveal className="py-10 bg-background border-b border-border" aria-labelledby="questionnaire-cta-heading">
           <div className="max-w-4xl mx-auto px-4">
             <div className="rounded-2xl border border-primary/20 bg-primary/5 p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-5">
               <div className="flex-1">
@@ -358,7 +381,7 @@ const Home = () => {
         </section>
 
         {/* AI English Training — positioned as Antony's own training system, not a standalone tool */}
-        <section className="py-12 bg-background" aria-labelledby="ai-training-heading">
+        <section data-reveal className="py-12 bg-background" aria-labelledby="ai-training-heading">
           <div className="max-w-4xl mx-auto px-4">
             <article className="relative overflow-hidden bg-card border border-border rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-lg transition-shadow">
               <div className="flex flex-col md:flex-row md:items-start gap-6">
@@ -430,7 +453,7 @@ const Home = () => {
         </section>
 
         {/* Features Section - 6 blocks in 2x3 grid */}
-        <section className="py-12 sm:py-16 bg-muted" aria-labelledby="features-heading">
+        <section data-reveal className="py-12 sm:py-16 bg-muted" aria-labelledby="features-heading">
           <div className="max-w-6xl mx-auto px-4">
             <h2 id="features-heading" className="text-2xl sm:text-3xl font-bold text-center text-primary mb-8 sm:mb-12 font-heading">
               Pourquoi choisir mes formations ?
@@ -450,7 +473,7 @@ const Home = () => {
         </section>
 
         {/* Pour qui — per-audience landing page links */}
-        <section className="py-12 sm:py-16 bg-white" aria-labelledby="audience-heading">
+        <section data-reveal className="py-12 sm:py-16 bg-white" aria-labelledby="audience-heading">
           <div className="max-w-6xl mx-auto px-4">
             <h2 id="audience-heading" className="text-2xl sm:text-3xl font-bold text-center text-primary mb-3 font-heading">
               Pour qui je travaille
@@ -485,7 +508,7 @@ const Home = () => {
 
 
         {/* Ils me font confiance Section - Updated with client categories */}
-        <section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+        <section data-reveal className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-extrabold text-primary mb-12 text-center">Ils me font confiance</h2>
             
@@ -509,7 +532,7 @@ const Home = () => {
         {/* Avis Clients Section - Testimonials right after trust signals */}
         <AvisClients />
 
-        <section className="py-12 bg-gradient-to-r from-primary/5 to-accent/5">
+        <section data-reveal className="py-12 bg-gradient-to-r from-primary/5 to-accent/5">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h3 className="text-2xl md:text-3xl font-bold text-primary mb-4 font-heading">
               Prêt à progresser ?
@@ -532,7 +555,7 @@ const Home = () => {
 
 
         {/* Contact CTA Section - Conversion-focused, WhatsApp-first */}
-        <section className="py-12 sm:py-16 bg-red-600 text-white">
+        <section data-reveal className="py-12 sm:py-16 bg-red-600 text-white">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 font-heading leading-tight">Prêt à améliorer votre anglais professionnel ?</h2>
             <p className="text-base sm:text-lg md:text-xl mb-3 font-body leading-relaxed">
@@ -569,7 +592,7 @@ const Home = () => {
         </section>
         
         {/* Footer Authority Links - E-E-A-T Signals */}
-        <section className="py-8 bg-muted/50 border-t">
+        <section data-reveal className="py-8 bg-muted/50 border-t">
           <div className="max-w-6xl mx-auto px-4">
             <div className="grid md:grid-cols-3 gap-8 text-sm">
               <div>
