@@ -202,56 +202,106 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
             </div>
           </div>
 
-          {/* Mobile Navigation Menu */}
-          {isMobileMenuOpen && (
-            <div id="mobile-navigation" className="lg:hidden border-t border-gray-200 py-4">
-              <nav className="flex flex-col space-y-2">
-                {navigation.map((item) => (
+        </div>
+
+        {/* Mobile Navigation — full-screen overlay */}
+        {isMobileMenuOpen && (
+          <div
+            id="mobile-navigation"
+            className="lg:hidden fixed inset-0 z-modal bg-white flex flex-col animate-fade-in"
+            role="dialog"
+            aria-modal="true"
+            aria-label={t('nav.openMenu')}
+          >
+            <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200">
+              <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2">
+                <SiteLogo height={36} alt="Antony Addy" />
+                <span className="text-base font-bold text-primary font-heading">Antony Addy</span>
+              </Link>
+              <button
+                type="button"
+                onClick={() => setIsMobileMenuOpen(false)}
+                aria-label={t('nav.closeMenu')}
+                className="text-primary p-2.5 min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                <X className="h-7 w-7" aria-hidden="true" />
+              </button>
+            </div>
+
+            <nav className="flex-1 overflow-y-auto px-6 py-8 flex flex-col gap-2">
+              {navigation.map((item) => (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`flex items-center min-h-[60px] px-4 py-4 rounded-xl text-2xl font-semibold font-heading transition-colors ${
+                    item.current
+                      ? 'text-accent-foreground bg-accent'
+                      : 'text-primary hover:bg-muted'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+
+              <div className="mt-4 pt-4 border-t border-gray-100">
+                <p className="px-4 pb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Pour qui</p>
+                {AUDIENCE_LINKS.map(a => (
                   <Link
-                    key={item.href}
-                    to={item.href}
+                    key={a.href}
+                    to={a.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`flex items-center min-h-[44px] px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 font-body border active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
-                      item.current
-                        ? 'text-accent-foreground bg-accent border-accent'
-                        : 'text-primary hover:text-accent-foreground hover:bg-accent border-transparent hover:border-accent'
+                    className={`flex items-center min-h-[52px] px-4 py-3 rounded-xl text-lg font-medium font-body transition-colors ${
+                      location.pathname === a.href
+                        ? 'text-accent-foreground bg-accent'
+                        : 'text-primary hover:bg-muted'
                     }`}
                   >
-                    {item.name}
+                    {a.name}
                   </Link>
                 ))}
+              </div>
 
-                {/* Pour qui — mobile */}
-                <div className="pt-2 mt-2 border-t border-gray-100">
-                  <p className="px-4 pb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Pour qui</p>
-                  {AUDIENCE_LINKS.map(a => (
-                    <Link
-                      key={a.href}
-                      to={a.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className={`flex items-center min-h-[44px] px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 font-body border ${
-                        location.pathname === a.href
-                          ? 'text-accent-foreground bg-accent border-accent'
-                          : 'text-primary hover:text-accent-foreground hover:bg-accent border-transparent hover:border-accent'
-                      }`}
-                    >
-                      {a.name}
-                    </Link>
-                  ))}
-                </div>
+              <Link
+                to="/questionnaire"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="mt-6 flex items-center justify-center min-h-[56px] px-6 py-4 rounded-xl text-lg font-bold bg-accent text-accent-foreground hover:bg-accent/90 transition-colors font-body"
+              >
+                Évaluer mes besoins
+              </Link>
+            </nav>
 
-                <Link
-                  to="/questionnaire"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center min-h-[44px] px-4 py-3 rounded-lg text-base font-semibold bg-accent text-accent-foreground hover:bg-accent/90 transition-colors font-body"
-                >
-                  Évaluer mes besoins
-                </Link>
-
-              </nav>
+            {/* Social icons pinned to bottom */}
+            <div className="border-t border-gray-200 px-6 py-5 flex items-center justify-center gap-4 bg-muted/40">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => { trackWA('mobile-overlay'); setIsMobileMenuOpen(false); }}
+                className="flex items-center justify-center w-12 h-12 rounded-full bg-green-500 text-white hover:bg-green-600 transition-colors"
+                aria-label="WhatsApp"
+              >
+                <MessageSquare className="h-5 w-5" />
+              </a>
+              <a
+                href="https://linkedin.com/in/antonyaddy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+                href="mailto:formations@antonyaddy.com"
+                className="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                aria-label="Email"
+              >
+                <Mail className="h-5 w-5" />
+              </a>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </header>
 
       <Breadcrumbs customTitle={breadcrumbTitle} customSection={breadcrumbSection} />
