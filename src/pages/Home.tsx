@@ -55,6 +55,29 @@ const Home = () => {
   useScrollTracking('home');
   useTimeTracking('home');
 
+  // Reveal-on-scroll: fade-in + slide-up for every [data-reveal] node
+  useEffect(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const nodes = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+    if (reduced) {
+      nodes.forEach(n => n.setAttribute('data-revealed', 'true'));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.setAttribute('data-revealed', 'true');
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    nodes.forEach(n => io.observe(n));
+    return () => io.disconnect();
+  }, []);
+
   const features = [{
     icon: Globe,
     title: 'Formateur britannique natif',
