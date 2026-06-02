@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "bun scripts/generate-sitemap.mjs",
     "build": "vite-react-ssg build",
     "build:dev": "vite-react-ssg build --mode development",
     "build:csr": "vite build",
