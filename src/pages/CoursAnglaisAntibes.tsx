@@ -11,7 +11,7 @@ const OTHER_CITIES = [
 const CoursAnglaisAntibes = () => (
   <CityLandingPage
     seo={{
-      title: "Cours d'anglais Antibes & Juan-les-Pins — Formateur natif",
+      title: "Cours d'anglais Antibes — Formateur natif britannique",
       description: "Cours d'anglais sur-mesure à Antibes, Juan-les-Pins et le bassin antibois. Formateur natif britannique certifié FPA. Présentiel ou distance.",
       canonical: "https://www.antonyaddy.com/cours-anglais-antibes",
     }}

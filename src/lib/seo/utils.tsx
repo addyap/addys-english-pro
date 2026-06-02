@@ -26,7 +26,10 @@ export function composeTitle(baseTitle?: string, siteName?: string) {
   // Avoid appending the site name if the base title already contains it
   // (case-insensitive substring match), to prevent "... | Antony Addy | Antony Addy".
   if (baseTitle.toLowerCase().includes(siteName.toLowerCase())) return baseTitle;
-  return `${baseTitle} | ${siteName}`;
+  const withSuffix = `${baseTitle} | ${siteName}`;
+  // Keep the suffix only if the total stays within Google's ~60-char truncation zone.
+  if (withSuffix.length <= 60) return withSuffix;
+  return baseTitle;
 }
 
 // Keep whatever normalization you previously had; default pass-through.
