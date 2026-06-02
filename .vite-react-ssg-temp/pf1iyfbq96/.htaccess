@@ -1,0 +1,117 @@
+
+# Security Headers
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+
+  # CSP tuned for YouTube background video + Google Translate
+  Header always set Content-Security-Policy "\
+    default-src 'self'; \
+    base-uri 'self'; \
+    img-src 'self' data: blob: https:; \
+    font-src 'self' https://fonts.gstatic.com data:; \
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; \
+    script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://translate.google.com; \
+    connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://gkwzodsznrnbfafaqbtu.supabase.co https://translate.googleapis.com; \
+    frame-src https://www.youtube.com https://www.youtube-nocookie.com https://translate.google.com; \
+    media-src 'self' https:; \
+    worker-src 'self' blob:; \
+    object-src 'none'; \
+    frame-ancestors 'self'; \
+    upgrade-insecure-requests; \
+    block-all-mixed-content"
+</IfModule>
+
+# Caching (keep)
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|woff2?|png|jpe?g|gif|svg|webp|avif)$">
+    Header set Cache-Control "public, max-age=2592000, immutable"
+  </FilesMatch>
+
+  # IMPORTANT: Service worker must NEVER be long-term cached, otherwise
+  # users can get stuck on old app code even after deployments.
+  <Files "sw.js">
+    Header always set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+    Header always set Pragma "no-cache"
+  </Files>
+  <Files "manifest.webmanifest">
+    Header always set Cache-Control "max-age=0, must-revalidate"
+  </Files>
+  <Files "manifest.json">
+    Header always set Cache-Control "max-age=0, must-revalidate"
+  </Files>
+  
+  # HTML: no long-term cache
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# Enable URL rewriting
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Force HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Force www subdomain
+  RewriteCond %{HTTP_HOST} !^www\.antonyaddy\.com$ [NC]
+  RewriteRule ^ https://www.antonyaddy.com%{REQUEST_URI} [L,R=301]
+
+  # Normalize trailing slash policy (no trailing slash except root)
+  RewriteCond %{REQUEST_URI} .+/$
+  RewriteRule ^(.+)/$ https://www.antonyaddy.com/$1 [L,R=301]
+
+  # 301 Redirects for legacy antonyaddy.com pages
+  RewriteRule ^services/?$ / [R=301,L]
+  RewriteRule ^tarifs-cpf/?$ / [R=301,L]
+  RewriteRule ^videos/?$ / [R=301,L]
+  RewriteRule ^faq/?$ / [R=301,L]
+  RewriteRule ^a-propos/?$ /qui-je-suis [R=301,L]
+  RewriteRule ^contactez-moi/?$ /contact [R=301,L]
+  RewriteRule ^ressources-et-conseils/?$ / [R=301,L]
+  RewriteRule ^ipsum-autem-impedit-nisi/?$ / [R=301,L]
+  RewriteRule ^formations-et-services/?$ /offres-de-formation [R=301,L]
+  RewriteRule ^tag/ad/?$ / [R=301,L]
+  RewriteRule ^votre-besoin/?$ / [R=301,L]
+  RewriteRule ^lander/?$ / [R=301,L]
+  RewriteRule ^est-ut-praesentium-voluptatibus-et/?$ / [R=301,L]
+  RewriteRule ^assumenda-nisi-nemo-labore-error/?$ / [R=301,L]
+  RewriteRule ^ullam-omnis-et-voluptatum-quis-quia/?$ / [R=301,L]
+  RewriteRule ^hellofacture/?$ / [R=301,L]
+  RewriteRule ^avis-clients/?$ /temoignages [R=301,L]
+  RewriteRule ^reseaux-sociaux/?$ / [R=301,L]
+  RewriteRule ^velit-et-eum-id-nobis-velit/?$ / [R=301,L]
+  RewriteRule ^aut-quo-eos-qui-odit-amet/?$ / [R=301,L]
+  RewriteRule ^velit-cumque-quos-harum-aut/?$ / [R=301,L]
+  RewriteRule ^jeux-anglais/?$ /exercices [R=301,L]
+  RewriteRule ^anglaisadistance/?$ /offres-de-formation [R=301,L]
+
+  # Catch-all for any /products/* routes (Shopify legacy)
+  RewriteRule ^products/.*$ / [R=301,L]
+
+  # Serve sitemap.xml as a real XML file, not routed through index.html
+  RewriteRule ^sitemap\.xml$ - [L]
+
+  # Prevent routing sitemap.xml to SPA fallback
+  RewriteRule ^index\.html$ - [L]
+
+  # SPA fallback: route all non-file, non-folder requests to index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Force correct MIME type for XML files
+AddType application/xml .xml
+
+# Optional: charset and compression
+AddDefaultCharset UTF-8
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE application/xml
+</IfModule>
