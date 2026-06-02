@@ -1,6 +1,8 @@
 
 import React from "react";
-import { Helmet } from "react-helmet-async";
+// Use vite-react-ssg's <Head> wrapper so we share the same react-helmet-async
+// module instance (and HelmetProvider context) as the SSG runtime.
+import { Head as Helmet } from "vite-react-ssg";
 import { useLocation } from "react-router-dom";
 import {
   composeTitle,

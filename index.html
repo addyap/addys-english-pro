@@ -34,14 +34,15 @@
     
     <!-- (hero-poster preload removed: not the LCP element; competed with hero-image.webp) -->
     
-    <title>Cours d'anglais professionnel – Var & Alpes-Maritimes | Antony Addy</title>
-    <meta name="description" content="Formateur d'anglais natif britannique, certifié FPA. Cours pour entreprises, cadres et particuliers. En présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde." />
+    <!--
+      Per-route <title>, <meta name="description">, <link rel="canonical">
+      and hreflangs are emitted at build time by each page's <SEOHead> via
+      vite-react-ssg + react-helmet-async. Keeping them here would
+      double-render and let the browser pick the wrong (static) value.
+    -->
     <meta name="author" content="Antony Addy" />
-    
-    <!-- SEO -->
-    <link rel="canonical" href="https://www.antonyaddy.com/" />
-    <link rel="alternate" hreflang="fr" href="https://www.antonyaddy.com/" />
-    <link rel="alternate" hreflang="x-default" href="https://www.antonyaddy.com/" />
+
+
     
     <link rel="icon" href="/lovable-uploads/2fd5760c-9208-4295-a1b5-87b41963111b.png" type="image/png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -78,17 +79,12 @@
       }
     </script>
 
-    <meta property="og:title" content="Cours d'anglais professionnel – Var & Alpes-Maritimes | Antony Addy" />
-    <meta property="og:description" content="Formateur d'anglais natif britannique, certifié FPA. Cours pour entreprises, cadres et particuliers. En présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.antonyaddy.com" />
-    <meta property="og:image" content="https://www.antonyaddy.com/social-preview.jpg" />
+    <!--
+      Per-route Open Graph / Twitter Card tags are emitted by <SEOHead>
+      at build time via Helmet. Keep this section empty to avoid
+      duplicates that would override the per-route values.
+    -->
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@antonyaddy" />
-    <meta name="twitter:title" content="Cours d'anglais professionnel – Var & Alpes-Maritimes | Antony Addy" />
-    <meta name="twitter:description" content="Formateur d'anglais natif britannique, certifié FPA. Cours pour entreprises, cadres et particuliers. En présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde." />
-    <meta name="twitter:image" content="https://www.antonyaddy.com/social-preview.jpg" />
   </head>
 
   <body>

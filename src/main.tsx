@@ -1,74 +1,81 @@
+// MUST be first: shims `localStorage`/`sessionStorage` on the SSG server
+// so modules (e.g. the auto-generated Supabase client) that touch them at
+// module load do not crash.
+import "./ssg-shims";
 
-import { createRoot, hydrateRoot } from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import { ViteReactSSG } from "vite-react-ssg";
+import { routes } from "./routes";
+import "./index.css";
+import "./i18n";
 
-// Initialize i18n (must run before App renders)
-import './i18n'
+/**
+ * vite-react-ssg entry.
+ *
+ * - At build time (`vite-react-ssg build`), this module is loaded
+ *   on the server: each route in `routes` is rendered to a static
+ *   HTML file in `dist/`.
+ * - In the browser, `createRoot` mounts (or hydrates) the same tree.
+ *
+ * All browser-only side effects (service worker, TTS lifecycle,
+ * console diagnostics) live inside the setup callback and are
+ * guarded by `isClient`.
+ */
+export const createRoot = ViteReactSSG(
+  { routes },
+  async ({ isClient }) => {
+    if (!isClient) return;
 
-// Initialize Core Web Vitals monitoring
-import './monitor/vitals.ts'
+    // Install global TTS lifecycle guards (cancel speech on tab hide / unload)
+    const { installTTSLifecycleGuards } = await import("./lib/ai/ttsLifecycle");
+    installTTSLifecycleGuards();
 
-// Install global TTS lifecycle guards (cancel speech on tab hide / page unload)
-import { installTTSLifecycleGuards } from './lib/ai/ttsLifecycle'
-installTTSLifecycleGuards()
+    // Web Vitals reporting (registers PerformanceObservers on import)
+    await import("./monitor/vitals");
 
-const rootElement = document.getElementById("root")!;
+    // Service-worker update logic — production only
+    if (import.meta.env.PROD && "serviceWorker" in navigator) {
+      let refreshed = false;
 
-// Only hydrate if the server actually pre-rendered content; otherwise mount fresh.
-const hasSSRContent = rootElement.childNodes.length > 0;
+      navigator.serviceWorker.addEventListener("controllerchange", () => {
+        if (refreshed) return;
+        refreshed = true;
+        window.location.reload();
+      });
 
-if (import.meta.env.PROD && hasSSRContent) {
-  hydrateRoot(rootElement, <App />);
-} else {
-  createRoot(rootElement).render(<App />);
-}
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.getRegistration().then((reg) => {
+          if (!reg) return;
 
-// Service worker update logic — must run in ALL production builds
-if (import.meta.env.PROD && 'serviceWorker' in navigator) {
-  let refreshed = false;
+          // Force an update check every load
+          reg.update().catch(() => undefined);
 
-  navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (refreshed) return;
-    refreshed = true;
-    window.location.reload();
-  });
+          const requestSkipWaiting = (worker?: ServiceWorker | null) => {
+            if (!worker) return;
+            worker.postMessage("SKIP_WAITING");
+          };
 
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.getRegistration().then((reg) => {
-      if (!reg) return;
+          // If an update is already waiting, activate it immediately
+          requestSkipWaiting(reg.waiting);
 
-      // Force an update check every load
-      reg.update().catch(() => undefined);
+          reg.addEventListener("updatefound", () => {
+            const newWorker = reg.installing;
+            if (!newWorker) return;
 
-      const requestSkipWaiting = (worker?: ServiceWorker | null) => {
-        if (!worker) return;
-        worker.postMessage('SKIP_WAITING');
-      };
-
-      // If an update is already waiting, activate it immediately
-      requestSkipWaiting(reg.waiting);
-
-      reg.addEventListener('updatefound', () => {
-        const newWorker = reg.installing;
-        if (!newWorker) return;
-
-        newWorker.addEventListener('statechange', () => {
-          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-            requestSkipWaiting(newWorker);
-          }
+            newWorker.addEventListener("statechange", () => {
+              if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+                requestSkipWaiting(newWorker);
+              }
+            });
+          });
         });
       });
-    });
-  });
-}
+    }
 
-// Console diagnostics on start
-setTimeout(() => {
-  console.log(`
-SEOHead wired: ${document.querySelectorAll('[data-react-helmet]').length}
-robots/sitemap present: ${fetch('/robots.txt').then(() => 'true').catch(() => 'false')}/${fetch('/sitemap.xml').then(() => 'true').catch(() => 'false')}
-PWA registered: ${'serviceWorker' in navigator ? 'true' : 'false'}
-Core Web Vitals reporting: enabled
-`);
-}, 1000);
+    // Console diagnostics on start
+    setTimeout(() => {
+      console.log(
+        `\nSEOHead wired: ${document.querySelectorAll("[data-react-helmet]").length}\nPWA registered: ${"serviceWorker" in navigator ? "true" : "false"}\nCore Web Vitals reporting: enabled\n`,
+      );
+    }, 1000);
+  },
+);

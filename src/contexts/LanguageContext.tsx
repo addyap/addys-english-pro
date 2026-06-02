@@ -25,8 +25,9 @@ function detect(): SupportedLangCode {
 }
 
 function readStored(key: string): SupportedLangCode | null {
+  if (typeof window === "undefined") return null;
   try {
-    const v = localStorage.getItem(key);
+    const v = window.localStorage.getItem(key);
     if (v && (SUPPORTED_LANG_CODES as readonly string[]).includes(v)) {
       return v as SupportedLangCode;
     }
@@ -51,12 +52,16 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const setInterfaceLang = useCallback((lang: SupportedLangCode) => {
     setInterfaceLangState(lang);
-    try { localStorage.setItem(INTERFACE_KEY, lang); } catch {}
+    if (typeof window !== "undefined") {
+      try { window.localStorage.setItem(INTERFACE_KEY, lang); } catch {}
+    }
   }, []);
 
   const setFeedbackLang = useCallback((lang: SupportedLangCode) => {
     setFeedbackLangState(lang);
-    try { localStorage.setItem(FEEDBACK_KEY, lang); } catch {}
+    if (typeof window !== "undefined") {
+      try { window.localStorage.setItem(FEEDBACK_KEY, lang); } catch {}
+    }
   }, []);
 
   const isRTL = getLangMeta(interfaceLang).dir === "rtl";

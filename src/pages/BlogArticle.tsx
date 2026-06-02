@@ -1,6 +1,15 @@
 
 import React, { useRef } from 'react';
 import DOMPurify from 'dompurify';
+
+// DOMPurify in Node SSG mode (no window) exports a factory function instead
+// of an object with .sanitize. Article content is trusted (authored in the
+// repo, no user input), so during SSG we pass it through unchanged; the
+// browser still re-sanitises after hydration.
+const sanitize: (html: string) => string =
+  typeof window !== 'undefined' && typeof (DOMPurify as any).sanitize === 'function'
+    ? (html) => (DOMPurify as any).sanitize(html)
+    : (html) => html;
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, User, ArrowLeft, BookOpen, GraduationCap, ArrowRight } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
@@ -293,7 +302,7 @@ const BlogArticle = () => {
             {/* Article Content */}
             <div 
               className="prose prose-lg max-w-none text-gray-700"
-              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article.content) }}
+              dangerouslySetInnerHTML={{ __html: sanitize(article.content) }}
             />
 
             {/* Practice Section - Internal Linking */}

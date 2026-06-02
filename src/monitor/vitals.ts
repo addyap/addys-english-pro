@@ -1,4 +1,3 @@
-
 import { onCLS, onFID, onLCP, onINP, onTTFB } from "web-vitals";
 
 function report(metric: any) {
@@ -13,4 +12,12 @@ function report(metric: any) {
   }
 }
 
-onCLS(report); onFID(report); onLCP(report); onINP(report); onTTFB(report);
+// Only register in the browser; web-vitals reads `performance` / `PerformanceObserver`
+// which do not exist during static site generation.
+if (typeof window !== "undefined") {
+  onCLS(report);
+  onFID(report);
+  onLCP(report);
+  onINP(report);
+  onTTFB(report);
+}
