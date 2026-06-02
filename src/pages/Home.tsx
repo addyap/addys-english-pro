@@ -110,7 +110,7 @@ const Home = () => {
 
   return <>
       <SEOHead 
-        title="Cours d'anglais professionnel – Var & Alpes-Maritimes | Antony Addy"
+        title="Cours d'anglais professionnel — Var & Alpes-Maritimes"
         description="Formateur d'anglais natif britannique, certifié FPA. Cours pour entreprises, cadres et particuliers. En présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde."
         canonicalUrl="https://www.antonyaddy.com/"
         datePublished="2025-01-15T10:00:00+01:00"
