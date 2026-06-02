@@ -1,20 +1,9 @@
-
 import React from "react";
 // Use vite-react-ssg's <Head> wrapper so we share the same react-helmet-async
 // module instance (and HelmetProvider context) as the SSG runtime.
 import { Head as Helmet } from "vite-react-ssg";
 import { useLocation } from "react-router-dom";
-import {
-  composeTitle,
-  buildCanonical,
-  metaBasics,
-  ogTags,
-  twitterTags,
-  hreflangLinks,
-  robotsDirectives,
-  metaKeywords,
-  articleDateMeta,
-} from "@/lib/seo/utils";
+import { composeTitle, buildCanonical } from "@/lib/seo/utils";
 import {
   OrgJsonLd,
   WebSiteJsonLd,
@@ -41,8 +30,8 @@ export type ArticleData = {
   headline: string;
   description?: string;
   image?: string;
-  datePublished?: string; // ISO
-  dateModified?: string;  // ISO
+  datePublished?: string;
+  dateModified?: string;
   authorName?: string;
   type?: "Article" | "BlogPosting" | "NewsArticle";
 };
@@ -51,22 +40,23 @@ export type SEOProps = {
   title?: string;
   siteName?: string;
   description?: string;
-  canonical?: string;       // legacy support
-  canonicalPath?: string;   // legacy support
-  canonicalUrl?: string;    // preferred
+  canonical?: string;
+  canonicalPath?: string;
+  canonicalUrl?: string;
   image?: string;
-  imageAlt?: string;        // Alt text for social image
-  imageWidth?: number;      // Image dimensions for OG
+  ogImage?: string;
+  imageAlt?: string;
+  imageWidth?: number;
   imageHeight?: number;
-  locale?: string;          // e.g. "en_GB"
+  locale?: string;
   type?: "website" | "article";
   twitterCard?: "summary" | "summary_large_image";
-  twitterSite?: string;     // @handle
-  twitterCreator?: string;  // @handle
+  twitterSite?: string;
+  twitterCreator?: string;
   hreflangs?: Hreflang[];
   noIndex?: boolean;
   noFollow?: boolean;
-  noindex?: boolean;        // legacy boolean
+  noindex?: boolean;
   enableOrgJsonLd?: boolean;
   enableWebSiteJsonLd?: boolean;
   breadcrumbItems?: BreadcrumbItem[];
@@ -74,61 +64,45 @@ export type SEOProps = {
   keywords?: string[];
   datePublished?: string;
   dateModified?: string;
-  jsonLd?: unknown | unknown[]; // optional raw JSON-LD object(s)
-  author?: string;          // Author name for articles
-  section?: string;         // Article section/category
-  tags?: string[];          // Article tags
+  jsonLd?: unknown | unknown[];
+  author?: string;
+  section?: string;
+  tags?: string[];
 };
 
-/**
- * Normalizes a URL for canonical usage:
- * - Always https
- * - No trailing slash (except root)
- * - Strip query params and hash
- */
 function normalizeCanonicalUrl(url: string): string {
   try {
-    // Handle relative paths
-    const fullUrl = url.startsWith('http') ? url : `${SITE_URL}${url}`;
+    const fullUrl = url.startsWith("http") ? url : `${SITE_URL}${url}`;
     const parsed = new URL(fullUrl);
-    
-    // Ensure https
-    parsed.protocol = 'https:';
-    
-    // Strip query params and hash
-    parsed.search = '';
-    parsed.hash = '';
-    
-    // Remove trailing slash except for root
+    parsed.protocol = "https:";
+    parsed.search = "";
+    parsed.hash = "";
     let pathname = parsed.pathname;
-    if (pathname !== '/' && pathname.endsWith('/')) {
+    if (pathname !== "/" && pathname.endsWith("/")) {
       pathname = pathname.slice(0, -1);
     }
-    
     return `${parsed.origin}${pathname}`;
   } catch {
-    // Fallback for invalid URLs
-    const cleanPath = url === "/" ? "/" : url.replace(/\/$/, "").split('?')[0].split('#')[0];
+    const cleanPath =
+      url === "/" ? "/" : url.replace(/\/$/, "").split("?")[0].split("#")[0];
     return `${SITE_URL}${cleanPath}`;
   }
 }
 
-/**
- * Generates a clean canonical URL from a path
- */
 function generateCanonicalUrl(path: string): string {
   return normalizeCanonicalUrl(path);
 }
 
-/**
- * Generates default self-referencing hreflangs
- * Site is primarily French, so we use fr + x-default
- */
 function generateDefaultHreflangs(canonicalUrl: string): Hreflang[] {
   return [
     { href: canonicalUrl, hrefLang: DEFAULT_LANG },
     { href: canonicalUrl, hrefLang: "x-default" },
   ];
+}
+
+function robotsValue(noIndex?: boolean, noFollow?: boolean) {
+  if (!noIndex && !noFollow) return "index,follow";
+  return `${noIndex ? "noindex" : "index"},${noFollow ? "nofollow" : "follow"}`;
 }
 
 export default function SEOHead(props: SEOProps) {
@@ -141,6 +115,7 @@ export default function SEOHead(props: SEOProps) {
     canonicalPath,
     canonicalUrl,
     image,
+    ogImage,
     imageAlt,
     imageWidth = 1200,
     imageHeight = 630,
@@ -152,12 +127,11 @@ export default function SEOHead(props: SEOProps) {
     hreflangs,
     noIndex = false,
     noFollow = false,
-    noindex = false, // legacy
+    noindex = false,
     enableOrgJsonLd = false,
     enableWebSiteJsonLd = false,
     breadcrumbItems,
     article,
-    keywords,
     datePublished,
     dateModified,
     jsonLd,
@@ -168,85 +142,101 @@ export default function SEOHead(props: SEOProps) {
 
   const computedTitle = composeTitle(title, siteName);
 
-  // Auto-generate canonical URL from current path if not provided
   let finalCanonicalUrl: string;
-  if (canonicalUrl) {
-    finalCanonicalUrl = buildCanonical(canonicalUrl);
-  } else if (canonical) {
-    finalCanonicalUrl = buildCanonical(canonical);
-  } else if (canonicalPath) {
-    finalCanonicalUrl = generateCanonicalUrl(canonicalPath);
-  } else {
-    // Auto-generate from current location
-    finalCanonicalUrl = generateCanonicalUrl(location.pathname);
+  if (canonicalUrl) finalCanonicalUrl = buildCanonical(canonicalUrl);
+  else if (canonical) finalCanonicalUrl = buildCanonical(canonical);
+  else if (canonicalPath) finalCanonicalUrl = generateCanonicalUrl(canonicalPath);
+  else finalCanonicalUrl = generateCanonicalUrl(location.pathname);
+
+  const finalHreflangs =
+    hreflangs && hreflangs.length > 0
+      ? hreflangs
+      : generateDefaultHreflangs(finalCanonicalUrl);
+
+  const robots = robotsValue(noIndex || noindex, noFollow);
+
+  const finalImage =
+    image ||
+    ogImage ||
+    `${SITE_URL}/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png`;
+  const finalImageAlt =
+    imageAlt || "Antony Addy - Formateur d'anglais professionnel";
+
+  // Build meta array — react-helmet-async v1.3.0 reliably renders meta
+  // passed through props but silently drops it when passed as JSX children.
+  type MetaTag =
+    | { name: string; content: string }
+    | { property: string; content: string };
+
+  const metaTags: MetaTag[] = [];
+  const push = (tag: MetaTag) => {
+    const content = (tag as { content?: string }).content;
+    if (content !== undefined && content !== null && content !== "") {
+      metaTags.push(tag);
+    }
+  };
+
+  if (description) push({ name: "description", content: description });
+  if (robots) push({ name: "robots", content: robots });
+
+  // Open Graph
+  push({ property: "og:title", content: computedTitle });
+  if (description) push({ property: "og:description", content: description });
+  push({ property: "og:url", content: finalCanonicalUrl });
+  push({ property: "og:type", content: type });
+  if (siteName) push({ property: "og:site_name", content: siteName });
+  if (locale) push({ property: "og:locale", content: locale });
+  push({ property: "og:image", content: finalImage });
+  push({ property: "og:image:alt", content: finalImageAlt });
+  push({ property: "og:image:width", content: String(imageWidth) });
+  push({ property: "og:image:height", content: String(imageHeight) });
+
+  if (author) push({ property: "article:author", content: author });
+  if (section) push({ property: "article:section", content: section });
+  if (tags) {
+    tags.forEach((t) => push({ property: "article:tag", content: t }));
   }
+  if (datePublished)
+    push({ property: "article:published_time", content: datePublished });
+  if (dateModified)
+    push({ property: "article:modified_time", content: dateModified });
 
-  // Auto-generate hreflangs if not provided
-  const finalHreflangs = hreflangs && hreflangs.length > 0 
-    ? hreflangs 
-    : generateDefaultHreflangs(finalCanonicalUrl);
+  // Twitter
+  push({ name: "twitter:card", content: twitterCard });
+  if (twitterSite) push({ name: "twitter:site", content: twitterSite });
+  if (twitterCreator) push({ name: "twitter:creator", content: twitterCreator });
+  push({ name: "twitter:title", content: computedTitle });
+  if (description) push({ name: "twitter:description", content: description });
+  push({ name: "twitter:image", content: finalImage });
+  push({ name: "twitter:image:alt", content: finalImageAlt });
 
-  const robots = robotsDirectives({ noIndex: noIndex || noindex, noFollow });
+  // Additional
+  if (author) push({ name: "author", content: author });
+  push({ name: "geo.region", content: "FR-83" });
+  push({
+    name: "geo.placename",
+    content: "Fréjus, Var & Alpes-Maritimes, France",
+  });
 
-  // Default image if not provided
-  const finalImage = image || `${SITE_URL}/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png`;
-  const finalImageAlt = imageAlt || "Antony Addy - Formateur d'anglais professionnel";
+  // Link tags (canonical + hreflangs) — also via props for v1 reliability.
+  const linkTags: Array<Record<string, string>> = [
+    { rel: "canonical", href: finalCanonicalUrl },
+    ...finalHreflangs.map(({ href, hrefLang }) => ({
+      rel: "alternate",
+      hreflang: hrefLang,
+      href,
+    })),
+  ];
 
   return (
     <>
-      <Helmet htmlAttributes={{ lang: DEFAULT_LANG }}>
-        {/* Title + basics — inlined so each tag is a DIRECT Helmet child.
-            react-helmet inside vite-react-ssg drops tags returned from
-            helper functions as React Fragments. */}
-        <title>{computedTitle}</title>
-        {description && <meta name="description" content={description} />}
+      <Helmet
+        htmlAttributes={{ lang: DEFAULT_LANG }}
+        title={computedTitle}
+        meta={metaTags}
+        link={linkTags}
+      />
 
-        {/* Canonical */}
-        <link rel="canonical" href={finalCanonicalUrl} />
-
-        {/* Robots */}
-        {robots && <meta name="robots" content={robots} />}
-
-        {/* Open Graph */}
-        <meta property="og:title" content={computedTitle} />
-        {description && <meta property="og:description" content={description} />}
-        <meta property="og:url" content={finalCanonicalUrl} />
-        <meta property="og:type" content={type} />
-        {siteName && <meta property="og:site_name" content={siteName} />}
-        {locale && <meta property="og:locale" content={locale} />}
-        <meta property="og:image" content={finalImage} />
-        <meta property="og:image:alt" content={finalImageAlt} />
-        <meta property="og:image:width" content={String(imageWidth)} />
-        <meta property="og:image:height" content={String(imageHeight)} />
-        {author && <meta property="article:author" content={author} />}
-        {section && <meta property="article:section" content={section} />}
-        {tags && tags.map((tag, i) => <meta key={i} property="article:tag" content={tag} />)}
-
-        {/* Twitter Cards */}
-        <meta name="twitter:card" content={twitterCard} />
-        {twitterSite && <meta name="twitter:site" content={twitterSite} />}
-        {twitterCreator && <meta name="twitter:creator" content={twitterCreator} />}
-        <meta name="twitter:title" content={computedTitle} />
-        {description && <meta name="twitter:description" content={description} />}
-        <meta name="twitter:image" content={finalImage} />
-        <meta name="twitter:image:alt" content={finalImageAlt} />
-
-        {/* Hreflangs */}
-        {finalHreflangs.map(({ href, hrefLang }) => (
-          <link key={`${hrefLang}-${href}`} rel="alternate" hrefLang={hrefLang} href={href} />
-        ))}
-
-        {/* Article dates */}
-        {datePublished && <meta property="article:published_time" content={datePublished} />}
-        {dateModified && <meta property="article:modified_time" content={dateModified} />}
-
-        {/* Additional SEO meta tags */}
-        {author && <meta name="author" content={author} />}
-        <meta name="geo.region" content="FR-83" />
-        <meta name="geo.placename" content="Fréjus, Var & Alpes-Maritimes, France" />
-      </Helmet>
-
-      {/* JSON-LD blocks */}
       {enableOrgJsonLd && <OrgJsonLd siteName={siteName} />}
       {enableWebSiteJsonLd && (
         <WebSiteJsonLd siteName={siteName} url={finalCanonicalUrl} />
@@ -267,7 +257,6 @@ export default function SEOHead(props: SEOProps) {
         />
       )}
 
-      {/* Optional raw JSON-LD passthrough(s) */}
       {Array.isArray(jsonLd)
         ? jsonLd.map((block, i) => <RawJsonLd key={i} json={block} />)
         : jsonLd
@@ -277,7 +266,6 @@ export default function SEOHead(props: SEOProps) {
   );
 }
 
-// Re-export legacy factories if other code imports them from here
 export {
   jsonLdPerson,
   jsonLdOrganization,
