@@ -43,7 +43,7 @@ jobs:
           # Cleanup
           kill $SERVER_PID 2>/dev/null || true
 
-      - name: 🧹 Clean target folder on Bluehost
+      - name: 🧹 Clean target folder on host
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.SSH_HOST }}

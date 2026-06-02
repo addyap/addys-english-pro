@@ -12,34 +12,12 @@ import { trackEvent } from '@/lib/analytics';
 import { WHATSAPP_PREFILLED_URL } from '@/lib/whatsapp';
 
 
-// Accurate exercise counts based on actual data files
+// Stats are aligned with the single source of truth: the anglaisadistance.fr
+// exercise platform itself advertises 700+ interactive exercises. Keep this
+// number consistent across both sites — bump in lockstep when the platform's
+// public count changes.
 const EXERCISE_COUNTS = {
-  grammar: 60,        // grammarCategories - 60 lessons
-  vocabulary: 150,    // exercises 1-150 in allExercises
-  reading: 12,        // readingPassages
-  listening: 20,      // listeningExercises  
-  dragDrop: 12,       // dragDropExercises
-  writing: 9,         // writingExercises
-  idioms: 6,          // idiomExercises (6 sets)
-  phrasalVerbs: 5,    // phrasalVerbExercises (5 sets)
-  collocations: 6,    // collocationExercises (6 sets)
-  dictation: 6,       // dictationExercises
-  translation: 6,     // translationExercises
-  stories: 5,         // interactiveStories
-  crossword: 6,       // crosswordExercises
-  matching: 6,        // matchingExercises
-  dialogue: 6,        // dialogueExercises
-  prepositions: 4,    // prepositionExercises
-  get total() {
-    return this.grammar + this.vocabulary + this.reading + this.listening + 
-           this.dragDrop + this.writing + this.idioms + this.phrasalVerbs + 
-           this.collocations + this.dictation + this.translation + this.stories +
-           this.crossword + this.matching + this.dialogue + this.prepositions;
-  },
-  get questions() {
-    // Rough estimate: 10 questions per exercise on average
-    return this.total * 10;
-  }
+  total: 700,
 };
 
 // Client logos data for lazy carousel
@@ -337,7 +315,7 @@ const Home = () => {
                     <span className="bg-white/20 px-2 py-0.5 rounded text-xs sm:text-sm">100% GRATUIT</span>
                     <span>Ressources pédagogiques en accès libre</span>
                   </p>
-                  <p className="text-xs sm:text-sm text-white/90 mt-1">{EXERCISE_COUNTS.total}+ exercices • {EXERCISE_COUNTS.questions.toLocaleString()}+ questions • Créés par un formateur certifié</p>
+                  <p className="text-xs sm:text-sm text-white/90 mt-1">{EXERCISE_COUNTS.total}+ exercices interactifs • Créés par un formateur certifié</p>
                 </div>
               </div>
               <a

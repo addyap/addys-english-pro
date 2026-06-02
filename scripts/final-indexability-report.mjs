@@ -82,7 +82,7 @@ async function generateReport() {
 
     console.log('\n=== OPTIMIZATION COMPLETE ===');
     console.log('Site is now fully optimized for Google indexability, load speed, and UX.');
-    console.log('Ready for deployment to Bluehost with Apache configuration.');
+    console.log('Ready for deployment to Vercel.');
     
   } catch (error) {
     console.error('Error generating report:', error);

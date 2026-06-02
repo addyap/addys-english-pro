@@ -147,7 +147,8 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 onClick={() => trackWA('header-mobile')}
                 aria-label="WhatsApp"
               >
-                <MessageSquare className="h-4 w-4" />
+                <MessageSquare className="h-4 w-4" aria-hidden="true" />
+                <span className="sr-only">WhatsApp</span>
               </a>
               <button
                 type="button"
