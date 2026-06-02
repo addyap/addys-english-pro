@@ -240,7 +240,10 @@ export default function SEOHead(props: SEOProps) {
         title={computedTitle}
         meta={metaTags}
         link={linkTags}
-      />
+      >
+        {/* children required by Head's TS signature; meta/link are passed via props */}
+        <></>
+      </Helmet>
 
       {enableOrgJsonLd && <OrgJsonLd siteName={siteName} />}
       {enableWebSiteJsonLd && (

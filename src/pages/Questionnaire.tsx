@@ -248,7 +248,9 @@ export default function Questionnaire() {
           { name: "robots", content: "noindex,nofollow" },
           { name: "description", content: t.meta.subtitle },
         ]}
-      />
+      >
+        <></>
+      </Helmet>
 
       {/* Top bar: logo + lang switcher */}
       <header className="border-b border-border bg-white">
