@@ -47,21 +47,15 @@ const LegalNotices = () => {
               </p>
 
               <h2 className="text-2xl font-semibold text-primary mb-4">Hébergement</h2>
-              <p className="mb-2">
-                <strong>Hébergeur :</strong> Vercel Inc.
-              </p>
-              <p className="mb-2">
-                <strong>Adresse :</strong> 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis
-              </p>
               <p className="mb-6">
-                <strong>Site web :</strong>{" "}
+                <strong>Hébergeur :</strong> Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis. Site web :{" "}
                 <a
                   href="https://vercel.com"
                   className="text-blue-600 underline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  vercel.com
+                  https://vercel.com
                 </a>
               </p>
 
