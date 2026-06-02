@@ -52,7 +52,7 @@ preservedRoutes.forEach(route => {
 });
 
 console.log('\n📋 NEXT STEPS:');
-console.log('1. Deploy to Bluehost');
+console.log('1. Deploy to Vercel');
 console.log('2. Ensure .htaccess is at web root');
 console.log('3. Import shopify-redirects.csv to Shopify admin');
 console.log('4. Run verification: node scripts/verify-indexability.mjs');

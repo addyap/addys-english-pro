@@ -147,7 +147,8 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 onClick={() => trackWA('header-mobile')}
                 aria-label="WhatsApp"
               >
-                <MessageSquare className="h-4 w-4" />
+                <MessageSquare className="h-4 w-4" aria-hidden="true" />
+                <span className="sr-only">WhatsApp</span>
               </a>
               <button
                 type="button"
@@ -361,9 +362,9 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               </p>
               <div className="flex items-center gap-4">
                 <p className="text-gray-600 text-xs">
-                  {t('footer.hostedBy')}{" "}
-                  <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 transition-colors">
-                    Vercel
+                  Hébergeur : Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis. Site web :{" "}
+                  <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-400 transition-colors">
+                    https://vercel.com
                   </a>
                 </p>
               </div>
