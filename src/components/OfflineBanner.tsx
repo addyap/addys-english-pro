@@ -4,11 +4,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useOnlineStatus } from '@/hooks/useOnlineStatus';
 
 const OfflineBanner: React.FC = () => {
+  // Defer mounting until after client hydration so the offline string
+  // never appears in the prerendered HTML (and so SSR/CSR markup matches).
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const isOnline = useOnlineStatus();
   const [wasOffline, setWasOffline] = React.useState(false);
   const [showReconnected, setShowReconnected] = React.useState(false);
 
   React.useEffect(() => {
+    if (!mounted) return;
     if (!isOnline) {
       setWasOffline(true);
     } else if (wasOffline) {
@@ -19,7 +27,9 @@ const OfflineBanner: React.FC = () => {
       }, 3000);
       return () => clearTimeout(timer);
     }
-  }, [isOnline, wasOffline]);
+  }, [isOnline, wasOffline, mounted]);
+
+  if (!mounted) return null;
 
   return (
     <AnimatePresence>

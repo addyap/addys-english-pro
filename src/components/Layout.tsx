@@ -353,7 +353,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
 
           <div className="border-t border-gray-800 pt-6 flex flex-col gap-3">
             <p className="text-gray-500 text-xs text-center md:text-left">
-              Organisme de formation enregistré sous le numéro [À CONFIRMER PAR ANTONY] auprès de la DREETS Provence-Alpes-Côte d'Azur.
+              Déclaration d'activité enregistrée sous le numéro 93830738883 auprès de la DREETS Provence-Alpes-Côte d'Azur. Cet enregistrement ne vaut pas agrément de l'État.
             </p>
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-gray-500 text-xs">
@@ -362,8 +362,8 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               <div className="flex items-center gap-4">
                 <p className="text-gray-600 text-xs">
                   {t('footer.hostedBy')}{" "}
-                  <a href="https://www.bluehost.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 transition-colors">
-                    Bluehost
+                  <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 transition-colors">
+                    Vercel
                   </a>
                 </p>
               </div>

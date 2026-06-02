@@ -19,9 +19,10 @@ const LegalNotices = () => {
 
               <h2 className="text-2xl font-semibold text-primary mb-4">Éditeur du site</h2>
               <p className="mb-2"><strong>Nom :</strong> Antony Addy</p>
-              <p className="mb-2"><strong>Statut juridique :</strong> Auto-Entrepreneur</p>
-              <p className="mb-2"><strong>Adresse professionnelle :</strong> 135 rue Henri Vadon, 83600 Fréjus, France</p>
-              <p className="mb-2"><strong>SIRET :</strong> 483 178 893 00028</p>
+              <p className="mb-2"><strong>Statut juridique :</strong> Entrepreneur individuel — Auto-Entrepreneur (travailleur indépendant)</p>
+              <p className="mb-2"><strong>Adresse professionnelle :</strong> 135 rue Henri Vadon, Résidence des Arènes, 83600 Fréjus, France</p>
+              <p className="mb-2"><strong>SIRET :</strong> 48317889300028</p>
+              <p className="mb-2"><strong>Code NAF/APE :</strong> 8559B — Autres enseignements</p>
               <p className="mb-2"><strong>Téléphone :</strong> +33 6 49 82 98 26</p>
               <p className="mb-2">
                 <strong>Courriel :</strong>{" "}
@@ -34,7 +35,7 @@ const LegalNotices = () => {
               <h2 className="text-2xl font-semibold text-primary mb-4">Organisme de formation</h2>
               <p className="mb-2">
                 <strong>Numéro de Déclaration d'Activité (NDA) :</strong>{" "}
-                93 830 73 88 83
+                93830738883
               </p>
               <p className="mb-2">
                 <strong>Autorité d'enregistrement :</strong> DREETS
@@ -46,8 +47,14 @@ const LegalNotices = () => {
               </p>
 
               <h2 className="text-2xl font-semibold text-primary mb-4">Hébergement</h2>
+              <p className="mb-2">
+                <strong>Hébergeur :</strong> Vercel Inc.
+              </p>
+              <p className="mb-2">
+                <strong>Adresse :</strong> 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis
+              </p>
               <p className="mb-6">
-                <strong>Hébergeur :</strong> Vercel —{" "}
+                <strong>Site web :</strong>{" "}
                 <a
                   href="https://vercel.com"
                   className="text-blue-600 underline"

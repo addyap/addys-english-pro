@@ -4,7 +4,6 @@ import SEOHead from "@/components/SEOHead";
 
 /**
  * Conditions Générales de Vente — formation professionnelle d'adultes.
- * Markers [À CONFIRMER PAR ANTONY] indicate values to be reviewed/filled.
  */
 const CGV = () => {
   return (
@@ -38,10 +37,11 @@ const CGV = () => {
           <h2>Article 2 — Identification du prestataire</h2>
           <ul>
             <li><strong>Prestataire :</strong> Antony Addy</li>
-            <li><strong>Statut juridique :</strong> [À CONFIRMER PAR ANTONY — auto-entrepreneur ou entreprise individuelle]</li>
-            <li><strong>Adresse professionnelle :</strong> 135 rue Henri Vadon, 83600 Fréjus, France</li>
+            <li><strong>Statut juridique :</strong> Auto-Entrepreneur (travailleur indépendant)</li>
+            <li><strong>Adresse professionnelle :</strong> 135 rue Henri Vadon, Résidence des Arènes, 83600 Fréjus, France</li>
             <li><strong>SIRET :</strong> 483 178 893 00028</li>
-            <li><strong>Numéro de Déclaration d'Activité (NDA) :</strong> [À CONFIRMER PAR ANTONY] — enregistré auprès de la DREETS Provence-Alpes-Côte d'Azur</li>
+            <li><strong>Code NAF/APE :</strong> 8559B — Autres enseignements</li>
+            <li><strong>Numéro de Déclaration d'Activité (NDA) :</strong> 93830738883 — enregistrée auprès de la DREETS Provence-Alpes-Côte d'Azur</li>
             <li><strong>Téléphone :</strong> +33 6 49 82 98 26</li>
             <li><strong>Courriel :</strong> formations@antonyaddy.com</li>
           </ul>
@@ -82,16 +82,17 @@ const CGV = () => {
             horaire, du format (individuel / collectif), du lieu d'intervention
             et du niveau de personnalisation. Sauf mention contraire, les
             tarifs sont indiqués en euros, nets de TVA (TVA non applicable,
-            article 293 B du CGI [À CONFIRMER PAR ANTONY selon régime fiscal]).
+            article 293 B du CGI — régime de la franchise en base applicable à
+            l'auto-entrepreneur).
           </p>
           <p>
-            <strong>Modalités de paiement :</strong> [À CONFIRMER PAR ANTONY —
-            par exemple : acompte de 30 % à la commande, solde à l'issue de la
-            formation ; règlement par virement bancaire à 30 jours pour les
-            clients professionnels]. Tout retard de paiement entraîne, de plein
-            droit, l'application de pénalités au taux légal en vigueur ainsi
-            qu'une indemnité forfaitaire de 40 € pour frais de recouvrement
-            (articles L.441-10 et D.441-5 du Code de commerce).
+            <strong>Modalités de paiement :</strong> acompte de 30 % à la
+            commande pour valider l'inscription, solde dû à l'issue de la
+            formation ; règlement par virement bancaire à 30 jours date de
+            facture pour les clients professionnels. Tout retard de paiement
+            entraîne, de plein droit, l'application de pénalités au taux légal
+            en vigueur ainsi qu'une indemnité forfaitaire de 40 € pour frais de
+            recouvrement (articles L.441-10 et D.441-5 du Code de commerce).
           </p>
 
           <h2>Article 6 — Convention de formation</h2>
@@ -110,11 +111,12 @@ const CGV = () => {
           <p>
             <strong>À l'initiative du Client :</strong> toute annulation ou
             report doit être notifié par écrit (courriel) au moins 7 jours
-            calendaires avant la date prévue de la prestation. Au-delà de ce
-            délai, les sommes versées restent acquises au Prestataire à titre
-            d'indemnité, sauf cas de force majeure dûment justifié.
-            [À CONFIRMER PAR ANTONY — adapter les pourcentages d'indemnité si
-            besoin : par ex. 50 % entre 7 et 3 jours, 100 % à moins de 3 jours.]
+            calendaires avant la date prévue de la prestation. En cas
+            d'annulation reçue entre 7 et 3 jours calendaires avant la date
+            prévue, une indemnité égale à 50 % du prix de la prestation reste
+            due au Prestataire. À moins de 3 jours calendaires, l'intégralité
+            (100 %) du prix de la prestation est due, sauf cas de force majeure
+            dûment justifié.
           </p>
           <p>
             <strong>À l'initiative du Prestataire :</strong> en cas
@@ -161,15 +163,15 @@ const CGV = () => {
           <p>
             Toute réclamation doit être adressée par écrit à
             formations@antonyaddy.com. Le Prestataire s'engage à apporter une
-            réponse dans un délai de 15 jours ouvrés. En cas de litige
-            persistant avec un consommateur, ce dernier peut recourir
-            gratuitement au médiateur de la consommation suivant :
-            [À CONFIRMER PAR ANTONY — uniquement obligatoire si vente à des
-            consommateurs particuliers ; nom et coordonnées du médiateur à
-            renseigner]. Pour les questions relatives aux données
-            personnelles, le Client peut introduire une réclamation auprès de
-            la Commission Nationale de l'Informatique et des Libertés (CNIL —
-            www.cnil.fr).
+            réponse dans un délai de 15 jours ouvrés. Conformément aux
+            articles L.611-1 et suivants du Code de la consommation, en cas de
+            litige persistant avec un Client consommateur, ce dernier peut
+            recourir gratuitement à un médiateur de la consommation. Les
+            coordonnées du médiateur compétent seront communiquées au Client
+            sur simple demande écrite à formations@antonyaddy.com. Pour les
+            questions relatives aux données personnelles, le Client peut
+            introduire une réclamation auprès de la Commission Nationale de
+            l'Informatique et des Libertés (CNIL — www.cnil.fr).
           </p>
 
           <h2>Article 12 — Droit applicable et juridiction compétente</h2>
