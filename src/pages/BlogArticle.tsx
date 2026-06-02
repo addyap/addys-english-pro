@@ -220,12 +220,17 @@ const BlogArticle = () => {
     );
   }
 
-  // Generate SEO metadata for this article
+  // Generate SEO metadata for this article. Fall back to a sensible default
+  // description so we never emit an empty <meta name="description">.
+  const fallbackDescription = `${article.title} — article du blog d'Antony Addy, formateur d'anglais professionnel.`;
   const articleSEO = {
     title: `${article.title} - Blog Antony Addy`,
-    description: article.description,
+    description: (article.description && article.description.trim()) || fallbackDescription,
     canonicalUrl: `https://www.antonyaddy.com/blog/${id}`,
-    ogImage: article.ogImage,
+    image: article.ogImage,
+    type: "article" as const,
+    datePublished: article.date,
+    section: article.category,
     keywords: [
       "article anglais",
       "anglais professionnel",

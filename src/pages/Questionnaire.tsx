@@ -242,10 +242,14 @@ export default function Questionnaire() {
 
   return (
     <div dir={isRTL ? "rtl" : "ltr"} className="min-h-screen bg-background text-foreground font-body">
-      <Helmet>
-        <title>{t.meta.title} — antonyaddy.com</title>
-        <meta name="robots" content="noindex,nofollow" />
-        <meta name="description" content={t.meta.subtitle} />
+      <Helmet
+        title={`${t.meta.title} — antonyaddy.com`}
+        meta={[
+          { name: "robots", content: "noindex,nofollow" },
+          { name: "description", content: t.meta.subtitle },
+        ]}
+      >
+        <></>
       </Helmet>
 
       {/* Top bar: logo + lang switcher */}
