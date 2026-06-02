@@ -1,7 +1,11 @@
 import React from "react";
-// Use vite-react-ssg's <Head> wrapper so we share the same react-helmet-async
-// module instance (and HelmetProvider context) as the SSG runtime.
-import { Head as Helmet } from "vite-react-ssg";
+// Import Helmet directly from react-helmet-async (aliased to v1.3.0 in
+// vite.config.ts so we share the same module instance / HelmetProvider as
+// vite-react-ssg's SSG runtime). v1.3.0 reliably renders meta/link via the
+// `meta`/`link` props array; passing them as JSX children is unreliable
+// (the child reconciler silently drops them).
+import { Helmet } from "react-helmet-async";
+
 import { useLocation } from "react-router-dom";
 import { composeTitle, buildCanonical } from "@/lib/seo/utils";
 import {
