@@ -1,8 +1,12 @@
 
 import { useEffect, useMemo, useState } from "react";
 
+const isBrowser = typeof window !== "undefined";
+
 export default function DiagnosticsPanel() {
-  const [open, setOpen] = useState<boolean>(() => new URLSearchParams(location.search).has("diag"));
+  const [open, setOpen] = useState<boolean>(() =>
+    isBrowser ? new URLSearchParams(window.location.search).has("diag") : false,
+  );
   const [fails, setFails] = useState<number>(0);
   const [lastError, setLastError] = useState<string>("");
 
@@ -21,7 +25,10 @@ export default function DiagnosticsPanel() {
     };
   }, []);
 
-  const route = useMemo(() => location.pathname + location.search, []);
+  const route = useMemo(
+    () => (isBrowser ? window.location.pathname + window.location.search : ""),
+    [],
+  );
 
   if (!open) return null;
   return (

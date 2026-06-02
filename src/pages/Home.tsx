@@ -186,6 +186,27 @@ const Home = () => {
                 }
               }
             ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "@id": "https://www.antonyaddy.com/#professionalservice",
+            name: "Antony Addy",
+            description: "Formateur d'anglais natif britannique, certifié FPA. Cours pour entreprises, cadres et particuliers, en présentiel dans le Var et les Alpes-Maritimes ou à distance.",
+            url: "https://www.antonyaddy.com",
+            email: "formations@antonyaddy.com",
+            telephone: "+33649829826",
+            image: "https://www.antonyaddy.com/social-preview.jpg",
+            logo: "https://www.antonyaddy.com/social-preview.jpg",
+            inLanguage: "fr",
+            availableLanguage: ["en", "fr"],
+            areaServed: [
+              { "@type": "AdministrativeArea", name: "Var" },
+              { "@type": "AdministrativeArea", name: "Alpes-Maritimes" },
+              { "@type": "Country", name: "France" },
+              "Worldwide (remote)"
+            ],
+            sameAs: ["https://www.linkedin.com/in/antonyaddy/"]
           }
         ]}
       />

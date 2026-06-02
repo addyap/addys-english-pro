@@ -12,13 +12,14 @@ interface SocialShareProps {
 }
 
 const SocialShare: React.FC<SocialShareProps> = ({
-  url = window.location.href,
+  url,
   title,
   description = '',
   hashtags = [],
   className = '',
 }) => {
-  const encodedUrl = encodeURIComponent(url);
+  const resolvedUrl = url ?? (typeof window !== 'undefined' ? window.location.href : '');
+  const encodedUrl = encodeURIComponent(resolvedUrl);
   const encodedTitle = encodeURIComponent(title);
   const encodedDescription = encodeURIComponent(description);
   const hashtagString = hashtags.join(',');
@@ -38,7 +39,7 @@ const SocialShare: React.FC<SocialShareProps> = ({
 
   const handleCopyLink = async () => {
     try {
-      await navigator.clipboard.writeText(url);
+      await navigator.clipboard.writeText(resolvedUrl);
       trackSocialShare('copy-link', 'article');
       // Could add a toast notification here
     } catch (err) {

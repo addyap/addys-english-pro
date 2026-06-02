@@ -18,26 +18,32 @@ export function getLangMeta(code: string) {
   return SUPPORTED_LANGS.find((l) => l.code === code) ?? SUPPORTED_LANGS[0];
 }
 
+const isBrowser = typeof window !== "undefined";
+
 if (!i18n.isInitialized) {
-  i18n
-    .use(LanguageDetector)
-    .use(initReactI18next)
-    .init({
-      resources: {
-        fr: { translation: fr },
-        en: { translation: en },
-      },
-      fallbackLng: "fr",
-      supportedLngs: SUPPORTED_LANG_CODES,
-      load: "languageOnly",
-      interpolation: { escapeValue: false },
-      detection: {
-        order: ["localStorage", "navigator", "htmlTag"],
-        lookupLocalStorage: "interfaceLanguage",
-        caches: ["localStorage"],
-      },
-      react: { useSuspense: false },
-    });
+  const chain = isBrowser
+    ? i18n.use(LanguageDetector).use(initReactI18next)
+    : i18n.use(initReactI18next);
+
+  chain.init({
+    resources: {
+      fr: { translation: fr },
+      en: { translation: en },
+    },
+    fallbackLng: "fr",
+    lng: isBrowser ? undefined : "fr",
+    supportedLngs: SUPPORTED_LANG_CODES,
+    load: "languageOnly",
+    interpolation: { escapeValue: false },
+    detection: isBrowser
+      ? {
+          order: ["localStorage", "navigator", "htmlTag"],
+          lookupLocalStorage: "interfaceLanguage",
+          caches: ["localStorage"],
+        }
+      : undefined,
+    react: { useSuspense: false },
+  });
 }
 
 if (typeof document !== "undefined") {

@@ -1,6 +1,8 @@
 
 import React from "react";
-import { Helmet } from "react-helmet-async";
+// Use vite-react-ssg's <Head> wrapper so we share the same react-helmet-async
+// module instance (and HelmetProvider context) as the SSG runtime.
+import { Head as Helmet } from "vite-react-ssg";
 import { useLocation } from "react-router-dom";
 import {
   composeTitle,
@@ -193,27 +195,26 @@ export default function SEOHead(props: SEOProps) {
   return (
     <>
       <Helmet htmlAttributes={{ lang: DEFAULT_LANG }}>
-        {/* Title + basics */}
+        {/* Title + basics — inlined so each tag is a DIRECT Helmet child.
+            react-helmet inside vite-react-ssg drops tags returned from
+            helper functions as React Fragments. */}
         <title>{computedTitle}</title>
-        {metaBasics({ description })}
-        {metaKeywords({ keywords })}
+        {description && <meta name="description" content={description} />}
 
-        {/* Canonical (always present) */}
+        {/* Canonical */}
         <link rel="canonical" href={finalCanonicalUrl} />
-        
+
         {/* Robots */}
         {robots && <meta name="robots" content={robots} />}
 
         {/* Open Graph */}
-        {ogTags({
-          title: computedTitle,
-          description,
-          image: finalImage,
-          type,
-          url: finalCanonicalUrl,
-          siteName,
-          locale,
-        })}
+        <meta property="og:title" content={computedTitle} />
+        {description && <meta property="og:description" content={description} />}
+        <meta property="og:url" content={finalCanonicalUrl} />
+        <meta property="og:type" content={type} />
+        {siteName && <meta property="og:site_name" content={siteName} />}
+        {locale && <meta property="og:locale" content={locale} />}
+        <meta property="og:image" content={finalImage} />
         <meta property="og:image:alt" content={finalImageAlt} />
         <meta property="og:image:width" content={String(imageWidth)} />
         <meta property="og:image:height" content={String(imageHeight)} />
@@ -222,24 +223,25 @@ export default function SEOHead(props: SEOProps) {
         {tags && tags.map((tag, i) => <meta key={i} property="article:tag" content={tag} />)}
 
         {/* Twitter Cards */}
-        {twitterTags({
-          card: twitterCard,
-          site: twitterSite,
-          creator: twitterCreator,
-          title: computedTitle,
-          description,
-          image: finalImage,
-        })}
+        <meta name="twitter:card" content={twitterCard} />
+        {twitterSite && <meta name="twitter:site" content={twitterSite} />}
+        {twitterCreator && <meta name="twitter:creator" content={twitterCreator} />}
+        <meta name="twitter:title" content={computedTitle} />
+        {description && <meta name="twitter:description" content={description} />}
+        <meta name="twitter:image" content={finalImage} />
         <meta name="twitter:image:alt" content={finalImageAlt} />
 
-        {/* Hreflangs (always present for self-referencing) */}
-        {hreflangLinks(finalHreflangs)}
+        {/* Hreflangs */}
+        {finalHreflangs.map(({ href, hrefLang }) => (
+          <link key={`${hrefLang}-${href}`} rel="alternate" hrefLang={hrefLang} href={href} />
+        ))}
 
         {/* Article dates */}
-        {articleDateMeta({ datePublished, dateModified })}
+        {datePublished && <meta property="article:published_time" content={datePublished} />}
+        {dateModified && <meta property="article:modified_time" content={dateModified} />}
 
         {/* Additional SEO meta tags */}
-        <meta name="author" content={author} />
+        {author && <meta name="author" content={author} />}
         <meta name="geo.region" content="FR-83" />
         <meta name="geo.placename" content="Fréjus, Var & Alpes-Maritimes, France" />
       </Helmet>
