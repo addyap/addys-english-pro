@@ -23,6 +23,9 @@ export function composeTitle(baseTitle?: string, siteName?: string) {
   if (!baseTitle && !siteName) return "";
   if (!siteName) return baseTitle ?? "";
   if (!baseTitle) return siteName;
+  // Avoid appending the site name if the base title already contains it
+  // (case-insensitive substring match), to prevent "... | Antony Addy | Antony Addy".
+  if (baseTitle.toLowerCase().includes(siteName.toLowerCase())) return baseTitle;
   return `${baseTitle} | ${siteName}`;
 }
 

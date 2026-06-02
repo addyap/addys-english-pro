@@ -53,7 +53,7 @@ const PrivacyPolicy = () => {
               </p>
 
               <p className="text-sm text-gray-600">
-                Hébergement du site : Bluehost – www.bluehost.com
+                Hébergement du site : Vercel Inc. — 340 S Lemon Ave #4133, Walnut, CA 91789, USA — vercel.com
               </p>
 
               {/* Internal Links */}
