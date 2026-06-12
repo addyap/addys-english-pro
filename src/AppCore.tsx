@@ -32,6 +32,7 @@ const BlogArticle = lazy(() => import("./pages/BlogArticle"));
 const LegalNotices = lazy(() => import("./pages/LegalNotices"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const CGV = lazy(() => import("./pages/CGV"));
+const Questionnaire = lazy(() => import("./pages/Questionnaire"));
 const TestPositionnement = lazy(() => import("./pages/TestPositionnement"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
