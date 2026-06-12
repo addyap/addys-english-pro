@@ -101,6 +101,7 @@ export const AppRoutes = () => (
     <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
     <Route path="/politique-de-confidentialite" element={<Navigate to="/politique-confidentialite" replace />} />
     <Route path="/cgv" element={<CGV />} />
+    <Route path="/test-de-positionnement" element={<TestPositionnement />} />
 
     {/* Per-audience landing pages */}
     <Route path="/anglais-entreprise" element={<AnglaisEntreprise />} />
