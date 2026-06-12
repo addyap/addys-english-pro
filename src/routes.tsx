@@ -60,6 +60,9 @@ export const routes: RouteRecord[] = [
           { path: "/politique-de-confidentialite", element: <Navigate to="/politique-confidentialite" replace /> },
           { path: "/cgv", lazy: page(() => import("./pages/CGV")), entry: "src/pages/CGV.tsx" },
 
+          // Free resources
+          { path: "/test-de-positionnement", lazy: page(() => import("./pages/TestPositionnement")), entry: "src/pages/TestPositionnement.tsx" },
+
           // Per-audience landing pages
           { path: "/anglais-entreprise", lazy: page(() => import("./pages/AnglaisEntreprise")), entry: "src/pages/AnglaisEntreprise.tsx" },
           { path: "/anglais-cadres", lazy: page(() => import("./pages/AnglaisCadres")), entry: "src/pages/AnglaisCadres.tsx" },

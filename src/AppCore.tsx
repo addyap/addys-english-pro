@@ -33,6 +33,7 @@ const LegalNotices = lazy(() => import("./pages/LegalNotices"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const CGV = lazy(() => import("./pages/CGV"));
 const Questionnaire = lazy(() => import("./pages/Questionnaire"));
+const TestPositionnement = lazy(() => import("./pages/TestPositionnement"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Per-audience pages
@@ -101,6 +102,7 @@ export const AppRoutes = () => (
     <Route path="/politique-confidentialite" element={<PrivacyPolicy />} />
     <Route path="/politique-de-confidentialite" element={<Navigate to="/politique-confidentialite" replace />} />
     <Route path="/cgv" element={<CGV />} />
+    <Route path="/test-de-positionnement" element={<TestPositionnement />} />
 
     {/* Per-audience landing pages */}
     <Route path="/anglais-entreprise" element={<AnglaisEntreprise />} />
