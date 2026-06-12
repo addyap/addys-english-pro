@@ -7,7 +7,7 @@ import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { trackEvent } from '@/lib/analytics';
 
 // ── Configurable constants ──────────────────────────────────────────
-const KAHOOT_ASSIGNMENT_URL = 'REPLACE_WITH_KAHOOT_LINK';
+const KAHOOT_ASSIGNMENT_URL = 'https://kahoot.it/challenge/04602749?challenge-id=1f8df03b-4a67-425e-a134-6e557d14c7e2_1781270780609';
 const KAHOOT_PIN = '04602749';
 
 const WHATSAPP_SCORE_URL =
