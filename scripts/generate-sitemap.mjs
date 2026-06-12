@@ -42,11 +42,15 @@ const staticRoutes = [
   { path: "/cours-anglais-antibes", priority: "0.8", changefreq: "monthly" },
   { path: "/cours-anglais-sophia-antipolis", priority: "0.8", changefreq: "monthly" },
 
+  // Free resources
+  { path: "/test-de-positionnement", priority: "0.8", changefreq: "monthly" },
+
   // Legal
   { path: "/mentions-legales", priority: "0.3", changefreq: "yearly" },
   { path: "/politique-confidentialite", priority: "0.3", changefreq: "yearly" },
   { path: "/cgv", priority: "0.3", changefreq: "yearly" },
 ];
+
 
 const blogRoutes = grammarBlogPosts.map((p) => ({
   path: `/blog/${p.id}`,
