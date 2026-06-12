@@ -120,14 +120,21 @@ export default function OptimizedHero() {
           100% personnalisé · Adapté à votre niveau · Réponse rapide garantie
         </p>
 
-        {/* Tertiary discovery link */}
-        <div className="mt-3">
+        {/* Tertiary discovery links */}
+        <div className="mt-3 flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center items-center">
           <Link
             to="/offres-de-formation"
             className="inline-block text-sm text-primary-foreground/80 hover:text-primary-foreground underline underline-offset-4 font-body focus:outline-none focus:ring-2 focus:ring-ring/30 rounded"
             aria-label="Voir les offres de formation en anglais professionnel"
           >
             Voir les formations →
+          </Link>
+          <Link
+            to="/ressources-gratuites"
+            className="inline-block text-sm text-primary-foreground/80 hover:text-primary-foreground underline underline-offset-4 font-body focus:outline-none focus:ring-2 focus:ring-ring/30 rounded"
+            aria-label="Explorer les ressources gratuites d'anglais"
+          >
+            Explorer les ressources gratuites →
           </Link>
         </div>
       </div>
