@@ -64,10 +64,21 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Honeypot check (spam prevention)
+    // Honeypot check (spam prevention) — silently reject
     if (formData.honeypot) {
       console.log('Spam detected');
       trackFormError('contact', 'spam_detected');
+      setSubmitSuccess(true); // fake success to deter bots
+      return;
+    }
+
+    // Client-side rate limiting / debounce
+    const now = Date.now();
+    if (isSubmitting) return;
+    if (now - lastSubmitRef.current < MIN_SUBMIT_INTERVAL_MS) {
+      trackFormError('contact', 'rate_limited');
+      setSubmitErrorBanner('⏳ Please wait a few seconds before submitting again.');
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
       return;
     }
 
@@ -76,16 +87,17 @@ const Contact = () => {
       return;
     }
 
+    lastSubmitRef.current = now;
     setIsSubmitting(true);
     setSubmitErrorBanner(null);
 
     try {
-      // Call the edge function to send email
+      // Call the edge function to send email — sanitize header-bearing fields
       const { data, error } = await supabase.functions.invoke('send-contact-email', {
         body: {
-          prenom: formData.prenom.trim(),
-          nom: formData.nom.trim(),
-          email: formData.email.trim(),
+          prenom: stripHeaderChars(formData.prenom),
+          nom: stripHeaderChars(formData.nom),
+          email: stripHeaderChars(formData.email),
           message: formData.message.trim()
         }
       });
