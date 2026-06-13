@@ -151,6 +151,7 @@ export default function Questionnaire() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [emailFailed, setEmailFailed] = useState(false);
 
   useEffect(() => {
     try { localStorage.setItem(STORAGE_KEY, lang); } catch {}
@@ -213,6 +214,7 @@ export default function Questionnaire() {
     if (!validateStep(5)) return;
     setSubmitting(true);
     setSubmitError(null);
+    setEmailFailed(false);
     try {
       const payload = { ...data, langue_completion: lang };
 
@@ -227,6 +229,7 @@ export default function Questionnaire() {
       );
       if (fnError) {
         console.error("Email function error:", fnError);
+        setEmailFailed(true);
         if (dbError) throw new Error("submit failed");
       }
 
@@ -357,7 +360,7 @@ export default function Questionnaire() {
             </p>
           </>
         ) : (
-          <ThanksScreen t={t} data={data} />
+          <ThanksScreen t={t} data={data} emailFailed={emailFailed} />
         )}
       </main>
     </div>
@@ -628,7 +631,7 @@ function Step5({ t, data, update, toggleArr }: Omit<StepProps, "errors">) {
 
 // =============== THANKS SCREEN ===============
 
-function ThanksScreen({ t, data }: { t: Dict; data: FormData }) {
+function ThanksScreen({ t, data, emailFailed }: { t: Dict; data: FormData; emailFailed?: boolean }) {
   const rows: Array<[string, string]> = [
     [t.step1.firstName, data.prenom],
     [t.step1.lastName, data.nom],
@@ -667,9 +670,27 @@ function ThanksScreen({ t, data }: { t: Dict; data: FormData }) {
       <h1 className="font-heading text-3xl sm:text-4xl font-bold text-primary mb-2">
         {tpl(t.thanks.title, { name: data.prenom })}
       </h1>
-      <p className="text-muted-foreground text-base leading-relaxed mx-auto max-w-[540px] mb-7">
-        {t.thanks.subtitle}
-      </p>
+      {emailFailed ? (
+        <div className="mx-auto max-w-[540px] mb-7">
+          <p className="text-destructive text-base leading-relaxed">
+            {t.thanks.subtitleEmailFailed}
+          </p>
+          <p className="mt-2">
+            <a
+              href="https://wa.me/33649829826"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-primary font-semibold hover:underline"
+            >
+              WhatsApp →
+            </a>
+          </p>
+        </div>
+      ) : (
+        <p className="text-muted-foreground text-base leading-relaxed mx-auto max-w-[540px] mb-7">
+          {t.thanks.subtitle}
+        </p>
+      )}
 
       <Card className="text-start">
         <CardContent className="p-6">
