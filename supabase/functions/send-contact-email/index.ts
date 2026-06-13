@@ -88,7 +88,23 @@ const handler = async (req: Request): Promise<Response> => {
       `,
     });
 
-    console.log("Notification email sent:", notificationResponse);
+    console.log("Notification email response:", notificationResponse);
+
+    if (notificationResponse?.error) {
+      console.error("Resend notification error:", notificationResponse.error);
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: notificationResponse.error?.message || "Email sending failed. Please try again later.",
+        }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+
+
 
     // Send confirmation email to the sender
     const confirmationResponse = await resend.emails.send({
@@ -127,7 +143,13 @@ const handler = async (req: Request): Promise<Response> => {
       `,
     });
 
-    console.log("Confirmation email sent:", confirmationResponse);
+    console.log("Confirmation email response:", confirmationResponse);
+    if (confirmationResponse?.error) {
+      // Non-fatal: notification to Antony already succeeded.
+      console.warn("Resend confirmation error (non-fatal):", confirmationResponse.error);
+    }
+
+
 
     return new Response(
       JSON.stringify({ 

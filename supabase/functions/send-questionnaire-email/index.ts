@@ -134,7 +134,19 @@ serve(async (req) => {
       html,
     });
 
-    console.log("Questionnaire email sent:", result);
+    console.log("Questionnaire email response:", result);
+
+    if (result?.error) {
+      console.error("Resend questionnaire error:", result.error);
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: result.error?.message || "Email sending failed. Please try again later.",
+        }),
+        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
     return new Response(JSON.stringify({ success: true }), {
       status: 200, headers: { "Content-Type": "application/json", ...corsHeaders },
     });
