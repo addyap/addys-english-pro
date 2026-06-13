@@ -22,6 +22,7 @@ type Dict = {
   thanks: {
     title: string; // uses {name}
     subtitle: string;
+    subtitleEmailFailed: string;
     summary: string;
     contactLabel: string;
   };
@@ -95,6 +96,7 @@ const fr: Dict = {
   thanks: {
     title: "Merci, {name} !",
     subtitle: "J'ai bien reçu vos réponses et je reviens vers vous sous 48 heures.",
+    subtitleEmailFailed: "Vos réponses ont bien été enregistrées, mais l'envoi de la notification a échoué. Pour une réponse rapide, contactez-moi directement sur WhatsApp.",
     summary: "Récapitulatif de vos réponses",
     contactLabel: "Email de contact",
   },
@@ -165,7 +167,7 @@ const en: Dict = {
   cta: { continue: "Continue", back: "Back", submit: "Send my profile →" },
   progress: { step: "Step {n} of {total}" },
   errors: { required: "This field is required", email: "Please enter a valid email address", submit: "Something went wrong. Try again or email formations@antonyaddy.com." },
-  thanks: { title: "Thank you, {name}!", subtitle: "I've received your answers and will get back to you within 48 hours.", summary: "Summary of your answers", contactLabel: "Contact email" },
+  thanks: { title: "Thank you, {name}!", subtitle: "I've received your answers and will get back to you within 48 hours.", subtitleEmailFailed: "Your answers have been saved, but the notification email failed to send. For a quick response, contact me directly on WhatsApp.", summary: "Summary of your answers", contactLabel: "Contact email" },
   step1: {
     title: "About you",
     firstName: "First name", lastName: "Last name", email: "Email address", phone: "Phone (optional)",
@@ -233,7 +235,7 @@ const es: Dict = {
   cta: { continue: "Continuar", back: "Atrás", submit: "Enviar mi perfil →" },
   progress: { step: "Paso {n} de {total}" },
   errors: { required: "Este campo es obligatorio", email: "Introduce un correo válido", submit: "Algo salió mal. Inténtalo de nuevo o escribe a formations@antonyaddy.com." },
-  thanks: { title: "¡Gracias, {name}!", subtitle: "He recibido tus respuestas y te contactaré en menos de 48 horas.", summary: "Resumen de tus respuestas", contactLabel: "Correo de contacto" },
+  thanks: { title: "¡Gracias, {name}!", subtitle: "He recibido tus respuestas y te contactaré en menos de 48 horas.", subtitleEmailFailed: "Tus respuestas se han guardado, pero el envío de la notificación ha fallado. Para una respuesta rápida, contáctame directamente por WhatsApp.", summary: "Resumen de tus respuestas", contactLabel: "Correo de contacto" },
   step1: {
     title: "Sobre ti",
     firstName: "Nombre", lastName: "Apellido", email: "Correo electrónico", phone: "Teléfono (opcional)",
@@ -301,7 +303,7 @@ const de: Dict = {
   cta: { continue: "Weiter", back: "Zurück", submit: "Profil senden →" },
   progress: { step: "Schritt {n} von {total}" },
   errors: { required: "Pflichtfeld", email: "Bitte gültige E-Mail eingeben", submit: "Etwas ist schiefgelaufen. Bitte erneut versuchen oder an formations@antonyaddy.com schreiben." },
-  thanks: { title: "Danke, {name}!", subtitle: "Ich habe Ihre Antworten erhalten und melde mich innerhalb von 48 Stunden.", summary: "Zusammenfassung Ihrer Antworten", contactLabel: "Kontakt-E-Mail" },
+  thanks: { title: "Danke, {name}!", subtitle: "Ich habe Ihre Antworten erhalten und melde mich innerhalb von 48 Stunden.", subtitleEmailFailed: "Ihre Antworten wurden gespeichert, aber die Benachrichtigung konnte nicht gesendet werden. Für eine schnelle Antwort kontaktieren Sie mich direkt über WhatsApp.", summary: "Zusammenfassung Ihrer Antworten", contactLabel: "Kontakt-E-Mail" },
   step1: {
     title: "Über Sie",
     firstName: "Vorname", lastName: "Nachname", email: "E-Mail", phone: "Telefon (optional)",
@@ -369,7 +371,7 @@ const it: Dict = {
   cta: { continue: "Continua", back: "Indietro", submit: "Invia il mio profilo →" },
   progress: { step: "Passo {n} di {total}" },
   errors: { required: "Campo obbligatorio", email: "Inserisci un'email valida", submit: "Si è verificato un errore. Riprova o scrivi a formations@antonyaddy.com." },
-  thanks: { title: "Grazie, {name}!", subtitle: "Ho ricevuto le tue risposte e ti ricontatto entro 48 ore.", summary: "Riepilogo delle tue risposte", contactLabel: "Email di contatto" },
+  thanks: { title: "Grazie, {name}!", subtitle: "Ho ricevuto le tue risposte e ti ricontatto entro 48 ore.", subtitleEmailFailed: "Le tue risposte sono state salvate, ma l'invio della notifica è fallito. Per una risposta rapida, contattami direttamente su WhatsApp.", summary: "Riepilogo delle tue risposte", contactLabel: "Email di contatto" },
   step1: {
     title: "Su di te",
     firstName: "Nome", lastName: "Cognome", email: "Email", phone: "Telefono (facoltativo)",
@@ -437,7 +439,7 @@ const pt: Dict = {
   cta: { continue: "Continuar", back: "Voltar", submit: "Enviar o meu perfil →" },
   progress: { step: "Passo {n} de {total}" },
   errors: { required: "Campo obrigatório", email: "Introduza um email válido", submit: "Algo correu mal. Tente novamente ou escreva para formations@antonyaddy.com." },
-  thanks: { title: "Obrigado, {name}!", subtitle: "Recebi as suas respostas e responder-lhe-ei em 48 horas.", summary: "Resumo das suas respostas", contactLabel: "Email de contacto" },
+  thanks: { title: "Obrigado, {name}!", subtitle: "Recebi as suas respostas e responder-lhe-ei em 48 horas.", subtitleEmailFailed: "As suas respostas foram guardadas, mas o envio da notificação falhou. Para uma resposta rápida, contacte-me diretamente pelo WhatsApp.", summary: "Resumo das suas respostas", contactLabel: "Email de contacto" },
   step1: {
     title: "Sobre si",
     firstName: "Nome próprio", lastName: "Apelido", email: "Email", phone: "Telefone (opcional)",
@@ -505,7 +507,7 @@ const zh: Dict = {
   cta: { continue: "继续", back: "返回", submit: "提交我的档案 →" },
   progress: { step: "第 {n} 步，共 {total} 步" },
   errors: { required: "此项为必填", email: "请输入有效的邮箱地址", submit: "出错了，请重试或写信至 formations@antonyaddy.com。" },
-  thanks: { title: "谢谢您，{name}！", subtitle: "我已收到您的回答，将在 48 小时内回复。", summary: "您的回答摘要", contactLabel: "联系邮箱" },
+  thanks: { title: "谢谢您，{name}！", subtitle: "我已收到您的回答，将在 48 小时内回复。", subtitleEmailFailed: "您的回答已保存，但通知邮件发送失败。如需快速回复，请直接通过 WhatsApp 联系我。", summary: "您的回答摘要", contactLabel: "联系邮箱" },
   step1: {
     title: "关于您",
     firstName: "名", lastName: "姓", email: "邮箱", phone: "电话（可选）",
@@ -573,7 +575,7 @@ const ar: Dict = {
   cta: { continue: "متابعة", back: "رجوع", submit: "إرسال ملفي ←" },
   progress: { step: "الخطوة {n} من {total}" },
   errors: { required: "هذا الحقل مطلوب", email: "يرجى إدخال بريد إلكتروني صالح", submit: "حدث خطأ. حاول مرة أخرى أو راسل formations@antonyaddy.com." },
-  thanks: { title: "شكراً لك، {name}!", subtitle: "تم استلام إجاباتك وسأرد خلال 48 ساعة.", summary: "ملخص إجاباتك", contactLabel: "بريد التواصل" },
+  thanks: { title: "شكراً لك، {name}!", subtitle: "تم استلام إجاباتك وسأرد خلال 48 ساعة.", subtitleEmailFailed: "تم حفظ إجاباتك، لكن فشل إرسال الإشعار. للحصول على رد سريع، تواصل معي مباشرة عبر واتساب.", summary: "ملخص إجاباتك", contactLabel: "بريد التواصل" },
   step1: {
     title: "عنك",
     firstName: "الاسم", lastName: "اللقب", email: "البريد الإلكتروني", phone: "الهاتف (اختياري)",
