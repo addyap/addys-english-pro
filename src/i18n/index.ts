@@ -21,29 +21,41 @@ export function getLangMeta(code: string) {
 const isBrowser = typeof window !== "undefined";
 
 if (!i18n.isInitialized) {
-  const chain = isBrowser
-    ? i18n.use(LanguageDetector).use(initReactI18next)
-    : i18n.use(initReactI18next);
-
-  chain.init({
+  // IMPORTANT: init with "fr" on BOTH server (SSG) and client so the first
+  // client render matches the prerendered HTML and React can hydrate cleanly.
+  // The user's stored preference is applied AFTER hydration (below) to avoid
+  // React hydration errors #418/#425 (text content / UI mismatch).
+  i18n.use(initReactI18next).init({
     resources: {
       fr: { translation: fr },
       en: { translation: en },
     },
     fallbackLng: "fr",
-    lng: isBrowser ? undefined : "fr",
+    lng: "fr",
     supportedLngs: SUPPORTED_LANG_CODES,
     load: "languageOnly",
     interpolation: { escapeValue: false },
-    detection: isBrowser
-      ? {
-          order: ["localStorage", "navigator", "htmlTag"],
-          lookupLocalStorage: "interfaceLanguage",
-          caches: ["localStorage"],
-        }
-      : undefined,
     react: { useSuspense: false },
   });
+
+  // Post-hydration language switch: read stored preference and change
+  // language asynchronously so it never interferes with the initial render.
+  if (isBrowser) {
+    // Defer until after the current microtask/hydration pass
+    Promise.resolve().then(() => {
+      try {
+        const stored = window.localStorage.getItem("interfaceLanguage");
+        if (stored && SUPPORTED_LANG_CODES.includes(stored) && stored !== i18n.language) {
+          // Wait one frame to let React commit the hydrated tree first
+          requestAnimationFrame(() => {
+            i18n.changeLanguage(stored).catch(() => undefined);
+          });
+        }
+      } catch {
+        /* localStorage unavailable; keep default */
+      }
+    });
+  }
 }
 
 if (typeof document !== "undefined") {
