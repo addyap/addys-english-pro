@@ -36,14 +36,22 @@ function readStored(key: string): SupportedLangCode | null {
 }
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [interfaceLang, setInterfaceLangState] = useState<SupportedLangCode>(
-    () => readStored(INTERFACE_KEY) ?? detect()
-  );
-  const [feedbackLang, setFeedbackLangState] = useState<SupportedLangCode>(
-    () => readStored(FEEDBACK_KEY) ?? readStored(INTERFACE_KEY) ?? detect()
-  );
+  // IMPORTANT: initial state MUST match the SSG-prerendered HTML (which is
+  // always "fr") or React hydration fails (#418/#425). Read the stored/
+  // detected preference AFTER hydration in a useEffect.
+  const [interfaceLang, setInterfaceLangState] = useState<SupportedLangCode>("fr");
+  const [feedbackLang, setFeedbackLangState] = useState<SupportedLangCode>("fr");
 
-  // Sync with i18next on mount and when interface language changes
+  // After hydration: apply the user's stored or detected preference.
+  useEffect(() => {
+    const storedInterface = readStored(INTERFACE_KEY) ?? detect();
+    if (storedInterface !== interfaceLang) setInterfaceLangState(storedInterface);
+    const storedFeedback = readStored(FEEDBACK_KEY) ?? storedInterface;
+    if (storedFeedback !== feedbackLang) setFeedbackLangState(storedFeedback);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Sync with i18next when interface language changes
   useEffect(() => {
     if (i18n.language !== interfaceLang) {
       i18n.changeLanguage(interfaceLang);
