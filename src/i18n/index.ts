@@ -1,6 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
+// LanguageDetector intentionally not imported: detection runs post-hydration
+// (see below) so the first client render matches the SSG-prerendered HTML.
 
 import en from "./locales/en.json";
 import fr from "./locales/fr.json";
