@@ -23,7 +23,13 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { prenom, nom, email, message }: ContactEmailRequest = await req.json();
+    const body: ContactEmailRequest = await req.json();
+    // Strip CR/LF from any value used in email headers to prevent header injection
+    const stripHeader = (v: string) => (v ?? "").toString().replace(/[\r\n]+/g, " ").trim();
+    const prenom = stripHeader(body.prenom);
+    const nom = stripHeader(body.nom);
+    const email = stripHeader(body.email);
+    const message = (body.message ?? "").toString().trim();
 
     // Validate input
     if (!prenom || !nom || !email || !message) {
@@ -37,7 +43,7 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Validate email format
+    // Validate email format (also rejects CR/LF since they were stripped)
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       console.error("Invalid email format:", email);
