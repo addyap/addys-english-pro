@@ -31,6 +31,11 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitErrorBanner, setSubmitErrorBanner] = useState<string | null>(null);
+  const lastSubmitRef = React.useRef<number>(0);
+  const MIN_SUBMIT_INTERVAL_MS = 10000; // rate limit: 1 submission per 10s
+
+  // Strip CR/LF to prevent email header injection in subject/from/reply-to
+  const stripHeaderChars = (v: string) => v.replace(/[\r\n]+/g, ' ').trim();
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
