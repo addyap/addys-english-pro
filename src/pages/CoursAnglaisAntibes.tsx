@@ -16,7 +16,7 @@ const CoursAnglaisAntibes = () => (
       canonical: "https://www.antonyaddy.com/cours-anglais-antibes",
     }}
     city="Antibes"
-    h1="Cours d'anglais Antibes — Formateur natif britannique"
+    h1="Apprenez l'anglais à Antibes avec un formateur britannique"
     intro="Je propose des cours d'anglais sur-mesure à Antibes, Juan-les-Pins, et dans tout le bassin antibois. Formations en présentiel ou à distance, conçues autour de votre situation et de vos objectifs."
     whoIAm="Antony Addy, formateur d'anglais natif britannique, certifié FPA, plus de 20 ans d'expérience. Basé à Fréjus, j'interviens régulièrement à Antibes auprès de professionnels, particuliers et étudiants."
     howItWorks="Présentiel à Antibes, Juan-les-Pins et communes proches, ou à distance. Première séance dédiée à l'évaluation et à la définition d'un programme adapté. Planning flexible. Pour les entreprises antiboises, intervention dans vos locaux dans le cadre d'une convention de formation."

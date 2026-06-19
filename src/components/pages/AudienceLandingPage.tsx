@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { CheckCircle } from 'lucide-react';
 import SEOHead from '@/components/SEOHead';
 import { FadeInSection, Accordion } from '@/components/Effects';
+import SocialProof from '@/components/SocialProof';
 
 export interface AudienceFAQ { q: string; a: string }
 export interface AudiencePageProps {
@@ -120,6 +121,10 @@ export const AudienceLandingPage: React.FC<AudiencePageProps> = ({
           </FadeInSection>
 
           {/* Closing CTA */}
+          <FadeInSection>
+            <SocialProof />
+          </FadeInSection>
+
           <FadeInSection>
             <section className="bg-gradient-to-r from-primary to-primary/80 text-white rounded-lg p-8 sm:p-10 text-center">
               <p className="text-lg sm:text-xl mb-6 leading-relaxed">{closingPitch}</p>

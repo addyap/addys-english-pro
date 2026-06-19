@@ -32,6 +32,7 @@ const AnglaisParticuliers = () => (
       { q: "Combien de temps pour progresser ?", a: "Variable, cela dépend de votre engagement et de vos objectifs. Une progression visible se mesure généralement sur quelques mois d'engagement régulier — mais les premiers résultats sont souvent ressentis dès les premières séances." },
     ]}
     closingPitch="Vous voulez reprendre l'anglais à votre rythme, sans pression et avec un vrai formateur natif ? Parlons de votre projet."
+    ctaLabel="Réserver un premier échange gratuit"
   />
 );
 

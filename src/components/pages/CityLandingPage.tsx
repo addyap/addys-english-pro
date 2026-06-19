@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SEOHead from '@/components/SEOHead';
 import { FadeInSection, Accordion } from '@/components/Effects';
+import SocialProof from '@/components/SocialProof';
 
 export interface CityFAQ { q: string; a: string }
 export interface CityPageProps {
@@ -124,6 +125,10 @@ export const CityLandingPage: React.FC<CityPageProps> = ({
                 ))}
               </div>
             </section>
+          </FadeInSection>
+
+          <FadeInSection>
+            <SocialProof />
           </FadeInSection>
 
           <FadeInSection>
