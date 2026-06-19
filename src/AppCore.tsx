@@ -18,7 +18,7 @@ import PrefetchRoutes from "./components/PrefetchRoutes";
 import ScrollToTop from "./components/ScrollToTop";
 import { HeroSkeleton, CardSkeleton } from "./components/SkeletonLoader";
 import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
-import ExternalRedirect from "./components/ExternalRedirect";
+
 
 // Marketing pages (KEEP)
 const Home = lazy(() => import("./pages/Home"));
@@ -73,20 +73,6 @@ interface AppCoreProps {
   helmetContext?: { helmet?: any };
 }
 
-// External destination map — anglaisadistance.fr equivalents
-const ADD = "https://anglaisadistance.fr";
-const DEST = {
-  conversation: `${ADD}/conversation-trainer`,
-  grammar: `${ADD}/grammaire-essentielle`,
-  grammarCorrector: `${ADD}/ai-grammar-corrector`,
-  emailCoach: `${ADD}/ai-email-coach`,
-  reading: `${ADD}/ai-reading-comprehension`,
-  dialogues: `${ADD}/dialogues`,
-  interview: `${ADD}/dialogues/job-interview`,
-  exercises: `${ADD}/grammaire-essentielle/contrastes`,
-  home: `${ADD}/`,
-};
-
 export const AppRoutes = () => (
   <Routes>
     {/* KEEP — focused trainer marketing site */}
@@ -121,38 +107,8 @@ export const AppRoutes = () => (
     {/* Internal: bookmarked sitemap page → home */}
     <Route path="/sitemap-page" element={<Navigate to="/" replace />} />
 
-    {/* CLOE — intentionally 404 (no redirect) */}
-    <Route path="/exercices/cloe-preparation/*" element={<NotFound />} />
-    <Route path="/exercices/cloe/*" element={<NotFound />} />
+    {/* CLOE & all external redirects are handled by vercel.json (301 at edge) */}
 
-    {/* REDIRECT — exercises (grammar lessons go to a more specific page) */}
-    <Route path="/exercices/grammar/*" element={<ExternalRedirect to={DEST.grammar} />} />
-    <Route path="/exercices/comprehension-ecrite" element={<ExternalRedirect to={DEST.reading} />} />
-    <Route path="/exercices/*" element={<ExternalRedirect to={DEST.exercises} />} />
-    <Route path="/exercices" element={<ExternalRedirect to={DEST.exercises} />} />
-
-    {/* REDIRECT — reading & stories */}
-    <Route path="/reading" element={<ExternalRedirect to={DEST.reading} />} />
-    <Route path="/reading/*" element={<ExternalRedirect to={DEST.reading} />} />
-    <Route path="/lecture" element={<ExternalRedirect to={DEST.reading} />} />
-    <Route path="/story/*" element={<ExternalRedirect to={DEST.dialogues} />} />
-    <Route path="/story-trainer" element={<ExternalRedirect to={DEST.dialogues} />} />
-
-    {/* REDIRECT — listening legacy aliases */}
-    <Route path="/listening" element={<ExternalRedirect to={DEST.exercises} />} />
-
-    {/* REDIRECT — AI trainers */}
-    <Route path="/conversation-trainer" element={<ExternalRedirect to={DEST.conversation} />} />
-    <Route path="/speaking-practice" element={<ExternalRedirect to={DEST.conversation} />} />
-    <Route path="/grammar-explainer" element={<ExternalRedirect to={DEST.grammar} />} />
-    <Route path="/writing-coach" element={<ExternalRedirect to={DEST.grammarCorrector} />} />
-    <Route path="/email-trainer" element={<ExternalRedirect to={DEST.emailCoach} />} />
-    <Route path="/interview-simulator" element={<ExternalRedirect to={DEST.interview} />} />
-    <Route path="/presentation-trainer" element={<ExternalRedirect to={DEST.home} />} />
-    <Route path="/negotiation-trainer" element={<ExternalRedirect to={DEST.home} />} />
-
-    {/* REDIRECT — free resources hub */}
-    <Route path="/ressources-gratuites" element={<ExternalRedirect to={DEST.home} />} />
 
     <Route path="*" element={<NotFound />} />
   </Routes>

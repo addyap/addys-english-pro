@@ -3,23 +3,8 @@ import { Navigate } from "react-router-dom";
 import type { RouteRecord } from "vite-react-ssg";
 
 import { AppShell, LayoutShell } from "./AppShell";
-import ExternalRedirect from "./components/ExternalRedirect";
 import NotFound from "./pages/NotFound";
 import { grammarBlogPosts } from "./data/grammarBlogPosts";
-
-// External destination map — anglaisadistance.fr equivalents
-const ADD = "https://anglaisadistance.fr";
-const DEST = {
-  conversation: `${ADD}/conversation-trainer`,
-  grammar: `${ADD}/grammaire-essentielle`,
-  grammarCorrector: `${ADD}/ai-grammar-corrector`,
-  emailCoach: `${ADD}/ai-email-coach`,
-  reading: `${ADD}/ai-reading-comprehension`,
-  dialogues: `${ADD}/dialogues`,
-  interview: `${ADD}/dialogues/job-interview`,
-  exercises: `${ADD}/grammaire-essentielle/contrastes`,
-  home: `${ADD}/`,
-};
 
 /** Helper: lazy-load a page module whose default export is the component. */
 const page = (loader: () => Promise<{ default: React.ComponentType<any> }>) =>
@@ -79,38 +64,9 @@ export const routes: RouteRecord[] = [
           // Internal: legacy sitemap bookmark → home
           { path: "/sitemap-page", element: <Navigate to="/" replace /> },
 
-          // CLOE — intentionally 404 (no redirect)
-          { path: "/exercices/cloe-preparation/*", element: <NotFound /> },
-          { path: "/exercices/cloe/*", element: <NotFound /> },
+          // CLOE & all external redirects are handled by vercel.json (301 at edge)
 
-          // External redirects — exercises
-          { path: "/exercices/grammar/*", element: <ExternalRedirect to={DEST.grammar} /> },
-          { path: "/exercices/comprehension-ecrite", element: <ExternalRedirect to={DEST.reading} /> },
-          { path: "/exercices/*", element: <ExternalRedirect to={DEST.exercises} /> },
-          { path: "/exercices", element: <ExternalRedirect to={DEST.exercises} /> },
 
-          // External redirects — reading & stories
-          { path: "/reading", element: <ExternalRedirect to={DEST.reading} /> },
-          { path: "/reading/*", element: <ExternalRedirect to={DEST.reading} /> },
-          { path: "/lecture", element: <ExternalRedirect to={DEST.reading} /> },
-          { path: "/story/*", element: <ExternalRedirect to={DEST.dialogues} /> },
-          { path: "/story-trainer", element: <ExternalRedirect to={DEST.dialogues} /> },
-
-          // External redirects — listening
-          { path: "/listening", element: <ExternalRedirect to={DEST.exercises} /> },
-
-          // External redirects — AI trainers
-          { path: "/conversation-trainer", element: <ExternalRedirect to={DEST.conversation} /> },
-          { path: "/speaking-practice", element: <ExternalRedirect to={DEST.conversation} /> },
-          { path: "/grammar-explainer", element: <ExternalRedirect to={DEST.grammar} /> },
-          { path: "/writing-coach", element: <ExternalRedirect to={DEST.grammarCorrector} /> },
-          { path: "/email-trainer", element: <ExternalRedirect to={DEST.emailCoach} /> },
-          { path: "/interview-simulator", element: <ExternalRedirect to={DEST.interview} /> },
-          { path: "/presentation-trainer", element: <ExternalRedirect to={DEST.home} /> },
-          { path: "/negotiation-trainer", element: <ExternalRedirect to={DEST.home} /> },
-
-          // External redirects — free resources hub
-          { path: "/ressources-gratuites", element: <ExternalRedirect to={DEST.home} /> },
 
           // Catch-all
           { path: "*", element: <NotFound /> },
