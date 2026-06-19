@@ -2171,50 +2171,6 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
     relatedExerciseId: 'unless-as-long-as-provided'
   },
-  // ============== NEW VOCABULARY & ADVANCED ARTICLES 2026 ==============
-  {
-    id: 'make-vs-do',
-    title: 'Make vs Do : Quelle différence en anglais ?',
-    excerpt: 'Make et Do sont souvent confondus par les francophones. Découvrez les règles simples pour ne plus jamais les confondre.',
-    content: `
-      <p>Les verbes <strong>MAKE</strong> et <strong>DO</strong> se traduisent tous deux par "faire" en français, ce qui crée beaucoup de confusion. Voici comment les différencier.</p>
-
-      <h2>DO : activités et tâches</h2>
-      <p>Utilisez <strong>DO</strong> pour :</p>
-      <ul>
-        <li><strong>Les tâches ménagères</strong> : do the dishes, do the laundry, do the housework</li>
-        <li><strong>Le travail</strong> : do homework, do a job, do business</li>
-        <li><strong>Les activités générales</strong> : do exercise, do sport, do yoga</li>
-        <li><strong>Les expressions avec nothing/something/anything</strong> : do nothing, do something</li>
-      </ul>
-
-      <h2>MAKE : création et production</h2>
-      <p>Utilisez <strong>MAKE</strong> pour :</p>
-      <ul>
-        <li><strong>Créer quelque chose</strong> : make a cake, make dinner, make a dress</li>
-        <li><strong>Sons et paroles</strong> : make a noise, make a speech, make a comment</li>
-        <li><strong>Argent</strong> : make money, make a profit, make a living</li>
-        <li><strong>Décisions et plans</strong> : make a decision, make plans, make a choice</li>
-      </ul>
-
-      <h2>Expressions idiomatiques courantes</h2>
-      <ul>
-        <li><strong>DO</strong> : do your best, do a favor, do harm, do good</li>
-        <li><strong>MAKE</strong> : make a mistake, make friends, make progress, make sense</li>
-      </ul>
-
-      <h2>Astuce mémorisation</h2>
-      <p><strong>MAKE</strong> = vous créez un résultat tangible ou visible<br/>
-      <strong>DO</strong> = vous accomplissez une action ou une tâche</p>
-    `,
-    date: '2026-01-04',
-    author: 'Antony Addy',
-    category: 'Vocabulaire',
-    readTime: '5 min',
-    description: 'Apprenez à différencier Make et Do en anglais avec des règles claires et des exemples pratiques.',
-    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
-    relatedExerciseId: 'make-vs-do'
-  },
   {
     id: 'bring-vs-take',
     title: 'Bring vs Take : Une question de direction',
