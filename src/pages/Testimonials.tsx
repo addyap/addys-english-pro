@@ -14,91 +14,6 @@ const Testimonials = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // AggregateRating Schema - Enhanced for rich snippets
-  const aggregateRatingSchema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Antony Addy - Formation Anglais Professionnel",
-    "description": "Formations d'anglais professionnel par un formateur britannique certifié FPA",
-    "url": "https://www.antonyaddy.com",
-    "telephone": "+33649829826",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "135 rue Henri Vadon",
-      "addressLocality": "Fréjus",
-      "postalCode": "83600",
-      "addressRegion": "Provence-Alpes-Côte d'Azur",
-      "addressCountry": "FR"
-    },
-    "areaServed": [
-      { "@type": "AdministrativeArea", "name": "Var" },
-      { "@type": "AdministrativeArea", "name": "Alpes-Maritimes" },
-      { "@type": "Country", "name": "France" }
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5",
-      "bestRating": "5",
-      "worstRating": "1",
-      "ratingCount": "15",
-      "reviewCount": "15"
-    },
-    "priceRange": "$$"
-  };
-
-  const testimonialsJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "numberOfItems": 15,
-    "itemListElement": [
-      {
-        "@type": "Review",
-        "position": 1,
-        "author": {
-          "@type": "Person",
-          "name": "Alina Ostashchenko"
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        },
-        "reviewBody": "An excellent teacher! Passionate and dedicated to their work, which brings a positive energy to the class atmosphere!",
-        "datePublished": "2024-06-15"
-      },
-      {
-        "@type": "Review",
-        "position": 2,
-        "author": {
-          "@type": "Person",
-          "name": "Yamina ABDA"
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        },
-        "reviewBody": "Un formateur exceptionnel qui sait transmettre et communiquer avec la bonne humeur qui le caractérise!",
-        "datePublished": "2024-05-20"
-      },
-      {
-        "@type": "Review",
-        "position": 3,
-        "author": {
-          "@type": "Person",
-          "name": "Nathalie LE MÉNACH"
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        },
-        "reviewBody": "Antony est l'un des meilleurs professeurs d'anglais que j'ai pu rencontrer. Je recommande vivement Antony en tant que professeur d'anglais. Je recommande à 1000%!!!!",
-        "datePublished": "2024-04-10"
-      }
-    ]
-  };
-
   const testimonials = [
     {
       quote: "An excellent teacher! Passionate and dedicated to their work, which brings a positive energy to the class atmosphere!",
@@ -176,6 +91,51 @@ const Testimonials = () => {
       role: "Directrice de production – Régisseuse générale",
     },
   ];
+
+  // AggregateRating Schema - Enhanced for rich snippets
+  const aggregateRatingSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Antony Addy - Formation Anglais Professionnel",
+    "description": "Formations d'anglais professionnel par un formateur britannique certifié FPA",
+    "url": "https://www.antonyaddy.com",
+    "telephone": "+33649829826",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "135 rue Henri Vadon",
+      "addressLocality": "Fréjus",
+      "postalCode": "83600",
+      "addressRegion": "Provence-Alpes-Côte d'Azur",
+      "addressCountry": "FR"
+    },
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Var" },
+      { "@type": "AdministrativeArea", "name": "Alpes-Maritimes" },
+      { "@type": "Country", "name": "France" }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": String(testimonials.length),
+      "reviewCount": String(testimonials.length)
+    },
+    "priceRange": "$$"
+  };
+
+  const testimonialsJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "numberOfItems": testimonials.length,
+    "itemListElement": testimonials.map((t, i) => ({
+      "@type": "Review",
+      "position": i + 1,
+      "author": { "@type": "Person", "name": t.name },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": t.quote,
+    })),
+  };
 
   return (
     <>
