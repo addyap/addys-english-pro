@@ -2216,53 +2216,6 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     relatedExerciseId: 'make-vs-do'
   },
   {
-    id: 'say-vs-tell',
-    title: 'Say vs Tell : Comment les utiliser correctement',
-    excerpt: 'Say et Tell posent souvent problème. Découvrez la règle simple qui vous aidera à choisir le bon verbe à chaque fois.',
-    content: `
-      <p>La différence entre <strong>SAY</strong> et <strong>TELL</strong> est simple une fois que vous connaissez la règle de base.</p>
-
-      <h2>La règle fondamentale</h2>
-      <ul>
-        <li><strong>SAY</strong> : ne nécessite PAS de complément de personne</li>
-        <li><strong>TELL</strong> : nécessite TOUJOURS un complément de personne</li>
-      </ul>
-
-      <h2>Exemples avec SAY</h2>
-      <ul>
-        <li>He <strong>said</strong> (that) he was tired.</li>
-        <li>She <strong>said</strong> hello.</li>
-        <li>"I'm leaving," he <strong>said</strong>.</li>
-        <li>He <strong>said to me</strong> that... (avec "to" si on ajoute la personne)</li>
-      </ul>
-
-      <h2>Exemples avec TELL</h2>
-      <ul>
-        <li>He <strong>told me</strong> (that) he was tired.</li>
-        <li>She <strong>told him</strong> to wait.</li>
-        <li>They <strong>told us</strong> a story.</li>
-        <li>❌ He told that he was tired. (INCORRECT - il manque "me/him/her")</li>
-      </ul>
-
-      <h2>Expressions figées</h2>
-      <ul>
-        <li><strong>TELL</strong> : tell a story, tell a lie, tell the truth, tell a joke, tell the time</li>
-        <li><strong>SAY</strong> : say sorry, say goodbye, say a prayer, say a word</li>
-      </ul>
-
-      <h2>Astuce</h2>
-      <p>Si vous pouvez placer "somebody" après le verbe → utilisez TELL<br/>
-      Sinon → utilisez SAY</p>
-    `,
-    date: '2026-01-03',
-    author: 'Antony Addy',
-    category: 'Vocabulaire',
-    readTime: '4 min',
-    description: 'Maîtrisez la différence entre Say et Tell avec cette règle simple et des exemples concrets.',
-    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
-    relatedExerciseId: 'say-vs-tell'
-  },
-  {
     id: 'bring-vs-take',
     title: 'Bring vs Take : Une question de direction',
     excerpt: 'Bring et Take dépendent de la direction du mouvement. Apprenez à choisir le bon verbe selon le contexte.',
