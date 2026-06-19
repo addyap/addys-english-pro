@@ -3,23 +3,8 @@ import { Navigate } from "react-router-dom";
 import type { RouteRecord } from "vite-react-ssg";
 
 import { AppShell, LayoutShell } from "./AppShell";
-import ExternalRedirect from "./components/ExternalRedirect";
 import NotFound from "./pages/NotFound";
 import { grammarBlogPosts } from "./data/grammarBlogPosts";
-
-// External destination map — anglaisadistance.fr equivalents
-const ADD = "https://anglaisadistance.fr";
-const DEST = {
-  conversation: `${ADD}/conversation-trainer`,
-  grammar: `${ADD}/grammaire-essentielle`,
-  grammarCorrector: `${ADD}/ai-grammar-corrector`,
-  emailCoach: `${ADD}/ai-email-coach`,
-  reading: `${ADD}/ai-reading-comprehension`,
-  dialogues: `${ADD}/dialogues`,
-  interview: `${ADD}/dialogues/job-interview`,
-  exercises: `${ADD}/grammaire-essentielle/contrastes`,
-  home: `${ADD}/`,
-};
 
 /** Helper: lazy-load a page module whose default export is the component. */
 const page = (loader: () => Promise<{ default: React.ComponentType<any> }>) =>
