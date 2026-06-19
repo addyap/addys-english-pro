@@ -18,7 +18,7 @@ import PrefetchRoutes from "./components/PrefetchRoutes";
 import ScrollToTop from "./components/ScrollToTop";
 import { HeroSkeleton, CardSkeleton } from "./components/SkeletonLoader";
 import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
-import ExternalRedirect from "./components/ExternalRedirect";
+
 
 // Marketing pages (KEEP)
 const Home = lazy(() => import("./pages/Home"));
