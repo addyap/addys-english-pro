@@ -16,7 +16,7 @@ const CoursAnglaisCannes = () => (
       canonical: "https://www.antonyaddy.com/cours-anglais-cannes",
     }}
     city="Cannes"
-    h1="Cours d'anglais Cannes — Formateur natif britannique"
+    h1="Apprenez l'anglais à Cannes avec un formateur britannique"
     intro="Je propose des cours d'anglais sur-mesure à Cannes et dans le bassin cannois (Mougins, Mandelieu, Le Cannet). Formations en présentiel ou à distance, adaptées à votre profil et vos objectifs."
     whoIAm="Antony Addy, formateur d'anglais natif britannique, certifié FPA, plus de 20 ans d'expérience. Basé à Fréjus, j'interviens régulièrement sur le bassin cannois pour des entreprises, cadres, et particuliers."
     howItWorks="Présentiel à Cannes et alentour (Mougins, Mandelieu, Le Cannet) ou distance, selon ce qui vous convient. Première séance d'évaluation, puis programme construit autour de votre situation. Planning flexible, particulièrement utile pendant les périodes de forte activité événementielle à Cannes."

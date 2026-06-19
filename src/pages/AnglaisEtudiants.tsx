@@ -32,6 +32,7 @@ const AnglaisEtudiants = () => (
       { q: "Travaillez-vous avec des lycéens ?", a: "Oui, j'accompagne aussi bien des lycéens (préparation au bac, oraux, soutien) que des étudiants du supérieur (écoles, universités, prépas)." },
     ]}
     closingPitch="Vous avez un examen à préparer, un semestre à l'étranger en vue, ou simplement besoin de prendre une longueur d'avance ? Parlons de votre projet."
+    ctaLabel="Réserver un premier échange gratuit"
   />
 );
 
