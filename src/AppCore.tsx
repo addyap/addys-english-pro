@@ -73,20 +73,6 @@ interface AppCoreProps {
   helmetContext?: { helmet?: any };
 }
 
-// External destination map — anglaisadistance.fr equivalents
-const ADD = "https://anglaisadistance.fr";
-const DEST = {
-  conversation: `${ADD}/conversation-trainer`,
-  grammar: `${ADD}/grammaire-essentielle`,
-  grammarCorrector: `${ADD}/ai-grammar-corrector`,
-  emailCoach: `${ADD}/ai-email-coach`,
-  reading: `${ADD}/ai-reading-comprehension`,
-  dialogues: `${ADD}/dialogues`,
-  interview: `${ADD}/dialogues/job-interview`,
-  exercises: `${ADD}/grammaire-essentielle/contrastes`,
-  home: `${ADD}/`,
-};
-
 export const AppRoutes = () => (
   <Routes>
     {/* KEEP — focused trainer marketing site */}
