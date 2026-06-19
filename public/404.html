@@ -1,20 +1,37 @@
-
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <title>Not found — antonyaddy.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Page introuvable — 404 | Antony Addy</title>
     <style>
-      body{font-family:system-ui,sans-serif;margin:2rem}
-      a{text-decoration:none}
-      .btn{display:inline-block;padding:.6rem 1rem;border:1px solid #111;border-radius:.5rem}
+      :root { --ink:#1a1a2e; --muted:#5b5b6b; --accent:#1d4ed8; --line:#e4e4ec; --bg:#f7f7fb; }
+      * { box-sizing:border-box; }
+      body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+             font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--ink); padding:1.5rem; }
+      .card { max-width:34rem; text-align:center; }
+      .code { font-size:4.5rem; font-weight:800; color:var(--accent); line-height:1; margin:0 0 .5rem; }
+      h1 { font-size:1.5rem; margin:0 0 .75rem; }
+      p { color:var(--muted); font-size:1rem; line-height:1.6; margin:0 auto 1.75rem; max-width:26rem; }
+      .actions { display:flex; flex-wrap:wrap; gap:.6rem; justify-content:center; }
+      a.btn { display:inline-block; padding:.65rem 1.1rem; border-radius:.6rem; text-decoration:none;
+              font-size:.95rem; border:1px solid var(--line); color:var(--ink); background:#fff; transition:border-color .15s; }
+      a.btn:hover { border-color:var(--accent); }
+      a.btn.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
     </style>
   </head>
   <body>
-    <h1>Page not found</h1>
-    <p>Sorry, we can't find that page.</p>
-    <p><a class="btn" href="/">Go to homepage</a></p>
-    <p><a class="btn" href="/status.html">Status</a></p>
+    <main class="card">
+      <p class="code">404</p>
+      <h1>Page introuvable</h1>
+      <p>Cette page n'existe pas ou a été déplacée. Choisissez l'une des options ci-dessous pour continuer.</p>
+      <div class="actions">
+        <a class="btn primary" href="/">Retour à l'accueil</a>
+        <a class="btn" href="/offres-de-formation">Voir les formations</a>
+        <a class="btn" href="/test-de-positionnement">Test de niveau gratuit</a>
+        <a class="btn" href="/contact">Contacter Antony</a>
+      </div>
+    </main>
   </body>
 </html>
