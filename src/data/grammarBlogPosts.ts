@@ -2659,53 +2659,6 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     relatedExerciseId: 'fun-vs-funny'
   },
   {
-    id: 'still-yet-already',
-    title: 'Still, Yet, Already : Maîtriser ces adverbes de temps',
-    excerpt: 'Ces trois adverbes expriment des nuances temporelles importantes. Découvrez comment les utiliser.',
-    content: `
-      <p><strong>STILL</strong>, <strong>YET</strong> et <strong>ALREADY</strong> sont essentiels pour exprimer des nuances temporelles.</p>
-
-      <h2>STILL : toujours, encore (continuation)</h2>
-      <p>Exprime qu'une situation continue :</p>
-      <ul>
-        <li>"He's <strong>still</strong> sleeping." (Il dort encore)</li>
-        <li>"I <strong>still</strong> love you." (Je t'aime toujours)</li>
-        <li>"Do you <strong>still</strong> work there?" (Tu travailles toujours là-bas ?)</li>
-        <li>Position : avant le verbe principal</li>
-      </ul>
-
-      <h2>YET : déjà / encore (questions et négations)</h2>
-      <p>Utilisé principalement en questions et négations :</p>
-      <ul>
-        <li>"Have you finished <strong>yet</strong>?" (Tu as déjà fini ?)</li>
-        <li>"I haven't eaten <strong>yet</strong>." (Je n'ai pas encore mangé)</li>
-        <li>"Is she here <strong>yet</strong>?" (Elle est déjà là ?)</li>
-        <li>Position : en fin de phrase</li>
-      </ul>
-
-      <h2>ALREADY : déjà (affirmation)</h2>
-      <p>Exprime que quelque chose s'est produit plus tôt que prévu :</p>
-      <ul>
-        <li>"I've <strong>already</strong> finished." (J'ai déjà fini)</li>
-        <li>"She's <strong>already</strong> here!" (Elle est déjà là !)</li>
-        <li>"I <strong>already</strong> know." (Je sais déjà)</li>
-        <li>Position : avant le verbe principal</li>
-      </ul>
-
-      <h2>Résumé</h2>
-      <p><strong>STILL</strong> = ça continue<br/>
-      <strong>YET</strong> = pas encore / déjà ? (négations/questions)<br/>
-      <strong>ALREADY</strong> = c'est fait (plus tôt que prévu)</p>
-    `,
-    date: '2025-12-24',
-    author: 'Antony Addy',
-    category: 'Vocabulaire',
-    readTime: '5 min',
-    description: 'Maîtrisez Still, Yet et Already pour exprimer les nuances temporelles en anglais.',
-    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
-    relatedExerciseId: 'still-yet-already'
-  },
-  {
     id: 'actually-currently',
     title: 'Actually vs Currently : Les faux amis à éviter',
     excerpt: 'Actually ne signifie pas "actuellement" ! Découvrez ce faux ami classique et comment l\'éviter.',
