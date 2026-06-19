@@ -24,9 +24,6 @@
     { "source": "/negotiation-trainer", "destination": "https://anglaisadistance.fr/", "permanent": true },
     { "source": "/ressources-gratuites", "destination": "https://anglaisadistance.fr/", "permanent": true }
   ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ],
   "headers": [
     {
       "source": "/(.*)",
