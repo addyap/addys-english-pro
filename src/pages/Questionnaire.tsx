@@ -214,7 +214,19 @@ export default function Questionnaire() {
   };
 
   const submit = async () => {
+    // Honeypot — silently abort if filled (bot)
+    if (honeypot) {
+      setSubmitted(true);
+      return;
+    }
+    // Client-side cooldown
+    const now = Date.now();
+    if (submitting) return;
+    if (now - lastSubmitRef.current < MIN_SUBMIT_INTERVAL_MS) {
+      return;
+    }
     if (!validateStep(5)) return;
+    lastSubmitRef.current = now;
     setSubmitting(true);
     setSubmitError(null);
     setEmailFailed(false);
