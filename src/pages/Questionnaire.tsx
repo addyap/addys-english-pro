@@ -324,6 +324,17 @@ export default function Questionnaire() {
             {/* Card */}
             <Card>
               <CardContent className="p-6 sm:p-7">
+                {/* Honeypot — hidden from real users */}
+                <input
+                  type="text"
+                  name="website"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  style={{ position: "absolute", left: "-9999px" }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={step}
