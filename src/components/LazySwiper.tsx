@@ -24,9 +24,9 @@ const CarouselSkeleton = memo(() => (
 
 export const LazyClientCarousel = memo<LazyClientCarouselProps>(({ logos }) => {
   const [SwiperComponents, setSwiperComponents] = useState<{
-    Swiper: any;
-    SwiperSlide: any;
-    Autoplay: any;
+    Swiper: React.ComponentType<React.PropsWithChildren<Record<string, unknown>>>;
+    SwiperSlide: React.ComponentType<React.PropsWithChildren<Record<string, unknown>>>;
+    Autoplay: unknown;
   } | null>(null);
 
   useEffect(() => {

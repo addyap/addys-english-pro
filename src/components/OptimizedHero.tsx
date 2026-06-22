@@ -22,7 +22,7 @@ export default function OptimizedHero() {
             height={1080}
             loading="eager"
             decoding="async"
-            // @ts-ignore - fetchpriority is valid HTML but not typed in React 18
+            // @ts-expect-error - fetchpriority is valid HTML but not typed in React 18
             fetchpriority="high"
           />
         </picture>
