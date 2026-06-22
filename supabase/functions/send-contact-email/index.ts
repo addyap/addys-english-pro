@@ -76,14 +76,14 @@ const handler = async (req: Request): Promise<Response> => {
           </h1>
           
           <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <p><strong>Prénom :</strong> ${prenom}</p>
-            <p><strong>Nom :</strong> ${nom}</p>
-            <p><strong>Email :</strong> <a href="mailto:${email}">${email}</a></p>
+            <p><strong>Prénom :</strong> ${esc(prenom)}</p>
+            <p><strong>Nom :</strong> ${esc(nom)}</p>
+            <p><strong>Email :</strong> <a href="mailto:${encodeURIComponent(email)}">${esc(email)}</a></p>
           </div>
           
           <div style="background-color: #fff; border: 1px solid #e5e7eb; padding: 20px; border-radius: 8px;">
             <h2 style="color: #374151; margin-top: 0;">Message :</h2>
-            <p style="white-space: pre-wrap; color: #4b5563;">${message}</p>
+            <p style="white-space: pre-wrap; color: #4b5563;">${esc(message)}</p>
           </div>
           
           <p style="color: #6b7280; font-size: 12px; margin-top: 20px;">
