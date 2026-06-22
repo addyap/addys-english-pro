@@ -118,13 +118,13 @@ const handler = async (req: Request): Promise<Response> => {
       subject: "Merci pour votre message - Antony Addy Formations",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h1 style="color: #1e40af;">Merci pour votre message, ${prenom} !</h1>
+          <h1 style="color: #1e40af;">Merci pour votre message, ${esc(prenom)} !</h1>
           
           <p>J'ai bien reçu votre demande et je vous recontacterai dans les plus brefs délais (généralement sous 24h).</p>
           
           <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h2 style="color: #374151; margin-top: 0;">Récapitulatif de votre message :</h2>
-            <p style="white-space: pre-wrap; color: #4b5563;">${message}</p>
+            <p style="white-space: pre-wrap; color: #4b5563;">${esc(message)}</p>
           </div>
           
           <p>En attendant, n'hésitez pas à :</p>
