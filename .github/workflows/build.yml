@@ -16,7 +16,7 @@ jobs:
       - name: 🧰 Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: 📦 Install dependencies
         run: npm install
@@ -42,15 +42,6 @@ jobs:
           
           # Cleanup
           kill $SERVER_PID 2>/dev/null || true
-
-      - name: 🧹 Clean target folder on host
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            rm -rf /home1/ionctpmy/public_html/*
 
       - name: 🚀 Upload dist contents via rsync
         run: |
