@@ -28,6 +28,8 @@ export const LazyClientCarousel = memo<LazyClientCarouselProps>(({ logos }) => {
     SwiperSlide: React.ComponentType<React.PropsWithChildren<Record<string, unknown>>>;
     Autoplay: unknown;
   } | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const setComponents = setSwiperComponents as unknown as (v: any) => void;
 
   useEffect(() => {
     let mounted = true;
