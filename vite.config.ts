@@ -16,7 +16,7 @@
     removeItem(_k: string) {},
     setItem(_k: string, _v: string) {},
   };
-  const g = globalThis as any;
+  const g = globalThis as unknown as { localStorage?: typeof noopStorage; sessionStorage?: typeof noopStorage };
   if (typeof g.localStorage === "undefined") g.localStorage = noopStorage;
   if (typeof g.sessionStorage === "undefined") g.sessionStorage = noopStorage;
 }

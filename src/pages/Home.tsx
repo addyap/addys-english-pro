@@ -255,7 +255,7 @@ const Home = () => {
                     height="350"
                     loading="eager"
                     decoding="async"
-                    // @ts-ignore - fetchpriority is valid HTML but not typed in React 18
+                    // @ts-expect-error - fetchpriority is valid HTML but not typed in React 18
                     fetchpriority="high"
                   />
                   <p className="text-sm text-muted-foreground mt-3 text-center lg:text-left font-body italic">

@@ -6,9 +6,10 @@ import DOMPurify from 'dompurify';
 // of an object with .sanitize. Article content is trusted (authored in the
 // repo, no user input), so during SSG we pass it through unchanged; the
 // browser still re-sanitises after hydration.
+const dpAny = DOMPurify as unknown as { sanitize?: (html: string) => string };
 const sanitize: (html: string) => string =
-  typeof window !== 'undefined' && typeof (DOMPurify as any).sanitize === 'function'
-    ? (html) => (DOMPurify as any).sanitize(html)
+  typeof window !== 'undefined' && typeof dpAny.sanitize === 'function'
+    ? (html) => dpAny.sanitize!(html)
     : (html) => html;
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, User, ArrowLeft, BookOpen, GraduationCap, ArrowRight } from 'lucide-react';
@@ -49,7 +50,7 @@ const BlogArticle = () => {
       ogImage: post.ogImage
     };
     return acc;
-  }, {} as Record<string, any>);
+  }, {} as Record<string, ArticleData>);
 
   const baseArticles: Record<string, ArticleData> = {
     'anglais-professionnel-2025': {

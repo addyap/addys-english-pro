@@ -31,7 +31,7 @@ function readStored(key: string): SupportedLangCode | null {
     if (v && (SUPPORTED_LANG_CODES as readonly string[]).includes(v)) {
       return v as SupportedLangCode;
     }
-  } catch {}
+  } catch { /* ignore */ }
   return null;
 }
 
@@ -61,14 +61,14 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const setInterfaceLang = useCallback((lang: SupportedLangCode) => {
     setInterfaceLangState(lang);
     if (typeof window !== "undefined") {
-      try { window.localStorage.setItem(INTERFACE_KEY, lang); } catch {}
+      try { window.localStorage.setItem(INTERFACE_KEY, lang); } catch { /* ignore */ }
     }
   }, []);
 
   const setFeedbackLang = useCallback((lang: SupportedLangCode) => {
     setFeedbackLangState(lang);
     if (typeof window !== "undefined") {
-      try { window.localStorage.setItem(FEEDBACK_KEY, lang); } catch {}
+      try { window.localStorage.setItem(FEEDBACK_KEY, lang); } catch { /* ignore */ }
     }
   }, []);
 

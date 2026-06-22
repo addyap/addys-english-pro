@@ -39,7 +39,7 @@ export const usePerformanceMonitor = (reportCallback?: (metrics: PerformanceMetr
     // Measure LCP (Largest Contentful Paint)
     const lcpObserver = new PerformanceObserver((list) => {
       const entries = list.getEntries();
-      const lastEntry = entries[entries.length - 1] as any;
+      const lastEntry = entries[entries.length - 1] as PerformanceEntry & { renderTime?: number; loadTime?: number };
       metrics.lcp = lastEntry.renderTime || lastEntry.loadTime;
       console.log('[Performance] LCP:', metrics.lcp);
       reportCallback?.(metrics);
@@ -54,7 +54,7 @@ export const usePerformanceMonitor = (reportCallback?: (metrics: PerformanceMetr
     // Measure FID (First Input Delay)
     const fidObserver = new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
-        metrics.fid = (entry as any).processingStart - entry.startTime;
+        metrics.fid = (entry as PerformanceEntry & { processingStart: number }).processingStart - entry.startTime;
         console.log('[Performance] FID:', metrics.fid);
         reportCallback?.(metrics);
       }
@@ -70,8 +70,9 @@ export const usePerformanceMonitor = (reportCallback?: (metrics: PerformanceMetr
     let clsValue = 0;
     const clsObserver = new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
-        if (!(entry as any).hadRecentInput) {
-          clsValue += (entry as any).value;
+        const shift = entry as PerformanceEntry & { hadRecentInput?: boolean; value: number };
+        if (!shift.hadRecentInput) {
+          clsValue += shift.value;
         }
       }
       metrics.cls = clsValue;

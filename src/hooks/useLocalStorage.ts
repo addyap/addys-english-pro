@@ -44,7 +44,7 @@ export function useLocalStorage<T>(
  */
 export function useStorageListener(
   key: string,
-  callback: (newValue: any) => void
+  callback: (newValue: unknown) => void
 ) {
   useEffect(() => {
     const handleStorageChange = (e: StorageEvent) => {

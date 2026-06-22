@@ -12,7 +12,7 @@ type EventParams = {
   category?: EventCategory;
   label?: string;
   value?: number;
-  [key: string]: any;
+  [key: string]: unknown;
 };
 
 /**

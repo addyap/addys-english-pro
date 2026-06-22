@@ -28,11 +28,12 @@ if (typeof globalThis !== "undefined") {
     setItem(_key: string, _value: string) {},
   };
 
-  if (typeof (globalThis as any).localStorage === "undefined") {
-    (globalThis as any).localStorage = noopStorage;
+  const g = globalThis as unknown as { localStorage?: Storage; sessionStorage?: Storage };
+  if (typeof g.localStorage === "undefined") {
+    g.localStorage = noopStorage;
   }
-  if (typeof (globalThis as any).sessionStorage === "undefined") {
-    (globalThis as any).sessionStorage = noopStorage;
+  if (typeof g.sessionStorage === "undefined") {
+    g.sessionStorage = noopStorage;
   }
 }
 
