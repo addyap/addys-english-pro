@@ -152,6 +152,9 @@ export default function Questionnaire() {
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [emailFailed, setEmailFailed] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
+  const lastSubmitRef = React.useRef<number>(0);
+  const MIN_SUBMIT_INTERVAL_MS = 10000;
 
   useEffect(() => {
     try { localStorage.setItem(STORAGE_KEY, lang); } catch { /* ignore */ }
