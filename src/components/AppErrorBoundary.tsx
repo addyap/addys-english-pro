@@ -2,16 +2,16 @@
 import React from "react";
 import ErrorFallback from './ErrorFallback';
 
-type State = { hasError: boolean; error?: any; info?: any };
+type State = { hasError: boolean; error?: Error; info?: React.ErrorInfo };
 
 export class AppErrorBoundary extends React.Component<React.PropsWithChildren, State> {
   state: State = { hasError: false };
 
-  static getDerivedStateFromError(error: any) {
+  static getDerivedStateFromError(error: Error) {
     return { hasError: true, error };
   }
 
-  componentDidCatch(error: any, info: any) {
+  componentDidCatch(error: Error, info: React.ErrorInfo) {
     console.error("AppErrorBoundary", { error, info });
     
     // Track critical error in analytics

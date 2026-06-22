@@ -2,8 +2,8 @@ import { useEffect, useRef } from "react";
 
 declare global {
   interface Window {
-    dataLayer?: any[];
-    gtag?: (...args: any[]) => void;
+    dataLayer?: unknown[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -33,8 +33,8 @@ export default function Analytics() {
       
       window.dataLayer = window.dataLayer || [];
       
-      window.gtag = function gtag(...args: any[]) {
-        window.dataLayer!.push(arguments);
+      window.gtag = function gtag(...args: unknown[]) {
+        window.dataLayer!.push(args);
       };
     };
 

@@ -1,10 +1,16 @@
-import { onCLS, onFID, onLCP, onINP, onTTFB } from "web-vitals";
+import { onCLS, onFID, onLCP, onINP, onTTFB, type Metric } from "web-vitals";
 
-function report(metric: any) {
+type GtagWindow = Window & {
+  __GA_ID__?: string;
+  gtag?: (...args: unknown[]) => void;
+};
+
+function report(metric: Metric) {
   console.log("[WebVitals]", metric.name, Math.round(metric.value), metric);
-  const id = (window as any).__GA_ID__ || import.meta.env.VITE_GA_ID;
-  if (id && (window as any).gtag) {
-    (window as any).gtag("event", metric.name, {
+  const w = window as GtagWindow;
+  const id = w.__GA_ID__ || import.meta.env.VITE_GA_ID;
+  if (id && w.gtag) {
+    w.gtag("event", metric.name, {
       value: metric.value,
       event_category: "Web Vitals",
       non_interaction: true,

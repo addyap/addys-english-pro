@@ -7,7 +7,7 @@ import NotFound from "./pages/NotFound";
 import { grammarBlogPosts } from "./data/grammarBlogPosts";
 
 /** Helper: lazy-load a page module whose default export is the component. */
-const page = (loader: () => Promise<{ default: React.ComponentType<any> }>) =>
+const page = (loader: () => Promise<{ default: React.ComponentType }>) =>
   () => loader().then((m) => ({ Component: m.default }));
 
 export const routes: RouteRecord[] = [

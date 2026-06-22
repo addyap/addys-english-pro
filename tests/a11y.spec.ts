@@ -1,10 +1,10 @@
 
-import { test, expect } from "@playwright/test";
+import { test, expect, type Page } from "@playwright/test";
 import { AxeBuilder } from "@axe-core/playwright";
 
 const BASE = process.env.PW_BASE_URL || "http://localhost:4173";
 
-async function checkA11y(page: any, path: string) {
+async function checkA11y(page: Page, path: string) {
   await page.goto(BASE + path, { waitUntil: "domcontentloaded" });
   const results = await new AxeBuilder({ page }).withTags(["wcag2a","wcag2aa"]).analyze();
   const violations = results.violations || [];

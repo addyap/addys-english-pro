@@ -1,4 +1,6 @@
 import React, { memo, useEffect, useState } from 'react';
+import type { Swiper as SwiperClass, SwiperSlide as SwiperSlideClass } from 'swiper/react';
+import type { Autoplay as AutoplayModule } from 'swiper/modules';
 
 interface ClientLogo {
   src: string;
@@ -24,9 +26,9 @@ const CarouselSkeleton = memo(() => (
 
 export const LazyClientCarousel = memo<LazyClientCarouselProps>(({ logos }) => {
   const [SwiperComponents, setSwiperComponents] = useState<{
-    Swiper: any;
-    SwiperSlide: any;
-    Autoplay: any;
+    Swiper: typeof SwiperClass;
+    SwiperSlide: typeof SwiperSlideClass;
+    Autoplay: typeof AutoplayModule;
   } | null>(null);
 
   useEffect(() => {

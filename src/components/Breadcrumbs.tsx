@@ -24,12 +24,6 @@ const routeConfig: Record<string, { label: string; section?: string; sectionPath
   '/install': { label: 'Installer' },
   '/conversation-trainer': { label: 'Conversation Trainer' },
   '/email-trainer': { label: 'Email Reply Trainer' },
-  '/presentation-trainer': { label: 'Presentation Trainer' },
-  '/negotiation-trainer': { label: 'Negotiation Trainer' },
-  '/speaking-practice': { label: 'Speaking Practice' },
-  '/writing-coach': { label: 'Writing Coach' },
-  '/interview-simulator': { label: 'Interview Simulator' },
-  '/grammar-explainer': { label: 'Grammar Explainer' },
 };
 
 // Section mappings for nested routes - must match actual route patterns in App.tsx

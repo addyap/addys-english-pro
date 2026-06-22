@@ -154,7 +154,7 @@ export default function Questionnaire() {
   const [emailFailed, setEmailFailed] = useState(false);
 
   useEffect(() => {
-    try { localStorage.setItem(STORAGE_KEY, lang); } catch {}
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch { /* ignore */ }
   }, [lang]);
 
   useEffect(() => {
