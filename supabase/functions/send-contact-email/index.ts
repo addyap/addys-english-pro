@@ -16,6 +16,11 @@ interface ContactEmailRequest {
   message: string;
 }
 
+const esc = (s: unknown) =>
+  String(s ?? "")
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+
 const handler = async (req: Request): Promise<Response> => {
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
@@ -71,14 +76,14 @@ const handler = async (req: Request): Promise<Response> => {
           </h1>
           
           <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <p><strong>Prénom :</strong> ${prenom}</p>
-            <p><strong>Nom :</strong> ${nom}</p>
-            <p><strong>Email :</strong> <a href="mailto:${email}">${email}</a></p>
+            <p><strong>Prénom :</strong> ${esc(prenom)}</p>
+            <p><strong>Nom :</strong> ${esc(nom)}</p>
+            <p><strong>Email :</strong> <a href="mailto:${encodeURIComponent(email)}">${esc(email)}</a></p>
           </div>
           
           <div style="background-color: #fff; border: 1px solid #e5e7eb; padding: 20px; border-radius: 8px;">
             <h2 style="color: #374151; margin-top: 0;">Message :</h2>
-            <p style="white-space: pre-wrap; color: #4b5563;">${message}</p>
+            <p style="white-space: pre-wrap; color: #4b5563;">${esc(message)}</p>
           </div>
           
           <p style="color: #6b7280; font-size: 12px; margin-top: 20px;">
@@ -113,13 +118,13 @@ const handler = async (req: Request): Promise<Response> => {
       subject: "Merci pour votre message - Antony Addy Formations",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h1 style="color: #1e40af;">Merci pour votre message, ${prenom} !</h1>
+          <h1 style="color: #1e40af;">Merci pour votre message, ${esc(prenom)} !</h1>
           
           <p>J'ai bien reçu votre demande et je vous recontacterai dans les plus brefs délais (généralement sous 24h).</p>
           
           <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h2 style="color: #374151; margin-top: 0;">Récapitulatif de votre message :</h2>
-            <p style="white-space: pre-wrap; color: #4b5563;">${message}</p>
+            <p style="white-space: pre-wrap; color: #4b5563;">${esc(message)}</p>
           </div>
           
           <p>En attendant, n'hésitez pas à :</p>

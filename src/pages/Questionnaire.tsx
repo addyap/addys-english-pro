@@ -152,6 +152,9 @@ export default function Questionnaire() {
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [emailFailed, setEmailFailed] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
+  const lastSubmitRef = React.useRef<number>(0);
+  const MIN_SUBMIT_INTERVAL_MS = 10000;
 
   useEffect(() => {
     try { localStorage.setItem(STORAGE_KEY, lang); } catch { /* ignore */ }
@@ -211,7 +214,19 @@ export default function Questionnaire() {
   };
 
   const submit = async () => {
+    // Honeypot — silently abort if filled (bot)
+    if (honeypot) {
+      setSubmitted(true);
+      return;
+    }
+    // Client-side cooldown
+    const now = Date.now();
+    if (submitting) return;
+    if (now - lastSubmitRef.current < MIN_SUBMIT_INTERVAL_MS) {
+      return;
+    }
     if (!validateStep(5)) return;
+    lastSubmitRef.current = now;
     setSubmitting(true);
     setSubmitError(null);
     setEmailFailed(false);
@@ -309,6 +324,17 @@ export default function Questionnaire() {
             {/* Card */}
             <Card>
               <CardContent className="p-6 sm:p-7">
+                {/* Honeypot — hidden from real users */}
+                <input
+                  type="text"
+                  name="website"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  style={{ position: "absolute", left: "-9999px" }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={step}
