@@ -1,46 +1,10 @@
 project_id = "gkwzodsznrnbfafaqbtu"
 
-[functions.listening-audio]
-verify_jwt = false
-
-[functions.listening-audio-admin]
-verify_jwt = false
-
-[functions.track-pageview]
-verify_jwt = false
-
 [functions.send-contact-email]
 verify_jwt = false
 
-[functions.business-chat]
+[functions.send-questionnaire-email]
 verify_jwt = false
 
-[functions.email-reply-trainer]
-verify_jwt = false
-
-[functions.presentation-trainer]
-verify_jwt = false
-
-[functions.negotiation-trainer]
-verify_jwt = false
-
-[functions.ai-feedback]
-verify_jwt = false
-
-[functions.speaking-practice]
-verify_jwt = false
-
-[functions.interview-simulator]
-verify_jwt = false
-
-[functions.grammar-explainer]
-verify_jwt = false
-
-[functions.writing-coach]
-verify_jwt = false
-
-[functions.site-analytics]
-verify_jwt = false
-
-[functions.multilingual-support]
+[functions.track-pageview]
 verify_jwt = false
