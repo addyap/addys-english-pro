@@ -1,4 +1,6 @@
 import React, { memo, useEffect, useState } from 'react';
+import type { Swiper as SwiperClass, SwiperSlide as SwiperSlideClass } from 'swiper/react';
+import type { Autoplay as AutoplayModule } from 'swiper/modules';
 
 interface ClientLogo {
   src: string;
@@ -24,12 +26,10 @@ const CarouselSkeleton = memo(() => (
 
 export const LazyClientCarousel = memo<LazyClientCarouselProps>(({ logos }) => {
   const [SwiperComponents, setSwiperComponents] = useState<{
-    Swiper: React.ComponentType<React.PropsWithChildren<Record<string, unknown>>>;
-    SwiperSlide: React.ComponentType<React.PropsWithChildren<Record<string, unknown>>>;
-    Autoplay: unknown;
+    Swiper: typeof SwiperClass;
+    SwiperSlide: typeof SwiperSlideClass;
+    Autoplay: typeof AutoplayModule;
   } | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const setComponents = setSwiperComponents as unknown as (v: any) => void;
 
   useEffect(() => {
     let mounted = true;
