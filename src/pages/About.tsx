@@ -1,4 +1,5 @@
 import React from 'react';
+import { YEARS_OF_EXPERIENCE } from '@/lib/utils';
 import { Award, BookOpen, Users, Globe, CheckCircle, Target, MessageCircle, Mail, Building, GraduationCap, MapPin, Phone, Factory, School, University, Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
