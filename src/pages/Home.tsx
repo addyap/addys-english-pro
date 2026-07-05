@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { YEARS_OF_EXPERIENCE } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, MapPin, Headphones, Sparkles, MessageCircle, Mail, ArrowRight, Handshake, Mic, PenTool, UserCheck, Search, Zap } from 'lucide-react';
 import SEOHead, { jsonLdWebsite, jsonLdOrganization, jsonLdPerson } from '../components/SEOHead';
@@ -47,7 +48,7 @@ const Home = () => {
     description: 'Pédagogie adaptée aux adultes actifs : méthodes actives, progression mesurable, respect de votre temps'
   }, {
     icon: Users,
-    title: '20+ ans d\'expérience avec des professionnels',
+    title: `${YEARS_OF_EXPERIENCE}+ ans d'expérience avec des professionnels`,
     description: 'Cadres, indépendants, équipes commerciales — des profils variés avec des besoins exigeants'
   }, {
     icon: Building,
@@ -230,7 +231,7 @@ const Home = () => {
           <p className="text-muted-foreground text-sm leading-relaxed font-body">
             Antony Addy propose des <strong className="text-primary">formations d'anglais pour adultes</strong> adaptées aux professionnels, 
             en présentiel dans le Var et les Alpes-Maritimes (Fréjus, Saint-Raphaël, Cannes, Antibes, Nice, Monaco) ou à distance partout en France et dans le monde. 
-            Britannique natif basé à Fréjus, certifié Formateur Professionnel d'Adultes depuis 2017 et fort de plus de 20 ans d'enseignement (notamment à l'EDJ Nice), il accompagne particuliers, 
+            Britannique natif basé à Fréjus, certifié Formateur Professionnel d'Adultes depuis 2017 et fort de plus de {YEARS_OF_EXPERIENCE} ans d'enseignement (notamment à l'EDJ Nice), il accompagne particuliers, 
             cadres, entreprises et centres de formation dans l'amélioration de leurs compétences en anglais professionnel.{' '}
             <Link to="/offres-de-formation" className="text-accent hover:underline font-medium">Découvrir les formations</Link>{' • '}
             <Link to="/contact" className="text-accent hover:underline font-medium">Demander un devis gratuit</Link>
