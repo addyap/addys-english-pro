@@ -1,5 +1,6 @@
 {
   "cleanUrls": true,
+  "trailingSlash": false,
   "redirects": [
     { "source": "/politique-de-confidentialite", "destination": "/politique-confidentialite", "permanent": true },
     { "source": "/exercices/cloe-preparation/:path*", "destination": "https://anglaisadistance.fr/grammaire-essentielle/contrastes", "permanent": true },
