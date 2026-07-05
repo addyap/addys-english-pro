@@ -14,7 +14,7 @@ const About = () => {
     "@type": "Person",
     "name": "Antony Addy",
     "jobTitle": "Formateur Professionnel d'Adultes certifié",
-    "description": "Formateur d'anglais professionnel avec plus de 20 ans d'expérience",
+    "description": `Formateur d'anglais professionnel avec plus de ${YEARS_OF_EXPERIENCE} ans d'expérience`,
     "url": "https://www.antonyaddy.com/qui-je-suis",
     "email": "formations@antonyaddy.com",
     "areaServed": [
@@ -36,7 +36,7 @@ const About = () => {
   return <>
       <SEOHead 
         title="Antony Addy | Formateur Anglais FPA Certifié"
-        description="Britannique natif certifié Formateur Professionnel d'Adultes depuis 2017. Plus de 20 ans d'expérience en formation anglais professionnel."
+        description={`Britannique natif certifié Formateur Professionnel d'Adultes depuis 2017. Plus de ${YEARS_OF_EXPERIENCE} ans d'expérience en formation anglais professionnel.`}
         keywords={["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "formation adultes", "Var", "Alpes-Maritimes", "Fréjus"]}
         canonicalUrl="https://www.antonyaddy.com/qui-je-suis"
         image="https://www.antonyaddy.com/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png"
@@ -50,7 +50,7 @@ const About = () => {
             "@type": "Person",
             name: "Antony Addy",
             jobTitle: "Formateur Professionnel d'Adultes certifié",
-            description: "Formateur britannique natif avec plus de 20 ans d'expérience dans l'enseignement de l'anglais professionnel",
+            description: `Formateur britannique natif avec plus de ${YEARS_OF_EXPERIENCE} ans d'expérience dans l'enseignement de l'anglais professionnel`,
             nationality: "British",
             knowsLanguage: ["en", "fr"],
             hasCredential: {
