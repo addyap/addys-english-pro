@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
 
@@ -47,7 +47,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
     return Math.abs(offset) * velocity;
   };
 
-  const paginate = (newDirection: number) => {
+  const paginate = useCallback((newDirection: number) => {
     setDirection(newDirection);
     setCurrentIndex((prevIndex) => {
       const nextIndex = prevIndex + newDirection;
@@ -55,14 +55,14 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
       if (nextIndex >= testimonials.length) return 0;
       return nextIndex;
     });
-  };
+  }, [testimonials.length]);
 
   // Auto-play with pause on hover
   useEffect(() => {
     if (!autoPlay || isPaused) return;
     const timer = setInterval(() => paginate(1), interval);
     return () => clearInterval(timer);
-  }, [currentIndex, autoPlay, interval, isPaused]);
+  }, [currentIndex, autoPlay, interval, isPaused, paginate]);
 
   // Keyboard navigation — only when carousel is focused/hovered
   useEffect(() => {
@@ -73,7 +73,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [paginate]);
 
   const current = testimonials[currentIndex];
 

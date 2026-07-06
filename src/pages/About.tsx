@@ -68,7 +68,7 @@ const About = () => {
               name: "Qui est Antony Addy ?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Antony Addy est un formateur britannique natif certifié Formateur Professionnel d'Adultes (FPA) depuis 2017, avec plus de 20 ans d'expérience dans l'enseignement de l'anglais professionnel."
+                text: `Antony Addy est un formateur britannique natif certifié Formateur Professionnel d'Adultes (FPA) depuis 2017, avec plus de ${YEARS_OF_EXPERIENCE} ans d'expérience dans l'enseignement de l'anglais professionnel.`
               }
             },
             {
