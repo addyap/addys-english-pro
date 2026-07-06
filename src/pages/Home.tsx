@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { YEARS_OF_EXPERIENCE } from '@/lib/utils';
+import { YEARS_OF_EXPERIENCE, getCurrentMonthYearFR } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, MapPin, Headphones, Sparkles, MessageCircle, Mail, ArrowRight, Handshake, Mic, PenTool, UserCheck, Search, Zap } from 'lucide-react';
 import SEOHead, { jsonLdWebsite, jsonLdOrganization, jsonLdPerson } from '../components/SEOHead';
@@ -600,7 +600,7 @@ const Home = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-foreground mb-3">Dernière mise à jour</h3>
-                <p className="text-muted-foreground">Mars 2026</p>
+                <p className="text-muted-foreground">{getCurrentMonthYearFR()}</p>
                 <p className="text-xs text-muted-foreground mt-2">
                   Contenu créé par <a href="https://www.linkedin.com/in/antonyaddy/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Antony Addy</a>, formateur certifié FPA.
                 </p>
