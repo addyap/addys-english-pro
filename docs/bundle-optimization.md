@@ -88,7 +88,7 @@ Look for:
 
 3. **Compression**
    - Ensure server uses Brotli or Gzip compression
-   - Already configured in `.htaccess`
+   - Handled automatically by Vercel
 
 4. **Font Optimization**
    - Use font-display: swap
