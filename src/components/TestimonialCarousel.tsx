@@ -47,7 +47,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
     return Math.abs(offset) * velocity;
   };
 
-  const paginate = (newDirection: number) => {
+  const paginate = useCallback((newDirection: number) => {
     setDirection(newDirection);
     setCurrentIndex((prevIndex) => {
       const nextIndex = prevIndex + newDirection;
@@ -55,7 +55,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
       if (nextIndex >= testimonials.length) return 0;
       return nextIndex;
     });
-  };
+  }, [testimonials.length]);
 
   // Auto-play with pause on hover
   useEffect(() => {
