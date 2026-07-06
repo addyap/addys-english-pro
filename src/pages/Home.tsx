@@ -277,7 +277,7 @@ const Home = () => {
                   >
                     Formateur Professionnel d'Adultes
                   </a>{' '}
-                  depuis 2017, plus de 20 ans d'expérience en formation d'anglais.
+                  depuis 2017, plus de {YEARS_OF_EXPERIENCE} ans d'expérience en formation d'anglais.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
                   J'aide les professionnels à communiquer avec confiance en anglais : réunions, négociations, présentations. Mon approche est directe, bienveillante et adaptée à vos enjeux réels.
