@@ -62,7 +62,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
     if (!autoPlay || isPaused) return;
     const timer = setInterval(() => paginate(1), interval);
     return () => clearInterval(timer);
-  }, [currentIndex, autoPlay, interval, isPaused]);
+  }, [currentIndex, autoPlay, interval, isPaused, paginate]);
 
   // Keyboard navigation — only when carousel is focused/hovered
   useEffect(() => {
@@ -73,7 +73,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [paginate]);
 
   const current = testimonials[currentIndex];
 
