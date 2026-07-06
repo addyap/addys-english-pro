@@ -6,8 +6,11 @@ const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
 if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
-  throw new Error(
-    'Missing Supabase environment variables: VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY must be set.'
+  // Do not throw at module load: this file is evaluated during SSG in Node,
+  // where these Vite-inlined vars may be absent. Real production builds
+  // (Vercel) inline them at build time. Log a warning instead.
+  console.warn(
+    '[supabase] Missing VITE_SUPABASE_URL or VITE_SUPABASE_PUBLISHABLE_KEY at build time.'
   );
 }
 
