@@ -45,18 +45,20 @@ jobs:
       - name: 🔗 Install Playwright for link validation
         run: npx playwright install chromium
 
-      # HTTP smoke test: crawls the built site and fails on 4xx/5xx. It cannot
-      # detect a dead route on its own, because `vite preview` serves an SPA
-      # fallback and returns 200 for unknown paths. The step above covers that.
+      # Crawls the real build over HTTP and fails on 4xx/5xx. Served by
+      # scripts/serve-dist.mjs, which applies vercel.json's redirects and
+      # cleanUrls and honours 404s. Deliberately NOT `npm run preview`: vite's
+      # SPA fallback answers 200 for every path, so a route that was never
+      # prerendered would look healthy and this gate would miss it.
       - name: 🔍 Validate internal links
         run: |
-          # Start preview server in background
-          npm run preview &
+          # Serve dist/ with Vercel's routing semantics, 404s included
+          node scripts/serve-dist.mjs &
           SERVER_PID=$!
 
           # Poll for readiness rather than guessing at a fixed sleep. This step
           # blocks the merge, so it must fail on a broken link and not because
-          # a slow runner had not finished booting the preview server.
+          # a slow runner had not finished booting the server.
           # `if` keeps a failing curl from tripping `bash -e`.
           for _ in $(seq 1 60); do
             if curl -sf -o /dev/null http://localhost:4173/; then break; fi

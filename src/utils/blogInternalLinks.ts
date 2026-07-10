@@ -28,13 +28,13 @@ const categoryToExerciseContext: Record<string, string> = {
 const categoryPostMap: Record<string, string[]> = {
   'Grammaire - Temps': ['present-simple-vs-present-continuous', 'past-simple-vs-present-perfect', 'past-simple-vs-past-continuous', 'past-simple-vs-past-perfect', 'past-perfect-continuous', 'future-continuous', 'future-perfect-continuous', 'will-vs-going-to'],
   'Grammaire - Prépositions': ['prepositions-de-lieu', 'prepositions-de-temps'],
-  'Grammaire - Adjectifs': ['comparatifs-en-anglais', 'superlatifs-en-anglais', 'adjective-order'],
+  'Grammaire - Adjectifs': ['comparatifs-en-anglais', 'superlatifs-en-anglais', 'order-of-adjectives'],
   'Grammaire - Déterminants': ['articles-a-an-the', 'demonstratives-this-that-these-those', 'determiners'],
   'Grammaire - Noms': ['countable-uncountable-nouns'],
-  'Grammaire - Quantificateurs': ['much-many-a-lot-of', 'some-and-any', 'few-vs-little', 'either-neither'],
+  'Grammaire - Quantificateurs': ['much-many-a-lot-of', 'some-and-any', 'few-a-few-little-a-little', 'either-neither'],
   'Grammaire - Structures': ['conditionals-zero-first-second-third', 'passive-voice', 'reported-speech', 'relative-clauses', 'wish-and-if-only', 'although-despite-however', 'unless-as-long-as-provided'],
   'Grammaire - Verbes': ['modal-verbs', 'phrasal-verbs', 'gerunds-vs-infinitives', 'make-vs-do', 'say-vs-tell', 'causative-have-get', 'had-better-would-rather'],
-  'Grammaire - Pronoms': ['subject-object-pronouns', 'reflexive-pronouns', 'possessive-adjectives', 'possessive-pronouns', 'possessive-adjectives-vs-pronouns'],
+  'Grammaire - Pronoms': ['subject-object-pronouns', 'reflexive-pronouns', 'possessive-adjectives', 'possessive-pronouns', 'possessive-adjectives-pronouns'],
   'Grammaire - Questions': ['question-tags'],
   'Grammaire - Intensifieurs': ['so-and-such', 'too-and-enough'],
   'Grammaire & Vocabulaire': ['erreurs-francophones', 'since-vs-for', 'been-vs-gone', 'still-yet-already', 'adverbs-of-frequency'],
@@ -63,12 +63,12 @@ const topicClusters: Record<string, string[]> = {
   
   // Comparatives cluster
   'comparatifs-en-anglais': ['superlatifs-en-anglais', 'too-and-enough', 'so-and-such'],
-  'superlatifs-en-anglais': ['comparatifs-en-anglais', 'adjective-order', 'determiners'],
+  'superlatifs-en-anglais': ['comparatifs-en-anglais', 'order-of-adjectives', 'determiners'],
   
   // Quantifiers cluster
-  'countable-uncountable-nouns': ['much-many-a-lot-of', 'some-and-any', 'few-vs-little', 'articles-a-an-the'],
-  'much-many-a-lot-of': ['countable-uncountable-nouns', 'few-vs-little', 'some-and-any'],
-  'few-vs-little': ['much-many-a-lot-of', 'countable-uncountable-nouns', 'some-and-any'],
+  'countable-uncountable-nouns': ['much-many-a-lot-of', 'some-and-any', 'few-a-few-little-a-little', 'articles-a-an-the'],
+  'much-many-a-lot-of': ['countable-uncountable-nouns', 'few-a-few-little-a-little', 'some-and-any'],
+  'few-a-few-little-a-little': ['much-many-a-lot-of', 'countable-uncountable-nouns', 'some-and-any'],
   'some-and-any': ['countable-uncountable-nouns', 'much-many-a-lot-of', 'either-neither'],
   
   // Structure cluster
@@ -85,9 +85,9 @@ const topicClusters: Record<string, string[]> = {
   // Pronouns cluster
   'subject-object-pronouns': ['reflexive-pronouns', 'possessive-adjectives', 'possessive-pronouns'],
   'reflexive-pronouns': ['subject-object-pronouns', 'possessive-pronouns', 'each-other-one-another'],
-  'possessive-adjectives': ['possessive-pronouns', 'possessive-adjectives-vs-pronouns', 'subject-object-pronouns'],
-  'possessive-pronouns': ['possessive-adjectives', 'possessive-adjectives-vs-pronouns', 'reflexive-pronouns'],
-  'possessive-adjectives-vs-pronouns': ['possessive-adjectives', 'possessive-pronouns', 'subject-object-pronouns'],
+  'possessive-adjectives': ['possessive-pronouns', 'possessive-adjectives-pronouns', 'subject-object-pronouns'],
+  'possessive-pronouns': ['possessive-adjectives', 'possessive-adjectives-pronouns', 'reflexive-pronouns'],
+  'possessive-adjectives-pronouns': ['possessive-adjectives', 'possessive-pronouns', 'subject-object-pronouns'],
   
   // Time expressions cluster
   'since-vs-for': ['past-simple-vs-present-perfect', 'been-vs-gone', 'still-yet-already'],
@@ -108,7 +108,7 @@ const topicClusters: Record<string, string[]> = {
   'although-despite-however': ['unless-as-long-as-provided', 'conditionals-zero-first-second-third', 'so-and-such'],
   'unless-as-long-as-provided': ['conditionals-zero-first-second-third', 'although-despite-however', 'wish-and-if-only'],
   'causative-have-get': ['passive-voice', 'gerunds-vs-infinitives', 'modal-verbs'],
-  'adjective-order': ['superlatifs-en-anglais', 'comparatifs-en-anglais', 'determiners'],
+  'order-of-adjectives': ['superlatifs-en-anglais', 'comparatifs-en-anglais', 'determiners'],
   'adverbs-of-frequency': ['prepositions-de-temps', 'present-simple-vs-present-continuous', 'still-yet-already'],
   'demonstratives-this-that-these-those': ['articles-a-an-the', 'determiners', 'relative-clauses'],
   
@@ -157,11 +157,11 @@ const blogTitles: Record<string, string> = {
   'much-many-a-lot-of': 'Much, Many, A lot of',
   'since-vs-for': 'Since vs For',
   'been-vs-gone': 'Been vs Gone',
-  'few-vs-little': 'Few, A few, Little, A little',
-  'possessive-adjectives-vs-pronouns': 'Possessive Adjectives vs Pronouns',
+  'few-a-few-little-a-little': 'Few, A few, Little, A little',
+  'possessive-adjectives-pronouns': 'Possessive Adjectives vs Pronouns',
   'adverbs-of-frequency': 'Les adverbes de fréquence',
   'causative-have-get': 'Causative Have/Get',
-  'adjective-order': "L'ordre des adjectifs",
+  'order-of-adjectives': "L'ordre des adjectifs",
   'determiners': 'Les déterminants',
   'had-better-would-rather': 'Had better / Would rather',
   'although-despite-however': 'Although, Despite, However',

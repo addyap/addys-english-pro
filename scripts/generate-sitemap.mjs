@@ -2,9 +2,11 @@
 // Run via the `prebuild` npm hook so dist/ always ships fresh files
 // (Vite copies public/* into dist/* during the build).
 //
-// Blog routes are derived from src/data/grammarBlogPosts.ts — the same
-// source vite-react-ssg's getStaticPaths reads — so the sitemap can never
-// drift out of sync with the prerendered routes.
+// Blog routes are derived from the same two data modules vite-react-ssg's
+// getStaticPaths reads, so the sitemap cannot drift out of sync with the
+// prerendered routes. Both must be listed: legacyBlogPosts used to be
+// unreachable from routes.tsx, and its three articles were neither prerendered
+// nor listed here.
 
 import { writeFileSync, mkdirSync } from "node:fs";
 import { resolve, dirname } from "node:path";
@@ -20,6 +22,14 @@ const blogModule = await import(
   pathToFileURL(resolve(__dirname, "../src/data/grammarBlogPosts.ts")).href
 );
 const grammarBlogPosts = blogModule.grammarBlogPosts ?? [];
+
+const legacyModule = await import(
+  pathToFileURL(resolve(__dirname, "../src/data/legacyBlogPosts.ts")).href
+);
+// Keyed by id, unlike grammarBlogPosts. Normalise to the same shape.
+const legacyPosts = Object.entries(legacyModule.legacyBlogPosts ?? {}).map(
+  ([id, post]) => ({ id, ...post }),
+);
 
 // Static marketing/legal routes (lifted verbatim from src/routes.tsx).
 // /questionnaire and external-redirect / 404 routes are intentionally excluded.
@@ -54,7 +64,7 @@ const staticRoutes = [
 ];
 
 
-const blogRoutes = grammarBlogPosts.map((p) => ({
+const blogRoutes = [...grammarBlogPosts, ...legacyPosts].map((p) => ({
   path: `/blog/${p.id}`,
   priority: "0.7",
   changefreq: "monthly",
