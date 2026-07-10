@@ -11,12 +11,19 @@
 import { chromium } from "@playwright/test";
 
 const BASE = process.env.PW_BASE_URL || "http://localhost:4173";
-const MAX_PAGES = 30;
+// A runaway guard, not a coverage limit: it sits well above the ~88 pages the
+// site prerenders so every internal page is crawled. Hitting it means the site
+// outgrew the cap (or the crawler is looping), and the run fails loudly rather
+// than reporting a green gate that inspected only part of the site.
+const MAX_PAGES = Number(process.env.MAX_PAGES || 500);
 const NAV_TIMEOUT_MS = 30_000;
 const NAV_ATTEMPTS = 3;
 
 const visited = new Set();
 const queue = ["/"];
+// Paths already queued or visited. Without this the queue accumulates the same
+// path once per inbound link — the old "176 queued" figure was mostly repeats.
+const enqueued = new Set(["/"]);
 
 function isInternal(url) {
   try { const u = new URL(url, BASE); return u.origin === new URL(BASE).origin; }
@@ -90,7 +97,9 @@ try {
     for (const href of (await anchorsOn(page, resp)).filter(Boolean)) {
       if (!isInternal(href)) continue;
       const { pathname } = new URL(href, BASE);
-      if (!visited.has(pathname)) queue.push(pathname);
+      if (enqueued.has(pathname)) continue;
+      enqueued.add(pathname);
+      queue.push(pathname);
     }
   }
 } finally {
@@ -106,11 +115,24 @@ if (unreachable.length) {
     unreachable,
   );
 }
+// Always state coverage, pass or fail. A gate that inspects part of the site
+// while reporting success is worse than no gate.
+const truncated = queue.length > 0;
+console.log(
+  `Coverage: ${visited.size} page(s) crawled, ${queue.length} not crawled` +
+    ` (MAX_PAGES=${MAX_PAGES}).`,
+);
+
 if (broken.length || unreachable.length) process.exit(1);
 
-console.log(`No broken internal links ✅ (${visited.size} pages checked)`);
-if (queue.length) {
-  console.log(
-    `Note: stopped at the MAX_PAGES cap of ${MAX_PAGES}; ${queue.length} queued page(s) were not crawled.`,
+if (truncated) {
+  console.error(
+    `Hit the MAX_PAGES guard of ${MAX_PAGES} with ${queue.length} page(s) still queued.` +
+      ` The crawl covered only part of the site, so this gate cannot vouch for the rest.` +
+      ` Raise MAX_PAGES (or set the MAX_PAGES env var) once you've confirmed the crawler` +
+      ` is not looping.`,
   );
+  process.exit(1);
 }
+
+console.log(`No broken internal links ✅ (${visited.size} pages checked, none skipped)`);
