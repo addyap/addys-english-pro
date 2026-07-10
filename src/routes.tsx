@@ -5,6 +5,7 @@ import type { RouteRecord } from "vite-react-ssg";
 import { AppShell, LayoutShell } from "./AppShell";
 import NotFound from "./pages/NotFound";
 import { grammarBlogPosts } from "./data/grammarBlogPosts";
+import { legacyBlogPosts } from "./data/legacyBlogPosts";
 
 /** Helper: lazy-load a page module whose default export is the component. */
 const page = (loader: () => Promise<{ default: React.ComponentType }>) =>
@@ -37,8 +38,13 @@ export const routes: RouteRecord[] = [
             path: "/blog/:id",
             lazy: page(() => import("./pages/BlogArticle")),
             entry: "src/pages/BlogArticle.tsx",
-            // Prerender one static HTML file per article.
-            getStaticPaths: () => grammarBlogPosts.map((p) => `/blog/${p.id}`),
+            // Prerender one static HTML file per article. BlogArticle renders
+            // both sets, so both must be listed here or the omitted ones 404 on
+            // direct access while in-app navigation still works.
+            getStaticPaths: () => [
+              ...grammarBlogPosts.map((p) => `/blog/${p.id}`),
+              ...Object.keys(legacyBlogPosts).map((id) => `/blog/${id}`),
+            ],
           },
           { path: "/mentions-legales", lazy: page(() => import("./pages/LegalNotices")), entry: "src/pages/LegalNotices.tsx" },
           { path: "/politique-confidentialite", lazy: page(() => import("./pages/PrivacyPolicy")), entry: "src/pages/PrivacyPolicy.tsx" },
