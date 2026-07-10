@@ -31,39 +31,39 @@ function findAssetReferences(assetFiles, searchDirs) {
     const relativePath = path.relative(projectRoot, assetPath).replace(/\\/g, "/");
     references[relativePath] = [];
   }
-  for (const searchDir of searchDirs) {
-    const searchFiles = scanDirectory(searchDir, [
-      ".tsx",
-      ".ts",
-      ".jsx",
-      ".js",
-      ".html",
-      ".css",
-      ".md",
-    ]);
-    for (const filePath of searchFiles) {
-      let content = "";
-      try {
-        content = fs.readFileSync(filePath, "utf8");
-      } catch {
-        continue;
-      }
-      for (const relAsset of Object.keys(references)) {
-        const assetName = path.basename(relAsset);
-        const patterns = [
-          relAsset,
-          assetName,
-          relAsset.replace(/^public\//, "/"),
-          "/" + relAsset,
-        ];
-        for (const pattern of patterns) {
-          if (content.includes(pattern)) {
-            const relFile = path.relative(projectRoot, filePath).replace(/\\/g, "/");
-            if (!references[relAsset].includes(relFile)) {
-              references[relAsset].push(relFile);
-            }
-            break;
+  // index.html sits at the project root, outside every search dir, but it can
+  // reference assets directly (preloads, favicons). Omitting it reports those
+  // assets as unused.
+  const rootHtml = path.join(projectRoot, "index.html");
+  const searchFiles = [
+    ...searchDirs.flatMap((dir) =>
+      scanDirectory(dir, [".tsx", ".ts", ".jsx", ".js", ".html", ".css", ".md"])
+    ),
+    ...(fs.existsSync(rootHtml) ? [rootHtml] : []),
+  ];
+
+  for (const filePath of searchFiles) {
+    let content = "";
+    try {
+      content = fs.readFileSync(filePath, "utf8");
+    } catch {
+      continue;
+    }
+    for (const relAsset of Object.keys(references)) {
+      const assetName = path.basename(relAsset);
+      const patterns = [
+        relAsset,
+        assetName,
+        relAsset.replace(/^public\//, "/"),
+        "/" + relAsset,
+      ];
+      for (const pattern of patterns) {
+        if (content.includes(pattern)) {
+          const relFile = path.relative(projectRoot, filePath).replace(/\\/g, "/");
+          if (!references[relAsset].includes(relFile)) {
+            references[relAsset].push(relFile);
           }
+          break;
         }
       }
     }
@@ -112,7 +112,7 @@ function auditAssets() {
   const unused = [];
 
   for (const [asset, refs] of Object.entries(references)) {
-    if ((refs as string[]).length > 0) used.push({ asset, references: refs });
+    if (refs.length > 0) used.push({ asset, references: refs });
     else unused.push(asset);
   }
 

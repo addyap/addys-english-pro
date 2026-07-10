@@ -3,7 +3,7 @@
  * Lightweight internal link audit (read-only).
  *
  * Scans src/ for internal links (Link `to=...`, `href=...`, `navigate(...)`)
- * and validates each against the route patterns declared in src/AppCore.tsx.
+ * and validates each against the route patterns declared in src/routes.tsx.
  *
  * Usage:
  *   node scripts/audit-internal-links.mjs
@@ -17,17 +17,19 @@ import { join, extname } from "node:path";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SRC = join(ROOT, "src");
-const ROUTER_FILE = join(SRC, "AppCore.tsx");
+const ROUTER_FILE = join(SRC, "routes.tsx");
 
-// ---------- 1. Extract route patterns from AppCore.tsx ----------
+// ---------- 1. Extract route patterns from routes.tsx ----------
 function extractRoutes() {
   const src = readFileSync(ROUTER_FILE, "utf8");
   const routes = [];
-  // Match path="..." inside <Route>
-  const re = /<Route[^>]*\spath=["']([^"']+)["']/g;
+  // Data-router object form: { path: "/blog/:id", lazy: ... }
+  const re = /\bpath:\s*["']([^"']+)["']/g;
   let m;
   while ((m = re.exec(src)) !== null) routes.push(m[1]);
-  return routes;
+  // The 404 catch-all matches every path, so keeping it here would make every
+  // link "valid" and the audit vacuous. A link that only matches `*` is broken.
+  return routes.filter((r) => r !== "*");
 }
 
 // Convert a router pattern into a RegExp matching real URL paths.
@@ -136,7 +138,7 @@ for (const link of unique) {
 console.log("──────────────────────────────────────────────");
 console.log(" Internal Link Audit (read-only)");
 console.log("──────────────────────────────────────────────");
-console.log(`Routes declared in AppCore.tsx : ${routePatterns.length}`);
+console.log(`Routes declared in routes.tsx : ${routePatterns.length}`);
 console.log(`Files scanned                  : ${files.length}`);
 console.log(`Internal links found           : ${unique.length}`);
 console.log(`  ↳ static (testable)          : ${unique.length - skipped.length}`);

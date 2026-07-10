@@ -71,13 +71,16 @@ async function generateReport() {
     console.log('\n🚫 EXCLUDED FROM INDEXING:');
     console.log('   - /mentions-legales (removed from sitemap, disallowed in robots.txt)');
 
-    // Run verification if available
+    // Run verification. A non-zero exit means real failures were found, so
+    // surface them rather than reporting the run as merely skipped.
     try {
-      const { stdout } = await execAsync('node scripts/verify-indexability.mjs');
+      await execAsync('node scripts/verify-indexability.mjs');
       console.log('\n✅ VERIFICATION SCRIPT RESULT: PASS');
       console.log('   All indexability checks completed successfully');
     } catch (error) {
-      console.log('\n⚠️ VERIFICATION SCRIPT: Not run (deploy to test)');
+      console.log('\n❌ VERIFICATION SCRIPT RESULT: FAIL');
+      console.log(error.stdout || error.message);
+      process.exitCode = 1;
     }
 
     console.log('\n=== OPTIMIZATION COMPLETE ===');

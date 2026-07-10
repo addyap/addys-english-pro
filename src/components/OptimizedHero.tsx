@@ -130,7 +130,7 @@ export default function OptimizedHero() {
             Voir les formations →
           </Link>
           <Link
-            to="/ressources-gratuites"
+            to="/blog"
             className="inline-block text-sm text-primary-foreground/80 hover:text-primary-foreground underline underline-offset-4 font-body focus:outline-none focus:ring-2 focus:ring-ring/30 rounded"
             aria-label="Explorer les ressources gratuites d'anglais"
           >
