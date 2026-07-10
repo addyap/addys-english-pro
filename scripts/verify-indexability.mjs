@@ -39,8 +39,10 @@ function checkFile(filePath, route) {
     }
   }
 
+  // react-helmet-async prefixes its tags with data-rh="true", so attributes are
+  // not adjacent to the tag name. Match them in any order.
   // Check meta description
-  const descMatch = html.match(/<meta\s+name="description"\s+content="([^"]+)"/i);
+  const descMatch = html.match(/<meta[^>]*\sname="description"[^>]*\scontent="([^"]+)"/i);
   if (!descMatch) {
     errors.push("Missing meta description");
   } else {
@@ -51,13 +53,13 @@ function checkFile(filePath, route) {
   }
 
   // Check robots tag
-  const robotsMatch = html.match(/<meta\s+name="robots"\s+content="([^"]+)"/i);
+  const robotsMatch = html.match(/<meta[^>]*\sname="robots"[^>]*\scontent="([^"]+)"/i);
   if (robotsMatch && robotsMatch[1].includes('noindex')) {
     errors.push("Contains noindex directive");
   }
 
   // Check canonical
-  const canonicalMatch = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i);
+  const canonicalMatch = html.match(/<link[^>]*\srel="canonical"[^>]*\shref="([^"]+)"/i);
   if (!canonicalMatch) {
     errors.push("Missing canonical tag");
   } else {
@@ -67,9 +69,10 @@ function checkFile(filePath, route) {
     }
   }
 
-  // Check H1
-  const h1Match = html.match(/<h1[^>]*>([^<]+)<\/h1>/i);
-  if (!h1Match) {
+  // Check H1. Headings may wrap parts of the text in <span>, so match lazily
+  // across tags and assert on the stripped text rather than a tag-free run.
+  const h1Match = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  if (!h1Match || !h1Match[1].replace(/<[^>]*>/g, '').trim()) {
     errors.push("Missing H1 tag");
   }
 

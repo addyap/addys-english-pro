@@ -3,7 +3,7 @@
  * Lightweight internal link audit (read-only).
  *
  * Scans src/ for internal links (Link `to=...`, `href=...`, `navigate(...)`)
- * and validates each against the route patterns declared in src/AppCore.tsx.
+ * and validates each against the route patterns declared in src/routes.tsx.
  *
  * Usage:
  *   node scripts/audit-internal-links.mjs
@@ -17,17 +17,32 @@ import { join, extname } from "node:path";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SRC = join(ROOT, "src");
-const ROUTER_FILE = join(SRC, "AppCore.tsx");
+const ROUTER_FILE = join(SRC, "routes.tsx");
+const VERCEL_FILE = join(ROOT, "vercel.json");
 
-// ---------- 1. Extract route patterns from AppCore.tsx ----------
+// ---------- 1. Extract route patterns from routes.tsx ----------
 function extractRoutes() {
   const src = readFileSync(ROUTER_FILE, "utf8");
   const routes = [];
-  // Match path="..." inside <Route>
-  const re = /<Route[^>]*\spath=["']([^"']+)["']/g;
+  // Data-router object form: { path: "/blog/:id", lazy: ... }
+  const re = /\bpath:\s*["']([^"']+)["']/g;
   let m;
   while ((m = re.exec(src)) !== null) routes.push(m[1]);
-  return routes;
+  // The 404 catch-all matches every path, so keeping it here would make every
+  // link "valid" and the audit vacuous. A link that only matches `*` is broken.
+  return routes.filter((r) => r !== "*");
+}
+
+// Vercel resolves these before the SPA ever loads, so a link to a redirect
+// source is live even though no React route declares it. Several deliberately
+// hand off to anglaisadistance.fr; without this the audit calls them broken.
+function extractRedirectSources() {
+  try {
+    const { redirects = [] } = JSON.parse(readFileSync(VERCEL_FILE, "utf8"));
+    return redirects.map((r) => r.source);
+  } catch {
+    return [];
+  }
 }
 
 // Convert a router pattern into a RegExp matching real URL paths.
@@ -37,7 +52,8 @@ function patternToRegex(pattern) {
   const escaped = pattern
     .split("/")
     .map((seg) => {
-      if (seg.startsWith(":")) return "[^/]+";
+      // Vercel's `:path*` spans zero or more segments; `:id` spans exactly one.
+      if (seg.startsWith(":")) return seg.endsWith("*") ? ".*" : "[^/]+";
       if (seg === "*") return ".*";
       return seg.replace(/[.+?^${}()|[\]\\]/g, "\\$&");
     })
@@ -105,7 +121,8 @@ function matchesAnyRoute(path, regexes) {
 
 // ---------- 4. Run ----------
 const routePatterns = extractRoutes();
-const routeRegexes = routePatterns.map(patternToRegex);
+const redirectSources = extractRedirectSources();
+const routeRegexes = [...routePatterns, ...redirectSources].map(patternToRegex);
 const files = walk(SRC);
 
 const all = [];
@@ -136,7 +153,8 @@ for (const link of unique) {
 console.log("──────────────────────────────────────────────");
 console.log(" Internal Link Audit (read-only)");
 console.log("──────────────────────────────────────────────");
-console.log(`Routes declared in AppCore.tsx : ${routePatterns.length}`);
+console.log(`Routes declared in routes.tsx : ${routePatterns.length}`);
+console.log(`Redirects in vercel.json       : ${redirectSources.length}`);
 console.log(`Files scanned                  : ${files.length}`);
 console.log(`Internal links found           : ${unique.length}`);
 console.log(`  ↳ static (testable)          : ${unique.length - skipped.length}`);
