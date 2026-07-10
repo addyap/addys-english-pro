@@ -1,40 +1,39 @@
 # Antony Addy
 
-> Formateur d'anglais professionnel basé dans les Alpes-Maritimes. Cours d'anglais business, préparation au CLOE, exercices gratuits et entraîneurs IA pour progresser à l'oral, à l'écrit et en compréhension.
+> Formateur d'anglais natif britannique, certifié FPA, avec plus de 20 ans d'expérience. Basé à Fréjus, il intervient en présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde.
 
-Le site propose des ressources gratuites (exercices interactifs, articles de blog, lab d'écoute) et des outils IA (coach d'écriture, simulateur d'entretien, entraîneur de présentation, conversation business, etc.) pour les apprenants francophones visant un anglais professionnel.
+Le site présente des formations d'anglais sur-mesure pour les entreprises, les cadres, les particuliers et les étudiants, ainsi qu'un blog de grammaire anglaise en accès libre et un test de positionnement gratuit.
 
 ## Pages principales
 
-- [Accueil](/): Présentation des formations et des ressources gratuites.
-- [À propos](/a-propos): Parcours et approche pédagogique d'Antony Addy.
-- [Contact](/contact): Prise de contact pour formations sur mesure.
-- [Questionnaire d'admission](/questionnaire): Évaluation des besoins en anglais pour prospects.
-- [Témoignages](/temoignages): Avis d'apprenants et entreprises clientes.
+- [Accueil](/): Présentation des formations en anglais professionnel et du parcours du formateur.
+- [Qui je suis](/qui-je-suis): Parcours, certifications et approche pédagogique d'Antony Addy.
+- [Offres de formation](/offres-de-formation): Formules, modalités et déroulement des formations.
+- [Témoignages](/temoignages): Avis d'apprenants et d'entreprises clientes.
+- [Contact](/contact): Prise de contact pour une formation sur mesure.
+- [Test de positionnement](/test-de-positionnement): Évaluation gratuite de votre niveau d'anglais.
+
+## Formations par public
+
+- [Anglais en entreprise](/anglais-entreprise): Formations sur-mesure pour vos équipes, en convention de formation.
+- [Anglais pour cadres](/anglais-cadres): Accompagnement individuel et confidentiel pour cadres et dirigeants.
+- [Anglais pour particuliers](/anglais-particuliers): Cours sur-mesure pour adultes, à votre rythme.
+- [Anglais pour étudiants](/anglais-etudiants): Accompagnement pour lycéens, étudiants et préparation aux examens.
+
+## Cours par ville
+
+- [Cours d'anglais à Fréjus](/cours-anglais-frejus): Présentiel à Fréjus et dans l'Est-Var.
+- [Cours d'anglais à Nice](/cours-anglais-nice): Présentiel à Nice et dans la métropole niçoise.
+- [Cours d'anglais à Cannes](/cours-anglais-cannes): Présentiel à Cannes et dans le bassin cannois.
+- [Cours d'anglais à Antibes](/cours-anglais-antibes): Présentiel à Antibes et Juan-les-Pins.
+- [Cours d'anglais à Sophia Antipolis](/cours-anglais-sophia-antipolis): Présentiel sur la technopole et ses environs.
 
 ## Ressources gratuites
 
-- [Ressources gratuites](/ressources-gratuites): Hub central des contenus gratuits.
-- [Exercices d'anglais](/exercices): Catalogue d'exercices interactifs par catégorie et niveau.
-- [Blog](/blog): Articles de grammaire, vocabulaire et conseils business English.
-- [Lecture guidée](/reading): Passages de lecture avec questions de compréhension.
-- [Lab d'écoute](/listening-library): Bibliothèque audio avec transcriptions et exercices.
-- [Préparation CLOE](/cloe): Cours et tests blancs pour le Certificat de Langues de l'Enseignement Supérieur.
-
-## Entraîneurs IA
-
-- [Hub d'entraînement IA](/training): Accès à tous les outils IA.
-- [Coach d'écriture](/ai-writing-coach): Correction et amélioration de vos textes anglais.
-- [Pratique orale](/ai-speaking-practice): Conversation orale guidée avec retour IA.
-- [Simulateur d'entretien](/ai-interview-simulator): Entretiens d'embauche en anglais.
-- [Entraîneur de présentation](/ai-presentation-trainer): Préparation de présentations professionnelles.
-- [Entraîneur de négociation](/ai-negotiation-trainer): Simulations de négociation business.
-- [Conversation business](/business-conversation): Scénarios professionnels variés.
-- [Réponse email](/email-reply-trainer): Rédaction et réponse à des emails professionnels.
-- [Explications de grammaire](/ai-grammar-explainer): Réponses claires à vos questions de grammaire.
+- [Blog](/blog): Articles de grammaire anglaise, points de vocabulaire et conseils de business English, rédigés par un formateur natif.
 
 ## Optional
 
+- [Conditions générales de vente](/cgv): Conditions applicables aux prestations de formation.
 - [Politique de confidentialité](/politique-confidentialite): Traitement des données personnelles.
 - [Mentions légales](/mentions-legales): Informations légales.
-- [Plan du site](/sitemap): Index complet des pages publiques.

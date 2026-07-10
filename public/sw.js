@@ -31,7 +31,6 @@ const STATIC_FILES = [
 // Routes to cache for offline access
 const OFFLINE_ROUTES = [
   '/',
-  '/exercices-anglais',
   '/blog',
   '/contact',
   '/qui-je-suis',
