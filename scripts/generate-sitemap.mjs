@@ -13,7 +13,9 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const BASE = "https://www.antonyaddy.com";
 
-// Import the TS data module directly (Bun handles .ts natively).
+// Import the TS data module directly. Written for Bun; under Node this relies
+// on native type stripping, so it requires Node >= 22.18. Older Node throws
+// ERR_UNKNOWN_FILE_EXTENSION here and the build dies before Vite runs.
 const blogModule = await import(
   pathToFileURL(resolve(__dirname, "../src/data/grammarBlogPosts.ts")).href
 );
