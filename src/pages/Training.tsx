@@ -130,7 +130,7 @@ const Training = () => {
     <>
       <SEOHead
         title="Formations d'anglais professionnel | Antony Addy"
-        description="Formations d'anglais professionnel sur mesure pour entreprises, cadres et particuliers. Présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde. Devis gratuit."
+        description="Formations d'anglais professionnel sur mesure pour entreprises, cadres et particuliers. Présentiel (Var, Alpes-Maritimes) ou à distance. Devis gratuit."
         canonicalUrl="https://www.antonyaddy.com/offres-de-formation"
         enableOrgJsonLd
         enableWebSiteJsonLd

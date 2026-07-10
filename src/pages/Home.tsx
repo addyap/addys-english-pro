@@ -112,7 +112,7 @@ const Home = () => {
   return <>
       <SEOHead 
         title="Cours d'anglais professionnel — Var & Alpes-Maritimes"
-        description="Formateur d'anglais natif britannique, certifié FPA. Cours pour entreprises, cadres et particuliers. En présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde."
+        description="Cours d'anglais professionnel avec un formateur britannique certifié FPA, pour entreprises, cadres et particuliers. Var, Alpes-Maritimes ou à distance."
         canonicalUrl="https://www.antonyaddy.com/"
         datePublished="2025-01-15T10:00:00+01:00"
         dateModified="2026-05-24T10:00:00+01:00"

@@ -64,7 +64,7 @@ const TestPositionnement = () => {
     <>
       <SEOHead
         title="Test de positionnement en anglais gratuit (A1–C1)"
-        description="Testez votre niveau d'anglais gratuitement en 40 minutes. 120 questions CECRL du A1 au C1, résultat immédiat. Par Antony Addy, formateur britannique certifié FPA."
+        description="Testez votre niveau d'anglais gratuitement en 40 minutes : 120 questions CECRL du A1 au C1, résultat immédiat. Formateur britannique certifié FPA."
         canonicalUrl="https://www.antonyaddy.com/test-de-positionnement"
         enableOrgJsonLd
         enableWebSiteJsonLd
