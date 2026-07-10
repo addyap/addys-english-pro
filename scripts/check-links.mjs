@@ -1,16 +1,42 @@
-// Crawl the preview server and fail on internal links that return 4xx/5xx.
+// Crawl the built site and fail on internal links that return 4xx/5xx.
 //
-// Scope, deliberately narrow: this is an HTTP smoke test. It cannot detect a
-// link to a route that does not exist, because `vite preview` serves an SPA
-// fallback and answers 200 for every path. `scripts/audit-internal-links.mjs`
-// is the deterministic dead-route gate; it resolves links against
-// src/routes.tsx and the redirects in vercel.json.
+// Run against `scripts/serve-dist.mjs`, which serves dist/ with Vercel's
+// routing semantics and honours 404s. Not `vite preview`: its SPA fallback
+// answers 200 for every path, so a route that never got prerendered still
+// looks healthy, which is the exact bug this check exists to catch.
 //
-// What this catches that the source-level audit cannot: pages that 5xx, that
-// fail to render, or that never finish loading.
+// Complements scripts/audit-internal-links.mjs. That one is a source-level
+// check: it resolves link literals against src/routes.tsx and vercel.json
+// without building. This one exercises the real build over HTTP, so it also
+// catches a route that is declared but never prerendered, a page that 5xx's,
+// and links that only exist in rendered output.
+import { readFileSync } from "node:fs";
 import { chromium } from "@playwright/test";
 
 const BASE = process.env.PW_BASE_URL || "http://localhost:4173";
+const BASE_ORIGIN = new URL(BASE).origin;
+
+// 21 of the vercel.json redirects point at anglaisadistance.fr, and the homepage
+// links one of them. Following those would put a live internet request in the
+// middle of a blocking CI gate — the wall clock swung from 34s to 156s while
+// this was left to Playwright. Skip them before navigating: the sibling site is
+// not ours to vouch for. The redirect itself is covered by audit-internal-links.
+function readOffsiteRedirectSources() {
+  try {
+    const config = JSON.parse(readFileSync(new URL("../vercel.json", import.meta.url), "utf8"));
+    return (config.redirects ?? [])
+      .filter((r) => /^https?:\/\//.test(r.destination))
+      // Strip a trailing `:path*` / `:id` so "/exercices/:path*" matches "/exercices/foo".
+      .map((r) => r.source.replace(/\/:[^/]*$/, ""));
+  } catch {
+    return [];
+  }
+}
+
+const offsiteRedirectSources = readOffsiteRedirectSources();
+
+const isOffsiteRedirect = (pathname) =>
+  offsiteRedirectSources.some((s) => pathname === s || pathname.startsWith(`${s}/`));
 // A runaway guard, not a coverage limit: it sits well above the ~88 pages the
 // site prerenders so every internal page is crawled. Hitting it means the site
 // outgrew the cap (or the crawler is looping), and the run fails loudly rather
@@ -72,6 +98,7 @@ const page = await browser.newPage();
 
 const broken = [];      // genuine 4xx/5xx responses
 const unreachable = []; // navigation never completed, after NAV_ATTEMPTS tries
+const offsite = [];     // redirects to another origin; not ours to vouch for
 
 try {
   while (queue.length && visited.size < MAX_PAGES) {
@@ -79,11 +106,24 @@ try {
     if (!path || visited.has(path)) continue;
     visited.add(path);
 
+    // Never leave the origin. Checked before navigating so no request reaches
+    // the public internet from a blocking gate.
+    if (isOffsiteRedirect(path)) {
+      offsite.push({ path });
+      continue;
+    }
+
     const url = new URL(path, BASE).toString();
     const { resp, error } = await gotoWithRetry(page, url);
 
     if (error) {
       unreachable.push({ url, error: String(error.message).split("\n")[0] });
+      continue;
+    }
+
+    // Belt and braces: an internal redirect could still hop origins.
+    if (new URL(resp.url()).origin !== BASE_ORIGIN) {
+      offsite.push({ path, to: resp.url() });
       continue;
     }
 
@@ -122,6 +162,12 @@ console.log(
   `Coverage: ${visited.size} page(s) crawled, ${queue.length} not crawled` +
     ` (MAX_PAGES=${MAX_PAGES}).`,
 );
+if (offsite.length) {
+  console.log(
+    `Skipped ${offsite.length} off-site redirect(s), not crawled: ` +
+      offsite.map((o) => o.path).join(", "),
+  );
+}
 
 if (broken.length || unreachable.length) process.exit(1);
 

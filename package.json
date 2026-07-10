@@ -10,7 +10,8 @@
     "build:dev": "vite-react-ssg build --mode development",
     "build:csr": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "serve:dist": "node scripts/serve-dist.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
