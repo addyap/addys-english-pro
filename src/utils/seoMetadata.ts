@@ -19,7 +19,7 @@ const OG_BLOG = `${SITE_URL}/og/og-blog.png`;
 export const seoMetadata: Record<string, SEOMetadata> = {
   home: {
     title: "Cours d'anglais professionnel – Var & Alpes-Maritimes | Antony Addy",
-    description: "Formateur d'anglais natif britannique, certifié FPA. Cours pour entreprises, cadres et particuliers. En présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde.",
+    description: "Cours d'anglais professionnel avec un formateur britannique certifié FPA, pour entreprises, cadres et particuliers. Var, Alpes-Maritimes ou à distance.",
     canonical: `${SITE_URL}/`,
     h1: "Formateur d'anglais professionnel pour adultes",
     keywords: ["formateur anglais", "formation anglais professionnel", "formateur FPA", "cours anglais adultes", "Var", "Alpes-Maritimes", "Côte d'Azur", "Fréjus", "Saint-Raphaël", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "anglais à distance", "anglais entreprises", "anglais cadres", "anglais étudiants"],
@@ -35,7 +35,7 @@ export const seoMetadata: Record<string, SEOMetadata> = {
   },
   training: {
     title: "Formations Anglais Professionnel | Antony Addy",
-    description: "Formations d'anglais professionnel sur mesure pour entreprises, cadres et particuliers. Présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde. Devis gratuit.",
+    description: "Formations d'anglais professionnel sur mesure pour entreprises, cadres et particuliers. Présentiel (Var, Alpes-Maritimes) ou à distance. Devis gratuit.",
     canonical: `${SITE_URL}/offres-de-formation`,
     h1: "Offres de formation en anglais",
     keywords: ["formation anglais", "cours entreprise", "formation à distance", "anglais Var", "anglais Alpes-Maritimes", "anglais Fréjus"],
