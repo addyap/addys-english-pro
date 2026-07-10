@@ -26,3 +26,9 @@ dist-ssr
 # Environment
 .env
 
+# vite-react-ssg build scratch dir
+.vite-react-ssg-temp
+
+# Generated audit output
+audit-assets-report.json
+
