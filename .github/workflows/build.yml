@@ -36,19 +36,33 @@ jobs:
       - name: 🛠️ Build website
         run: npm run build
 
+      # Source-level check: resolves every internal link against src/routes.tsx
+      # and the redirects in vercel.json. This is the step that actually catches
+      # a link to a route that does not exist.
+      - name: 🔗 Audit internal links against routes and redirects
+        run: node scripts/audit-internal-links.mjs
+
       - name: 🔗 Install Playwright for link validation
         run: npx playwright install chromium
 
+      # HTTP smoke test: crawls the built site and fails on 4xx/5xx. It cannot
+      # detect a dead route on its own, because `vite preview` serves an SPA
+      # fallback and returns 200 for unknown paths. The step above covers that.
       - name: 🔍 Validate internal links
-        continue-on-error: true
         run: |
           # Start preview server in background
           npm run preview &
           SERVER_PID=$!
-          
-          # Wait for server to be ready
-          sleep 5
-          
+
+          # Poll for readiness rather than guessing at a fixed sleep. This step
+          # blocks the merge, so it must fail on a broken link and not because
+          # a slow runner had not finished booting the preview server.
+          # `if` keeps a failing curl from tripping `bash -e`.
+          for _ in $(seq 1 60); do
+            if curl -sf -o /dev/null http://localhost:4173/; then break; fi
+            sleep 1
+          done
+
           # Run link checker
           PW_BASE_URL=http://localhost:4173 node scripts/check-links.mjs
           
