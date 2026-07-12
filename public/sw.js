@@ -22,9 +22,10 @@ const STATIC_FILES = [
   '/health.html',
   '/status.html',
   '/apple-touch-icon.png',
+  '/favicon.ico',
+  '/favicon-32x32.png',
   '/assets/logo.svg',
-  '/assets/logo-512.png',
-  '/lovable-uploads/2fd5760c-9208-4295-a1b5-87b41963111b.png',
+  '/icon-512.png',
   '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
 ];
 
