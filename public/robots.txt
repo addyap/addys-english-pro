@@ -3,7 +3,8 @@ User-agent: *
 Allow: /
 
 # Private / non-indexable
-Disallow: /questionnaire
+# /questionnaire is intentionally not disallowed: it carries a noindex,nofollow
+# meta, and a Disallow here would stop Google crawling the page to see it.
 Disallow: /thank-you
 Disallow: /auth
 Disallow: /admin

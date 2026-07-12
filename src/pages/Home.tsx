@@ -24,10 +24,10 @@ const EXERCISE_COUNTS = {
 // Client logos data for lazy carousel
 const CLIENT_LOGOS = [
   { src: "/lovable-uploads/a3da9e3b-1f6c-447a-b308-2ca44d071c67.png", alt: "Logo IGY Vieux-Port de Cannes, partenaire formation anglais", name: "IGY Vieux-Port de Cannes" },
-  { src: "/lovable-uploads/694fcb0f-d52b-44f3-8cbc-6c1a051e416b.png", alt: "Logo ITEC, école partenaire pour formations d'anglais", name: "ITEC" },
-  { src: "/lovable-uploads/6668f20c-7d63-477f-a5be-856e631eaaef.png", alt: "Logo ESCCOM, école de commerce partenaire formations anglais", name: "ESCCOM" },
-  { src: "/lovable-uploads/69034832-a004-43a5-b367-f4726a4d126a.png", alt: "Logo Ingeneria Project, entreprise partenaire pour formations d'anglais professionnel", name: "Ingeneria" },
-  { src: "/lovable-uploads/edj-nice-logo.png", alt: "Logo EDJ Nice, L'école du journalisme, partenaire formation anglais", name: "EDJ Nice" },
+  { src: "/lovable-uploads/694fcb0f-d52b-44f3-8cbc-6c1a051e416b.webp", alt: "Logo ITEC, école partenaire pour formations d'anglais", name: "ITEC" },
+  { src: "/lovable-uploads/6668f20c-7d63-477f-a5be-856e631eaaef.webp", alt: "Logo ESCCOM, école de commerce partenaire formations anglais", name: "ESCCOM" },
+  { src: "/lovable-uploads/69034832-a004-43a5-b367-f4726a4d126a.webp", alt: "Logo Ingeneria Project, entreprise partenaire pour formations d'anglais professionnel", name: "Ingeneria" },
+  { src: "/lovable-uploads/edj-nice-logo.webp", alt: "Logo EDJ Nice, L'école du journalisme, partenaire formation anglais", name: "EDJ Nice" },
 ];
 
 const Home = () => {

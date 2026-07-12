@@ -20,6 +20,8 @@ export default function SiteLogo({
       src={logoImage}
       alt={alt}
       className={`object-contain ${className}`}
+      width={calculatedWidth}
+      height={height}
       style={{ height: `${height}px`, width: `${calculatedWidth}px` }}
     />
   );
