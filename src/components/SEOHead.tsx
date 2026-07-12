@@ -15,12 +15,6 @@ import {
   BreadcrumbJsonLd,
   ArticleJsonLd,
   RawJsonLd,
-  jsonLdPerson,
-  jsonLdOrganization,
-  jsonLdWebsite,
-  jsonLdProfessionalService,
-  jsonLdBreadcrumbs,
-  jsonLdCourse,
 } from "@/lib/seo/jsonld";
 
 // Site-wide constants
@@ -273,12 +267,3 @@ export default function SEOHead(props: SEOProps) {
     </>
   );
 }
-
-export {
-  jsonLdPerson,
-  jsonLdOrganization,
-  jsonLdWebsite,
-  jsonLdProfessionalService,
-  jsonLdBreadcrumbs,
-  jsonLdCourse,
-};

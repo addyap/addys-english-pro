@@ -74,12 +74,17 @@ function findAssetReferences(assetFiles, searchDirs) {
 function auditAssets() {
   console.log("🔍 Auditing project assets...");
 
-  const assetsDir = path.join(projectRoot, "public", "assets");
   const publicDir = path.join(projectRoot, "public");
   const srcDir = path.join(projectRoot, "src");
 
-  if (!fs.existsSync(assetsDir)) {
-    console.log("No assets directory found at public/assets");
+  // Scan every static-asset directory under public/, not just public/assets —
+  // stub and unreferenced files also accumulate in public/images and public/og.
+  const assetDirs = ["assets", "images", "og"]
+    .map((d) => path.join(publicDir, d))
+    .filter((d) => fs.existsSync(d));
+
+  if (assetDirs.length === 0) {
+    console.log("No asset directories found under public/ (assets, images, og)");
     const empty = {
       timestamp: new Date().toISOString(),
       summary: { total: 0, used: 0, unused: 0 },
@@ -105,7 +110,7 @@ function auditAssets() {
     ".mp4",
     ".webm",
   ];
-  const assetFiles = scanDirectory(assetsDir, exts);
+  const assetFiles = assetDirs.flatMap((dir) => scanDirectory(dir, exts));
   const references = findAssetReferences(assetFiles, [srcDir, publicDir]);
 
   const used = [];
