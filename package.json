@@ -71,7 +71,7 @@
     "tailwindcss-animate": "^1.0.7",
     "terser": "^5.44.1",
     "vaul": "^0.9.9",
-    "vite-react-ssg": "^0.9.1-beta.1",
+    "vite-react-ssg": "0.9.1-beta.1",
     "web-vitals": "^4.2.4",
     "zod": "^3.25.76"
   },
