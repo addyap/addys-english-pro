@@ -219,6 +219,10 @@ const Contact = () => {
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Premier échange gratuit et sans engagement pour définir vos objectifs en anglais professionnel
             </p>
+            <p className="text-sm text-gray-500 max-w-2xl mx-auto mt-4">
+              Formation finançable directement par votre entreprise (convention de formation sur fonds propres)
+              ou à titre personnel. Non éligible au CPF.
+            </p>
           </header>
 
           <div className="grid lg:grid-cols-2 gap-12">

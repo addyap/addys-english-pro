@@ -331,7 +331,7 @@ const Training = () => {
               </p>
               
               <p className="text-muted-foreground mb-4">
-                <strong className="text-primary">Personnes en reconversion</strong> ou recherche d'emploi, accompagnées par France Travail ou un OPCO, qui veulent valoriser leur profil.
+                <strong className="text-primary">Personnes en reconversion</strong> ou en recherche d'emploi qui veulent valoriser leur profil et gagner en confiance à l'oral comme à l'écrit.
               </p>
               
               <p className="text-muted-foreground">
@@ -434,6 +434,37 @@ const Training = () => {
             </div>
           </FadeInSection>
 
+          {/* Financement */}
+          <FadeInSection>
+            <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
+              <div className="flex items-center mb-6">
+                <span className="text-2xl mr-3">💼</span>
+                <h2 className="text-2xl font-bold text-primary">Financement</h2>
+              </div>
+
+              <div className="space-y-4 text-muted-foreground">
+                <p>
+                  <strong className="text-primary">Finançable directement par votre entreprise.</strong>{' '}
+                  En tant qu'organisme de formation enregistré (déclaration d'activité auprès de la DREETS),
+                  je délivre une convention de formation professionnelle et l'ensemble des pièces requises.
+                  Votre employeur peut ainsi commander la formation et l'inscrire à son plan de développement
+                  des compétences, sur ses fonds propres.
+                </p>
+                <p>
+                  <strong className="text-primary">Financement personnel.</strong>{' '}
+                  Les particuliers peuvent financer leur formation directement, avec un programme adapté
+                  à leur rythme et à leur budget.
+                </p>
+              </div>
+
+              <p className="text-sm text-muted-foreground italic border-t border-border pt-4 mt-6">
+                À noter : ces formations ne sont pas éligibles au CPF ni aux fonds mutualisés
+                (OPCO, France Travail). Le financement se fait directement par l'entreprise ou à titre
+                personnel — un circuit plus simple et sans dossier administratif.
+              </p>
+            </div>
+          </FadeInSection>
+
           {/* Authority Resources Section */}
           <FadeInSection>
             <div className="bg-muted/50 border border-border rounded-lg p-8 mb-12">
@@ -446,11 +477,6 @@ const Training = () => {
                 <div>
                   <h3 className="font-semibold text-primary mb-2">Références institutionnelles</h3>
                   <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>
-                      <a href="https://www.francetravail.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                        France Travail ↗
-                      </a>
-                    </li>
                     <li>
                       <a href="https://www.francecompetences.fr/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                         France Compétences ↗

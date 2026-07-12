@@ -25,7 +25,7 @@
     { "source": "/negotiation-trainer", "destination": "https://anglaisadistance.fr/", "permanent": true },
     { "source": "/ressources-gratuites", "destination": "https://anglaisadistance.fr/", "permanent": true },
     { "source": "/services", "destination": "/", "permanent": true },
-    { "source": "/tarifs-cpf", "destination": "/", "permanent": true },
+    { "source": "/tarifs-cpf", "destination": "/offres-de-formation", "permanent": true },
     { "source": "/videos", "destination": "/", "permanent": true },
     { "source": "/faq", "destination": "/", "permanent": true },
     { "source": "/a-propos", "destination": "/qui-je-suis", "permanent": true },
