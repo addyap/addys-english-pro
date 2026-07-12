@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { YEARS_OF_EXPERIENCE, getCurrentMonthYearFR } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, MapPin, Headphones, Sparkles, MessageCircle, Mail, ArrowRight, Handshake, Mic, PenTool, UserCheck, Search, Zap } from 'lucide-react';
-import SEOHead, { jsonLdWebsite, jsonLdOrganization, jsonLdPerson } from '../components/SEOHead';
+import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import OptimizedHero from '../components/OptimizedHero';
 import { TypingText } from '../components/TypingText';
@@ -29,6 +29,111 @@ const CLIENT_LOGOS = [
   { src: "/lovable-uploads/69034832-a004-43a5-b367-f4726a4d126a.webp", alt: "Logo Ingeneria Project, entreprise partenaire pour formations d'anglais professionnel", name: "Ingeneria" },
   { src: "/lovable-uploads/edj-nice-logo.webp", alt: "Logo EDJ Nice, L'école du journalisme, partenaire formation anglais", name: "EDJ Nice" },
 ];
+
+// Single consolidated JSON-LD @graph for the homepage. Replaces the previous
+// 9 separate blocks (Organization ×2, WebSite ×2, Person ×2, ProfessionalService
+// ×2, FAQPage) that redundantly re-declared the same business, address and
+// service areas. One canonical business node (ProfessionalService — a
+// LocalBusiness/Organization subtype, so no separate Organization node is
+// needed), one WebSite, one Person, one FAQPage, linked by @id. Every real fact
+// from the old markup is preserved; only duplicates are removed. Conflicts were
+// resolved to the real value: email formations@ (not the placeholder contact@),
+// logo /assets/logo-512.png and image /social-preview.jpg (both exist; the old
+// /og/antonyaddy-card.png 404s).
+const HOME_JSONLD_GRAPH = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.antonyaddy.com/#business",
+      name: "Antony Addy",
+      alternateName: "Antony Addy — English Training",
+      description: "Services de formation en anglais professionnel, coaching linguistique et cours particuliers dispensés par un formateur natif britannique certifié FPA",
+      slogan: "Formations claires, flexibles et efficaces en anglais professionnel",
+      url: "https://www.antonyaddy.com",
+      logo: "https://www.antonyaddy.com/assets/logo-512.png",
+      image: "https://www.antonyaddy.com/social-preview.jpg",
+      telephone: "+33649829826",
+      email: "formations@antonyaddy.com",
+      priceRange: "$$",
+      inLanguage: "fr",
+      address: {
+        "@type": "PostalAddress",
+        "@id": "https://www.antonyaddy.com/#address",
+        streetAddress: "135 rue Henri Vadon",
+        addressLocality: "Fréjus",
+        postalCode: "83600",
+        addressRegion: "Provence-Alpes-Côte d'Azur",
+        addressCountry: "FR",
+      },
+      areaServed: [
+        { "@type": "AdministrativeArea", name: "Var" },
+        { "@type": "AdministrativeArea", name: "Alpes-Maritimes" },
+        { "@type": "Country", name: "France" },
+        "Worldwide (remote)",
+      ],
+      availableLanguage: ["fr", "en"],
+      serviceType: [
+        "Formation d'anglais professionnel",
+        "Coaching linguistique",
+        "Cours particuliers d'anglais",
+      ],
+      availableChannel: [
+        { "@type": "ServiceChannel", serviceType: "En présentiel", availableLanguage: ["fr", "en"] },
+        { "@type": "ServiceChannel", serviceType: "À distance", availableLanguage: ["fr", "en"] },
+      ],
+      founder: { "@id": "https://www.antonyaddy.com/#antony-addy" },
+      sameAs: [
+        "https://www.linkedin.com/in/antonyaddy",
+        "https://twitter.com/antonyaddy",
+      ],
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.antonyaddy.com/#antony-addy",
+      name: "Antony Addy",
+      jobTitle: "Formateur Professionnel d'Adultes en Anglais",
+      description: "Spécialiste en anglais professionnel depuis 2017, formations pour particuliers, professionnels et centres de formation",
+      url: "https://www.antonyaddy.com",
+      image: "https://www.antonyaddy.com/social-preview.jpg",
+      knowsLanguage: ["fr", "en"],
+      address: { "@id": "https://www.antonyaddy.com/#address" },
+      worksFor: { "@id": "https://www.antonyaddy.com/#business" },
+      sameAs: [
+        "https://www.linkedin.com/in/antonyaddy",
+        "https://twitter.com/antonyaddy",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.antonyaddy.com/#website",
+      name: "Antony Addy — Formateur d'anglais",
+      url: "https://www.antonyaddy.com",
+      description: "Formations d'anglais professionnel en présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde",
+      inLanguage: "fr",
+      publisher: { "@id": "https://www.antonyaddy.com/#business" },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://www.antonyaddy.com/blog?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.antonyaddy.com/#faq",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Où intervient Antony Addy pour les formations d'anglais ?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "En présentiel dans le Var et les Alpes-Maritimes (Fréjus, Saint-Raphaël, Cannes, Antibes, Nice, Monaco) et à distance partout en France et dans le monde.",
+          },
+        },
+      ],
+    },
+  ],
+};
 
 const Home = () => {
   useScrollTracking('home');
@@ -117,77 +222,9 @@ const Home = () => {
         datePublished="2025-01-15T10:00:00+01:00"
         dateModified="2026-05-24T10:00:00+01:00"
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
-        enableOrgJsonLd
-        enableWebSiteJsonLd
         imageAlt="Antony Addy, formateur d'anglais professionnel certifié FPA"
         keywords={["formateur anglais", "formation anglais professionnel", "formateur FPA", "cours anglais adultes", "Var", "Alpes-Maritimes", "Côte d'Azur", "Fréjus", "Saint-Raphaël", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "anglais à distance", "formateur britannique", "anglais entreprises", "anglais cadres", "anglais étudiants"]}
-        jsonLd={[
-          jsonLdWebsite(),
-          jsonLdOrganization(),
-          jsonLdPerson(),
-          {
-            "@context": "https://schema.org",
-            "@type": "ProfessionalService",
-            name: "Formation d'anglais professionnel",
-            description: "Services de formation en anglais professionnel, coaching linguistique et cours particuliers dispensés par un formateur natif britannique certifié FPA",
-            provider: jsonLdOrganization(),
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "135 rue Henri Vadon",
-              addressLocality: "Fréjus",
-              postalCode: "83600",
-              addressRegion: "Provence-Alpes-Côte d'Azur",
-              addressCountry: "FR"
-            },
-            areaServed: [
-              { "@type": "AdministrativeArea", name: "Var" },
-              { "@type": "AdministrativeArea", name: "Alpes-Maritimes" },
-              { "@type": "Country", name: "France" }
-            ],
-            availableLanguage: ["fr", "en"],
-            serviceType: ["Formation d'anglais professionnel", "Coaching linguistique", "Cours particuliers d'anglais"],
-            priceRange: "$$",
-            availableChannel: [
-              { "@type": "ServiceChannel", serviceType: "En présentiel", availableLanguage: ["fr", "en"] },
-              { "@type": "ServiceChannel", serviceType: "À distance", availableLanguage: ["fr", "en"] }
-            ]
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Où intervient Antony Addy pour les formations d'anglais ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "En présentiel dans le Var et les Alpes-Maritimes (Fréjus, Saint-Raphaël, Cannes, Antibes, Nice, Monaco) et à distance partout en France et dans le monde."
-                }
-              }
-            ]
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "ProfessionalService",
-            "@id": "https://www.antonyaddy.com/#professionalservice",
-            name: "Antony Addy",
-            description: "Formateur d'anglais natif britannique, certifié FPA. Cours pour entreprises, cadres et particuliers, en présentiel dans le Var et les Alpes-Maritimes ou à distance.",
-            url: "https://www.antonyaddy.com",
-            email: "formations@antonyaddy.com",
-            telephone: "+33649829826",
-            image: "https://www.antonyaddy.com/social-preview.jpg",
-            logo: "https://www.antonyaddy.com/social-preview.jpg",
-            inLanguage: "fr",
-            availableLanguage: ["en", "fr"],
-            areaServed: [
-              { "@type": "AdministrativeArea", name: "Var" },
-              { "@type": "AdministrativeArea", name: "Alpes-Maritimes" },
-              { "@type": "Country", name: "France" },
-              "Worldwide (remote)"
-            ],
-            sameAs: ["https://www.linkedin.com/in/antonyaddy/"]
-          }
-        ]}
+        jsonLd={HOME_JSONLD_GRAPH}
       />
       
       {/* Skip to content link for accessibility */}
