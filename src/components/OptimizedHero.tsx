@@ -139,42 +139,8 @@ export default function OptimizedHero() {
         </div>
       </div>
 
-      {/* JSON-LD structured data for SEO. Serialize via dangerouslySetInnerHTML,
-          not as a JSX child: a child string is HTML-escaped by React, which turns
-          the quotes into &quot; and makes the JSON invalid. */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: "Antony Addy",
-            jobTitle: "Formateur Professionnel d'Adultes en Anglais",
-            description:
-              "Spécialiste en anglais professionnel depuis 2017, formations pour particuliers, professionnels et centres de formation",
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "135 rue Henri Vadon",
-              addressLocality: "Fréjus",
-              postalCode: "83600",
-              addressRegion: "Provence-Alpes-Côte d'Azur",
-              addressCountry: "FR",
-            },
-            areaServed: [
-              { "@type": "AdministrativeArea", name: "Var" },
-              { "@type": "AdministrativeArea", name: "Alpes-Maritimes" },
-              { "@type": "Country", name: "France" },
-            ],
-            knowsLanguage: ["fr", "en"],
-            offers: {
-              "@type": "Service",
-              name: "Formation en anglais professionnel",
-              description:
-                "Formations claires, flexibles et efficaces en anglais professionnel",
-            },
-          }).replace(/</g, "\\u003c"),
-        }}
-      />
+      {/* The homepage Person schema now lives in the consolidated @graph in
+          Home.tsx (node @id .../#antony-addy), so it is not emitted here. */}
     </section>
   );
 }
