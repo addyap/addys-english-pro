@@ -38,8 +38,8 @@ const CLIENT_LOGOS = [
 // needed), one WebSite, one Person, one FAQPage, linked by @id. Every real fact
 // from the old markup is preserved; only duplicates are removed. Conflicts were
 // resolved to the real value: email formations@ (not the placeholder contact@),
-// logo /assets/logo-512.png and image /social-preview.jpg (both exist; the old
-// /og/antonyaddy-card.png 404s).
+// logo /icon-512.png and image /social-preview.jpg (both real images; the old
+// /og/antonyaddy-card.png 404s and /assets/logo-512.png was a text stub).
 const HOME_JSONLD_GRAPH = {
   "@context": "https://schema.org",
   "@graph": [
@@ -51,7 +51,7 @@ const HOME_JSONLD_GRAPH = {
       description: "Services de formation en anglais professionnel, coaching linguistique et cours particuliers dispensés par un formateur natif britannique certifié FPA",
       slogan: "Formations claires, flexibles et efficaces en anglais professionnel",
       url: "https://www.antonyaddy.com",
-      logo: "https://www.antonyaddy.com/assets/logo-512.png",
+      logo: "https://www.antonyaddy.com/icon-512.png",
       image: "https://www.antonyaddy.com/social-preview.jpg",
       telephone: "+33649829826",
       email: "formations@antonyaddy.com",
