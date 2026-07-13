@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { YEARS_OF_EXPERIENCE, EXPERIENCE_FLOOR, getCurrentMonthYearFR } from '@/lib/utils';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, Headphones, Sparkles, MessageCircle, Mail, ArrowRight, Handshake, Mic, PenTool, UserCheck, Search } from 'lucide-react';
+import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, Headphones, Sparkles, MessageCircle, Mail, ArrowRight, Handshake, Mic, PenTool, UserCheck, Search, Zap } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import OptimizedHero from '../components/OptimizedHero';
@@ -354,6 +354,14 @@ const Home = () => {
                 </div>
               </div>
               <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+                <Link
+                  to="/test-de-positionnement"
+                  onClick={() => trackEvent('home_placement_test_cta_click', { target: '/test-de-positionnement' })}
+                  className="bg-white/20 text-white border border-white/30 px-5 py-2.5 rounded-lg font-bold text-sm sm:text-base hover:bg-white/30 transition-all flex items-center gap-2 whitespace-nowrap w-full md:w-auto justify-center"
+                >
+                  <Zap className="h-4 w-4" />
+                  Test de positionnement
+                </Link>
                 <a
                   href="https://anglaisadistance.fr/grammaire-essentielle/contrastes"
                   target="_blank"
