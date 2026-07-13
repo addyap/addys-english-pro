@@ -162,12 +162,6 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
 
             {/* Desktop CTA + WhatsApp */}
             <div className="hidden lg:flex items-center gap-2 ms-4">
-              <Link
-                to="/questionnaire"
-                className="bg-accent text-accent-foreground px-4 py-2 rounded-lg font-medium hover:bg-accent/90 transition-colors font-body text-sm"
-              >
-                Évaluer mes besoins
-              </Link>
               <a
                 href={WHATSAPP_URL}
                 className="bg-green-500 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-green-600 transition-colors font-body"
@@ -218,14 +212,6 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                     </Link>
                   ))}
                 </div>
-
-                <Link
-                  to="/questionnaire"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center min-h-[44px] px-4 py-3 rounded-lg text-base font-semibold bg-accent text-accent-foreground hover:bg-accent/90 transition-colors font-body"
-                >
-                  Évaluer mes besoins
-                </Link>
 
               </nav>
             </div>
@@ -292,7 +278,6 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">{t('nav.contact')}</Link></li>
                 <li><Link to="/blog" className="text-gray-400 hover:text-white transition-colors">{t('nav.blog')}</Link></li>
                 <li><Link to="/test-de-positionnement" className="text-gray-400 hover:text-white transition-colors">Test de positionnement</Link></li>
-                <li><Link to="/questionnaire" className="text-gray-400 hover:text-white transition-colors">Questionnaire de profil</Link></li>
               </ul>
 
               <h4 className="font-semibold mt-6 mb-2 text-white text-xs uppercase tracking-wider">Pour qui</h4>

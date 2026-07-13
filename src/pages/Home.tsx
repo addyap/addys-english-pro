@@ -376,30 +376,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Questionnaire CTA — qualified-lead capture */}
-        <section className="py-10 bg-background border-b border-border" aria-labelledby="questionnaire-cta-heading">
-          <div className="max-w-4xl mx-auto px-4">
-            <div className="rounded-2xl border border-primary/20 bg-primary/5 p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-5">
-              <div className="flex-1">
-                <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-1.5 font-body">Première étape</p>
-                <h2 id="questionnaire-cta-heading" className="text-xl md:text-2xl font-bold text-primary font-heading mb-2">
-                  Commencez par évaluer vos besoins
-                </h2>
-                <p className="text-sm md:text-base text-muted-foreground font-body leading-relaxed">
-                  Un questionnaire de 5 minutes pour me transmettre votre niveau, vos objectifs et vos contraintes. Je vous réponds avec une proposition adaptée.
-                </p>
-              </div>
-              <Link
-                to="/questionnaire"
-                onClick={() => trackEvent('home_questionnaire_cta_click', { target: '/questionnaire' })}
-                className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 min-h-[44px] rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body whitespace-nowrap"
-              >
-                Démarrer le questionnaire
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </div>
-          </div>
-        </section>
 
         {/* AI English Training — positioned as Antony's own training system, not a standalone tool */}
         <section className="py-12 bg-background" aria-labelledby="ai-training-heading">
