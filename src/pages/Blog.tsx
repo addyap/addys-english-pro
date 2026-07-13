@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { EXPERIENCE_FLOOR } from '@/lib/utils';
 import { seoMetadata } from '../utils/seoMetadata';
 import BlogSearch from '../components/BlogSearch';
 import AnimatedCard from '../components/AnimatedCard';
@@ -124,7 +125,7 @@ const Blog = () => {
               Blog Anglais Professionnel
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Conseils d'expert, astuces pratiques et ressources pour progresser en anglais. Articles rédigés par un formateur britannique certifié FPA, avec plus de 20 ans d'expérience.
+              Conseils d'expert, astuces pratiques et ressources pour progresser en anglais. Articles rédigés par un formateur britannique certifié FPA, avec plus de {EXPERIENCE_FLOOR} ans d'expérience.
             </p>
           </div>
 

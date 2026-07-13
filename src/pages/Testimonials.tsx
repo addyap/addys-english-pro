@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import SEOHead from '../components/SEOHead';
+import { EXPERIENCE_FLOOR } from '@/lib/utils';
 import { TypingText } from '../components/TypingText';
 import { TestimonialSkeleton } from '../components/SkeletonLoader';
 
@@ -179,7 +180,7 @@ const Testimonials = () => {
             </h2>
             <div className="text-muted-foreground space-y-3 font-body">
               <p>
-                Depuis plus de <strong className="text-primary">20 ans</strong>, j'accompagne des adultes de tous horizons dans leur apprentissage de l'anglais. Ces témoignages proviennent de <strong className="text-primary">LinkedIn</strong> et reflètent l'expérience réelle de mes apprenants : cadres, étudiants en école de commerce, conseillers de vente, assistants de direction, notaires, préparateurs physiques...
+                Depuis plus de <strong className="text-primary">{EXPERIENCE_FLOOR} ans</strong>, j'accompagne des adultes de tous horizons dans leur apprentissage de l'anglais. Ces témoignages proviennent de <strong className="text-primary">LinkedIn</strong> et reflètent l'expérience réelle de mes apprenants : cadres, étudiants en école de commerce, conseillers de vente, assistants de direction, notaires, préparateurs physiques...
               </p>
               <p>
                 Ce qui revient souvent dans leurs retours : une <strong className="text-primary">pédagogie adaptée</strong> à chaque profil, une <strong className="text-primary">atmosphère bienveillante</strong> et motivante, et des <strong className="text-primary">progrès concrets</strong> dans leur pratique professionnelle de l'anglais.

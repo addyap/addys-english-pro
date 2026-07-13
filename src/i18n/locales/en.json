@@ -11,7 +11,7 @@
     "closeMenu": "Close menu"
   },
   "footer": {
-    "tagline": "Certified professional English trainer (FPA). Over 20 years of experience teaching English to adults, companies and institutions.",
+    "tagline": "Certified professional English trainer (FPA). Over {{years}} years of experience teaching English to adults, companies and institutions.",
     "navigation": "Navigation",
     "resources": "Free Resources",
     "exercises": "English exercises",

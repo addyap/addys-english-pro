@@ -1,5 +1,5 @@
 import React from 'react';
-import { YEARS_OF_EXPERIENCE } from '@/lib/utils';
+import { YEARS_OF_EXPERIENCE, EXPERIENCE_FLOOR } from '@/lib/utils';
 import { Award, BookOpen, Users, Globe, CheckCircle, Target, MessageCircle, Mail, GraduationCap, MapPin, Phone, Factory, School, University, Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
@@ -14,7 +14,7 @@ const About = () => {
     "@type": "Person",
     "name": "Antony Addy",
     "jobTitle": "Formateur Professionnel d'Adultes certifié",
-    "description": `Formateur d'anglais professionnel avec plus de ${YEARS_OF_EXPERIENCE} ans d'expérience`,
+    "description": `Formateur d'anglais professionnel avec plus de ${EXPERIENCE_FLOOR} ans d'expérience`,
     "url": "https://www.antonyaddy.com/qui-je-suis",
     "email": "formations@antonyaddy.com",
     "areaServed": [
@@ -36,7 +36,7 @@ const About = () => {
   return <>
       <SEOHead 
         title="Antony Addy | Formateur Anglais FPA Certifié"
-        description={`Britannique natif certifié Formateur Professionnel d'Adultes depuis 2017. Plus de ${YEARS_OF_EXPERIENCE} ans d'expérience en formation anglais professionnel.`}
+        description={`Britannique natif certifié Formateur Professionnel d'Adultes depuis 2017. Plus de ${EXPERIENCE_FLOOR} ans d'expérience en formation anglais professionnel.`}
         keywords={["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "formation adultes", "Var", "Alpes-Maritimes", "Fréjus"]}
         canonicalUrl="https://www.antonyaddy.com/qui-je-suis"
         image="https://www.antonyaddy.com/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png"
@@ -50,7 +50,7 @@ const About = () => {
             "@type": "Person",
             name: "Antony Addy",
             jobTitle: "Formateur Professionnel d'Adultes certifié",
-            description: `Formateur britannique natif avec plus de ${YEARS_OF_EXPERIENCE} ans d'expérience dans l'enseignement de l'anglais professionnel`,
+            description: `Formateur britannique natif avec plus de ${EXPERIENCE_FLOOR} ans d'expérience dans l'enseignement de l'anglais professionnel`,
             nationality: "British",
             knowsLanguage: ["en", "fr"],
             hasCredential: {
@@ -68,7 +68,7 @@ const About = () => {
               name: "Qui est Antony Addy ?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: `Antony Addy est un formateur britannique natif certifié Formateur Professionnel d'Adultes (FPA) depuis 2017, avec plus de ${YEARS_OF_EXPERIENCE} ans d'expérience dans l'enseignement de l'anglais professionnel.`
+                text: `Antony Addy est un formateur britannique natif certifié Formateur Professionnel d'Adultes (FPA) depuis 2017, avec plus de ${EXPERIENCE_FLOOR} ans d'expérience dans l'enseignement de l'anglais professionnel.`
               }
             },
             {
@@ -111,7 +111,7 @@ const About = () => {
 
               <div className="text-lg text-muted-foreground leading-relaxed mb-6 font-body space-y-4">
                 <p>
-                  <strong className="text-primary">Britannique de naissance</strong>, je vis et travaille en France depuis plus de vingt ans. J'enseigne l'anglais à des adultes dans des contextes professionnels exigeants : entreprises, écoles de commerce, organismes de formation, et accompagnement de personnes en reconversion ou en recherche d'emploi.
+                  <strong className="text-primary">Britannique de naissance</strong>, je vis et travaille en France depuis plus de {EXPERIENCE_FLOOR} ans. J'enseigne l'anglais à des adultes dans des contextes professionnels exigeants : entreprises, écoles de commerce, organismes de formation, et accompagnement de personnes en reconversion ou en recherche d'emploi.
                 </p>
                 <p>
                   Ma certification <strong className="text-primary">Formateur Professionnel d'Adultes (FPA)</strong>, obtenue en 2017, atteste d'une pédagogie rigoureuse, centrée sur les résultats. Je ne vous fais pas mémoriser des règles abstraites — je vous aide à <em>parler, écrire et comprendre</em> l'anglais dans votre quotidien professionnel.

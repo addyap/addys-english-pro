@@ -9,6 +9,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 
 import { trackEvent } from '@/lib/analytics';
 import { WHATSAPP_PREFILLED_URL } from '@/lib/whatsapp';
+import { EXPERIENCE_FLOOR } from '@/lib/utils';
 
 const WHATSAPP_URL = WHATSAPP_PREFILLED_URL;
 const trackWA = (location: string) => trackEvent('whatsapp_cta_click', { page: 'Layout', target: WHATSAPP_URL, location, prefilled: true });
@@ -245,7 +246,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 <SiteLogo height={32} className="brightness-0 invert" alt="Antony Addy" />
                 <span className="font-bold text-lg">Antony Addy</span>
               </Link>
-              <p className="text-gray-400 mb-4 leading-relaxed">{t('footer.tagline')}</p>
+              <p className="text-gray-400 mb-4 leading-relaxed">{tRaw('footer.tagline', { lng: 'fr', years: EXPERIENCE_FLOOR })}</p>
               <div className="flex gap-3">
                 <a
                   href={WHATSAPP_URL}
