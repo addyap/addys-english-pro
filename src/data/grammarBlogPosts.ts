@@ -152,6 +152,255 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
   },
   {
+    id: 'presentation-en-anglais',
+    title: 'Réussir une présentation en anglais : structure, transitions et prise de parole',
+    excerpt: "Introduction, transitions, mise en valeur des points clés, gestion des questions : les phrases et la structure pour présenter en anglais avec aisance — et les erreurs de francophone à éviter.",
+    content: `
+      <p>Présenter en anglais devant un comité, un client ou une conférence est l'une des situations les plus redoutées par les professionnels francophones. La difficulté n'est presque jamais le vocabulaire technique — c'est la fluidité, les transitions et les codes de la prise de parole anglophone. Bonne nouvelle : une présentation repose sur des formules réutilisables. Une fois que vous les maîtrisez, vous pouvez vous concentrer sur le fond.</p>
+
+      <h2>La structure : dites ce que vous allez dire</h2>
+      <p>La présentation anglophone suit un principe simple : <em>"Tell them what you're going to tell them, tell them, then tell them what you told them."</em> Trois temps :</p>
+      <ul>
+        <li><strong>Introduction</strong> : qui vous êtes, votre sujet, votre plan, la durée</li>
+        <li><strong>Body</strong> : deux à quatre points clés, clairement séparés</li>
+        <li><strong>Conclusion</strong> : récapitulatif, message à retenir, remerciements</li>
+      </ul>
+
+      <h2>L'introduction : poser le cadre</h2>
+      <ul>
+        <li>"Good morning everyone, and thank you for coming."</li>
+        <li>"For those who don't know me, I'm Antony, and I lead the training team."</li>
+        <li>"Today I'd like to talk about..." / "The aim of this presentation is to..."</li>
+        <li>"I've divided my talk into three parts." (annoncer le plan)</li>
+        <li>"This should take around fifteen minutes. Feel free to ask questions as we go." (ou : "...at the end.")</li>
+      </ul>
+
+      <h2>Les transitions (signposting) : guider l'auditoire</h2>
+      <p>Les transitions sont ce qui distingue une présentation fluide d'une suite de diapos. Annoncez chaque changement :</p>
+      <ul>
+        <li>"Let's start with..." (premier point)</li>
+        <li>"Let's move on to..." / "Turning to..." (point suivant)</li>
+        <li>"This brings me to my next point,..."</li>
+        <li>"Going back to what I said earlier,..."</li>
+        <li>"So, to summarise this section,..."</li>
+      </ul>
+
+      <h2>Mettre en valeur un point clé</h2>
+      <ul>
+        <li>"The key takeaway here is..."</li>
+        <li>"I'd like to highlight..." / "What's really important is..."</li>
+        <li>"If you remember one thing from today, it's this:..."</li>
+      </ul>
+
+      <h2>Présenter des chiffres et des visuels</h2>
+      <ul>
+        <li>"As you can see on this slide,..."</li>
+        <li>"This chart shows..." / "These figures highlight..."</li>
+        <li>"There's been a sharp increase in..." / "...a steady decline in..."</li>
+        <li>"Let me draw your attention to the figure on the right."</li>
+      </ul>
+
+      <h2>Gérer les questions</h2>
+      <ul>
+        <li>"That's a great question." (gagner une seconde pour réfléchir)</li>
+        <li>"If I understand correctly, you're asking about..." (reformuler)</li>
+        <li>"That's a good point — let me get back to you on that." (quand vous ne savez pas)</li>
+        <li>"Does that answer your question?"</li>
+      </ul>
+
+      <h2>Conclure avec impact</h2>
+      <ul>
+        <li>"To sum up,..." / "To wrap up,..."</li>
+        <li>"So, where does this leave us?" (avant la recommandation finale)</li>
+        <li>"Thank you for your attention. I'm happy to take any questions."</li>
+      </ul>
+
+      <h2>Les erreurs de francophone les plus courantes</h2>
+      <ul>
+        <li>❌ "I will explain you the results." → ✅ "I will explain the results to you." ("explain" ne se construit pas avec un complément direct de personne)</li>
+        <li>❌ "We work on this project since three years." → ✅ "We've been working on this project for three years."</li>
+        <li>❌ "I'm going to present you our new strategy." → ✅ "I'm going to present our new strategy." / "...to talk you through our new strategy."</li>
+        <li>❌ "In this slide..." → ✅ "On this slide..."</li>
+        <li>❌ "As well" en début de phrase (calque de "aussi") → ✅ "Also,..." / "In addition,..."</li>
+      </ul>
+
+      <h2>Un modèle d'ouverture</h2>
+      <p>Voici une ouverture prête à adapter :</p>
+      <p>
+        <em>"Good morning everyone, and thank you for being here. I'm Antony Addy, and I work with companies on professional English. Today, I'd like to talk about how to improve your team's communication in English. I've divided my talk into three parts: first the challenges, then a practical method, and finally some results. This should take about ten minutes — please feel free to ask questions at the end. Let's start with the challenges."</em>
+      </p>
+
+      <h2>En résumé</h2>
+      <p>Une présentation réussie en anglais tient à trois choses : une <strong>structure claire</strong> annoncée dès le départ, des <strong>transitions explicites</strong> entre les parties, et quelques <strong>formules de prise de parole</strong> pour ouvrir, mettre en valeur et conclure. Le contenu, vous le connaissez déjà — ces repères vous libèrent pour le transmettre avec assurance.</p>
+    `,
+    date: '2026-07-13',
+    author: 'Antony Addy',
+    category: 'Communication',
+    readTime: '8 min',
+    description: "Comment réussir une présentation en anglais : structure, transitions (signposting), mise en valeur des points clés, gestion des questions et erreurs fréquentes des francophones.",
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
+  },
+  {
+    id: 'entretien-embauche-en-anglais',
+    title: "Réussir un entretien d'embauche en anglais : questions, réponses et préparation",
+    excerpt: "\"Tell me about yourself\", forces et faiblesses, la méthode STAR : comment préparer et réussir un entretien d'embauche en anglais, avec des réponses modèles et les erreurs de francophone à éviter.",
+    content: `
+      <p>Un entretien d'embauche en anglais ajoute une couche de difficulté à un exercice déjà stressant. La clé n'est pas d'improviser en espérant que ça passe, mais de <strong>préparer les questions récurrentes</strong> : elles sont presque toujours les mêmes. Voici comment structurer vos réponses, avec les formules et la méthode qui font la différence.</p>
+
+      <h2>"Tell me about yourself" : la question d'ouverture</h2>
+      <p>C'est presque toujours la première question, et c'est un piège si vous récitez votre CV. La bonne structure est <strong>présent → passé → futur</strong> :</p>
+      <ul>
+        <li><strong>Présent</strong> : "I'm currently a project manager at..." (votre rôle actuel)</li>
+        <li><strong>Passé</strong> : "Before that, I spent five years in..." (comment vous en êtes arrivé là)</li>
+        <li><strong>Futur</strong> : "Now I'm looking to..." (pourquoi ce poste vous intéresse)</li>
+      </ul>
+
+      <h2>Parler de son parcours : les bons temps</h2>
+      <p>Pour une expérience toujours en cours ou dont le résultat compte aujourd'hui, utilisez le <strong>present perfect</strong> :</p>
+      <ul>
+        <li>"I've worked with international teams for most of my career."</li>
+        <li>"I've managed budgets of up to two million euros."</li>
+        <li>Pour une expérience datée et terminée, le past simple : "In 2020, I led the launch of..."</li>
+      </ul>
+
+      <h2>Forces et faiblesses</h2>
+      <ul>
+        <li>"One of my main strengths is..." / "I'd say I'm particularly good at..."</li>
+        <li>Faiblesse (choisissez-en une réelle mais gérable) : "Something I've been working on is... and I've improved by..."</li>
+        <li>❌ Évitez le classique "I'm a perfectionist" — les recruteurs anglophones le repèrent immédiatement.</li>
+      </ul>
+
+      <h2>"Why do you want this job?"</h2>
+      <ul>
+        <li>"I'm really drawn to..." / "What appeals to me about this role is..."</li>
+        <li>"Your company's approach to... really resonates with me."</li>
+        <li>Reliez toujours à ce que vous apportez : "...and I believe my experience in X would add real value."</li>
+      </ul>
+
+      <h2>La méthode STAR pour les questions de mise en situation</h2>
+      <p>Pour "Tell me about a time when..." (une situation difficile, un conflit, un succès), structurez avec <strong>STAR</strong> :</p>
+      <ul>
+        <li><strong>S</strong>ituation : "We were behind on a key deadline..."</li>
+        <li><strong>T</strong>ask : "My job was to get the project back on track."</li>
+        <li><strong>A</strong>ction : "I reorganised the team and prioritised..."</li>
+        <li><strong>R</strong>esult : "As a result, we delivered on time and the client renewed."</li>
+      </ul>
+
+      <h2>Poser vos propres questions</h2>
+      <p>"Do you have any questions for us?" n'est pas une formalité — préparez-en deux ou trois :</p>
+      <ul>
+        <li>"What does success look like in this role in the first year?"</li>
+        <li>"How would you describe the team culture?"</li>
+        <li>"What are the main challenges the team is facing right now?"</li>
+      </ul>
+
+      <h2>Les erreurs de francophone les plus courantes</h2>
+      <ul>
+        <li>❌ "I have 35 years." → ✅ "I'm 35." (l'âge se dit avec "to be")</li>
+        <li>❌ "I'm agree with that approach." → ✅ "I agree with that approach."</li>
+        <li>❌ "I assist to a lot of meetings." → ✅ "I attend a lot of meetings." ("assist" = aider)</li>
+        <li>❌ "Actually, I'm looking for a new challenge." (si vous voulez dire "en ce moment") → ✅ "Currently, I'm looking for..."</li>
+        <li>❌ "I have a good experience." → ✅ "I have solid experience." ("experience" au sens de savoir-faire est indénombrable)</li>
+      </ul>
+
+      <h2>Un modèle de réponse</h2>
+      <p>Réponse à "Tell me about yourself", prête à adapter :</p>
+      <p>
+        <em>"Sure. I'm currently a marketing manager at a mid-sized tech company, where I lead a team of four. Before that, I spent six years in agencies, working with international clients across Europe. Over the years, I've developed real strength in cross-cultural communication and campaign strategy. I'm now looking to bring that experience to a company with a stronger international focus — which is exactly why this role caught my attention."</em>
+      </p>
+
+      <h2>En résumé</h2>
+      <p>Un entretien en anglais se gagne à la <strong>préparation</strong>, pas à l'improvisation. Structurez votre présentation en présent-passé-futur, appuyez vos exemples sur la méthode STAR, préparez vos propres questions, et surveillez les faux-amis classiques ("assist", "actually", "I'm agree"). Vous n'avez pas besoin d'un anglais parfait — d'un anglais clair, structuré et confiant.</p>
+    `,
+    date: '2026-07-13',
+    author: 'Antony Addy',
+    category: 'Communication',
+    readTime: '8 min',
+    description: "Comment réussir un entretien d'embauche en anglais : répondre à \"Tell me about yourself\", forces et faiblesses, la méthode STAR, questions à poser et erreurs des francophones.",
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
+  },
+  {
+    id: 'anglais-telephone-visio',
+    title: "L'anglais au téléphone et en visioconférence : phrases clés et bonnes pratiques",
+    excerpt: "Se présenter, faire répéter poliment, gérer les problèmes techniques en visio, laisser un message : les formules essentielles pour gérer un appel professionnel en anglais avec assurance.",
+    content: `
+      <p>Le téléphone et la visioconférence sont, de loin, les situations les plus stressantes en anglais professionnel : pas de langage corporel pour vous aider, des accents variés, un débit rapide, et parfois une mauvaise connexion. La parade est d'avoir en tête un répertoire de formules pour chaque moment de l'appel — vous n'improvisez plus, vous pilotez.</p>
+
+      <h2>Décrocher et se présenter</h2>
+      <ul>
+        <li>"Hello, this is Antony speaking." (notez : <strong>this is</strong>, pas "I am" ni "here is")</li>
+        <li>"Good morning, Antony Addy speaking. How can I help?"</li>
+        <li>Pour un appel sortant : "Hello, this is Antony from [company]. Am I speaking to Ms Laurent?"</li>
+      </ul>
+
+      <h2>Demander à parler à quelqu'un</h2>
+      <ul>
+        <li>"Could I speak to Sarah, please?"</li>
+        <li>"I'm calling about..." (annoncer l'objet tout de suite)</li>
+        <li>Filtrer un appel : "May I ask who's calling?" / "Could I ask what it's regarding?"</li>
+        <li>Faire patienter : "Could you hold on a moment, please? I'll put you through."</li>
+      </ul>
+
+      <h2>Faire répéter — poliment</h2>
+      <p>Demander de répéter n'est pas une faiblesse ; c'est professionnel. Ayez plusieurs formules pour ne pas répéter "Can you repeat?" à chaque fois :</p>
+      <ul>
+        <li>"Sorry, could you repeat that, please?"</li>
+        <li>"I didn't quite catch that."</li>
+        <li>"Could you speak up a little? The line isn't great."</li>
+        <li>"Would you mind spelling that for me?" (pour un nom ou un email)</li>
+        <li>"Just to make sure I've understood — you'd like..." (reformuler pour confirmer)</li>
+      </ul>
+
+      <h2>La visioconférence : gérer la technique</h2>
+      <p>Les problèmes techniques ont leur propre vocabulaire, qu'il vaut mieux connaître avant d'en avoir besoin :</p>
+      <ul>
+        <li>"You're on mute." (l'erreur numéro un — personne ne vous entend)</li>
+        <li>"Sorry, you're breaking up." (la connexion coupe)</li>
+        <li>"I think there's a bit of a delay / lag."</li>
+        <li>"Could you turn your camera on?" / "Would you mind sharing your screen?"</li>
+        <li>"Can everyone see my screen?"</li>
+      </ul>
+
+      <h2>Structurer l'appel</h2>
+      <ul>
+        <li>Ouvrir : "Thanks for taking the time. I'd like to go over three things today."</li>
+        <li>Enchaîner : "Right, moving on to the next point..."</li>
+        <li>Vérifier : "Does that make sense?" / "Are we all on the same page?"</li>
+        <li>Conclure : "So, to recap the next steps:..." / "I'll follow up with an email to confirm."</li>
+      </ul>
+
+      <h2>Prendre et laisser un message</h2>
+      <ul>
+        <li>"I'm afraid she's not available right now. Can I take a message?"</li>
+        <li>"Could you ask her to call me back on...?"</li>
+        <li>"Let me leave you my number, just in case."</li>
+      </ul>
+
+      <h2>Les erreurs de francophone les plus courantes</h2>
+      <ul>
+        <li>❌ "Here is Antony." (calque de "c'est Antony à l'appareil") → ✅ "This is Antony."</li>
+        <li>❌ "How do you call this in English?" → ✅ "What do you call this in English?" / "What's this called?"</li>
+        <li>❌ "I call you back later." (pour une décision immédiate) → ✅ "I'll call you back later." (le futur avec "will")</li>
+        <li>❌ "Wait, please." (sonne comme un ordre) → ✅ "Could you hold on a moment, please?"</li>
+        <li>❌ "I don't understand you." (abrupt) → ✅ "Sorry, I didn't quite catch that."</li>
+      </ul>
+
+      <h2>Un modèle d'ouverture d'appel</h2>
+      <p>
+        <em>"Hello, this is Antony Addy from [company]. Thanks for taking my call. I'm calling about the proposal I sent last week — is now a good time to talk it through? ... Great. I'd like to cover three quick points, and then I'm happy to answer any questions."</em>
+      </p>
+
+      <h2>En résumé</h2>
+      <p>Au téléphone et en visio, la confiance vient de la <strong>préparation des formules</strong>, pas d'un accent parfait. Sachez vous présenter ("This is..."), faire répéter poliment sans vous excuser à l'excès, gérer les aléas techniques ("You're on mute", "You're breaking up"), et structurer l'échange du début à la fin. Ces réflexes transforment l'appel le plus stressant en routine maîtrisée.</p>
+    `,
+    date: '2026-07-13',
+    author: 'Antony Addy',
+    category: 'Communication',
+    readTime: '7 min',
+    description: "L'anglais au téléphone et en visioconférence : se présenter, faire répéter poliment, gérer les problèmes techniques, laisser un message et éviter les erreurs des francophones.",
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
+  },
+  {
     id: 'present-simple-vs-present-continuous',
     title: 'Present Simple vs Present Continuous : Quelle différence ?',
     excerpt: 'Comprendre quand utiliser le Present Simple et le Present Continuous est essentiel pour parler anglais correctement. Découvrez les règles et exemples pratiques.',
