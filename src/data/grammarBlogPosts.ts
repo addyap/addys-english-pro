@@ -14,6 +14,144 @@ export interface GrammarBlogPost {
 
 export const grammarBlogPosts: GrammarBlogPost[] = [
   {
+    id: 'email-professionnel-en-anglais',
+    title: 'Rédiger un email professionnel en anglais : structure, formules et exemples',
+    excerpt: "Salutations, formules de politesse, relances, pièces jointes : le guide complet pour écrire des emails professionnels en anglais clairs et crédibles — avec des formules prêtes à l'emploi et les erreurs de francophone à éviter.",
+    content: `
+      <p>Un email mal tourné coûte cher : un client qui trouve le ton sec, un collègue étranger qui ne comprend pas la demande, une candidature qui passe à la trappe. Pour un francophone, l'email professionnel en anglais est un exercice piégeux — non pas à cause de la grammaire, mais parce que les codes ne sont pas les mêmes qu'en français. Voici comment écrire des emails clairs, polis et efficaces, avec des formules prêtes à l'emploi.</p>
+
+      <h2>La structure d'un email professionnel</h2>
+      <p>Un email professionnel anglais suit presque toujours la même ossature. La respecter, c'est gagner en clarté et en crédibilité :</p>
+      <ul>
+        <li><strong>Subject line</strong> (objet) : court, précis, informatif</li>
+        <li><strong>Greeting</strong> (salutation) : "Dear..." ou "Hi..."</li>
+        <li><strong>Opening line</strong> : une phrase d'accroche avant d'entrer dans le vif</li>
+        <li><strong>Body</strong> (corps) : votre message, droit au but</li>
+        <li><strong>Closing line</strong> : ce que vous attendez pour la suite</li>
+        <li><strong>Sign-off</strong> (formule de politesse) : "Kind regards", etc.</li>
+        <li><strong>Signature</strong> : nom, fonction, coordonnées</li>
+      </ul>
+
+      <h2>L'objet (subject line) : précis et concret</h2>
+      <p>L'objet décide si votre email est ouvert. Restez informatif et évitez les objets vagues comme "Question" ou "Hello".</p>
+      <ul>
+        <li>✅ "Meeting request: Q3 budget review"</li>
+        <li>✅ "Follow-up: invoice #2041"</li>
+        <li>✅ "Quick question about the Nice project"</li>
+        <li>❌ "Important!!!" (agressif et peu informatif)</li>
+      </ul>
+
+      <h2>Les formules d'ouverture (greetings)</h2>
+      <p>Le choix dépend de votre relation avec le destinataire et du degré de formalité attendu.</p>
+      <p><strong>Formel</strong> (premier contact, client, hiérarchie) :</p>
+      <ul>
+        <li>"Dear Mr Smith," / "Dear Ms Jones," — nom connu (notez <strong>Ms</strong>, pas Mrs, sauf certitude du statut marital)</li>
+        <li>"Dear Sir or Madam," — nom inconnu (de plus en plus rare)</li>
+        <li>"Dear Hiring Manager," — destinataire fonctionnel</li>
+      </ul>
+      <p><strong>Courant</strong> (collègues, échanges réguliers) :</p>
+      <ul>
+        <li>"Hi Sarah," — le standard dans la plupart des entreprises anglophones</li>
+        <li>"Hello team," — pour un groupe</li>
+      </ul>
+      <p><strong>À éviter :</strong></p>
+      <ul>
+        <li>❌ "Dear Madam Jones," — calque du français ; on ne met pas le nom après "Madam"</li>
+        <li>❌ "Hello Mr Smith," — mélange maladroit ; choisissez "Dear Mr Smith" ou "Hi John"</li>
+      </ul>
+
+      <h2>La phrase d'ouverture (opening line)</h2>
+      <p>En anglais professionnel, on place souvent une phrase courtoise avant la demande — mais brève, à l'opposé des longues formules françaises.</p>
+      <ul>
+        <li>"I hope you're well." — passe-partout, sincère</li>
+        <li>"Thank you for your email." / "Thanks for getting back to me."</li>
+        <li>"I'm writing to..." — annonce directe de l'objet</li>
+        <li>"Following up on our call earlier,..." — relance après un échange</li>
+      </ul>
+
+      <h2>Le corps : aller droit au but</h2>
+      <p>La culture email anglophone valorise la concision : une idée par paragraphe, des phrases courtes, et la demande clairement formulée. Voici des formules classées par intention.</p>
+      <p><strong>Demander quelque chose (poliment) :</strong></p>
+      <ul>
+        <li>"Could you please send me...?" — standard, poli</li>
+        <li>"Would you be able to...?" — un cran plus prudent</li>
+        <li>"I'd appreciate it if you could..." — formel</li>
+      </ul>
+      <p><strong>Informer / transmettre :</strong></p>
+      <ul>
+        <li>"Just to let you know that..." — informel</li>
+        <li>"I wanted to update you on..."</li>
+        <li>"Please note that..." — attirer l'attention sur un point</li>
+      </ul>
+      <p><strong>Relancer sans agacer :</strong></p>
+      <ul>
+        <li>"I wanted to follow up on my previous email."</li>
+        <li>"Just a gentle reminder about..."</li>
+        <li>"Could you let me know where we stand on...?"</li>
+      </ul>
+      <p><strong>S'excuser :</strong></p>
+      <ul>
+        <li>"Apologies for the delay in getting back to you." (britannique : <strong>apologise</strong>, pas apologize)</li>
+        <li>"Sorry for the confusion — let me clarify."</li>
+      </ul>
+
+      <h2>La pièce jointe : la bonne formule</h2>
+      <p>C'est l'une des erreurs les plus fréquentes chez les francophones.</p>
+      <ul>
+        <li>✅ "Please find attached my CV." / "I've attached the invoice."</li>
+        <li>❌ "Please find enclosed..." — "enclosed" désigne un document joint à un <em>courrier papier</em>, pas à un email</li>
+        <li>❌ "Please find in attachment..." — calque qui n'existe pas en anglais</li>
+        <li>❌ "I join the document." — "join" ne signifie pas joindre un fichier</li>
+      </ul>
+
+      <h2>Les formules de clôture (sign-offs)</h2>
+      <p>La formule finale reflète le registre. En anglais britannique :</p>
+      <ul>
+        <li><strong>"Kind regards,"</strong> — le passe-partout professionnel par excellence</li>
+        <li><strong>"Best regards,"</strong> / "Regards," — courant, légèrement plus neutre</li>
+        <li><strong>"Many thanks,"</strong> — lorsque vous demandez un service</li>
+        <li><strong>"Best wishes,"</strong> — chaleureux, pour une relation établie</li>
+      </ul>
+      <p><strong>Règle formelle historique :</strong> "Yours sincerely" si vous connaissez le nom du destinataire, "Yours faithfully" si vous avez ouvert par "Dear Sir or Madam". Réservé aujourd'hui aux courriers très formels (candidatures, juridique).</p>
+      <p><strong>À éviter :</strong></p>
+      <ul>
+        <li>❌ "Cordially," — calque de "Cordialement" ; sonne étrange en anglais</li>
+        <li>❌ "Waiting for your answer." — abrupt ; préférez "I look forward to hearing from you."</li>
+      </ul>
+
+      <h2>Les erreurs de francophone les plus courantes</h2>
+      <ul>
+        <li>❌ "I wait your answer." → ✅ "I look forward to your reply."</li>
+        <li>❌ "I ask you to..." (sonne comme un ordre) → ✅ "Could you please..."</li>
+        <li>❌ "Actually, I work in finance." ("actually" = en réalité, pas actuellement) → ✅ "Currently, I work in finance."</li>
+        <li>❌ "I have a doubt." → ✅ "I have a question." / "I'm not sure about..."</li>
+        <li>❌ "Do you have news?" → ✅ "Do you have any updates?"</li>
+        <li>❌ Trop de formalité : les longues formules à la française ("Je vous prie d'agréer...") n'ont pas d'équivalent — un simple "Kind regards" suffit.</li>
+      </ul>
+
+      <h2>Un modèle complet</h2>
+      <p>Voici un email de relance client, prêt à adapter :</p>
+      <p>
+        <em>Subject: Follow-up: proposal for the March campaign</em><br><br>
+        Dear Ms Laurent,<br><br>
+        I hope you're well. I'm following up on the proposal I sent last week regarding the March campaign.<br><br>
+        Please let me know if you have any questions, or if you'd like to arrange a quick call to discuss the details. I'd be happy to adjust the scope to fit your budget.<br><br>
+        I look forward to hearing from you.<br><br>
+        Kind regards,<br>
+        Antony Addy
+      </p>
+
+      <h2>En résumé</h2>
+      <p>Un bon email professionnel en anglais est <strong>clair, concis et cohérent dans son registre</strong>. Retenez trois réflexes : allez droit au but, choisissez une salutation et une formule de clôture assorties, et méfiez-vous des calques du français ("enclosed", "actually", "I wait"). Avec quelques formules solides en tête, vous gagnez immédiatement en aisance et en crédibilité à l'écrit.</p>
+    `,
+    date: '2026-07-13',
+    author: 'Antony Addy',
+    category: 'Communication',
+    readTime: '8 min',
+    description: "Comment rédiger un email professionnel en anglais : structure, formules d'ouverture et de clôture, phrases utiles par situation et erreurs fréquentes des francophones.",
+    ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
+  },
+  {
     id: 'present-simple-vs-present-continuous',
     title: 'Present Simple vs Present Continuous : Quelle différence ?',
     excerpt: 'Comprendre quand utiliser le Present Simple et le Present Continuous est essentiel pour parler anglais correctement. Découvrez les règles et exemples pratiques.',
