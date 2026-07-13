@@ -13,6 +13,7 @@ import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import ScrollToTop from "./components/ScrollToTop";
 import PrefetchRoutes from "./components/PrefetchRoutes";
+import UmamiAnalytics from "./components/UmamiAnalytics";
 import Layout from "./components/Layout";
 import { HeroSkeleton, CardSkeleton } from "./components/SkeletonLoader";
 
@@ -52,6 +53,7 @@ export const AppShell = () => (
           <LanguageProvider>
             <ScrollToTop />
             <PrefetchRoutes />
+            <UmamiAnalytics />
             <Toaster />
             <Sonner />
             <DiagnosticsPanel />

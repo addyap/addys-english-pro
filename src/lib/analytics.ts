@@ -16,25 +16,24 @@ type EventParams = {
 };
 
 /**
- * Track custom events to Google Analytics
+ * Track a custom event to Umami (self-hosted, cookieless).
+ *
+ * No-op until the Umami script is loaded (see src/components/UmamiAnalytics.tsx),
+ * which only happens when VITE_UMAMI_SRC + VITE_UMAMI_WEBSITE_ID are configured.
+ * Until then every call is a safe no-op, so the site works identically with or
+ * without analytics wired up.
  */
 export const trackEvent = (
   eventName: string,
   params?: EventParams
 ): void => {
-  if (typeof window === 'undefined' || !window.gtag) {
-    console.log('[Analytics] Event tracked (GA not loaded):', eventName, params);
-    return;
+  if (typeof window === 'undefined' || !window.umami) return;
+
+  try {
+    window.umami.track(eventName, params as Record<string, unknown> | undefined);
+  } catch {
+    /* never let analytics break a user interaction */
   }
-
-  window.gtag('event', eventName, {
-    event_category: params?.category,
-    event_label: params?.label,
-    value: params?.value,
-    ...params,
-  });
-
-  console.log('[Analytics] Event tracked:', eventName, params);
 };
 
 /**
