@@ -6,7 +6,6 @@ import { MessageSquare, Menu, X, ChevronDown } from 'lucide-react';
 import { ScrollProgressBar } from "@/components/Effects";
 import SiteLogo from "@/components/SiteLogo";
 import Breadcrumbs from '@/components/Breadcrumbs';
-import { usePageTracking } from '@/hooks/usePageTracking';
 
 import { trackEvent } from '@/lib/analytics';
 import { WHATSAPP_PREFILLED_URL } from '@/lib/whatsapp';
@@ -45,8 +44,6 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
   // Public marketing site is always French.
   const t = (key: string, fallback?: string) =>
     tRaw(key, { lng: 'fr', defaultValue: fallback }) as string;
-
-  usePageTracking();
 
   const audienceActive = AUDIENCE_LINKS.some(a => a.href === location.pathname);
 

@@ -7,10 +7,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AppErrorBoundary } from "./components/AppErrorBoundary";
 import DiagnosticsPanel from "./components/DiagnosticsPanel";
-import Analytics from "./components/Analytics";
 import OfflineBanner from "./components/OfflineBanner";
 import A11yProvider from "./components/A11yProvider";
-import CookieConsent from "./components/CookieConsent";
 import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import ScrollToTop from "./components/ScrollToTop";
@@ -54,12 +52,10 @@ export const AppShell = () => (
           <LanguageProvider>
             <ScrollToTop />
             <PrefetchRoutes />
-            <Analytics />
             <Toaster />
             <Sonner />
             <DiagnosticsPanel />
             <OfflineBanner />
-            <CookieConsent />
             <PWAInstallPrompt />
             <Suspense fallback={<PageLoader />}>
               <Outlet />
