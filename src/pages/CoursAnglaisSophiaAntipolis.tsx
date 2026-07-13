@@ -14,6 +14,8 @@ const CoursAnglaisSophiaAntipolis = () => (
       title: "Cours d'anglais Sophia Antipolis — Formateur natif britannique",
       description: "Formations d'anglais sur-mesure à Sophia Antipolis pour équipes tech et professionnels internationaux. Présentiel sur site ou distance.",
       canonical: "https://www.antonyaddy.com/cours-anglais-sophia-antipolis",
+      geoRegion: "FR-06",
+      geoPlacename: "Sophia Antipolis, Alpes-Maritimes, France",
     }}
     city="Sophia Antipolis"
     h1="Anglais professionnel à Sophia Antipolis avec un formateur britannique"

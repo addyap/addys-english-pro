@@ -14,6 +14,8 @@ const CoursAnglaisAntibes = () => (
       title: "Cours d'anglais Antibes — Formateur natif britannique",
       description: "Cours d'anglais sur-mesure à Antibes, Juan-les-Pins et le bassin antibois. Formateur natif britannique certifié FPA. Présentiel ou distance.",
       canonical: "https://www.antonyaddy.com/cours-anglais-antibes",
+      geoRegion: "FR-06",
+      geoPlacename: "Antibes, Alpes-Maritimes, France",
     }}
     city="Antibes"
     h1="Apprenez l'anglais à Antibes avec un formateur britannique"

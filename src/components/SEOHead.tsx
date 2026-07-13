@@ -65,6 +65,8 @@ export type SEOProps = {
   dateModified?: string;
   jsonLd?: unknown | unknown[];
   author?: string;
+  geoRegion?: string;
+  geoPlacename?: string;
   section?: string;
   tags?: string[];
 };
@@ -135,6 +137,8 @@ export default function SEOHead(props: SEOProps) {
     dateModified,
     jsonLd,
     author = "Antony Addy",
+    geoRegion = "FR-83",
+    geoPlacename = "Fréjus, Var & Alpes-Maritimes, France",
     section,
     tags,
   } = props;
@@ -211,10 +215,10 @@ export default function SEOHead(props: SEOProps) {
 
   // Additional
   if (author) push({ name: "author", content: author });
-  push({ name: "geo.region", content: "FR-83" });
+  push({ name: "geo.region", content: geoRegion });
   push({
     name: "geo.placename",
-    content: "Fréjus, Var & Alpes-Maritimes, France",
+    content: geoPlacename,
   });
 
   // Link tags (canonical + hreflangs) — also via props for v1 reliability.

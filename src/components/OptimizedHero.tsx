@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { trackEvent } from "@/lib/analytics";
 import { WHATSAPP_PREFILLED_URL } from "@/lib/whatsapp";
+import { YEARS_OF_EXPERIENCE } from "@/lib/utils";
 
 export default function OptimizedHero() {
   return (
@@ -71,7 +72,7 @@ export default function OptimizedHero() {
             <li aria-hidden="true" className="hidden md:inline text-primary-foreground/40">•</li>
             <li className="inline-flex items-center gap-2">
               <span aria-hidden="true">📅</span>
-              <span>20+ ans d'enseignement en France</span>
+              <span>{YEARS_OF_EXPERIENCE}+ ans d'enseignement en France</span>
             </li>
           </ul>
         </header>

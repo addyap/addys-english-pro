@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MessageSquare, Mail, MapPin, Clock, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { MessageSquare, Mail, Phone, MapPin, Clock, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { trackFormSubmission, trackFormError, trackWhatsAppClick, trackEmailClick, trackEvent } from '@/lib/analytics';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
@@ -403,8 +403,8 @@ const Contact = () => {
                     <Mail className="h-5 w-5 text-blue-600 mr-3" />
                     <div>
                       <p className="font-medium text-gray-900">Email</p>
-                      <a 
-                        href="mailto:formations@antonyaddy.com" 
+                      <a
+                        href="mailto:formations@antonyaddy.com"
                         className="text-blue-600 hover:text-blue-800 transition-colors"
                         onClick={trackEmailClick}
                       >
@@ -412,7 +412,20 @@ const Contact = () => {
                       </a>
                     </div>
                   </div>
-                  
+
+                  <div className="flex items-center">
+                    <Phone className="h-5 w-5 text-blue-600 mr-3" />
+                    <div>
+                      <p className="font-medium text-gray-900">Téléphone</p>
+                      <a
+                        href="tel:+33649829826"
+                        className="text-blue-600 hover:text-blue-800 transition-colors"
+                      >
+                        +33 6 49 82 98 26
+                      </a>
+                    </div>
+                  </div>
+
                   <div className="flex items-center">
                     <MapPin className="h-5 w-5 text-blue-600 mr-3" />
                     <div>

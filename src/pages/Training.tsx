@@ -6,6 +6,7 @@ import SEOHead from '../components/SEOHead';
 import { FadeInSection, Accordion } from '../components/Effects';
 import { CourseSchema } from '@/lib/seo/structuredData';
 import { seoMetadata } from '../utils/seoMetadata';
+import { getCurrentMonthYearFR } from '@/lib/utils';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { trackEvent } from '@/lib/analytics';
 import { WHATSAPP_PREFILLED_URL } from '@/lib/whatsapp';
@@ -512,7 +513,7 @@ const Training = () => {
               </div>
               
               <p className="text-xs text-muted-foreground border-t border-border pt-4">
-                <strong>Dernière mise à jour :</strong> Mars 2026
+                <strong>Dernière mise à jour :</strong> {getCurrentMonthYearFR()}
               </p>
             </div>
           </FadeInSection>

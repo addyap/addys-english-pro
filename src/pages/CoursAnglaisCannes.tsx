@@ -14,6 +14,8 @@ const CoursAnglaisCannes = () => (
       title: "Cours d'anglais Cannes — Formateur natif britannique",
       description: "Cours d'anglais sur-mesure à Cannes, Mougins, Mandelieu et Le Cannet. Formateur natif britannique certifié FPA. Présentiel ou distance.",
       canonical: "https://www.antonyaddy.com/cours-anglais-cannes",
+      geoRegion: "FR-06",
+      geoPlacename: "Cannes, Alpes-Maritimes, France",
     }}
     city="Cannes"
     h1="Apprenez l'anglais à Cannes avec un formateur britannique"

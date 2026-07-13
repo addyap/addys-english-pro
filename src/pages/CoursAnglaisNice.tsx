@@ -14,6 +14,8 @@ const CoursAnglaisNice = () => (
       title: "Cours d'anglais Nice — Formateur natif britannique",
       description: "Cours d'anglais sur-mesure à Nice et dans la métropole niçoise. Formateur natif britannique certifié FPA. Entreprises, cadres, particuliers, étudiants.",
       canonical: "https://www.antonyaddy.com/cours-anglais-nice",
+      geoRegion: "FR-06",
+      geoPlacename: "Nice, Alpes-Maritimes, France",
     }}
     city="Nice"
     h1="Apprenez l'anglais à Nice avec un formateur britannique"
