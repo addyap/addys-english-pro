@@ -252,7 +252,7 @@ const Training = () => {
               <ul className="grid sm:grid-cols-2 gap-3">
                 <li>
                   <a
-                    href="https://anglaisadistance.fr/conversation-trainer?ctx=ACOM"
+                    href="https://anglaisadistance.fr/dialogues?ctx=ACOM"
                     target="_blank"
                     rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
@@ -266,7 +266,7 @@ const Training = () => {
                 </li>
                 <li>
                   <a
-                    href="https://anglaisadistance.fr/conversation-trainer?ctx=VPL"
+                    href="https://anglaisadistance.fr/dialogues?ctx=VPL"
                     target="_blank"
                     rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
@@ -280,7 +280,7 @@ const Training = () => {
                 </li>
                 <li>
                   <a
-                    href="https://anglaisadistance.fr/conversation-trainer?ctx=AD"
+                    href="https://anglaisadistance.fr/dialogues?ctx=AD"
                     target="_blank"
                     rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
@@ -294,7 +294,7 @@ const Training = () => {
                 </li>
                 <li>
                   <a
-                    href="https://anglaisadistance.fr/conversation-trainer?ctx=MEDICAL"
+                    href="https://anglaisadistance.fr/dialogues?ctx=MEDICAL"
                     target="_blank"
                     rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
@@ -310,7 +310,7 @@ const Training = () => {
 
               <div className="mt-5 pt-5 border-t border-border">
                 <a
-                  href="https://anglaisadistance.fr/conversation-trainer"
+                  href="https://anglaisadistance.fr/dialogues"
                   target="_blank"
                   rel="noopener"
                   className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
