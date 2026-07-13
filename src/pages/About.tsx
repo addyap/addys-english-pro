@@ -138,7 +138,7 @@ const About = () => {
                   </h3>
                   <ul className="text-muted-foreground space-y-1 text-sm">
                     <li>• Titre professionnel FPA (niveau 5, 2017)</li>
-                    <li>• 20+ années d'enseignement en France</li>
+                    <li>• {YEARS_OF_EXPERIENCE}+ années d'enseignement en France</li>
                     <li>• Anglophone natif (Royaume-Uni)</li>
                   </ul>
                 </div>

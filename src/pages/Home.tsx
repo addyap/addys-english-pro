@@ -238,7 +238,7 @@ const Home = () => {
       <section className="bg-background py-6 sm:py-8 border-b border-border" aria-label="Indicateurs de confiance">
         <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
           <div>
-            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">20+</p>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">{YEARS_OF_EXPERIENCE}+</p>
             <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Années d'expérience</p>
           </div>
           <div>

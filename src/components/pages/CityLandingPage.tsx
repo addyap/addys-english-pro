@@ -6,7 +6,7 @@ import SocialProof from '@/components/SocialProof';
 
 export interface CityFAQ { q: string; a: string }
 export interface CityPageProps {
-  seo: { title: string; description: string; canonical: string };
+  seo: { title: string; description: string; canonical: string; geoRegion?: string; geoPlacename?: string };
   city: string;
   h1: string;
   intro: string;
@@ -58,6 +58,8 @@ export const CityLandingPage: React.FC<CityPageProps> = ({
         title={seo.title}
         description={seo.description}
         canonicalUrl={seo.canonical}
+        geoRegion={seo.geoRegion}
+        geoPlacename={seo.geoPlacename}
         jsonLd={[localBusinessJsonLd, faqJsonLd]}
       />
       <div className="min-h-screen bg-background">

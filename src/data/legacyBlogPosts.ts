@@ -50,7 +50,7 @@ export const legacyBlogPosts: Record<string, ArticleData> = {
       <h2>Conclusion</h2>
       <p>Investir dans sa formation en anglais professionnel, c'est investir dans son avenir professionnel. Les opportunités s'ouvrent à ceux qui maîtrisent cette compétence devenue incontournable.</p>
     `,
-    date: '2025-01-15',
+    date: '2026-01-15',
     author: 'Antony Addy',
     category: 'Conseils carrière',
     readTime: '5 min',
@@ -92,7 +92,7 @@ export const legacyBlogPosts: Record<string, ArticleData> = {
       <h2>Comment éviter ces erreurs ?</h2>
       <p>La clé est la pratique consciente et la correction systématique. Un formateur expérimenté peut identifier vos erreurs récurrentes et vous proposer des exercices ciblés pour les corriger durablement.</p>
     `,
-    date: '2025-01-10',
+    date: '2026-01-10',
     author: 'Antony Addy',
     category: 'Grammaire & Vocabulaire',
     readTime: '7 min',
@@ -154,7 +154,7 @@ export const legacyBlogPosts: Record<string, ArticleData> = {
       <h2>Conclusion</h2>
       <p>Maîtriser ces différents registres demande de la pratique. L'idéal est de s'entraîner dans des situations réalistes avec un formateur qui peut corriger en temps réel.</p>
     `,
-    date: '2025-01-05',
+    date: '2026-01-05',
     author: 'Antony Addy',
     category: 'Communication',
     readTime: '6 min',
