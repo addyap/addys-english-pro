@@ -1,6 +1,6 @@
 import React from 'react';
 import { YEARS_OF_EXPERIENCE } from '@/lib/utils';
-import { Award, BookOpen, Users, Globe, CheckCircle, Target, MessageCircle, Mail, Building, GraduationCap, MapPin, Phone, Factory, School, University, Briefcase } from 'lucide-react';
+import { Award, BookOpen, Users, Globe, CheckCircle, Target, MessageCircle, Mail, GraduationCap, MapPin, Phone, Factory, School, University, Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import { TypingText } from '../components/TypingText';
@@ -111,7 +111,7 @@ const About = () => {
 
               <div className="text-lg text-muted-foreground leading-relaxed mb-6 font-body space-y-4">
                 <p>
-                  <strong className="text-primary">Britannique de naissance</strong>, je vis et travaille en France depuis plus de vingt ans. J'enseigne l'anglais à des adultes dans des contextes professionnels exigeants : entreprises, écoles de commerce, organismes de formation, et accompagnement de demandeurs d'emploi via France Travail.
+                  <strong className="text-primary">Britannique de naissance</strong>, je vis et travaille en France depuis plus de vingt ans. J'enseigne l'anglais à des adultes dans des contextes professionnels exigeants : entreprises, écoles de commerce, organismes de formation, et accompagnement de personnes en reconversion ou en recherche d'emploi.
                 </p>
                 <p>
                   Ma certification <strong className="text-primary">Formateur Professionnel d'Adultes (FPA)</strong>, obtenue en 2017, atteste d'une pédagogie rigoureuse, centrée sur les résultats. Je ne vous fais pas mémoriser des règles abstraites — je vous aide à <em>parler, écrire et comprendre</em> l'anglais dans votre quotidien professionnel.
@@ -197,11 +197,6 @@ const About = () => {
                 <div className="flex items-center">
                   <University className="h-5 w-5 text-accent mr-2" />
                   <span className="font-medium text-primary">Universités</span>
-                </div>
-
-                <div className="flex items-center">
-                  <Building className="h-5 w-5 text-accent mr-2" />
-                  <span className="font-medium text-primary">Centres de formation France Travail</span>
                 </div>
 
                 <div className="flex items-center">
