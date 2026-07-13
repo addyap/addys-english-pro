@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { YEARS_OF_EXPERIENCE, getCurrentMonthYearFR } from '@/lib/utils';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, MapPin, Headphones, Sparkles, MessageCircle, Mail, ArrowRight, Handshake, Mic, PenTool, UserCheck, Search } from 'lucide-react';
+import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, Headphones, Sparkles, MessageCircle, Mail, ArrowRight, Handshake, Mic, PenTool, UserCheck, Search } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import OptimizedHero from '../components/OptimizedHero';
@@ -175,20 +175,20 @@ const Home = () => {
     description: 'Parcours personnalisés adaptés à vos objectifs individuels et votre rythme d\'apprentissage.'
   }, {
     icon: Target,
-    title: 'Actions de Formation Conventionnées',
-    description: 'Interventions via des organismes certifiés pour répondre aux besoins spécifiques des entreprises et institutions.'
+    title: 'Sous-traitance pour organismes de formation',
+    description: 'J\'interviens comme formateur pour des organismes et centres de formation partenaires, dans le cadre de leurs propres dispositifs.'
   }, {
     icon: Users,
-    title: 'Dispositifs d\'Accès à l\'Emploi',
-    description: 'Préparation des publics en reconversion dans le cadre des dispositifs pilotés par les OPCO ou France Travail.'
+    title: 'Reconversion & recherche d\'emploi',
+    description: 'Formations pour les personnes en reconversion ou en recherche d\'emploi souhaitant valoriser leur anglais professionnel.'
   }, {
     icon: GraduationCap,
     title: 'Formations Bachelor & Master',
     description: 'Soutien aux étudiants et alternants pour maîtriser l\'anglais académique et professionnel, en formation continue.'
   }, {
     icon: Settings,
-    title: 'Autres Dispositifs Spécialisés',
-    description: 'Interventions via organismes partenaires sur les dispositifs VAE, Agefiph, missions locales, etc.'
+    title: 'Préparation aux certifications',
+    description: 'Préparation ciblée aux certifications d\'anglais (Cambridge, TOEIC, etc.) selon vos objectifs.'
   }];
 
   const clientCategories = [{
@@ -206,9 +206,6 @@ const Home = () => {
   }, {
     icon: University,
     title: 'Universités'
-  }, {
-    icon: MapPin,
-    title: 'Centres de formation France Travail'
   }, {
     icon: Globe,
     title: 'Écoles de langues'
