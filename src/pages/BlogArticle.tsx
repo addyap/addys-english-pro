@@ -12,8 +12,10 @@ const sanitize: (html: string) => string =
     ? (html) => dpAny.sanitize!(html)
     : (html) => html;
 import { useParams, Link } from 'react-router-dom';
-import { Calendar, User, ArrowLeft, BookOpen, GraduationCap, ArrowRight } from 'lucide-react';
+import { Calendar, User, ArrowLeft, BookOpen, GraduationCap, ArrowRight, MessageSquare } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { WHATSAPP_PREFILLED_URL } from '@/lib/whatsapp';
+import { trackEvent } from '@/lib/analytics';
 import ReadingProgress from '../components/ReadingProgress';
 import SocialShare from '../components/SocialShare';
 import { ArticleSchema } from '@/lib/seo/structuredData';
@@ -219,11 +221,11 @@ const BlogArticle = () => {
                   {/* Soft Commercial CTA */}
                   {showCommercialCTA && (
                     <p className="text-sm text-gray-600 mt-4 italic">
-                      Besoin d'un accompagnement personnalisé ? Découvrez mes{' '}
+                      Vous utilisez l'anglais au travail ? Je propose des{' '}
                       <Link to="/offres-de-formation" className="text-blue-600 hover:underline">
-                        formations d'anglais professionnel
+                        formations d'anglais professionnel sur-mesure
                       </Link>
-                      {' '}adaptées à votre niveau et vos objectifs.
+                      {' '}pour entreprises, cadres et particuliers.
                     </p>
                   )}
                 </div>
@@ -275,28 +277,41 @@ const BlogArticle = () => {
 
           {/* Author CTA */}
           <div className="bg-blue-50 rounded-lg p-8">
-            <div className="text-center">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Besoin d'aide pour progresser en anglais ?
+            <div className="text-center max-w-2xl mx-auto">
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Passez à l'anglais professionnel
               </h3>
               <p className="text-gray-600 mb-6">
-                Antony Addy propose des formations personnalisées en anglais professionnel, 
-                adaptées à votre secteur et à vos objectifs.
+                Antony Addy, formateur natif britannique certifié FPA, conçoit des formations
+                d'anglais sur-mesure autour de vos situations réelles — réunions, présentations,
+                emails, entretiens. En visio ou en présentiel dans le Var et les Alpes-Maritimes.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+                <a
+                  href={WHATSAPP_PREFILLED_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent('whatsapp_cta_click', { page: 'BlogArticle', target: WHATSAPP_PREFILLED_URL, location: 'article-footer', prefilled: true })}
+                  className="inline-flex items-center justify-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                >
+                  <MessageSquare className="h-5 w-5" aria-hidden="true" />
+                  Échanger sur WhatsApp
+                </a>
                 <Link
                   to="/contact"
-                  className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                  className="inline-flex items-center justify-center border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors"
                 >
                   Me contacter
                 </Link>
-                <Link
-                  to="/offres-de-formation"
-                  className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors"
-                >
-                  Voir les formations
-                </Link>
               </div>
+              <p className="text-sm text-gray-600">
+                Vous êtes :{' '}
+                <Link to="/anglais-entreprise" className="text-blue-600 hover:underline font-medium">une entreprise</Link>
+                {' · '}
+                <Link to="/anglais-cadres" className="text-blue-600 hover:underline font-medium">un cadre ou dirigeant</Link>
+                {' · '}
+                <Link to="/anglais-particuliers" className="text-blue-600 hover:underline font-medium">un particulier</Link>
+              </p>
             </div>
           </div>
         </div>

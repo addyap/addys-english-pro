@@ -248,9 +248,9 @@ export function getRelatedContent(postId: string, category: string): RelatedCont
     practiceSection = `Pour consolider vos acquis sur ${exerciseContext}, passez à la pratique avec nos exercices interactifs. Chaque exercice propose 10 questions avec corrections détaillées. Nos textes de compréhension écrite vous permettent de voir ces points de grammaire en contexte.`;
   }
 
-  // Stable CTA logic: always for career/communication categories, ~30% for others via hash
-  const alwaysShowCTACategories = ['Conseils carrière', 'Communication'];
-  const showCommercialCTA = alwaysShowCTACategories.includes(category) || (stableHash(postId) % 100 < 30);
+  // The blog is a top-of-funnel channel: every article routes readers to a
+  // relevant service, so the commercial CTA now shows on all posts.
+  const showCommercialCTA = true;
 
   return {
     practiceSection,
