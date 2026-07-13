@@ -38,7 +38,7 @@ const ThankYou: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="https://anglaisadistance.fr/conversation-trainer"
+              href="https://anglaisadistance.fr/dialogues"
               target="_blank"
               rel="noopener"
               className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"

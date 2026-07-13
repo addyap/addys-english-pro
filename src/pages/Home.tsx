@@ -423,10 +423,10 @@ const Home = () => {
                     <li>Adapté à votre niveau, du A1 au C2</li>
                   </ul>
                   <a
-                    href="https://anglaisadistance.fr/conversation-trainer"
+                    href="https://anglaisadistance.fr/dialogues"
                     target="_blank"
                     rel="noopener"
-                    onClick={() => trackEvent('home_ai_card_cta_click', { target: 'https://anglaisadistance.fr/conversation-trainer' })}
+                    onClick={() => trackEvent('home_ai_card_cta_click', { target: 'https://anglaisadistance.fr/dialogues' })}
                     className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 min-h-[44px] rounded-lg font-semibold hover:bg-primary/90 transition-colors"
                   >
                     Démarrer avec mon système IA ↗
