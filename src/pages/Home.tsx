@@ -304,7 +304,7 @@ const Home = () => {
                 <p className="text-lg text-muted-foreground leading-relaxed mb-4 font-body">
                   <strong className="text-primary">Antony Addy</strong> — Britannique, certifié{' '}
                   <a 
-                    href="https://www.afpa.fr/formation/titre-professionnel-formateur-professionnel-adultes" 
+                    href="https://www.afpa.fr/formation-qualifiante/formateur-professionnel-d-adultes"
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-accent hover:underline"

@@ -484,7 +484,7 @@ const Training = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.afpa.fr/formation/titre-professionnel-formateur-professionnel-adultes" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                      <a href="https://www.afpa.fr/formation-qualifiante/formateur-professionnel-d-adultes" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                         Titre FPA (AFPA) ↗
                       </a>
                     </li>
