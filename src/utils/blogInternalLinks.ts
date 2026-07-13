@@ -302,10 +302,14 @@ const exerciseLinkVariants: Record<string, { href: string; label: string }[]> = 
 };
 
 // Reading link variants for anchor text variation
+// The former /ai-reading-comprehension page was retired from anglaisadistance.fr
+// (404). Point instead at /dialogues — the live flagship resource for reading
+// and understanding English in realistic context, which matches the "en contexte"
+// framing of the practice copy above.
 const readingLinkVariants = [
-  { href: 'https://anglaisadistance.fr/ai-reading-comprehension', label: 'Textes de compréhension' },
-  { href: 'https://anglaisadistance.fr/ai-reading-comprehension', label: 'Passages de lecture' },
-  { href: 'https://anglaisadistance.fr/ai-reading-comprehension', label: 'Compréhension écrite' },
+  { href: 'https://anglaisadistance.fr/dialogues', label: 'Dialogues interactifs' },
+  { href: 'https://anglaisadistance.fr/dialogues', label: 'Compréhension en contexte' },
+  { href: 'https://anglaisadistance.fr/dialogues', label: 'Conversations en anglais' },
 ];
 
 /**
