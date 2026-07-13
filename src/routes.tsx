@@ -52,7 +52,6 @@ export const routes: RouteRecord[] = [
           { path: "/cgv", lazy: page(() => import("./pages/CGV")), entry: "src/pages/CGV.tsx" },
 
           // Free resources
-          { path: "/test-de-positionnement", lazy: page(() => import("./pages/TestPositionnement")), entry: "src/pages/TestPositionnement.tsx" },
 
           // Per-audience landing pages
           { path: "/anglais-entreprise", lazy: page(() => import("./pages/AnglaisEntreprise")), entry: "src/pages/AnglaisEntreprise.tsx" },

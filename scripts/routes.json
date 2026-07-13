@@ -19,7 +19,6 @@
     { "path": "/cours-anglais-cannes", "priority": 0.8, "changefreq": "monthly", "title": "Cours d'anglais Cannes" },
     { "path": "/cours-anglais-antibes", "priority": 0.8, "changefreq": "monthly", "title": "Cours d'anglais Antibes" },
     { "path": "/cours-anglais-sophia-antipolis", "priority": 0.8, "changefreq": "monthly", "title": "Cours d'anglais Sophia Antipolis" },
-    { "path": "/test-de-positionnement", "priority": 0.8, "changefreq": "monthly", "title": "Test de positionnement" },
 
     { "path": "/blog/present-simple-vs-present-continuous", "priority": 0.7, "changefreq": "monthly", "title": "Present Simple vs Present Continuous" },
     { "path": "/blog/past-simple-vs-present-perfect", "priority": 0.7, "changefreq": "monthly", "title": "Past Simple vs Present Perfect" },

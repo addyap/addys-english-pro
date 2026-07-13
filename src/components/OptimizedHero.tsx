@@ -104,15 +104,6 @@ export default function OptimizedHero() {
             <span className="relative z-10">Prendre contact sur WhatsApp</span>
           </a>
 
-          {/* SECONDARY CTA — Évaluer mon niveau gratuitement */}
-          <Link
-            to="/test-de-positionnement"
-            onClick={() => trackEvent('hero_secondary_cta_click', { page: 'home', target: '/test-de-positionnement' })}
-            className="group relative overflow-hidden border-2 border-primary-foreground/80 text-primary-foreground bg-transparent px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-base hover:bg-primary-foreground/10 hover:border-primary-foreground transition-all duration-300 font-body backdrop-blur-sm transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-ring/30 active:scale-100"
-            aria-label="Évaluer mon niveau d'anglais gratuitement avec le test de positionnement"
-          >
-            <span className="relative z-10">Évaluer mon niveau gratuitement</span>
-          </Link>
         </nav>
 
         {/* Microcopy reassurance under CTAs */}
