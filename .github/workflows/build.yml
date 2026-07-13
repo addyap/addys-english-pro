@@ -7,6 +7,11 @@ on:
   pull_request:
     branches:
       - main
+  # Weekly run to catch external-link rot — a third party removing a page
+  # between PRs. The external-link check only fails on a definitive 404/410,
+  # so a scheduled red build is a genuine dead link, not runner flakiness.
+  schedule:
+    - cron: '0 6 * * 1' # Mondays 06:00 UTC
 
 jobs:
   build:
@@ -67,7 +72,16 @@ jobs:
 
           # Run link checker
           PW_BASE_URL=http://localhost:4173 node scripts/check-links.mjs
-          
+
           # Cleanup
           kill $SERVER_PID 2>/dev/null || true
+
+      # The layer the two checks above skip by design: they never leave the
+      # origin, so a link to a retired anglaisadistance.fr / afpa.fr page ships
+      # unnoticed (which is exactly what happened, repeatedly). This crawls
+      # every off-site URL in the build + the off-site redirect destinations in
+      # vercel.json and fails ONLY on a definitive 404/410. Anti-bot statuses
+      # (403/999) and transient errors (5xx/timeout) are reported, never failed.
+      - name: 🌐 Check external links for 404s
+        run: node scripts/check-external-links.mjs
 
