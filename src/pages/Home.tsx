@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { YEARS_OF_EXPERIENCE, getCurrentMonthYearFR } from '@/lib/utils';
+import { YEARS_OF_EXPERIENCE, EXPERIENCE_FLOOR, getCurrentMonthYearFR } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, Headphones, Sparkles, MessageCircle, Mail, ArrowRight, Handshake, Mic, PenTool, UserCheck, Search } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
@@ -265,7 +265,7 @@ const Home = () => {
           <p className="text-muted-foreground text-sm leading-relaxed font-body">
             Antony Addy propose des <strong className="text-primary">formations d'anglais pour adultes</strong> adaptées aux professionnels, 
             en présentiel dans le Var et les Alpes-Maritimes (Fréjus, Saint-Raphaël, Cannes, Antibes, Nice, Monaco) ou à distance partout en France et dans le monde. 
-            Britannique natif basé à Fréjus, certifié Formateur Professionnel d'Adultes depuis 2017 et fort de plus de {YEARS_OF_EXPERIENCE} ans d'enseignement (notamment à l'EDJ Nice), il accompagne particuliers, 
+            Britannique natif basé à Fréjus, certifié Formateur Professionnel d'Adultes depuis 2017 et fort de plus de {EXPERIENCE_FLOOR} ans d'enseignement (notamment à l'EDJ Nice), il accompagne particuliers, 
             cadres, entreprises et centres de formation dans l'amélioration de leurs compétences en anglais professionnel.{' '}
             <Link to="/offres-de-formation" className="text-accent hover:underline font-medium">Découvrir les formations</Link>{' • '}
             <Link to="/contact" className="text-accent hover:underline font-medium">Demander un devis gratuit</Link>
@@ -311,7 +311,7 @@ const Home = () => {
                   >
                     Formateur Professionnel d'Adultes
                   </a>{' '}
-                  depuis 2017, plus de {YEARS_OF_EXPERIENCE} ans d'expérience en formation d'anglais.
+                  depuis 2017, plus de {EXPERIENCE_FLOOR} ans d'expérience en formation d'anglais.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
                   J'aide les professionnels à communiquer avec confiance en anglais : réunions, négociations, présentations. Mon approche est directe, bienveillante et adaptée à vos enjeux réels.

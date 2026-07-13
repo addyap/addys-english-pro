@@ -1,5 +1,6 @@
 import React from 'react';
 import CityLandingPage from '@/components/pages/CityLandingPage';
+import { EXPERIENCE_FLOOR } from '@/lib/utils';
 
 const OTHER_CITIES = [
   { name: 'Fréjus', path: '/cours-anglais-frejus' },
@@ -20,7 +21,7 @@ const CoursAnglaisNice = () => (
     city="Nice"
     h1="Apprenez l'anglais à Nice avec un formateur britannique"
     intro="Je propose des cours d'anglais sur-mesure à Nice et dans toute la métropole niçoise. Formations en présentiel pour les entreprises, cadres, particuliers et étudiants niçois, ou à distance selon votre préférence."
-    whoIAm="Antony Addy, formateur d'anglais natif britannique, certifié FPA, plus de 20 ans d'expérience. Basé à Fréjus mais régulièrement présent à Nice — j'enseigne notamment à l'École Du Journalisme de Nice, donc le déplacement fait partie de mon quotidien."
+    whoIAm={`Antony Addy, formateur d'anglais natif britannique, certifié FPA, plus de ${EXPERIENCE_FLOOR} ans d'expérience. Basé à Fréjus mais régulièrement présent à Nice — j'enseigne notamment à l'École Du Journalisme de Nice, donc le déplacement fait partie de mon quotidien.`}
     howItWorks="Présentiel à Nice ou distance, vous choisissez. Pour le présentiel, je me déplace sur place — dans vos locaux d'entreprise, à votre domicile, ou sur un lieu neutre. Première séance dédiée à l'évaluation et à la construction du programme. Planning adaptable, y compris créneaux tôt le matin ou en fin de journée pour les cadres."
     areaServed={['Nice', 'Saint-Laurent-du-Var', 'Cagnes-sur-Mer', 'Villefranche-sur-Mer', 'Beaulieu-sur-Mer']}
     faqs={[

@@ -1,5 +1,6 @@
 import React from 'react';
 import CityLandingPage from '@/components/pages/CityLandingPage';
+import { EXPERIENCE_FLOOR } from '@/lib/utils';
 
 const OTHER_CITIES = [
   { name: 'Fréjus', path: '/cours-anglais-frejus' },
@@ -20,7 +21,7 @@ const CoursAnglaisAntibes = () => (
     city="Antibes"
     h1="Apprenez l'anglais à Antibes avec un formateur britannique"
     intro="Je propose des cours d'anglais sur-mesure à Antibes, Juan-les-Pins, et dans tout le bassin antibois. Formations en présentiel ou à distance, conçues autour de votre situation et de vos objectifs."
-    whoIAm="Antony Addy, formateur d'anglais natif britannique, certifié FPA, plus de 20 ans d'expérience. Basé à Fréjus, j'interviens régulièrement à Antibes auprès de professionnels, particuliers et étudiants."
+    whoIAm={`Antony Addy, formateur d'anglais natif britannique, certifié FPA, plus de ${EXPERIENCE_FLOOR} ans d'expérience. Basé à Fréjus, j'interviens régulièrement à Antibes auprès de professionnels, particuliers et étudiants.`}
     howItWorks="Présentiel à Antibes, Juan-les-Pins et communes proches, ou à distance. Première séance dédiée à l'évaluation et à la définition d'un programme adapté. Planning flexible. Pour les entreprises antiboises, intervention dans vos locaux dans le cadre d'une convention de formation."
     areaServed={['Antibes', 'Juan-les-Pins', 'Biot', 'Vallauris', 'Villeneuve-Loubet']}
     faqs={[

@@ -20,6 +20,12 @@ export interface ArticleData {
   ogImage: string;
 }
 
+// Mirror of EXPERIENCE_FLOOR in src/lib/utils.ts, computed locally rather than
+// imported: scripts/generate-sitemap.mjs loads this file under Node's native TS
+// type-stripping, which can't resolve the '@/' alias. Keep the 2005 start year
+// in sync with src/lib/utils.ts.
+const EXPERIENCE_FLOOR = Math.floor((new Date().getFullYear() - 2005) / 10) * 10;
+
 export const legacyBlogPosts: Record<string, ArticleData> = {
   'anglais-professionnel-2025': {
     title: "Pourquoi l'anglais professionnel est une compétence essentielle en 2025",
@@ -60,7 +66,7 @@ export const legacyBlogPosts: Record<string, ArticleData> = {
   'erreurs-francophones': {
     title: 'Les erreurs fréquentes chez les francophones – et comment les éviter',
     content: `
-      <p>En tant que formateur d'anglais pour francophones depuis plus de 20 ans, j'ai identifié les erreurs les plus récurrentes. Bonne nouvelle : elles sont prévisibles et donc évitables !</p>
+      <p>En tant que formateur d'anglais pour francophones depuis plus de ${EXPERIENCE_FLOOR} ans, j'ai identifié les erreurs les plus récurrentes. Bonne nouvelle : elles sont prévisibles et donc évitables !</p>
 
       <h2>Les faux-amis : ces mots qui nous trompent</h2>
       <p>Les faux-amis sont probablement le piège le plus courant. Voici quelques exemples classiques :</p>

@@ -1,5 +1,6 @@
 import React from 'react';
 import AudienceLandingPage from '@/components/pages/AudienceLandingPage';
+import { EXPERIENCE_FLOOR } from '@/lib/utils';
 
 const AnglaisParticuliers = () => (
   <AudienceLandingPage
@@ -15,7 +16,7 @@ const AnglaisParticuliers = () => (
       "La première séance sert à faire connaissance et à comprendre où vous en êtes : votre niveau actuel, vos objectifs personnels, vos préférences d'apprentissage, le temps que vous pouvez y consacrer. Pas de test scolaire stressant — une vraie conversation.",
       "Je construis ensuite un programme adapté à votre situation. L'approche est conversationnelle et progressive : on parle vraiment anglais dès le début, à votre niveau, avec des sujets qui vous intéressent. La grammaire et le vocabulaire arrivent au service de la communication, pas l'inverse.",
       "Le rythme s'adapte à votre vie : hebdomadaire pour une progression régulière, bimensuel pour un entretien, ou intensif sur une période donnée si vous avez un projet précis (voyage, expatriation, prise de poste). Présentiel ou distance, selon ce qui vous convient.",
-      "Vous bénéficiez d'un suivi régulier de votre progression. Pas de pression d'examen, pas de jugement — juste un accompagnement bienveillant et exigeant d'un formateur natif britannique avec plus de 20 ans d'expérience auprès d'adultes.",
+      `Vous bénéficiez d'un suivi régulier de votre progression. Pas de pression d'examen, pas de jugement — juste un accompagnement bienveillant et exigeant d'un formateur natif britannique avec plus de ${EXPERIENCE_FLOOR} ans d'expérience auprès d'adultes.`,
     ]}
     benefits={[
       "Un programme conçu autour de vos objectifs personnels",

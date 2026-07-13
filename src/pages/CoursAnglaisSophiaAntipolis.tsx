@@ -1,5 +1,6 @@
 import React from 'react';
 import CityLandingPage from '@/components/pages/CityLandingPage';
+import { EXPERIENCE_FLOOR } from '@/lib/utils';
 
 const OTHER_CITIES = [
   { name: 'Fréjus', path: '/cours-anglais-frejus' },
@@ -20,7 +21,7 @@ const CoursAnglaisSophiaAntipolis = () => (
     city="Sophia Antipolis"
     h1="Anglais professionnel à Sophia Antipolis avec un formateur britannique"
     intro="Je propose des cours d'anglais sur-mesure aux professionnels et entreprises de Sophia Antipolis, premier technopôle d'Europe. Formations en présentiel sur site ou à distance, particulièrement adaptées aux équipes internationales et environnements technologiques."
-    whoIAm="Antony Addy, formateur d'anglais natif britannique, certifié FPA, plus de 20 ans d'expérience. Basé à Fréjus, j'interviens régulièrement sur Sophia Antipolis auprès d'équipes techniques, R&D, et de profils internationaux."
+    whoIAm={`Antony Addy, formateur d'anglais natif britannique, certifié FPA, plus de ${EXPERIENCE_FLOOR} ans d'expérience. Basé à Fréjus, j'interviens régulièrement sur Sophia Antipolis auprès d'équipes techniques, R&D, et de profils internationaux.`}
     howItWorks="Présentiel sur site à Sophia Antipolis (dans vos bureaux) ou à distance — la distance fonctionne particulièrement bien pour les équipes distribuées. Convention de formation pour les entreprises. Programmes adaptés aux contextes tech : standups en anglais, présentations techniques, communication avec équipes internationales, documentation."
     areaServed={['Sophia Antipolis', 'Valbonne', 'Mougins', 'Antibes', 'Biot']}
     faqs={[

@@ -1,3 +1,5 @@
+import { EXPERIENCE_FLOOR } from '@/lib/utils';
+
 interface SEOMetadata {
   title: string;
   description: string;
@@ -27,7 +29,7 @@ export const seoMetadata: Record<string, SEOMetadata> = {
   },
   about: {
     title: "Qui suis-je | Antony Addy, Formateur FPA",
-    description: "Britannique natif certifié Formateur Professionnel d'Adultes depuis 2017. Plus de 20 ans d'expérience en formation d'anglais professionnel.",
+    description: `Britannique natif certifié Formateur Professionnel d'Adultes depuis 2017. Plus de ${EXPERIENCE_FLOOR} ans d'expérience en formation d'anglais professionnel.`,
     canonical: `${SITE_URL}/qui-je-suis`,
     h1: "Antony Addy – Formateur Professionnel d'Adultes",
     keywords: ["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "formation adultes", "Var", "Alpes-Maritimes"],

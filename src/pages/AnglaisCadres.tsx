@@ -1,5 +1,6 @@
 import React from 'react';
 import AudienceLandingPage from '@/components/pages/AudienceLandingPage';
+import { EXPERIENCE_FLOOR } from '@/lib/utils';
 
 const AnglaisCadres = () => (
   <AudienceLandingPage
@@ -15,7 +16,7 @@ const AnglaisCadres = () => (
       "Tout commence par une session d'évaluation pour cerner précisément le contexte : votre poste, vos interlocuteurs, les situations à fort enjeu, votre niveau actuel, vos points de blocage. À partir de là, je construis un parcours strictement individuel.",
       "Le planning s'adapte à votre charge de travail réelle : matin tôt, fin de journée, week-end si nécessaire. Les séances peuvent être hebdomadaires régulières, intensives autour d'une échéance précise, ou ponctuelles pour préparer un évènement particulier (deal, comité, prise de poste).",
       "Les contenus sont construits autour de vos situations réelles. Un pitch à préparer, un comité international à animer, une négociation en cours, une présentation devant un board : je travaille avec votre matière, pas avec des manuels génériques.",
-      "Confidentialité absolue par défaut. Formateur natif britannique, plus de 20 ans d'expérience auprès de profils exécutifs, certifié FPA. Je m'engage sur des résultats concrets, mesurés sur les situations professionnelles que vous m'identifiez.",
+      `Confidentialité absolue par défaut. Formateur natif britannique, plus de ${EXPERIENCE_FLOOR} ans d'expérience auprès de profils exécutifs, certifié FPA. Je m'engage sur des résultats concrets, mesurés sur les situations professionnelles que vous m'identifiez.`,
     ]}
     benefits={[
       "Un accompagnement strictement individuel et confidentiel",

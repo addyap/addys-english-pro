@@ -11,7 +11,7 @@
     "closeMenu": "Fermer le menu"
   },
   "footer": {
-    "tagline": "Formateur d'anglais professionnel certifié FPA. Plus de 20 ans d'expérience dans la formation d'anglais pour adultes, entreprises et institutions.",
+    "tagline": "Formateur d'anglais professionnel certifié FPA. Plus de {{years}} ans d'expérience dans la formation d'anglais pour adultes, entreprises et institutions.",
     "navigation": "Navigation",
     "resources": "Ressources Gratuites",
     "exercises": "Exercices d'anglais",
