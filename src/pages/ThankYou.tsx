@@ -26,11 +26,11 @@ const ThankYou: React.FC = () => {
           </div>
 
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Message Sent ✅
+            Message envoyé ✅
           </h1>
 
           <p className="text-lg text-gray-600 mb-2">
-            Thanks for reaching out. I'll get back to you shortly.
+            Merci de votre message. Je vous réponds dans les meilleurs délais.
           </p>
           <p className="text-sm text-gray-500 mb-8">
             Réponse garantie sous 24h ouvrées.
