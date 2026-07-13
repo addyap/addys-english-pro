@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation, Link } from "react-router-dom";
-import { Home, BookOpen, Mail } from 'lucide-react';
+import { Home, BookOpen, Sparkles, Mail } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { Button } from '@/components/ui/button';
 import { trackEvent } from '@/lib/analytics';
@@ -18,6 +18,7 @@ const NotFound = () => {
   const recoveryActions = [
     { href: '/', label: 'Retour à l\'accueil', icon: Home, variant: 'default' as const },
     { href: '/offres-de-formation', label: 'Voir les formations', icon: BookOpen, variant: 'outline' as const },
+    { href: '/test-de-positionnement', label: 'Test de niveau gratuit', icon: Sparkles, variant: 'outline' as const },
     { href: '/contact', label: 'Contacter Antony', icon: Mail, variant: 'ghost' as const },
   ];
 

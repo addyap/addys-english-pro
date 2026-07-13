@@ -11,6 +11,7 @@ Le site présente des formations d'anglais sur-mesure pour les entreprises, les 
 - [Offres de formation](/offres-de-formation): Formules, modalités et déroulement des formations.
 - [Témoignages](/temoignages): Avis d'apprenants et d'entreprises clientes.
 - [Contact](/contact): Prise de contact pour une formation sur mesure.
+- [Test de positionnement](/test-de-positionnement): Évaluation gratuite de votre niveau d'anglais.
 
 ## Formations par public
 

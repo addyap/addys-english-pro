@@ -291,6 +291,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 <li><Link to="/temoignages" className="text-gray-400 hover:text-white transition-colors">{t('nav.testimonials')}</Link></li>
                 <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">{t('nav.contact')}</Link></li>
                 <li><Link to="/blog" className="text-gray-400 hover:text-white transition-colors">{t('nav.blog')}</Link></li>
+                <li><Link to="/test-de-positionnement" className="text-gray-400 hover:text-white transition-colors">Test de positionnement</Link></li>
                 <li><Link to="/questionnaire" className="text-gray-400 hover:text-white transition-colors">Questionnaire de profil</Link></li>
               </ul>
 
