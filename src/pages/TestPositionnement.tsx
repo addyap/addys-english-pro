@@ -4,14 +4,12 @@ import { ArrowRight, Play, Clock, CheckCircle, Zap, Smartphone } from 'lucide-re
 import SEOHead from '../components/SEOHead';
 import { FadeInSection } from '../components/Effects';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
+import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 import { trackEvent } from '@/lib/analytics';
 
 // ── Configurable constants ──────────────────────────────────────────
 const KAHOOT_ASSIGNMENT_URL = 'https://kahoot.it/challenge/04602749?challenge-id=1f8df03b-4a67-425e-a134-6e557d14c7e2_1781270780609';
 const KAHOOT_PIN = '04602749';
-
-const WHATSAPP_SCORE_URL =
-  'https://wa.me/33649829826?text=Bonjour%20Antony%2C%0A%0AJe%20viens%20de%20faire%20le%20test%20de%20positionnement%20en%20anglais.%0A%0A%E2%80%A2%20Mon%20score%20%3A%20%E2%80%A6%20%2F%20120%0A%E2%80%A2%20Question%20o%C3%B9%20j%27ai%20commenc%C3%A9%20%C3%A0%20bloquer%20%3A%20n%C2%B0%20%E2%80%A6%0A%E2%80%A2%20Mon%20objectif%20%3A%20%0A%0APouvez-vous%20m%27indiquer%20mon%20niveau%20et%20me%20proposer%20une%20solution%20adapt%C3%A9e%20%3F';
 
 const CECRL_LEVELS = [
   { level: 'A1', label: 'Débutant', range: 'Questions 1–20', tint: 50 },
@@ -50,6 +48,7 @@ const BADGES = [
 const TestPositionnement = () => {
   useScrollTracking('test-de-positionnement');
   useTimeTracking('test-de-positionnement');
+  const whatsappScoreLink = useWhatsAppLink('score');
 
   const handleStartTest = () => {
     trackEvent('kahoot_cta_click', { page: 'test-de-positionnement', target: KAHOOT_ASSIGNMENT_URL });
@@ -57,7 +56,8 @@ const TestPositionnement = () => {
   };
 
   const handleWhatsApp = () => {
-    trackEvent('whatsapp_score_cta_click', { page: 'test-de-positionnement', target: WHATSAPP_SCORE_URL });
+    if (!whatsappScoreLink) return;
+    trackEvent('whatsapp_score_cta_click', { page: 'test-de-positionnement', target: whatsappScoreLink });
   };
 
   return (
@@ -212,10 +212,13 @@ const TestPositionnement = () => {
               Envoyez-moi votre score et le numéro de la question où vous avez commencé à bloquer : je vous confirme votre niveau CECRL et je vous propose un parcours adapté à vos objectifs — entretiens, réunions, TOEIC, Linguaskill ou conversation. Premier échange gratuit, réponse sous 24 h.
             </p>
             <a
-              href={WHATSAPP_SCORE_URL}
+              href={whatsappScoreLink || "#"}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={handleWhatsApp}
+              onClick={(e) => {
+                if (!whatsappScoreLink) { e.preventDefault(); return; }
+                handleWhatsApp();
+              }}
               className="inline-flex items-center justify-center gap-2 bg-white text-primary px-6 py-3.5 sm:px-8 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-white/90 transition-all hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary font-body"
             >
               <span aria-hidden="true">💬</span>

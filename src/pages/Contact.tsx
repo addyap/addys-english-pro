@@ -5,7 +5,7 @@ import SEOHead from '../components/SEOHead';
 import { trackFormSubmission, trackFormError, trackWhatsAppClick, trackEmailClick, trackEvent } from '@/lib/analytics';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
 import { supabase } from '@/integrations/supabase/client';
-import { WHATSAPP_PREFILLED_URL } from '@/lib/whatsapp';
+import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 
 const Contact = () => {
   const contactJsonLd = {
@@ -18,6 +18,7 @@ const Contact = () => {
 
   useScrollTracking('/contact');
   const navigate = useNavigate();
+  const whatsappLink = useWhatsAppLink();
 
   const [formData, setFormData] = useState({
     prenom: '',
@@ -379,13 +380,16 @@ const Contact = () => {
                 <p className="text-green-800 mb-4">
                   Pour une réponse immédiate, contactez-moi directement sur WhatsApp
                 </p>
-                <a 
-                  href={WHATSAPP_PREFILLED_URL} 
-                  className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 hover:scale-105 active:scale-95" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href={whatsappLink || "#"}
+                  className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 hover:scale-105 active:scale-95"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="Contactez-moi via WhatsApp"
-                  onClick={trackWhatsAppClick}
+                  onClick={(e) => {
+                    if (!whatsappLink) { e.preventDefault(); return; }
+                    trackWhatsAppClick();
+                  }}
                 >
                   <MessageSquare className="h-5 w-5 mr-2" aria-hidden="true" />
                   Ouvrir WhatsApp

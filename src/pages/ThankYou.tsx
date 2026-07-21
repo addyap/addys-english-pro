@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { CheckCircle2, MessageSquare, Sparkles, ArrowLeft } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { trackEvent } from "@/lib/analytics";
-import { WHATSAPP_PREFILLED_URL } from "@/lib/whatsapp";
+import { useWhatsAppLink } from "@/hooks/useWhatsAppLink";
 
 const ThankYou: React.FC = () => {
+  const whatsappLink = useWhatsAppLink();
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
   }, []);
@@ -48,10 +49,13 @@ const ThankYou: React.FC = () => {
             </a>
 
             <a
-              href={WHATSAPP_PREFILLED_URL}
+              href={whatsappLink || "#"}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackEvent('whatsapp_cta_click', { page: 'ThankYou', target: WHATSAPP_PREFILLED_URL, prefilled: true })}
+              onClick={(e) => {
+                if (!whatsappLink) { e.preventDefault(); return; }
+                trackEvent('whatsapp_cta_click', { page: 'ThankYou', target: whatsappLink, prefilled: true });
+              }}
               className="inline-flex items-center justify-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
             >
               <MessageSquare className="w-5 h-5" aria-hidden="true" />

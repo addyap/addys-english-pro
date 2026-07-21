@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { trackEvent } from "@/lib/analytics";
-import { WHATSAPP_PREFILLED_URL } from "@/lib/whatsapp";
+import { useWhatsAppLink } from "@/hooks/useWhatsAppLink";
 import { YEARS_OF_EXPERIENCE } from "@/lib/utils";
 
 export default function OptimizedHero() {
+  const whatsappLink = useWhatsAppLink();
   return (
     <section
       className="relative hero-section overflow-hidden text-primary-foreground"
@@ -94,10 +95,13 @@ export default function OptimizedHero() {
         >
           {/* PRIMARY CTA — WhatsApp with prefilled message, lowest-friction conversion */}
           <a
-            href={WHATSAPP_PREFILLED_URL}
+            href={whatsappLink || "#"}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackEvent('whatsapp_cta_click', { page: 'home', location: 'hero', prefilled: true })}
+            onClick={(e) => {
+              if (!whatsappLink) { e.preventDefault(); return; }
+              trackEvent('whatsapp_cta_click', { page: 'home', location: 'hero', prefilled: true });
+            }}
             className="group relative overflow-hidden bg-accent text-accent-foreground px-6 py-3.5 sm:px-10 sm:py-5 rounded-lg font-bold text-base sm:text-lg hover:bg-accent/90 hover:shadow-2xl transition-all duration-300 shadow-2xl font-body transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-accent/40 active:scale-100 ring-2 ring-accent/40 inline-flex items-center justify-center gap-2"
             aria-label="Prendre contact sur WhatsApp avec Antony Addy (message pré-rempli)"
           >
