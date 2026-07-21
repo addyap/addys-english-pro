@@ -2,9 +2,10 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+const MIN_SUBMIT_MS = 1500;
 
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Origin": "https://www.antonyaddy.com",
   "Access-Control-Allow-Headers":
     "authorization, x-client-info, apikey, content-type",
 };
@@ -14,6 +15,8 @@ interface ContactEmailRequest {
   nom: string;
   email: string;
   message: string;
+  _gotcha?: string;
+  renderedAt?: number;
 }
 
 const esc = (s: unknown) =>
@@ -29,6 +32,24 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     const body: ContactEmailRequest = await req.json();
+
+    // Honeypot: a real browser never fills this hidden field. Also reject
+    // submissions that skip the timing trap entirely (a direct-POST bot
+    // bypassing the React form won't send renderedAt at all) or arrive
+    // faster than a human could plausibly fill in four fields.
+    if (body._gotcha) {
+      return new Response(JSON.stringify({ error: "rejected" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      });
+    }
+    if (typeof body.renderedAt !== "number" || Date.now() - body.renderedAt < MIN_SUBMIT_MS) {
+      return new Response(JSON.stringify({ error: "rejected" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      });
+    }
+
     // Strip CR/LF from any value used in email headers to prevent header injection
     const stripHeader = (v: string) => (v ?? "").toString().replace(/[\r\n]+/g, " ").trim();
     const prenom = stripHeader(body.prenom);
