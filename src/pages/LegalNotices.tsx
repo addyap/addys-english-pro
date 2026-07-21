@@ -82,7 +82,7 @@ const LegalNotices = () => {
               <p className="mb-4">
                 Ce site respecte le <strong>Règlement Général sur la Protection
                 des Données (RGPD)</strong>. Les informations collectées via le
-                formulaire de contact et le questionnaire sont utilisées
+                formulaire de contact sont utilisées
                 exclusivement pour répondre à votre demande et ne sont ni
                 vendues ni louées. Elles sont uniquement traitées par nos
                 prestataires techniques (hébergement, base de données, envoi
