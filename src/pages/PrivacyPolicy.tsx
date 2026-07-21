@@ -39,7 +39,6 @@ const PrivacyPolicy = () => {
               </p>
               <ul className="list-disc list-inside mb-4 space-y-2">
                 <li><strong>Formulaire de contact</strong> : prénom, nom, adresse email et le contenu de votre message.</li>
-                <li><strong>Test / questionnaire de positionnement</strong> : prénom, nom, email, téléphone (facultatif) et vos réponses (niveau, objectifs, disponibilités, etc.).</li>
                 <li><strong>Échanges directs</strong> : les informations que vous communiquez par email ou WhatsApp.</li>
               </ul>
 
@@ -58,7 +57,6 @@ const PrivacyPolicy = () => {
               </p>
               <ul className="list-disc list-inside mb-6 space-y-2">
                 <li><strong>Vercel Inc.</strong> (États-Unis) — hébergement du site.</li>
-                <li><strong>Supabase</strong> — base de données où sont enregistrées les réponses au questionnaire.</li>
                 <li><strong>Resend</strong> — acheminement des emails de notification et de confirmation.</li>
               </ul>
               <p className="mb-6">
@@ -68,7 +66,7 @@ const PrivacyPolicy = () => {
 
               <h2 className="text-xl font-semibold text-gray-900 mt-8 mb-3">Durée de conservation</h2>
               <p className="mb-6">
-                Les données de contact et de questionnaire sont conservées le temps nécessaire au traitement de
+                Les données de contact sont conservées le temps nécessaire au traitement de
                 votre demande puis, le cas échéant, pendant la durée de notre relation, et au maximum 3 ans après
                 le dernier contact, sauf obligation légale contraire.
               </p>

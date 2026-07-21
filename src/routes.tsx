@@ -15,13 +15,6 @@ export const routes: RouteRecord[] = [
   {
     element: <AppShell />,
     children: [
-      // Standalone — no global <Layout> chrome
-      {
-        path: "/questionnaire",
-        lazy: page(() => import("./pages/Questionnaire")),
-        entry: "src/pages/Questionnaire.tsx",
-      },
-
       // All marketing routes wrapped in <Layout>
       {
         element: <LayoutShell />,

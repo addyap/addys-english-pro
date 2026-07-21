@@ -71,8 +71,7 @@ export const AppShell = () => (
 
 /**
  * Pathless layout route — wraps marketing pages with the global
- * <Layout> (header, breadcrumbs, footer). The /questionnaire route
- * sits outside this branch so it can render full-bleed.
+ * <Layout> (header, breadcrumbs, footer).
  */
 export const LayoutShell = () => (
   <Layout>

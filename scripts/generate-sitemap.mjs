@@ -32,7 +32,7 @@ const legacyPosts = Object.entries(legacyModule.legacyBlogPosts ?? {}).map(
 );
 
 // Static marketing/legal routes (lifted verbatim from src/routes.tsx).
-// /questionnaire and external-redirect / 404 routes are intentionally excluded.
+// External-redirect / 404 routes are intentionally excluded.
 const staticRoutes = [
   { path: "/", priority: "1.0", changefreq: "weekly" },
   { path: "/qui-je-suis", priority: "0.9", changefreq: "monthly" },
@@ -101,8 +101,6 @@ User-agent: *
 Allow: /
 
 # Private / non-indexable
-# /questionnaire is intentionally not disallowed: it carries a noindex,nofollow
-# meta, and a Disallow here would stop Google crawling the page to see it.
 Disallow: /thank-you
 Disallow: /auth
 Disallow: /admin
