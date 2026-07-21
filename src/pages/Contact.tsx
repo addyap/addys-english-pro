@@ -34,6 +34,7 @@ const Contact = () => {
   const [submitErrorBanner, setSubmitErrorBanner] = useState<string | null>(null);
   const lastSubmitRef = React.useRef<number>(0);
   const MIN_SUBMIT_INTERVAL_MS = 10000; // rate limit: 1 submission per 10s
+  const [formRenderedAt] = useState(() => Date.now());
 
   // Strip CR/LF to prevent email header injection in subject/from/reply-to
   const stripHeaderChars = (v: string) => v.replace(/[\r\n]+/g, ' ').trim();
@@ -99,7 +100,9 @@ const Contact = () => {
           prenom: stripHeaderChars(formData.prenom),
           nom: stripHeaderChars(formData.nom),
           email: stripHeaderChars(formData.email),
-          message: formData.message.trim()
+          message: formData.message.trim(),
+          _gotcha: formData.honeypot,
+          renderedAt: formRenderedAt
         }
       });
 
