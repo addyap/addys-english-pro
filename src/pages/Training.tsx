@@ -9,9 +9,10 @@ import { seoMetadata } from '../utils/seoMetadata';
 import { getCurrentMonthYearFR } from '@/lib/utils';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { trackEvent } from '@/lib/analytics';
-import { WHATSAPP_PREFILLED_URL } from '@/lib/whatsapp';
+import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 
 const Training = () => {
+  const whatsappLink = useWhatsAppLink();
   useScrollTracking('training');
   useTimeTracking('training');
   const trainingJsonLd = {
@@ -555,7 +556,7 @@ const Training = () => {
                 <Link to="/contact" className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-lg">
                   Réserver un premier échange
                 </Link>
-                <a href={WHATSAPP_PREFILLED_URL} onClick={() => trackEvent('whatsapp_cta_click', { page: 'Training', target: WHATSAPP_PREFILLED_URL, prefilled: true, location: 'final-cta' })} className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-8 py-4 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
+                <a href={whatsappLink || "#"} onClick={(e) => { if (!whatsappLink) { e.preventDefault(); return; } trackEvent('whatsapp_cta_click', { page: 'Training', target: whatsappLink, prefilled: true, location: 'final-cta' }); }} className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-8 py-4 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
                   WhatsApp direct
                 </a>
               </div>

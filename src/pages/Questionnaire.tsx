@@ -4,6 +4,7 @@ import { Head as Helmet } from "vite-react-ssg";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, ArrowLeft, ArrowRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { useWhatsAppLink } from "@/hooks/useWhatsAppLink";
 import { DICT, LANGS, type LangCode, type Dict } from "./questionnaire/i18n";
 import SiteLogo from "@/components/SiteLogo";
 import { Button } from "@/components/ui/button";
@@ -144,6 +145,7 @@ export default function Questionnaire() {
   });
   const t: Dict = DICT[lang];
   const isRTL = useMemo(() => LANGS.find((l) => l.code === lang)?.rtl ?? false, [lang]);
+  const whatsappPlainLink = useWhatsAppLink("plain");
 
   const [step, setStep] = useState(1);
   const [data, setData] = useState<FormData>(emptyForm);
@@ -703,9 +705,10 @@ function ThanksScreen({ t, data, emailFailed }: { t: Dict; data: FormData; email
           </p>
           <p className="mt-2">
             <a
-              href="https://wa.me/33649829826"
+              href={whatsappPlainLink || "#"}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => { if (!whatsappPlainLink) e.preventDefault(); }}
               className="inline-flex items-center gap-1.5 text-primary font-semibold hover:underline"
             >
               WhatsApp →

@@ -14,7 +14,7 @@ const sanitize: (html: string) => string =
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, User, ArrowLeft, BookOpen, GraduationCap, ArrowRight, MessageSquare } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
-import { WHATSAPP_PREFILLED_URL } from '@/lib/whatsapp';
+import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 import { trackEvent } from '@/lib/analytics';
 import ReadingProgress from '../components/ReadingProgress';
 import SocialShare from '../components/SocialShare';
@@ -27,6 +27,7 @@ import { getRelatedContent, getExerciseLink, getReadingLink } from '@/utils/blog
 const BlogArticle = () => {
   const { id } = useParams();
   const articleRef = useRef<HTMLDivElement>(null);
+  const whatsappLink = useWhatsAppLink();
   useScrollTracking(`/blog/${id}`);
 
   // Convert grammar blog posts to the expected format
@@ -288,10 +289,13 @@ const BlogArticle = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
                 <a
-                  href={WHATSAPP_PREFILLED_URL}
+                  href={whatsappLink || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackEvent('whatsapp_cta_click', { page: 'BlogArticle', target: WHATSAPP_PREFILLED_URL, location: 'article-footer', prefilled: true })}
+                  onClick={(e) => {
+                    if (!whatsappLink) { e.preventDefault(); return; }
+                    trackEvent('whatsapp_cta_click', { page: 'BlogArticle', target: whatsappLink, location: 'article-footer', prefilled: true });
+                  }}
                   className="inline-flex items-center justify-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
                 >
                   <MessageSquare className="h-5 w-5" aria-hidden="true" />

@@ -8,11 +8,8 @@ import SiteLogo from "@/components/SiteLogo";
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 import { trackEvent } from '@/lib/analytics';
-import { WHATSAPP_PREFILLED_URL } from '@/lib/whatsapp';
+import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 import { EXPERIENCE_FLOOR } from '@/lib/utils';
-
-const WHATSAPP_URL = WHATSAPP_PREFILLED_URL;
-const trackWA = (location: string) => trackEvent('whatsapp_cta_click', { page: 'Layout', target: WHATSAPP_URL, location, prefilled: true });
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -41,6 +38,12 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAudienceOpen, setIsAudienceOpen] = useState(false);
   const year = new Date().getFullYear();
+  const whatsappLink = useWhatsAppLink();
+  const trackWA = (loc: string) => trackEvent('whatsapp_cta_click', { page: 'Layout', target: whatsappLink, location: loc, prefilled: true });
+  const handleWhatsAppClick = (loc: string) => (e: React.MouseEvent) => {
+    if (!whatsappLink) { e.preventDefault(); return; }
+    trackWA(loc);
+  };
 
   // Public marketing site is always French.
   const t = (key: string, fallback?: string) =>
@@ -138,11 +141,11 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
             {/* Mobile menu button + WhatsApp */}
             <div className="lg:hidden flex items-center gap-2">
               <a
-                href={WHATSAPP_URL}
+                href={whatsappLink || "#"}
                 className="bg-green-500 text-white px-3 py-2 rounded-lg flex items-center gap-1 hover:bg-green-600 transition-colors text-sm font-body"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackWA('header-mobile')}
+                onClick={handleWhatsAppClick('header-mobile')}
                 aria-label="WhatsApp"
               >
                 <MessageSquare className="h-4 w-4" aria-hidden="true" />
@@ -163,11 +166,11 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
             {/* Desktop CTA + WhatsApp */}
             <div className="hidden lg:flex items-center gap-2 ms-4">
               <a
-                href={WHATSAPP_URL}
+                href={whatsappLink || "#"}
                 className="bg-green-500 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-green-600 transition-colors font-body"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackWA('header-desktop')}
+                onClick={handleWhatsAppClick('header-desktop')}
               >
                 <MessageSquare className="h-4 w-4" />
                 WhatsApp
@@ -235,12 +238,12 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               <p className="text-gray-400 mb-4 leading-relaxed">{tRaw('footer.tagline', { lng: 'fr', years: EXPERIENCE_FLOOR })}</p>
               <div className="flex gap-3">
                 <a
-                  href={WHATSAPP_URL}
+                  href={whatsappLink || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-600 hover:bg-green-700 px-3 py-2 rounded-lg text-xs font-medium transition-colors"
                   aria-label="WhatsApp"
-                  onClick={() => trackWA('footer-social')}
+                  onClick={handleWhatsAppClick('footer-social')}
                 >
                   💬 WhatsApp
                 </a>
@@ -315,11 +318,11 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 </li>
                 <li>
                   <a
-                    href={WHATSAPP_URL}
+                    href={whatsappLink || "#"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors"
-                    onClick={() => trackWA('footer-contact')}
+                    onClick={handleWhatsAppClick('footer-contact')}
                   >
                     💬 +33 6 49 82 98 26
                   </a>

@@ -10,7 +10,7 @@ import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { LazyClientCarousel } from '@/components/LazySwiper';
 
 import { trackEvent } from '@/lib/analytics';
-import { WHATSAPP_PREFILLED_URL } from '@/lib/whatsapp';
+import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 
 
 // Stats are aligned with the single source of truth: the anglaisadistance.fr
@@ -136,6 +136,7 @@ const HOME_JSONLD_GRAPH = {
 };
 
 const Home = () => {
+  const whatsappLink = useWhatsAppLink();
   useScrollTracking('home');
   useTimeTracking('home');
 
@@ -555,8 +556,11 @@ const Home = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <a
-                href={WHATSAPP_PREFILLED_URL}
-                onClick={() => trackEvent('whatsapp_cta_click', { page: 'Home', location: 'final-cta', prefilled: true })}
+                href={whatsappLink || "#"}
+                onClick={(e) => {
+                  if (!whatsappLink) { e.preventDefault(); return; }
+                  trackEvent('whatsapp_cta_click', { page: 'Home', location: 'final-cta', prefilled: true });
+                }}
                 className="bg-white text-red-600 px-6 py-3.5 sm:px-8 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-gray-100 transition-all hover:scale-105 flex items-center justify-center gap-2 font-body shadow-lg"
                 target="_blank"
                 rel="noopener noreferrer"

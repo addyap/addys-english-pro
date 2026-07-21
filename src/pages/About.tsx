@@ -6,9 +6,10 @@ import SEOHead from '../components/SEOHead';
 import { TypingText } from '../components/TypingText';
 import { FadeInSection } from '../components/Effects';
 import { trackEvent } from '@/lib/analytics';
-import { WHATSAPP_PREFILLED_URL } from '@/lib/whatsapp';
+import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 
 const About = () => {
+  const whatsappLink = useWhatsAppLink();
   const aboutJsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -267,7 +268,7 @@ const About = () => {
                 <Link to="/contact" className="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors">
                   Prendre contact
                 </Link>
-                <a href={WHATSAPP_PREFILLED_URL} onClick={() => trackEvent('whatsapp_cta_click', { page: 'About', target: WHATSAPP_PREFILLED_URL, prefilled: true })} className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-8 py-3 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
+                <a href={whatsappLink || "#"} onClick={(e) => { if (!whatsappLink) { e.preventDefault(); return; } trackEvent('whatsapp_cta_click', { page: 'About', target: whatsappLink, prefilled: true }); }} className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-8 py-3 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
                   WhatsApp direct
                 </a>
               </div>
