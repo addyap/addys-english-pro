@@ -4,7 +4,6 @@ import { MessageSquare, Mail, Phone, MapPin, Clock, CheckCircle2, AlertCircle, L
 import SEOHead from '../components/SEOHead';
 import { trackFormSubmission, trackFormError, trackWhatsAppClick, trackEmailClick, trackEvent } from '@/lib/analytics';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
-import { supabase } from '@/integrations/supabase/client';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 
 const Contact = () => {
@@ -94,20 +93,23 @@ const Contact = () => {
     setSubmitErrorBanner(null);
 
     try {
-      // Call the edge function to send email — sanitize header-bearing fields
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
-        body: {
+      // Call the Vercel edge function to send email — sanitize header-bearing fields
+      const res = await fetch('/api/send-contact-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
           prenom: stripHeaderChars(formData.prenom),
           nom: stripHeaderChars(formData.nom),
           email: stripHeaderChars(formData.email),
           message: formData.message.trim(),
           _gotcha: formData.honeypot,
           renderedAt: formRenderedAt
-        }
+        })
       });
+      const data = await res.json().catch(() => null);
 
-      if (error) {
-        throw new Error(error.message || 'Erreur lors de l\'envoi');
+      if (!res.ok || !data?.success) {
+        throw new Error(data?.error || 'Erreur lors de l\'envoi');
       }
 
       console.log('Contact form submitted successfully:', data);
