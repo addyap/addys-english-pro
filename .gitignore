@@ -32,3 +32,5 @@ dist-ssr
 # Generated audit output
 audit-assets-report.json
 
+.vercel
+.env*

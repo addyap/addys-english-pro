@@ -1,8 +1,19 @@
+import { createClient } from "@supabase/supabase-js";
+
 export const config = { runtime: "edge" };
 
 const NOTIFY_TO = "formations@antonyaddy.com";
 const FROM_DOMAIN = "antonyaddy.com";
 const MIN_SUBMIT_MS = 1500;
+
+// Service-role client used only for the consume_rate_limit() RPC, which is
+// locked to the service_role grant (see the migration that defines it).
+// SUPABASE_SERVICE_ROLE_KEY must be added in Vercel project settings —
+// it's a secret, distinct from the publishable/anon key already there.
+const supabaseAdmin = createClient(
+  process.env.VITE_SUPABASE_URL ?? "",
+  process.env.SUPABASE_SERVICE_ROLE_KEY ?? "",
+);
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "https://www.antonyaddy.com",
@@ -62,6 +73,31 @@ export default async function handler(request: Request): Promise<Response> {
         status: 400,
         headers: { "Content-Type": "application/json", ...corsHeaders },
       });
+    }
+
+    // Per-IP rate limit. The honeypot and timing checks above are both
+    // client-suppliable and trivial for a script to satisfy directly, and
+    // this function triggers two outbound emails per call (one of them to
+    // whatever address the caller supplies) — without this, a bot could
+    // both spam Antony's inbox and use the confirmation email to relay
+    // mail to an arbitrary third party. Vercel edge functions set
+    // x-forwarded-for on every incoming request.
+    const clientIp = (request.headers.get("x-forwarded-for") ?? "").split(",")[0].trim();
+    if (clientIp) {
+      const { data: limit, error: limitError } = await supabaseAdmin.rpc("consume_rate_limit", {
+        _identifier: clientIp,
+        _bucket: "send-contact-email",
+        _max_per_min: 3,
+        _max_per_day: 20,
+      });
+      if (limitError) {
+        console.error("Rate limit check failed (allowing request):", limitError.message);
+      } else if (limit?.[0] && !limit[0].allowed) {
+        return new Response(
+          JSON.stringify({ error: "rate_limited", retryAfter: limit[0].retry_after }),
+          { status: 429, headers: { "Content-Type": "application/json", ...corsHeaders } },
+        );
+      }
     }
 
     const stripHeader = (v: string) => (v ?? "").toString().replace(/[\r\n]+/g, " ").trim();
