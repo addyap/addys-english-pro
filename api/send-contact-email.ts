@@ -6,12 +6,17 @@ const NOTIFY_TO = "formations@antonyaddy.com";
 const FROM_DOMAIN = "antonyaddy.com";
 const MIN_SUBMIT_MS = 1500;
 
-// Service-role client used only for the consume_rate_limit() RPC, which is
-// locked to the service_role grant (see the migration that defines it).
-// SUPABASE_SERVICE_ROLE_KEY must be added in Vercel project settings —
-// it's a secret, distinct from the publishable/anon key already there.
+// Service-role client used only for the consume_rate_limit() RPC. This
+// site has no Supabase project of its own (its original one was
+// Lovable-created and Antony has never had dashboard access to it) — it
+// deliberately reuses the anglaisadistance.fr Supabase project instead,
+// which Antony does own, via two server-only env vars (SUPABASE_URL,
+// SUPABASE_SERVICE_ROLE_KEY — not the VITE_-prefixed client vars, which
+// point nowhere usable and aren't touched by this function). Both must be
+// added in Vercel project settings, copied from the anglaisadistance.fr
+// Supabase dashboard (Settings > API).
 const supabaseAdmin = createClient(
-  process.env.VITE_SUPABASE_URL ?? "",
+  process.env.SUPABASE_URL ?? "",
   process.env.SUPABASE_SERVICE_ROLE_KEY ?? "",
 );
 
@@ -86,7 +91,11 @@ export default async function handler(request: Request): Promise<Response> {
     if (clientIp) {
       const { data: limit, error: limitError } = await supabaseAdmin.rpc("consume_rate_limit", {
         _identifier: clientIp,
-        _bucket: "send-contact-email",
+        // Distinct from anglaisadistance.fr's own "send-contact-email"
+        // bucket in the same shared rate_limits table, so a visitor
+        // hitting both sites' contact forms from one IP doesn't throttle
+        // them against each other.
+        _bucket: "antonyaddy-com-contact",
         _max_per_min: 3,
         _max_per_day: 20,
       });
