@@ -58,6 +58,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
     { name: t('nav.testimonials'), href: '/temoignages', current: location.pathname === '/temoignages' },
     { name: t('nav.contact'), href: '/contact', current: location.pathname === '/contact' },
     { name: t('nav.blog'), href: '/blog', current: location.pathname === '/blog' },
+    { name: 'Ressources en ligne', href: '/ressources-en-ligne', current: location.pathname === '/ressources-en-ligne' },
   ];
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -281,6 +282,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">{t('nav.contact')}</Link></li>
                 <li><Link to="/blog" className="text-gray-400 hover:text-white transition-colors">{t('nav.blog')}</Link></li>
                 <li><Link to="/test-de-positionnement" className="text-gray-400 hover:text-white transition-colors">Test de positionnement</Link></li>
+                <li><Link to="/ressources-en-ligne" className="text-gray-400 hover:text-white transition-colors">Ressources en ligne</Link></li>
               </ul>
 
               <h4 className="font-semibold mt-6 mb-2 text-white text-xs uppercase tracking-wider">Pour qui</h4>

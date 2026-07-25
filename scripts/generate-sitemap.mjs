@@ -56,6 +56,7 @@ const staticRoutes = [
 
   // Free resources
   { path: "/test-de-positionnement", priority: "0.8", changefreq: "monthly" },
+  { path: "/ressources-en-ligne", priority: "0.7", changefreq: "monthly" },
 
   // Legal
   { path: "/mentions-legales", priority: "0.3", changefreq: "yearly" },

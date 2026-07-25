@@ -46,6 +46,7 @@ export const routes: RouteRecord[] = [
 
           // Free resources
           { path: "/test-de-positionnement", lazy: page(() => import("./pages/TestPositionnement")), entry: "src/pages/TestPositionnement.tsx" },
+          { path: "/ressources-en-ligne", lazy: page(() => import("./pages/RessourcesEnLigne")), entry: "src/pages/RessourcesEnLigne.tsx" },
 
           // Per-audience landing pages
           { path: "/anglais-entreprise", lazy: page(() => import("./pages/AnglaisEntreprise")), entry: "src/pages/AnglaisEntreprise.tsx" },
