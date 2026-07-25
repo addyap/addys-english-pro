@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Sparkles, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, Sparkles, ArrowRight, Gift, RefreshCw, Clock } from 'lucide-react';
 import SEOHead from '@/components/SEOHead';
 import { FadeInSection } from '@/components/Effects';
 
 interface Platform {
   name: string;
-  url: string;
+  url?: string;
   host: string;
   tag: string;
   raison: string;
   accent: string; // tailwind gradient classes for the card header band
+  comingSoon?: boolean;
 }
 
 const PLATFORMS: Platform[] = [
@@ -33,6 +34,15 @@ const PLATFORMS: Platform[] = [
     accent: 'from-emerald-500 to-teal-600',
   },
   {
+    name: 'ListenUp',
+    url: 'https://listening.antonyaddy.com',
+    host: 'listening.antonyaddy.com',
+    tag: 'Compréhension orale',
+    raison:
+      "Une plateforme d'entraînement à la compréhension orale de l'anglais : exercices audio interactifs, voix générées par IA, quiz et traductions en plus de dix langues, pour habituer l'oreille à l'anglais réel.",
+    accent: 'from-violet-500 to-purple-600',
+  },
+  {
     name: 'TOEIC Prep',
     url: 'https://toeic.antonyaddy.com',
     host: 'toeic.antonyaddy.com',
@@ -50,6 +60,15 @@ const PLATFORMS: Platform[] = [
       "Une préparation dédiée à la certification CLOE : exercices calés sur le format de l'épreuve pour aborder l'examen avec méthode et confiance.",
     accent: 'from-rose-500 to-pink-600',
   },
+  {
+    name: "Entraîneur d'anglais oral IA",
+    host: 'Bientôt disponible',
+    tag: 'Expression orale',
+    raison:
+      "Un entraîneur d'expression orale propulsé par l'IA : dialoguez à voix haute, entraînez-vous à de vraies situations et recevez un retour instantané sur votre prononciation et votre aisance. En cours de développement.",
+    accent: 'from-slate-400 to-slate-500',
+    comingSoon: true,
+  },
 ];
 
 const RessourcesEnLigne = () => {
@@ -60,7 +79,7 @@ const RessourcesEnLigne = () => {
     description:
       "Plateformes d'apprentissage de l'anglais conçues et développées par Antony Addy à l'aide de l'intelligence artificielle.",
     url: 'https://www.antonyaddy.com/ressources-en-ligne',
-    hasPart: PLATFORMS.map((p) => ({
+    hasPart: PLATFORMS.filter((p) => !p.comingSoon).map((p) => ({
       '@type': 'WebSite',
       name: p.name,
       url: p.url,
@@ -93,7 +112,8 @@ const RessourcesEnLigne = () => {
                 En complément de mes formations, je conçois et développe — à l'aide de
                 l'intelligence artificielle — des plateformes d'apprentissage de l'anglais.
                 Chacune répond à un besoin précis : progresser en autonomie, comprendre la
-                grammaire, ou préparer une certification.
+                grammaire, ou préparer une certification.{' '}
+                <span className="font-semibold text-primary">Toutes sont gratuites et enrichies en continu.</span>
               </p>
             </FadeInSection>
           </div>
@@ -102,14 +122,9 @@ const RessourcesEnLigne = () => {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           {/* Platform grid */}
           <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
-            {PLATFORMS.map((p) => (
-              <FadeInSection key={p.host}>
-                <a
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-                >
+            {PLATFORMS.map((p) => {
+              const inner = (
+                <>
                   {/* Coloured band */}
                   <div className={`h-2 w-full bg-gradient-to-r ${p.accent}`} />
 
@@ -118,10 +133,17 @@ const RessourcesEnLigne = () => {
                       <span className="inline-block rounded-full bg-muted px-3 py-1 text-xs font-semibold text-muted-foreground">
                         {p.tag}
                       </span>
-                      <ArrowUpRight
-                        className="h-5 w-5 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-foreground"
-                        aria-hidden="true"
-                      />
+                      {p.comingSoon ? (
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-200 px-3 py-1 text-xs font-semibold text-slate-600">
+                          <Clock className="h-3.5 w-3.5" aria-hidden="true" />
+                          Bientôt
+                        </span>
+                      ) : (
+                        <ArrowUpRight
+                          className="h-5 w-5 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-foreground"
+                          aria-hidden="true"
+                        />
+                      )}
                     </div>
 
                     <h2 className="text-xl sm:text-2xl font-bold text-primary font-heading">
@@ -135,14 +157,42 @@ const RessourcesEnLigne = () => {
                       {p.raison}
                     </p>
 
-                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-accent-foreground">
-                      Découvrir le site
-                      <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
-                    </span>
+                    {p.comingSoon ? (
+                      <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-500">
+                        En cours de développement
+                      </span>
+                    ) : (
+                      <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-accent-foreground">
+                        Découvrir le site
+                        <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+                      </span>
+                    )}
                   </div>
-                </a>
-              </FadeInSection>
-            ))}
+                </>
+              );
+
+              return (
+                <FadeInSection key={p.host}>
+                  {p.comingSoon ? (
+                    <div
+                      aria-label={`${p.name} — bientôt disponible`}
+                      className="flex h-full flex-col overflow-hidden rounded-2xl border border-dashed border-slate-300 bg-slate-50/60 shadow-sm"
+                    >
+                      {inner}
+                    </div>
+                  ) : (
+                    <a
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                    >
+                      {inner}
+                    </a>
+                  )}
+                </FadeInSection>
+              );
+            })}
           </div>
 
           {/* Why AI note */}
@@ -158,6 +208,16 @@ const RessourcesEnLigne = () => {
                 apprenants — et à tous ceux qui apprennent l'anglais — de quoi s'entraîner
                 en autonomie, entre deux séances ou en préparation d'un examen.
               </p>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <p className="flex flex-1 items-start gap-3 rounded-xl bg-accent/10 p-4 text-sm leading-relaxed text-foreground">
+                  <Gift className="mt-0.5 h-5 w-5 shrink-0 text-accent-foreground" aria-hidden="true" />
+                  <span><strong>Gratuit.</strong> Toutes ces plateformes sont actuellement en accès libre : vous pouvez les utiliser dès maintenant, sans inscription payante.</span>
+                </p>
+                <p className="flex flex-1 items-start gap-3 rounded-xl bg-accent/10 p-4 text-sm leading-relaxed text-foreground">
+                  <RefreshCw className="mt-0.5 h-5 w-5 shrink-0 text-accent-foreground" aria-hidden="true" />
+                  <span><strong>En évolution constante.</strong> Je les enrichis en continu — nouveaux contenus, exercices et améliorations sont ajoutés régulièrement.</span>
+                </p>
+              </div>
             </section>
           </FadeInSection>
 
