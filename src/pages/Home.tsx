@@ -11,6 +11,10 @@ import { LazyClientCarousel } from '@/components/LazySwiper';
 
 import { trackEvent } from '@/lib/analytics';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
+import { FORMATIONS } from '@/data/formations';
+
+// Map the formation icon names to their lucide components (already imported above).
+const FORMATION_ICONS = { Globe, Sparkles, Settings } as const;
 
 
 // Stats are aligned with the single source of truth: the anglaisadistance.fr
@@ -275,6 +279,64 @@ const Home = () => {
       </section>
 
       <main id="main-content">
+        {/* Mes 3 formations — hub access to English (this site), IA & SAP subdomains */}
+        <section className="py-12 sm:py-16 bg-white border-b border-border" aria-labelledby="formations-hub-heading">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="text-center mb-8 sm:mb-10">
+              <h2 id="formations-hub-heading" className="text-2xl sm:text-3xl font-bold text-primary font-heading mb-2">
+                Mes trois domaines de formation
+              </h2>
+              <p className="text-muted-foreground font-body max-w-2xl mx-auto">
+                Formateur Professionnel d'Adultes certifié, j'accompagne particuliers et entreprises sur trois expertises complémentaires.
+              </p>
+            </div>
+            <div className="grid gap-5 sm:gap-6 md:grid-cols-3" role="list">
+              {FORMATIONS.map((f) => {
+                const Icon = FORMATION_ICONS[f.icon];
+                const isCurrent = !f.external;
+                const inner = (
+                  <>
+                    <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-4" aria-hidden="true">
+                      <Icon className="h-7 w-7" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-primary font-heading mb-2 flex items-center gap-2">
+                      {f.title}
+                      {f.external && <ExternalLink className="h-4 w-4 text-muted-foreground" aria-hidden="true" />}
+                    </h3>
+                    <p className="text-sm text-muted-foreground font-body leading-relaxed mb-4 flex-1">{f.tagline}</p>
+                    <span className="inline-flex items-center gap-1.5 text-primary font-semibold text-sm mt-auto">
+                      {isCurrent ? 'Vous y êtes' : f.cta}
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </span>
+                  </>
+                );
+                const cardClass =
+                  'group flex flex-col h-full text-left p-6 rounded-2xl border transition-all ' +
+                  (isCurrent
+                    ? 'bg-primary/5 border-primary/30'
+                    : 'bg-card border-border hover:shadow-lg hover:border-primary/40');
+                return isCurrent ? (
+                  <div key={f.key} className={cardClass} role="listitem" aria-current="page">
+                    {inner}
+                  </div>
+                ) : (
+                  <a
+                    key={f.key}
+                    href={f.href}
+                    target="_blank"
+                    rel="noopener"
+                    role="listitem"
+                    onClick={() => trackEvent('home_formation_card_click', { formation: f.key, target: f.href })}
+                    className={cardClass}
+                  >
+                    {inner}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
         {/* Qui je suis Section - Updated with split layout */}
         <section className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4">

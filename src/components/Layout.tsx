@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MessageSquare, Menu, X, ChevronDown } from 'lucide-react';
+import { MessageSquare, Menu, X, ChevronDown, Globe, Sparkles, Settings, ExternalLink } from 'lucide-react';
+import { FORMATIONS } from '@/data/formations';
+
+const FORMATION_ICONS = { Globe, Sparkles, Settings } as const;
 
 import { ScrollProgressBar } from "@/components/Effects";
 import SiteLogo from "@/components/SiteLogo";
@@ -37,6 +40,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
   const { t: tRaw } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAudienceOpen, setIsAudienceOpen] = useState(false);
+  const [isFormationsOpen, setIsFormationsOpen] = useState(false);
   const year = new Date().getFullYear();
   const whatsappLink = useWhatsAppLink();
   const trackWA = (loc: string) => trackEvent('whatsapp_cta_click', { page: 'Layout', target: whatsappLink, location: loc, prefilled: true });
@@ -136,6 +140,69 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                   </div>
                 )}
               </div>
+
+              {/* Mes formations — cross-domain switcher (Anglais · IA · SAP) */}
+              <div
+                className="relative"
+                onMouseEnter={() => setIsFormationsOpen(true)}
+                onMouseLeave={() => setIsFormationsOpen(false)}
+              >
+                <button
+                  type="button"
+                  onClick={() => setIsFormationsOpen(o => !o)}
+                  aria-haspopup="true"
+                  aria-expanded={isFormationsOpen}
+                  className="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 font-body border inline-flex items-center gap-1 text-primary hover:text-accent-foreground hover:bg-accent border-transparent hover:border-accent"
+                >
+                  Mes formations
+                  <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
+                </button>
+                {isFormationsOpen && (
+                  <div className="absolute right-0 top-full mt-1 w-72 bg-white border border-border rounded-lg shadow-lg py-2 z-50">
+                    {FORMATIONS.map(f => {
+                      const Icon = FORMATION_ICONS[f.icon];
+                      const current = !f.external;
+                      const content = (
+                        <>
+                          <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary shrink-0">
+                            <Icon className="h-4 w-4" aria-hidden="true" />
+                          </span>
+                          <span className="flex flex-col">
+                            <span className="text-sm font-medium text-primary inline-flex items-center gap-1">
+                              {f.navLabel}
+                              {f.external && <ExternalLink className="h-3 w-3 text-muted-foreground" aria-hidden="true" />}
+                            </span>
+                            <span className="text-xs text-muted-foreground">
+                              {current ? 'Ce site' : f.href.replace('https://', '')}
+                            </span>
+                          </span>
+                        </>
+                      );
+                      return current ? (
+                        <Link
+                          key={f.key}
+                          to="/"
+                          onClick={() => setIsFormationsOpen(false)}
+                          className="flex items-center gap-3 px-4 py-2 hover:bg-muted transition-colors"
+                        >
+                          {content}
+                        </Link>
+                      ) : (
+                        <a
+                          key={f.key}
+                          href={f.href}
+                          target="_blank"
+                          rel="noopener"
+                          onClick={() => { setIsFormationsOpen(false); trackEvent('nav_formation_switch', { formation: f.key, target: f.href }); }}
+                          className="flex items-center gap-3 px-4 py-2 hover:bg-muted transition-colors"
+                        >
+                          {content}
+                        </a>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
             </nav>
 
 
@@ -217,6 +284,39 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                   ))}
                 </div>
 
+                {/* Mes formations — mobile switcher */}
+                <div className="pt-2 mt-2 border-t border-gray-100">
+                  <p className="px-4 pb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Mes formations</p>
+                  {FORMATIONS.map(f => {
+                    const Icon = FORMATION_ICONS[f.icon];
+                    const current = !f.external;
+                    const cls = 'flex items-center gap-3 min-h-[44px] px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 font-body border border-transparent text-primary hover:text-accent-foreground hover:bg-accent hover:border-accent';
+                    const content = (
+                      <>
+                        <Icon className="h-5 w-5 shrink-0" aria-hidden="true" />
+                        <span className="inline-flex items-center gap-1">
+                          {f.navLabel}
+                          {f.external && <ExternalLink className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />}
+                        </span>
+                      </>
+                    );
+                    return current ? (
+                      <Link key={f.key} to="/" onClick={() => setIsMobileMenuOpen(false)} className={cls}>{content}</Link>
+                    ) : (
+                      <a
+                        key={f.key}
+                        href={f.href}
+                        target="_blank"
+                        rel="noopener"
+                        onClick={() => { setIsMobileMenuOpen(false); trackEvent('nav_formation_switch', { formation: f.key, target: f.href }); }}
+                        className={cls}
+                      >
+                        {content}
+                      </a>
+                    );
+                  })}
+                </div>
+
               </nav>
             </div>
           )}
@@ -270,6 +370,29 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                   anglaisadistance.fr ↗
                 </a>
               </p>
+              <div className="mt-5">
+                <h4 className="font-semibold mb-2 text-white text-xs uppercase tracking-wider">Mes formations</h4>
+                <ul className="flex flex-wrap gap-x-4 gap-y-1">
+                  {FORMATIONS.map(f => (
+                    <li key={f.key}>
+                      {f.external ? (
+                        <a
+                          href={f.href}
+                          target="_blank"
+                          rel="noopener"
+                          onClick={() => trackEvent('footer_formation_click', { formation: f.key, target: f.href })}
+                          className="text-gray-400 hover:text-white transition-colors text-sm inline-flex items-center gap-1"
+                        >
+                          {f.navLabel}
+                          <ExternalLink className="h-3 w-3" aria-hidden="true" />
+                        </a>
+                      ) : (
+                        <Link to="/" className="text-gray-400 hover:text-white transition-colors text-sm">{f.navLabel}</Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             <nav aria-label={t('footer.navigation')}>
