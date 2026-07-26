@@ -3,6 +3,8 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/politique-de-confidentialite", "destination": "/politique-confidentialite", "permanent": true },
+    { "source": "/blog/certification-cloe-anglais-guide-complet", "destination": "https://cloe.antonyaddy.com", "permanent": true },
+    { "source": "/blog/outils-ia-anglais-professionnel", "destination": "/ressources-en-ligne", "permanent": true },
     { "source": "/exercices/cloe-preparation/:path*", "destination": "https://anglaisadistance.fr/grammaire-essentielle/contrastes", "permanent": true },
     { "source": "/exercices/cloe/:path*", "destination": "https://anglaisadistance.fr/grammaire-essentielle/contrastes", "permanent": true },
     { "source": "/exercices/grammar/:path*", "destination": "https://anglaisadistance.fr/grammaire-essentielle", "permanent": true },
