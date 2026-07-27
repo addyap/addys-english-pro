@@ -62,12 +62,12 @@ const PLATFORMS: Platform[] = [
   },
   {
     name: "Entraîneur d'anglais oral IA",
-    host: 'Bientôt disponible',
+    url: 'https://speak.antonyaddy.com',
+    host: 'speak.antonyaddy.com',
     tag: 'Expression orale',
     raison:
-      "Un entraîneur d'expression orale propulsé par l'IA : dialoguez à voix haute, entraînez-vous à de vraies situations et recevez un retour instantané sur votre prononciation et votre aisance. En cours de développement.",
-    accent: 'from-slate-400 to-slate-500',
-    comingSoon: true,
+      "Un entraîneur d'expression orale propulsé par l'IA : dialoguez à voix haute, entraînez-vous à de vraies situations et recevez un retour instantané sur votre prononciation et votre aisance.",
+    accent: 'from-cyan-500 to-sky-600',
   },
 ];
 
