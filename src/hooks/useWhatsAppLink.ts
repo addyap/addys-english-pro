@@ -1,5 +1,24 @@
 import { useEffect, useState } from "react";
 
+type WhatsAppContext = "default" | "plain" | "score";
+
+// Multiple components on the same page (header, footer, CTAs) use this hook
+// with the same context; share one in-flight request instead of firing one
+// fetch per instance.
+const linkRequests = new Map<WhatsAppContext, Promise<string | null>>();
+
+function fetchWhatsAppLink(context: WhatsAppContext): Promise<string | null> {
+  let request = linkRequests.get(context);
+  if (!request) {
+    request = fetch(`/api/whatsapp?context=${context}`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => data?.whatsapp ?? null)
+      .catch(() => null);
+    linkRequests.set(context, request);
+  }
+  return request;
+}
+
 /**
  * Fetches the WhatsApp contact link from a server-side edge function
  * instead of bundling the phone number into client code, so static
@@ -10,18 +29,17 @@ import { useEffect, useState } from "react";
  * "default" (general enquiry), "plain" (no prefilled text), or
  * "score" (test-de-positionnement result report).
  */
-export function useWhatsAppLink(context: "default" | "plain" | "score" = "default"): string | null {
+export function useWhatsAppLink(context: WhatsAppContext = "default"): string | null {
   const [link, setLink] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`/api/whatsapp?context=${context}`)
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (data?.whatsapp) setLink(data.whatsapp);
-      })
-      .catch(() => {
-        // Network/API failure: link stays hidden, nothing to do.
-      });
+    let cancelled = false;
+    fetchWhatsAppLink(context).then((whatsapp) => {
+      if (!cancelled && whatsapp) setLink(whatsapp);
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [context]);
 
   return link;

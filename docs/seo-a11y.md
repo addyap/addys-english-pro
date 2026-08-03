@@ -17,16 +17,24 @@ Set `VITE_GA_ID` in `.env` or assign `window.__GA_ID__` in `index.html`. GA is d
 ## Core Web Vitals
 Import `src/monitor/vitals.ts` once at bootstrap. Metrics log to console and GA if enabled.
 
-## Sitemap & OG images
-Edit `scripts/routes.json`.  
-- `npm run build:sitemap` generates `public/sitemap.xml`.  
-- Place a template at `public/og/og-template.png` then `npm run og` to generate per-route OG cards in `public/og/`.
+## Sitemap
+The sitemap is generated automatically by the `prebuild` step (`node scripts/generate-sitemap.mjs`), which runs before every `npm run build`. It reads routes from `src/routes.tsx` and blog posts from `src/data/grammarBlogPosts.ts`.
 
 ## Link integrity
-`npm run check:links` crawls the preview and fails on internal 4xx/5xx.
+`node scripts/audit-internal-links.mjs` statically checks that internal links resolve to a route or a `vercel.json` redirect. `scripts/check-links.mjs` crawls a running preview server with Playwright and fails on internal 4xx/5xx:
+```sh
+npm run preview &
+PW_BASE_URL=http://localhost:4173 node scripts/check-links.mjs
+```
 
 ## Pre-deploy safety
-Run: `npm run ci:preview && npm run ci:lh && npm run a11y && npm run check:links && npm run build:sitemap`. Fix failures before publishing.
+```sh
+npm run build
+node scripts/verify-indexability.mjs
+node scripts/audit-internal-links.mjs
+node scripts/audit-assets.mjs
+```
+Fix failures before publishing. See the root [README](../README.md#checks) for the full list.
 
-## Apache rewrites
-`public/.htaccess` forces HTTPS + non‑www, strips trailing slashes, and enables SPA fallback to `index.html`.
+## Hosting
+Deployed on Vercel. Redirects and security headers live in `vercel.json` — there is no `.htaccess` or Apache layer.
