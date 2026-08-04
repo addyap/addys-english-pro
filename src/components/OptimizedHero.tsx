@@ -17,7 +17,7 @@ export default function OptimizedHero() {
         <picture>
           <source srcSet="/assets/hero-image.webp" type="image/webp" />
           <img
-            src="/assets/hero-image.png"
+            src="/assets/hero-image.jpg"
             alt="Formation en anglais professionnel avec Antony Addy"
             className="absolute inset-0 w-full h-full object-cover animate-ken-burns opacity-80"
             width={1920}
