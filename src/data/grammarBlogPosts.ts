@@ -15,7 +15,7 @@ export interface GrammarBlogPost {
 export const grammarBlogPosts: GrammarBlogPost[] = [
   {
     id: 'email-professionnel-en-anglais',
-    title: 'Rédiger un email professionnel en anglais : structure, formules et exemples',
+    title: 'Email professionnel en anglais',
     excerpt: "Salutations, formules de politesse, relances, pièces jointes : le guide complet pour écrire des emails professionnels en anglais clairs et crédibles — avec des formules prêtes à l'emploi et les erreurs de francophone à éviter.",
     content: `
       <p>Un email mal tourné coûte cher : un client qui trouve le ton sec, un collègue étranger qui ne comprend pas la demande, une candidature qui passe à la trappe. Pour un francophone, l'email professionnel en anglais est un exercice piégeux — non pas à cause de la grammaire, mais parce que les codes ne sont pas les mêmes qu'en français. Voici comment écrire des emails clairs, polis et efficaces, avec des formules prêtes à l'emploi.</p>
@@ -148,12 +148,12 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     author: 'Antony Addy',
     category: 'Communication',
     readTime: '8 min',
-    description: "Comment rédiger un email professionnel en anglais : structure, formules d'ouverture et de clôture, phrases utiles par situation et erreurs fréquentes des francophones.",
+    description: "Rédiger un email professionnel en anglais : structure, formules d'ouverture et de clôture, phrases utiles et erreurs à éviter.",
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
   },
   {
     id: 'presentation-en-anglais',
-    title: 'Réussir une présentation en anglais : structure, transitions et prise de parole',
+    title: 'Présentation en anglais : le guide',
     excerpt: "Introduction, transitions, mise en valeur des points clés, gestion des questions : les phrases et la structure pour présenter en anglais avec aisance — et les erreurs de francophone à éviter.",
     content: `
       <p>Présenter en anglais devant un comité, un client ou une conférence est l'une des situations les plus redoutées par les professionnels francophones. La difficulté n'est presque jamais le vocabulaire technique — c'est la fluidité, les transitions et les codes de la prise de parole anglophone. Bonne nouvelle : une présentation repose sur des formules réutilisables. Une fois que vous les maîtrisez, vous pouvez vous concentrer sur le fond.</p>
@@ -237,12 +237,12 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     author: 'Antony Addy',
     category: 'Communication',
     readTime: '8 min',
-    description: "Comment réussir une présentation en anglais : structure, transitions (signposting), mise en valeur des points clés, gestion des questions et erreurs fréquentes des francophones.",
+    description: "Réussir une présentation en anglais : structure, transitions, points clés, gestion des questions et erreurs courantes.",
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
   },
   {
     id: 'entretien-embauche-en-anglais',
-    title: "Réussir un entretien d'embauche en anglais : questions, réponses et préparation",
+    title: "Entretien d'embauche en anglais",
     excerpt: "\"Tell me about yourself\", forces et faiblesses, la méthode STAR : comment préparer et réussir un entretien d'embauche en anglais, avec des réponses modèles et les erreurs de francophone à éviter.",
     content: `
       <p>Un entretien d'embauche en anglais ajoute une couche de difficulté à un exercice déjà stressant. La clé n'est pas d'improviser en espérant que ça passe, mais de <strong>préparer les questions récurrentes</strong> : elles sont presque toujours les mêmes. Voici comment structurer vos réponses, avec les formules et la méthode qui font la différence.</p>
@@ -316,12 +316,12 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     author: 'Antony Addy',
     category: 'Communication',
     readTime: '8 min',
-    description: "Comment réussir un entretien d'embauche en anglais : répondre à \"Tell me about yourself\", forces et faiblesses, la méthode STAR, questions à poser et erreurs des francophones.",
+    description: "Réussir un entretien d'embauche en anglais : répondre à \"Tell me about yourself\", méthode STAR et erreurs à éviter.",
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
   },
   {
     id: 'anglais-telephone-visio',
-    title: "L'anglais au téléphone et en visioconférence : phrases clés et bonnes pratiques",
+    title: "Anglais au téléphone et en visio",
     excerpt: "Se présenter, faire répéter poliment, gérer les problèmes techniques en visio, laisser un message : les formules essentielles pour gérer un appel professionnel en anglais avec assurance.",
     content: `
       <p>Le téléphone et la visioconférence sont, de loin, les situations les plus stressantes en anglais professionnel : pas de langage corporel pour vous aider, des accents variés, un débit rapide, et parfois une mauvaise connexion. La parade est d'avoir en tête un répertoire de formules pour chaque moment de l'appel — vous n'improvisez plus, vous pilotez.</p>
@@ -397,12 +397,12 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     author: 'Antony Addy',
     category: 'Communication',
     readTime: '7 min',
-    description: "L'anglais au téléphone et en visioconférence : se présenter, faire répéter poliment, gérer les problèmes techniques, laisser un message et éviter les erreurs des francophones.",
+    description: "Anglais au téléphone et en visio : se présenter, faire répéter poliment, gérer la technique et éviter les erreurs courantes.",
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
   },
   {
     id: 'present-simple-vs-present-continuous',
-    title: 'Present Simple vs Present Continuous : Quelle différence ?',
+    title: 'Present Simple vs Present Continuous',
     excerpt: 'Comprendre quand utiliser le Present Simple et le Present Continuous est essentiel pour parler anglais correctement. Découvrez les règles et exemples pratiques.',
     content: `
       <p>La distinction entre le <strong>Present Simple</strong> et le <strong>Present Continuous</strong> est l'une des premières difficultés rencontrées par les francophones. Ces deux temps expriment le présent mais dans des contextes très différents.</p>
@@ -445,7 +445,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'past-simple-vs-present-perfect',
-    title: 'Past Simple vs Present Perfect : Comment choisir ?',
+    title: 'Past Simple vs Present Perfect',
     excerpt: 'Le Past Simple et le Present Perfect sont souvent confondus par les francophones. Apprenez à les distinguer avec des règles simples.',
     content: `
       <p>La distinction entre <strong>Past Simple</strong> et <strong>Present Perfect</strong> est cruciale en anglais. Ces deux temps parlent du passé mais avec des perspectives différentes.</p>
@@ -486,7 +486,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'past-simple-vs-past-continuous',
-    title: 'Past Simple vs Past Continuous : Actions et contexte',
+    title: 'Past Simple vs Past Continuous',
     excerpt: 'Découvrez comment utiliser le Past Simple et le Past Continuous pour raconter des histoires et décrire des situations passées.',
     content: `
       <p>Le <strong>Past Simple</strong> et le <strong>Past Continuous</strong> travaillent souvent ensemble pour raconter des histoires, créant un effet de "scène" et "action".</p>
@@ -526,7 +526,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'past-simple-vs-past-perfect',
-    title: 'Past Simple vs Past Perfect : Le passé du passé',
+    title: 'Past Simple vs Past Perfect',
     excerpt: 'Le Past Perfect permet de parler d\'une action antérieure à une autre action passée. Découvrez comment l\'utiliser correctement.',
     content: `
       <p>Le <strong>Past Perfect</strong> est le "passé du passé". Il permet de clarifier l'ordre chronologique de deux événements passés.</p>
@@ -566,7 +566,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'past-perfect-continuous',
-    title: 'Le Past Perfect Continuous expliqué simplement',
+    title: 'Le Past Perfect Continuous',
     excerpt: 'Le Past Perfect Continuous combine durée et antériorité. Apprenez à l\'utiliser pour décrire des actions continues avant un moment passé.',
     content: `
       <p>Le <strong>Past Perfect Continuous</strong> décrit une action qui était <strong>en cours pendant une durée</strong> avant un autre événement passé.</p>
@@ -603,7 +603,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'future-continuous',
-    title: 'Le Future Continuous : Actions en cours dans le futur',
+    title: 'Le Future Continuous en anglais',
     excerpt: 'Le Future Continuous permet de parler d\'actions qui seront en cours à un moment précis du futur.',
     content: `
       <p>Le <strong>Future Continuous</strong> décrit une action qui sera <strong>en cours</strong> à un moment spécifique dans le futur.</p>
@@ -640,7 +640,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'future-perfect-continuous',
-    title: 'Le Future Perfect Continuous : Durée jusqu\'au futur',
+    title: 'Le Future Perfect Continuous',
     excerpt: 'Le Future Perfect Continuous exprime la durée d\'une action jusqu\'à un point dans le futur. Un temps avancé expliqué simplement.',
     content: `
       <p>Le <strong>Future Perfect Continuous</strong> décrit la <strong>durée</strong> d'une action qui sera en cours jusqu'à un moment futur.</p>
@@ -674,7 +674,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'prepositions-de-lieu',
-    title: 'Les prépositions de lieu en anglais : in, on, at, under...',
+    title: 'Prépositions de lieu : in, on, at',
     excerpt: 'Maîtrisez les prépositions de lieu anglaises avec des règles claires et des exemples concrets pour ne plus jamais vous tromper.',
     content: `
       <p>Les <strong>prépositions de lieu</strong> indiquent la position d'une personne ou d'un objet. Voici les principales à maîtriser.</p>
@@ -719,7 +719,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'prepositions-de-temps',
-    title: 'Les prépositions de temps : in, on, at - Quand les utiliser ?',
+    title: 'Prépositions de temps : in, on, at',
     excerpt: 'In, on, at pour le temps : découvrez les règles simples pour ne plus confondre ces prépositions temporelles.',
     content: `
       <p>Les prépositions <strong>in, on, at</strong> s'utilisent aussi pour le temps, avec des règles précises à connaître.</p>
@@ -761,7 +761,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'comparatifs-en-anglais',
-    title: 'Les comparatifs en anglais : more, -er, as...as',
+    title: 'Les comparatifs en anglais',
     excerpt: 'Comment comparer deux éléments en anglais ? Découvrez les règles des comparatifs avec des exemples clairs.',
     content: `
       <p>Les <strong>comparatifs</strong> permettent de comparer deux éléments. La formation dépend de la longueur de l'adjectif.</p>
@@ -807,7 +807,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'superlatifs-en-anglais',
-    title: 'Les superlatifs en anglais : the most, the -est',
+    title: 'Les superlatifs en anglais',
     excerpt: 'Comment exprimer le plus haut degré en anglais ? Maîtrisez les superlatifs avec des règles simples.',
     content: `
       <p>Les <strong>superlatifs</strong> expriment le degré le plus élevé d'une qualité parmi trois éléments ou plus.</p>
@@ -850,7 +850,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'countable-uncountable-nouns',
-    title: 'Noms dénombrables et indénombrables en anglais',
+    title: 'Dénombrables et indénombrables',
     excerpt: 'Some ou any ? Much ou many ? Comprenez la différence entre noms dénombrables et indénombrables.',
     content: `
       <p>En anglais, les noms sont soit <strong>dénombrables</strong> (countable) soit <strong>indénombrables</strong> (uncountable). Cette distinction affecte le vocabulaire utilisé.</p>
@@ -894,7 +894,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'demonstratives-this-that-these-those',
-    title: 'This, That, These, Those : Les démonstratifs expliqués',
+    title: 'This, That, These, Those',
     excerpt: 'Quand utiliser this, that, these ou those ? Maîtrisez les démonstratifs anglais avec des règles simples.',
     content: `
       <p>Les <strong>démonstratifs</strong> permettent de désigner des personnes ou des objets selon leur distance (proche ou éloigné) et leur nombre (singulier ou pluriel).</p>
@@ -937,7 +937,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'conditionals-zero-first-second-third',
-    title: 'Les conditionnels en anglais : Zero, First, Second, Third',
+    title: 'Les conditionnels en anglais',
     excerpt: 'Maîtrisez les quatre types de conditionnels anglais avec des explications claires et des exemples pratiques.',
     content: `
       <p>L'anglais possède plusieurs types de <strong>conditionnels</strong> selon le degré de probabilité ou de réalité de la situation.</p>
@@ -977,7 +977,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'passive-voice',
-    title: 'La voix passive en anglais : Formation et usages',
+    title: 'La voix passive en anglais',
     excerpt: 'Quand et comment utiliser la voix passive en anglais ? Découvrez les règles et transformez vos phrases actives.',
     content: `
       <p>La <strong>voix passive</strong> met l'accent sur l'action ou l'objet plutôt que sur l'auteur de l'action.</p>
@@ -1020,7 +1020,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'phrasal-verbs',
-    title: 'Les Phrasal Verbs : Guide essentiel pour les maîtriser',
+    title: 'Les Phrasal Verbs en anglais',
     excerpt: 'Les phrasal verbs sont incontournables en anglais. Découvrez comment ils fonctionnent et apprenez les plus courants.',
     content: `
       <p>Les <strong>phrasal verbs</strong> sont des verbes composés d'un verbe + une particule (préposition ou adverbe) qui change le sens du verbe.</p>
@@ -1066,7 +1066,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'articles-a-an-the',
-    title: 'Les articles en anglais : A, An, The ou rien ?',
+    title: 'Les articles : A, An, The',
     excerpt: 'Quand utiliser a, an, the ou pas d\'article ? Les règles essentielles pour ne plus hésiter.',
     content: `
       <p>Les <strong>articles</strong> sont l'une des difficultés majeures pour les francophones. Voici les règles essentielles.</p>
@@ -1107,7 +1107,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'modal-verbs',
-    title: 'Les verbes modaux : Can, Could, Must, Should...',
+    title: 'Les verbes modaux en anglais',
     excerpt: 'Les modaux expriment la capacité, l\'obligation, la probabilité et plus. Guide complet avec exemples.',
     content: `
       <p>Les <strong>verbes modaux</strong> sont des auxiliaires qui expriment la capacité, la permission, l'obligation, la probabilité, etc.</p>
@@ -1157,7 +1157,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'reported-speech',
-    title: 'Le discours indirect (Reported Speech) en anglais',
+    title: 'Le discours indirect en anglais',
     excerpt: 'Comment rapporter les paroles de quelqu\'un en anglais ? Les règles du discours indirect expliquées.',
     content: `
       <p>Le <strong>discours indirect</strong> (reported speech) permet de rapporter ce que quelqu'un a dit sans citer ses paroles exactes.</p>
@@ -1204,7 +1204,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'relative-clauses',
-    title: 'Les propositions relatives : Who, Which, That, Whose',
+    title: 'Propositions relatives en anglais',
     excerpt: 'Comment utiliser who, which, that, whose et where pour relier des phrases ? Guide complet des relatives.',
     content: `
       <p>Les <strong>propositions relatives</strong> donnent des informations supplémentaires sur un nom en utilisant un pronom relatif.</p>
@@ -1245,7 +1245,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'gerunds-vs-infinitives',
-    title: 'Gérondif ou Infinitif ? Le guide pour ne plus hésiter',
+    title: 'Gérondif ou infinitif en anglais',
     excerpt: 'Quand utiliser -ing et quand utiliser to + verbe ? Les règles et listes de verbes à connaître.',
     content: `
       <p>Certains verbes sont suivis du <strong>gérondif</strong> (-ing), d'autres de l'<strong>infinitif</strong> (to + verbe). Comment s'y retrouver ?</p>
@@ -1290,7 +1290,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'question-tags',
-    title: 'Les Question Tags : Comment les former correctement',
+    title: 'Les question tags en anglais',
     excerpt: 'You speak English, don\'t you? Apprenez à former ces petites questions de confirmation en anglais.',
     content: `
       <p>Les <strong>question tags</strong> sont des mini-questions ajoutées en fin de phrase pour demander confirmation ou encourager une réponse.</p>
@@ -1332,7 +1332,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'so-and-such',
-    title: 'So vs Such : Quelle différence et comment les utiliser',
+    title: 'So vs Such : quelle différence ?',
     excerpt: 'So ou such pour intensifier ? Découvrez les règles pour exprimer "tellement" en anglais.',
     content: `
       <p><strong>SO</strong> et <strong>SUCH</strong> servent tous deux à intensifier, mais avec des structures différentes.</p>
@@ -1377,7 +1377,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'too-and-enough',
-    title: 'Too et Enough : Exprimer l\'excès et la suffisance',
+    title: 'Too et Enough en anglais',
     excerpt: 'Too much ou enough ? Apprenez à exprimer ce qui est excessif ou suffisant en anglais.',
     content: `
       <p><strong>TOO</strong> exprime l'excès (trop), <strong>ENOUGH</strong> exprime la suffisance (assez).</p>
@@ -1422,7 +1422,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'some-and-any',
-    title: 'Some ou Any ? Les règles pour ne plus se tromper',
+    title: 'Some ou Any : les règles clés',
     excerpt: 'Quand utiliser some et quand utiliser any ? Les règles essentielles avec exemples.',
     content: `
       <p><strong>SOME</strong> et <strong>ANY</strong> expriment une quantité indéfinie, mais s'utilisent dans des contextes différents.</p>
@@ -1471,7 +1471,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'wish-and-if-only',
-    title: 'Wish et If Only : Exprimer les regrets et souhaits',
+    title: 'Wish et If Only en anglais',
     excerpt: 'Comment exprimer des souhaits présents et des regrets passés avec wish et if only.',
     content: `
       <p><strong>WISH</strong> et <strong>IF ONLY</strong> expriment le regret ou le désir que quelque chose soit différent. "If only" est plus emphatique.</p>
@@ -1598,7 +1598,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'reflexive-pronouns',
-    title: 'Les pronoms réfléchis : myself, yourself, himself...',
+    title: 'Les pronoms réfléchis en anglais',
     excerpt: 'Quand utiliser myself, yourself, himself ? Guide complet des pronoms réfléchis anglais.',
     content: `
       <p>Les <strong>pronoms réfléchis</strong> se terminent en -self (singulier) ou -selves (pluriel) et renvoient au sujet.</p>
@@ -1647,7 +1647,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'subject-object-pronouns',
-    title: 'Pronoms sujets et compléments : I/me, he/him, she/her...',
+    title: 'Pronoms sujets et compléments',
     excerpt: 'Quand utiliser I ou me ? He ou him ? Maîtrisez les pronoms sujets et compléments.',
     content: `
       <p>Les <strong>pronoms sujets</strong> font l'action, les <strong>pronoms compléments</strong> reçoivent l'action.</p>
@@ -1698,7 +1698,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'possessive-adjectives',
-    title: 'Les adjectifs possessifs : my, your, his, her...',
+    title: 'Les adjectifs possessifs en anglais',
     excerpt: 'My, your, his, her, its, our, their : maîtrisez les adjectifs possessifs anglais.',
     content: `
       <p>Les <strong>adjectifs possessifs</strong> indiquent la possession et viennent AVANT un nom.</p>
@@ -1748,7 +1748,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'possessive-pronouns',
-    title: 'Les pronoms possessifs : mine, yours, his, hers...',
+    title: 'Les pronoms possessifs en anglais',
     excerpt: 'Mine, yours, his, hers, ours, theirs : utilisez les pronoms possessifs sans nom.',
     content: `
       <p>Les <strong>pronoms possessifs</strong> remplacent "adjectif possessif + nom" et s'utilisent SEULS.</p>
@@ -1799,7 +1799,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'either-neither',
-    title: 'Either et Neither : Exprimer le choix et la négation',
+    title: 'Either et Neither en anglais',
     excerpt: 'Either...or, neither...nor, me neither : maîtrisez ces structures de choix et d\'accord.',
     content: `
       <p><strong>EITHER</strong> et <strong>NEITHER</strong> s'utilisent pour parler de deux choses ou personnes.</p>
@@ -1848,7 +1848,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   // HIGH PRIORITY LESSONS
   {
     id: 'will-vs-going-to',
-    title: 'Will vs Going To : Quelle différence pour le futur ?',
+    title: 'Will vs Going To en anglais',
     excerpt: 'Will et Going to expriment tous deux le futur mais dans des contextes différents. Découvrez quand utiliser chacun.',
     content: `
       <p>Les deux formes <strong>Will</strong> et <strong>Going to</strong> parlent du futur, mais avec des nuances importantes que tout apprenant doit maîtriser.</p>
@@ -1892,7 +1892,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'much-many-a-lot-of',
-    title: 'Much, Many, A lot of : Les quantités en anglais',
+    title: 'Much, Many, A lot of en anglais',
     excerpt: 'Much, many et a lot of expriment tous la quantité mais ne s\'utilisent pas avec les mêmes noms. Voici les règles.',
     content: `
       <p>Exprimer la quantité en anglais nécessite de distinguer les noms <strong>dénombrables</strong> (countable) des noms <strong>indénombrables</strong> (uncountable).</p>
@@ -2030,7 +2030,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'few-a-few-little-a-little',
-    title: 'Few/A few vs Little/A little : Nuances de quantité',
+    title: 'Few/A few vs Little/A little',
     excerpt: 'Few et little expriment une petite quantité, mais avec ou sans "a", le sens change complètement. Découvrez ces nuances.',
     content: `
       <p>La présence ou l'absence de <strong>"a"</strong> devant few et little change le <strong>ton</strong> du message : positif ou négatif.</p>
@@ -2081,7 +2081,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   // MEDIUM PRIORITY LESSONS
   {
     id: 'possessive-adjectives-pronouns',
-    title: 'Adjectifs possessifs vs Pronoms possessifs en anglais',
+    title: 'Adjectifs vs pronoms possessifs',
     excerpt: 'My/mine, your/yours, his/his... Apprenez à distinguer les adjectifs possessifs des pronoms possessifs.',
     content: `
       <p>Les <strong>adjectifs possessifs</strong> et les <strong>pronoms possessifs</strong> expriment tous deux la possession, mais ils s'utilisent différemment dans la phrase.</p>
@@ -2133,7 +2133,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'adverbs-of-frequency',
-    title: 'Les adverbes de fréquence : always, usually, often, sometimes, never',
+    title: 'Les adverbes de fréquence',
     excerpt: 'Où placer les adverbes de fréquence dans la phrase anglaise ? Découvrez les règles et exceptions.',
     content: `
       <p>Les <strong>adverbes de fréquence</strong> indiquent à quelle fréquence une action se produit. Leur <strong>position</strong> dans la phrase suit des règles précises.</p>
@@ -2190,7 +2190,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'causative-have-get',
-    title: 'Le causatif avec Have et Get : Faire faire quelque chose',
+    title: 'Le causatif : Have et Get',
     excerpt: 'Comment dire "faire faire" en anglais ? Découvrez les structures causatives avec have et get.',
     content: `
       <p>Les structures <strong>causatives</strong> permettent d'exprimer qu'on fait faire une action par quelqu'un d'autre.</p>
@@ -2286,7 +2286,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     author: 'Antony Addy',
     category: 'Grammaire - Adjectifs',
     readTime: '5 min',
-    description: "Maîtrisez l'ordre des adjectifs en anglais avec la règle OSASCOMP.",
+    description: "Maîtrisez l'ordre des adjectifs en anglais avec la règle OSASCOMP et des exemples pratiques.",
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
     relatedExerciseId: 'order-adjectives'
   },
@@ -2345,14 +2345,14 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     author: 'Antony Addy',
     category: 'Grammaire - Déterminants',
     readTime: '5 min',
-    description: 'Maîtrisez les déterminants all, both, each, every et no en anglais.',
+    description: 'Maîtrisez les déterminants all, both, each, every et no en anglais avec des exemples.',
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
     relatedExerciseId: 'determiners'
   },
   // LOWER PRIORITY LESSONS
   {
     id: 'had-better-would-rather',
-    title: 'Had Better vs Would Rather : Conseils et préférences',
+    title: 'Had Better vs Would Rather',
     excerpt: "Had better exprime un conseil fort, would rather une préférence. Découvrez comment les utiliser.",
     content: `
       <p><strong>Had better</strong> et <strong>would rather</strong> sont deux expressions utiles pour donner des conseils et exprimer des préférences.</p>
@@ -2400,7 +2400,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'although-despite-however',
-    title: 'Although, Despite, However : Exprimer la concession',
+    title: 'Although, Despite, However',
     excerpt: 'Ces trois mots expriment tous un contraste, mais avec des structures différentes. Voici comment les utiliser.',
     content: `
       <p><strong>Although</strong>, <strong>despite</strong> et <strong>however</strong> expriment tous un <strong>contraste</strong> ou une concession, mais leur utilisation grammaticale diffère.</p>
@@ -2646,7 +2646,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     author: 'Antony Addy',
     category: 'Vocabulaire',
     readTime: '4 min',
-    description: 'Ne confondez plus Lend et Borrow grâce à cette explication claire.',
+    description: 'Ne confondez plus Lend et Borrow grâce à cette explication claire avec des exemples.',
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
     relatedExerciseId: 'lend-vs-borrow'
   },
@@ -3042,7 +3042,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
   },
   {
     id: 'classic-vs-classical',
-    title: 'Classic vs Classical : Une différence importante',
+    title: 'Classic vs Classical en anglais',
     excerpt: 'Classic et Classical ne sont pas interchangeables. Découvrez quand utiliser chacun.',
     content: `
       <p><strong>CLASSIC</strong> et <strong>CLASSICAL</strong> ont des sens distincts malgré leur apparence similaire.</p>
@@ -3165,13 +3165,13 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     author: 'Antony Addy',
     category: 'Vocabulaire',
     readTime: '4 min',
-    description: 'Distinguez Historic (mémorable) et Historical (relatif à l\'histoire).',
+    description: 'Distinguez Historic (mémorable) et Historical (relatif à l\'histoire) avec des exemples clairs.',
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
     relatedExerciseId: 'historic-vs-historical'
   },
   {
     id: 'used-to-be-used-to',
-    title: 'Used to vs Be used to : Habitudes passées et présentes',
+    title: 'Used to vs Be used to',
     excerpt: 'Ces deux expressions sont souvent confondues. Découvrez leurs différences de sens et de structure.',
     content: `
       <p><strong>USED TO</strong> et <strong>BE USED TO</strong> expriment des concepts différents liés aux habitudes.</p>
@@ -3210,7 +3210,7 @@ export const grammarBlogPosts: GrammarBlogPost[] = [
     author: 'Antony Addy',
     category: 'Grammaire - Structures',
     readTime: '5 min',
-    description: 'Maîtrisez Used to et Be used to pour parler des habitudes en anglais.',
+    description: 'Maîtrisez Used to et Be used to pour parler des habitudes passées et présentes en anglais.',
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
     relatedExerciseId: 'used-to-be-used-to'
   },

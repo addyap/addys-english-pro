@@ -500,7 +500,7 @@ const Training = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.coe.int/en/web/common-european-framework-reference-languages/home" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                      <a href="https://www.coe.int/en/web/common-european-framework-reference-languages" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                         Cadre Européen CECRL ↗
                       </a>
                     </li>

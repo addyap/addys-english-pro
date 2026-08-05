@@ -91,7 +91,7 @@ const RessourcesEnLigne = () => {
     <>
       <SEOHead
         title="Ressources & plateformes d'anglais en ligne | Antony Addy"
-        description="Découvrez les plateformes d'apprentissage de l'anglais conçues et développées avec l'IA par Antony Addy : Anglais à distance, Grammatica, préparation TOEIC et CLOE."
+        description="Plateformes d'apprentissage de l'anglais conçues par Antony Addy : Anglais à distance, Grammatica, préparation TOEIC et CLOE."
         canonicalUrl="https://www.antonyaddy.com/ressources-en-ligne"
         jsonLd={collectionJsonLd}
       />
