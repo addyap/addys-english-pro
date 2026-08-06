@@ -11,7 +11,10 @@
     "build:csr": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "serve:dist": "node scripts/serve-dist.mjs"
+    "serve:dist": "node scripts/serve-dist.mjs",
+    "audit": "node scripts/audit/index.mjs",
+    "audit:wiring": "node scripts/audit/index.mjs wiring",
+    "lighthouse": "node scripts/lighthouse-ci.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

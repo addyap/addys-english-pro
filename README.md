@@ -41,20 +41,32 @@ The dev server runs without them, but the contact form and questionnaire will no
 
 ## Checks
 
-These run in CI on every push and pull request, and can be run locally against a build:
+The unified site audit runs on every push and pull request. It aggregates four sub-audits (internal-links, wiring, assets, indexability), writes a single `audit-report.json`, and fails the build only on `error`-severity findings — `warn`s stay visible without blocking merges.
 
 ```sh
 npm run build
-node scripts/verify-indexability.mjs    # title, description, canonical, H1 per route
-node scripts/audit-internal-links.mjs   # links resolve to a route or a vercel.json redirect
-node scripts/audit-assets.mjs           # unreferenced files in public/assets
+npm run audit                    # all four sub-audits
+npm run audit -- wiring          # or run one sub-audit
+FAIL_ON=warn npm run audit       # promote warnings to failures for a strict pass
 ```
 
-`scripts/check-links.mjs` crawls the built site with Playwright and needs a running preview server:
+Sub-audits live under `scripts/audit/`. Adding a new one takes an import + one row in the registry in `scripts/audit/index.mjs`.
+
+Every push uploads `audit-report.json` as a GitHub Actions artifact; every PR downloads main's most-recent baseline, runs `scripts/audit/diff.mjs`, and posts a sticky comment showing new / resolved findings vs main.
+
+`scripts/check-links.mjs` crawls the built site with Playwright and needs a running preview server; it's a separate integration test, not part of `npm run audit`:
 
 ```sh
 npm run preview &
 PW_BASE_URL=http://localhost:4173 node scripts/check-links.mjs
+```
+
+Lighthouse runs against a matrix of 5 representative pages (home, blog index, a blog post, an audience landing, a city landing) — a single-URL run masked regressions in individual templates. Needs the same running preview:
+
+```sh
+node scripts/serve-dist.mjs &
+LH_URL=http://localhost:4173 npm run lighthouse
+LH_STRICT=0 npm run lighthouse    # report scores without failing on threshold miss
 ```
 
 ## Routing and redirects

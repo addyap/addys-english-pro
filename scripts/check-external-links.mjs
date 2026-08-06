@@ -1,7 +1,8 @@
 // Check external (cross-origin) links in the built site for 404s.
 //
 // This is the layer the other two gates deliberately skip:
-//   - audit-internal-links.mjs resolves internal links against routes/redirects.
+//   - the `internal-links` sub-audit (scripts/audit/) resolves internal links
+//     against routes/redirects.
 //   - check-links.mjs crawls the build but never leaves the origin.
 // Neither follows a link to anglaisadistance.fr, afpa.fr, etc. That blind spot
 // is exactly how a homepage CTA to a retired /conversation-trainer page, and

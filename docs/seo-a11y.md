@@ -21,7 +21,7 @@ Import `src/monitor/vitals.ts` once at bootstrap. Metrics log to console and GA 
 The sitemap is generated automatically by the `prebuild` step (`node scripts/generate-sitemap.mjs`), which runs before every `npm run build`. It reads routes from `src/routes.tsx` and blog posts from `src/data/grammarBlogPosts.ts`.
 
 ## Link integrity
-`node scripts/audit-internal-links.mjs` statically checks that internal links resolve to a route or a `vercel.json` redirect. `scripts/check-links.mjs` crawls a running preview server with Playwright and fails on internal 4xx/5xx:
+`npm run audit` runs the source-level internal-links check (resolves every `to=`/`href=`/`navigate()` literal against `src/routes.tsx` and `vercel.json` redirects) plus the wiring, assets, and indexability sub-audits. `scripts/check-links.mjs` is a separate integration test that crawls a running preview server with Playwright and fails on internal 4xx/5xx:
 ```sh
 npm run preview &
 PW_BASE_URL=http://localhost:4173 node scripts/check-links.mjs
@@ -30,11 +30,9 @@ PW_BASE_URL=http://localhost:4173 node scripts/check-links.mjs
 ## Pre-deploy safety
 ```sh
 npm run build
-node scripts/verify-indexability.mjs
-node scripts/audit-internal-links.mjs
-node scripts/audit-assets.mjs
+npm run audit                # links + wiring + assets + indexability, one report
 ```
-Fix failures before publishing. See the root [README](../README.md#checks) for the full list.
+Fix `error`-severity findings before publishing; `warn`-severity findings (title length, duplicate descriptions, unreferenced assets) are informational and don't block CI.
 
 ## Hosting
 Deployed on Vercel. Redirects and security headers live in `vercel.json` — there is no `.htaccess` or Apache layer.

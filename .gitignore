@@ -30,7 +30,7 @@ dist-ssr
 .vite-react-ssg-temp
 
 # Generated audit output
-audit-assets-report.json
+audit-report.json
 
 .vercel
 .env*

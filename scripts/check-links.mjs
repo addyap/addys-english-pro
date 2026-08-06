@@ -5,11 +5,11 @@
 // answers 200 for every path, so a route that never got prerendered still
 // looks healthy, which is the exact bug this check exists to catch.
 //
-// Complements scripts/audit-internal-links.mjs. That one is a source-level
-// check: it resolves link literals against src/routes.tsx and vercel.json
-// without building. This one exercises the real build over HTTP, so it also
-// catches a route that is declared but never prerendered, a page that 5xx's,
-// and links that only exist in rendered output.
+// Complements the `internal-links` sub-audit under scripts/audit/. That one
+// is a source-level check: it resolves link literals against src/routes.tsx
+// and vercel.json without building. This one exercises the real build over
+// HTTP, so it also catches a route that is declared but never prerendered,
+// a page that 5xx's, and links that only exist in rendered output.
 import { readFileSync } from "node:fs";
 import { chromium } from "@playwright/test";
 
@@ -20,7 +20,7 @@ const BASE_ORIGIN = new URL(BASE).origin;
 // links one of them. Following those would put a live internet request in the
 // middle of a blocking CI gate — the wall clock swung from 34s to 156s while
 // this was left to Playwright. Skip them before navigating: the sibling site is
-// not ours to vouch for. The redirect itself is covered by audit-internal-links.
+// not ours to vouch for. The redirect itself is covered by the internal-links sub-audit.
 function readOffsiteRedirectSources() {
   try {
     const config = JSON.parse(readFileSync(new URL("../vercel.json", import.meta.url), "utf8"));

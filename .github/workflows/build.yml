@@ -17,6 +17,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    # The default token for pull_request events is read-only. Grant write on
+    # pull-requests so the audit-diff step below can post/update a sticky
+    # comment. Fork PRs still get a read-only token from GitHub — that step
+    # tolerates the resulting 403 rather than failing the whole build.
+    permissions:
+      contents: read
+      pull-requests: write
+
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v3
@@ -41,11 +49,77 @@ jobs:
       - name: 🛠️ Build website
         run: npm run build
 
-      # Source-level check: resolves every internal link against src/routes.tsx
-      # and the redirects in vercel.json. This is the step that actually catches
-      # a link to a route that does not exist.
-      - name: 🔗 Audit internal links against routes and redirects
-        run: node scripts/audit-internal-links.mjs
+      # Unified site audit: internal links resolve, generated content is wired
+      # to a page, public/ assets are referenced, and every prerendered HTML
+      # in dist/ carries a title/description/canonical/H1. Runs after build so
+      # the indexability sub-audit can walk the freshly prerendered output;
+      # writes audit-report.json for downstream annotation.
+      - name: 🧭 Site audit (links, wiring, assets, indexability)
+        run: npm run audit
+
+      # Every run — push, PR, cron — uploads its audit report. The next PR
+      # will download main's most-recent successful upload as its baseline;
+      # without this step there is nothing to diff against.
+      - name: 📤 Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-report
+          path: audit-report.json
+          retention-days: 30
+
+      # PR-only: pull the baseline audit report from main's most recent
+      # successful run, diff, and post/update a sticky comment on the PR.
+      # `gh` is preinstalled and authenticated via GITHUB_TOKEN.
+      - name: 📥 Fetch baseline audit report from main
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p base-audit
+          # Grab the most recent successful main run of THIS workflow. `|| true`
+          # keeps the step green when no baseline exists yet (first PR after
+          # this rolls out); the diff step handles a missing baseline itself.
+          RUN_ID=$(gh run list \
+            --workflow "${{ github.workflow }}" \
+            --branch main \
+            --status success \
+            --limit 1 \
+            --json databaseId \
+            --jq '.[0].databaseId' || true)
+          if [ -n "$RUN_ID" ]; then
+            echo "Baseline run: $RUN_ID"
+            gh run download "$RUN_ID" --name audit-report --dir base-audit || true
+          else
+            echo "No successful main run found — first-run mode."
+          fi
+
+      - name: 💬 Post audit diff comment
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BASE_PATH="base-audit/audit-report.json"
+          [ ! -f "$BASE_PATH" ] && BASE_PATH="/dev/null"
+          CTX="commit \`${{ github.event.pull_request.head.sha }}\` · run [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+          node scripts/audit/diff.mjs "$BASE_PATH" audit-report.json --context "$CTX" > /tmp/audit-comment.md
+
+          # Sticky comment: find one carrying our marker and edit it, else
+          # create a new one. Fork PRs whose token can't post will 403 here —
+          # we swallow the error so an unrelated permissions issue doesn't
+          # fail the build.
+          MARKER='<!-- audit-diff:v1 -->'
+          PR="${{ github.event.pull_request.number }}"
+          REPO="${{ github.repository }}"
+          EXISTING=$(gh api "repos/$REPO/issues/$PR/comments" --paginate \
+            --jq "[.[] | select(.body | contains(\"$MARKER\"))][0].id" || echo "")
+          if [ -n "$EXISTING" ] && [ "$EXISTING" != "null" ]; then
+            gh api -X PATCH "repos/$REPO/issues/comments/$EXISTING" \
+              -f body="$(cat /tmp/audit-comment.md)" || echo "comment update failed (permissions?)"
+          else
+            gh pr comment "$PR" --body-file /tmp/audit-comment.md \
+              || echo "comment create failed (permissions?)"
+          fi
 
       - name: 🔗 Install Playwright for link validation
         run: npx playwright install chromium
