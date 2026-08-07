@@ -23,6 +23,7 @@ const LegalNotices = () => {
               <p className="mb-2"><strong>Adresse professionnelle :</strong> 135 rue Henri Vadon, Résidence des Arènes, 83600 Fréjus, France</p>
               <p className="mb-2"><strong>SIRET :</strong> 48317889300028</p>
               <p className="mb-2"><strong>Code NAF/APE :</strong> 8559B — Autres enseignements</p>
+              <p className="mb-2"><strong>TVA :</strong> TVA non applicable, art. 293 B du CGI</p>
               <p className="mb-2"><strong>Téléphone :</strong> +33 6 49 82 98 26</p>
               <p className="mb-2">
                 <strong>Courriel :</strong>{" "}

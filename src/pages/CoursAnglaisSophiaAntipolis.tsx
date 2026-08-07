@@ -12,7 +12,7 @@ const OTHER_CITIES = [
 const CoursAnglaisSophiaAntipolis = () => (
   <CityLandingPage
     seo={{
-      title: "Cours d'anglais Sophia Antipolis — Formateur natif britannique",
+      title: "Cours d'anglais Sophia Antipolis",
       description: "Formations d'anglais sur-mesure à Sophia Antipolis pour équipes tech et professionnels internationaux. Présentiel sur site ou distance.",
       canonical: "https://www.antonyaddy.com/cours-anglais-sophia-antipolis",
       geoRegion: "FR-06",

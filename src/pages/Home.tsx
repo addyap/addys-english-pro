@@ -580,7 +580,7 @@ const Home = () => {
               <div>
                 <h3 className="font-semibold text-foreground mb-3">Références officielles</h3>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li><a href="https://www.coe.int/en/web/common-european-framework-reference-languages/home" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Cadre Européen CECRL ↗</a></li>
+                  <li><a href="https://www.coe.int/en/web/common-european-framework-reference-languages" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Cadre Européen CECRL ↗</a></li>
                   <li><a href="https://dictionary.cambridge.org/grammar/british-grammar/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Cambridge Grammar ↗</a></li>
                   <li><a href="https://learnenglish.britishcouncil.org/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">British Council ↗</a></li>
                 </ul>

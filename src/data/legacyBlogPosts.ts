@@ -28,7 +28,7 @@ const EXPERIENCE_FLOOR = Math.floor((new Date().getFullYear() - 2005) / 10) * 10
 
 export const legacyBlogPosts: Record<string, ArticleData> = {
   'anglais-professionnel-2025': {
-    title: "Pourquoi l'anglais professionnel est une compétence essentielle en 2025",
+    title: "L'anglais pro : compétence clé en 2025",
     content: `
       <p>Dans un monde professionnel de plus en plus globalisé, maîtriser l'anglais n'est plus un simple atout sur le CV : c'est devenu une nécessité absolue pour évoluer dans sa carrière et rester compétitif sur le marché du travail.</p>
 
@@ -64,7 +64,7 @@ export const legacyBlogPosts: Record<string, ArticleData> = {
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
   },
   'erreurs-francophones': {
-    title: 'Les erreurs fréquentes chez les francophones – et comment les éviter',
+    title: 'Erreurs des francophones en anglais',
     content: `
       <p>En tant que formateur d'anglais pour francophones depuis plus de ${EXPERIENCE_FLOOR} ans, j'ai identifié les erreurs les plus récurrentes. Bonne nouvelle : elles sont prévisibles et donc évitables !</p>
 
@@ -106,7 +106,7 @@ export const legacyBlogPosts: Record<string, ArticleData> = {
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
   },
   'oral-vs-ecrit': {
-    title: 'Anglais oral vs écrit – adapter sa communication professionnelle',
+    title: 'Anglais oral vs écrit au travail',
     content: `
       <p>Dans le monde professionnel, votre anglais doit s'adapter au canal de communication. Un email, une présentation orale et un appel téléphonique requièrent des registres et des techniques différents.</p>
 

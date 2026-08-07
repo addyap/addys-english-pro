@@ -70,6 +70,12 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
 
   return (
     <div className="min-h-screen bg-background font-body">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:text-primary focus:px-4 focus:py-2 focus:rounded focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary"
+      >
+        Aller au contenu principal
+      </a>
       <ScrollProgressBar />
 
       {/* Header */}
@@ -325,7 +331,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
 
       <Breadcrumbs customTitle={breadcrumbTitle} customSection={breadcrumbSection} />
 
-      <main>{children}</main>
+      <main id="main-content">{children}</main>
 
       {/* Footer */}
       <footer className="bg-slate-900 text-white text-sm py-12 px-4">
@@ -371,7 +377,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 </a>
               </p>
               <div className="mt-5">
-                <h4 className="font-semibold mb-2 text-white text-xs uppercase tracking-wider">Mes formations</h4>
+                <h3 className="font-semibold mb-2 text-white text-xs uppercase tracking-wider">Mes formations</h3>
                 <ul className="flex flex-wrap gap-x-4 gap-y-1">
                   {FORMATIONS.map(f => (
                     <li key={f.key}>

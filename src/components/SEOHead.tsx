@@ -158,10 +158,11 @@ export default function SEOHead(props: SEOProps) {
 
   const robots = robotsValue(noIndex || noindex, noFollow);
 
-  const finalImage =
+  const rawImage =
     image ||
     ogImage ||
     `${SITE_URL}/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png`;
+  const finalImage = rawImage.startsWith("http") ? rawImage : `${SITE_URL}${rawImage}`;
   const finalImageAlt =
     imageAlt || "Antony Addy - Formateur d'anglais professionnel";
 
