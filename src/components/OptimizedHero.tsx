@@ -134,13 +134,17 @@ export default function OptimizedHero() {
           >
             Voir les formations →
           </Link>
-          <Link
-            to="/ressources-gratuites"
+          {/* Plain <a>, not <Link>: this path only exists as a vercel.json
+              redirect to anglaisadistance.fr, not a client route — a <Link>
+              would client-side-navigate straight into the 404 catch-all
+              instead of letting the server redirect fire. */}
+          <a
+            href="/ressources-gratuites"
             className="inline-block text-sm text-primary-foreground/80 hover:text-primary-foreground underline underline-offset-4 font-body focus:outline-none focus:ring-2 focus:ring-ring/30 rounded"
             aria-label="Explorer les ressources gratuites d'anglais"
           >
             Explorer les ressources gratuites →
-          </Link>
+          </a>
         </div>
       </div>
 
