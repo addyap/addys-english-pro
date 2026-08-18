@@ -12,6 +12,7 @@ import { LazyClientCarousel } from '@/components/LazySwiper';
 import { trackEvent } from '@/lib/analytics';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 import { FORMATIONS } from '@/data/formations';
+import { PLATFORM_COUNT } from '@/data/platforms';
 
 // Map the formation icon names to their lucide components (already imported above).
 const FORMATION_ICONS = { Globe, Sparkles, Settings } as const;
@@ -412,16 +413,19 @@ const Home = () => {
                   </p>
                 </div>
               </div>
+              {/* Internal, to the list of all platforms. Was an external deep
+                  link into one grammar exercise on anglaisadistance.fr — the ↗
+                  and ExternalLink icon go with it, since this no longer leaves
+                  the site. */}
               <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
-                <a
-                  href="https://anglaisadistance.fr/grammaire-essentielle/contrastes"
-                  target="_blank"
-                  rel="noopener"
+                <Link
+                  to="/ressources-en-ligne"
+                  onClick={() => trackEvent('home_resources_banner_click', { page: 'home', target: '/ressources-en-ligne' })}
                   className="bg-white text-emerald-700 px-5 py-2.5 rounded-lg font-bold text-sm sm:text-base hover:bg-white/90 transition-all flex items-center gap-2 whitespace-nowrap shadow-lg hover:scale-105 w-full md:w-auto justify-center"
                 >
-                  Commencer maintenant ↗
-                  <ExternalLink className="h-4 w-4" />
-                </a>
+                  Voir les {PLATFORM_COUNT} plateformes
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
               </div>
             </div>
           </div>
@@ -513,18 +517,18 @@ const Home = () => {
               Prêt à progresser ?
             </h3>
             <p className="text-lg text-muted-foreground mb-6 font-body">
-              Rejoignez des centaines d'apprenants. Commencez par un exercice gratuit — sans inscription.
+              Grammaire, compréhension orale, préparation TOEIC et CLOE, entraînement à l'oral —
+              en accès libre, sans inscription.
             </p>
-            <a
-              href="https://anglaisadistance.fr/grammaire-essentielle/contrastes"
-              target="_blank"
-              rel="noopener"
+            <Link
+              to="/ressources-en-ligne"
+              onClick={() => trackEvent('home_resources_cta_click', { page: 'home', location: 'progress-cta', target: '/ressources-en-ligne' })}
               className="inline-flex items-center gap-2 bg-emerald-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-emerald-700 transition-all hover:scale-105 shadow-lg"
             >
-              <Sparkles className="h-5 w-5" />
-              Essayer un exercice maintenant ↗
-              <ArrowRight className="h-5 w-5" />
-            </a>
+              <Sparkles className="h-5 w-5" aria-hidden="true" />
+              Explorer les plateformes gratuites
+              <ArrowRight className="h-5 w-5" aria-hidden="true" />
+            </Link>
           </div>
         </section>
 

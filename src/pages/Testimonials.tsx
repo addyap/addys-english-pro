@@ -6,6 +6,7 @@ import { EXPERIENCE_FLOOR, PRICE_RANGE, CONTENT_LAST_REVIEWED_ISO } from '@/lib/
 import { TypingText } from '../components/TypingText';
 import { TestimonialSkeleton } from '../components/SkeletonLoader';
 import { testimonials } from '@/data/testimonials';
+import { PLATFORM_COUNT } from '@/data/platforms';
 
 const Testimonials = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -179,15 +180,15 @@ const Testimonials = () => {
               Prêt à rejoindre ces apprenants satisfaits ?
             </h2>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Découvrez mes <Link to="/offres-de-formation" className="text-accent hover:underline font-medium">formations d'anglais personnalisées</Link> ou testez vos compétences avec mes <a href="https://anglaisadistance.fr/grammaire-essentielle/contrastes" target="_blank" rel="noopener" className="text-accent hover:underline font-medium">exercices gratuits ↗</a>.
+              Découvrez mes <Link to="/offres-de-formation" className="text-accent hover:underline font-medium">formations d'anglais personnalisées</Link> ou entraînez-vous sur mes <Link to="/ressources-en-ligne" className="text-accent hover:underline font-medium">{PLATFORM_COUNT} plateformes gratuites</Link>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">
                 Me contacter
               </Link>
-              <a href="https://anglaisadistance.fr/grammaire-essentielle/contrastes" target="_blank" rel="noopener" className="bg-card border border-border text-foreground px-6 py-3 rounded-lg font-semibold hover:bg-muted transition-colors">
-                Essayer les exercices gratuits ↗
-              </a>
+              <Link to="/ressources-en-ligne" className="bg-card border border-border text-foreground px-6 py-3 rounded-lg font-semibold hover:bg-muted transition-colors">
+                Explorer les plateformes gratuites
+              </Link>
             </div>
           </div>
         </div>
