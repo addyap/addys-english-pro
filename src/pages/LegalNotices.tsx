@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
+import { MEDIATOR } from '@/config/mediator';
 
 /** Date of the legal notices version currently published. Bump by hand on change. */
 const LEGAL_VERSION_DATE = '18 août 2026';
@@ -50,6 +51,34 @@ const LegalNotices = () => {
                 Cet enregistrement ne vaut pas agrément de l'État (article
                 L.6352-12 du Code du travail).
               </p>
+
+              {/* Art. R.616-1 requires the mediator's details on the site itself,
+                  not only inside the CGV. Driven by the same constant, so one
+                  edit updates both pages. See src/config/mediator.ts. */}
+              {MEDIATOR && (
+                <>
+                  <h2 className="text-2xl font-semibold text-primary mb-4">Médiation de la consommation</h2>
+                  <p className="mb-2">
+                    Conformément à l'article L.612-1 du Code de la consommation, tout Client
+                    consommateur peut recourir gratuitement au médiateur suivant en cas de litige
+                    non résolu :
+                  </p>
+                  <p className="mb-2"><strong>{MEDIATOR.name}</strong></p>
+                  <p className="mb-2">{MEDIATOR.address}</p>
+                  <p className="mb-6">
+                    <a
+                      href={MEDIATOR.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-700 font-medium underline"
+                    >
+                      {MEDIATOR.url.replace(/^https?:\/\//, "")}
+                    </a>
+                    {" — "}saisine possible après réclamation écrite préalable restée sans réponse
+                    satisfaisante.
+                  </p>
+                </>
+              )}
 
               <h2 className="text-2xl font-semibold text-primary mb-4">Hébergement</h2>
               <p className="mb-6">

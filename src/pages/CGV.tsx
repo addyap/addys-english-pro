@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
+import { MEDIATOR } from "@/config/mediator";
 
 /**
  * Conditions Générales de Vente — formation professionnelle d'adultes.
@@ -198,38 +199,31 @@ const CGV = () => {
             introduire une réclamation auprès de la Commission Nationale de
             l'Informatique et des Libertés (CNIL — www.cnil.fr).
           </p>
-          {/*
-            ⚠️ MÉDIATION DE LA CONSOMMATION — SECTION MANQUANTE, ACTION REQUISE
-            ─────────────────────────────────────────────────────────────────
-            Articles L.612-1 and R.616-1 of the Code de la consommation require
-            any professional selling to consumers (your "Particuliers" clients)
-            to (a) be enrolled with an approved consumer mediator, and (b) state
-            that mediator's NAME, POSTAL ADDRESS and WEBSITE in the CGV and on
-            the site. Enrolment is a paid annual subscription; the CNM (Commission
-            d'évaluation et de contrôle de la médiation de la consommation)
-            publishes the list of approved mediators at economie.gouv.fr.
-
-            The previous wording here promised to supply the mediator's details
-            "sur simple demande", which does not satisfy R.616-1 and implied an
-            enrolment that does not exist. It has been removed rather than left
-            to stand as an unsupportable claim.
-
-            Once enrolled, replace this comment with:
-
-              <p>
-                Conformément aux articles L.612-1 et suivants du Code de la
-                consommation, le Client consommateur peut recourir gratuitement
-                au médiateur de la consommation suivant, en vue de la résolution
-                amiable d'un litige :
-                <strong>[NOM DU MÉDIATEUR]</strong>, [ADRESSE POSTALE],
-                <a href="[SITE WEB]">[SITE WEB]</a>. Le recours à la médiation
-                n'est recevable qu'après une réclamation écrite préalable
-                adressée au Prestataire.
-              </p>
-
-            Note: this obligation only applies to consumer (B2C) clients. It does
-            not apply to formations sold to companies under convention.
-          */}
+          {/* Rendered only once enrolled — see src/config/mediator.ts, which
+              also carries the CECMC shortlist and what to declare when signing
+              up. While MEDIATOR is null this paragraph is simply absent, which
+              is honest; the wording it replaced promised to supply the
+              mediator's details "sur simple demande", which does not satisfy
+              art. R.616-1 and implied an enrolment that did not exist. */}
+          {MEDIATOR && (
+            <p>
+              Conformément aux articles L.612-1 et suivants du Code de la
+              consommation, le Client consommateur a le droit de recourir
+              gratuitement à un médiateur de la consommation en vue de la
+              résolution amiable d'un litige l'opposant au Prestataire. Le
+              médiateur désigné est :{" "}
+              <strong>{MEDIATOR.name}</strong>, {MEDIATOR.address},{" "}
+              <a href={MEDIATOR.url} target="_blank" rel="noopener noreferrer" className="text-primary underline">
+                {MEDIATOR.url.replace(/^https?:\/\//, "")}
+              </a>
+              . Le recours à la médiation n'est recevable qu'après une
+              réclamation écrite préalable adressée au Prestataire et restée
+              sans réponse satisfaisante dans un délai de deux mois. Cette
+              faculté est ouverte aux Clients consommateurs ; elle ne s'applique
+              pas aux prestations commandées par un Client professionnel dans le
+              cadre d'une convention de formation.
+            </p>
+          )}
 
           <h2>Article 13 — Droit applicable et juridiction compétente</h2>
           <p>
