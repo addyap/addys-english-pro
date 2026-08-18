@@ -47,6 +47,15 @@ const PrivacyPolicy = () => {
               </p>
               <ul className="list-disc list-inside mb-4 space-y-2">
                 <li><strong>Formulaire de contact</strong> : prénom, nom, adresse email et le contenu de votre message.</li>
+                <li>
+                  <strong>Adresse IP</strong> : lors de l'envoi du formulaire uniquement, votre
+                  adresse IP est enregistrée quelques heures afin de limiter le nombre d'envois par
+                  visiteur. Cette mesure anti-spam est nécessaire : chaque envoi déclenche deux
+                  emails, dont un vers l'adresse saisie, ce qui sans garde-fou permettrait à un
+                  robot de se servir du formulaire pour relayer du courrier. L'adresse IP n'est
+                  associée ni à votre message ni à votre identité, et sert exclusivement à ce
+                  comptage.
+                </li>
                 <li><strong>Échanges directs</strong> : les informations que vous communiquez par email ou WhatsApp.</li>
               </ul>
 
@@ -67,6 +76,7 @@ const PrivacyPolicy = () => {
                 <li><strong>Vercel Inc.</strong> (États-Unis) — hébergement du site.</li>
                 <li><strong>Resend</strong> — acheminement des emails de notification et de confirmation.</li>
                 <li><strong>Umami</strong> — mesure d'audience du site, sans cookie et sans identifiant publicitaire (voir « Cookies et mesures d'audience » ci-dessous).</li>
+                <li><strong>Supabase</strong> — base de données hébergeant le compteur anti-spam décrit ci-dessus (adresses IP uniquement, à durée de vie très courte).</li>
               </ul>
               <p className="mb-6">
                 Certains de ces prestataires sont situés hors de l'Union européenne ; les transferts éventuels sont
