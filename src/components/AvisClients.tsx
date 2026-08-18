@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from "react-router-dom";
-import { testimonials } from '@/data/testimonials';
+import { featuredTestimonials } from '@/data/testimonials';
 import TestimonialCarousel from './TestimonialCarousel';
 
 const AvisClients = () => {
@@ -17,7 +17,7 @@ const AvisClients = () => {
             Ils me font confiance.
           </p>
 
-          <TestimonialCarousel testimonials={testimonials} />
+          <TestimonialCarousel testimonials={featuredTestimonials} />
 
           <div className="mt-10">
             <Link

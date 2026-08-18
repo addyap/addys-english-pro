@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Sparkles, ArrowRight, Gift, RefreshCw, Clock } from 'lucide-react';
+import { ArrowUpRight, Sparkles, ArrowRight, Gift, RefreshCw } from 'lucide-react';
 import SEOHead from '@/components/SEOHead';
 import { FadeInSection } from '@/components/Effects';
 
@@ -11,7 +11,6 @@ interface Platform {
   tag: string;
   raison: string;
   accent: string; // tailwind gradient classes for the card header band
-  comingSoon?: boolean;
 }
 
 const PLATFORMS: Platform[] = [
@@ -79,7 +78,7 @@ const RessourcesEnLigne = () => {
     description:
       "Plateformes d'apprentissage de l'anglais conçues et développées par Antony Addy à l'aide de l'intelligence artificielle.",
     url: 'https://www.antonyaddy.com/ressources-en-ligne',
-    hasPart: PLATFORMS.filter((p) => !p.comingSoon).map((p) => ({
+    hasPart: PLATFORMS.map((p) => ({
       '@type': 'WebSite',
       name: p.name,
       url: p.url,
@@ -133,17 +132,10 @@ const RessourcesEnLigne = () => {
                       <span className="inline-block rounded-full bg-muted px-3 py-1 text-xs font-semibold text-muted-foreground">
                         {p.tag}
                       </span>
-                      {p.comingSoon ? (
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-200 px-3 py-1 text-xs font-semibold text-slate-600">
-                          <Clock className="h-3.5 w-3.5" aria-hidden="true" />
-                          Bientôt
-                        </span>
-                      ) : (
-                        <ArrowUpRight
-                          className="h-5 w-5 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-foreground"
-                          aria-hidden="true"
-                        />
-                      )}
+                      <ArrowUpRight
+                        className="h-5 w-5 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-foreground"
+                        aria-hidden="true"
+                      />
                     </div>
 
                     <h2 className="text-xl sm:text-2xl font-bold text-primary font-heading">
@@ -157,39 +149,24 @@ const RessourcesEnLigne = () => {
                       {p.raison}
                     </p>
 
-                    {p.comingSoon ? (
-                      <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-500">
-                        En cours de développement
-                      </span>
-                    ) : (
-                      <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-accent-foreground">
-                        Découvrir le site
-                        <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
-                      </span>
-                    )}
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-accent-foreground">
+                      Découvrir le site
+                      <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+                    </span>
                   </div>
                 </>
               );
 
               return (
                 <FadeInSection key={p.host}>
-                  {p.comingSoon ? (
-                    <div
-                      aria-label={`${p.name} — bientôt disponible`}
-                      className="flex h-full flex-col overflow-hidden rounded-2xl border border-dashed border-slate-300 bg-slate-50/60 shadow-sm"
-                    >
-                      {inner}
-                    </div>
-                  ) : (
-                    <a
-                      href={p.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-                    >
-                      {inner}
-                    </a>
-                  )}
+                  <a
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                  >
+                    {inner}
+                  </a>
                 </FadeInSection>
               );
             })}

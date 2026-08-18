@@ -2,7 +2,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
-import { seoMetadata } from '../utils/seoMetadata';
+
+/**
+ * Date of the privacy policy version currently published. Bump by hand in the
+ * same commit as any change to what is collected, why, or by whom.
+ */
+const PRIVACY_VERSION_DATE = '18 août 2026';
 
 const PrivacyPolicy = () => {
   return (
@@ -17,10 +22,13 @@ const PrivacyPolicy = () => {
       <div className="min-h-screen bg-gray-50 py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-lg shadow-lg p-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-8">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
               Politique de confidentialité
             </h1>
-            
+            <p className="text-sm text-gray-500 mb-8">
+              Version du {PRIVACY_VERSION_DATE}.
+            </p>
+
             <div className="prose max-w-none text-gray-700">
               <p className="text-lg mb-6">
                 La présente politique décrit les données personnelles que ce site collecte, pourquoi,
@@ -58,10 +66,35 @@ const PrivacyPolicy = () => {
               <ul className="list-disc list-inside mb-6 space-y-2">
                 <li><strong>Vercel Inc.</strong> (États-Unis) — hébergement du site.</li>
                 <li><strong>Resend</strong> — acheminement des emails de notification et de confirmation.</li>
+                <li><strong>Umami</strong> — mesure d'audience du site, sans cookie et sans identifiant publicitaire (voir « Cookies et mesures d'audience » ci-dessous).</li>
               </ul>
               <p className="mb-6">
                 Certains de ces prestataires sont situés hors de l'Union européenne ; les transferts éventuels sont
                 encadrés par les garanties appropriées prévues par le RGPD.
+              </p>
+
+              <h2 className="text-xl font-semibold text-gray-900 mt-8 mb-3">Services tiers vers lesquels ce site peut vous rediriger</h2>
+              <p className="mb-4">
+                Certaines pages proposent des liens vers des services extérieurs. Dès que vous les
+                utilisez, vos données sont traitées par ces services selon <em>leurs</em> propres
+                politiques, sur lesquelles je n'ai pas la main :
+              </p>
+              <ul className="list-disc list-inside mb-6 space-y-2">
+                <li>
+                  <strong>WhatsApp (Meta Platforms Ireland Ltd.)</strong> — si vous me contactez via
+                  les boutons WhatsApp du site. Votre numéro de téléphone et le contenu de vos
+                  messages transitent alors par Meta.
+                </li>
+                <li>
+                  <strong>Kahoot! AS</strong> (Norvège) — si vous lancez le test de positionnement
+                  gratuit, qui est hébergé sur kahoot.it. Le test se fait sans compte, avec le
+                  pseudonyme de votre choix : évitez d'y saisir votre nom complet si vous ne le
+                  souhaitez pas.
+                </li>
+              </ul>
+              <p className="mb-6">
+                Aucune de ces redirections n'est automatique : elles n'ont lieu que si vous cliquez
+                sur le lien correspondant.
               </p>
 
               <h2 className="text-xl font-semibold text-gray-900 mt-8 mb-3">Durée de conservation</h2>
@@ -73,9 +106,14 @@ const PrivacyPolicy = () => {
 
               <h2 className="text-xl font-semibold text-gray-900 mt-8 mb-3">Cookies et mesures d'audience</h2>
               <p className="mb-6">
-                Ce site n'utilise aucun cookie publicitaire ni traceur à des fins de profilage, et ne dépose pas
-                de cookie de mesure d'audience nécessitant votre consentement. Seul un stockage technique
-                strictement nécessaire au fonctionnement du site (préférences, langue) peut être utilisé.
+                Ce site n'utilise aucun cookie publicitaire ni traceur à des fins de profilage. La
+                mesure d'audience est assurée par <strong>Umami</strong>, un outil sans cookie qui
+                ne collecte que des statistiques agrégées (pages vues, provenance, type d'appareil)
+                sans permettre de vous identifier ni de vous suivre d'un site à l'autre. Ce type de
+                mesure entre dans les exemptions de consentement prévues par la CNIL, ce qui est la
+                raison pour laquelle aucune bannière cookies ne vous est présentée. Seul un stockage
+                technique strictement nécessaire au fonctionnement du site (préférences, langue)
+                peut par ailleurs être utilisé.
               </p>
 
               <h2 className="text-xl font-semibold text-gray-900 mt-8 mb-3">Vos droits</h2>

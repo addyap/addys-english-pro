@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { MessageSquare, Mail, Phone, MapPin, Clock, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { trackFormSubmission, trackFormError, trackWhatsAppClick, trackEmailClick, trackEvent } from '@/lib/analytics';
@@ -48,14 +48,14 @@ const Contact = () => {
       newErrors.nom = 'Le nom est requis';
     }
     if (!formData.email.trim()) {
-      newErrors.email = 'Please enter a valid email address';
+      newErrors.email = 'Merci de saisir une adresse email valide';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      newErrors.email = 'Please enter a valid email address';
+      newErrors.email = 'Merci de saisir une adresse email valide';
     }
     if (!formData.message.trim()) {
-      newErrors.message = 'Please write at least 20 characters';
+      newErrors.message = 'Merci de décrire votre demande en 20 caractères minimum';
     } else if (formData.message.trim().length < 20) {
-      newErrors.message = 'Please write at least 20 characters';
+      newErrors.message = 'Merci de décrire votre demande en 20 caractères minimum';
     }
 
     setErrors(newErrors);
@@ -78,7 +78,7 @@ const Contact = () => {
     if (isSubmitting) return;
     if (now - lastSubmitRef.current < MIN_SUBMIT_INTERVAL_MS) {
       trackFormError('contact', 'rate_limited');
-      setSubmitErrorBanner('⏳ Please wait a few seconds before submitting again.');
+      setSubmitErrorBanner('⏳ Merci de patienter quelques secondes avant de renvoyer le formulaire.');
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
       return;
     }
@@ -136,7 +136,7 @@ const Contact = () => {
       console.error('Form submission error:', error);
       trackFormError('contact', 'submission_failed');
       trackEvent('contact_submit_error', { page: 'contact', reason: 'submission_failed' });
-      const msg = '❌ Something went wrong. Please try again or use WhatsApp.';
+      const msg = '❌ Une erreur est survenue. Réessayez ou contactez-moi sur WhatsApp.';
       setErrors({ submit: 'Une erreur est survenue. Veuillez réessayer.' });
       setSubmitErrorBanner(msg);
       // Scroll to top so the error banner is visible
@@ -201,7 +201,7 @@ const Contact = () => {
             >
               <CheckCircle2 className="h-6 w-6 text-green-600 shrink-0" aria-hidden="true" />
               <span className="font-medium">
-                ✅ Message received! I will reply within 24 hours.
+                ✅ Message bien reçu ! Je vous réponds sous 24 h.
               </span>
             </div>
           )}
@@ -236,19 +236,23 @@ const Contact = () => {
             {/* Contact Form */}
             <div className="bg-white rounded-lg shadow-lg p-8">
               {/* Trust testimonial — placed at point of friction */}
+              {/* The real LinkedIn recommendation from Loan MIRMONT, matching
+                  /temoignages. It previously showed an English quote attributed to
+                  "Loan Mirmont — Student / Professional learner" that exists nowhere
+                  else on the site or in his actual recommendation, alongside a
+                  5-star graphic that LinkedIn recommendations do not carry. */}
               <figure className="mb-6 border-l-4 border-accent bg-accent/5 rounded-r-md px-4 py-3">
-                <div className="flex items-center gap-1 mb-2 text-accent" aria-label="5 out of 5 stars">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <svg key={i} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.957a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.367 2.446a1 1 0 00-.364 1.118l1.287 3.957c.3.922-.755 1.688-1.54 1.118l-3.366-2.446a1 1 0 00-1.176 0l-3.367 2.446c-.784.57-1.838-.196-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.075 9.384c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.274-3.957z" />
-                    </svg>
-                  ))}
-                </div>
                 <blockquote className="text-sm md:text-base text-gray-700 italic leading-relaxed">
-                  “Antony helped me gain confidence in professional English very quickly. The sessions are practical and directly useful.”
+                  «&nbsp;Antony est un super professeur. À l'écoute, dans l'échange et très
+                  pédagogue, il s'adapte à nos besoins (anglais travail, anglais courant). Je
+                  recommande vivement.&nbsp;»
                 </blockquote>
                 <figcaption className="mt-2 text-xs text-gray-600">
-                  <span className="font-semibold text-primary">Loan Mirmont</span> — Student / Professional learner
+                  <span className="font-semibold text-primary">Loan MIRMONT</span> — Préparateur
+                  physique, gérant de PPR-Formance ·{' '}
+                  <Link to="/temoignages" className="text-blue-600 hover:underline">
+                    voir les autres recommandations
+                  </Link>
                 </figcaption>
               </figure>
 
@@ -336,20 +340,36 @@ const Contact = () => {
                   {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
                 </div>
 
+                {/* RGPD art. 13 — information must be given AT the point of
+                    collection, not only in the footer policy. */}
+                <p className="text-xs text-gray-500 leading-relaxed">
+                  Les informations saisies ci-dessus sont utilisées uniquement pour répondre à
+                  votre demande et, le cas échéant, établir un devis. Elles ne sont ni vendues ni
+                  cédées, et sont conservées au maximum 3 ans après notre dernier contact. Vous
+                  disposez d'un droit d'accès, de rectification, d'effacement, d'opposition et de
+                  portabilité, que vous pouvez exercer à{' '}
+                  <a href="mailto:formations@antonyaddy.com" className="text-blue-600 hover:underline">
+                    formations@antonyaddy.com
+                  </a>
+                  . Détails dans la{' '}
+                  <Link to="/politique-confidentialite" className="text-blue-600 hover:underline">
+                    politique de confidentialité
+                  </Link>
+                  .
+                </p>
+
                 {errors.submit && (
                   <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
                     {errors.submit}
                   </div>
                 )}
 
-                {submitSuccess && (
-                  <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 flex items-center gap-2 animate-fade-in">
-                    <CheckCircle2 className="h-5 w-5" />
-                    <span>Message envoyé avec succès ! Je vous recontacte rapidement.</span>
-                  </div>
-                )}
-                
-                <button 
+                {/* The success confirmation is the banner at the top of the page,
+                    which is where the form scrolls to on submit. A second inline
+                    copy here meant two different success messages rendered at
+                    once, in two different languages. */}
+
+                <button
                   type="submit" 
                   disabled={isSubmitting}
                   className="w-full bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed text-lg" 
@@ -358,7 +378,7 @@ const Contact = () => {
                   {isSubmitting ? (
                     <span className="inline-flex items-center justify-center gap-2">
                       <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />
-                      Sending...
+                      Envoi en cours…
                     </span>
                   ) : (
                     'Envoyer mon message'

@@ -1,12 +1,11 @@
 
 import React from 'react';
-import { Users, Building, GraduationCap, CheckCircle, AlertCircle, Globe, MapPin, Phone, Mail } from 'lucide-react';
+import { Users, Building, GraduationCap, CheckCircle, AlertCircle, Globe, MapPin, Phone, Mail, Clock3, CalendarClock, ClipboardCheck, Euro, Accessibility } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import { FadeInSection, Accordion } from '../components/Effects';
 import { CourseSchema } from '@/lib/seo/structuredData';
-import { seoMetadata } from '../utils/seoMetadata';
-import { getCurrentMonthYearFR } from '@/lib/utils';
+import { formatMonthYearFR } from '@/lib/utils';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { trackEvent } from '@/lib/analytics';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
@@ -123,6 +122,51 @@ const Training = () => {
     }
   ];
 
+  // ── Mentions obligatoires (art. L.6353-8 du Code du travail) ──────────────
+  // A declared training provider must publish these before enrolment. Keep them
+  // here as one editable block rather than scattered through the JSX.
+  //
+  // ⚠️ HOURLY_RATE_FROM is the only figure I cannot derive from the rest of the
+  // site. Set it to your real entry rate (net de TVA) — the section renders
+  // "sur devis" alone while it is null, which is legal but far less persuasive.
+  const HOURLY_RATE_FROM: number | null = null;
+  const ACCESS_LEAD_TIME = '15 jours ouvrés';
+
+  const practicalInfo = [
+    {
+      icon: CheckCircle,
+      title: 'Prérequis',
+      body: "Aucun prérequis de niveau : je forme du grand débutant (A1) à l'avancé (C1). Un entretien préalable et une évaluation de départ permettent de situer votre niveau et de construire le programme. Pour les formations à distance, une connexion internet et un ordinateur ou une tablette équipés d'un micro sont nécessaires.",
+    },
+    {
+      icon: Clock3,
+      title: 'Durée et rythme',
+      body: "La durée est définie avec vous au moment du devis, en fonction de votre objectif et de votre niveau de départ. Les parcours se déroulent en séances individuelles ou en petits groupes, à un rythme hebdomadaire ou intensif selon vos contraintes.",
+    },
+    {
+      icon: CalendarClock,
+      title: "Délais d'accès",
+      body: `Le premier échange a lieu sous 24 h après votre demande. L'entrée en formation intervient généralement sous ${ACCESS_LEAD_TIME} après validation du devis et signature de la convention ou du contrat de formation, sous réserve de disponibilité mutuelle.`,
+    },
+    {
+      icon: ClipboardCheck,
+      title: "Modalités d'évaluation",
+      body: "Évaluation de positionnement en début de parcours, points de progression réguliers en cours de formation, et bilan final au regard des objectifs fixés dans la convention. Une attestation de fin de formation est remise à l'issue du parcours. Les parcours de préparation à une certification (TOEIC, Linguaskill, Cambridge) intègrent des tests blancs au format réel.",
+    },
+    {
+      icon: Euro,
+      title: 'Tarifs',
+      body: HOURLY_RATE_FROM
+        ? `À partir de ${HOURLY_RATE_FROM} € de l'heure, net de TVA (TVA non applicable, art. 293 B du CGI). Le tarif exact figure sur le devis personnalisé et dépend du volume horaire, du format (individuel ou collectif) et du lieu d'intervention. Devis gratuit et sans engagement.`
+        : "Tarif établi sur devis personnalisé, net de TVA (TVA non applicable, art. 293 B du CGI). Il dépend du volume horaire, du format (individuel ou collectif) et du lieu d'intervention. Devis gratuit et sans engagement.",
+    },
+    {
+      icon: Accessibility,
+      title: 'Accessibilité et situation de handicap',
+      body: "Mes formations sont ouvertes aux personnes en situation de handicap. En tant que formateur indépendant, j'assure moi-même le rôle de référent handicap : contactez-moi en amont à formations@antonyaddy.com ou au +33 6 49 82 98 26 pour que nous étudiions ensemble les aménagements nécessaires (rythme, supports adaptés, durée des séances, lieu accessible, formation à distance). Si un besoin dépasse ce que je peux mettre en place seul, je vous oriente vers les ressources spécialisées de l'Agefiph ou de Cap Emploi.",
+    },
+  ];
+
   const handleScrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -147,28 +191,9 @@ const Training = () => {
           "anglais Fréjus",
           "préparation TOEIC"
         ]}
-        jsonLd={[trainingJsonLd, {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: [
-            {
-              "@type": "Question",
-              name: "Quels types de formations d'anglais proposez-vous ?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Je propose plusieurs types de formations : anglais général, anglais professionnel, anglais téléphonique et email, anglais spécialisé (vente, RH, immobilier, hôtellerie), et préparation aux certifications professionnelles (TOEIC, Linguaskill, Cambridge)."
-              }
-            },
-            {
-              "@type": "Question",
-              name: "Les formations sont-elles disponibles en ligne ?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Oui, toutes les formations sont disponibles en ligne (visioconférence) partout en France et dans le monde, ou en présentiel dans le Var et les Alpes-Maritimes (Fréjus, Saint-Raphaël, Cannes, Antibes, Nice, Monaco)."
-              }
-            }
-          ]
-        }]}
+        /* FAQPage removed: this page renders no visible Q&A, and Google requires
+           FAQ answers to appear on the page. See the note in Home.tsx. */
+        jsonLd={trainingJsonLd}
       />
       <CourseSchema
         name="Formations d'anglais professionnel"
@@ -436,6 +461,41 @@ const Training = () => {
             </div>
           </FadeInSection>
 
+          {/* Informations pratiques — mentions obligatoires art. L.6353-8 */}
+          <FadeInSection>
+            <div id="modalites" className="bg-white rounded-lg shadow-lg p-8 mb-12 scroll-mt-24">
+              <div className="flex items-center mb-3">
+                <span className="text-2xl mr-3">📋</span>
+                <h2 className="text-2xl font-bold text-primary">Informations pratiques</h2>
+              </div>
+              <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
+                Prérequis, durée, délais d'accès, modalités d'évaluation, tarifs et accessibilité —
+                les informations que tout organisme de formation doit vous communiquer avant votre
+                inscription.
+              </p>
+
+              <dl className="grid md:grid-cols-2 gap-x-8 gap-y-6">
+                {practicalInfo.map((item) => (
+                  <div key={item.title}>
+                    <dt className="font-semibold text-primary mb-1.5 flex items-center gap-2">
+                      <item.icon className="h-5 w-5 text-accent shrink-0" aria-hidden="true" />
+                      {item.title}
+                    </dt>
+                    <dd className="text-sm text-muted-foreground leading-relaxed">{item.body}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              <p className="text-sm text-muted-foreground border-t border-border pt-4 mt-6">
+                Le détail contractuel figure dans les{' '}
+                <Link to="/cgv" className="text-accent hover:underline font-medium">
+                  conditions générales de vente
+                </Link>
+                .
+              </p>
+            </div>
+          </FadeInSection>
+
           {/* Financement */}
           <FadeInSection>
             <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
@@ -514,7 +574,7 @@ const Training = () => {
               </div>
               
               <p className="text-xs text-muted-foreground border-t border-border pt-4">
-                <strong>Dernière mise à jour :</strong> {getCurrentMonthYearFR()}
+                <strong>Dernière mise à jour :</strong> {formatMonthYearFR()}
               </p>
             </div>
           </FadeInSection>

@@ -1,6 +1,7 @@
 
 import React from "react";
 import ErrorFallback from './ErrorFallback';
+import { trackEvent } from '@/lib/analytics';
 
 type State = { hasError: boolean; error?: Error; info?: React.ErrorInfo };
 
@@ -14,13 +15,12 @@ export class AppErrorBoundary extends React.Component<React.PropsWithChildren, S
   componentDidCatch(error: Error, info: React.ErrorInfo) {
     console.error("AppErrorBoundary", { error, info });
     
-    // Track critical error in analytics
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'exception', {
-        description: error?.message || 'Unknown error',
-        fatal: true,
-      });
-    }
+    // Reported to Umami. This used to call window.gtag, which is never defined:
+    // the site has no Google Analytics, so every crash report was silently dropped.
+    trackEvent('exception', {
+      description: error?.message || 'Unknown error',
+      fatal: true,
+    });
   }
 
   resetError = () => {

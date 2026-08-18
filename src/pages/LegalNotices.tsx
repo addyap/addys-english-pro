@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 
+/** Date of the legal notices version currently published. Bump by hand on change. */
+const LEGAL_VERSION_DATE = '18 août 2026';
+
 const LegalNotices = () => {
   return (
     <>
@@ -15,7 +18,8 @@ const LegalNotices = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-lg shadow-lg p-8">
             <section className="max-w-3xl mx-auto text-neutral-800">
-              <h1 className="text-3xl font-bold text-primary mb-6">Mentions Légales</h1>
+              <h1 className="text-3xl font-bold text-primary mb-2">Mentions Légales</h1>
+              <p className="text-sm text-gray-500 mb-6">Version du {LEGAL_VERSION_DATE}.</p>
 
               <h2 className="text-2xl font-semibold text-primary mb-4">Éditeur du site</h2>
               <p className="mb-2"><strong>Nom :</strong> Antony Addy</p>
@@ -49,7 +53,8 @@ const LegalNotices = () => {
 
               <h2 className="text-2xl font-semibold text-primary mb-4">Hébergement</h2>
               <p className="mb-6">
-                <strong>Hébergeur :</strong> Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis. Site web :{" "}
+                <strong>Hébergeur :</strong> Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789,
+                États-Unis. Téléphone : +1 559 288 7060. Site web :{" "}
                 <a
                   href="https://vercel.com"
                   className="text-blue-600 underline"
@@ -86,8 +91,8 @@ const LegalNotices = () => {
                 formulaire de contact sont utilisées
                 exclusivement pour répondre à votre demande et ne sont ni
                 vendues ni louées. Elles sont uniquement traitées par nos
-                prestataires techniques (hébergement, base de données, envoi
-                d'emails). Le détail figure dans notre{' '}
+                prestataires techniques (hébergement, envoi d'emails, mesure
+                d'audience sans cookie). Le détail figure dans notre{' '}
                 <Link to="/politique-confidentialite" className="text-blue-600 hover:underline">
                   politique de confidentialité
                 </Link>.

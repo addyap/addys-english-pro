@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { trackEvent } from '@/lib/analytics';
 
 interface PerformanceMetrics {
   fcp?: number; // First Contentful Paint
@@ -95,9 +96,9 @@ export const usePerformanceMonitor = (reportCallback?: (metrics: PerformanceMetr
       reportCallback?.(metrics);
     }
 
-    // Send to analytics if available
-    if (window.gtag && Object.keys(metrics).length > 0) {
-      window.gtag('event', 'web_vitals', metrics);
+    // Sent to Umami (was window.gtag, which never exists on this site).
+    if (Object.keys(metrics).length > 0) {
+      trackEvent('web_vitals', { ...metrics });
     }
 
     return () => {
@@ -125,13 +126,10 @@ export const useLongTaskMonitor = () => {
           startTime: entry.startTime,
         });
 
-        // Track in analytics
-        if (window.gtag) {
-          window.gtag('event', 'long_task', {
-            duration: entry.duration,
-            start_time: entry.startTime,
-          });
-        }
+        trackEvent('long_task', {
+          duration: entry.duration,
+          start_time: entry.startTime,
+        });
       }
     });
 

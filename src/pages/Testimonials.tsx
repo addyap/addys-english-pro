@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import SEOHead from '../components/SEOHead';
-import { EXPERIENCE_FLOOR } from '@/lib/utils';
+import { EXPERIENCE_FLOOR, PRICE_RANGE, CONTENT_LAST_REVIEWED_ISO } from '@/lib/utils';
 import { TypingText } from '../components/TypingText';
 import { TestimonialSkeleton } from '../components/SkeletonLoader';
+import { testimonials } from '@/data/testimonials';
 
 const Testimonials = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -15,94 +16,31 @@ const Testimonials = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const testimonials = [
-    {
-      quote: "An excellent teacher! Passionate and dedicated to their work, which brings a positive energy to the class atmosphere!",
-      name: "Alina Ostashchenko",
-      role: "Transformational Leader | Driving Sales Growth & High-Performing Teams in Luxury Retail | MBA Candidate at EDHEC Business School",
-    },
-    {
-      quote: "Un formateur exceptionnel qui sait transmettre et communiquer avec la bonne humeur qui le caractérise! Keep going dear!",
-      name: "Yamina ABDA",
-      role: "Assistante de direction",
-    },
-    {
-      quote: "Je recommande vivement Mr Addy pour son professionnalisme, son enthousiasme, sa capacité à s'adapter à différents niveaux.",
-      name: "Adrien KOWALSKI",
-      role: "Genius Product / Expert Produit | Automobile",
-    },
-    {
-      quote: "Antony a des très bonnes capacités d'adaptation. Il a bien saisi nos manières différentes d'apprendre. Il a su adapter les cours au niveau de chaque apprenant. Toujours avec beaucoup d'humour. Thank you so much, Antony!",
-      name: "Karyna Suvarian",
-      role: "Conseillère de vente français/ukrainien/russe/anglais",
-    },
-    {
-      quote: "Antony est l'un des meilleurs professeurs d'anglais que j'ai pu rencontrer. Il est anglais et cela est un avantage pour nous enseigner sa langue maternelle. Ces cours m'ont beaucoup plu, ludiques, intéressants et amusants, il arrivait à nous détendre \"Donald Duck\" pour nous mettre en bonne condition d'apprentissage. Pour ma part il m'a bien aidé avec les mots en termes techniques anglais /français sur supports papiers, (que je relis de temps à autres), pendant cette formation que j'ai fais cette année 2024 sur 8 mois à l'escomm de Cannes., où j'ai rencontré Antony pour devenir Conseillère de vente, spécialisée qui pour moi, dans le domaine de l'outillage, bricolage et du BTP. Je ne suis pas douée en anglais, je n'arrive pas à assimiler l'auditif et le traduire, en tout cas très difficilement, par contre en voyant les mots et lisant, malgré mes grosses lacunes de mots, de la grammaire et l'orthographe, dont je n'ai pas pratiqué depuis 20/30 ans, je me débrouille mieux et avec l'enseignement des cours d'Antony cela m'a beaucoup aidé. Merci Antony",
-      name: "Alexandra Buat",
-      role: "Votre futur CONSEILLÈRE DE VENTE dans le secteur : du BTP Outillage | du Bricolage | PROMOTEUR DES VENTES",
-    },
-    {
-      quote: "Antony is the best from the best! He gave us material in the easiest form! Every lesson was full of positive emotions and all of our group loved him! Real professional and very kind person!",
-      name: "Marine Melkumian",
-      role: "Vendeuse",
-    },
-    {
-      quote: "Moi qui ne parlais pas un mot d'anglais, Anthony m'a poussé à m'améliorer à chaque cours. Sa manière d'enseigner la langue est divertissante. J'ai adoré ses cours, mais également les progrès qui en sont ressortis.",
-      name: "Paula Giusto",
-      role: "Conseillère de Vente en Produits de Luxe",
-    },
-    {
-      quote: "Que dire de mon expérience de préparation au TOEIC avec Antony ? Eh bien sans hésitation qu'il est l'un des meilleurs professeurs d'anglais que j'ai rencontrés. D'abord il est anglais … (ca aide 😉) mais ce qui distingue vraiment Anto, c'est sa capacité à rendre les cours amusants et intéressants. Malgré la rigueur nécessaire pour réussir le TOEIC, il a réussi à injecter une dose de bonne humeur et de rires dans chaque séance. Grâce à son approche unique, chaque cours était un moment agréable, ce qui a rendu les apprentissages beaucoup plus faciles et motivants. Son sérieux et son professionnalisme sont également remarquables. Il était toujours bien préparé, structurant les cours de manière claire et organisée. Il nous a fourni des ressources supplémentaires et des conseils précieux pour améliorer nos compétences en anglais. Grâce à son soutien constant et à son encouragement, nous avons tous obtenu de bons résultats au TOEIC. Je recommande vivement Antony en tant que professeur d'anglais. Sa passion pour l'enseignement, son approche ludique et sa capacité à créer une atmosphère conviviale font de lui un enseignant exceptionnel. Si vous cherchez à améliorer vos compétences en anglais tout en passant un bon moment, Antony est la personne idéale pour vous accompagner dans votre apprentissage ! Je recommande à 1000%!!!!",
-      name: "Nathalie LE MÉNACH",
-      role: "Conseillère en Formation Continue Responsable Relations Entreprises et Organisations Institutionnelles – GIP FIPAN – Rectorat de l'Académie de Nice – Présidente DCF CÔTE D'AZUR",
-    },
-    {
-      quote: "Super formateur motivé et motivant, capable de créer des plans de cours attrayants et de fournir des explications claires qui aident à l'acquisition de solides connaissances! Ton enthousiasme et ta bonne humeur créent un environnement d'apprentissage positif et dynamique!! Merci pour tout!!!",
-      name: "Audrey KLOCZKO-BEAUDON",
-      role: "Gestionnaire RH, Ressources Humaines, Sécurité au travail, Management, Recrutement",
-    },
-    {
-      quote: "Antony est un super professeur. À l'écoute, dans l'échange et très pédagogue, il s'adapte à nos besoins (anglais travail, anglais courant). Je recommande vivement.",
-      name: "Loan MIRMONT",
-      role: "Préparateur physique N2 et responsable P.A académie Etoile FC – Enseignant vacataire UFR STAPS NICE – Gérant de l'entreprise PPR-Formance dédiée à la préparation physique et reathlétisation des sportifs",
-    },
-    {
-      quote: "Anthony excels in creating an engaging and inclusive learning environment. His innovative teaching strategies cater to diverse learning styles and have been a great source of motivation for us to learn English. Highly recommend!",
-      name: "Chia Min HSU",
-      role: "Sales Assistant Sinophone Market",
-    },
-    {
-      quote: "Formateur très professionnel sachant manier la pédagogie avec humour et enthousiasme tout en s'adaptant à son audience. Je le recommande sans hésitation.",
-      name: "Sandrine Masse",
-      role: "Responsable administrative",
-    },
-    {
-      quote: "Cours dispensé sur-mesure avec la \"touch so british\" 👍👍👍",
-      name: "Sophie Chenot",
-      role: "Management, sales & services",
-    },
-    {
-      quote: "Très bon formateur d'anglais! Excellent dans la pédagogie et l'écoute, toujours dans le sérieux et la bonne humeur!",
-      name: "Arnaud Dalmasso",
-      role: "Notaire associé",
-    },
-    {
-      quote: "Un professeur pédagogue, à l'écoute, qui s'adapte à la demande ; et tout ça dans la bonne humeur !! thank you ;-)",
-      name: "Colette Chrétien",
-      role: "Directrice de production – Régisseuse générale",
-    },
-  ];
 
-  // AggregateRating Schema - Enhanced for rich snippets
-  const aggregateRatingSchema = {
+  // Business node for this page. Shares the @id of the canonical ProfessionalService
+  // declared in Home.tsx's @graph, so Google resolves one business rather than two
+  // competing entities.
+  //
+  // ⚠️ This used to carry `aggregateRating: 5/5` and stamp `ratingValue: "5"` on
+  // every review. Those stars were invented: the quotes below are LinkedIn
+  // recommendations, and LinkedIn recommendations carry no rating at all. That
+  // breached Google's review-snippet policy on two counts (self-serving reviews
+  // about your own business, and ratings not supplied by the reviewer), and sat
+  // badly with art. L.111-7-2 C. conso., which requires a stated verification
+  // method and a date per review. Do not reintroduce ratings unless they come
+  // from a real rated source (Google Business Profile, Trustpilot, Pages Jaunes),
+  // in which case use that platform's own widget instead.
+  const businessSchema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Antony Addy - Formation Anglais Professionnel",
+    "@type": "ProfessionalService",
+    "@id": "https://www.antonyaddy.com/#business",
+    "name": "Antony Addy",
     "description": "Formations d'anglais professionnel par un formateur britannique certifié FPA",
     "url": "https://www.antonyaddy.com",
     "telephone": "+33649829826",
     "address": {
       "@type": "PostalAddress",
+      "@id": "https://www.antonyaddy.com/#address",
       "streetAddress": "135 rue Henri Vadon",
       "addressLocality": "Fréjus",
       "postalCode": "83600",
@@ -114,27 +52,23 @@ const Testimonials = () => {
       { "@type": "AdministrativeArea", "name": "Alpes-Maritimes" },
       { "@type": "Country", "name": "France" }
     ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5",
-      "bestRating": "5",
-      "worstRating": "1",
-      "ratingCount": String(testimonials.length),
-      "reviewCount": String(testimonials.length)
-    },
-    "priceRange": "$$"
+    "priceRange": PRICE_RANGE
   };
 
+  // Plain list of quotations — no @type: Review, so no rating is implied.
   const testimonialsJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
+    "name": "Recommandations LinkedIn reçues par Antony Addy",
     "numberOfItems": testimonials.length,
     "itemListElement": testimonials.map((t, i) => ({
-      "@type": "Review",
+      "@type": "ListItem",
       "position": i + 1,
-      "author": { "@type": "Person", "name": t.name },
-      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-      "reviewBody": t.quote,
+      "item": {
+        "@type": "Quotation",
+        "text": t.quote,
+        "spokenByCharacter": { "@type": "Person", "name": t.name },
+      },
     })),
   };
 
@@ -142,15 +76,15 @@ const Testimonials = () => {
     <>
       <SEOHead 
         title="Avis Clients | Formations Anglais Antony Addy"
-        description="Découvrez 15+ témoignages authentiques de professionnels satisfaits. Avis vérifiés sur la qualité des formations d'anglais d'Antony Addy. Note : 5/5."
+        description="Recommandations LinkedIn de professionnels formés par Antony Addy : cadres, étudiants, notaires, conseillers de vente. Formations d'anglais professionnel, Var et Alpes-Maritimes."
         keywords={["témoignages formation anglais", "avis Antony Addy", "retours clients", "satisfaction apprenants", "avis formation anglais"]}
         canonicalUrl="https://www.antonyaddy.com/temoignages"
-        dateModified="2026-01-15T10:00:00+01:00"
+        dateModified={CONTENT_LAST_REVIEWED_ISO}
         enableOrgJsonLd
         enableWebSiteJsonLd
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
         imageAlt="Témoignages clients formations anglais Antony Addy"
-        jsonLd={[aggregateRatingSchema, testimonialsJsonLd]}
+        jsonLd={[businessSchema, testimonialsJsonLd]}
       />
       
       <div className="min-h-screen bg-background py-12">
@@ -186,11 +120,29 @@ const Testimonials = () => {
                 Ce qui revient souvent dans leurs retours : une <strong className="text-primary">pédagogie adaptée</strong> à chaque profil, une <strong className="text-primary">atmosphère bienveillante</strong> et motivante, et des <strong className="text-primary">progrès concrets</strong> dans leur pratique professionnelle de l'anglais.
               </p>
             </div>
+            {/* No "avis vérifiés" and no average score: these are LinkedIn
+                recommendations, not rated reviews, and art. L.111-7-2 C. conso.
+                requires a stated verification method and a date per review before
+                either claim can be made. Naming the source is both honest and,
+                since LinkedIn recommendations are publicly checkable under a real
+                name, more convincing than an unsourced 5/5. */}
             <div className="flex flex-wrap gap-3 mt-4 text-sm">
-              <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">{testimonials.length} avis vérifiés</span>
-              <span className="bg-amber-500/10 text-amber-700 px-3 py-1 rounded-full">Note moyenne : 5/5</span>
+              <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">{testimonials.length} recommandations LinkedIn</span>
               <span className="bg-green-500/10 text-green-700 px-3 py-1 rounded-full">Formateur FPA certifié</span>
             </div>
+            <p className="text-xs text-muted-foreground mt-3">
+              Chaque recommandation ci-dessous a été publiée par son auteur sur LinkedIn, sous son
+              nom et son profil professionnel, et est consultable publiquement depuis{' '}
+              <a
+                href="https://www.linkedin.com/in/antonyaddy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:underline"
+              >
+                mon profil
+              </a>
+              . Elles sont reproduites ici telles quelles, sans modification.
+            </p>
           </div>
 
           {/* Testimonials */}

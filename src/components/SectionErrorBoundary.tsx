@@ -1,5 +1,6 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import ErrorFallback from './ErrorFallback';
+import { trackEvent } from '@/lib/analytics';
 
 interface Props {
   children: ReactNode;
@@ -24,13 +25,11 @@ export class SectionErrorBoundary extends Component<Props, State> {
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('Section error caught:', this.props.sectionName, error, errorInfo);
     
-    // Track error in analytics if available
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'exception', {
-        description: `${this.props.sectionName || 'Section'}: ${error.message}`,
-        fatal: false,
-      });
-    }
+    // Reported to Umami (was window.gtag, which never exists on this site).
+    trackEvent('exception', {
+      description: `${this.props.sectionName || 'Section'}: ${error.message}`,
+      fatal: false,
+    });
   }
 
   resetError = () => {

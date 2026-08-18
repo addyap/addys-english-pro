@@ -5,6 +5,16 @@ import SEOHead from "@/components/SEOHead";
 /**
  * Conditions Générales de Vente — formation professionnelle d'adultes.
  */
+
+/**
+ * Date of the CGV version currently published.
+ *
+ * MUST be a fixed date, bumped by hand whenever the terms below change. It used
+ * to render `new Date().getFullYear()`, which silently restamped the contract
+ * every January — you could no longer prove which version a client accepted when
+ * they signed. Update this line in the same commit as any change to the articles.
+ */
+const CGV_VERSION_DATE = '18 août 2026';
 const CGV = () => {
   return (
     <>
@@ -20,7 +30,7 @@ const CGV = () => {
           </h1>
           <p className="text-sm text-muted-foreground mb-8">
             Applicables aux prestations de formation professionnelle dispensées
-            par Antony Addy — dernière mise à jour : {new Date().getFullYear()}.
+            par Antony Addy — version du {CGV_VERSION_DATE}.
           </p>
 
           <h2>Article 1 — Objet et champ d'application</h2>
@@ -66,7 +76,27 @@ const CGV = () => {
             Alpes-Maritimes, et à distance partout en France et à l'international.
           </p>
 
-          <h2>Article 4 — Modalités d'inscription et acceptation</h2>
+          <h2>Article 4 — Accessibilité et situation de handicap</h2>
+          <p>
+            Les prestations du Prestataire sont ouvertes aux personnes en
+            situation de handicap. Exerçant en tant que formateur indépendant,
+            le Prestataire assure lui-même la fonction de référent handicap et
+            peut être joint à cet effet à formations@antonyaddy.com ou au
+            +33 6 49 82 98 26.
+          </p>
+          <p>
+            Le Client ou le stagiaire est invité à signaler tout besoin
+            spécifique dès le premier échange, afin que les aménagements
+            nécessaires soient étudiés avant l'entrée en formation :
+            adaptation du rythme et de la durée des séances, supports
+            accessibles, choix d'un lieu accessible, ou basculement en
+            visioconférence. Lorsqu'un besoin excède les aménagements
+            réalisables directement, le Prestataire oriente le Client vers les
+            ressources spécialisées compétentes (Agefiph, Cap Emploi, ou le
+            service de santé au travail concerné).
+          </p>
+
+          <h2>Article 5 — Modalités d'inscription et acceptation</h2>
           <p>
             Toute demande de formation fait l'objet d'un échange préalable
             (entretien téléphonique, visio ou rendez-vous) permettant d'évaluer
@@ -76,7 +106,7 @@ const CGV = () => {
             réception du devis signé et, lorsque applicable, de l'acompte.
           </p>
 
-          <h2>Article 5 — Tarifs et conditions de paiement</h2>
+          <h2>Article 6 — Tarifs et conditions de paiement</h2>
           <p>
             Les tarifs sont établis sur devis personnalisé en fonction du volume
             horaire, du format (individuel / collectif), du lieu d'intervention
@@ -95,7 +125,7 @@ const CGV = () => {
             recouvrement (articles L.441-10 et D.441-5 du Code de commerce).
           </p>
 
-          <h2>Article 6 — Convention de formation</h2>
+          <h2>Article 7 — Convention de formation</h2>
           <p>
             Pour toute prestation à destination d'un Client professionnel, une
             convention de formation professionnelle continue est établie en
@@ -107,7 +137,7 @@ const CGV = () => {
             de rétractation de 10 jours à compter de sa signature.
           </p>
 
-          <h2>Article 7 — Annulation et report</h2>
+          <h2>Article 8 — Annulation et report</h2>
           <p>
             <strong>À l'initiative du Client :</strong> toute annulation ou
             report doit être notifié par écrit (courriel) au moins 7 jours
@@ -125,7 +155,7 @@ const CGV = () => {
             remboursées.
           </p>
 
-          <h2>Article 8 — Propriété intellectuelle</h2>
+          <h2>Article 9 — Propriété intellectuelle</h2>
           <p>
             L'ensemble des supports pédagogiques (documents, enregistrements,
             exercices, méthodes) remis ou mis à disposition dans le cadre des
@@ -134,7 +164,7 @@ const CGV = () => {
             autorisation écrite préalable est strictement interdite.
           </p>
 
-          <h2>Article 9 — Confidentialité et protection des données</h2>
+          <h2>Article 10 — Confidentialité et protection des données</h2>
           <p>
             Le Prestataire s'engage à respecter la confidentialité des
             informations communiquées par le Client dans le cadre de la
@@ -148,7 +178,7 @@ const CGV = () => {
             .
           </p>
 
-          <h2>Article 10 — Responsabilité</h2>
+          <h2>Article 11 — Responsabilité</h2>
           <p>
             Le Prestataire est tenu à une obligation de moyens dans la
             réalisation des prestations. Sa responsabilité ne saurait être
@@ -159,22 +189,49 @@ const CGV = () => {
             titre de la prestation concernée.
           </p>
 
-          <h2>Article 11 — Réclamations et médiation</h2>
+          <h2>Article 12 — Réclamations et médiation</h2>
           <p>
             Toute réclamation doit être adressée par écrit à
             formations@antonyaddy.com. Le Prestataire s'engage à apporter une
-            réponse dans un délai de 15 jours ouvrés. Conformément aux
-            articles L.611-1 et suivants du Code de la consommation, en cas de
-            litige persistant avec un Client consommateur, ce dernier peut
-            recourir gratuitement à un médiateur de la consommation. Les
-            coordonnées du médiateur compétent seront communiquées au Client
-            sur simple demande écrite à formations@antonyaddy.com. Pour les
+            réponse dans un délai de 15 jours ouvrés. Pour les
             questions relatives aux données personnelles, le Client peut
             introduire une réclamation auprès de la Commission Nationale de
             l'Informatique et des Libertés (CNIL — www.cnil.fr).
           </p>
+          {/*
+            ⚠️ MÉDIATION DE LA CONSOMMATION — SECTION MANQUANTE, ACTION REQUISE
+            ─────────────────────────────────────────────────────────────────
+            Articles L.612-1 and R.616-1 of the Code de la consommation require
+            any professional selling to consumers (your "Particuliers" clients)
+            to (a) be enrolled with an approved consumer mediator, and (b) state
+            that mediator's NAME, POSTAL ADDRESS and WEBSITE in the CGV and on
+            the site. Enrolment is a paid annual subscription; the CNM (Commission
+            d'évaluation et de contrôle de la médiation de la consommation)
+            publishes the list of approved mediators at economie.gouv.fr.
 
-          <h2>Article 12 — Droit applicable et juridiction compétente</h2>
+            The previous wording here promised to supply the mediator's details
+            "sur simple demande", which does not satisfy R.616-1 and implied an
+            enrolment that does not exist. It has been removed rather than left
+            to stand as an unsupportable claim.
+
+            Once enrolled, replace this comment with:
+
+              <p>
+                Conformément aux articles L.612-1 et suivants du Code de la
+                consommation, le Client consommateur peut recourir gratuitement
+                au médiateur de la consommation suivant, en vue de la résolution
+                amiable d'un litige :
+                <strong>[NOM DU MÉDIATEUR]</strong>, [ADRESSE POSTALE],
+                <a href="[SITE WEB]">[SITE WEB]</a>. Le recours à la médiation
+                n'est recevable qu'après une réclamation écrite préalable
+                adressée au Prestataire.
+              </p>
+
+            Note: this obligation only applies to consumer (B2C) clients. It does
+            not apply to formations sold to companies under convention.
+          */}
+
+          <h2>Article 13 — Droit applicable et juridiction compétente</h2>
           <p>
             Les présentes CGV sont soumises au droit français. À défaut de
             règlement amiable, tout litige relatif à leur interprétation ou à

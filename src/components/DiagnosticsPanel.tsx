@@ -40,7 +40,7 @@ export default function DiagnosticsPanel() {
       <div><strong>Route:</strong> {route}</div>
       <div><strong>Failed requests:</strong> {fails}</div>
       <div><strong>Last error:</strong> {lastError || "—"}</div>
-      <button style={{ marginTop: 8 }} onClick={() => setOpen(false)}>Close</button>
+      <button style={{ marginTop: 8 }} onClick={() => setOpen(false)}>Fermer</button>
     </div>
   );
 }

@@ -15,6 +15,10 @@ const CoursAnglaisFrejus = () => (
       title: "Cours d'anglais Fréjus — Formateur natif britannique",
       description: "Cours d'anglais sur-mesure à Fréjus et dans l'Est-Var. Formateur natif britannique certifié FPA. Présentiel ou distance, entreprises et particuliers.",
       canonical: "https://www.antonyaddy.com/cours-anglais-frejus",
+      // FR-83 = Var. This was the only city page missing its geo tags, and it is
+      // the home base — the one page where local signals matter most.
+      geoRegion: "FR-83",
+      geoPlacename: "Fréjus, Var, France",
     }}
     city="Fréjus"
     h1="Apprenez l'anglais à Fréjus avec un formateur britannique"

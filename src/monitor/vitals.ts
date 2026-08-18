@@ -1,21 +1,22 @@
 import { onCLS, onFID, onLCP, onINP, onTTFB, type Metric } from "web-vitals";
+import { trackEvent } from "@/lib/analytics";
 
-type GtagWindow = Window & {
-  __GA_ID__?: string;
-  gtag?: (...args: unknown[]) => void;
-};
-
+/**
+ * Core Web Vitals reporting.
+ *
+ * Reports to Umami. This previously sent to `window.gtag`, gated on a
+ * `VITE_GA_ID` that is not set and a Google Analytics snippet that this site
+ * never loads — so every measurement was collected and then thrown away.
+ * `trackEvent` is a no-op until Umami is configured, so the same "silent when
+ * unconfigured" behaviour is preserved without pretending to use GA.
+ */
 function report(metric: Metric) {
-  console.log("[WebVitals]", metric.name, Math.round(metric.value), metric);
-  const w = window as GtagWindow;
-  const id = w.__GA_ID__ || import.meta.env.VITE_GA_ID;
-  if (id && w.gtag) {
-    w.gtag("event", metric.name, {
-      value: metric.value,
-      event_category: "Web Vitals",
-      non_interaction: true,
-    });
-  }
+  trackEvent("web_vital", {
+    category: "engagement",
+    label: metric.name,
+    value: Math.round(metric.value),
+    rating: metric.rating,
+  });
 }
 
 // Only register in the browser; web-vitals reads `performance` / `PerformanceObserver`

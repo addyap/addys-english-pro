@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SEOHead from '@/components/SEOHead';
 import { FadeInSection, Accordion } from '@/components/Effects';
 import SocialProof from '@/components/SocialProof';
+import { PRICE_RANGE } from '@/lib/utils';
 
 export interface CityFAQ { q: string; a: string }
 export interface CityPageProps {
@@ -40,7 +41,7 @@ export const CityLandingPage: React.FC<CityPageProps> = ({
     email: 'formations@antonyaddy.com',
     address: ADDRESS,
     areaServed: areaServed.map(a => ({ '@type': 'City', name: a })),
-    priceRange: '€€',
+    priceRange: PRICE_RANGE,
   };
   const faqJsonLd = {
     '@context': 'https://schema.org',

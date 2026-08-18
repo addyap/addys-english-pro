@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { YEARS_OF_EXPERIENCE, EXPERIENCE_FLOOR, getCurrentMonthYearFR } from '@/lib/utils';
+import { YEARS_OF_EXPERIENCE, EXPERIENCE_FLOOR, PRICE_RANGE, CONTENT_LAST_REVIEWED_ISO, formatMonthYearFR } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, Headphones, Sparkles, MessageCircle, Mail, ArrowRight, Handshake, Mic, PenTool, UserCheck, Search } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
@@ -17,13 +17,18 @@ import { FORMATIONS } from '@/data/formations';
 const FORMATION_ICONS = { Globe, Sparkles, Settings } as const;
 
 
-// Stats are aligned with the single source of truth: the anglaisadistance.fr
-// exercise platform itself advertises 700+ interactive exercises. Keep this
-// number consistent across both sites — bump in lockstep when the platform's
-// public count changes.
-const EXERCISE_COUNTS = {
-  total: 700,
-};
+// ⚠️ The hard "700+" figure that used to live here is gone.
+//
+// It was justified by a comment saying anglaisadistance.fr "itself advertises
+// 700+ interactive exercises" and had to be kept in lockstep with it. That is no
+// longer true: the platform's homepage now counts *questions*, not exercises, and
+// its highest visible figure is "59+". Two sites publishing different numbers for
+// the same thing is worse than publishing none, and an unverifiable precise count
+// is the first thing a sceptical prospect will check.
+//
+// If you want the number back, take the real count from the platform and set it
+// here — the banner renders the figure whenever this is non-null.
+const EXERCISE_COUNT: number | null = null;
 
 // Client logos data for lazy carousel
 const CLIENT_LOGOS = [
@@ -59,7 +64,7 @@ const HOME_JSONLD_GRAPH = {
       image: "https://www.antonyaddy.com/social-preview.jpg",
       telephone: "+33649829826",
       email: "formations@antonyaddy.com",
-      priceRange: "$$",
+      priceRange: PRICE_RANGE,
       inLanguage: "fr",
       address: {
         "@type": "PostalAddress",
@@ -122,20 +127,11 @@ const HOME_JSONLD_GRAPH = {
         "query-input": "required name=search_term_string",
       },
     },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.antonyaddy.com/#faq",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "Où intervient Antony Addy pour les formations d'anglais ?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "En présentiel dans le Var et les Alpes-Maritimes (Fréjus, Saint-Raphaël, Cannes, Antibes, Nice, Monaco) et à distance partout en France et dans le monde.",
-          },
-        },
-      ],
-    },
+    // No FAQPage node. The one that used to sit here declared a question and
+    // answer that appear nowhere in the rendered page — Google requires FAQ
+    // content to be visible, and FAQ rich results were withdrawn for sites like
+    // this one in 2023, so it carried risk with no upside. The city landing
+    // pages keep their FAQPage markup because their questions *are* rendered.
   ],
 };
 
@@ -222,7 +218,7 @@ const Home = () => {
         description="Cours d'anglais professionnel avec un formateur britannique certifié FPA, pour entreprises, cadres et particuliers. Var, Alpes-Maritimes ou à distance."
         canonicalUrl="https://www.antonyaddy.com/"
         datePublished="2025-01-15T10:00:00+01:00"
-        dateModified="2026-05-24T10:00:00+01:00"
+        dateModified={CONTENT_LAST_REVIEWED_ISO}
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
         imageAlt="Antony Addy, formateur d'anglais professionnel certifié FPA"
         keywords={["formateur anglais", "formation anglais professionnel", "formateur FPA", "cours anglais adultes", "Var", "Alpes-Maritimes", "Côte d'Azur", "Fréjus", "Saint-Raphaël", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "anglais à distance", "formateur britannique", "anglais entreprises", "anglais cadres", "anglais étudiants"]}
@@ -413,7 +409,9 @@ const Home = () => {
                     <span className="bg-white/20 px-2 py-0.5 rounded text-xs sm:text-sm">100% GRATUIT</span>
                     <span>Ressources pédagogiques en accès libre</span>
                   </p>
-                  <p className="text-xs sm:text-sm text-white/90 mt-1">{EXERCISE_COUNTS.total}+ exercices interactifs • Créés par un formateur certifié</p>
+                  <p className="text-xs sm:text-sm text-white/90 mt-1">
+                    {EXERCISE_COUNT ? `${EXERCISE_COUNT}+ exercices interactifs` : 'Exercices interactifs corrigés'} • Créés par un formateur certifié
+                  </p>
                 </div>
               </div>
               <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
@@ -595,7 +593,7 @@ const Home = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-foreground mb-3">Dernière mise à jour</h3>
-                <p className="text-muted-foreground">{getCurrentMonthYearFR()}</p>
+                <p className="text-muted-foreground">{formatMonthYearFR()}</p>
                 <p className="text-xs text-muted-foreground mt-2">
                   Contenu créé par <a href="https://www.linkedin.com/in/antonyaddy/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Antony Addy</a>, formateur certifié FPA.
                 </p>

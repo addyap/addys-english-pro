@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { EXPERIENCE_FLOOR } from '@/lib/utils';
-import { seoMetadata } from '../utils/seoMetadata';
 import BlogSearch from '../components/BlogSearch';
 import AnimatedCard from '../components/AnimatedCard';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
@@ -51,6 +50,14 @@ const Blog = () => {
       new Date(b.date).getTime() - new Date(a.date).getTime()
     ), [baseArticles]);
 
+  // Derived from the newest post rather than hardcoded. The literal that used to
+  // sit in dateModified said 2026-01-17 while the most recent article was dated
+  // 2026-07-13 — six months of publishing that the index told Google to ignore.
+  const lastPublished = useMemo(
+    () => (articles[0]?.date ? `${articles[0].date}T10:00:00+01:00` : undefined),
+    [articles],
+  );
+
   // Run internal links audit in dev mode only (once)
   useEffect(() => {
     const allPosts = articles.map(a => ({ id: a.id, category: a.category }));
@@ -82,8 +89,8 @@ const Blog = () => {
         title="Blog Anglais | Grammaire, Vocabulaire & Conseils"
         description="Conseils d'expert pour progresser en anglais : grammaire, vocabulaire, erreurs courantes. Articles par un formateur FPA certifié."
         canonicalUrl="https://www.antonyaddy.com/blog"
-        datePublished="2026-01-15T10:00:00+01:00"
-        dateModified="2026-01-17T10:00:00+01:00"
+        datePublished="2024-12-19T10:00:00+01:00"
+        dateModified={lastPublished}
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
         imageAlt="Blog anglais professionnel par Antony Addy"
         enableOrgJsonLd

@@ -1,9 +1,8 @@
 import React from 'react';
 import { YEARS_OF_EXPERIENCE, EXPERIENCE_FLOOR } from '@/lib/utils';
-import { Award, BookOpen, Users, Globe, CheckCircle, Target, MessageCircle, Mail, GraduationCap, MapPin, Phone, Factory, School, University, Briefcase } from 'lucide-react';
+import { Award, Globe, Target, Mail, MapPin, Phone, Factory, School, University, Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
-import { TypingText } from '../components/TypingText';
 import { FadeInSection } from '../components/Effects';
 import { trackEvent } from '@/lib/analytics';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
@@ -60,28 +59,16 @@ const About = () => {
               name: "Formateur Professionnel d'Adultes (FPA)"
             }
           }
-        }, {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: [
-            {
-              "@type": "Question",
-              name: "Qui est Antony Addy ?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: `Antony Addy est un formateur britannique natif certifié Formateur Professionnel d'Adultes (FPA) depuis 2017, avec plus de ${EXPERIENCE_FLOOR} ans d'expérience dans l'enseignement de l'anglais professionnel.`
-              }
-            },
-            {
-              "@type": "Question",
-              name: "Quelles sont ses qualifications ?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Il possède la certification FPA (Formateur Professionnel d'Adultes), une licence en langues et civilisations étrangères, et une spécialisation en anglais des affaires et TOEIC."
-              }
-            }
-          ]
         }]}
+        /* The FAQPage block that used to sit here has been removed. Its second
+           answer claimed a "licence en langues et civilisations étrangères" and a
+           "spécialisation TOEIC" that appear nowhere in the visible page — Google
+           requires FAQ answers to be present on the page itself, and asserting
+           credentials only in markup is the kind of thing that earns a manual
+           action. It also bought nothing: FAQ rich results were withdrawn for
+           non-government/health sites in 2023. If you do hold that licence, state
+           it in the "Certifications" list below and the claim becomes both visible
+           and true. */
       />
       
       <div className="min-h-screen bg-background py-12">
@@ -107,7 +94,7 @@ const About = () => {
               
               {/* Photo */}
               <div className="flex justify-center mb-6">
-                <img src="/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png" alt="Antony Addy, Formateur Professionnel d'Adultes certifié depuis 2017, spécialisé en anglais professionnel" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" width="350" height="auto" loading="lazy" />
+                <img src="/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png" alt="Antony Addy, Formateur Professionnel d'Adultes certifié depuis 2017, spécialisé en anglais professionnel" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" width="350" height="350" loading="lazy" />
               </div>
 
               <div className="text-lg text-muted-foreground leading-relaxed mb-6 font-body space-y-4">

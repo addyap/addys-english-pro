@@ -7,9 +7,11 @@ import { YEARS_OF_EXPERIENCE } from "@/lib/utils";
 export default function OptimizedHero() {
   const whatsappLink = useWhatsAppLink();
   return (
+    /* No role="banner": the site header already exposes that landmark, and a
+       second one leaves screen-reader users with two "banner" regions and no way
+       to tell which is the site header. A plain labelled section is correct here. */
     <section
       className="relative hero-section overflow-hidden text-primary-foreground"
-      role="banner"
       aria-label="Section principale de présentation"
     >
       {/* Background image with WebP optimization */}
@@ -33,13 +35,9 @@ export default function OptimizedHero() {
       {/* Overlay to optimize text readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/55 via-primary/35 to-primary/70 z-5" />
 
-      {/* Skip to content link for accessibility */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-background focus:text-foreground focus:px-4 focus:py-2 focus:rounded-lg focus:font-semibold"
-      >
-        Aller au contenu principal
-      </a>
+      {/* The skip link lives in Home.tsx, before this hero. Having a second one
+          here meant keyboard users tabbed past "Aller au contenu principal"
+          twice on the homepage. */}
 
       {/* Content (height now driven by content, not min-h-screen) */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-10 sm:py-14 md:py-20 text-center hero-title-wrap">
