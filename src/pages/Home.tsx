@@ -92,10 +92,11 @@ const HOME_JSONLD_GRAPH = {
         { "@type": "ServiceChannel", serviceType: "À distance", availableLanguage: ["fr", "en"] },
       ],
       founder: { "@id": "https://www.antonyaddy.com/#antony-addy" },
-      sameAs: [
-        "https://www.linkedin.com/in/antonyaddy",
-        "https://twitter.com/antonyaddy",
-      ],
+      // LinkedIn only. The twitter.com/antonyaddy entry that used to sit here
+      // pointed at an account that is not Antony's — a `sameAs` is an identity
+      // assertion, so pointing it at someone else's profile actively misleads
+      // the entity resolution it exists to help.
+      sameAs: ["https://www.linkedin.com/in/antonyaddy"],
     },
     {
       "@type": "Person",
@@ -108,10 +109,7 @@ const HOME_JSONLD_GRAPH = {
       knowsLanguage: ["fr", "en"],
       address: { "@id": "https://www.antonyaddy.com/#address" },
       worksFor: { "@id": "https://www.antonyaddy.com/#business" },
-      sameAs: [
-        "https://www.linkedin.com/in/antonyaddy",
-        "https://twitter.com/antonyaddy",
-      ],
+      sameAs: ["https://www.linkedin.com/in/antonyaddy"],
     },
     {
       "@type": "WebSite",
