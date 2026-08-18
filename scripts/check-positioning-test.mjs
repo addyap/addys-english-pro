@@ -21,6 +21,14 @@ const { EXPIRES_ON, PIN, WARN_WITHIN_DAYS, daysUntilExpiry, isExpired } = await 
 
 const days = daysUntilExpiry();
 
+// Only a user-facing build should be blocked. Vercel preview deploys exist so a
+// PR can be reviewed — failing those just makes the branch unreviewable without
+// protecting anybody, since nobody visits a preview URL looking for the test.
+// Production deploys and local builds still fail hard.
+//   VERCEL_ENV = "production" | "preview" | "development"; unset when not on Vercel.
+const isPreviewDeploy = process.env.VERCEL_ENV === "preview";
+const allowExpired = Boolean(process.env.ALLOW_EXPIRED_POSITIONING_TEST);
+
 if (isExpired()) {
   console.error(`
 ❌ The Kahoot positioning test has EXPIRED.
@@ -39,10 +47,17 @@ if (isExpired()) {
      ALLOW_EXPIRED_POSITIONING_TEST=1 npm run build
 `);
 
-  if (!process.env.ALLOW_EXPIRED_POSITIONING_TEST) {
+  if (isPreviewDeploy) {
+    console.error(
+      "⚠️  Preview deploy (VERCEL_ENV=preview) — building anyway so the PR stays\n" +
+      "    reviewable. The page will render its expired-state fallback. A\n" +
+      "    PRODUCTION deploy will still fail until the challenge is regenerated.\n",
+    );
+  } else if (allowExpired) {
+    console.error("⚠️  ALLOW_EXPIRED_POSITIONING_TEST set — continuing anyway.\n");
+  } else {
     process.exit(1);
   }
-  console.error("⚠️  ALLOW_EXPIRED_POSITIONING_TEST set — continuing anyway.\n");
 } else if (days <= WARN_WITHIN_DAYS) {
   console.warn(
     `⚠️  Kahoot positioning test closes in ${days} day(s) (${EXPIRES_ON}). Regenerate it soon — see src/config/positioningTest.ts.`,
