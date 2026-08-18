@@ -132,17 +132,20 @@ export default function OptimizedHero() {
           >
             Voir les formations →
           </Link>
-          {/* Plain <a>, not <Link>: this path only exists as a vercel.json
-              redirect to anglaisadistance.fr, not a client route — a <Link>
-              would client-side-navigate straight into the 404 catch-all
-              instead of letting the server redirect fire. */}
-          <a
-            href="/ressources-gratuites"
+          {/* Points at the in-site list of all six platforms, not out to a
+              single one. This used to be a plain <a href="/ressources-gratuites">
+              relying on a vercel.json 301 to anglaisadistance.fr, which sent
+              visitors straight off the site to one platform and left the other
+              five undiscovered. Now a real client route, so <Link> is correct
+              and the navigation stays instant. */}
+          <Link
+            to="/ressources-en-ligne"
+            onClick={() => trackEvent('hero_resources_click', { page: 'home', target: '/ressources-en-ligne' })}
             className="inline-block text-sm text-primary-foreground/80 hover:text-primary-foreground underline underline-offset-4 font-body focus:outline-none focus:ring-2 focus:ring-ring/30 rounded"
             aria-label="Explorer les ressources gratuites d'anglais"
           >
             Explorer les ressources gratuites →
-          </a>
+          </Link>
         </div>
       </div>
 

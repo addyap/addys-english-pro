@@ -6,6 +6,7 @@ import SEOHead from '../components/SEOHead';
 import { FadeInSection, Accordion } from '../components/Effects';
 import { CourseSchema } from '@/lib/seo/structuredData';
 import { formatMonthYearFR } from '@/lib/utils';
+import { PLATFORM_COUNT } from '@/data/platforms';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { trackEvent } from '@/lib/analytics';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
@@ -587,18 +588,20 @@ const Training = () => {
                 <h2 className="text-2xl font-bold text-primary">Et en attendant ?</h2>
               </div>
               
+              {/* Links to the list of all six platforms rather than deep-linking
+                  into one exercise on anglaisadistance.fr, which is what this
+                  did before — the other five were invisible from here. */}
               <p className="text-muted-foreground">
                 <span className="text-lg mr-2">🎓</span>
-                En parallèle de mes formations, je mets à disposition des{' '}
-                <a
-                  href="https://anglaisadistance.fr/grammaire-essentielle/contrastes"
-                  target="_blank"
-                  rel="noopener"
+                En parallèle de mes formations, je mets à disposition{' '}
+                <Link
+                  to="/ressources-en-ligne"
                   className="font-semibold text-accent hover:text-accent/80 transition-colors"
                 >
-                  ressources gratuites ↗
-                </a>
-                {' '}— grammaire claire, vocabulaire utile, dialogues pratiques, quiz interactifs, et bien plus.
+                  {PLATFORM_COUNT} plateformes d'entraînement gratuites
+                </Link>
+                {' '}— grammaire claire, vocabulaire utile, dialogues audio, préparation TOEIC et CLOE,
+                et un entraîneur d'expression orale. Accès libre, sans inscription.
               </p>
             </div>
           </FadeInSection>
