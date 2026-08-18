@@ -5,17 +5,20 @@
 // secondary button, the footer link and the 404 recovery links — silently leads to
 // a dead end. That is exactly what happened between 2026-07-10 and 2026-08-18.
 //
-// Two guards now make that failure loud instead of silent:
-//   1. `scripts/check-positioning-test.mjs` runs on `prebuild` and FAILS the build
-//      if the challenge has already lapsed (and warns when it is close).
-//   2. `useIsPositioningTestOpen()` re-checks in the browser, so a challenge that
-//      lapses *between* deploys degrades to a graceful fallback instead of a 404.
+// Two things now make that failure visible instead of silent:
+//   1. `useIsPositioningTestOpen()` checks in the browser, so an expired
+//      challenge — including one that lapses *between* deploys — degrades to a
+//      fallback telling the visitor the session is closed and offering a direct
+//      evaluation. This is the real safety mechanism: the dead PIN is never shown.
+//   2. `scripts/check-positioning-test.mjs` runs on `prebuild` and warns loudly
+//      once the challenge has lapsed, or is within 14 days of doing so. It does
+//      NOT fail the build — see the comment in that file for why not.
 //
 // ─── HOW TO REGENERATE ────────────────────────────────────────────────────────
 // 1. Open the quiz in Kahoot → "Assign" / "Challenge".
 // 2. Set the deadline as far out as your plan allows.
 // 3. Copy the challenge link and the PIN into CHALLENGE_URL / PIN below.
-// 4. Set EXPIRES_ON to the deadline you chose (YYYY-MM-DD, the day it CLOSES).
+// 4. Set EXPIRES_AT to the deadline Kahoot reports (full ISO instant, see below).
 // 5. Redeploy. The prebuild check will confirm the dates are sane.
 //
 // To verify a challenge is still live without opening a browser:
@@ -26,26 +29,32 @@ import { useEffect, useState } from 'react';
 
 /** Full Kahoot challenge URL, including the `challenge-id` query parameter. */
 export const CHALLENGE_URL =
-  'https://kahoot.it/challenge/04602749?challenge-id=1f8df03b-4a67-425e-a134-6e557d14c7e2_1781270780609';
+  'https://kahoot.it/challenge/03348422?challenge-id=1f8df03b-4a67-425e-a134-6e557d14c7e2_1787049427063';
 
 /** The PIN shown on the page for people who prefer to type it into kahoot.it. */
-export const PIN = '04602749';
+export const PIN = '03348422';
 
 /**
- * Date the Kahoot challenge closes, as `YYYY-MM-DD`.
+ * The exact instant the Kahoot challenge closes, as an ISO 8601 timestamp.
  *
- * Treated as end-of-day UTC: the test counts as open right up to 23:59 on this
- * date. Keep it in sync with the deadline actually set in Kahoot — this constant
- * is what both guards read, not Kahoot itself.
+ * A full timestamp, not a date: Kahoot deadlines carry a time of day. The
+ * current challenge closes at 11:00 UTC, so treating the date as end-of-day —
+ * which an earlier version of this file did — would have left a 13-hour window
+ * where the site advertised a test that had already stopped accepting players.
+ *
+ * Read it straight off the API rather than transcribing from the UI:
+ *   curl -s https://kahoot.it/rest/challenges/pin/<PIN> | python3 -c \
+ *     "import json,sys,datetime; d=json.load(sys.stdin); \
+ *      print(datetime.datetime.fromtimestamp(d['endTime']/1000, datetime.UTC).isoformat())"
  */
-export const EXPIRES_ON = '2026-07-10';
+export const EXPIRES_AT = '2026-09-15T11:00:00Z';
 
 /** Warn during the build once the challenge is within this many days of closing. */
 export const WARN_WITHIN_DAYS = 14;
 
 /** Millisecond timestamp at which the challenge stops accepting players. */
 export function expiryTimestamp(): number {
-  return Date.parse(`${EXPIRES_ON}T23:59:59Z`);
+  return Date.parse(EXPIRES_AT);
 }
 
 /** True when the challenge deadline has passed. */
