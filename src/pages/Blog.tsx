@@ -8,41 +8,31 @@ import BlogSearch from '../components/BlogSearch';
 import AnimatedCard from '../components/AnimatedCard';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { grammarArticles } from '@/data/grammarBlogPosts';
+import { legacyBlogPosts } from '@/data/legacyBlogPosts';
 import { runDevAudit } from '@/utils/blogInternalLinks';
 
 const Blog = () => {
   useScrollTracking('blog');
   useTimeTracking('blog');
   
-  const baseArticles = useMemo(() => [
-    {
-      id: 'anglais-professionnel-2025',
-      title: 'Pourquoi l\'anglais professionnel est une compétence essentielle en 2025',
-      excerpt: 'Dans un monde professionnel de plus en plus globalisé, maîtriser l\'anglais n\'est plus un atout mais une nécessité. Découvrez pourquoi et comment développer cette compétence clé.',
-      date: '2026-01-15',
-      author: 'Antony Addy',
-      category: 'Conseils carrière',
-      readTime: '5 min'
-    },
-    {
-      id: 'erreurs-francophones',
-      title: 'Les erreurs fréquentes chez les francophones – et comment les éviter',
-      excerpt: 'Faux-amis, structures grammaticales françaises traduites littéralement... Identifiez et corrigez les erreurs les plus communes des francophones en anglais.',
-      date: '2026-01-10',
-      author: 'Antony Addy',
-      category: 'Grammaire & Vocabulaire',
-      readTime: '7 min'
-    },
-    {
-      id: 'oral-vs-ecrit',
-      title: 'Anglais oral vs écrit – adapter sa communication professionnelle',
-      excerpt: 'L\'anglais professionnel diffère selon le canal de communication. Apprenez à adapter votre style entre emails, présentations orales et conversations téléphoniques.',
-      date: '2026-01-05',
-      author: 'Antony Addy',
-      category: 'Communication',
-      readTime: '6 min'
-    }
-  ], []);
+  // Derived from legacyBlogPosts, not retyped. These three were hardcoded here
+  // with titles that did not match the articles themselves — the index offered
+  // "Pourquoi l'anglais professionnel est une compétence essentielle en 2025"
+  // and the page it opened was headed "L'anglais pro : compétence clé en 2025".
+  // All three diverged. One source now feeds both.
+  const baseArticles = useMemo(
+    () =>
+      Object.entries(legacyBlogPosts).map(([id, post]) => ({
+        id,
+        title: post.title,
+        excerpt: post.description,
+        date: post.date,
+        author: post.author,
+        category: post.category,
+        readTime: post.readTime,
+      })),
+    [],
+  );
 
   // Combine base articles with grammar articles - memoized
   const articles = useMemo(() => 

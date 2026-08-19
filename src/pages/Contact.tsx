@@ -169,7 +169,7 @@ const Contact = () => {
   return <>
       <SEOHead 
         title="Contact | Devis Formation Anglais Gratuit"
-        description="Contactez Antony Addy pour vos formations d'anglais professionnel. Réponse sous 24h par email, WhatsApp ou formulaire. Devis gratuit."
+        description="Contactez Antony Addy pour vos formations d'anglais professionnel. Réponse sous 24 h ouvrées par email, WhatsApp ou formulaire. Devis gratuit."
         keywords={["contact formateur anglais", "devis formation", "WhatsApp", "email formations"]}
         canonicalUrl="https://www.antonyaddy.com/contact"
         image="https://www.antonyaddy.com/lovable-uploads/200e88ab-2bbf-4168-85ad-8123b07c44ac.png"
@@ -201,7 +201,7 @@ const Contact = () => {
             >
               <CheckCircle2 className="h-6 w-6 text-green-600 shrink-0" aria-hidden="true" />
               <span className="font-medium">
-                ✅ Message bien reçu ! Je vous réponds sous 24 h.
+                ✅ Message bien reçu ! Je vous réponds sous 24 h ouvrées.
               </span>
             </div>
           )}
@@ -387,7 +387,7 @@ const Contact = () => {
               </form>
               
               <p className="text-sm text-gray-500 mt-4 text-center">
-                Réponse sous 24h • Présentiel Var & Alpes-Maritimes • Distanciel France entière et international
+                Réponse sous 24 h ouvrées • Présentiel Var & Alpes-Maritimes • Distanciel France entière et international
               </p>
             </div>
 
@@ -472,7 +472,7 @@ const Contact = () => {
                       <p className="font-medium text-gray-900">Horaires</p>
                       <p className="text-gray-600">
                         Lun-Ven : 9h-18h<br />
-                        Réponse sous 24h
+                        Réponse sous 24 h ouvrées
                       </p>
                     </div>
                   </div>

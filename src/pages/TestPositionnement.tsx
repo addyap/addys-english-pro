@@ -287,7 +287,7 @@ const TestPositionnement = () => {
               Vous avez votre score ? Parlons-en.
             </h2>
             <p className="text-base sm:text-lg text-white/90 leading-relaxed mb-8 font-body max-w-2xl mx-auto">
-              Envoyez-moi votre score et le numéro de la question où vous avez commencé à bloquer : je vous confirme votre niveau CECRL et je vous propose un parcours adapté à vos objectifs — entretiens, réunions, TOEIC, Linguaskill ou conversation. Premier échange gratuit, réponse sous 24 h.
+              Envoyez-moi votre score et le numéro de la question où vous avez commencé à bloquer : je vous confirme votre niveau CECRL et je vous propose un parcours adapté à vos objectifs — entretiens, réunions, TOEIC, Linguaskill ou conversation. Premier échange gratuit, réponse sous 24 h ouvrées.
             </p>
             <a
               href={whatsappScoreLink || "#"}
@@ -303,7 +303,7 @@ const TestPositionnement = () => {
               Envoyer mon score sur WhatsApp
             </a>
             <p className="mt-4 text-xs text-white/70 font-body">
-              Réponse sous 24 h · Sans engagement
+              Réponse sous 24 h ouvrées · Sans engagement
             </p>
           </FadeInSection>
         </div>

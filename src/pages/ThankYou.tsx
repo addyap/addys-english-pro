@@ -34,7 +34,7 @@ const ThankYou: React.FC = () => {
             Merci de votre message. Je vous réponds dans les meilleurs délais.
           </p>
           <p className="text-sm text-gray-500 mb-8">
-            Réponse garantie sous 24h ouvrées.
+            Réponse sous 24 h ouvrées.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

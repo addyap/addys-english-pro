@@ -148,7 +148,7 @@ const Training = () => {
     {
       icon: CalendarClock,
       title: "Délais d'accès",
-      body: `Le premier échange a lieu sous 24 h après votre demande. L'entrée en formation intervient généralement sous ${ACCESS_LEAD_TIME} après validation du devis et signature de la convention ou du contrat de formation, sous réserve de disponibilité mutuelle.`,
+      body: `Le premier échange a lieu sous 24 h ouvrées après votre demande. L'entrée en formation intervient généralement sous ${ACCESS_LEAD_TIME} après validation du devis et signature de la convention ou du contrat de formation, sous réserve de disponibilité mutuelle.`,
     },
     {
       icon: ClipboardCheck,
@@ -626,7 +626,7 @@ const Training = () => {
               </div>
 
               <p className="text-sm text-muted-foreground mb-6">
-                💬 Premier échange gratuit · Sans engagement · Réponse sous 24h
+                💬 Premier échange gratuit · Sans engagement · Réponse sous 24 h ouvrées
               </p>
               
               <div className="space-y-2 text-sm text-muted-foreground">
@@ -641,7 +641,7 @@ const Training = () => {
               </div>
               
               <p className="text-xs text-muted-foreground mt-4">
-                Réponse sous 24h • Sans engagement • Devis gratuit
+                Réponse sous 24 h ouvrées • Sans engagement • Devis gratuit
               </p>
             </div>
           </FadeInSection>

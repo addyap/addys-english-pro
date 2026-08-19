@@ -83,7 +83,7 @@ export default function OptimizedHero() {
             aria-label="Indicateur de confiance"
           >
             <span aria-hidden="true">⭐</span>
-            Premier échange gratuit · Sans engagement · Réponse sous 24h
+            Premier échange gratuit · Sans engagement · Réponse sous 24 h ouvrées
           </span>
         </div>
 
@@ -120,7 +120,7 @@ export default function OptimizedHero() {
 
         {/* Microcopy reassurance under CTAs */}
         <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base text-primary-foreground/85 font-body drop-shadow">
-          100% personnalisé · Adapté à votre niveau · Réponse rapide garantie
+          100% personnalisé · Adapté à votre niveau · Sans engagement
         </p>
 
         {/* Tertiary discovery links */}

@@ -253,8 +253,8 @@ const Home = () => {
             <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Certifié depuis 2017</p>
           </div>
           <div>
-            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">24h</p>
-            <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Réponse garantie</p>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">24 h</p>
+            <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Réponse en jours ouvrés</p>
           </div>
         </div>
         <p className="max-w-4xl mx-auto px-4 mt-4 sm:mt-6 text-center text-xs sm:text-sm text-muted-foreground font-body leading-relaxed">
@@ -544,7 +544,7 @@ const Home = () => {
               Expliquez-moi votre objectif, je vous réponds rapidement avec une proposition adaptée.
             </p>
             <p className="text-sm sm:text-base mb-6 sm:mb-8 font-body text-white/90">
-              💬 Premier échange gratuit · Sans engagement · Réponse sous 24h
+              💬 Premier échange gratuit · Sans engagement · Réponse sous 24 h ouvrées
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <a
@@ -559,7 +559,7 @@ const Home = () => {
                 aria-label="Contacter Antony Addy sur WhatsApp (message pré-rempli)"
               >
                 <MessageCircle className="h-5 w-5" aria-hidden="true" />
-                Contact WhatsApp · Réponse sous 24h
+                Contact WhatsApp · Réponse sous 24 h ouvrées
               </a>
               <Link
                 to="/contact"

@@ -38,12 +38,12 @@ const categoryPostMap: Record<string, string[]> = {
   'Grammaire - Questions': ['question-tags'],
   'Grammaire - Intensifieurs': ['so-and-such', 'too-and-enough'],
   'Grammaire & Vocabulaire': ['erreurs-francophones', 'since-vs-for', 'been-vs-gone', 'still-yet-already', 'adverbs-of-frequency'],
-  'Conseils carrière': ['anglais-professionnel-2025'],
+  'Conseils carrière': ['anglais-professionnel-competence-cle'],
   'Communication': ['oral-vs-ecrit'],
 };
 
 // Cornerstone posts for ultimate fallback
-const cornerstonePosts = ['erreurs-francophones', 'anglais-professionnel-2025', 'present-simple-vs-present-continuous', 'past-simple-vs-present-perfect'];
+const cornerstonePosts = ['erreurs-francophones', 'anglais-professionnel-competence-cle', 'present-simple-vs-present-continuous', 'past-simple-vs-present-perfect'];
 
 // Topic clusters for internal blog linking
 const topicClusters: Record<string, string[]> = {
@@ -113,9 +113,9 @@ const topicClusters: Record<string, string[]> = {
   'demonstratives-this-that-these-those': ['articles-a-an-the', 'determiners', 'relative-clauses'],
   
   // Base articles
-  'anglais-professionnel-2025': ['erreurs-francophones', 'oral-vs-ecrit'],
-  'erreurs-francophones': ['anglais-professionnel-2025', 'phrasal-verbs', 'prepositions-de-temps'],
-  'oral-vs-ecrit': ['anglais-professionnel-2025', 'erreurs-francophones', 'reported-speech'],
+  'anglais-professionnel-competence-cle': ['erreurs-francophones', 'oral-vs-ecrit'],
+  'erreurs-francophones': ['anglais-professionnel-competence-cle', 'phrasal-verbs', 'prepositions-de-temps'],
+  'oral-vs-ecrit': ['anglais-professionnel-competence-cle', 'erreurs-francophones', 'reported-speech'],
 };
 
 // Blog post titles for linking
@@ -167,7 +167,7 @@ const blogTitles: Record<string, string> = {
   'although-despite-however': 'Although, Despite, However',
   'still-yet-already': 'Still, Yet, Already',
   'unless-as-long-as-provided': 'Unless, As long as, Provided',
-  'anglais-professionnel-2025': "L'anglais professionnel en 2025",
+  'anglais-professionnel-competence-cle': "L'anglais professionnel au travail",
   'erreurs-francophones': 'Les erreurs fréquentes des francophones',
   'oral-vs-ecrit': 'Anglais oral vs écrit',
 };

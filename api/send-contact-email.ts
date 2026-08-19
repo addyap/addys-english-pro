@@ -173,7 +173,7 @@ export default async function handler(request: Request): Promise<Response> {
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h1 style="color: #1e40af;">Merci pour votre message, ${esc(prenom)} !</h1>
-          <p>J'ai bien reçu votre demande et je vous recontacterai dans les plus brefs délais (généralement sous 24h).</p>
+          <p>J'ai bien reçu votre demande et je vous recontacterai dans les plus brefs délais (généralement sous 24 h ouvrées).</p>
           <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h2 style="color: #374151; margin-top: 0;">Récapitulatif de votre message :</h2>
             <p style="white-space: pre-wrap; color: #4b5563;">${esc(message)}</p>

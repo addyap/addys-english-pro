@@ -261,7 +261,7 @@ const About = () => {
               </div>
               
               <p className="text-xs text-muted-foreground mt-4">
-                Réponse sous 24h • Aucun engagement
+                Réponse sous 24 h ouvrées • Aucun engagement
               </p>
             </div>
           </FadeInSection>

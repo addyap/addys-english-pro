@@ -2,77 +2,298 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/politique-de-confidentialite", "destination": "/politique-confidentialite", "permanent": true },
-    { "source": "/blog/certification-cloe-anglais-guide-complet", "destination": "https://cloe.antonyaddy.com", "permanent": true },
-    { "source": "/blog/outils-ia-anglais-professionnel", "destination": "/ressources-en-ligne", "permanent": true },
-    { "source": "/exercices/cloe-preparation/:path*", "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes", "permanent": true },
-    { "source": "/exercices/cloe/:path*", "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes", "permanent": true },
-    { "source": "/exercices/grammar/:path*", "destination": "https://www.anglaisadistance.fr/grammaire-essentielle", "permanent": true },
-    { "source": "/exercices/comprehension-ecrite", "destination": "https://www.anglaisadistance.fr/dialogues", "permanent": true },
-    { "source": "/exercices/:path*", "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes", "permanent": true },
-    { "source": "/exercices", "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes", "permanent": true },
-    { "source": "/reading/:path*", "destination": "https://www.anglaisadistance.fr/dialogues", "permanent": true },
-    { "source": "/reading", "destination": "https://www.anglaisadistance.fr/dialogues", "permanent": true },
-    { "source": "/lecture", "destination": "https://www.anglaisadistance.fr/dialogues", "permanent": true },
-    { "source": "/story/:path*", "destination": "https://www.anglaisadistance.fr/dialogues", "permanent": true },
-    { "source": "/story-trainer", "destination": "https://www.anglaisadistance.fr/dialogues", "permanent": true },
-    { "source": "/listening", "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes", "permanent": true },
-    { "source": "/conversation-trainer", "destination": "https://www.anglaisadistance.fr/dialogues", "permanent": true },
-    { "source": "/speaking-practice", "destination": "https://www.anglaisadistance.fr/dialogues", "permanent": true },
-    { "source": "/grammar-explainer", "destination": "https://www.anglaisadistance.fr/grammaire-essentielle", "permanent": true },
-    { "source": "/writing-coach", "destination": "https://www.anglaisadistance.fr/grammaire-essentielle", "permanent": true },
-    { "source": "/email-trainer", "destination": "https://www.anglaisadistance.fr/vocabulaire/professionnel/emailing", "permanent": true },
-    { "source": "/interview-simulator", "destination": "https://www.anglaisadistance.fr/dialogues/job-interview", "permanent": true },
-    { "source": "/presentation-trainer", "destination": "https://www.anglaisadistance.fr/", "permanent": true },
-    { "source": "/negotiation-trainer", "destination": "https://www.anglaisadistance.fr/", "permanent": true },
-    { "source": "/ressources-gratuites", "destination": "/ressources-en-ligne", "permanent": false },
-    { "source": "/services", "destination": "/", "permanent": true },
-    { "source": "/tarifs-cpf", "destination": "/offres-de-formation", "permanent": true },
-    { "source": "/videos", "destination": "/", "permanent": true },
-    { "source": "/faq", "destination": "/", "permanent": true },
-    { "source": "/a-propos", "destination": "/qui-je-suis", "permanent": true },
-    { "source": "/contactez-moi", "destination": "/contact", "permanent": true },
-    { "source": "/ressources-et-conseils", "destination": "/", "permanent": true },
-    { "source": "/ipsum-autem-impedit-nisi", "destination": "/", "permanent": true },
-    { "source": "/formations-et-services", "destination": "/offres-de-formation", "permanent": true },
-    { "source": "/tag/ad", "destination": "/", "permanent": true },
-    { "source": "/votre-besoin", "destination": "/", "permanent": true },
-    { "source": "/lander", "destination": "/", "permanent": true },
-    { "source": "/est-ut-praesentium-voluptatibus-et", "destination": "/", "permanent": true },
-    { "source": "/assumenda-nisi-nemo-labore-error", "destination": "/", "permanent": true },
-    { "source": "/ullam-omnis-et-voluptatum-quis-quia", "destination": "/", "permanent": true },
-    { "source": "/hellofacture", "destination": "/", "permanent": true },
-    { "source": "/avis-clients", "destination": "/temoignages", "permanent": true },
-    { "source": "/reseaux-sociaux", "destination": "/", "permanent": true },
-    { "source": "/velit-et-eum-id-nobis-velit", "destination": "/", "permanent": true },
-    { "source": "/aut-quo-eos-qui-odit-amet", "destination": "/", "permanent": true },
-    { "source": "/velit-cumque-quos-harum-aut", "destination": "/", "permanent": true },
-    { "source": "/jeux-anglais", "destination": "/exercices", "permanent": true },
-    { "source": "/anglaisadistance", "destination": "/offres-de-formation", "permanent": true },
-    { "source": "/products/:path*", "destination": "/", "permanent": true }
+    {
+      "source": "/politique-de-confidentialite",
+      "destination": "/politique-confidentialite",
+      "permanent": true
+    },
+    {
+      "source": "/blog/certification-cloe-anglais-guide-complet",
+      "destination": "https://cloe.antonyaddy.com",
+      "permanent": true
+    },
+    {
+      "source": "/blog/outils-ia-anglais-professionnel",
+      "destination": "/ressources-en-ligne",
+      "permanent": true
+    },
+    {
+      "source": "/exercices/cloe-preparation/:path*",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes",
+      "permanent": true
+    },
+    {
+      "source": "/exercices/cloe/:path*",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes",
+      "permanent": true
+    },
+    {
+      "source": "/exercices/grammar/:path*",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle",
+      "permanent": true
+    },
+    {
+      "source": "/exercices/comprehension-ecrite",
+      "destination": "https://www.anglaisadistance.fr/dialogues",
+      "permanent": true
+    },
+    {
+      "source": "/exercices/:path*",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes",
+      "permanent": true
+    },
+    {
+      "source": "/exercices",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes",
+      "permanent": true
+    },
+    {
+      "source": "/reading/:path*",
+      "destination": "https://www.anglaisadistance.fr/dialogues",
+      "permanent": true
+    },
+    {
+      "source": "/reading",
+      "destination": "https://www.anglaisadistance.fr/dialogues",
+      "permanent": true
+    },
+    {
+      "source": "/lecture",
+      "destination": "https://www.anglaisadistance.fr/dialogues",
+      "permanent": true
+    },
+    {
+      "source": "/story/:path*",
+      "destination": "https://www.anglaisadistance.fr/dialogues",
+      "permanent": true
+    },
+    {
+      "source": "/story-trainer",
+      "destination": "https://www.anglaisadistance.fr/dialogues",
+      "permanent": true
+    },
+    {
+      "source": "/listening",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes",
+      "permanent": true
+    },
+    {
+      "source": "/conversation-trainer",
+      "destination": "https://www.anglaisadistance.fr/dialogues",
+      "permanent": true
+    },
+    {
+      "source": "/speaking-practice",
+      "destination": "https://www.anglaisadistance.fr/dialogues",
+      "permanent": true
+    },
+    {
+      "source": "/grammar-explainer",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle",
+      "permanent": true
+    },
+    {
+      "source": "/writing-coach",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle",
+      "permanent": true
+    },
+    {
+      "source": "/email-trainer",
+      "destination": "https://www.anglaisadistance.fr/vocabulaire/professionnel/emailing",
+      "permanent": true
+    },
+    {
+      "source": "/interview-simulator",
+      "destination": "https://www.anglaisadistance.fr/dialogues/job-interview",
+      "permanent": true
+    },
+    {
+      "source": "/presentation-trainer",
+      "destination": "https://www.anglaisadistance.fr/",
+      "permanent": true
+    },
+    {
+      "source": "/negotiation-trainer",
+      "destination": "https://www.anglaisadistance.fr/",
+      "permanent": true
+    },
+    {
+      "source": "/ressources-gratuites",
+      "destination": "/ressources-en-ligne",
+      "permanent": false
+    },
+    {
+      "source": "/services",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/tarifs-cpf",
+      "destination": "/offres-de-formation",
+      "permanent": true
+    },
+    {
+      "source": "/videos",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/faq",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/a-propos",
+      "destination": "/qui-je-suis",
+      "permanent": true
+    },
+    {
+      "source": "/contactez-moi",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/ressources-et-conseils",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ipsum-autem-impedit-nisi",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/formations-et-services",
+      "destination": "/offres-de-formation",
+      "permanent": true
+    },
+    {
+      "source": "/tag/ad",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/votre-besoin",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/lander",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/est-ut-praesentium-voluptatibus-et",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/assumenda-nisi-nemo-labore-error",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ullam-omnis-et-voluptatum-quis-quia",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/hellofacture",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/avis-clients",
+      "destination": "/temoignages",
+      "permanent": true
+    },
+    {
+      "source": "/reseaux-sociaux",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/velit-et-eum-id-nobis-velit",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/aut-quo-eos-qui-odit-amet",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/velit-cumque-quos-harum-aut",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/jeux-anglais",
+      "destination": "/exercices",
+      "permanent": true
+    },
+    {
+      "source": "/anglaisadistance",
+      "destination": "/offres-de-formation",
+      "permanent": true
+    },
+    {
+      "source": "/products/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/anglais-professionnel-2025",
+      "destination": "/blog/anglais-professionnel-competence-cle",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/lovable-uploads/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; base-uri 'self'; img-src 'self' data: blob: https:; font-src 'self' https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://translate.google.com https://translate.googleapis.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://gkwzodsznrnbfafaqbtu.supabase.co wss://gkwzodsznrnbfafaqbtu.supabase.co https://translate.googleapis.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://translate.google.com; media-src 'self' https: blob:; worker-src 'self' blob:; object-src 'none'; frame-ancestors 'self'; form-action 'self' https://wa.me https://api.whatsapp.com; upgrade-insecure-requests" }
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; base-uri 'self'; img-src 'self' data: blob: https:; font-src 'self' https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://translate.google.com https://translate.googleapis.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://gkwzodsznrnbfafaqbtu.supabase.co wss://gkwzodsznrnbfafaqbtu.supabase.co https://translate.googleapis.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://translate.google.com; media-src 'self' https: blob:; worker-src 'self' blob:; object-src 'none'; frame-ancestors 'self'; form-action 'self' https://wa.me https://api.whatsapp.com; upgrade-insecure-requests"
+        }
       ]
     }
   ]
