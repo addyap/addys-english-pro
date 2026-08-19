@@ -27,6 +27,78 @@ const AUDIENCE_LINKS = [
   { name: 'Étudiants', href: '/anglais-etudiants' },
 ];
 
+// Free content, grouped so it stops competing with the commercial pages for
+// space in the bar. The positioning test was previously reachable only from the
+// hero and the footer despite being the main lead magnet.
+const RESOURCE_LINKS = [
+  { name: 'Test de positionnement', href: '/test-de-positionnement', desc: 'Évaluez votre niveau · A1 → C1' },
+  { name: 'Plateformes gratuites', href: '/ressources-en-ligne', desc: "Entraînement en accès libre" },
+  { name: 'Blog', href: '/blog', desc: "Conseils et points de grammaire" },
+];
+
+const FORMATION_LINKS = [
+  { name: 'Toutes les formations', href: '/offres-de-formation', desc: 'Programmes, modalités et tarifs' },
+];
+
+/**
+ * Desktop nav dropdown.
+ *
+ * Click to toggle; closes on Escape, on outside click, and on selecting an item.
+ *
+ * Deliberately not hover-to-open. The previous menus did both, which cancel each
+ * other out on a mouse: moving onto the button opened the menu, and the click
+ * that followed toggled it straight back shut. Hover-open also fires menus by
+ * accident as the pointer crosses the bar, and gives touch users no way to
+ * dismiss. Click alone behaves identically for mouse, touch and keyboard.
+ */
+const NavDropdown: React.FC<{
+  label: string;
+  active?: boolean;
+  align?: 'left' | 'right';
+  width?: string;
+  children: (close: () => void) => React.ReactNode;
+}> = ({ label, active = false, align = 'left', width = 'w-64', children }) => {
+  const [open, setOpen] = useState(false);
+  const ref = React.useRef<HTMLDivElement>(null);
+  const close = React.useCallback(() => setOpen(false), []);
+
+  React.useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
+    const onClick = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('mousedown', onClick);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('mousedown', onClick);
+    };
+  }, [open]);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen(o => !o)}
+        aria-haspopup="true"
+        aria-expanded={open}
+        className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors font-body inline-flex items-center gap-1 ${
+          active ? 'bg-accent text-accent-foreground' : 'text-primary hover:bg-muted'
+        }`}
+      >
+        {label}
+        <ChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
+      </button>
+      {open && (
+        <div className={`absolute ${align === 'right' ? 'right-0' : 'left-0'} top-full mt-1 ${width} bg-white border border-border rounded-lg shadow-lg py-2 z-50`}>
+          {children(close)}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const CITY_LINKS = [
   { name: 'Fréjus', href: '/cours-anglais-frejus' },
   { name: 'Nice', href: '/cours-anglais-nice' },
@@ -39,8 +111,6 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
   const location = useLocation();
   const { t: tRaw } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isAudienceOpen, setIsAudienceOpen] = useState(false);
-  const [isFormationsOpen, setIsFormationsOpen] = useState(false);
   const year = new Date().getFullYear();
   const whatsappLink = useWhatsAppLink();
   const trackWA = (loc: string) => trackEvent('whatsapp_cta_click', { page: 'Layout', target: whatsappLink, location: loc, prefilled: true });
@@ -53,17 +123,20 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
   const t = (key: string, fallback?: string) =>
     tRaw(key, { lng: 'fr', defaultValue: fallback }) as string;
 
-  const audienceActive = AUDIENCE_LINKS.some(a => a.href === location.pathname);
+  // Two dropdown groups, two plain links, then the CTAs. The bar previously
+  // carried nine top-level items, two of which — "Offres de formation" and
+  // "Mes formations" — sat next to each other with near-identical labels and
+  // entirely different destinations (this site's offer vs. a switcher to the
+  // IA and SAP subdomains).
+  const isOn = (href: string) => location.pathname === href;
+  const formationsActive =
+    isOn('/offres-de-formation') || AUDIENCE_LINKS.some(a => isOn(a.href));
+  const resourcesActive = RESOURCE_LINKS.some(r => location.pathname.startsWith(r.href));
 
-  const navigation = [
-    { name: t('nav.home'), href: '/', current: location.pathname === '/' },
-    { name: t('nav.about'), href: '/qui-je-suis', current: location.pathname === '/qui-je-suis' },
-    { name: t('nav.training'), href: '/offres-de-formation', current: location.pathname === '/offres-de-formation' },
-    { name: t('nav.testimonials'), href: '/temoignages', current: location.pathname === '/temoignages' },
-    { name: t('nav.contact'), href: '/contact', current: location.pathname === '/contact' },
-    { name: t('nav.blog'), href: '/blog', current: location.pathname === '/blog' },
-    { name: 'Ressources en ligne', href: '/ressources-en-ligne', current: location.pathname === '/ressources-en-ligne' },
-  ];
+  // Only the other two domains. On the English site, a menu row reading
+  // "Anglais — Ce site" is noise; the homepage hub section still presents all
+  // three for anyone arriving cold.
+  const otherDomains = FORMATIONS.filter(f => f.external);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
@@ -92,125 +165,80 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1">
-              {navigation.map((item) => (
-                <Link
-                  key={item.href}
-                  to={item.href}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 font-body border ${
-                    item.current
-                      ? 'bg-accent text-accent-foreground border-accent'
-                      : 'text-primary hover:text-accent-foreground hover:bg-accent border-transparent hover:border-accent'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-
-              {/* Pour qui dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setIsAudienceOpen(true)}
-                onMouseLeave={() => setIsAudienceOpen(false)}
-              >
-                <button
-                  type="button"
-                  onClick={() => setIsAudienceOpen(o => !o)}
-                  aria-haspopup="true"
-                  aria-expanded={isAudienceOpen}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 font-body border inline-flex items-center gap-1 ${
-                    audienceActive
-                      ? 'bg-accent text-accent-foreground border-accent'
-                      : 'text-primary hover:text-accent-foreground hover:bg-accent border-transparent hover:border-accent'
-                  }`}
-                >
-                  Pour qui
-                  <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
-                </button>
-                {isAudienceOpen && (
-                  <div className="absolute left-0 top-full mt-1 w-56 bg-white border border-border rounded-lg shadow-lg py-2 z-50">
+            <nav className="hidden lg:flex items-center gap-0.5" aria-label="Navigation principale">
+              <NavDropdown label="Formations" active={formationsActive} width="w-72">
+                {close => (
+                  <>
+                    {FORMATION_LINKS.map(f => (
+                      <Link
+                        key={f.href}
+                        to={f.href}
+                        onClick={close}
+                        className={`block px-4 py-2.5 transition-colors ${isOn(f.href) ? 'bg-accent/10' : 'hover:bg-muted'}`}
+                      >
+                        <span className="block text-sm font-medium text-primary">{f.name}</span>
+                        <span className="block text-xs text-muted-foreground">{f.desc}</span>
+                      </Link>
+                    ))}
+                    <p className="px-4 pt-3 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground border-t border-border mt-2">
+                      Pour qui
+                    </p>
                     {AUDIENCE_LINKS.map(a => (
                       <Link
                         key={a.href}
                         to={a.href}
-                        onClick={() => setIsAudienceOpen(false)}
+                        onClick={close}
                         className={`block px-4 py-2 text-sm font-body transition-colors ${
-                          location.pathname === a.href
-                            ? 'bg-accent text-accent-foreground'
-                            : 'text-primary hover:bg-muted'
+                          isOn(a.href) ? 'bg-accent text-accent-foreground' : 'text-primary hover:bg-muted'
                         }`}
                       >
                         {a.name}
                       </Link>
                     ))}
-                  </div>
+                  </>
                 )}
-              </div>
+              </NavDropdown>
 
-              {/* Mes formations — cross-domain switcher (Anglais · IA · SAP) */}
-              <div
-                className="relative"
-                onMouseEnter={() => setIsFormationsOpen(true)}
-                onMouseLeave={() => setIsFormationsOpen(false)}
+              <NavDropdown label="Ressources" active={resourcesActive} width="w-72">
+                {close => (
+                  <>
+                    <p className="px-4 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      Gratuit, sans inscription
+                    </p>
+                    {RESOURCE_LINKS.map(r => (
+                      <Link
+                        key={r.href}
+                        to={r.href}
+                        onClick={close}
+                        className={`block px-4 py-2.5 transition-colors ${
+                          location.pathname.startsWith(r.href) ? 'bg-accent/10' : 'hover:bg-muted'
+                        }`}
+                      >
+                        <span className="block text-sm font-medium text-primary">{r.name}</span>
+                        <span className="block text-xs text-muted-foreground">{r.desc}</span>
+                      </Link>
+                    ))}
+                  </>
+                )}
+              </NavDropdown>
+
+              <Link
+                to="/qui-je-suis"
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors font-body ${
+                  isOn('/qui-je-suis') ? 'bg-accent text-accent-foreground' : 'text-primary hover:bg-muted'
+                }`}
               >
-                <button
-                  type="button"
-                  onClick={() => setIsFormationsOpen(o => !o)}
-                  aria-haspopup="true"
-                  aria-expanded={isFormationsOpen}
-                  className="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 font-body border inline-flex items-center gap-1 text-primary hover:text-accent-foreground hover:bg-accent border-transparent hover:border-accent"
-                >
-                  Mes formations
-                  <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
-                </button>
-                {isFormationsOpen && (
-                  <div className="absolute right-0 top-full mt-1 w-72 bg-white border border-border rounded-lg shadow-lg py-2 z-50">
-                    {FORMATIONS.map(f => {
-                      const Icon = FORMATION_ICONS[f.icon];
-                      const current = !f.external;
-                      const content = (
-                        <>
-                          <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary shrink-0">
-                            <Icon className="h-4 w-4" aria-hidden="true" />
-                          </span>
-                          <span className="flex flex-col">
-                            <span className="text-sm font-medium text-primary inline-flex items-center gap-1">
-                              {f.navLabel}
-                              {f.external && <ExternalLink className="h-3 w-3 text-muted-foreground" aria-hidden="true" />}
-                            </span>
-                            <span className="text-xs text-muted-foreground">
-                              {current ? 'Ce site' : f.href.replace('https://', '')}
-                            </span>
-                          </span>
-                        </>
-                      );
-                      return current ? (
-                        <Link
-                          key={f.key}
-                          to="/"
-                          onClick={() => setIsFormationsOpen(false)}
-                          className="flex items-center gap-3 px-4 py-2 hover:bg-muted transition-colors"
-                        >
-                          {content}
-                        </Link>
-                      ) : (
-                        <a
-                          key={f.key}
-                          href={f.href}
-                          target="_blank"
-                          rel="noopener"
-                          onClick={() => { setIsFormationsOpen(false); trackEvent('nav_formation_switch', { formation: f.key, target: f.href }); }}
-                          className="flex items-center gap-3 px-4 py-2 hover:bg-muted transition-colors"
-                        >
-                          {content}
-                        </a>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
+                {t('nav.about')}
+              </Link>
+              <Link
+                to="/temoignages"
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors font-body ${
+                  isOn('/temoignages') ? 'bg-accent text-accent-foreground' : 'text-primary hover:bg-muted'
+                }`}
+              >
+                {t('nav.testimonials')}
+              </Link>
             </nav>
-
 
             {/* Mobile menu button + WhatsApp */}
             <div className="lg:hidden flex items-center gap-2">
@@ -237,92 +265,129 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               </button>
             </div>
 
-            {/* Desktop CTA + WhatsApp */}
+            {/* Cross-domain switcher + CTAs, separated from the nav proper: these
+                leave the English site or start a conversation, rather than moving
+                around within it. */}
             <div className="hidden lg:flex items-center gap-2 ms-4">
+              <NavDropdown label="IA & SAP" align="right" width="w-72">
+                {close => (
+                  <>
+                    <p className="px-4 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      Mes autres domaines
+                    </p>
+                    {otherDomains.map(f => {
+                      const Icon = FORMATION_ICONS[f.icon];
+                      return (
+                        <a
+                          key={f.key}
+                          href={f.href}
+                          target="_blank"
+                          rel="noopener"
+                          onClick={() => { close(); trackEvent('nav_formation_switch', { formation: f.key, target: f.href }); }}
+                          className="flex items-center gap-3 px-4 py-2.5 hover:bg-muted transition-colors"
+                        >
+                          <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary shrink-0">
+                            <Icon className="h-4 w-4" aria-hidden="true" />
+                          </span>
+                          <span className="flex flex-col">
+                            <span className="text-sm font-medium text-primary inline-flex items-center gap-1">
+                              {f.navLabel}
+                              <ExternalLink className="h-3 w-3 text-muted-foreground" aria-hidden="true" />
+                            </span>
+                            <span className="text-xs text-muted-foreground">{f.href.replace('https://', '')}</span>
+                          </span>
+                        </a>
+                      );
+                    })}
+                  </>
+                )}
+              </NavDropdown>
+
+              <Link
+                to="/contact"
+                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors font-body border ${
+                  isOn('/contact')
+                    ? 'bg-primary text-primary-foreground border-primary'
+                    : 'text-primary border-primary/30 hover:bg-primary/5 hover:border-primary'
+                }`}
+              >
+                {t('nav.contact')}
+              </Link>
               <a
                 href={whatsappLink || "#"}
-                className="bg-green-500 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-green-600 transition-colors font-body"
+                className="bg-green-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-semibold hover:bg-green-700 transition-colors font-body"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleWhatsAppClick('header-desktop')}
               >
-                <MessageSquare className="h-4 w-4" />
+                <MessageSquare className="h-4 w-4" aria-hidden="true" />
                 WhatsApp
               </a>
             </div>
           </div>
 
-          {/* Mobile Navigation Menu */}
+          {/* Mobile Navigation Menu — same grouping as desktop, as a flat
+              accordion-free list so nothing is hidden behind a second tap. */}
           {isMobileMenuOpen && (
             <div id="mobile-navigation" className="lg:hidden border-t border-gray-200 py-4">
-              <nav className="flex flex-col space-y-2">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.href}
-                    to={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`flex items-center min-h-[44px] px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 font-body border active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
-                      item.current
-                        ? 'text-accent-foreground bg-accent border-accent'
-                        : 'text-primary hover:text-accent-foreground hover:bg-accent border-transparent hover:border-accent'
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-
-                {/* Pour qui — mobile */}
-                <div className="pt-2 mt-2 border-t border-gray-100">
-                  <p className="px-4 pb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Pour qui</p>
-                  {AUDIENCE_LINKS.map(a => (
+              <nav className="flex flex-col" aria-label="Navigation principale">
+                {(() => {
+                  const item = (href: string, name: string, key?: string) => (
                     <Link
-                      key={a.href}
-                      to={a.href}
+                      key={key ?? href}
+                      to={href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`flex items-center min-h-[44px] px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 font-body border ${
-                        location.pathname === a.href
-                          ? 'text-accent-foreground bg-accent border-accent'
-                          : 'text-primary hover:text-accent-foreground hover:bg-accent border-transparent hover:border-accent'
+                      className={`flex items-center min-h-[44px] px-4 py-3 rounded-lg text-base font-medium transition-colors font-body active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                        isOn(href) ? 'text-accent-foreground bg-accent' : 'text-primary hover:bg-muted'
                       }`}
                     >
-                      {a.name}
+                      {name}
                     </Link>
-                  ))}
-                </div>
+                  );
+                  const heading = (label: string) => (
+                    <p className="px-4 pt-4 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      {label}
+                    </p>
+                  );
+                  return (
+                    <>
+                      {item('/', t('nav.home'))}
 
-                {/* Mes formations — mobile switcher */}
-                <div className="pt-2 mt-2 border-t border-gray-100">
-                  <p className="px-4 pb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Mes formations</p>
-                  {FORMATIONS.map(f => {
-                    const Icon = FORMATION_ICONS[f.icon];
-                    const current = !f.external;
-                    const cls = 'flex items-center gap-3 min-h-[44px] px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 font-body border border-transparent text-primary hover:text-accent-foreground hover:bg-accent hover:border-accent';
-                    const content = (
-                      <>
-                        <Icon className="h-5 w-5 shrink-0" aria-hidden="true" />
-                        <span className="inline-flex items-center gap-1">
-                          {f.navLabel}
-                          {f.external && <ExternalLink className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />}
-                        </span>
-                      </>
-                    );
-                    return current ? (
-                      <Link key={f.key} to="/" onClick={() => setIsMobileMenuOpen(false)} className={cls}>{content}</Link>
-                    ) : (
-                      <a
-                        key={f.key}
-                        href={f.href}
-                        target="_blank"
-                        rel="noopener"
-                        onClick={() => { setIsMobileMenuOpen(false); trackEvent('nav_formation_switch', { formation: f.key, target: f.href }); }}
-                        className={cls}
-                      >
-                        {content}
-                      </a>
-                    );
-                  })}
-                </div>
+                      {heading('Formations')}
+                      {FORMATION_LINKS.map(f => item(f.href, f.name))}
+                      {AUDIENCE_LINKS.map(a => item(a.href, a.name))}
 
+                      {heading('Ressources gratuites')}
+                      {RESOURCE_LINKS.map(r => item(r.href, r.name))}
+
+                      {heading('À propos')}
+                      {item('/qui-je-suis', t('nav.about'))}
+                      {item('/temoignages', t('nav.testimonials'))}
+                      {item('/contact', t('nav.contact'))}
+
+                      {heading('Mes autres domaines')}
+                      {otherDomains.map(f => {
+                        const Icon = FORMATION_ICONS[f.icon];
+                        return (
+                          <a
+                            key={f.key}
+                            href={f.href}
+                            target="_blank"
+                            rel="noopener"
+                            onClick={() => { setIsMobileMenuOpen(false); trackEvent('nav_formation_switch', { formation: f.key, target: f.href }); }}
+                            className="flex items-center gap-3 min-h-[44px] px-4 py-3 rounded-lg text-base font-medium transition-colors font-body text-primary hover:bg-muted"
+                          >
+                            <Icon className="h-5 w-5 shrink-0" aria-hidden="true" />
+                            <span className="inline-flex items-center gap-1">
+                              {f.navLabel}
+                              <ExternalLink className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
+                            </span>
+                          </a>
+                        );
+                      })}
+                    </>
+                  );
+                })()}
               </nav>
             </div>
           )}
