@@ -127,9 +127,10 @@ const Training = () => {
   // A declared training provider must publish these before enrolment. Keep them
   // here as one editable block rather than scattered through the JSX.
   //
-  // ⚠️ HOURLY_RATE_FROM is the only figure I cannot derive from the rest of the
-  // site. Set it to your real entry rate (net de TVA) — the section renders
-  // "sur devis" alone while it is null, which is legal but far less persuasive.
+  // Rates are quoted per engagement, not published. `null` is the intended
+  // state, not a gap: the Tarifs entry renders "sur devis", which satisfies
+  // L.6353-8. Leave it alone unless Antony asks for a public entry rate — if he
+  // ever does, set it to the hourly figure net de TVA and the copy adapts.
   const HOURLY_RATE_FROM: number | null = null;
   const ACCESS_LEAD_TIME = '15 jours ouvrés';
 
