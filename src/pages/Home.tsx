@@ -104,7 +104,10 @@ const HOME_JSONLD_GRAPH = {
       "@id": "https://www.antonyaddy.com/#antony-addy",
       name: "Antony Addy",
       jobTitle: "Formateur Professionnel d'Adultes en Anglais",
-      description: "Spécialiste en anglais professionnel depuis 2017, formations pour particuliers, professionnels et centres de formation",
+      // "depuis 2017" alone read as five years' experience, contradicting the
+      // 21+ figure shown on the page. 2017 is the FPA certification date, not
+      // the start of the career.
+      description: `Formateur britannique natif, certifié Formateur Professionnel d'Adultes depuis 2017, ${EXPERIENCE_FLOOR}+ ans d'enseignement de l'anglais en France auprès d'adultes, d'entreprises et de l'enseignement supérieur`,
       url: "https://www.antonyaddy.com",
       image: "https://www.antonyaddy.com/social-preview.jpg",
       knowsLanguage: ["fr", "en"],
@@ -478,7 +481,7 @@ const Home = () => {
               </Link>
               <Link to="/anglais-etudiants" className="block p-5 rounded-lg bg-muted hover:bg-accent/10 border border-border hover:border-accent transition-all">
                 <h3 className="text-lg font-semibold text-primary mb-2 font-heading">Étudiants</h3>
-                <p className="text-sm text-muted-foreground mb-3 leading-relaxed">Lycéens, étudiants du supérieur, préparation aux examens (TOEIC, Cambridge, bac).</p>
+                <p className="text-sm text-muted-foreground mb-3 leading-relaxed">BTS, Bachelor, Master, écoles et universités — préparation TOEIC et Cambridge.</p>
                 <span className="text-sm font-medium text-accent">En savoir plus →</span>
               </Link>
             </div>

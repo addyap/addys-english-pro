@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight, Sparkles, ArrowRight, Gift, RefreshCw } from 'lucide-react';
 import SEOHead from '@/components/SEOHead';
 import { FadeInSection } from '@/components/Effects';
+import { EXPERIENCE_FLOOR } from '@/lib/utils';
 import { PLATFORMS } from '@/data/platforms';
 
 const RessourcesEnLigne = () => {
@@ -11,7 +12,7 @@ const RessourcesEnLigne = () => {
     '@type': 'CollectionPage',
     name: "Ressources et plateformes d'apprentissage en ligne",
     description:
-      "Plateformes d'apprentissage de l'anglais conçues et développées par Antony Addy à l'aide de l'intelligence artificielle.",
+      "Plateformes d'entraînement à l'anglais conçues par Antony Addy, formateur professionnel d'adultes certifié FPA.",
     url: 'https://www.antonyaddy.com/ressources-en-ligne',
     hasPart: PLATFORMS.map((p) => ({
       '@type': 'WebSite',
@@ -25,7 +26,7 @@ const RessourcesEnLigne = () => {
     <>
       <SEOHead
         title="Ressources & plateformes d'anglais en ligne | Antony Addy"
-        description="Plateformes d'apprentissage de l'anglais conçues par Antony Addy : Anglais à distance, Grammatica, préparation TOEIC et CLOE."
+        description="Plateformes d'entraînement à l'anglais conçues par Antony Addy, formateur certifié FPA : grammaire, compréhension orale, préparation TOEIC et CLOE. Gratuit."
         canonicalUrl="https://www.antonyaddy.com/ressources-en-ligne"
         jsonLd={collectionJsonLd}
       />
@@ -37,16 +38,16 @@ const RessourcesEnLigne = () => {
             <FadeInSection>
               <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 text-accent-foreground px-4 py-1.5 text-sm font-semibold mb-6">
                 <Sparkles className="h-4 w-4" aria-hidden="true" />
-                Conçu et développé avec l'IA
+                Conçues par un formateur certifié FPA
               </span>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 font-heading leading-tight">
                 Mes plateformes d'apprentissage en ligne
               </h1>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                En complément de mes formations, je conçois et développe — à l'aide de
-                l'intelligence artificielle — des plateformes d'apprentissage de l'anglais.
-                Chacune répond à un besoin précis : progresser en autonomie, comprendre la
-                grammaire, ou préparer une certification.{' '}
+                En complément de mes formations, je conçois des plateformes d'entraînement à
+                l'anglais : progression, exercices et corrections reposent sur ma pédagogie et
+                sur {EXPERIENCE_FLOOR} ans de salle de classe. Chacune répond à un besoin précis —
+                progresser en autonomie, comprendre la grammaire, préparer une certification.{' '}
                 <span className="font-semibold text-primary">Toutes sont gratuites et enrichies en continu.</span>
               </p>
             </FadeInSection>
@@ -114,11 +115,17 @@ const RessourcesEnLigne = () => {
                 Pourquoi ces outils ?
               </h2>
               <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
-                L'intelligence artificielle me permet de créer rapidement des ressources
-                pédagogiques de qualité, pensées par un formateur et non par un algorithme
-                anonyme. Chaque plateforme prolonge mon accompagnement : elle donne à mes
-                apprenants — et à tous ceux qui apprennent l'anglais — de quoi s'entraîner
-                en autonomie, entre deux séances ou en préparation d'un examen.
+                Parce qu'une heure de cours ne suffit pas : ce qui fait progresser, c'est ce
+                que vous faites entre deux séances. Chaque plateforme prolonge mon
+                accompagnement — mêmes explications, mêmes priorités, mêmes pièges traités en
+                cours — et donne à mes apprenants, comme à tous ceux qui apprennent l'anglais,
+                de quoi s'entraîner en autonomie ou préparer un examen.
+              </p>
+              <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
+                Je m'appuie sur l'intelligence artificielle pour les développer, ce qui me permet
+                d'aller vite et de les enrichir en continu. Le contenu pédagogique, lui, reste le
+                mien : c'est ma progression, mes exemples et mes corrections — pas ceux d'un
+                algorithme anonyme.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <p className="flex flex-1 items-start gap-3 rounded-xl bg-accent/10 p-4 text-sm leading-relaxed text-foreground">

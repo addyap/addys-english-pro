@@ -104,7 +104,7 @@ export const CityLandingPage: React.FC<CityPageProps> = ({
                 </Link>
                 <Link to="/anglais-etudiants" className="block p-4 bg-white rounded-lg border border-border hover:border-accent hover:shadow-sm transition-all">
                   <span className="font-semibold text-primary">Étudiants</span>
-                  <p className="text-sm text-muted-foreground mt-1">Lycéens, supérieur, préparation aux examens.</p>
+                  <p className="text-sm text-muted-foreground mt-1">Supérieur : BTS, Bachelor, Master, certifications.</p>
                 </Link>
               </div>
             </section>

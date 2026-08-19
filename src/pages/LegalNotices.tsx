@@ -119,10 +119,10 @@ const LegalNotices = () => {
                 des Données (RGPD)</strong>. Les informations collectées via le
                 formulaire de contact sont utilisées
                 exclusivement pour répondre à votre demande et ne sont ni
-                vendues ni louées. Elles sont uniquement traitées par nos
+                vendues ni louées. Elles sont uniquement traitées par mes
                 prestataires techniques (hébergement, envoi d'emails, mesure
                 d'audience sans cookie, base de données anti-spam). Le détail
-                figure dans notre{' '}
+                figure dans ma{' '}
                 <Link to="/politique-confidentialite" className="text-blue-600 hover:underline">
                   politique de confidentialité
                 </Link>.
