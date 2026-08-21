@@ -4,52 +4,49 @@ import { Link } from 'react-router-dom';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { EXPERIENCE_FLOOR } from '@/lib/utils';
-import { seoMetadata } from '../utils/seoMetadata';
 import BlogSearch from '../components/BlogSearch';
 import AnimatedCard from '../components/AnimatedCard';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { grammarArticles } from '@/data/grammarBlogPosts';
+import { legacyBlogPosts } from '@/data/legacyBlogPosts';
 import { runDevAudit } from '@/utils/blogInternalLinks';
 
 const Blog = () => {
   useScrollTracking('blog');
   useTimeTracking('blog');
   
-  const baseArticles = useMemo(() => [
-    {
-      id: 'anglais-professionnel-2025',
-      title: 'Pourquoi l\'anglais professionnel est une compétence essentielle en 2025',
-      excerpt: 'Dans un monde professionnel de plus en plus globalisé, maîtriser l\'anglais n\'est plus un atout mais une nécessité. Découvrez pourquoi et comment développer cette compétence clé.',
-      date: '2026-01-15',
-      author: 'Antony Addy',
-      category: 'Conseils carrière',
-      readTime: '5 min'
-    },
-    {
-      id: 'erreurs-francophones',
-      title: 'Les erreurs fréquentes chez les francophones – et comment les éviter',
-      excerpt: 'Faux-amis, structures grammaticales françaises traduites littéralement... Identifiez et corrigez les erreurs les plus communes des francophones en anglais.',
-      date: '2026-01-10',
-      author: 'Antony Addy',
-      category: 'Grammaire & Vocabulaire',
-      readTime: '7 min'
-    },
-    {
-      id: 'oral-vs-ecrit',
-      title: 'Anglais oral vs écrit – adapter sa communication professionnelle',
-      excerpt: 'L\'anglais professionnel diffère selon le canal de communication. Apprenez à adapter votre style entre emails, présentations orales et conversations téléphoniques.',
-      date: '2026-01-05',
-      author: 'Antony Addy',
-      category: 'Communication',
-      readTime: '6 min'
-    }
-  ], []);
+  // Derived from legacyBlogPosts, not retyped. These three were hardcoded here
+  // with titles that did not match the articles themselves — the index offered
+  // "Pourquoi l'anglais professionnel est une compétence essentielle en 2025"
+  // and the page it opened was headed "L'anglais pro : compétence clé en 2025".
+  // All three diverged. One source now feeds both.
+  const baseArticles = useMemo(
+    () =>
+      Object.entries(legacyBlogPosts).map(([id, post]) => ({
+        id,
+        title: post.title,
+        excerpt: post.description,
+        date: post.date,
+        author: post.author,
+        category: post.category,
+        readTime: post.readTime,
+      })),
+    [],
+  );
 
   // Combine base articles with grammar articles - memoized
   const articles = useMemo(() => 
     [...baseArticles, ...grammarArticles].sort((a, b) => 
       new Date(b.date).getTime() - new Date(a.date).getTime()
     ), [baseArticles]);
+
+  // Derived from the newest post rather than hardcoded. The literal that used to
+  // sit in dateModified said 2026-01-17 while the most recent article was dated
+  // 2026-07-13 — six months of publishing that the index told Google to ignore.
+  const lastPublished = useMemo(
+    () => (articles[0]?.date ? `${articles[0].date}T10:00:00+01:00` : undefined),
+    [articles],
+  );
 
   // Run internal links audit in dev mode only (once)
   useEffect(() => {
@@ -82,8 +79,8 @@ const Blog = () => {
         title="Blog Anglais | Grammaire, Vocabulaire & Conseils"
         description="Conseils d'expert pour progresser en anglais : grammaire, vocabulaire, erreurs courantes. Articles par un formateur FPA certifié."
         canonicalUrl="https://www.antonyaddy.com/blog"
-        datePublished="2026-01-15T10:00:00+01:00"
-        dateModified="2026-01-17T10:00:00+01:00"
+        datePublished="2024-12-19T10:00:00+01:00"
+        dateModified={lastPublished}
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
         imageAlt="Blog anglais professionnel par Antony Addy"
         enableOrgJsonLd

@@ -1,75 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Sparkles, ArrowRight, Gift, RefreshCw, Clock } from 'lucide-react';
+import { ArrowUpRight, Sparkles, ArrowRight, Gift, RefreshCw } from 'lucide-react';
 import SEOHead from '@/components/SEOHead';
 import { FadeInSection } from '@/components/Effects';
-
-interface Platform {
-  name: string;
-  url?: string;
-  host: string;
-  tag: string;
-  raison: string;
-  accent: string; // tailwind gradient classes for the card header band
-  comingSoon?: boolean;
-}
-
-const PLATFORMS: Platform[] = [
-  {
-    name: 'Anglais à distance',
-    url: 'https://anglaisadistance.fr',
-    host: 'anglaisadistance.fr',
-    tag: 'Pour les francophones',
-    raison:
-      "Une plateforme d'exercices d'anglais pensée pour les francophones : des centaines d'activités interactives, corrigées instantanément, pour progresser à son rythme et là où l'on se trouve.",
-    accent: 'from-blue-500 to-indigo-600',
-  },
-  {
-    name: 'Grammatica',
-    url: 'https://grammatica.antonyaddy.com',
-    host: 'grammatica.antonyaddy.com',
-    tag: 'Guide multilingue',
-    raison:
-      "Un guide de grammaire anglaise multilingue : des explications claires, dans la langue maternelle de l'apprenant, pour comprendre enfin les règles qui bloquent les élèves du monde entier.",
-    accent: 'from-emerald-500 to-teal-600',
-  },
-  {
-    name: 'ListenUp',
-    url: 'https://listening.antonyaddy.com',
-    host: 'listening.antonyaddy.com',
-    tag: 'Compréhension orale',
-    raison:
-      "Une plateforme d'entraînement à la compréhension orale de l'anglais : exercices audio interactifs, voix générées par IA, quiz et traductions en plus de dix langues, pour habituer l'oreille à l'anglais réel.",
-    accent: 'from-violet-500 to-purple-600',
-  },
-  {
-    name: 'TOEIC Prep',
-    url: 'https://toeic.antonyaddy.com',
-    host: 'toeic.antonyaddy.com',
-    tag: 'Préparation TOEIC',
-    raison:
-      "Une préparation complète au TOEIC : entraînements ciblés, tests blancs au format réel et stratégies concrètes pour viser le score dont on a besoin.",
-    accent: 'from-amber-500 to-orange-600',
-  },
-  {
-    name: 'CLOE Prep',
-    url: 'https://cloe.antonyaddy.com',
-    host: 'cloe.antonyaddy.com',
-    tag: 'Préparation CLOE',
-    raison:
-      "Une préparation dédiée à la certification CLOE : exercices calés sur le format de l'épreuve pour aborder l'examen avec méthode et confiance.",
-    accent: 'from-rose-500 to-pink-600',
-  },
-  {
-    name: "Entraîneur d'anglais oral IA",
-    url: 'https://speak.antonyaddy.com',
-    host: 'speak.antonyaddy.com',
-    tag: 'Expression orale',
-    raison:
-      "Un entraîneur d'expression orale propulsé par l'IA : dialoguez à voix haute, entraînez-vous à de vraies situations et recevez un retour instantané sur votre prononciation et votre aisance.",
-    accent: 'from-cyan-500 to-sky-600',
-  },
-];
+import { EXPERIENCE_FLOOR } from '@/lib/utils';
+import { PLATFORMS } from '@/data/platforms';
 
 const RessourcesEnLigne = () => {
   const collectionJsonLd = {
@@ -77,9 +12,9 @@ const RessourcesEnLigne = () => {
     '@type': 'CollectionPage',
     name: "Ressources et plateformes d'apprentissage en ligne",
     description:
-      "Plateformes d'apprentissage de l'anglais conçues et développées par Antony Addy à l'aide de l'intelligence artificielle.",
+      "Plateformes d'entraînement à l'anglais conçues par Antony Addy, formateur professionnel d'adultes certifié FPA.",
     url: 'https://www.antonyaddy.com/ressources-en-ligne',
-    hasPart: PLATFORMS.filter((p) => !p.comingSoon).map((p) => ({
+    hasPart: PLATFORMS.map((p) => ({
       '@type': 'WebSite',
       name: p.name,
       url: p.url,
@@ -91,7 +26,7 @@ const RessourcesEnLigne = () => {
     <>
       <SEOHead
         title="Ressources & plateformes d'anglais en ligne | Antony Addy"
-        description="Plateformes d'apprentissage de l'anglais conçues par Antony Addy : Anglais à distance, Grammatica, préparation TOEIC et CLOE."
+        description="Plateformes d'entraînement à l'anglais conçues par Antony Addy, formateur certifié FPA : grammaire, compréhension orale, préparation TOEIC et CLOE. Gratuit."
         canonicalUrl="https://www.antonyaddy.com/ressources-en-ligne"
         jsonLd={collectionJsonLd}
       />
@@ -103,16 +38,16 @@ const RessourcesEnLigne = () => {
             <FadeInSection>
               <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 text-accent-foreground px-4 py-1.5 text-sm font-semibold mb-6">
                 <Sparkles className="h-4 w-4" aria-hidden="true" />
-                Conçu et développé avec l'IA
+                Conçues par un formateur certifié FPA
               </span>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 font-heading leading-tight">
                 Mes plateformes d'apprentissage en ligne
               </h1>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                En complément de mes formations, je conçois et développe — à l'aide de
-                l'intelligence artificielle — des plateformes d'apprentissage de l'anglais.
-                Chacune répond à un besoin précis : progresser en autonomie, comprendre la
-                grammaire, ou préparer une certification.{' '}
+                En complément de mes formations, je conçois des plateformes d'entraînement à
+                l'anglais : progression, exercices et corrections reposent sur ma pédagogie et
+                sur {EXPERIENCE_FLOOR} ans de salle de classe. Chacune répond à un besoin précis —
+                progresser en autonomie, comprendre la grammaire, préparer une certification.{' '}
                 <span className="font-semibold text-primary">Toutes sont gratuites et enrichies en continu.</span>
               </p>
             </FadeInSection>
@@ -120,6 +55,18 @@ const RessourcesEnLigne = () => {
         </section>
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          {/* Fluentory banner — the platform collection at a glance */}
+          <FadeInSection>
+            <img
+              src="/fluentory-plateformes.webp"
+              alt="Fluentory — mes plateformes d'apprentissage de l'anglais : CLOE Prep, SpeakUp AI, TOEIC, ListenUp, Anglais à Distance et Grammatica."
+              width={1774}
+              height={887}
+              loading="lazy"
+              className="mb-12 sm:mb-14 w-full rounded-2xl border border-border shadow-sm"
+            />
+          </FadeInSection>
+
           {/* Platform grid */}
           <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
             {PLATFORMS.map((p) => {
@@ -133,17 +80,10 @@ const RessourcesEnLigne = () => {
                       <span className="inline-block rounded-full bg-muted px-3 py-1 text-xs font-semibold text-muted-foreground">
                         {p.tag}
                       </span>
-                      {p.comingSoon ? (
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-200 px-3 py-1 text-xs font-semibold text-slate-600">
-                          <Clock className="h-3.5 w-3.5" aria-hidden="true" />
-                          Bientôt
-                        </span>
-                      ) : (
-                        <ArrowUpRight
-                          className="h-5 w-5 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-foreground"
-                          aria-hidden="true"
-                        />
-                      )}
+                      <ArrowUpRight
+                        className="h-5 w-5 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-foreground"
+                        aria-hidden="true"
+                      />
                     </div>
 
                     <h2 className="text-xl sm:text-2xl font-bold text-primary font-heading">
@@ -157,39 +97,24 @@ const RessourcesEnLigne = () => {
                       {p.raison}
                     </p>
 
-                    {p.comingSoon ? (
-                      <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-slate-500">
-                        En cours de développement
-                      </span>
-                    ) : (
-                      <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-accent-foreground">
-                        Découvrir le site
-                        <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
-                      </span>
-                    )}
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-accent-foreground">
+                      Découvrir le site
+                      <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+                    </span>
                   </div>
                 </>
               );
 
               return (
                 <FadeInSection key={p.host}>
-                  {p.comingSoon ? (
-                    <div
-                      aria-label={`${p.name} — bientôt disponible`}
-                      className="flex h-full flex-col overflow-hidden rounded-2xl border border-dashed border-slate-300 bg-slate-50/60 shadow-sm"
-                    >
-                      {inner}
-                    </div>
-                  ) : (
-                    <a
-                      href={p.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-                    >
-                      {inner}
-                    </a>
-                  )}
+                  <a
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                  >
+                    {inner}
+                  </a>
                 </FadeInSection>
               );
             })}
@@ -202,11 +127,17 @@ const RessourcesEnLigne = () => {
                 Pourquoi ces outils ?
               </h2>
               <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
-                L'intelligence artificielle me permet de créer rapidement des ressources
-                pédagogiques de qualité, pensées par un formateur et non par un algorithme
-                anonyme. Chaque plateforme prolonge mon accompagnement : elle donne à mes
-                apprenants — et à tous ceux qui apprennent l'anglais — de quoi s'entraîner
-                en autonomie, entre deux séances ou en préparation d'un examen.
+                Parce qu'une heure de cours ne suffit pas : ce qui fait progresser, c'est ce
+                que vous faites entre deux séances. Chaque plateforme prolonge mon
+                accompagnement — mêmes explications, mêmes priorités, mêmes pièges traités en
+                cours — et donne à mes apprenants, comme à tous ceux qui apprennent l'anglais,
+                de quoi s'entraîner en autonomie ou préparer un examen.
+              </p>
+              <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
+                Je m'appuie sur l'intelligence artificielle pour les développer, ce qui me permet
+                d'aller vite et de les enrichir en continu. Le contenu pédagogique, lui, reste le
+                mien : c'est ma progression, mes exemples et mes corrections — pas ceux d'un
+                algorithme anonyme.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <p className="flex flex-1 items-start gap-3 rounded-xl bg-accent/10 p-4 text-sm leading-relaxed text-foreground">

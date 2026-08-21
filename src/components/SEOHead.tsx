@@ -123,8 +123,14 @@ export default function SEOHead(props: SEOProps) {
     locale = DEFAULT_LOCALE,
     type = "website",
     twitterCard = "summary_large_image",
-    twitterSite = "@antonyaddy",
-    twitterCreator = "@antonyaddy",
+    // No default handle. These used to default to "@antonyaddy", stamping
+    // twitter:site and twitter:creator on every page and attributing the whole
+    // site to an X account that is not Antony's. The card tags below are kept —
+    // X, Slack, WhatsApp and others read them to build link previews, and they
+    // work perfectly well without naming an account. Pass these props only if a
+    // verified handle exists.
+    twitterSite,
+    twitterCreator,
     hreflangs,
     noIndex = false,
     noFollow = false,

@@ -7,9 +7,11 @@ import { YEARS_OF_EXPERIENCE } from "@/lib/utils";
 export default function OptimizedHero() {
   const whatsappLink = useWhatsAppLink();
   return (
+    /* No role="banner": the site header already exposes that landmark, and a
+       second one leaves screen-reader users with two "banner" regions and no way
+       to tell which is the site header. A plain labelled section is correct here. */
     <section
       className="relative hero-section overflow-hidden text-primary-foreground"
-      role="banner"
       aria-label="Section principale de présentation"
     >
       {/* Background image with WebP optimization */}
@@ -33,13 +35,9 @@ export default function OptimizedHero() {
       {/* Overlay to optimize text readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/55 via-primary/35 to-primary/70 z-5" />
 
-      {/* Skip to content link for accessibility */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-background focus:text-foreground focus:px-4 focus:py-2 focus:rounded-lg focus:font-semibold"
-      >
-        Aller au contenu principal
-      </a>
+      {/* The skip link lives in Home.tsx, before this hero. Having a second one
+          here meant keyboard users tabbed past "Aller au contenu principal"
+          twice on the homepage. */}
 
       {/* Content (height now driven by content, not min-h-screen) */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-10 sm:py-14 md:py-20 text-center hero-title-wrap">
@@ -85,7 +83,7 @@ export default function OptimizedHero() {
             aria-label="Indicateur de confiance"
           >
             <span aria-hidden="true">⭐</span>
-            Premier échange gratuit · Sans engagement · Réponse sous 24h
+            Premier échange gratuit · Sans engagement · Réponse sous 24 h ouvrées
           </span>
         </div>
 
@@ -122,7 +120,7 @@ export default function OptimizedHero() {
 
         {/* Microcopy reassurance under CTAs */}
         <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base text-primary-foreground/85 font-body drop-shadow">
-          100% personnalisé · Adapté à votre niveau · Réponse rapide garantie
+          100% personnalisé · Adapté à votre niveau · Sans engagement
         </p>
 
         {/* Tertiary discovery links */}
@@ -134,17 +132,20 @@ export default function OptimizedHero() {
           >
             Voir les formations →
           </Link>
-          {/* Plain <a>, not <Link>: this path only exists as a vercel.json
-              redirect to anglaisadistance.fr, not a client route — a <Link>
-              would client-side-navigate straight into the 404 catch-all
-              instead of letting the server redirect fire. */}
-          <a
-            href="/ressources-gratuites"
+          {/* Points at the in-site list of all six platforms, not out to a
+              single one. This used to be a plain <a href="/ressources-gratuites">
+              relying on a vercel.json 301 to anglaisadistance.fr, which sent
+              visitors straight off the site to one platform and left the other
+              five undiscovered. Now a real client route, so <Link> is correct
+              and the navigation stays instant. */}
+          <Link
+            to="/ressources-en-ligne"
+            onClick={() => trackEvent('hero_resources_click', { page: 'home', target: '/ressources-en-ligne' })}
             className="inline-block text-sm text-primary-foreground/80 hover:text-primary-foreground underline underline-offset-4 font-body focus:outline-none focus:ring-2 focus:ring-ring/30 rounded"
             aria-label="Explorer les ressources gratuites d'anglais"
           >
             Explorer les ressources gratuites →
-          </a>
+          </Link>
         </div>
       </div>
 

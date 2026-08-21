@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { YEARS_OF_EXPERIENCE, EXPERIENCE_FLOOR, getCurrentMonthYearFR } from '@/lib/utils';
+import { YEARS_OF_EXPERIENCE, EXPERIENCE_FLOOR, PRICE_RANGE, CONTENT_LAST_REVIEWED_ISO, formatMonthYearFR } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, Headphones, Sparkles, MessageCircle, Mail, ArrowRight, Handshake, Mic, PenTool, UserCheck, Search } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
@@ -12,18 +12,24 @@ import { LazyClientCarousel } from '@/components/LazySwiper';
 import { trackEvent } from '@/lib/analytics';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 import { FORMATIONS } from '@/data/formations';
+import { PLATFORM_COUNT } from '@/data/platforms';
 
 // Map the formation icon names to their lucide components (already imported above).
 const FORMATION_ICONS = { Globe, Sparkles, Settings } as const;
 
 
-// Stats are aligned with the single source of truth: the anglaisadistance.fr
-// exercise platform itself advertises 700+ interactive exercises. Keep this
-// number consistent across both sites — bump in lockstep when the platform's
-// public count changes.
-const EXERCISE_COUNTS = {
-  total: 700,
-};
+// ⚠️ The hard "700+" figure that used to live here is gone.
+//
+// It was justified by a comment saying anglaisadistance.fr "itself advertises
+// 700+ interactive exercises" and had to be kept in lockstep with it. That is no
+// longer true: the platform's homepage now counts *questions*, not exercises, and
+// its highest visible figure is "59+". Two sites publishing different numbers for
+// the same thing is worse than publishing none, and an unverifiable precise count
+// is the first thing a sceptical prospect will check.
+//
+// If you want the number back, take the real count from the platform and set it
+// here — the banner renders the figure whenever this is non-null.
+const EXERCISE_COUNT: number | null = null;
 
 // Client logos data for lazy carousel
 const CLIENT_LOGOS = [
@@ -59,7 +65,7 @@ const HOME_JSONLD_GRAPH = {
       image: "https://www.antonyaddy.com/social-preview.jpg",
       telephone: "+33649829826",
       email: "formations@antonyaddy.com",
-      priceRange: "$$",
+      priceRange: PRICE_RANGE,
       inLanguage: "fr",
       address: {
         "@type": "PostalAddress",
@@ -87,26 +93,27 @@ const HOME_JSONLD_GRAPH = {
         { "@type": "ServiceChannel", serviceType: "À distance", availableLanguage: ["fr", "en"] },
       ],
       founder: { "@id": "https://www.antonyaddy.com/#antony-addy" },
-      sameAs: [
-        "https://www.linkedin.com/in/antonyaddy",
-        "https://twitter.com/antonyaddy",
-      ],
+      // LinkedIn only. The twitter.com/antonyaddy entry that used to sit here
+      // pointed at an account that is not Antony's — a `sameAs` is an identity
+      // assertion, so pointing it at someone else's profile actively misleads
+      // the entity resolution it exists to help.
+      sameAs: ["https://www.linkedin.com/in/antonyaddy"],
     },
     {
       "@type": "Person",
       "@id": "https://www.antonyaddy.com/#antony-addy",
       name: "Antony Addy",
       jobTitle: "Formateur Professionnel d'Adultes en Anglais",
-      description: "Spécialiste en anglais professionnel depuis 2017, formations pour particuliers, professionnels et centres de formation",
+      // "depuis 2017" alone read as five years' experience, contradicting the
+      // 21+ figure shown on the page. 2017 is the FPA certification date, not
+      // the start of the career.
+      description: `Formateur britannique natif, certifié Formateur Professionnel d'Adultes depuis 2017, ${EXPERIENCE_FLOOR}+ ans d'enseignement de l'anglais en France auprès d'adultes, d'entreprises et de l'enseignement supérieur`,
       url: "https://www.antonyaddy.com",
       image: "https://www.antonyaddy.com/social-preview.jpg",
       knowsLanguage: ["fr", "en"],
       address: { "@id": "https://www.antonyaddy.com/#address" },
       worksFor: { "@id": "https://www.antonyaddy.com/#business" },
-      sameAs: [
-        "https://www.linkedin.com/in/antonyaddy",
-        "https://twitter.com/antonyaddy",
-      ],
+      sameAs: ["https://www.linkedin.com/in/antonyaddy"],
     },
     {
       "@type": "WebSite",
@@ -122,20 +129,11 @@ const HOME_JSONLD_GRAPH = {
         "query-input": "required name=search_term_string",
       },
     },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.antonyaddy.com/#faq",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "Où intervient Antony Addy pour les formations d'anglais ?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "En présentiel dans le Var et les Alpes-Maritimes (Fréjus, Saint-Raphaël, Cannes, Antibes, Nice, Monaco) et à distance partout en France et dans le monde.",
-          },
-        },
-      ],
-    },
+    // No FAQPage node. The one that used to sit here declared a question and
+    // answer that appear nowhere in the rendered page — Google requires FAQ
+    // content to be visible, and FAQ rich results were withdrawn for sites like
+    // this one in 2023, so it carried risk with no upside. The city landing
+    // pages keep their FAQPage markup because their questions *are* rendered.
   ],
 };
 
@@ -222,7 +220,7 @@ const Home = () => {
         description="Cours d'anglais professionnel avec un formateur britannique certifié FPA, pour entreprises, cadres et particuliers. Var, Alpes-Maritimes ou à distance."
         canonicalUrl="https://www.antonyaddy.com/"
         datePublished="2025-01-15T10:00:00+01:00"
-        dateModified="2026-05-24T10:00:00+01:00"
+        dateModified={CONTENT_LAST_REVIEWED_ISO}
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
         imageAlt="Antony Addy, formateur d'anglais professionnel certifié FPA"
         keywords={["formateur anglais", "formation anglais professionnel", "formateur FPA", "cours anglais adultes", "Var", "Alpes-Maritimes", "Côte d'Azur", "Fréjus", "Saint-Raphaël", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "anglais à distance", "formateur britannique", "anglais entreprises", "anglais cadres", "anglais étudiants"]}
@@ -255,8 +253,8 @@ const Home = () => {
             <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Certifié depuis 2017</p>
           </div>
           <div>
-            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">24h</p>
-            <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Réponse garantie</p>
+            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">24 h</p>
+            <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Réponse en jours ouvrés</p>
           </div>
         </div>
         <p className="max-w-4xl mx-auto px-4 mt-4 sm:mt-6 text-center text-xs sm:text-sm text-muted-foreground font-body leading-relaxed">
@@ -413,21 +411,66 @@ const Home = () => {
                     <span className="bg-white/20 px-2 py-0.5 rounded text-xs sm:text-sm">100% GRATUIT</span>
                     <span>Ressources pédagogiques en accès libre</span>
                   </p>
-                  <p className="text-xs sm:text-sm text-white/90 mt-1">{EXERCISE_COUNTS.total}+ exercices interactifs • Créés par un formateur certifié</p>
+                  <p className="text-xs sm:text-sm text-white/90 mt-1">
+                    {EXERCISE_COUNT ? `${EXERCISE_COUNT}+ exercices interactifs` : 'Exercices interactifs corrigés'} • Créés par un formateur certifié
+                  </p>
                 </div>
               </div>
+              {/* Internal, to the list of all platforms. Was an external deep
+                  link into one grammar exercise on anglaisadistance.fr — the ↗
+                  and ExternalLink icon go with it, since this no longer leaves
+                  the site. */}
               <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
-                <a
-                  href="https://anglaisadistance.fr/grammaire-essentielle/contrastes"
-                  target="_blank"
-                  rel="noopener"
+                <Link
+                  to="/ressources-en-ligne"
+                  onClick={() => trackEvent('home_resources_banner_click', { page: 'home', target: '/ressources-en-ligne' })}
                   className="bg-white text-emerald-700 px-5 py-2.5 rounded-lg font-bold text-sm sm:text-base hover:bg-white/90 transition-all flex items-center gap-2 whitespace-nowrap shadow-lg hover:scale-105 w-full md:w-auto justify-center"
                 >
-                  Commencer maintenant ↗
-                  <ExternalLink className="h-4 w-4" />
-                </a>
+                  Voir les {PLATFORM_COUNT} plateformes
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Platforms showcase — the Fluentory banner as a breadth/credibility
+            signal. Free is stated in the present ("en accès libre"), never as a
+            permanent promise; the AI angle stays a discreet aside, not the pitch. */}
+        <section className="py-12 sm:py-16 bg-white" aria-labelledby="platforms-heading">
+          <div className="max-w-5xl mx-auto px-4 text-center">
+            <h2 id="platforms-heading" className="text-2xl sm:text-3xl font-bold text-primary mb-3 font-heading">
+              Un formateur, {PLATFORM_COUNT} plateformes d'entraînement
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
+              Grammaire, TOEIC, CLOE, compréhension et expression orales : je conçois
+              et enrichis mes propres outils d'entraînement, en accès libre. Ma
+              pédagogie, prolongée par les outils d'aujourd'hui.
+            </p>
+            <Link
+              to="/ressources-en-ligne"
+              onClick={() => trackEvent('home_platforms_banner_click', { page: 'home', target: '/ressources-en-ligne' })}
+              className="group block rounded-2xl overflow-hidden border border-border shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            >
+              <img
+                src="/fluentory-plateformes.webp"
+                alt="Fluentory — mes plateformes d'apprentissage de l'anglais : CLOE Prep, SpeakUp AI, TOEIC, ListenUp, Anglais à Distance et Grammatica."
+                width={1774}
+                height={887}
+                loading="lazy"
+                className="w-full"
+              />
+            </Link>
+            <p className="mt-6">
+              <Link
+                to="/ressources-en-ligne"
+                onClick={() => trackEvent('home_platforms_cta_click', { page: 'home', target: '/ressources-en-ligne' })}
+                className="group/cta inline-flex items-center gap-1.5 font-semibold text-primary hover:text-accent-foreground"
+              >
+                Découvrir les {PLATFORM_COUNT} plateformes
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover/cta:translate-x-1" aria-hidden="true" />
+              </Link>
+            </p>
           </div>
         </section>
 
@@ -478,7 +521,7 @@ const Home = () => {
               </Link>
               <Link to="/anglais-etudiants" className="block p-5 rounded-lg bg-muted hover:bg-accent/10 border border-border hover:border-accent transition-all">
                 <h3 className="text-lg font-semibold text-primary mb-2 font-heading">Étudiants</h3>
-                <p className="text-sm text-muted-foreground mb-3 leading-relaxed">Lycéens, étudiants du supérieur, préparation aux examens (TOEIC, Cambridge, bac).</p>
+                <p className="text-sm text-muted-foreground mb-3 leading-relaxed">BTS, Bachelor, Master, écoles et universités — préparation TOEIC et Cambridge.</p>
                 <span className="text-sm font-medium text-accent">En savoir plus →</span>
               </Link>
             </div>
@@ -517,18 +560,18 @@ const Home = () => {
               Prêt à progresser ?
             </h3>
             <p className="text-lg text-muted-foreground mb-6 font-body">
-              Rejoignez des centaines d'apprenants. Commencez par un exercice gratuit — sans inscription.
+              Grammaire, compréhension orale, préparation TOEIC et CLOE, entraînement à l'oral —
+              en accès libre, sans inscription.
             </p>
-            <a
-              href="https://anglaisadistance.fr/grammaire-essentielle/contrastes"
-              target="_blank"
-              rel="noopener"
+            <Link
+              to="/ressources-en-ligne"
+              onClick={() => trackEvent('home_resources_cta_click', { page: 'home', location: 'progress-cta', target: '/ressources-en-ligne' })}
               className="inline-flex items-center gap-2 bg-emerald-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-emerald-700 transition-all hover:scale-105 shadow-lg"
             >
-              <Sparkles className="h-5 w-5" />
-              Essayer un exercice maintenant ↗
-              <ArrowRight className="h-5 w-5" />
-            </a>
+              <Sparkles className="h-5 w-5" aria-hidden="true" />
+              Explorer les plateformes gratuites
+              <ArrowRight className="h-5 w-5" aria-hidden="true" />
+            </Link>
           </div>
         </section>
 
@@ -541,7 +584,7 @@ const Home = () => {
               Expliquez-moi votre objectif, je vous réponds rapidement avec une proposition adaptée.
             </p>
             <p className="text-sm sm:text-base mb-6 sm:mb-8 font-body text-white/90">
-              💬 Premier échange gratuit · Sans engagement · Réponse sous 24h
+              💬 Premier échange gratuit · Sans engagement · Réponse sous 24 h ouvrées
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <a
@@ -556,7 +599,7 @@ const Home = () => {
                 aria-label="Contacter Antony Addy sur WhatsApp (message pré-rempli)"
               >
                 <MessageCircle className="h-5 w-5" aria-hidden="true" />
-                Contact WhatsApp · Réponse sous 24h
+                Contact WhatsApp · Réponse sous 24 h ouvrées
               </a>
               <Link
                 to="/contact"
@@ -595,7 +638,7 @@ const Home = () => {
               </div>
               <div>
                 <h3 className="font-semibold text-foreground mb-3">Dernière mise à jour</h3>
-                <p className="text-muted-foreground">{getCurrentMonthYearFR()}</p>
+                <p className="text-muted-foreground">{formatMonthYearFR()}</p>
                 <p className="text-xs text-muted-foreground mt-2">
                   Contenu créé par <a href="https://www.linkedin.com/in/antonyaddy/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Antony Addy</a>, formateur certifié FPA.
                 </p>

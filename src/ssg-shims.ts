@@ -1,10 +1,15 @@
 /**
  * SSG-time browser-API shims.
  *
- * Some third-party / generated modules (notably the auto-generated
- * Supabase client at `src/integrations/supabase/client.ts`) reference
- * `localStorage` at module load. During `vite-react-ssg build` those
- * modules are evaluated in Node, where `localStorage` does not exist.
+ * Some third-party modules reference `localStorage` at module load. During
+ * `vite-react-ssg build` those modules are evaluated in Node, where
+ * `localStorage` does not exist.
+ *
+ * (The original offender was the generated browser-side Supabase client, since
+ * deleted — nothing in src/ imported it. Note that Supabase itself is still in
+ * use server-side: api/send-contact-email.ts builds its own client for the
+ * rate-limit RPC, which never runs through SSG. These shims are kept because
+ * the same trap applies to any dependency that touches storage at import time.)
  *
  * We install minimal no-op shims onto `globalThis` so import-time access
  * never throws. In the browser these globals already exist and are NOT

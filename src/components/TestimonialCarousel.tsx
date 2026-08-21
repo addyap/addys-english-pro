@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
 interface Testimonial {
   quote: string;
@@ -97,9 +97,9 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
 
       {/* "Avis client" badge */}
       <div className="relative flex justify-center mb-4">
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-semibold uppercase tracking-wide">
-          <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" aria-hidden="true" />
-          Avis client
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold uppercase tracking-wide">
+          <Quote className="w-3.5 h-3.5" aria-hidden="true" />
+          Recommandation LinkedIn
         </span>
       </div>
 
@@ -132,13 +132,9 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
             aria-roledescription="diapositive"
             aria-label={`Témoignage ${currentIndex + 1} sur ${testimonials.length}`}
           >
-            {/* 5-star rating */}
-            <div className="flex justify-center gap-1 mb-4 text-amber-500" aria-label="Note 5 sur 5">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-4 w-4 md:h-5 md:w-5 fill-current" aria-hidden="true" />
-              ))}
-            </div>
-
+            {/* No star row here. These quotes are LinkedIn recommendations, which
+                carry no rating — painting five stars on each one invents a score
+                the author never gave. See the note in src/pages/Testimonials.tsx. */}
             <blockquote className="text-base sm:text-lg md:text-2xl text-gray-800 italic mb-6 leading-relaxed sm:leading-relaxed md:leading-relaxed max-w-3xl mx-auto px-2">
               «&nbsp;{current.quote}&nbsp;»
             </blockquote>

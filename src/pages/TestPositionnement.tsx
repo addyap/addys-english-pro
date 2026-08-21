@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Play, Clock, CheckCircle, Zap, Smartphone } from 'lucide-react';
+import { ArrowRight, Play, Clock, CheckCircle, Zap, Smartphone, AlertCircle } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { FadeInSection } from '../components/Effects';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 import { trackEvent } from '@/lib/analytics';
-
-// ── Configurable constants ──────────────────────────────────────────
-const KAHOOT_ASSIGNMENT_URL = 'https://kahoot.it/challenge/04602749?challenge-id=1f8df03b-4a67-425e-a134-6e557d14c7e2_1781270780609';
-const KAHOOT_PIN = '04602749';
+import {
+  CHALLENGE_URL as KAHOOT_ASSIGNMENT_URL,
+  PIN as KAHOOT_PIN,
+  useIsPositioningTestOpen,
+} from '@/config/positioningTest';
 
 const CECRL_LEVELS = [
   { level: 'A1', label: 'Débutant', range: 'Questions 1–20', tint: 50 },
@@ -49,6 +50,10 @@ const TestPositionnement = () => {
   useScrollTracking('test-de-positionnement');
   useTimeTracking('test-de-positionnement');
   const whatsappScoreLink = useWhatsAppLink('score');
+  const whatsappLink = useWhatsAppLink();
+  // False once the Kahoot challenge deadline has passed. Flips after mount, so
+  // the page never advertises a test that no longer accepts players.
+  const testIsOpen = useIsPositioningTestOpen();
 
   const handleStartTest = () => {
     trackEvent('kahoot_cta_click', { page: 'test-de-positionnement', target: KAHOOT_ASSIGNMENT_URL });
@@ -87,6 +92,23 @@ const TestPositionnement = () => {
             <p className="text-base sm:text-lg text-white/90 max-w-2xl leading-relaxed mb-6 font-body">
               Évaluez votre niveau d'anglais en 40 minutes maximum, gratuitement et sans inscription. 120 questions de difficulté croissante, du niveau débutant (A1) au niveau avancé (C1), sous forme de quiz interactif Kahoot!.
             </p>
+            {!testIsOpen && (
+              <p
+                role="status"
+                className="flex items-start gap-2 rounded-lg bg-amber-400/15 border border-amber-300/40 px-4 py-3 mb-6 text-sm text-white/95 font-body max-w-2xl"
+              >
+                <AlertCircle className="h-4 w-4 mt-0.5 shrink-0" aria-hidden="true" />
+                <span>
+                  La session de quiz en ligne est momentanément fermée pendant son
+                  renouvellement. Je peux évaluer votre niveau directement —{' '}
+                  <Link to="/contact" className="underline underline-offset-2 font-semibold hover:text-white">
+                    voir comment
+                  </Link>
+                  .
+                </span>
+              </p>
+            )}
+
             <div className="flex flex-wrap gap-2">
               {BADGES.map((b) => (
                 <span
@@ -169,33 +191,89 @@ const TestPositionnement = () => {
         <div className="max-w-xl mx-auto px-4 sm:px-6">
           <FadeInSection>
             <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-sm text-center">
-              <button
-                type="button"
-                onClick={handleStartTest}
-                className="inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground px-6 py-3.5 sm:px-8 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-accent/90 transition-all hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 font-body w-full sm:w-auto"
-              >
-                Commencer le test
-                <ArrowRight className="h-5 w-5" aria-hidden="true" />
-              </button>
+              {testIsOpen ? (
+                <>
+                  <button
+                    type="button"
+                    onClick={handleStartTest}
+                    className="inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground px-6 py-3.5 sm:px-8 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-accent/90 transition-all hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 font-body w-full sm:w-auto"
+                  >
+                    Commencer le test
+                    <ArrowRight className="h-5 w-5" aria-hidden="true" />
+                  </button>
 
-              <p className="mt-5 text-sm text-muted-foreground font-body">
-                Ou rendez-vous sur{' '}
-                <a
-                  href="https://kahoot.it"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-accent hover:underline font-medium"
-                >
-                  kahoot.it
-                </a>{' '}
-                et entrez le PIN :{' '}
-                <span className="font-mono font-semibold text-foreground">{KAHOOT_PIN}</span>
-              </p>
+                  <p className="mt-5 text-sm text-muted-foreground font-body">
+                    Ou rendez-vous sur{' '}
+                    <a
+                      href="https://kahoot.it"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent hover:underline font-medium"
+                    >
+                      kahoot.it
+                    </a>{' '}
+                    et entrez le PIN :{' '}
+                    <span className="font-mono font-semibold text-foreground">{KAHOOT_PIN}</span>
+                  </p>
 
-              <p className="mt-3 text-xs text-muted-foreground/80 font-body flex items-center justify-center gap-1.5">
-                <Smartphone className="h-3.5 w-3.5" aria-hidden="true" />
-                Fonctionne sur ordinateur, tablette et téléphone (navigateur ou application Kahoot!).
-              </p>
+                  <p className="mt-3 text-xs text-muted-foreground/80 font-body flex items-center justify-center gap-1.5">
+                    <Smartphone className="h-3.5 w-3.5" aria-hidden="true" />
+                    Fonctionne sur ordinateur, tablette et téléphone (navigateur ou application Kahoot!).
+                  </p>
+                </>
+              ) : (
+                /* Challenge deadline has passed. Say so plainly rather than sending
+                   people to a PIN that no longer resolves, and keep the page useful
+                   by routing them to a real evaluation instead. */
+                <div role="status">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-amber-100 text-amber-700 mb-4">
+                    <AlertCircle className="h-6 w-6" aria-hidden="true" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-primary font-heading mb-2">
+                    Session de test momentanément fermée
+                  </h3>
+                  <p className="text-sm sm:text-base text-muted-foreground font-body leading-relaxed mb-6">
+                    La session en ligne est en cours de renouvellement. En attendant, je vous
+                    propose mieux : dites-moi où vous en êtes et je vous évalue moi-même — à
+                    l'écrit comme à l'oral, ce que le quiz ne fait pas. C'est gratuit et sans
+                    engagement.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a
+                      href={whatsappLink || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => {
+                        if (!whatsappLink) { e.preventDefault(); return; }
+                        trackEvent('positioning_test_expired_cta', { page: 'test-de-positionnement', target: 'whatsapp' });
+                      }}
+                      className="inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground px-6 py-3.5 rounded-lg font-bold text-base hover:bg-accent/90 transition-all font-body"
+                    >
+                      <span aria-hidden="true">💬</span>
+                      Évaluer mon niveau sur WhatsApp
+                    </a>
+                    <Link
+                      to="/contact"
+                      onClick={() => trackEvent('positioning_test_expired_cta', { page: 'test-de-positionnement', target: '/contact' })}
+                      className="inline-flex items-center justify-center gap-2 border border-primary text-primary px-6 py-3.5 rounded-lg font-semibold text-base hover:bg-primary/5 transition-colors font-body"
+                    >
+                      Passer par le formulaire
+                    </Link>
+                  </div>
+                  <p className="mt-5 text-xs text-muted-foreground/80 font-body">
+                    En autonomie dès maintenant :{' '}
+                    <a
+                      href="https://anglaisadistance.fr"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent hover:underline font-medium"
+                    >
+                      anglaisadistance.fr
+                    </a>{' '}
+                    — exercices classés par niveau, accès libre.
+                  </p>
+                </div>
+              )}
             </div>
           </FadeInSection>
         </div>
@@ -209,7 +287,7 @@ const TestPositionnement = () => {
               Vous avez votre score ? Parlons-en.
             </h2>
             <p className="text-base sm:text-lg text-white/90 leading-relaxed mb-8 font-body max-w-2xl mx-auto">
-              Envoyez-moi votre score et le numéro de la question où vous avez commencé à bloquer : je vous confirme votre niveau CECRL et je vous propose un parcours adapté à vos objectifs — entretiens, réunions, TOEIC, Linguaskill ou conversation. Premier échange gratuit, réponse sous 24 h.
+              Envoyez-moi votre score et le numéro de la question où vous avez commencé à bloquer : je vous confirme votre niveau CECRL et je vous propose un parcours adapté à vos objectifs — entretiens, réunions, TOEIC, Linguaskill ou conversation. Premier échange gratuit, réponse sous 24 h ouvrées.
             </p>
             <a
               href={whatsappScoreLink || "#"}
@@ -225,7 +303,7 @@ const TestPositionnement = () => {
               Envoyer mon score sur WhatsApp
             </a>
             <p className="mt-4 text-xs text-white/70 font-body">
-              Réponse sous 24 h · Sans engagement
+              Réponse sous 24 h ouvrées · Sans engagement
             </p>
           </FadeInSection>
         </div>

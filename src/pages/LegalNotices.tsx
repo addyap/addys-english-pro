@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
+import { MEDIATOR } from '@/config/mediator';
+
+/** Date of the legal notices version currently published. Bump by hand on change. */
+const LEGAL_VERSION_DATE = '18 août 2026';
 
 const LegalNotices = () => {
   return (
@@ -15,7 +19,8 @@ const LegalNotices = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-lg shadow-lg p-8">
             <section className="max-w-3xl mx-auto text-neutral-800">
-              <h1 className="text-3xl font-bold text-primary mb-6">Mentions Légales</h1>
+              <h1 className="text-3xl font-bold text-primary mb-2">Mentions Légales</h1>
+              <p className="text-sm text-gray-500 mb-6">Version du {LEGAL_VERSION_DATE}.</p>
 
               <h2 className="text-2xl font-semibold text-primary mb-4">Éditeur du site</h2>
               <p className="mb-2"><strong>Nom :</strong> Antony Addy</p>
@@ -47,9 +52,38 @@ const LegalNotices = () => {
                 L.6352-12 du Code du travail).
               </p>
 
+              {/* Art. R.616-1 requires the mediator's details on the site itself,
+                  not only inside the CGV. Driven by the same constant, so one
+                  edit updates both pages. See src/config/mediator.ts. */}
+              {MEDIATOR && (
+                <>
+                  <h2 className="text-2xl font-semibold text-primary mb-4">Médiation de la consommation</h2>
+                  <p className="mb-2">
+                    Conformément à l'article L.612-1 du Code de la consommation, tout Client
+                    consommateur peut recourir gratuitement au médiateur suivant en cas de litige
+                    non résolu :
+                  </p>
+                  <p className="mb-2"><strong>{MEDIATOR.name}</strong></p>
+                  <p className="mb-2">{MEDIATOR.address}</p>
+                  <p className="mb-6">
+                    <a
+                      href={MEDIATOR.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-700 font-medium underline"
+                    >
+                      {MEDIATOR.url.replace(/^https?:\/\//, "")}
+                    </a>
+                    {" — "}saisine possible après réclamation écrite préalable restée sans réponse
+                    satisfaisante.
+                  </p>
+                </>
+              )}
+
               <h2 className="text-2xl font-semibold text-primary mb-4">Hébergement</h2>
               <p className="mb-6">
-                <strong>Hébergeur :</strong> Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis. Site web :{" "}
+                <strong>Hébergeur :</strong> Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789,
+                États-Unis. Téléphone : +1 559 288 7060. Site web :{" "}
                 <a
                   href="https://vercel.com"
                   className="text-blue-600 underline"
@@ -85,9 +119,10 @@ const LegalNotices = () => {
                 des Données (RGPD)</strong>. Les informations collectées via le
                 formulaire de contact sont utilisées
                 exclusivement pour répondre à votre demande et ne sont ni
-                vendues ni louées. Elles sont uniquement traitées par nos
-                prestataires techniques (hébergement, base de données, envoi
-                d'emails). Le détail figure dans notre{' '}
+                vendues ni louées. Elles sont uniquement traitées par mes
+                prestataires techniques (hébergement, envoi d'emails, mesure
+                d'audience sans cookie, base de données anti-spam). Le détail
+                figure dans ma{' '}
                 <Link to="/politique-confidentialite" className="text-blue-600 hover:underline">
                   politique de confidentialité
                 </Link>.

@@ -1,72 +1,42 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-// LanguageDetector intentionally not imported: detection runs post-hydration
-// (see below) so the first client render matches the SSG-prerendered HTML.
 
-import en from "./locales/en.json";
 import fr from "./locales/fr.json";
 
-export const SUPPORTED_LANGS: Array<{ code: string; label: string; flag: string; dir: "ltr" | "rtl"; nativeName: string }> = [
-  { code: "fr", label: "Français", flag: "🇫🇷", dir: "ltr", nativeName: "Français" },
-  { code: "en", label: "English", flag: "🇬🇧", dir: "ltr", nativeName: "English" },
-];
-
-export const SUPPORTED_LANG_CODES = SUPPORTED_LANGS.map((l) => l.code);
-
-export type SupportedLangCode = (typeof SUPPORTED_LANGS)[number]["code"];
-
-export function getLangMeta(code: string) {
-  return SUPPORTED_LANGS.find((l) => l.code === code) ?? SUPPORTED_LANGS[0];
-}
-
-const isBrowser = typeof window !== "undefined";
-
+/**
+ * i18next, pinned to French.
+ *
+ * This site is French-only in practice: every page body is hardcoded French and
+ * only the header/footer strings in Layout.tsx go through `t()`. i18next is kept
+ * for those, not because the site is translatable.
+ *
+ * ⚠️ What used to happen here was a live bug, not just dead weight. A
+ * LanguageContext read `navigator.language` after hydration and called
+ * `changeLanguage("en")` for any visitor whose browser was not French — while
+ * every page body stayed French. English-speaking visitors therefore got an
+ * English navigation and footer bolted onto French content, with no way to
+ * change it back: the LanguageSwitcher that was supposed to control this was
+ * never rendered anywhere in the app, so `interfaceLanguage` was never written
+ * and the detection was the only thing driving the switch.
+ *
+ * Both the switcher and the context have been deleted, `en.json` with them, and
+ * the language is now fixed. To make the site genuinely bilingual later you need
+ * translated page content first — at which point restore a switcher, re-add the
+ * locale file, and give each language its own URL (/en/...) with hreflang, which
+ * is what search engines need and what localStorage-based switching never gave.
+ */
 if (!i18n.isInitialized) {
-  // IMPORTANT: init with "fr" on BOTH server (SSG) and client so the first
-  // client render matches the prerendered HTML and React can hydrate cleanly.
-  // The user's stored preference is applied AFTER hydration (below) to avoid
-  // React hydration errors #418/#425 (text content / UI mismatch).
   i18n.use(initReactI18next).init({
     resources: {
       fr: { translation: fr },
-      en: { translation: en },
     },
     fallbackLng: "fr",
     lng: "fr",
-    supportedLngs: SUPPORTED_LANG_CODES,
+    supportedLngs: ["fr"],
     load: "languageOnly",
     interpolation: { escapeValue: false },
     react: { useSuspense: false },
   });
-
-  // Post-hydration language switch: read stored preference and change
-  // language asynchronously so it never interferes with the initial render.
-  if (isBrowser) {
-    // Defer until after the current microtask/hydration pass
-    Promise.resolve().then(() => {
-      try {
-        const stored = window.localStorage.getItem("interfaceLanguage");
-        if (stored && SUPPORTED_LANG_CODES.includes(stored) && stored !== i18n.language) {
-          // Wait one frame to let React commit the hydrated tree first
-          requestAnimationFrame(() => {
-            i18n.changeLanguage(stored).catch(() => undefined);
-          });
-        }
-      } catch {
-        /* localStorage unavailable; keep default */
-      }
-    });
-  }
-}
-
-if (typeof document !== "undefined") {
-  const apply = (lng: string) => {
-    const meta = getLangMeta(lng);
-    document.documentElement.lang = lng;
-    document.documentElement.dir = meta.dir;
-  };
-  apply(i18n.language || "fr");
-  i18n.on("languageChanged", apply);
 }
 
 export default i18n;

@@ -10,7 +10,6 @@ import DiagnosticsPanel from "./components/DiagnosticsPanel";
 import OfflineBanner from "./components/OfflineBanner";
 import A11yProvider from "./components/A11yProvider";
 import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
-import { LanguageProvider } from "./contexts/LanguageContext";
 import ScrollToTop from "./components/ScrollToTop";
 import PrefetchRoutes from "./components/PrefetchRoutes";
 import UmamiAnalytics from "./components/UmamiAnalytics";
@@ -50,19 +49,17 @@ export const AppShell = () => (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <A11yProvider>
-          <LanguageProvider>
-            <ScrollToTop />
-            <PrefetchRoutes />
-            <UmamiAnalytics />
-            <Toaster />
-            <Sonner />
-            <DiagnosticsPanel />
-            <OfflineBanner />
-            <PWAInstallPrompt />
-            <Suspense fallback={<PageLoader />}>
-              <Outlet />
-            </Suspense>
-          </LanguageProvider>
+          <ScrollToTop />
+          <PrefetchRoutes />
+          <UmamiAnalytics />
+          <Toaster />
+          <Sonner />
+          <DiagnosticsPanel />
+          <OfflineBanner />
+          <PWAInstallPrompt />
+          <Suspense fallback={<PageLoader />}>
+            <Outlet />
+          </Suspense>
         </A11yProvider>
       </TooltipProvider>
     </QueryClientProvider>

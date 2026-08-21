@@ -34,19 +34,20 @@ const ThankYou: React.FC = () => {
             Merci de votre message. Je vous réponds dans les meilleurs délais.
           </p>
           <p className="text-sm text-gray-500 mb-8">
-            Réponse garantie sous 24h ouvrées.
+            Réponse sous 24 h ouvrées.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href="https://anglaisadistance.fr/dialogues"
-              target="_blank"
-              rel="noopener"
+            {/* Was "Try the AI Trainer ↗" — an English CTA on a French page,
+                deep-linking to one platform. Now French, and pointing at the list. */}
+            <Link
+              to="/ressources-en-ligne"
+              onClick={() => trackEvent('thankyou_resources_click', { page: 'ThankYou', target: '/ressources-en-ligne' })}
               className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             >
               <Sparkles className="w-5 h-5" aria-hidden="true" />
-              Try the AI Trainer ↗
-            </a>
+              En attendant, entraînez-vous gratuitement
+            </Link>
 
             <a
               href={whatsappLink || "#"}
@@ -59,7 +60,7 @@ const ThankYou: React.FC = () => {
               className="inline-flex items-center justify-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
             >
               <MessageSquare className="w-5 h-5" aria-hidden="true" />
-              Contact via WhatsApp
+              Me contacter sur WhatsApp
             </a>
           </div>
 

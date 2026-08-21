@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SEOHead from '@/components/SEOHead';
 import { FadeInSection, Accordion } from '@/components/Effects';
 import SocialProof from '@/components/SocialProof';
+import { PRICE_RANGE } from '@/lib/utils';
 
 export interface CityFAQ { q: string; a: string }
 export interface CityPageProps {
@@ -40,7 +41,7 @@ export const CityLandingPage: React.FC<CityPageProps> = ({
     email: 'formations@antonyaddy.com',
     address: ADDRESS,
     areaServed: areaServed.map(a => ({ '@type': 'City', name: a })),
-    priceRange: '€€',
+    priceRange: PRICE_RANGE,
   };
   const faqJsonLd = {
     '@context': 'https://schema.org',
@@ -103,7 +104,7 @@ export const CityLandingPage: React.FC<CityPageProps> = ({
                 </Link>
                 <Link to="/anglais-etudiants" className="block p-4 bg-white rounded-lg border border-border hover:border-accent hover:shadow-sm transition-all">
                   <span className="font-semibold text-primary">Étudiants</span>
-                  <p className="text-sm text-muted-foreground mt-1">Lycéens, supérieur, préparation aux examens.</p>
+                  <p className="text-sm text-muted-foreground mt-1">Supérieur : BTS, Bachelor, Master, certifications.</p>
                 </Link>
               </div>
             </section>

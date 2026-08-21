@@ -36,7 +36,7 @@ export const ScrollProgressBar = memo(() => {
       aria-valuenow={Math.round(scroll)}
       aria-valuemin={0}
       aria-valuemax={100}
-      aria-label="Reading progress"
+      aria-label="Progression de lecture"
     />
   );
 });
