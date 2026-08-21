@@ -434,6 +434,46 @@ const Home = () => {
           </div>
         </section>
 
+        {/* Platforms showcase — the Fluentory banner as a breadth/credibility
+            signal. Free is stated in the present ("en accès libre"), never as a
+            permanent promise; the AI angle stays a discreet aside, not the pitch. */}
+        <section className="py-12 sm:py-16 bg-white" aria-labelledby="platforms-heading">
+          <div className="max-w-5xl mx-auto px-4 text-center">
+            <h2 id="platforms-heading" className="text-2xl sm:text-3xl font-bold text-primary mb-3 font-heading">
+              Un formateur, {PLATFORM_COUNT} plateformes d'entraînement
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
+              Grammaire, TOEIC, CLOE, compréhension et expression orales : je conçois
+              et enrichis mes propres outils d'entraînement, en accès libre. Ma
+              pédagogie, prolongée par les outils d'aujourd'hui.
+            </p>
+            <Link
+              to="/ressources-en-ligne"
+              onClick={() => trackEvent('home_platforms_banner_click', { page: 'home', target: '/ressources-en-ligne' })}
+              className="group block rounded-2xl overflow-hidden border border-border shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            >
+              <img
+                src="/fluentory-plateformes.webp"
+                alt="Fluentory — mes plateformes d'apprentissage de l'anglais : CLOE Prep, SpeakUp AI, TOEIC, ListenUp, Anglais à Distance et Grammatica."
+                width={1774}
+                height={887}
+                loading="lazy"
+                className="w-full"
+              />
+            </Link>
+            <p className="mt-6">
+              <Link
+                to="/ressources-en-ligne"
+                onClick={() => trackEvent('home_platforms_cta_click', { page: 'home', target: '/ressources-en-ligne' })}
+                className="group/cta inline-flex items-center gap-1.5 font-semibold text-primary hover:text-accent-foreground"
+              >
+                Découvrir les {PLATFORM_COUNT} plateformes
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover/cta:translate-x-1" aria-hidden="true" />
+              </Link>
+            </p>
+          </div>
+        </section>
+
         {/* Features Section - 6 blocks in 2x3 grid */}
         <section className="py-12 sm:py-16 bg-muted" aria-labelledby="features-heading">
           <div className="max-w-6xl mx-auto px-4">
