@@ -55,6 +55,18 @@ const RessourcesEnLigne = () => {
         </section>
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          {/* Fluentory banner — the platform collection at a glance */}
+          <FadeInSection>
+            <img
+              src="/fluentory-plateformes.webp"
+              alt="Fluentory — mes plateformes d'apprentissage de l'anglais : CLOE Prep, SpeakUp AI, TOEIC, ListenUp, Anglais à Distance et Grammatica."
+              width={1774}
+              height={887}
+              loading="lazy"
+              className="mb-12 sm:mb-14 w-full rounded-2xl border border-border shadow-sm"
+            />
+          </FadeInSection>
+
           {/* Platform grid */}
           <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
             {PLATFORMS.map((p) => {
