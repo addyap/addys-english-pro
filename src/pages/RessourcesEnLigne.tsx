@@ -4,7 +4,7 @@ import { ArrowUpRight, Sparkles, ArrowRight, Gift, RefreshCw } from 'lucide-reac
 import SEOHead from '@/components/SEOHead';
 import { FadeInSection } from '@/components/Effects';
 import { EXPERIENCE_FLOOR } from '@/lib/utils';
-import { PLATFORMS, PLATFORM_COUNT } from '@/data/platforms';
+import { PLATFORMS } from '@/data/platforms';
 
 const RessourcesEnLigne = () => {
   const collectionJsonLd = {
@@ -29,6 +29,10 @@ const RessourcesEnLigne = () => {
         title="Fluentory by Antony Addy — mes plateformes d'anglais en ligne"
         description="Plateformes d'entraînement à l'anglais conçues par Antony Addy, formateur certifié FPA : grammaire, compréhension orale, préparation TOEIC et CLOE. Gratuit."
         canonicalUrl="https://www.antonyaddy.com/ressources-en-ligne"
+        image="/og/fluentory-og.jpg"
+        imageAlt="Fluentory by Antony Addy — mes plateformes d'apprentissage de l'anglais : CLOE, expression orale, TOEIC, compréhension orale, Anglais à Distance et grammaire."
+        imageWidth={1200}
+        imageHeight={600}
         jsonLd={collectionJsonLd}
       />
 
@@ -45,7 +49,8 @@ const RessourcesEnLigne = () => {
                 Fluentory <span className="text-accent-foreground">by Antony Addy</span>
               </h1>
               <p className="text-lg sm:text-xl font-semibold text-primary max-w-2xl mx-auto mb-4">
-                Mes {PLATFORM_COUNT} plateformes d'apprentissage de l'anglais, en accès libre.
+                Free tools for grammar, listening, speaking and exam prep — built by a
+                certified trainer.
               </p>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 En complément de mes formations, je conçois des plateformes d'entraînement à
