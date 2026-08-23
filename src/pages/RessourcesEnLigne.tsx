@@ -4,15 +4,16 @@ import { ArrowUpRight, Sparkles, ArrowRight, Gift, RefreshCw } from 'lucide-reac
 import SEOHead from '@/components/SEOHead';
 import { FadeInSection } from '@/components/Effects';
 import { EXPERIENCE_FLOOR } from '@/lib/utils';
-import { PLATFORMS } from '@/data/platforms';
+import { PLATFORMS, PLATFORM_COUNT } from '@/data/platforms';
 
 const RessourcesEnLigne = () => {
   const collectionJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: "Ressources et plateformes d'apprentissage en ligne",
+    name: 'Fluentory by Antony Addy',
+    alternateName: "Ressources et plateformes d'apprentissage en ligne",
     description:
-      "Plateformes d'entraînement à l'anglais conçues par Antony Addy, formateur professionnel d'adultes certifié FPA.",
+      "Fluentory by Antony Addy : la suite de plateformes d'entraînement à l'anglais conçues par Antony Addy, formateur professionnel d'adultes certifié FPA.",
     url: 'https://www.antonyaddy.com/ressources-en-ligne',
     hasPart: PLATFORMS.map((p) => ({
       '@type': 'WebSite',
@@ -25,7 +26,7 @@ const RessourcesEnLigne = () => {
   return (
     <>
       <SEOHead
-        title="Ressources & plateformes d'anglais en ligne | Antony Addy"
+        title="Fluentory by Antony Addy — mes plateformes d'anglais en ligne"
         description="Plateformes d'entraînement à l'anglais conçues par Antony Addy, formateur certifié FPA : grammaire, compréhension orale, préparation TOEIC et CLOE. Gratuit."
         canonicalUrl="https://www.antonyaddy.com/ressources-en-ligne"
         jsonLd={collectionJsonLd}
@@ -40,9 +41,12 @@ const RessourcesEnLigne = () => {
                 <Sparkles className="h-4 w-4" aria-hidden="true" />
                 Conçues par un formateur certifié FPA
               </span>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 font-heading leading-tight">
-                Mes plateformes d'apprentissage en ligne
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-3 font-heading leading-tight">
+                Fluentory <span className="text-accent-foreground">by Antony Addy</span>
               </h1>
+              <p className="text-lg sm:text-xl font-semibold text-primary max-w-2xl mx-auto mb-4">
+                Mes {PLATFORM_COUNT} plateformes d'apprentissage de l'anglais, en accès libre.
+              </p>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 En complément de mes formations, je conçois des plateformes d'entraînement à
                 l'anglais : progression, exercices et corrections reposent sur ma pédagogie et

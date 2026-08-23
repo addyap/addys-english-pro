@@ -32,7 +32,7 @@ const AUDIENCE_LINKS = [
 // hero and the footer despite being the main lead magnet.
 const RESOURCE_LINKS = [
   { name: 'Test de positionnement', href: '/test-de-positionnement', desc: 'Évaluez votre niveau · A1 → C1' },
-  { name: 'Plateformes gratuites', href: '/ressources-en-ligne', desc: "Entraînement en accès libre" },
+  { name: 'Fluentory — mes plateformes', href: '/ressources-en-ligne', desc: "Entraînement en accès libre" },
   { name: 'Blog', href: '/blog', desc: "Conseils et points de grammaire" },
 ];
 

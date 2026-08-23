@@ -30,6 +30,7 @@ Le site présente des formations d'anglais sur-mesure pour les entreprises, les 
 
 ## Ressources gratuites
 
+- [Fluentory by Antony Addy](/ressources-en-ligne): La suite de plateformes d'entraînement à l'anglais conçues par Antony Addy — grammaire (Grammatica), compréhension orale (ListenUp), expression orale (SpeakUp AI), préparation TOEIC et CLOE, et Anglais à Distance. En accès libre.
 - [Blog](/blog): Articles de grammaire anglaise, points de vocabulaire et conseils de business English, rédigés par un formateur natif.
 
 ## Optional

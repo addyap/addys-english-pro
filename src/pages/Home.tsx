@@ -439,6 +439,9 @@ const Home = () => {
             permanent promise; the AI angle stays a discreet aside, not the pitch. */}
         <section className="py-12 sm:py-16 bg-white" aria-labelledby="platforms-heading">
           <div className="max-w-5xl mx-auto px-4 text-center">
+            <p className="text-sm font-semibold uppercase tracking-wide text-accent-foreground mb-2">
+              Fluentory <span className="text-muted-foreground normal-case tracking-normal">by Antony Addy</span>
+            </p>
             <h2 id="platforms-heading" className="text-2xl sm:text-3xl font-bold text-primary mb-3 font-heading">
               Un formateur, {PLATFORM_COUNT} plateformes d'entraînement
             </h2>
