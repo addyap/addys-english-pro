@@ -41,7 +41,7 @@ export const PLATFORMS: Platform[] = [
     accent: 'from-violet-500 to-purple-600',
   },
   {
-    name: 'TOEIC Prep',
+    name: 'ToeicPath',
     url: 'https://toeic.antonyaddy.com',
     host: 'toeic.antonyaddy.com',
     tag: 'Préparation TOEIC',
@@ -59,7 +59,7 @@ export const PLATFORMS: Platform[] = [
     accent: 'from-rose-500 to-pink-600',
   },
   {
-    name: "Entraîneur d'anglais oral IA",
+    name: 'SpeakUp AI',
     url: 'https://speak.antonyaddy.com',
     host: 'speak.antonyaddy.com',
     tag: 'Expression orale',

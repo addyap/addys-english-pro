@@ -442,6 +442,9 @@ const Home = () => {
             <p className="text-sm font-semibold uppercase tracking-wide text-accent-foreground mb-2">
               Fluentory <span className="text-muted-foreground normal-case tracking-normal">by Antony Addy</span>
             </p>
+            <p className="text-sm sm:text-base italic text-muted-foreground mb-4">
+              Free tools for grammar, listening, speaking and exam prep — built by a certified trainer.
+            </p>
             <h2 id="platforms-heading" className="text-2xl sm:text-3xl font-bold text-primary mb-3 font-heading">
               Un formateur, {PLATFORM_COUNT} plateformes d'entraînement
             </h2>
