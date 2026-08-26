@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { trackEvent } from "@/lib/analytics";
 import { useWhatsAppLink } from "@/hooks/useWhatsAppLink";
-import { YEARS_OF_EXPERIENCE } from "@/lib/utils";
 
 /**
  * "La Ligne" — the signature homepage hero.
@@ -118,9 +117,9 @@ export default function OptimizedHero() {
       {/* The skip link lives in Home.tsx, before this hero. */}
 
       {/* Content (height driven by content, not min-h-screen) */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-12 sm:py-16 md:py-20 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 py-8 sm:py-10 md:py-14 text-center">
         <header>
-          <p className="ll-eyebrow">Formateur d'anglais professionnel · Britannique natif · Antony&nbsp;Addy</p>
+          <p className="ll-eyebrow">Formateur d'anglais · Britannique natif</p>
 
           <h1 className="ll-h1">
             De l'hésitation à l'<span className="ll-hot">assurance</span>, ligne&nbsp;directe.
@@ -155,47 +154,12 @@ export default function OptimizedHero() {
               <span className="sm">Terminus</span>Assurance
             </span>
           </div>
-
-          <p className="text-base sm:text-xl md:text-2xl mt-2 mb-3 sm:mb-4 font-body drop-shadow-xl max-w-3xl mx-auto text-primary-foreground/90 leading-snug">
-            Communiquez avec confiance en anglais dans votre vie professionnelle. Formations personnalisées par un formateur britannique certifié FPA depuis 2017.
-          </p>
-
-          <p className="text-sm sm:text-lg mb-4 sm:mb-6 font-body drop-shadow-lg max-w-3xl mx-auto text-primary-foreground/80">
-            Présentiel Var & Alpes-Maritimes • Distanciel France entière et international • Particuliers, cadres & entreprises
-          </p>
-
-          {/* Credential strip — authority signals */}
-          <ul
-            className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-6 gap-y-1.5 mb-4 sm:mb-6 text-xs sm:text-sm md:text-base font-body text-primary-foreground/85"
-            aria-label="Qualifications"
-          >
-            <li className="inline-flex items-center gap-2">
-              <span aria-hidden="true">🇬🇧</span>
-              <span>Britannique natif</span>
-            </li>
-            <li aria-hidden="true" className="hidden md:inline text-primary-foreground/40">•</li>
-            <li className="inline-flex items-center gap-2">
-              <span aria-hidden="true">🎓</span>
-              <span>Certifié FPA depuis 2017</span>
-            </li>
-            <li aria-hidden="true" className="hidden md:inline text-primary-foreground/40">•</li>
-            <li className="inline-flex items-center gap-2">
-              <span aria-hidden="true">📅</span>
-              <span>{YEARS_OF_EXPERIENCE}+ ans d'enseignement en France</span>
-            </li>
-          </ul>
         </header>
 
-        {/* Trust metric — strongest credibility signal, above the fold */}
-        <div className="flex justify-center mb-5 sm:mb-6">
-          <span
-            className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-background/15 border border-primary-foreground/30 backdrop-blur-sm text-xs sm:text-sm md:text-base font-medium text-primary-foreground shadow-lg text-center"
-            aria-label="Indicateur de confiance"
-          >
-            <span aria-hidden="true">⭐</span>
-            Premier échange gratuit · Sans engagement · Réponse sous 24 h ouvrées
-          </span>
-        </div>
+        {/* One tight value line — carries the credentials without the bulk */}
+        <p className="mt-1 mb-6 font-body max-w-xl mx-auto text-sm sm:text-base md:text-lg text-primary-foreground/90 leading-snug drop-shadow">
+          Formations sur mesure avec un <b className="font-semibold text-primary-foreground">formateur britannique natif</b>, certifié FPA depuis 2017.
+        </p>
 
         <nav
           className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center flex-wrap items-stretch sm:items-center"
@@ -228,29 +192,10 @@ export default function OptimizedHero() {
           </Link>
         </nav>
 
-        {/* Microcopy reassurance under CTAs */}
-        <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base text-primary-foreground/85 font-body drop-shadow">
-          100% personnalisé · Adapté à votre niveau · Sans engagement
+        {/* One compact reassurance + local-SEO line */}
+        <p className="mt-3 text-xs sm:text-sm text-primary-foreground/75 font-body drop-shadow">
+          Présentiel Var &amp; Alpes-Maritimes · Distanciel partout · Premier échange gratuit, réponse sous 24 h
         </p>
-
-        {/* Tertiary discovery links */}
-        <div className="mt-3 flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center items-center">
-          <Link
-            to="/offres-de-formation"
-            className="inline-block text-sm text-primary-foreground/80 hover:text-primary-foreground underline underline-offset-4 font-body focus:outline-none focus:ring-2 focus:ring-ring/30 rounded"
-            aria-label="Voir les offres de formation en anglais professionnel"
-          >
-            Voir les formations →
-          </Link>
-          <Link
-            to="/ressources-en-ligne"
-            onClick={() => trackEvent('hero_resources_click', { page: 'home', target: '/ressources-en-ligne' })}
-            className="inline-block text-sm text-primary-foreground/80 hover:text-primary-foreground underline underline-offset-4 font-body focus:outline-none focus:ring-2 focus:ring-ring/30 rounded"
-            aria-label="Explorer les ressources gratuites d'anglais"
-          >
-            Explorer les ressources gratuites →
-          </Link>
-        </div>
       </div>
 
       {/* The homepage Person schema lives in the consolidated @graph in
