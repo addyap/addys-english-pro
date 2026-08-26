@@ -117,7 +117,7 @@ export default function OptimizedHero() {
       {/* The skip link lives in Home.tsx, before this hero. */}
 
       {/* Content (height driven by content, not min-h-screen) */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 py-8 sm:py-10 md:py-14 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 pt-4 pb-8 sm:pt-5 sm:pb-10 md:pt-6 md:pb-14 text-center">
         <header>
           <p className="ll-eyebrow">Formateur d'anglais · Britannique natif</p>
 
