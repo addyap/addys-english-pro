@@ -50,22 +50,43 @@ export default function OptimizedHero() {
 
     if (reduce || !rider) return;
 
-    // The red "rider" eases along the rail toward the cursor's x while the
-    // pointer is over the band — the visitor drives their own progress.
+    // At rest the rider keeps travelling Départ → Terminus and loops — the
+    // journey from hesitation to assurance, always quietly in motion. The
+    // moment the pointer is over the band it takes the wheel; when it leaves,
+    // the ambient journey resumes seamlessly.
+    const span = RIDE_MAX - RIDE_MIN;
     let raf = 0;
     let pos = RIDE_MIN;
     let target = RIDE_MIN;
+    let lastMove = -1e9;
+    let auto = 0; // journey phase 0..1
+    let prev = performance.now();
+
     const onMove = (e: PointerEvent) => {
       const r = metro.getBoundingClientRect();
       if (e.clientY > r.top - 80 && e.clientY < r.bottom + 100) {
         const f = (e.clientX - r.left) / r.width;
         target = Math.max(RIDE_MIN, Math.min(RIDE_MAX, f));
+        lastMove = performance.now();
       }
     };
     window.addEventListener("pointermove", onMove, { passive: true });
 
-    const frame = () => {
-      pos += (target - pos) * 0.12;
+    const frame = (now: number) => {
+      const dt = Math.min(64, now - prev);
+      prev = now;
+      const active = now - lastMove < 2500;
+      if (active) {
+        pos += (target - pos) * 0.12;
+        rider.style.opacity = "1";
+        auto = (pos - RIDE_MIN) / span; // stay in sync for a seamless hand-back
+      } else {
+        auto += dt / 4200; // ~4.2s per journey, then loop
+        if (auto >= 1) auto -= 1;
+        pos = RIDE_MIN + auto * span;
+        const edge = Math.min(auto, 1 - auto); // fade in/out at the ends
+        rider.style.opacity = Math.max(0, Math.min(1, edge / 0.1)).toFixed(2);
+      }
       rider.style.left = `${(pos * 100).toFixed(2)}%`;
       raf = requestAnimationFrame(frame);
     };
