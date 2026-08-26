@@ -267,7 +267,13 @@ All colors MUST be HSL.
   transform:translate(-50%,-50%); background:hsl(240 50% 15%); border:3px solid; }
 .ll-dot--a{ left:16.667%; border-color:var(--ll-indigo-lite); }
 .ll-dot--b{ left:50%; border-color:var(--ll-purple-lite); }
-.ll-dot--c{ left:83.333%; width:17px; height:17px; border-color:hsl(var(--accent)); }
+.ll-dot--c{ left:83.333%; width:17px; height:17px; border-color:hsl(var(--accent));
+  animation:ll-goal 2.8s ease-out infinite; }
+/* the goal quietly beckons — a soft radar pulse on the "Assurance" stop */
+@keyframes ll-goal{
+  0%{ box-shadow:0 0 0 0 hsl(var(--accent) / .5); }
+  70%,100%{ box-shadow:0 0 0 9px hsl(var(--accent) / 0); }
+}
 .ll-rider{ position:absolute; top:50%; left:16.667%; width:12px; height:12px; border-radius:50%;
   transform:translate(-50%,-50%); background:hsl(var(--accent)); box-shadow:0 0 8px hsl(var(--accent) / .85); }
 
@@ -288,4 +294,5 @@ All colors MUST be HSL.
 @media (prefers-reduced-motion:reduce){
   .ll-rail-fill{ transform:translateY(-50%) scaleX(1) !important; transition:none !important; }
   .ll-rider{ display:none; }
+  .ll-dot--c{ animation:none; }
 }
