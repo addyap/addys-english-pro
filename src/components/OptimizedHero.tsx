@@ -106,27 +106,9 @@ export default function OptimizedHero() {
       className="ll-hero relative overflow-hidden text-primary-foreground"
       aria-label="Section principale de présentation"
     >
-      {/* Background image with WebP optimization */}
-      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-primary">
-        <picture>
-          <source srcSet="/assets/hero-image.webp" type="image/webp" />
-          <img
-            src="/assets/hero-image.jpg"
-            alt="Formation en anglais professionnel avec Antony Addy"
-            className="absolute inset-0 w-full h-full object-cover animate-ken-burns"
-            style={{ objectPosition: "62% 30%" }}
-            width={1920}
-            height={1080}
-            loading="eager"
-            decoding="async"
-            // @ts-expect-error - fetchpriority is valid HTML but not typed in React 18
-            fetchpriority="high"
-          />
-        </picture>
-      </div>
-
-      {/* Deep-navy scrim so the photo reads as warm context, not foreground */}
-      <div className="absolute inset-0 z-[1] ll-scrim" aria-hidden="true" />
+      {/* Brand-colour ground: deep navy with soft purple depth — lets the line,
+          type and motion carry the hero (no stock photo). */}
+      <div className="absolute inset-0 z-0 ll-bg" aria-hidden="true" />
 
       {/* Soft fade so the navy hero melts into the light section below */}
       <div className="ll-fade" aria-hidden="true" />
