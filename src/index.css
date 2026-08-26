@@ -235,7 +235,7 @@ All colors MUST be HSL.
 
 .declic .stage{
   position:relative;
-  min-height:100svh;
+  min-height:72svh;
   display:grid;
   place-items:center;
   overflow:hidden;
@@ -297,7 +297,7 @@ All colors MUST be HSL.
 
 .declic .content{
   position:relative;z-index:4;text-align:center;
-  padding:clamp(1.25rem,4vw,3rem);max-width:64ch;
+  padding:clamp(1.25rem,4vw,3rem);max-width:min(60rem,92vw);
   transform:translateY(calc(var(--dl-rise,0) * 1px));
 }
 .declic .eyebrow{
@@ -311,7 +311,7 @@ All colors MUST be HSL.
 
 .declic .dl-h1{
   font-family:'Poppins',sans-serif;font-weight:800;
-  font-size:clamp(2.4rem,7.2vw,5.4rem);line-height:1.03;letter-spacing:-.02em;
+  font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.06;letter-spacing:-.02em;
   text-wrap:balance;margin:0 auto .2rem;color:var(--dl-paper);
 }
 .declic .dl-h1 .ln{display:block;overflow:hidden}

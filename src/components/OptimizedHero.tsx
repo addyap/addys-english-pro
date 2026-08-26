@@ -156,9 +156,10 @@ export default function OptimizedHero() {
         <div className="content">
           <p className="eyebrow">Formateur d'anglais · Côte d'Azur &amp; à distance</p>
 
+          {/* One flowing line: sits on a single line from tablet up and wraps
+              to two on narrow phones, keeping the hero compact. */}
           <h1 className="dl-h1">
-            <span className="ln"><span>Parlez anglais</span></span>
-            <span className="ln"><span>avec <em className="ignite">assurance<i className="spark" aria-hidden="true" /></em>.</span></span>
+            <span className="ln"><span>Parlez anglais avec <em className="ignite">assurance<i className="spark" aria-hidden="true" /></em>.</span></span>
           </h1>
 
           <p className="sub">
