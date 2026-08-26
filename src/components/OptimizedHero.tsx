@@ -18,60 +18,55 @@ import { useWhatsAppLink } from "@/hooks/useWhatsAppLink";
  * (purple), --accent (red).
  */
 
-// The journey path — one gentle wave across the band, in the 800×120 viewBox.
-// Endpoints are inset (~12%/88%) so the stop chips have room and never clip.
-const PATH = "M96,70 C240,14 330,14 400,60 C470,106 560,106 704,50";
+// The three stops sit at 1/6, 1/2 and 5/6 of the rail — the rider stays between
+// the outer two.
+const RIDE_MIN = 1 / 6;
+const RIDE_MAX = 5 / 6;
 
 export default function OptimizedHero() {
   const whatsappLink = useWhatsAppLink();
   const metroRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<SVGPathElement>(null);
-  const drawRef = useRef<SVGPathElement>(null);
-  const riderRef = useRef<SVGCircleElement>(null);
+  const fillRef = useRef<HTMLDivElement>(null);
+  const riderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const track = trackRef.current;
-    const draw = drawRef.current;
+    const fill = fillRef.current;
     const rider = riderRef.current;
     const metro = metroRef.current;
-    if (!track || !draw) return;
+    if (!metro) return;
     if (typeof window === "undefined") return;
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const len = track.getTotalLength();
 
-    // Draw the line in on mount (no-JS / reduced-motion keep it fully drawn).
-    if (!reduce) {
-      draw.style.transition = "none";
-      draw.style.strokeDasharray = `${len}`;
-      draw.style.strokeDashoffset = `${len}`;
-      // next frame: release the transition so it animates from empty to full
+    // Draw the gradient rail in on mount (no-JS / reduced-motion keep it full).
+    if (fill && !reduce) {
+      fill.style.transition = "none";
+      fill.style.transform = "translateY(-50%) scaleX(0)";
       requestAnimationFrame(() => {
-        draw.style.transition = "stroke-dashoffset 1.6s cubic-bezier(.5,0,.2,1) .2s";
-        draw.style.strokeDashoffset = "0";
+        fill.style.transition = "transform 1.5s cubic-bezier(.5,0,.2,1) .2s";
+        fill.style.transform = "translateY(-50%) scaleX(1)";
       });
     }
 
-    if (reduce || !rider || !metro) return;
+    if (reduce || !rider) return;
 
-    // The red "rider" eases along the line toward the cursor's x while the
+    // The red "rider" eases along the rail toward the cursor's x while the
     // pointer is over the band — the visitor drives their own progress.
     let raf = 0;
-    let pos = 0;
-    let target = 0;
+    let pos = RIDE_MIN;
+    let target = RIDE_MIN;
     const onMove = (e: PointerEvent) => {
       const r = metro.getBoundingClientRect();
       if (e.clientY > r.top - 80 && e.clientY < r.bottom + 100) {
-        target = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+        const f = (e.clientX - r.left) / r.width;
+        target = Math.max(RIDE_MIN, Math.min(RIDE_MAX, f));
       }
     };
     window.addEventListener("pointermove", onMove, { passive: true });
 
     const frame = () => {
       pos += (target - pos) * 0.12;
-      const p = track.getPointAtLength(pos * len);
-      rider.setAttribute("cx", p.x.toFixed(1));
-      rider.setAttribute("cy", p.y.toFixed(1));
+      rider.style.left = `${(pos * 100).toFixed(2)}%`;
       raf = requestAnimationFrame(frame);
     };
     raf = requestAnimationFrame(frame);
@@ -126,34 +121,29 @@ export default function OptimizedHero() {
             De l'hésitation à l'<span className="ll-hot">assurance</span>, ligne&nbsp;directe.
           </h1>
 
-          {/* The signature line: hésitation → aisance → assurance, drawn in the
-              brand colours. SVG is decorative; the three stop names below carry
-              the meaning for assistive tech. */}
+          {/* The signature route: hésitation → aisance → assurance, on a level
+              rail in the brand colours (navy → purple → red). The rail is
+              decorative; the three-step row below carries the meaning. */}
           <div className="ll-metro" ref={metroRef}>
-            <svg viewBox="0 0 800 120" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-              <defs>
-                <linearGradient id="ll-grad" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="#8E8CE0" />
-                  <stop offset="48%" stopColor="#8A6FC8" />
-                  <stop offset="100%" style={{ stopColor: "hsl(var(--accent))" }} />
-                </linearGradient>
-              </defs>
-              <path ref={trackRef} className="ll-track" d={PATH} />
-              <path ref={drawRef} className="ll-draw" d={PATH} stroke="url(#ll-grad)" />
-              <circle className="ll-stn ll-s1" cx="96" cy="70" r="8.5" />
-              <circle className="ll-stn ll-s2" cx="400" cy="60" r="8.5" />
-              <circle className="ll-stn ll-s3" cx="704" cy="50" r="9.5" />
-              <circle ref={riderRef} className="ll-rider" cx="96" cy="70" r="6.5" />
-            </svg>
-            <span className="ll-lbl ll-lbl--a" style={{ left: "12%" }}>
-              <span className="sm">Départ</span>Hésitation
-            </span>
-            <span className="ll-lbl ll-lbl--b" style={{ left: "50%" }}>
-              <span className="sm">En chemin</span>Aisance
-            </span>
-            <span className="ll-lbl hot ll-lbl--c" style={{ left: "88%" }}>
-              <span className="sm">Terminus</span>Assurance
-            </span>
+            <div className="ll-rail" aria-hidden="true">
+              <span className="ll-rail-track" />
+              <span className="ll-rail-fill" ref={fillRef} />
+              <span className="ll-dot ll-dot--a" />
+              <span className="ll-dot ll-dot--b" />
+              <span className="ll-dot ll-dot--c" />
+              <span className="ll-rider" ref={riderRef} />
+            </div>
+            <div className="ll-stops">
+              <div className="ll-stop ll-lbl--a">
+                <span className="sm">Départ</span><span className="nm">Hésitation</span>
+              </div>
+              <div className="ll-stop ll-lbl--b">
+                <span className="sm">En chemin</span><span className="nm">Aisance</span>
+              </div>
+              <div className="ll-stop ll-lbl--c">
+                <span className="sm">Terminus</span><span className="nm">Assurance</span>
+              </div>
+            </div>
           </div>
         </header>
 
