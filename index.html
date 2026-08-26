@@ -15,15 +15,10 @@
     
     <link rel="dns-prefetch" href="https://www.youtube.com">
     
-    <!-- Preload critical hero image with high priority (WebP for modern browsers) -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/hero-image.webp"
-      type="image/webp"
-      fetchpriority="high"
-    >
-    
+    <!-- The "Le Déclic" hero is text/CSS-driven: its LCP is the Poppins
+         headline, not an image, so there is no hero image to preload here.
+         The critical font is preloaded just below. -->
+
     <!-- Font preloads for critical fonts - subsetted to latin only with reduced weights -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap&subset=latin&text=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789%20%C3%A0%C3%A2%C3%A7%C3%A8%C3%A9%C3%AA%C3%AB%C3%AE%C3%AF%C3%B4%C3%B9%C3%BB%C3%BC%C5%93%C3%80%C3%82%C3%87%C3%88%C3%89%C3%8A%C3%8B%C3%8E%C3%8F%C3%94%C3%99%C3%9B%C3%9C%C5%92.,!?'%22-:;()%26%C2%AB%C2%BB%E2%80%93%E2%80%94" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap&subset=latin" rel="stylesheet"></noscript>
