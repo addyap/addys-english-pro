@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { trackEvent } from "@/lib/analytics";
 import { useWhatsAppLink } from "@/hooks/useWhatsAppLink";
@@ -38,13 +38,13 @@ export default function OptimizedHero() {
   const whatsappLink = useWhatsAppLink();
   const stageRef = useRef<HTMLElement>(null);
   const fieldRef = useRef<HTMLDivElement>(null);
-  // Gates cursor:none — only once the light is actually driving the pointer.
-  const [interactive, setInteractive] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const stage = stageRef.current;
     const field = fieldRef.current;
-    if (!stage || !field) return;
+    const root = rootRef.current;
+    if (!stage || !field || !root) return;
     if (typeof window === "undefined") return;
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -104,26 +104,42 @@ export default function OptimizedHero() {
       };
     }
 
-    setInteractive(true);
     const R = Math.min(window.innerWidth, 620) * 0.7; // focus radius
     let mx = window.innerWidth / 2, my = window.innerHeight * 0.45;
-    let tx = mx, ty = my, moved = false;
+    let px = mx, py = my;      // last pointer position
+    let lastMove = -1e9;       // timestamp of last real pointer move
+    const t0 = performance.now();
 
-    const onMove = (e: PointerEvent) => { tx = e.clientX; ty = e.clientY; moved = true; };
+    const onMove = (e: PointerEvent) => { px = e.clientX; py = e.clientY; lastMove = performance.now(); };
     window.addEventListener("pointermove", onMove, { passive: true });
 
-    const frame = () => {
-      mx += (tx - mx) * 0.14; // eased, weighty follow
-      my += (ty - my) * 0.14;
+    const frame = (now: number) => {
+      // Until the pointer takes over, the light drifts on its own along a slow
+      // path — so the field is alive on load and on touch devices with no
+      // cursor. The moment the pointer moves, it hands off to you.
+      const held = now - lastMove < 2400;
+      let tx: number, ty: number;
+      if (held) {
+        tx = px; ty = py;
+      } else {
+        const s = (now - t0) / 1000;
+        tx = window.innerWidth * (0.5 + 0.30 * Math.sin(s * 0.16));
+        ty = window.innerHeight * (0.46 + 0.24 * Math.cos(s * 0.11));
+      }
+      const ease = held ? 0.14 : 0.03; // weighty when held, gentle when drifting
+      mx += (tx - mx) * ease;
+      my += (ty - my) * ease;
       stage.style.setProperty("--dl-mx", `${mx}px`);
       stage.style.setProperty("--dl-my", `${my}px`);
-      const push = moved ? 1 : 0;
+      // Sharp core + hidden OS cursor only while you're actually holding it.
+      stage.style.setProperty("--dl-core-op", held ? "1" : "0");
+      root.classList.toggle("is-interactive", held);
       for (const w of words) {
         const dist = Math.hypot(w.cx - mx, w.cy - my);
         const focus = Math.max(0, 1 - dist / R);
         w.el.style.setProperty("--focus", (focus * focus).toFixed(3)); // ease-in
-        w.el.style.setProperty("--px", (-(mx - window.innerWidth / 2) / window.innerWidth * 46 * w.depth * push).toFixed(1) + "px");
-        w.el.style.setProperty("--py", (-(my - window.innerHeight / 2) / window.innerHeight * 46 * w.depth * push).toFixed(1) + "px");
+        w.el.style.setProperty("--px", (-(mx - window.innerWidth / 2) / window.innerWidth * 46 * w.depth).toFixed(1) + "px");
+        w.el.style.setProperty("--py", (-(my - window.innerHeight / 2) / window.innerHeight * 46 * w.depth).toFixed(1) + "px");
       }
       raf = requestAnimationFrame(frame);
     };
@@ -142,16 +158,19 @@ export default function OptimizedHero() {
        plain labelled section is correct here. The skip link lives in Home.tsx,
        before this hero. The homepage Person schema lives in the consolidated
        @graph in Home.tsx (node @id .../#antony-addy), not here. */
-    <div className={`declic${interactive ? " is-interactive" : ""}`}>
+    <div className="declic" ref={rootRef}>
       <section
         ref={stageRef}
         className="stage overflow-hidden"
         aria-label="Section principale de présentation"
       >
-        {/* Progressive-enhancement light + depth field (decorative). */}
+        {/* Ambient atmosphere + progressive-enhancement light + depth field
+            (all decorative). */}
+        <div className="aura" aria-hidden="true" />
         <div className="spot" aria-hidden="true" />
         <div className="spot__core" aria-hidden="true" />
         <div className="field" ref={fieldRef} aria-hidden="true" />
+        <div className="grain" aria-hidden="true" />
 
         <div className="content">
           <p className="eyebrow">Formateur d'anglais · Côte d'Azur &amp; à distance</p>
