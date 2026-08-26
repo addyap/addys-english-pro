@@ -1,17 +1,93 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { trackEvent } from "@/lib/analytics";
 import { useWhatsAppLink } from "@/hooks/useWhatsAppLink";
 import { YEARS_OF_EXPERIENCE } from "@/lib/utils";
 
+/**
+ * "La Ligne" — the signature homepage hero.
+ *
+ * The real classroom photo sits behind a deep-navy scrim; a metro-style line
+ * gradients from navy (hésitation) through purple (aisance) to red (assurance)
+ * — the brand's core promise, drawn as a single direct line. The line, its
+ * three stops, the headline, copy and CTAs all render server-side and read
+ * with no JS (SSG-safe). The draw-in animation and the cursor-led red "rider"
+ * are progressive enhancement layered on after mount; prefers-reduced-motion
+ * falls back to a static, fully-drawn scene.
+ *
+ * Colours are the brand tokens throughout: --primary (navy), --secondary
+ * (purple), --accent (red).
+ */
+
+// The journey path — one gentle wave across the band, in the 800×120 viewBox.
+const PATH = "M40,70 C220,10 320,10 400,60 C480,110 580,110 760,50";
+
 export default function OptimizedHero() {
   const whatsappLink = useWhatsAppLink();
+  const metroRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<SVGPathElement>(null);
+  const drawRef = useRef<SVGPathElement>(null);
+  const riderRef = useRef<SVGCircleElement>(null);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    const draw = drawRef.current;
+    const rider = riderRef.current;
+    const metro = metroRef.current;
+    if (!track || !draw) return;
+    if (typeof window === "undefined") return;
+
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const len = track.getTotalLength();
+
+    // Draw the line in on mount (no-JS / reduced-motion keep it fully drawn).
+    if (!reduce) {
+      draw.style.transition = "none";
+      draw.style.strokeDasharray = `${len}`;
+      draw.style.strokeDashoffset = `${len}`;
+      // next frame: release the transition so it animates from empty to full
+      requestAnimationFrame(() => {
+        draw.style.transition = "stroke-dashoffset 1.6s cubic-bezier(.5,0,.2,1) .2s";
+        draw.style.strokeDashoffset = "0";
+      });
+    }
+
+    if (reduce || !rider || !metro) return;
+
+    // The red "rider" eases along the line toward the cursor's x while the
+    // pointer is over the band — the visitor drives their own progress.
+    let raf = 0;
+    let pos = 0;
+    let target = 0;
+    const onMove = (e: PointerEvent) => {
+      const r = metro.getBoundingClientRect();
+      if (e.clientY > r.top - 80 && e.clientY < r.bottom + 100) {
+        target = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+      }
+    };
+    window.addEventListener("pointermove", onMove, { passive: true });
+
+    const frame = () => {
+      pos += (target - pos) * 0.12;
+      const p = track.getPointAtLength(pos * len);
+      rider.setAttribute("cx", p.x.toFixed(1));
+      rider.setAttribute("cy", p.y.toFixed(1));
+      raf = requestAnimationFrame(frame);
+    };
+    raf = requestAnimationFrame(frame);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("pointermove", onMove);
+    };
+  }, []);
+
   return (
     /* No role="banner": the site header already exposes that landmark, and a
        second one leaves screen-reader users with two "banner" regions and no way
        to tell which is the site header. A plain labelled section is correct here. */
     <section
-      className="relative hero-section overflow-hidden text-primary-foreground"
+      className="ll-hero relative overflow-hidden text-primary-foreground"
       aria-label="Section principale de présentation"
     >
       {/* Background image with WebP optimization */}
@@ -21,7 +97,8 @@ export default function OptimizedHero() {
           <img
             src="/assets/hero-image.jpg"
             alt="Formation en anglais professionnel avec Antony Addy"
-            className="absolute inset-0 w-full h-full object-cover animate-ken-burns opacity-80"
+            className="absolute inset-0 w-full h-full object-cover animate-ken-burns"
+            style={{ objectPosition: "62% 30%" }}
             width={1920}
             height={1080}
             loading="eager"
@@ -32,21 +109,51 @@ export default function OptimizedHero() {
         </picture>
       </div>
 
-      {/* Overlay to optimize text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/55 via-primary/35 to-primary/70 z-5" />
+      {/* Deep-navy scrim so the photo reads as warm context, not foreground */}
+      <div className="absolute inset-0 z-[1] ll-scrim" aria-hidden="true" />
 
-      {/* The skip link lives in Home.tsx, before this hero. Having a second one
-          here meant keyboard users tabbed past "Aller au contenu principal"
-          twice on the homepage. */}
+      {/* The skip link lives in Home.tsx, before this hero. */}
 
-      {/* Content (height now driven by content, not min-h-screen) */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-10 sm:py-14 md:py-20 text-center hero-title-wrap">
-        <header className="mb-6 sm:mb-8">
-          <h1 className="text-[1.75rem] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl font-bold font-heading mb-4 sm:mb-6 hero-title drop-shadow-2xl text-primary-foreground">
-            Formateur d'anglais pour adultes – <span className="whitespace-nowrap">Antony Addy</span>
+      {/* Content (height driven by content, not min-h-screen) */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-12 sm:py-16 md:py-20 text-center">
+        <header>
+          <p className="ll-eyebrow">Formateur d'anglais professionnel · Britannique natif · Antony&nbsp;Addy</p>
+
+          <h1 className="ll-h1">
+            De l'hésitation à l'<span className="ll-hot">assurance</span>, ligne&nbsp;directe.
           </h1>
 
-          <p className="text-base sm:text-xl md:text-2xl mb-3 sm:mb-4 font-body drop-shadow-xl max-w-4xl mx-auto text-primary-foreground/90 leading-snug">
+          {/* The signature line: hésitation → aisance → assurance, drawn in the
+              brand colours. SVG is decorative; the three stop names below carry
+              the meaning for assistive tech. */}
+          <div className="ll-metro" ref={metroRef}>
+            <svg viewBox="0 0 800 120" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <defs>
+                <linearGradient id="ll-grad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="#8E8CE0" />
+                  <stop offset="48%" stopColor="#8A6FC8" />
+                  <stop offset="100%" style={{ stopColor: "hsl(var(--accent))" }} />
+                </linearGradient>
+              </defs>
+              <path ref={trackRef} className="ll-track" d={PATH} />
+              <path ref={drawRef} className="ll-draw" d={PATH} stroke="url(#ll-grad)" />
+              <circle className="ll-stn ll-s1" cx="40" cy="70" r="8.5" />
+              <circle className="ll-stn ll-s2" cx="400" cy="60" r="8.5" />
+              <circle className="ll-stn ll-s3" cx="760" cy="50" r="9.5" />
+              <circle ref={riderRef} className="ll-rider" cx="40" cy="70" r="6.5" />
+            </svg>
+            <span className="ll-lbl" style={{ left: "5%" }}>
+              <span className="sm">Départ</span>Hésitation
+            </span>
+            <span className="ll-lbl" style={{ left: "50%" }}>
+              <span className="sm">En chemin</span>Aisance
+            </span>
+            <span className="ll-lbl hot" style={{ left: "95%" }}>
+              <span className="sm">Terminus</span>Assurance
+            </span>
+          </div>
+
+          <p className="text-base sm:text-xl md:text-2xl mt-2 mb-3 sm:mb-4 font-body drop-shadow-xl max-w-3xl mx-auto text-primary-foreground/90 leading-snug">
             Communiquez avec confiance en anglais dans votre vie professionnelle. Formations personnalisées par un formateur britannique certifié FPA depuis 2017.
           </p>
 
@@ -132,12 +239,6 @@ export default function OptimizedHero() {
           >
             Voir les formations →
           </Link>
-          {/* Points at the in-site list of all six platforms, not out to a
-              single one. This used to be a plain <a href="/ressources-gratuites">
-              relying on a vercel.json 301 to anglaisadistance.fr, which sent
-              visitors straight off the site to one platform and left the other
-              five undiscovered. Now a real client route, so <Link> is correct
-              and the navigation stays instant. */}
           <Link
             to="/ressources-en-ligne"
             onClick={() => trackEvent('hero_resources_click', { page: 'home', target: '/ressources-en-ligne' })}
@@ -149,7 +250,7 @@ export default function OptimizedHero() {
         </div>
       </div>
 
-      {/* The homepage Person schema now lives in the consolidated @graph in
+      {/* The homepage Person schema lives in the consolidated @graph in
           Home.tsx (node @id .../#antony-addy), so it is not emitted here. */}
     </section>
   );
