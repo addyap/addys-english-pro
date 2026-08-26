@@ -19,7 +19,8 @@ import { useWhatsAppLink } from "@/hooks/useWhatsAppLink";
  */
 
 // The journey path — one gentle wave across the band, in the 800×120 viewBox.
-const PATH = "M40,70 C220,10 320,10 400,60 C480,110 580,110 760,50";
+// Endpoints are inset (~12%/88%) so the stop chips have room and never clip.
+const PATH = "M96,70 C240,14 330,14 400,60 C470,106 560,106 704,50";
 
 export default function OptimizedHero() {
   const whatsappLink = useWhatsAppLink();
@@ -139,18 +140,18 @@ export default function OptimizedHero() {
               </defs>
               <path ref={trackRef} className="ll-track" d={PATH} />
               <path ref={drawRef} className="ll-draw" d={PATH} stroke="url(#ll-grad)" />
-              <circle className="ll-stn ll-s1" cx="40" cy="70" r="8.5" />
+              <circle className="ll-stn ll-s1" cx="96" cy="70" r="8.5" />
               <circle className="ll-stn ll-s2" cx="400" cy="60" r="8.5" />
-              <circle className="ll-stn ll-s3" cx="760" cy="50" r="9.5" />
-              <circle ref={riderRef} className="ll-rider" cx="40" cy="70" r="6.5" />
+              <circle className="ll-stn ll-s3" cx="704" cy="50" r="9.5" />
+              <circle ref={riderRef} className="ll-rider" cx="96" cy="70" r="6.5" />
             </svg>
-            <span className="ll-lbl" style={{ left: "5%" }}>
+            <span className="ll-lbl ll-lbl--a" style={{ left: "12%" }}>
               <span className="sm">Départ</span>Hésitation
             </span>
-            <span className="ll-lbl" style={{ left: "50%" }}>
+            <span className="ll-lbl ll-lbl--b" style={{ left: "50%" }}>
               <span className="sm">En chemin</span>Aisance
             </span>
-            <span className="ll-lbl hot" style={{ left: "95%" }}>
+            <span className="ll-lbl hot ll-lbl--c" style={{ left: "88%" }}>
               <span className="sm">Terminus</span>Assurance
             </span>
           </div>
