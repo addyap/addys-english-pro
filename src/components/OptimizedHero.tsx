@@ -112,6 +112,9 @@ export default function OptimizedHero() {
       {/* Deep-navy scrim so the photo reads as warm context, not foreground */}
       <div className="absolute inset-0 z-[1] ll-scrim" aria-hidden="true" />
 
+      {/* Soft fade so the navy hero melts into the light section below */}
+      <div className="ll-fade" aria-hidden="true" />
+
       {/* The skip link lives in Home.tsx, before this hero. */}
 
       {/* Content (height driven by content, not min-h-screen) */}
