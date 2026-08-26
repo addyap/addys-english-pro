@@ -221,16 +221,18 @@ All colors MUST be HSL.
    no-JS-safe), and prefers-reduced-motion drops to a static scene.
    ===================================================================== */
 .declic{
-  --dl-ink-0:#0C0C24;
-  --dl-ink-1:#111132;
-  --dl-ink-2:#1A1A4D;   /* brand --primary */
-  --dl-plum:#2E2360;    /* brand --secondary */
-  --dl-sun-0:#F6C878;   /* riviera light */
-  --dl-sun-1:#F3A857;
-  --dl-ignite:#E24646;  /* brand --accent, brightened */
-  --dl-paper:#F4F4FA;
-  --dl-paper-dim:rgba(244,244,250,.62);
-  --dl-line:rgba(244,244,250,.14);
+  --dl-ink-0:#0A0A20;
+  --dl-ink-1:#121038;
+  --dl-ink-2:#231C5E;   /* deeper, richer plum floor */
+  --dl-plum:#3A2A78;    /* brand --secondary, lifted */
+  --dl-sun-0:#FFD07A;   /* riviera light, warmer & brighter */
+  --dl-sun-1:#F79A46;
+  --dl-sun-2:#FFE9BE;   /* highlight sheen */
+  --dl-ignite:#FF5A4D;  /* brand --accent, brightened */
+  --dl-rose:#C24A9B;    /* mediterranean dusk pink */
+  --dl-paper:#F6F5FE;
+  --dl-paper-dim:rgba(246,245,254,.68);
+  --dl-line:rgba(246,245,254,.16);
 }
 
 .declic .stage{
@@ -243,8 +245,19 @@ All colors MUST be HSL.
   color:var(--dl-paper);
   background:
     radial-gradient(120% 90% at 50% 118%, var(--dl-plum) 0%, transparent 55%),
-    radial-gradient(140% 120% at 50% -20%, #201C52 0%, transparent 60%),
+    radial-gradient(70% 60% at 82% 8%, rgba(194,74,155,.20) 0%, transparent 60%),
+    radial-gradient(140% 120% at 50% -20%, #2A2270 0%, transparent 60%),
     linear-gradient(180deg, var(--dl-ink-0) 0%, var(--dl-ink-1) 42%, var(--dl-ink-2) 100%);
+}
+/* slow living warmth: a wide gradient sheen that breathes across the band
+   even at rest, so the hero is never a flat block on load. */
+.declic .stage > .aura::after{
+  content:"";position:absolute;inset:-20%;pointer-events:none;
+  background:conic-gradient(from 210deg at 50% 60%,
+    transparent 0deg, rgba(255,208,122,.10) 60deg, transparent 140deg,
+    rgba(194,74,155,.12) 220deg, transparent 300deg);
+  filter:blur(40px);
+  animation:dl-swirl 40s linear infinite;
 }
 .declic.is-interactive .stage{cursor:none}
 /* soft handoff into the light section that follows the hero */
@@ -266,11 +279,12 @@ All colors MUST be HSL.
 .declic .aura{
   position:absolute;inset:-12%;z-index:0;pointer-events:none;
   background:
-    radial-gradient(38% 44% at 26% 30%, rgba(243,168,87,.12), transparent 68%),
-    radial-gradient(46% 52% at 76% 68%, rgba(120,108,224,.16), transparent 72%),
-    radial-gradient(30% 34% at 60% 20%, rgba(246,200,120,.07), transparent 70%);
-  filter:blur(34px);
-  animation:dl-aura 24s ease-in-out infinite alternate;
+    radial-gradient(38% 44% at 24% 28%, rgba(247,154,70,.20), transparent 66%),
+    radial-gradient(48% 54% at 78% 70%, rgba(140,118,255,.24), transparent 72%),
+    radial-gradient(34% 38% at 62% 16%, rgba(255,208,122,.14), transparent 70%),
+    radial-gradient(40% 44% at 88% 24%, rgba(194,74,155,.16), transparent 72%);
+  filter:blur(30px);
+  animation:dl-aura 22s ease-in-out infinite alternate;
 }
 /* Fine film grain to kill banding and give the dark ground some tooth. */
 .declic .grain{
@@ -306,15 +320,15 @@ All colors MUST be HSL.
   position:absolute;left:var(--x);top:var(--y);
   transform:translate(-50%,-50%) translate3d(var(--px,0px),var(--py,0px),0);
   font-family:'Poppins',sans-serif;font-weight:600;white-space:nowrap;color:var(--dl-paper);
-  opacity:calc(.15 + var(--focus,0) * .82);
+  opacity:calc(.24 + var(--focus,0) * .74);
   filter:blur(calc((1 - var(--focus,0)) * var(--haze,7px)));
-  text-shadow:0 0 calc(var(--focus,0) * 22px) rgba(246,200,120,calc(var(--focus,0)*.55));
+  text-shadow:0 0 calc(var(--focus,0) * 24px) rgba(255,208,122,calc(var(--focus,0)*.65));
   will-change:transform,filter,opacity;
   transition:opacity .18s linear, filter .18s linear, text-shadow .18s linear;
 }
-.declic .word.dl-far{font-size:.95rem;--haze:8px;color:#B9B7E6}
-.declic .word.dl-mid{font-size:1.4rem;--haze:6px}
-.declic .word.dl-near{font-size:2rem;--haze:5px;font-weight:700}
+.declic .word.dl-far{font-size:1rem;--haze:8px;color:#C7C4F2}
+.declic .word.dl-mid{font-size:1.5rem;--haze:6px}
+.declic .word.dl-near{font-size:2.15rem;--haze:5px;font-weight:700}
 
 .declic .content{
   position:relative;z-index:4;text-align:center;
@@ -332,8 +346,9 @@ All colors MUST be HSL.
 
 .declic .dl-h1{
   font-family:'Poppins',sans-serif;font-weight:800;
-  font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.06;letter-spacing:-.02em;
+  font-size:clamp(2.1rem,4.8vw,3.55rem);line-height:1.05;letter-spacing:-.025em;
   text-wrap:balance;margin:0 auto .2rem;color:var(--dl-paper);
+  text-shadow:0 2px 40px rgba(140,118,255,.28);
 }
 .declic .dl-h1 .ln{display:block;overflow:hidden}
 .declic .dl-h1 .ln > span{
@@ -343,7 +358,14 @@ All colors MUST be HSL.
 .declic .dl-h1 .ln:nth-child(1) > span{animation-delay:.35s}
 .declic .dl-h1 .ln:nth-child(2) > span{animation-delay:.52s}
 
-.declic .ignite{position:relative;color:var(--dl-sun-0);white-space:nowrap;font-style:normal}
+.declic .ignite{
+  position:relative;white-space:nowrap;font-style:normal;
+  background:linear-gradient(92deg,var(--dl-sun-1) 0%,var(--dl-sun-0) 42%,var(--dl-sun-2) 50%,var(--dl-sun-0) 58%,var(--dl-sun-1) 100%);
+  background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-fill-color:transparent;
+  animation:dl-shimmer 6.5s ease-in-out 1.4s infinite;
+}
 .declic .ignite .spark{
   position:absolute;left:0;right:0;bottom:-.06em;height:.12em;border-radius:2px;
   background:linear-gradient(90deg,var(--dl-sun-1),var(--dl-ignite));
@@ -409,6 +431,11 @@ All colors MUST be HSL.
 @keyframes dl-aura{
   0%{transform:translate3d(-3%,-2%,0) scale(1)}
   100%{transform:translate3d(3%,2%,0) scale(1.09)}
+}
+@keyframes dl-swirl{to{transform:rotate(1turn)}}
+@keyframes dl-shimmer{
+  0%,100%{background-position:120% 0}
+  50%{background-position:-20% 0}
 }
 @keyframes dl-resolve{to{opacity:1;transform:translateY(0);filter:blur(0)}}
 @keyframes dl-up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
