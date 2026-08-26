@@ -250,34 +250,42 @@ All colors MUST be HSL.
 }
 .ll-h1 .ll-hot{ color:var(--ll-red-lite); }
 
-/* the line */
-.ll-metro{ position:relative; width:100%; max-width:44rem; height:7rem;
-  margin:clamp(1rem,3vw,1.7rem) auto 0; }
-.ll-metro svg{ position:absolute; left:0; top:0; width:100%; height:5.4rem; overflow:visible; }
-.ll-track{ fill:none; stroke:hsl(var(--primary-foreground) / .18); stroke-width:3.5; }
-.ll-draw{ fill:none; stroke-width:4.5; stroke-linecap:round;
-  filter:drop-shadow(0 0 10px hsl(var(--accent) / .6)); }
-.ll-stn{ stroke-width:3.5; }
-.ll-s1{ fill:hsl(240 50% 15%); stroke:var(--ll-indigo-lite); }
-.ll-s2{ fill:hsl(240 50% 15%); stroke:var(--ll-purple-lite); }
-.ll-s3{ fill:hsl(240 50% 15%); stroke:hsl(var(--accent)); }
-.ll-rider{ fill:hsl(var(--accent)); filter:drop-shadow(0 0 8px hsl(var(--accent) / .85)); }
-.ll-lbl{ position:absolute; top:4.8rem; transform:translateX(-50%); text-align:center;
-  font-size:.78rem; font-weight:700; color:#EAE9FA; }
-/* small station "tags" — colour-coded chips that echo each stop */
-.ll-lbl .sm{ display:block; width:fit-content; margin:0 auto .3rem; font-size:.58rem;
-  letter-spacing:.11em; text-transform:uppercase; font-weight:800; opacity:1;
-  padding:.13rem .5rem; border-radius:999px; background:hsl(var(--primary-foreground) / .1); }
+/* the line — a level "route": a gradient rail (navy → purple → red) with three
+   evenly-spaced stops, and an aligned 3-column row of labels beneath. Stops and
+   label columns share the same three centres (1/6, 1/2, 5/6). */
+.ll-metro{ position:relative; width:100%; max-width:36rem;
+  margin:clamp(1.1rem,3vw,1.7rem) auto clamp(1.6rem,4.5vw,2.6rem); }
+
+.ll-rail{ position:relative; height:1.5rem; }
+.ll-rail-track,.ll-rail-fill{ position:absolute; left:16.667%; right:16.667%; top:50%;
+  height:4px; transform:translateY(-50%); border-radius:99px; }
+.ll-rail-track{ background:hsl(var(--primary-foreground) / .18); }
+.ll-rail-fill{ transform-origin:left center;
+  background:linear-gradient(90deg, var(--ll-indigo-lite), var(--ll-purple-lite) 50%, hsl(var(--accent)));
+  box-shadow:0 0 10px hsl(var(--accent) / .4); }
+.ll-dot{ position:absolute; top:50%; width:15px; height:15px; border-radius:50%;
+  transform:translate(-50%,-50%); background:hsl(240 50% 15%); border:3px solid; }
+.ll-dot--a{ left:16.667%; border-color:var(--ll-indigo-lite); }
+.ll-dot--b{ left:50%; border-color:var(--ll-purple-lite); }
+.ll-dot--c{ left:83.333%; width:17px; height:17px; border-color:hsl(var(--accent)); }
+.ll-rider{ position:absolute; top:50%; left:16.667%; width:12px; height:12px; border-radius:50%;
+  transform:translate(-50%,-50%); background:hsl(var(--accent)); box-shadow:0 0 8px hsl(var(--accent) / .85); }
+
+.ll-stops{ display:grid; grid-template-columns:repeat(3,1fr); gap:.4rem; margin-top:1rem; }
+.ll-stop{ display:flex; flex-direction:column; align-items:center; gap:.4rem; text-align:center; }
+.ll-stop .sm{ font-size:.58rem; letter-spacing:.11em; text-transform:uppercase; font-weight:800;
+  padding:.14rem .55rem; border-radius:999px; background:hsl(var(--primary-foreground) / .1); }
+.ll-stop .nm{ font-weight:700; font-size:clamp(.9rem,1.4vw,1.05rem); line-height:1.1;
+  color:hsl(var(--primary-foreground)); }
 .ll-lbl--a .sm{ color:var(--ll-indigo-lite); background:rgba(156,154,234,.18); }
 .ll-lbl--b .sm{ color:var(--ll-purple-lite); background:rgba(158,134,214,.18); }
 .ll-lbl--c .sm{ color:var(--ll-red-lite); background:rgba(255,106,87,.20); }
-.ll-lbl.hot{ color:var(--ll-red-lite); }
 
-@media (max-width:480px){
-  .ll-metro{ height:6.2rem; }
-  .ll-metro svg{ height:4.6rem; }
-  .ll-lbl{ top:4rem; font-size:.7rem; }
+@media (max-width:420px){
+  .ll-stop .sm{ font-size:.52rem; letter-spacing:.08em; padding:.12rem .4rem; }
+  .ll-stops{ gap:.25rem; }
 }
 @media (prefers-reduced-motion:reduce){
-  .ll-draw{ stroke-dashoffset:0 !important; transition:none !important; }
+  .ll-rail-fill{ transform:translateY(-50%) scaleX(1) !important; transition:none !important; }
+  .ll-rider{ display:none; }
 }
