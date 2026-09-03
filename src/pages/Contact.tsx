@@ -479,6 +479,29 @@ const Contact = () => {
                 </div>
               </div>
 
+              {/* WhatsApp QR Code */}
+              <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                  Contactez-moi sur WhatsApp
+                </h3>
+                <img src="/lovable-uploads/whatsapp-qr-antony-addy.png" alt="QR Code WhatsApp Business permettant de contacter Antony Addy" className="mx-auto mb-4 max-w-48" width="192" height="192" loading="lazy" />
+                <p className="text-sm text-gray-600">
+                  Scannez ce QR code pour m'écrire directement sur WhatsApp
+                </p>
+                {whatsappLink && (
+                  <a
+                    href={whatsappLink}
+                    className="inline-block mt-4 text-green-700 hover:text-green-800 font-medium focus:outline-none focus:ring-2 focus:ring-green-500 focus:rounded"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Ouvrir la conversation WhatsApp (ouvre dans un nouvel onglet)"
+                    onClick={trackWhatsAppClick}
+                  >
+                    Ouvrir WhatsApp →
+                  </a>
+                )}
+              </div>
+
               {/* LinkedIn QR Code */}
               <div className="bg-white rounded-lg shadow-lg p-6 text-center">
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">
