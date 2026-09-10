@@ -21,6 +21,16 @@ const CoursAnglaisCannes = () => (
     city="Cannes"
     h1="Apprenez l'anglais à Cannes avec un formateur britannique"
     intro="Je propose des cours d'anglais sur-mesure à Cannes et dans le bassin cannois (Mougins, Mandelieu, Le Cannet). Formations en présentiel ou à distance, adaptées à votre profil et vos objectifs."
+    localSections={[
+      {
+        h2: "Cannes, une ville d'événements internationaux",
+        body: "Peu de villes de cette taille reçoivent autant d'événements mondiaux que Cannes : le Festival du film, mais aussi les grands rendez-vous professionnels de l'immobilier, du contenu audiovisuel et de la communication qui remplissent le Palais des Festivals une bonne partie de l'année. Ces temps forts attirent des délégations venues du monde entier, et l'économie locale — hôtellerie de luxe, restauration, commerce haut de gamme, événementiel, yachting — fonctionne alors intégralement en anglais.\n\nPour les professionnels cannois, l'enjeu n'est pas seulement de comprendre l'anglais, mais de le parler avec aisance et assurance dans des situations à forte pression : accueillir un client exigeant, négocier, présenter, gérer un imprévu en direct. C'est exactement le type de compétence que je fais travailler, à partir de vos situations réelles.",
+      },
+      {
+        h2: "Une préparation ciblée avant vos temps forts",
+        body: "Beaucoup de mes clients du bassin cannois cherchent une montée en puissance avant une échéance précise : un salon, une prise de parole, une série de rendez-vous internationaux. Je propose des formats intensifs de préparation, centrés sur la prise de parole, la négociation et l'anglais de la relation client. Le planning s'adapte aux périodes de forte activité — y compris tôt le matin ou en fin de journée — et la formule distance permet de garder le rythme même en pleine saison événementielle.",
+      },
+    ]}
     whoIAm={`Antony Addy, formateur d'anglais natif britannique, certifié FPA, plus de ${EXPERIENCE_FLOOR} ans d'expérience. Basé à Fréjus, j'interviens régulièrement sur le bassin cannois pour des entreprises, cadres, et particuliers.`}
     howItWorks="Présentiel à Cannes et alentour (Mougins, Mandelieu, Le Cannet) ou distance, selon ce qui vous convient. Première séance d'évaluation, puis programme construit autour de votre situation. Planning flexible, particulièrement utile pendant les périodes de forte activité événementielle à Cannes."
     areaServed={['Cannes', 'Mougins', 'Mandelieu-la-Napoule', 'Le Cannet', 'Vallauris']}

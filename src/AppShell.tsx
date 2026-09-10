@@ -9,7 +9,6 @@ import { AppErrorBoundary } from "./components/AppErrorBoundary";
 import DiagnosticsPanel from "./components/DiagnosticsPanel";
 import OfflineBanner from "./components/OfflineBanner";
 import A11yProvider from "./components/A11yProvider";
-import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
 import ScrollToTop from "./components/ScrollToTop";
 import PrefetchRoutes from "./components/PrefetchRoutes";
 import UmamiAnalytics from "./components/UmamiAnalytics";
@@ -56,7 +55,6 @@ export const AppShell = () => (
           <Sonner />
           <DiagnosticsPanel />
           <OfflineBanner />
-          <PWAInstallPrompt />
           <Suspense fallback={<PageLoader />}>
             <Outlet />
           </Suspense>

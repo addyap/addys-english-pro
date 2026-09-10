@@ -6,11 +6,18 @@ import SocialProof from '@/components/SocialProof';
 import { PRICE_RANGE } from '@/lib/utils';
 
 export interface CityFAQ { q: string; a: string }
+export interface CitySection { h2: string; body: string }
 export interface CityPageProps {
   seo: { title: string; description: string; canonical: string; geoRegion?: string; geoPlacename?: string };
   city: string;
   h1: string;
   intro: string;
+  /**
+   * City-specific context (local economy, sectors, why professional English
+   * matters here). Rendered right below the hero. Kept genuinely unique per
+   * city so the location pages don't read as near-duplicate templates.
+   */
+  localSections?: CitySection[];
   whoIAm: string;
   howItWorks: string;
   areaServed: string[];
@@ -28,7 +35,7 @@ const ADDRESS = {
 };
 
 export const CityLandingPage: React.FC<CityPageProps> = ({
-  seo, city, h1, intro, whoIAm, howItWorks, areaServed, faqs, otherCities,
+  seo, city, h1, intro, localSections = [], whoIAm, howItWorks, areaServed, faqs, otherCities,
 }) => {
   const localBusinessJsonLd = {
     '@context': 'https://schema.org',
@@ -76,6 +83,15 @@ export const CityLandingPage: React.FC<CityPageProps> = ({
         </section>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          {localSections.map((s, i) => (
+            <FadeInSection key={i}>
+              <section className="mb-10">
+                <h2 className="text-2xl font-bold text-primary mb-3 font-heading">{s.h2}</h2>
+                <p className="text-base text-muted-foreground leading-relaxed whitespace-pre-line">{s.body}</p>
+              </section>
+            </FadeInSection>
+          ))}
+
           <FadeInSection>
             <section className="mb-10">
               <h2 className="text-2xl font-bold text-primary mb-3 font-heading">Qui je suis</h2>
