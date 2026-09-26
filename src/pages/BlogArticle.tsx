@@ -65,7 +65,7 @@ const BlogArticle = () => {
       <div className="min-h-screen bg-gray-50 py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Article non trouvé</h1>
-          <Link to="/blog" className="text-blue-600 hover:text-blue-800">
+          <Link to="/blog" className="text-accent hover:text-accent/80">
             Retour au blog
           </Link>
         </div>
@@ -118,7 +118,7 @@ const BlogArticle = () => {
           <div className="mb-8">
             <Link 
               to="/blog" 
-              className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+              className="inline-flex items-center text-accent hover:text-accent/80 font-medium"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Retour au blog
@@ -128,7 +128,7 @@ const BlogArticle = () => {
           {/* Article Header */}
           <article className="bg-white rounded-lg shadow-lg p-8 mb-8">
             <div className="mb-6">
-              <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
+              <span className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">
                 {article.category}
               </span>
             </div>
@@ -174,7 +174,7 @@ const BlogArticle = () => {
               return (
                 <div className="mt-10 pt-8 border-t border-gray-200">
                   <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <GraduationCap className="h-5 w-5 text-blue-600" />
+                    <GraduationCap className="h-5 w-5 text-accent" />
                     Pratiquer ce sujet
                   </h2>
                   <p className="text-gray-700 mb-4">
@@ -185,7 +185,7 @@ const BlogArticle = () => {
                       href={exerciseLink.href}
                       target="_blank"
                       rel="noopener"
-                      className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-lg hover:bg-blue-100 transition-colors font-medium"
+                      className="inline-flex items-center gap-2 bg-accent/5 text-accent px-4 py-2 rounded-lg hover:bg-accent/15 transition-colors font-medium"
                     >
                       <GraduationCap className="h-4 w-4" />
                       Accéder aux {exerciseLink.label} ↗
@@ -211,7 +211,7 @@ const BlogArticle = () => {
                           <li key={topic.id}>
                             <Link 
                               to={`/blog/${topic.id}`}
-                              className="text-blue-600 hover:text-blue-800 hover:underline inline-flex items-center gap-1"
+                              className="text-accent hover:text-accent/80 hover:underline inline-flex items-center gap-1"
                             >
                               <ArrowRight className="h-3 w-3" />
                               {topic.title}
@@ -226,7 +226,7 @@ const BlogArticle = () => {
                   {showCommercialCTA && (
                     <p className="text-sm text-gray-600 mt-4 italic">
                       Vous utilisez l'anglais au travail ? Je propose des{' '}
-                      <Link to="/offres-de-formation" className="text-blue-600 hover:underline">
+                      <Link to="/offres-de-formation" className="text-accent hover:underline">
                         formations d'anglais professionnel sur-mesure
                       </Link>
                       {' '}pour entreprises, cadres et particuliers.
@@ -259,11 +259,11 @@ const BlogArticle = () => {
                     className="group block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
                   >
                     <div className="mb-2">
-                      <span className="text-xs text-blue-600 font-medium">
+                      <span className="text-xs text-accent font-medium">
                         {relatedArticle.category}
                       </span>
                     </div>
-                    <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                    <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-accent transition-colors line-clamp-2">
                       {relatedArticle.title}
                     </h3>
                     <div className="flex items-center text-sm text-gray-500">
@@ -280,7 +280,7 @@ const BlogArticle = () => {
           )}
 
           {/* Author CTA */}
-          <div className="bg-blue-50 rounded-lg p-8">
+          <div className="bg-accent/5 rounded-lg p-8">
             <div className="text-center max-w-2xl mx-auto">
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
                 Passez à l'anglais professionnel
@@ -306,18 +306,18 @@ const BlogArticle = () => {
                 </a>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors"
+                  className="inline-flex items-center justify-center border-2 border-accent text-accent px-6 py-3 rounded-lg font-semibold hover:bg-accent hover:text-white transition-colors"
                 >
                   Me contacter
                 </Link>
               </div>
               <p className="text-sm text-gray-600">
                 Vous êtes :{' '}
-                <Link to="/anglais-entreprise" className="text-blue-600 hover:underline font-medium">une entreprise</Link>
+                <Link to="/anglais-entreprise" className="text-accent hover:underline font-medium">une entreprise</Link>
                 {' · '}
-                <Link to="/anglais-cadres" className="text-blue-600 hover:underline font-medium">un cadre ou dirigeant</Link>
+                <Link to="/anglais-cadres" className="text-accent hover:underline font-medium">un cadre ou dirigeant</Link>
                 {' · '}
-                <Link to="/anglais-particuliers" className="text-blue-600 hover:underline font-medium">un particulier</Link>
+                <Link to="/anglais-particuliers" className="text-accent hover:underline font-medium">un particulier</Link>
               </p>
             </div>
           </div>

@@ -399,7 +399,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
       <main id="main-content">{children}</main>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-white text-sm py-12 px-4">
+      <footer className="site-footer text-white text-sm py-12 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
             <div className="lg:col-span-2">
@@ -423,7 +423,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                   href="https://linkedin.com/in/antonyaddy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded-lg text-xs font-medium transition-colors"
+                  className="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-2 rounded-lg text-xs font-medium transition-colors"
                   aria-label="LinkedIn"
                 >
                   LinkedIn
@@ -535,7 +535,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
             </div>
           </div>
 
-          <div className="border-t border-gray-800 pt-6 flex flex-col gap-3">
+          <div className="border-t border-white/10 pt-6 flex flex-col gap-3">
             <p className="text-gray-500 text-xs text-center md:text-left">
               Déclaration d'activité enregistrée sous le numéro 93830738883 auprès de la DREETS Provence-Alpes-Côte d'Azur. Cet enregistrement ne vaut pas agrément de l'État.
             </p>

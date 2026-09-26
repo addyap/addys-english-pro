@@ -252,7 +252,7 @@ const Contact = () => {
                 <figcaption className="mt-2 text-xs text-gray-600">
                   <span className="font-semibold text-primary">Loan MIRMONT</span> — Préparateur
                   physique, gérant de PPR-Formance ·{' '}
-                  <Link to="/temoignages" className="text-blue-600 hover:underline">
+                  <Link to="/temoignages" className="text-accent hover:underline">
                     voir les autres recommandations
                   </Link>
                 </figcaption>
@@ -287,7 +287,7 @@ const Contact = () => {
                       value={formData.prenom} 
                       onChange={handleChange} 
                       required 
-                      className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-blue-500 focus:border-transparent ${errors.prenom ? 'border-red-500' : 'border-gray-300'}`}
+                      className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent ${errors.prenom ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     {errors.prenom && <p className="text-red-500 text-sm mt-1">{errors.prenom}</p>}
                   </div>
@@ -303,7 +303,7 @@ const Contact = () => {
                       value={formData.nom} 
                       onChange={handleChange} 
                       required 
-                      className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-blue-500 focus:border-transparent ${errors.nom ? 'border-red-500' : 'border-gray-300'}`}
+                      className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent ${errors.nom ? 'border-red-500' : 'border-gray-300'}`}
                     />
                     {errors.nom && <p className="text-red-500 text-sm mt-1">{errors.nom}</p>}
                   </div>
@@ -320,7 +320,7 @@ const Contact = () => {
                     value={formData.email} 
                     onChange={handleChange} 
                     required 
-                    className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-blue-500 focus:border-transparent ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+                    className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
                   />
                   {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                 </div>
@@ -337,7 +337,7 @@ const Contact = () => {
                     onChange={handleChange} 
                     required 
                     placeholder="Décrivez vos besoins en formation, votre niveau actuel, vos objectifs..." 
-                    className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none ${errors.message ? 'border-red-500' : 'border-gray-300'}`}
+                    className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent resize-none ${errors.message ? 'border-red-500' : 'border-gray-300'}`}
                   />
                   {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
                 </div>
@@ -350,11 +350,11 @@ const Contact = () => {
                   cédées, et sont conservées au maximum 3 ans après notre dernier contact. Vous
                   disposez d'un droit d'accès, de rectification, d'effacement, d'opposition et de
                   portabilité, que vous pouvez exercer à{' '}
-                  <a href="mailto:formations@antonyaddy.com" className="text-blue-600 hover:underline">
+                  <a href="mailto:formations@antonyaddy.com" className="text-accent hover:underline">
                     formations@antonyaddy.com
                   </a>
                   . Détails dans la{' '}
-                  <Link to="/politique-confidentialite" className="text-blue-600 hover:underline">
+                  <Link to="/politique-confidentialite" className="text-accent hover:underline">
                     politique de confidentialité
                   </Link>
                   .
@@ -431,12 +431,12 @@ const Contact = () => {
                 
                 <div className="space-y-4">
                   <div className="flex items-center">
-                    <Mail className="h-5 w-5 text-blue-600 mr-3" />
+                    <Mail className="h-5 w-5 text-accent mr-3" />
                     <div>
                       <p className="font-medium text-gray-900">Email</p>
                       <a
                         href="mailto:formations@antonyaddy.com"
-                        className="text-blue-600 hover:text-blue-800 transition-colors"
+                        className="text-accent hover:text-accent/80 transition-colors"
                         onClick={trackEmailClick}
                       >
                         formations@antonyaddy.com
@@ -445,12 +445,12 @@ const Contact = () => {
                   </div>
 
                   <div className="flex items-center">
-                    <Phone className="h-5 w-5 text-blue-600 mr-3" />
+                    <Phone className="h-5 w-5 text-accent mr-3" />
                     <div>
                       <p className="font-medium text-gray-900">Téléphone</p>
                       <a
                         href="tel:+33649829826"
-                        className="text-blue-600 hover:text-blue-800 transition-colors"
+                        className="text-accent hover:text-accent/80 transition-colors"
                       >
                         +33 6 49 82 98 26
                       </a>
@@ -458,7 +458,7 @@ const Contact = () => {
                   </div>
 
                   <div className="flex items-center">
-                    <MapPin className="h-5 w-5 text-blue-600 mr-3" />
+                    <MapPin className="h-5 w-5 text-accent mr-3" />
                     <div>
                       <p className="font-medium text-gray-900">Zone d'intervention</p>
                       <p className="text-gray-600">
@@ -469,7 +469,7 @@ const Contact = () => {
                   </div>
                   
                   <div className="flex items-center">
-                    <Clock className="h-5 w-5 text-blue-600 mr-3" />
+                    <Clock className="h-5 w-5 text-accent mr-3" />
                     <div>
                       <p className="font-medium text-gray-900">Horaires</p>
                       <p className="text-gray-600">
@@ -513,7 +513,7 @@ const Contact = () => {
                 <p className="text-sm text-gray-600">
                   Scannez ce QR code pour me suivre sur LinkedIn
                 </p>
-                <a href="https://linkedin.com/in/antonyaddy" className="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:rounded" target="_blank" rel="noopener noreferrer" aria-label="Voir mon profil LinkedIn (ouvre dans un nouvel onglet)">
+                <a href="https://linkedin.com/in/antonyaddy" className="inline-block mt-4 text-accent hover:text-accent/80 font-medium focus:outline-none focus:ring-2 focus:ring-accent focus:rounded" target="_blank" rel="noopener noreferrer" aria-label="Voir mon profil LinkedIn (ouvre dans un nouvel onglet)">
                   Voir mon profil LinkedIn →
                 </a>
               </div>

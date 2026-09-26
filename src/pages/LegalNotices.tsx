@@ -32,7 +32,7 @@ const LegalNotices = () => {
               <p className="mb-2"><strong>Téléphone :</strong> +33 6 49 82 98 26</p>
               <p className="mb-2">
                 <strong>Courriel :</strong>{" "}
-                <a href="mailto:formations@antonyaddy.com" className="text-blue-700 font-medium underline">
+                <a href="mailto:formations@antonyaddy.com" className="text-accent font-medium underline">
                   formations@antonyaddy.com
                 </a>
               </p>
@@ -70,7 +70,7 @@ const LegalNotices = () => {
                       href={MEDIATOR.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-700 font-medium underline"
+                      className="text-accent font-medium underline"
                     >
                       {MEDIATOR.url.replace(/^https?:\/\//, "")}
                     </a>
@@ -86,7 +86,7 @@ const LegalNotices = () => {
                 États-Unis. Téléphone : +1 559 288 7060. Site web :{" "}
                 <a
                   href="https://vercel.com"
-                  className="text-blue-600 underline"
+                  className="text-accent underline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -123,7 +123,7 @@ const LegalNotices = () => {
                 prestataires techniques (hébergement, envoi d'emails, mesure
                 d'audience sans cookie, base de données anti-spam). Le détail
                 figure dans ma{' '}
-                <Link to="/politique-confidentialite" className="text-blue-600 hover:underline">
+                <Link to="/politique-confidentialite" className="text-accent hover:underline">
                   politique de confidentialité
                 </Link>.
               </p>
@@ -133,24 +133,24 @@ const LegalNotices = () => {
               </p>
               <p>
                 📧{" "}
-                <a href="mailto:formations@antonyaddy.com" className="text-blue-700 font-medium underline">
+                <a href="mailto:formations@antonyaddy.com" className="text-accent font-medium underline">
                   formations@antonyaddy.com
                 </a>
               </p>
               <p className="mt-4 text-sm text-gray-600">
                 Vous disposez également du droit d'introduire une réclamation
                 auprès de la Commission Nationale de l'Informatique et des
-                Libertés (CNIL) — <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">www.cnil.fr</a>.
+                Libertés (CNIL) — <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" className="text-accent underline">www.cnil.fr</a>.
               </p>
 
               <div className="mt-8 pt-6 border-t border-gray-200">
                 <h2 className="text-xl font-semibold text-primary mb-3">Explorer le site</h2>
                 <div className="flex flex-wrap gap-4 text-sm">
-                  <Link to="/" className="text-blue-600 hover:underline">Accueil</Link>
-                  <Link to="/contact" className="text-blue-600 hover:underline">Contact</Link>
-                  <Link to="/politique-confidentialite" className="text-blue-600 hover:underline">Politique de confidentialité</Link>
-                  <Link to="/cgv" className="text-blue-600 hover:underline">CGV</Link>
-                  <Link to="/offres-de-formation" className="text-blue-600 hover:underline">Formations</Link>
+                  <Link to="/" className="text-accent hover:underline">Accueil</Link>
+                  <Link to="/contact" className="text-accent hover:underline">Contact</Link>
+                  <Link to="/politique-confidentialite" className="text-accent hover:underline">Politique de confidentialité</Link>
+                  <Link to="/cgv" className="text-accent hover:underline">CGV</Link>
+                  <Link to="/offres-de-formation" className="text-accent hover:underline">Formations</Link>
                 </div>
               </div>
             </section>

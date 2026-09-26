@@ -362,6 +362,15 @@ html.js .reveal[data-inview="true"]{ will-change:auto; }
   .aurora::before,.aurora::after{ animation:none; }
 }
 
+/* Site footer — brand navy ground that bookends the hero, replacing the cold
+   generic slate. Deeper than the hero so it reads as the base of the page, with
+   a faint purple lift to echo the brand's navy→purple→red story. */
+.site-footer{
+  background:
+    radial-gradient(120% 130% at 12% 0%, hsl(258 41% 22%), transparent 58%),
+    linear-gradient(180deg, hsl(240 50% 15%) 0%, hsl(240 54% 9%) 100%);
+}
+
 /* Signature underline that draws in when its Reveal enters — for section
    headings. Pairs with the .heading-rule element. */
 .heading-rule{

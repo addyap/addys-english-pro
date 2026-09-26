@@ -80,7 +80,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
   return (
     <div
       ref={containerRef}
-      className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 sm:p-8 md:p-12 shadow-sm"
+      className="relative overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-6 sm:p-8 md:p-12 shadow-sm"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onFocus={() => setIsPaused(true)}
@@ -92,12 +92,12 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
     >
       {/* Decorative quote icon */}
       <div className="absolute top-6 left-6 opacity-10 pointer-events-none" aria-hidden="true">
-        <Quote className="w-20 h-20 md:w-24 md:h-24 text-blue-600" />
+        <Quote className="w-20 h-20 md:w-24 md:h-24 text-accent" />
       </div>
 
       {/* "Avis client" badge */}
       <div className="relative flex justify-center mb-4">
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold uppercase tracking-wide">
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold uppercase tracking-wide">
           <Quote className="w-3.5 h-3.5" aria-hidden="true" />
           Recommandation LinkedIn
         </span>
@@ -143,7 +143,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
               <p className="font-bold text-base md:text-lg text-gray-900">{current.name}</p>
               <p className="text-sm md:text-base text-gray-600">{current.role}</p>
               {current.company && (
-                <p className="text-sm text-blue-700 font-medium">{current.company}</p>
+                <p className="text-sm text-accent font-medium">{current.company}</p>
               )}
             </footer>
           </motion.article>
@@ -154,7 +154,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
       <button
         type="button"
         onClick={() => paginate(-1)}
-        className="hidden sm:flex absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white p-2.5 md:p-3 rounded-full shadow-lg transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500 items-center justify-center"
+        className="hidden sm:flex absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white p-2.5 md:p-3 rounded-full shadow-lg transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent items-center justify-center"
         aria-label="Témoignage précédent"
       >
         <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-gray-700" aria-hidden="true" />
@@ -163,7 +163,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
       <button
         type="button"
         onClick={() => paginate(1)}
-        className="hidden sm:flex absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white p-2.5 md:p-3 rounded-full shadow-lg transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500 items-center justify-center"
+        className="hidden sm:flex absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white p-2.5 md:p-3 rounded-full shadow-lg transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent items-center justify-center"
         aria-label="Témoignage suivant"
       >
         <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-700" aria-hidden="true" />
@@ -186,9 +186,9 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
               role="tab"
               aria-selected={index === currentIndex}
               aria-label={`Aller au témoignage ${index + 1}`}
-              className={`transition-all rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+              className={`transition-all rounded-full focus:outline-none focus:ring-2 focus:ring-accent ${
                 index === currentIndex
-                  ? 'w-8 h-2 bg-blue-600'
+                  ? 'w-8 h-2 bg-accent'
                   : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
               }`}
             />
