@@ -190,7 +190,7 @@ const Contact = () => {
         }]}
       />
       
-      <div className="min-h-screen bg-gray-50 py-12">
+      <div className="min-h-screen bg-muted py-12">
         <div className="max-w-6xl mx-auto px-4">
 
           {/* Persistent top banners (success / error) */}
@@ -220,13 +220,13 @@ const Contact = () => {
 
           {/* Header */}
           <Reveal as="header" className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-4xl font-bold text-foreground mb-4">
               Prenons contact
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Premier échange gratuit et sans engagement pour définir vos objectifs en anglais professionnel
             </p>
-            <p className="text-sm text-gray-500 max-w-2xl mx-auto mt-4">
+            <p className="text-sm text-muted-foreground max-w-2xl mx-auto mt-4">
               Formation finançable directement par votre entreprise (convention de formation sur fonds propres)
               ou à titre personnel. Non éligible au CPF.
             </p>
@@ -244,12 +244,12 @@ const Contact = () => {
                   else on the site or in his actual recommendation, alongside a
                   5-star graphic that LinkedIn recommendations do not carry. */}
               <figure className="mb-6 border-l-4 border-accent bg-accent/5 rounded-r-md px-4 py-3">
-                <blockquote className="text-sm md:text-base text-gray-700 italic leading-relaxed">
+                <blockquote className="text-sm md:text-base text-muted-foreground italic leading-relaxed">
                   «&nbsp;Antony est un super professeur. À l'écoute, dans l'échange et très
                   pédagogue, il s'adapte à nos besoins (anglais travail, anglais courant). Je
                   recommande vivement.&nbsp;»
                 </blockquote>
-                <figcaption className="mt-2 text-xs text-gray-600">
+                <figcaption className="mt-2 text-xs text-muted-foreground">
                   <span className="font-semibold text-primary">Loan MIRMONT</span> — Préparateur
                   physique, gérant de PPR-Formance ·{' '}
                   <Link to="/temoignages" className="text-accent hover:underline">
@@ -258,7 +258,7 @@ const Contact = () => {
                 </figcaption>
               </figure>
 
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl font-bold text-foreground mb-6">
                 Envoyez-moi un message
               </h2>
               
@@ -277,7 +277,7 @@ const Contact = () => {
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="prenom" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="prenom" className="block text-sm font-medium text-muted-foreground mb-2">
                       Prénom *
                     </label>
                     <input 
@@ -287,13 +287,13 @@ const Contact = () => {
                       value={formData.prenom} 
                       onChange={handleChange} 
                       required 
-                      className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent ${errors.prenom ? 'border-red-500' : 'border-gray-300'}`}
+                      className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent ${errors.prenom ? 'border-red-500' : 'border-border'}`}
                     />
                     {errors.prenom && <p className="text-red-500 text-sm mt-1">{errors.prenom}</p>}
                   </div>
                   
                   <div>
-                    <label htmlFor="nom" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="nom" className="block text-sm font-medium text-muted-foreground mb-2">
                       Nom *
                     </label>
                     <input 
@@ -303,14 +303,14 @@ const Contact = () => {
                       value={formData.nom} 
                       onChange={handleChange} 
                       required 
-                      className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent ${errors.nom ? 'border-red-500' : 'border-gray-300'}`}
+                      className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent ${errors.nom ? 'border-red-500' : 'border-border'}`}
                     />
                     {errors.nom && <p className="text-red-500 text-sm mt-1">{errors.nom}</p>}
                   </div>
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-2">
                     Email *
                   </label>
                   <input 
@@ -320,13 +320,13 @@ const Contact = () => {
                     value={formData.email} 
                     onChange={handleChange} 
                     required 
-                    className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+                    className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent ${errors.email ? 'border-red-500' : 'border-border'}`}
                   />
                   {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                 </div>
                 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-muted-foreground mb-2">
                     Message *
                   </label>
                   <textarea 
@@ -337,14 +337,14 @@ const Contact = () => {
                     onChange={handleChange} 
                     required 
                     placeholder="Décrivez vos besoins en formation, votre niveau actuel, vos objectifs..." 
-                    className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent resize-none ${errors.message ? 'border-red-500' : 'border-gray-300'}`}
+                    className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent resize-none ${errors.message ? 'border-red-500' : 'border-border'}`}
                   />
                   {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
                 </div>
 
                 {/* RGPD art. 13 — information must be given AT the point of
                     collection, not only in the footer policy. */}
-                <p className="text-xs text-gray-500 leading-relaxed">
+                <p className="text-xs text-muted-foreground leading-relaxed">
                   Les informations saisies ci-dessus sont utilisées uniquement pour répondre à
                   votre demande et, le cas échéant, établir un devis. Elles ne sont ni vendues ni
                   cédées, et sont conservées au maximum 3 ans après notre dernier contact. Vous
@@ -388,7 +388,7 @@ const Contact = () => {
                 </button>
               </form>
               
-              <p className="text-sm text-gray-500 mt-4 text-center">
+              <p className="text-sm text-muted-foreground mt-4 text-center">
                 Réponse sous 24 h ouvrées • Présentiel Var & Alpes-Maritimes • Distanciel France entière et international
               </p>
             </div>
@@ -425,7 +425,7 @@ const Contact = () => {
 
               {/* Contact Details */}
               <div className="bg-white rounded-lg shadow-lg p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-6">
+                <h3 className="text-xl font-semibold text-foreground mb-6">
                   Informations de contact
                 </h3>
                 
@@ -433,7 +433,7 @@ const Contact = () => {
                   <div className="flex items-center">
                     <Mail className="h-5 w-5 text-accent mr-3" />
                     <div>
-                      <p className="font-medium text-gray-900">Email</p>
+                      <p className="font-medium text-foreground">Email</p>
                       <a
                         href="mailto:formations@antonyaddy.com"
                         className="text-accent hover:text-accent/80 transition-colors"
@@ -447,7 +447,7 @@ const Contact = () => {
                   <div className="flex items-center">
                     <Phone className="h-5 w-5 text-accent mr-3" />
                     <div>
-                      <p className="font-medium text-gray-900">Téléphone</p>
+                      <p className="font-medium text-foreground">Téléphone</p>
                       <a
                         href="tel:+33649829826"
                         className="text-accent hover:text-accent/80 transition-colors"
@@ -460,8 +460,8 @@ const Contact = () => {
                   <div className="flex items-center">
                     <MapPin className="h-5 w-5 text-accent mr-3" />
                     <div>
-                      <p className="font-medium text-gray-900">Zone d'intervention</p>
-                      <p className="text-gray-600">
+                      <p className="font-medium text-foreground">Zone d'intervention</p>
+                      <p className="text-muted-foreground">
                         Présentiel : Var & Alpes-Maritimes (basé à Fréjus)<br />
                         Distanciel : France entière et international
                       </p>
@@ -471,8 +471,8 @@ const Contact = () => {
                   <div className="flex items-center">
                     <Clock className="h-5 w-5 text-accent mr-3" />
                     <div>
-                      <p className="font-medium text-gray-900">Horaires</p>
-                      <p className="text-gray-600">
+                      <p className="font-medium text-foreground">Horaires</p>
+                      <p className="text-muted-foreground">
                         Lun-Ven : 9h-18h<br />
                         Réponse sous 24 h ouvrées
                       </p>
@@ -483,11 +483,11 @@ const Contact = () => {
 
               {/* WhatsApp QR Code */}
               <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                <h3 className="text-xl font-semibold text-foreground mb-4">
                   Contactez-moi sur WhatsApp
                 </h3>
                 <img src="/lovable-uploads/whatsapp-qr-antony-addy.png" alt="QR Code WhatsApp Business permettant de contacter Antony Addy" className="mx-auto mb-4 max-w-48" width="192" height="192" loading="lazy" />
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-muted-foreground">
                   Scannez ce QR code pour m'écrire directement sur WhatsApp
                 </p>
                 {whatsappLink && (
@@ -506,11 +506,11 @@ const Contact = () => {
 
               {/* LinkedIn QR Code */}
               <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                <h3 className="text-xl font-semibold text-foreground mb-4">
                   Connectons-nous sur LinkedIn
                 </h3>
                 <img src="/lovable-uploads/200e88ab-2bbf-4168-85ad-8123b07c44ac.png" alt="QR Code LinkedIn permettant de se connecter au profil d'Antony Addy" className="mx-auto mb-4 max-w-48" width="192" height="192" loading="lazy" />
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-muted-foreground">
                   Scannez ce QR code pour me suivre sur LinkedIn
                 </p>
                 <a href="https://linkedin.com/in/antonyaddy" className="inline-block mt-4 text-accent hover:text-accent/80 font-medium focus:outline-none focus:ring-2 focus:ring-accent focus:rounded" target="_blank" rel="noopener noreferrer" aria-label="Voir mon profil LinkedIn (ouvre dans un nouvel onglet)">

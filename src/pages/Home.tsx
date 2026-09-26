@@ -360,7 +360,7 @@ const Home = () => {
                   <img 
                     src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png" 
                     alt="Antony Addy animant une formation en anglais professionnel avec des apprenants adultes" 
-                    className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" 
+                    className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-border" 
                     width="350" 
                     height="350"
                     loading="eager"
@@ -562,7 +562,7 @@ const Home = () => {
 
 
         {/* Ils me font confiance Section - Updated with client categories */}
-        <section className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+        <section className="bg-muted py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-extrabold text-primary mb-12 text-center">Ils me font confiance</h2>
             
@@ -626,7 +626,7 @@ const Home = () => {
                   if (!whatsappLink) { e.preventDefault(); return; }
                   trackEvent('whatsapp_cta_click', { page: 'Home', location: 'final-cta', prefilled: true });
                 }}
-                className="bg-white text-red-600 px-6 py-3.5 sm:px-8 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-gray-100 transition-all hover:scale-105 flex items-center justify-center gap-2 font-body shadow-lg"
+                className="bg-white text-red-600 px-6 py-3.5 sm:px-8 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-muted transition-all hover:scale-105 flex items-center justify-center gap-2 font-body shadow-lg"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Contacter Antony Addy sur WhatsApp (message pré-rempli)"

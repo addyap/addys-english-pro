@@ -44,10 +44,10 @@ export const Accordion = ({ title, children }: { title: string; children: React.
   const [open, setOpen] = useState(false);
   return (
     <div className="mb-4 border-b pb-2">
-      <button onClick={() => setOpen(!open)} className="w-full text-left text-lg font-semibold text-blue-900">
+      <button onClick={() => setOpen(!open)} className="w-full text-left text-lg font-semibold text-primary">
         {title}
       </button>
-      {open && <div className="mt-2 text-gray-700">{children}</div>}
+      {open && <div className="mt-2 text-muted-foreground">{children}</div>}
     </div>
   );
 };

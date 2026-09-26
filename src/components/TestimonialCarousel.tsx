@@ -135,13 +135,13 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
             {/* No star row here. These quotes are LinkedIn recommendations, which
                 carry no rating — painting five stars on each one invents a score
                 the author never gave. See the note in src/pages/Testimonials.tsx. */}
-            <blockquote className="text-base sm:text-lg md:text-2xl text-gray-800 italic mb-6 leading-relaxed sm:leading-relaxed md:leading-relaxed max-w-3xl mx-auto px-2">
+            <blockquote className="text-base sm:text-lg md:text-2xl text-foreground italic mb-6 leading-relaxed sm:leading-relaxed md:leading-relaxed max-w-3xl mx-auto px-2">
               «&nbsp;{current.quote}&nbsp;»
             </blockquote>
 
             <footer className="space-y-1">
-              <p className="font-bold text-base md:text-lg text-gray-900">{current.name}</p>
-              <p className="text-sm md:text-base text-gray-600">{current.role}</p>
+              <p className="font-bold text-base md:text-lg text-foreground">{current.name}</p>
+              <p className="text-sm md:text-base text-muted-foreground">{current.role}</p>
               {current.company && (
                 <p className="text-sm text-accent font-medium">{current.company}</p>
               )}
@@ -157,7 +157,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
         className="hidden sm:flex absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white p-2.5 md:p-3 rounded-full shadow-lg transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent items-center justify-center"
         aria-label="Témoignage précédent"
       >
-        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-gray-700" aria-hidden="true" />
+        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-muted-foreground" aria-hidden="true" />
       </button>
 
       <button
@@ -166,12 +166,12 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
         className="hidden sm:flex absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white p-2.5 md:p-3 rounded-full shadow-lg transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent items-center justify-center"
         aria-label="Témoignage suivant"
       >
-        <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-gray-700" aria-hidden="true" />
+        <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-muted-foreground" aria-hidden="true" />
       </button>
 
       {/* Counter + dots */}
       <div className="relative flex flex-col items-center gap-3 mt-6">
-        <span className="text-xs font-medium text-gray-600 tabular-nums" aria-live="polite">
+        <span className="text-xs font-medium text-muted-foreground tabular-nums" aria-live="polite">
           {currentIndex + 1} / {testimonials.length}
         </span>
         <div className="flex justify-center gap-2" role="tablist" aria-label="Sélectionner un témoignage">
@@ -189,7 +189,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
               className={`transition-all rounded-full focus:outline-none focus:ring-2 focus:ring-accent ${
                 index === currentIndex
                   ? 'w-8 h-2 bg-accent'
-                  : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
+                  : 'w-2 h-2 bg-muted-foreground/30 hover:bg-muted-foreground/50'
               }`}
             />
           ))}

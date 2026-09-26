@@ -19,29 +19,29 @@ const PrivacyPolicy = () => {
         keywords={["politique confidentialité", "RGPD", "données personnelles", "vie privée"]}
       />
       
-      <div className="min-h-screen bg-gray-50 py-12">
+      <div className="min-h-screen bg-muted py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-lg shadow-lg p-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-foreground mb-2">
               Politique de confidentialité
             </h1>
-            <p className="text-sm text-gray-500 mb-8">
+            <p className="text-sm text-muted-foreground mb-8">
               Version du {PRIVACY_VERSION_DATE}.
             </p>
 
-            <div className="prose max-w-none text-gray-700">
+            <div className="prose max-w-none text-muted-foreground">
               <p className="text-lg mb-6">
                 La présente politique décrit les données personnelles que ce site collecte, pourquoi,
                 comment elles sont traitées et les droits dont vous disposez.
               </p>
 
-              <h2 className="text-xl font-semibold text-gray-900 mt-8 mb-3">Responsable du traitement</h2>
+              <h2 className="text-xl font-semibold text-foreground mt-8 mb-3">Responsable du traitement</h2>
               <p className="mb-6">
                 Antony Addy, formateur d'anglais (auto-entrepreneur), 135 rue Henri Vadon, 83600 Fréjus,
                 France. Contact : <strong>formations@antonyaddy.com</strong>.
               </p>
 
-              <h2 className="text-xl font-semibold text-gray-900 mt-8 mb-3">Données collectées</h2>
+              <h2 className="text-xl font-semibold text-foreground mt-8 mb-3">Données collectées</h2>
               <p className="mb-4">
                 Les données personnelles ne sont collectées que lorsque vous me les transmettez volontairement :
               </p>
@@ -59,7 +59,7 @@ const PrivacyPolicy = () => {
                 <li><strong>Échanges directs</strong> : les informations que vous communiquez par email ou WhatsApp.</li>
               </ul>
 
-              <h2 className="text-xl font-semibold text-gray-900 mt-8 mb-3">Finalité et base légale</h2>
+              <h2 className="text-xl font-semibold text-foreground mt-8 mb-3">Finalité et base légale</h2>
               <p className="mb-6">
                 Ces données sont utilisées uniquement pour répondre à vos demandes, établir un devis et organiser
                 une éventuelle formation. La base légale est votre consentement et l'exécution de mesures
@@ -67,7 +67,7 @@ const PrivacyPolicy = () => {
                 n'est réalisé.
               </p>
 
-              <h2 className="text-xl font-semibold text-gray-900 mt-8 mb-3">Hébergement et sous-traitants</h2>
+              <h2 className="text-xl font-semibold text-foreground mt-8 mb-3">Hébergement et sous-traitants</h2>
               <p className="mb-4">
                 Vos données ne sont ni vendues ni louées. Elles sont uniquement traitées par les prestataires
                 techniques suivants, agissant pour mon compte et selon mes instructions :
@@ -83,7 +83,7 @@ const PrivacyPolicy = () => {
                 encadrés par les garanties appropriées prévues par le RGPD.
               </p>
 
-              <h2 className="text-xl font-semibold text-gray-900 mt-8 mb-3">Services tiers vers lesquels ce site peut vous rediriger</h2>
+              <h2 className="text-xl font-semibold text-foreground mt-8 mb-3">Services tiers vers lesquels ce site peut vous rediriger</h2>
               <p className="mb-4">
                 Certaines pages proposent des liens vers des services extérieurs. Dès que vous les
                 utilisez, vos données sont traitées par ces services selon <em>leurs</em> propres
@@ -107,14 +107,14 @@ const PrivacyPolicy = () => {
                 sur le lien correspondant.
               </p>
 
-              <h2 className="text-xl font-semibold text-gray-900 mt-8 mb-3">Durée de conservation</h2>
+              <h2 className="text-xl font-semibold text-foreground mt-8 mb-3">Durée de conservation</h2>
               <p className="mb-6">
                 Les données de contact sont conservées le temps nécessaire au traitement de
                 votre demande puis, le cas échéant, pendant la durée de notre collaboration, et au maximum 3 ans après
                 le dernier contact, sauf obligation légale contraire.
               </p>
 
-              <h2 className="text-xl font-semibold text-gray-900 mt-8 mb-3">Cookies et mesures d'audience</h2>
+              <h2 className="text-xl font-semibold text-foreground mt-8 mb-3">Cookies et mesures d'audience</h2>
               <p className="mb-6">
                 Ce site n'utilise aucun cookie publicitaire ni traceur à des fins de profilage. La
                 mesure d'audience est assurée par <strong>Umami</strong>, un outil sans cookie qui
@@ -126,7 +126,7 @@ const PrivacyPolicy = () => {
                 peut par ailleurs être utilisé.
               </p>
 
-              <h2 className="text-xl font-semibold text-gray-900 mt-8 mb-3">Vos droits</h2>
+              <h2 className="text-xl font-semibold text-foreground mt-8 mb-3">Vos droits</h2>
               <p className="mb-4">
                 Conformément au Règlement Général sur la Protection des Données (RGPD), vous pouvez à tout moment :
               </p>
@@ -142,13 +142,13 @@ const PrivacyPolicy = () => {
                 également du droit d'introduire une réclamation auprès de la CNIL (www.cnil.fr).
               </p>
 
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-muted-foreground">
                 Hébergement du site : Vercel Inc. — 340 S Lemon Ave #4133, Walnut, CA 91789, USA — vercel.com
               </p>
 
               {/* Internal Links */}
-              <div className="mt-8 pt-6 border-t border-gray-200">
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">
+              <div className="mt-8 pt-6 border-t border-border">
+                <h2 className="text-xl font-semibold text-foreground mb-3">
                   Explorer le site
                 </h2>
                 <div className="flex flex-wrap gap-4 text-sm">

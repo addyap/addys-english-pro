@@ -15,12 +15,12 @@ const LegalNotices = () => {
         canonicalUrl="https://www.antonyaddy.com/mentions-legales"
         keywords={["mentions légales", "RGPD", "organisme de formation", "données personnelles"]}
       />
-      <div className="min-h-screen bg-gray-50 py-12">
+      <div className="min-h-screen bg-muted py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-lg shadow-lg p-8">
             <section className="max-w-3xl mx-auto text-neutral-800">
               <h1 className="text-3xl font-bold text-primary mb-2">Mentions Légales</h1>
-              <p className="text-sm text-gray-500 mb-6">Version du {LEGAL_VERSION_DATE}.</p>
+              <p className="text-sm text-muted-foreground mb-6">Version du {LEGAL_VERSION_DATE}.</p>
 
               <h2 className="text-2xl font-semibold text-primary mb-4">Éditeur du site</h2>
               <p className="mb-2"><strong>Nom :</strong> Antony Addy</p>
@@ -47,7 +47,7 @@ const LegalNotices = () => {
                 <strong>Autorité d'enregistrement :</strong> DREETS
                 Provence-Alpes-Côte d'Azur
               </p>
-              <p className="mb-6 text-sm italic text-gray-600">
+              <p className="mb-6 text-sm italic text-muted-foreground">
                 Cet enregistrement ne vaut pas agrément de l'État (article
                 L.6352-12 du Code du travail).
               </p>
@@ -137,13 +137,13 @@ const LegalNotices = () => {
                   formations@antonyaddy.com
                 </a>
               </p>
-              <p className="mt-4 text-sm text-gray-600">
+              <p className="mt-4 text-sm text-muted-foreground">
                 Vous disposez également du droit d'introduire une réclamation
                 auprès de la Commission Nationale de l'Informatique et des
                 Libertés (CNIL) — <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" className="text-accent underline">www.cnil.fr</a>.
               </p>
 
-              <div className="mt-8 pt-6 border-t border-gray-200">
+              <div className="mt-8 pt-6 border-t border-border">
                 <h2 className="text-xl font-semibold text-primary mb-3">Explorer le site</h2>
                 <div className="flex flex-wrap gap-4 text-sm">
                   <Link to="/" className="text-accent hover:underline">Accueil</Link>

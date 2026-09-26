@@ -94,7 +94,7 @@ const About = () => {
               
               {/* Photo */}
               <div className="flex justify-center mb-6">
-                <img src="/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png" alt="Antony Addy, Formateur Professionnel d'Adultes certifié depuis 2017, spécialisé en anglais professionnel" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-gray-200" width="350" height="350" loading="lazy" />
+                <img src="/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png" alt="Antony Addy, Formateur Professionnel d'Adultes certifié depuis 2017, spécialisé en anglais professionnel" className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-border" width="350" height="350" loading="lazy" />
               </div>
 
               <div className="text-lg text-muted-foreground leading-relaxed mb-6 font-body space-y-4">

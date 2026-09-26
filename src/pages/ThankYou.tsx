@@ -21,20 +21,20 @@ const ThankYou: React.FC = () => {
         noindex
       />
 
-      <div className="min-h-screen bg-gray-50 py-16 px-4">
+      <div className="min-h-screen bg-muted py-16 px-4">
         <Reveal as="div" variant="scale" className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12 text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-6">
             <CheckCircle2 className="w-9 h-9 text-green-600" aria-hidden="true" />
           </div>
 
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Message envoyé ✅
           </h1>
 
-          <p className="text-lg text-gray-600 mb-2">
+          <p className="text-lg text-muted-foreground mb-2">
             Merci de votre message. Je vous réponds dans les meilleurs délais.
           </p>
-          <p className="text-sm text-gray-500 mb-8">
+          <p className="text-sm text-muted-foreground mb-8">
             Réponse sous 24 h ouvrées.
           </p>
 
@@ -65,10 +65,10 @@ const ThankYou: React.FC = () => {
             </a>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-gray-200">
+          <div className="mt-8 pt-6 border-t border-border">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-primary transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
             >
               <ArrowLeft className="w-4 h-4" aria-hidden="true" />
               Retour à l'accueil

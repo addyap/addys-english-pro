@@ -62,9 +62,9 @@ const BlogArticle = () => {
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-gray-50 py-12">
+      <div className="min-h-screen bg-muted py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Article non trouvé</h1>
+          <h1 className="text-2xl font-bold text-foreground mb-4">Article non trouvé</h1>
           <Link to="/blog" className="text-accent hover:text-accent/80">
             Retour au blog
           </Link>
@@ -111,7 +111,7 @@ const BlogArticle = () => {
       />
       <ReadingProgress />
       
-      <div ref={articleRef} className="min-h-screen bg-gray-50 py-12">
+      <div ref={articleRef} className="min-h-screen bg-muted py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Navigation */}
@@ -135,12 +135,12 @@ const BlogArticle = () => {
             
             <header>
               <Reveal>
-                <h1 className="text-4xl font-bold text-gray-900 mb-6">
+                <h1 className="text-4xl font-bold text-foreground mb-6">
                   {article.title}
                 </h1>
               </Reveal>
               
-              <div className="flex items-center space-x-6 text-gray-500 text-sm border-b border-gray-200 pb-6 mb-8">
+              <div className="flex items-center space-x-6 text-muted-foreground text-sm border-b border-border pb-6 mb-8">
                 <div className="flex items-center">
                   <Calendar className="h-4 w-4 mr-2" />
                   <time dateTime={article.date}>
@@ -161,7 +161,7 @@ const BlogArticle = () => {
 
             {/* Article Content */}
             <div 
-              className="prose prose-lg max-w-none text-gray-700"
+              className="prose prose-lg max-w-none text-muted-foreground"
               dangerouslySetInnerHTML={{ __html: sanitize(article.content) }}
             />
 
@@ -172,12 +172,12 @@ const BlogArticle = () => {
               const readingLink = getReadingLink(id);
               
               return (
-                <div className="mt-10 pt-8 border-t border-gray-200">
-                  <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <div className="mt-10 pt-8 border-t border-border">
+                  <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
                     <GraduationCap className="h-5 w-5 text-accent" />
                     Pratiquer ce sujet
                   </h2>
-                  <p className="text-gray-700 mb-4">
+                  <p className="text-muted-foreground mb-4">
                     {practiceSection}
                   </p>
                   <div className="flex flex-wrap gap-3 mb-6">
@@ -204,8 +204,8 @@ const BlogArticle = () => {
                   
                   {/* Related Blog Posts */}
                   {relatedTopics.length > 0 && (
-                    <div className="bg-gray-50 rounded-lg p-4">
-                      <p className="text-sm font-medium text-gray-700 mb-2">Articles connexes sur ce thème :</p>
+                    <div className="bg-muted rounded-lg p-4">
+                      <p className="text-sm font-medium text-muted-foreground mb-2">Articles connexes sur ce thème :</p>
                       <ul className="space-y-1">
                         {relatedTopics.map(topic => (
                           <li key={topic.id}>
@@ -224,7 +224,7 @@ const BlogArticle = () => {
 
                   {/* Soft Commercial CTA */}
                   {showCommercialCTA && (
-                    <p className="text-sm text-gray-600 mt-4 italic">
+                    <p className="text-sm text-muted-foreground mt-4 italic">
                       Vous utilisez l'anglais au travail ? Je propose des{' '}
                       <Link to="/offres-de-formation" className="text-accent hover:underline">
                         formations d'anglais professionnel sur-mesure
@@ -237,8 +237,8 @@ const BlogArticle = () => {
             })()}
 
             {/* Social Share */}
-            <div className="mt-8 pt-6 border-t border-gray-200">
-              <p className="text-sm font-medium text-gray-700 mb-3">Partager cet article :</p>
+            <div className="mt-8 pt-6 border-t border-border">
+              <p className="text-sm font-medium text-muted-foreground mb-3">Partager cet article :</p>
               <SocialShare 
                 title={article.title}
                 description={article.description}
@@ -250,23 +250,23 @@ const BlogArticle = () => {
           {/* Related Posts */}
           {relatedPosts.length > 0 && (
             <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Articles connexes</h2>
+              <h2 className="text-2xl font-bold text-foreground mb-6">Articles connexes</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {relatedPosts.map(([key, relatedArticle]) => (
                   <Link
                     key={key}
                     to={`/blog/${key}`}
-                    className="group block p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
+                    className="group block p-4 border border-border rounded-lg hover:shadow-md transition-shadow"
                   >
                     <div className="mb-2">
                       <span className="text-xs text-accent font-medium">
                         {relatedArticle.category}
                       </span>
                     </div>
-                    <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-accent transition-colors line-clamp-2">
+                    <h3 className="font-semibold text-foreground mb-2 group-hover:text-accent transition-colors line-clamp-2">
                       {relatedArticle.title}
                     </h3>
-                    <div className="flex items-center text-sm text-gray-500">
+                    <div className="flex items-center text-sm text-muted-foreground">
                       <Calendar className="h-3 w-3 mr-1" />
                       {new Date(relatedArticle.date).toLocaleDateString('fr-FR', { 
                         month: 'short', 
@@ -282,10 +282,10 @@ const BlogArticle = () => {
           {/* Author CTA */}
           <div className="bg-accent/5 rounded-lg p-8">
             <div className="text-center max-w-2xl mx-auto">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              <h3 className="text-xl font-semibold text-foreground mb-3">
                 Passez à l'anglais professionnel
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-muted-foreground mb-6">
                 Antony Addy, formateur natif britannique certifié FPA, conçoit des formations
                 d'anglais sur-mesure autour de vos situations réelles — réunions, présentations,
                 emails, entretiens. En visio ou en présentiel dans le Var et les Alpes-Maritimes.
@@ -311,7 +311,7 @@ const BlogArticle = () => {
                   Me contacter
                 </Link>
               </div>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-muted-foreground">
                 Vous êtes :{' '}
                 <Link to="/anglais-entreprise" className="text-accent hover:underline font-medium">une entreprise</Link>
                 {' · '}
