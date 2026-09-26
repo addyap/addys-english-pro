@@ -56,7 +56,7 @@ export default defineConfig(({ mode, isSsrBuild }) => ({
             manualChunks: {
               "react-vendor": ["react", "react-dom"],
               router: ["react-router-dom"],
-              "ui-vendor": ["framer-motion", "@radix-ui/react-tooltip", "@radix-ui/react-dialog"],
+              "ui-vendor": ["@radix-ui/react-tooltip", "@radix-ui/react-dialog"],
               swiper: ["swiper"],
             },
           },

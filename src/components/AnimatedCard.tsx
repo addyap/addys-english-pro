@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { Reveal } from '@/components/motion/Reveal';
 
 interface AnimatedCardProps {
   children: React.ReactNode;
@@ -10,6 +10,15 @@ interface AnimatedCardProps {
   delay?: number;
 }
 
+/**
+ * AnimatedCard — scroll-reveal entrance + a subtle lift/scale on hover.
+ *
+ * Reimplemented on the SSG-safe `Reveal` primitive (was framer-motion): Reveal
+ * handles the entrance (no-JS-safe, reduced-motion aware) and the `.hover-lift`
+ * utility adds the hover transform, driven by the `--hover-scale` custom
+ * property so callers keep the same `hoverScale` prop. Same element, same
+ * classes — layout is unchanged.
+ */
 const AnimatedCard: React.FC<AnimatedCardProps> = ({
   children,
   className = '',
@@ -18,39 +27,27 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({
   hoverScale = 1.02,
   delay = 0,
 }) => {
-  const baseClasses = 'block rounded-lg transition-shadow';
-  const classes = `${baseClasses} ${className}`;
-
-  const motionProps = {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: '-50px' },
-    transition: { duration: 0.5, delay },
-    whileHover: { scale: hoverScale },
-    whileTap: onClick || href ? { scale: 0.98 } : {},
-  };
+  const classes = `block rounded-lg hover-lift ${className}`;
+  const style = { '--hover-scale': String(hoverScale) } as React.CSSProperties;
 
   if (href) {
     return (
-      <motion.a
-        href={href}
-        className={classes}
-        {...motionProps}
-      >
+      <Reveal as="a" href={href} className={classes} style={style} delay={delay}>
         {children}
-      </motion.a>
+      </Reveal>
     );
   }
 
   return (
-    <motion.div
+    <Reveal
+      as="div"
       onClick={onClick}
       className={classes}
-      style={{ cursor: onClick ? 'pointer' : 'default' }}
-      {...motionProps}
+      style={{ ...style, cursor: onClick ? 'pointer' : 'default' }}
+      delay={delay}
     >
       {children}
-    </motion.div>
+    </Reveal>
   );
 };
 

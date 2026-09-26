@@ -383,3 +383,30 @@ html.js .reveal[data-inview="true"]{ will-change:auto; }
 html.js .reveal[data-inview="true"] .heading-rule,
 .reveal[data-inview="true"] .heading-rule{ transform:scaleX(1); opacity:1; }
 @media (prefers-reduced-motion:reduce){ .heading-rule{ transition:opacity .3s ease; } }
+
+/* Hover lift for cards — replaces framer-motion's whileHover. Ordered after the
+   reveal rules so the hover transform wins over `.reveal[data-inview] { transform:none }`.
+   `--hover-scale` is set per-card so callers keep their old hoverScale prop. */
+.hover-lift{ transition:transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease; }
+.hover-lift:hover{ transform:translateY(-4px) scale(var(--hover-scale, 1.02)); }
+.hover-lift:active{ transform:translateY(-1px) scale(.99); }
+@media (prefers-reduced-motion:reduce){
+  .hover-lift:hover,.hover-lift:active{ transform:none; }
+}
+
+/* Carousel slide-in — replaces framer-motion's AnimatePresence on the
+   testimonial carousel. The article is keyed by index so it remounts on change;
+   `data-dir` picks the direction it enters from. */
+@keyframes slide-in-right{ from{ opacity:0; transform:translateX(48px); } to{ opacity:1; transform:none; } }
+@keyframes slide-in-left{ from{ opacity:0; transform:translateX(-48px); } to{ opacity:1; transform:none; } }
+.carousel-slide[data-dir="1"]{ animation:slide-in-right .4s cubic-bezier(.16,1,.3,1) both; }
+.carousel-slide[data-dir="-1"]{ animation:slide-in-left .4s cubic-bezier(.16,1,.3,1) both; }
+.carousel-slide[data-dragging="true"]{ animation:none; transition:none; }
+@media (prefers-reduced-motion:reduce){
+  .carousel-slide[data-dir]{ animation:none; }
+}
+
+/* Offline banner slide-down — replaces framer-motion on OfflineBanner. */
+@keyframes banner-in{ from{ transform:translateY(-100%); opacity:0; } to{ transform:none; opacity:1; } }
+.banner-in{ animation:banner-in .3s cubic-bezier(.16,1,.3,1) both; }
+@media (prefers-reduced-motion:reduce){ .banner-in{ animation:none; } }

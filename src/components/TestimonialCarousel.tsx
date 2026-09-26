@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
 interface Testimonial {
@@ -21,31 +20,22 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
   interval = 7000,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [direction, setDirection] = useState(1);
   const [isPaused, setIsPaused] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 200 : -200,
-      opacity: 0,
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      zIndex: 0,
-      x: direction < 0 ? 200 : -200,
-      opacity: 0,
-    }),
-  };
-
-  const swipeConfidenceThreshold = 8000;
-  const swipePower = (offset: number, velocity: number) => {
-    return Math.abs(offset) * velocity;
-  };
+  // Pointer-drag (replaces framer-motion's drag). Refs drive the gesture so it
+  // is frame-independent — the guard and offset never depend on async state
+  // that hasn't flushed between pointerdown and the first move. State mirrors
+  // them only for rendering: `dragX` for the live transform, `dragging` to
+  // suspend the slide-in animation, `snapBack` to ease home under threshold.
+  const [dragX, setDragX] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const [snapBack, setSnapBack] = useState(false);
+  const draggingRef = useRef(false);
+  const startXRef = useRef(0);
+  const dxRef = useRef(0);
+  const SWIPE_THRESHOLD = 60; // px
 
   const paginate = useCallback((newDirection: number) => {
     setDirection(newDirection);
@@ -56,6 +46,38 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
       return nextIndex;
     });
   }, [testimonials.length]);
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    startXRef.current = e.clientX;
+    dxRef.current = 0;
+    draggingRef.current = true;
+    setDragging(true);
+    setSnapBack(false);
+    setIsPaused(true);
+    (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
+  };
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!draggingRef.current) return;
+    dxRef.current = e.clientX - startXRef.current;
+    setDragX(dxRef.current);
+  };
+  const endDrag = () => {
+    if (!draggingRef.current) return;
+    draggingRef.current = false;
+    setDragging(false);
+    setIsPaused(false);
+    const dx = dxRef.current;
+    setDragX(0);
+    if (dx <= -SWIPE_THRESHOLD) {
+      paginate(1);
+    } else if (dx >= SWIPE_THRESHOLD) {
+      paginate(-1);
+    } else {
+      // Below threshold: ease back to centre.
+      setSnapBack(true);
+      window.setTimeout(() => setSnapBack(false), 300);
+    }
+  };
 
   // Auto-play with pause on hover
   useEffect(() => {
@@ -108,46 +130,38 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
         className="relative min-h-[340px] sm:min-h-[300px] md:min-h-[280px] flex items-center"
         aria-atomic="true"
       >
-        <AnimatePresence initial={false} custom={direction} mode="wait">
-          <motion.article
-            key={currentIndex}
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{
-              x: { type: 'spring', stiffness: 260, damping: 28 },
-              opacity: { duration: 0.35 },
-            }}
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.2}
-            onDragEnd={(_e, { offset, velocity }) => {
-              const swipe = swipePower(offset.x, velocity.x);
-              if (swipe < -swipeConfidenceThreshold) paginate(1);
-              else if (swipe > swipeConfidenceThreshold) paginate(-1);
-            }}
-            className="absolute inset-0 w-full px-2 sm:px-6 flex flex-col justify-center text-center"
-            aria-roledescription="diapositive"
-            aria-label={`Témoignage ${currentIndex + 1} sur ${testimonials.length}`}
-          >
-            {/* No star row here. These quotes are LinkedIn recommendations, which
-                carry no rating — painting five stars on each one invents a score
-                the author never gave. See the note in src/pages/Testimonials.tsx. */}
-            <blockquote className="text-base sm:text-lg md:text-2xl text-foreground italic mb-6 leading-relaxed sm:leading-relaxed md:leading-relaxed max-w-3xl mx-auto px-2">
-              «&nbsp;{current.quote}&nbsp;»
-            </blockquote>
+        <article
+          key={currentIndex}
+          className="carousel-slide absolute inset-0 w-full px-2 sm:px-6 flex flex-col justify-center text-center cursor-grab active:cursor-grabbing select-none"
+          data-dir={direction}
+          data-dragging={dragging ? 'true' : 'false'}
+          style={{
+            transform: dragX ? `translateX(${dragX}px)` : undefined,
+            transition: snapBack ? 'transform .3s cubic-bezier(.16,1,.3,1)' : undefined,
+            touchAction: 'pan-y',
+          }}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={endDrag}
+          onPointerCancel={endDrag}
+          aria-roledescription="diapositive"
+          aria-label={`Témoignage ${currentIndex + 1} sur ${testimonials.length}`}
+        >
+          {/* No star row here. These quotes are LinkedIn recommendations, which
+              carry no rating — painting five stars on each one invents a score
+              the author never gave. See the note in src/pages/Testimonials.tsx. */}
+          <blockquote className="text-base sm:text-lg md:text-2xl text-foreground italic mb-6 leading-relaxed sm:leading-relaxed md:leading-relaxed max-w-3xl mx-auto px-2">
+            «&nbsp;{current.quote}&nbsp;»
+          </blockquote>
 
-            <footer className="space-y-1">
-              <p className="font-bold text-base md:text-lg text-foreground">{current.name}</p>
-              <p className="text-sm md:text-base text-muted-foreground">{current.role}</p>
-              {current.company && (
-                <p className="text-sm text-accent font-medium">{current.company}</p>
-              )}
-            </footer>
-          </motion.article>
-        </AnimatePresence>
+          <footer className="space-y-1">
+            <p className="font-bold text-base md:text-lg text-foreground">{current.name}</p>
+            <p className="text-sm md:text-base text-muted-foreground">{current.role}</p>
+            {current.company && (
+              <p className="text-sm text-accent font-medium">{current.company}</p>
+            )}
+          </footer>
+        </article>
       </div>
 
       {/* Navigation buttons — hidden on small screens (swipe instead) */}

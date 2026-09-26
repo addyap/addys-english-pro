@@ -1,39 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 
 /**
- * Reading Progress Bar Component
- * Shows scroll progress at the top of the page
+ * Reading Progress Bar — scroll progress at the top of the page.
+ * Vanilla (was framer-motion); RAF-throttled, passive listener.
  */
 const ReadingProgress: React.FC = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const updateProgress = () => {
+    let ticking = false;
+    const update = () => {
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = window.scrollY;
-      const progress = (scrolled / scrollHeight) * 100;
-      setProgress(Math.min(progress, 100));
+      setProgress(scrollHeight > 0 ? Math.min((window.scrollY / scrollHeight) * 100, 100) : 0);
+      ticking = false;
     };
-
-    window.addEventListener('scroll', updateProgress, { passive: true });
-    updateProgress(); // Initial calculation
-
-    return () => window.removeEventListener('scroll', updateProgress);
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    update();
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
-    <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-primary/20 z-50"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-    >
-      <motion.div
-        className="h-full bg-primary"
+    <div className="fixed top-0 left-0 right-0 h-1 bg-primary/20 z-50" aria-hidden="true">
+      <div
+        className="h-full bg-primary origin-left will-change-[width]"
         style={{ width: `${progress}%` }}
-        transition={{ duration: 0.1 }}
       />
-    </motion.div>
+    </div>
   );
 };
 
