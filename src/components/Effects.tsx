@@ -1,6 +1,5 @@
 
-import { useEffect, useState, useCallback, memo } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState, memo } from "react";
 
 // Optimized with passive listener and RAF throttling for better scroll performance
 export const ScrollProgressBar = memo(() => {
@@ -40,17 +39,6 @@ export const ScrollProgressBar = memo(() => {
     />
   );
 });
-
-export const FadeInSection = ({ children }: { children: React.ReactNode }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 }}
-    viewport={{ once: true }}
-  >
-    {children}
-  </motion.div>
-);
 
 export const Accordion = ({ title, children }: { title: string; children: React.ReactNode }) => {
   const [open, setOpen] = useState(false);
