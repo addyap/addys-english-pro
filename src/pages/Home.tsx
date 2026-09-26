@@ -20,18 +20,6 @@ import { PLATFORM_COUNT } from '@/data/platforms';
 const FORMATION_ICONS = { Globe, Sparkles, Settings } as const;
 
 
-// ⚠️ The hard "700+" figure that used to live here is gone.
-//
-// It was justified by a comment saying anglaisadistance.fr "itself advertises
-// 700+ interactive exercises" and had to be kept in lockstep with it. That is no
-// longer true: the platform's homepage now counts *questions*, not exercises, and
-// its highest visible figure is "59+". Two sites publishing different numbers for
-// the same thing is worse than publishing none, and an unverifiable precise count
-// is the first thing a sceptical prospect will check.
-//
-// If you want the number back, take the real count from the platform and set it
-// here — the banner renders the figure whenever this is non-null.
-const EXERCISE_COUNT: number | null = null;
 
 // Client logos data for lazy carousel
 const CLIENT_LOGOS = [
@@ -412,47 +400,14 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Quick Exercises CTA Banner - More subtle, value-focused */}
-        <section className="py-5 sm:py-6 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
-          <div className="max-w-6xl mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4">
-              <div className="flex items-center gap-3 sm:gap-4 w-full md:w-auto">
-                <div className="bg-white/20 rounded-full p-2 sm:p-2.5 animate-pulse shrink-0">
-                  <Award className="h-5 w-5" />
-                </div>
-                <div className="min-w-0">
-                  <p className="font-bold text-base sm:text-lg flex flex-wrap items-center gap-x-2 gap-y-1 leading-tight">
-                    <span className="bg-white/20 px-2 py-0.5 rounded text-xs sm:text-sm">100% GRATUIT</span>
-                    <span>Ressources pédagogiques en accès libre</span>
-                  </p>
-                  <p className="text-xs sm:text-sm text-white/90 mt-1">
-                    {EXERCISE_COUNT ? `${EXERCISE_COUNT}+ exercices interactifs` : 'Exercices interactifs corrigés'} • Créés par un formateur certifié
-                  </p>
-                </div>
-              </div>
-              {/* Internal, to the list of all platforms. Was an external deep
-                  link into one grammar exercise on anglaisadistance.fr — the ↗
-                  and ExternalLink icon go with it, since this no longer leaves
-                  the site. */}
-              <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
-                <Link
-                  to="/ressources-en-ligne"
-                  onClick={() => trackEvent('home_resources_banner_click', { page: 'home', target: '/ressources-en-ligne' })}
-                  className="bg-white text-emerald-700 px-5 py-2.5 rounded-lg font-bold text-sm sm:text-base hover:bg-white/90 transition-all flex items-center gap-2 whitespace-nowrap shadow-lg hover:scale-105 w-full md:w-auto justify-center"
-                >
-                  Voir les {PLATFORM_COUNT} plateformes
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Platforms showcase — the Fluentory banner as a breadth/credibility
-            signal. Free is stated in the present ("en accès libre"), never as a
+        {/* Platforms showcase — the single free-resources moment on the page
+            (the emerald "Quick Exercises" banner that used to sit above this was
+            a duplicate CTA to the same /ressources-en-ligne, in an off-brand
+            teal; its "gratuit / accès libre" message now lives in the badge
+            below). Free is stated in the present ("en accès libre"), never as a
             permanent promise; the AI angle stays a discreet aside, not the pitch. */}
         <section className="py-12 sm:py-16 bg-white" aria-labelledby="platforms-heading">
-          <div className="max-w-5xl mx-auto px-4 text-center">
+          <Reveal className="max-w-5xl mx-auto px-4 text-center">
             <p className="text-sm font-semibold uppercase tracking-wide text-accent-foreground mb-2">
               Fluentory <span className="text-muted-foreground normal-case tracking-normal">by Antony Addy</span>
             </p>
@@ -462,6 +417,10 @@ const Home = () => {
             <h2 id="platforms-heading" className="text-2xl sm:text-3xl font-bold text-primary mb-3 font-heading">
               Un formateur, {PLATFORM_COUNT} plateformes d'entraînement
             </h2>
+            <p className="inline-flex items-center gap-1.5 mb-4 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold uppercase tracking-wide">
+              <Award className="h-3.5 w-3.5" aria-hidden="true" />
+              Gratuit · sans inscription
+            </p>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
               Grammaire, TOEIC, CLOE, compréhension et expression orales : je conçois
               et enrichis mes propres outils d'entraînement, en accès libre. Ma
@@ -491,7 +450,7 @@ const Home = () => {
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover/cta:translate-x-1" aria-hidden="true" />
               </Link>
             </p>
-          </div>
+          </Reveal>
         </section>
 
         {/* Features Section - 6 blocks in 2x3 grid */}
@@ -590,19 +549,19 @@ const Home = () => {
           <div className="aurora" aria-hidden="true" />
           <Reveal className="relative z-10 max-w-4xl mx-auto px-4 text-center">
             <h3 className="text-2xl md:text-3xl font-bold text-primary mb-4 font-heading">
-              Prêt à progresser ?
+              Quel est votre niveau d'anglais aujourd'hui ?
             </h3>
             <p className="text-lg text-muted-foreground mb-6 font-body">
-              Grammaire, compréhension orale, préparation TOEIC et CLOE, entraînement à l'oral —
-              en accès libre, sans inscription.
+              Faites le test de positionnement : un résultat sur l'échelle CECRL (A1 → C1)
+              et des repères concrets pour progresser. Gratuit, sans inscription, en quelques minutes.
             </p>
             <Link
-              to="/ressources-en-ligne"
-              onClick={() => trackEvent('home_resources_cta_click', { page: 'home', location: 'progress-cta', target: '/ressources-en-ligne' })}
-              className="inline-flex items-center gap-2 bg-emerald-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-emerald-700 transition-all hover:scale-105 shadow-lg"
+              to="/test-de-positionnement"
+              onClick={() => trackEvent('home_assessment_cta_click', { page: 'home', location: 'assessment-cta', target: '/test-de-positionnement' })}
+              className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-4 rounded-xl font-semibold hover:bg-accent/90 transition-all hover:scale-105 shadow-lg"
             >
-              <Sparkles className="h-5 w-5" aria-hidden="true" />
-              Explorer les plateformes gratuites
+              <Target className="h-5 w-5" aria-hidden="true" />
+              Évaluer mon niveau — test gratuit
               <ArrowRight className="h-5 w-5" aria-hidden="true" />
             </Link>
           </Reveal>
