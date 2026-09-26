@@ -3,7 +3,8 @@ import React from 'react';
 import { Users, Building, GraduationCap, CheckCircle, AlertCircle, Globe, MapPin, Phone, Mail, Clock3, CalendarClock, ClipboardCheck, Euro, Accessibility } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
-import { FadeInSection, Accordion } from '../components/Effects';
+import { Accordion } from '../components/Effects';
+import { Reveal } from '@/components/motion/Reveal';
 import { CourseSchema } from '@/lib/seo/structuredData';
 import { formatMonthYearFR } from '@/lib/utils';
 import { PLATFORM_COUNT } from '@/data/platforms';
@@ -210,7 +211,7 @@ const Training = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header */}
-          <FadeInSection>
+          <Reveal>
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold text-primary mb-4">
                 Formations d'anglais professionnel
@@ -219,12 +220,12 @@ const Training = () => {
                 Des formations concrètes pour communiquer avec confiance en anglais dans votre vie professionnelle
               </p>
             </div>
-          </FadeInSection>
+          </Reveal>
 
           <hr className="border-t border-border mb-12" />
 
           {/* Quick audience shortcuts */}
-          <FadeInSection>
+          <Reveal>
             <div className="grid sm:grid-cols-3 gap-4 mb-12">
               {audienceShortcuts.map((a) => (
                 <button
@@ -242,10 +243,10 @@ const Training = () => {
                 </button>
               ))}
             </div>
-          </FadeInSection>
+          </Reveal>
 
           {/* Per-audience landing page links */}
-          <FadeInSection>
+          <Reveal>
             <div className="mb-12 bg-gradient-to-br from-primary/5 to-accent/5 rounded-lg p-6 sm:p-8 border border-border">
               <h2 className="text-xl sm:text-2xl font-bold text-primary mb-2 font-heading">Voir le détail par profil</h2>
               <p className="text-sm text-muted-foreground mb-5">Chaque profil a sa propre page dédiée avec FAQ et exemples concrets.</p>
@@ -264,11 +265,11 @@ const Training = () => {
                 </Link>
               </div>
             </div>
-          </FadeInSection>
+          </Reveal>
 
 
           {/* Formations professionnelles spécialisées (AI-powered) */}
-          <FadeInSection>
+          <Reveal>
             <div id="formations-professionnelles" className="bg-white rounded-lg shadow-lg p-6 sm:p-8 mb-12 scroll-mt-24">
               <div className="flex items-center mb-4">
                 <span className="text-2xl mr-3" aria-hidden="true">🎯</span>
@@ -348,10 +349,10 @@ const Training = () => {
                 </a>
               </div>
             </div>
-          </FadeInSection>
+          </Reveal>
 
 
-          <FadeInSection>
+          <Reveal>
             <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
               <h2 className="text-2xl font-bold text-primary mb-4">Pour qui ?</h2>
               
@@ -367,10 +368,10 @@ const Training = () => {
                 <strong className="text-primary">Étudiants en école de commerce ou formation continue</strong> qui préparent leur entrée dans le monde professionnel.
               </p>
             </div>
-          </FadeInSection>
+          </Reveal>
 
           {/* Formation categories with Accordion */}
-          <FadeInSection>
+          <Reveal>
             <div id="formations" className="bg-white rounded-lg shadow-lg p-8 mb-12 scroll-mt-24">
               <div className="flex items-center mb-6">
                 <span className="text-2xl mr-3">📚</span>
@@ -387,10 +388,10 @@ const Training = () => {
                 <p>Interventions dans des établissements comme ESCCOM, ITEC, et universités, avec approche certifiée.</p>
               </Accordion>
             </div>
-          </FadeInSection>
+          </Reveal>
 
           {/* Ce que je propose */}
-          <FadeInSection>
+          <Reveal>
             <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
               <div className="flex items-center mb-6">
                 <span className="text-2xl mr-3">🎯</span>
@@ -428,10 +429,10 @@ const Training = () => {
                 </p>
               </div>
             </div>
-          </FadeInSection>
+          </Reveal>
 
           {/* Où et comment */}
-          <FadeInSection>
+          <Reveal>
             <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
               <div className="flex items-center mb-6">
                 <span className="text-2xl mr-3">📍</span>
@@ -461,10 +462,10 @@ const Training = () => {
                 <p>• Rythme flexible, selon vos besoins</p>
               </div>
             </div>
-          </FadeInSection>
+          </Reveal>
 
           {/* Informations pratiques — mentions obligatoires art. L.6353-8 */}
-          <FadeInSection>
+          <Reveal>
             <div id="modalites" className="bg-white rounded-lg shadow-lg p-8 mb-12 scroll-mt-24">
               <div className="flex items-center mb-3">
                 <span className="text-2xl mr-3">📋</span>
@@ -496,10 +497,10 @@ const Training = () => {
                 .
               </p>
             </div>
-          </FadeInSection>
+          </Reveal>
 
           {/* Financement */}
-          <FadeInSection>
+          <Reveal>
             <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
               <div className="flex items-center mb-6">
                 <span className="text-2xl mr-3">💼</span>
@@ -527,10 +528,10 @@ const Training = () => {
                 personnel — un circuit plus simple et sans dossier administratif.
               </p>
             </div>
-          </FadeInSection>
+          </Reveal>
 
           {/* Authority Resources Section */}
-          <FadeInSection>
+          <Reveal>
             <div className="bg-muted/50 border border-border rounded-lg p-8 mb-12">
               <div className="flex items-center mb-6">
                 <span className="text-2xl mr-3">📚</span>
@@ -579,10 +580,10 @@ const Training = () => {
                 <strong>Dernière mise à jour :</strong> {formatMonthYearFR()}
               </p>
             </div>
-          </FadeInSection>
+          </Reveal>
 
           {/* Et en attendant */}
-          <FadeInSection>
+          <Reveal>
             <div className="bg-primary/5 border border-primary/10 rounded-lg p-8 mb-12">
               <div className="flex items-center mb-6">
                 <span className="text-2xl mr-3">🌐</span>
@@ -605,10 +606,10 @@ const Training = () => {
                 et un entraîneur d'expression orale. Accès libre, sans inscription.
               </p>
             </div>
-          </FadeInSection>
+          </Reveal>
 
           {/* Contact */}
-          <FadeInSection>
+          <Reveal>
             <div className="bg-white rounded-lg shadow-lg p-8 text-center">
               <h2 className="text-2xl font-bold text-primary mb-4">Commencer</h2>
               
@@ -644,7 +645,7 @@ const Training = () => {
                 Réponse sous 24 h ouvrées • Sans engagement • Devis gratuit
               </p>
             </div>
-          </FadeInSection>
+          </Reveal>
         </div>
       </div>
     </>

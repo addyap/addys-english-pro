@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Sparkles, ArrowRight, Gift, RefreshCw } from 'lucide-react';
 import SEOHead from '@/components/SEOHead';
-import { FadeInSection } from '@/components/Effects';
+import { Reveal } from '@/components/motion/Reveal';
 import { EXPERIENCE_FLOOR } from '@/lib/utils';
 import { PLATFORMS } from '@/data/platforms';
 
@@ -40,7 +40,7 @@ const RessourcesEnLigne = () => {
         {/* Hero */}
         <section className="bg-gradient-to-br from-primary/5 to-accent/5 py-16 sm:py-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <FadeInSection>
+            <Reveal>
               <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 text-accent-foreground px-4 py-1.5 text-sm font-semibold mb-6">
                 <Sparkles className="h-4 w-4" aria-hidden="true" />
                 Conçues par un formateur certifié FPA
@@ -59,13 +59,13 @@ const RessourcesEnLigne = () => {
                 progresser en autonomie, comprendre la grammaire, préparer une certification.{' '}
                 <span className="font-semibold text-primary">Toutes sont gratuites et enrichies en continu.</span>
               </p>
-            </FadeInSection>
+            </Reveal>
           </div>
         </section>
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           {/* Fluentory banner — the platform collection at a glance */}
-          <FadeInSection>
+          <Reveal>
             <img
               src="/fluentory-plateformes.webp"
               alt="Fluentory — mes plateformes d'apprentissage de l'anglais : CLOE Prep, SpeakUp AI, TOEIC, ListenUp, Anglais à Distance et Grammatica."
@@ -74,7 +74,7 @@ const RessourcesEnLigne = () => {
               loading="lazy"
               className="mb-12 sm:mb-14 w-full rounded-2xl border border-border shadow-sm"
             />
-          </FadeInSection>
+          </Reveal>
 
           {/* Platform grid */}
           <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
@@ -115,7 +115,7 @@ const RessourcesEnLigne = () => {
               );
 
               return (
-                <FadeInSection key={p.host}>
+                <Reveal key={p.host}>
                   <a
                     href={p.url}
                     target="_blank"
@@ -124,13 +124,13 @@ const RessourcesEnLigne = () => {
                   >
                     {inner}
                   </a>
-                </FadeInSection>
+                </Reveal>
               );
             })}
           </div>
 
           {/* Why AI note */}
-          <FadeInSection>
+          <Reveal>
             <section className="mt-14 rounded-2xl border border-border bg-white p-6 sm:p-8 shadow-sm">
               <h2 className="mb-4 text-2xl sm:text-3xl font-bold text-primary font-heading">
                 Pourquoi ces outils ?
@@ -159,10 +159,10 @@ const RessourcesEnLigne = () => {
                 </p>
               </div>
             </section>
-          </FadeInSection>
+          </Reveal>
 
           {/* Closing CTA back to the main site */}
-          <FadeInSection>
+          <Reveal>
             <section className="mt-12 rounded-2xl bg-gradient-to-r from-primary to-primary/80 p-8 sm:p-10 text-center text-white">
               <h2 className="mb-3 text-2xl sm:text-3xl font-bold font-heading">
                 Envie d'un accompagnement sur-mesure ?
@@ -186,7 +186,7 @@ const RessourcesEnLigne = () => {
                 </Link>
               </div>
             </section>
-          </FadeInSection>
+          </Reveal>
         </div>
       </div>
     </>

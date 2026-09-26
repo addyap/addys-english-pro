@@ -17,6 +17,7 @@ import SEOHead from '../components/SEOHead';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 import { trackEvent } from '@/lib/analytics';
 import ReadingProgress from '../components/ReadingProgress';
+import { Reveal } from '@/components/motion/Reveal';
 import SocialShare from '../components/SocialShare';
 import { ArticleSchema } from '@/lib/seo/structuredData';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
@@ -133,9 +134,11 @@ const BlogArticle = () => {
             </div>
             
             <header>
-              <h1 className="text-4xl font-bold text-gray-900 mb-6">
-                {article.title}
-              </h1>
+              <Reveal>
+                <h1 className="text-4xl font-bold text-gray-900 mb-6">
+                  {article.title}
+                </h1>
+              </Reveal>
               
               <div className="flex items-center space-x-6 text-gray-500 text-sm border-b border-gray-200 pb-6 mb-8">
                 <div className="flex items-center">

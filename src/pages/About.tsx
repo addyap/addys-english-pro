@@ -3,7 +3,7 @@ import { YEARS_OF_EXPERIENCE, EXPERIENCE_FLOOR } from '@/lib/utils';
 import { Award, Globe, Target, Mail, MapPin, Phone, Factory, School, University, Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
-import { FadeInSection } from '../components/Effects';
+import { Reveal } from '@/components/motion/Reveal';
 import { trackEvent } from '@/lib/analytics';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 
@@ -74,7 +74,7 @@ const About = () => {
       <div className="min-h-screen bg-background py-12">
         <div className="max-w-4xl mx-auto px-4">
           {/* Header */}
-          <FadeInSection>
+          <Reveal>
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold text-primary mb-6">
                 Qui je suis
@@ -83,10 +83,10 @@ const About = () => {
                 Formateur britannique certifié, spécialisé dans l'anglais professionnel pour adultes en France
               </p>
             </div>
-          </FadeInSection>
+          </Reveal>
 
           {/* Content */}
-          <FadeInSection>
+          <Reveal>
             <div className="bg-white rounded-lg shadow-lg p-8">
               <div className="flex items-center mb-6">
                 <h2 className="text-2xl font-bold text-primary">Antony Addy</h2>
@@ -151,10 +151,10 @@ const About = () => {
                 </p>
               </div>
             </div>
-          </FadeInSection>
+          </Reveal>
 
           {/* Mes clients */}
-          <FadeInSection>
+          <Reveal>
             <div className="bg-white rounded-lg shadow-lg p-8 mt-12">
               <div className="flex items-center mb-6">
                 <span className="text-2xl mr-3">🏢</span>
@@ -197,10 +197,10 @@ const About = () => {
                 J'interviens auprès de structures variées, de la PME aux grands groupes, en passant par les écoles de commerce et les organismes de formation professionnelle.
               </p>
             </div>
-          </FadeInSection>
+          </Reveal>
 
           {/* Zone d'intervention */}
-          <FadeInSection>
+          <Reveal>
             <div className="bg-white rounded-lg shadow-lg p-8 mt-12">
               <div className="flex items-center mb-6">
                 <span className="text-2xl mr-3">📍</span>
@@ -229,10 +229,10 @@ const About = () => {
                 </div>
               </div>
             </div>
-          </FadeInSection>
+          </Reveal>
 
           {/* Contact */}
-          <FadeInSection>
+          <Reveal>
             <div className="bg-white rounded-lg shadow-lg p-8 mt-12 text-center">
               <h2 className="text-2xl font-bold text-primary mb-4">Prêt à progresser ?</h2>
               
@@ -264,7 +264,7 @@ const About = () => {
                 Réponse sous 24 h ouvrées • Aucun engagement
               </p>
             </div>
-          </FadeInSection>
+          </Reveal>
         </div>
       </div>
     </>;

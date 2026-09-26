@@ -5,6 +5,7 @@ import SEOHead from '../components/SEOHead';
 import { trackFormSubmission, trackFormError, trackWhatsAppClick, trackEmailClick, trackEvent } from '@/lib/analytics';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
+import { Reveal } from '@/components/motion/Reveal';
 
 const Contact = () => {
   const contactJsonLd = {
@@ -218,7 +219,7 @@ const Contact = () => {
           )}
 
           {/* Header */}
-          <header className="text-center mb-12">
+          <Reveal as="header" className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
               Prenons contact
             </h1>
@@ -229,7 +230,8 @@ const Contact = () => {
               Formation finançable directement par votre entreprise (convention de formation sur fonds propres)
               ou à titre personnel. Non éligible au CPF.
             </p>
-          </header>
+            <span className="heading-rule" aria-hidden="true" />
+          </Reveal>
 
           <div className="grid lg:grid-cols-2 gap-12">
             

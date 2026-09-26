@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle } from 'lucide-react';
 import SEOHead from '@/components/SEOHead';
-import { FadeInSection, Accordion } from '@/components/Effects';
+import { Accordion } from '@/components/Effects';
+import { Reveal, RevealStagger } from '@/components/motion/Reveal';
 import SocialProof from '@/components/SocialProof';
 
 export interface AudienceFAQ { q: string; a: string }
@@ -43,9 +44,10 @@ export const AudienceLandingPage: React.FC<AudiencePageProps> = ({
       />
       <div className="min-h-screen bg-background">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-primary/5 to-accent/5 py-16 sm:py-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <FadeInSection>
+        <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5 py-16 sm:py-20">
+          <div className="aurora" aria-hidden="true" />
+          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <Reveal>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 font-heading leading-tight">
                 {h1}
               </h1>
@@ -55,83 +57,77 @@ export const AudienceLandingPage: React.FC<AudiencePageProps> = ({
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
                   to={ctaHref}
-                  className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors"
+                  className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300"
                 >
                   {ctaLabel}
                 </Link>
               </div>
-            </FadeInSection>
+              <span className="heading-rule" aria-hidden="true" />
+            </Reveal>
           </div>
         </section>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           {/* Pour qui */}
-          <FadeInSection>
-            <section className="mb-12">
-              <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4 font-heading">Pour qui</h2>
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{pourQui}</p>
-            </section>
-          </FadeInSection>
+          <Reveal as="section" className="mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4 font-heading">Pour qui</h2>
+            <span className="heading-rule is-left" aria-hidden="true" />
+            <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">{pourQui}</p>
+          </Reveal>
 
           {/* Comment je travaille */}
-          <FadeInSection>
-            <section className="mb-12 bg-white rounded-lg shadow-sm p-6 sm:p-8 border border-border">
-              <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-6 font-heading">Comment je travaille</h2>
-              <div className="space-y-4">
-                {comment.map((para, i) => (
-                  <p key={i} className="text-base text-muted-foreground leading-relaxed">{para}</p>
-                ))}
-              </div>
-            </section>
-          </FadeInSection>
+          <Reveal as="section" variant="scale" className="mb-12 bg-white rounded-lg shadow-sm p-6 sm:p-8 border border-border">
+            <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-6 font-heading">Comment je travaille</h2>
+            <div className="space-y-4">
+              {comment.map((para, i) => (
+                <p key={i} className="text-base text-muted-foreground leading-relaxed">{para}</p>
+              ))}
+            </div>
+          </Reveal>
 
           {/* Ce que vous obtenez */}
-          <FadeInSection>
-            <section className="mb-12">
+          <section className="mb-12">
+            <Reveal>
               <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-6 font-heading">Ce que vous obtenez</h2>
-              <ul className="space-y-3">
-                {benefits.map((b, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" aria-hidden="true" />
-                    <span className="text-base text-foreground leading-relaxed">{b}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </FadeInSection>
+            </Reveal>
+            <RevealStagger as="ul" className="space-y-3">
+              {benefits.map((b, i) => (
+                <Reveal key={i} as="li" variant="left" className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" aria-hidden="true" />
+                  <span className="text-base text-foreground leading-relaxed">{b}</span>
+                </Reveal>
+              ))}
+            </RevealStagger>
+          </section>
 
           {/* FAQ */}
-          <FadeInSection>
-            <section className="mb-12">
-              <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-6 font-heading">Questions fréquentes</h2>
-              <div>
-                {faqs.map((f, i) => (
-                  <Accordion key={i} title={f.q}>
-                    <p>{f.a}</p>
-                  </Accordion>
-                ))}
-              </div>
-            </section>
-          </FadeInSection>
+          <Reveal as="section" className="mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-6 font-heading">Questions fréquentes</h2>
+            <div>
+              {faqs.map((f, i) => (
+                <Accordion key={i} title={f.q}>
+                  <p>{f.a}</p>
+                </Accordion>
+              ))}
+            </div>
+          </Reveal>
 
           {/* Closing CTA */}
-          <FadeInSection>
+          <Reveal>
             <SocialProof />
-          </FadeInSection>
+          </Reveal>
 
-          <FadeInSection>
-            <section className="bg-gradient-to-r from-primary to-primary/80 text-white rounded-lg p-8 sm:p-10 text-center">
-              <p className="text-lg sm:text-xl mb-6 leading-relaxed">{closingPitch}</p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link
-                  to={ctaHref}
-                  className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors"
-                >
-                  {ctaLabel}
-                </Link>
-              </div>
-            </section>
-          </FadeInSection>
+          <Reveal as="section" variant="scale" className="bg-gradient-to-r from-primary to-primary/80 text-white rounded-lg p-8 sm:p-10 text-center">
+            <p className="text-lg sm:text-xl mb-6 leading-relaxed">{closingPitch}</p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link
+                to={ctaHref}
+                className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300"
+              >
+                {ctaLabel}
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </div>
     </>

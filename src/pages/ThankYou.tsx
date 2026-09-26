@@ -4,6 +4,7 @@ import { CheckCircle2, MessageSquare, Sparkles, ArrowLeft } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import { trackEvent } from "@/lib/analytics";
 import { useWhatsAppLink } from "@/hooks/useWhatsAppLink";
+import { Reveal } from "@/components/motion/Reveal";
 
 const ThankYou: React.FC = () => {
   const whatsappLink = useWhatsAppLink();
@@ -21,7 +22,7 @@ const ThankYou: React.FC = () => {
       />
 
       <div className="min-h-screen bg-gray-50 py-16 px-4">
-        <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12 text-center">
+        <Reveal as="div" variant="scale" className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12 text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-6">
             <CheckCircle2 className="w-9 h-9 text-green-600" aria-hidden="true" />
           </div>
@@ -73,7 +74,7 @@ const ThankYou: React.FC = () => {
               Retour à l'accueil
             </Link>
           </div>
-        </div>
+        </Reveal>
       </div>
     </>
   );

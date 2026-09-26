@@ -299,3 +299,78 @@ All colors MUST be HSL.
   .ll-rider{ display:none; }
   .ll-dot--c{ animation:none; }
 }
+
+/* =====================================================================
+   Motion system — scroll-reveal + ambient brand accents.
+
+   Reveal styles are scoped to `html.js` (set by an inline script in
+   index.html before first paint). With JS off/broken/loading, content is
+   fully visible — the animation is pure progressive enhancement, never a
+   gate on content. prefers-reduced-motion collapses movement to a plain,
+   near-instant fade. Uses only opacity + transform (compositor-friendly).
+   ===================================================================== */
+html.js .reveal{
+  opacity:0;
+  transform:translate3d(0, 22px, 0);
+  transition:
+    opacity .7s cubic-bezier(.16,1,.3,1) var(--reveal-delay, 0ms),
+    transform .7s cubic-bezier(.16,1,.3,1) var(--reveal-delay, 0ms);
+  will-change:opacity, transform;
+}
+html.js .reveal[data-reveal="fade"]{ transform:none; }
+html.js .reveal[data-reveal="scale"]{ transform:translate3d(0,14px,0) scale(.97); }
+html.js .reveal[data-reveal="left"]{ transform:translate3d(-28px,0,0); }
+html.js .reveal[data-reveal="right"]{ transform:translate3d(28px,0,0); }
+
+html.js .reveal[data-inview="true"]{
+  opacity:1;
+  transform:none;
+}
+
+/* Once revealed, drop will-change so we don't hold layers forever. */
+html.js .reveal[data-inview="true"]{ will-change:auto; }
+
+@media (prefers-reduced-motion:reduce){
+  html.js .reveal{
+    transform:none !important;
+    transition:opacity .35s ease var(--reveal-delay, 0ms) !important;
+  }
+}
+
+/* Ambient brand aurora — a slow, GPU-cheap drifting glow used behind select
+   light sections to echo the navy→purple→red hero without a heavy asset.
+   Decorative only; sits behind content and is aria-hidden by the markup. */
+.aurora{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+.aurora::before,
+.aurora::after{
+  content:""; position:absolute; border-radius:50%;
+  filter:blur(60px); opacity:.16;
+}
+.aurora::before{
+  width:46vw; height:46vw; top:-12vw; left:-8vw;
+  background:radial-gradient(circle at 50% 50%, hsl(var(--secondary)), transparent 68%);
+  animation:aurora-a 22s ease-in-out infinite alternate;
+}
+.aurora::after{
+  width:40vw; height:40vw; bottom:-14vw; right:-10vw;
+  background:radial-gradient(circle at 50% 50%, hsl(var(--accent)), transparent 66%);
+  animation:aurora-b 26s ease-in-out infinite alternate;
+}
+@keyframes aurora-a{ from{ transform:translate3d(0,0,0) scale(1); } to{ transform:translate3d(6vw,4vw,0) scale(1.12); } }
+@keyframes aurora-b{ from{ transform:translate3d(0,0,0) scale(1.05); } to{ transform:translate3d(-5vw,-3vw,0) scale(1); } }
+@media (prefers-reduced-motion:reduce){
+  .aurora::before,.aurora::after{ animation:none; }
+}
+
+/* Signature underline that draws in when its Reveal enters — for section
+   headings. Pairs with the .heading-rule element. */
+.heading-rule{
+  display:block; height:3px; width:56px; margin:.9rem auto 0; border-radius:99px;
+  background:linear-gradient(90deg, hsl(var(--secondary)), hsl(var(--accent)));
+  transform-origin:center; transform:scaleX(.25); opacity:.4;
+  transition:transform .8s cubic-bezier(.16,1,.3,1) .1s, opacity .8s ease .1s;
+}
+.heading-rule.is-left{ margin-left:0; margin-right:auto; transform-origin:left; }
+html.js .reveal[data-inview="true"] .heading-rule,
+.reveal[data-inview="true"] .heading-rule{ transform:scaleX(1); opacity:1; }
+@media (prefers-reduced-motion:reduce){ .heading-rule{ transition:opacity .3s ease; } }

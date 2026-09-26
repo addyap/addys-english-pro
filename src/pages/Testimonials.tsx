@@ -4,6 +4,7 @@ import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import SEOHead from '../components/SEOHead';
 import { EXPERIENCE_FLOOR, PRICE_RANGE, CONTENT_LAST_REVIEWED_ISO } from '@/lib/utils';
 import { TypingText } from '../components/TypingText';
+import { Reveal, RevealStagger } from '@/components/motion/Reveal';
 import { TestimonialSkeleton } from '../components/SkeletonLoader';
 import { testimonials } from '@/data/testimonials';
 import { PLATFORM_COUNT } from '@/data/platforms';
@@ -92,7 +93,7 @@ const Testimonials = () => {
         <div className="max-w-4xl mx-auto px-4">
           
           {/* Header */}
-          <div className="text-center mb-8">
+          <Reveal className="text-center mb-8">
             <h1 className="text-4xl font-bold text-foreground mb-6">
               Témoignages
             </h1>
@@ -106,10 +107,11 @@ const Testimonials = () => {
               pause={1800}
               className="text-lg font-medium text-center text-muted-foreground mb-6 block"
             />
-          </div>
+            <span className="heading-rule" aria-hidden="true" />
+          </Reveal>
 
           {/* Intro Section */}
-          <div className="bg-card border border-border rounded-xl p-6 mb-10">
+          <Reveal as="div" variant="scale" className="bg-card border border-border rounded-xl p-6 mb-10">
             <h2 className="text-xl font-semibold text-foreground mb-3 font-heading">
               Des avis authentiques de professionnels
             </h2>
@@ -144,17 +146,17 @@ const Testimonials = () => {
               </a>
               . Elles sont reproduites ici telles quelles, sans modification.
             </p>
-          </div>
+          </Reveal>
 
           {/* Testimonials */}
-          <div className="space-y-6">
+          <RevealStagger className="space-y-6">
             {isLoading ? (
               Array.from({ length: 5 }).map((_, index) => (
                 <TestimonialSkeleton key={index} />
               ))
             ) : (
               testimonials.map((testimonial, index) => (
-                <Card key={index} className="border-red-500 border-2 bg-card">
+                <Reveal as={Card} key={index} variant="up" className="border-red-500 border-2 bg-card transition-shadow duration-300 hover:shadow-lg">
                   <CardHeader>
                     <div className="text-red-500 text-4xl mb-2">"</div>
                     <p className="text-lg italic text-card-foreground leading-relaxed">
@@ -169,13 +171,13 @@ const Testimonials = () => {
                       {testimonial.role}
                     </p>
                   </CardContent>
-                </Card>
+                </Reveal>
               ))
             )}
-          </div>
+          </RevealStagger>
 
           {/* CTA Section */}
-          <div className="mt-12 bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-8 text-center border border-primary/20">
+          <Reveal as="div" variant="scale" className="mt-12 bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-8 text-center border border-primary/20">
             <h2 className="text-2xl font-bold text-foreground mb-3 font-heading">
               Prêt à rejoindre ces apprenants satisfaits ?
             </h2>
@@ -190,7 +192,7 @@ const Testimonials = () => {
                 Explorer les plateformes gratuites
               </Link>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </>

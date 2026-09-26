@@ -6,6 +6,7 @@ import SEOHead from '../components/SEOHead';
 import { EXPERIENCE_FLOOR } from '@/lib/utils';
 import BlogSearch from '../components/BlogSearch';
 import AnimatedCard from '../components/AnimatedCard';
+import { Reveal } from '@/components/motion/Reveal';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { grammarArticles } from '@/data/grammarBlogPosts';
 import { legacyBlogPosts } from '@/data/legacyBlogPosts';
@@ -117,14 +118,15 @@ const Blog = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header */}
-          <div className="text-center mb-12">
+          <Reveal className="text-center mb-12">
             <h1 className="text-4xl font-bold text-foreground mb-4">
               Blog Anglais Professionnel
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Conseils d'expert, astuces pratiques et ressources pour progresser en anglais. Articles rédigés par un formateur britannique certifié FPA, avec plus de {EXPERIENCE_FLOOR} ans d'expérience.
             </p>
-          </div>
+            <span className="heading-rule" aria-hidden="true" />
+          </Reveal>
 
           {/* Search and Filter */}
           <BlogSearch articles={articles} onFilterChange={handleFilterChange} />

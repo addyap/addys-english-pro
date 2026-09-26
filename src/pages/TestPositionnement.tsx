@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Play, Clock, CheckCircle, Zap, Smartphone, AlertCircle } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
-import { FadeInSection } from '../components/Effects';
+import { Reveal } from '@/components/motion/Reveal';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 import { trackEvent } from '@/lib/analytics';
@@ -82,7 +82,7 @@ const TestPositionnement = () => {
           <div className="absolute bottom-8 left-8 w-40 h-40 rounded-full bg-white/10" />
         </div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <FadeInSection>
+          <Reveal>
             <p className="text-amber-400 font-semibold text-sm uppercase tracking-wider mb-3 font-body">
               Ressource gratuite · CECRL A1 → C1
             </p>
@@ -120,14 +120,14 @@ const TestPositionnement = () => {
                 </span>
               ))}
             </div>
-          </FadeInSection>
+          </Reveal>
         </div>
       </section>
 
       {/* ── 2. ÉCHELLE CECRL ── */}
       <section className="bg-muted py-12 sm:py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection>
+          <Reveal>
             <h2 className="text-2xl sm:text-3xl font-bold text-primary text-center font-heading mb-3">
               Plus vous allez loin, plus votre niveau est élevé
             </h2>
@@ -152,14 +152,14 @@ const TestPositionnement = () => {
             <p className="text-center text-xs text-muted-foreground mt-6 max-w-xl mx-auto font-body italic">
               Niveau indicatif. Pour une évaluation complète (oral compris), contactez-moi avec votre score.
             </p>
-          </FadeInSection>
+          </Reveal>
         </div>
       </section>
 
       {/* ── 3. COMMENT ÇA MARCHE ── */}
       <section className="bg-white py-12 sm:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInSection>
+          <Reveal>
             <h2 className="text-2xl sm:text-3xl font-bold text-primary text-center font-heading mb-10 sm:mb-12">
               Comment ça marche ?
             </h2>
@@ -182,14 +182,14 @@ const TestPositionnement = () => {
                 </div>
               ))}
             </div>
-          </FadeInSection>
+          </Reveal>
         </div>
       </section>
 
       {/* ── 4. CTA CARD ── */}
       <section className="bg-background py-12 sm:py-16">
         <div className="max-w-xl mx-auto px-4 sm:px-6">
-          <FadeInSection>
+          <Reveal>
             <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-sm text-center">
               {testIsOpen ? (
                 <>
@@ -275,14 +275,14 @@ const TestPositionnement = () => {
                 </div>
               )}
             </div>
-          </FadeInSection>
+          </Reveal>
         </div>
       </section>
 
       {/* ── 5. FOOTER CTA ── */}
       <section className="bg-primary text-primary-foreground py-12 sm:py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <FadeInSection>
+          <Reveal>
             <h2 className="text-2xl sm:text-3xl font-bold font-heading mb-4">
               Vous avez votre score ? Parlons-en.
             </h2>
@@ -305,7 +305,7 @@ const TestPositionnement = () => {
             <p className="mt-4 text-xs text-white/70 font-body">
               Réponse sous 24 h ouvrées · Sans engagement
             </p>
-          </FadeInSection>
+          </Reveal>
         </div>
       </section>
     </>

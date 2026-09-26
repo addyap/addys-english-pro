@@ -8,6 +8,8 @@ import OptimizedHero from '../components/OptimizedHero';
 import { TypingText } from '../components/TypingText';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { LazyClientCarousel } from '@/components/LazySwiper';
+import { Reveal, RevealStagger } from '@/components/motion/Reveal';
+import CountUp from '@/components/motion/CountUp';
 
 import { trackEvent } from '@/lib/analytics';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
@@ -239,24 +241,30 @@ const Home = () => {
 
       {/* Trust / authority strip — instant credibility under the hero */}
       <section className="bg-background py-6 sm:py-8 border-b border-border" aria-label="Indicateurs de confiance">
-        <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
-          <div>
-            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">{YEARS_OF_EXPERIENCE}+</p>
+        <RevealStagger className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+          <Reveal variant="up">
+            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">
+              <CountUp value={YEARS_OF_EXPERIENCE} suffix="+" />
+            </p>
             <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Années d'expérience</p>
-          </div>
-          <div>
-            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">500+</p>
+          </Reveal>
+          <Reveal variant="up">
+            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">
+              <CountUp value={500} suffix="+" />
+            </p>
             <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Apprenants accompagnés</p>
-          </div>
-          <div>
+          </Reveal>
+          <Reveal variant="up">
             <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">FPA</p>
             <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Certifié depuis 2017</p>
-          </div>
-          <div>
-            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">24 h</p>
+          </Reveal>
+          <Reveal variant="up">
+            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">
+              <CountUp value={24} suffix=" h" />
+            </p>
             <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Réponse en jours ouvrés</p>
-          </div>
-        </div>
+          </Reveal>
+        </RevealStagger>
         <p className="max-w-4xl mx-auto px-4 mt-4 sm:mt-6 text-center text-xs sm:text-sm text-muted-foreground font-body leading-relaxed">
           Particuliers, salariés, étudiants (BTS, Bachelor, Master), cadres et équipes : préparation aux entretiens, examens, réunions et présentations en anglais.
         </p>
@@ -280,15 +288,16 @@ const Home = () => {
         {/* Mes 3 formations — hub access to English (this site), IA & SAP subdomains */}
         <section className="py-12 sm:py-16 bg-white border-b border-border" aria-labelledby="formations-hub-heading">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="text-center mb-8 sm:mb-10">
+            <Reveal className="text-center mb-8 sm:mb-10">
               <h2 id="formations-hub-heading" className="text-2xl sm:text-3xl font-bold text-primary font-heading mb-2">
                 Mes trois domaines de formation
               </h2>
               <p className="text-muted-foreground font-body max-w-2xl mx-auto">
                 Formateur Professionnel d'Adultes certifié, j'accompagne particuliers et entreprises sur trois expertises complémentaires.
               </p>
-            </div>
-            <div className="grid gap-5 sm:gap-6 md:grid-cols-3" role="list">
+              <span className="heading-rule" aria-hidden="true" />
+            </Reveal>
+            <RevealStagger className="grid gap-5 sm:gap-6 md:grid-cols-3" role="list">
               {FORMATIONS.map((f) => {
                 const Icon = FORMATION_ICONS[f.icon];
                 const isCurrent = !f.external;
@@ -309,17 +318,19 @@ const Home = () => {
                   </>
                 );
                 const cardClass =
-                  'group flex flex-col h-full text-left p-6 rounded-2xl border transition-all ' +
+                  'group flex flex-col h-full text-left p-6 rounded-2xl border transition-all duration-300 ' +
                   (isCurrent
                     ? 'bg-primary/5 border-primary/30'
-                    : 'bg-card border-border hover:shadow-lg hover:border-primary/40');
+                    : 'bg-card border-border hover:shadow-xl hover:border-primary/40 hover:-translate-y-1');
                 return isCurrent ? (
-                  <div key={f.key} className={cardClass} role="listitem" aria-current="page">
+                  <Reveal key={f.key} variant="scale" as="div" className={cardClass} role="listitem" aria-current="page">
                     {inner}
-                  </div>
+                  </Reveal>
                 ) : (
-                  <a
+                  <Reveal
                     key={f.key}
+                    variant="scale"
+                    as="a"
                     href={f.href}
                     target="_blank"
                     rel="noopener"
@@ -328,20 +339,23 @@ const Home = () => {
                     className={cardClass}
                   >
                     {inner}
-                  </a>
+                  </Reveal>
                 );
               })}
-            </div>
+            </RevealStagger>
           </div>
         </section>
 
         {/* Qui je suis Section - Updated with split layout */}
         <section className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-primary mb-12 text-center font-heading">Votre formateur</h2>
+            <Reveal className="mb-12 text-center">
+              <h2 className="text-3xl font-bold text-primary font-heading">Votre formateur</h2>
+              <span className="heading-rule" aria-hidden="true" />
+            </Reveal>
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Image Side */}
-              <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start">
+              <Reveal variant="left" className="order-2 lg:order-1 flex flex-col items-center lg:items-start">
                 <div className="relative">
                   <img 
                     src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png" 
@@ -358,10 +372,10 @@ const Home = () => {
                     En formation avec des professionnels
                   </p>
                 </div>
-              </div>
-              
+              </Reveal>
+
               {/* Content Side */}
-              <div className="order-1 lg:order-2">
+              <Reveal variant="right" className="order-1 lg:order-2">
                 <p className="text-lg text-muted-foreground leading-relaxed mb-4 font-body">
                   <strong className="text-primary">Antony Addy</strong> — Britannique, certifié{' '}
                   <a 
@@ -393,7 +407,7 @@ const Home = () => {
                     LinkedIn
                   </a>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </div>
         </section>
@@ -483,54 +497,66 @@ const Home = () => {
         {/* Features Section - 6 blocks in 2x3 grid */}
         <section className="py-12 sm:py-16 bg-muted" aria-labelledby="features-heading">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 id="features-heading" className="text-2xl sm:text-3xl font-bold text-center text-primary mb-8 sm:mb-12 font-heading">
-              Pourquoi choisir mes formations ?
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8" role="list">
+            <Reveal className="text-center mb-8 sm:mb-12">
+              <h2 id="features-heading" className="text-2xl sm:text-3xl font-bold text-primary font-heading">
+                Pourquoi choisir mes formations ?
+              </h2>
+              <span className="heading-rule" aria-hidden="true" />
+            </Reveal>
+            <RevealStagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8" role="list">
               {features.map((feature, index) => (
-                <article key={index} className="text-center p-5 sm:p-6 rounded-lg bg-white hover:shadow-lg transition-shadow" role="listitem">
-                  <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-accent/10 text-accent rounded-full mb-3 sm:mb-4" aria-hidden="true">
+                <Reveal
+                  key={index}
+                  variant="up"
+                  as="article"
+                  role="listitem"
+                  className="group text-center p-5 sm:p-6 rounded-xl bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-accent/10 text-accent rounded-full mb-3 sm:mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:bg-accent/15" aria-hidden="true">
                     <feature.icon className="h-7 w-7 sm:h-8 sm:w-8" />
                   </div>
                   <h3 className="text-lg sm:text-xl font-semibold text-primary mb-2 sm:mb-3 font-heading">{feature.title}</h3>
                   <p className="text-sm sm:text-base text-muted-foreground font-body leading-relaxed">{feature.description}</p>
-                </article>
+                </Reveal>
               ))}
-            </div>
+            </RevealStagger>
           </div>
         </section>
 
         {/* Pour qui — per-audience landing page links */}
         <section className="py-12 sm:py-16 bg-white" aria-labelledby="audience-heading">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 id="audience-heading" className="text-2xl sm:text-3xl font-bold text-center text-primary mb-3 font-heading">
-              Pour qui je travaille
-            </h2>
-            <p className="text-center text-muted-foreground mb-8 sm:mb-10 max-w-2xl mx-auto">
-              Chaque formation est conçue sur mesure. Voici les quatre profils que j'accompagne le plus souvent.
-            </p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <Link to="/anglais-entreprise" className="block p-5 rounded-lg bg-muted hover:bg-accent/10 border border-border hover:border-accent transition-all">
+            <Reveal className="text-center mb-8 sm:mb-10">
+              <h2 id="audience-heading" className="text-2xl sm:text-3xl font-bold text-primary font-heading mb-3">
+                Pour qui je travaille
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Chaque formation est conçue sur mesure. Voici les quatre profils que j'accompagne le plus souvent.
+              </p>
+              <span className="heading-rule" aria-hidden="true" />
+            </Reveal>
+            <RevealStagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <Reveal variant="up" as={Link} to="/anglais-entreprise" className="group block p-5 rounded-xl bg-muted hover:bg-accent/10 border border-border hover:border-accent hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                 <h3 className="text-lg font-semibold text-primary mb-2 font-heading">Entreprises</h3>
                 <p className="text-sm text-muted-foreground mb-3 leading-relaxed">Formations sur-mesure pour vos équipes, encadrées par convention de formation.</p>
-                <span className="text-sm font-medium text-accent">En savoir plus →</span>
-              </Link>
-              <Link to="/anglais-cadres" className="block p-5 rounded-lg bg-muted hover:bg-accent/10 border border-border hover:border-accent transition-all">
+                <span className="text-sm font-medium text-accent inline-flex items-center gap-1">En savoir plus <span className="transition-transform duration-300 group-hover:translate-x-1">→</span></span>
+              </Reveal>
+              <Reveal variant="up" as={Link} to="/anglais-cadres" className="group block p-5 rounded-xl bg-muted hover:bg-accent/10 border border-border hover:border-accent hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                 <h3 className="text-lg font-semibold text-primary mb-2 font-heading">Cadres &amp; dirigeants</h3>
                 <p className="text-sm text-muted-foreground mb-3 leading-relaxed">Accompagnement individuel et confidentiel autour de vos enjeux professionnels.</p>
-                <span className="text-sm font-medium text-accent">En savoir plus →</span>
-              </Link>
-              <Link to="/anglais-particuliers" className="block p-5 rounded-lg bg-muted hover:bg-accent/10 border border-border hover:border-accent transition-all">
+                <span className="text-sm font-medium text-accent inline-flex items-center gap-1">En savoir plus <span className="transition-transform duration-300 group-hover:translate-x-1">→</span></span>
+              </Reveal>
+              <Reveal variant="up" as={Link} to="/anglais-particuliers" className="group block p-5 rounded-xl bg-muted hover:bg-accent/10 border border-border hover:border-accent hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                 <h3 className="text-lg font-semibold text-primary mb-2 font-heading">Particuliers</h3>
                 <p className="text-sm text-muted-foreground mb-3 leading-relaxed">Cours adaptés à votre niveau, votre rythme, et vos objectifs personnels.</p>
-                <span className="text-sm font-medium text-accent">En savoir plus →</span>
-              </Link>
-              <Link to="/anglais-etudiants" className="block p-5 rounded-lg bg-muted hover:bg-accent/10 border border-border hover:border-accent transition-all">
+                <span className="text-sm font-medium text-accent inline-flex items-center gap-1">En savoir plus <span className="transition-transform duration-300 group-hover:translate-x-1">→</span></span>
+              </Reveal>
+              <Reveal variant="up" as={Link} to="/anglais-etudiants" className="group block p-5 rounded-xl bg-muted hover:bg-accent/10 border border-border hover:border-accent hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                 <h3 className="text-lg font-semibold text-primary mb-2 font-heading">Étudiants</h3>
                 <p className="text-sm text-muted-foreground mb-3 leading-relaxed">BTS, Bachelor, Master, écoles et universités — préparation TOEIC et Cambridge.</p>
-                <span className="text-sm font-medium text-accent">En savoir plus →</span>
-              </Link>
-            </div>
+                <span className="text-sm font-medium text-accent inline-flex items-center gap-1">En savoir plus <span className="transition-transform duration-300 group-hover:translate-x-1">→</span></span>
+              </Reveal>
+            </RevealStagger>
           </div>
         </section>
 
@@ -560,8 +586,9 @@ const Home = () => {
         {/* Avis Clients Section - Testimonials right after trust signals */}
         <AvisClients />
 
-        <section className="py-12 bg-gradient-to-r from-primary/5 to-accent/5">
-          <div className="max-w-4xl mx-auto px-4 text-center">
+        <section className="relative overflow-hidden py-12 bg-gradient-to-r from-primary/5 to-accent/5">
+          <div className="aurora" aria-hidden="true" />
+          <Reveal className="relative z-10 max-w-4xl mx-auto px-4 text-center">
             <h3 className="text-2xl md:text-3xl font-bold text-primary mb-4 font-heading">
               Prêt à progresser ?
             </h3>
@@ -578,7 +605,7 @@ const Home = () => {
               Explorer les plateformes gratuites
               <ArrowRight className="h-5 w-5" aria-hidden="true" />
             </Link>
-          </div>
+          </Reveal>
         </section>
 
 
