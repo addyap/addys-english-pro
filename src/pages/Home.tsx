@@ -32,7 +32,9 @@ const CLIENT_LOGOS = [
 // ×2, FAQPage) that redundantly re-declared the same business, address and
 // service areas. One canonical business node (ProfessionalService — a
 // LocalBusiness/Organization subtype, so no separate Organization node is
-// needed), one WebSite, one Person, one FAQPage, linked by @id. Every real fact
+// needed) for the English arm, one WebSite, one Person carrying the full
+// three-activity identity, and two Service nodes for the IA and website-creation
+// activities on their subdomains, linked by @id. Every real fact
 // from the old markup is preserved; only duplicates are removed. Conflicts were
 // resolved to the real value: email formations@ (not the placeholder contact@),
 // logo /icon-512.png and image /social-preview.jpg (both real images; the old
@@ -90,11 +92,27 @@ const HOME_JSONLD_GRAPH = {
       "@type": "Person",
       "@id": "https://www.antonyaddy.com/#antony-addy",
       name: "Antony Addy",
-      jobTitle: "Formateur Professionnel d'Adultes en Anglais",
+      // Antony's three activities. antonyaddy.com is the hub; the IA and
+      // website-creation services live on their own subdomains, modelled as
+      // Service nodes below with this Person as their provider.
+      jobTitle: [
+        "Formateur d'anglais professionnel",
+        "Formateur en IA générative",
+        "Créateur de sites web",
+      ],
       // "depuis 2017" alone read as five years' experience, contradicting the
       // 21+ figure shown on the page. 2017 is the FPA certification date, not
       // the start of the career.
-      description: `Formateur britannique natif, certifié Formateur Professionnel d'Adultes depuis 2017, ${EXPERIENCE_FLOOR}+ ans d'enseignement de l'anglais en France auprès d'adultes, d'entreprises et de l'enseignement supérieur`,
+      description: `Britannique natif, certifié Formateur Professionnel d'Adultes depuis 2017 (${EXPERIENCE_FLOOR}+ ans d'enseignement de l'anglais), également formateur en IA générative et créateur de sites web par IA. Côte d'Azur et à distance.`,
+      knowsAbout: [
+        "Anglais professionnel",
+        "Coaching linguistique",
+        "IA générative",
+        "ChatGPT",
+        "Ingénierie de prompts",
+        "Création de sites web",
+        "Développement web assisté par IA",
+      ],
       url: "https://www.antonyaddy.com",
       image: "https://www.antonyaddy.com/social-preview.jpg",
       knowsLanguage: ["fr", "en"],
@@ -105,9 +123,9 @@ const HOME_JSONLD_GRAPH = {
     {
       "@type": "WebSite",
       "@id": "https://www.antonyaddy.com/#website",
-      name: "Antony Addy — Formateur d'anglais",
+      name: "Antony Addy — Formateur d'anglais, IA générative & création de sites web",
       url: "https://www.antonyaddy.com",
-      description: "Formations d'anglais professionnel en présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde",
+      description: "Le point de rencontre des trois activités d'Antony Addy : formation en anglais professionnel, formation en IA générative et création de sites web par IA — sur la Côte d'Azur et à distance.",
       inLanguage: "fr",
       publisher: { "@id": "https://www.antonyaddy.com/#business" },
       potentialAction: {
@@ -115,6 +133,38 @@ const HOME_JSONLD_GRAPH = {
         target: "https://www.antonyaddy.com/blog?q={search_term_string}",
         "query-input": "required name=search_term_string",
       },
+    },
+    // Antony's two other activities, each provided by the Person above and
+    // living on its own subdomain. Modelling them here lets the hub declare the
+    // full three-activity offer without the English ProfessionalService node
+    // having to pretend to cover them.
+    {
+      "@type": "Service",
+      "@id": "https://www.antonyaddy.com/#service-ia",
+      name: "Formation en IA générative",
+      serviceType: "Formation professionnelle à l'IA générative",
+      description: "Formations à l'IA générative pour gagner en productivité : ChatGPT, prompts et outils IA appliqués à votre métier.",
+      provider: { "@id": "https://www.antonyaddy.com/#antony-addy" },
+      url: "https://ia.antonyaddy.com",
+      areaServed: [
+        { "@type": "Country", name: "France" },
+        "Worldwide (remote)",
+      ],
+      availableLanguage: ["fr"],
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.antonyaddy.com/#service-web",
+      name: "Création de sites web par IA",
+      serviceType: "Conception et développement de sites web",
+      description: "Sites web et outils sur mesure pour entreprises et indépendants, conçus et développés avec l'IA — rapides, soignés et abordables.",
+      provider: { "@id": "https://www.antonyaddy.com/#antony-addy" },
+      url: "https://creations.antonyaddy.com",
+      areaServed: [
+        { "@type": "Country", name: "France" },
+        "Worldwide (remote)",
+      ],
+      availableLanguage: ["fr"],
     },
     // No FAQPage node. The one that used to sit here declared a question and
     // answer that appear nowhere in the rendered page — Google requires FAQ

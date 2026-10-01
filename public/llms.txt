@@ -1,12 +1,17 @@
 # Antony Addy
 
-> Formateur d'anglais natif britannique, certifié FPA, avec plus de 20 ans d'expérience. Basé à Fréjus, il intervient en présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde.
+> Antony Addy exerce trois activités : formateur d'anglais professionnel (britannique natif, certifié FPA), formateur en IA générative, et créateur de sites web par IA. Basé à Fréjus, il intervient sur la Côte d'Azur (Var, Alpes-Maritimes) et à distance partout en France et dans le monde. antonyaddy.com est le point de rencontre de ces trois activités.
 
-Le site présente des formations d'anglais sur-mesure pour les entreprises, les cadres, les particuliers et les étudiants, ainsi qu'un blog de grammaire anglaise en accès libre et un test de positionnement gratuit.
+Ce site (antonyaddy.com) détaille l'activité de formation en anglais : formations sur-mesure pour les entreprises, les cadres, les particuliers et les étudiants, un blog de grammaire anglaise en accès libre et un test de positionnement gratuit. Les activités IA générative et création de sites web disposent de leurs propres sites (voir « Autres activités »).
+
+## Autres activités
+
+- [Formation en IA générative](https://ia.antonyaddy.com): Formations à l'IA générative (ChatGPT, prompts, outils IA) pour les professionnels et les entreprises. Site dédié.
+- [Création de sites web par IA](https://creations.antonyaddy.com): Conception et développement de sites web et d'outils sur mesure pour entreprises et indépendants, avec l'IA. Site dédié.
 
 ## Pages principales
 
-- [Accueil](/): Présentation des formations en anglais professionnel et du parcours du formateur.
+- [Accueil](/): Hub des trois activités d'Antony Addy (anglais, IA générative, création de sites web) et présentation détaillée de la formation en anglais.
 - [Qui je suis](/qui-je-suis): Parcours, certifications et approche pédagogique d'Antony Addy.
 - [Offres de formation](/offres-de-formation): Formules, modalités et déroulement des formations.
 - [Témoignages](/temoignages): Avis d'apprenants et d'entreprises clientes.
