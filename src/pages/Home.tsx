@@ -366,64 +366,36 @@ const Home = () => {
           <OptimizedHero />
         </div>
 
-        {/* Qui je suis Section - Updated with split layout */}
-        <section className="py-16 bg-white">
-          <div className="max-w-6xl mx-auto px-4">
-            <Reveal className="mb-12 text-center">
-              <h2 className="text-3xl font-bold text-primary font-heading">Votre formateur</h2>
-              <span className="heading-rule" aria-hidden="true" />
-            </Reveal>
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Image Side */}
-              <Reveal variant="left" className="order-2 lg:order-1 flex flex-col items-center lg:items-start">
-                <div className="relative">
-                  <img 
-                    src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png" 
-                    alt="Antony Addy animant une formation en anglais professionnel avec des apprenants adultes" 
-                    className="w-full max-w-[350px] h-auto rounded-2xl shadow-lg border border-border" 
-                    width="350" 
-                    height="350"
-                    loading="eager"
-                    decoding="async"
-                    // @ts-expect-error - fetchpriority is valid HTML but not typed in React 18
-                    fetchpriority="high"
-                  />
-                  <p className="text-sm text-muted-foreground mt-3 text-center lg:text-left font-body italic">
-                    En formation avec des professionnels
-                  </p>
-                </div>
+        {/* ===== LE CONDUCTEUR — who's at the controls (dark La Ligne station) ===== */}
+        <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-conducteur">
+          <span className="pointer-events-none absolute top-0 bottom-0 left-5 sm:left-8 w-px bg-[#CBCFE4] opacity-30" aria-hidden="true" />
+          <span className="pointer-events-none absolute left-5 sm:left-8 -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#CBCFE4]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22' }} />
+          <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
+            <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Le Conducteur</span>
+            <h2 id="station-conducteur" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">Qui est aux commandes</h2>
+            <div className="mt-8 grid lg:grid-cols-[320px_1fr] gap-10 items-start">
+              <Reveal variant="left" className="flex flex-col items-center lg:items-start">
+                <img
+                  src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
+                  alt="Antony Addy animant une formation en anglais professionnel avec des apprenants adultes"
+                  className="w-full max-w-[300px] h-auto rounded-2xl shadow-2xl border border-white/10"
+                  width="300" height="300" loading="lazy" decoding="async"
+                />
+                <p className="text-sm text-[#8b93b6] mt-3 text-center lg:text-left font-body italic">En formation avec des professionnels</p>
               </Reveal>
-
-              {/* Content Side */}
-              <Reveal variant="right" className="order-1 lg:order-2">
-                <p className="text-lg text-muted-foreground leading-relaxed mb-4 font-body">
-                  <strong className="text-primary">Antony Addy</strong> — Britannique, certifié{' '}
-                  <a 
-                    href="https://www.afpa.fr/formation-qualifiante/formateur-professionnel-d-adultes"
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-accent hover:underline"
-                  >
-                    Formateur Professionnel d'Adultes
-                  </a>{' '}
-                  depuis 2017, plus de {EXPERIENCE_FLOOR} ans d'expérience en formation d'anglais.
+              <Reveal variant="right" className="max-w-xl">
+                <p className="text-lg text-[#CBCFE4] leading-relaxed mb-4 font-body">
+                  <strong className="text-white">Antony Addy</strong> — Britannique, certifié{' '}
+                  <a href="https://www.afpa.fr/formation-qualifiante/formateur-professionnel-d-adultes" target="_blank" rel="noopener noreferrer" className="text-[#F6A463] hover:underline">Formateur Professionnel d'Adultes</a>{' '}
+                  depuis 2017, plus de {EXPERIENCE_FLOOR} ans d'expérience — aujourd'hui aussi formateur en IA générative et créateur de sites web par IA.
                 </p>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6 font-body">
-                  J'aide les professionnels à communiquer avec confiance en anglais : réunions, négociations, présentations. Mon approche est directe, bienveillante et adaptée à vos enjeux réels.
+                <p className="text-lg text-[#CBCFE4] leading-relaxed mb-6 font-body">
+                  Le fil conducteur n'a jamais changé : faire passer les gens de l'hésitation à l'assurance — en réunion, face à un outil IA, ou au lancement d'un site.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-3 text-center lg:text-left">
-                  <Link to="/qui-je-suis" className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors font-body">
-                    En savoir plus sur mon parcours
-                  </Link>
-                  <a 
-                    href="https://www.linkedin.com/in/antonyaddy/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="border border-primary text-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary/10 transition-colors font-body flex items-center justify-center gap-2"
-                  >
-                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link to="/qui-je-suis" className="bg-white text-[#070b22] px-6 py-3 rounded-lg font-semibold hover:bg-white/90 transition-colors font-body text-center">En savoir plus sur mon parcours</Link>
+                  <a href="https://www.linkedin.com/in/antonyaddy/" target="_blank" rel="noopener noreferrer" className="border border-white/25 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors font-body flex items-center justify-center gap-2">
+                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                     LinkedIn
                   </a>
                 </div>
@@ -613,23 +585,26 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Ils me font confiance Section - Updated with client categories */}
-        <section className="bg-muted py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-extrabold text-primary mb-12 text-center">Ils me font confiance</h2>
-            
-            {/* Client Categories */}
-            <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+        {/* ===== LES PASSAGERS — proof, as people who rode the line (dark station) ===== */}
+        <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-passagers">
+          <span className="pointer-events-none absolute top-0 bottom-0 left-5 sm:left-8 w-px bg-[#CBCFE4] opacity-30" aria-hidden="true" />
+          <span className="pointer-events-none absolute left-5 sm:left-8 -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#CBCFE4]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22' }} />
+          <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
+            <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Les Passagers</span>
+            <h2 id="station-passagers" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">Ils me font confiance</h2>
+
+            {/* Client categories — served stations */}
+            <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {clientCategories.map((category, index) => (
-                <div key={index} className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm">
-                  <category.icon className="h-5 w-5 text-accent mr-2" />
-                  <span className="font-medium text-primary text-sm">{category.title}</span>
+                <div key={index} className="flex items-center gap-2 p-4 rounded-xl border border-white/10 bg-white/[0.03]">
+                  <category.icon className="h-5 w-5 text-[#E8473B]" />
+                  <span className="font-heading font-medium text-white text-sm">{category.title}</span>
                 </div>
               ))}
             </div>
 
-            {/* Lazy-loaded client logos carousel - fixed height prevents CLS */}
-            <div className="min-h-[140px]">
+            {/* Client logos on a light plate so the marks stay legible on navy */}
+            <div className="mt-8 rounded-2xl bg-white/95 px-6 py-5 min-h-[140px] flex items-center">
               <LazyClientCarousel logos={CLIENT_LOGOS} />
             </div>
           </div>
@@ -661,43 +636,34 @@ const Home = () => {
         </section>
 
 
-        {/* Contact CTA Section - Conversion-focused, WhatsApp-first */}
-        <section className="py-12 sm:py-16 bg-red-600 text-white">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 font-heading leading-tight">Un projet en anglais, en IA ou un site web ?</h2>
-            <p className="text-base sm:text-lg md:text-xl mb-3 font-body leading-relaxed">
-              Expliquez-moi votre objectif, je vous réponds rapidement avec une proposition adaptée.
+        {/* ===== PROCHAIN ARRÊT — the closing stop (dark La Ligne, WhatsApp-first) ===== */}
+        <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-contact">
+          <div className="pointer-events-none absolute inset-0" aria-hidden="true" style={{ background: 'radial-gradient(70% 120% at 50% 120%, rgba(246,164,99,.16), transparent 60%)' }} />
+          <span className="pointer-events-none absolute top-0 bottom-0 left-5 sm:left-8 w-px bg-[#F6A463] opacity-50" aria-hidden="true" />
+          <span className="pointer-events-none absolute left-5 sm:left-8 -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#F6A463]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(246,164,99,.6)' }} />
+          <div className="relative max-w-3xl mx-auto pl-12 sm:pl-20 pr-4 py-16 sm:py-24">
+            <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Prochain arrêt</span>
+            <h2 id="station-contact" className="mt-3 font-heading font-extrabold tracking-tight text-3xl sm:text-5xl leading-[1.03]">
+              Un projet en anglais, en IA ou un site web ?<br /><span className="text-[#F6A463]">Mind the gap.</span>
+            </h2>
+            <p className="mt-5 text-lg text-[#CBCFE4] font-body leading-relaxed max-w-xl">
+              Dites-moi où vous voulez aller — je vous réponds rapidement avec une proposition adaptée. Premier échange gratuit, réponse sous 24 h ouvrées.
             </p>
-            <p className="text-sm sm:text-base mb-6 sm:mb-8 font-body text-white/90">
-              💬 Premier échange gratuit · Sans engagement · Réponse sous 24 h ouvrées
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
                 href={whatsappLink || "#"}
-                onClick={(e) => {
-                  if (!whatsappLink) { e.preventDefault(); return; }
-                  trackEvent('whatsapp_cta_click', { page: 'Home', location: 'final-cta', prefilled: true });
-                }}
-                className="bg-white text-red-600 px-6 py-3.5 sm:px-8 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-muted transition-all hover:scale-105 flex items-center justify-center gap-2 font-body shadow-lg"
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={(e) => { if (!whatsappLink) { e.preventDefault(); return; } trackEvent('whatsapp_cta_click', { page: 'Home', location: 'final-cta', prefilled: true }); }}
+                className="bg-[#E8473B] text-white px-7 py-4 rounded-xl font-bold text-base sm:text-lg hover:-translate-y-0.5 transition-transform flex items-center justify-center gap-2 font-heading shadow-xl"
+                target="_blank" rel="noopener noreferrer"
                 aria-label="Contacter Antony Addy sur WhatsApp (message pré-rempli)"
               >
-                <MessageCircle className="h-5 w-5" aria-hidden="true" />
-                Contact WhatsApp · Réponse sous 24 h ouvrées
+                <MessageCircle className="h-5 w-5" aria-hidden="true" />Contact WhatsApp
               </a>
-              <Link
-                to="/contact"
-                className="border-2 border-white text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-base hover:bg-white hover:text-red-600 transition-colors flex items-center justify-center gap-2 font-body"
-                aria-label="Aller au formulaire de contact"
-              >
-                <Mail className="h-5 w-5" aria-hidden="true" />
-                Formulaire de contact
+              <Link to="/contact" className="border border-white/25 text-white px-7 py-4 rounded-xl font-semibold text-base hover:bg-white/10 transition-colors flex items-center justify-center gap-2 font-heading" aria-label="Aller au formulaire de contact">
+                <Mail className="h-5 w-5" aria-hidden="true" />Formulaire de contact
               </Link>
             </div>
-            <p className="mt-4 sm:mt-5 text-xs sm:text-sm text-white/80 font-body">
-              100% personnalisé · Adapté à votre niveau
-            </p>
+            <p className="mt-5 text-sm text-[#8b93b6] font-body">Premier échange gratuit · Sans engagement · Réponse sous 24 h ouvrées</p>
           </div>
         </section>
         
