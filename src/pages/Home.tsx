@@ -5,6 +5,7 @@ import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, Gra
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import OptimizedHero from '../components/OptimizedHero';
+import HubHero from '../components/HubHero';
 import { TypingText } from '../components/TypingText';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { LazyClientCarousel } from '@/components/LazySwiper';
@@ -13,28 +14,7 @@ import CountUp from '@/components/motion/CountUp';
 
 import { trackEvent } from '@/lib/analytics';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
-import { FORMATIONS } from '@/data/formations';
 import { PLATFORM_COUNT } from '@/data/platforms';
-import anglaisLogo from '@/assets/brand/anglais-logo.png';
-import iaLogo from '@/assets/brand/ia-logo.svg';
-import creationsLogo from '@/assets/brand/creations-logo.png';
-
-// Each activity's own brand mark, shown on the homepage hub cards so the three
-// read as equal, distinct offers rather than interchangeable icon tiles.
-const FORMATION_LOGOS: Record<string, string> = {
-  anglais: anglaisLogo,
-  ia: iaLogo,
-  creations: creationsLogo,
-};
-
-// Per-activity accent, keyed off the design tokens where possible: English =
-// accent red, IA = secondary purple (≈ the subdomain's #5B3DF5), Créations =
-// orange (its wordmark's arrow). Navy (primary) is the shared base.
-const FORMATION_ACCENTS: Record<string, { tile: string; ring: string }> = {
-  anglais: { tile: 'bg-accent/10', ring: 'hover:border-accent/50' },
-  ia: { tile: 'bg-secondary/10', ring: 'hover:border-secondary/50' },
-  creations: { tile: 'bg-[#E08A2B]/10', ring: 'hover:border-[#E08A2B]/60' },
-};
 
 
 
@@ -223,14 +203,14 @@ const Home = () => {
 
   return <>
       <SEOHead 
-        title="Cours d'anglais professionnel — Var & Alpes-Maritimes"
-        description="Cours d'anglais professionnel avec un formateur britannique certifié FPA, pour entreprises, cadres et particuliers. Var, Alpes-Maritimes ou à distance."
+        title="Antony Addy — Formateur d'anglais, formateur IA & création de sites web"
+        description="Antony Addy : formateur d'anglais professionnel (britannique, certifié FPA), formateur en IA générative et créateur de sites web par IA. Côte d'Azur et à distance."
         canonicalUrl="https://www.antonyaddy.com/"
         datePublished="2025-01-15T10:00:00+01:00"
         dateModified={CONTENT_LAST_REVIEWED_ISO}
         image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
         imageAlt="Antony Addy, formateur d'anglais professionnel certifié FPA"
-        keywords={["formateur anglais", "formation anglais professionnel", "formateur FPA", "cours anglais adultes", "Var", "Alpes-Maritimes", "Côte d'Azur", "Fréjus", "Saint-Raphaël", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "anglais à distance", "formateur britannique", "anglais entreprises", "anglais cadres", "anglais étudiants"]}
+        keywords={["formateur anglais", "formation anglais professionnel", "formateur FPA", "cours anglais adultes", "formateur IA générative", "formation ChatGPT entreprise", "création site web IA", "Var", "Alpes-Maritimes", "Côte d'Azur", "Fréjus", "Saint-Raphaël", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "anglais à distance", "formateur britannique", "anglais entreprises", "anglais cadres", "anglais étudiants"]}
         jsonLd={HOME_JSONLD_GRAPH}
       />
       
@@ -241,8 +221,8 @@ const Home = () => {
 
 
 
-      {/* Main brand hero — service-first positioning */}
-      <OptimizedHero />
+      {/* Hub hero — Antony Addy's three activities, equal billing */}
+      <HubHero />
 
       {/* Trust / authority strip — instant credibility under the hero */}
       <section className="bg-background py-6 sm:py-8 border-b border-border" aria-label="Indicateurs de confiance">
@@ -290,72 +270,11 @@ const Home = () => {
       </section>
 
       <main id="main-content">
-        {/* Mes 3 activités — hub access to English (this site), IA & Créations subdomains */}
-        <section className="py-12 sm:py-16 bg-white border-b border-border" aria-labelledby="formations-hub-heading">
-          <div className="max-w-6xl mx-auto px-4">
-            <Reveal className="text-center mb-8 sm:mb-10">
-              <h2 id="formations-hub-heading" className="text-2xl sm:text-3xl font-bold text-primary font-heading mb-2">
-                Mes trois activités
-              </h2>
-              <p className="text-muted-foreground font-body max-w-2xl mx-auto">
-                Formateur Professionnel d'Adultes certifié, j'accompagne particuliers et entreprises sur trois expertises complémentaires.
-              </p>
-              <span className="heading-rule" aria-hidden="true" />
-            </Reveal>
-            <RevealStagger className="grid gap-5 sm:gap-6 md:grid-cols-3" role="list">
-              {FORMATIONS.map((f) => {
-                const accent = FORMATION_ACCENTS[f.key];
-                const isCurrent = !f.external;
-                const inner = (
-                  <>
-                    <div className="flex items-center justify-center h-20 mb-5 rounded-xl bg-white border border-border/60 px-4" aria-hidden="true">
-                      <img
-                        src={FORMATION_LOGOS[f.key]}
-                        alt=""
-                        className="max-h-14 w-auto object-contain"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    <h3 className="text-xl font-semibold text-primary font-heading mb-2 flex items-center gap-2">
-                      {f.title}
-                      {f.external && <ExternalLink className="h-4 w-4 text-muted-foreground" aria-hidden="true" />}
-                    </h3>
-                    <p className="text-sm text-muted-foreground font-body leading-relaxed mb-4 flex-1">{f.tagline}</p>
-                    <span className="inline-flex items-center gap-1.5 text-primary font-semibold text-sm mt-auto">
-                      {isCurrent ? 'Vous y êtes' : f.cta}
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-                    </span>
-                  </>
-                );
-                const cardClass =
-                  'group flex flex-col h-full text-left p-6 rounded-2xl border transition-all duration-300 ' +
-                  (isCurrent
-                    ? 'bg-primary/5 border-primary/30'
-                    : `bg-card border-border hover:shadow-xl ${accent.ring} hover:-translate-y-1`);
-                return isCurrent ? (
-                  <Reveal key={f.key} variant="scale" as="div" className={cardClass} role="listitem" aria-current="page">
-                    {inner}
-                  </Reveal>
-                ) : (
-                  <Reveal
-                    key={f.key}
-                    variant="scale"
-                    as="a"
-                    href={f.href}
-                    target="_blank"
-                    rel="noopener"
-                    role="listitem"
-                    onClick={() => trackEvent('home_formation_card_click', { formation: f.key, target: f.href })}
-                    className={cardClass}
-                  >
-                    {inner}
-                  </Reveal>
-                );
-              })}
-            </RevealStagger>
-          </div>
-        </section>
+        {/* Anglais professionnel — the English chapter opens here. The hub hero's
+            "Anglais" card scrolls to this #anchor. */}
+        <div id="anglais" className="scroll-mt-20">
+          <OptimizedHero />
+        </div>
 
         {/* Qui je suis Section - Updated with split layout */}
         <section className="py-16 bg-white">
@@ -594,7 +513,7 @@ const Home = () => {
         {/* Contact CTA Section - Conversion-focused, WhatsApp-first */}
         <section className="py-12 sm:py-16 bg-red-600 text-white">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 font-heading leading-tight">Prêt à améliorer votre anglais professionnel ?</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 font-heading leading-tight">Un projet en anglais, en IA ou un site web ?</h2>
             <p className="text-base sm:text-lg md:text-xl mb-3 font-body leading-relaxed">
               Expliquez-moi votre objectif, je vous réponds rapidement avec une proposition adaptée.
             </p>

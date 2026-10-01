@@ -120,9 +120,9 @@ export default function OptimizedHero() {
         <header>
           <p className="ll-eyebrow">Formateur d'anglais · Britannique natif</p>
 
-          <h1 className="ll-h1">
+          <h2 className="ll-h1">
             De l'hésitation à l'<span className="ll-hot">assurance</span>, ligne&nbsp;directe.
-          </h1>
+          </h2>
 
           {/* The signature route: hésitation → aisance → assurance, on a level
               rail in the brand colours (navy → purple → red). The rail is
