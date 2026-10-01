@@ -327,9 +327,42 @@ const Home = () => {
       </section>
 
       <main id="main-content">
-        {/* Anglais professionnel — the English chapter opens here. The hub hero's
-            "Anglais" card scrolls to this #anchor. */}
+        {/* ===== STATION 02 · LIGNE ANGLAIS — the English chapter opens here.
+             The hub hero's "Anglais" card scrolls to this #anchor. Audience and
+             city pages are surfaced as "served stations" (real internal links). ===== */}
         <div id="anglais" className="scroll-mt-20">
+          <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-anglais">
+            <div className="pointer-events-none absolute inset-0" aria-hidden="true"
+              style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(232,71,59,.10), transparent 55%)' }} />
+            <span className="pointer-events-none absolute top-0 bottom-0 left-5 sm:left-8 w-px bg-[#E8473B] opacity-50" aria-hidden="true" />
+            <span className="pointer-events-none absolute left-5 sm:left-8 -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#E8473B]" aria-hidden="true"
+              style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(232,71,59,.55)' }} />
+            <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 pt-14 sm:pt-20 pb-2">
+              <div className="flex items-center gap-3 flex-wrap">
+                <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">02 · Ligne Anglais</span>
+                <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#E8473B] border border-[#E8473B]/45 rounded-full px-3 py-1.5">Red line</span>
+              </div>
+              <h2 id="station-anglais" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
+                L'anglais qui vous met en mouvement
+              </h2>
+              <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
+                Britannique natif, certifié Formateur Professionnel d'Adultes. Je ne vous fais pas réciter des règles — je vous mets en mouvement : réunions, présentations, emails, appels. En présentiel sur la Côte d'Azur ou à distance.
+              </p>
+
+              <p className="mt-7 font-heading text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-[#8b93b6]">Stations desservies</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <Link to="/anglais-entreprise" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Entreprises</Link>
+                <Link to="/anglais-cadres" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Cadres &amp; dirigeants</Link>
+                <Link to="/anglais-particuliers" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Particuliers</Link>
+                <Link to="/anglais-etudiants" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Étudiants</Link>
+                <Link to="/cours-anglais-frejus" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Fréjus</Link>
+                <Link to="/cours-anglais-nice" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Nice</Link>
+                <Link to="/cours-anglais-cannes" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Cannes</Link>
+                <Link to="/cours-anglais-antibes" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Antibes</Link>
+                <Link to="/cours-anglais-sophia-antipolis" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Sophia Antipolis</Link>
+              </div>
+            </div>
+          </section>
           <OptimizedHero />
         </div>
 
