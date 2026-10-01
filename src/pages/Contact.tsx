@@ -24,6 +24,7 @@ const Contact = () => {
     prenom: '',
     nom: '',
     email: '',
+    sujet: '',
     message: '',
     honeypot: '' // Anti-spam field
   });
@@ -52,6 +53,9 @@ const Contact = () => {
       newErrors.email = 'Merci de saisir une adresse email valide';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
       newErrors.email = 'Merci de saisir une adresse email valide';
+    }
+    if (!formData.sujet) {
+      newErrors.sujet = "Merci de choisir l'objet de votre demande";
     }
     if (!formData.message.trim()) {
       newErrors.message = 'Merci de décrire votre demande en 20 caractères minimum';
@@ -102,6 +106,7 @@ const Contact = () => {
           prenom: stripHeaderChars(formData.prenom),
           nom: stripHeaderChars(formData.nom),
           email: stripHeaderChars(formData.email),
+          sujet: stripHeaderChars(formData.sujet),
           message: formData.message.trim(),
           _gotcha: formData.honeypot,
           renderedAt: formRenderedAt
@@ -122,6 +127,7 @@ const Contact = () => {
         prenom: '',
         nom: '',
         email: '',
+        sujet: '',
         message: '',
         honeypot: ''
       });
@@ -147,7 +153,7 @@ const Contact = () => {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
 
@@ -169,9 +175,9 @@ const Contact = () => {
 
   return <>
       <SEOHead 
-        title="Contact | Devis Formation Anglais Gratuit"
-        description="Contactez Antony Addy pour vos formations d'anglais professionnel. Réponse sous 24 h ouvrées par email, WhatsApp ou formulaire. Devis gratuit."
-        keywords={["contact formateur anglais", "devis formation", "WhatsApp", "email formations"]}
+        title="Contact | Anglais, IA générative & création de sites web"
+        description="Contactez Antony Addy pour une formation en anglais, une formation en IA générative ou la création d'un site web. Réponse sous 24 h ouvrées par email, WhatsApp ou formulaire. Devis gratuit."
+        keywords={["contact formateur anglais", "contact formateur IA", "devis création site web", "devis formation", "WhatsApp", "email formations"]}
         canonicalUrl="https://www.antonyaddy.com/contact"
         image="https://www.antonyaddy.com/lovable-uploads/200e88ab-2bbf-4168-85ad-8123b07c44ac.png"
         imageAlt="QR Code LinkedIn pour contacter Antony Addy"
@@ -224,7 +230,7 @@ const Contact = () => {
               Prenons contact
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Premier échange gratuit et sans engagement pour définir vos objectifs en anglais professionnel
+              Premier échange gratuit et sans engagement pour définir votre besoin — anglais, IA générative ou création de site web
             </p>
             <p className="text-sm text-muted-foreground max-w-2xl mx-auto mt-4">
               Formation finançable directement par votre entreprise (convention de formation sur fonds propres)
@@ -324,19 +330,40 @@ const Contact = () => {
                   />
                   {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                 </div>
-                
+
+                <div>
+                  <label htmlFor="sujet" className="block text-sm font-medium text-muted-foreground mb-2">
+                    Objet de votre demande *
+                  </label>
+                  <select
+                    id="sujet"
+                    name="sujet"
+                    value={formData.sujet}
+                    onChange={handleChange}
+                    required
+                    className={`w-full px-4 py-2 border rounded-lg bg-white transition-all focus:ring-2 focus:ring-accent focus:border-transparent ${errors.sujet ? 'border-red-500' : 'border-border'}`}
+                  >
+                    <option value="" disabled>— Choisissez —</option>
+                    <option value="Anglais professionnel">Formation en anglais</option>
+                    <option value="IA générative">Formation en IA générative</option>
+                    <option value="Création de site web">Création de site web</option>
+                    <option value="Autre">Autre</option>
+                  </select>
+                  {errors.sujet && <p className="text-red-500 text-sm mt-1">{errors.sujet}</p>}
+                </div>
+
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-muted-foreground mb-2">
                     Message *
                   </label>
-                  <textarea 
-                    id="message" 
-                    name="message" 
-                    rows={6} 
-                    value={formData.message} 
-                    onChange={handleChange} 
-                    required 
-                    placeholder="Décrivez vos besoins en formation, votre niveau actuel, vos objectifs..." 
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={6}
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    placeholder="Décrivez votre besoin ou votre projet, et vos objectifs..."
                     className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent resize-none ${errors.message ? 'border-red-500' : 'border-border'}`}
                   />
                   {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}

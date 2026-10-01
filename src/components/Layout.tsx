@@ -166,7 +166,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-0.5" aria-label="Navigation principale">
-              <NavDropdown label="Formations" active={formationsActive} width="w-72">
+              <NavDropdown label="Anglais" active={formationsActive} width="w-72">
                 {close => (
                   <>
                     {FORMATION_LINKS.map(f => (
@@ -195,6 +195,43 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                         {a.name}
                       </Link>
                     ))}
+                  </>
+                )}
+              </NavDropdown>
+
+              {/* The other two activities, as a peer of "Anglais" — the three
+                  activities read as equals in the primary nav, not one offer
+                  plus a tucked-away switcher. */}
+              <NavDropdown label="IA & Créations" width="w-72">
+                {close => (
+                  <>
+                    <p className="px-4 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      Mes autres activités
+                    </p>
+                    {otherDomains.map(f => {
+                      const Icon = FORMATION_ICONS[f.icon];
+                      return (
+                        <a
+                          key={f.key}
+                          href={f.href}
+                          target="_blank"
+                          rel="noopener"
+                          onClick={() => { close(); trackEvent('nav_formation_switch', { formation: f.key, target: f.href }); }}
+                          className="flex items-center gap-3 px-4 py-2.5 hover:bg-muted transition-colors"
+                        >
+                          <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary shrink-0">
+                            <Icon className="h-4 w-4" aria-hidden="true" />
+                          </span>
+                          <span className="flex flex-col">
+                            <span className="text-sm font-medium text-primary inline-flex items-center gap-1">
+                              {f.navLabel}
+                              <ExternalLink className="h-3 w-3 text-muted-foreground" aria-hidden="true" />
+                            </span>
+                            <span className="text-xs text-muted-foreground">{f.href.replace('https://', '')}</span>
+                          </span>
+                        </a>
+                      );
+                    })}
                   </>
                 )}
               </NavDropdown>
@@ -265,44 +302,9 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               </button>
             </div>
 
-            {/* Cross-domain switcher + CTAs, separated from the nav proper: these
-                leave the English site or start a conversation, rather than moving
-                around within it. */}
+            {/* CTAs, separated from the nav proper: these start a conversation
+                rather than moving around within the site. */}
             <div className="hidden lg:flex items-center gap-2 ms-4">
-              <NavDropdown label="IA & Créations" align="right" width="w-72">
-                {close => (
-                  <>
-                    <p className="px-4 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                      Mes autres domaines
-                    </p>
-                    {otherDomains.map(f => {
-                      const Icon = FORMATION_ICONS[f.icon];
-                      return (
-                        <a
-                          key={f.key}
-                          href={f.href}
-                          target="_blank"
-                          rel="noopener"
-                          onClick={() => { close(); trackEvent('nav_formation_switch', { formation: f.key, target: f.href }); }}
-                          className="flex items-center gap-3 px-4 py-2.5 hover:bg-muted transition-colors"
-                        >
-                          <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary shrink-0">
-                            <Icon className="h-4 w-4" aria-hidden="true" />
-                          </span>
-                          <span className="flex flex-col">
-                            <span className="text-sm font-medium text-primary inline-flex items-center gap-1">
-                              {f.navLabel}
-                              <ExternalLink className="h-3 w-3 text-muted-foreground" aria-hidden="true" />
-                            </span>
-                            <span className="text-xs text-muted-foreground">{f.href.replace('https://', '')}</span>
-                          </span>
-                        </a>
-                      );
-                    })}
-                  </>
-                )}
-              </NavDropdown>
-
               <Link
                 to="/contact"
                 className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors font-body border ${
@@ -353,7 +355,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                     <>
                       {item('/', t('nav.home'))}
 
-                      {heading('Formations')}
+                      {heading('Anglais')}
                       {FORMATION_LINKS.map(f => item(f.href, f.name))}
                       {AUDIENCE_LINKS.map(a => item(a.href, a.name))}
 
@@ -365,7 +367,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                       {item('/temoignages', t('nav.testimonials'))}
                       {item('/contact', t('nav.contact'))}
 
-                      {heading('Mes autres domaines')}
+                      {heading('IA & Créations')}
                       {otherDomains.map(f => {
                         const Icon = FORMATION_ICONS[f.icon];
                         return (

@@ -30,6 +30,7 @@ interface ContactEmailRequest {
   prenom: string;
   nom: string;
   email: string;
+  sujet?: string;
   message: string;
   _gotcha?: string;
   renderedAt?: number;
@@ -113,6 +114,7 @@ export default async function handler(request: Request): Promise<Response> {
     const prenom = stripHeader(body.prenom);
     const nom = stripHeader(body.nom);
     const email = stripHeader(body.email);
+    const sujet = stripHeader(body.sujet) || "Non précisé";
     const message = (body.message ?? "").toString().trim();
 
     if (!prenom || !nom || !email || !message) {
@@ -134,7 +136,7 @@ export default async function handler(request: Request): Promise<Response> {
       from: `${prenom} ${nom} via Contact <contact@${FROM_DOMAIN}>`,
       to: [NOTIFY_TO],
       reply_to: email,
-      subject: `Nouveau message de ${prenom} ${nom} (${email})`,
+      subject: `[${sujet}] Nouveau message de ${prenom} ${nom} (${email})`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h1 style="color: #1e40af; border-bottom: 2px solid #1e40af; padding-bottom: 10px;">
@@ -144,6 +146,7 @@ export default async function handler(request: Request): Promise<Response> {
             <p><strong>Prénom :</strong> ${esc(prenom)}</p>
             <p><strong>Nom :</strong> ${esc(nom)}</p>
             <p><strong>Email :</strong> <a href="mailto:${encodeURIComponent(email)}">${esc(email)}</a></p>
+            <p><strong>Objet :</strong> ${esc(sujet)}</p>
           </div>
           <div style="background-color: #fff; border: 1px solid #e5e7eb; padding: 20px; border-radius: 8px;">
             <h2 style="color: #374151; margin-top: 0;">Message :</h2>

@@ -35,9 +35,9 @@ const About = () => {
 
   return <>
       <SEOHead 
-        title="Antony Addy | Formateur Anglais FPA Certifié"
-        description={`Britannique natif certifié Formateur Professionnel d'Adultes depuis 2017. Plus de ${EXPERIENCE_FLOOR} ans d'expérience en formation anglais professionnel.`}
-        keywords={["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "formation adultes", "Var", "Alpes-Maritimes", "Fréjus"]}
+        title="Antony Addy | Formateur d'anglais, IA générative & création de sites web"
+        description={`Britannique natif certifié FPA (${EXPERIENCE_FLOOR}+ ans en formation d'anglais), également formateur en IA générative et créateur de sites web par IA. Côte d'Azur et à distance.`}
+        keywords={["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "formateur IA générative", "création site web IA", "Var", "Alpes-Maritimes", "Fréjus"]}
         canonicalUrl="https://www.antonyaddy.com/qui-je-suis"
         image="https://www.antonyaddy.com/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png"
         imageAlt="Antony Addy, formateur d'anglais certifié FPA"
@@ -80,7 +80,7 @@ const About = () => {
                 Qui je suis
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Formateur britannique certifié, spécialisé dans l'anglais professionnel pour adultes en France
+                Britannique natif, certifié FPA — formateur d'anglais et d'IA générative, et créateur de sites web par IA, sur la Côte d'Azur et à distance
               </p>
             </div>
           </Reveal>
@@ -98,6 +98,14 @@ const About = () => {
               </div>
 
               <div className="text-lg text-muted-foreground leading-relaxed mb-6 font-body space-y-4">
+                <p>
+                  J'exerce aujourd'hui trois activités complémentaires : la formation en{' '}
+                  <strong className="text-primary">anglais professionnel</strong> — détaillée sur ce site —, la{' '}
+                  <strong className="text-primary">formation à l'IA générative</strong>{' '}
+                  (<a href="https://ia.antonyaddy.com" target="_blank" rel="noopener" className="text-accent hover:underline">ia.antonyaddy.com</a>){' '}
+                  et la <strong className="text-primary">création de sites web par IA</strong>{' '}
+                  (<a href="https://creations.antonyaddy.com" target="_blank" rel="noopener" className="text-accent hover:underline">creations.antonyaddy.com</a>).
+                </p>
                 <p>
                   <strong className="text-primary">Britannique de naissance</strong>, je vis et travaille en France depuis plus de {EXPERIENCE_FLOOR} ans. J'enseigne l'anglais à des adultes dans des contextes professionnels exigeants : entreprises, écoles de commerce, organismes de formation, et accompagnement de personnes en reconversion ou en recherche d'emploi.
                 </p>
