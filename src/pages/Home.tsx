@@ -551,6 +551,67 @@ const Home = () => {
           </div>
         </section>
 
+        {/* ===== STATION 03 · LIGNE IA (violet) — links the ia. subdomain ===== */}
+        <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-ia">
+          <div className="pointer-events-none absolute inset-0" aria-hidden="true"
+            style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(122,98,255,.12), transparent 55%)' }} />
+          <span className="pointer-events-none absolute top-0 bottom-0 left-5 sm:left-8 w-px bg-[#7A62FF] opacity-50" aria-hidden="true" />
+          <span className="pointer-events-none absolute left-5 sm:left-8 -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#7A62FF]" aria-hidden="true"
+            style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(122,98,255,.55)' }} />
+          <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
+            <div className="flex items-center gap-3 flex-wrap">
+              <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">03 · Ligne IA</span>
+              <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#7A62FF] border border-[#7A62FF]/45 rounded-full px-3 py-1.5">Violet line</span>
+            </div>
+            <h2 id="station-ia" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
+              L'IA générative, appliquée à votre métier
+            </h2>
+            <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
+              Des formations concrètes à l'IA générative pour les professionnels et les équipes : ChatGPT, ingénierie de prompts et outils IA, branchés directement sur vos tâches réelles — du gain de temps dès la première session.
+            </p>
+            <div className="mt-8 grid gap-3 sm:grid-cols-3 max-w-3xl">
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Pour qui</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Équipes &amp; indépendants</h3></div>
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Format</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Atelier sur mesure</h3></div>
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Résultat</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Productivité réelle</h3></div>
+            </div>
+            <a href="https://ia.antonyaddy.com" target="_blank" rel="noopener"
+               onClick={() => trackEvent('station_route_click', { formation: 'ia', target: 'https://ia.antonyaddy.com' })}
+               className="mt-8 inline-flex items-center gap-2 bg-[#7A62FF] text-white font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
+              Ouvrir ia.antonyaddy.com <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
+        </section>
+
+        {/* ===== STATION 04 · LIGNE CRÉATIONS (amber) — links the creations. subdomain ===== */}
+        <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-creations">
+          <div className="pointer-events-none absolute inset-0" aria-hidden="true"
+            style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(240,151,74,.12), transparent 55%)' }} />
+          <span className="pointer-events-none absolute top-0 bottom-0 left-5 sm:left-8 w-px bg-[#F0974A] opacity-50" aria-hidden="true" />
+          <span className="pointer-events-none absolute left-5 sm:left-8 -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#F0974A]" aria-hidden="true"
+            style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(240,151,74,.55)' }} />
+          <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
+            <div className="flex items-center gap-3 flex-wrap">
+              <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">04 · Ligne Créations</span>
+              <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#F0974A] border border-[#F0974A]/45 rounded-full px-3 py-1.5">Amber line</span>
+            </div>
+            <h2 id="station-creations" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
+              Votre présence en ligne, construite avec l'IA
+            </h2>
+            <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
+              Des sites web et des outils sur mesure pour entreprises et indépendants, conçus et développés avec l'IA — rapides, soignés et abordables. De la page qui convertit à l'outil interne qui fait gagner des heures.
+            </p>
+            <div className="mt-8 grid gap-3 sm:grid-cols-3 max-w-3xl">
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Sites</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Vitrine &amp; conversion</h3></div>
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Outils</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Sur mesure</h3></div>
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Méthode</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">L'IA au service du métier</h3></div>
+            </div>
+            <a href="https://creations.antonyaddy.com" target="_blank" rel="noopener"
+               onClick={() => trackEvent('station_route_click', { formation: 'creations', target: 'https://creations.antonyaddy.com' })}
+               className="mt-8 inline-flex items-center gap-2 bg-[#F0974A] text-[#1a1200] font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
+              Ouvrir creations.antonyaddy.com <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
+        </section>
 
         {/* Ils me font confiance Section - Updated with client categories */}
         <section className="bg-muted py-16 px-4 sm:px-6 lg:px-8">
