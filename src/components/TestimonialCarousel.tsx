@@ -102,7 +102,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
   return (
     <div
       ref={containerRef}
-      className="relative overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl p-6 sm:p-8 md:p-12 shadow-sm"
+      className="relative overflow-hidden bg-white rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onFocus={() => setIsPaused(true)}

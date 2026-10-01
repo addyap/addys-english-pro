@@ -68,10 +68,13 @@ export default function HubHeroLigne() {
     at(600, () => { if (trunk) trunk.style.strokeDashoffset = '0'; scene?.classList.add('llx-riding'); });
     at(1950, () => { scene?.classList.remove('llx-riding'); show(gHub); });
     at(2200, () => show(gPlate));
-    at(2800, () => { [bAng, bIa, bCre].forEach((b) => { if (b) b.style.strokeDashoffset = '0'; }); });
-    at(3050, () => dests.forEach(show));
-    at(4050, () => { show(h1); show(promise); });
-    at(4400, () => { show(routes); show(cta); });
+    // the three routes draw one after another — the eye follows the line
+    // from Anglais → IA → Créations rather than all branches firing at once.
+    at(2800, () => { if (bAng) bAng.style.strokeDashoffset = '0'; show(dests[0]); });
+    at(3200, () => { if (bIa) bIa.style.strokeDashoffset = '0'; show(dests[1]); });
+    at(3600, () => { if (bCre) bCre.style.strokeDashoffset = '0'; show(dests[2]); });
+    at(4450, () => { show(h1); show(promise); });
+    at(4800, () => { show(routes); show(cta); });
 
     return () => timers.forEach(clearTimeout);
   }, []);
