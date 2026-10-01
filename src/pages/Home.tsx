@@ -5,7 +5,7 @@ import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, Gra
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import OptimizedHero from '../components/OptimizedHero';
-import HubHero from '../components/HubHero';
+import HubHeroLigne from '../components/HubHeroLigne';
 import { TypingText } from '../components/TypingText';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { LazyClientCarousel } from '@/components/LazySwiper';
@@ -271,8 +271,9 @@ const Home = () => {
 
 
 
-      {/* Hub hero — Antony Addy's three activities, equal billing */}
-      <HubHero />
+      {/* Hub hero — "La Ligne" départ sequence: the three activities as one
+          branching line. Keeps the keyword H1 and the three real links. */}
+      <HubHeroLigne />
 
       {/* Trust / authority strip — instant credibility under the hero */}
       <section className="bg-background py-6 sm:py-8 border-b border-border" aria-label="Indicateurs de confiance">
