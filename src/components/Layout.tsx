@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MessageSquare, Menu, X, ChevronDown, Globe, Sparkles, Settings, ExternalLink } from 'lucide-react';
+import { MessageSquare, Menu, X, ChevronDown, Globe, Sparkles, Code, ExternalLink } from 'lucide-react';
 import { FORMATIONS } from '@/data/formations';
 
-const FORMATION_ICONS = { Globe, Sparkles, Settings } as const;
+const FORMATION_ICONS = { Globe, Sparkles, Code } as const;
 
 import { ScrollProgressBar } from "@/components/Effects";
 import SiteLogo from "@/components/SiteLogo";
@@ -127,7 +127,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
   // carried nine top-level items, two of which — "Offres de formation" and
   // "Mes formations" — sat next to each other with near-identical labels and
   // entirely different destinations (this site's offer vs. a switcher to the
-  // IA and SAP subdomains).
+  // IA and website-creation subdomains).
   const isOn = (href: string) => location.pathname === href;
   const formationsActive =
     isOn('/offres-de-formation') || AUDIENCE_LINKS.some(a => isOn(a.href));
@@ -269,7 +269,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 leave the English site or start a conversation, rather than moving
                 around within it. */}
             <div className="hidden lg:flex items-center gap-2 ms-4">
-              <NavDropdown label="IA & SAP" align="right" width="w-72">
+              <NavDropdown label="IA & Créations" align="right" width="w-72">
                 {close => (
                   <>
                     <p className="px-4 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">

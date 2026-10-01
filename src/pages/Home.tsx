@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { YEARS_OF_EXPERIENCE, EXPERIENCE_FLOOR, PRICE_RANGE, CONTENT_LAST_REVIEWED_ISO, formatMonthYearFR } from '@/lib/utils';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, Headphones, Sparkles, MessageCircle, Mail, ArrowRight, Handshake, Mic, PenTool, UserCheck, Search } from 'lucide-react';
+import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, Headphones, MessageCircle, Mail, ArrowRight, Handshake, Mic, PenTool, UserCheck, Search } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import OptimizedHero from '../components/OptimizedHero';
@@ -15,9 +15,26 @@ import { trackEvent } from '@/lib/analytics';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 import { FORMATIONS } from '@/data/formations';
 import { PLATFORM_COUNT } from '@/data/platforms';
+import anglaisLogo from '@/assets/brand/anglais-logo.png';
+import iaLogo from '@/assets/brand/ia-logo.svg';
+import creationsLogo from '@/assets/brand/creations-logo.png';
 
-// Map the formation icon names to their lucide components (already imported above).
-const FORMATION_ICONS = { Globe, Sparkles, Settings } as const;
+// Each activity's own brand mark, shown on the homepage hub cards so the three
+// read as equal, distinct offers rather than interchangeable icon tiles.
+const FORMATION_LOGOS: Record<string, string> = {
+  anglais: anglaisLogo,
+  ia: iaLogo,
+  creations: creationsLogo,
+};
+
+// Per-activity accent, keyed off the design tokens where possible: English =
+// accent red, IA = secondary purple (≈ the subdomain's #5B3DF5), Créations =
+// orange (its wordmark's arrow). Navy (primary) is the shared base.
+const FORMATION_ACCENTS: Record<string, { tile: string; ring: string }> = {
+  anglais: { tile: 'bg-accent/10', ring: 'hover:border-accent/50' },
+  ia: { tile: 'bg-secondary/10', ring: 'hover:border-secondary/50' },
+  creations: { tile: 'bg-[#E08A2B]/10', ring: 'hover:border-[#E08A2B]/60' },
+};
 
 
 
@@ -273,12 +290,12 @@ const Home = () => {
       </section>
 
       <main id="main-content">
-        {/* Mes 3 formations — hub access to English (this site), IA & SAP subdomains */}
+        {/* Mes 3 activités — hub access to English (this site), IA & Créations subdomains */}
         <section className="py-12 sm:py-16 bg-white border-b border-border" aria-labelledby="formations-hub-heading">
           <div className="max-w-6xl mx-auto px-4">
             <Reveal className="text-center mb-8 sm:mb-10">
               <h2 id="formations-hub-heading" className="text-2xl sm:text-3xl font-bold text-primary font-heading mb-2">
-                Mes trois domaines de formation
+                Mes trois activités
               </h2>
               <p className="text-muted-foreground font-body max-w-2xl mx-auto">
                 Formateur Professionnel d'Adultes certifié, j'accompagne particuliers et entreprises sur trois expertises complémentaires.
@@ -287,12 +304,18 @@ const Home = () => {
             </Reveal>
             <RevealStagger className="grid gap-5 sm:gap-6 md:grid-cols-3" role="list">
               {FORMATIONS.map((f) => {
-                const Icon = FORMATION_ICONS[f.icon];
+                const accent = FORMATION_ACCENTS[f.key];
                 const isCurrent = !f.external;
                 const inner = (
                   <>
-                    <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-4" aria-hidden="true">
-                      <Icon className="h-7 w-7" />
+                    <div className="flex items-center justify-center h-20 mb-5 rounded-xl bg-white border border-border/60 px-4" aria-hidden="true">
+                      <img
+                        src={FORMATION_LOGOS[f.key]}
+                        alt=""
+                        className="max-h-14 w-auto object-contain"
+                        loading="lazy"
+                        decoding="async"
+                      />
                     </div>
                     <h3 className="text-xl font-semibold text-primary font-heading mb-2 flex items-center gap-2">
                       {f.title}
@@ -301,7 +324,7 @@ const Home = () => {
                     <p className="text-sm text-muted-foreground font-body leading-relaxed mb-4 flex-1">{f.tagline}</p>
                     <span className="inline-flex items-center gap-1.5 text-primary font-semibold text-sm mt-auto">
                       {isCurrent ? 'Vous y êtes' : f.cta}
-                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
                     </span>
                   </>
                 );
@@ -309,7 +332,7 @@ const Home = () => {
                   'group flex flex-col h-full text-left p-6 rounded-2xl border transition-all duration-300 ' +
                   (isCurrent
                     ? 'bg-primary/5 border-primary/30'
-                    : 'bg-card border-border hover:shadow-xl hover:border-primary/40 hover:-translate-y-1');
+                    : `bg-card border-border hover:shadow-xl ${accent.ring} hover:-translate-y-1`);
                 return isCurrent ? (
                   <Reveal key={f.key} variant="scale" as="div" className={cardClass} role="listitem" aria-current="page">
                     {inner}

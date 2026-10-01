@@ -1,12 +1,12 @@
-// Single source of truth for Antony Addy's three training domains.
+// Single source of truth for Antony Addy's three activities.
 // antonyaddy.com is the hub: the English formation lives on this site (root),
-// while the IA and SAP formations live on their own subdomains. Update links
-// or wording here and the header switcher, homepage section and footer all
-// follow automatically.
+// while the IA and website-creation activities live on their own subdomains.
+// Update links or wording here and the header switcher, homepage hub section
+// and footer all follow automatically.
 
 export interface Formation {
   /** Stable key, also used for analytics + React keys. */
-  key: 'anglais' | 'ia' | 'sap';
+  key: 'anglais' | 'ia' | 'creations';
   /** Short label for the nav switcher. */
   navLabel: string;
   /** Full card title. */
@@ -17,8 +17,8 @@ export interface Formation {
   href: string;
   /** True when href points to another domain (opens in a new tab). */
   external: boolean;
-  /** lucide-react icon name, resolved by each consumer. */
-  icon: 'Globe' | 'Sparkles' | 'Settings';
+  /** lucide-react icon name, used for the compact nav/footer tiles. */
+  icon: 'Globe' | 'Sparkles' | 'Code';
   /** CTA label on the homepage card. */
   cta: string;
 }
@@ -37,8 +37,8 @@ export const FORMATIONS: Formation[] = [
   },
   {
     key: 'ia',
-    navLabel: 'Intelligence Artificielle',
-    title: 'Intelligence Artificielle',
+    navLabel: 'IA générative',
+    title: 'IA générative',
     tagline:
       "Formations à l'IA générative pour gagner en productivité : ChatGPT, prompts et outils IA appliqués à votre métier.",
     href: 'https://ia.antonyaddy.com',
@@ -47,14 +47,14 @@ export const FORMATIONS: Formation[] = [
     cta: 'Découvrir la formation IA',
   },
   {
-    key: 'sap',
-    navLabel: 'SAP',
-    title: 'SAP',
+    key: 'creations',
+    navLabel: 'Création de sites web',
+    title: 'Création de sites web',
     tagline:
-      "Formations SAP pour maîtriser l'ERP de référence et accompagner votre montée en compétences ou celle de vos équipes.",
-    href: 'https://sap.antonyaddy.com',
+      "Sites web et outils sur mesure pour entreprises et indépendants, conçus et développés avec l'IA — rapides, soignés et abordables.",
+    href: 'https://creations.antonyaddy.com',
     external: true,
-    icon: 'Settings',
-    cta: 'Découvrir la formation SAP',
+    icon: 'Code',
+    cta: 'Découvrir mes créations web',
   },
 ];
