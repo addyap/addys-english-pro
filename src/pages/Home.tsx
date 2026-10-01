@@ -37,8 +37,8 @@ const CLIENT_LOGOS = [
 // activities on their subdomains, linked by @id. Every real fact
 // from the old markup is preserved; only duplicates are removed. Conflicts were
 // resolved to the real value: email formations@ (not the placeholder contact@),
-// logo /icon-512.png and image /social-preview.jpg (both real images; the old
-// /og/antonyaddy-card.png 404s and /assets/logo-512.png was a text stub).
+// logo /icon-512.png and image /og/antonyaddy-hub.jpg (the hub social card; the
+// old /og/antonyaddy-card.png 404s and /assets/logo-512.png was a text stub).
 const HOME_JSONLD_GRAPH = {
   "@context": "https://schema.org",
   "@graph": [
@@ -51,7 +51,7 @@ const HOME_JSONLD_GRAPH = {
       slogan: "Formations claires, flexibles et efficaces en anglais professionnel",
       url: "https://www.antonyaddy.com",
       logo: "https://www.antonyaddy.com/icon-512.png",
-      image: "https://www.antonyaddy.com/social-preview.jpg",
+      image: "https://www.antonyaddy.com/og/antonyaddy-hub.jpg",
       telephone: "+33649829826",
       email: "formations@antonyaddy.com",
       priceRange: PRICE_RANGE,
@@ -114,7 +114,7 @@ const HOME_JSONLD_GRAPH = {
         "Développement web assisté par IA",
       ],
       url: "https://www.antonyaddy.com",
-      image: "https://www.antonyaddy.com/social-preview.jpg",
+      image: "https://www.antonyaddy.com/og/antonyaddy-hub.jpg",
       knowsLanguage: ["fr", "en"],
       address: { "@id": "https://www.antonyaddy.com/#address" },
       worksFor: { "@id": "https://www.antonyaddy.com/#business" },
@@ -258,8 +258,8 @@ const Home = () => {
         canonicalUrl="https://www.antonyaddy.com/"
         datePublished="2025-01-15T10:00:00+01:00"
         dateModified={CONTENT_LAST_REVIEWED_ISO}
-        image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
-        imageAlt="Antony Addy, formateur d'anglais professionnel certifié FPA"
+        image="https://www.antonyaddy.com/og/antonyaddy-hub.jpg"
+        imageAlt="Antony Addy — formateur d'anglais, formateur en IA générative et créateur de sites web"
         keywords={["formateur anglais", "formation anglais professionnel", "formateur FPA", "cours anglais adultes", "formateur IA générative", "formation ChatGPT entreprise", "création site web IA", "Var", "Alpes-Maritimes", "Côte d'Azur", "Fréjus", "Saint-Raphaël", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "anglais à distance", "formateur britannique", "anglais entreprises", "anglais cadres", "anglais étudiants"]}
         jsonLd={HOME_JSONLD_GRAPH}
       />
