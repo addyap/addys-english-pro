@@ -275,47 +275,53 @@ const Home = () => {
           branching line. Keeps the keyword H1 and the three real links. */}
       <HubHeroLigne />
 
-      {/* Trust / authority strip — instant credibility under the hero */}
-      <section className="bg-background py-6 sm:py-8 border-b border-border" aria-label="Indicateurs de confiance">
-        <RevealStagger className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
-          <Reveal variant="up">
-            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">
-              <CountUp value={YEARS_OF_EXPERIENCE} suffix="+" />
-            </p>
-            <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Années d'expérience</p>
-          </Reveal>
-          <Reveal variant="up">
-            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">
-              <CountUp value={500} suffix="+" />
-            </p>
-            <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Apprenants accompagnés</p>
-          </Reveal>
-          <Reveal variant="up">
-            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">FPA</p>
-            <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Certifié depuis 2017</p>
-          </Reveal>
-          <Reveal variant="up">
-            <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary font-heading">
-              <CountUp value={24} suffix=" h" />
-            </p>
-            <p className="text-xs sm:text-sm text-muted-foreground font-body mt-1">Réponse en jours ouvrés</p>
-          </Reveal>
-        </RevealStagger>
-        <p className="max-w-4xl mx-auto px-4 mt-4 sm:mt-6 text-center text-xs sm:text-sm text-muted-foreground font-body leading-relaxed">
-          Particuliers, salariés, étudiants (BTS, Bachelor, Master), cadres et équipes : préparation aux entretiens, examens, réunions et présentations en anglais.
-        </p>
-      </section>
+      {/* ===== STATION 01 · L'INTERCHANGE — La Ligne dark treatment.
+           Folds the old trust strip + SEO intro into one station; every metric,
+           the full crawlable text and both links are preserved. ===== */}
+      <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-interchange">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true"
+          style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(246,164,99,.10), transparent 55%), radial-gradient(120% 90% at 50% 120%, rgba(11,16,48,.9), transparent 55%)' }} />
+        {/* the line — spine + interchange node */}
+        <span className="pointer-events-none absolute top-0 bottom-0 left-5 sm:left-8 w-px opacity-50" aria-hidden="true"
+          style={{ background: 'linear-gradient(180deg,#E8473B,#7A62FF 55%,#F0974A)' }} />
+        <span className="pointer-events-none absolute left-5 sm:left-8 -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#E8473B]" aria-hidden="true"
+          style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(232,71,59,.55)' }} />
 
-      {/* SEO: Crawlable introductory text for search engines */}
-      <section className="bg-muted py-6 border-b border-border">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-muted-foreground text-sm leading-relaxed font-body">
-            Antony Addy propose des <strong className="text-primary">formations d'anglais pour adultes</strong> adaptées aux professionnels, 
-            en présentiel dans le Var et les Alpes-Maritimes (Fréjus, Saint-Raphaël, Cannes, Antibes, Nice, Monaco) ou à distance partout en France et dans le monde. 
-            Britannique natif basé à Fréjus, certifié Formateur Professionnel d'Adultes depuis 2017 et fort de plus de {EXPERIENCE_FLOOR} ans d'enseignement (notamment à l'EDJ Nice), il accompagne particuliers, 
+        <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
+          <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">01 · L'Interchange</span>
+          <h2 id="station-interchange" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
+            Une ligne, trois destinations.
+          </h2>
+          <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
+            antonyaddy.com est le point de rencontre de mes trois activités : un formateur, trois façons d'avancer — en anglais, en IA générative, et en ligne.
+          </p>
+
+          <RevealStagger className="mt-9 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+            <Reveal variant="up">
+              <p className="text-3xl sm:text-4xl font-extrabold text-white font-heading"><CountUp value={YEARS_OF_EXPERIENCE} suffix="+" /></p>
+              <p className="mt-1 font-heading text-[0.62rem] uppercase tracking-[0.14em] text-[#8b93b6]">Années d'expérience</p>
+            </Reveal>
+            <Reveal variant="up">
+              <p className="text-3xl sm:text-4xl font-extrabold text-white font-heading"><CountUp value={500} suffix="+" /></p>
+              <p className="mt-1 font-heading text-[0.62rem] uppercase tracking-[0.14em] text-[#8b93b6]">Apprenants accompagnés</p>
+            </Reveal>
+            <Reveal variant="up">
+              <p className="text-3xl sm:text-4xl font-extrabold text-white font-heading">FPA</p>
+              <p className="mt-1 font-heading text-[0.62rem] uppercase tracking-[0.14em] text-[#8b93b6]">Certifié depuis 2017</p>
+            </Reveal>
+            <Reveal variant="up">
+              <p className="text-3xl sm:text-4xl font-extrabold text-white font-heading"><CountUp value={24} suffix=" h" /></p>
+              <p className="mt-1 font-heading text-[0.62rem] uppercase tracking-[0.14em] text-[#8b93b6]">Réponse en jours ouvrés</p>
+            </Reveal>
+          </RevealStagger>
+
+          <p className="mt-9 max-w-4xl text-sm text-[#9aa2c0] font-body leading-relaxed">
+            Antony Addy propose des <strong className="text-[#F2EDE1] font-semibold">formations d'anglais pour adultes</strong> adaptées aux professionnels,
+            en présentiel dans le Var et les Alpes-Maritimes (Fréjus, Saint-Raphaël, Cannes, Antibes, Nice, Monaco) ou à distance partout en France et dans le monde.
+            Britannique natif basé à Fréjus, certifié Formateur Professionnel d'Adultes depuis 2017 et fort de plus de {EXPERIENCE_FLOOR} ans d'enseignement (notamment à l'EDJ Nice), il accompagne particuliers,
             cadres, entreprises et centres de formation dans l'amélioration de leurs compétences en anglais professionnel.{' '}
-            <Link to="/offres-de-formation" className="text-accent hover:underline font-medium">Découvrir les formations</Link>{' • '}
-            <Link to="/contact" className="text-accent hover:underline font-medium">Demander un devis gratuit</Link>
+            <Link to="/offres-de-formation" className="text-[#F6A463] hover:underline font-medium">Découvrir les formations</Link>{' • '}
+            <Link to="/contact" className="text-[#F6A463] hover:underline font-medium">Demander un devis gratuit</Link>
           </p>
         </div>
       </section>

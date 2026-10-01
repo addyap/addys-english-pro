@@ -156,12 +156,11 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
-              <SiteLogo height={40} className="me-3" alt="Antony Addy" />
-              <div className="flex flex-col">
-                <Link to="/" className="text-lg font-bold text-primary font-heading">
-                  Antony Addy
-                </Link>
-              </div>
+              {/* Neutral wordmark for the hub — the English "FORMATIONS" roundel
+                  lived here but misrepresents a three-activity brand. */}
+              <Link to="/" className="text-xl font-bold text-primary font-heading tracking-tight">
+                Antony Addy
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
