@@ -207,8 +207,8 @@ const LLX_CSS = `
 .llx-rider{opacity:0}
 .llx-riding .llx-rider{opacity:1;animation:llxRide 1.5s cubic-bezier(.65,0,.3,1) forwards}
 @keyframes llxRide{from{offset-distance:0%}to{offset-distance:100%}}
-.llx-h1{font-family:'Poppins',system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.02;
-  font-size:clamp(1.7rem,4.6vw,3rem);max-width:20ch;margin:0;text-wrap:balance}
+.llx-h1{font-family:'Bricolage Grotesque','Poppins',system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.02;
+  font-size:clamp(1.9rem,5vw,3.4rem);max-width:18ch;margin:0;text-wrap:balance}
 .llx-k{color:var(--horizon)}
 .llx-promise{font-style:italic;color:#CBCFE4;font-size:clamp(1rem,2.4vw,1.25rem);margin:0;max-width:44ch}
 .llx-hot{color:var(--horizon);font-style:normal;font-weight:600}
