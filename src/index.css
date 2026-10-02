@@ -124,6 +124,20 @@ All colors MUST be HSL.
   }
 }
 
+/* La Ligne rail — align the station spine/nodes to the content gutter at every
+   width (max-w-6xl = 1152px centred). Without this the absolute rail sits at the
+   screen edge while the content is centred, orphaning the line on wide screens. */
+.lg-x { left: max(20px, calc(50% - 544px)); }
+
+/* Continuous connector rail for the "bare" dark sections between stations, so
+   the line reads as one journey rather than disconnected station stubs. */
+.lg-section { position: relative; }
+.lg-section::before {
+  content: ""; position: absolute; top: 0; bottom: 0;
+  left: max(20px, calc(50% - 544px)); width: 2px;
+  background: rgba(203, 207, 228, 0.16); z-index: 0; pointer-events: none;
+}
+
 /* Prevent long headings from clipping/truncating */
 .hero-title {
   line-height: 1.1;

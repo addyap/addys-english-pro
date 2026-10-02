@@ -282,9 +282,9 @@ const Home = () => {
         <div className="pointer-events-none absolute inset-0" aria-hidden="true"
           style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(246,164,99,.10), transparent 55%), radial-gradient(120% 90% at 50% 120%, rgba(11,16,48,.9), transparent 55%)' }} />
         {/* the line — spine + interchange node */}
-        <span className="pointer-events-none absolute top-0 bottom-0 left-5 sm:left-8 w-px opacity-50" aria-hidden="true"
+        <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px opacity-50" aria-hidden="true"
           style={{ background: 'linear-gradient(180deg,#E8473B,#7A62FF 55%,#F0974A)' }} />
-        <span className="pointer-events-none absolute left-5 sm:left-8 -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#E8473B]" aria-hidden="true"
+        <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#E8473B]" aria-hidden="true"
           style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(232,71,59,.55)' }} />
 
         <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
@@ -334,8 +334,8 @@ const Home = () => {
           <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-anglais">
             <div className="pointer-events-none absolute inset-0" aria-hidden="true"
               style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(232,71,59,.10), transparent 55%)' }} />
-            <span className="pointer-events-none absolute top-0 bottom-0 left-5 sm:left-8 w-px bg-[#E8473B] opacity-50" aria-hidden="true" />
-            <span className="pointer-events-none absolute left-5 sm:left-8 -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#E8473B]" aria-hidden="true"
+            <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#E8473B] opacity-50" aria-hidden="true" />
+            <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#E8473B]" aria-hidden="true"
               style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(232,71,59,.55)' }} />
             <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 pt-14 sm:pt-20 pb-2">
               <div className="flex items-center gap-3 flex-wrap">
@@ -368,8 +368,8 @@ const Home = () => {
 
         {/* ===== LE CONDUCTEUR — who's at the controls (dark La Ligne station) ===== */}
         <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-conducteur">
-          <span className="pointer-events-none absolute top-0 bottom-0 left-5 sm:left-8 w-px bg-[#CBCFE4] opacity-30" aria-hidden="true" />
-          <span className="pointer-events-none absolute left-5 sm:left-8 -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#CBCFE4]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22' }} />
+          <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#CBCFE4] opacity-30" aria-hidden="true" />
+          <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#CBCFE4]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22' }} />
           <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
             <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Le Conducteur</span>
             <h2 id="station-conducteur" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">Qui est aux commandes</h2>
@@ -410,7 +410,7 @@ const Home = () => {
             teal; its "gratuit / accès libre" message now lives in the badge
             below). Free is stated in the present ("en accès libre"), never as a
             permanent promise; the AI angle stays a discreet aside, not the pitch. */}
-        <section className="py-14 sm:py-20 bg-[#070b22] text-[#F2EDE1]" aria-labelledby="platforms-heading">
+        <section className="py-14 sm:py-20 bg-[#070b22] text-[#F2EDE1] lg-section" aria-labelledby="platforms-heading">
           <Reveal className="max-w-5xl mx-auto px-4 text-center">
             <p className="text-sm font-semibold uppercase tracking-wide text-[#F6A463] mb-2">
               Fluentory <span className="text-[#8b93b6] normal-case tracking-normal">by Antony Addy</span>
@@ -458,7 +458,7 @@ const Home = () => {
         </section>
 
         {/* Features Section - 6 blocks in 2x3 grid */}
-        <section className="py-14 sm:py-20 bg-[#070b22] text-[#F2EDE1]" aria-labelledby="features-heading">
+        <section className="py-14 sm:py-20 bg-[#070b22] text-[#F2EDE1] lg-section" aria-labelledby="features-heading">
           <div className="max-w-6xl mx-auto px-4">
             <Reveal className="text-center mb-8 sm:mb-12">
               <h2 id="features-heading" className="text-2xl sm:text-3xl font-extrabold text-white font-heading tracking-tight">
@@ -486,7 +486,7 @@ const Home = () => {
         </section>
 
         {/* Pour qui — per-audience landing page links */}
-        <section className="py-14 sm:py-20 bg-[#070b22] text-[#F2EDE1]" aria-labelledby="audience-heading">
+        <section className="py-14 sm:py-20 bg-[#070b22] text-[#F2EDE1] lg-section" aria-labelledby="audience-heading">
           <div className="max-w-6xl mx-auto px-4">
             <Reveal className="text-center mb-8 sm:mb-10">
               <h2 id="audience-heading" className="text-2xl sm:text-3xl font-extrabold text-white font-heading tracking-tight mb-3">
@@ -525,8 +525,8 @@ const Home = () => {
         <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-ia">
           <div className="pointer-events-none absolute inset-0" aria-hidden="true"
             style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(122,98,255,.12), transparent 55%)' }} />
-          <span className="pointer-events-none absolute top-0 bottom-0 left-5 sm:left-8 w-px bg-[#7A62FF] opacity-50" aria-hidden="true" />
-          <span className="pointer-events-none absolute left-5 sm:left-8 -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#7A62FF]" aria-hidden="true"
+          <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#7A62FF] opacity-50" aria-hidden="true" />
+          <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#7A62FF]" aria-hidden="true"
             style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(122,98,255,.55)' }} />
           <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
             <div className="flex items-center gap-3 flex-wrap">
@@ -556,8 +556,8 @@ const Home = () => {
         <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-creations">
           <div className="pointer-events-none absolute inset-0" aria-hidden="true"
             style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(240,151,74,.12), transparent 55%)' }} />
-          <span className="pointer-events-none absolute top-0 bottom-0 left-5 sm:left-8 w-px bg-[#F0974A] opacity-50" aria-hidden="true" />
-          <span className="pointer-events-none absolute left-5 sm:left-8 -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#F0974A]" aria-hidden="true"
+          <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#F0974A] opacity-50" aria-hidden="true" />
+          <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#F0974A]" aria-hidden="true"
             style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(240,151,74,.55)' }} />
           <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
             <div className="flex items-center gap-3 flex-wrap">
@@ -585,8 +585,8 @@ const Home = () => {
 
         {/* ===== LES PASSAGERS — proof, as people who rode the line (dark station) ===== */}
         <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-passagers">
-          <span className="pointer-events-none absolute top-0 bottom-0 left-5 sm:left-8 w-px bg-[#CBCFE4] opacity-30" aria-hidden="true" />
-          <span className="pointer-events-none absolute left-5 sm:left-8 -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#CBCFE4]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22' }} />
+          <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#CBCFE4] opacity-30" aria-hidden="true" />
+          <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#CBCFE4]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22' }} />
           <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
             <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Les Passagers</span>
             <h2 id="station-passagers" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">Ils me font confiance</h2>
@@ -611,7 +611,7 @@ const Home = () => {
         {/* Avis Clients Section - Testimonials right after trust signals */}
         <AvisClients />
 
-        <section className="relative overflow-hidden py-14 sm:py-16 bg-[#0b1030] text-[#F2EDE1] border-t border-white/5">
+        <section className="relative overflow-hidden lg-section py-14 sm:py-16 bg-[#0b1030] text-[#F2EDE1] border-t border-white/5">
           <Reveal className="relative z-10 max-w-4xl mx-auto px-4 text-center">
             <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4 font-heading tracking-tight">
               Quel est votre niveau d'anglais aujourd'hui ?
@@ -636,8 +636,8 @@ const Home = () => {
         {/* ===== PROCHAIN ARRÊT — the closing stop (dark La Ligne, WhatsApp-first) ===== */}
         <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-contact">
           <div className="pointer-events-none absolute inset-0" aria-hidden="true" style={{ background: 'radial-gradient(70% 120% at 50% 120%, rgba(246,164,99,.16), transparent 60%)' }} />
-          <span className="pointer-events-none absolute top-0 bottom-0 left-5 sm:left-8 w-px bg-[#F6A463] opacity-50" aria-hidden="true" />
-          <span className="pointer-events-none absolute left-5 sm:left-8 -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#F6A463]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(246,164,99,.6)' }} />
+          <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#F6A463] opacity-50" aria-hidden="true" />
+          <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#F6A463]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(246,164,99,.6)' }} />
           <div className="relative max-w-3xl mx-auto pl-12 sm:pl-20 pr-4 py-16 sm:py-24">
             <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Prochain arrêt</span>
             <h2 id="station-contact" className="mt-3 font-heading font-extrabold tracking-tight text-3xl sm:text-5xl leading-[1.03]">

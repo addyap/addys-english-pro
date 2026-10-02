@@ -91,7 +91,7 @@ export default function HubHeroLigne() {
         </p>
 
         <div className="llx-scene" aria-hidden="true">
-          <svg viewBox="0 0 1000 520" role="presentation">
+          <svg viewBox="0 0 1000 476" role="presentation">
             <defs>
               <linearGradient id="llxTg" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0" stopColor="rgba(255,255,255,.35)" />
@@ -119,17 +119,16 @@ export default function HubHeroLigne() {
               <text className="llx-plate-t" x="500" y="224" textAnchor="middle">Antony Addy</text>
               <text className="llx-plate-s" x="500" y="239" textAnchor="middle">Interchange</text>
             </g>
+            {/* Terminus nodes only — the three routes are named by the cards
+                below, so the diagram stays clean rather than repeating them. */}
             <g className="llx-dest llx-pre" data-r>
               <circle cx="250" cy="432" r="8" fill="#0b1030" stroke="#E8473B" strokeWidth="3.1" filter="url(#llxGl)" />
-              <text className="llx-dt" x="250" y="470" textAnchor="middle" fill="#E8473B">Anglais</text>
             </g>
             <g className="llx-dest llx-pre" data-r>
               <circle cx="500" cy="452" r="8" fill="#0b1030" stroke="#7A62FF" strokeWidth="3.1" filter="url(#llxGl)" />
-              <text className="llx-dt" x="500" y="490" textAnchor="middle" fill="#7A62FF">IA générative</text>
             </g>
             <g className="llx-dest llx-pre" data-r>
               <circle cx="750" cy="432" r="8" fill="#0b1030" stroke="#F0974A" strokeWidth="3.1" filter="url(#llxGl)" />
-              <text className="llx-dt" x="750" y="470" textAnchor="middle" fill="#F0974A">Création de sites</text>
             </g>
           </svg>
         </div>
