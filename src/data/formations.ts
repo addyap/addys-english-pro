@@ -51,7 +51,7 @@ export const FORMATIONS: Formation[] = [
     navLabel: 'Création de sites web',
     title: 'Création de sites web',
     tagline:
-      "Sites web et outils sur mesure pour entreprises et indépendants, conçus et développés avec l'IA — rapides, soignés et abordables.",
+      "Sites web et outils métier sur mesure (applications, automatisations) pour entreprises et indépendants, développés avec l'IA.",
     href: 'https://creations.antonyaddy.com',
     external: true,
     icon: 'Code',

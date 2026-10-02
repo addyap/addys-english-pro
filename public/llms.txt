@@ -7,7 +7,7 @@ Ce site (antonyaddy.com) détaille l'activité de formation en anglais : formati
 ## Autres activités
 
 - [Formation en IA générative](https://ia.antonyaddy.com): Formations à l'IA générative (ChatGPT, prompts, outils IA) pour les professionnels et les entreprises. Site dédié.
-- [Création de sites web par IA](https://creations.antonyaddy.com): Conception et développement de sites web et d'outils sur mesure pour entreprises et indépendants, avec l'IA. Site dédié.
+- [Création de sites web par IA](https://creations.antonyaddy.com): Deux prestations distinctes, pour entreprises et indépendants, développées avec l'IA — (1) la création de sites web (vitrines, pages qui convertissent) et (2) le développement d'outils métier sur mesure (applications internes, automatisations). À ne pas confondre avec les outils pédagogiques Fluentory (voir Ressources), qui sont des outils d'apprentissage de l'anglais. Site dédié.
 
 ## Pages principales
 
@@ -35,7 +35,7 @@ Ce site (antonyaddy.com) détaille l'activité de formation en anglais : formati
 
 ## Ressources gratuites
 
-- [Fluentory by Antony Addy](/ressources-en-ligne): La suite de plateformes d'entraînement à l'anglais conçues par Antony Addy — grammaire (Grammatica), compréhension orale (ListenUp), expression orale (SpeakUp AI), préparation TOEIC et CLOE, et Anglais à Distance. En accès libre.
+- [Fluentory by Antony Addy](/ressources-en-ligne): La suite d'outils pédagogiques (plateformes d'apprentissage de l'anglais) conçue par Antony Addy — grammaire (Grammatica), compréhension orale (ListenUp), expression orale (SpeakUp AI), préparation TOEIC et CLOE, et Anglais à Distance. Ce sont des outils éducatifs liés à la formation en anglais, distincts des sites web et outils métier créés pour les clients (voir creations.antonyaddy.com). En accès libre.
 - [Blog](/blog): Articles de grammaire anglaise, points de vocabulaire et conseils de business English, rédigés par un formateur natif.
 
 ## Optional

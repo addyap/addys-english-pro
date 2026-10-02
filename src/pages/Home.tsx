@@ -157,7 +157,7 @@ const HOME_JSONLD_GRAPH = {
       "@id": "https://www.antonyaddy.com/#service-web",
       name: "Création de sites web par IA",
       serviceType: "Conception et développement de sites web",
-      description: "Sites web et outils sur mesure pour entreprises et indépendants, conçus et développés avec l'IA — rapides, soignés et abordables.",
+      description: "Création de sites web et développement d'outils métier sur mesure (applications, automatisations) pour entreprises et indépendants, avec l'IA.",
       provider: { "@id": "https://www.antonyaddy.com/#antony-addy" },
       url: "https://creations.antonyaddy.com",
       areaServed: [
@@ -383,16 +383,15 @@ const Home = () => {
               Free tools for grammar, listening, speaking and exam prep — built by a certified trainer.
             </p>
             <h2 id="platforms-heading" className="text-2xl sm:text-3xl font-extrabold text-white mb-3 font-heading tracking-tight">
-              Un formateur, {PLATFORM_COUNT} plateformes d'entraînement
+              Un formateur, {PLATFORM_COUNT} plateformes d'entraînement à l'anglais
             </h2>
             <p className="inline-flex items-center gap-1.5 mb-4 px-3 py-1 rounded-full bg-[#E8473B]/15 text-[#E8473B] text-xs font-semibold uppercase tracking-wide">
               <Award className="h-3.5 w-3.5" aria-hidden="true" />
               Gratuit · sans inscription
             </p>
             <p className="text-base sm:text-lg text-[#9aa2c0] max-w-2xl mx-auto mb-8 leading-relaxed">
-              Grammaire, TOEIC, CLOE, compréhension et expression orales : je conçois
-              et enrichis mes propres outils d'entraînement, en accès libre. Ma
-              pédagogie, prolongée par les outils d'aujourd'hui.
+              Grammaire, TOEIC, CLOE, compréhension et expression orales : mes propres
+              <strong className="text-[#F2EDE1] font-semibold"> outils pédagogiques</strong> d'apprentissage de l'anglais, en accès libre — à distinguer de mes créations web pour clients. Ma pédagogie, prolongée par les outils d'aujourd'hui.
             </p>
             <Link
               to="/ressources-en-ligne"
@@ -537,12 +536,12 @@ const Home = () => {
               Votre présence en ligne, construite avec l'IA
             </h2>
             <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
-              Des sites web et des outils sur mesure pour entreprises et indépendants, conçus et développés avec l'IA — rapides, soignés et abordables. De la page qui convertit à l'outil interne qui fait gagner des heures.
+              Deux prestations, un même moteur (l'IA), pour les entreprises et les indépendants : la <strong className="text-white">création de sites web</strong> — vitrines et pages qui convertissent — et le développement d'<strong className="text-white">outils métier sur mesure</strong> — applications internes, automatisations. Rapides, soignés et abordables.
             </p>
             <div className="mt-8 grid gap-3 sm:grid-cols-3 max-w-3xl">
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Sites</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Vitrine &amp; conversion</h3></div>
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Outils</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Sur mesure</h3></div>
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Méthode</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">L'IA au service du métier</h3></div>
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Sites web</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Vitrines &amp; conversion</h3></div>
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Outils métier</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Apps &amp; automatisations</h3></div>
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Méthode</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Conçu &amp; développé avec l'IA</h3></div>
             </div>
             <a href="https://creations.antonyaddy.com" target="_blank" rel="noopener"
                onClick={() => trackEvent('station_route_click', { formation: 'creations', target: 'https://creations.antonyaddy.com' })}
