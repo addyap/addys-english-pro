@@ -76,7 +76,36 @@ export default function HubHeroLigne() {
     at(4450, () => { show(h1); show(promise); });
     at(4800, () => { show(routes); show(cta); });
 
-    return () => timers.forEach(clearTimeout);
+    // 3D depth — the diagram is a plane that parallaxes to the pointer while the
+    // ground shifts behind it: camera-like dimensionality, no WebGL dependency.
+    // (Unreachable under reduced motion: that path returned above.)
+    let raf = 0;
+    const plane = root.querySelector('.llx-plane') as HTMLElement | null;
+    const ground = root.querySelector('.llx-bg') as HTMLElement | null;
+    let tgX = 0, tgY = 0, curX = 0, curY = 0;
+    const onMove = (e: PointerEvent) => {
+      const r = root.getBoundingClientRect();
+      tgX = (e.clientX - r.left) / r.width - 0.5;
+      tgY = (e.clientY - r.top) / r.height - 0.5;
+    };
+    const reset = () => { tgX = 0; tgY = 0; };
+    const loop = () => {
+      curX += (tgX - curX) * 0.06;
+      curY += (tgY - curY) * 0.06;
+      if (plane) plane.style.transform = `rotateX(${(-curY * 7).toFixed(2)}deg) rotateY(${(curX * 10).toFixed(2)}deg)`;
+      if (ground) ground.style.transform = `translate(${(-curX * 16).toFixed(1)}px, ${(-curY * 12).toFixed(1)}px)`;
+      raf = requestAnimationFrame(loop);
+    };
+    window.addEventListener('pointermove', onMove, { passive: true });
+    root.addEventListener('pointerleave', reset);
+    raf = requestAnimationFrame(loop);
+
+    return () => {
+      timers.forEach(clearTimeout);
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener('pointermove', onMove);
+      root.removeEventListener('pointerleave', reset);
+    };
   }, []);
 
   return (
@@ -91,6 +120,7 @@ export default function HubHeroLigne() {
         </p>
 
         <div className="llx-scene" aria-hidden="true">
+         <div className="llx-plane">
           <svg viewBox="0 0 1000 476" role="presentation">
             <defs>
               <linearGradient id="llxTg" x1="0" y1="0" x2="0" y2="1">
@@ -131,6 +161,7 @@ export default function HubHeroLigne() {
               <circle cx="750" cy="432" r="8" fill="#0b1030" stroke="#F0974A" strokeWidth="3.1" filter="url(#llxGl)" />
             </g>
           </svg>
+         </div>
         </div>
 
         <h1 className="llx-h1 llx-pre" data-r>
@@ -185,7 +216,7 @@ const LLX_CSS = `
 .llx{position:relative;overflow:hidden;isolation:isolate;color:#F2EDE1;
   --ang:#E8473B;--ia:#7A62FF;--cre:#F0974A;--horizon:#F6A463;
   font-family:inherit;border-bottom:1px solid rgba(233,236,255,.07)}
-.llx-bg{position:absolute;inset:0;z-index:-1;pointer-events:none;
+.llx-bg{position:absolute;inset:-26px;z-index:-1;pointer-events:none;will-change:transform;transition:transform .5s cubic-bezier(.2,.7,.2,1);
   background:
     radial-gradient(46% 55% at 86% 0%,rgba(246,164,99,.20),transparent 55%),
     radial-gradient(44% 55% at 98% 14%,rgba(232,101,122,.15),transparent 60%),
@@ -195,7 +226,9 @@ const LLX_CSS = `
 .llx-eyebrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;margin:0;
   font-family:'Poppins',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:.7rem;font-weight:700;color:#8b93b6}
 .llx-pip{width:8px;height:8px;border-radius:50%;background:var(--horizon);box-shadow:0 0 0 4px rgba(246,164,99,.16),0 0 14px rgba(246,164,99,.8)}
-.llx-scene{width:100%;max-width:960px}
+.llx-scene{width:100%;max-width:960px;perspective:1100px}
+.llx-plane{transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.7,.2,1);will-change:transform}
+@media (prefers-reduced-motion:reduce){ .llx-plane,.llx-bg{transition:none} }
 .llx-scene svg{width:100%;height:auto;max-height:46vh;display:block;overflow:visible}
 .llx-line{fill:none;stroke-linecap:round;transition:stroke-dashoffset 1.5s cubic-bezier(.6,0,.2,1)}
 .llx-trunk{stroke:url(#llxTg);stroke-width:3.4}

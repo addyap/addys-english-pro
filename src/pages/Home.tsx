@@ -397,16 +397,21 @@ const Home = () => {
             <Link
               to="/ressources-en-ligne"
               onClick={() => trackEvent('home_platforms_banner_click', { page: 'home', target: '/ressources-en-ligne' })}
-              className="group block rounded-2xl overflow-hidden border border-white/10 shadow-xl transition-all duration-200 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6A463] focus-visible:ring-offset-2 focus-visible:ring-offset-[#070b22]"
+              className="group relative block rounded-2xl p-2.5 bg-[#0b1030] border border-white/10 shadow-2xl transition-all duration-200 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6A463] focus-visible:ring-offset-2 focus-visible:ring-offset-[#070b22]"
             >
-              <img
-                src="/fluentory-plateformes.webp"
-                alt="Fluentory — mes plateformes d'apprentissage de l'anglais : CLOE Prep, SpeakUp AI, TOEIC, ListenUp, Anglais à Distance et Grammatica."
-                width={1774}
-                height={887}
-                loading="lazy"
-                className="w-full"
-              />
+              <span className="relative block overflow-hidden rounded-xl">
+                <img
+                  src="/fluentory-plateformes.webp"
+                  alt="Fluentory — mes plateformes d'apprentissage de l'anglais : CLOE Prep, SpeakUp AI, TOEIC, ListenUp, Anglais à Distance et Grammatica."
+                  width={1774}
+                  height={887}
+                  loading="lazy"
+                  className="w-full block transition-transform duration-500 group-hover:scale-[1.02]"
+                  style={{ filter: 'saturate(0.94) brightness(0.97)' }}
+                />
+                {/* Vignette so the bright banner melts into the dark section */}
+                <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-xl" style={{ boxShadow: 'inset 0 0 70px rgba(7,11,34,0.5)' }} />
+              </span>
             </Link>
             <p className="mt-6">
               <Link
