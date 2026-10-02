@@ -366,43 +366,7 @@ const Home = () => {
           <OptimizedHero />
         </div>
 
-        {/* ===== LE CONDUCTEUR — who's at the controls (dark La Ligne station) ===== */}
-        <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-conducteur">
-          <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#CBCFE4] opacity-30" aria-hidden="true" />
-          <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#CBCFE4]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22' }} />
-          <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
-            <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Le Conducteur</span>
-            <h2 id="station-conducteur" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">Qui est aux commandes</h2>
-            <div className="mt-8 grid lg:grid-cols-[320px_1fr] gap-10 items-start">
-              <Reveal variant="left" className="flex flex-col items-center lg:items-start">
-                <img
-                  src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
-                  alt="Antony Addy animant une formation en anglais professionnel avec des apprenants adultes"
-                  className="w-full max-w-[300px] h-auto rounded-2xl shadow-2xl border border-white/10"
-                  width="300" height="300" loading="lazy" decoding="async"
-                />
-                <p className="text-sm text-[#8b93b6] mt-3 text-center lg:text-left font-body italic">En formation avec des professionnels</p>
-              </Reveal>
-              <Reveal variant="right" className="max-w-xl">
-                <p className="text-lg text-[#CBCFE4] leading-relaxed mb-4 font-body">
-                  <strong className="text-white">Antony Addy</strong> — Britannique, certifié{' '}
-                  <a href="https://www.afpa.fr/formation-qualifiante/formateur-professionnel-d-adultes" target="_blank" rel="noopener noreferrer" className="text-[#F6A463] hover:underline">Formateur Professionnel d'Adultes</a>{' '}
-                  depuis 2017, plus de {EXPERIENCE_FLOOR} ans d'expérience — aujourd'hui aussi formateur en IA générative et créateur de sites web par IA.
-                </p>
-                <p className="text-lg text-[#CBCFE4] leading-relaxed mb-6 font-body">
-                  Le fil conducteur n'a jamais changé : faire passer les gens de l'hésitation à l'assurance — en réunion, face à un outil IA, ou au lancement d'un site.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link to="/qui-je-suis" className="bg-white text-[#070b22] px-6 py-3 rounded-lg font-semibold hover:bg-white/90 transition-colors font-body text-center">En savoir plus sur mon parcours</Link>
-                  <a href="https://www.linkedin.com/in/antonyaddy/" target="_blank" rel="noopener noreferrer" className="border border-white/25 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors font-body flex items-center justify-center gap-2">
-                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    LinkedIn
-                  </a>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </section>
+        {/* "Le Conducteur" lives below now — after the three routes (Créations). */}
 
         {/* Platforms showcase — the single free-resources moment on the page
             (the emerald "Quick Exercises" banner that used to sit above this was
@@ -580,6 +544,44 @@ const Home = () => {
                className="mt-8 inline-flex items-center gap-2 bg-[#F0974A] text-[#1a1200] font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
               Ouvrir creations.antonyaddy.com <ExternalLink className="h-4 w-4" aria-hidden="true" />
             </a>
+          </div>
+        </section>
+
+        {/* ===== LE CONDUCTEUR — who's at the controls (after the three routes) ===== */}
+        <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-conducteur">
+          <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#CBCFE4] opacity-30" aria-hidden="true" />
+          <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#CBCFE4]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22' }} />
+          <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
+            <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Le Conducteur</span>
+            <h2 id="station-conducteur" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">Qui est aux commandes</h2>
+            <div className="mt-8 grid lg:grid-cols-[320px_1fr] gap-10 items-start">
+              <Reveal variant="left" className="flex flex-col items-center lg:items-start">
+                <img
+                  src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
+                  alt="Antony Addy animant une formation en anglais professionnel avec des apprenants adultes"
+                  className="w-full max-w-[300px] h-auto rounded-2xl shadow-2xl border border-white/10"
+                  width="300" height="300" loading="lazy" decoding="async"
+                />
+                <p className="text-sm text-[#8b93b6] mt-3 text-center lg:text-left font-body italic">En formation avec des professionnels</p>
+              </Reveal>
+              <Reveal variant="right" className="max-w-xl">
+                <p className="text-lg text-[#CBCFE4] leading-relaxed mb-4 font-body">
+                  <strong className="text-white">Antony Addy</strong> — Britannique, certifié{' '}
+                  <a href="https://www.afpa.fr/formation-qualifiante/formateur-professionnel-d-adultes" target="_blank" rel="noopener noreferrer" className="text-[#F6A463] hover:underline">Formateur Professionnel d'Adultes</a>{' '}
+                  depuis 2017, plus de {EXPERIENCE_FLOOR} ans d'expérience — aujourd'hui aussi formateur en IA générative et créateur de sites web par IA.
+                </p>
+                <p className="text-lg text-[#CBCFE4] leading-relaxed mb-6 font-body">
+                  Le fil conducteur n'a jamais changé : faire passer les gens de l'hésitation à l'assurance — en réunion, face à un outil IA, ou au lancement d'un site.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link to="/qui-je-suis" className="bg-white text-[#070b22] px-6 py-3 rounded-lg font-semibold hover:bg-white/90 transition-colors font-body text-center">En savoir plus sur mon parcours</Link>
+                  <a href="https://www.linkedin.com/in/antonyaddy/" target="_blank" rel="noopener noreferrer" className="border border-white/25 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors font-body flex items-center justify-center gap-2">
+                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                  </a>
+                </div>
+              </Reveal>
+            </div>
           </div>
         </section>
 

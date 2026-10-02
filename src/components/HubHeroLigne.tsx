@@ -241,7 +241,12 @@ const LLX_CSS = `
   html.js .llx-routes.llx-pre,html.js .llx-cta.llx-pre{transform:translateY(10px)}
 }
 @media (max-width:760px){
-  .llx-routes{grid-template-columns:1fr}
-  .llx-scene svg{max-height:40vh}
+  .llx-inner{gap:14px;padding-top:18px;padding-bottom:28px}
+  .llx-scene svg{max-height:34vh}
+  .llx-routes{grid-template-columns:1fr;gap:10px}
+  .llx-route{padding:12px;gap:12px;border-radius:14px}
+  .llx-rtile{width:44px;height:44px}
+  .llx-rtile img{max-width:38px;max-height:38px}
+  .llx-rtag{font-size:.78rem}
 }
 `;
