@@ -48,13 +48,13 @@ export const FORMATIONS: Formation[] = [
   },
   {
     key: 'creations',
-    navLabel: 'Création de sites web',
-    title: 'Création de sites web',
+    navLabel: 'Sites web & outils',
+    title: 'Sites web & outils numériques',
     tagline:
-      "Sites web et outils métier sur mesure (applications, automatisations) pour entreprises et indépendants, développés avec l'IA.",
+      "Sites web, outils métier et outils pédagogiques sur mesure pour entreprises, indépendants et acteurs de l'éducation, développés avec l'IA.",
     href: 'https://creations.antonyaddy.com',
     external: true,
     icon: 'Code',
-    cta: 'Découvrir mes créations web',
+    cta: 'Découvrir mes créations',
   },
 ];

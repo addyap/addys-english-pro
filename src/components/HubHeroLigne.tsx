@@ -5,7 +5,7 @@ import { trackEvent } from '@/lib/analytics';
 const routes = [
   { key: 'anglais', number: '01', label: 'Anglais professionnel', detail: 'Prenez la parole avec confiance.', href: '#anglais', external: false },
   { key: 'ia', number: '02', label: 'IA générative', detail: 'Faites travailler les outils pour vous.', href: 'https://ia.antonyaddy.com', external: true },
-  { key: 'creations', number: '03', label: 'Création de sites web', detail: 'Donnez de l’élan à votre présence en ligne.', href: 'https://creations.antonyaddy.com', external: true },
+  { key: 'creations', number: '03', label: 'Sites web & outils', detail: 'Pour votre activité ou pour apprendre.', href: 'https://creations.antonyaddy.com', external: true },
 ] as const;
 
 export default function HubHeroLigne() {
@@ -20,7 +20,7 @@ export default function HubHeroLigne() {
             L’anglais.<br />L’IA.<br />Le web.<br /><span>À vous d’avancer.</span>
           </h1>
           <p className="llx-description">
-            Formations d’anglais professionnel, ateliers d’IA générative et création de sites web.
+            Formations d’anglais professionnel, ateliers d’IA générative, sites web et outils numériques.
             Trois façons d’avancer, avec un seul interlocuteur.
           </p>
           <div className="llx-actions">

@@ -97,12 +97,12 @@ const HOME_JSONLD_GRAPH = {
       jobTitle: [
         "Formateur d'anglais professionnel",
         "Formateur en IA générative",
-        "Créateur de sites web",
+        "Créateur de sites web et d'outils pédagogiques",
       ],
       // "depuis 2017" alone read as five years' experience, contradicting the
       // 21+ figure shown on the page. 2017 is the FPA certification date, not
       // the start of the career.
-      description: `Britannique natif, certifié Formateur Professionnel d'Adultes depuis 2017 (${EXPERIENCE_FLOOR}+ ans d'enseignement de l'anglais), également formateur en IA générative et créateur de sites web par IA. Côte d'Azur et à distance.`,
+      description: `Britannique natif, certifié Formateur Professionnel d'Adultes depuis 2017 (${EXPERIENCE_FLOOR}+ ans d'enseignement de l'anglais), également formateur en IA générative et créateur de sites web et d'outils pédagogiques avec l'IA. Côte d'Azur et à distance.`,
       knowsAbout: [
         "Anglais professionnel",
         "Coaching linguistique",
@@ -110,6 +110,7 @@ const HOME_JSONLD_GRAPH = {
         "ChatGPT",
         "Ingénierie de prompts",
         "Création de sites web",
+        "Création d'outils pédagogiques",
         "Développement web assisté par IA",
       ],
       url: "https://www.antonyaddy.com",
@@ -122,9 +123,9 @@ const HOME_JSONLD_GRAPH = {
     {
       "@type": "WebSite",
       "@id": "https://www.antonyaddy.com/#website",
-      name: "Antony Addy — Formateur d'anglais, IA générative & création de sites web",
+      name: "Antony Addy — Anglais, IA générative, sites web & outils pédagogiques",
       url: "https://www.antonyaddy.com",
-      description: "Le point de rencontre des trois activités d'Antony Addy : formation en anglais professionnel, formation en IA générative et création de sites web par IA — sur la Côte d'Azur et à distance.",
+      description: "Le point de rencontre des trois activités d'Antony Addy : formation en anglais professionnel, formation en IA générative et création de sites web et d'outils pédagogiques avec l'IA — sur la Côte d'Azur et à distance.",
       inLanguage: "fr",
       publisher: { "@id": "https://www.antonyaddy.com/#business" },
       potentialAction: {
@@ -154,9 +155,9 @@ const HOME_JSONLD_GRAPH = {
     {
       "@type": "Service",
       "@id": "https://www.antonyaddy.com/#service-web",
-      name: "Création de sites web par IA",
-      serviceType: "Conception et développement de sites web",
-      description: "Création de sites web et développement d'outils métier sur mesure (applications, automatisations) pour entreprises et indépendants, avec l'IA.",
+      name: "Création de sites web et d'outils numériques",
+      serviceType: ["Conception et développement de sites web", "Création d'outils métier et pédagogiques"],
+      description: "Création de sites web, d'outils métier et d'outils pédagogiques sur mesure pour entreprises, indépendants et acteurs de l'éducation, avec l'IA.",
       provider: { "@id": "https://www.antonyaddy.com/#antony-addy" },
       url: "https://creations.antonyaddy.com",
       areaServed: [
@@ -200,14 +201,14 @@ const Home = () => {
 
   return <>
       <SEOHead 
-        title="Antony Addy — Formateur d'anglais, formateur IA & création de sites web"
-        description="Antony Addy : formateur d'anglais professionnel (britannique, certifié FPA), formateur en IA générative et créateur de sites web par IA. Côte d'Azur et à distance."
+        title="Antony Addy — Anglais, IA, sites web & outils pédagogiques"
+        description="Antony Addy : formateur d'anglais professionnel, formateur en IA générative et créateur de sites web et d'outils pédagogiques avec l'IA. Côte d'Azur et à distance."
         canonicalUrl="https://www.antonyaddy.com/"
         datePublished="2025-01-15T10:00:00+01:00"
         dateModified={CONTENT_LAST_REVIEWED_ISO}
         image="https://www.antonyaddy.com/og/antonyaddy-hub.jpg"
-        imageAlt="Antony Addy — formateur d'anglais, formateur en IA générative et créateur de sites web"
-        keywords={["formateur anglais", "formation anglais professionnel", "formateur FPA", "cours anglais adultes", "formateur IA générative", "formation ChatGPT entreprise", "création site web IA", "Var", "Alpes-Maritimes", "Côte d'Azur", "Fréjus", "Saint-Raphaël", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "anglais à distance", "formateur britannique", "anglais entreprises", "anglais cadres", "anglais étudiants"]}
+        imageAlt="Antony Addy — formateur d'anglais, formateur en IA générative et créateur de sites web et d'outils pédagogiques"
+        keywords={["formateur anglais", "formation anglais professionnel", "formateur FPA", "cours anglais adultes", "formateur IA générative", "formation ChatGPT entreprise", "création site web IA", "outils pédagogiques", "Var", "Alpes-Maritimes", "Côte d'Azur", "Fréjus", "Saint-Raphaël", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "anglais à distance", "formateur britannique", "anglais entreprises", "anglais cadres", "anglais étudiants"]}
         jsonLd={HOME_JSONLD_GRAPH}
       />
       
@@ -315,15 +316,15 @@ const Home = () => {
               <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#F0974A] border border-[#F0974A]/45 rounded-full px-3 py-1.5">Amber line</span>
             </div>
             <h2 id="station-creations" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
-              Votre présence en ligne, construite avec l'IA
+              Des sites et des outils faits pour avancer
             </h2>
             <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
-              Deux prestations, un même moteur (l'IA), pour les entreprises et les indépendants : la <strong className="text-white">création de sites web</strong> — vitrines et pages qui convertissent — et le développement d'<strong className="text-white">outils métier sur mesure</strong> — applications internes, automatisations. Rapides, soignés et abordables.
+              Je crée des <strong className="text-white">sites web</strong> pour présenter votre activité et des <strong className="text-white">outils numériques sur mesure</strong> : applications métier, automatisations et outils pédagogiques pour l'éducation et la formation. Avec l'IA, de la conception à la mise en ligne.
             </p>
             <div className="mt-8 grid gap-3 sm:grid-cols-3 max-w-3xl">
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Sites web</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Vitrines &amp; conversion</h3></div>
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Outils métier</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Apps &amp; automatisations</h3></div>
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Méthode</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Conçu &amp; développé avec l'IA</h3></div>
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Éducation</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Outils pédagogiques sur mesure</h3></div>
             </div>
             <a href="https://creations.antonyaddy.com" target="_blank" rel="noopener"
                onClick={() => trackEvent('station_route_click', { formation: 'creations', target: 'https://creations.antonyaddy.com' })}
@@ -406,7 +407,7 @@ const Home = () => {
                 <p className="text-lg text-[#CBCFE4] leading-relaxed mb-4 font-body">
                   <strong className="text-white">Antony Addy</strong> — Britannique, certifié{' '}
                   <a href="https://www.afpa.fr/formation-qualifiante/formateur-professionnel-d-adultes" target="_blank" rel="noopener noreferrer" className="text-[#F6A463] hover:underline">Formateur Professionnel d'Adultes</a>{' '}
-                  depuis 2017, plus de {EXPERIENCE_FLOOR} ans d'expérience — aujourd'hui aussi formateur en IA générative et créateur de sites web par IA.
+                  depuis 2017, plus de {EXPERIENCE_FLOOR} ans d'expérience — aujourd'hui aussi formateur en IA générative et créateur de sites et d'outils pédagogiques avec l'IA.
                 </p>
                 <p className="text-lg text-[#CBCFE4] leading-relaxed mb-6 font-body">
                   Le fil conducteur n'a jamais changé : faire passer les gens de l'hésitation à l'assurance — en réunion, face à un outil IA, ou au lancement d'un site.
@@ -481,7 +482,7 @@ const Home = () => {
           <div className="relative max-w-3xl mx-auto pl-12 sm:pl-20 pr-4 py-16 sm:py-24">
             <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Prochain arrêt</span>
             <h2 id="station-contact" className="mt-3 font-heading font-extrabold tracking-tight text-3xl sm:text-5xl leading-[1.03]">
-              Un projet en anglais, en IA ou un site web ?<br /><span className="text-[#F6A463]">Mind the gap.</span>
+              Un projet en anglais, en IA, un site ou un outil ?<br /><span className="text-[#F6A463]">Mind the gap.</span>
             </h2>
             <p className="mt-5 text-lg text-[#CBCFE4] font-body leading-relaxed max-w-xl">
               Dites-moi où vous voulez aller — je vous réponds rapidement avec une proposition adaptée. Premier échange gratuit, réponse sous 24 h ouvrées.
