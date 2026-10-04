@@ -34,7 +34,7 @@ const FEATURED_PROJECTS = [
     need: 'Présenter le restaurant à une clientèle internationale.',
     solution: 'Menu, galerie et réservation en quatre langues.',
     url: 'https://www.ristorantedalola.it',
-    image: 'https://creations.antonyaddy.com/screenshots/ristorante-lola.jpg',
+    image: '/projects/ristorante-lola.jpg',
   },
   {
     name: 'Filton Athletic FC',
@@ -42,7 +42,7 @@ const FEATURED_PROJECTS = [
     need: 'Rassembler les informations utiles aux supporters.',
     solution: 'Calendrier, résultats, classements et actualités du club.',
     url: 'https://filtonathletic.co.uk',
-    image: 'https://creations.antonyaddy.com/screenshots/filton-athletic-fc.jpg',
+    image: '/projects/filton-athletic-fc.jpg',
   },
   {
     name: 'Grammatica',
@@ -50,7 +50,7 @@ const FEATURED_PROJECTS = [
     need: 'Comprendre une règle dans la langue que l’on maîtrise.',
     solution: 'Explications en huit langues et exercices autocorrigés.',
     url: 'https://grammatica.antonyaddy.com',
-    image: 'https://creations.antonyaddy.com/screenshots/grammatica.jpg',
+    image: '/projects/grammatica.jpg',
   },
   {
     name: 'SpeakUp AI',
@@ -58,7 +58,7 @@ const FEATURED_PROJECTS = [
     need: 'Pratiquer l’anglais oral entre deux cours.',
     solution: 'Conversations guidées et retour immédiat.',
     url: 'https://speak.antonyaddy.com',
-    image: 'https://creations.antonyaddy.com/screenshots/speakup.jpg',
+    image: '/projects/speakup.jpg',
   },
 ] as const;
 
@@ -413,7 +413,7 @@ const Home = () => {
                   <a key={project.name} className="home-project" href={project.url} target="_blank" rel="noopener noreferrer"
                     onClick={() => trackEvent('home_project_click', { project: project.name, target: project.url })}>
                     <div className="home-project-image">
-                      <img src={project.image} alt={`Aperçu de ${project.name}`} loading="lazy" decoding="async" />
+                      <img src={project.image} alt={`Capture d'écran de ${project.name}`} width="1200" height="750" loading="lazy" decoding="async" />
                       <span aria-hidden="true"><ExternalLink size={19} /></span>
                     </div>
                     <div className="home-project-copy">
