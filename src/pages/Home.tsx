@@ -286,16 +286,21 @@ const Home = () => {
             <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#E8473B]" aria-hidden="true"
               style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(232,71,59,.55)' }} />
             <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 pt-14 sm:pt-20 pb-2">
-              <div className="flex items-center gap-3 flex-wrap">
-                <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">01 · Ligne Anglais</span>
-                <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#E8473B] border border-[#E8473B]/45 rounded-full px-3 py-1.5">Red line</span>
+              <div className="home-chapter-intro">
+                <div>
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">01 · Ligne Anglais</span>
+                    <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#E8473B] border border-[#E8473B]/45 rounded-full px-3 py-1.5">Red line</span>
+                  </div>
+                  <h2 id="station-anglais" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
+                    L'anglais qui vous met en mouvement
+                  </h2>
+                  <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
+                    Britannique natif, certifié Formateur Professionnel d'Adultes. Je ne vous fais pas réciter des règles — je vous mets en mouvement : réunions, présentations, emails, appels. En présentiel sur la Côte d'Azur ou à distance.
+                  </p>
+                </div>
+                <img className="home-chapter-art" src="/illustrations/english-conversation.webp" alt="Illustration de deux bulles de conversation reliées par une ligne rouge, avec un discret motif britannique" width="1200" height="800" loading="lazy" decoding="async" />
               </div>
-              <h2 id="station-anglais" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
-                L'anglais qui vous met en mouvement
-              </h2>
-              <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
-                Britannique natif, certifié Formateur Professionnel d'Adultes. Je ne vous fais pas réciter des règles — je vous mets en mouvement : réunions, présentations, emails, appels. En présentiel sur la Côte d'Azur ou à distance.
-              </p>
 
               <p className="mt-7 font-heading text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-[#8b93b6]">Stations desservies</p>
               <div className="mt-3 flex flex-wrap gap-2">
@@ -331,16 +336,21 @@ const Home = () => {
           <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#7A62FF]" aria-hidden="true"
             style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(122,98,255,.55)' }} />
           <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
-            <div className="flex items-center gap-3 flex-wrap">
-              <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">02 · Ligne IA</span>
-              <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#7A62FF] border border-[#7A62FF]/45 rounded-full px-3 py-1.5">Violet line</span>
+            <div className="home-chapter-intro">
+              <div>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">02 · Ligne IA</span>
+                  <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#7A62FF] border border-[#7A62FF]/45 rounded-full px-3 py-1.5">Violet line</span>
+                </div>
+                <h2 id="station-ia" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
+                  L'IA générative, appliquée à votre métier
+                </h2>
+                <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
+                  Des formations concrètes à l'IA générative pour les professionnels et les équipes : ChatGPT, ingénierie de prompts et outils IA, branchés directement sur vos tâches réelles — du gain de temps dès la première session.
+                </p>
+              </div>
+              <img className="home-chapter-art" src="/illustrations/ai-workflow.webp" alt="Illustration d'une tâche transformée en document utile grâce à un parcours d'IA guidé" width="1200" height="800" loading="lazy" decoding="async" />
             </div>
-            <h2 id="station-ia" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
-              L'IA générative, appliquée à votre métier
-            </h2>
-            <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
-              Des formations concrètes à l'IA générative pour les professionnels et les équipes : ChatGPT, ingénierie de prompts et outils IA, branchés directement sur vos tâches réelles — du gain de temps dès la première session.
-            </p>
             <div className="mt-8 grid gap-3 sm:grid-cols-3 max-w-3xl">
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Pour qui</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Équipes &amp; indépendants</h3></div>
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Format</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Atelier sur mesure</h3></div>
@@ -362,16 +372,21 @@ const Home = () => {
           <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#F0974A]" aria-hidden="true"
             style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(240,151,74,.55)' }} />
           <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
-            <div className="flex items-center gap-3 flex-wrap">
-              <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">03 · Ligne Créations</span>
-              <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#F0974A] border border-[#F0974A]/45 rounded-full px-3 py-1.5">Amber line</span>
+            <div className="home-chapter-intro">
+              <div>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">03 · Ligne Créations</span>
+                  <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#F0974A] border border-[#F0974A]/45 rounded-full px-3 py-1.5">Amber line</span>
+                </div>
+                <h2 id="station-creations" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
+                  Des sites et des outils faits pour avancer
+                </h2>
+                <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
+                  Je crée des <strong className="text-white">sites web</strong> pour présenter votre activité et des <strong className="text-white">outils numériques sur mesure</strong> : applications métier, automatisations et outils pédagogiques pour l'éducation et la formation. Avec l'IA, de la conception à la mise en ligne.
+                </p>
+              </div>
+              <img className="home-chapter-art" src="/illustrations/web-and-learning-tools.webp" alt="Illustration d'un site web et d'un outil pédagogique sur tablette, reliés par une ligne orange" width="1200" height="800" loading="lazy" decoding="async" />
             </div>
-            <h2 id="station-creations" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
-              Des sites et des outils faits pour avancer
-            </h2>
-            <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
-              Je crée des <strong className="text-white">sites web</strong> pour présenter votre activité et des <strong className="text-white">outils numériques sur mesure</strong> : applications métier, automatisations et outils pédagogiques pour l'éducation et la formation. Avec l'IA, de la conception à la mise en ligne.
-            </p>
             <div className="mt-8 grid gap-3 sm:grid-cols-3 max-w-3xl">
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Sites web</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Vitrines &amp; conversion</h3></div>
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Outils métier</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Apps &amp; automatisations</h3></div>
