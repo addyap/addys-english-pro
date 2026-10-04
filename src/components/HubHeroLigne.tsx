@@ -229,7 +229,9 @@ const LLX_CSS = `
 @keyframes llxRide{from{offset-distance:0%}to{offset-distance:100%}}
 .llx-h1{font-family:'Bricolage Grotesque','Poppins',system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.02;
   font-size:clamp(1.9rem,5vw,3.4rem);max-width:18ch;margin:0;text-wrap:balance}
-.llx-k{color:var(--horizon)}
+.llx-ang{color:var(--ang)}
+.llx-ia{color:var(--ia)}
+.llx-cre{color:var(--cre)}
 .llx-promise{font-style:italic;color:#CBCFE4;font-size:clamp(1rem,2.4vw,1.25rem);margin:0;max-width:44ch}
 .llx-hot{color:var(--horizon);font-style:normal;font-weight:600}
 .llx-routes{display:grid;gap:12px;grid-template-columns:repeat(3,1fr);width:100%;max-width:900px;margin-top:4px}
