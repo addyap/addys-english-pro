@@ -26,6 +26,37 @@ const CLIENT_LOGOS = [
   { src: "/lovable-uploads/edj-nice-logo.webp", alt: "Logo EDJ Nice, L'école du journalisme, partenaire formation anglais", name: "EDJ Nice" },
 ];
 
+const FEATURED_PROJECTS = [
+  {
+    name: 'Ristorante da Lola',
+    type: 'Site web · Restaurant',
+    description: 'Un restaurant familial présenté en quatre langues.',
+    url: 'https://www.ristorantedalola.it',
+    image: 'https://creations.antonyaddy.com/screenshots/ristorante-lola.jpg',
+  },
+  {
+    name: 'Filton Athletic FC',
+    type: 'Site web · Association',
+    description: 'Calendrier, résultats et vie du club au même endroit.',
+    url: 'https://filtonathletic.co.uk',
+    image: 'https://creations.antonyaddy.com/screenshots/filton-athletic-fc.jpg',
+  },
+  {
+    name: 'Grammatica',
+    type: 'Outil pédagogique · Grammaire',
+    description: 'La grammaire anglaise expliquée en huit langues.',
+    url: 'https://grammatica.antonyaddy.com',
+    image: 'https://creations.antonyaddy.com/screenshots/grammatica.jpg',
+  },
+  {
+    name: 'SpeakUp AI',
+    type: 'Outil pédagogique · Expression orale',
+    description: 'Des conversations guidées avec un retour immédiat.',
+    url: 'https://speak.antonyaddy.com',
+    image: 'https://creations.antonyaddy.com/screenshots/speakup.jpg',
+  },
+] as const;
+
 // Single consolidated JSON-LD @graph for the homepage. Replaces the previous
 // 9 separate blocks (Organization ×2, WebSite ×2, Person ×2, ProfessionalService
 // ×2, FAQPage) that redundantly re-declared the same business, address and
@@ -331,6 +362,34 @@ const Home = () => {
                className="mt-8 inline-flex items-center gap-2 bg-[#F0974A] text-[#1a1200] font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
               Ouvrir creations.antonyaddy.com <ExternalLink className="h-4 w-4" aria-hidden="true" />
             </a>
+
+            <div className="home-showcase">
+              <div className="home-showcase-intro">
+                <div>
+                  <span className="home-showcase-kicker">Réalisations en ligne</span>
+                  <h3>Des projets que vous pouvez explorer.</h3>
+                </div>
+                <a href="https://creations.antonyaddy.com/#work" target="_blank" rel="noopener noreferrer">
+                  Voir toutes les réalisations <ArrowRight size={18} aria-hidden="true" />
+                </a>
+              </div>
+              <div className="home-showcase-grid">
+                {FEATURED_PROJECTS.map((project) => (
+                  <a key={project.name} className="home-project" href={project.url} target="_blank" rel="noopener noreferrer"
+                    onClick={() => trackEvent('home_project_click', { project: project.name, target: project.url })}>
+                    <div className="home-project-image">
+                      <img src={project.image} alt={`Aperçu de ${project.name}`} loading="lazy" decoding="async" />
+                      <span aria-hidden="true"><ExternalLink size={19} /></span>
+                    </div>
+                    <div className="home-project-copy">
+                      <span>{project.type}</span>
+                      <strong>{project.name}</strong>
+                      <p>{project.description}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
