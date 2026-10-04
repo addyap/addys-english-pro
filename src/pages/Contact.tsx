@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { MessageSquare, Mail, Phone, MapPin, Clock, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { trackFormSubmission, trackFormError, trackWhatsAppClick, trackEmailClick, trackEvent } from '@/lib/analytics';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 import { Reveal } from '@/components/motion/Reveal';
+
+const trainingTitles = new Set([
+  'Anglais général',
+  'Anglais professionnel',
+  'Anglais téléphonique et email',
+  'Anglais spécialisé',
+  'Préparation à une certification',
+  'Préparation aux entretiens en anglais'
+]);
 
 const Contact = () => {
   const contactJsonLd = {
@@ -18,14 +27,17 @@ const Contact = () => {
 
   useScrollTracking('/contact');
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const requestedTraining = searchParams.get('formation');
+  const training = requestedTraining && trainingTitles.has(requestedTraining) ? requestedTraining : null;
   const whatsappLink = useWhatsAppLink();
 
   const [formData, setFormData] = useState({
     prenom: '',
     nom: '',
     email: '',
-    sujet: '',
-    message: '',
+    sujet: training ? 'Anglais professionnel' : '',
+    message: training ? `Bonjour, je souhaite en savoir plus sur la formation « ${training} ».\n\nMon besoin : ` : '',
     honeypot: '' // Anti-spam field
   });
 
