@@ -14,6 +14,7 @@ import CountUp from '@/components/motion/CountUp';
 
 import { trackEvent } from '@/lib/analytics';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
+import { featuredTestimonials } from '@/data/testimonials';
 
 
 
@@ -30,28 +31,32 @@ const FEATURED_PROJECTS = [
   {
     name: 'Ristorante da Lola',
     type: 'Site web · Restaurant',
-    description: 'Un restaurant familial présenté en quatre langues.',
+    need: 'Présenter le restaurant à une clientèle internationale.',
+    solution: 'Menu, galerie et réservation en quatre langues.',
     url: 'https://www.ristorantedalola.it',
     image: 'https://creations.antonyaddy.com/screenshots/ristorante-lola.jpg',
   },
   {
     name: 'Filton Athletic FC',
     type: 'Site web · Association',
-    description: 'Calendrier, résultats et vie du club au même endroit.',
+    need: 'Rassembler les informations utiles aux supporters.',
+    solution: 'Calendrier, résultats, classements et actualités du club.',
     url: 'https://filtonathletic.co.uk',
     image: 'https://creations.antonyaddy.com/screenshots/filton-athletic-fc.jpg',
   },
   {
     name: 'Grammatica',
     type: 'Outil pédagogique · Grammaire',
-    description: 'La grammaire anglaise expliquée en huit langues.',
+    need: 'Comprendre une règle dans la langue que l’on maîtrise.',
+    solution: 'Explications en huit langues et exercices autocorrigés.',
     url: 'https://grammatica.antonyaddy.com',
     image: 'https://creations.antonyaddy.com/screenshots/grammatica.jpg',
   },
   {
     name: 'SpeakUp AI',
     type: 'Outil pédagogique · Expression orale',
-    description: 'Des conversations guidées avec un retour immédiat.',
+    need: 'Pratiquer l’anglais oral entre deux cours.',
+    solution: 'Conversations guidées et retour immédiat.',
     url: 'https://speak.antonyaddy.com',
     image: 'https://creations.antonyaddy.com/screenshots/speakup.jpg',
   },
@@ -207,6 +212,7 @@ const HOME_JSONLD_GRAPH = {
 
 const Home = () => {
   const whatsappLink = useWhatsAppLink();
+  const earlyRecommendation = featuredTestimonials.find((item) => item.name === 'Adrien KOWALSKI') ?? featuredTestimonials[0];
   useScrollTracking('home');
   useTimeTracking('home');
 
@@ -255,6 +261,20 @@ const Home = () => {
       <HubHeroLigne />
 
       <main id="main-content">
+        <section className="home-early-proof" aria-label="Un avis et des repères sur mon expérience">
+          <div className="home-early-proof-inner">
+            <div className="home-early-quote">
+              <span>Recommandation LinkedIn</span>
+              <blockquote>« {earlyRecommendation.quote} »</blockquote>
+              <p>{earlyRecommendation.name} · {earlyRecommendation.role}</p>
+            </div>
+            <div className="home-early-facts">
+              <div><strong>{YEARS_OF_EXPERIENCE}+</strong><span>années d’expérience</span></div>
+              <div><strong>FPA</strong><span>certifié depuis 2017</span></div>
+              <Link to="/temoignages">Lire les témoignages <ArrowRight size={17} aria-hidden="true" /></Link>
+            </div>
+          </div>
+        </section>
         {/* ===== STATION 02 · LIGNE ANGLAIS — the English chapter opens here.
              The hub hero's "Anglais" card scrolls to this #anchor. Audience and
              city pages are surfaced as "served stations" (real internal links). ===== */}
@@ -384,7 +404,8 @@ const Home = () => {
                     <div className="home-project-copy">
                       <span>{project.type}</span>
                       <strong>{project.name}</strong>
-                      <p>{project.description}</p>
+                      <p><b>Le besoin</b>{project.need}</p>
+                      <p><b>La réponse</b>{project.solution}</p>
                     </div>
                   </a>
                 ))}

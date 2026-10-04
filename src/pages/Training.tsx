@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Users, Building, GraduationCap, CheckCircle, AlertCircle, Globe, MapPin, Phone, Mail, Clock3, CalendarClock, ClipboardCheck, Euro, Accessibility, BriefcaseBusiness, Target, BookOpen, Wrench, ClipboardList, Gem, Stethoscope } from 'lucide-react';
+import { Users, Building, GraduationCap, CheckCircle, AlertCircle, Globe, MapPin, Phone, Mail, Clock3, CalendarClock, ClipboardCheck, Euro, Accessibility, BriefcaseBusiness, Target, BookOpen, Wrench, ClipboardList, Gem, Stethoscope, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import { Accordion } from '../components/Effects';
@@ -103,27 +103,6 @@ const Training = () => {
     }
   ];
 
-  const audienceShortcuts = [
-    {
-      icon: BriefcaseBusiness,
-      title: 'Professionnels',
-      desc: 'Réunions, emails, appels clients en anglais.',
-      target: 'formations'
-    },
-    {
-      icon: GraduationCap,
-      title: 'Étudiants',
-      desc: 'Préparer vos études et votre entrée en entreprise.',
-      target: 'formations'
-    },
-    {
-      icon: Target,
-      title: 'Entretiens',
-      desc: 'Réussir un entretien d\'embauche ou d\'école en anglais.',
-      target: 'formations'
-    }
-  ];
-
   // ── Mentions obligatoires (art. L.6353-8 du Code du travail) ──────────────
   // A declared training provider must publish these before enrolment. Keep them
   // here as one editable block rather than scattered through the JSX.
@@ -169,11 +148,6 @@ const Training = () => {
       body: "Mes formations sont ouvertes aux personnes en situation de handicap. En tant que formateur indépendant, j'assure moi-même le rôle de référent handicap : contactez-moi en amont à formations@antonyaddy.com ou au +33 6 49 82 98 26 pour que nous étudiions ensemble les aménagements nécessaires (rythme, supports adaptés, durée des séances, lieu accessible, formation à distance). Si un besoin dépasse ce que je peux mettre en place seul, je vous oriente vers les ressources spécialisées de l'Agefiph ou de Cap Emploi.",
     },
   ];
-
-  const handleScrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
 
   return (
     <>
@@ -225,26 +199,25 @@ const Training = () => {
 
           <hr className="border-t border-border mb-12" />
 
-          {/* Quick audience shortcuts */}
-          <Reveal>
-            <div className="grid sm:grid-cols-3 gap-4 mb-12">
-              {audienceShortcuts.map((a) => (
-                <button
-                  key={a.title}
-                  type="button"
-                  onClick={() => handleScrollTo(a.target)}
-                  className="text-left bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-5 border border-border"
-                >
-                  <div className="flex items-center mb-2">
-                    <a.icon className="h-6 w-6 mr-2 text-accent" aria-hidden="true" />
-                    <h2 className="text-lg font-semibold text-primary">{a.title}</h2>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-3">{a.desc}</p>
-                  <span className="text-sm font-medium text-accent">Voir les formations ↓</span>
-                </button>
+          {/* A quick, comparable view before the full programme details. */}
+          <section className="training-overview mb-12" aria-labelledby="training-overview-title">
+            <div className="training-overview-head">
+              <span>Six parcours, un programme adapté à vous</span>
+              <h2 id="training-overview-title">Quel est votre objectif ?</h2>
+              <p>Choisissez le besoin qui vous ressemble. Le contenu et le rythme seront ajustés après notre premier échange.</p>
+            </div>
+            <div className="training-overview-grid">
+              {formations.map((formation, index) => (
+                <a key={formation.title} href="#formations" className="training-option">
+                  <span className="training-option-number">{String(index + 1).padStart(2, '0')}</span>
+                  <h3>{formation.title}</h3>
+                  <p>{formation.pourQui}</p>
+                  <div><strong>Objectif</strong><span>{formation.objectif}</span></div>
+                  <span className="training-option-link">Voir le détail <ArrowRight size={16} aria-hidden="true" /></span>
+                </a>
               ))}
             </div>
-          </Reveal>
+          </section>
 
           {/* Per-audience landing page links */}
           <Reveal>

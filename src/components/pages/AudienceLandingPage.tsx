@@ -69,6 +69,14 @@ export const AudienceLandingPage: React.FC<AudiencePageProps> = ({
         </section>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <section className="inner-scan" aria-label="Les bénéfices en bref">
+            {benefits.slice(0, 3).map((benefit, index) => (
+              <div key={benefit}>
+                <span>0{index + 1} · Votre progression</span>
+                <p>{benefit}</p>
+              </div>
+            ))}
+          </section>
           {/* Pour qui */}
           <Reveal as="section" className="mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4 font-heading">Pour qui</h2>
