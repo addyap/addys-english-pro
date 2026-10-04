@@ -226,7 +226,7 @@ const Contact = () => {
 
           {/* Header */}
           <Reveal as="header" className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-foreground mb-4">
+            <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
               Prenons contact
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -243,27 +243,6 @@ const Contact = () => {
             
             {/* Contact Form */}
             <div className="bg-white rounded-lg shadow-lg p-8">
-              {/* Trust testimonial — placed at point of friction */}
-              {/* The real LinkedIn recommendation from Loan MIRMONT, matching
-                  /temoignages. It previously showed an English quote attributed to
-                  "Loan Mirmont — Student / Professional learner" that exists nowhere
-                  else on the site or in his actual recommendation, alongside a
-                  5-star graphic that LinkedIn recommendations do not carry. */}
-              <figure className="mb-6 border-l-4 border-accent bg-accent/5 rounded-r-md px-4 py-3">
-                <blockquote className="text-sm md:text-base text-muted-foreground italic leading-relaxed">
-                  «&nbsp;Antony est un super professeur. À l'écoute, dans l'échange et très
-                  pédagogue, il s'adapte à nos besoins (anglais travail, anglais courant). Je
-                  recommande vivement.&nbsp;»
-                </blockquote>
-                <figcaption className="mt-2 text-xs text-muted-foreground">
-                  <span className="font-semibold text-primary">Loan MIRMONT</span> — Préparateur
-                  physique, gérant de PPR-Formance ·{' '}
-                  <Link to="/temoignages" className="text-accent hover:underline">
-                    voir les autres recommandations
-                  </Link>
-                </figcaption>
-              </figure>
-
               <h2 className="text-2xl font-bold text-foreground mb-6">
                 Envoyez-moi un message
               </h2>
@@ -424,19 +403,19 @@ const Contact = () => {
             <div className="space-y-8">
               
               {/* WhatsApp CTA */}
-              <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+              <div className="bg-white border border-border rounded-lg p-6 shadow-sm">
                 <div className="flex items-center mb-4">
-                  <MessageSquare className="h-8 w-8 text-green-600 mr-3" />
-                  <h3 className="text-xl font-semibold text-green-900">
+                  <MessageSquare className="h-7 w-7 text-accent mr-3" />
+                  <h3 className="text-xl font-semibold text-primary">
                     Contact rapide via WhatsApp
                   </h3>
                 </div>
-                <p className="text-green-800 mb-4">
-                  Pour une réponse immédiate, contactez-moi directement sur WhatsApp
+                <p className="text-muted-foreground mb-4">
+                  Écrivez-moi directement sur WhatsApp. Réponse sous 24 h ouvrées.
                 </p>
                 <a
                   href={whatsappLink || "#"}
-                  className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 hover:scale-105 active:scale-95"
+                  className="inline-flex items-center border border-primary text-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary/5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Contactez-moi via WhatsApp"
@@ -508,42 +487,27 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* WhatsApp QR Code */}
-              <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-                <h3 className="text-xl font-semibold text-foreground mb-4">
-                  Contactez-moi sur WhatsApp
-                </h3>
-                <img src="/lovable-uploads/whatsapp-qr-antony-addy.png" alt="QR Code WhatsApp Business permettant de contacter Antony Addy" className="mx-auto mb-4 max-w-48" width="192" height="192" loading="lazy" />
-                <p className="text-sm text-muted-foreground">
-                  Scannez ce QR code pour m'écrire directement sur WhatsApp
-                </p>
-                {whatsappLink && (
-                  <a
-                    href={whatsappLink}
-                    className="inline-block mt-4 text-green-700 hover:text-green-800 font-medium focus:outline-none focus:ring-2 focus:ring-green-500 focus:rounded"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Ouvrir la conversation WhatsApp (ouvre dans un nouvel onglet)"
-                    onClick={trackWhatsAppClick}
-                  >
-                    Ouvrir WhatsApp →
-                  </a>
-                )}
-              </div>
+              {/* Trust testimonial — placed at point of friction */}
+              {/* The real LinkedIn recommendation from Loan MIRMONT, matching
+                  /temoignages. It previously showed an English quote attributed to
+                  "Loan Mirmont — Student / Professional learner" that exists nowhere
+                  else on the site or in his actual recommendation, alongside a
+                  5-star graphic that LinkedIn recommendations do not carry. */}
+              <figure className="bg-white p-5 rounded-lg border-l-4 border-accent bg-accent/5 rounded-r-md px-4 py-3">
+                <blockquote className="text-sm md:text-base text-muted-foreground italic leading-relaxed">
+                  «&nbsp;Antony est un super professeur. À l'écoute, dans l'échange et très
+                  pédagogue, il s'adapte à nos besoins (anglais travail, anglais courant). Je
+                  recommande vivement.&nbsp;»
+                </blockquote>
+                <figcaption className="mt-2 text-xs text-muted-foreground">
+                  <span className="font-semibold text-primary">Loan MIRMONT</span> — Préparateur
+                  physique, gérant de PPR-Formance ·{' '}
+                  <Link to="/temoignages" className="text-accent hover:underline">
+                    voir les autres recommandations
+                  </Link>
+                </figcaption>
+              </figure>
 
-              {/* LinkedIn QR Code */}
-              <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-                <h3 className="text-xl font-semibold text-foreground mb-4">
-                  Connectons-nous sur LinkedIn
-                </h3>
-                <img src="/lovable-uploads/200e88ab-2bbf-4168-85ad-8123b07c44ac.png" alt="QR Code LinkedIn permettant de se connecter au profil d'Antony Addy" className="mx-auto mb-4 max-w-48" width="192" height="192" loading="lazy" />
-                <p className="text-sm text-muted-foreground">
-                  Scannez ce QR code pour me suivre sur LinkedIn
-                </p>
-                <a href="https://linkedin.com/in/antonyaddy" className="inline-block mt-4 text-accent hover:text-accent/80 font-medium focus:outline-none focus:ring-2 focus:ring-accent focus:rounded" target="_blank" rel="noopener noreferrer" aria-label="Voir mon profil LinkedIn (ouvre dans un nouvel onglet)">
-                  Voir mon profil LinkedIn →
-                </a>
-              </div>
             </div>
           </div>
         </div>

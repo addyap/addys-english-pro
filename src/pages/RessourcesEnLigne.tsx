@@ -38,15 +38,15 @@ const RessourcesEnLigne = () => {
 
       <div className="min-h-screen bg-background">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-primary/5 to-accent/5 py-16 sm:py-20">
+        <section className="bg-gradient-to-br from-primary/5 to-accent/5 py-12 sm:py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Reveal>
-              <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 text-accent-foreground px-4 py-1.5 text-sm font-semibold mb-6">
+              <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 text-accent px-4 py-1.5 text-sm font-semibold mb-6">
                 <Sparkles className="h-4 w-4" aria-hidden="true" />
                 Conçues par un formateur certifié FPA
               </span>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-3 font-heading leading-tight">
-                Fluentory <span className="text-accent-foreground">by Antony Addy</span>
+              <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-3 font-heading leading-tight">
+                Fluentory <span className="text-accent">by Antony Addy</span>
               </h1>
               <p className="text-lg sm:text-xl font-semibold text-primary max-w-2xl mx-auto mb-4">
                 Free tools for grammar, listening, speaking and exam prep — built by a
@@ -90,7 +90,7 @@ const RessourcesEnLigne = () => {
                         {p.tag}
                       </span>
                       <ArrowUpRight
-                        className="h-5 w-5 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-foreground"
+                        className="h-5 w-5 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
                         aria-hidden="true"
                       />
                     </div>
@@ -98,7 +98,7 @@ const RessourcesEnLigne = () => {
                     <h2 className="text-xl sm:text-2xl font-bold text-primary font-heading">
                       {p.name}
                     </h2>
-                    <p className="mb-4 text-sm font-medium text-accent-foreground/80">
+                    <p className="mb-4 text-sm font-medium text-accent">
                       {p.host}
                     </p>
 
@@ -106,7 +106,7 @@ const RessourcesEnLigne = () => {
                       {p.raison}
                     </p>
 
-                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-accent-foreground">
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-accent">
                       Découvrir le site
                       <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
                     </span>
@@ -150,11 +150,11 @@ const RessourcesEnLigne = () => {
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <p className="flex flex-1 items-start gap-3 rounded-xl bg-accent/10 p-4 text-sm leading-relaxed text-foreground">
-                  <Gift className="mt-0.5 h-5 w-5 shrink-0 text-accent-foreground" aria-hidden="true" />
+                  <Gift className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
                   <span><strong>Gratuit.</strong> Toutes ces plateformes sont actuellement en accès libre : vous pouvez les utiliser dès maintenant, sans inscription payante.</span>
                 </p>
                 <p className="flex flex-1 items-start gap-3 rounded-xl bg-accent/10 p-4 text-sm leading-relaxed text-foreground">
-                  <RefreshCw className="mt-0.5 h-5 w-5 shrink-0 text-accent-foreground" aria-hidden="true" />
+                  <RefreshCw className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
                   <span><strong>En évolution constante.</strong> Je les enrichis en continu — nouveaux contenus, exercices et améliorations sont ajoutés régulièrement.</span>
                 </p>
               </div>

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Users, Building, GraduationCap, CheckCircle, AlertCircle, Globe, MapPin, Phone, Mail, Clock3, CalendarClock, ClipboardCheck, Euro, Accessibility } from 'lucide-react';
+import { Users, Building, GraduationCap, CheckCircle, AlertCircle, Globe, MapPin, Phone, Mail, Clock3, CalendarClock, ClipboardCheck, Euro, Accessibility, BriefcaseBusiness, Target, BookOpen, Wrench, ClipboardList, Gem, Stethoscope } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import { Accordion } from '../components/Effects';
@@ -105,19 +105,19 @@ const Training = () => {
 
   const audienceShortcuts = [
     {
-      emoji: '💼',
+      icon: BriefcaseBusiness,
       title: 'Professionnels',
       desc: 'Réunions, emails, appels clients en anglais.',
       target: 'formations'
     },
     {
-      emoji: '🎓',
+      icon: GraduationCap,
       title: 'Étudiants',
       desc: 'Préparer vos études et votre entrée en entreprise.',
       target: 'formations'
     },
     {
-      emoji: '🎤',
+      icon: Target,
       title: 'Entretiens',
       desc: 'Réussir un entretien d\'embauche ou d\'école en anglais.',
       target: 'formations'
@@ -213,7 +213,7 @@ const Training = () => {
           {/* Header */}
           <Reveal>
             <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold text-primary mb-4">
+              <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
                 Formations d'anglais professionnel
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -235,7 +235,7 @@ const Training = () => {
                   className="text-left bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-5 border border-border"
                 >
                   <div className="flex items-center mb-2">
-                    <span className="text-2xl mr-2" aria-hidden="true">{a.emoji}</span>
+                    <a.icon className="h-6 w-6 mr-2 text-accent" aria-hidden="true" />
                     <h2 className="text-lg font-semibold text-primary">{a.title}</h2>
                   </div>
                   <p className="text-sm text-muted-foreground mb-3">{a.desc}</p>
@@ -272,7 +272,7 @@ const Training = () => {
           <Reveal>
             <div id="formations-professionnelles" className="bg-white rounded-lg shadow-lg p-6 sm:p-8 mb-12 scroll-mt-24">
               <div className="flex items-center mb-4">
-                <span className="text-2xl mr-3" aria-hidden="true">🎯</span>
+                <Target className="h-6 w-6 mr-3 text-accent" aria-hidden="true" />
                 <h2 className="text-2xl font-bold text-primary">Formations professionnelles spécialisées</h2>
               </div>
               <p className="text-muted-foreground mb-6">
@@ -287,7 +287,7 @@ const Training = () => {
                     rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
                   >
-                    <span className="text-xl shrink-0" aria-hidden="true">💼</span>
+                    <BriefcaseBusiness className="h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
                     <div>
                       <div className="font-semibold text-primary">ACOM — Salons & commerce international ↗</div>
                       <div className="text-sm text-muted-foreground">Accueil visiteurs, prospection B2B, négociation.</div>
@@ -301,7 +301,7 @@ const Training = () => {
                     rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
                   >
-                    <span className="text-xl shrink-0" aria-hidden="true">💎</span>
+                    <Gem className="h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
                     <div>
                       <div className="font-semibold text-primary">VPL — Vente luxe ↗</div>
                       <div className="text-sm text-muted-foreground">Conseil clientèle haut de gamme en boutique.</div>
@@ -315,7 +315,7 @@ const Training = () => {
                     rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
                   >
-                    <span className="text-xl shrink-0" aria-hidden="true">📞</span>
+                    <Phone className="h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
                     <div>
                       <div className="font-semibold text-primary">Assistant de Direction ↗</div>
                       <div className="text-sm text-muted-foreground">Téléphone professionnel, prise de message, agenda.</div>
@@ -329,7 +329,7 @@ const Training = () => {
                     rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
                   >
-                    <span className="text-xl shrink-0" aria-hidden="true">🩺</span>
+                    <Stethoscope className="h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
                     <div>
                       <div className="font-semibold text-primary">Secrétaire Médicale ↗</div>
                       <div className="text-sm text-muted-foreground">Accueil patient, prise de rendez-vous, réassurance.</div>
@@ -374,7 +374,7 @@ const Training = () => {
           <Reveal>
             <div id="formations" className="bg-white rounded-lg shadow-lg p-8 mb-12 scroll-mt-24">
               <div className="flex items-center mb-6">
-                <span className="text-2xl mr-3">📚</span>
+                <BookOpen className="h-6 w-6 mr-3 text-accent" aria-hidden="true" />
                 <h2 className="text-2xl font-bold text-primary">Types de formations</h2>
               </div>
               
@@ -394,7 +394,7 @@ const Training = () => {
           <Reveal>
             <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
               <div className="flex items-center mb-6">
-                <span className="text-2xl mr-3">🎯</span>
+                <Target className="h-6 w-6 mr-3 text-accent" aria-hidden="true" />
                 <h2 className="text-2xl font-bold text-primary">Ce que je propose</h2>
               </div>
               
@@ -423,8 +423,8 @@ const Training = () => {
               </div>
               
               <div className="bg-accent/10 border border-accent/20 rounded-lg p-4 mt-6">
-                <p className="text-accent-foreground">
-                  <span className="text-lg mr-2">🛠️</span>
+                <p className="text-primary">
+                  <Wrench className="inline h-5 w-5 mr-2 text-accent" aria-hidden="true" />
                   <strong>Toutes les formations sont personnalisées, flexibles et orientées vers des résultats concrets.</strong>
                 </p>
               </div>
@@ -435,7 +435,7 @@ const Training = () => {
           <Reveal>
             <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
               <div className="flex items-center mb-6">
-                <span className="text-2xl mr-3">📍</span>
+                <MapPin className="h-6 w-6 mr-3 text-accent" aria-hidden="true" />
                 <h2 className="text-2xl font-bold text-primary">Où et comment ?</h2>
               </div>
               
@@ -468,7 +468,7 @@ const Training = () => {
           <Reveal>
             <div id="modalites" className="bg-white rounded-lg shadow-lg p-8 mb-12 scroll-mt-24">
               <div className="flex items-center mb-3">
-                <span className="text-2xl mr-3">📋</span>
+                <ClipboardList className="h-6 w-6 mr-3 text-accent" aria-hidden="true" />
                 <h2 className="text-2xl font-bold text-primary">Informations pratiques</h2>
               </div>
               <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
@@ -503,7 +503,7 @@ const Training = () => {
           <Reveal>
             <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
               <div className="flex items-center mb-6">
-                <span className="text-2xl mr-3">💼</span>
+                <BriefcaseBusiness className="h-6 w-6 mr-3 text-accent" aria-hidden="true" />
                 <h2 className="text-2xl font-bold text-primary">Financement</h2>
               </div>
 
@@ -534,7 +534,7 @@ const Training = () => {
           <Reveal>
             <div className="bg-muted/50 border border-border rounded-lg p-8 mb-12">
               <div className="flex items-center mb-6">
-                <span className="text-2xl mr-3">📚</span>
+                <BookOpen className="h-6 w-6 mr-3 text-accent" aria-hidden="true" />
                 <h2 className="text-2xl font-bold text-primary">Ressources et références</h2>
               </div>
               
@@ -586,7 +586,7 @@ const Training = () => {
           <Reveal>
             <div className="bg-primary/5 border border-primary/10 rounded-lg p-8 mb-12">
               <div className="flex items-center mb-6">
-                <span className="text-2xl mr-3">🌐</span>
+                <Globe className="h-6 w-6 mr-3 text-accent" aria-hidden="true" />
                 <h2 className="text-2xl font-bold text-primary">Et en attendant ?</h2>
               </div>
               
@@ -594,7 +594,7 @@ const Training = () => {
                   into one exercise on anglaisadistance.fr, which is what this
                   did before — the other five were invisible from here. */}
               <p className="text-muted-foreground">
-                <span className="text-lg mr-2">🎓</span>
+                <GraduationCap className="inline h-5 w-5 mr-2 text-accent" aria-hidden="true" />
                 En parallèle de mes formations, je mets à disposition{' '}
                 <Link
                   to="/ressources-en-ligne"

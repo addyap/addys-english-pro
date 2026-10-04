@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MessageSquare, Menu, X, ChevronDown, Globe, Sparkles, Code, ExternalLink } from 'lucide-react';
+import { MessageSquare, Menu, X, ChevronDown, Globe, Sparkles, Code, ExternalLink, Mail, MapPin } from 'lucide-react';
 import { FORMATIONS } from '@/data/formations';
 
 const FORMATION_ICONS = { Globe, Sparkles, Code } as const;
@@ -280,7 +280,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
             <div className="lg:hidden flex items-center gap-2">
               <a
                 href={whatsappLink || "#"}
-                className="bg-green-500 text-white px-3 py-2 rounded-lg flex items-center gap-1 hover:bg-green-600 transition-colors text-sm font-body"
+                className="border border-primary/30 text-primary px-3 py-2 rounded-lg flex items-center gap-1 hover:bg-primary/5 transition-colors text-sm font-body"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleWhatsAppClick('header-mobile')}
@@ -316,7 +316,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               </Link>
               <a
                 href={whatsappLink || "#"}
-                className="bg-green-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-semibold hover:bg-green-700 transition-colors font-body"
+                className="border border-primary/30 text-primary px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-semibold hover:bg-primary/5 transition-colors font-body"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleWhatsAppClick('header-desktop')}
@@ -400,159 +400,57 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
       <main id="main-content">{children}</main>
 
       {/* Footer */}
-      <footer className="site-footer text-white text-sm py-12 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
-            <div className="lg:col-span-2">
-              <Link to="/" className="flex items-center gap-2 mb-4">
+      <footer className="site-footer px-4 py-12 text-sm text-white">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-10 border-b border-white/15 pb-10 md:grid-cols-3">
+            <div>
+              <Link to="/" className="mb-4 inline-flex items-center gap-2">
                 <SiteLogo height={32} className="brightness-0 invert" alt="Antony Addy" />
-                <span className="font-bold text-lg">Antony Addy</span>
+                <span className="text-lg font-bold">Antony Addy</span>
               </Link>
-              <p className="text-gray-400 mb-4 leading-relaxed">{tRaw('footer.tagline', { lng: 'fr', years: EXPERIENCE_FLOOR })}</p>
-              <div className="flex gap-3">
-                <a
-                  href={whatsappLink || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-green-600 hover:bg-green-700 px-3 py-2 rounded-lg text-xs font-medium transition-colors"
-                  aria-label="WhatsApp"
-                  onClick={handleWhatsAppClick('footer-social')}
-                >
-                  💬 WhatsApp
-                </a>
-                <a
-                  href="https://linkedin.com/in/antonyaddy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-2 rounded-lg text-xs font-medium transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  LinkedIn
-                </a>
-              </div>
-              <p className="mt-4 text-xs italic text-gray-400 leading-relaxed">
-                Vous préférez apprendre en autonomie ? Découvrez ma plateforme
-                d'exercices d'anglais en ligne :{" "}
-                <a
-                  href="https://anglaisadistance.fr"
-                  target="_blank"
-                  rel="noopener"
-                  className="text-gray-200 hover:text-white underline underline-offset-2"
-                >
-                  anglaisadistance.fr ↗
-                </a>
-              </p>
-              <div className="mt-5">
-                <h3 className="font-semibold mb-2 text-white text-xs uppercase tracking-wider">Mes formations</h3>
-                <ul className="flex flex-wrap gap-x-4 gap-y-1">
-                  {FORMATIONS.map(f => (
-                    <li key={f.key}>
-                      {f.external ? (
-                        <a
-                          href={f.href}
-                          target="_blank"
-                          rel="noopener"
-                          onClick={() => trackEvent('footer_formation_click', { formation: f.key, target: f.href })}
-                          className="text-gray-400 hover:text-white transition-colors text-sm inline-flex items-center gap-1"
-                        >
-                          {f.navLabel}
-                          <ExternalLink className="h-3 w-3" aria-hidden="true" />
-                        </a>
-                      ) : (
-                        <Link to="/" className="text-gray-400 hover:text-white transition-colors text-sm">{f.navLabel}</Link>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <p className="max-w-sm leading-relaxed text-gray-300">{tRaw('footer.tagline', { lng: 'fr', years: EXPERIENCE_FLOOR })}</p>
+              <p className="mt-4 flex items-start gap-2 text-gray-300"><MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />Var &amp; Alpes-Maritimes · À distance partout</p>
             </div>
 
-            <nav aria-label={t('footer.navigation')}>
-              <h3 className="font-semibold mb-3 text-white">{t('footer.navigation')}</h3>
-              <ul className="space-y-2">
-                <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">{t('nav.home')}</Link></li>
-                <li><Link to="/qui-je-suis" className="text-gray-400 hover:text-white transition-colors">{t('nav.about')}</Link></li>
-                <li><Link to="/offres-de-formation" className="text-gray-400 hover:text-white transition-colors">{t('nav.training')}</Link></li>
-                <li><Link to="/temoignages" className="text-gray-400 hover:text-white transition-colors">{t('nav.testimonials')}</Link></li>
-                <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">{t('nav.contact')}</Link></li>
-                <li><Link to="/blog" className="text-gray-400 hover:text-white transition-colors">{t('nav.blog')}</Link></li>
-                <li><Link to="/test-de-positionnement" className="text-gray-400 hover:text-white transition-colors">Test de positionnement</Link></li>
-                <li><Link to="/ressources-en-ligne" className="text-gray-400 hover:text-white transition-colors">Ressources en ligne</Link></li>
+            <nav aria-label="Explorer le site">
+              <h3 className="mb-4 font-semibold text-white">Explorer</h3>
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-3 text-gray-300">
+                <li><Link to="/offres-de-formation" className="hover:text-white">Formations</Link></li>
+                <li><Link to="/qui-je-suis" className="hover:text-white">Qui je suis</Link></li>
+                <li><Link to="/test-de-positionnement" className="hover:text-white">Test de niveau</Link></li>
+                <li><Link to="/temoignages" className="hover:text-white">Témoignages</Link></li>
+                <li><Link to="/ressources-en-ligne" className="hover:text-white">Ressources</Link></li>
+                <li><Link to="/blog" className="hover:text-white">Blog</Link></li>
               </ul>
-
-              <h4 className="font-semibold mt-6 mb-2 text-white text-xs uppercase tracking-wider">Pour qui</h4>
-              <ul className="space-y-1">
-                {AUDIENCE_LINKS.map(a => (
-                  <li key={a.href}>
-                    <Link to={a.href} className="text-gray-400 hover:text-white transition-colors text-xs">{a.name}</Link>
-                  </li>
+              <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 border-t border-white/10 pt-4">
+                {FORMATIONS.filter((f) => f.external).map((f) => (
+                  <a key={f.key} href={f.href} target="_blank" rel="noopener" onClick={() => trackEvent('footer_formation_click', { formation: f.key, target: f.href })} className="inline-flex items-center gap-1 text-gray-300 hover:text-white">
+                    {f.navLabel}<ExternalLink className="h-3 w-3" aria-hidden="true" />
+                  </a>
                 ))}
-              </ul>
+              </div>
             </nav>
 
             <div>
-              <h3 className="font-semibold mb-3 text-white">Zones d'intervention</h3>
-              <ul className="space-y-2">
-                {CITY_LINKS.map(c => (
-                  <li key={c.href}>
-                    <Link to={c.href} className="text-gray-400 hover:text-white transition-colors">{c.name}</Link>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-gray-500 text-xs mt-3 leading-relaxed">
-                Présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde.
-              </p>
-            </div>
-
-
-            <div>
-              <h3 className="font-semibold mb-3 text-white">{t('footer.contact')}</h3>
-              <ul className="space-y-2 mb-6">
-                <li>
-                  <a href="mailto:formations@antonyaddy.com" className="text-gray-400 hover:text-white transition-colors">
-                    📧 formations@antonyaddy.com
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={whatsappLink || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors"
-                    onClick={handleWhatsAppClick('footer-contact')}
-                  >
-                    💬 +33 6 49 82 98 26
-                  </a>
-                </li>
-                <li className="text-gray-400">📍 {t('footer.location')}</li>
-              </ul>
-
-              <h4 className="font-semibold mb-2 text-white text-xs uppercase tracking-wider">{t('footer.legal')}</h4>
-              <ul className="space-y-1">
-                <li><Link to="/mentions-legales" className="text-gray-400 hover:text-white transition-colors text-xs">{t('footer.legalNotices')}</Link></li>
-                <li><Link to="/politique-confidentialite" className="text-gray-400 hover:text-white transition-colors text-xs">{t('footer.privacy')}</Link></li>
-                <li><Link to="/cgv" className="text-gray-400 hover:text-white transition-colors text-xs">CGV</Link></li>
-              </ul>
+              <h3 className="mb-4 font-semibold text-white">Parlons de votre projet</h3>
+              <p className="mb-4 leading-relaxed text-gray-300">Premier échange gratuit · Réponse sous 24 h ouvrées</p>
+              <Link to="/contact" className="mb-5 inline-flex rounded-lg bg-accent px-5 py-3 font-semibold text-white hover:bg-accent/90">Prendre contact</Link>
+              <a href="mailto:formations@antonyaddy.com" className="flex items-center gap-2 text-gray-300 hover:text-white"><Mail className="h-4 w-4" aria-hidden="true" />formations@antonyaddy.com</a>
+              <a href={whatsappLink || '#'} target="_blank" rel="noopener noreferrer" onClick={handleWhatsAppClick('footer-contact')} className="mt-3 flex items-center gap-2 text-gray-300 hover:text-white"><MessageSquare className="h-4 w-4" aria-hidden="true" />WhatsApp · +33 6 49 82 98 26</a>
+              <a href="https://linkedin.com/in/antonyaddy" target="_blank" rel="noopener noreferrer" className="mt-3 inline-block text-gray-300 hover:text-white">LinkedIn ↗</a>
             </div>
           </div>
 
-          <div className="border-t border-white/10 pt-6 flex flex-col gap-3">
-            <p className="text-gray-500 text-xs text-center md:text-left">
-              Déclaration d'activité enregistrée sous le numéro 93830738883 auprès de la DREETS Provence-Alpes-Côte d'Azur. Cet enregistrement ne vaut pas agrément de l'État.
-            </p>
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-gray-500 text-xs">
-                © {year} Antony Addy. {t('footer.rights')}
-              </p>
-              <div className="flex items-center gap-4">
-                <p className="text-gray-600 text-xs">
-                  Hébergeur : Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis. Site web :{" "}
-                  <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-400 transition-colors">
-                    https://vercel.com
-                  </a>
-                </p>
-              </div>
+          <div className="flex flex-col gap-4 pt-6 text-xs leading-relaxed text-gray-300 md:flex-row md:justify-between">
+            <div>
+              <p>© {year} Antony Addy · Déclaration d'activité n° 93830738883 auprès de la DREETS PACA. Cet enregistrement ne vaut pas agrément de l'État.</p>
+              <p className="mt-2">Hébergeur : Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis · <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">vercel.com</a></p>
             </div>
+            <nav aria-label="Informations légales" className="flex shrink-0 flex-wrap gap-x-4 gap-y-2">
+              <Link to="/mentions-legales" className="hover:text-white">Mentions légales</Link>
+              <Link to="/politique-confidentialite" className="hover:text-white">Confidentialité</Link>
+              <Link to="/cgv" className="hover:text-white">CGV</Link>
+            </nav>
           </div>
         </div>
       </footer>

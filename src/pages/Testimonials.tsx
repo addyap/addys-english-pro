@@ -94,7 +94,7 @@ const Testimonials = () => {
           
           {/* Header */}
           <Reveal className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-foreground mb-6">
+            <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
               Témoignages
             </h1>
             <TypingText

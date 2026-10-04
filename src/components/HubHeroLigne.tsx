@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ExternalLink, MessageCircle } from 'lucide-react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
-import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 import anglaisLogo from '@/assets/brand/anglais-logo.png';
 import iaLogo from '@/assets/brand/ia-logo.svg';
 import creationsLogo from '@/assets/brand/creations-logo.png';
@@ -20,7 +19,6 @@ const ROUTES = [
 ] as const;
 
 export default function HubHeroLigne() {
-  const whatsappLink = useWhatsAppLink();
   const rootRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -73,8 +71,8 @@ export default function HubHeroLigne() {
     at(2800, () => { if (bAng) bAng.style.strokeDashoffset = '0'; show(dests[0]); });
     at(3200, () => { if (bIa) bIa.style.strokeDashoffset = '0'; show(dests[1]); });
     at(3600, () => { if (bCre) bCre.style.strokeDashoffset = '0'; show(dests[2]); });
-    at(4450, () => { show(h1); show(promise); });
-    at(4800, () => { show(routes); show(cta); });
+    at(350, () => { show(h1); show(promise); show(cta); });
+    at(1100, () => show(routes));
 
     // 3D depth — the diagram is a plane that parallaxes to the pointer while the
     // ground shifts behind it: camera-like dimensionality, no WebGL dependency.
@@ -118,6 +116,16 @@ export default function HubHeroLigne() {
           <span className="llx-pip" aria-hidden="true" />
           <span>antonyaddy.com · Côte d'Azur &amp; à distance</span>
         </p>
+
+        <h1 className="llx-h1" data-r>
+          Formateur d'<span className="llx-k llx-ang">anglais</span>, formateur en <span className="llx-k llx-ia">IA générative</span> &amp; créateur de <span className="llx-k llx-cre">sites web</span>
+        </h1>
+        <p className="llx-promise" data-r>De l'hésitation à <span className="llx-hot">l'assurance</span> — sur la Côte d'Azur et à distance.</p>
+
+        <div className="llx-cta" data-r>
+          <Link to="/contact" className="llx-wa">Parler de mon projet <ArrowRight className="llx-waicon" aria-hidden="true" /></Link>
+          <p className="llx-reassure">Premier échange gratuit · Réponse sous 24 h ouvrées</p>
+        </div>
 
         <div className="llx-scene" aria-hidden="true">
          <div className="llx-plane">
@@ -164,11 +172,6 @@ export default function HubHeroLigne() {
          </div>
         </div>
 
-        <h1 className="llx-h1 llx-pre" data-r>
-          Formateur d'<span className="llx-k llx-ang">anglais</span>, formateur en <span className="llx-k llx-ia">IA générative</span> &amp; créateur de <span className="llx-k llx-cre">sites web</span>
-        </h1>
-        <p className="llx-promise llx-pre" data-r>De l'hésitation à <span className="llx-hot">l'assurance</span> — sur la Côte d'Azur et à distance.</p>
-
         <div className="llx-routes llx-pre" data-r role="list">
           {ROUTES.map((r) => {
             const inner = (
@@ -192,21 +195,6 @@ export default function HubHeroLigne() {
           })}
         </div>
 
-        <div className="llx-cta llx-pre" data-r>
-          <a
-            href={whatsappLink || '#'}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => { if (!whatsappLink) { e.preventDefault(); return; } trackEvent('whatsapp_cta_click', { page: 'home', location: 'hub-hero', prefilled: true }); }}
-            className="llx-wa"
-            aria-label="Prendre contact sur WhatsApp avec Antony Addy (message pré-rempli)"
-          >
-            <MessageCircle className="llx-waicon" aria-hidden="true" />
-            <span>Prendre contact sur WhatsApp</span>
-          </a>
-          <Link to="/contact" className="llx-contact">Formulaire de contact</Link>
-          <p className="llx-reassure">Premier échange gratuit · Réponse sous 24 h ouvrées</p>
-        </div>
       </div>
     </section>
   );
@@ -222,14 +210,14 @@ const LLX_CSS = `
     radial-gradient(44% 55% at 98% 14%,rgba(232,101,122,.15),transparent 60%),
     radial-gradient(120% 90% at 50% 125%,rgba(11,16,48,.92),transparent 55%),
     linear-gradient(165deg,#0b1030 0%,#070b22 100%)}
-.llx-inner{position:relative;max-width:1000px;margin:0 auto;padding:clamp(26px,4vw,48px) 20px clamp(34px,5vw,56px);text-align:center;display:flex;flex-direction:column;align-items:center;gap:clamp(14px,2.2vw,22px)}
+.llx-inner{position:relative;max-width:1000px;margin:0 auto;padding:clamp(26px,4vw,48px) 20px clamp(34px,5vw,56px);text-align:center;display:flex;flex-direction:column;align-items:center;gap:clamp(12px,1.8vw,18px)}
 .llx-eyebrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;margin:0;
   font-family:'Poppins',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:.7rem;font-weight:700;color:#8b93b6}
 .llx-pip{width:8px;height:8px;border-radius:50%;background:var(--horizon);box-shadow:0 0 0 4px rgba(246,164,99,.16),0 0 14px rgba(246,164,99,.8)}
-.llx-scene{width:100%;max-width:960px;perspective:1100px}
+.llx-scene{width:100%;max-width:520px;perspective:1100px}
 .llx-plane{transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.7,.2,1);will-change:transform}
 @media (prefers-reduced-motion:reduce){ .llx-plane,.llx-bg{transition:none} }
-.llx-scene svg{width:100%;height:auto;max-height:46vh;display:block;overflow:visible}
+.llx-scene svg{width:100%;height:auto;display:block;overflow:visible}
 .llx-line{fill:none;stroke-linecap:round;transition:stroke-dashoffset 1.5s cubic-bezier(.6,0,.2,1)}
 .llx-trunk{stroke:url(#llxTg);stroke-width:3.4}
 .llx-bang{stroke:var(--ang);stroke-width:3.4}.llx-bia{stroke:var(--ia);stroke-width:3.4}.llx-bcre{stroke:var(--cre);stroke-width:3.4}
@@ -257,7 +245,7 @@ const LLX_CSS = `
 .llx-rtag{font-size:.8rem;color:#5b6180;line-height:1.35}
 .llx-rarrow{margin-left:auto;flex:none;width:18px;height:18px;color:#1A1A4D;transition:transform .2s ease}
 .llx-route:hover .llx-rarrow{transform:translateX(3px)}
-.llx-cta{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:6px}
+.llx-cta{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:6px}
 .llx-wa{display:inline-flex;align-items:center;gap:10px;background:var(--ang);color:#fff;font-family:'Poppins',sans-serif;
   font-weight:700;font-size:clamp(.95rem,2vw,1.05rem);padding:14px 28px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.35);
   transition:transform .25s ease,box-shadow .25s ease}
@@ -275,7 +263,7 @@ const LLX_CSS = `
 }
 @media (max-width:760px){
   .llx-inner{gap:14px;padding-top:18px;padding-bottom:28px}
-  .llx-scene svg{max-height:34vh}
+  .llx-scene{max-width:360px}
   .llx-routes{grid-template-columns:1fr;gap:10px}
   .llx-route{padding:12px;gap:12px;border-radius:14px}
   .llx-rtile{width:44px;height:44px}

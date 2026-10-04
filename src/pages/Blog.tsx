@@ -119,7 +119,7 @@ const Blog = () => {
           
           {/* Header */}
           <Reveal className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-foreground mb-4">
+            <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
               Blog Anglais Professionnel
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
