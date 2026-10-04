@@ -7,7 +7,7 @@ import TestimonialCarousel from './TestimonialCarousel';
 const AvisClients = () => {
 
   return (
-    <section className="bg-[#070b22] text-[#F2EDE1] py-16 lg-section" aria-labelledby="avis-clients-heading">
+    <section className="home-testimonials bg-[#070b22] text-[#F2EDE1] py-16 lg-section" aria-labelledby="avis-clients-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 id="avis-clients-heading" className="text-3xl font-extrabold text-white mb-3 font-heading tracking-tight">

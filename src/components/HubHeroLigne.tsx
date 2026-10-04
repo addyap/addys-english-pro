@@ -37,6 +37,7 @@ export default function HubHeroLigne() {
             <span className="llx-interchange-node" aria-hidden="true" />
             <strong>Antony Addy</strong>
             <small>Un point de départ. Trois directions.</small>
+            <img className="llx-portrait" src="/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png" alt="" width="64" height="64" decoding="async" />
           </div>
           <ol className="llx-routes">
             {routes.map((route) => (
@@ -91,6 +92,8 @@ const styles = `
 .llx-interchange-node{grid-row:span 2;align-self:start;width:18px;height:18px;margin:3px 0 0 8px;border:4px solid var(--cream);border-radius:50%;background:#121935;box-shadow:0 0 0 5px rgba(244,240,231,.09)}
 .llx-interchange strong{font:800 1.35rem/1.15 'Bricolage Grotesque','Poppins',sans-serif;letter-spacing:-.02em}
 .llx-interchange small{grid-column:2;margin-top:4px;color:#aeb5d0;font:400 .83rem/1.4 'Inter',sans-serif}
+.llx-interchange small{max-width:23ch}
+.llx-portrait{position:absolute;right:28px;top:22px;width:62px;height:62px;object-fit:cover;object-position:center 25%;border:3px solid var(--cream);border-radius:16px;transform:rotate(6deg);box-shadow:0 12px 26px rgba(0,0,0,.3)}
 .llx-routes{position:relative;list-style:none;display:grid;gap:8px;margin:0;padding:0 22px 24px 74px}
 .llx-route{position:relative;--route:var(--red)}
 .llx-route--ia{--route:var(--violet)}.llx-route--creations{--route:var(--amber)}
@@ -111,6 +114,6 @@ const styles = `
 @keyframes llxPulse{50%{box-shadow:0 0 0 8px rgba(246,164,99,0)}}
 @media(max-width:1050px){.llx-inner{grid-template-columns:minmax(0,1fr) minmax(370px,.95fr);gap:40px}.llx-title{font-size:clamp(3.1rem,5.3vw,4.7rem)}}
 @media(max-width:800px){.llx-inner{min-height:0;grid-template-columns:1fr;gap:50px;padding:58px 0 50px}.llx-copy{max-width:640px}.llx-title{max-width:14ch;font-size:clamp(3.4rem,9vw,5rem)}.llx-board{max-width:640px;width:100%}}
-@media(max-width:520px){.llx-inner,.llx-footer{width:min(100% - 40px,1216px)}.llx-inner{padding-top:48px;gap:38px}.llx-eyebrow{margin-bottom:24px;font-size:.63rem;letter-spacing:.1em}.llx-title{font-size:clamp(2.75rem,11.4vw,3.75rem)}.llx-description{margin-top:26px;font-size:.98rem}.llx-actions{align-items:stretch;flex-direction:column;gap:8px;margin-top:28px}.llx-primary{width:100%}.llx-secondary{justify-content:flex-start;min-height:44px}.llx-board{border-radius:18px}.llx-board-top,.llx-board-bottom{padding:18px 20px}.llx-interchange{padding:28px 20px 22px}.llx-interchange-line{left:37px;top:50px;bottom:-284px}.llx-routes{padding:0 14px 20px 62px}.llx-route-stop{left:-31px}.llx-route a{min-height:90px;padding:14px 12px;gap:12px}.llx-route-text strong{font-size:.98rem}.llx-route-text span{font-size:.73rem}.llx-footer{padding-bottom:22px;font-size:.56rem}}
+@media(max-width:520px){.llx-inner,.llx-footer{width:min(100% - 40px,1216px)}.llx-inner{padding-top:48px;gap:38px}.llx-eyebrow{margin-bottom:24px;font-size:.63rem;letter-spacing:.1em}.llx-title{font-size:clamp(2.75rem,11.4vw,3.75rem)}.llx-description{margin-top:26px;font-size:.98rem}.llx-actions{align-items:stretch;flex-direction:column;gap:8px;margin-top:28px}.llx-primary{width:100%}.llx-secondary{justify-content:flex-start;min-height:44px}.llx-board{border-radius:18px}.llx-board-top,.llx-board-bottom{padding:18px 20px}.llx-interchange{padding:28px 20px 22px}.llx-interchange-line{left:37px;top:50px;bottom:-284px}.llx-portrait{right:18px;top:20px;width:48px;height:48px;border-radius:12px}.llx-routes{padding:0 14px 20px 62px}.llx-route-stop{left:-31px}.llx-route a{min-height:90px;padding:14px 12px;gap:12px}.llx-route-text strong{font-size:.98rem}.llx-route-text span{font-size:.73rem}.llx-footer{padding-bottom:22px;font-size:.56rem}}
 @media(prefers-reduced-motion:reduce){.llx-copy,.llx-board,.llx-board-pulse{animation:none}.llx-primary,.llx-secondary,.llx-route a{transition:none}}
 `;

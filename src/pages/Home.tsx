@@ -5,6 +5,7 @@ import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, Gra
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import HubHeroLigne from '../components/HubHeroLigne';
+import './HomeVisual.css';
 import { TypingText } from '../components/TypingText';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { LazyClientCarousel } from '@/components/LazySwiper';
@@ -226,7 +227,7 @@ const Home = () => {
              The hub hero's "Anglais" card scrolls to this #anchor. Audience and
              city pages are surfaced as "served stations" (real internal links). ===== */}
         <div id="anglais" className="scroll-mt-20">
-          <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-anglais">
+          <section className="home-chapter home-chapter--english relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-anglais">
             <div className="pointer-events-none absolute inset-0" aria-hidden="true"
               style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(232,71,59,.10), transparent 55%)' }} />
             <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#E8473B] opacity-50" aria-hidden="true" />
@@ -271,7 +272,7 @@ const Home = () => {
         {/* "Le Conducteur" lives below now — after the three routes (Créations). */}
 
         {/* ===== STATION 03 · LIGNE IA (violet) — links the ia. subdomain ===== */}
-        <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-ia">
+        <section className="home-chapter home-chapter--ai relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-ia">
           <div className="pointer-events-none absolute inset-0" aria-hidden="true"
             style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(122,98,255,.12), transparent 55%)' }} />
           <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#7A62FF] opacity-50" aria-hidden="true" />
@@ -302,7 +303,7 @@ const Home = () => {
         </section>
 
         {/* ===== STATION 04 · LIGNE CRÉATIONS (amber) — links the creations. subdomain ===== */}
-        <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-creations">
+        <section className="home-chapter home-chapter--web relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-creations">
           <div className="pointer-events-none absolute inset-0" aria-hidden="true"
             style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(240,151,74,.12), transparent 55%)' }} />
           <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#F0974A] opacity-50" aria-hidden="true" />
@@ -335,7 +336,7 @@ const Home = () => {
       {/* ===== PROOF · THREE SERVICES — La Ligne dark treatment.
            Folds the old trust strip + SEO intro into one station; every metric,
            the full crawlable text and both links are preserved. ===== */}
-      <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-interchange">
+      <section className="home-proof relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-interchange">
         <div className="pointer-events-none absolute inset-0" aria-hidden="true"
           style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(246,164,99,.10), transparent 55%), radial-gradient(120% 90% at 50% 120%, rgba(11,16,48,.9), transparent 55%)' }} />
         {/* the line — spine + interchange node */}
@@ -385,7 +386,7 @@ const Home = () => {
 
 
         {/* ===== LE CONDUCTEUR — who's at the controls (after the three routes) ===== */}
-        <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-conducteur">
+        <section className="home-person relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-conducteur">
           <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#CBCFE4] opacity-30" aria-hidden="true" />
           <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#CBCFE4]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22' }} />
           <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
@@ -423,7 +424,7 @@ const Home = () => {
         </section>
 
         {/* ===== LES PASSAGERS — proof, as people who rode the line (dark station) ===== */}
-        <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-passagers">
+        <section className="home-clients relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-passagers">
           <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#CBCFE4] opacity-30" aria-hidden="true" />
           <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#CBCFE4]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22' }} />
           <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
@@ -450,7 +451,7 @@ const Home = () => {
         {/* Avis Clients Section - Testimonials right after trust signals */}
         <AvisClients />
 
-        <section className="relative overflow-hidden lg-section py-14 sm:py-16 bg-[#0b1030] text-[#F2EDE1] border-t border-white/5">
+        <section className="home-assessment relative overflow-hidden lg-section py-14 sm:py-16 bg-[#0b1030] text-[#F2EDE1] border-t border-white/5">
           <Reveal className="relative z-10 max-w-4xl mx-auto px-4 text-center">
             <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4 font-heading tracking-tight">
               Quel est votre niveau d'anglais aujourd'hui ?
