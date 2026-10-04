@@ -175,8 +175,8 @@ const Contact = () => {
 
   return <>
       <SEOHead 
-        title="Contact | Anglais, IA générative & création de sites web"
-        description="Contactez Antony Addy pour une formation en anglais, une formation en IA générative ou la création d'un site web. Réponse sous 24 h ouvrées par email, WhatsApp ou formulaire. Devis gratuit."
+        title="Contact | Anglais, IA, sites web & outils numériques"
+        description="Contactez Antony Addy pour une formation en anglais, une formation en IA générative, un site web ou un outil numérique. Réponse sous 24 h ouvrées par email, WhatsApp ou formulaire. Devis gratuit."
         keywords={["contact formateur anglais", "contact formateur IA", "devis création site web", "devis formation", "WhatsApp", "email formations"]}
         canonicalUrl="https://www.antonyaddy.com/contact"
         image="https://www.antonyaddy.com/lovable-uploads/200e88ab-2bbf-4168-85ad-8123b07c44ac.png"
@@ -196,7 +196,7 @@ const Contact = () => {
         }]}
       />
       
-      <div className="min-h-screen bg-muted py-12">
+      <div className="inner-page inner-page--contact min-h-screen bg-muted py-12">
         <div className="max-w-6xl mx-auto px-4">
 
           {/* Persistent top banners (success / error) */}
@@ -225,15 +225,16 @@ const Contact = () => {
           )}
 
           {/* Header */}
-          <Reveal as="header" className="text-center mb-12">
+          <Reveal as="header" className="inner-intro text-center mb-12">
+            <span className="inner-kicker">Prochain arrêt · Votre projet</span>
             <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
               Prenons contact
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Premier échange gratuit et sans engagement pour définir votre besoin — anglais, IA générative ou création de site web
+              Premier échange gratuit et sans engagement pour parler d'anglais, d'IA, d'un site web ou d'un outil sur mesure
             </p>
             <p className="text-sm text-muted-foreground max-w-2xl mx-auto mt-4">
-              Formation finançable directement par votre entreprise (convention de formation sur fonds propres)
+              Pour les formations : financement possible par votre entreprise (sur fonds propres)
               ou à titre personnel. Non éligible au CPF.
             </p>
             <span className="heading-rule" aria-hidden="true" />
@@ -326,6 +327,7 @@ const Contact = () => {
                     <option value="Anglais professionnel">Formation en anglais</option>
                     <option value="IA générative">Formation en IA générative</option>
                     <option value="Création de site web">Création de site web</option>
+                    <option value="Création d'outil numérique ou pédagogique">Création d'outil numérique ou pédagogique</option>
                     <option value="Autre">Autre</option>
                   </select>
                   {errors.sujet && <p className="text-red-500 text-sm mt-1">{errors.sujet}</p>}

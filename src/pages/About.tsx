@@ -35,8 +35,8 @@ const About = () => {
 
   return <>
       <SEOHead 
-        title="Antony Addy | Formateur d'anglais, IA générative & création de sites web"
-        description={`Britannique natif certifié FPA (${EXPERIENCE_FLOOR}+ ans en formation d'anglais), également formateur en IA générative et créateur de sites web par IA. Côte d'Azur et à distance.`}
+        title="Antony Addy | Anglais, IA, sites web & outils numériques"
+        description={`Britannique natif certifié FPA (${EXPERIENCE_FLOOR}+ ans en formation d'anglais), également formateur en IA générative et créateur de sites web et d'outils numériques avec l'IA. Côte d'Azur et à distance.`}
         keywords={["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "formateur IA générative", "création site web IA", "Var", "Alpes-Maritimes", "Fréjus"]}
         canonicalUrl="https://www.antonyaddy.com/qui-je-suis"
         image="https://www.antonyaddy.com/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png"
@@ -71,16 +71,17 @@ const About = () => {
            and true. */
       />
       
-      <div className="min-h-screen bg-background py-12">
+      <div className="inner-page inner-page--about min-h-screen bg-background py-12">
         <div className="max-w-4xl mx-auto px-4">
           {/* Header */}
           <Reveal>
-            <div className="text-center mb-12">
+            <div className="inner-intro text-center mb-12">
+              <span className="inner-kicker">La personne derrière les projets</span>
               <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
                 Qui je suis
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Britannique natif, certifié FPA — formateur d'anglais et d'IA générative, et créateur de sites web par IA, sur la Côte d'Azur et à distance
+                Britannique natif, certifié FPA — formateur d'anglais et d'IA générative, créateur de sites et d'outils numériques sur la Côte d'Azur et à distance
               </p>
             </div>
           </Reveal>
@@ -103,7 +104,7 @@ const About = () => {
                   <strong className="text-primary">anglais professionnel</strong> — détaillée sur ce site —, la{' '}
                   <strong className="text-primary">formation à l'IA générative</strong>{' '}
                   (<a href="https://ia.antonyaddy.com" target="_blank" rel="noopener" className="text-accent hover:underline">ia.antonyaddy.com</a>){' '}
-                  et la <strong className="text-primary">création de sites web par IA</strong>{' '}
+                  et la <strong className="text-primary">création de sites et d'outils numériques avec l'IA</strong>{' '}
                   (<a href="https://creations.antonyaddy.com" target="_blank" rel="noopener" className="text-accent hover:underline">creations.antonyaddy.com</a>).
                 </p>
                 <p>

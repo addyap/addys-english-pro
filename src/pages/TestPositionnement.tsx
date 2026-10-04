@@ -76,7 +76,7 @@ const TestPositionnement = () => {
       />
 
       {/* ── 1. HERO ── */}
-      <section className="relative bg-primary text-primary-foreground py-16 sm:py-20 lg:py-24 overflow-hidden">
+      <section className="assessment-hero relative bg-primary text-primary-foreground py-16 sm:py-20 lg:py-24 overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-white/10" />
           <div className="absolute bottom-8 left-8 w-40 h-40 rounded-full bg-white/10" />

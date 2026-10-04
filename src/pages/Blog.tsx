@@ -114,11 +114,12 @@ const Blog = () => {
         ]}
       />
       
-      <div className="min-h-screen bg-muted/30 py-12">
+      <div className="inner-page inner-page--blog min-h-screen bg-muted/30 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header */}
-          <Reveal className="text-center mb-12">
+          <Reveal className="inner-intro text-center mb-12">
+            <span className="inner-kicker">Notes de terrain · Anglais professionnel</span>
             <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
               Blog Anglais Professionnel
             </h1>

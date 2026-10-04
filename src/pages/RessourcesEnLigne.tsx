@@ -36,12 +36,12 @@ const RessourcesEnLigne = () => {
         jsonLd={collectionJsonLd}
       />
 
-      <div className="min-h-screen bg-background">
+      <div className="inner-page inner-page--resources min-h-screen bg-background">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-primary/5 to-accent/5 py-12 sm:py-16">
+        <section className="inner-hero bg-gradient-to-br from-primary/5 to-accent/5 py-12 sm:py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Reveal>
-              <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 text-accent px-4 py-1.5 text-sm font-semibold mb-6">
+              <span className="inner-kicker inline-flex items-center gap-2 rounded-full bg-accent/15 text-accent px-4 py-1.5 text-sm font-semibold mb-6">
                 <Sparkles className="h-4 w-4" aria-hidden="true" />
                 Conçues par un formateur certifié FPA
               </span>
