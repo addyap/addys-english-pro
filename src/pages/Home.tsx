@@ -1,12 +1,11 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { YEARS_OF_EXPERIENCE, EXPERIENCE_FLOOR, PRICE_RANGE, CONTENT_LAST_REVIEWED_ISO, formatMonthYearFR } from '@/lib/utils';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, Headphones, MessageCircle, Mail, ArrowRight, Handshake, Mic, PenTool, UserCheck, Search } from 'lucide-react';
+import { Globe, BookOpen, ExternalLink, Building, GraduationCap, Target, School, University, MessageCircle, Mail, ArrowRight } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import HubHeroLigne from '../components/HubHeroLigne';
 import './HomeVisual.css';
-import { TypingText } from '../components/TypingText';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { LazyClientCarousel } from '@/components/LazySwiper';
 import { Reveal, RevealStagger } from '@/components/motion/Reveal';
@@ -15,6 +14,7 @@ import CountUp from '@/components/motion/CountUp';
 import { trackEvent } from '@/lib/analytics';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 import { featuredTestimonials } from '@/data/testimonials';
+import { useIsPositioningTestOpen } from '@/config/positioningTest';
 
 
 
@@ -212,6 +212,7 @@ const HOME_JSONLD_GRAPH = {
 
 const Home = () => {
   const whatsappLink = useWhatsAppLink();
+  const testIsOpen = useIsPositioningTestOpen();
   const earlyRecommendation = featuredTestimonials.find((item) => item.name === 'Adrien KOWALSKI') ?? featuredTestimonials[0];
   useScrollTracking('home');
   useTimeTracking('home');
@@ -249,18 +250,10 @@ const Home = () => {
         jsonLd={HOME_JSONLD_GRAPH}
       />
       
-      {/* Skip to content link for accessibility */}
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded-lg z-50">
-        Aller au contenu principal
-      </a>
-
-
-
       {/* Hub hero — "La Ligne" départ sequence: the three activities as one
           branching line. Keeps the keyword H1 and the three real links. */}
+      <div className="home-page">
       <HubHeroLigne />
-
-      <main id="main-content">
         <section className="home-early-proof" aria-label="Un avis et des repères sur mon expérience">
           <div className="home-early-proof-inner">
             <div className="home-early-quote">
@@ -285,10 +278,10 @@ const Home = () => {
             <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#E8473B] opacity-50" aria-hidden="true" />
             <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#E8473B]" aria-hidden="true"
               style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(232,71,59,.55)' }} />
-            <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 pt-14 sm:pt-20 pb-2">
+            <div className="home-section-inner relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 pt-14 sm:pt-20 pb-2">
               <div className="home-chapter-intro">
                 <div>
-                  <div className="flex items-center gap-3 flex-wrap">
+                  <div className="home-chapter-label flex items-center gap-3 flex-wrap">
                     <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">01 · Ligne Anglais</span>
                     <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#E8473B] border border-[#E8473B]/45 rounded-full px-3 py-1.5">Red line</span>
                   </div>
@@ -302,8 +295,8 @@ const Home = () => {
                 <img className="home-chapter-art" src="/illustrations/english-conversation.webp" alt="Illustration de deux bulles de conversation reliées par une ligne rouge, avec un discret motif britannique" width="1200" height="800" loading="lazy" decoding="async" />
               </div>
 
-              <p className="mt-7 font-heading text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-[#8b93b6]">Stations desservies</p>
-              <div className="mt-3 flex flex-wrap gap-2">
+              <p className="home-stations-label mt-7 font-heading text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-[#8b93b6]">Stations desservies</p>
+              <div className="home-station-links mt-3 flex flex-wrap gap-2">
                 <Link to="/anglais-entreprise" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Entreprises</Link>
                 <Link to="/anglais-cadres" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Cadres &amp; dirigeants</Link>
                 <Link to="/anglais-particuliers" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Particuliers</Link>
@@ -314,7 +307,7 @@ const Home = () => {
                 <Link to="/cours-anglais-antibes" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Antibes</Link>
                 <Link to="/cours-anglais-sophia-antipolis" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Sophia Antipolis</Link>
               </div>
-              <div className="mt-7 flex flex-wrap gap-3">
+              <div className="home-chapter-actions mt-7 flex flex-wrap gap-3">
                 <Link to="/offres-de-formation" className="inline-flex items-center gap-2 rounded-lg bg-[#E8473B] px-5 py-3 font-semibold text-white hover:bg-[#c9362b] transition-colors">
                   Voir les formations <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
@@ -335,10 +328,10 @@ const Home = () => {
           <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#7A62FF] opacity-50" aria-hidden="true" />
           <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#7A62FF]" aria-hidden="true"
             style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(122,98,255,.55)' }} />
-          <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
+          <div className="home-section-inner relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
             <div className="home-chapter-intro">
               <div>
-                <div className="flex items-center gap-3 flex-wrap">
+                <div className="home-chapter-label flex items-center gap-3 flex-wrap">
                   <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">02 · Ligne IA</span>
                   <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#7A62FF] border border-[#7A62FF]/45 rounded-full px-3 py-1.5">Violet line</span>
                 </div>
@@ -351,14 +344,14 @@ const Home = () => {
               </div>
               <img className="home-chapter-art" src="/illustrations/ai-workflow.webp" alt="Illustration d'une tâche transformée en document utile grâce à un parcours d'IA guidé" width="1200" height="800" loading="lazy" decoding="async" />
             </div>
-            <div className="mt-8 grid gap-3 sm:grid-cols-3 max-w-3xl">
+            <div className="home-service-facts mt-8 grid gap-3 sm:grid-cols-3 max-w-3xl">
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Pour qui</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Équipes &amp; indépendants</h3></div>
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Format</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Atelier sur mesure</h3></div>
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Résultat</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Productivité réelle</h3></div>
             </div>
             <a href="https://ia.antonyaddy.com" target="_blank" rel="noopener"
                onClick={() => trackEvent('station_route_click', { formation: 'ia', target: 'https://ia.antonyaddy.com' })}
-               className="mt-8 inline-flex items-center gap-2 bg-[#7A62FF] text-white font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
+               className="home-service-link mt-8 inline-flex items-center gap-2 bg-[#7A62FF] text-white font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
               Ouvrir ia.antonyaddy.com <ExternalLink className="h-4 w-4" aria-hidden="true" />
             </a>
           </div>
@@ -371,10 +364,10 @@ const Home = () => {
           <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#F0974A] opacity-50" aria-hidden="true" />
           <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#F0974A]" aria-hidden="true"
             style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(240,151,74,.55)' }} />
-          <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
+          <div className="home-section-inner relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
             <div className="home-chapter-intro">
               <div>
-                <div className="flex items-center gap-3 flex-wrap">
+                <div className="home-chapter-label flex items-center gap-3 flex-wrap">
                   <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">03 · Ligne Créations</span>
                   <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#F0974A] border border-[#F0974A]/45 rounded-full px-3 py-1.5">Amber line</span>
                 </div>
@@ -387,14 +380,14 @@ const Home = () => {
               </div>
               <img className="home-chapter-art" src="/illustrations/web-and-learning-tools.webp" alt="Illustration d'un site web et d'un outil pédagogique sur tablette, reliés par une ligne orange" width="1200" height="800" loading="lazy" decoding="async" />
             </div>
-            <div className="mt-8 grid gap-3 sm:grid-cols-3 max-w-3xl">
+            <div className="home-service-facts mt-8 grid gap-3 sm:grid-cols-3 max-w-3xl">
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Sites web</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Vitrines &amp; conversion</h3></div>
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Outils métier</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Apps &amp; automatisations</h3></div>
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Éducation</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Outils pédagogiques sur mesure</h3></div>
             </div>
             <a href="https://creations.antonyaddy.com" target="_blank" rel="noopener"
                onClick={() => trackEvent('station_route_click', { formation: 'creations', target: 'https://creations.antonyaddy.com' })}
-               className="mt-8 inline-flex items-center gap-2 bg-[#F0974A] text-[#1a1200] font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
+               className="home-service-link mt-8 inline-flex items-center gap-2 bg-[#F0974A] text-[#1a1200] font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
               Ouvrir creations.antonyaddy.com <ExternalLink className="h-4 w-4" aria-hidden="true" />
             </a>
 
@@ -441,7 +434,7 @@ const Home = () => {
         <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#E8473B]" aria-hidden="true"
           style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(232,71,59,.55)' }} />
 
-        <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
+        <div className="home-section-inner relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
           <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">En quelques chiffres</span>
           <h2 id="station-interchange" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
             Un formateur, trois savoir-faire.
@@ -450,7 +443,7 @@ const Home = () => {
             Un parcours de formateur, au service de vos projets en anglais, en IA et sur le web.
           </p>
 
-          <RevealStagger className="mt-9 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+          <RevealStagger className="home-metrics mt-9 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             <Reveal variant="up">
               <p className="text-3xl sm:text-4xl font-extrabold text-white font-heading"><CountUp value={YEARS_OF_EXPERIENCE} suffix="+" /></p>
               <p className="mt-1 font-heading text-[0.62rem] uppercase tracking-[0.14em] text-[#8b93b6]">Années d'expérience</p>
@@ -469,7 +462,7 @@ const Home = () => {
             </Reveal>
           </RevealStagger>
 
-          <p className="mt-9 max-w-4xl text-sm text-[#9aa2c0] font-body leading-relaxed">
+          <p className="home-proof-description mt-9 max-w-4xl text-sm text-[#9aa2c0] font-body leading-relaxed">
             Antony Addy propose des <strong className="text-[#F2EDE1] font-semibold">formations d'anglais pour adultes</strong> adaptées aux professionnels,
             en présentiel dans le Var et les Alpes-Maritimes (Fréjus, Saint-Raphaël, Cannes, Antibes, Nice, Monaco) ou à distance partout en France et dans le monde.
             Britannique natif basé à Fréjus, certifié Formateur Professionnel d'Adultes depuis 2017 et fort de plus de {EXPERIENCE_FLOOR} ans d'enseignement (notamment à l'EDJ Nice), il accompagne particuliers,
@@ -485,10 +478,10 @@ const Home = () => {
         <section className="home-person relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-conducteur">
           <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#CBCFE4] opacity-30" aria-hidden="true" />
           <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#CBCFE4]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22' }} />
-          <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
+          <div className="home-section-inner relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
             <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Le Conducteur</span>
             <h2 id="station-conducteur" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">Qui est aux commandes</h2>
-            <div className="mt-8 grid lg:grid-cols-[320px_1fr] gap-10 items-start">
+            <div className="home-person-grid mt-8 grid lg:grid-cols-[320px_1fr] gap-10 items-start">
               <Reveal variant="left" className="flex flex-col items-center lg:items-start">
                 <img
                   src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
@@ -523,12 +516,12 @@ const Home = () => {
         <section className="home-clients relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-passagers">
           <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#CBCFE4] opacity-30" aria-hidden="true" />
           <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#CBCFE4]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22' }} />
-          <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
+          <div className="home-section-inner relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
             <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Les Passagers</span>
             <h2 id="station-passagers" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">Ils me font confiance</h2>
 
             {/* Client categories — served stations */}
-            <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="home-client-categories mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {clientCategories.map((category, index) => (
                 <div key={index} className="flex items-center gap-2 p-4 rounded-xl border border-white/10 bg-white/[0.03]">
                   <category.icon className="h-5 w-5 text-[#E8473B]" />
@@ -538,7 +531,7 @@ const Home = () => {
             </div>
 
             {/* Client logos on a light plate so the marks stay legible on navy */}
-            <div className="mt-8 rounded-2xl bg-white/95 px-6 py-5 min-h-[140px] flex items-center">
+            <div className="home-client-logos mt-8 rounded-2xl bg-white/95 px-6 py-5 min-h-[140px] flex items-center">
               <LazyClientCarousel logos={CLIENT_LOGOS} />
             </div>
           </div>
@@ -553,16 +546,17 @@ const Home = () => {
               Quel est votre niveau d'anglais aujourd'hui ?
             </h3>
             <p className="text-lg text-[#9aa2c0] mb-6 font-body">
-              Faites le test de positionnement : un résultat sur l'échelle CECRL (A1 → C1)
-              et des repères concrets pour progresser. Gratuit, sans inscription, en quelques minutes.
+              {testIsOpen
+                ? "Faites le test de positionnement : des repères sur l'échelle CECRL (A1 → C1), gratuitement et sans inscription. Comptez 40 minutes maximum."
+                : "La session de quiz en ligne est en cours de renouvellement. Contactez-moi pour une évaluation directe et des repères pour progresser."}
             </p>
             <Link
-              to="/test-de-positionnement"
-              onClick={() => trackEvent('home_assessment_cta_click', { page: 'home', location: 'assessment-cta', target: '/test-de-positionnement' })}
+              to={testIsOpen ? '/test-de-positionnement' : '/contact'}
+              onClick={() => trackEvent('home_assessment_cta_click', { page: 'home', location: 'assessment-cta', target: testIsOpen ? '/test-de-positionnement' : '/contact' })}
               className="inline-flex items-center gap-2 bg-[#E8473B] text-white px-8 py-4 rounded-xl font-semibold hover:-translate-y-0.5 transition-all shadow-lg"
             >
               <Target className="h-5 w-5" aria-hidden="true" />
-              Évaluer mon niveau — test gratuit
+              {testIsOpen ? 'Évaluer mon niveau — test gratuit' : 'Demander une évaluation'}
               <ArrowRight className="h-5 w-5" aria-hidden="true" />
             </Link>
           </Reveal>
@@ -570,11 +564,11 @@ const Home = () => {
 
 
         {/* ===== PROCHAIN ARRÊT — the closing stop (dark La Ligne, WhatsApp-first) ===== */}
-        <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-contact">
+        <section className="home-contact relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-contact">
           <div className="pointer-events-none absolute inset-0" aria-hidden="true" style={{ background: 'radial-gradient(70% 120% at 50% 120%, rgba(246,164,99,.16), transparent 60%)' }} />
           <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#F6A463] opacity-50" aria-hidden="true" />
           <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#F6A463]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(246,164,99,.6)' }} />
-          <div className="relative max-w-3xl mx-auto pl-12 sm:pl-20 pr-4 py-16 sm:py-24">
+          <div className="home-contact-inner relative max-w-3xl mx-auto pl-12 sm:pl-20 pr-4 py-16 sm:py-24">
             <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Prochain arrêt</span>
             <h2 id="station-contact" className="mt-3 font-heading font-extrabold tracking-tight text-3xl sm:text-5xl leading-[1.03]">
               Un projet en anglais, en IA, un site ou un outil ?<br /><span className="text-[#F6A463]">Mind the gap.</span>
@@ -601,7 +595,7 @@ const Home = () => {
         </section>
         
         {/* Footer Authority Links - E-E-A-T Signals */}
-        <section className="py-8 bg-muted/50 border-t">
+        <section className="home-authority py-8 bg-muted/50 border-t">
           <div className="max-w-6xl mx-auto px-4">
             <div className="grid md:grid-cols-3 gap-8 text-sm">
               <div>
@@ -630,7 +624,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>;
 };
 

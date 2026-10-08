@@ -29,7 +29,7 @@ export const ScrollProgressBar = memo(() => {
   
   return (
     <div 
-      className="fixed top-0 left-0 z-50 h-1 bg-yellow-500 will-change-[width]" 
+      className="fixed top-0 left-0 z-[60] h-0.5 bg-accent will-change-[width]"
       style={{ width: `${scroll}%` }} 
       role="progressbar"
       aria-valuenow={Math.round(scroll)}

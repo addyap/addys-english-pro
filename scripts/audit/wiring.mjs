@@ -61,11 +61,9 @@ const AUDIT_TARGETS = [
     // Record<id, ArticleData>: the key is the id, not a field on the value.
     shape: "record",
     urlPattern: "/blog/:id",
-    // Blog.tsx does not import legacyBlogPosts; it re-declares 3 ids in a
-    // hardcoded baseArticles array. That is the wiring point that has to match
-    // the data, and it has silently drifted before.
+    // Blog.tsx derives its index from Object.entries(legacyBlogPosts).
     indexPages: ["src/pages/Blog.tsx"],
-    wiring: "byId",
+    wiring: "iterated",
   },
   {
     name: "FORMATIONS",

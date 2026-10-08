@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { featuredTestimonials } from '@/data/testimonials';
 import TestimonialCarousel from './TestimonialCarousel';
+import { ArrowRight } from 'lucide-react';
 
 const AvisClients = () => {
 
@@ -17,14 +18,15 @@ const AvisClients = () => {
             Ils me font confiance.
           </p>
 
-          <TestimonialCarousel testimonials={featuredTestimonials} />
+          <TestimonialCarousel testimonials={featuredTestimonials} autoPlay={false} />
 
           <div className="mt-10">
             <Link
               to="/temoignages"
-              className="inline-block bg-red-600 text-white font-medium px-6 py-3 rounded hover:bg-red-700 transition-all hover:scale-105 active:scale-95 font-body focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+              className="home-testimonials-link font-body"
             >
               Voir tous les témoignages
+              <ArrowRight size={18} aria-hidden="true" />
             </Link>
           </div>
         </div>

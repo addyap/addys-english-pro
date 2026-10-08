@@ -58,7 +58,7 @@ const ThankYou: React.FC = () => {
                 if (!whatsappLink) { e.preventDefault(); return; }
                 trackEvent('whatsapp_cta_click', { page: 'ThankYou', target: whatsappLink, prefilled: true });
               }}
-              className="inline-flex items-center justify-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+              className="inline-flex items-center justify-center gap-2 bg-green-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-800 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
             >
               <MessageSquare className="w-5 h-5" aria-hidden="true" />
               Me contacter sur WhatsApp

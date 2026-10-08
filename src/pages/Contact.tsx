@@ -252,13 +252,14 @@ const Contact = () => {
             <span className="heading-rule" aria-hidden="true" />
           </Reveal>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="contact-grid grid lg:grid-cols-2 gap-12">
             
             {/* Contact Form */}
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h2 className="text-2xl font-bold text-foreground mb-6">
+            <div className="contact-form-card bg-white rounded-lg shadow-lg p-8">
+              <h2 className="text-2xl font-bold text-foreground mb-2">
                 Envoyez-moi un message
               </h2>
+              <p className="text-sm text-muted-foreground mb-6">Quelques mots sur votre projet suffisent. Tous les champs sont requis.</p>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Honeypot field - hidden from real users */}
@@ -282,6 +283,7 @@ const Contact = () => {
                       type="text" 
                       id="prenom" 
                       name="prenom" 
+                      autoComplete="given-name"
                       value={formData.prenom} 
                       onChange={handleChange} 
                       required 
@@ -298,6 +300,7 @@ const Contact = () => {
                       type="text" 
                       id="nom" 
                       name="nom" 
+                      autoComplete="family-name"
                       value={formData.nom} 
                       onChange={handleChange} 
                       required 
@@ -315,6 +318,7 @@ const Contact = () => {
                     type="email" 
                     id="email" 
                     name="email" 
+                    autoComplete="email"
                     value={formData.email} 
                     onChange={handleChange} 
                     required 
@@ -414,10 +418,10 @@ const Contact = () => {
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-8">
+            <div className="contact-details space-y-8">
               
               {/* WhatsApp CTA */}
-              <div className="bg-white border border-border rounded-lg p-6 shadow-sm">
+              <div className="contact-whatsapp-card bg-white border border-border rounded-lg p-6 shadow-sm">
                 <div className="flex items-center mb-4">
                   <MessageSquare className="h-7 w-7 text-accent mr-3" />
                   <h3 className="text-xl font-semibold text-primary">

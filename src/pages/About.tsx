@@ -264,7 +264,7 @@ const About = () => {
                 <Link to="/contact" className="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors">
                   Prendre contact
                 </Link>
-                <a href={whatsappLink || "#"} onClick={(e) => { if (!whatsappLink) { e.preventDefault(); return; } trackEvent('whatsapp_cta_click', { page: 'About', target: whatsappLink, prefilled: true }); }} className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-8 py-3 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
+                <a href={whatsappLink || "#"} onClick={(e) => { if (!whatsappLink) { e.preventDefault(); return; } trackEvent('whatsapp_cta_click', { page: 'About', target: whatsappLink, prefilled: true }); }} className="bg-green-700 hover:bg-green-800 text-white px-8 py-3 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
                   WhatsApp direct
                 </a>
               </div>

@@ -83,7 +83,7 @@ export async function runInternalLinksAudit() {
   let dynamicCount = 0;
 
   for (const link of links) {
-    const norm = link.path.replace(/\/+$/, "") || "/";
+    const norm = link.path.split(/[?#]/, 1)[0].replace(/\/+$/, "") || "/";
     if (!isStaticPath(norm)) {
       dynamicCount++;
       continue;

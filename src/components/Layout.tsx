@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MessageSquare, Menu, X, ChevronDown, Globe, Sparkles, Code, ExternalLink, Mail, MapPin } from 'lucide-react';
@@ -7,7 +7,7 @@ import { FORMATIONS } from '@/data/formations';
 const FORMATION_ICONS = { Globe, Sparkles, Code } as const;
 
 import { ScrollProgressBar } from "@/components/Effects";
-import SiteLogo from "@/components/SiteLogo";
+import './Layout.css';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 import { trackEvent } from '@/lib/analytics';
@@ -60,11 +60,17 @@ const NavDropdown: React.FC<{
 }> = ({ label, active = false, align = 'left', width = 'w-64', children }) => {
   const [open, setOpen] = useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
+  const panelId = React.useId();
   const close = React.useCallback(() => setOpen(false), []);
 
   React.useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        ref.current?.querySelector('button')?.focus();
+      }
+    };
     const onClick = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
     };
@@ -77,11 +83,11 @@ const NavDropdown: React.FC<{
   }, [open]);
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="site-nav-dropdown relative">
       <button
         type="button"
         onClick={() => setOpen(o => !o)}
-        aria-haspopup="true"
+        aria-controls={panelId}
         aria-expanded={open}
         className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors font-body inline-flex items-center gap-1 ${
           active ? 'bg-accent text-accent-foreground' : 'text-primary hover:bg-muted'
@@ -91,7 +97,7 @@ const NavDropdown: React.FC<{
         <ChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
       </button>
       {open && (
-        <div className={`absolute ${align === 'right' ? 'right-0' : 'left-0'} top-full mt-1 ${width} bg-white border border-border rounded-lg shadow-lg py-2 z-50`}>
+        <div id={panelId} className={`site-nav-panel absolute ${align === 'right' ? 'right-0' : 'left-0'} top-full mt-1 ${width} bg-white border border-border rounded-lg shadow-lg py-2 z-50`}>
           {children(close)}
         </div>
       )}
@@ -111,6 +117,23 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
   const location = useLocation();
   const { t: tRaw } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', closeOnEscape);
+    return () => document.removeEventListener('keydown', closeOnEscape);
+  }, [isMobileMenuOpen]);
   const year = new Date().getFullYear();
   const whatsappLink = useWhatsAppLink();
   const trackWA = (loc: string) => trackEvent('whatsapp_cta_click', { page: 'Layout', target: whatsappLink, location: loc, prefilled: true });
@@ -152,19 +175,20 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
       <ScrollProgressBar />
 
       {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
+      <header className="site-header sticky top-0 z-50">
+        <div className="site-header-inner">
+          <div className="site-header-row">
             <div className="flex items-center">
               {/* Neutral wordmark for the hub — the English "FORMATIONS" roundel
                   lived here but misrepresents a three-activity brand. */}
-              <Link to="/" className="text-xl font-bold text-primary font-heading tracking-tight">
-                Antony Addy
+              <Link to="/" className="site-wordmark" aria-label="Antony Addy — Accueil">
+                <span className="site-brand-mark" aria-hidden="true"><i /><i /><i /></span>
+                <span><strong>Antony Addy</strong><small>Anglais · IA · Créations</small></span>
               </Link>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-0.5" aria-label="Navigation principale">
+            <nav className="site-desktop-nav hidden xl:flex items-center gap-0.5" aria-label="Navigation principale">
               <NavDropdown label="Anglais" active={formationsActive} width="w-72">
                 {close => (
                   <>
@@ -277,10 +301,10 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
             </nav>
 
             {/* Mobile menu button + WhatsApp */}
-            <div className="lg:hidden flex items-center gap-2">
+            <div className="xl:hidden flex items-center gap-2">
               <a
                 href={whatsappLink || "#"}
-                className="border border-primary/30 text-primary px-3 py-2 rounded-lg flex items-center gap-1 hover:bg-primary/5 transition-colors text-sm font-body"
+                className="site-mobile-contact"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleWhatsAppClick('header-mobile')}
@@ -290,12 +314,13 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 <span className="sr-only">WhatsApp</span>
               </a>
               <button
+                ref={menuButtonRef}
                 type="button"
                 onClick={toggleMobileMenu}
                 aria-label={isMobileMenuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-navigation"
-                className="text-primary hover:text-primary/80 p-2.5 min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-lg active:scale-[0.95] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                className="site-menu-button"
               >
                 {isMobileMenuOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
               </button>
@@ -303,20 +328,17 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
 
             {/* CTAs, separated from the nav proper: these start a conversation
                 rather than moving around within the site. */}
-            <div className="hidden lg:flex items-center gap-2 ms-4">
+            <div className="site-header-actions hidden xl:flex items-center gap-3">
               <Link
                 to="/contact"
-                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors font-body border ${
-                  isOn('/contact')
-                    ? 'bg-primary text-primary-foreground border-primary'
-                    : 'text-primary border-primary/30 hover:bg-primary/5 hover:border-primary'
-                }`}
+                className="site-contact-button"
+                aria-current={isOn('/contact') ? 'page' : undefined}
               >
                 {t('nav.contact')}
               </Link>
               <a
                 href={whatsappLink || "#"}
-                className="border border-primary/30 text-primary px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-semibold hover:bg-primary/5 transition-colors font-body"
+                className="site-whatsapp-button"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleWhatsAppClick('header-desktop')}
@@ -330,7 +352,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
           {/* Mobile Navigation Menu — same grouping as desktop, as a flat
               accordion-free list so nothing is hidden behind a second tap. */}
           {isMobileMenuOpen && (
-            <div id="mobile-navigation" className="lg:hidden border-t border-gray-200 py-4">
+            <div id="mobile-navigation" className="site-mobile-navigation xl:hidden">
               <nav className="flex flex-col" aria-label="Navigation principale">
                 {(() => {
                   const item = (href: string, name: string, key?: string) => (
@@ -397,16 +419,16 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
 
       <Breadcrumbs customTitle={breadcrumbTitle} customSection={breadcrumbSection} />
 
-      <main id="main-content">{children}</main>
+      <main id="main-content" className="site-main">{children}</main>
 
       {/* Footer */}
       <footer className="site-footer px-4 py-12 text-sm text-white">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-10 border-b border-white/15 pb-10 md:grid-cols-3">
             <div>
-              <Link to="/" className="mb-4 inline-flex items-center gap-2">
-                <SiteLogo height={32} className="brightness-0 invert" alt="Antony Addy" />
-                <span className="text-lg font-bold">Antony Addy</span>
+              <Link to="/" className="site-wordmark mb-4" aria-label="Antony Addy — Accueil">
+                <span className="site-brand-mark" aria-hidden="true"><i /><i /><i /></span>
+                <span><strong>Antony Addy</strong><small>Anglais · IA · Créations</small></span>
               </Link>
               <p className="max-w-sm leading-relaxed text-gray-300">{tRaw('footer.tagline', { lng: 'fr', years: EXPERIENCE_FLOOR })}</p>
               <p className="mt-4 flex items-start gap-2 text-gray-300"><MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />Var &amp; Alpes-Maritimes · À distance partout</p>

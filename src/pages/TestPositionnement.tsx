@@ -144,7 +144,7 @@ const TestPositionnement = () => {
                 >
                   <p className="text-xl sm:text-2xl font-bold font-heading mb-1">{lvl.level}</p>
                   <p className="text-xs sm:text-sm font-medium mb-1 font-body">{lvl.label}</p>
-                  <p className="text-[11px] sm:text-xs opacity-80 font-body">{lvl.range}</p>
+                  <p className="text-[11px] sm:text-xs font-body">{lvl.range}</p>
                 </div>
               ))}
             </div>
