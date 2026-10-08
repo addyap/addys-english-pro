@@ -511,7 +511,7 @@ const Training = () => {
                 <Link to="/contact" className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-lg">
                   Réserver un premier échange
                 </Link>
-                <a href={whatsappLink || "#"} onClick={(e) => { if (!whatsappLink) { e.preventDefault(); return; } trackEvent('whatsapp_cta_click', { page: 'Training', target: whatsappLink, prefilled: true, location: 'final-cta' }); }} className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-8 py-4 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
+                <a href={whatsappLink || "#"} onClick={(e) => { if (!whatsappLink) { e.preventDefault(); return; } trackEvent('whatsapp_cta_click', { page: 'Training', target: whatsappLink, prefilled: true, location: 'final-cta' }); }} className="bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
                   WhatsApp direct
                 </a>
               </div>

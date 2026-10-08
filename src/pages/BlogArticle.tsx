@@ -299,7 +299,7 @@ const BlogArticle = () => {
                     if (!whatsappLink) { e.preventDefault(); return; }
                     trackEvent('whatsapp_cta_click', { page: 'BlogArticle', target: whatsappLink, location: 'article-footer', prefilled: true });
                   }}
-                  className="inline-flex items-center justify-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                  className="inline-flex items-center justify-center gap-2 bg-green-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-800 transition-colors"
                 >
                   <MessageSquare className="h-5 w-5" aria-hidden="true" />
                   Échanger sur WhatsApp

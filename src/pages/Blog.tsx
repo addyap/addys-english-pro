@@ -193,7 +193,7 @@ const Blog = () => {
                   <article className="overflow-hidden h-full">
                     <div className="p-6">
                       <div className="flex items-center mb-3">
-                        <span className="bg-accent/20 text-accent-foreground px-2 py-1 rounded text-sm font-medium">
+                        <span className="bg-accent/10 text-accent px-2 py-1 rounded text-sm font-medium">
                           {article.category}
                         </span>
                       </div>

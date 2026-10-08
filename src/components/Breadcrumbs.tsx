@@ -153,7 +153,7 @@ export default function Breadcrumbs({ customTitle, customSection }: BreadcrumbsP
       {/* Visual breadcrumbs */}
       <nav 
         aria-label="Fil d'Ariane" 
-        className="py-3 px-4 bg-muted/30 border-b border-border"
+        className="site-breadcrumbs"
       >
         <div className="max-w-7xl mx-auto">
           <ol className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
