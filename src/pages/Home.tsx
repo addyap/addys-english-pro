@@ -302,8 +302,8 @@ const Home = () => {
               <p className="mt-1 font-heading text-[0.62rem] uppercase tracking-[0.14em] text-[#8b93b6]">Années d'expérience</p>
             </Reveal>
             <Reveal variant="up">
-              <p className="text-3xl sm:text-4xl font-extrabold text-white font-heading"><CountUp value={500} suffix="+" /></p>
-              <p className="mt-1 font-heading text-[0.62rem] uppercase tracking-[0.14em] text-[#8b93b6]">Apprenants accompagnés</p>
+              <p className="text-2xl sm:text-3xl font-extrabold text-white font-heading leading-[1.05]">Des&nbsp;centaines</p>
+              <p className="mt-1 font-heading text-[0.62rem] uppercase tracking-[0.14em] text-[#8b93b6]">D'apprenants accompagnés</p>
             </Reveal>
             <Reveal variant="up">
               <p className="text-3xl sm:text-4xl font-extrabold text-white font-heading">FPA</p>
