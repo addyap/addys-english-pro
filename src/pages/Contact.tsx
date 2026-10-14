@@ -191,8 +191,8 @@ const Contact = () => {
         description="Contactez Antony Addy pour une formation en anglais, une formation en IA générative, un site web ou un outil numérique. Réponse sous 24 h ouvrées par email, WhatsApp ou formulaire. Devis gratuit."
         keywords={["contact formateur anglais", "contact formateur IA", "devis création site web", "devis formation", "WhatsApp", "email formations"]}
         canonicalUrl="https://www.antonyaddy.com/contact"
-        image="https://www.antonyaddy.com/lovable-uploads/200e88ab-2bbf-4168-85ad-8123b07c44ac.png"
-        imageAlt="QR Code LinkedIn pour contacter Antony Addy"
+        image="https://www.antonyaddy.com/og/antonyaddy-hub.jpg"
+        imageAlt="Antony Addy — formateur d'anglais, formateur en IA générative et créateur de sites web"
         enableOrgJsonLd
         enableWebSiteJsonLd
         jsonLd={[contactJsonLd, {

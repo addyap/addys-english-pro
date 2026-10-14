@@ -5,7 +5,9 @@ const BASE = process.env.PW_BASE_URL || "http://localhost:4173";
 test("blog article links work after applying a category filter", async ({ page }) => {
   await page.goto(`${BASE}/blog`, { waitUntil: "domcontentloaded" });
 
-  // Apply a category filter (should exist thanks to grammar blog posts)
+  // Apply a category filter (should exist thanks to grammar blog posts).
+  // Only the first categories are shown until "Plus de filtres" is opened.
+  await page.getByRole("button", { name: "Plus de filtres" }).click();
   await page.getByRole("button", { name: "Grammaire - Temps" }).click();
 
   // Click a non-featured article card (the grid card wrapper link)
