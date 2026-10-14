@@ -1,42 +1,24 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-
 import fr from "./locales/fr.json";
 
 /**
- * i18next, pinned to French.
+ * UI-string lookup, pinned to French.
  *
- * This site is French-only in practice: every page body is hardcoded French and
- * only the header/footer strings in Layout.tsx go through `t()`. i18next is kept
- * for those, not because the site is translatable.
+ * This site is French-only: every page body is hardcoded French and only the
+ * header/footer strings in Layout.tsx come from here. i18next + react-i18next
+ * used to do this lookup — ~45 KB of JS on every page for one fixed locale — so
+ * it is now a plain nested-key read of fr.json.
  *
- * ⚠️ What used to happen here was a live bug, not just dead weight. A
- * LanguageContext read `navigator.language` after hydration and called
- * `changeLanguage("en")` for any visitor whose browser was not French — while
- * every page body stayed French. English-speaking visitors therefore got an
- * English navigation and footer bolted onto French content, with no way to
- * change it back: the LanguageSwitcher that was supposed to control this was
- * never rendered anywhere in the app, so `interfaceLanguage` was never written
- * and the detection was the only thing driving the switch.
- *
- * Both the switcher and the context have been deleted, `en.json` with them, and
- * the language is now fixed. To make the site genuinely bilingual later you need
- * translated page content first — at which point restore a switcher, re-add the
- * locale file, and give each language its own URL (/en/...) with hreflang, which
- * is what search engines need and what localStorage-based switching never gave.
+ * History worth keeping: an earlier LanguageContext switched the header/footer
+ * to English for non-French browsers while page bodies stayed French, with no
+ * way back. To make the site genuinely bilingual, translate the page content
+ * first, then give each language its own URL (/en/...) with hreflang.
  */
-if (!i18n.isInitialized) {
-  i18n.use(initReactI18next).init({
-    resources: {
-      fr: { translation: fr },
-    },
-    fallbackLng: "fr",
-    lng: "fr",
-    supportedLngs: ["fr"],
-    load: "languageOnly",
-    interpolation: { escapeValue: false },
-    react: { useSuspense: false },
-  });
-}
+type Vars = Record<string, string | number>;
 
-export default i18n;
+export function t(key: string, vars?: Vars): string {
+  const value = key
+    .split(".")
+    .reduce<unknown>((node, part) => (node as Record<string, unknown> | undefined)?.[part], fr);
+  if (typeof value !== "string") return key;
+  return vars ? value.replace(/\{\{(\w+)\}\}/g, (m, name) => String(vars[name] ?? m)) : value;
+}

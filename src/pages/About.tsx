@@ -35,7 +35,7 @@ const About = () => {
 
   return <>
       <SEOHead 
-        title="Antony Addy | Formateur d'anglais, IA générative & création de sites web"
+        title="Qui je suis — Antony Addy, formateur britannique natif"
         description={`Britannique natif certifié FPA (${EXPERIENCE_FLOOR}+ ans en formation d'anglais), également formateur en IA générative et créateur de sites web par IA. Côte d'Azur et à distance.`}
         keywords={["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "formateur IA générative", "création site web IA", "Var", "Alpes-Maritimes", "Fréjus"]}
         canonicalUrl="https://www.antonyaddy.com/qui-je-suis"
@@ -102,9 +102,9 @@ const About = () => {
                   J'exerce aujourd'hui trois activités complémentaires : la formation en{' '}
                   <strong className="text-primary">anglais professionnel</strong> — détaillée sur ce site —, la{' '}
                   <strong className="text-primary">formation à l'IA générative</strong>{' '}
-                  (<a href="https://ia.antonyaddy.com" target="_blank" rel="noopener" className="text-accent hover:underline">ia.antonyaddy.com</a>){' '}
+                  (<a href="https://ia.antonyaddy.com" target="_blank" rel="noopener" className="text-accent underline underline-offset-2 hover:decoration-2">ia.antonyaddy.com</a>){' '}
                   et la <strong className="text-primary">création de sites web par IA</strong>{' '}
-                  (<a href="https://creations.antonyaddy.com" target="_blank" rel="noopener" className="text-accent hover:underline">creations.antonyaddy.com</a>).
+                  (<a href="https://creations.antonyaddy.com" target="_blank" rel="noopener" className="text-accent underline underline-offset-2 hover:decoration-2">creations.antonyaddy.com</a>).
                 </p>
                 <p>
                   <strong className="text-primary">Britannique de naissance</strong>, je vis et travaille en France depuis plus de {EXPERIENCE_FLOOR} ans. J'enseigne l'anglais à des adultes dans des contextes professionnels exigeants : entreprises, écoles de commerce, organismes de formation, et accompagnement de personnes en reconversion ou en recherche d'emploi.
@@ -155,7 +155,7 @@ const About = () => {
               {/* Link to exercises */}
               <div className="p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg">
                 <p className="text-sm text-muted-foreground">
-                  <span className="font-medium text-primary">Pour vous entraîner en autonomie</span>, j'ai créé une plateforme dédiée d'exercices interactifs : <a href="https://anglaisadistance.fr/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-semibold">anglaisadistance.fr</a>. Accès libre, sans inscription.
+                  <span className="font-medium text-primary">Pour vous entraîner en autonomie</span>, j'ai créé une plateforme dédiée d'exercices interactifs : <a href="https://anglaisadistance.fr/" target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-2 hover:decoration-2 font-semibold">anglaisadistance.fr</a>. Accès libre, sans inscription.
                 </p>
               </div>
             </div>
@@ -263,7 +263,7 @@ const About = () => {
                 <Link to="/contact" className="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors">
                   Prendre contact
                 </Link>
-                <a href={whatsappLink || "#"} onClick={(e) => { if (!whatsappLink) { e.preventDefault(); return; } trackEvent('whatsapp_cta_click', { page: 'About', target: whatsappLink, prefilled: true }); }} className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-8 py-3 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
+                <a href={whatsappLink} onClick={(e) => { trackEvent('whatsapp_cta_click', { page: 'About', target: whatsappLink, prefilled: true }); }} className="bg-green-700 hover:bg-green-800 text-white px-8 py-3 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
                   WhatsApp direct
                 </a>
               </div>

@@ -8,7 +8,6 @@ import OptimizedHero from '../components/OptimizedHero';
 import HubHeroLigne from '../components/HubHeroLigne';
 import { TypingText } from '../components/TypingText';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
-import { LazyClientCarousel } from '@/components/LazySwiper';
 import { Reveal, RevealStagger } from '@/components/motion/Reveal';
 import CountUp from '@/components/motion/CountUp';
 
@@ -18,7 +17,7 @@ import { PLATFORM_COUNT } from '@/data/platforms';
 
 
 
-// Client logos data for lazy carousel
+// Client logos (static row in the Passagers section)
 const CLIENT_LOGOS = [
   { src: "/lovable-uploads/a3da9e3b-1f6c-447a-b308-2ca44d071c67.png", alt: "Logo IGY Vieux-Port de Cannes, partenaire formation anglais", name: "IGY Vieux-Port de Cannes" },
   { src: "/lovable-uploads/694fcb0f-d52b-44f3-8cbc-6c1a051e416b.webp", alt: "Logo ITEC, école partenaire pour formations d'anglais", name: "ITEC" },
@@ -253,7 +252,7 @@ const Home = () => {
 
   return <>
       <SEOHead 
-        title="Antony Addy — Formateur d'anglais, formateur IA & création de sites web"
+        title="Antony Addy — Formateur anglais, IA & sites web, Côte d'Azur"
         description="Antony Addy : formateur d'anglais professionnel (britannique, certifié FPA), formateur en IA générative et créateur de sites web par IA. Côte d'Azur et à distance."
         canonicalUrl="https://www.antonyaddy.com/"
         datePublished="2025-01-15T10:00:00+01:00"
@@ -514,7 +513,7 @@ const Home = () => {
             </div>
             <a href="https://ia.antonyaddy.com" target="_blank" rel="noopener"
                onClick={() => trackEvent('station_route_click', { formation: 'ia', target: 'https://ia.antonyaddy.com' })}
-               className="mt-8 inline-flex items-center gap-2 bg-[#7A62FF] text-white font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
+               className="mt-8 inline-flex items-center gap-2 bg-[#6A4FF0] text-white font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
               Ouvrir ia.antonyaddy.com <ExternalLink className="h-4 w-4" aria-hidden="true" />
             </a>
           </div>
@@ -607,10 +606,26 @@ const Home = () => {
               ))}
             </div>
 
-            {/* Client logos on a light plate so the marks stay legible on navy */}
-            <div className="mt-8 rounded-2xl bg-white/95 px-6 py-5 min-h-[140px] flex items-center">
-              <LazyClientCarousel logos={CLIENT_LOGOS} />
-            </div>
+            {/* Client logos on a light plate so the marks stay legible on navy.
+                A static row, not a carousel: five logos fit, they are in the
+                prerendered HTML, and nothing auto-moves (WCAG 2.2.2) — the old
+                Swiper autoplay shipped ~80 KB and had no pause control. */}
+            <ul className="mt-8 rounded-2xl bg-white/95 px-6 py-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-6 items-center" role="list">
+              {CLIENT_LOGOS.map((logo) => (
+                <li key={logo.name} className="flex flex-col items-center">
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="h-16 sm:h-20 w-auto object-contain mb-2"
+                    width="96"
+                    height="96"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <p className="text-xs sm:text-sm font-medium text-primary text-center" aria-hidden="true">{logo.name}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
@@ -629,7 +644,7 @@ const Home = () => {
             <Link
               to="/test-de-positionnement"
               onClick={() => trackEvent('home_assessment_cta_click', { page: 'home', location: 'assessment-cta', target: '/test-de-positionnement' })}
-              className="inline-flex items-center gap-2 bg-[#E8473B] text-white px-8 py-4 rounded-xl font-semibold hover:-translate-y-0.5 transition-all shadow-lg"
+              className="inline-flex items-center gap-2 bg-[#C8352A] text-white px-8 py-4 rounded-xl font-semibold hover:-translate-y-0.5 transition-all shadow-lg"
             >
               <Target className="h-5 w-5" aria-hidden="true" />
               Évaluer mon niveau — test gratuit
@@ -654,9 +669,9 @@ const Home = () => {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
-                href={whatsappLink || "#"}
-                onClick={(e) => { if (!whatsappLink) { e.preventDefault(); return; } trackEvent('whatsapp_cta_click', { page: 'Home', location: 'final-cta', prefilled: true }); }}
-                className="bg-[#E8473B] text-white px-7 py-4 rounded-xl font-bold text-base sm:text-lg hover:-translate-y-0.5 transition-transform flex items-center justify-center gap-2 font-heading shadow-xl"
+                href={whatsappLink}
+                onClick={(e) => { trackEvent('whatsapp_cta_click', { page: 'Home', location: 'final-cta', prefilled: true }); }}
+                className="bg-[#C8352A] text-white px-7 py-4 rounded-xl font-bold text-base sm:text-lg hover:-translate-y-0.5 transition-transform flex items-center justify-center gap-2 font-heading shadow-xl"
                 target="_blank" rel="noopener noreferrer"
                 aria-label="Contacter Antony Addy sur WhatsApp (message pré-rempli)"
               >
@@ -694,7 +709,7 @@ const Home = () => {
                 <h3 className="font-semibold text-foreground mb-3">Dernière mise à jour</h3>
                 <p className="text-muted-foreground">{formatMonthYearFR()}</p>
                 <p className="text-xs text-muted-foreground mt-2">
-                  Contenu créé par <a href="https://www.linkedin.com/in/antonyaddy/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Antony Addy</a>, formateur certifié FPA.
+                  Contenu créé par <a href="https://www.linkedin.com/in/antonyaddy/" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 hover:decoration-2">Antony Addy</a>, formateur certifié FPA.
                 </p>
               </div>
             </div>

@@ -61,7 +61,6 @@ const TestPositionnement = () => {
   };
 
   const handleWhatsApp = () => {
-    if (!whatsappScoreLink) return;
     trackEvent('whatsapp_score_cta_click', { page: 'test-de-positionnement', target: whatsappScoreLink });
   };
 
@@ -208,7 +207,7 @@ const TestPositionnement = () => {
                       href="https://kahoot.it"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-accent hover:underline font-medium"
+                      className="text-accent underline underline-offset-2 hover:decoration-2 font-medium"
                     >
                       kahoot.it
                     </a>{' '}
@@ -240,11 +239,10 @@ const TestPositionnement = () => {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <a
-                      href={whatsappLink || '#'}
+                      href={whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => {
-                        if (!whatsappLink) { e.preventDefault(); return; }
                         trackEvent('positioning_test_expired_cta', { page: 'test-de-positionnement', target: 'whatsapp' });
                       }}
                       className="inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground px-6 py-3.5 rounded-lg font-bold text-base hover:bg-accent/90 transition-all font-body"
@@ -266,7 +264,7 @@ const TestPositionnement = () => {
                       href="https://anglaisadistance.fr"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-accent hover:underline font-medium"
+                      className="text-accent underline underline-offset-2 hover:decoration-2 font-medium"
                     >
                       anglaisadistance.fr
                     </a>{' '}
@@ -290,11 +288,10 @@ const TestPositionnement = () => {
               Envoyez-moi votre score et le numéro de la question où vous avez commencé à bloquer : je vous confirme votre niveau CECRL et je vous propose un parcours adapté à vos objectifs — entretiens, réunions, TOEIC, Linguaskill ou conversation. Premier échange gratuit, réponse sous 24 h ouvrées.
             </p>
             <a
-              href={whatsappScoreLink || "#"}
+              href={whatsappScoreLink}
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => {
-                if (!whatsappScoreLink) { e.preventDefault(); return; }
                 handleWhatsApp();
               }}
               className="inline-flex items-center justify-center gap-2 bg-white text-primary px-6 py-3.5 sm:px-8 sm:py-4 rounded-lg font-bold text-base sm:text-lg hover:bg-white/90 transition-all hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary font-body"

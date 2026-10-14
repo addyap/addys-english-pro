@@ -19,18 +19,23 @@ function fetchWhatsAppLink(context: WhatsAppContext): Promise<string | null> {
   return request;
 }
 
+// Works before (and without) the API call: rendered into the prerendered HTML
+// so the CTA is never a dead "#" link. The number is already public on the
+// site (JSON-LD telephone, legal notices, contact page), so hiding it here
+// protected nothing and only cost conversions when /api/whatsapp was slow.
+export const WHATSAPP_FALLBACK = "https://wa.me/33649829826";
+
 /**
- * Fetches the WhatsApp contact link from a server-side edge function
- * instead of bundling the phone number into client code, so static
- * scrapers/crawlers can't harvest it from the page source.
- * Returns null until the fetch resolves (fails closed, not open).
+ * Returns a WhatsApp contact link. Starts as the plain wa.me link so the CTA
+ * works in the static HTML and when the API is unreachable, then upgrades to
+ * the server-side prefilled-message variant once /api/whatsapp answers.
  *
  * `context` selects a server-side prefilled-message variant:
  * "default" (general enquiry), "plain" (no prefilled text), or
  * "score" (test-de-positionnement result report).
  */
-export function useWhatsAppLink(context: WhatsAppContext = "default"): string | null {
-  const [link, setLink] = useState<string | null>(null);
+export function useWhatsAppLink(context: WhatsAppContext = "default"): string {
+  const [link, setLink] = useState<string>(WHATSAPP_FALLBACK);
 
   useEffect(() => {
     let cancelled = false;

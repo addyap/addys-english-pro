@@ -123,7 +123,7 @@ const LegalNotices = () => {
                 prestataires techniques (hébergement, envoi d'emails, mesure
                 d'audience sans cookie, base de données anti-spam). Le détail
                 figure dans ma{' '}
-                <Link to="/politique-confidentialite" className="text-accent hover:underline">
+                <Link to="/politique-confidentialite" className="text-accent underline underline-offset-2 hover:decoration-2">
                   politique de confidentialité
                 </Link>.
               </p>
@@ -146,11 +146,11 @@ const LegalNotices = () => {
               <div className="mt-8 pt-6 border-t border-border">
                 <h2 className="text-xl font-semibold text-primary mb-3">Explorer le site</h2>
                 <div className="flex flex-wrap gap-4 text-sm">
-                  <Link to="/" className="text-accent hover:underline">Accueil</Link>
-                  <Link to="/contact" className="text-accent hover:underline">Contact</Link>
-                  <Link to="/politique-confidentialite" className="text-accent hover:underline">Politique de confidentialité</Link>
-                  <Link to="/cgv" className="text-accent hover:underline">CGV</Link>
-                  <Link to="/offres-de-formation" className="text-accent hover:underline">Formations</Link>
+                  <Link to="/" className="text-accent underline underline-offset-2 hover:decoration-2">Accueil</Link>
+                  <Link to="/contact" className="text-accent underline underline-offset-2 hover:decoration-2">Contact</Link>
+                  <Link to="/politique-confidentialite" className="text-accent underline underline-offset-2 hover:decoration-2">Politique de confidentialité</Link>
+                  <Link to="/cgv" className="text-accent underline underline-offset-2 hover:decoration-2">CGV</Link>
+                  <Link to="/offres-de-formation" className="text-accent underline underline-offset-2 hover:decoration-2">Formations</Link>
                 </div>
               </div>
             </section>

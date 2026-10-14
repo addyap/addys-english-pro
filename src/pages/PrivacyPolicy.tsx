@@ -152,10 +152,10 @@ const PrivacyPolicy = () => {
                   Explorer le site
                 </h2>
                 <div className="flex flex-wrap gap-4 text-sm">
-                  <Link to="/" className="text-accent hover:underline">Accueil</Link>
-                  <Link to="/contact" className="text-accent hover:underline">Contact</Link>
-                  <Link to="/mentions-legales" className="text-accent hover:underline">Mentions légales</Link>
-                  <Link to="/offres-de-formation" className="text-accent hover:underline">Formations</Link>
+                  <Link to="/" className="text-accent underline underline-offset-2 hover:decoration-2">Accueil</Link>
+                  <Link to="/contact" className="text-accent underline underline-offset-2 hover:decoration-2">Contact</Link>
+                  <Link to="/mentions-legales" className="text-accent underline underline-offset-2 hover:decoration-2">Mentions légales</Link>
+                  <Link to="/offres-de-formation" className="text-accent underline underline-offset-2 hover:decoration-2">Formations</Link>
                 </div>
               </div>
             </div>

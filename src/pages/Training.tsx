@@ -343,7 +343,7 @@ const Training = () => {
                   href="https://anglaisadistance.fr/dialogues"
                   target="_blank"
                   rel="noopener"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-accent underline underline-offset-2 hover:decoration-2"
                 >
                   → IA d'entraînement professionnel (tous contextes) ↗
                 </a>
@@ -491,7 +491,7 @@ const Training = () => {
 
               <p className="text-sm text-muted-foreground border-t border-border pt-4 mt-6">
                 Le détail contractuel figure dans les{' '}
-                <Link to="/cgv" className="text-accent hover:underline font-medium">
+                <Link to="/cgv" className="text-accent underline underline-offset-2 hover:decoration-2 font-medium">
                   conditions générales de vente
                 </Link>
                 .
@@ -621,7 +621,7 @@ const Training = () => {
                 <Link to="/contact" className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-lg">
                   Réserver un premier échange
                 </Link>
-                <a href={whatsappLink || "#"} onClick={(e) => { if (!whatsappLink) { e.preventDefault(); return; } trackEvent('whatsapp_cta_click', { page: 'Training', target: whatsappLink, prefilled: true, location: 'final-cta' }); }} className="bg-[#25D366] hover:bg-[#1EBE5C] text-white px-8 py-4 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
+                <a href={whatsappLink} onClick={(e) => { trackEvent('whatsapp_cta_click', { page: 'Training', target: whatsappLink, prefilled: true, location: 'final-cta' }); }} className="bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
                   WhatsApp direct
                 </a>
               </div>

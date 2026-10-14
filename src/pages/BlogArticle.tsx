@@ -226,7 +226,7 @@ const BlogArticle = () => {
                   {showCommercialCTA && (
                     <p className="text-sm text-muted-foreground mt-4 italic">
                       Vous utilisez l'anglais au travail ? Je propose des{' '}
-                      <Link to="/offres-de-formation" className="text-accent hover:underline">
+                      <Link to="/offres-de-formation" className="text-accent underline underline-offset-2 hover:decoration-2">
                         formations d'anglais professionnel sur-mesure
                       </Link>
                       {' '}pour entreprises, cadres et particuliers.
@@ -292,14 +292,13 @@ const BlogArticle = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
                 <a
-                  href={whatsappLink || "#"}
+                  href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => {
-                    if (!whatsappLink) { e.preventDefault(); return; }
                     trackEvent('whatsapp_cta_click', { page: 'BlogArticle', target: whatsappLink, location: 'article-footer', prefilled: true });
                   }}
-                  className="inline-flex items-center justify-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                  className="inline-flex items-center justify-center gap-2 bg-green-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-800 transition-colors"
                 >
                   <MessageSquare className="h-5 w-5" aria-hidden="true" />
                   Échanger sur WhatsApp
@@ -313,11 +312,11 @@ const BlogArticle = () => {
               </div>
               <p className="text-sm text-muted-foreground">
                 Vous êtes :{' '}
-                <Link to="/anglais-entreprise" className="text-accent hover:underline font-medium">une entreprise</Link>
+                <Link to="/anglais-entreprise" className="text-accent underline underline-offset-2 hover:decoration-2 font-medium">une entreprise</Link>
                 {' · '}
-                <Link to="/anglais-cadres" className="text-accent hover:underline font-medium">un cadre ou dirigeant</Link>
+                <Link to="/anglais-cadres" className="text-accent underline underline-offset-2 hover:decoration-2 font-medium">un cadre ou dirigeant</Link>
                 {' · '}
-                <Link to="/anglais-particuliers" className="text-accent hover:underline font-medium">un particulier</Link>
+                <Link to="/anglais-particuliers" className="text-accent underline underline-offset-2 hover:decoration-2 font-medium">un particulier</Link>
               </p>
             </div>
           </div>

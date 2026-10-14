@@ -5,7 +5,9 @@ import { AxeBuilder } from "@axe-core/playwright";
 const BASE = process.env.PW_BASE_URL || "http://localhost:4173";
 
 async function checkA11y(page: Page, path: string) {
-  await page.goto(BASE + path, { waitUntil: "domcontentloaded" });
+  // networkidle: let hydration and the hero intro settle so axe sees the
+  // page a visitor actually interacts with, not the first paint.
+  await page.goto(BASE + path, { waitUntil: "networkidle" });
   const results = await new AxeBuilder({ page }).withTags(["wcag2a","wcag2aa"]).analyze();
   const violations = results.violations || [];
   if (violations.length) {
@@ -18,5 +20,18 @@ async function checkA11y(page: Page, path: string) {
   expect(violations.length, `Accessibility issues found on ${path}`).toBe(0);
 }
 
-test("homepage passes axe", async ({ page }) => { await checkA11y(page, "/"); });
-test("contact passes axe", async ({ page }) => { await checkA11y(page, "/contact"); });
+// One page per template: home, contact form, about, offers, blog index,
+// blog article, assessment, audience landing, city landing.
+for (const path of [
+  "/",
+  "/contact",
+  "/qui-je-suis",
+  "/offres-de-formation",
+  "/blog",
+  "/blog/lie-vs-lay",
+  "/test-de-positionnement",
+  "/anglais-entreprise",
+  "/cours-anglais-nice",
+]) {
+  test(`${path} passes axe`, async ({ page }) => { await checkA11y(page, path); });
+}

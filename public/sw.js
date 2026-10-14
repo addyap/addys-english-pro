@@ -1,9 +1,9 @@
-const VERSION = 'v2.1.2';
+const VERSION = 'v2.2.0';
 const CACHE_NAME = `antonyaddy-${VERSION}`;
 const STATIC_CACHE = `${CACHE_NAME}-static`;
+const PAGES_CACHE = `${CACHE_NAME}-pages`;
 const DYNAMIC_CACHE = `${CACHE_NAME}-dynamic`;
-const OFFLINE_CACHE = `${CACHE_NAME}-offline`;
-const MAX_CACHE_SIZE = 100; // Maximum items in dynamic cache
+const MAX_CACHE_SIZE = 60; // Maximum items in each runtime cache
 
 // Allow the app to trigger immediate activation of a newly installed SW.
 self.addEventListener('message', (event) => {
@@ -12,155 +12,91 @@ self.addEventListener('message', (event) => {
   }
 });
 
-// Critical app shell files
+// App shell precache. Only URLs that answer 200 directly: with cleanUrls on
+// Vercel, `/index.html` or `/health.html` 308-redirect, and a redirected
+// response can't be used to answer a navigation.
 const STATIC_FILES = [
   '/',
-  '/index.html',
   '/manifest.webmanifest',
-  '/manifest.json',
-  '/robots.txt',
-  '/health.html',
-  '/status.html',
   '/apple-touch-icon.png',
   '/favicon.ico',
   '/favicon-32x32.png',
-  '/assets/logo.svg',
   '/icon-512.png',
-  '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png',
 ];
 
-// Routes to cache for offline access
-const OFFLINE_ROUTES = [
-  '/',
-  '/blog',
-  '/contact',
-  '/qui-je-suis',
-  '/offres-de-formation',
-];
+const limitCacheSize = async (cacheName, maxSize) => {
+  const cache = await caches.open(cacheName);
+  const keys = await cache.keys();
+  for (let i = 0; i < keys.length - maxSize; i++) await cache.delete(keys[i]);
+};
 
-// Limit cache size
-const limitCacheSize = (cacheName, maxSize) => {
-  caches.open(cacheName).then(cache => {
-    cache.keys().then(keys => {
-      if (keys.length > maxSize) {
-        cache.delete(keys[0]).then(() => limitCacheSize(cacheName, maxSize));
-      }
-    });
-  });
+const putInCache = async (cacheName, request, response) => {
+  if (!response || response.status !== 200 || response.type !== 'basic' || response.redirected) return;
+  const cache = await caches.open(cacheName);
+  await cache.put(request, response);
+  await limitCacheSize(cacheName, MAX_CACHE_SIZE);
 };
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(STATIC_CACHE)
-      .then((cache) => {
-        console.log('Precaching app shell');
-        return cache.addAll(STATIC_FILES);
-      })
-  );
+  event.waitUntil(caches.open(STATIC_CACHE).then((cache) => cache.addAll(STATIC_FILES)));
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
-  console.log('Activating new service worker...');
-  const cacheWhitelist = [STATIC_CACHE, DYNAMIC_CACHE];
-
+  const keep = [STATIC_CACHE, PAGES_CACHE, DYNAMIC_CACHE];
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            console.log('Deleting old cache:', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    caches.keys()
+      .then((names) => Promise.all(names.filter((n) => !keep.includes(n)).map((n) => caches.delete(n))))
+      .then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
-  const url = new URL(event.request.url);
+  const { request } = event;
+  const url = new URL(request.url);
 
-  // Network-first strategy for navigation requests (HTML) to prevent stale content
-  if (event.request.mode === 'navigate' || url.pathname === '/' || url.pathname.endsWith('.html')) {
+  // Only same-origin GETs. POSTs (contact form), third-party requests (fonts,
+  // analytics) and the edge functions go straight to the network untouched.
+  if (request.method !== 'GET' || url.origin !== self.location.origin) return;
+  if (url.pathname.startsWith('/api/')) return;
+
+  // Pages: network-first so content is never stale; cache only as an
+  // offline fallback, then the cached home page as a last resort.
+  if (request.mode === 'navigate') {
     event.respondWith(
-      fetch(event.request)
-        .then(networkResponse => {
-          // Cache the fresh response for offline use
-          caches.open(STATIC_CACHE).then(cache => {
-            cache.put(event.request, networkResponse.clone());
-          });
-          return networkResponse;
+      fetch(request)
+        .then((response) => {
+          event.waitUntil(putInCache(PAGES_CACHE, request, response.clone()));
+          return response;
         })
-        .catch(() => {
-          // Only use cache as fallback when offline
-          return caches.match(event.request) || caches.match('/index.html');
-        })
+        .catch(async () => (await caches.match(request)) || (await caches.match('/')) || Response.error())
     );
     return;
   }
 
-  // Stale-while-revalidate for static assets
-  if (STATIC_FILES.some(file => url.pathname.endsWith(file.substring(1)))) {
+  // Hashed build assets never change: cache-first.
+  if (url.pathname.startsWith('/assets/')) {
     event.respondWith(
-      caches.match(event.request)
-        .then(cachedResponse => {
-          const fetchedResponsePromise = fetch(event.request).then(networkResponse => {
-            caches.open(STATIC_CACHE).then(cache => {
-              cache.put(event.request, networkResponse.clone());
-              return networkResponse;
-            });
-            return networkResponse;
-          });
-          return cachedResponse || fetchedResponsePromise;
-        })
+      caches.match(request).then((cached) => cached || fetch(request).then((response) => {
+        event.waitUntil(putInCache(DYNAMIC_CACHE, request, response.clone()));
+        return response;
+      }))
     );
     return;
   }
 
-  // Network-first for API requests, falling back to cache
-  if (url.pathname.startsWith('/api/')) {
-    event.respondWith(
-      fetch(event.request)
-        .catch(() => {
-          return caches.match(event.request);
-        })
-    );
-    return;
-  }
-
-  // Dynamic caching for other assets
+  // Everything else same-origin (images, icons, manifest): stale-while-revalidate.
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        return response || fetch(event.request).then(networkResponse => {
-          // Only cache successful responses
-          if (networkResponse.status === 200) {
-            caches.open(DYNAMIC_CACHE).then(cache => {
-              cache.put(event.request, networkResponse.clone());
-              limitCacheSize(DYNAMIC_CACHE, MAX_CACHE_SIZE);
-            });
-          }
-          return networkResponse;
-        }).catch(() => {
-          // Return offline fallback for navigation requests
-          if (event.request.mode === 'navigate') {
-            return caches.match('/index.html');
-          }
-        });
-      })
+    caches.match(request).then((cached) => {
+      const network = fetch(request).then((response) => {
+        event.waitUntil(putInCache(DYNAMIC_CACHE, request, response.clone()));
+        return response;
+      });
+      if (cached) {
+        network.catch(() => undefined);
+        return cached;
+      }
+      return network;
+    })
   );
 });
-
-// Background sync for failed requests
-self.addEventListener('sync', (event) => {
-  if (event.tag === 'sync-data') {
-    event.waitUntil(syncData());
-  }
-});
-
-async function syncData() {
-  // Placeholder for background sync logic
-  console.log('Background sync triggered');
-}

@@ -1,6 +1,6 @@
 
 import React from "react";
-import logoImage from "@/assets/antony-addy-logo.png";
+import logoImage from "@/assets/antony-addy-logo.webp";
 
 export default function SiteLogo({
   height = 40,

@@ -1,10 +1,6 @@
 import React, { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { AppErrorBoundary } from "./components/AppErrorBoundary";
 import DiagnosticsPanel from "./components/DiagnosticsPanel";
 import OfflineBanner from "./components/OfflineBanner";
@@ -14,15 +10,6 @@ import PrefetchRoutes from "./components/PrefetchRoutes";
 import UmamiAnalytics from "./components/UmamiAnalytics";
 import Layout from "./components/Layout";
 import { HeroSkeleton, CardSkeleton } from "./components/SkeletonLoader";
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 60 * 1000,
-      refetchOnWindowFocus: false,
-    },
-  },
-});
 
 const PageLoader = () => (
   <div className="min-h-screen bg-background py-12">
@@ -45,22 +32,19 @@ const PageLoader = () => (
  */
 export const AppShell = () => (
   <AppErrorBoundary>
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <A11yProvider>
-          <ScrollToTop />
-          <PrefetchRoutes />
-          <UmamiAnalytics />
-          <Toaster />
-          <Sonner />
-          <DiagnosticsPanel />
-          <OfflineBanner />
-          <Suspense fallback={<PageLoader />}>
-            <Outlet />
-          </Suspense>
-        </A11yProvider>
-      </TooltipProvider>
-    </QueryClientProvider>
+    {/* React Query, the tooltip provider and both toasters (Radix + Sonner)
+        used to wrap the app here; nothing called them, so they were ~60 KB of
+        dead JS on every page. Re-add a provider when a feature needs it. */}
+    <A11yProvider>
+      <ScrollToTop />
+      <PrefetchRoutes />
+      <UmamiAnalytics />
+      <DiagnosticsPanel />
+      <OfflineBanner />
+      <Suspense fallback={<PageLoader />}>
+        <Outlet />
+      </Suspense>
+    </A11yProvider>
   </AppErrorBoundary>
 );
 

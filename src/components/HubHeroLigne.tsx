@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, ExternalLink, MessageCircle } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
-import anglaisLogo from '@/assets/brand/anglais-logo.png';
+import anglaisLogo from '@/assets/antony-addy-logo.webp';
 import iaLogo from '@/assets/brand/ia-logo.svg';
-import creationsLogo from '@/assets/brand/creations-logo.png';
+import creationsLogo from '@/assets/brand/creations-logo.webp';
 
 // "La Ligne" homepage hero — the départ sequence: a single line ignites, draws
 // to the Antony Addy interchange, and branches into the three routes. The SEO
@@ -59,46 +59,49 @@ export default function HubHeroLigne() {
     const gHub = root.querySelector('.llx-hub');
     const gPlate = root.querySelector('.llx-plate');
     const dests = Array.from(root.querySelectorAll('.llx-dest'));
-    const h1 = root.querySelector('.llx-h1');
-    const promise = root.querySelector('.llx-promise');
-    const routes = root.querySelector('.llx-routes');
-    const cta = root.querySelector('.llx-cta');
-
-    at(200, () => { show(gEyebrow); show(gDot); });
-    at(600, () => { if (trunk) trunk.style.strokeDashoffset = '0'; scene?.classList.add('llx-riding'); });
-    at(1950, () => { scene?.classList.remove('llx-riding'); show(gHub); });
-    at(2200, () => show(gPlate));
+    // Only the decorative diagram animates. The H1, cards and CTAs are never
+    // hidden: they are the LCP element and the conversion path, and gating
+    // them behind a ~5 s intro left visitors looking at an empty hero.
+    at(100, () => { show(gEyebrow); show(gDot); });
+    at(250, () => { if (trunk) trunk.style.strokeDashoffset = '0'; scene?.classList.add('llx-riding'); });
+    at(1400, () => { scene?.classList.remove('llx-riding'); show(gHub); });
+    at(1550, () => show(gPlate));
     // the three routes draw one after another — the eye follows the line
     // from Anglais → IA → Créations rather than all branches firing at once.
-    at(2800, () => { if (bAng) bAng.style.strokeDashoffset = '0'; show(dests[0]); });
-    at(3200, () => { if (bIa) bIa.style.strokeDashoffset = '0'; show(dests[1]); });
-    at(3600, () => { if (bCre) bCre.style.strokeDashoffset = '0'; show(dests[2]); });
-    at(4450, () => { show(h1); show(promise); });
-    at(4800, () => { show(routes); show(cta); });
+    at(1750, () => { if (bAng) bAng.style.strokeDashoffset = '0'; show(dests[0]); });
+    at(2000, () => { if (bIa) bIa.style.strokeDashoffset = '0'; show(dests[1]); });
+    at(2250, () => { if (bCre) bCre.style.strokeDashoffset = '0'; show(dests[2]); });
 
     // 3D depth — the diagram is a plane that parallaxes to the pointer while the
     // ground shifts behind it: camera-like dimensionality, no WebGL dependency.
     // (Unreachable under reduced motion: that path returned above.)
+    // The loop only runs while the plane is still easing towards the pointer,
+    // and only for mouse/trackpad users — touch devices get no parallax.
     let raf = 0;
     const plane = root.querySelector('.llx-plane') as HTMLElement | null;
     const ground = root.querySelector('.llx-bg') as HTMLElement | null;
     let tgX = 0, tgY = 0, curX = 0, curY = 0;
-    const onMove = (e: PointerEvent) => {
-      const r = root.getBoundingClientRect();
-      tgX = (e.clientX - r.left) / r.width - 0.5;
-      tgY = (e.clientY - r.top) / r.height - 0.5;
-    };
-    const reset = () => { tgX = 0; tgY = 0; };
     const loop = () => {
       curX += (tgX - curX) * 0.06;
       curY += (tgY - curY) * 0.06;
       if (plane) plane.style.transform = `rotateX(${(-curY * 7).toFixed(2)}deg) rotateY(${(curX * 10).toFixed(2)}deg)`;
       if (ground) ground.style.transform = `translate(${(-curX * 16).toFixed(1)}px, ${(-curY * 12).toFixed(1)}px)`;
-      raf = requestAnimationFrame(loop);
+      raf = Math.abs(tgX - curX) + Math.abs(tgY - curY) > 0.001 ? requestAnimationFrame(loop) : 0;
     };
-    window.addEventListener('pointermove', onMove, { passive: true });
-    root.addEventListener('pointerleave', reset);
-    raf = requestAnimationFrame(loop);
+    const kick = () => { if (!raf) raf = requestAnimationFrame(loop); };
+    const onMove = (e: PointerEvent) => {
+      const r = root.getBoundingClientRect();
+      if (r.bottom < 0) return; // hero scrolled away
+      tgX = (e.clientX - r.left) / r.width - 0.5;
+      tgY = (e.clientY - r.top) / r.height - 0.5;
+      kick();
+    };
+    const reset = () => { tgX = 0; tgY = 0; kick(); };
+    const finePointer = window.matchMedia('(pointer: fine)').matches;
+    if (finePointer) {
+      window.addEventListener('pointermove', onMove, { passive: true });
+      root.addEventListener('pointerleave', reset);
+    }
 
     return () => {
       timers.forEach(clearTimeout);
@@ -110,7 +113,11 @@ export default function HubHeroLigne() {
 
   return (
     <section ref={rootRef} className="llx" aria-label="Antony Addy — trois activités">
-      <style>{LLX_CSS}</style>
+      {/* dangerouslySetInnerHTML, not {LLX_CSS} as a child: React's server
+          renderer entity-escapes the quotes in text children (' → &#x27;),
+          which browsers don't decode inside <style>. That broke the prerendered
+          CSS and caused a hydration mismatch that discarded the SSR tree. */}
+      <style dangerouslySetInnerHTML={{ __html: LLX_CSS }} />
       <div className="llx-bg" aria-hidden="true" />
 
       <div className="llx-inner">
@@ -164,12 +171,12 @@ export default function HubHeroLigne() {
          </div>
         </div>
 
-        <h1 className="llx-h1 llx-pre" data-r>
+        <h1 className="llx-h1">
           Formateur d'<span className="llx-k llx-ang">anglais</span>, formateur en <span className="llx-k llx-ia">IA générative</span> &amp; créateur de <span className="llx-k llx-cre">sites web</span>
         </h1>
-        <p className="llx-promise llx-pre" data-r>De l'hésitation à <span className="llx-hot">l'assurance</span> — sur la Côte d'Azur et à distance.</p>
+        <p className="llx-promise">De l'hésitation à <span className="llx-hot">l'assurance</span> — sur la Côte d'Azur et à distance.</p>
 
-        <div className="llx-routes llx-pre" data-r role="list">
+        <ul className="llx-routes" role="list">
           {ROUTES.map((r) => {
             const inner = (
               <>
@@ -182,22 +189,28 @@ export default function HubHeroLigne() {
               </>
             );
             const cls = `llx-route llx-r-${r.cls}`;
-            return r.external ? (
-              <a key={r.key} className={cls} href={r.href} target="_blank" rel="noopener" role="listitem"
-                 onClick={() => trackEvent('hub_hero_card_click', { formation: r.key, target: r.href })}>{inner}</a>
-            ) : (
-              <a key={r.key} className={cls} href={r.href} role="listitem"
-                 onClick={() => trackEvent('hub_hero_card_click', { formation: r.key, target: r.href })}>{inner}</a>
+            return (
+              <li key={r.key}>
+                {r.external ? (
+                  <a className={cls} href={r.href} target="_blank" rel="noopener"
+                     onClick={() => trackEvent('hub_hero_card_click', { formation: r.key, target: r.href })}>
+                    {inner}<span className="sr-only"> (nouvel onglet)</span>
+                  </a>
+                ) : (
+                  <a className={cls} href={r.href}
+                     onClick={() => trackEvent('hub_hero_card_click', { formation: r.key, target: r.href })}>{inner}</a>
+                )}
+              </li>
             );
           })}
-        </div>
+        </ul>
 
-        <div className="llx-cta llx-pre" data-r>
+        <div className="llx-cta">
           <a
-            href={whatsappLink || '#'}
+            href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => { if (!whatsappLink) { e.preventDefault(); return; } trackEvent('whatsapp_cta_click', { page: 'home', location: 'hub-hero', prefilled: true }); }}
+            onClick={() => trackEvent('whatsapp_cta_click', { page: 'home', location: 'hub-hero', prefilled: true })}
             className="llx-wa"
             aria-label="Prendre contact sur WhatsApp avec Antony Addy (message pré-rempli)"
           >
@@ -213,7 +226,7 @@ export default function HubHeroLigne() {
 }
 
 const LLX_CSS = `
-.llx{position:relative;overflow:hidden;isolation:isolate;color:#F2EDE1;
+.llx{position:relative;overflow:hidden;isolation:isolate;color:#F2EDE1;background:#070b22;
   --ang:#E8473B;--ia:#7A62FF;--cre:#F0974A;--horizon:#F6A463;
   font-family:inherit;border-bottom:1px solid rgba(233,236,255,.07)}
 .llx-bg{position:absolute;inset:-26px;z-index:-1;pointer-events:none;will-change:transform;transition:transform .5s cubic-bezier(.2,.7,.2,1);
@@ -229,7 +242,8 @@ const LLX_CSS = `
 .llx-scene{width:100%;max-width:960px;perspective:1100px}
 .llx-plane{transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.7,.2,1);will-change:transform}
 @media (prefers-reduced-motion:reduce){ .llx-plane,.llx-bg{transition:none} }
-.llx-scene svg{width:100%;height:auto;max-height:46vh;display:block;overflow:visible}
+/* Capped so the route cards and CTA reach the first screen on laptops and phones. */
+.llx-scene svg{width:100%;height:auto;max-height:28vh;display:block;overflow:visible}
 .llx-line{fill:none;stroke-linecap:round;transition:stroke-dashoffset 1.5s cubic-bezier(.6,0,.2,1)}
 .llx-trunk{stroke:url(#llxTg);stroke-width:3.4}
 .llx-bang{stroke:var(--ang);stroke-width:3.4}.llx-bia{stroke:var(--ia);stroke-width:3.4}.llx-bcre{stroke:var(--cre);stroke-width:3.4}
@@ -241,10 +255,11 @@ const LLX_CSS = `
 @keyframes llxRide{from{offset-distance:0%}to{offset-distance:100%}}
 .llx-h1{font-family:'Bricolage Grotesque','Poppins',system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.02;
   font-size:clamp(1.9rem,5vw,3.4rem);max-width:18ch;margin:0;text-wrap:balance}
+@media (min-width:761px){ .llx-h1{max-width:26ch} }
 .llx-k{color:var(--horizon)}
 .llx-promise{font-style:italic;color:#CBCFE4;font-size:clamp(1rem,2.4vw,1.25rem);margin:0;max-width:44ch}
 .llx-hot{color:var(--horizon);font-style:normal;font-weight:600}
-.llx-routes{display:grid;gap:12px;grid-template-columns:repeat(3,1fr);width:100%;max-width:900px;margin-top:4px}
+.llx-routes{list-style:none;padding:0;display:grid;gap:12px;grid-template-columns:repeat(3,1fr);width:100%;max-width:900px;margin-top:4px}
 .llx-route{display:flex;align-items:center;gap:14px;text-align:left;background:#fff;border-radius:16px;padding:16px;
   border:1px solid transparent;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;box-shadow:0 10px 30px rgba(0,0,0,.28)}
 .llx-route:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.4)}
@@ -258,7 +273,7 @@ const LLX_CSS = `
 .llx-rarrow{margin-left:auto;flex:none;width:18px;height:18px;color:#1A1A4D;transition:transform .2s ease}
 .llx-route:hover .llx-rarrow{transform:translateX(3px)}
 .llx-cta{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:6px}
-.llx-wa{display:inline-flex;align-items:center;gap:10px;background:var(--ang);color:#fff;font-family:'Poppins',sans-serif;
+.llx-wa{display:inline-flex;align-items:center;gap:10px;background:#C8352A;color:#fff;font-family:'Poppins',sans-serif;
   font-weight:700;font-size:clamp(.95rem,2vw,1.05rem);padding:14px 28px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.35);
   transition:transform .25s ease,box-shadow .25s ease}
 .llx-wa:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(232,71,59,.3)}
@@ -271,11 +286,10 @@ const LLX_CSS = `
   html.js .llx-pre{opacity:0}
   html.js g.llx-plate.llx-pre{transform:translateY(12px)}
   html.js g.llx-dest.llx-pre{transform:translateY(8px)}
-  html.js .llx-routes.llx-pre,html.js .llx-cta.llx-pre{transform:translateY(10px)}
 }
 @media (max-width:760px){
   .llx-inner{gap:14px;padding-top:18px;padding-bottom:28px}
-  .llx-scene svg{max-height:34vh}
+  .llx-scene svg{max-height:24vh}
   .llx-routes{grid-template-columns:1fr;gap:10px}
   .llx-route{padding:12px;gap:12px;border-radius:14px}
   .llx-rtile{width:44px;height:44px}

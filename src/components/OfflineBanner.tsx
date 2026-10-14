@@ -48,7 +48,7 @@ const OfflineBanner: React.FC = () => {
   if (showReconnected) {
     return (
       <div
-        className="banner-in fixed top-0 left-0 right-0 z-50 bg-green-600 text-white px-4 py-3 shadow-lg"
+        className="banner-in fixed top-0 left-0 right-0 z-50 bg-green-700 text-white px-4 py-3 shadow-lg"
         role="status"
         aria-live="polite"
       >

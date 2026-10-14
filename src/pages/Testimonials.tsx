@@ -140,7 +140,7 @@ const Testimonials = () => {
                 href="https://www.linkedin.com/in/antonyaddy/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-accent hover:underline"
+                className="text-accent underline underline-offset-2 hover:decoration-2"
               >
                 mon profil
               </a>
@@ -182,7 +182,7 @@ const Testimonials = () => {
               Prêt à rejoindre ces apprenants satisfaits ?
             </h2>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Découvrez mes <Link to="/offres-de-formation" className="text-accent hover:underline font-medium">formations d'anglais personnalisées</Link> ou entraînez-vous sur mes <Link to="/ressources-en-ligne" className="text-accent hover:underline font-medium">{PLATFORM_COUNT} plateformes gratuites</Link>.
+              Découvrez mes <Link to="/offres-de-formation" className="text-accent underline underline-offset-2 hover:decoration-2 font-medium">formations d'anglais personnalisées</Link> ou entraînez-vous sur mes <Link to="/ressources-en-ligne" className="text-accent underline underline-offset-2 hover:decoration-2 font-medium">{PLATFORM_COUNT} plateformes gratuites</Link>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">

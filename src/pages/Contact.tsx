@@ -64,6 +64,8 @@ const Contact = () => {
     }
 
     setErrors(newErrors);
+    const firstInvalid = ['prenom', 'nom', 'email', 'sujet', 'message'].find((f) => newErrors[f]);
+    if (firstInvalid) document.getElementById(firstInvalid)?.focus();
     return Object.keys(newErrors).length === 0;
   };
 
@@ -72,7 +74,6 @@ const Contact = () => {
 
     // Honeypot check (spam prevention) — silently reject
     if (formData.honeypot) {
-      console.log('Spam detected');
       trackFormError('contact', 'spam_detected');
       setSubmitSuccess(true); // fake success to deter bots
       return;
@@ -118,7 +119,6 @@ const Contact = () => {
         throw new Error(data?.error || 'Erreur lors de l\'envoi');
       }
 
-      console.log('Contact form submitted successfully:', data);
       trackFormSubmission('contact', true);
       trackEvent('contact_submit_success', { page: 'contact' });
 
@@ -258,7 +258,7 @@ const Contact = () => {
                 <figcaption className="mt-2 text-xs text-muted-foreground">
                   <span className="font-semibold text-primary">Loan MIRMONT</span> — Préparateur
                   physique, gérant de PPR-Formance ·{' '}
-                  <Link to="/temoignages" className="text-accent hover:underline">
+                  <Link to="/temoignages" className="text-accent underline underline-offset-2 hover:decoration-2">
                     voir les autres recommandations
                   </Link>
                 </figcaption>
@@ -268,7 +268,7 @@ const Contact = () => {
                 Envoyez-moi un message
               </h2>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 {/* Honeypot field - hidden from real users */}
                 <input
                   type="text"
@@ -290,12 +290,16 @@ const Contact = () => {
                       type="text" 
                       id="prenom" 
                       name="prenom" 
+                      aria-invalid={!!errors.prenom}
+                      aria-describedby={errors.prenom ? 'prenom-error' : undefined}
+                      autoComplete="given-name"
+                      maxLength={120}
                       value={formData.prenom} 
                       onChange={handleChange} 
                       required 
                       className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent ${errors.prenom ? 'border-red-500' : 'border-border'}`}
                     />
-                    {errors.prenom && <p className="text-red-500 text-sm mt-1">{errors.prenom}</p>}
+                    {errors.prenom && <p id="prenom-error" className="text-red-700 text-sm mt-1">{errors.prenom}</p>}
                   </div>
                   
                   <div>
@@ -306,12 +310,16 @@ const Contact = () => {
                       type="text" 
                       id="nom" 
                       name="nom" 
+                      aria-invalid={!!errors.nom}
+                      aria-describedby={errors.nom ? 'nom-error' : undefined}
+                      autoComplete="family-name"
+                      maxLength={120}
                       value={formData.nom} 
                       onChange={handleChange} 
                       required 
                       className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent ${errors.nom ? 'border-red-500' : 'border-border'}`}
                     />
-                    {errors.nom && <p className="text-red-500 text-sm mt-1">{errors.nom}</p>}
+                    {errors.nom && <p id="nom-error" className="text-red-700 text-sm mt-1">{errors.nom}</p>}
                   </div>
                 </div>
                 
@@ -323,12 +331,16 @@ const Contact = () => {
                     type="email" 
                     id="email" 
                     name="email" 
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? 'email-error' : undefined}
+                    autoComplete="email"
+                    maxLength={254}
                     value={formData.email} 
                     onChange={handleChange} 
                     required 
                     className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent ${errors.email ? 'border-red-500' : 'border-border'}`}
                   />
-                  {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+                  {errors.email && <p id="email-error" className="text-red-700 text-sm mt-1">{errors.email}</p>}
                 </div>
 
                 <div>
@@ -338,6 +350,8 @@ const Contact = () => {
                   <select
                     id="sujet"
                     name="sujet"
+                    aria-invalid={!!errors.sujet}
+                    aria-describedby={errors.sujet ? 'sujet-error' : undefined}
                     value={formData.sujet}
                     onChange={handleChange}
                     required
@@ -349,7 +363,7 @@ const Contact = () => {
                     <option value="Création de site web">Création de site web</option>
                     <option value="Autre">Autre</option>
                   </select>
-                  {errors.sujet && <p className="text-red-500 text-sm mt-1">{errors.sujet}</p>}
+                  {errors.sujet && <p id="sujet-error" className="text-red-700 text-sm mt-1">{errors.sujet}</p>}
                 </div>
 
                 <div>
@@ -359,6 +373,9 @@ const Contact = () => {
                   <textarea
                     id="message"
                     name="message"
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? 'message-error' : undefined}
+                    maxLength={5000}
                     rows={6}
                     value={formData.message}
                     onChange={handleChange}
@@ -366,7 +383,7 @@ const Contact = () => {
                     placeholder="Décrivez votre besoin ou votre projet, et vos objectifs..."
                     className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent resize-none ${errors.message ? 'border-red-500' : 'border-border'}`}
                   />
-                  {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
+                  {errors.message && <p id="message-error" className="text-red-700 text-sm mt-1">{errors.message}</p>}
                 </div>
 
                 {/* RGPD art. 13 — information must be given AT the point of
@@ -377,11 +394,11 @@ const Contact = () => {
                   cédées, et sont conservées au maximum 3 ans après notre dernier contact. Vous
                   disposez d'un droit d'accès, de rectification, d'effacement, d'opposition et de
                   portabilité, que vous pouvez exercer à{' '}
-                  <a href="mailto:formations@antonyaddy.com" className="text-accent hover:underline">
+                  <a href="mailto:formations@antonyaddy.com" className="text-accent underline underline-offset-2 hover:decoration-2">
                     formations@antonyaddy.com
                   </a>
                   . Détails dans la{' '}
-                  <Link to="/politique-confidentialite" className="text-accent hover:underline">
+                  <Link to="/politique-confidentialite" className="text-accent underline underline-offset-2 hover:decoration-2">
                     politique de confidentialité
                   </Link>
                   .
@@ -402,7 +419,6 @@ const Contact = () => {
                   type="submit" 
                   disabled={isSubmitting}
                   className="w-full bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed text-lg" 
-                  aria-label="Envoyer le message de contact"
                 >
                   {isSubmitting ? (
                     <span className="inline-flex items-center justify-center gap-2">
@@ -435,13 +451,12 @@ const Contact = () => {
                   Pour une réponse immédiate, contactez-moi directement sur WhatsApp
                 </p>
                 <a
-                  href={whatsappLink || "#"}
-                  className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 hover:scale-105 active:scale-95"
+                  href={whatsappLink}
+                  className="inline-flex items-center bg-green-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-800 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 hover:scale-105 active:scale-95"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Contactez-moi via WhatsApp"
                   onClick={(e) => {
-                    if (!whatsappLink) { e.preventDefault(); return; }
                     trackWhatsAppClick();
                   }}
                 >

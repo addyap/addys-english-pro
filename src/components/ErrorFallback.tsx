@@ -85,7 +85,7 @@ const ErrorFallback: React.FC<ErrorFallbackProps> = ({
 
         <p className="mt-6 text-sm text-muted-foreground">
           Si le problème persiste, n'hésitez pas à{' '}
-          <Link to="/contact" className="text-primary hover:underline">
+          <Link to="/contact" className="text-primary underline underline-offset-2 hover:decoration-2">
             nous contacter
           </Link>
           .

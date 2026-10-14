@@ -5,6 +5,10 @@ export const config = { runtime: "edge" };
 const NOTIFY_TO = "formations@antonyaddy.com";
 const FROM_DOMAIN = "antonyaddy.com";
 const MIN_SUBMIT_MS = 1500;
+// Generous for real enquiries, small enough that a script can't push huge
+// payloads through Resend.
+const MAX_FIELD = 120;
+const MAX_MESSAGE = 5000;
 
 // Service-role client used only for the consume_rate_limit() RPC. This
 // site has no Supabase project of its own (its original one was
@@ -117,6 +121,14 @@ export default async function handler(request: Request): Promise<Response> {
     const sujet = stripHeader(body.sujet) || "Non précisé";
     const message = (body.message ?? "").toString().trim();
 
+    if (prenom.length > MAX_FIELD || nom.length > MAX_FIELD || email.length > 254 ||
+        sujet.length > MAX_FIELD || message.length > MAX_MESSAGE) {
+      return new Response(JSON.stringify({ error: "Message trop long" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      });
+    }
+
     if (!prenom || !nom || !email || !message) {
       return new Response(JSON.stringify({ error: "Tous les champs sont requis" }), {
         status: 400,
@@ -169,6 +181,11 @@ export default async function handler(request: Request): Promise<Response> {
 
     // Confirmation email to the sender. Non-fatal if it fails — the
     // notification to Antony already succeeded, so still report success.
+    //
+    // Deliberately does NOT echo the submitted message: the recipient is
+    // whatever address the caller typed, so echoing it let anyone use this
+    // form to send arbitrary text from contact@antonyaddy.com to a third
+    // party (spam relay → domain reputation damage).
     const confirmation = await sendEmail({
       from: `Antony Addy <contact@${FROM_DOMAIN}>`,
       to: [email],
@@ -177,13 +194,9 @@ export default async function handler(request: Request): Promise<Response> {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h1 style="color: #1e40af;">Merci pour votre message, ${esc(prenom)} !</h1>
           <p>J'ai bien reçu votre demande et je vous recontacterai dans les plus brefs délais (généralement sous 24 h ouvrées).</p>
-          <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h2 style="color: #374151; margin-top: 0;">Récapitulatif de votre message :</h2>
-            <p style="white-space: pre-wrap; color: #4b5563;">${esc(message)}</p>
-          </div>
           <p>En attendant, n'hésitez pas à :</p>
           <ul>
-            <li><a href="https://www.antonyaddy.com/exercices" style="color: #1e40af;">Découvrir nos exercices gratuits</a></li>
+            <li><a href="https://www.antonyaddy.com/test-de-positionnement" style="color: #1e40af;">Faire le test de positionnement gratuit</a></li>
             <li><a href="https://www.antonyaddy.com/blog" style="color: #1e40af;">Lire nos articles sur la grammaire anglaise</a></li>
             <li><a href="https://wa.me/33649829826" style="color: #16a34a;">Me contacter sur WhatsApp</a> pour une réponse plus rapide</li>
           </ul>
@@ -210,7 +223,8 @@ export default async function handler(request: Request): Promise<Response> {
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : "Unknown error";
     console.error("Error in send-contact-email:", errorMessage);
-    return new Response(JSON.stringify({ error: errorMessage }), {
+    // Internal details stay in the logs, not in the response.
+    return new Response(JSON.stringify({ error: "server_error" }), {
       status: 500,
       headers: { "Content-Type": "application/json", ...corsHeaders },
     });

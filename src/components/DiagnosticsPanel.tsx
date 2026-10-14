@@ -11,6 +11,9 @@ export default function DiagnosticsPanel() {
   const [lastError, setLastError] = useState<string>("");
 
   useEffect(() => {
+    // Only instrument when the panel was asked for (?diag) — never patch
+    // window.fetch for ordinary visitors.
+    if (!open) return;
     const origFetch = window.fetch;
     window.fetch = async (input: RequestInfo | URL, init?: RequestInit) => {
       const res = await origFetch(input, init);
@@ -23,7 +26,7 @@ export default function DiagnosticsPanel() {
       window.fetch = origFetch;
       window.removeEventListener("error", handler);
     };
-  }, []);
+  }, [open]);
 
   const route = useMemo(
     () => (isBrowser ? window.location.pathname + window.location.search : ""),

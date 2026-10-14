@@ -57,7 +57,6 @@ export default defineConfig(({ mode, isSsrBuild }) => ({
               "react-vendor": ["react", "react-dom"],
               router: ["react-router-dom"],
               "ui-vendor": ["@radix-ui/react-tooltip", "@radix-ui/react-dialog"],
-              swiper: ["swiper"],
             },
           },
     },

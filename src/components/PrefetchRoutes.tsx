@@ -1,55 +1,36 @@
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 /**
- * Routes that should be prefetched for faster navigation
+ * Warms the JS chunks of the most-visited pages once the browser is idle, so
+ * in-app navigation to them is instant.
+ *
+ * Navigation is client-side, so it needs the route's JS chunk — never the
+ * prerendered HTML. This used to inject <link rel="prefetch"> for five full
+ * HTML documents on every route change, which in-app navigation never used.
+ * These dynamic imports resolve to the same chunks the router's lazy routes
+ * load, so the router later finds them already in the module cache.
  */
-const PREFETCH_ROUTES = [
-  '/qui-je-suis',
-  '/offres-de-formation',
-  '/blog',
-  '/contact',
-  '/temoignages',
+const PREFETCH = [
+  () => import('@/pages/Contact'),
+  () => import('@/pages/Training'),
+  () => import('@/pages/About'),
+  () => import('@/pages/Blog'),
 ];
 
-/**
- * Component to prefetch important routes on idle
- */
-const PrefetchRoutes: React.FC = () => {
-  const location = useLocation();
+type NetworkInformation = { saveData?: boolean; effectiveType?: string };
 
+const PrefetchRoutes = () => {
   useEffect(() => {
-    if (typeof window === 'undefined' || !('requestIdleCallback' in window)) {
-      return;
-    }
+    if (!('requestIdleCallback' in window)) return;
+    const conn = (navigator as Navigator & { connection?: NetworkInformation }).connection;
+    if (conn?.saveData || /(^|-)2g$/.test(conn?.effectiveType ?? '')) return;
 
-    const prefetchRoute = (route: string) => {
-      // Create a link element to trigger prefetch
-      const link = document.createElement('link');
-      link.rel = 'prefetch';
-      link.href = route;
-      link.as = 'document';
-      document.head.appendChild(link);
-    };
-
-    const handleIdle = () => {
-      // Prefetch routes that aren't the current route
-      PREFETCH_ROUTES.forEach((route) => {
-        if (route !== location.pathname) {
-          prefetchRoute(route);
-        }
-      });
-    };
-
-    // Use requestIdleCallback to prefetch during idle time
-    const idleCallback = window.requestIdleCallback(handleIdle, { timeout: 2000 });
-
-    return () => {
-      if (idleCallback) {
-        window.cancelIdleCallback(idleCallback);
-      }
-    };
-  }, [location.pathname]);
+    const id = window.requestIdleCallback(
+      () => PREFETCH.forEach((load) => load().catch(() => undefined)),
+      { timeout: 4000 },
+    );
+    return () => window.cancelIdleCallback(id);
+  }, []);
 
   return null;
 };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { t } from '@/i18n';
 import { MessageSquare, Menu, X, ChevronDown, Globe, Sparkles, Code, ExternalLink } from 'lucide-react';
 import { FORMATIONS } from '@/data/formations';
 
@@ -109,19 +109,11 @@ const CITY_LINKS = [
 
 const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) => {
   const location = useLocation();
-  const { t: tRaw } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const year = new Date().getFullYear();
   const whatsappLink = useWhatsAppLink();
   const trackWA = (loc: string) => trackEvent('whatsapp_cta_click', { page: 'Layout', target: whatsappLink, location: loc, prefilled: true });
-  const handleWhatsAppClick = (loc: string) => (e: React.MouseEvent) => {
-    if (!whatsappLink) { e.preventDefault(); return; }
-    trackWA(loc);
-  };
-
-  // Public marketing site is always French.
-  const t = (key: string, fallback?: string) =>
-    tRaw(key, { lng: 'fr', defaultValue: fallback }) as string;
+  const handleWhatsAppClick = (loc: string) => () => trackWA(loc);
 
   // Two dropdown groups, two plain links, then the CTAs. The bar previously
   // carried nine top-level items, two of which — "Offres de formation" and
@@ -279,8 +271,8 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
             {/* Mobile menu button + WhatsApp */}
             <div className="lg:hidden flex items-center gap-2">
               <a
-                href={whatsappLink || "#"}
-                className="bg-green-500 text-white px-3 py-2 rounded-lg flex items-center gap-1 hover:bg-green-600 transition-colors text-sm font-body"
+                href={whatsappLink}
+                className="bg-green-700 text-white px-3 py-2 rounded-lg flex items-center gap-1 hover:bg-green-800 transition-colors text-sm font-body"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleWhatsAppClick('header-mobile')}
@@ -315,8 +307,8 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 {t('nav.contact')}
               </Link>
               <a
-                href={whatsappLink || "#"}
-                className="bg-green-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-semibold hover:bg-green-700 transition-colors font-body"
+                href={whatsappLink}
+                className="bg-green-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-semibold hover:bg-green-800 transition-colors font-body"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleWhatsAppClick('header-desktop')}
@@ -408,13 +400,13 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 <SiteLogo height={32} className="brightness-0 invert" alt="Antony Addy" />
                 <span className="font-bold text-lg">Antony Addy</span>
               </Link>
-              <p className="text-gray-400 mb-4 leading-relaxed">{tRaw('footer.tagline', { lng: 'fr', years: EXPERIENCE_FLOOR })}</p>
+              <p className="text-gray-400 mb-4 leading-relaxed">{t('footer.tagline', { years: EXPERIENCE_FLOOR })}</p>
               <div className="flex gap-3">
                 <a
-                  href={whatsappLink || "#"}
+                  href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-green-600 hover:bg-green-700 px-3 py-2 rounded-lg text-xs font-medium transition-colors"
+                  className="bg-green-700 hover:bg-green-800 px-3 py-2 rounded-lg text-xs font-medium transition-colors"
                   aria-label="WhatsApp"
                   onClick={handleWhatsAppClick('footer-social')}
                 >
@@ -515,7 +507,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 </li>
                 <li>
                   <a
-                    href={whatsappLink || "#"}
+                    href={whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors"
