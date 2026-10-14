@@ -76,11 +76,17 @@ const BlogArticle = () => {
   // Generate SEO metadata for this article. Fall back to a sensible default
   // description so we never emit an empty <meta name="description">.
   const fallbackDescription = `${article.title} — article du blog d'Antony Addy, formateur d'anglais professionnel.`;
+  // Every post's ogImage is the same square logo, which LinkedIn/WhatsApp crop
+  // badly. Use the wide blog card for all articles instead.
+  const blogCardImage = 'https://www.antonyaddy.com/og/og-blog.png';
   const articleSEO = {
     title: `${article.title} - Blog Antony Addy`,
     description: (article.description && article.description.trim()) || fallbackDescription,
     canonicalUrl: `https://www.antonyaddy.com/blog/${id}`,
-    image: article.ogImage,
+    image: blogCardImage,
+    imageWidth: 1200,
+    imageHeight: 640,
+    imageAlt: `${article.title} — blog d'Antony Addy`,
     type: "article" as const,
     datePublished: article.date,
     section: article.category,
@@ -104,7 +110,7 @@ const BlogArticle = () => {
       <ArticleSchema
         headline={article.title}
         description={article.description}
-        image={article.ogImage}
+        image={blogCardImage}
         datePublished={article.date}
         author={{ name: article.author, url: 'https://www.antonyaddy.com/qui-je-suis' }}
         publisher={{ name: 'Antony Addy', logo: 'https://www.antonyaddy.com/assets/logo.svg' }}

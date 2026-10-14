@@ -52,11 +52,11 @@ gains an `antonyaddy-dist` config that serves the production build.
 
 | # | Sev | Issue | Impact | Recommended fix |
 |---|---|---|---|---|
-| A | **High** | **Analytics may be off entirely.** Umami is inert unless `VITE_UMAMI_SRC` + `VITE_UMAMI_WEBSITE_ID` are set in Vercel, and the CSP has **no** Umami host in `script-src`/`connect-src` — a hosted Umami would be blocked even when configured. | No conversion data: you can't tell whether these fixes moved anything. | Set both env vars; add the Umami origin to `script-src` and `connect-src` in `vercel.json`. Verify a `whatsapp_cta_click` event arrives. |
-| B | Medium | CSP carries stale allowances: GA, Google Translate, jsDelivr, and the old Supabase project (`gkwzodsz…`, no longer used by the browser). | Larger script/connect surface than needed. | Remove them in the same edit as A. |
-| C | Medium | **Google Fonts loaded from Google's servers** sends every visitor's IP to Google (cf. LG München 2022; CNIL guidance). Clashes with the "no consent banner needed" stance. | GDPR exposure. | Self-host Inter/Poppins/Bricolage as WOFF2 in `/public/fonts`, drop the preconnects, tighten `font-src`/`style-src` to `'self'`. |
+| A | **High** | **Analytics may be off entirely.** Umami is inert unless `VITE_UMAMI_SRC` + `VITE_UMAMI_WEBSITE_ID` are set in Vercel. **CSP part done:** `script-src` allows `https://cloud.umami.is`, `connect-src` allows `https://cloud.umami.is` + `https://api-gateway.umami.dev` (Umami Cloud). | No conversion data: you can't tell whether these fixes moved anything. | Set `VITE_UMAMI_SRC=https://cloud.umami.is/script.js` and `VITE_UMAMI_WEBSITE_ID` in Vercel, redeploy, verify a `whatsapp_cta_click` event arrives. If you move to a self-hosted Umami, swap the two CSP origins. |
+| B | ✅ Done | ~~CSP carries stale allowances:~~ Removed GA, Google Translate (script/connect/frame), jsDelivr and old Supabase; `font-src 'self'`, `style-src 'self' 'unsafe-inline'` (inline styles still needed for React `style` props and the critical CSS). Was: GA, Google Translate, jsDelivr, and the old Supabase project (`gkwzodsz…`, no longer used by the browser). | Larger script/connect surface than needed. | Remove them in the same edit as A. |
+| C | ✅ Done | Self-hosted: 5 latin WOFF2 files in `public/fonts` (Inter 400–700 variable, Bricolage Grotesque opsz/wght variable, Poppins 500/600/700; ~150 KB total, only Inter + Bricolage preloaded), `@font-face` in the critical `<style>` of `index.html`, `/fonts/*` cached 1 year immutable (rename a file if you ever replace it). Built HTML has no `fonts.googleapis.com`/`gstatic` reference; verified in Chromium that no request leaves for Google. Was: **Google Fonts loaded from Google's servers** sends every visitor's IP to Google (cf. LG München 2022; CNIL guidance). Clashes with the "no consent banner needed" stance. | GDPR exposure. | Self-host Inter/Poppins/Bricolage as WOFF2 in `/public/fonts`, drop the preconnects, tighten `font-src`/`style-src` to `'self'`. |
 | D | Medium | Contact rate limiter **fails open** (Supabase error or missing `x-forwarded-for` → no limit). | Abuse window if Supabase is down. | Fail closed for the visitor-confirmation email at least; keep the notification to you. |
-| E | Medium | Social cards: `/contact` uses a LinkedIn **QR code** (1272×1295) as `og:image`; blog posts use a 628² square logo. `public/og/og-blog.png` (1200×640) exists but is unused. | Weak link previews on LinkedIn/WhatsApp, where this audience shares. | Use `og-blog.png` for blog posts and `antonyaddy-hub.jpg` for contact. |
+| E | ✅ Done | Blog articles now use `/og/og-blog.png` (1200×640, set in `BlogArticle.tsx` for SEOHead + Article JSON-LD); `/contact` uses `/og/antonyaddy-hub.jpg`. Was: Social cards: `/contact` uses a LinkedIn **QR code** (1272×1295) as `og:image`; blog posts use a 628² square logo. `public/og/og-blog.png` (1200×640) exists but is unused. | Weak link previews on LinkedIn/WhatsApp, where this audience shares. | Use `og-blog.png` for blog posts and `antonyaddy-hub.jpg` for contact. |
 | F | Medium | Content audit flags **65 of 69 blog posts as thin**. | Limited organic reach for the grammar library. | Expand the top-traffic posts first (examples, exercises, FAQ schema). |
 | G | Low | A deploy while a visitor is mid-session triggers an automatic reload (by design) — could wipe a half-typed contact message. | Rare lost enquiry. | Reload on the next navigation instead of immediately. |
 | H | Low | Phone hero: WhatsApp CTA sits ~60 px below the fold on 375×812 (header WhatsApp button is visible). | Minor. | Optional: move the CTA above the route cards on mobile. |
@@ -80,7 +80,7 @@ gains an `antonyaddy-dist` config that serves the production build.
 
 **Assets**
 - [x] Logos resized to WebP; carousel removed
-- [ ] Self-host fonts (Open C); fix social cards (Open E)
+- [x] Self-host fonts (Open C); fix social cards (Open E)
 
 **Performance**
 - [x] Entry JS 72 KB gz; no HTML prefetch; no idle rAF loop
@@ -100,7 +100,8 @@ gains an `antonyaddy-dist` config that serves the production build.
 - [ ] Resubmit sitemap in Search Console after deploy; inspect `/` with the URL Inspection tool
 
 **Analytics**
-- [ ] Open A: env vars + CSP; verify pageview + `whatsapp_cta_click` + `contact_submit_success` in Umami
+- [x] Open A, CSP: Umami Cloud origins allowed
+- [ ] Open A: set Umami env vars in Vercel; verify pageview + `whatsapp_cta_click` + `contact_submit_success` in Umami
 
 **Error handling**
 - [x] API returns generic errors; form shows French error banner + WhatsApp fallback
