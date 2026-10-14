@@ -1,19 +1,19 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { YEARS_OF_EXPERIENCE, EXPERIENCE_FLOOR, PRICE_RANGE, CONTENT_LAST_REVIEWED_ISO, formatMonthYearFR } from '@/lib/utils';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Globe, Users, Award, BookOpen, ExternalLink, Building, GraduationCap, Target, Briefcase, Settings, School, University, Headphones, MessageCircle, Mail, ArrowRight, Handshake, Mic, PenTool, UserCheck, Search } from 'lucide-react';
+import { Globe, BookOpen, ExternalLink, Building, GraduationCap, Target, School, University, MessageCircle, Mail, ArrowRight } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
-import OptimizedHero from '../components/OptimizedHero';
 import HubHeroLigne from '../components/HubHeroLigne';
-import { TypingText } from '../components/TypingText';
+import './HomeVisual.css';
 import { useScrollTracking, useTimeTracking } from '@/hooks/useScrollTracking';
 import { Reveal, RevealStagger } from '@/components/motion/Reveal';
 import CountUp from '@/components/motion/CountUp';
 
 import { trackEvent } from '@/lib/analytics';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
-import { PLATFORM_COUNT } from '@/data/platforms';
+import { featuredTestimonials } from '@/data/testimonials';
+import { useIsPositioningTestOpen } from '@/config/positioningTest';
 
 
 
@@ -25,6 +25,41 @@ const CLIENT_LOGOS = [
   { src: "/lovable-uploads/69034832-a004-43a5-b367-f4726a4d126a.webp", alt: "Logo Ingeneria Project, entreprise partenaire pour formations d'anglais professionnel", name: "Ingeneria" },
   { src: "/lovable-uploads/edj-nice-logo.webp", alt: "Logo EDJ Nice, L'école du journalisme, partenaire formation anglais", name: "EDJ Nice" },
 ];
+
+const FEATURED_PROJECTS = [
+  {
+    name: 'Ristorante da Lola',
+    type: 'Site web · Restaurant',
+    need: 'Présenter le restaurant à une clientèle internationale.',
+    solution: 'Menu, galerie et réservation en quatre langues.',
+    url: 'https://www.ristorantedalola.it',
+    image: '/projects/ristorante-lola.jpg',
+  },
+  {
+    name: 'Filton Athletic FC',
+    type: 'Site web · Association',
+    need: 'Rassembler les informations utiles aux supporters.',
+    solution: 'Calendrier, résultats, classements et actualités du club.',
+    url: 'https://filtonathletic.co.uk',
+    image: '/projects/filton-athletic-fc.jpg',
+  },
+  {
+    name: 'Grammatica',
+    type: 'Outil pédagogique · Grammaire',
+    need: 'Comprendre une règle dans la langue que l’on maîtrise.',
+    solution: 'Explications en huit langues et exercices autocorrigés.',
+    url: 'https://grammatica.antonyaddy.com',
+    image: '/projects/grammatica.jpg',
+  },
+  {
+    name: 'SpeakUp AI',
+    type: 'Outil pédagogique · Expression orale',
+    need: 'Pratiquer l’anglais oral entre deux cours.',
+    solution: 'Conversations guidées et retour immédiat.',
+    url: 'https://speak.antonyaddy.com',
+    image: '/projects/speakup.jpg',
+  },
+] as const;
 
 // Single consolidated JSON-LD @graph for the homepage. Replaces the previous
 // 9 separate blocks (Organization ×2, WebSite ×2, Person ×2, ProfessionalService
@@ -97,12 +132,12 @@ const HOME_JSONLD_GRAPH = {
       jobTitle: [
         "Formateur d'anglais professionnel",
         "Formateur en IA générative",
-        "Créateur de sites web",
+        "Créateur de sites web et d'outils pédagogiques",
       ],
       // "depuis 2017" alone read as five years' experience, contradicting the
       // 21+ figure shown on the page. 2017 is the FPA certification date, not
       // the start of the career.
-      description: `Britannique natif, certifié Formateur Professionnel d'Adultes depuis 2017 (${EXPERIENCE_FLOOR}+ ans d'enseignement de l'anglais), également formateur en IA générative et créateur de sites web par IA. Côte d'Azur et à distance.`,
+      description: `Britannique natif, certifié Formateur Professionnel d'Adultes depuis 2017 (${EXPERIENCE_FLOOR}+ ans d'enseignement de l'anglais), également formateur en IA générative et créateur de sites web et d'outils pédagogiques avec l'IA. Côte d'Azur et à distance.`,
       knowsAbout: [
         "Anglais professionnel",
         "Coaching linguistique",
@@ -110,6 +145,7 @@ const HOME_JSONLD_GRAPH = {
         "ChatGPT",
         "Ingénierie de prompts",
         "Création de sites web",
+        "Création d'outils pédagogiques",
         "Développement web assisté par IA",
       ],
       url: "https://www.antonyaddy.com",
@@ -122,9 +158,9 @@ const HOME_JSONLD_GRAPH = {
     {
       "@type": "WebSite",
       "@id": "https://www.antonyaddy.com/#website",
-      name: "Antony Addy — Formateur d'anglais, IA générative & création de sites web",
+      name: "Antony Addy — Anglais, IA générative, sites web & outils pédagogiques",
       url: "https://www.antonyaddy.com",
-      description: "Le point de rencontre des trois activités d'Antony Addy : formation en anglais professionnel, formation en IA générative et création de sites web par IA — sur la Côte d'Azur et à distance.",
+      description: "Le point de rencontre des trois activités d'Antony Addy : formation en anglais professionnel, formation en IA générative et création de sites web et d'outils pédagogiques avec l'IA — sur la Côte d'Azur et à distance.",
       inLanguage: "fr",
       publisher: { "@id": "https://www.antonyaddy.com/#business" },
       potentialAction: {
@@ -154,9 +190,9 @@ const HOME_JSONLD_GRAPH = {
     {
       "@type": "Service",
       "@id": "https://www.antonyaddy.com/#service-web",
-      name: "Création de sites web par IA",
-      serviceType: "Conception et développement de sites web",
-      description: "Création de sites web et développement d'outils métier sur mesure (applications, automatisations) pour entreprises et indépendants, avec l'IA.",
+      name: "Création de sites web et d'outils numériques",
+      serviceType: ["Conception et développement de sites web", "Création d'outils métier et pédagogiques"],
+      description: "Création de sites web, d'outils métier et d'outils pédagogiques sur mesure pour entreprises, indépendants et acteurs de l'éducation, avec l'IA.",
       provider: { "@id": "https://www.antonyaddy.com/#antony-addy" },
       url: "https://creations.antonyaddy.com",
       areaServed: [
@@ -175,60 +211,10 @@ const HOME_JSONLD_GRAPH = {
 
 const Home = () => {
   const whatsappLink = useWhatsAppLink();
+  const testIsOpen = useIsPositioningTestOpen();
+  const earlyRecommendation = featuredTestimonials.find((item) => item.name === 'Adrien KOWALSKI') ?? featuredTestimonials[0];
   useScrollTracking('home');
   useTimeTracking('home');
-
-  const features = [{
-    icon: Globe,
-    title: 'Formateur britannique natif',
-    description: 'Prononciation authentique, expressions naturelles et compréhension culturelle d\'un anglophone de naissance'
-  }, {
-    icon: Target,
-    title: 'Formations orientées résultats',
-    description: 'Objectifs concrets : réunions, présentations, emails, appels — vous progressez sur ce qui compte pour votre métier'
-  }, {
-    icon: Award,
-    title: 'Certifié Formateur Professionnel d\'Adultes',
-    description: 'Pédagogie adaptée aux adultes actifs : méthodes actives, progression mesurable, respect de votre temps'
-  }, {
-    icon: Users,
-    title: `${YEARS_OF_EXPERIENCE}+ ans d'expérience avec des professionnels`,
-    description: 'Cadres, indépendants, équipes commerciales — des profils variés avec des besoins exigeants'
-  }, {
-    icon: Building,
-    title: 'Partenaire d\'écoles et d\'entreprises',
-    description: 'ESCCOM, ITEC, IGY Vieux-Port, et de nombreux centres de formation me font confiance'
-  }, {
-    icon: CheckCircle,
-    title: 'Présentiel ou distanciel, selon vos contraintes',
-    description: 'Var et Alpes-Maritimes en face à face, toute la France et le monde à distance — flexibilité totale'
-  }];
-
-  const services = [{
-    icon: Building,
-    title: 'Formations en Entreprise',
-    description: 'Sessions personnalisées pour renforcer les compétences linguistiques de vos équipes (anglais professionnel, techniques, ou sectoriels).'
-  }, {
-    icon: Briefcase,
-    title: 'Formations Individuelles',
-    description: 'Parcours personnalisés adaptés à vos objectifs individuels et votre rythme d\'apprentissage.'
-  }, {
-    icon: Target,
-    title: 'Sous-traitance pour organismes de formation',
-    description: 'J\'interviens comme formateur pour des organismes et centres de formation partenaires, dans le cadre de leurs propres dispositifs.'
-  }, {
-    icon: Users,
-    title: 'Reconversion & recherche d\'emploi',
-    description: 'Formations pour les personnes en reconversion ou en recherche d\'emploi souhaitant valoriser leur anglais professionnel.'
-  }, {
-    icon: GraduationCap,
-    title: 'Formations Bachelor & Master',
-    description: 'Soutien aux étudiants et alternants pour maîtriser l\'anglais académique et professionnel, en formation continue.'
-  }, {
-    icon: Settings,
-    title: 'Préparation aux certifications',
-    description: 'Préparation ciblée aux certifications d\'anglais (Cambridge, TOEIC, etc.) selon vos objectifs.'
-  }];
 
   const clientCategories = [{
     icon: Building,
@@ -252,32 +238,193 @@ const Home = () => {
 
   return <>
       <SEOHead 
-        title="Antony Addy — Formateur anglais, IA & sites web, Côte d'Azur"
-        description="Antony Addy : formateur d'anglais professionnel (britannique, certifié FPA), formateur en IA générative et créateur de sites web par IA. Côte d'Azur et à distance."
+        title="Antony Addy — Anglais, IA, sites web & outils pédagogiques"
+        description="Antony Addy : formateur d'anglais professionnel, formateur en IA générative et créateur de sites web et d'outils pédagogiques avec l'IA. Côte d'Azur et à distance."
         canonicalUrl="https://www.antonyaddy.com/"
         datePublished="2025-01-15T10:00:00+01:00"
         dateModified={CONTENT_LAST_REVIEWED_ISO}
         image="https://www.antonyaddy.com/og/antonyaddy-hub.jpg"
-        imageAlt="Antony Addy — formateur d'anglais, formateur en IA générative et créateur de sites web"
-        keywords={["formateur anglais", "formation anglais professionnel", "formateur FPA", "cours anglais adultes", "formateur IA générative", "formation ChatGPT entreprise", "création site web IA", "Var", "Alpes-Maritimes", "Côte d'Azur", "Fréjus", "Saint-Raphaël", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "anglais à distance", "formateur britannique", "anglais entreprises", "anglais cadres", "anglais étudiants"]}
+        imageAlt="Antony Addy — formateur d'anglais, formateur en IA générative et créateur de sites web et d'outils pédagogiques"
+        keywords={["formateur anglais", "formation anglais professionnel", "formateur FPA", "cours anglais adultes", "formateur IA générative", "formation ChatGPT entreprise", "création site web IA", "outils pédagogiques", "Var", "Alpes-Maritimes", "Côte d'Azur", "Fréjus", "Saint-Raphaël", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "anglais à distance", "formateur britannique", "anglais entreprises", "anglais cadres", "anglais étudiants"]}
         jsonLd={HOME_JSONLD_GRAPH}
       />
       
-      {/* Skip to content link for accessibility */}
-      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded-lg z-50">
-        Aller au contenu principal
-      </a>
-
-
-
       {/* Hub hero — "La Ligne" départ sequence: the three activities as one
           branching line. Keeps the keyword H1 and the three real links. */}
+      <div className="home-page">
       <HubHeroLigne />
+        <section className="home-early-proof" aria-label="Un avis et des repères sur mon expérience">
+          <div className="home-early-proof-inner">
+            <div className="home-early-quote">
+              <span>Recommandation LinkedIn</span>
+              <blockquote>« {earlyRecommendation.quote} »</blockquote>
+              <p>{earlyRecommendation.name} · {earlyRecommendation.role}</p>
+            </div>
+            <div className="home-early-facts">
+              <div><strong>{YEARS_OF_EXPERIENCE}+</strong><span>années d’expérience</span></div>
+              <div><strong>FPA</strong><span>certifié depuis 2017</span></div>
+              <Link to="/temoignages">Lire les témoignages <ArrowRight size={17} aria-hidden="true" /></Link>
+            </div>
+          </div>
+        </section>
+        {/* ===== STATION 02 · LIGNE ANGLAIS — the English chapter opens here.
+             The hub hero's "Anglais" card scrolls to this #anchor. Audience and
+             city pages are surfaced as "served stations" (real internal links). ===== */}
+        <div id="anglais" className="scroll-mt-20">
+          <section className="home-chapter home-chapter--english relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-anglais">
+            <div className="pointer-events-none absolute inset-0" aria-hidden="true"
+              style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(232,71,59,.10), transparent 55%)' }} />
+            <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#E8473B] opacity-50" aria-hidden="true" />
+            <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#E8473B]" aria-hidden="true"
+              style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(232,71,59,.55)' }} />
+            <div className="home-section-inner relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 pt-14 sm:pt-20 pb-2">
+              <div className="home-chapter-intro">
+                <div>
+                  <div className="home-chapter-label flex items-center gap-3 flex-wrap">
+                    <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">01 · Ligne Anglais</span>
+                    <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#E8473B] border border-[#E8473B]/45 rounded-full px-3 py-1.5">Red line</span>
+                  </div>
+                  <h2 id="station-anglais" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
+                    L'anglais qui vous met en mouvement
+                  </h2>
+                  <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
+                    Britannique natif, certifié Formateur Professionnel d'Adultes. Je ne vous fais pas réciter des règles — je vous mets en mouvement : réunions, présentations, emails, appels. En présentiel sur la Côte d'Azur ou à distance.
+                  </p>
+                </div>
+                <img className="home-chapter-art" src="/illustrations/english-conversation.webp" alt="Illustration de deux bulles de conversation reliées par une ligne rouge, avec un discret motif britannique" width="1200" height="800" loading="lazy" decoding="async" />
+              </div>
 
-      {/* ===== STATION 01 · L'INTERCHANGE — La Ligne dark treatment.
+              <p className="home-stations-label mt-7 font-heading text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-[#8b93b6]">Stations desservies</p>
+              <div className="home-station-links mt-3 flex flex-wrap gap-2">
+                <Link to="/anglais-entreprise" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Entreprises</Link>
+                <Link to="/anglais-cadres" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Cadres &amp; dirigeants</Link>
+                <Link to="/anglais-particuliers" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Particuliers</Link>
+                <Link to="/anglais-etudiants" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Étudiants</Link>
+                <Link to="/cours-anglais-frejus" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Fréjus</Link>
+                <Link to="/cours-anglais-nice" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Nice</Link>
+                <Link to="/cours-anglais-cannes" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Cannes</Link>
+                <Link to="/cours-anglais-antibes" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Antibes</Link>
+                <Link to="/cours-anglais-sophia-antipolis" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Sophia Antipolis</Link>
+              </div>
+              <div className="home-chapter-actions mt-7 flex flex-wrap gap-3">
+                <Link to="/offres-de-formation" className="inline-flex items-center gap-2 rounded-lg bg-[#E8473B] px-5 py-3 font-semibold text-white hover:bg-[#c9362b] transition-colors">
+                  Voir les formations <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+                <Link to="/ressources-en-ligne" className="inline-flex items-center gap-2 rounded-lg border border-white/25 px-5 py-3 font-semibold text-white hover:bg-white/10 transition-colors">
+                  Découvrir les ressources gratuites
+                </Link>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        {/* "Le Conducteur" lives below now — after the three routes (Créations). */}
+
+        {/* ===== STATION 03 · LIGNE IA (violet) — links the ia. subdomain ===== */}
+        <section className="home-chapter home-chapter--ai relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-ia">
+          <div className="pointer-events-none absolute inset-0" aria-hidden="true"
+            style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(122,98,255,.12), transparent 55%)' }} />
+          <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#7A62FF] opacity-50" aria-hidden="true" />
+          <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#7A62FF]" aria-hidden="true"
+            style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(122,98,255,.55)' }} />
+          <div className="home-section-inner relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
+            <div className="home-chapter-intro">
+              <div>
+                <div className="home-chapter-label flex items-center gap-3 flex-wrap">
+                  <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">02 · Ligne IA</span>
+                  <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#7A62FF] border border-[#7A62FF]/45 rounded-full px-3 py-1.5">Violet line</span>
+                </div>
+                <h2 id="station-ia" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
+                  L'IA générative, appliquée à votre métier
+                </h2>
+                <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
+                  Des formations concrètes à l'IA générative pour les professionnels et les équipes : ChatGPT, ingénierie de prompts et outils IA, branchés directement sur vos tâches réelles — du gain de temps dès la première session.
+                </p>
+              </div>
+              <img className="home-chapter-art" src="/illustrations/ai-workflow.webp" alt="Illustration d'une tâche transformée en document utile grâce à un parcours d'IA guidé" width="1200" height="800" loading="lazy" decoding="async" />
+            </div>
+            <div className="home-service-facts mt-8 grid gap-3 sm:grid-cols-3 max-w-3xl">
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Pour qui</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Équipes &amp; indépendants</h3></div>
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Format</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Atelier sur mesure</h3></div>
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Résultat</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Productivité réelle</h3></div>
+            </div>
+            <a href="https://ia.antonyaddy.com" target="_blank" rel="noopener"
+               onClick={() => trackEvent('station_route_click', { formation: 'ia', target: 'https://ia.antonyaddy.com' })}
+               className="home-service-link mt-8 inline-flex items-center gap-2 bg-[#6A4FF0] text-white font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
+              Ouvrir ia.antonyaddy.com <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
+        </section>
+
+        {/* ===== STATION 04 · LIGNE CRÉATIONS (amber) — links the creations. subdomain ===== */}
+        <section className="home-chapter home-chapter--web relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-creations">
+          <div className="pointer-events-none absolute inset-0" aria-hidden="true"
+            style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(240,151,74,.12), transparent 55%)' }} />
+          <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#F0974A] opacity-50" aria-hidden="true" />
+          <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#F0974A]" aria-hidden="true"
+            style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(240,151,74,.55)' }} />
+          <div className="home-section-inner relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
+            <div className="home-chapter-intro">
+              <div>
+                <div className="home-chapter-label flex items-center gap-3 flex-wrap">
+                  <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">03 · Ligne Créations</span>
+                  <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#F0974A] border border-[#F0974A]/45 rounded-full px-3 py-1.5">Amber line</span>
+                </div>
+                <h2 id="station-creations" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
+                  Des sites et des outils faits pour avancer
+                </h2>
+                <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
+                  Je crée des <strong className="text-white">sites web</strong> pour présenter votre activité et des <strong className="text-white">outils numériques sur mesure</strong> : applications métier, automatisations et outils pédagogiques pour l'éducation et la formation. Avec l'IA, de la conception à la mise en ligne.
+                </p>
+              </div>
+              <img className="home-chapter-art" src="/illustrations/web-and-learning-tools.webp" alt="Illustration d'un site web et d'un outil pédagogique sur tablette, reliés par une ligne orange" width="1200" height="800" loading="lazy" decoding="async" />
+            </div>
+            <div className="home-service-facts mt-8 grid gap-3 sm:grid-cols-3 max-w-3xl">
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Sites web</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Vitrines &amp; conversion</h3></div>
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Outils métier</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Apps &amp; automatisations</h3></div>
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Éducation</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Outils pédagogiques sur mesure</h3></div>
+            </div>
+            <a href="https://creations.antonyaddy.com" target="_blank" rel="noopener"
+               onClick={() => trackEvent('station_route_click', { formation: 'creations', target: 'https://creations.antonyaddy.com' })}
+               className="home-service-link mt-8 inline-flex items-center gap-2 bg-[#F0974A] text-[#1a1200] font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
+              Ouvrir creations.antonyaddy.com <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </a>
+
+            <div className="home-showcase">
+              <div className="home-showcase-intro">
+                <div>
+                  <span className="home-showcase-kicker">Réalisations en ligne</span>
+                  <h3>Des projets que vous pouvez explorer.</h3>
+                </div>
+                <a href="https://creations.antonyaddy.com/#work" target="_blank" rel="noopener noreferrer">
+                  Voir toutes les réalisations <ArrowRight size={18} aria-hidden="true" />
+                </a>
+              </div>
+              <div className="home-showcase-grid">
+                {FEATURED_PROJECTS.map((project) => (
+                  <a key={project.name} className="home-project" href={project.url} target="_blank" rel="noopener noreferrer"
+                    onClick={() => trackEvent('home_project_click', { project: project.name, target: project.url })}>
+                    <div className="home-project-image">
+                      <img src={project.image} alt={`Capture d'écran de ${project.name}`} width="1200" height="750" loading="lazy" decoding="async" />
+                      <span aria-hidden="true"><ExternalLink size={19} /></span>
+                    </div>
+                    <div className="home-project-copy">
+                      <span>{project.type}</span>
+                      <strong>{project.name}</strong>
+                      <p><b>Le besoin</b>{project.need}</p>
+                      <p><b>La réponse</b>{project.solution}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+      {/* ===== PROOF · THREE SERVICES — La Ligne dark treatment.
            Folds the old trust strip + SEO intro into one station; every metric,
            the full crawlable text and both links are preserved. ===== */}
-      <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-interchange">
+      <section className="home-proof relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-interchange">
         <div className="pointer-events-none absolute inset-0" aria-hidden="true"
           style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(246,164,99,.10), transparent 55%), radial-gradient(120% 90% at 50% 120%, rgba(11,16,48,.9), transparent 55%)' }} />
         {/* the line — spine + interchange node */}
@@ -286,23 +433,23 @@ const Home = () => {
         <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#E8473B]" aria-hidden="true"
           style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(232,71,59,.55)' }} />
 
-        <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
-          <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">01 · L'Interchange</span>
+        <div className="home-section-inner relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
+          <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">En quelques chiffres</span>
           <h2 id="station-interchange" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
-            Une ligne, trois destinations.
+            Un formateur, trois savoir-faire.
           </h2>
           <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
-            antonyaddy.com est le point de rencontre de mes trois activités : un formateur, trois façons d'avancer — en anglais, en IA générative, et en ligne.
+            Un parcours de formateur, au service de vos projets en anglais, en IA et sur le web.
           </p>
 
-          <RevealStagger className="mt-9 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+          <RevealStagger className="home-metrics mt-9 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             <Reveal variant="up">
               <p className="text-3xl sm:text-4xl font-extrabold text-white font-heading"><CountUp value={YEARS_OF_EXPERIENCE} suffix="+" /></p>
               <p className="mt-1 font-heading text-[0.62rem] uppercase tracking-[0.14em] text-[#8b93b6]">Années d'expérience</p>
             </Reveal>
             <Reveal variant="up">
-              <p className="text-2xl sm:text-3xl font-extrabold text-white font-heading leading-[1.05]">Des&nbsp;centaines</p>
-              <p className="mt-1 font-heading text-[0.62rem] uppercase tracking-[0.14em] text-[#8b93b6]">D'apprenants accompagnés</p>
+              <p className="text-3xl sm:text-4xl font-extrabold text-white font-heading"><CountUp value={500} suffix="+" /></p>
+              <p className="mt-1 font-heading text-[0.62rem] uppercase tracking-[0.14em] text-[#8b93b6]">Apprenants accompagnés</p>
             </Reveal>
             <Reveal variant="up">
               <p className="text-3xl sm:text-4xl font-extrabold text-white font-heading">FPA</p>
@@ -314,7 +461,7 @@ const Home = () => {
             </Reveal>
           </RevealStagger>
 
-          <p className="mt-9 max-w-4xl text-sm text-[#9aa2c0] font-body leading-relaxed">
+          <p className="home-proof-description mt-9 max-w-4xl text-sm text-[#9aa2c0] font-body leading-relaxed">
             Antony Addy propose des <strong className="text-[#F2EDE1] font-semibold">formations d'anglais pour adultes</strong> adaptées aux professionnels,
             en présentiel dans le Var et les Alpes-Maritimes (Fréjus, Saint-Raphaël, Cannes, Antibes, Nice, Monaco) ou à distance partout en France et dans le monde.
             Britannique natif basé à Fréjus, certifié Formateur Professionnel d'Adultes depuis 2017 et fort de plus de {EXPERIENCE_FLOOR} ans d'enseignement (notamment à l'EDJ Nice), il accompagne particuliers,
@@ -325,239 +472,15 @@ const Home = () => {
         </div>
       </section>
 
-      <main id="main-content">
-        {/* ===== STATION 02 · LIGNE ANGLAIS — the English chapter opens here.
-             The hub hero's "Anglais" card scrolls to this #anchor. Audience and
-             city pages are surfaced as "served stations" (real internal links). ===== */}
-        <div id="anglais" className="scroll-mt-20">
-          <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-anglais">
-            <div className="pointer-events-none absolute inset-0" aria-hidden="true"
-              style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(232,71,59,.10), transparent 55%)' }} />
-            <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#E8473B] opacity-50" aria-hidden="true" />
-            <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#E8473B]" aria-hidden="true"
-              style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(232,71,59,.55)' }} />
-            <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 pt-14 sm:pt-20 pb-2">
-              <div className="flex items-center gap-3 flex-wrap">
-                <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">02 · Ligne Anglais</span>
-                <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#E8473B] border border-[#E8473B]/45 rounded-full px-3 py-1.5">Red line</span>
-              </div>
-              <h2 id="station-anglais" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
-                L'anglais qui vous met en mouvement
-              </h2>
-              <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
-                Britannique natif, certifié Formateur Professionnel d'Adultes. Je ne vous fais pas réciter des règles — je vous mets en mouvement : réunions, présentations, emails, appels. En présentiel sur la Côte d'Azur ou à distance.
-              </p>
-
-              <p className="mt-7 font-heading text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-[#8b93b6]">Stations desservies</p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                <Link to="/anglais-entreprise" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Entreprises</Link>
-                <Link to="/anglais-cadres" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Cadres &amp; dirigeants</Link>
-                <Link to="/anglais-particuliers" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Particuliers</Link>
-                <Link to="/anglais-etudiants" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Étudiants</Link>
-                <Link to="/cours-anglais-frejus" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Fréjus</Link>
-                <Link to="/cours-anglais-nice" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Nice</Link>
-                <Link to="/cours-anglais-cannes" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Cannes</Link>
-                <Link to="/cours-anglais-antibes" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Antibes</Link>
-                <Link to="/cours-anglais-sophia-antipolis" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Sophia Antipolis</Link>
-              </div>
-            </div>
-          </section>
-          <OptimizedHero />
-        </div>
-
-        {/* "Le Conducteur" lives below now — after the three routes (Créations). */}
-
-        {/* Platforms showcase — the single free-resources moment on the page
-            (the emerald "Quick Exercises" banner that used to sit above this was
-            a duplicate CTA to the same /ressources-en-ligne, in an off-brand
-            teal; its "gratuit / accès libre" message now lives in the badge
-            below). Free is stated in the present ("en accès libre"), never as a
-            permanent promise; the AI angle stays a discreet aside, not the pitch. */}
-        <section className="py-14 sm:py-20 bg-[#070b22] text-[#F2EDE1] lg-section" aria-labelledby="platforms-heading">
-          <Reveal className="max-w-5xl mx-auto px-4 text-center">
-            <p className="text-sm font-semibold uppercase tracking-wide text-[#F6A463] mb-2">
-              Fluentory <span className="text-[#8b93b6] normal-case tracking-normal">by Antony Addy</span>
-            </p>
-            <p className="text-sm sm:text-base italic text-[#9aa2c0] mb-4">
-              Free tools for grammar, listening, speaking and exam prep — built by a certified trainer.
-            </p>
-            <h2 id="platforms-heading" className="text-2xl sm:text-3xl font-extrabold text-white mb-3 font-heading tracking-tight">
-              Un formateur, {PLATFORM_COUNT} plateformes d'entraînement à l'anglais
-            </h2>
-            <p className="inline-flex items-center gap-1.5 mb-4 px-3 py-1 rounded-full bg-[#E8473B]/15 text-[#E8473B] text-xs font-semibold uppercase tracking-wide">
-              <Award className="h-3.5 w-3.5" aria-hidden="true" />
-              Gratuit · sans inscription
-            </p>
-            <p className="text-base sm:text-lg text-[#9aa2c0] max-w-2xl mx-auto mb-8 leading-relaxed">
-              Grammaire, TOEIC, CLOE, compréhension et expression orales : mes propres
-              <strong className="text-[#F2EDE1] font-semibold"> outils pédagogiques</strong> d'apprentissage de l'anglais, en accès libre — à distinguer de mes créations web pour clients. Ma pédagogie, prolongée par les outils d'aujourd'hui.
-            </p>
-            <Link
-              to="/ressources-en-ligne"
-              onClick={() => trackEvent('home_platforms_banner_click', { page: 'home', target: '/ressources-en-ligne' })}
-              className="group relative block rounded-2xl p-2.5 bg-[#0b1030] border border-white/10 shadow-2xl transition-all duration-200 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F6A463] focus-visible:ring-offset-2 focus-visible:ring-offset-[#070b22]"
-            >
-              <span className="relative block overflow-hidden rounded-xl">
-                <img
-                  src="/fluentory-plateformes.webp"
-                  alt="Fluentory — mes plateformes d'apprentissage de l'anglais : CLOE Prep, SpeakUp AI, TOEIC, ListenUp, Anglais à Distance et Grammatica."
-                  width={1774}
-                  height={887}
-                  loading="lazy"
-                  className="w-full block transition-transform duration-500 group-hover:scale-[1.02]"
-                  style={{ filter: 'saturate(0.94) brightness(0.97)' }}
-                />
-                {/* Vignette so the bright banner melts into the dark section */}
-                <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-xl" style={{ boxShadow: 'inset 0 0 70px rgba(7,11,34,0.5)' }} />
-              </span>
-            </Link>
-            <p className="mt-6">
-              <Link
-                to="/ressources-en-ligne"
-                onClick={() => trackEvent('home_platforms_cta_click', { page: 'home', target: '/ressources-en-ligne' })}
-                className="group/cta inline-flex items-center gap-1.5 font-semibold text-white hover:text-[#F6A463]"
-              >
-                Découvrir les {PLATFORM_COUNT} plateformes
-                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover/cta:translate-x-1" aria-hidden="true" />
-              </Link>
-            </p>
-          </Reveal>
-        </section>
-
-        {/* Features Section - 6 blocks in 2x3 grid */}
-        <section className="py-14 sm:py-20 bg-[#070b22] text-[#F2EDE1] lg-section" aria-labelledby="features-heading">
-          <div className="max-w-6xl mx-auto px-4">
-            <Reveal className="text-center mb-8 sm:mb-12">
-              <h2 id="features-heading" className="text-2xl sm:text-3xl font-extrabold text-white font-heading tracking-tight">
-                Pourquoi choisir mes formations ?
-              </h2>
-            </Reveal>
-            <RevealStagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6" role="list">
-              {features.map((feature, index) => (
-                <Reveal
-                  key={index}
-                  variant="up"
-                  as="article"
-                  role="listitem"
-                  className="group text-center p-5 sm:p-6 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:-translate-y-1 transition-all duration-300"
-                >
-                  <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-[#E8473B]/15 text-[#E8473B] rounded-full mb-3 sm:mb-4 transition-transform duration-300 group-hover:scale-110" aria-hidden="true">
-                    <feature.icon className="h-7 w-7 sm:h-8 sm:w-8" />
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3 font-heading">{feature.title}</h3>
-                  <p className="text-sm sm:text-base text-[#9aa2c0] font-body leading-relaxed">{feature.description}</p>
-                </Reveal>
-              ))}
-            </RevealStagger>
-          </div>
-        </section>
-
-        {/* Pour qui — per-audience landing page links */}
-        <section className="py-14 sm:py-20 bg-[#070b22] text-[#F2EDE1] lg-section" aria-labelledby="audience-heading">
-          <div className="max-w-6xl mx-auto px-4">
-            <Reveal className="text-center mb-8 sm:mb-10">
-              <h2 id="audience-heading" className="text-2xl sm:text-3xl font-extrabold text-white font-heading tracking-tight mb-3">
-                Pour qui je travaille
-              </h2>
-              <p className="text-[#9aa2c0] max-w-2xl mx-auto">
-                Chaque formation est conçue sur mesure. Voici les quatre profils que j'accompagne le plus souvent.
-              </p>
-            </Reveal>
-            <RevealStagger className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <Reveal variant="up" as={Link} to="/anglais-entreprise" className="group block p-5 rounded-xl bg-white/[0.03] hover:bg-[#E8473B]/10 border border-white/10 hover:border-[#E8473B] hover:-translate-y-1 transition-all duration-300">
-                <h3 className="text-lg font-semibold text-white mb-2 font-heading">Entreprises</h3>
-                <p className="text-sm text-[#9aa2c0] mb-3 leading-relaxed">Formations sur-mesure pour vos équipes, encadrées par convention de formation.</p>
-                <span className="text-sm font-medium text-[#E8473B] inline-flex items-center gap-1">En savoir plus <span className="transition-transform duration-300 group-hover:translate-x-1">→</span></span>
-              </Reveal>
-              <Reveal variant="up" as={Link} to="/anglais-cadres" className="group block p-5 rounded-xl bg-white/[0.03] hover:bg-[#E8473B]/10 border border-white/10 hover:border-[#E8473B] hover:-translate-y-1 transition-all duration-300">
-                <h3 className="text-lg font-semibold text-white mb-2 font-heading">Cadres &amp; dirigeants</h3>
-                <p className="text-sm text-[#9aa2c0] mb-3 leading-relaxed">Accompagnement individuel et confidentiel autour de vos enjeux professionnels.</p>
-                <span className="text-sm font-medium text-[#E8473B] inline-flex items-center gap-1">En savoir plus <span className="transition-transform duration-300 group-hover:translate-x-1">→</span></span>
-              </Reveal>
-              <Reveal variant="up" as={Link} to="/anglais-particuliers" className="group block p-5 rounded-xl bg-white/[0.03] hover:bg-[#E8473B]/10 border border-white/10 hover:border-[#E8473B] hover:-translate-y-1 transition-all duration-300">
-                <h3 className="text-lg font-semibold text-white mb-2 font-heading">Particuliers</h3>
-                <p className="text-sm text-[#9aa2c0] mb-3 leading-relaxed">Cours adaptés à votre niveau, votre rythme, et vos objectifs personnels.</p>
-                <span className="text-sm font-medium text-[#E8473B] inline-flex items-center gap-1">En savoir plus <span className="transition-transform duration-300 group-hover:translate-x-1">→</span></span>
-              </Reveal>
-              <Reveal variant="up" as={Link} to="/anglais-etudiants" className="group block p-5 rounded-xl bg-white/[0.03] hover:bg-[#E8473B]/10 border border-white/10 hover:border-[#E8473B] hover:-translate-y-1 transition-all duration-300">
-                <h3 className="text-lg font-semibold text-white mb-2 font-heading">Étudiants</h3>
-                <p className="text-sm text-[#9aa2c0] mb-3 leading-relaxed">BTS, Bachelor, Master, écoles et universités — préparation TOEIC et Cambridge.</p>
-                <span className="text-sm font-medium text-[#E8473B] inline-flex items-center gap-1">En savoir plus <span className="transition-transform duration-300 group-hover:translate-x-1">→</span></span>
-              </Reveal>
-            </RevealStagger>
-          </div>
-        </section>
-
-        {/* ===== STATION 03 · LIGNE IA (violet) — links the ia. subdomain ===== */}
-        <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-ia">
-          <div className="pointer-events-none absolute inset-0" aria-hidden="true"
-            style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(122,98,255,.12), transparent 55%)' }} />
-          <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#7A62FF] opacity-50" aria-hidden="true" />
-          <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#7A62FF]" aria-hidden="true"
-            style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(122,98,255,.55)' }} />
-          <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
-            <div className="flex items-center gap-3 flex-wrap">
-              <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">03 · Ligne IA</span>
-              <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#7A62FF] border border-[#7A62FF]/45 rounded-full px-3 py-1.5">Violet line</span>
-            </div>
-            <h2 id="station-ia" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
-              L'IA générative, appliquée à votre métier
-            </h2>
-            <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
-              Des formations concrètes à l'IA générative pour les professionnels et les équipes : ChatGPT, ingénierie de prompts et outils IA, branchés directement sur vos tâches réelles — du gain de temps dès la première session.
-            </p>
-            <div className="mt-8 grid gap-3 sm:grid-cols-3 max-w-3xl">
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Pour qui</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Équipes &amp; indépendants</h3></div>
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Format</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Atelier sur mesure</h3></div>
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Résultat</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Productivité réelle</h3></div>
-            </div>
-            <a href="https://ia.antonyaddy.com" target="_blank" rel="noopener"
-               onClick={() => trackEvent('station_route_click', { formation: 'ia', target: 'https://ia.antonyaddy.com' })}
-               className="mt-8 inline-flex items-center gap-2 bg-[#6A4FF0] text-white font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
-              Ouvrir ia.antonyaddy.com <ExternalLink className="h-4 w-4" aria-hidden="true" />
-            </a>
-          </div>
-        </section>
-
-        {/* ===== STATION 04 · LIGNE CRÉATIONS (amber) — links the creations. subdomain ===== */}
-        <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-creations">
-          <div className="pointer-events-none absolute inset-0" aria-hidden="true"
-            style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(240,151,74,.12), transparent 55%)' }} />
-          <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#F0974A] opacity-50" aria-hidden="true" />
-          <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#F0974A]" aria-hidden="true"
-            style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(240,151,74,.55)' }} />
-          <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
-            <div className="flex items-center gap-3 flex-wrap">
-              <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">04 · Ligne Créations</span>
-              <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#F0974A] border border-[#F0974A]/45 rounded-full px-3 py-1.5">Amber line</span>
-            </div>
-            <h2 id="station-creations" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
-              Votre présence en ligne, construite avec l'IA
-            </h2>
-            <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
-              Deux prestations, un même moteur (l'IA), pour les entreprises et les indépendants : la <strong className="text-white">création de sites web</strong> — vitrines et pages qui convertissent — et le développement d'<strong className="text-white">outils métier sur mesure</strong> — applications internes, automatisations. Rapides, soignés et abordables.
-            </p>
-            <div className="mt-8 grid gap-3 sm:grid-cols-3 max-w-3xl">
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Sites web</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Vitrines &amp; conversion</h3></div>
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Outils métier</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Apps &amp; automatisations</h3></div>
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Méthode</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Conçu &amp; développé avec l'IA</h3></div>
-            </div>
-            <a href="https://creations.antonyaddy.com" target="_blank" rel="noopener"
-               onClick={() => trackEvent('station_route_click', { formation: 'creations', target: 'https://creations.antonyaddy.com' })}
-               className="mt-8 inline-flex items-center gap-2 bg-[#F0974A] text-[#1a1200] font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
-              Ouvrir creations.antonyaddy.com <ExternalLink className="h-4 w-4" aria-hidden="true" />
-            </a>
-          </div>
-        </section>
 
         {/* ===== LE CONDUCTEUR — who's at the controls (after the three routes) ===== */}
-        <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-conducteur">
+        <section className="home-person relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-conducteur">
           <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#CBCFE4] opacity-30" aria-hidden="true" />
           <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#CBCFE4]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22' }} />
-          <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
+          <div className="home-section-inner relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
             <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Le Conducteur</span>
             <h2 id="station-conducteur" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">Qui est aux commandes</h2>
-            <div className="mt-8 grid lg:grid-cols-[320px_1fr] gap-10 items-start">
+            <div className="home-person-grid mt-8 grid lg:grid-cols-[320px_1fr] gap-10 items-start">
               <Reveal variant="left" className="flex flex-col items-center lg:items-start">
                 <img
                   src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
@@ -571,7 +494,7 @@ const Home = () => {
                 <p className="text-lg text-[#CBCFE4] leading-relaxed mb-4 font-body">
                   <strong className="text-white">Antony Addy</strong> — Britannique, certifié{' '}
                   <a href="https://www.afpa.fr/formation-qualifiante/formateur-professionnel-d-adultes" target="_blank" rel="noopener noreferrer" className="text-[#F6A463] hover:underline">Formateur Professionnel d'Adultes</a>{' '}
-                  depuis 2017, plus de {EXPERIENCE_FLOOR} ans d'expérience — aujourd'hui aussi formateur en IA générative et créateur de sites web par IA.
+                  depuis 2017, plus de {EXPERIENCE_FLOOR} ans d'expérience — aujourd'hui aussi formateur en IA générative et créateur de sites et d'outils pédagogiques avec l'IA.
                 </p>
                 <p className="text-lg text-[#CBCFE4] leading-relaxed mb-6 font-body">
                   Le fil conducteur n'a jamais changé : faire passer les gens de l'hésitation à l'assurance — en réunion, face à un outil IA, ou au lancement d'un site.
@@ -589,15 +512,15 @@ const Home = () => {
         </section>
 
         {/* ===== LES PASSAGERS — proof, as people who rode the line (dark station) ===== */}
-        <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-passagers">
+        <section className="home-clients relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-passagers">
           <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#CBCFE4] opacity-30" aria-hidden="true" />
           <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#CBCFE4]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22' }} />
-          <div className="relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
+          <div className="home-section-inner relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
             <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Les Passagers</span>
             <h2 id="station-passagers" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">Ils me font confiance</h2>
 
             {/* Client categories — served stations */}
-            <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="home-client-categories mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {clientCategories.map((category, index) => (
                 <div key={index} className="flex items-center gap-2 p-4 rounded-xl border border-white/10 bg-white/[0.03]">
                   <category.icon className="h-5 w-5 text-[#E8473B]" />
@@ -610,7 +533,7 @@ const Home = () => {
                 A static row, not a carousel: five logos fit, they are in the
                 prerendered HTML, and nothing auto-moves (WCAG 2.2.2) — the old
                 Swiper autoplay shipped ~80 KB and had no pause control. */}
-            <ul className="mt-8 rounded-2xl bg-white/95 px-6 py-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-6 items-center" role="list">
+            <ul className="home-client-logos mt-8 rounded-2xl bg-white/95 px-6 py-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-6 items-center" role="list">
               {CLIENT_LOGOS.map((logo) => (
                 <li key={logo.name} className="flex flex-col items-center">
                   <img
@@ -632,22 +555,23 @@ const Home = () => {
         {/* Avis Clients Section - Testimonials right after trust signals */}
         <AvisClients />
 
-        <section className="relative overflow-hidden lg-section py-14 sm:py-16 bg-[#0b1030] text-[#F2EDE1] border-t border-white/5">
+        <section className="home-assessment relative overflow-hidden lg-section py-14 sm:py-16 bg-[#0b1030] text-[#F2EDE1] border-t border-white/5">
           <Reveal className="relative z-10 max-w-4xl mx-auto px-4 text-center">
             <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4 font-heading tracking-tight">
               Quel est votre niveau d'anglais aujourd'hui ?
             </h3>
             <p className="text-lg text-[#9aa2c0] mb-6 font-body">
-              Faites le test de positionnement : un résultat sur l'échelle CECRL (A1 → C1)
-              et des repères concrets pour progresser. Gratuit, sans inscription, en quelques minutes.
+              {testIsOpen
+                ? "Faites le test de positionnement : des repères sur l'échelle CECRL (A1 → C1), gratuitement et sans inscription. Comptez 40 minutes maximum."
+                : "La session de quiz en ligne est en cours de renouvellement. Contactez-moi pour une évaluation directe et des repères pour progresser."}
             </p>
             <Link
-              to="/test-de-positionnement"
-              onClick={() => trackEvent('home_assessment_cta_click', { page: 'home', location: 'assessment-cta', target: '/test-de-positionnement' })}
+              to={testIsOpen ? '/test-de-positionnement' : '/contact'}
+              onClick={() => trackEvent('home_assessment_cta_click', { page: 'home', location: 'assessment-cta', target: testIsOpen ? '/test-de-positionnement' : '/contact' })}
               className="inline-flex items-center gap-2 bg-[#C8352A] text-white px-8 py-4 rounded-xl font-semibold hover:-translate-y-0.5 transition-all shadow-lg"
             >
               <Target className="h-5 w-5" aria-hidden="true" />
-              Évaluer mon niveau — test gratuit
+              {testIsOpen ? 'Évaluer mon niveau — test gratuit' : 'Demander une évaluation'}
               <ArrowRight className="h-5 w-5" aria-hidden="true" />
             </Link>
           </Reveal>
@@ -655,14 +579,14 @@ const Home = () => {
 
 
         {/* ===== PROCHAIN ARRÊT — the closing stop (dark La Ligne, WhatsApp-first) ===== */}
-        <section className="relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-contact">
+        <section className="home-contact relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-contact">
           <div className="pointer-events-none absolute inset-0" aria-hidden="true" style={{ background: 'radial-gradient(70% 120% at 50% 120%, rgba(246,164,99,.16), transparent 60%)' }} />
           <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#F6A463] opacity-50" aria-hidden="true" />
           <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#F6A463]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(246,164,99,.6)' }} />
-          <div className="relative max-w-3xl mx-auto pl-12 sm:pl-20 pr-4 py-16 sm:py-24">
+          <div className="home-contact-inner relative max-w-3xl mx-auto pl-12 sm:pl-20 pr-4 py-16 sm:py-24">
             <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Prochain arrêt</span>
             <h2 id="station-contact" className="mt-3 font-heading font-extrabold tracking-tight text-3xl sm:text-5xl leading-[1.03]">
-              Un projet en anglais, en IA ou un site web ?<br /><span className="text-[#F6A463]">Mind the gap.</span>
+              Un projet en anglais, en IA, un site ou un outil ?<br /><span className="text-[#F6A463]">Mind the gap.</span>
             </h2>
             <p className="mt-5 text-lg text-[#CBCFE4] font-body leading-relaxed max-w-xl">
               Dites-moi où vous voulez aller — je vous réponds rapidement avec une proposition adaptée. Premier échange gratuit, réponse sous 24 h ouvrées.
@@ -670,7 +594,7 @@ const Home = () => {
             <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
                 href={whatsappLink}
-                onClick={(e) => { trackEvent('whatsapp_cta_click', { page: 'Home', location: 'final-cta', prefilled: true }); }}
+                onClick={() => trackEvent('whatsapp_cta_click', { page: 'Home', location: 'final-cta', prefilled: true })}
                 className="bg-[#C8352A] text-white px-7 py-4 rounded-xl font-bold text-base sm:text-lg hover:-translate-y-0.5 transition-transform flex items-center justify-center gap-2 font-heading shadow-xl"
                 target="_blank" rel="noopener noreferrer"
                 aria-label="Contacter Antony Addy sur WhatsApp (message pré-rempli)"
@@ -686,7 +610,7 @@ const Home = () => {
         </section>
         
         {/* Footer Authority Links - E-E-A-T Signals */}
-        <section className="py-8 bg-muted/50 border-t">
+        <section className="home-authority py-8 bg-muted/50 border-t">
           <div className="max-w-6xl mx-auto px-4">
             <div className="grid md:grid-cols-3 gap-8 text-sm">
               <div>
@@ -709,13 +633,13 @@ const Home = () => {
                 <h3 className="font-semibold text-foreground mb-3">Dernière mise à jour</h3>
                 <p className="text-muted-foreground">{formatMonthYearFR()}</p>
                 <p className="text-xs text-muted-foreground mt-2">
-                  Contenu créé par <a href="https://www.linkedin.com/in/antonyaddy/" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 hover:decoration-2">Antony Addy</a>, formateur certifié FPA.
+                  Contenu créé par <a href="https://www.linkedin.com/in/antonyaddy/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Antony Addy</a>, formateur certifié FPA.
                 </p>
               </div>
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>;
 };
 

@@ -1,17 +1,17 @@
 # Antony Addy
 
-> Antony Addy exerce trois activités : formateur d'anglais professionnel (britannique natif, certifié FPA), formateur en IA générative, et créateur de sites web par IA. Basé à Fréjus, il intervient sur la Côte d'Azur (Var, Alpes-Maritimes) et à distance partout en France et dans le monde. antonyaddy.com est le point de rencontre de ces trois activités.
+> Antony Addy exerce trois activités : formateur d'anglais professionnel (britannique natif, certifié FPA), formateur en IA générative, et créateur de sites web et d'outils numériques. Basé à Fréjus, il intervient sur la Côte d'Azur (Var, Alpes-Maritimes) et à distance partout en France et dans le monde. antonyaddy.com est le point de rencontre de ces trois activités.
 
-Ce site (antonyaddy.com) détaille l'activité de formation en anglais : formations sur-mesure pour les entreprises, les cadres, les particuliers et les étudiants, un blog de grammaire anglaise en accès libre et un test de positionnement gratuit. Les activités IA générative et création de sites web disposent de leurs propres sites (voir « Autres activités »).
+Ce site (antonyaddy.com) détaille l'activité de formation en anglais : formations sur-mesure pour les entreprises, les cadres, les particuliers et les étudiants, un blog de grammaire anglaise en accès libre et un test de positionnement gratuit. Les activités IA générative et création de sites et d'outils disposent de leurs propres sites (voir « Autres activités »).
 
 ## Autres activités
 
 - [Formation en IA générative](https://ia.antonyaddy.com): Formations à l'IA générative (ChatGPT, prompts, outils IA) pour les professionnels et les entreprises. Site dédié.
-- [Création de sites web par IA](https://creations.antonyaddy.com): Deux prestations distinctes, pour entreprises et indépendants, développées avec l'IA — (1) la création de sites web (vitrines, pages qui convertissent) et (2) le développement d'outils métier sur mesure (applications internes, automatisations). À ne pas confondre avec les outils pédagogiques Fluentory (voir Ressources), qui sont des outils d'apprentissage de l'anglais. Site dédié.
+- [Création de sites web et d'outils numériques](https://creations.antonyaddy.com): Portfolio de sites pour commerces et associations, d'outils métier et de plateformes d'apprentissage développés avec l'IA. Les outils pédagogiques Fluentory, créés par Antony Addy pour apprendre l'anglais, figurent aussi parmi ces réalisations. Site dédié.
 
 ## Pages principales
 
-- [Accueil](/): Hub des trois activités d'Antony Addy (anglais, IA générative, création de sites web) et présentation détaillée de la formation en anglais.
+- [Accueil](/): Hub des trois activités d'Antony Addy (anglais, IA générative, sites web et outils numériques), réalisations choisies et présentation détaillée de la formation en anglais.
 - [Qui je suis](/qui-je-suis): Parcours, certifications et approche pédagogique d'Antony Addy.
 - [Offres de formation](/offres-de-formation): Formules, modalités et déroulement des formations.
 - [Témoignages](/temoignages): Avis d'apprenants et d'entreprises clientes.
@@ -35,7 +35,7 @@ Ce site (antonyaddy.com) détaille l'activité de formation en anglais : formati
 
 ## Ressources gratuites
 
-- [Fluentory by Antony Addy](/ressources-en-ligne): La suite d'outils pédagogiques (plateformes d'apprentissage de l'anglais) conçue par Antony Addy — grammaire (Grammatica), compréhension orale (ListenUp), expression orale (SpeakUp AI), préparation TOEIC et CLOE, et Anglais à Distance. Ce sont des outils éducatifs liés à la formation en anglais, distincts des sites web et outils métier créés pour les clients (voir creations.antonyaddy.com). En accès libre.
+- [Fluentory by Antony Addy](/ressources-en-ligne): La suite d'outils pédagogiques (plateformes d'apprentissage de l'anglais) conçue par Antony Addy — grammaire (Grammatica), compréhension orale (ListenUp), expression orale (SpeakUp AI), préparation TOEIC et CLOE, et Anglais à Distance. Ces outils gratuits montrent aussi son travail de conception de plateformes d'apprentissage présenté sur creations.antonyaddy.com.
 - [Blog](/blog): Articles de grammaire anglaise, points de vocabulaire et conseils de business English, rédigés par un formateur natif.
 
 ## Optional

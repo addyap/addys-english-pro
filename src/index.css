@@ -10,35 +10,50 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 96%;
-    --foreground: 240 50% 21%;
+    --background: 40 33% 97%;
+    --foreground: 230 48% 13%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 50% 21%;
+    --card-foreground: 230 48% 13%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 50% 21%;
+    --popover-foreground: 230 48% 13%;
 
-    --primary: 240 50% 21%;
+    --primary: 230 48% 13%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 258 41% 30%;
+    --secondary: 256 45% 42%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 240 50% 35%;
+    --muted: 40 25% 94%;
+    --muted-foreground: 230 14% 36%;
 
-    --accent: 0 68% 47%;
+    --accent: 5 59% 46%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 10% 85%;
-    --input: 240 10% 85%;
-    --ring: 240 50% 21%;
+    --border: 230 16% 87%;
+    --input: 230 16% 78%;
+    --ring: 5 59% 46%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    --brand-ink: 230 48% 13%;
+    --brand-paper: 40 33% 97%;
+    --brand-red: 5 59% 46%;
+    --brand-violet: 256 45% 42%;
+    --brand-amber: 28 89% 68%;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 1rem;
+    --space-4: 1.5rem;
+    --space-5: 2rem;
+    --space-6: 3rem;
+    --space-7: 4rem;
+    --shadow-card: 0 2px 4px hsl(var(--brand-ink) / .03), 0 12px 32px hsl(var(--brand-ink) / .06);
+    --shadow-floating: 0 4px 12px hsl(var(--brand-ink) / .08), 0 24px 64px hsl(var(--brand-ink) / .12);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 50% 21%;
@@ -97,12 +112,23 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
   
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Bricolage Grotesque', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     letter-spacing: -0.02em;
+    text-wrap: balance;
   }
+
+  :where(a, button, input, select, textarea):focus-visible {
+    outline: 3px solid hsl(var(--ring));
+    outline-offset: 4px;
+  }
+
+  ::selection { background: hsl(var(--brand-amber) / .4); color: hsl(var(--brand-ink)); }
+  [id] { scroll-margin-top: 6rem; }
 }
 
 /* Custom utilities */
@@ -347,8 +373,9 @@ html.js .reveal[data-inview="true"]{ will-change:auto; }
 
 @media (prefers-reduced-motion:reduce){
   html.js .reveal{
+    opacity:1;
     transform:none !important;
-    transition:opacity .35s ease var(--reveal-delay, 0ms) !important;
+    transition:none !important;
   }
 }
 
@@ -425,3 +452,10 @@ html.js .reveal[data-inview="true"] .heading-rule,
 @keyframes banner-in{ from{ transform:translateY(-100%); opacity:0; } to{ transform:none; opacity:1; } }
 .banner-in{ animation:banner-in .3s cubic-bezier(.16,1,.3,1) both; }
 @media (prefers-reduced-motion:reduce){ .banner-in{ animation:none; } }
+
+/* Inline links remain recognizable without relying on color or hover. */
+p a:not([role='button']), figcaption a, .prose a {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+  text-decoration-thickness: 1px;
+}

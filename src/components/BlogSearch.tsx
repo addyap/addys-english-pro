@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
-import { Search, X } from 'lucide-react';
+import { ChevronDown, Search, X } from 'lucide-react';
 
 interface Article {
   id: string;
@@ -19,6 +19,7 @@ interface BlogSearchProps {
 const BlogSearch: React.FC<BlogSearchProps> = ({ articles, onFilterChange }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [showMoreCategories, setShowMoreCategories] = useState(false);
   
   // Store callback ref to avoid dependency issues
   const onFilterChangeRef = useRef(onFilterChange);
@@ -89,8 +90,8 @@ const BlogSearch: React.FC<BlogSearchProps> = ({ articles, onFilterChange }) => 
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap gap-2" role="group" aria-label="Filtrer par catégorie">
-          {categories.map((category) => (
+        <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Filtrer par catégorie">
+          {categories.slice(0, 3).map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
@@ -105,7 +106,34 @@ const BlogSearch: React.FC<BlogSearchProps> = ({ articles, onFilterChange }) => 
               {category === 'all' ? 'Tous' : category}
             </button>
           ))}
+          {categories.length > 3 && (
+            <button
+              type="button"
+              onClick={() => setShowMoreCategories((value) => !value)}
+              aria-expanded={showMoreCategories}
+              aria-controls="more-blog-categories"
+              className="inline-flex items-center gap-1 rounded-full border border-border px-4 py-2 text-sm font-medium text-primary hover:bg-muted"
+            >
+              {showMoreCategories ? 'Moins de filtres' : 'Plus de filtres'}
+              <ChevronDown className={`h-4 w-4 transition-transform ${showMoreCategories ? 'rotate-180' : ''}`} aria-hidden="true" />
+            </button>
+          )}
         </div>
+        {showMoreCategories && (
+          <div id="more-blog-categories" className="flex flex-wrap gap-2 border-t border-border pt-4" role="group" aria-label="Filtres détaillés">
+            {categories.slice(3).map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                type="button"
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${selectedCategory === category ? 'bg-primary text-primary-foreground' : 'bg-muted text-primary hover:bg-muted/80'}`}
+                aria-pressed={selectedCategory === category}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Results Count & Clear */}
         <div className="flex items-center justify-between text-sm text-muted-foreground">

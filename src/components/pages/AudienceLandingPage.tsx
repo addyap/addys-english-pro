@@ -42,13 +42,14 @@ export const AudienceLandingPage: React.FC<AudiencePageProps> = ({
         canonicalUrl={seo.canonical}
         jsonLd={faqJsonLd}
       />
-      <div className="min-h-screen bg-background">
+      <div className="inner-page inner-page--training min-h-screen bg-background">
         {/* Hero */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5 py-16 sm:py-20">
+        <section className="inner-hero relative overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5 py-12 sm:py-16">
           <div className="aurora" aria-hidden="true" />
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Reveal>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 font-heading leading-tight">
+              <span className="inner-kicker">Ligne anglais · Selon votre profil</span>
+              <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
                 {h1}
               </h1>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
@@ -68,6 +69,14 @@ export const AudienceLandingPage: React.FC<AudiencePageProps> = ({
         </section>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <section className="inner-scan" aria-label="Les bénéfices en bref">
+            {benefits.slice(0, 3).map((benefit, index) => (
+              <div key={benefit}>
+                <span>0{index + 1} · Votre progression</span>
+                <p>{benefit}</p>
+              </div>
+            ))}
+          </section>
           {/* Pour qui */}
           <Reveal as="section" className="mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4 font-heading">Pour qui</h2>

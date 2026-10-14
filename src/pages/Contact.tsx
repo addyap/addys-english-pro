@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { MessageSquare, Mail, Phone, MapPin, Clock, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { trackFormSubmission, trackFormError, trackWhatsAppClick, trackEmailClick, trackEvent } from '@/lib/analytics';
 import { useScrollTracking } from '@/hooks/useScrollTracking';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 import { Reveal } from '@/components/motion/Reveal';
+
+const trainingTitles = new Set([
+  'Anglais général',
+  'Anglais professionnel',
+  'Anglais téléphonique et email',
+  'Anglais spécialisé',
+  'Préparation à une certification',
+  'Préparation aux entretiens en anglais'
+]);
 
 const Contact = () => {
   const contactJsonLd = {
@@ -18,14 +27,17 @@ const Contact = () => {
 
   useScrollTracking('/contact');
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const requestedTraining = searchParams.get('formation');
+  const training = requestedTraining && trainingTitles.has(requestedTraining) ? requestedTraining : null;
   const whatsappLink = useWhatsAppLink();
 
   const [formData, setFormData] = useState({
     prenom: '',
     nom: '',
     email: '',
-    sujet: '',
-    message: '',
+    sujet: training ? 'Anglais professionnel' : '',
+    message: training ? `Bonjour, je souhaite en savoir plus sur la formation « ${training} ».\n\nMon besoin : ` : '',
     honeypot: '' // Anti-spam field
   });
 
@@ -175,8 +187,8 @@ const Contact = () => {
 
   return <>
       <SEOHead 
-        title="Contact | Anglais, IA générative & création de sites web"
-        description="Contactez Antony Addy pour une formation en anglais, une formation en IA générative ou la création d'un site web. Réponse sous 24 h ouvrées par email, WhatsApp ou formulaire. Devis gratuit."
+        title="Contact | Anglais, IA, sites web & outils numériques"
+        description="Contactez Antony Addy pour une formation en anglais, une formation en IA générative, un site web ou un outil numérique. Réponse sous 24 h ouvrées par email, WhatsApp ou formulaire. Devis gratuit."
         keywords={["contact formateur anglais", "contact formateur IA", "devis création site web", "devis formation", "WhatsApp", "email formations"]}
         canonicalUrl="https://www.antonyaddy.com/contact"
         image="https://www.antonyaddy.com/lovable-uploads/200e88ab-2bbf-4168-85ad-8123b07c44ac.png"
@@ -196,7 +208,7 @@ const Contact = () => {
         }]}
       />
       
-      <div className="min-h-screen bg-muted py-12">
+      <div className="inner-page inner-page--contact min-h-screen bg-muted py-12">
         <div className="max-w-6xl mx-auto px-4">
 
           {/* Persistent top banners (success / error) */}
@@ -225,48 +237,29 @@ const Contact = () => {
           )}
 
           {/* Header */}
-          <Reveal as="header" className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-foreground mb-4">
+          <Reveal as="header" className="inner-intro text-center mb-12">
+            <span className="inner-kicker">Prochain arrêt · Votre projet</span>
+            <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
               Prenons contact
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Premier échange gratuit et sans engagement pour définir votre besoin — anglais, IA générative ou création de site web
+              Premier échange gratuit et sans engagement pour parler d'anglais, d'IA, d'un site web ou d'un outil sur mesure
             </p>
             <p className="text-sm text-muted-foreground max-w-2xl mx-auto mt-4">
-              Formation finançable directement par votre entreprise (convention de formation sur fonds propres)
+              Pour les formations : financement possible par votre entreprise (sur fonds propres)
               ou à titre personnel. Non éligible au CPF.
             </p>
             <span className="heading-rule" aria-hidden="true" />
           </Reveal>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="contact-grid grid lg:grid-cols-2 gap-12">
             
             {/* Contact Form */}
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              {/* Trust testimonial — placed at point of friction */}
-              {/* The real LinkedIn recommendation from Loan MIRMONT, matching
-                  /temoignages. It previously showed an English quote attributed to
-                  "Loan Mirmont — Student / Professional learner" that exists nowhere
-                  else on the site or in his actual recommendation, alongside a
-                  5-star graphic that LinkedIn recommendations do not carry. */}
-              <figure className="mb-6 border-l-4 border-accent bg-accent/5 rounded-r-md px-4 py-3">
-                <blockquote className="text-sm md:text-base text-muted-foreground italic leading-relaxed">
-                  «&nbsp;Antony est un super professeur. À l'écoute, dans l'échange et très
-                  pédagogue, il s'adapte à nos besoins (anglais travail, anglais courant). Je
-                  recommande vivement.&nbsp;»
-                </blockquote>
-                <figcaption className="mt-2 text-xs text-muted-foreground">
-                  <span className="font-semibold text-primary">Loan MIRMONT</span> — Préparateur
-                  physique, gérant de PPR-Formance ·{' '}
-                  <Link to="/temoignages" className="text-accent underline underline-offset-2 hover:decoration-2">
-                    voir les autres recommandations
-                  </Link>
-                </figcaption>
-              </figure>
-
-              <h2 className="text-2xl font-bold text-foreground mb-6">
+            <div className="contact-form-card bg-white rounded-lg shadow-lg p-8">
+              <h2 className="text-2xl font-bold text-foreground mb-2">
                 Envoyez-moi un message
               </h2>
+              <p className="text-sm text-muted-foreground mb-6">Quelques mots sur votre projet suffisent. Tous les champs sont requis.</p>
               
               <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 {/* Honeypot field - hidden from real users */}
@@ -361,6 +354,7 @@ const Contact = () => {
                     <option value="Anglais professionnel">Formation en anglais</option>
                     <option value="IA générative">Formation en IA générative</option>
                     <option value="Création de site web">Création de site web</option>
+                    <option value="Création d'outil numérique ou pédagogique">Création d'outil numérique ou pédagogique</option>
                     <option value="Autre">Autre</option>
                   </select>
                   {errors.sujet && <p id="sujet-error" className="text-red-700 text-sm mt-1">{errors.sujet}</p>}
@@ -437,22 +431,22 @@ const Contact = () => {
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-8">
+            <div className="contact-details space-y-8">
               
               {/* WhatsApp CTA */}
-              <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+              <div className="contact-whatsapp-card bg-white border border-border rounded-lg p-6 shadow-sm">
                 <div className="flex items-center mb-4">
-                  <MessageSquare className="h-8 w-8 text-green-600 mr-3" />
-                  <h3 className="text-xl font-semibold text-green-900">
+                  <MessageSquare className="h-7 w-7 text-accent mr-3" />
+                  <h3 className="text-xl font-semibold text-primary">
                     Contact rapide via WhatsApp
                   </h3>
                 </div>
-                <p className="text-green-800 mb-4">
-                  Pour une réponse immédiate, contactez-moi directement sur WhatsApp
+                <p className="text-muted-foreground mb-4">
+                  Écrivez-moi directement sur WhatsApp. Réponse sous 24 h ouvrées.
                 </p>
                 <a
                   href={whatsappLink}
-                  className="inline-flex items-center bg-green-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-800 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 hover:scale-105 active:scale-95"
+                  className="inline-flex items-center border border-primary text-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary/5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Contactez-moi via WhatsApp"
@@ -523,42 +517,27 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* WhatsApp QR Code */}
-              <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-                <h3 className="text-xl font-semibold text-foreground mb-4">
-                  Contactez-moi sur WhatsApp
-                </h3>
-                <img src="/lovable-uploads/whatsapp-qr-antony-addy.png" alt="QR Code WhatsApp Business permettant de contacter Antony Addy" className="mx-auto mb-4 max-w-48" width="192" height="192" loading="lazy" />
-                <p className="text-sm text-muted-foreground">
-                  Scannez ce QR code pour m'écrire directement sur WhatsApp
-                </p>
-                {whatsappLink && (
-                  <a
-                    href={whatsappLink}
-                    className="inline-block mt-4 text-green-700 hover:text-green-800 font-medium focus:outline-none focus:ring-2 focus:ring-green-500 focus:rounded"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Ouvrir la conversation WhatsApp (ouvre dans un nouvel onglet)"
-                    onClick={trackWhatsAppClick}
-                  >
-                    Ouvrir WhatsApp →
-                  </a>
-                )}
-              </div>
+              {/* Trust testimonial — placed at point of friction */}
+              {/* The real LinkedIn recommendation from Loan MIRMONT, matching
+                  /temoignages. It previously showed an English quote attributed to
+                  "Loan Mirmont — Student / Professional learner" that exists nowhere
+                  else on the site or in his actual recommendation, alongside a
+                  5-star graphic that LinkedIn recommendations do not carry. */}
+              <figure className="bg-white p-5 rounded-lg border-l-4 border-accent bg-accent/5 rounded-r-md px-4 py-3">
+                <blockquote className="text-sm md:text-base text-muted-foreground italic leading-relaxed">
+                  «&nbsp;Antony est un super professeur. À l'écoute, dans l'échange et très
+                  pédagogue, il s'adapte à nos besoins (anglais travail, anglais courant). Je
+                  recommande vivement.&nbsp;»
+                </blockquote>
+                <figcaption className="mt-2 text-xs text-muted-foreground">
+                  <span className="font-semibold text-primary">Loan MIRMONT</span> — Préparateur
+                  physique, gérant de PPR-Formance ·{' '}
+                  <Link to="/temoignages" className="text-accent hover:underline">
+                    voir les autres recommandations
+                  </Link>
+                </figcaption>
+              </figure>
 
-              {/* LinkedIn QR Code */}
-              <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-                <h3 className="text-xl font-semibold text-foreground mb-4">
-                  Connectons-nous sur LinkedIn
-                </h3>
-                <img src="/lovable-uploads/200e88ab-2bbf-4168-85ad-8123b07c44ac.png" alt="QR Code LinkedIn permettant de se connecter au profil d'Antony Addy" className="mx-auto mb-4 max-w-48" width="192" height="192" loading="lazy" />
-                <p className="text-sm text-muted-foreground">
-                  Scannez ce QR code pour me suivre sur LinkedIn
-                </p>
-                <a href="https://linkedin.com/in/antonyaddy" className="inline-block mt-4 text-accent hover:text-accent/80 font-medium focus:outline-none focus:ring-2 focus:ring-accent focus:rounded" target="_blank" rel="noopener noreferrer" aria-label="Voir mon profil LinkedIn (ouvre dans un nouvel onglet)">
-                  Voir mon profil LinkedIn →
-                </a>
-              </div>
             </div>
           </div>
         </div>

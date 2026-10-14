@@ -1,9 +1,8 @@
 
 import React from 'react';
-import { Users, Building, GraduationCap, CheckCircle, AlertCircle, Globe, MapPin, Phone, Mail, Clock3, CalendarClock, ClipboardCheck, Euro, Accessibility } from 'lucide-react';
+import { Users, Building, GraduationCap, CheckCircle, AlertCircle, Globe, MapPin, Phone, Mail, Clock3, CalendarClock, ClipboardCheck, Euro, Accessibility, BriefcaseBusiness, Target, BookOpen, ClipboardList, Gem, Stethoscope, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
-import { Accordion } from '../components/Effects';
 import { Reveal } from '@/components/motion/Reveal';
 import { CourseSchema } from '@/lib/seo/structuredData';
 import { formatMonthYearFR } from '@/lib/utils';
@@ -63,64 +62,37 @@ const Training = () => {
       title: 'Anglais général',
       pourQui: 'Adultes souhaitant gagner en aisance au quotidien.',
       objectif: 'Améliorer fluidité, compréhension et confiance.',
-      format: 'Visio ou présentiel · individuel ou petit groupe.',
-      resultat: 'Conversations naturelles sans blocage.'
+      format: 'Visio ou présentiel · individuel ou petit groupe.'
     },
     {
       title: 'Anglais professionnel',
       pourQui: 'Professionnels en poste utilisant l\'anglais au travail.',
       objectif: 'Maîtriser réunions, appels, présentations, rédaction.',
-      format: 'Sessions ciblées sur vos situations réelles.',
-      resultat: 'Communication efficace avec clients et collègues.'
+      format: 'Sessions ciblées sur vos situations réelles.'
     },
     {
       title: 'Anglais téléphonique et email',
       pourQui: 'Métiers en relation client, support, commerce.',
       objectif: 'Parler clairement au téléphone et écrire sans stress.',
-      format: 'Mises en situation et modèles d\'emails utiles.',
-      resultat: 'Échanges pros plus rapides et plus clairs.'
+      format: 'Mises en situation et modèles d\'emails utiles.'
     },
     {
       title: 'Anglais spécialisé',
       pourQui: 'Vente, RH, immobilier, hôtellerie, accueil, etc.',
       objectif: 'Acquérir le vocabulaire métier et les bons réflexes.',
-      format: 'Contenus 100% adaptés à votre secteur.',
-      resultat: 'Crédibilité immédiate dans votre domaine.'
+      format: 'Contenus adaptés à votre secteur.'
     },
     {
       title: 'Préparation à une certification',
       pourQui: 'Candidats TOEIC, Linguaskill, Cambridge ou équivalent.',
       objectif: 'Atteindre le score visé avec une méthode structurée.',
-      format: 'Plan d\'entraînement + tests blancs corrigés.',
-      resultat: 'Certification obtenue avec confiance.'
+      format: 'Plan d\'entraînement et tests blancs corrigés.'
     },
     {
       title: 'Préparation aux entretiens en anglais',
       pourQui: 'Candidats à un poste, une école ou une promotion.',
       objectif: 'Répondre avec aisance aux questions clés en anglais.',
-      format: 'Simulations d\'entretien + feedback personnalisé.',
-      resultat: 'Entretien passé sereinement et avec impact.'
-    }
-  ];
-
-  const audienceShortcuts = [
-    {
-      emoji: '💼',
-      title: 'Professionnels',
-      desc: 'Réunions, emails, appels clients en anglais.',
-      target: 'formations'
-    },
-    {
-      emoji: '🎓',
-      title: 'Étudiants',
-      desc: 'Préparer vos études et votre entrée en entreprise.',
-      target: 'formations'
-    },
-    {
-      emoji: '🎤',
-      title: 'Entretiens',
-      desc: 'Réussir un entretien d\'embauche ou d\'école en anglais.',
-      target: 'formations'
+      format: 'Simulations d\'entretien et retour personnalisé.'
     }
   ];
 
@@ -170,11 +142,6 @@ const Training = () => {
     },
   ];
 
-  const handleScrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
   return (
     <>
       <SEOHead
@@ -207,13 +174,14 @@ const Training = () => {
         }}
       />
       
-      <div className="min-h-screen bg-background py-12">
+      <div className="inner-page inner-page--training min-h-screen bg-background py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header */}
           <Reveal>
-            <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold text-primary mb-4">
+            <div className="inner-intro text-center mb-12">
+              <span className="inner-kicker">Ligne anglais · Vos formations</span>
+              <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
                 Formations d'anglais professionnel
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -224,26 +192,27 @@ const Training = () => {
 
           <hr className="border-t border-border mb-12" />
 
-          {/* Quick audience shortcuts */}
-          <Reveal>
-            <div className="grid sm:grid-cols-3 gap-4 mb-12">
-              {audienceShortcuts.map((a) => (
-                <button
-                  key={a.title}
-                  type="button"
-                  onClick={() => handleScrollTo(a.target)}
-                  className="text-left bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-5 border border-border"
-                >
-                  <div className="flex items-center mb-2">
-                    <span className="text-2xl mr-2" aria-hidden="true">{a.emoji}</span>
-                    <h2 className="text-lg font-semibold text-primary">{a.title}</h2>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-3">{a.desc}</p>
-                  <span className="text-sm font-medium text-accent">Voir les formations ↓</span>
-                </button>
+          <section id="formations" className="training-overview mb-12 scroll-mt-24" aria-labelledby="training-overview-title">
+            <div className="training-overview-head">
+              <span>Six parcours, un programme adapté à vous</span>
+              <h2 id="training-overview-title">Quel est votre objectif ?</h2>
+              <p>Choisissez le besoin qui vous ressemble. Le contenu et le rythme seront ajustés après notre premier échange.</p>
+            </div>
+            <div className="training-overview-grid">
+              {formations.map((formation, index) => (
+                <article key={formation.title} className="training-option">
+                  <span className="training-option-number">{String(index + 1).padStart(2, '0')}</span>
+                  <h3>{formation.title}</h3>
+                  <p>{formation.pourQui}</p>
+                  <div><strong>Objectif</strong><span>{formation.objectif}</span></div>
+                  <div><strong>Format</strong><span>{formation.format}</span></div>
+                  <Link to={`/contact?formation=${encodeURIComponent(formation.title)}`} className="training-option-link" aria-label={`Se renseigner sur la formation ${formation.title}`}>
+                    Se renseigner <ArrowRight size={16} aria-hidden="true" />
+                  </Link>
+                </article>
               ))}
             </div>
-          </Reveal>
+          </section>
 
           {/* Per-audience landing page links */}
           <Reveal>
@@ -272,7 +241,7 @@ const Training = () => {
           <Reveal>
             <div id="formations-professionnelles" className="bg-white rounded-lg shadow-lg p-6 sm:p-8 mb-12 scroll-mt-24">
               <div className="flex items-center mb-4">
-                <span className="text-2xl mr-3" aria-hidden="true">🎯</span>
+                <Target className="h-6 w-6 mr-3 text-accent" aria-hidden="true" />
                 <h2 className="text-2xl font-bold text-primary">Formations professionnelles spécialisées</h2>
               </div>
               <p className="text-muted-foreground mb-6">
@@ -287,7 +256,7 @@ const Training = () => {
                     rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
                   >
-                    <span className="text-xl shrink-0" aria-hidden="true">💼</span>
+                    <BriefcaseBusiness className="h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
                     <div>
                       <div className="font-semibold text-primary">ACOM — Salons & commerce international ↗</div>
                       <div className="text-sm text-muted-foreground">Accueil visiteurs, prospection B2B, négociation.</div>
@@ -301,7 +270,7 @@ const Training = () => {
                     rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
                   >
-                    <span className="text-xl shrink-0" aria-hidden="true">💎</span>
+                    <Gem className="h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
                     <div>
                       <div className="font-semibold text-primary">VPL — Vente luxe ↗</div>
                       <div className="text-sm text-muted-foreground">Conseil clientèle haut de gamme en boutique.</div>
@@ -315,7 +284,7 @@ const Training = () => {
                     rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
                   >
-                    <span className="text-xl shrink-0" aria-hidden="true">📞</span>
+                    <Phone className="h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
                     <div>
                       <div className="font-semibold text-primary">Assistant de Direction ↗</div>
                       <div className="text-sm text-muted-foreground">Téléphone professionnel, prise de message, agenda.</div>
@@ -329,7 +298,7 @@ const Training = () => {
                     rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
                   >
-                    <span className="text-xl shrink-0" aria-hidden="true">🩺</span>
+                    <Stethoscope className="h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
                     <div>
                       <div className="font-semibold text-primary">Secrétaire Médicale ↗</div>
                       <div className="text-sm text-muted-foreground">Accueil patient, prise de rendez-vous, réassurance.</div>
@@ -352,90 +321,11 @@ const Training = () => {
           </Reveal>
 
 
-          <Reveal>
-            <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
-              <h2 className="text-2xl font-bold text-primary mb-4">Pour qui ?</h2>
-              
-              <p className="text-muted-foreground mb-4">
-                <strong className="text-primary">Professionnels en poste</strong> qui ont besoin de l'anglais au quotidien : réunions, emails, appels clients, présentations.
-              </p>
-              
-              <p className="text-muted-foreground mb-4">
-                <strong className="text-primary">Personnes en reconversion</strong> ou en recherche d'emploi qui veulent valoriser leur profil et gagner en confiance à l'oral comme à l'écrit.
-              </p>
-              
-              <p className="text-muted-foreground">
-                <strong className="text-primary">Étudiants en école de commerce ou formation continue</strong> qui préparent leur entrée dans le monde professionnel.
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Formation categories with Accordion */}
-          <Reveal>
-            <div id="formations" className="bg-white rounded-lg shadow-lg p-8 mb-12 scroll-mt-24">
-              <div className="flex items-center mb-6">
-                <span className="text-2xl mr-3">📚</span>
-                <h2 className="text-2xl font-bold text-primary">Types de formations</h2>
-              </div>
-              
-              <Accordion title="Formations individuelles & sur mesure">
-                <p>Parcours personnalisés selon votre métier, vos objectifs et votre niveau, en présentiel ou à distance.</p>
-              </Accordion>
-              <Accordion title="Formations en entreprise">
-                <p>Sessions de formation adaptées à vos équipes, sur site ou à distance, avec contenus sur mesure.</p>
-              </Accordion>
-              <Accordion title="Centres de formation et écoles">
-                <p>Interventions dans des établissements comme ESCCOM, ITEC, et universités, avec approche certifiée.</p>
-              </Accordion>
-            </div>
-          </Reveal>
-
-          {/* Ce que je propose */}
-          <Reveal>
-            <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
-              <div className="flex items-center mb-6">
-                <span className="text-2xl mr-3">🎯</span>
-                <h2 className="text-2xl font-bold text-primary">Ce que je propose</h2>
-              </div>
-              
-              <p className="text-muted-foreground mb-6">
-                Chaque formation est pensée pour vous aider dans votre vie professionnelle, tout en prenant en compte vos besoins personnels : confiance, aisance à l'oral, progression visible.
-              </p>
-              
-              <p className="font-medium text-primary mb-6">
-                Voici quelques exemples de formations possibles :
-              </p>
-              
-              <div className="space-y-6">
-                {formations.map((formation, index) => (
-                  <div key={index} className="border-l-4 border-accent pl-4">
-                    <h3 className="font-semibold text-primary mb-2">
-                      {formation.title}
-                    </h3>
-                    <ul className="text-muted-foreground text-sm space-y-1">
-                      <li><span className="font-medium text-primary">Pour qui :</span> {formation.pourQui}</li>
-                      <li><span className="font-medium text-primary">Objectif :</span> {formation.objectif}</li>
-                      <li><span className="font-medium text-primary">Format :</span> {formation.format}</li>
-                      <li><span className="font-medium text-primary">Résultat :</span> {formation.resultat}</li>
-                    </ul>
-                  </div>
-                ))}
-              </div>
-              
-              <div className="bg-accent/10 border border-accent/20 rounded-lg p-4 mt-6">
-                <p className="text-accent-foreground">
-                  <span className="text-lg mr-2">🛠️</span>
-                  <strong>Toutes les formations sont personnalisées, flexibles et orientées vers des résultats concrets.</strong>
-                </p>
-              </div>
-            </div>
-          </Reveal>
-
           {/* Où et comment */}
           <Reveal>
             <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
               <div className="flex items-center mb-6">
-                <span className="text-2xl mr-3">📍</span>
+                <MapPin className="h-6 w-6 mr-3 text-accent" aria-hidden="true" />
                 <h2 className="text-2xl font-bold text-primary">Où et comment ?</h2>
               </div>
               
@@ -468,7 +358,7 @@ const Training = () => {
           <Reveal>
             <div id="modalites" className="bg-white rounded-lg shadow-lg p-8 mb-12 scroll-mt-24">
               <div className="flex items-center mb-3">
-                <span className="text-2xl mr-3">📋</span>
+                <ClipboardList className="h-6 w-6 mr-3 text-accent" aria-hidden="true" />
                 <h2 className="text-2xl font-bold text-primary">Informations pratiques</h2>
               </div>
               <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
@@ -503,7 +393,7 @@ const Training = () => {
           <Reveal>
             <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
               <div className="flex items-center mb-6">
-                <span className="text-2xl mr-3">💼</span>
+                <BriefcaseBusiness className="h-6 w-6 mr-3 text-accent" aria-hidden="true" />
                 <h2 className="text-2xl font-bold text-primary">Financement</h2>
               </div>
 
@@ -534,7 +424,7 @@ const Training = () => {
           <Reveal>
             <div className="bg-muted/50 border border-border rounded-lg p-8 mb-12">
               <div className="flex items-center mb-6">
-                <span className="text-2xl mr-3">📚</span>
+                <BookOpen className="h-6 w-6 mr-3 text-accent" aria-hidden="true" />
                 <h2 className="text-2xl font-bold text-primary">Ressources et références</h2>
               </div>
               
@@ -586,7 +476,7 @@ const Training = () => {
           <Reveal>
             <div className="bg-primary/5 border border-primary/10 rounded-lg p-8 mb-12">
               <div className="flex items-center mb-6">
-                <span className="text-2xl mr-3">🌐</span>
+                <Globe className="h-6 w-6 mr-3 text-accent" aria-hidden="true" />
                 <h2 className="text-2xl font-bold text-primary">Et en attendant ?</h2>
               </div>
               
@@ -594,7 +484,7 @@ const Training = () => {
                   into one exercise on anglaisadistance.fr, which is what this
                   did before — the other five were invisible from here. */}
               <p className="text-muted-foreground">
-                <span className="text-lg mr-2">🎓</span>
+                <GraduationCap className="inline h-5 w-5 mr-2 text-accent" aria-hidden="true" />
                 En parallèle de mes formations, je mets à disposition{' '}
                 <Link
                   to="/ressources-en-ligne"

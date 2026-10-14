@@ -71,21 +71,28 @@ export const CityLandingPage: React.FC<CityPageProps> = ({
         geoPlacename={seo.geoPlacename}
         jsonLd={[localBusinessJsonLd, faqJsonLd]}
       />
-      <div className="min-h-screen bg-background">
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5 py-14 sm:py-16">
+      <div className="inner-page inner-page--city min-h-screen bg-background">
+        <section className="inner-hero relative overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5 py-12 sm:py-16">
           <div className="aurora" aria-hidden="true" />
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Reveal>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 font-heading leading-tight">
+              <span className="inner-kicker">Ligne anglais · {city}</span>
+              <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
                 {h1}
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">{intro}</p>
+              <Link to="/contact" className="inline-flex mt-7 bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">Parler de ma formation</Link>
               <span className="heading-rule" aria-hidden="true" />
             </Reveal>
           </div>
         </section>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <section className="inner-scan" aria-label="La formation en bref">
+            <div><span>Sur place</span><p>{city} et les environs</p></div>
+            <div><span>À distance</span><p>Partout en France</p></div>
+            <div><span>Pour qui</span><p>Entreprises, cadres, particuliers et étudiants</p></div>
+          </section>
           {localSections.map((s, i) => (
             <Reveal as="section" key={i} className="mb-10">
               <h2 className="text-2xl font-bold text-primary mb-3 font-heading">{s.h2}</h2>

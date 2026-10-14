@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { t } from '@/i18n';
-import { MessageSquare, Menu, X, ChevronDown, Globe, Sparkles, Code, ExternalLink } from 'lucide-react';
+import { MessageSquare, Menu, X, ChevronDown, Globe, Sparkles, Code, ExternalLink, Mail, MapPin } from 'lucide-react';
 import { FORMATIONS } from '@/data/formations';
 
 const FORMATION_ICONS = { Globe, Sparkles, Code } as const;
 
 import { ScrollProgressBar } from "@/components/Effects";
-import SiteLogo from "@/components/SiteLogo";
+import './Layout.css';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 import { trackEvent } from '@/lib/analytics';
@@ -60,11 +60,17 @@ const NavDropdown: React.FC<{
 }> = ({ label, active = false, align = 'left', width = 'w-64', children }) => {
   const [open, setOpen] = useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
+  const panelId = React.useId();
   const close = React.useCallback(() => setOpen(false), []);
 
   React.useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        ref.current?.querySelector('button')?.focus();
+      }
+    };
     const onClick = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
     };
@@ -77,11 +83,11 @@ const NavDropdown: React.FC<{
   }, [open]);
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="site-nav-dropdown relative">
       <button
         type="button"
         onClick={() => setOpen(o => !o)}
-        aria-haspopup="true"
+        aria-controls={panelId}
         aria-expanded={open}
         className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors font-body inline-flex items-center gap-1 ${
           active ? 'bg-accent text-accent-foreground' : 'text-primary hover:bg-muted'
@@ -91,7 +97,7 @@ const NavDropdown: React.FC<{
         <ChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
       </button>
       {open && (
-        <div className={`absolute ${align === 'right' ? 'right-0' : 'left-0'} top-full mt-1 ${width} bg-white border border-border rounded-lg shadow-lg py-2 z-50`}>
+        <div id={panelId} className={`site-nav-panel absolute ${align === 'right' ? 'right-0' : 'left-0'} top-full mt-1 ${width} bg-white border border-border rounded-lg shadow-lg py-2 z-50`}>
           {children(close)}
         </div>
       )}
@@ -110,6 +116,23 @@ const CITY_LINKS = [
 const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', closeOnEscape);
+    return () => document.removeEventListener('keydown', closeOnEscape);
+  }, [isMobileMenuOpen]);
   const year = new Date().getFullYear();
   const whatsappLink = useWhatsAppLink();
   const trackWA = (loc: string) => trackEvent('whatsapp_cta_click', { page: 'Layout', target: whatsappLink, location: loc, prefilled: true });
@@ -144,19 +167,20 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
       <ScrollProgressBar />
 
       {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
+      <header className="site-header sticky top-0 z-50">
+        <div className="site-header-inner">
+          <div className="site-header-row">
             <div className="flex items-center">
               {/* Neutral wordmark for the hub — the English "FORMATIONS" roundel
                   lived here but misrepresents a three-activity brand. */}
-              <Link to="/" className="text-xl font-bold text-primary font-heading tracking-tight">
-                Antony Addy
+              <Link to="/" className="site-wordmark" aria-label="Antony Addy — Accueil">
+                <span className="site-brand-mark" aria-hidden="true"><i /><i /><i /></span>
+                <span><strong>Antony Addy</strong><small>Anglais · IA · Créations</small></span>
               </Link>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-0.5" aria-label="Navigation principale">
+            <nav className="site-desktop-nav hidden xl:flex items-center gap-0.5" aria-label="Navigation principale">
               <NavDropdown label="Anglais" active={formationsActive} width="w-72">
                 {close => (
                   <>
@@ -269,10 +293,10 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
             </nav>
 
             {/* Mobile menu button + WhatsApp */}
-            <div className="lg:hidden flex items-center gap-2">
+            <div className="xl:hidden flex items-center gap-2">
               <a
                 href={whatsappLink}
-                className="bg-green-700 text-white px-3 py-2 rounded-lg flex items-center gap-1 hover:bg-green-800 transition-colors text-sm font-body"
+                className="site-mobile-contact"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleWhatsAppClick('header-mobile')}
@@ -282,12 +306,13 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 <span className="sr-only">WhatsApp</span>
               </a>
               <button
+                ref={menuButtonRef}
                 type="button"
                 onClick={toggleMobileMenu}
                 aria-label={isMobileMenuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-navigation"
-                className="text-primary hover:text-primary/80 p-2.5 min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-lg active:scale-[0.95] transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+                className="site-menu-button"
               >
                 {isMobileMenuOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
               </button>
@@ -295,20 +320,17 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
 
             {/* CTAs, separated from the nav proper: these start a conversation
                 rather than moving around within the site. */}
-            <div className="hidden lg:flex items-center gap-2 ms-4">
+            <div className="site-header-actions hidden xl:flex items-center gap-3">
               <Link
                 to="/contact"
-                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors font-body border ${
-                  isOn('/contact')
-                    ? 'bg-primary text-primary-foreground border-primary'
-                    : 'text-primary border-primary/30 hover:bg-primary/5 hover:border-primary'
-                }`}
+                className="site-contact-button"
+                aria-current={isOn('/contact') ? 'page' : undefined}
               >
                 {t('nav.contact')}
               </Link>
               <a
                 href={whatsappLink}
-                className="bg-green-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-semibold hover:bg-green-800 transition-colors font-body"
+                className="site-whatsapp-button"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleWhatsAppClick('header-desktop')}
@@ -322,7 +344,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
           {/* Mobile Navigation Menu — same grouping as desktop, as a flat
               accordion-free list so nothing is hidden behind a second tap. */}
           {isMobileMenuOpen && (
-            <div id="mobile-navigation" className="lg:hidden border-t border-gray-200 py-4">
+            <div id="mobile-navigation" className="site-mobile-navigation xl:hidden">
               <nav className="flex flex-col" aria-label="Navigation principale">
                 {(() => {
                   const item = (href: string, name: string, key?: string) => (
@@ -389,162 +411,60 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
 
       <Breadcrumbs customTitle={breadcrumbTitle} customSection={breadcrumbSection} />
 
-      <main id="main-content">{children}</main>
+      <main id="main-content" className="site-main">{children}</main>
 
       {/* Footer */}
-      <footer className="site-footer text-white text-sm py-12 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
-            <div className="lg:col-span-2">
-              <Link to="/" className="flex items-center gap-2 mb-4">
-                <SiteLogo height={32} className="brightness-0 invert" alt="Antony Addy" />
-                <span className="font-bold text-lg">Antony Addy</span>
+      <footer className="site-footer px-4 py-12 text-sm text-white">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-10 border-b border-white/15 pb-10 md:grid-cols-3">
+            <div>
+              <Link to="/" className="site-wordmark mb-4" aria-label="Antony Addy — Accueil">
+                <span className="site-brand-mark" aria-hidden="true"><i /><i /><i /></span>
+                <span><strong>Antony Addy</strong><small>Anglais · IA · Créations</small></span>
               </Link>
-              <p className="text-gray-400 mb-4 leading-relaxed">{t('footer.tagline', { years: EXPERIENCE_FLOOR })}</p>
-              <div className="flex gap-3">
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-green-700 hover:bg-green-800 px-3 py-2 rounded-lg text-xs font-medium transition-colors"
-                  aria-label="WhatsApp"
-                  onClick={handleWhatsAppClick('footer-social')}
-                >
-                  💬 WhatsApp
-                </a>
-                <a
-                  href="https://linkedin.com/in/antonyaddy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-2 rounded-lg text-xs font-medium transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  LinkedIn
-                </a>
-              </div>
-              <p className="mt-4 text-xs italic text-gray-400 leading-relaxed">
-                Vous préférez apprendre en autonomie ? Découvrez ma plateforme
-                d'exercices d'anglais en ligne :{" "}
-                <a
-                  href="https://anglaisadistance.fr"
-                  target="_blank"
-                  rel="noopener"
-                  className="text-gray-200 hover:text-white underline underline-offset-2"
-                >
-                  anglaisadistance.fr ↗
-                </a>
-              </p>
-              <div className="mt-5">
-                <h3 className="font-semibold mb-2 text-white text-xs uppercase tracking-wider">Mes formations</h3>
-                <ul className="flex flex-wrap gap-x-4 gap-y-1">
-                  {FORMATIONS.map(f => (
-                    <li key={f.key}>
-                      {f.external ? (
-                        <a
-                          href={f.href}
-                          target="_blank"
-                          rel="noopener"
-                          onClick={() => trackEvent('footer_formation_click', { formation: f.key, target: f.href })}
-                          className="text-gray-400 hover:text-white transition-colors text-sm inline-flex items-center gap-1"
-                        >
-                          {f.navLabel}
-                          <ExternalLink className="h-3 w-3" aria-hidden="true" />
-                        </a>
-                      ) : (
-                        <Link to="/" className="text-gray-400 hover:text-white transition-colors text-sm">{f.navLabel}</Link>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <p className="max-w-sm leading-relaxed text-gray-300">{t('footer.tagline', { years: EXPERIENCE_FLOOR })}</p>
+              <p className="mt-4 flex items-start gap-2 text-gray-300"><MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />Var &amp; Alpes-Maritimes · À distance partout</p>
             </div>
 
-            <nav aria-label={t('footer.navigation')}>
-              <h3 className="font-semibold mb-3 text-white">{t('footer.navigation')}</h3>
-              <ul className="space-y-2">
-                <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">{t('nav.home')}</Link></li>
-                <li><Link to="/qui-je-suis" className="text-gray-400 hover:text-white transition-colors">{t('nav.about')}</Link></li>
-                <li><Link to="/offres-de-formation" className="text-gray-400 hover:text-white transition-colors">{t('nav.training')}</Link></li>
-                <li><Link to="/temoignages" className="text-gray-400 hover:text-white transition-colors">{t('nav.testimonials')}</Link></li>
-                <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">{t('nav.contact')}</Link></li>
-                <li><Link to="/blog" className="text-gray-400 hover:text-white transition-colors">{t('nav.blog')}</Link></li>
-                <li><Link to="/test-de-positionnement" className="text-gray-400 hover:text-white transition-colors">Test de positionnement</Link></li>
-                <li><Link to="/ressources-en-ligne" className="text-gray-400 hover:text-white transition-colors">Ressources en ligne</Link></li>
+            <nav aria-label="Explorer le site">
+              <h3 className="mb-4 font-semibold text-white">Explorer</h3>
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-3 text-gray-300">
+                <li><Link to="/offres-de-formation" className="hover:text-white">Formations</Link></li>
+                <li><Link to="/qui-je-suis" className="hover:text-white">Qui je suis</Link></li>
+                <li><Link to="/test-de-positionnement" className="hover:text-white">Test de niveau</Link></li>
+                <li><Link to="/temoignages" className="hover:text-white">Témoignages</Link></li>
+                <li><Link to="/ressources-en-ligne" className="hover:text-white">Ressources</Link></li>
+                <li><Link to="/blog" className="hover:text-white">Blog</Link></li>
               </ul>
-
-              <h4 className="font-semibold mt-6 mb-2 text-white text-xs uppercase tracking-wider">Pour qui</h4>
-              <ul className="space-y-1">
-                {AUDIENCE_LINKS.map(a => (
-                  <li key={a.href}>
-                    <Link to={a.href} className="text-gray-400 hover:text-white transition-colors text-xs">{a.name}</Link>
-                  </li>
+              <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 border-t border-white/10 pt-4">
+                {FORMATIONS.filter((f) => f.external).map((f) => (
+                  <a key={f.key} href={f.href} target="_blank" rel="noopener" onClick={() => trackEvent('footer_formation_click', { formation: f.key, target: f.href })} className="inline-flex items-center gap-1 text-gray-300 hover:text-white">
+                    {f.navLabel}<ExternalLink className="h-3 w-3" aria-hidden="true" />
+                  </a>
                 ))}
-              </ul>
+              </div>
             </nav>
 
             <div>
-              <h3 className="font-semibold mb-3 text-white">Zones d'intervention</h3>
-              <ul className="space-y-2">
-                {CITY_LINKS.map(c => (
-                  <li key={c.href}>
-                    <Link to={c.href} className="text-gray-400 hover:text-white transition-colors">{c.name}</Link>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-gray-500 text-xs mt-3 leading-relaxed">
-                Présentiel dans le Var et les Alpes-Maritimes, ou à distance partout en France et dans le monde.
-              </p>
-            </div>
-
-
-            <div>
-              <h3 className="font-semibold mb-3 text-white">{t('footer.contact')}</h3>
-              <ul className="space-y-2 mb-6">
-                <li>
-                  <a href="mailto:formations@antonyaddy.com" className="text-gray-400 hover:text-white transition-colors">
-                    📧 formations@antonyaddy.com
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={whatsappLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors"
-                    onClick={handleWhatsAppClick('footer-contact')}
-                  >
-                    💬 +33 6 49 82 98 26
-                  </a>
-                </li>
-                <li className="text-gray-400">📍 {t('footer.location')}</li>
-              </ul>
-
-              <h4 className="font-semibold mb-2 text-white text-xs uppercase tracking-wider">{t('footer.legal')}</h4>
-              <ul className="space-y-1">
-                <li><Link to="/mentions-legales" className="text-gray-400 hover:text-white transition-colors text-xs">{t('footer.legalNotices')}</Link></li>
-                <li><Link to="/politique-confidentialite" className="text-gray-400 hover:text-white transition-colors text-xs">{t('footer.privacy')}</Link></li>
-                <li><Link to="/cgv" className="text-gray-400 hover:text-white transition-colors text-xs">CGV</Link></li>
-              </ul>
+              <h3 className="mb-4 font-semibold text-white">Parlons de votre projet</h3>
+              <p className="mb-4 leading-relaxed text-gray-300">Premier échange gratuit · Réponse sous 24 h ouvrées</p>
+              <Link to="/contact" className="mb-5 inline-flex rounded-lg bg-accent px-5 py-3 font-semibold text-white hover:bg-accent/90">Prendre contact</Link>
+              <a href="mailto:formations@antonyaddy.com" className="flex items-center gap-2 text-gray-300 hover:text-white"><Mail className="h-4 w-4" aria-hidden="true" />formations@antonyaddy.com</a>
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer" onClick={handleWhatsAppClick('footer-contact')} className="mt-3 flex items-center gap-2 text-gray-300 hover:text-white"><MessageSquare className="h-4 w-4" aria-hidden="true" />WhatsApp · +33 6 49 82 98 26</a>
+              <a href="https://linkedin.com/in/antonyaddy" target="_blank" rel="noopener noreferrer" className="mt-3 inline-block text-gray-300 hover:text-white">LinkedIn ↗</a>
             </div>
           </div>
 
-          <div className="border-t border-white/10 pt-6 flex flex-col gap-3">
-            <p className="text-gray-500 text-xs text-center md:text-left">
-              Déclaration d'activité enregistrée sous le numéro 93830738883 auprès de la DREETS Provence-Alpes-Côte d'Azur. Cet enregistrement ne vaut pas agrément de l'État.
-            </p>
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-gray-500 text-xs">
-                © {year} Antony Addy. {t('footer.rights')}
-              </p>
-              <div className="flex items-center gap-4">
-                <p className="text-gray-600 text-xs">
-                  Hébergeur : Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis. Site web :{" "}
-                  <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-400 transition-colors">
-                    https://vercel.com
-                  </a>
-                </p>
-              </div>
+          <div className="flex flex-col gap-4 pt-6 text-xs leading-relaxed text-gray-300 md:flex-row md:justify-between">
+            <div>
+              <p>© {year} Antony Addy · Déclaration d'activité n° 93830738883 auprès de la DREETS PACA. Cet enregistrement ne vaut pas agrément de l'État.</p>
+              <p className="mt-2">Hébergeur : Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis · <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">vercel.com</a></p>
             </div>
+            <nav aria-label="Informations légales" className="flex shrink-0 flex-wrap gap-x-4 gap-y-2">
+              <Link to="/mentions-legales" className="hover:text-white">Mentions légales</Link>
+              <Link to="/politique-confidentialite" className="hover:text-white">Confidentialité</Link>
+              <Link to="/cgv" className="hover:text-white">CGV</Link>
+            </nav>
           </div>
         </div>
       </footer>

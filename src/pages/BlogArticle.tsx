@@ -111,7 +111,7 @@ const BlogArticle = () => {
       />
       <ReadingProgress />
       
-      <div ref={articleRef} className="min-h-screen bg-muted py-12">
+      <div ref={articleRef} className="inner-page inner-page--article min-h-screen bg-muted py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Navigation */}
@@ -126,7 +126,7 @@ const BlogArticle = () => {
           </div>
 
           {/* Article Header */}
-          <article className="bg-white rounded-lg shadow-lg p-8 mb-8">
+          <article className="inner-article bg-white rounded-lg shadow-lg p-8 mb-8">
             <div className="mb-6">
               <span className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">
                 {article.category}
