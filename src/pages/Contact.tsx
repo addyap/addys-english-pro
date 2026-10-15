@@ -6,6 +6,7 @@ import { trackFormSubmission, trackFormError, trackWhatsAppClick, trackEmailClic
 import { useScrollTracking } from '@/hooks/useScrollTracking';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 import { Reveal } from '@/components/motion/Reveal';
+import { solveFormChallenge, type PowSolution } from '@/lib/formPow';
 
 const trainingTitles = new Set([
   'Anglais général',
@@ -99,7 +100,16 @@ const Contact = () => {
   const [submitErrorBanner, setSubmitErrorBanner] = useState<string | null>(null);
   const lastSubmitRef = React.useRef<number>(0);
   const MIN_SUBMIT_INTERVAL_MS = 10000; // rate limit: 1 submission per 10s
-  const [formRenderedAt] = useState(() => Date.now());
+
+  // Proof of work (see src/lib/formPow.ts): solved in the background as soon
+  // as the form loads, and again after every attempt (each one is single-use).
+  const powRef = React.useRef<Promise<PowSolution | null> | null>(null);
+  const startPow = React.useCallback(() => {
+    powRef.current = solveFormChallenge();
+    powRef.current.catch(() => undefined); // surfaced at submit time
+    return powRef.current;
+  }, []);
+  useEffect(() => { startPow(); }, [startPow]);
 
   // Pre-select from the link the visitor followed: ?sujet=anglais|ia|sites, or
   // ?formation=<title> from the training page. Applied after hydration — the
@@ -181,6 +191,10 @@ const Contact = () => {
     setSubmitErrorBanner(null);
 
     try {
+      // Normally already solved while the visitor was typing.
+      const pow = await (powRef.current ?? startPow()).catch(() => null);
+      startPow();
+
       // Call the Vercel edge function to send email — sanitize header-bearing fields
       const res = await fetch('/api/send-contact-email', {
         method: 'POST',
@@ -192,11 +206,24 @@ const Contact = () => {
           sujet: stripHeaderChars(formData.sujet),
           message: formData.message.trim(),
           _gotcha: formData.honeypot,
-          renderedAt: formRenderedAt
+          pow
         })
       });
       const data = await res.json().catch(() => null);
 
+      if (data?.error === 'email_domain') {
+        trackFormError('contact', 'email_domain');
+        setErrors({ email: "Cette adresse ne semble pas pouvoir recevoir d'email. Merci de la vérifier." });
+        document.getElementById('email')?.focus();
+        lastSubmitRef.current = 0; // let them correct it and resend at once
+        return;
+      }
+      if (data?.error === 'rate_limited') {
+        trackFormError('contact', 'rate_limited_server');
+        setSubmitErrorBanner('⏳ Plusieurs messages viennent d\'être envoyés depuis votre connexion. Réessayez dans une minute, ou écrivez-moi sur WhatsApp.');
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        return;
+      }
       if (!res.ok || !data?.success) {
         throw new Error(data?.error || 'Erreur lors de l\'envoi');
       }

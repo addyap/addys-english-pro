@@ -161,7 +161,7 @@ export function confirmationEmail(sujet: string) {
 }
 
 /** Notification sent to Antony. All visitor input is escaped. */
-export function notificationEmail(d: { prenom: string; nom: string; email: string; sujet: string; message: string }) {
+export function notificationEmail(d: { prenom: string; nom: string; email: string; sujet: string; message: string; source?: string }) {
   const received = new Intl.DateTimeFormat("fr-FR", {
     dateStyle: "full", timeStyle: "short", timeZone: "Europe/Paris",
   }).format(new Date());
@@ -185,12 +185,13 @@ export function notificationEmail(d: { prenom: string; nom: string; email: strin
         ${row("Email", `<a href="mailto:${encodeURIComponent(d.email)}" style="color:${C.accent};">${esc(d.email)}</a>`)}
         ${row("Activité", esc(d.sujet))}
         ${row("Reçue le", esc(received))}
+        ${d.source ? row("Depuis", esc(d.source)) : ""}
       </table>
       <div style="font-size:13px;color:${C.muted};margin:0 0 8px;">Message</div>
       <div style="background:${C.soft};border-left:3px solid ${C.accent};border-radius:0 8px 8px 0;padding:16px 18px;margin:0 0 28px;color:${C.ink};white-space:pre-wrap;">${esc(d.message)}</div>
       ${button(replyHref, `Répondre à ${esc(d.prenom)}`, C.navy)}
       <p style="margin:14px 0 0;font-size:13px;color:${C.muted};">Ou répondez directement à cet email : la réponse part à ${esc(d.email)}.</p>`,
-    footer: `Reçu via le formulaire de contact · <a href="${SITE}/contact" style="color:${C.muted};">antonyaddy.com/contact</a>. Le visiteur a reçu un accusé de réception automatique.`,
+    footer: `Reçu via le formulaire de contact${d.source ? ` de ${esc(d.source)}` : ""}. Le visiteur a reçu un accusé de réception automatique.`,
   });
 
   const text = [
@@ -200,6 +201,7 @@ export function notificationEmail(d: { prenom: string; nom: string; email: strin
     `Email : ${d.email}`,
     `Activité : ${d.sujet}`,
     `Reçue le : ${received}`,
+    ...(d.source ? [`Depuis : ${d.source}`] : []),
     "",
     "Message :",
     d.message,

@@ -1,10 +1,10 @@
 import { SUBJECTS, confirmationEmail, notificationEmail } from "./_lib/contact-emails";
+import { allowedOrigin, corsHeaders, emailDomainAcceptsMail, spamReason, verifySolution } from "./_lib/form-guard";
 
 export const config = { runtime: "edge" };
 
 const NOTIFY_TO = "formations@antonyaddy.com";
 const FROM_DOMAIN = "antonyaddy.com";
-const MIN_SUBMIT_MS = 1500;
 // Generous for real enquiries, small enough that a script can't push huge
 // payloads through Resend.
 const MAX_FIELD = 120;
@@ -35,12 +35,6 @@ function rateLimited(ip: string): boolean {
   return false;
 }
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "https://www.antonyaddy.com",
-  "Access-Control-Allow-Headers": "content-type",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-};
-
 interface ContactEmailRequest {
   prenom: string;
   nom: string;
@@ -48,7 +42,8 @@ interface ContactEmailRequest {
   sujet?: string;
   message: string;
   _gotcha?: string;
-  renderedAt?: number;
+  /** Proof-of-work solution: the challenge from /api/form-challenge plus the found number. */
+  pow?: unknown;
 }
 
 async function sendEmail(payload: Record<string, unknown>) {
@@ -65,39 +60,36 @@ async function sendEmail(payload: Record<string, unknown>) {
 }
 
 export default async function handler(request: Request): Promise<Response> {
+  const origin = allowedOrigin(request);
+  const cors = corsHeaders(origin, "POST, OPTIONS");
+  const json = (status: number, data: Record<string, unknown>) =>
+    new Response(JSON.stringify(data), { status, headers: { "Content-Type": "application/json", ...cors } });
+
   if (request.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return new Response(null, { status: origin ? 204 : 403, headers: cors });
   }
-  if (request.method !== "POST") {
-    return new Response(JSON.stringify({ error: "method_not_allowed" }), {
-      status: 405,
-      headers: { "Content-Type": "application/json", ...corsHeaders },
-    });
-  }
+  if (request.method !== "POST") return json(405, { error: "method_not_allowed" });
+  // Browsers always send Origin on POST; a missing or foreign one is a script.
+  if (!origin) return json(403, { error: "forbidden" });
 
   try {
     const body: ContactEmailRequest = await request.json();
 
-    if (body._gotcha) {
-      return new Response(JSON.stringify({ error: "rejected" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
-      });
-    }
-    if (typeof body.renderedAt !== "number" || Date.now() - body.renderedAt < MIN_SUBMIT_MS) {
-      return new Response(JSON.stringify({ error: "rejected" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
-      });
+    if (body._gotcha) return json(400, { error: "rejected" });
+
+    // Proof of work also enforces the minimum fill time, with a timestamp the
+    // server signed — the old client-sent renderedAt could simply be faked.
+    const pow = await verifySolution(body.pow);
+    if (pow === "disabled") {
+      console.warn("FORM_SECRET / RESEND_API_KEY not set — proof of work not enforced");
+    } else if (pow === "expired") {
+      return json(400, { error: "challenge_expired" });
+    } else if (pow !== "ok") {
+      return json(400, { error: "rejected" });
     }
 
     const clientIp = (request.headers.get("x-forwarded-for") ?? "").split(",")[0].trim();
-    if (clientIp && rateLimited(clientIp)) {
-      return new Response(JSON.stringify({ error: "rate_limited" }), {
-        status: 429,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
-      });
-    }
+    if (clientIp && rateLimited(clientIp)) return json(429, { error: "rate_limited" });
 
     const stripHeader = (v: string) => (v ?? "").toString().replace(/[\r\n]+/g, " ").trim();
     const prenom = stripHeader(body.prenom);
@@ -109,28 +101,30 @@ export default async function handler(request: Request): Promise<Response> {
 
     if (prenom.length > MAX_FIELD || nom.length > MAX_FIELD || email.length > 254 ||
         sujet.length > MAX_FIELD || message.length > MAX_MESSAGE) {
-      return new Response(JSON.stringify({ error: "Message trop long" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
-      });
+      return json(400, { error: "too_long" });
     }
 
     if (!prenom || !nom || !email || !message) {
-      return new Response(JSON.stringify({ error: "Tous les champs sont requis" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
-      });
+      return json(400, { error: "missing_fields" });
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return new Response(JSON.stringify({ error: "Format d'email invalide" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json", ...corsHeaders },
-      });
+    if (!emailRegex.test(email)) return json(400, { error: "invalid_email" });
+
+    const spam = spamReason({ prenom, nom, message });
+    if (spam) {
+      console.warn("Contact form rejected as spam:", spam);
+      return json(400, { error: "rejected" });
     }
 
-    const notice = notificationEmail({ prenom, nom, email, sujet, message });
+    // Checked last (it is a network call). Spares Resend a bounce, which
+    // protects the sending domain's reputation.
+    if (!(await emailDomainAcceptsMail(email))) return json(400, { error: "email_domain" });
+
+    // Which site the form was on — useful once the subdomains share this API.
+    const source = new URL(origin).hostname;
+
+    const notice = notificationEmail({ prenom, nom, email, sujet, message, source });
     const notification = await sendEmail({
       from: `${prenom} ${nom} via antonyaddy.com <contact@${FROM_DOMAIN}>`,
       to: [NOTIFY_TO],
@@ -142,10 +136,7 @@ export default async function handler(request: Request): Promise<Response> {
 
     if (!notification.ok) {
       console.error("Resend notification error:", notification.json);
-      return new Response(
-        JSON.stringify({ success: false, error: "Email sending failed. Please try again later." }),
-        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
+      return json(500, { success: false, error: "send_failed" });
     }
 
     // Confirmation email to the sender. Non-fatal if it fails — the
@@ -170,17 +161,11 @@ export default async function handler(request: Request): Promise<Response> {
       console.warn("Resend confirmation error (non-fatal):", confirmation.json);
     }
 
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200,
-      headers: { "Content-Type": "application/json", ...corsHeaders },
-    });
+    return json(200, { success: true });
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : "Unknown error";
     console.error("Error in send-contact-email:", errorMessage);
     // Internal details stay in the logs, not in the response.
-    return new Response(JSON.stringify({ error: "server_error" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json", ...corsHeaders },
-    });
+    return json(500, { error: "server_error" });
   }
 }
