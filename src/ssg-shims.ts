@@ -6,9 +6,7 @@
  * `localStorage` does not exist.
  *
  * (The original offender was the generated browser-side Supabase client, since
- * deleted — nothing in src/ imported it. Note that Supabase itself is still in
- * use server-side: api/send-contact-email.ts builds its own client for the
- * rate-limit RPC, which never runs through SSG. These shims are kept because
+ * deleted; the site no longer uses Supabase at all. These shims are kept because
  * the same trap applies to any dependency that touches storage at import time.)
  *
  * We install minimal no-op shims onto `globalThis` so import-time access

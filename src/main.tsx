@@ -1,5 +1,5 @@
 // MUST be first: shims `localStorage`/`sessionStorage` on the SSG server
-// so modules (e.g. the auto-generated Supabase client) that touch them at
+// so modules (e.g. the since-deleted Supabase client) that touch them at
 // module load do not crash.
 import "./ssg-shims";
 

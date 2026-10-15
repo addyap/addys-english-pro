@@ -2,7 +2,7 @@
 // SSG-time browser-API shims (MUST run before any module loading)
 //
 // vite-react-ssg evaluates user route chunks in this same Node process via
-// dynamic import. Some modules (e.g. the auto-generated Supabase client)
+// dynamic import. Some modules (e.g. the since-deleted Supabase client)
 // touch `localStorage`/`sessionStorage` at module load. Defining no-op
 // shims on `globalThis` here — at config evaluation time — guarantees they
 // exist by the time any chunk is imported.

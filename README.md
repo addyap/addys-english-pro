@@ -11,7 +11,7 @@ Static site: every route is prerendered at build time and served as HTML, so sea
 - **Tailwind CSS** + **shadcn/ui** (Radix primitives)
 - **react-helmet-async** — per-page title, meta description, canonical, Open Graph
 - **i18next** — French/English copy
-- **Supabase** — contact form and questionnaire submissions
+- **Vercel edge functions** — contact form (`api/send-contact-email.ts`, emails via Resend) and the WhatsApp link (`api/whatsapp.ts`). No database.
 - Deployed on **Vercel**
 
 ## Requirements
@@ -22,13 +22,13 @@ Static site: every route is prerendered at build time and served as HTML, so sea
 
 ```sh
 npm install
-cp .env.example .env   # fill in the Supabase values
+cp .env.example .env   # optional locally — see below
 npm run dev            # http://localhost:8080
 ```
 
-`.env` needs `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`. Both are public client-side values — copy them from the Supabase dashboard under Project Settings → API. Never put the `service_role` key here; it would ship in the browser bundle.
+The site runs locally with no env vars. In Vercel, set `RESEND_API_KEY` (server-only) or the contact form cannot send, and optionally `VITE_UMAMI_SRC` + `VITE_UMAMI_WEBSITE_ID` for analytics. The `api/` functions only run on Vercel (or `vercel dev`), not under `npm run dev`.
 
-The dev server runs without them, but the contact form and questionnaire will not submit.
+The `supabase/` folder is a leftover from the original Lovable scaffold; nothing deployed uses it.
 
 ## Scripts
 

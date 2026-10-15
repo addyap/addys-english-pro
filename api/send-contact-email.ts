@@ -1,5 +1,3 @@
-import { createClient } from "@supabase/supabase-js";
-
 export const config = { runtime: "edge" };
 
 const NOTIFY_TO = "formations@antonyaddy.com";
@@ -10,24 +8,30 @@ const MIN_SUBMIT_MS = 1500;
 const MAX_FIELD = 120;
 const MAX_MESSAGE = 5000;
 
-// Service-role client used only for the consume_rate_limit() RPC. This
-// site has no Supabase project of its own (its original one was
-// Lovable-created and Antony has never had dashboard access to it) — it
-// deliberately reuses the anglaisadistance.fr Supabase project instead,
-// which Antony does own, via two server-only env vars (SUPABASE_URL,
-// SUPABASE_SERVICE_ROLE_KEY — not the VITE_-prefixed client vars, which
-// point nowhere usable and aren't touched by this function). Both must be
-// added in Vercel project settings, copied from the anglaisadistance.fr
-// Supabase dashboard (Settings > API).
-//
-// Created only when both vars are set. createClient("") throws at module load,
-// which made Vercel fail EVERY request (FUNCTION_INVOCATION_FAILED, even a GET)
-// whenever the vars were missing — the contact form was down, not merely
-// un-rate-limited. Without them the honeypot and timing checks still apply.
-const supabaseAdmin =
-  process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY
-    ? createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY)
-    : null;
+// Best-effort per-IP rate limit, held in memory — no database. Each warm
+// edge instance keeps its own counts, so a determined script spread across
+// cold starts can exceed it; it stops the casual repeat/flood case. The real
+// protection is that nothing a stranger types is ever sent to a third party
+// (the visitor confirmation carries no submitted text), so the worst case is
+// spam in your own inbox. For a hard limit, add a Vercel Firewall rate-limit
+// rule on /api/send-contact-email — still no database.
+const MAX_PER_MIN = 3;
+const MAX_PER_DAY = 20;
+const hits = new Map<string, number[]>();
+
+function rateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (hits.get(ip) ?? []).filter((t) => now - t < 86_400_000);
+  const lastMinute = recent.filter((t) => now - t < 60_000).length;
+  if (lastMinute >= MAX_PER_MIN || recent.length >= MAX_PER_DAY) {
+    hits.set(ip, recent);
+    return true;
+  }
+  recent.push(now);
+  hits.set(ip, recent);
+  if (hits.size > 5000) hits.clear(); // bound memory on a long-lived instance
+  return false;
+}
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "https://www.antonyaddy.com",
@@ -90,35 +94,12 @@ export default async function handler(request: Request): Promise<Response> {
       });
     }
 
-    // Per-IP rate limit. The honeypot and timing checks above are both
-    // client-suppliable and trivial for a script to satisfy directly, and
-    // this function triggers two outbound emails per call (one of them to
-    // whatever address the caller supplies) — without this, a bot could
-    // both spam Antony's inbox and use the confirmation email to relay
-    // mail to an arbitrary third party. Vercel edge functions set
-    // x-forwarded-for on every incoming request.
     const clientIp = (request.headers.get("x-forwarded-for") ?? "").split(",")[0].trim();
-    if (!supabaseAdmin) {
-      console.warn("SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY not set — contact form is not rate-limited");
-    } else if (clientIp) {
-      const { data: limit, error: limitError } = await supabaseAdmin.rpc("consume_rate_limit", {
-        _identifier: clientIp,
-        // Distinct from anglaisadistance.fr's own "send-contact-email"
-        // bucket in the same shared rate_limits table, so a visitor
-        // hitting both sites' contact forms from one IP doesn't throttle
-        // them against each other.
-        _bucket: "antonyaddy-com-contact",
-        _max_per_min: 3,
-        _max_per_day: 20,
+    if (clientIp && rateLimited(clientIp)) {
+      return new Response(JSON.stringify({ error: "rate_limited" }), {
+        status: 429,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
       });
-      if (limitError) {
-        console.error("Rate limit check failed (allowing request):", limitError.message);
-      } else if (limit?.[0] && !limit[0].allowed) {
-        return new Response(
-          JSON.stringify({ error: "rate_limited", retryAfter: limit[0].retry_after }),
-          { status: 429, headers: { "Content-Type": "application/json", ...corsHeaders } },
-        );
-      }
     }
 
     const stripHeader = (v: string) => (v ?? "").toString().replace(/[\r\n]+/g, " ").trim();
@@ -189,17 +170,17 @@ export default async function handler(request: Request): Promise<Response> {
     // Confirmation email to the sender. Non-fatal if it fails — the
     // notification to Antony already succeeded, so still report success.
     //
-    // Deliberately does NOT echo the submitted message: the recipient is
-    // whatever address the caller typed, so echoing it let anyone use this
-    // form to send arbitrary text from contact@antonyaddy.com to a third
-    // party (spam relay → domain reputation damage).
+    // Deliberately contains NO submitted text — not the message, not even
+    // the first name: the recipient is whatever address the caller typed, so
+    // any echoed field would let anyone send their own text from
+    // contact@antonyaddy.com to a third party (spam relay → domain damage).
     const confirmation = await sendEmail({
       from: `Antony Addy <contact@${FROM_DOMAIN}>`,
       to: [email],
       subject: "Merci pour votre message - Antony Addy Formations",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h1 style="color: #1e40af;">Merci pour votre message, ${esc(prenom)} !</h1>
+          <h1 style="color: #1e40af;">Merci pour votre message !</h1>
           <p>J'ai bien reçu votre demande et je vous recontacterai dans les plus brefs délais (généralement sous 24 h ouvrées).</p>
           <p>En attendant, n'hésitez pas à :</p>
           <ul>
