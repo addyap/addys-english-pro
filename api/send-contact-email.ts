@@ -19,10 +19,15 @@ const MAX_MESSAGE = 5000;
 // point nowhere usable and aren't touched by this function). Both must be
 // added in Vercel project settings, copied from the anglaisadistance.fr
 // Supabase dashboard (Settings > API).
-const supabaseAdmin = createClient(
-  process.env.SUPABASE_URL ?? "",
-  process.env.SUPABASE_SERVICE_ROLE_KEY ?? "",
-);
+//
+// Created only when both vars are set. createClient("") throws at module load,
+// which made Vercel fail EVERY request (FUNCTION_INVOCATION_FAILED, even a GET)
+// whenever the vars were missing — the contact form was down, not merely
+// un-rate-limited. Without them the honeypot and timing checks still apply.
+const supabaseAdmin =
+  process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY
+    ? createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY)
+    : null;
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "https://www.antonyaddy.com",
@@ -93,7 +98,9 @@ export default async function handler(request: Request): Promise<Response> {
     // mail to an arbitrary third party. Vercel edge functions set
     // x-forwarded-for on every incoming request.
     const clientIp = (request.headers.get("x-forwarded-for") ?? "").split(",")[0].trim();
-    if (clientIp) {
+    if (!supabaseAdmin) {
+      console.warn("SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY not set — contact form is not rate-limited");
+    } else if (clientIp) {
       const { data: limit, error: limitError } = await supabaseAdmin.rpc("consume_rate_limit", {
         _identifier: clientIp,
         // Distinct from anglaisadistance.fr's own "send-contact-email"
