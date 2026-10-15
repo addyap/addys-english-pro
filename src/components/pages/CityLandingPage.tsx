@@ -81,7 +81,7 @@ export const CityLandingPage: React.FC<CityPageProps> = ({
                 {h1}
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">{intro}</p>
-              <Link to="/contact" className="inline-flex mt-7 bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">Parler de ma formation</Link>
+              <Link to="/contact?sujet=anglais" className="inline-flex mt-7 bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">Parler de ma formation</Link>
               <span className="heading-rule" aria-hidden="true" />
             </Reveal>
           </div>
@@ -158,7 +158,7 @@ export const CityLandingPage: React.FC<CityPageProps> = ({
             <h2 className="text-2xl font-bold mb-3 font-heading">Discutons de votre projet</h2>
             <p className="mb-6">Premier échange gratuit pour évaluer vos besoins et construire un programme adapté.</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link to="/contact" className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300">
+              <Link to="/contact?sujet=anglais" className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300">
                 Me contacter
               </Link>
             </div>

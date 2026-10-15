@@ -8,6 +8,20 @@ const MIN_SUBMIT_MS = 1500;
 const MAX_FIELD = 120;
 const MAX_MESSAGE = 5000;
 
+// Subjects offered by the contact form (src/pages/Contact.tsx SUBJECTS), each
+// with the next step suggested in the visitor's confirmation email. Anything
+// else is filed as "Non précisé" rather than trusted into the subject line.
+const SUBJECT_NEXT_STEP: Record<string, string> = {
+  "Anglais professionnel":
+    '<a href="https://www.antonyaddy.com/test-de-positionnement" style="color: #1e40af;">Faire le test de positionnement gratuit</a> pour situer votre niveau',
+  "IA générative":
+    '<a href="https://ia.antonyaddy.com" style="color: #1e40af;">Découvrir les formations en IA générative</a>',
+  "Sites web & outils":
+    '<a href="https://creations.antonyaddy.com" style="color: #1e40af;">Voir des exemples de sites et d\'outils réalisés</a>',
+  "Autre":
+    '<a href="https://www.antonyaddy.com" style="color: #1e40af;">Parcourir le site</a> : anglais, IA générative et sites web',
+};
+
 // Best-effort per-IP rate limit, held in memory — no database. Each warm
 // edge instance keeps its own counts, so a determined script spread across
 // cold starts can exceed it; it stops the casual repeat/flood case. The real
@@ -106,7 +120,7 @@ export default async function handler(request: Request): Promise<Response> {
     const prenom = stripHeader(body.prenom);
     const nom = stripHeader(body.nom);
     const email = stripHeader(body.email);
-    const sujet = stripHeader(body.sujet) || "Non précisé";
+    const sujet = SUBJECT_NEXT_STEP[stripHeader(body.sujet)] ? stripHeader(body.sujet) : "Non précisé";
     const message = (body.message ?? "").toString().trim();
 
     if (prenom.length > MAX_FIELD || nom.length > MAX_FIELD || email.length > 254 ||
@@ -177,22 +191,21 @@ export default async function handler(request: Request): Promise<Response> {
     const confirmation = await sendEmail({
       from: `Antony Addy <contact@${FROM_DOMAIN}>`,
       to: [email],
-      subject: "Merci pour votre message - Antony Addy Formations",
+      subject: "Merci pour votre message — Antony Addy",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h1 style="color: #1e40af;">Merci pour votre message !</h1>
           <p>J'ai bien reçu votre demande et je vous recontacterai dans les plus brefs délais (généralement sous 24 h ouvrées).</p>
-          <p>En attendant, n'hésitez pas à :</p>
+          <p>En attendant, vous pouvez :</p>
           <ul>
-            <li><a href="https://www.antonyaddy.com/test-de-positionnement" style="color: #1e40af;">Faire le test de positionnement gratuit</a></li>
-            <li><a href="https://www.antonyaddy.com/blog" style="color: #1e40af;">Lire nos articles sur la grammaire anglaise</a></li>
+            <li>${SUBJECT_NEXT_STEP[sujet] ?? SUBJECT_NEXT_STEP["Autre"]}</li>
             <li><a href="https://wa.me/33649829826" style="color: #16a34a;">Me contacter sur WhatsApp</a> pour une réponse plus rapide</li>
           </ul>
           <p>À très bientôt !</p>
-          <p><strong>Antony Addy</strong><br>Formateur d'anglais professionnel</p>
+          <p><strong>Antony Addy</strong><br>Formateur d'anglais et d'IA générative · Création de sites web</p>
           <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;">
           <p style="color: #6b7280; font-size: 12px;">
-            Antony Addy - Formations d'anglais professionnel<br>
+            Antony Addy — Anglais, IA générative & sites web<br>
             Email: ${NOTIFY_TO}<br>
             Site: <a href="https://www.antonyaddy.com" style="color: #1e40af;">antonyaddy.com</a>
           </p>

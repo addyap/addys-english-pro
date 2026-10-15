@@ -22,7 +22,7 @@ export interface AudiencePageProps {
 
 export const AudienceLandingPage: React.FC<AudiencePageProps> = ({
   seo, h1, sub, pourQui, comment, benefits, faqs, closingPitch,
-  ctaHref = '/contact', ctaLabel = 'Demander un devis',
+  ctaHref = '/contact?sujet=anglais', ctaLabel = 'Demander un devis',
 }) => {
   const faqJsonLd = {
     '@context': 'https://schema.org',

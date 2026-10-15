@@ -467,7 +467,7 @@ const Home = () => {
             Britannique natif basé à Fréjus, certifié Formateur Professionnel d'Adultes depuis 2017 et fort de plus de {EXPERIENCE_FLOOR} ans d'enseignement (notamment à l'EDJ Nice), il accompagne particuliers,
             cadres, entreprises et centres de formation dans l'amélioration de leurs compétences en anglais professionnel.{' '}
             <Link to="/offres-de-formation" className="text-[#F6A463] hover:underline font-medium">Découvrir les formations</Link>{' • '}
-            <Link to="/contact" className="text-[#F6A463] hover:underline font-medium">Demander un devis gratuit</Link>
+            <Link to="/contact?sujet=anglais" className="text-[#F6A463] hover:underline font-medium">Demander un devis gratuit</Link>
           </p>
         </div>
       </section>

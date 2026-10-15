@@ -508,7 +508,7 @@ const Training = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-3">
-                <Link to="/contact" className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-lg">
+                <Link to="/contact?sujet=anglais" className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-lg">
                   Réserver un premier échange
                 </Link>
                 <a href={whatsappLink} onClick={(e) => { trackEvent('whatsapp_cta_click', { page: 'Training', target: whatsappLink, prefilled: true, location: 'final-cta' }); }} className="bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">

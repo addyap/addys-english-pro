@@ -100,7 +100,7 @@ const TestPositionnement = () => {
                 <span>
                   La session de quiz en ligne est momentanément fermée pendant son
                   renouvellement. Je peux évaluer votre niveau directement —{' '}
-                  <Link to="/contact" className="underline underline-offset-2 font-semibold hover:text-white">
+                  <Link to="/contact?sujet=anglais" className="underline underline-offset-2 font-semibold hover:text-white">
                     voir comment
                   </Link>
                   .
@@ -251,7 +251,7 @@ const TestPositionnement = () => {
                       Évaluer mon niveau sur WhatsApp
                     </a>
                     <Link
-                      to="/contact"
+                      to="/contact?sujet=anglais"
                       onClick={() => trackEvent('positioning_test_expired_cta', { page: 'test-de-positionnement', target: '/contact' })}
                       className="inline-flex items-center justify-center gap-2 border border-primary text-primary px-6 py-3.5 rounded-lg font-semibold text-base hover:bg-primary/5 transition-colors font-body"
                     >

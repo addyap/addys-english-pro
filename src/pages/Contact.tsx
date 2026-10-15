@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { MessageSquare, Mail, Phone, MapPin, Clock, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
@@ -16,28 +16,80 @@ const trainingTitles = new Set([
   'Préparation aux entretiens en anglais'
 ]);
 
+// The three activities of the site (same order and wording as the menu), plus
+// a catch-all. `value` is what reaches the notification email's subject line;
+// `key` is what links use to pre-select it: /contact?sujet=anglais|ia|sites.
+const SUBJECTS = [
+  {
+    key: 'anglais',
+    value: 'Anglais professionnel',
+    label: 'Anglais',
+    detail: 'Cours et formations',
+    training: true,
+    hints: [
+      'Votre niveau actuel (ou votre score au test de positionnement)',
+      'Votre objectif : réunions, présentations, entretien, certification…',
+      'Pour vous ou une équipe, en présentiel (Var, Alpes-Maritimes) ou à distance',
+    ],
+    placeholder: "Ex. : je dois animer des réunions en anglais d'ici trois mois. Niveau intermédiaire, à distance de préférence.",
+  },
+  {
+    key: 'ia',
+    value: 'IA générative',
+    label: 'IA générative',
+    detail: 'Formations et ateliers',
+    training: true,
+    hints: [
+      'Votre métier ou secteur, et ce que vous voulez y gagner',
+      'Les outils déjà utilisés (ChatGPT, Copilot…), ou aucun',
+      'Seul ou en équipe — et combien de personnes',
+    ],
+    placeholder: 'Ex. : équipe commerciale de six personnes, nous voulons utiliser ChatGPT pour nos emails et nos propositions.',
+  },
+  {
+    key: 'sites',
+    value: 'Sites web & outils',
+    label: 'Site web ou outil',
+    detail: 'Création sur mesure',
+    training: false,
+    hints: [
+      'Le type de projet : site vitrine, refonte, outil métier ou pédagogique',
+      "L'échéance souhaitée",
+      'Une fourchette de budget, si vous en avez une',
+    ],
+    placeholder: 'Ex. : un site vitrine de quelques pages pour mon activité, en ligne avant le printemps.',
+  },
+  {
+    key: 'autre',
+    value: 'Autre',
+    label: 'Autre demande',
+    detail: 'Ou plusieurs à la fois',
+    training: false,
+    hints: [],
+    placeholder: 'Décrivez votre besoin en quelques lignes…',
+  },
+] as const;
+
 const Contact = () => {
   const contactJsonLd = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     "name": "Contact - Antony Addy",
-    "description": "Contactez Antony Addy pour vos besoins en formation d'anglais professionnel",
+    "description": "Contactez Antony Addy pour une formation en anglais ou en IA générative, ou pour la création d'un site web ou d'un outil sur mesure",
     "url": "https://www.antonyaddy.com/contact"
   };
 
   useScrollTracking('/contact');
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const requestedTraining = searchParams.get('formation');
-  const training = requestedTraining && trainingTitles.has(requestedTraining) ? requestedTraining : null;
   const whatsappLink = useWhatsAppLink();
 
   const [formData, setFormData] = useState({
     prenom: '',
     nom: '',
     email: '',
-    sujet: training ? 'Anglais professionnel' : '',
-    message: training ? `Bonjour, je souhaite en savoir plus sur la formation « ${training} ».\n\nMon besoin : ` : '',
+    sujet: '',
+    message: '',
     honeypot: '' // Anti-spam field
   });
 
@@ -48,6 +100,24 @@ const Contact = () => {
   const lastSubmitRef = React.useRef<number>(0);
   const MIN_SUBMIT_INTERVAL_MS = 10000; // rate limit: 1 submission per 10s
   const [formRenderedAt] = useState(() => Date.now());
+
+  // Pre-select from the link the visitor followed: ?sujet=anglais|ia|sites, or
+  // ?formation=<title> from the training page. Applied after hydration — the
+  // prerendered HTML has no query string, so reading it during render made the
+  // server and client trees differ.
+  useEffect(() => {
+    const requestedTraining = searchParams.get('formation');
+    const training = requestedTraining && trainingTitles.has(requestedTraining) ? requestedTraining : null;
+    const subject = training ? SUBJECTS[0] : SUBJECTS.find((s) => s.key === searchParams.get('sujet') && s.key !== 'autre');
+    if (!subject) return;
+    setFormData((prev) => ({
+      ...prev,
+      sujet: prev.sujet || subject.value,
+      message: prev.message || (training ? `Bonjour, je souhaite en savoir plus sur la formation « ${training} ».\n\nMon besoin : ` : ''),
+    }));
+  }, [searchParams]);
+
+  const selectedSubject = SUBJECTS.find((s) => s.value === formData.sujet);
 
   // Strip CR/LF to prevent email header injection in subject/from/reply-to
   const stripHeaderChars = (v: string) => v.replace(/[\r\n]+/g, ' ').trim();
@@ -67,7 +137,7 @@ const Contact = () => {
       newErrors.email = 'Merci de saisir une adresse email valide';
     }
     if (!formData.sujet) {
-      newErrors.sujet = "Merci de choisir l'objet de votre demande";
+      newErrors.sujet = 'Merci de choisir ce que concerne votre demande';
     }
     if (!formData.message.trim()) {
       newErrors.message = 'Merci de décrire votre demande en 20 caractères minimum';
@@ -245,10 +315,6 @@ const Contact = () => {
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Premier échange gratuit et sans engagement pour parler d'anglais, d'IA, d'un site web ou d'un outil sur mesure
             </p>
-            <p className="text-sm text-muted-foreground max-w-2xl mx-auto mt-4">
-              Pour les formations : financement possible par votre entreprise (sur fonds propres)
-              ou à titre personnel. Non éligible au CPF.
-            </p>
             <span className="heading-rule" aria-hidden="true" />
           </Reveal>
 
@@ -259,7 +325,7 @@ const Contact = () => {
               <h2 className="text-2xl font-bold text-foreground mb-2">
                 Envoyez-moi un message
               </h2>
-              <p className="text-sm text-muted-foreground mb-6">Quelques mots sur votre projet suffisent. Tous les champs sont requis.</p>
+              <p className="text-sm text-muted-foreground mb-6">Tous les champs sont obligatoires ; quelques lignes suffisent.</p>
               
               <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 {/* Honeypot field - hidden from real users */}
@@ -336,29 +402,37 @@ const Contact = () => {
                   {errors.email && <p id="email-error" className="text-red-700 text-sm mt-1">{errors.email}</p>}
                 </div>
 
-                <div>
-                  <label htmlFor="sujet" className="block text-sm font-medium text-muted-foreground mb-2">
-                    Objet de votre demande *
-                  </label>
-                  <select
-                    id="sujet"
-                    name="sujet"
-                    aria-invalid={!!errors.sujet}
-                    aria-describedby={errors.sujet ? 'sujet-error' : undefined}
-                    value={formData.sujet}
-                    onChange={handleChange}
-                    required
-                    className={`w-full px-4 py-2 border rounded-lg bg-white transition-all focus:ring-2 focus:ring-accent focus:border-transparent ${errors.sujet ? 'border-red-500' : 'border-border'}`}
-                  >
-                    <option value="" disabled>— Choisissez —</option>
-                    <option value="Anglais professionnel">Formation en anglais</option>
-                    <option value="IA générative">Formation en IA générative</option>
-                    <option value="Création de site web">Création de site web</option>
-                    <option value="Création d'outil numérique ou pédagogique">Création d'outil numérique ou pédagogique</option>
-                    <option value="Autre">Autre</option>
-                  </select>
+                <fieldset aria-describedby={errors.sujet ? 'sujet-error' : undefined}>
+                  <legend className="block text-sm font-medium text-muted-foreground mb-2">
+                    Votre demande concerne *
+                  </legend>
+                  <div className="grid grid-cols-2 gap-3">
+                    {SUBJECTS.map((subject, i) => {
+                      const checked = formData.sujet === subject.value;
+                      return (
+                        <label
+                          key={subject.key}
+                          className={`flex cursor-pointer items-start gap-2.5 rounded-lg border p-3 transition-colors focus-within:ring-2 focus-within:ring-accent ${checked ? 'border-primary bg-primary/5' : errors.sujet ? 'border-red-500' : 'border-border hover:border-primary/40'}`}
+                        >
+                          <input
+                            type="radio"
+                            id={i === 0 ? 'sujet' : undefined}
+                            name="sujet"
+                            value={subject.value}
+                            checked={checked}
+                            onChange={handleChange}
+                            className="mt-1 accent-[hsl(var(--primary))]"
+                          />
+                          <span className="flex flex-col leading-tight">
+                            <span className="font-semibold text-foreground">{subject.label}</span>
+                            <span className="text-xs text-muted-foreground mt-0.5">{subject.detail}</span>
+                          </span>
+                        </label>
+                      );
+                    })}
+                  </div>
                   {errors.sujet && <p id="sujet-error" className="text-red-700 text-sm mt-1">{errors.sujet}</p>}
-                </div>
+                </fieldset>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-muted-foreground mb-2">
@@ -368,16 +442,29 @@ const Contact = () => {
                     id="message"
                     name="message"
                     aria-invalid={!!errors.message}
-                    aria-describedby={errors.message ? 'message-error' : undefined}
+                    aria-describedby={[selectedSubject?.hints.length ? 'message-hints' : '', errors.message ? 'message-error' : ''].filter(Boolean).join(' ') || undefined}
                     maxLength={5000}
                     rows={6}
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    placeholder="Décrivez votre besoin ou votre projet, et vos objectifs..."
+                    placeholder={selectedSubject?.placeholder ?? 'Décrivez votre besoin ou votre projet, et vos objectifs…'}
                     className={`w-full px-4 py-2 border rounded-lg transition-all focus:ring-2 focus:ring-accent focus:border-transparent resize-none ${errors.message ? 'border-red-500' : 'border-border'}`}
                   />
                   {errors.message && <p id="message-error" className="text-red-700 text-sm mt-1">{errors.message}</p>}
+                  {selectedSubject && selectedSubject.hints.length > 0 && (
+                    <div id="message-hints" className="mt-3 rounded-lg bg-muted/60 px-4 py-3 text-sm text-muted-foreground">
+                      <p className="font-medium text-foreground">Pour une réponse précise, indiquez si possible :</p>
+                      <ul className="mt-1.5 list-disc space-y-0.5 pl-5">
+                        {selectedSubject.hints.map((hint) => <li key={hint}>{hint}</li>)}
+                      </ul>
+                      {selectedSubject.training && (
+                        <p className="mt-2 text-xs">
+                          Financement possible par votre entreprise (sur fonds propres) ou à titre personnel. Non éligible au CPF.
+                        </p>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 {/* RGPD art. 13 — information must be given AT the point of
