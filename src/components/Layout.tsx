@@ -175,7 +175,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                   lived here but misrepresents a three-activity brand. */}
               <Link to="/" className="site-wordmark" aria-label="Antony Addy — Accueil">
                 <span className="site-brand-mark" aria-hidden="true"><i /><i /><i /></span>
-                <span><strong>Antony Addy</strong><small>Anglais · IA · Créations</small></span>
+                <span><strong>Antony Addy</strong><small>Anglais · IA · Sites web</small></span>
               </Link>
             </div>
 
@@ -217,7 +217,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               {/* The other two activities, as a peer of "Anglais" — the three
                   activities read as equals in the primary nav, not one offer
                   plus a tucked-away switcher. */}
-              <NavDropdown label="IA & Créations" width="w-72">
+              <NavDropdown label="IA & Sites web" width="w-72">
                 {close => (
                   <>
                     <p className="px-4 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -380,7 +380,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                       {item('/temoignages', t('nav.testimonials'))}
                       {item('/contact', t('nav.contact'))}
 
-                      {heading('IA & Créations')}
+                      {heading('IA & Sites web')}
                       {otherDomains.map(f => {
                         const Icon = FORMATION_ICONS[f.icon];
                         return (
@@ -420,7 +420,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
             <div>
               <Link to="/" className="site-wordmark mb-4" aria-label="Antony Addy — Accueil">
                 <span className="site-brand-mark" aria-hidden="true"><i /><i /><i /></span>
-                <span><strong>Antony Addy</strong><small>Anglais · IA · Créations</small></span>
+                <span><strong>Antony Addy</strong><small>Anglais · IA · Sites web</small></span>
               </Link>
               <p className="max-w-sm leading-relaxed text-gray-300">{t('footer.tagline', { years: EXPERIENCE_FLOOR })}</p>
               <p className="mt-4 flex items-start gap-2 text-gray-300"><MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />Var &amp; Alpes-Maritimes · À distance partout</p>
