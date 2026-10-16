@@ -5,9 +5,9 @@ const BASE = process.env.PW_BASE_URL || "http://localhost:4173";
 test("blog article links work after applying a category filter", async ({ page }) => {
   await page.goto(`${BASE}/blog`, { waitUntil: "domcontentloaded" });
 
-  // Apply a category filter (should exist thanks to grammar blog posts).
+  // Apply a category filter (should exist thanks to the communication posts).
   // Only the first few categories are shown; the rest sit behind "Plus de filtres".
-  const filter = page.getByRole("button", { name: "Grammaire - Temps" });
+  const filter = page.getByRole("button", { name: "Communication" });
   if (!(await filter.isVisible())) await page.getByRole("button", { name: "Plus de filtres" }).click();
   await filter.click();
 

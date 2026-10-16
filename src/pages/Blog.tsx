@@ -77,8 +77,8 @@ const Blog = () => {
   return (
     <>
       <SEOHead
-        title="Blog Anglais | Grammaire, Vocabulaire & Conseils"
-        description="Conseils d'expert pour progresser en anglais : grammaire, vocabulaire, erreurs courantes. Articles par un formateur FPA certifié."
+        title="Blog Anglais Professionnel | Conseils & Communication"
+        description="Conseils d'expert pour l'anglais au travail : emails, présentations, entretiens, téléphone et erreurs courantes. Articles par un formateur FPA certifié."
         canonicalUrl="https://www.antonyaddy.com/blog"
         datePublished="2024-12-19T10:00:00+01:00"
         dateModified={lastPublished}
@@ -89,7 +89,7 @@ const Blog = () => {
         keywords={[
           "blog anglais",
           "conseils anglais",
-          "grammaire anglaise",
+          "anglais au travail",
           "vocabulaire professionnel"
         ]}
         jsonLd={[

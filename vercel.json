@@ -246,6 +246,321 @@
       "source": "/blog/anglais-professionnel-2025",
       "destination": "/blog/anglais-professionnel-competence-cle",
       "permanent": true
+    },
+    {
+      "source": "/blog/present-simple-vs-present-continuous",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes/present-simple-vs-present-continuous",
+      "permanent": true
+    },
+    {
+      "source": "/blog/past-simple-vs-present-perfect",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes/past-simple-vs-present-perfect",
+      "permanent": true
+    },
+    {
+      "source": "/blog/past-simple-vs-past-continuous",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes/past-simple-vs-past-continuous",
+      "permanent": true
+    },
+    {
+      "source": "/blog/past-simple-vs-past-perfect",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/past-perfect",
+      "permanent": true
+    },
+    {
+      "source": "/blog/past-perfect-continuous",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/narrative-tenses",
+      "permanent": true
+    },
+    {
+      "source": "/blog/future-continuous",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/future",
+      "permanent": true
+    },
+    {
+      "source": "/blog/future-perfect-continuous",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/future",
+      "permanent": true
+    },
+    {
+      "source": "/blog/prepositions-de-lieu",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/prepositions/in-on-at-place",
+      "permanent": true
+    },
+    {
+      "source": "/blog/prepositions-de-temps",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/prepositions/in-on-at-time",
+      "permanent": true
+    },
+    {
+      "source": "/blog/comparatifs-en-anglais",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/comparatives",
+      "permanent": true
+    },
+    {
+      "source": "/blog/superlatifs-en-anglais",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/comparatives-superlatives",
+      "permanent": true
+    },
+    {
+      "source": "/blog/countable-uncountable-nouns",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/countable-uncountable",
+      "permanent": true
+    },
+    {
+      "source": "/blog/demonstratives-this-that-these-those",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/demonstratives",
+      "permanent": true
+    },
+    {
+      "source": "/blog/conditionals-zero-first-second-third",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes/zero-first-second-third-conditionals",
+      "permanent": true
+    },
+    {
+      "source": "/blog/passive-voice",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/passive-voice",
+      "permanent": true
+    },
+    {
+      "source": "/blog/phrasal-verbs",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/phrasal-verbs",
+      "permanent": true
+    },
+    {
+      "source": "/blog/articles-a-an-the",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/articles",
+      "permanent": true
+    },
+    {
+      "source": "/blog/modal-verbs",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/modal-verbs",
+      "permanent": true
+    },
+    {
+      "source": "/blog/reported-speech",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/reported-speech",
+      "permanent": true
+    },
+    {
+      "source": "/blog/relative-clauses",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/relative-clauses",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gerunds-vs-infinitives",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes/gerund-vs-infinitive",
+      "permanent": true
+    },
+    {
+      "source": "/blog/question-tags",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/tag-questions",
+      "permanent": true
+    },
+    {
+      "source": "/blog/so-and-such",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/si-tellement-so-ou-such",
+      "permanent": true
+    },
+    {
+      "source": "/blog/too-and-enough",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/trop-too-ou-enough",
+      "permanent": true
+    },
+    {
+      "source": "/blog/some-and-any",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes/some-vs-any-vs-no",
+      "permanent": true
+    },
+    {
+      "source": "/blog/wish-and-if-only",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/wish-if-only/exercise",
+      "permanent": true
+    },
+    {
+      "source": "/blog/make-vs-do",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes/make-vs-do",
+      "permanent": true
+    },
+    {
+      "source": "/blog/say-vs-tell",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/dire-say-ou-tell",
+      "permanent": true
+    },
+    {
+      "source": "/blog/reflexive-pronouns",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/reflexive-pronouns",
+      "permanent": true
+    },
+    {
+      "source": "/blog/subject-object-pronouns",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/object-pronouns",
+      "permanent": true
+    },
+    {
+      "source": "/blog/possessive-adjectives",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/possessive-adjectives",
+      "permanent": true
+    },
+    {
+      "source": "/blog/possessive-pronouns",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/possessive-adjectives",
+      "permanent": true
+    },
+    {
+      "source": "/blog/either-neither",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/quantifiers",
+      "permanent": true
+    },
+    {
+      "source": "/blog/will-vs-going-to",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes/will-vs-going-to",
+      "permanent": true
+    },
+    {
+      "source": "/blog/much-many-a-lot-of",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes/much-vs-many-vs-a-lot-of",
+      "permanent": true
+    },
+    {
+      "source": "/blog/since-vs-for",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes/for-vs-since-vs-during-vs-ago",
+      "permanent": true
+    },
+    {
+      "source": "/blog/been-vs-gone",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/present-perfect",
+      "permanent": true
+    },
+    {
+      "source": "/blog/few-a-few-little-a-little",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/quantifiers",
+      "permanent": true
+    },
+    {
+      "source": "/blog/possessive-adjectives-pronouns",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/possessive-adjectives",
+      "permanent": true
+    },
+    {
+      "source": "/blog/adverbs-of-frequency",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/adverbs-frequency",
+      "permanent": true
+    },
+    {
+      "source": "/blog/causative-have-get",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/causative-get-have",
+      "permanent": true
+    },
+    {
+      "source": "/blog/order-of-adjectives",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/adjectives/exercise",
+      "permanent": true
+    },
+    {
+      "source": "/blog/determiners",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/quantifiers",
+      "permanent": true
+    },
+    {
+      "source": "/blog/had-better-would-rather",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/would-rather-had-better/exercise",
+      "permanent": true
+    },
+    {
+      "source": "/blog/although-despite-however",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/bien-que-although-ou-despite",
+      "permanent": true
+    },
+    {
+      "source": "/blog/still-yet-already",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/encore-still-ou-yet",
+      "permanent": true
+    },
+    {
+      "source": "/blog/unless-as-long-as-provided",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/conditionals",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bring-vs-take",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/porter-bring-ou-take",
+      "permanent": true
+    },
+    {
+      "source": "/blog/lend-vs-borrow",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/emprunter-borrow-ou-lend",
+      "permanent": true
+    },
+    {
+      "source": "/blog/learn-vs-teach",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/apprendre-learn-ou-teach",
+      "permanent": true
+    },
+    {
+      "source": "/blog/look-see-watch",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/voir-see-ou-watch-ou-look",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hear-vs-listen",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/entendre-hear-ou-listen",
+      "permanent": true
+    },
+    {
+      "source": "/blog/speak-vs-talk",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/parler-speak-ou-talk",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rise-vs-raise",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/elever-lever-raise-ou-rise",
+      "permanent": true
+    },
+    {
+      "source": "/blog/lie-vs-lay",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/etre-allonge-pose-lay-ou-lie",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fun-vs-funny",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/drole-fun-ou-funny",
+      "permanent": true
+    },
+    {
+      "source": "/blog/actually-currently",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/actuellement-actually-ou-currently",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fairly-quite-rather",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/assez-enough-ou-quite",
+      "permanent": true
+    },
+    {
+      "source": "/blog/classic-vs-classical",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/economic-vs-economical",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/economique-economic-ou-economical",
+      "permanent": true
+    },
+    {
+      "source": "/blog/historic-vs-historical",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques",
+      "permanent": true
+    },
+    {
+      "source": "/blog/used-to-be-used-to",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/pieges-classiques/habitude-used-to-ou-be-used-to",
+      "permanent": true
+    },
+    {
+      "source": "/blog/inversion",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/inversion",
+      "permanent": true
     }
   ],
   "headers": [

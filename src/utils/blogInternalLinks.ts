@@ -8,17 +8,6 @@ export interface RelatedContent {
 
 // Map categories to relevant exercise and reading content
 const categoryToExerciseContext: Record<string, string> = {
-  'Grammaire - Temps': 'les temps anglais',
-  'Grammaire - Prépositions': 'les prépositions',
-  'Grammaire - Adjectifs': 'les adjectifs comparatifs et superlatifs',
-  'Grammaire - Noms': 'les noms et quantificateurs',
-  'Grammaire - Déterminants': 'les déterminants et articles',
-  'Grammaire - Structures': 'les structures grammaticales avancées',
-  'Grammaire - Verbes': 'les verbes et leurs usages',
-  'Grammaire - Pronoms': 'les pronoms anglais',
-  'Grammaire - Quantificateurs': 'les quantificateurs',
-  'Grammaire - Questions': 'les question tags',
-  'Grammaire - Intensifieurs': 'les intensifieurs',
   'Grammaire & Vocabulaire': 'le vocabulaire et les expressions',
   'Conseils carrière': "l'anglais professionnel",
   'Communication': 'la communication professionnelle',
@@ -26,147 +15,27 @@ const categoryToExerciseContext: Record<string, string> = {
 
 // Category groups for fallback related posts
 const categoryPostMap: Record<string, string[]> = {
-  'Grammaire - Temps': ['present-simple-vs-present-continuous', 'past-simple-vs-present-perfect', 'past-simple-vs-past-continuous', 'past-simple-vs-past-perfect', 'past-perfect-continuous', 'future-continuous', 'future-perfect-continuous', 'will-vs-going-to'],
-  'Grammaire - Prépositions': ['prepositions-de-lieu', 'prepositions-de-temps'],
-  'Grammaire - Adjectifs': ['comparatifs-en-anglais', 'superlatifs-en-anglais', 'order-of-adjectives'],
-  'Grammaire - Déterminants': ['articles-a-an-the', 'demonstratives-this-that-these-those', 'determiners'],
-  'Grammaire - Noms': ['countable-uncountable-nouns'],
-  'Grammaire - Quantificateurs': ['much-many-a-lot-of', 'some-and-any', 'few-a-few-little-a-little', 'either-neither'],
-  'Grammaire - Structures': ['conditionals-zero-first-second-third', 'passive-voice', 'reported-speech', 'relative-clauses', 'wish-and-if-only', 'although-despite-however', 'unless-as-long-as-provided'],
-  'Grammaire - Verbes': ['modal-verbs', 'phrasal-verbs', 'gerunds-vs-infinitives', 'make-vs-do', 'say-vs-tell', 'causative-have-get', 'had-better-would-rather'],
-  'Grammaire - Pronoms': ['subject-object-pronouns', 'reflexive-pronouns', 'possessive-adjectives', 'possessive-pronouns', 'possessive-adjectives-pronouns'],
-  'Grammaire - Questions': ['question-tags'],
-  'Grammaire - Intensifieurs': ['so-and-such', 'too-and-enough'],
-  'Grammaire & Vocabulaire': ['erreurs-francophones', 'since-vs-for', 'been-vs-gone', 'still-yet-already', 'adverbs-of-frequency'],
+  'Grammaire & Vocabulaire': ['erreurs-francophones'],
   'Conseils carrière': ['anglais-professionnel-competence-cle'],
-  'Communication': ['oral-vs-ecrit'],
+  'Communication': ['oral-vs-ecrit', 'email-professionnel-en-anglais', 'presentation-en-anglais', 'entretien-embauche-en-anglais', 'anglais-telephone-visio'],
 };
 
 // Cornerstone posts for ultimate fallback
-const cornerstonePosts = ['erreurs-francophones', 'anglais-professionnel-competence-cle', 'present-simple-vs-present-continuous', 'past-simple-vs-present-perfect'];
+const cornerstonePosts = ['erreurs-francophones', 'anglais-professionnel-competence-cle', 'oral-vs-ecrit'];
 
 // Topic clusters for internal blog linking
 const topicClusters: Record<string, string[]> = {
-  // Tenses cluster
-  'present-simple-vs-present-continuous': ['past-simple-vs-present-perfect', 'future-continuous', 'gerunds-vs-infinitives'],
-  'past-simple-vs-present-perfect': ['present-simple-vs-present-continuous', 'since-vs-for', 'been-vs-gone'],
-  'past-simple-vs-past-continuous': ['past-simple-vs-past-perfect', 'past-perfect-continuous', 'reported-speech'],
-  'past-simple-vs-past-perfect': ['past-simple-vs-past-continuous', 'past-perfect-continuous', 'conditionals-zero-first-second-third'],
-  'past-perfect-continuous': ['past-simple-vs-past-perfect', 'future-perfect-continuous', 'since-vs-for'],
-  'future-continuous': ['future-perfect-continuous', 'will-vs-going-to', 'present-simple-vs-present-continuous'],
-  'future-perfect-continuous': ['future-continuous', 'past-perfect-continuous', 'will-vs-going-to'],
-  'will-vs-going-to': ['future-continuous', 'present-simple-vs-present-continuous', 'conditionals-zero-first-second-third'],
-  
-  // Prepositions cluster
-  'prepositions-de-lieu': ['prepositions-de-temps', 'phrasal-verbs'],
-  'prepositions-de-temps': ['prepositions-de-lieu', 'since-vs-for', 'still-yet-already'],
-  
-  // Comparatives cluster
-  'comparatifs-en-anglais': ['superlatifs-en-anglais', 'too-and-enough', 'so-and-such'],
-  'superlatifs-en-anglais': ['comparatifs-en-anglais', 'order-of-adjectives', 'determiners'],
-  
-  // Quantifiers cluster
-  'countable-uncountable-nouns': ['much-many-a-lot-of', 'some-and-any', 'few-a-few-little-a-little', 'articles-a-an-the'],
-  'much-many-a-lot-of': ['countable-uncountable-nouns', 'few-a-few-little-a-little', 'some-and-any'],
-  'few-a-few-little-a-little': ['much-many-a-lot-of', 'countable-uncountable-nouns', 'some-and-any'],
-  'some-and-any': ['countable-uncountable-nouns', 'much-many-a-lot-of', 'either-neither'],
-  
-  // Structure cluster
-  'conditionals-zero-first-second-third': ['wish-and-if-only', 'unless-as-long-as-provided', 'reported-speech'],
-  'passive-voice': ['reported-speech', 'causative-have-get', 'relative-clauses'],
-  'reported-speech': ['passive-voice', 'past-simple-vs-past-perfect', 'say-vs-tell'],
-  'relative-clauses': ['passive-voice', 'question-tags', 'demonstratives-this-that-these-those'],
-  
-  // Verbs cluster
-  'phrasal-verbs': ['prepositions-de-lieu', 'gerunds-vs-infinitives', 'make-vs-do'],
-  'gerunds-vs-infinitives': ['phrasal-verbs', 'modal-verbs', 'causative-have-get'],
-  'modal-verbs': ['gerunds-vs-infinitives', 'had-better-would-rather', 'conditionals-zero-first-second-third'],
-  
-  // Pronouns cluster
-  'subject-object-pronouns': ['reflexive-pronouns', 'possessive-adjectives', 'possessive-pronouns'],
-  'reflexive-pronouns': ['subject-object-pronouns', 'possessive-pronouns', 'each-other-one-another'],
-  'possessive-adjectives': ['possessive-pronouns', 'possessive-adjectives-pronouns', 'subject-object-pronouns'],
-  'possessive-pronouns': ['possessive-adjectives', 'possessive-adjectives-pronouns', 'reflexive-pronouns'],
-  'possessive-adjectives-pronouns': ['possessive-adjectives', 'possessive-pronouns', 'subject-object-pronouns'],
-  
-  // Time expressions cluster
-  'since-vs-for': ['past-simple-vs-present-perfect', 'been-vs-gone', 'still-yet-already'],
-  'been-vs-gone': ['since-vs-for', 'past-simple-vs-present-perfect', 'phrasal-verbs'],
-  'still-yet-already': ['since-vs-for', 'prepositions-de-temps', 'adverbs-of-frequency'],
-  
-  // Misc grammar cluster
-  'articles-a-an-the': ['countable-uncountable-nouns', 'determiners', 'demonstratives-this-that-these-those'],
-  'determiners': ['articles-a-an-the', 'demonstratives-this-that-these-those', 'some-and-any'],
-  'question-tags': ['relative-clauses', 'modal-verbs', 'so-and-such'],
-  'so-and-such': ['too-and-enough', 'comparatifs-en-anglais', 'question-tags'],
-  'too-and-enough': ['so-and-such', 'comparatifs-en-anglais', 'much-many-a-lot-of'],
-  'either-neither': ['some-and-any', 'both-all-none', 'countable-uncountable-nouns'],
-  'make-vs-do': ['say-vs-tell', 'phrasal-verbs', 'gerunds-vs-infinitives'],
-  'say-vs-tell': ['make-vs-do', 'reported-speech', 'phrasal-verbs'],
-  'wish-and-if-only': ['conditionals-zero-first-second-third', 'had-better-would-rather', 'modal-verbs'],
-  'had-better-would-rather': ['modal-verbs', 'wish-and-if-only', 'conditionals-zero-first-second-third'],
-  'although-despite-however': ['unless-as-long-as-provided', 'conditionals-zero-first-second-third', 'so-and-such'],
-  'unless-as-long-as-provided': ['conditionals-zero-first-second-third', 'although-despite-however', 'wish-and-if-only'],
-  'causative-have-get': ['passive-voice', 'gerunds-vs-infinitives', 'modal-verbs'],
-  'order-of-adjectives': ['superlatifs-en-anglais', 'comparatifs-en-anglais', 'determiners'],
-  'adverbs-of-frequency': ['prepositions-de-temps', 'present-simple-vs-present-continuous', 'still-yet-already'],
-  'demonstratives-this-that-these-those': ['articles-a-an-the', 'determiners', 'relative-clauses'],
-  
-  // Base articles
   'anglais-professionnel-competence-cle': ['erreurs-francophones', 'oral-vs-ecrit'],
-  'erreurs-francophones': ['anglais-professionnel-competence-cle', 'phrasal-verbs', 'prepositions-de-temps'],
-  'oral-vs-ecrit': ['anglais-professionnel-competence-cle', 'erreurs-francophones', 'reported-speech'],
+  'erreurs-francophones': ['anglais-professionnel-competence-cle', 'oral-vs-ecrit'],
+  'oral-vs-ecrit': ['anglais-professionnel-competence-cle', 'erreurs-francophones'],
 };
 
 // Blog post titles for linking
 const blogTitles: Record<string, string> = {
-  'present-simple-vs-present-continuous': 'Present Simple vs Present Continuous',
-  'past-simple-vs-present-perfect': 'Past Simple vs Present Perfect',
-  'past-simple-vs-past-continuous': 'Past Simple vs Past Continuous',
-  'past-simple-vs-past-perfect': 'Past Simple vs Past Perfect',
-  'past-perfect-continuous': 'Le Past Perfect Continuous',
-  'future-continuous': 'Le Future Continuous',
-  'future-perfect-continuous': 'Le Future Perfect Continuous',
-  'prepositions-de-lieu': 'Les prépositions de lieu',
-  'prepositions-de-temps': 'Les prépositions de temps',
-  'comparatifs-en-anglais': 'Les comparatifs en anglais',
-  'superlatifs-en-anglais': 'Les superlatifs en anglais',
-  'countable-uncountable-nouns': 'Countable vs Uncountable Nouns',
-  'demonstratives-this-that-these-those': 'This, That, These, Those',
-  'conditionals-zero-first-second-third': 'Les conditionnels anglais',
-  'passive-voice': 'La voix passive',
-  'phrasal-verbs': 'Les phrasal verbs',
-  'articles-a-an-the': 'Les articles A, An, The',
-  'modal-verbs': 'Les verbes modaux',
-  'reported-speech': 'Le discours indirect',
-  'relative-clauses': 'Les propositions relatives',
-  'gerunds-vs-infinitives': 'Gerunds vs Infinitives',
-  'question-tags': 'Les question tags',
-  'so-and-such': 'So et Such',
-  'too-and-enough': 'Too et Enough',
-  'some-and-any': 'Some et Any',
-  'wish-and-if-only': 'Wish et If only',
-  'make-vs-do': 'Make vs Do',
-  'say-vs-tell': 'Say vs Tell',
-  'reflexive-pronouns': 'Les pronoms réfléchis',
-  'subject-object-pronouns': 'Subject vs Object Pronouns',
-  'possessive-adjectives': 'Les adjectifs possessifs',
-  'possessive-pronouns': 'Les pronoms possessifs',
-  'either-neither': 'Either et Neither',
-  'will-vs-going-to': 'Will vs Going to',
-  'much-many-a-lot-of': 'Much, Many, A lot of',
-  'since-vs-for': 'Since vs For',
-  'been-vs-gone': 'Been vs Gone',
-  'few-a-few-little-a-little': 'Few, A few, Little, A little',
-  'possessive-adjectives-pronouns': 'Possessive Adjectives vs Pronouns',
-  'adverbs-of-frequency': 'Les adverbes de fréquence',
-  'causative-have-get': 'Causative Have/Get',
-  'order-of-adjectives': "L'ordre des adjectifs",
-  'determiners': 'Les déterminants',
-  'had-better-would-rather': 'Had better / Would rather',
-  'although-despite-however': 'Although, Despite, However',
-  'still-yet-already': 'Still, Yet, Already',
-  'unless-as-long-as-provided': 'Unless, As long as, Provided',
+  'email-professionnel-en-anglais': 'Email professionnel en anglais',
+  'presentation-en-anglais': 'Présentation en anglais : le guide',
+  'entretien-embauche-en-anglais': "Entretien d'embauche en anglais",
+  'anglais-telephone-visio': 'Anglais au téléphone et en visio',
   'anglais-professionnel-competence-cle': "L'anglais professionnel au travail",
   'erreurs-francophones': 'Les erreurs fréquentes des francophones',
   'oral-vs-ecrit': 'Anglais oral vs écrit',
