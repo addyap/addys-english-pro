@@ -229,7 +229,7 @@
     },
     {
       "source": "/jeux-anglais",
-      "destination": "/exercices",
+      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes",
       "permanent": true
     },
     {
