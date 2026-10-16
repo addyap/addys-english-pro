@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { t } from '@/i18n';
 import { MessageSquare, Menu, X, ChevronDown, Globe, Sparkles, Code, ExternalLink, Mail, MapPin } from 'lucide-react';
-import { FORMATIONS } from '@/data/formations';
+import { FORMATIONS, opensNewTab, displayAddress } from '@/data/formations';
 
 const FORMATION_ICONS = { Globe, Sparkles, Code } as const;
 
@@ -229,8 +229,8 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                         <a
                           key={f.key}
                           href={f.href}
-                          target="_blank"
-                          rel="noopener"
+                          target={opensNewTab(f.href) ? '_blank' : undefined}
+                          rel={opensNewTab(f.href) ? 'noopener' : undefined}
                           onClick={() => { close(); trackEvent('nav_formation_switch', { formation: f.key, target: f.href }); }}
                           className="flex items-center gap-3 px-4 py-2.5 hover:bg-muted transition-colors"
                         >
@@ -240,9 +240,9 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                           <span className="flex flex-col">
                             <span className="text-sm font-medium text-primary inline-flex items-center gap-1">
                               {f.navLabel}
-                              <ExternalLink className="h-3 w-3 text-muted-foreground" aria-hidden="true" />
+                              {opensNewTab(f.href) && <ExternalLink className="h-3 w-3 text-muted-foreground" aria-hidden="true" />}
                             </span>
-                            <span className="text-xs text-muted-foreground">{f.href.replace('https://', '')}</span>
+                            <span className="text-xs text-muted-foreground">{displayAddress(f.href)}</span>
                           </span>
                         </a>
                       );
@@ -387,15 +387,15 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                           <a
                             key={f.key}
                             href={f.href}
-                            target="_blank"
-                            rel="noopener"
+                            target={opensNewTab(f.href) ? '_blank' : undefined}
+                            rel={opensNewTab(f.href) ? 'noopener' : undefined}
                             onClick={() => { setIsMobileMenuOpen(false); trackEvent('nav_formation_switch', { formation: f.key, target: f.href }); }}
                             className="flex items-center gap-3 min-h-[44px] px-4 py-3 rounded-lg text-base font-medium transition-colors font-body text-primary hover:bg-muted"
                           >
                             <Icon className="h-5 w-5 shrink-0" aria-hidden="true" />
                             <span className="inline-flex items-center gap-1">
                               {f.navLabel}
-                              <ExternalLink className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
+                              {opensNewTab(f.href) && <ExternalLink className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />}
                             </span>
                           </a>
                         );
@@ -438,8 +438,8 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               </ul>
               <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 border-t border-white/10 pt-4">
                 {FORMATIONS.filter((f) => f.external).map((f) => (
-                  <a key={f.key} href={f.href} target="_blank" rel="noopener" onClick={() => trackEvent('footer_formation_click', { formation: f.key, target: f.href })} className="inline-flex items-center gap-1 text-gray-300 hover:text-white">
-                    {f.navLabel}<ExternalLink className="h-3 w-3" aria-hidden="true" />
+                  <a key={f.key} href={f.href} target={opensNewTab(f.href) ? '_blank' : undefined} rel={opensNewTab(f.href) ? 'noopener' : undefined} onClick={() => trackEvent('footer_formation_click', { formation: f.key, target: f.href })} className="inline-flex items-center gap-1 text-gray-300 hover:text-white">
+                    {f.navLabel}{opensNewTab(f.href) && <ExternalLink className="h-3 w-3" aria-hidden="true" />}
                   </a>
                 ))}
               </div>

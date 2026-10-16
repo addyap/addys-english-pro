@@ -105,7 +105,7 @@ const About = () => {
                   <strong className="text-primary">formation à l'IA générative</strong>{' '}
                   (<a href="https://ia.antonyaddy.com" target="_blank" rel="noopener" className="text-accent underline underline-offset-2 hover:decoration-2">ia.antonyaddy.com</a>){' '}
                   et la <strong className="text-primary">création de sites et d'outils numériques avec l'IA</strong>{' '}
-                  (<a href="https://creations.antonyaddy.com" target="_blank" rel="noopener" className="text-accent underline underline-offset-2 hover:decoration-2">creations.antonyaddy.com</a>).
+                  (<a href="/sites-web" className="text-accent underline underline-offset-2 hover:decoration-2">antonyaddy.com/sites-web</a>).
                 </p>
                 <p>
                   <strong className="text-primary">Britannique de naissance</strong>, je vis et travaille en France depuis plus de {EXPERIENCE_FLOOR} ans. J'enseigne l'anglais à des adultes dans des contextes professionnels exigeants : entreprises, écoles de commerce, organismes de formation, et accompagnement de personnes en reconversion ou en recherche d'emploi.

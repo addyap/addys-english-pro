@@ -1,4 +1,4 @@
-const VERSION = 'v2.2.0';
+const VERSION = 'v2.2.1';
 const CACHE_NAME = `antonyaddy-${VERSION}`;
 const STATIC_CACHE = `${CACHE_NAME}-static`;
 const PAGES_CACHE = `${CACHE_NAME}-pages`;
@@ -59,6 +59,8 @@ self.addEventListener('fetch', (event) => {
   // analytics) and the edge functions go straight to the network untouched.
   if (request.method !== 'GET' || url.origin !== self.location.origin) return;
   if (url.pathname.startsWith('/api/')) return;
+  // /sites-web is a separate app that www forwards to; it does its own caching.
+  if (url.pathname === '/sites-web' || url.pathname.startsWith('/sites-web/')) return;
 
   // Pages: network-first so content is never stale; cache only as an
   // offline fallback, then the cached home page as a last resort.

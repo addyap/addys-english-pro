@@ -45,12 +45,14 @@ export function extractRoutePatterns() {
   return patterns.filter((p) => p !== "*");
 }
 
+// Rewrites count too: /sites-web is answered by another project that www
+// forwards to, so a link there is valid even though no route declares it.
 export function extractRedirectSources() {
   try {
-    const { redirects = [] } = JSON.parse(
+    const { redirects = [], rewrites = [] } = JSON.parse(
       readFileSync(join(ROOT, "vercel.json"), "utf8"),
     );
-    return redirects.map((r) => r.source);
+    return [...redirects, ...rewrites].map((r) => r.source);
   } catch {
     return [];
   }

@@ -7,7 +7,7 @@ Ce site (antonyaddy.com) détaille l'activité de formation en anglais : formati
 ## Autres activités
 
 - [Formation en IA générative](https://ia.antonyaddy.com): Formations à l'IA générative (ChatGPT, prompts, outils IA) pour les professionnels et les entreprises. Site dédié.
-- [Création de sites web et d'outils numériques](https://creations.antonyaddy.com): Portfolio de sites pour commerces et associations, d'outils métier et de plateformes d'apprentissage développés avec l'IA. Les outils pédagogiques Fluentory, créés par Antony Addy pour apprendre l'anglais, figurent aussi parmi ces réalisations. Site dédié.
+- [Création de sites web et d'outils numériques](https://www.antonyaddy.com/sites-web): Portfolio de sites pour commerces et associations, d'outils métier et de plateformes d'apprentissage développés avec l'IA. Les outils pédagogiques Fluentory, créés par Antony Addy pour apprendre l'anglais, figurent aussi parmi ces réalisations. Site dédié.
 
 ## Pages principales
 
@@ -35,7 +35,7 @@ Ce site (antonyaddy.com) détaille l'activité de formation en anglais : formati
 
 ## Ressources gratuites
 
-- [Fluentory by Antony Addy](/ressources-en-ligne): La suite d'outils pédagogiques (plateformes d'apprentissage de l'anglais) conçue par Antony Addy — grammaire (Grammatica), compréhension orale (ListenUp), expression orale (SpeakUp AI), préparation TOEIC et CLOE, et Anglais à Distance. Ces outils gratuits montrent aussi son travail de conception de plateformes d'apprentissage présenté sur creations.antonyaddy.com.
+- [Fluentory by Antony Addy](/ressources-en-ligne): La suite d'outils pédagogiques (plateformes d'apprentissage de l'anglais) conçue par Antony Addy — grammaire (Grammatica), compréhension orale (ListenUp), expression orale (SpeakUp AI), préparation TOEIC et CLOE, et Anglais à Distance. Ces outils gratuits montrent aussi son travail de conception de plateformes d'apprentissage présenté sur antonyaddy.com/sites-web.
 - [Blog](/blog): Articles de grammaire anglaise, points de vocabulaire et conseils de business English, rédigés par un formateur natif.
 
 ## Optional
