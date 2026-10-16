@@ -571,6 +571,30 @@
     {
       "source": "/sites-web/:path*",
       "destination": "https://creations.antonyaddy.com/sites-web/:path*"
+    },
+    {
+      "source": "/books",
+      "destination": "https://books.antonyaddy.com/books"
+    },
+    {
+      "source": "/books/:path*",
+      "destination": "https://books.antonyaddy.com/books/:path*"
+    },
+    {
+      "source": "/toeic",
+      "destination": "https://toeic.antonyaddy.com/toeic"
+    },
+    {
+      "source": "/toeic/:path*",
+      "destination": "https://toeic.antonyaddy.com/toeic/:path*"
+    },
+    {
+      "source": "/grammatica",
+      "destination": "https://grammatica.antonyaddy.com/grammatica"
+    },
+    {
+      "source": "/grammatica/:path*",
+      "destination": "https://grammatica.antonyaddy.com/grammatica/:path*"
     }
   ],
   "headers": [
@@ -627,7 +651,7 @@
       ]
     },
     {
-      "source": "/((?!sites-web(?:/|$)).*)",
+      "source": "/((?!(?:sites-web|books|toeic|grammatica)(?:/|$)).*)",
       "headers": [
         {
           "key": "Content-Security-Policy",

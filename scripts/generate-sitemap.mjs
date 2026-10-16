@@ -97,6 +97,10 @@ ${urls}
 </urlset>
 `;
 
+// Apps that vercel.json forwards from www (/sites-web, /books, …) publish
+// their own sitemaps; list them so crawlers find those pages too.
+const forwardedApps = ["sites-web", "books", "toeic", "grammatica"];
+
 const robots = `# Robots.txt for antonyaddy.com
 User-agent: *
 Allow: /
@@ -107,6 +111,7 @@ Disallow: /auth
 Disallow: /admin
 
 Sitemap: ${BASE}/sitemap.xml
+${forwardedApps.map((app) => `Sitemap: ${BASE}/${app}/sitemap.xml`).join("\n")}
 `;
 
 mkdirSync(resolve(__dirname, "../public"), { recursive: true });
