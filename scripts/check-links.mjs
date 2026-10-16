@@ -21,10 +21,12 @@ const BASE_ORIGIN = new URL(BASE).origin;
 // middle of a blocking CI gate — the wall clock swung from 34s to 156s while
 // this was left to Playwright. Skip them before navigating: the sibling site is
 // not ours to vouch for. The redirect itself is covered by the internal-links sub-audit.
+// Rewrites to another origin (/sites-web, served by the showcase project) are
+// skipped for the same reason: another app answers them, not dist/.
 function readOffsiteRedirectSources() {
   try {
     const config = JSON.parse(readFileSync(new URL("../vercel.json", import.meta.url), "utf8"));
-    return (config.redirects ?? [])
+    return [...(config.redirects ?? []), ...(config.rewrites ?? [])]
       .filter((r) => /^https?:\/\//.test(r.destination))
       // Strip a trailing `:path*` / `:id` so "/exercices/:path*" matches "/exercices/foo".
       .map((r) => r.source.replace(/\/:[^/]*$/, ""));

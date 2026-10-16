@@ -194,7 +194,7 @@ const HOME_JSONLD_GRAPH = {
       serviceType: ["Conception et développement de sites web", "Création d'outils métier et pédagogiques"],
       description: "Création de sites web, d'outils métier et d'outils pédagogiques sur mesure pour entreprises, indépendants et acteurs de l'éducation, avec l'IA.",
       provider: { "@id": "https://www.antonyaddy.com/#antony-addy" },
-      url: "https://creations.antonyaddy.com",
+      url: "https://www.antonyaddy.com/sites-web",
       areaServed: [
         { "@type": "Country", name: "France" },
         "Worldwide (remote)",
@@ -384,10 +384,10 @@ const Home = () => {
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Outils métier</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Apps &amp; automatisations</h3></div>
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Éducation</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Outils pédagogiques sur mesure</h3></div>
             </div>
-            <a href="https://creations.antonyaddy.com" target="_blank" rel="noopener"
-               onClick={() => trackEvent('station_route_click', { formation: 'creations', target: 'https://creations.antonyaddy.com' })}
+            <a href="/sites-web"
+               onClick={() => trackEvent('station_route_click', { formation: 'creations', target: '/sites-web' })}
                className="home-service-link mt-8 inline-flex items-center gap-2 bg-[#F0974A] text-[#1a1200] font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
-              Ouvrir creations.antonyaddy.com <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              Voir mes sites web <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </a>
 
             <div className="home-showcase">
@@ -396,7 +396,7 @@ const Home = () => {
                   <span className="home-showcase-kicker">Réalisations en ligne</span>
                   <h3>Des projets que vous pouvez explorer.</h3>
                 </div>
-                <a href="https://creations.antonyaddy.com/#work" target="_blank" rel="noopener noreferrer">
+                <a href="/sites-web#work">
                   Voir toutes les réalisations <ArrowRight size={18} aria-hidden="true" />
                 </a>
               </div>

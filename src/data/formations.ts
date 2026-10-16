@@ -1,6 +1,7 @@
 // Single source of truth for Antony Addy's three activities.
 // antonyaddy.com is the hub: the English formation lives on this site (root),
-// while the IA and website-creation activities live on their own subdomains.
+// website creation at /sites-web (a separate app that www forwards to), and
+// the IA activity on its own subdomain.
 // Update links or wording here and the header switcher, homepage hub section
 // and footer all follow automatically.
 
@@ -13,9 +14,10 @@ export interface Formation {
   title: string;
   /** One-line description shown on the homepage cards. */
   tagline: string;
-  /** Destination. Internal (this site) or absolute subdomain URL. */
+  /** Destination. Internal (this site), /sites-web, or absolute subdomain URL. */
   href: string;
-  /** True when href points to another domain (opens in a new tab). */
+  /** True for the other activities, which are separate apps: linked with a
+   *  plain <a> (full page load), listed under "Mes autres activités". */
   external: boolean;
   /** lucide-react icon name, used for the compact nav/footer tiles. */
   icon: 'Globe' | 'Sparkles' | 'Code';
@@ -52,9 +54,16 @@ export const FORMATIONS: Formation[] = [
     title: 'Sites web & outils numériques',
     tagline:
       "Sites web, outils métier et outils pédagogiques sur mesure pour entreprises, indépendants et acteurs de l'éducation, développés avec l'IA.",
-    href: 'https://creations.antonyaddy.com',
+    href: '/sites-web',
     external: true,
     icon: 'Code',
     cta: 'Découvrir mes créations',
   },
 ];
+
+/** Other domains open in a new tab; /sites-web is on this domain, so it doesn't. */
+export const opensNewTab = (href: string) => href.startsWith('http');
+
+/** "ia.antonyaddy.com", "antonyaddy.com/sites-web" — shown under menu labels. */
+export const displayAddress = (href: string) =>
+  href.startsWith('/') ? `antonyaddy.com${href}` : href.replace('https://', '');
