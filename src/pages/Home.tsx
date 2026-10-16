@@ -48,7 +48,7 @@ const FEATURED_PROJECTS = [
     type: 'Outil pédagogique · Grammaire',
     need: 'Comprendre une règle dans la langue que l’on maîtrise.',
     solution: 'Explications en huit langues et exercices autocorrigés.',
-    url: 'https://grammatica.antonyaddy.com',
+    url: 'https://www.antonyaddy.com/grammatica',
     image: '/projects/grammatica.jpg',
   },
   {

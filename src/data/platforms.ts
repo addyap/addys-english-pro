@@ -24,8 +24,8 @@ export const PLATFORMS: Platform[] = [
   },
   {
     name: 'Grammatica',
-    url: 'https://grammatica.antonyaddy.com',
-    host: 'grammatica.antonyaddy.com',
+    url: 'https://www.antonyaddy.com/grammatica',
+    host: 'antonyaddy.com/grammatica',
     tag: 'Guide multilingue',
     raison:
       "Un guide de grammaire anglaise multilingue : des explications claires, dans la langue maternelle de l'apprenant, pour comprendre enfin les règles qui bloquent les élèves du monde entier.",
@@ -42,8 +42,8 @@ export const PLATFORMS: Platform[] = [
   },
   {
     name: 'ToeicPath',
-    url: 'https://toeic.antonyaddy.com',
-    host: 'toeic.antonyaddy.com',
+    url: 'https://www.antonyaddy.com/toeic',
+    host: 'antonyaddy.com/toeic',
     tag: 'Préparation TOEIC',
     raison:
       "Une préparation complète au TOEIC : entraînements ciblés, tests blancs au format réel et stratégies concrètes pour viser le score dont on a besoin.",
