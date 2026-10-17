@@ -57,7 +57,7 @@ const RessourcesEnLigne = () => {
                 outils que j'ai conçus moi-même, sur {EXPERIENCE_FLOOR} ans de salle de classe :
                 comprendre une règle dans sa langue, entraîner son oreille, lire à son niveau,
                 préparer le TOEIC ou CLOE. {ON_SITE_PLATFORMS.length} d'entre eux vivent directement sur ce site.{' '}
-                <span className="font-semibold text-primary">Tous sont gratuits, sans inscription, et enrichis en continu.</span>
+                <span className="font-semibold text-primary">Tous sont gratuits et enrichis en continu.</span>
               </p>
             </Reveal>
           </div>

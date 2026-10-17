@@ -1,7 +1,7 @@
 import React from 'react';
 import { YEARS_OF_EXPERIENCE, EXPERIENCE_FLOOR, PRICE_RANGE, CONTENT_LAST_REVIEWED_ISO, formatMonthYearFR } from '@/lib/utils';
 import { Link } from 'react-router-dom';
-import { ON_SITE_PLATFORMS, onSitePath } from '@/data/platforms';
+import { MY_TOOLS, toolHref, toolOpensNewTab } from '@/data/platforms';
 import { Globe, BookOpen, ExternalLink, Building, GraduationCap, Target, School, University, MessageCircle, Mail, ArrowRight } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
@@ -322,7 +322,7 @@ const Home = () => {
                     <h3>Entre deux séances, on continue.</h3>
                     <p className="home-tools-lede">
                       J'ai conçu ces outils pour que mes apprenants progressent aussi en dehors du cours :
-                      gratuits, sans inscription, dans la langue de chacun.
+                      gratuits, à leur rythme, dans la langue de chacun.
                     </p>
                   </div>
                   <Link to="/ressources-en-ligne">
@@ -330,12 +330,14 @@ const Home = () => {
                   </Link>
                 </div>
                 <div className="home-showcase-grid home-tools-grid">
-                  {ON_SITE_PLATFORMS.map((p) => (
-                    <a key={p.name} className="home-project" href={onSitePath(p)!}
+                  {MY_TOOLS.map((p) => (
+                    <a key={p.name} className="home-project" href={toolHref(p)}
+                      target={toolOpensNewTab(p) ? '_blank' : undefined}
+                      rel={toolOpensNewTab(p) ? 'noopener' : undefined}
                       onClick={() => trackEvent('home_tool_click', { platform: p.name })}>
                       <div className="home-project-image">
                         <img src={p.image} alt={`Page d'accueil de ${p.name}`} width="960" height="600" loading="lazy" decoding="async" />
-                        <span aria-hidden="true"><ArrowRight size={19} /></span>
+                        <span aria-hidden="true">{toolOpensNewTab(p) ? <ExternalLink size={19} /> : <ArrowRight size={19} />}</span>
                       </div>
                       <div className="home-project-copy">
                         <span>{p.tag}</span>

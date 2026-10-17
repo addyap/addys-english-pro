@@ -97,8 +97,22 @@ const SITE_ORIGIN = 'https://www.antonyaddy.com';
 export const onSitePath = (p: Platform): string | null =>
   p.url?.startsWith(`${SITE_ORIGIN}/`) ? p.url.slice(SITE_ORIGIN.length) : null;
 
-/** The platforms served on this domain, for the menus and footer. */
+/** The platforms served on this domain. */
 export const ON_SITE_PLATFORMS = PLATFORMS.filter((p) => onSitePath(p) !== null);
+
+/** My own training tools, on this domain or an antonyaddy.com subdomain
+ *  (CLOE and SpeakUp keep their subdomains: their logins are bound to them).
+ *  Listed in the Ressources menu, the footer and the home tools block. */
+export const MY_TOOLS = PLATFORMS.filter((p) => {
+  try { return /(^|\.)antonyaddy\.com$/.test(new URL(p.url ?? '').hostname); }
+  catch { return false; }
+});
+
+/** Link for a tool: its path when on this domain, else its own address. */
+export const toolHref = (p: Platform): string => onSitePath(p) ?? p.url ?? '/ressources-en-ligne';
+
+/** Subdomain tools open in a new tab; the ones on this domain don't. */
+export const toolOpensNewTab = (p: Platform): boolean => onSitePath(p) === null;
 
 /** Number of platforms currently live. Derived — never hardcode this in copy. */
 export const PLATFORM_COUNT = PLATFORMS.length;

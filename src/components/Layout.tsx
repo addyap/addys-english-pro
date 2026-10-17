@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { t } from '@/i18n';
 import { MessageSquare, Menu, X, ChevronDown, Globe, Sparkles, Code, ExternalLink, Mail, MapPin } from 'lucide-react';
 import { FORMATIONS, opensNewTab, displayAddress } from '@/data/formations';
-import { ON_SITE_PLATFORMS, onSitePath } from '@/data/platforms';
+import { MY_TOOLS, toolHref, toolOpensNewTab } from '@/data/platforms';
 
 const FORMATION_ICONS = { Globe, Sparkles, Code } as const;
 
@@ -273,14 +273,19 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                     <p className="mt-1 border-t border-border px-4 pt-3 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                       Mes outils d'entraînement
                     </p>
-                    {ON_SITE_PLATFORMS.map(p => (
+                    {MY_TOOLS.map(p => (
                       <a
                         key={p.name}
-                        href={onSitePath(p)!}
+                        href={toolHref(p)}
+                        target={toolOpensNewTab(p) ? '_blank' : undefined}
+                        rel={toolOpensNewTab(p) ? 'noopener' : undefined}
                         onClick={() => { close(); trackEvent('nav_platform_click', { platform: p.name }); }}
                         className="block px-4 py-2.5 transition-colors hover:bg-muted"
                       >
-                        <span className="block text-sm font-medium text-primary">{p.name}</span>
+                        <span className="text-sm font-medium text-primary inline-flex items-center gap-1">
+                          {p.name}
+                          {toolOpensNewTab(p) && <ExternalLink className="h-3 w-3 text-muted-foreground" aria-hidden="true" />}
+                        </span>
                         <span className="block text-xs text-muted-foreground">{p.tag}</span>
                       </a>
                     ))}
@@ -388,10 +393,12 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
 
                       {heading('Ressources gratuites')}
                       {RESOURCE_LINKS.map(r => item(r.href, r.name))}
-                      {ON_SITE_PLATFORMS.map(p => (
+                      {MY_TOOLS.map(p => (
                         <a
                           key={p.name}
-                          href={onSitePath(p)!}
+                          href={toolHref(p)}
+                          target={toolOpensNewTab(p) ? '_blank' : undefined}
+                          rel={toolOpensNewTab(p) ? 'noopener' : undefined}
                           onClick={() => { setIsMobileMenuOpen(false); trackEvent('nav_platform_click', { platform: p.name }); }}
                           className="flex items-center min-h-[44px] px-4 py-3 rounded-lg text-base font-medium transition-colors font-body active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent text-primary hover:bg-muted"
                         >
@@ -467,8 +474,8 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 ))}
               </div>
               <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
-                {ON_SITE_PLATFORMS.map((p) => (
-                  <a key={p.name} href={onSitePath(p)!} onClick={() => trackEvent('footer_platform_click', { platform: p.name })} className="text-gray-300 hover:text-white">
+                {MY_TOOLS.map((p) => (
+                  <a key={p.name} href={toolHref(p)} target={toolOpensNewTab(p) ? '_blank' : undefined} rel={toolOpensNewTab(p) ? 'noopener' : undefined} onClick={() => trackEvent('footer_platform_click', { platform: p.name })} className="text-gray-300 hover:text-white">
                     {p.name}
                   </a>
                 ))}
