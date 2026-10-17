@@ -595,6 +595,14 @@
     {
       "source": "/grammatica/:path*",
       "destination": "https://grammatica.antonyaddy.com/grammatica/:path*"
+    },
+    {
+      "source": "/listening",
+      "destination": "https://listening.antonyaddy.com/listening"
+    },
+    {
+      "source": "/listening/:path*",
+      "destination": "https://listening.antonyaddy.com/listening/:path*"
     }
   ],
   "headers": [
@@ -651,7 +659,7 @@
       ]
     },
     {
-      "source": "/((?!(?:sites-web|books|toeic|grammatica)(?:/|$)).*)",
+      "source": "/((?!(?:sites-web|books|toeic|grammatica|listening)(?:/|$)).*)",
       "headers": [
         {
           "key": "Content-Security-Policy",

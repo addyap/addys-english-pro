@@ -99,7 +99,7 @@ ${urls}
 
 // Apps that vercel.json forwards from www (/sites-web, /books, …) publish
 // their own sitemaps; list them so crawlers find those pages too.
-const forwardedApps = ["sites-web", "books", "toeic", "grammatica"];
+const forwardedApps = ["sites-web", "books", "toeic", "grammatica", "listening"];
 
 const robots = `# Robots.txt for antonyaddy.com
 User-agent: *

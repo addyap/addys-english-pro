@@ -39,6 +39,7 @@ Ce site (antonyaddy.com) détaille l'activité de formation en anglais : formati
 - [Grammatica](/grammatica): Guide de grammaire anglaise multilingue, avec explications dans huit langues et exercices autocorrigés.
 - [ToeicPath](/toeic): Préparation complète au TOEIC, gratuite et sans compte : quatre compétences, tests blancs et entraînement adaptatif.
 - [English Reading Adventures](/books): Histoires interactives à embranchements pour apprendre l'anglais en lisant, en trois niveaux (A2, B1, B2).
+- [ListenUp](/listening): Entraînement gratuit à la compréhension orale de l'anglais : audio par IA, surlignage mot à mot, quiz et traductions en plus de dix langues.
 - [Blog](/blog): Articles de grammaire anglaise, points de vocabulaire et conseils de business English, rédigés par un formateur natif.
 
 ## Optional
