@@ -45,7 +45,7 @@ export const SUBJECTS: Record<string, { label: string; cta: string; url: string 
   "Sites web & outils": {
     label: "un site web ou un outil sur mesure",
     cta: "Voir des réalisations",
-    url: "https://creations.antonyaddy.com",
+    url: "https://www.antonyaddy.com/sites-web",
   },
   Autre: {
     label: "votre projet",
