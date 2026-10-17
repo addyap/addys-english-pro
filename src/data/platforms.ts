@@ -37,8 +37,8 @@ export const PLATFORMS: Platform[] = [
   },
   {
     name: 'ListenUp',
-    url: 'https://listening.antonyaddy.com',
-    host: 'listening.antonyaddy.com',
+    url: 'https://www.antonyaddy.com/listening',
+    host: 'antonyaddy.com/listening',
     tag: 'Compréhension orale',
     raison:
       "Une plateforme d'entraînement à la compréhension orale de l'anglais : exercices audio interactifs, voix générées par IA, quiz et traductions en plus de dix langues, pour habituer l'oreille à l'anglais réel.",
