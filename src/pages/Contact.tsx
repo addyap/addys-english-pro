@@ -275,7 +275,7 @@ const Contact = () => {
         if (v && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) delete next.email;
       } else if (name === 'message') {
         if (v.length >= 20) delete next.message;
-      } else if (name === 'prenom' || name === 'nom') {
+      } else if (name === 'prenom' || name === 'nom' || name === 'sujet') {
         if (v) delete next[name];
       }
       return next;
