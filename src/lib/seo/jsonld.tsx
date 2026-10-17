@@ -17,7 +17,7 @@ export function OrgJsonLd({ siteName }: { siteName?: string }) {
     "@type": "Organization",
     name: siteName ?? "Antony Addy",
     url: "https://www.antonyaddy.com",
-    logo: "https://www.antonyaddy.com/icon-512.png",
+    logo: "https://www.antonyaddy.com/brand/antony-addy-logo.png",
     sameAs: [],
   };
   return <RawJsonLd json={json} />;

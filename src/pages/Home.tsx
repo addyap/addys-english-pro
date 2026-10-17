@@ -85,7 +85,7 @@ const HOME_JSONLD_GRAPH = {
       description: "Services de formation en anglais professionnel, coaching linguistique et cours particuliers dispensés par un formateur natif britannique certifié FPA",
       slogan: "Formations claires, flexibles et efficaces en anglais professionnel",
       url: "https://www.antonyaddy.com",
-      logo: "https://www.antonyaddy.com/icon-512.png",
+      logo: "https://www.antonyaddy.com/brand/antony-addy-logo.png",
       image: "https://www.antonyaddy.com/og/antonyaddy-hub.jpg",
       telephone: "+33649829826",
       email: "formations@antonyaddy.com",

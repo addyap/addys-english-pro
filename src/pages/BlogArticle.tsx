@@ -113,7 +113,7 @@ const BlogArticle = () => {
         image={blogCardImage}
         datePublished={article.date}
         author={{ name: article.author, url: 'https://www.antonyaddy.com/qui-je-suis' }}
-        publisher={{ name: 'Antony Addy', logo: 'https://www.antonyaddy.com/assets/logo.svg' }}
+        publisher={{ name: 'Antony Addy', logo: 'https://www.antonyaddy.com/brand/antony-addy-logo.png' }}
       />
       <ReadingProgress />
       
