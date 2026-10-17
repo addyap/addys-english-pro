@@ -6,7 +6,7 @@ Ce site (antonyaddy.com) détaille l'activité de formation en anglais : formati
 
 ## Autres activités
 
-- [Formation en IA générative](https://ia.antonyaddy.com): Formations à l'IA générative (ChatGPT, prompts, outils IA) pour les professionnels et les entreprises. Site dédié.
+- [Formation en IA générative](/ia): Formations à l'IA générative (ChatGPT, prompts, outils IA) pour les professionnels et les entreprises.
 - [Création de sites web et d'outils numériques](https://www.antonyaddy.com/sites-web): Portfolio de sites pour commerces et associations, d'outils métier et de plateformes d'apprentissage développés avec l'IA. Les outils pédagogiques Fluentory, créés par Antony Addy pour apprendre l'anglais, figurent aussi parmi ces réalisations. Site dédié.
 
 ## Pages principales

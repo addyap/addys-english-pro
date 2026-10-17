@@ -40,7 +40,7 @@ export const SUBJECTS: Record<string, { label: string; cta: string; url: string 
   "IA générative": {
     label: "une formation en IA générative",
     cta: "Découvrir les formations IA",
-    url: "https://ia.antonyaddy.com",
+    url: "https://www.antonyaddy.com/ia",
   },
   "Sites web & outils": {
     label: "un site web ou un outil sur mesure",

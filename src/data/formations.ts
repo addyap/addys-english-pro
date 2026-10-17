@@ -1,7 +1,7 @@
 // Single source of truth for Antony Addy's three activities.
 // antonyaddy.com is the hub: the English formation lives on this site (root),
-// website creation at /sites-web (a separate app that www forwards to), and
-// the IA activity on its own subdomain.
+// generative-AI training at /ia and website creation at /sites-web (separate
+// apps that www forwards to).
 // Update links or wording here and the header switcher, homepage hub section
 // and footer all follow automatically.
 
@@ -14,7 +14,7 @@ export interface Formation {
   title: string;
   /** One-line description shown on the homepage cards. */
   tagline: string;
-  /** Destination. Internal (this site), /sites-web, or absolute subdomain URL. */
+  /** Destination. Internal (this site), or /ia and /sites-web. */
   href: string;
   /** True for the other activities, which are separate apps: linked with a
    *  plain <a> (full page load), listed under "Mes autres activités". */
@@ -43,7 +43,7 @@ export const FORMATIONS: Formation[] = [
     title: 'IA générative',
     tagline:
       "Formations à l'IA générative pour gagner en productivité : ChatGPT, prompts et outils IA appliqués à votre métier.",
-    href: 'https://ia.antonyaddy.com',
+    href: '/ia',
     external: true,
     icon: 'Sparkles',
     cta: 'Découvrir la formation IA',
@@ -61,9 +61,9 @@ export const FORMATIONS: Formation[] = [
   },
 ];
 
-/** Other domains open in a new tab; /sites-web is on this domain, so it doesn't. */
+/** Other domains open in a new tab; /ia and /sites-web are on this domain, so they don't. */
 export const opensNewTab = (href: string) => href.startsWith('http');
 
-/** "ia.antonyaddy.com", "antonyaddy.com/sites-web" — shown under menu labels. */
+/** "antonyaddy.com/ia", "antonyaddy.com/sites-web" — shown under menu labels. */
 export const displayAddress = (href: string) =>
   href.startsWith('/') ? `antonyaddy.com${href}` : href.replace('https://', '');

@@ -103,7 +103,7 @@ const About = () => {
                   J'exerce aujourd'hui trois activités complémentaires : la formation en{' '}
                   <strong className="text-primary">anglais professionnel</strong> — détaillée sur ce site —, la{' '}
                   <strong className="text-primary">formation à l'IA générative</strong>{' '}
-                  (<a href="https://ia.antonyaddy.com" target="_blank" rel="noopener" className="text-accent underline underline-offset-2 hover:decoration-2">ia.antonyaddy.com</a>){' '}
+                  (<a href="/ia" className="text-accent underline underline-offset-2 hover:decoration-2">antonyaddy.com/ia</a>){' '}
                   et la <strong className="text-primary">création de sites et d'outils numériques avec l'IA</strong>{' '}
                   (<a href="/sites-web" className="text-accent underline underline-offset-2 hover:decoration-2">antonyaddy.com/sites-web</a>).
                 </p>

@@ -1,4 +1,4 @@
-const VERSION = 'v2.2.3';
+const VERSION = 'v2.2.4';
 const CACHE_NAME = `antonyaddy-${VERSION}`;
 const STATIC_CACHE = `${CACHE_NAME}-static`;
 const PAGES_CACHE = `${CACHE_NAME}-pages`;
@@ -60,7 +60,7 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET' || url.origin !== self.location.origin) return;
   if (url.pathname.startsWith('/api/')) return;
   // These are separate apps that www forwards to; they do their own caching.
-  if (/^\/(sites-web|books|toeic|grammatica|listening)(\/|$)/.test(url.pathname)) return;
+  if (/^\/(sites-web|books|toeic|grammatica|listening|ia)(\/|$)/.test(url.pathname)) return;
 
   // Pages: network-first so content is never stale; cache only as an
   // offline fallback, then the cached home page as a last resort.
