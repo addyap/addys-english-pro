@@ -73,11 +73,6 @@
       "permanent": true
     },
     {
-      "source": "/listening",
-      "destination": "https://www.anglaisadistance.fr/grammaire-essentielle/contrastes",
-      "permanent": true
-    },
-    {
       "source": "/conversation-trainer",
       "destination": "https://www.anglaisadistance.fr/dialogues",
       "permanent": true
