@@ -4,7 +4,7 @@ import { ArrowUpRight, Sparkles, ArrowRight, Gift, RefreshCw } from 'lucide-reac
 import SEOHead from '@/components/SEOHead';
 import { Reveal } from '@/components/motion/Reveal';
 import { EXPERIENCE_FLOOR } from '@/lib/utils';
-import { PLATFORMS } from '@/data/platforms';
+import { PLATFORMS, onSitePath } from '@/data/platforms';
 
 const RessourcesEnLigne = () => {
   const collectionJsonLd = {
@@ -27,7 +27,7 @@ const RessourcesEnLigne = () => {
     <>
       <SEOHead
         title="Fluentory by Antony Addy — mes plateformes d'anglais en ligne"
-        description="Plateformes d'entraînement à l'anglais conçues par Antony Addy, formateur certifié FPA : grammaire, compréhension orale, préparation TOEIC et CLOE. Gratuit."
+        description="Plateformes d'entraînement à l'anglais conçues par Antony Addy, formateur certifié FPA : grammaire, compréhension orale, lecture, préparation TOEIC et CLOE. Gratuit."
         canonicalUrl="https://www.antonyaddy.com/ressources-en-ligne"
         image="/og/fluentory-og.jpg"
         imageAlt="Fluentory by Antony Addy — mes plateformes d'apprentissage de l'anglais : CLOE, expression orale, TOEIC, compréhension orale, Anglais à Distance et grammaire."
@@ -89,10 +89,12 @@ const RessourcesEnLigne = () => {
                       <span className="inline-block rounded-full bg-muted px-3 py-1 text-xs font-semibold text-muted-foreground">
                         {p.tag}
                       </span>
-                      <ArrowUpRight
-                        className="h-5 w-5 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
-                        aria-hidden="true"
-                      />
+                      {!onSitePath(p) && (
+                        <ArrowUpRight
+                          className="h-5 w-5 text-muted-foreground transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+                          aria-hidden="true"
+                        />
+                      )}
                     </div>
 
                     <h2 className="text-xl sm:text-2xl font-bold text-primary font-heading">
@@ -117,9 +119,9 @@ const RessourcesEnLigne = () => {
               return (
                 <Reveal key={p.host}>
                   <a
-                    href={p.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={onSitePath(p) ?? p.url}
+                    target={onSitePath(p) ? undefined : '_blank'}
+                    rel={onSitePath(p) ? undefined : 'noopener noreferrer'}
                     className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                   >
                     {inner}

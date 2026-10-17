@@ -2,6 +2,10 @@
 // alongside his training. /ressources-en-ligne renders the full list; other
 // pages link to it and derive the count from PLATFORM_COUNT rather than writing
 // a number in prose that silently goes stale.
+//
+// Some platforms are served on this domain (www.antonyaddy.com/grammatica …):
+// vercel.json forwards their path to a separate app. They're linked with a
+// plain <a> (full page load, same tab), never a router <Link>.
 
 export interface Platform {
   name: string;
@@ -50,6 +54,15 @@ export const PLATFORMS: Platform[] = [
     accent: 'from-amber-500 to-orange-600',
   },
   {
+    name: 'English Reading Adventures',
+    url: 'https://www.antonyaddy.com/books',
+    host: 'antonyaddy.com/books',
+    tag: 'Lecture interactive',
+    raison:
+      "Des histoires interactives dont l'apprenant est le héros : chaque choix change la suite. Trois niveaux de lecture (A2, B1, B2) et le sens des mots disponible en huit langues, pour lire en anglais avec plaisir.",
+    accent: 'from-teal-600 to-cyan-800',
+  },
+  {
     name: 'CLOE Prep',
     url: 'https://cloe.antonyaddy.com',
     host: 'cloe.antonyaddy.com',
@@ -68,6 +81,15 @@ export const PLATFORMS: Platform[] = [
     accent: 'from-cyan-500 to-sky-600',
   },
 ];
+
+const SITE_ORIGIN = 'https://www.antonyaddy.com';
+
+/** "/grammatica" for a platform served on this domain, null for other sites. */
+export const onSitePath = (p: Platform): string | null =>
+  p.url?.startsWith(`${SITE_ORIGIN}/`) ? p.url.slice(SITE_ORIGIN.length) : null;
+
+/** The platforms served on this domain, for the menus and footer. */
+export const ON_SITE_PLATFORMS = PLATFORMS.filter((p) => onSitePath(p) !== null);
 
 /** Number of platforms currently live. Derived — never hardcode this in copy. */
 export const PLATFORM_COUNT = PLATFORMS.length;
