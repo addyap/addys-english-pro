@@ -4,7 +4,7 @@
 .inner-page--contact { --inner-accent:#f6a463; --inner-surface:#f6e6d2; }
 .inner-page--testimonials { --inner-accent:#8f78ff; --inner-surface:#e9e4fb; }
 .inner-page--blog { --inner-accent:#e8473b; --inner-surface:#f5f0e7; }
-.inner-page--resources { --inner-accent:#8f78ff; --inner-surface:#e9e4fb; }
+.inner-page--resources { --inner-accent:#e8473b; --inner-surface:#f5f0e7; }
 .inner-page--city { --inner-accent:#e8473b; --inner-surface:#f5f0e7; }
 .inner-page--article { --inner-accent:#e8473b; --inner-surface:#f5f0e7; }
 .inner-page.py-12 { padding-top:0; }
@@ -16,7 +16,7 @@
 .inner-intro > *, .inner-hero > div { position:relative; z-index:1; }
 .inner-kicker { display:inline-flex; align-items:center; gap:10px; margin:0 0 20px; color:hsl(var(--brand-red)); font:600 .6875rem/1.5 'Inter',sans-serif; letter-spacing:.1em; text-transform:uppercase; }
 .inner-kicker::before { content:''; display:block; width:9px; height:9px; flex:none; border-radius:50%; background:var(--inner-accent); box-shadow:0 0 0 5px color-mix(in srgb,var(--inner-accent) 18%,transparent); }
-.inner-page--testimonials .inner-kicker,.inner-page--resources .inner-kicker { color:#5540a6; }
+.inner-page--testimonials .inner-kicker { color:#5540a6; }
 .inner-page--resources .inner-kicker { padding:0; background:none; border-radius:0; }
 .inner-page--resources .inner-kicker svg { display:none; }
 .inner-intro h1,.inner-hero h1 { max-width:15ch; margin:0 0 22px; color:#111631; font:700 clamp(2.25rem,4.5vw,3.5rem)/1.12 'Bricolage Grotesque','Poppins',sans-serif; letter-spacing:-.035em; text-align:left; }

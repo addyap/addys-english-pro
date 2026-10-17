@@ -4,7 +4,7 @@ import { ArrowUpRight, Sparkles, ArrowRight, Gift, RefreshCw } from 'lucide-reac
 import SEOHead from '@/components/SEOHead';
 import { Reveal } from '@/components/motion/Reveal';
 import { EXPERIENCE_FLOOR } from '@/lib/utils';
-import { PLATFORMS, onSitePath } from '@/data/platforms';
+import { PLATFORMS, ON_SITE_PLATFORMS, onSitePath } from '@/data/platforms';
 
 const RessourcesEnLigne = () => {
   const collectionJsonLd = {
@@ -49,40 +49,39 @@ const RessourcesEnLigne = () => {
                 Fluentory <span className="text-accent">by Antony Addy</span>
               </h1>
               <p className="text-lg sm:text-xl font-semibold text-primary max-w-2xl mx-auto mb-4">
-                Free tools for grammar, listening, speaking and exam prep — built by a
+                Free tools for grammar, listening, reading, speaking and exam prep — built by a
                 certified trainer.
               </p>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                En complément de mes formations, je conçois des plateformes d'entraînement à
-                l'anglais : progression, exercices et corrections reposent sur ma pédagogie et
-                sur {EXPERIENCE_FLOOR} ans de salle de classe. Chacune répond à un besoin précis —
-                progresser en autonomie, comprendre la grammaire, préparer une certification.{' '}
-                <span className="font-semibold text-primary">Toutes sont gratuites et enrichies en continu.</span>
+                Mes formations se prolongent ici. Entre deux séances, je donne à mes apprenants des
+                outils que j'ai conçus moi-même, sur {EXPERIENCE_FLOOR} ans de salle de classe :
+                comprendre une règle dans sa langue, entraîner son oreille, lire à son niveau,
+                préparer le TOEIC ou CLOE. {ON_SITE_PLATFORMS.length} d'entre eux vivent directement sur ce site.{' '}
+                <span className="font-semibold text-primary">Tous sont gratuits, sans inscription, et enrichis en continu.</span>
               </p>
             </Reveal>
           </div>
         </section>
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-          {/* Fluentory banner — the platform collection at a glance */}
-          <Reveal>
-            <img
-              src="/fluentory-plateformes.webp"
-              alt="Fluentory — mes plateformes d'apprentissage de l'anglais : CLOE Prep, SpeakUp AI, TOEIC, ListenUp, Anglais à Distance et Grammatica."
-              width={1774}
-              height={887}
-              loading="lazy"
-              className="mb-12 sm:mb-14 w-full rounded-2xl border border-border shadow-sm"
-            />
-          </Reveal>
-
           {/* Platform grid */}
           <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
             {PLATFORMS.map((p) => {
               const inner = (
                 <>
-                  {/* Coloured band */}
-                  <div className={`h-2 w-full bg-gradient-to-r ${p.accent}`} />
+                  {/* Screenshot, with the platform's colour as a thin band beneath */}
+                  <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-muted">
+                    <img
+                      src={p.image}
+                      alt={`Page d'accueil de ${p.name}`}
+                      width={960}
+                      height={600}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.025]"
+                    />
+                    <div className={`absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r ${p.accent}`} />
+                  </div>
 
                   <div className="flex flex-1 flex-col p-6 sm:p-7">
                     <div className="mb-3 flex items-center justify-between gap-3">
@@ -109,7 +108,7 @@ const RessourcesEnLigne = () => {
                     </p>
 
                     <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-accent">
-                      Découvrir le site
+                      {onSitePath(p) ? "Ouvrir l'outil" : 'Découvrir le site'}
                       <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
                     </span>
                   </div>
@@ -170,8 +169,9 @@ const RessourcesEnLigne = () => {
                 Envie d'un accompagnement sur-mesure ?
               </h2>
               <p className="mx-auto mb-6 max-w-2xl text-lg leading-relaxed text-white/90">
-                Les plateformes sont un excellent complément, mais rien ne remplace un
-                formateur. Découvrez mes formations ou parlons directement de votre projet.
+                Ces outils sont faits pour accompagner mes formations, pas pour les remplacer :
+                c'est en séance que l'on travaille votre anglais, vos situations, vos objectifs.
+                Découvrez mes formations ou parlons directement de votre projet.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link

@@ -1,6 +1,7 @@
 import React from 'react';
 import { YEARS_OF_EXPERIENCE, EXPERIENCE_FLOOR, PRICE_RANGE, CONTENT_LAST_REVIEWED_ISO, formatMonthYearFR } from '@/lib/utils';
 import { Link } from 'react-router-dom';
+import { ON_SITE_PLATFORMS, onSitePath } from '@/data/platforms';
 import { Globe, BookOpen, ExternalLink, Building, GraduationCap, Target, School, University, MessageCircle, Mail, ArrowRight } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
@@ -44,20 +45,20 @@ const FEATURED_PROJECTS = [
     image: '/projects/filton-athletic-fc.jpg',
   },
   {
-    name: 'Grammatica',
-    type: 'Outil pédagogique · Grammaire',
-    need: 'Comprendre une règle dans la langue que l’on maîtrise.',
-    solution: 'Explications en huit langues et exercices autocorrigés.',
-    url: 'https://www.antonyaddy.com/grammatica',
-    image: '/projects/grammatica.jpg',
+    name: 'Wall Street Fréjus',
+    type: 'Site web · Pub-restaurant',
+    need: 'Remplir la salle les soirs de concert et de match.',
+    solution: 'Programme, menu de la semaine et réservation en ligne.',
+    url: 'https://www.wallstreetfrejus.fr',
+    image: '/projects/wall-street.webp',
   },
   {
-    name: 'SpeakUp AI',
-    type: 'Outil pédagogique · Expression orale',
-    need: 'Pratiquer l’anglais oral entre deux cours.',
-    solution: 'Conversations guidées et retour immédiat.',
-    url: 'https://speak.antonyaddy.com',
-    image: '/projects/speakup.jpg',
+    name: 'SR Bien-être',
+    type: 'Site web · Praticienne',
+    need: 'Présenter des soins variés et faciliter la prise de rendez-vous.',
+    solution: 'Une page claire par soin et la réservation en ligne.',
+    url: 'https://www.srbienetre.fr',
+    image: '/projects/stephanie.webp',
   },
 ] as const;
 
@@ -288,7 +289,7 @@ const Home = () => {
                     L'anglais qui vous met en mouvement
                   </h2>
                   <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
-                    Britannique natif, certifié Formateur Professionnel d'Adultes. Je ne vous fais pas réciter des règles — je vous mets en mouvement : réunions, présentations, emails, appels. En présentiel sur la Côte d'Azur ou à distance.
+                    Britannique natif, certifié Formateur Professionnel d'Adultes. Je ne vous fais pas réciter des règles — je vous mets en mouvement : réunions, présentations, emails, appels. En présentiel sur la Côte d'Azur ou à distance, et entre deux séances avec les outils que j'ai conçus pour vous.
                   </p>
                 </div>
                 <img className="home-chapter-art" src="/illustrations/english-conversation.webp" alt="Illustration de deux bulles de conversation reliées par une ligne rouge, avec un discret motif britannique" width="1200" height="800" loading="lazy" decoding="async" />
@@ -310,9 +311,40 @@ const Home = () => {
                 <Link to="/offres-de-formation" className="inline-flex items-center gap-2 rounded-lg bg-[#E8473B] px-5 py-3 font-semibold text-white hover:bg-[#c9362b] transition-colors">
                   Voir les formations <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
-                <Link to="/ressources-en-ligne" className="inline-flex items-center gap-2 rounded-lg border border-white/25 px-5 py-3 font-semibold text-white hover:bg-white/10 transition-colors">
-                  Découvrir les ressources gratuites
-                </Link>
+              </div>
+
+              {/* The free tools that extend the training. Each is a separate app
+                  forwarded under this domain (vercel.json), so plain <a>, not <Link>. */}
+              <div className="home-showcase home-tools">
+                <div className="home-showcase-intro">
+                  <div>
+                    <span className="home-showcase-kicker">Mes outils gratuits</span>
+                    <h3>Entre deux séances, on continue.</h3>
+                    <p className="home-tools-lede">
+                      J'ai conçu ces outils pour que mes apprenants progressent aussi en dehors du cours :
+                      gratuits, sans inscription, dans la langue de chacun.
+                    </p>
+                  </div>
+                  <Link to="/ressources-en-ligne">
+                    Tous mes outils <ArrowRight size={18} aria-hidden="true" />
+                  </Link>
+                </div>
+                <div className="home-showcase-grid home-tools-grid">
+                  {ON_SITE_PLATFORMS.map((p) => (
+                    <a key={p.name} className="home-project" href={onSitePath(p)!}
+                      onClick={() => trackEvent('home_tool_click', { platform: p.name })}>
+                      <div className="home-project-image">
+                        <img src={p.image} alt={`Page d'accueil de ${p.name}`} width="960" height="600" loading="lazy" decoding="async" />
+                        <span aria-hidden="true"><ArrowRight size={19} /></span>
+                      </div>
+                      <div className="home-project-copy">
+                        <span>{p.tag}</span>
+                        <strong>{p.name}</strong>
+                        <p>{p.raison}</p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </section>
