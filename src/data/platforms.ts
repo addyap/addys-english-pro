@@ -14,11 +14,14 @@ export interface Platform {
   tag: string;
   raison: string;
   accent: string; // tailwind gradient classes for the card header band
+  /** Screenshot of the platform's home page (960×600, from the studio portfolio). */
+  image: string;
 }
 
 export const PLATFORMS: Platform[] = [
   {
     name: 'Anglais à distance',
+    image: '/projects/anglais-a-distance.webp',
     url: 'https://anglaisadistance.fr',
     host: 'anglaisadistance.fr',
     tag: 'Pour les francophones',
@@ -28,6 +31,7 @@ export const PLATFORMS: Platform[] = [
   },
   {
     name: 'Grammatica',
+    image: '/projects/grammatica.webp',
     url: 'https://www.antonyaddy.com/grammatica',
     host: 'antonyaddy.com/grammatica',
     tag: 'Guide multilingue',
@@ -37,6 +41,7 @@ export const PLATFORMS: Platform[] = [
   },
   {
     name: 'ListenUp',
+    image: '/projects/listening-english.webp',
     url: 'https://www.antonyaddy.com/listening',
     host: 'antonyaddy.com/listening',
     tag: 'Compréhension orale',
@@ -46,6 +51,7 @@ export const PLATFORMS: Platform[] = [
   },
   {
     name: 'ToeicPath',
+    image: '/projects/toeic-success-hub.webp',
     url: 'https://www.antonyaddy.com/toeic',
     host: 'antonyaddy.com/toeic',
     tag: 'Préparation TOEIC',
@@ -55,6 +61,7 @@ export const PLATFORMS: Platform[] = [
   },
   {
     name: 'English Reading Adventures',
+    image: '/projects/adventure-books.webp',
     url: 'https://www.antonyaddy.com/books',
     host: 'antonyaddy.com/books',
     tag: 'Lecture interactive',
@@ -64,6 +71,7 @@ export const PLATFORMS: Platform[] = [
   },
   {
     name: 'CLOE Prep',
+    image: '/projects/cloe-prep-path.webp',
     url: 'https://cloe.antonyaddy.com',
     host: 'cloe.antonyaddy.com',
     tag: 'Préparation CLOE',
@@ -73,6 +81,7 @@ export const PLATFORMS: Platform[] = [
   },
   {
     name: 'SpeakUp AI',
+    image: '/projects/speakup.webp',
     url: 'https://speak.antonyaddy.com',
     host: 'speak.antonyaddy.com',
     tag: 'Expression orale',
