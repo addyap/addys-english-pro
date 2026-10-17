@@ -38,7 +38,7 @@ export default function HubHeroLigne() {
             <span className="llx-interchange-node" aria-hidden="true" />
             <strong>Antony Addy</strong>
             <small>Votre interlocuteur, du premier échange à la réalisation.</small>
-            <img className="llx-portrait" src="/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png" alt="" width="64" height="64" decoding="async" />
+            <img className="llx-portrait" src="/brand/antony-addy-portrait-128.webp" alt="" width="64" height="64" decoding="async" />
           </div>
           <ol className="llx-routes">
             {routes.map((route) => (

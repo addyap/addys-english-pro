@@ -72,14 +72,19 @@ export function daysUntilExpiry(now: Date | number = Date.now()): number {
 /**
  * Whether the test is currently playable, checked in the browser.
  *
- * Deliberately starts as `true` and only flips inside an effect. The site is
- * prerendered by vite-react-ssg, so evaluating the date during render would bake
- * the build-time answer into the HTML and then disagree with the client on the
- * first paint — a hydration mismatch. Returning the optimistic value for the
- * server render and correcting after mount keeps the markup identical.
+ * Starts from the answer at BUILD time, then re-checks inside an effect. The
+ * site is prerendered by vite-react-ssg, so evaluating `Date.now()` during
+ * render would disagree with the prerendered HTML on the first paint — a
+ * hydration mismatch. `__BUILD_TIME__` is the same constant in the SSR and
+ * client bundles, so both agree; the effect then corrects for a challenge that
+ * lapsed after the deploy.
+ *
+ * This used to start as a hard-coded `true`, which meant that once the
+ * challenge expired, every prerendered page (what crawlers and no-JS visitors
+ * see, and what everyone sees until hydration) still advertised the dead test.
  */
 export function useIsPositioningTestOpen(): boolean {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(() => !isExpired(__BUILD_TIME__));
   useEffect(() => {
     setOpen(!isExpired());
   }, []);

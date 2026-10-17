@@ -82,7 +82,8 @@ const Blog = () => {
         canonicalUrl="https://www.antonyaddy.com/blog"
         datePublished="2024-12-19T10:00:00+01:00"
         dateModified={lastPublished}
-        image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
+        image="/og/og-blog.png"
+        imageHeight={640}
         imageAlt="Blog anglais professionnel par Antony Addy"
         enableOrgJsonLd
         enableWebSiteJsonLd

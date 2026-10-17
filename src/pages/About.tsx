@@ -40,6 +40,8 @@ const About = () => {
         keywords={["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "formateur IA générative", "création site web IA", "Var", "Alpes-Maritimes", "Fréjus"]}
         canonicalUrl="https://www.antonyaddy.com/qui-je-suis"
         image="https://www.antonyaddy.com/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png"
+        imageWidth={960}
+        imageHeight={960}
         imageAlt="Antony Addy, formateur d'anglais certifié FPA"
         enableOrgJsonLd
         enableWebSiteJsonLd
