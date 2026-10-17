@@ -5,7 +5,7 @@ import './HubHeroLigne.css';
 
 const routes = [
   { key: 'anglais', number: '01', label: 'Anglais professionnel', detail: 'Prenez la parole avec confiance.', href: '#anglais', external: false },
-  { key: 'ia', number: '02', label: 'IA générative', detail: 'Faites travailler les outils pour vous.', href: 'https://ia.antonyaddy.com', external: true },
+  { key: 'ia', number: '02', label: 'IA générative', detail: 'Faites travailler les outils pour vous.', href: '/ia', external: false },
   { key: 'creations', number: '03', label: 'Sites web & outils', detail: 'Pour votre activité ou pour apprendre.', href: '/sites-web', external: false },
 ] as const;
 

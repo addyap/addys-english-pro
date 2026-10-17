@@ -13,3 +13,4 @@ Sitemap: https://www.antonyaddy.com/books/sitemap.xml
 Sitemap: https://www.antonyaddy.com/toeic/sitemap.xml
 Sitemap: https://www.antonyaddy.com/grammatica/sitemap.xml
 Sitemap: https://www.antonyaddy.com/listening/sitemap.xml
+Sitemap: https://www.antonyaddy.com/ia/sitemap.xml

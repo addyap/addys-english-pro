@@ -181,7 +181,7 @@ const HOME_JSONLD_GRAPH = {
       serviceType: "Formation professionnelle à l'IA générative",
       description: "Formations à l'IA générative pour gagner en productivité : ChatGPT, prompts et outils IA appliqués à votre métier.",
       provider: { "@id": "https://www.antonyaddy.com/#antony-addy" },
-      url: "https://ia.antonyaddy.com",
+      url: "https://www.antonyaddy.com/ia",
       areaServed: [
         { "@type": "Country", name: "France" },
         "Worldwide (remote)",
@@ -354,7 +354,7 @@ const Home = () => {
 
         {/* "Le Conducteur" lives below now — after the three routes (Créations). */}
 
-        {/* ===== STATION 03 · LIGNE IA (violet) — links the ia. subdomain ===== */}
+        {/* ===== STATION 03 · LIGNE IA (violet) — links /ia ===== */}
         <section className="home-chapter home-chapter--ai relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-ia">
           <div className="pointer-events-none absolute inset-0" aria-hidden="true"
             style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(122,98,255,.12), transparent 55%)' }} />
@@ -382,10 +382,10 @@ const Home = () => {
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Format</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Atelier sur mesure</h3></div>
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Résultat</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Productivité réelle</h3></div>
             </div>
-            <a href="https://ia.antonyaddy.com" target="_blank" rel="noopener"
-               onClick={() => trackEvent('station_route_click', { formation: 'ia', target: 'https://ia.antonyaddy.com' })}
+            <a href="/ia"
+               onClick={() => trackEvent('station_route_click', { formation: 'ia', target: '/ia' })}
                className="home-service-link mt-8 inline-flex items-center gap-2 bg-[#6A4FF0] text-white font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
-              Ouvrir ia.antonyaddy.com <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              Découvrir les formations IA <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </a>
           </div>
         </section>
