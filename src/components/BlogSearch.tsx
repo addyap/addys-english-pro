@@ -16,7 +16,10 @@ interface BlogSearchProps {
   onFilterChange: (filtered: Article[]) => void;
 }
 
-const BlogSearch: React.FC<BlogSearchProps> = ({ articles, onFilterChange }) => {
+const normalize = (s: string) =>
+  s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
+
+const BlogSearch: React.FC<BlogSearchProps> =({ articles, onFilterChange }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [showMoreCategories, setShowMoreCategories] = useState(false);
@@ -40,13 +43,14 @@ const BlogSearch: React.FC<BlogSearchProps> = ({ articles, onFilterChange }) => 
       filtered = filtered.filter(a => a.category === selectedCategory);
     }
 
-    // Filter by search query
-    if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase();
+    // Filter by search query — trimmed, case- and accent-insensitive, so
+    // "telephone" finds "téléphone"
+    const query = normalize(searchQuery);
+    if (query) {
       filtered = filtered.filter(
         a =>
-          a.title.toLowerCase().includes(query) ||
-          a.excerpt.toLowerCase().includes(query)
+          normalize(a.title).includes(query) ||
+          normalize(a.excerpt).includes(query)
       );
     }
 
