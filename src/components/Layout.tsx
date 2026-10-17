@@ -172,11 +172,10 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
         <div className="site-header-inner">
           <div className="site-header-row">
             <div className="flex items-center">
-              {/* Neutral wordmark for the hub — the English "FORMATIONS" roundel
-                  lived here but misrepresents a three-activity brand. */}
+              {/* The brand logo (public/brand/), with the three activities beside it. */}
               <Link to="/" className="site-wordmark" aria-label="Antony Addy — Accueil">
-                <span className="site-brand-mark" aria-hidden="true"><i /><i /><i /></span>
-                <span><strong>Antony Addy</strong><small>Anglais · IA · Sites web</small></span>
+                <img className="site-logo" src="/brand/antony-addy-logo.svg" alt="Antony Addy" width="86" height="44" />
+                <small className="site-logo-tagline">Anglais · IA · Sites web</small>
               </Link>
             </div>
 
@@ -443,9 +442,8 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-10 border-b border-white/15 pb-10 md:grid-cols-3">
             <div>
-              <Link to="/" className="site-wordmark mb-4" aria-label="Antony Addy — Accueil">
-                <span className="site-brand-mark" aria-hidden="true"><i /><i /><i /></span>
-                <span><strong>Antony Addy</strong><small>Anglais · IA · Sites web</small></span>
+              <Link to="/" className="site-wordmark mb-5" aria-label="Antony Addy — Accueil">
+                <img className="site-logo site-logo--footer" src="/brand/antony-addy-logo-white.svg" alt="Antony Addy" width="125" height="64" loading="lazy" />
               </Link>
               <p className="max-w-sm leading-relaxed text-gray-300">{t('footer.tagline', { years: EXPERIENCE_FLOOR })}</p>
               <p className="mt-4 flex items-start gap-2 text-gray-300"><MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />Var &amp; Alpes-Maritimes · À distance partout</p>
