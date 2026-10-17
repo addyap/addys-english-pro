@@ -24,6 +24,13 @@ const BlogSearch: React.FC<BlogSearchProps> =({ articles, onFilterChange }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [showMoreCategories, setShowMoreCategories] = useState(false);
   
+  // Honour /blog?q=… — the WebSite SearchAction in the structured data points
+  // here. Read after mount so the prerendered HTML and hydration still match.
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get('q');
+    if (q) setSearchQuery(q);
+  }, []);
+
   // Store callback ref to avoid dependency issues
   const onFilterChangeRef = useRef(onFilterChange);
   onFilterChangeRef.current = onFilterChange;

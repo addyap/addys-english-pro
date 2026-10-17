@@ -150,7 +150,7 @@ const Training = () => {
         canonicalUrl="https://www.antonyaddy.com/offres-de-formation"
         enableOrgJsonLd
         enableWebSiteJsonLd
-        image="https://www.antonyaddy.com/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
+        image="/og/antonyaddy-hub.jpg"
         imageAlt="Formations d'anglais professionnel par Antony Addy"
         keywords={[
           "formation anglais",

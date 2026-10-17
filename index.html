@@ -5,12 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Preconnects for YouTube embeds -->
-    <link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin>
-    <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-    
-    <link rel="dns-prefetch" href="https://www.youtube.com">
-    
     <!-- Self-hosted fonts (latin subset, WOFF2) so no visitor IP reaches Google
          (GDPR). @font-face rules live in the critical <style> below. Inter (body)
          and Bricolage Grotesque (headings) are above the fold on every page. -->
@@ -54,7 +48,10 @@
 
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#0b245b">
-    <meta name="color-scheme" content="light dark">
+    <!-- Light only: the site has no dark theme, so declaring "light dark" made
+         browsers in dark mode draw native controls dark on a light page
+         (e.g. the contact form's unchecked radios looked selected). -->
+    <meta name="color-scheme" content="light">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">

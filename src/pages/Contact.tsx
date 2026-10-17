@@ -563,7 +563,7 @@ const Contact = () => {
                   className="inline-flex items-center border border-primary text-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary/5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Contactez-moi via WhatsApp"
+                  aria-label="Ouvrir WhatsApp pour me contacter (nouvel onglet)"
                   onClick={(e) => {
                     trackWhatsAppClick();
                   }}

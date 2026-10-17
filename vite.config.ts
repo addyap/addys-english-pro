@@ -25,8 +25,16 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
+// One timestamp per build process. vite-react-ssg runs the client and SSR
+// builds back to back and may evaluate this config twice; pinning the value in
+// process.env gives both bundles the same instant.
+process.env.AA_BUILD_TIME ??= String(Date.now());
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode, isSsrBuild }) => ({
+  define: {
+    __BUILD_TIME__: process.env.AA_BUILD_TIME,
+  },
   server: {
     host: "::",
     port: 8080,

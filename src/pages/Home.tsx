@@ -631,7 +631,7 @@ const Home = () => {
                 onClick={() => trackEvent('whatsapp_cta_click', { page: 'Home', location: 'final-cta', prefilled: true })}
                 className="bg-[#C8352A] text-white px-7 py-4 rounded-xl font-bold text-base sm:text-lg hover:-translate-y-0.5 transition-transform flex items-center justify-center gap-2 font-heading shadow-xl"
                 target="_blank" rel="noopener noreferrer"
-                aria-label="Contacter Antony Addy sur WhatsApp (message pré-rempli)"
+                aria-label="Contact WhatsApp avec Antony Addy (message pré-rempli, nouvel onglet)"
               >
                 <MessageCircle className="h-5 w-5" aria-hidden="true" />Contact WhatsApp
               </a>

@@ -28,7 +28,7 @@ for (const path of [
   "/qui-je-suis",
   "/offres-de-formation",
   "/blog",
-  "/blog/lie-vs-lay",
+  "/blog/email-professionnel-en-anglais",
   "/test-de-positionnement",
   "/anglais-entreprise",
   "/cours-anglais-nice",
