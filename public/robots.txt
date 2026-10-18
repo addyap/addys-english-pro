@@ -7,6 +7,10 @@ Disallow: /thank-you
 Disallow: /auth
 Disallow: /admin
 
+# Sections served from other projects. Crawlers only read this root file,
+# so their own robots.txt rules have to be repeated here.
+Disallow: /ia/api/
+
 Sitemap: https://www.antonyaddy.com/sitemap.xml
 Sitemap: https://www.antonyaddy.com/sites-web/sitemap.xml
 Sitemap: https://www.antonyaddy.com/books/sitemap.xml
