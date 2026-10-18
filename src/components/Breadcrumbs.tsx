@@ -12,6 +12,7 @@ const routeConfig: Record<string, { label: string; section?: string; sectionPath
   '/offres-de-formation': { label: 'Offres de formation' },
   '/temoignages': { label: 'Témoignages' },
   '/contact': { label: 'Contact' },
+  '/thank-you': { label: 'Merci' },
   '/blog': { label: 'Blog' },
   '/exercices': { label: 'Exercices' },
   '/reading': { label: 'Compréhension écrite' },
