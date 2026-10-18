@@ -22,7 +22,7 @@ export const PLATFORMS: Platform[] = [
   {
     name: 'Anglais à distance',
     image: '/projects/anglais-a-distance.webp',
-    url: 'https://anglaisadistance.fr',
+    url: 'https://www.anglaisadistance.fr',
     host: 'anglaisadistance.fr',
     tag: 'Pour les francophones',
     raison:

@@ -184,9 +184,24 @@ const Training = () => {
               <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
                 Formations d'anglais professionnel
               </h1>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
                 Des formations concrètes pour communiquer avec confiance en anglais dans votre vie professionnelle
               </p>
+              {/* Same hero CTA as the audience pages: the six options below start under the fold. */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  to="/contact?sujet=anglais"
+                  className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300"
+                >
+                  Réserver un premier échange gratuit
+                </Link>
+                <Link
+                  to="/test-de-positionnement"
+                  className="border border-primary text-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary/5 transition-colors"
+                >
+                  Tester mon niveau
+                </Link>
+              </div>
             </div>
           </Reveal>
 
@@ -251,7 +266,7 @@ const Training = () => {
               <ul className="grid sm:grid-cols-2 gap-3">
                 <li>
                   <a
-                    href="https://anglaisadistance.fr/dialogues?ctx=ACOM"
+                    href="https://www.anglaisadistance.fr/dialogues?ctx=ACOM"
                     target="_blank"
                     rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
@@ -265,7 +280,7 @@ const Training = () => {
                 </li>
                 <li>
                   <a
-                    href="https://anglaisadistance.fr/dialogues?ctx=VPL"
+                    href="https://www.anglaisadistance.fr/dialogues?ctx=VPL"
                     target="_blank"
                     rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
@@ -279,7 +294,7 @@ const Training = () => {
                 </li>
                 <li>
                   <a
-                    href="https://anglaisadistance.fr/dialogues?ctx=AD"
+                    href="https://www.anglaisadistance.fr/dialogues?ctx=AD"
                     target="_blank"
                     rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
@@ -293,7 +308,7 @@ const Training = () => {
                 </li>
                 <li>
                   <a
-                    href="https://anglaisadistance.fr/dialogues?ctx=MEDICAL"
+                    href="https://www.anglaisadistance.fr/dialogues?ctx=MEDICAL"
                     target="_blank"
                     rel="noopener"
                     className="flex items-start gap-3 p-4 min-h-[64px] rounded-lg border border-border hover:border-accent hover:bg-accent/5 transition-colors"
@@ -309,7 +324,7 @@ const Training = () => {
 
               <div className="mt-5 pt-5 border-t border-border">
                 <a
-                  href="https://anglaisadistance.fr/dialogues"
+                  href="https://www.anglaisadistance.fr/dialogues"
                   target="_blank"
                   rel="noopener"
                   className="inline-flex items-center gap-2 text-sm font-medium text-accent underline underline-offset-2 hover:decoration-2"

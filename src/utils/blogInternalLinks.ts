@@ -128,57 +128,56 @@ export function getRelatedContent(postId: string, category: string): RelatedCont
   };
 }
 
-// Exercise link labels by category for anchor text variation
+// Exercise link labels by category for anchor text variation.
+// Each category points to the matching Grammatica section on this domain.
 const exerciseLinkVariants: Record<string, { href: string; label: string }[]> = {
   'Grammaire - Temps': [
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices de grammaire' },
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices sur les temps' },
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'quiz interactifs de grammaire' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/tenses', label: 'exercices de grammaire' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/tenses', label: 'exercices sur les temps' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/tenses', label: 'quiz interactifs de grammaire' },
   ],
   'Grammaire - Prépositions': [
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices de vocabulaire' },
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices sur les prépositions' },
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'quiz interactifs' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/prepositions', label: 'exercices de grammaire' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/prepositions', label: 'exercices sur les prépositions' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/prepositions', label: 'quiz interactifs' },
   ],
   'Grammaire - Verbes': [
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices sur les verbes' },
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices de vocabulaire' },
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'quiz de grammaire' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/verb-patterns', label: 'exercices sur les verbes' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/verb-patterns', label: 'exercices de grammaire' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/verb-patterns', label: 'quiz de grammaire' },
   ],
   'Grammaire - Structures': [
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices de grammaire' },
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices interactifs' },
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'quiz sur les structures' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/advanced-structures', label: 'exercices de grammaire' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/advanced-structures', label: 'exercices interactifs' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/advanced-structures', label: 'quiz sur les structures' },
   ],
   'Grammaire - Pronoms': [
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices sur les pronoms' },
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices de grammaire' },
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'quiz interactifs' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/pronouns-possessives', label: 'exercices sur les pronoms' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/pronouns-possessives', label: 'exercices de grammaire' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/pronouns-possessives', label: 'quiz interactifs' },
   ],
   'Grammaire - Quantificateurs': [
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices sur les quantificateurs' },
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices interactifs' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/nouns-quantity', label: 'exercices sur les quantificateurs' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/nouns-quantity', label: 'exercices interactifs' },
   ],
   'Grammaire - Déterminants': [
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices sur les déterminants' },
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices de grammaire' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/articles-determiners', label: 'exercices sur les déterminants' },
+    { href: 'https://www.antonyaddy.com/grammatica/section/articles-determiners', label: 'exercices de grammaire' },
   ],
   'default': [
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices interactifs' },
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'exercices de grammaire' },
-    { href: 'https://anglaisadistance.fr/grammaire-essentielle/contrastes', label: 'quiz d\'anglais' },
+    { href: 'https://www.antonyaddy.com/grammatica', label: 'exercices interactifs' },
+    { href: 'https://www.antonyaddy.com/grammatica', label: 'exercices de grammaire' },
+    { href: 'https://www.antonyaddy.com/grammatica', label: 'quiz d\'anglais' },
   ],
 };
 
-// Reading link variants for anchor text variation
-// The former /ai-reading-comprehension page was retired from anglaisadistance.fr
-// (404). Point instead at /dialogues — the live flagship resource for reading
-// and understanding English in realistic context, which matches the "en contexte"
-// framing of the practice copy above.
+// Reading link variants for anchor text variation.
+// The posts cover workplace English (email, phone, meetings, interviews), so they
+// point to ListenUp's Professional English dialogues on this domain.
 const readingLinkVariants = [
-  { href: 'https://anglaisadistance.fr/dialogues', label: 'Dialogues interactifs' },
-  { href: 'https://anglaisadistance.fr/dialogues', label: 'Compréhension en contexte' },
-  { href: 'https://anglaisadistance.fr/dialogues', label: 'Conversations en anglais' },
+  { href: 'https://www.antonyaddy.com/listening/category/professional', label: 'Dialogues professionnels' },
+  { href: 'https://www.antonyaddy.com/listening/category/professional', label: 'Compréhension en contexte' },
+  { href: 'https://www.antonyaddy.com/listening/category/professional', label: 'Conversations en anglais' },
 ];
 
 /**
