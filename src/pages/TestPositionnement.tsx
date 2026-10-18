@@ -261,7 +261,7 @@ const TestPositionnement = () => {
                   <p className="mt-5 text-xs text-muted-foreground/80 font-body">
                     En autonomie dès maintenant :{' '}
                     <a
-                      href="https://anglaisadistance.fr"
+                      href="https://www.anglaisadistance.fr"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-accent underline underline-offset-2 hover:decoration-2 font-medium"
@@ -299,6 +299,17 @@ const TestPositionnement = () => {
               <span aria-hidden="true">💬</span>
               Envoyer mon score sur WhatsApp
             </a>
+            {/* For visitors who can't use WhatsApp at work: same offer, by form. */}
+            <p className="mt-4 text-sm text-white/90 font-body">
+              Pas de WhatsApp ?{' '}
+              <Link
+                to="/contact?sujet=anglais"
+                onClick={() => trackEvent('positioning_test_form_cta_click', { page: 'test-de-positionnement', target: '/contact' })}
+                className="underline underline-offset-2 font-semibold hover:text-white"
+              >
+                Passer par le formulaire
+              </Link>
+            </p>
             <p className="mt-4 text-xs text-white/70 font-body">
               Réponse sous 24 h ouvrées · Sans engagement
             </p>

@@ -310,7 +310,7 @@ const BlogArticle = () => {
                   Échanger sur WhatsApp
                 </a>
                 <Link
-                  to="/contact"
+                  to="/contact?sujet=anglais"
                   className="inline-flex items-center justify-center border-2 border-accent text-accent px-6 py-3 rounded-lg font-semibold hover:bg-accent hover:text-white transition-colors"
                 >
                   Me contacter
