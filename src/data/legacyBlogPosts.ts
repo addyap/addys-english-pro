@@ -28,7 +28,7 @@ const EXPERIENCE_FLOOR = Math.floor((new Date().getFullYear() - 2005) / 10) * 10
 
 export const legacyBlogPosts: Record<string, ArticleData> = {
   'anglais-professionnel-competence-cle': {
-    title: "L'anglais professionnel, une compétence clé au travail",
+    title: "L'anglais professionnel, une compétence clé",
     content: `
       <p>Dans un monde professionnel de plus en plus globalisé, maîtriser l'anglais n'est plus un simple atout sur le CV : c'est devenu une nécessité absolue pour évoluer dans sa carrière et rester compétitif sur le marché du travail.</p>
 
