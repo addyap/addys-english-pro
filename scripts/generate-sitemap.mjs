@@ -110,6 +110,10 @@ Disallow: /thank-you
 Disallow: /auth
 Disallow: /admin
 
+# Sections served from other projects. Crawlers only read this root file,
+# so their own robots.txt rules have to be repeated here.
+Disallow: /ia/api/
+
 Sitemap: ${BASE}/sitemap.xml
 ${forwardedApps.map((app) => `Sitemap: ${BASE}/${app}/sitemap.xml`).join("\n")}
 `;
