@@ -255,7 +255,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 {close => (
                   <>
                     <p className="px-4 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                      Gratuit, sans inscription
+                      Gratuit pendant le lancement
                     </p>
                     {RESOURCE_LINKS.map(r => (
                       <Link
@@ -391,7 +391,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                       {FORMATION_LINKS.map(f => item(f.href, f.name))}
                       {AUDIENCE_LINKS.map(a => item(a.href, a.name))}
 
-                      {heading('Ressources gratuites')}
+                      {heading('Ressources')}
                       {RESOURCE_LINKS.map(r => item(r.href, r.name))}
                       {MY_TOOLS.map(p => (
                         <a

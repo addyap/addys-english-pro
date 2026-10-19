@@ -47,7 +47,7 @@ const ThankYou: React.FC = () => {
               className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             >
               <Sparkles className="w-5 h-5" aria-hidden="true" />
-              En attendant, entraînez-vous gratuitement
+              En attendant, entraînez-vous avec mes outils
             </Link>
 
             <a
