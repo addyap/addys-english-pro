@@ -16,6 +16,8 @@ export interface Platform {
   accent: string; // tailwind gradient classes for the card header band
   /** Screenshot of the platform's home page (960×600, from the studio portfolio). */
   image: string;
+  /** An app you sign in to and use (CLOE, SpeakUp), not a website you browse. */
+  app?: true;
 }
 
 export const PLATFORMS: Platform[] = [
@@ -74,9 +76,10 @@ export const PLATFORMS: Platform[] = [
     image: '/projects/cloe-prep-path.webp',
     url: 'https://cloe.antonyaddy.com',
     host: 'cloe.antonyaddy.com',
-    tag: 'Préparation CLOE',
+    tag: 'Application · Préparation CLOE',
+    app: true,
     raison:
-      "Une préparation dédiée à la certification CLOE : exercices calés sur le format de l'épreuve pour aborder l'examen avec méthode et confiance.",
+      "Une application de préparation à la certification CLOE : exercices calés sur le format de l'épreuve pour aborder l'examen avec méthode et confiance.",
     accent: 'from-rose-500 to-pink-600',
   },
   {
@@ -84,9 +87,10 @@ export const PLATFORMS: Platform[] = [
     image: '/projects/speakup.webp',
     url: 'https://speak.antonyaddy.com',
     host: 'speak.antonyaddy.com',
-    tag: 'Expression orale',
+    tag: 'Application · Expression orale',
+    app: true,
     raison:
-      "Un entraîneur d'expression orale propulsé par l'IA : dialoguez à voix haute, entraînez-vous à de vraies situations et recevez un retour instantané sur votre prononciation et votre aisance.",
+      "Une application d'expression orale propulsée par l'IA : dialoguez à voix haute, entraînez-vous à de vraies situations et recevez un retour instantané sur votre prononciation et votre aisance.",
     accent: 'from-cyan-500 to-sky-600',
   },
 ];
