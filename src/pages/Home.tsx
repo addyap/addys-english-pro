@@ -318,11 +318,11 @@ const Home = () => {
               <div className="home-showcase home-tools">
                 <div className="home-showcase-intro">
                   <div>
-                    <span className="home-showcase-kicker">Mes outils gratuits</span>
+                    <span className="home-showcase-kicker">Mes outils</span>
                     <h3>Entre deux séances, on continue.</h3>
                     <p className="home-tools-lede">
                       J'ai conçu ces outils pour que mes apprenants progressent aussi en dehors du cours :
-                      gratuits, à leur rythme, dans la langue de chacun.
+                      gratuits pendant leur lancement, à leur rythme, dans la langue de chacun.
                     </p>
                   </div>
                   <Link to="/ressources-en-ligne">

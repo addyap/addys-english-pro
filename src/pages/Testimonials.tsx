@@ -190,7 +190,7 @@ const Testimonials = () => {
                 Me contacter
               </Link>
               <Link to="/ressources-en-ligne" className="bg-card border border-border text-foreground px-6 py-3 rounded-lg font-semibold hover:bg-muted transition-colors">
-                Explorer les plateformes gratuites
+                Explorer mes plateformes
               </Link>
             </div>
           </Reveal>

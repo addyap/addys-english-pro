@@ -28,7 +28,7 @@ const RessourcesEnLigne = () => {
     <>
       <SEOHead
         title="Fluentory by Antony Addy — mes plateformes d'anglais en ligne"
-        description="Plateformes d'entraînement à l'anglais conçues par Antony Addy, formateur certifié FPA : grammaire, compréhension orale, lecture, préparation TOEIC et CLOE. Gratuit."
+        description="Plateformes d'entraînement à l'anglais conçues par Antony Addy, formateur certifié FPA : grammaire, compréhension orale, lecture, préparation TOEIC et CLOE. Gratuit pendant le lancement."
         canonicalUrl="https://www.antonyaddy.com/ressources-en-ligne"
         image="/og/fluentory-og.jpg"
         imageAlt="Fluentory by Antony Addy — mes plateformes d'apprentissage de l'anglais : CLOE, expression orale, TOEIC, compréhension orale, Anglais à Distance et grammaire."
@@ -50,15 +50,15 @@ const RessourcesEnLigne = () => {
                 Fluentory <span className="text-accent">by Antony Addy</span>
               </h1>
               <p className="text-lg sm:text-xl font-semibold text-primary max-w-2xl mx-auto mb-4">
-                Free tools for grammar, listening, reading, speaking and exam prep — built by a
-                certified trainer.
+                Tools for grammar, listening, reading, speaking and exam prep — built by a
+                certified trainer. Free during launch.
               </p>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Mes formations se prolongent ici. Entre deux séances, je donne à mes apprenants des
                 outils que j'ai conçus moi-même, sur {EXPERIENCE_FLOOR} ans de salle de classe :
                 comprendre une règle dans sa langue, entraîner son oreille, lire à son niveau,
                 préparer le TOEIC ou CLOE. {ON_SITE_PLATFORMS.length} d'entre eux vivent directement sur ce site.{' '}
-                <span className="font-semibold text-primary">Tous sont gratuits et enrichis en continu.</span> Je les conçois et les finance moi-même, grâce à mon activité de formateur, sans publicité.
+                <span className="font-semibold text-primary">Tous sont gratuits pendant leur lancement et enrichis en continu.</span> Je les conçois et les finance moi-même, grâce à mon activité de formateur, sans publicité.
               </p>
             </Reveal>
           </div>
@@ -153,7 +153,7 @@ const RessourcesEnLigne = () => {
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <p className="flex flex-1 items-start gap-3 rounded-xl bg-accent/10 p-4 text-sm leading-relaxed text-foreground">
                   <Gift className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
-                  <span><strong>Gratuit.</strong> Toutes ces plateformes sont actuellement en accès libre : vous pouvez les utiliser dès maintenant, sans inscription payante.</span>
+                  <span><strong>Gratuit pendant le lancement.</strong> Toutes ces plateformes sont en accès libre pendant leur lancement : vous pouvez les utiliser dès maintenant, sans inscription payante.</span>
                 </p>
                 <p className="flex flex-1 items-start gap-3 rounded-xl bg-accent/10 p-4 text-sm leading-relaxed text-foreground">
                   <RefreshCw className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
