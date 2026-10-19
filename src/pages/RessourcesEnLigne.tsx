@@ -16,10 +16,11 @@ const RessourcesEnLigne = () => {
       "Fluentory by Antony Addy : la suite de plateformes d'entraînement à l'anglais conçues par Antony Addy, formateur professionnel d'adultes certifié FPA.",
     url: 'https://www.antonyaddy.com/ressources-en-ligne',
     hasPart: PLATFORMS.map((p) => ({
-      '@type': 'WebSite',
+      '@type': p.app ? 'WebApplication' : 'WebSite',
       name: p.name,
       url: p.url,
       description: p.raison,
+      ...(p.app && { applicationCategory: 'EducationalApplication', operatingSystem: 'Web' }),
     })),
   };
 
@@ -108,7 +109,7 @@ const RessourcesEnLigne = () => {
                     </p>
 
                     <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-accent">
-                      {onSitePath(p) ? "Ouvrir l'outil" : 'Découvrir le site'}
+                      {p.app ? "Ouvrir l'application" : onSitePath(p) ? "Ouvrir l'outil" : 'Découvrir le site'}
                       <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
                     </span>
                   </div>
