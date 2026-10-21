@@ -10,10 +10,11 @@
 .site-contact-button, .site-whatsapp-button { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 16px; border-radius: 12px; font-size: .875rem; font-weight: 600; transition: background-color .2s, border-color .2s; }
 .site-contact-button { background: hsl(var(--brand-red)); color: white; }
 .site-contact-button:hover { background: hsl(5 59% 39%); }
-.site-whatsapp-button { color: hsl(var(--brand-ink)); border: 1px solid hsl(var(--border)); }
-.site-whatsapp-button:hover { background: hsl(var(--muted)); border-color: hsl(var(--brand-ink) / .4); }
+.site-whatsapp-button { background: hsl(var(--whatsapp-green)); color: white; border: 1px solid transparent; }
+.site-whatsapp-button:hover { background: hsl(var(--whatsapp-green-hover)); }
 .site-mobile-contact, .site-menu-button { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid hsl(var(--border)); border-radius: 12px; color: hsl(var(--brand-ink)); }
-.site-mobile-contact { background: hsl(var(--brand-ink)); color: white; border-color: transparent; }
+.site-mobile-contact { background: hsl(var(--whatsapp-green)); color: white; border-color: transparent; }
+.site-mobile-contact:hover { background: hsl(var(--whatsapp-green-hover)); }
 .site-menu-button:hover { background: hsl(var(--muted)); }
 .site-menu-button[aria-expanded='true'] { background: hsl(var(--muted)); border-color: hsl(var(--brand-ink) / .4); }
 .site-mobile-navigation { max-height: calc(100dvh - 80px); overflow-y: auto; overscroll-behavior: contain; border-top: 1px solid hsl(var(--border)); padding: 16px 0 24px; }

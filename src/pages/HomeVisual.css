@@ -116,8 +116,8 @@
 .home-contact p { color: hsl(var(--muted-foreground)); line-height: 1.75; }
 .home-contact-inner > span { color: hsl(var(--brand-red)); font-size: .75rem; }
 .home-contact a { min-height: 52px; font: 600 .9375rem/1.5 'Inter', sans-serif; box-shadow: none; border-radius: 12px; }
-.home-contact a:first-child { background: hsl(var(--brand-red)); }
-.home-contact a:first-child:hover { background: hsl(5 59% 39%); }
+.home-contact a:first-child { background: hsl(var(--whatsapp-green)); }
+.home-contact a:first-child:hover { background: hsl(var(--whatsapp-green-hover)); }
 .home-contact a:last-child { color: hsl(var(--brand-ink)); border-color: hsl(var(--brand-ink) / .25); }
 .home-contact a:last-child:hover { background: white; }
 .home-contact > .lg-x { display: none; }

@@ -104,8 +104,8 @@
 .inner-page .contact-whatsapp-card { background:hsl(var(--brand-ink)); border:0; color:white; }
 .contact-whatsapp-card h3, .contact-whatsapp-card svg { color:white; }
 .contact-whatsapp-card p { color:hsl(230 22% 82%); }
-.contact-whatsapp-card a { color:white; border-color:hsl(0 0% 100% / .4); border-radius:12px; min-height:48px; }
-.contact-whatsapp-card a:hover { background:hsl(0 0% 100% / .1); }
+.contact-whatsapp-card a { background:hsl(var(--whatsapp-green)); color:white; border-color:transparent; border-radius:12px; min-height:48px; }
+.contact-whatsapp-card a:hover { background:hsl(var(--whatsapp-green-hover)); }
 @media(max-width:900px) { .contact-grid { grid-template-columns:1fr; } }
 @media(max-width:640px) {
   .contact-form-card { padding:24px; }
