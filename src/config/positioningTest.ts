@@ -29,10 +29,10 @@ import { useEffect, useState } from 'react';
 
 /** Full Kahoot challenge URL, including the `challenge-id` query parameter. */
 export const CHALLENGE_URL =
-  'https://kahoot.it/challenge/03348422?challenge-id=1f8df03b-4a67-425e-a134-6e557d14c7e2_1787049427063';
+  'https://kahoot.it/challenge/03125050?challenge-id=1f8df03b-4a67-425e-a134-6e557d14c7e2_1792589858879';
 
 /** The PIN shown on the page for people who prefer to type it into kahoot.it. */
-export const PIN = '03348422';
+export const PIN = '03125050';
 
 /**
  * The exact instant the Kahoot challenge closes, as an ISO 8601 timestamp.
@@ -47,7 +47,7 @@ export const PIN = '03348422';
  *     "import json,sys,datetime; d=json.load(sys.stdin); \
  *      print(datetime.datetime.fromtimestamp(d['endTime']/1000, datetime.UTC).isoformat())"
  */
-export const EXPIRES_AT = '2026-09-15T11:00:00Z';
+export const EXPIRES_AT = '2026-11-18T11:00:00Z';
 
 /** Warn during the build once the challenge is within this many days of closing. */
 export const WARN_WITHIN_DAYS = 14;
