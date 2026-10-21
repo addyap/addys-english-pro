@@ -1,4 +1,4 @@
-const VERSION = 'v2.2.5';
+const VERSION = 'v2.2.6';
 const CACHE_NAME = `antonyaddy-${VERSION}`;
 const STATIC_CACHE = `${CACHE_NAME}-static`;
 const PAGES_CACHE = `${CACHE_NAME}-pages`;
@@ -59,6 +59,9 @@ self.addEventListener('fetch', (event) => {
   // analytics) and the edge functions go straight to the network untouched.
   if (request.method !== 'GET' || url.origin !== self.location.origin) return;
   if (url.pathname.startsWith('/api/')) return;
+  // Let the browser stream and seek audio directly, without caching large files
+  // or answering a byte-range request with a cached full response.
+  if (url.pathname.startsWith('/audio/') || request.headers.has('range')) return;
   // The WhatsApp hand-off checks the browser's own click signal
   // (Sec-Fetch-User), which a fetch() from here would drop: let it through.
   if (url.pathname === '/whatsapp') return;

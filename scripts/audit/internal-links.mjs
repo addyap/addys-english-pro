@@ -7,7 +7,7 @@
 // Complements the wiring audit: this one asks "does the target of a link
 // exist?", the wiring audit asks "does anything link to this content?".
 
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import {
   ROOT,
   walk,
@@ -89,7 +89,9 @@ export async function runInternalLinksAudit() {
       continue;
     }
     staticCount++;
-    if (!matchesAnyRoute(norm, regexes)) {
+    const publicFile = join(ROOT, "public", norm);
+    const isPublicFile = existsSync(publicFile) && statSync(publicFile).isFile();
+    if (!matchesAnyRoute(norm, regexes) && !isPublicFile) {
       findings.push(
         finding(
           AUDIT,

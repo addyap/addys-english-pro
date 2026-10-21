@@ -118,6 +118,17 @@ try {
     }
 
     const url = new URL(path, BASE).toString();
+    // Audio links open a download rather than an HTML document. Check the
+    // resource over HTTP without treating that browser navigation as a failure.
+    if (/\.(?:m4a|mp3|ogg|wav)$/i.test(path)) {
+      try {
+        const response = await page.request.head(url);
+        if (response.status() >= 400) broken.push({ url, status: response.status() });
+      } catch (error) {
+        unreachable.push({ url, error: String(error.message).split("\n")[0] });
+      }
+      continue;
+    }
     const { resp, error } = await gotoWithRetry(page, url);
 
     if (error) {

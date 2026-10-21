@@ -1,6 +1,6 @@
 import React from 'react';
 import { YEARS_OF_EXPERIENCE, EXPERIENCE_FLOOR } from '@/lib/utils';
-import { Award, Globe, Target, Mail, MapPin, Phone, Factory, School, University, Briefcase } from 'lucide-react';
+import { Award, Globe, Target, Mail, MapPin, Phone, Factory, School, University, Briefcase, Headphones, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import { Reveal } from '@/components/motion/Reveal';
@@ -127,6 +127,29 @@ const About = () => {
                   L'anglais professionnel ne s'apprend pas dans un manuel. Il se construit dans la pratique : simuler une réunion, rédiger un email réel, répondre à un appel difficile. C'est cette approche concrète qui fait la différence pour des adultes occupés.
                 </p>
               </div>
+
+              <section id="portrait-audio" aria-labelledby="portrait-audio-title" lang="fr" className="scroll-mt-28 rounded-2xl border border-primary/15 bg-primary/5 p-5 sm:p-6 mb-8">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                    <Headphones className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <p className="text-sm font-semibold text-primary">Portrait audio · En français · 4 min 58</p>
+                </div>
+                <h3 id="portrait-audio-title" className="text-xl sm:text-2xl font-bold font-heading text-primary mb-3">
+                  Le prof d’anglais qui code des IA
+                </h3>
+                <p id="portrait-audio-description" className="text-muted-foreground leading-relaxed mb-5">
+                  Découvrez ma façon de former et le lien entre mes activités de formateur d’anglais et de créateur d’outils avec l’IA, dans ce portrait audio en français.
+                </p>
+                <audio controls preload="none" aria-labelledby="portrait-audio-title" aria-describedby="portrait-audio-description" className="block w-full min-w-0 max-w-full">
+                  <source src="/audio/le-prof-d-anglais-qui-code-des-ia.m4a" type="audio/mp4" />
+                  Votre navigateur ne prend pas en charge la lecture audio. Utilisez le lien ci-dessous pour télécharger le fichier.
+                </audio>
+                <a href="/audio/le-prof-d-anglais-qui-code-des-ia.m4a" download className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary underline underline-offset-4 hover:decoration-2">
+                  <Download className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  Télécharger l’audio (M4A · 9,6 Mo)
+                </a>
+              </section>
 
               {/* Credentials */}
               <div className="grid md:grid-cols-2 gap-6 mb-6">

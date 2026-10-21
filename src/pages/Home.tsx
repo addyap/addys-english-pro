@@ -2,7 +2,7 @@ import React from 'react';
 import { YEARS_OF_EXPERIENCE, EXPERIENCE_FLOOR, PRICE_RANGE, CONTENT_LAST_REVIEWED_ISO, formatMonthYearFR } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { MY_TOOLS, toolHref, toolOpensNewTab } from '@/data/platforms';
-import { Globe, BookOpen, ExternalLink, Building, GraduationCap, Target, School, University, MessageCircle, Mail, ArrowRight } from 'lucide-react';
+import { Globe, BookOpen, ExternalLink, Building, GraduationCap, Target, School, University, MessageCircle, Mail, ArrowRight, Headphones } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import AvisClients from '../components/AvisClients';
 import HubHeroLigne from '../components/HubHeroLigne';
@@ -539,6 +539,10 @@ const Home = () => {
                     LinkedIn
                   </a>
                 </div>
+                <a href="/qui-je-suis#portrait-audio" className="mt-6 inline-flex items-center gap-2 font-body text-sm font-medium text-[#F6A463] underline underline-offset-4 hover:decoration-2">
+                  <Headphones className="h-5 w-5 shrink-0" aria-hidden="true" />
+                  Écouter mon portrait audio · En français · 5 min
+                </a>
               </Reveal>
             </div>
           </div>
