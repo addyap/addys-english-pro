@@ -46,6 +46,7 @@ const RessourcesEnLigne = () => {
                 <Sparkles className="h-4 w-4" aria-hidden="true" />
                 Conçues par un formateur certifié FPA
               </span>
+              <span className="visual-photo-credit">Photo d’illustration · Pexels</span>
               <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-3 font-heading leading-tight">
                 Fluentory <span className="text-accent">by Antony Addy</span>
               </h1>

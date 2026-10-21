@@ -94,6 +94,7 @@ const Testimonials = () => {
           {/* Header */}
           <Reveal className="inner-intro text-center mb-8">
             <span className="inner-kicker">Leurs mots, leur expérience</span>
+              <span className="visual-photo-credit">Photo d’illustration · Pexels</span>
             <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
               Témoignages
             </h1>
@@ -149,7 +150,7 @@ const Testimonials = () => {
           </Reveal>
 
           {/* Testimonials */}
-          <RevealStagger className="space-y-6">
+          <RevealStagger className="visual-testimonials-grid space-y-6">
             {isLoading ? (
               Array.from({ length: 5 }).map((_, index) => (
                 <TestimonialSkeleton key={index} />

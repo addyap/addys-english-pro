@@ -1,0 +1,115 @@
+/* Image-led sections for the main marketing site. Forwarded apps own their styles. */
+.visual-hero-portrait { position:relative; height:224px; overflow:hidden; margin:0; }
+.visual-hero-portrait img { width:100%; height:100%; object-fit:cover; object-position:50% 0%; }
+.visual-hero-portrait::after { content:''; position:absolute; inset:45% 0 0; background:linear-gradient(transparent,rgba(13,20,40,.86)); }
+.visual-hero-portrait figcaption { position:absolute; left:24px; bottom:20px; z-index:1; color:white; font:600 24px/1.2 'Bricolage Grotesque',sans-serif; }
+.visual-hero-portrait figcaption span { display:block; margin-top:6px; color:#eee5da; font:400 13px/1.5 'Inter',sans-serif; }
+.llx .llx-interchange { display:none; }
+.llx .llx-board { border-radius:24px; }
+.llx .llx-board-top { padding:20px 24px; border:0; }
+.llx .llx-routes { padding:0 24px 24px 24px; gap:8px; }
+.llx .llx-route-stop { display:none; }
+.llx .llx-route a { min-height:76px; }
+.llx .llx-board-bottom { padding:16px 24px; }
+.llx .llx-inner { gap:80px; padding-top:64px; }
+.home-chapter--english .home-chapter-art { aspect-ratio:4/3; border-radius:24px 24px 72px 24px; box-shadow:16px 16px 0 #eadaca; }
+.visual-home-photo { position:relative; margin:0; }
+.visual-home-photo figcaption { position:absolute; right:24px; bottom:16px; padding:6px 10px; border-radius:6px; background:rgba(17,22,49,.8); color:#fff; font:400 10px/1.5 'Inter',sans-serif; }
+.inner-page :is(.inner-intro,.inner-hero) .visual-photo-credit { position:absolute; right:24px; bottom:16px; padding:6px 10px; border-radius:6px; background:rgba(17,22,49,.8); color:white; font:400 10px/1.5 'Inter',sans-serif; }
+.home-person .home-person-grid img { border-radius:24px 24px 72px 24px; box-shadow:16px 16px 0 #eadaca; }
+.home-early-proof .home-early-quote blockquote { font-size:1.375rem; }
+.home-early-proof .home-early-proof-inner { padding-block:40px; }
+
+/* Editorial image-led openings for the core marketing pages. */
+.inner-page--training { --visual-photo:url('/visuals/professional-workshop.jpg'); }
+.inner-page--testimonials { --visual-photo:url('/visuals/conversation.jpg'); }
+.inner-page--blog, .inner-page--resources, .inner-page--city { --visual-photo:url('/visuals/independent-learning.jpg'); }
+.inner-page--contact { --visual-photo:url('/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png'); }
+.inner-page:is(.inner-page--training,.inner-page--testimonials,.inner-page--blog,.inner-page--resources,.inner-page--contact,.inner-page--city) :is(.inner-intro,.inner-hero) { min-height:440px; padding-top:80px; padding-bottom:80px; }
+.inner-page:is(.inner-page--training,.inner-page--testimonials,.inner-page--blog,.inner-page--resources,.inner-page--contact,.inner-page--city) :is(.inner-intro,.inner-hero)::after { inset:0 0 0 54%; background-image:linear-gradient(90deg,var(--inner-surface),transparent 18%),var(--visual-photo); background-size:cover; background-position:center; opacity:1; mask-image:none; z-index:-1; }
+.inner-page--contact .inner-intro::after { background-position:center,50% 34%; }
+.inner-page:is(.inner-page--training,.inner-page--testimonials,.inner-page--blog,.inner-page--resources,.inner-page--contact,.inner-page--city) :is(.inner-intro,.inner-hero) h1 { max-width:15ch; font-size:clamp(2.5rem,4vw,3.75rem); }
+.inner-page:is(.inner-page--training,.inner-page--testimonials,.inner-page--blog,.inner-page--resources,.inner-page--contact,.inner-page--city) :is(.inner-intro,.inner-hero) p { max-width:min(48%,54ch); font-size:1.0625rem; line-height:1.75; }
+.inner-page--resources .inner-hero p { font-size:1rem; }
+.inner-page--resources .inner-hero { min-height:580px; }
+.inner-page :is(.inner-intro,.inner-hero) .aurora { display:none; }
+.inner-page--testimonials .inner-intro .block { max-width:45%; text-align:left; }
+.inner-page--training .inner-intro > .flex { max-width:50%; flex-wrap:wrap; }
+.inner-page--training .inner-intro > .flex > a { width:fit-content; }
+.inner-page--training .inner-hero .flex { justify-content:flex-start; }
+.inner-page--training > .max-w-4xl, .inner-page--about > .max-w-4xl, .inner-page--testimonials > .max-w-4xl { max-width:1120px; }
+.inner-scan > div { position:relative; padding:32px; border:0; border-radius:16px; background:#f0e7dc; }
+.inner-scan p { margin-top:16px; font-size:1.125rem; font-weight:600; }
+.training-overview-grid { gap:24px; }
+.training-option { padding:32px; border-top:0; min-height:360px; background:#fffdfa; box-shadow:none; }
+.training-option-number { display:grid; width:48px; height:48px; place-items:center; border-radius:14px; background:#f3e1d4; color:#973a26; font:600 20px/1 'Bricolage Grotesque',sans-serif; }
+.training-option:nth-child(3n + 2) .training-option-number { background:#e5e0f1; color:#59428b; }
+.training-option:nth-child(3n + 3) .training-option-number { background:#dfeadf; color:#3c6349; }
+.training-option h3 { margin-top:24px; font-size:1.5rem; }
+.training-option-link { margin-top:24px; }
+
+/* The real trainer portrait stays the focal point of the profile. */
+.inner-page--about .inner-intro { min-height:490px; padding-block:96px; overflow:visible; }
+.inner-page--about .inner-intro h1 { max-width:50%; font-size:clamp(3rem,4vw,4rem); }
+.inner-page--about .inner-intro p { max-width:46%; }
+.inner-page--about .inner-intro::after { display:none; }
+.inner-page--about .inner-intro > .visual-about-portrait { position:absolute; inset:32px max(32px,calc((100vw - 1120px)/2)) 32px auto; width:410px; margin:0; overflow:hidden; border-radius:24px 24px 80px 24px; box-shadow:16px 16px 0 #dfcbb7; }
+.visual-about-portrait img { width:100%; height:100%; object-fit:cover; object-position:center 35%; }
+.visual-about-portrait::after { content:''; position:absolute; inset:50% 0 0; background:linear-gradient(transparent,rgba(17,22,49,.9)); }
+.visual-about-portrait figcaption { position:absolute; left:24px; right:24px; bottom:24px; z-index:2; color:#fff; font:600 26px/1.2 'Bricolage Grotesque',sans-serif; }
+.visual-about-portrait figcaption span { display:block; margin-top:6px; font:400 12px/1.5 'Inter',sans-serif; }
+.about-profile-card { padding:48px; }
+.about-profile-card > .flex.justify-center { display:none; }
+.about-profile-card > .text-lg { columns:2; column-gap:48px; font-size:1.0625rem; }
+.about-profile-card > .text-lg p { break-inside:avoid; }
+.about-profile-card > .border-l-4 { margin-block:40px; padding:24px 32px; border:0; background:#f4eee5; border-radius:16px; }
+.about-profile-card > .border-l-4 h3 { font:600 24px/1.25 'Bricolage Grotesque',sans-serif; }
+#portrait-audio { position:relative; overflow:hidden; background:#111631; border:0; padding:32px; }
+#portrait-audio :is(h3,p,a) { color:#fff; }
+#portrait-audio #portrait-audio-description { color:#d4d6e0; max-width:65ch; }
+#portrait-audio > div:first-child > span { background:#f6a463; color:#111631; }
+#portrait-audio > div:first-child p { color:#f6c59c; }
+#portrait-audio audio { position:relative; z-index:1; }
+.visual-audio-wave { display:flex; align-items:center; gap:5px; height:72px; margin:12px 0 24px; opacity:.75; }
+.visual-audio-wave span { width:5px; flex:1; max-width:10px; border-radius:8px; background:#e9ad7e; }
+
+/* Reading and recommendations get a clearer editorial rhythm. */
+.visual-featured-article { display:grid; grid-template-columns:1fr 1.15fr; border:1px solid #ddd8d1; box-shadow:none; border-radius:24px; }
+.visual-featured-article > .visual-article-photo { width:100%; height:100%; min-height:320px; object-fit:cover; }
+.visual-featured-article > div.p-8 { padding:40px; }
+.visual-testimonials-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+.visual-testimonials-grid > * { margin-top:0!important; }
+.visual-testimonials-grid > *:first-child { grid-column:1/-1; }
+.visual-testimonials-grid blockquote { line-height:1.8; }
+.contact-whatsapp-card { position:relative; overflow:hidden; }
+.contact-whatsapp-card::after { content:''; display:block; height:4px; width:72px; background:#27c464; border-radius:3px; margin-top:24px; }
+.inner-page--contact .contact-form-card { border-top:4px solid #d4a27d; }
+
+@media(max-width:1100px) {
+  .inner-page--about .inner-intro > .visual-about-portrait { width:36%; right:32px; }
+  .llx .llx-inner { gap:40px; }
+}
+@media(max-width:760px) {
+  .llx .llx-inner { padding-top:40px; gap:40px; }
+  .visual-hero-portrait { height:240px; }
+  .home-chapter--english .home-chapter-art { box-shadow:8px 8px 0 #eadaca; border-bottom-right-radius:48px; }
+  .inner-page:is(.inner-page--training,.inner-page--testimonials,.inner-page--blog,.inner-page--resources,.inner-page--contact,.inner-page--city) :is(.inner-intro,.inner-hero) { padding-top:48px; padding-bottom:280px; min-height:0; }
+  .inner-page:is(.inner-page--training,.inner-page--testimonials,.inner-page--blog,.inner-page--resources,.inner-page--contact,.inner-page--city) :is(.inner-intro,.inner-hero)::after { inset:auto 0 0; height:240px; background-image:linear-gradient(180deg,var(--inner-surface),transparent 20%),var(--visual-photo); background-position:center; }
+  .inner-page:is(.inner-page--training,.inner-page--testimonials,.inner-page--blog,.inner-page--resources,.inner-page--contact,.inner-page--city) :is(.inner-intro,.inner-hero) h1 { max-width:100%; font-size:2.5rem; }
+  .inner-page:is(.inner-page--training,.inner-page--testimonials,.inner-page--blog,.inner-page--resources,.inner-page--contact,.inner-page--city) :is(.inner-intro,.inner-hero) p { max-width:100%; }
+  .inner-page--testimonials .inner-intro .block { max-width:100%; }
+  .inner-page--training .inner-intro > .flex { max-width:100%; }
+  .inner-page--contact .inner-intro::after { background-position:center,50% 30%!important; }
+  .inner-page--about .inner-intro { padding-top:48px; padding-bottom:40px; }
+  .inner-page--about .inner-intro h1,.inner-page--about .inner-intro p { max-width:100%; }
+  .inner-page--about .inner-intro > .visual-about-portrait { position:relative; inset:auto; width:100%; height:340px; margin-top:32px; border-bottom-right-radius:56px; box-shadow:8px 8px 0 #dfcbb7; }
+  .about-profile-card { padding:24px; }
+  .about-profile-card > .text-lg { columns:1; }
+  .about-profile-card > .border-l-4 { margin-block:32px; padding:24px; }
+  #portrait-audio { padding:24px; }
+  .visual-featured-article { grid-template-columns:1fr; }
+  .visual-featured-article > .visual-article-photo { min-height:0; height:220px; }
+  .visual-featured-article > div.p-8 { padding:24px; }
+  .visual-testimonials-grid { grid-template-columns:1fr; }
+  .training-option { padding:24px; min-height:0; }
+}

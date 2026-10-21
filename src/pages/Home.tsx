@@ -291,7 +291,7 @@ const Home = () => {
                     Britannique natif, certifié Formateur Professionnel d'Adultes. Je ne vous fais pas réciter des règles — je vous mets en mouvement : réunions, présentations, emails, appels. En présentiel sur la Côte d'Azur ou à distance, et entre deux séances avec les outils que j'ai conçus pour vous.
                   </p>
                 </div>
-                <img className="home-chapter-art" src="/illustrations/english-conversation.webp" alt="Illustration de deux bulles de conversation reliées par une ligne rouge, avec un discret motif britannique" width="1200" height="800" loading="lazy" decoding="async" />
+                <figure className="visual-home-photo"><img className="home-chapter-art" src="/visuals/learning-workshop.jpg" alt="Scène d’illustration : des adultes échangent autour de leurs notes pendant un atelier" width="1200" height="800" loading="lazy" decoding="async" /><figcaption>Photo d’illustration · Pexels</figcaption></figure>
               </div>
 
               <p className="home-stations-label mt-7 font-heading text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-[#8b93b6]">Stations desservies</p>
@@ -517,11 +517,11 @@ const Home = () => {
               <Reveal variant="left" className="flex flex-col items-center lg:items-start">
                 <img
                   src="/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png"
-                  alt="Antony Addy animant une formation en anglais professionnel avec des apprenants adultes"
+                  alt="Antony Addy au micro lors d’une intervention"
                   className="w-full max-w-[300px] h-auto rounded-2xl shadow-2xl border border-white/10"
                   width="300" height="300" loading="lazy" decoding="async"
                 />
-                <p className="text-sm text-[#8b93b6] mt-3 text-center lg:text-left font-body italic">En formation avec des professionnels</p>
+                <p className="text-sm text-[#8b93b6] mt-3 text-center lg:text-left font-body italic">Antony Addy en intervention</p>
               </Reveal>
               <Reveal variant="right" className="max-w-xl">
                 <p className="text-lg text-[#CBCFE4] leading-relaxed mb-4 font-body">

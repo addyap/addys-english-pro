@@ -121,6 +121,7 @@ const Blog = () => {
           {/* Header */}
           <Reveal className="inner-intro text-center mb-12">
             <span className="inner-kicker">Notes de terrain · Anglais professionnel</span>
+              <span className="visual-photo-credit">Photo d’illustration · Pexels</span>
             <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
               Blog Anglais Professionnel
             </h1>
@@ -135,7 +136,8 @@ const Blog = () => {
 
           {/* Featured Article */}
           {displayArticles.length > 0 && (
-          <AnimatedCard className="bg-card shadow-lg mb-12 overflow-hidden" hoverScale={1.01}>
+          <AnimatedCard className="visual-featured-article bg-card shadow-lg mb-12 overflow-hidden" hoverScale={1.01}>
+            <img className="visual-article-photo" src="/visuals/independent-learning.jpg" alt="Une personne consulte son ordinateur et prend des notes en extérieur" width="1536" height="1024" loading="lazy" />
             <div className="p-8">
               <div className="flex items-center mb-4 text-sm text-muted-foreground">
                 <span className="bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">

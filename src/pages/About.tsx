@@ -85,12 +85,16 @@ const About = () => {
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Britannique natif, certifié FPA — formateur d'anglais et d'IA générative, créateur de sites et d'outils numériques sur la Côte d'Azur et à distance
               </p>
+              <figure className="visual-about-portrait">
+                <img src="/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png" alt="Antony Addy, à son bureau" width="960" height="960" />
+                <figcaption>Antony Addy <span>Formateur professionnel d’adultes · Certifié FPA</span></figcaption>
+              </figure>
             </div>
           </Reveal>
 
           {/* Content */}
           <Reveal>
-            <div className="bg-white rounded-lg shadow-lg p-8">
+            <div className="about-profile-card bg-white rounded-lg shadow-lg p-8">
               <div className="flex items-center mb-6">
                 <h2 className="text-2xl font-bold text-primary">Antony Addy</h2>
               </div>
@@ -141,6 +145,9 @@ const About = () => {
                 <p id="portrait-audio-description" className="text-muted-foreground leading-relaxed mb-5">
                   Découvrez ma façon de former et le lien entre mes activités de formateur d’anglais et de créateur d’outils avec l’IA, dans ce portrait audio en français.
                 </p>
+                <div className="visual-audio-wave" aria-hidden="true">
+                  {[18,30,44,24,56,36,68,48,32,64,80,54,36,66,40,24,52,72,42,60,28,46,20,34,58,40,26,48,64,30,44,20].map((height, index) => <span key={index} style={{height: `${height}%`}} />)}
+                </div>
                 <audio controls preload="none" aria-labelledby="portrait-audio-title" aria-describedby="portrait-audio-description" className="block w-full min-w-0 max-w-full">
                   <source src="/audio/le-prof-d-anglais-qui-code-des-ia.m4a" type="audio/mp4" />
                   Votre navigateur ne prend pas en charge la lecture audio. Utilisez le lien ci-dessous pour télécharger le fichier.

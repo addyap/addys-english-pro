@@ -7,6 +7,7 @@ import { ViteReactSSG } from "vite-react-ssg";
 import { routes } from "./routes";
 import "./index.css";
 import "./inner-pages.css";
+import "./section-visuals.css";
 
 /**
  * vite-react-ssg entry.

@@ -181,6 +181,7 @@ const Training = () => {
           <Reveal>
             <div className="inner-intro text-center mb-12">
               <span className="inner-kicker">Ligne anglais · Vos formations</span>
+              <span className="visual-photo-credit">Photo d’illustration · Pexels</span>
               <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
                 Formations d'anglais professionnel
               </h1>
