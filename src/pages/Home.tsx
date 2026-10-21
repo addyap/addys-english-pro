@@ -27,6 +27,9 @@ const CLIENT_LOGOS = [
   { src: "/lovable-uploads/edj-nice-logo.webp", alt: "Logo EDJ Nice, L'école du journalisme, partenaire formation anglais", name: "EDJ Nice" },
 ];
 
+// Share the portfolio's screenshots so both galleries show the same sites.
+const PROJECT_SCREENSHOTS_BASE = 'https://www.antonyaddy.com/sites-web/screenshots';
+
 const FEATURED_PROJECTS = [
   {
     name: 'Ristorante da Lola',
@@ -34,7 +37,7 @@ const FEATURED_PROJECTS = [
     need: 'Présenter le restaurant à une clientèle internationale.',
     solution: 'Menu, galerie et réservation en quatre langues.',
     url: 'https://www.ristorantedalola.it',
-    image: '/projects/ristorante-lola.jpg',
+    screenshot: 'ristorante-lola',
   },
   {
     name: 'Filton Athletic FC',
@@ -42,7 +45,7 @@ const FEATURED_PROJECTS = [
     need: 'Rassembler les informations utiles aux supporters.',
     solution: 'Calendrier, résultats, classements et actualités du club.',
     url: 'https://filtonathletic.co.uk',
-    image: '/projects/filton-athletic-fc.jpg',
+    screenshot: 'filton-athletic-fc',
   },
   {
     name: 'Wall Street Fréjus',
@@ -50,7 +53,7 @@ const FEATURED_PROJECTS = [
     need: 'Remplir la salle les soirs de concert et de match.',
     solution: 'Programme, menu de la semaine et réservation en ligne.',
     url: 'https://www.wallstreetfrejus.fr',
-    image: '/projects/wall-street.webp',
+    screenshot: 'wall-street',
   },
   {
     name: 'SR Bien-être',
@@ -58,7 +61,7 @@ const FEATURED_PROJECTS = [
     need: 'Présenter des soins variés et faciliter la prise de rendez-vous.',
     solution: 'Une page claire par soin et la réservation en ligne.',
     url: 'https://www.srbienetre.fr',
-    image: '/projects/stephanie.webp',
+    screenshot: 'stephanie',
   },
 ] as const;
 
@@ -438,7 +441,13 @@ const Home = () => {
                   <a key={project.name} className="home-project" href={project.url} target="_blank" rel="noopener noreferrer"
                     onClick={() => trackEvent('home_project_click', { project: project.name, target: project.url })}>
                     <div className="home-project-image">
-                      <img src={project.image} alt={`Capture d'écran de ${project.name}`} width="1200" height="750" loading="lazy" decoding="async" />
+                      <img
+                        src={`${PROJECT_SCREENSHOTS_BASE}/${project.screenshot}.jpg`}
+                        srcSet={`${PROJECT_SCREENSHOTS_BASE}/responsive/${project.screenshot}-480.webp 480w, ${PROJECT_SCREENSHOTS_BASE}/responsive/${project.screenshot}-960.webp 960w, ${PROJECT_SCREENSHOTS_BASE}/${project.screenshot}.jpg 1200w`}
+                        sizes="(max-width: 640px) calc(100vw - 68px), (max-width: 1200px) calc((100vw - 120px) / 2), 540px"
+                        alt={`Capture d'écran de ${project.name}`}
+                        width="1200" height="750" loading="lazy" decoding="async"
+                      />
                       <span aria-hidden="true"><ExternalLink size={19} /></span>
                     </div>
                     <div className="home-project-copy">
