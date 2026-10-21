@@ -138,7 +138,7 @@ const Training = () => {
     {
       icon: Accessibility,
       title: 'Accessibilité et situation de handicap',
-      body: "Mes formations sont ouvertes aux personnes en situation de handicap. En tant que formateur indépendant, j'assure moi-même le rôle de référent handicap : contactez-moi en amont à formations@antonyaddy.com ou au +33 6 49 82 98 26 pour que nous étudiions ensemble les aménagements nécessaires (rythme, supports adaptés, durée des séances, lieu accessible, formation à distance). Si un besoin dépasse ce que je peux mettre en place seul, je vous oriente vers les ressources spécialisées de l'Agefiph ou de Cap Emploi.",
+      body: "Mes formations sont ouvertes aux personnes en situation de handicap. En tant que formateur indépendant, j'assure moi-même le rôle de référent handicap : contactez-moi en amont à formations@antonyaddy.com ou sur WhatsApp pour que nous étudiions ensemble les aménagements nécessaires (rythme, supports adaptés, durée des séances, lieu accessible, formation à distance). Si un besoin dépasse ce que je peux mettre en place seul, je vous oriente vers les ressources spécialisées de l'Agefiph ou de Cap Emploi.",
     },
   ];
 
@@ -542,7 +542,7 @@ const Training = () => {
                 </div>
                 <div className="flex items-center justify-center">
                   <Phone className="h-4 w-4 mr-2" />
-                  <span>+33 6 49 82 98 26</span>
+                  <a href="/whatsapp" target="_blank" rel="noopener nofollow" className="underline underline-offset-2 hover:text-foreground">WhatsApp</a>
                 </div>
               </div>
               

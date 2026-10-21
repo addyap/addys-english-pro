@@ -560,6 +560,10 @@
   ],
   "rewrites": [
     {
+      "source": "/whatsapp",
+      "destination": "/api/whatsapp"
+    },
+    {
       "source": "/sites-web",
       "destination": "https://creations.antonyaddy.com/sites-web"
     },

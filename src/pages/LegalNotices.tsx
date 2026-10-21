@@ -1,4 +1,5 @@
 import React from 'react';
+import PhoneNumber from '@/components/PhoneNumber';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import { MEDIATOR } from '@/config/mediator';
@@ -29,7 +30,7 @@ const LegalNotices = () => {
               <p className="mb-2"><strong>SIRET :</strong> 48317889300028</p>
               <p className="mb-2"><strong>Code NAF/APE :</strong> 8559B — Autres enseignements</p>
               <p className="mb-2"><strong>TVA :</strong> TVA non applicable, art. 293 B du CGI</p>
-              <p className="mb-2"><strong>Téléphone :</strong> +33 6 49 82 98 26</p>
+              <p className="mb-2"><strong>Téléphone :</strong> <PhoneNumber /></p>
               <p className="mb-2">
                 <strong>Courriel :</strong>{" "}
                 <a href="mailto:formations@antonyaddy.com" className="text-accent font-medium underline">

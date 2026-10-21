@@ -258,7 +258,7 @@ const About = () => {
                 </div>
                 <div className="flex items-center justify-center text-muted-foreground">
                   <Phone className="h-4 w-4 mr-2" />
-                  <span>WhatsApp : +33 6 49 82 98 26</span>
+                  <a href="/whatsapp" target="_blank" rel="noopener nofollow" className="underline underline-offset-2 hover:text-foreground">Écrivez-moi sur WhatsApp</a>
                 </div>
               </div>
               
