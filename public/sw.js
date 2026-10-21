@@ -1,4 +1,4 @@
-const VERSION = 'v2.2.4';
+const VERSION = 'v2.2.5';
 const CACHE_NAME = `antonyaddy-${VERSION}`;
 const STATIC_CACHE = `${CACHE_NAME}-static`;
 const PAGES_CACHE = `${CACHE_NAME}-pages`;
@@ -59,6 +59,9 @@ self.addEventListener('fetch', (event) => {
   // analytics) and the edge functions go straight to the network untouched.
   if (request.method !== 'GET' || url.origin !== self.location.origin) return;
   if (url.pathname.startsWith('/api/')) return;
+  // The WhatsApp hand-off checks the browser's own click signal
+  // (Sec-Fetch-User), which a fetch() from here would drop: let it through.
+  if (url.pathname === '/whatsapp') return;
   // These are separate apps that www forwards to; they do their own caching.
   if (/^\/(sites-web|books|toeic|grammatica|listening|ia)(\/|$)/.test(url.pathname)) return;
 
