@@ -27,7 +27,9 @@ function readOffsiteRedirectSources() {
   try {
     const config = JSON.parse(readFileSync(new URL("../vercel.json", import.meta.url), "utf8"));
     return [...(config.redirects ?? []), ...(config.rewrites ?? [])]
-      .filter((r) => /^https?:\/\//.test(r.destination))
+      // Also rewrites to a serverless function (/whatsapp → /api/whatsapp):
+      // Vercel runs those, dist/ has no file for them.
+      .filter((r) => /^https?:\/\//.test(r.destination) || r.destination.startsWith("/api/"))
       // Strip a trailing `:path*` / `:id` so "/exercices/:path*" matches "/exercices/foo".
       .map((r) => r.source.replace(/\/:[^/]*$/, ""));
   } catch {
