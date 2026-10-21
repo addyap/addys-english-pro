@@ -1,4 +1,5 @@
 import React from "react";
+import PhoneNumber from "@/components/PhoneNumber";
 import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import { MEDIATOR } from "@/config/mediator";
@@ -53,7 +54,7 @@ const CGV = () => {
             <li><strong>SIRET :</strong> 483 178 893 00028</li>
             <li><strong>Code NAF/APE :</strong> 8559B — Autres enseignements</li>
             <li><strong>Numéro de Déclaration d'Activité (NDA) :</strong> 93830738883 — enregistrée auprès de la DREETS Provence-Alpes-Côte d'Azur</li>
-            <li><strong>Téléphone :</strong> +33 6 49 82 98 26</li>
+            <li><strong>Téléphone :</strong> <PhoneNumber /></li>
             <li><strong>Courriel :</strong> formations@antonyaddy.com</li>
           </ul>
           <p className="text-sm italic">
@@ -82,8 +83,8 @@ const CGV = () => {
             Les prestations du Prestataire sont ouvertes aux personnes en
             situation de handicap. Exerçant en tant que formateur indépendant,
             le Prestataire assure lui-même la fonction de référent handicap et
-            peut être joint à cet effet à formations@antonyaddy.com ou au
-            +33 6 49 82 98 26.
+            peut être joint à cet effet à formations@antonyaddy.com ou par
+            téléphone (numéro ci-dessus).
           </p>
           <p>
             Le Client ou le stagiaire est invité à signaler tout besoin

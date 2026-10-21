@@ -87,7 +87,6 @@ const HOME_JSONLD_GRAPH = {
       url: "https://www.antonyaddy.com",
       logo: "https://www.antonyaddy.com/brand/antony-addy-logo.png",
       image: "https://www.antonyaddy.com/og/antonyaddy-hub.jpg",
-      telephone: "+33649829826",
       email: "formations@antonyaddy.com",
       priceRange: PRICE_RANGE,
       inLanguage: "fr",

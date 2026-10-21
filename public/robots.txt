@@ -6,6 +6,9 @@ Allow: /
 Disallow: /thank-you
 Disallow: /auth
 Disallow: /admin
+# WhatsApp hand-off: only for people who click, never for crawlers.
+Disallow: /whatsapp
+Disallow: /api/
 
 # Sections served from other projects. Crawlers only read this root file,
 # so their own robots.txt rules have to be repeated here.

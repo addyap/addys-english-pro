@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PhoneNumber from '@/components/PhoneNumber';
 import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { MessageSquare, Mail, Phone, MapPin, Clock, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
@@ -598,12 +599,7 @@ const Contact = () => {
                     <Phone className="h-5 w-5 text-accent mr-3" />
                     <div>
                       <p className="font-medium text-foreground">Téléphone</p>
-                      <a
-                        href="tel:+33649829826"
-                        className="text-accent hover:text-accent/80 transition-colors"
-                      >
-                        +33 6 49 82 98 26
-                      </a>
+                      <PhoneNumber className="text-accent hover:text-accent/80 transition-colors" />
                     </div>
                   </div>
 

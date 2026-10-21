@@ -45,7 +45,6 @@ export const CityLandingPage: React.FC<CityPageProps> = ({
     name: `Antony Addy — Cours d'anglais ${city}`,
     description: seo.description,
     url: seo.canonical,
-    telephone: '+33649829826',
     email: 'formations@antonyaddy.com',
     address: ADDRESS,
     areaServed: areaServed.map(a => ({ '@type': 'City', name: a })),

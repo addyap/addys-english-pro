@@ -39,7 +39,6 @@ const Testimonials = () => {
     "name": "Antony Addy",
     "description": "Formations d'anglais professionnel par un formateur britannique certifié FPA",
     "url": "https://www.antonyaddy.com",
-    "telephone": "+33649829826",
     "address": {
       "@type": "PostalAddress",
       "@id": "https://www.antonyaddy.com/#address",

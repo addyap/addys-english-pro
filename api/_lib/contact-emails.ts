@@ -9,7 +9,8 @@
 
 const SITE = "https://www.antonyaddy.com";
 const NOTIFY_TO = "formations@antonyaddy.com";
-const WHATSAPP = "https://wa.me/33649829826";
+// The protected hand-off (api/whatsapp.ts): the number never appears in an email.
+const WHATSAPP = "https://www.antonyaddy.com/whatsapp";
 
 const C = {
   page: "#f4f2ee",

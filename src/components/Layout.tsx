@@ -487,7 +487,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               <p className="mb-4 leading-relaxed text-gray-300">Premier échange gratuit · Réponse sous 24 h ouvrées</p>
               <Link to="/contact" className="mb-5 inline-flex rounded-lg bg-accent px-5 py-3 font-semibold text-white hover:bg-accent/90">Prendre contact</Link>
               <a href="mailto:formations@antonyaddy.com" className="flex items-center gap-2 text-gray-300 hover:text-white"><Mail className="h-4 w-4" aria-hidden="true" />formations@antonyaddy.com</a>
-              <a href={whatsappLink} target="_blank" rel="noopener noreferrer" onClick={handleWhatsAppClick('footer-contact')} className="mt-3 flex items-center gap-2 text-gray-300 hover:text-white"><MessageSquare className="h-4 w-4" aria-hidden="true" />WhatsApp · +33 6 49 82 98 26</a>
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer" onClick={handleWhatsAppClick('footer-contact')} className="mt-3 flex items-center gap-2 text-gray-300 hover:text-white"><MessageSquare className="h-4 w-4" aria-hidden="true" />WhatsApp</a>
               <a href="https://linkedin.com/in/antonyaddy" target="_blank" rel="noopener noreferrer" className="mt-3 inline-block text-gray-300 hover:text-white">LinkedIn ↗</a>
             </div>
           </div>
