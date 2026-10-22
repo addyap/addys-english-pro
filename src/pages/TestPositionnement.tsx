@@ -50,7 +50,7 @@ const TestPositionnement = () => {
   useScrollTracking('test-de-positionnement');
   useTimeTracking('test-de-positionnement');
   const whatsappScoreLink = useWhatsAppLink('score');
-  const whatsappLink = useWhatsAppLink();
+  const whatsappLink = useWhatsAppLink('anglais');
   // False once the Kahoot challenge deadline has passed. Flips after mount, so
   // the page never advertises a test that no longer accepts players.
   const testIsOpen = useIsPositioningTestOpen();
