@@ -28,7 +28,7 @@ import { getRelatedContent, getExerciseLink, getReadingLink } from '@/utils/blog
 const BlogArticle = () => {
   const { id } = useParams();
   const articleRef = useRef<HTMLDivElement>(null);
-  const whatsappLink = useWhatsAppLink();
+  const whatsappLink = useWhatsAppLink('anglais');
   useScrollTracking(`/blog/${id}`);
 
   // Convert grammar blog posts to the expected format

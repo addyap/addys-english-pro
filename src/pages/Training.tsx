@@ -12,7 +12,7 @@ import { trackEvent } from '@/lib/analytics';
 import { useWhatsAppLink } from '@/hooks/useWhatsAppLink';
 
 const Training = () => {
-  const whatsappLink = useWhatsAppLink();
+  const whatsappLink = useWhatsAppLink('anglais');
   useScrollTracking('training');
   useTimeTracking('training');
   const trainingJsonLd = {
@@ -543,7 +543,7 @@ const Training = () => {
                 </div>
                 <div className="flex items-center justify-center">
                   <Phone className="h-4 w-4 mr-2" />
-                  <a href="/whatsapp" target="_blank" rel="noopener nofollow" className="underline underline-offset-2 hover:text-foreground">WhatsApp</a>
+                  <a href="/whatsapp?c=anglais" target="_blank" rel="noopener nofollow" className="underline underline-offset-2 hover:text-foreground">WhatsApp</a>
                 </div>
               </div>
               

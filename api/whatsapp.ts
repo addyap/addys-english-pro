@@ -20,7 +20,20 @@ export const config = { runtime: "edge" };
 // Every response is no-store and noindex, and robots.txt disallows /whatsapp.
 
 const MESSAGES: Record<string, string> = {
+  // Header, footer, home, contact: the visitor may want any of the three
+  // services, so the message lets them keep the line that applies.
   default: `Bonjour Antony,
+
+Ma demande concerne (gardez la bonne ligne) :
+• Anglais professionnel (cours, formation)
+• IA générative (formation, atelier)
+• Site web ou outil sur mesure
+
+Mon besoin en quelques mots :
+
+Merci !`,
+  // English-only pages (training offer, blog, positioning test).
+  anglais: `Bonjour Antony,
 
 Je souhaite améliorer mon anglais.
 
