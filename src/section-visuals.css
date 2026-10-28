@@ -27,7 +27,7 @@
 .inner-page--contact { --visual-photo:url('/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png'); }
 .inner-page:is(.inner-page--training,.inner-page--testimonials,.inner-page--blog,.inner-page--resources,.inner-page--contact,.inner-page--city) :is(.inner-intro,.inner-hero) { min-height:440px; padding-top:80px; padding-bottom:80px; }
 .inner-page:is(.inner-page--training,.inner-page--testimonials,.inner-page--blog,.inner-page--resources,.inner-page--contact,.inner-page--city) :is(.inner-intro,.inner-hero)::after { inset:0 0 0 54%; background-image:linear-gradient(90deg,var(--inner-surface),transparent 18%),var(--visual-photo); background-size:cover; background-position:center; opacity:1; mask-image:none; z-index:-1; }
-.inner-page--contact .inner-intro::after { background-position:center,50% 34%; }
+.inner-page.inner-page--contact .inner-intro::after { background-position:center,50% 0%; }
 .inner-page:is(.inner-page--training,.inner-page--testimonials,.inner-page--blog,.inner-page--resources,.inner-page--contact,.inner-page--city) :is(.inner-intro,.inner-hero) h1 { max-width:15ch; font-size:clamp(2.5rem,4vw,3.75rem); }
 .inner-page:is(.inner-page--training,.inner-page--testimonials,.inner-page--blog,.inner-page--resources,.inner-page--contact,.inner-page--city) :is(.inner-intro,.inner-hero) p { max-width:min(48%,54ch); font-size:1.0625rem; line-height:1.75; }
 .inner-page--resources .inner-hero p { font-size:1rem; }
@@ -99,7 +99,7 @@
   .inner-page:is(.inner-page--training,.inner-page--testimonials,.inner-page--blog,.inner-page--resources,.inner-page--contact,.inner-page--city) :is(.inner-intro,.inner-hero) p { max-width:100%; }
   .inner-page--testimonials .inner-intro .block { max-width:100%; }
   .inner-page--training .inner-intro > .flex { max-width:100%; }
-  .inner-page--contact .inner-intro::after { background-position:center,50% 30%!important; }
+  .inner-page.inner-page--contact .inner-intro::after { background-image:var(--visual-photo); background-position:50% 0%; }
   .inner-page--about .inner-intro { padding-top:48px; padding-bottom:40px; }
   .inner-page--about .inner-intro h1,.inner-page--about .inner-intro p { max-width:100%; }
   .inner-page--about .inner-intro > .visual-about-portrait { position:relative; inset:auto; width:100%; height:340px; margin-top:32px; border-bottom-right-radius:56px; box-shadow:8px 8px 0 #dfcbb7; }
