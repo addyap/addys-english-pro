@@ -175,7 +175,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               {/* The brand logo (public/brand/), with the three activities beside it. */}
               <Link to="/" className="site-wordmark" aria-label="Antony Addy — Accueil">
                 <img className="site-logo" src="/brand/antony-addy-logo.svg" alt="Antony Addy" width="86" height="44" />
-                <small className="site-logo-tagline">Anglais · IA · Sites web</small>
+                <small className="site-logo-tagline">Anglais · Sites web · IA</small>
               </Link>
             </div>
 
@@ -214,10 +214,8 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                 )}
               </NavDropdown>
 
-              {/* The other two activities, as a peer of "Anglais" — the three
-                  activities read as equals in the primary nav, not one offer
-                  plus a tucked-away switcher. */}
-              <NavDropdown label="IA & Sites web" width="w-72">
+              {/* Websites lead this shared menu; AI follows as the third offer. */}
+              <NavDropdown label="Sites web & IA" width="w-72">
                 {close => (
                   <>
                     <p className="px-4 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -411,7 +409,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                       {item('/temoignages', t('nav.testimonials'))}
                       {item('/contact', t('nav.contact'))}
 
-                      {heading('IA & Sites web')}
+                      {heading('Sites web & IA')}
                       {otherDomains.map(f => {
                         const Icon = FORMATION_ICONS[f.icon];
                         return (

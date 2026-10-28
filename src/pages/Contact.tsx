@@ -36,19 +36,6 @@ const SUBJECTS = [
     placeholder: "Ex. : je dois animer des réunions en anglais d'ici trois mois. Niveau intermédiaire, à distance de préférence.",
   },
   {
-    key: 'ia',
-    value: 'IA générative',
-    label: 'IA générative',
-    detail: 'Formations et ateliers',
-    training: true,
-    hints: [
-      'Votre métier ou secteur, et ce que vous voulez y gagner',
-      'Les outils déjà utilisés (ChatGPT, Copilot…), ou aucun',
-      'Seul ou en équipe — et combien de personnes',
-    ],
-    placeholder: 'Ex. : équipe commerciale de six personnes, nous voulons utiliser ChatGPT pour nos emails et nos propositions.',
-  },
-  {
     key: 'sites',
     value: 'Sites web & outils',
     label: 'Site web ou outil',
@@ -60,6 +47,19 @@ const SUBJECTS = [
       'Une fourchette de budget, si vous en avez une',
     ],
     placeholder: 'Ex. : un site vitrine de quelques pages pour mon activité, en ligne avant le printemps.',
+  },
+  {
+    key: 'ia',
+    value: 'IA générative',
+    label: 'IA générative',
+    detail: 'Formations et ateliers',
+    training: true,
+    hints: [
+      'Votre métier ou secteur, et ce que vous voulez y gagner',
+      'Les outils déjà utilisés (ChatGPT, Copilot…), ou aucun',
+      'Seul ou en équipe — et combien de personnes',
+    ],
+    placeholder: 'Ex. : équipe commerciale de six personnes, nous voulons utiliser ChatGPT pour nos emails et nos propositions.',
   },
   {
     key: 'autre',
@@ -77,7 +77,7 @@ const Contact = () => {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     "name": "Contact - Antony Addy",
-    "description": "Contactez Antony Addy pour une formation en anglais ou en IA générative, ou pour la création d'un site web ou d'un outil sur mesure",
+    "description": "Contactez Antony Addy pour une formation en anglais, la création d'un site web ou d'un outil sur mesure, ou un atelier d'IA générative",
     "url": "https://www.antonyaddy.com/contact"
   };
 
@@ -285,12 +285,12 @@ const Contact = () => {
 
   return <>
       <SEOHead 
-        title="Contact | Anglais, IA, sites web & outils numériques"
-        description="Contactez Antony Addy pour une formation en anglais, une formation en IA générative, un site web ou un outil numérique. Réponse sous 24 h ouvrées par email, WhatsApp ou formulaire. Devis gratuit."
-        keywords={["contact formateur anglais", "contact formateur IA", "devis création site web", "devis formation", "WhatsApp", "email formations"]}
+        title="Contact | Anglais, sites web & IA générative"
+        description="Contactez Antony Addy pour une formation en anglais, un site web ou un outil numérique, ou un atelier d'IA générative. Réponse sous 24 h ouvrées. Devis gratuit."
+        keywords={["contact formateur anglais", "devis création site web", "contact formateur IA", "devis formation", "WhatsApp", "email formations"]}
         canonicalUrl="https://www.antonyaddy.com/contact"
         image="https://www.antonyaddy.com/og/antonyaddy-hub.jpg"
-        imageAlt="Antony Addy — formateur d'anglais, formateur en IA générative et créateur de sites web"
+        imageAlt="Antony Addy — formateur d'anglais, créateur de sites web et formateur en IA générative"
         enableOrgJsonLd
         enableWebSiteJsonLd
         jsonLd={[contactJsonLd, {
@@ -341,7 +341,7 @@ const Contact = () => {
               Prenons contact
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Premier échange gratuit et sans engagement pour parler d'anglais, d'IA, d'un site web ou d'un outil sur mesure
+              Premier échange gratuit et sans engagement pour parler d'anglais, d'un site web, d'un outil sur mesure ou d'IA
             </p>
             <span className="heading-rule" aria-hidden="true" />
           </Reveal>

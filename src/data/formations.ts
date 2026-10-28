@@ -1,6 +1,6 @@
 // Single source of truth for Antony Addy's three activities.
 // antonyaddy.com is the hub: the English formation lives on this site (root),
-// generative-AI training at /ia and website creation at /sites-web (separate
+// website creation at /sites-web and generative-AI training at /ia (separate
 // apps that www forwards to).
 // Update links or wording here and the header switcher, homepage hub section
 // and footer all follow automatically.
@@ -38,17 +38,6 @@ export const FORMATIONS: Formation[] = [
     cta: 'Découvrir la formation anglais',
   },
   {
-    key: 'ia',
-    navLabel: 'IA générative',
-    title: 'IA générative',
-    tagline:
-      "Formations à l'IA générative pour gagner en productivité : ChatGPT, prompts et outils IA appliqués à votre métier.",
-    href: '/ia',
-    external: true,
-    icon: 'Sparkles',
-    cta: 'Découvrir la formation IA',
-  },
-  {
     key: 'creations',
     navLabel: 'Sites web & outils',
     title: 'Sites web & outils numériques',
@@ -58,6 +47,17 @@ export const FORMATIONS: Formation[] = [
     external: true,
     icon: 'Code',
     cta: 'Découvrir mes créations',
+  },
+  {
+    key: 'ia',
+    navLabel: 'IA générative',
+    title: 'IA générative',
+    tagline:
+      "Formations à l'IA générative pour gagner en productivité : ChatGPT, prompts et outils IA appliqués à votre métier.",
+    href: '/ia',
+    external: true,
+    icon: 'Sparkles',
+    cta: 'Découvrir la formation IA',
   },
 ];
 

@@ -170,7 +170,7 @@ export default function SEOHead(props: SEOProps) {
     `${SITE_URL}/og/antonyaddy-hub.jpg`;
   const finalImage = rawImage.startsWith("http") ? rawImage : `${SITE_URL}${rawImage}`;
   const finalImageAlt =
-    imageAlt || "Antony Addy — formateur d'anglais, formateur en IA générative et créateur de sites web";
+    imageAlt || "Antony Addy — formateur d'anglais, créateur de sites web et formateur en IA générative";
 
   // Build meta array — react-helmet-async v1.3.0 reliably renders meta
   // passed through props but silently drops it when passed as JSX children.
