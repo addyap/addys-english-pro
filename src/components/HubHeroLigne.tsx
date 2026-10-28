@@ -5,8 +5,8 @@ import './HubHeroLigne.css';
 
 const routes = [
   { key: 'anglais', number: '01', label: 'Anglais professionnel', detail: 'Prenez la parole avec confiance.', href: '#anglais', external: false },
-  { key: 'ia', number: '02', label: 'IA générative', detail: 'Faites travailler les outils pour vous.', href: '/ia', external: false },
-  { key: 'creations', number: '03', label: 'Sites web & outils', detail: 'Pour votre activité ou pour apprendre.', href: '/sites-web', external: false },
+  { key: 'creations', number: '02', label: 'Sites web & outils', detail: 'Pour votre activité ou pour apprendre.', href: '/sites-web', external: false },
+  { key: 'ia', number: '03', label: 'IA générative', detail: 'Faites travailler les outils pour vous.', href: '/ia', external: false },
 ] as const;
 
 export default function HubHeroLigne() {
@@ -17,11 +17,11 @@ export default function HubHeroLigne() {
         <div className="llx-copy">
           <p className="llx-eyebrow"><span className="llx-signal" aria-hidden="true" />Antony Addy · Côte d’Azur &amp; à distance</p>
           <h1 id="llx-title" className="llx-title">
-            <span className="llx-services">L’anglais.<br />L’IA.<br />Le web.</span>
+            <span className="llx-services">L’anglais.<br />Le web.<br />L’IA.</span>
             <span className="llx-promise">À vous d’avancer.</span>
           </h1>
           <p className="llx-description">
-            Formations d’anglais professionnel, ateliers d’IA générative, sites web et outils numériques.
+            Formations d’anglais professionnel, sites web et outils numériques, ateliers d’IA générative.
             Trois façons d’avancer, avec un seul interlocuteur.
           </p>
           <div className="llx-actions">

@@ -129,27 +129,26 @@ const HOME_JSONLD_GRAPH = {
       "@type": "Person",
       "@id": "https://www.antonyaddy.com/#antony-addy",
       name: "Antony Addy",
-      // Antony's three activities. antonyaddy.com is the hub; the IA and
-      // website-creation services live on their own subdomains, modelled as
-      // Service nodes below with this Person as their provider.
+      // Antony's three activities. The website and AI services are modelled
+      // as Service nodes below with this Person as their provider.
       jobTitle: [
         "Formateur d'anglais professionnel",
-        "Formateur en IA générative",
         "Créateur de sites web et d'outils pédagogiques",
+        "Formateur en IA générative",
       ],
       // "depuis 2017" alone read as five years' experience, contradicting the
       // 21+ figure shown on the page. 2017 is the FPA certification date, not
       // the start of the career.
-      description: `Britannique natif, certifié Formateur Professionnel d'Adultes depuis 2017 (${EXPERIENCE_FLOOR}+ ans d'enseignement de l'anglais), également formateur en IA générative et créateur de sites web et d'outils pédagogiques avec l'IA. Côte d'Azur et à distance.`,
+      description: `Britannique natif, certifié Formateur Professionnel d'Adultes depuis 2017 (${EXPERIENCE_FLOOR}+ ans d'enseignement de l'anglais), également créateur de sites web et d'outils pédagogiques, et formateur en IA générative. Côte d'Azur et à distance.`,
       knowsAbout: [
         "Anglais professionnel",
         "Coaching linguistique",
-        "IA générative",
-        "ChatGPT",
-        "Ingénierie de prompts",
         "Création de sites web",
         "Création d'outils pédagogiques",
         "Développement web assisté par IA",
+        "IA générative",
+        "ChatGPT",
+        "Ingénierie de prompts",
       ],
       url: "https://www.antonyaddy.com",
       image: "https://www.antonyaddy.com/og/antonyaddy-hub.jpg",
@@ -161,9 +160,9 @@ const HOME_JSONLD_GRAPH = {
     {
       "@type": "WebSite",
       "@id": "https://www.antonyaddy.com/#website",
-      name: "Antony Addy — Anglais, IA générative, sites web & outils pédagogiques",
+      name: "Antony Addy — Anglais, sites web & IA générative",
       url: "https://www.antonyaddy.com",
-      description: "Le point de rencontre des trois activités d'Antony Addy : formation en anglais professionnel, formation en IA générative et création de sites web et d'outils pédagogiques avec l'IA — sur la Côte d'Azur et à distance.",
+      description: "Le point de rencontre des trois activités d'Antony Addy : formation en anglais professionnel, création de sites web et d'outils pédagogiques et ateliers d'IA générative — sur la Côte d'Azur et à distance.",
       inLanguage: "fr",
       publisher: { "@id": "https://www.antonyaddy.com/#business" },
       potentialAction: {
@@ -241,13 +240,13 @@ const Home = () => {
 
   return <>
       <SEOHead 
-        title="Antony Addy — Anglais, IA, sites web & outils pédagogiques"
-        description="Antony Addy : formateur d'anglais professionnel, formateur en IA générative et créateur de sites web et d'outils pédagogiques avec l'IA. Côte d'Azur et à distance."
+        title="Antony Addy — Anglais, sites web & IA générative"
+        description="Antony Addy : formateur d'anglais professionnel, créateur de sites web et d'outils pédagogiques, et formateur en IA générative. Côte d'Azur et à distance."
         canonicalUrl="https://www.antonyaddy.com/"
         datePublished="2025-01-15T10:00:00+01:00"
         dateModified={CONTENT_LAST_REVIEWED_ISO}
         image="https://www.antonyaddy.com/og/antonyaddy-hub.jpg"
-        imageAlt="Antony Addy — formateur d'anglais, formateur en IA générative et créateur de sites web et d'outils pédagogiques"
+        imageAlt="Antony Addy — formateur d'anglais, créateur de sites web et d'outils pédagogiques, formateur en IA générative"
         keywords={["formateur anglais", "formation anglais professionnel", "formateur FPA", "cours anglais adultes", "formateur IA générative", "formation ChatGPT entreprise", "création site web IA", "outils pédagogiques", "Var", "Alpes-Maritimes", "Côte d'Azur", "Fréjus", "Saint-Raphaël", "Nice", "Cannes", "Antibes", "Sophia Antipolis", "Monaco", "anglais à distance", "formateur britannique", "anglais entreprises", "anglais cadres", "anglais étudiants"]}
         jsonLd={HOME_JSONLD_GRAPH}
       />
@@ -354,45 +353,7 @@ const Home = () => {
           </section>
         </div>
 
-        {/* "Le Conducteur" lives below now — after the three routes (Créations). */}
-
-        {/* ===== STATION 03 · LIGNE IA (violet) — links /ia ===== */}
-        <section className="home-chapter home-chapter--ai relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-ia">
-          <div className="pointer-events-none absolute inset-0" aria-hidden="true"
-            style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(122,98,255,.12), transparent 55%)' }} />
-          <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#7A62FF] opacity-50" aria-hidden="true" />
-          <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#7A62FF]" aria-hidden="true"
-            style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(122,98,255,.55)' }} />
-          <div className="home-section-inner relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
-            <div className="home-chapter-intro">
-              <div>
-                <div className="home-chapter-label flex items-center gap-3 flex-wrap">
-                  <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">02 · Ligne IA</span>
-                  <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#7A62FF] border border-[#7A62FF]/45 rounded-full px-3 py-1.5">Violet line</span>
-                </div>
-                <h2 id="station-ia" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
-                  L'IA générative, appliquée à votre métier
-                </h2>
-                <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
-                  Des formations concrètes à l'IA générative pour les professionnels et les équipes : ChatGPT, ingénierie de prompts et outils IA, branchés directement sur vos tâches réelles — du gain de temps dès la première session.
-                </p>
-              </div>
-              <img className="home-chapter-art" src="/illustrations/ai-workflow.webp" alt="Illustration d'une tâche transformée en document utile grâce à un parcours d'IA guidé" width="1200" height="800" loading="lazy" decoding="async" />
-            </div>
-            <div className="home-service-facts mt-8 grid gap-3 sm:grid-cols-3 max-w-3xl">
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Pour qui</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Équipes &amp; indépendants</h3></div>
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Format</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Atelier sur mesure</h3></div>
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Résultat</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Productivité réelle</h3></div>
-            </div>
-            <a href="/ia"
-               onClick={() => trackEvent('station_route_click', { formation: 'ia', target: '/ia' })}
-               className="home-service-link mt-8 inline-flex items-center gap-2 bg-[#6A4FF0] text-white font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
-              Découvrir les formations IA <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </a>
-          </div>
-        </section>
-
-        {/* ===== STATION 04 · LIGNE CRÉATIONS (amber) — links the creations. subdomain ===== */}
+        {/* ===== STATION 03 · LIGNE CRÉATIONS (amber) — links the creations. subdomain ===== */}
         <section className="home-chapter home-chapter--web relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-creations">
           <div className="pointer-events-none absolute inset-0" aria-hidden="true"
             style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(240,151,74,.12), transparent 55%)' }} />
@@ -403,7 +364,7 @@ const Home = () => {
             <div className="home-chapter-intro">
               <div>
                 <div className="home-chapter-label flex items-center gap-3 flex-wrap">
-                  <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">03 · Ligne Créations</span>
+                  <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">02 · Ligne Créations</span>
                   <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#F0974A] border border-[#F0974A]/45 rounded-full px-3 py-1.5">Amber line</span>
                 </div>
                 <h2 id="station-creations" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
@@ -463,6 +424,43 @@ const Home = () => {
           </div>
         </section>
 
+        {/* ===== STATION 04 · LIGNE IA (violet) — links /ia ===== */}
+        <section className="home-chapter home-chapter--ai relative overflow-hidden bg-[#070b22] text-[#F2EDE1]" aria-labelledby="station-ia">
+          <div className="pointer-events-none absolute inset-0" aria-hidden="true"
+            style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(122,98,255,.12), transparent 55%)' }} />
+          <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#7A62FF] opacity-50" aria-hidden="true" />
+          <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#7A62FF]" aria-hidden="true"
+            style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(122,98,255,.55)' }} />
+          <div className="home-section-inner relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
+            <div className="home-chapter-intro">
+              <div>
+                <div className="home-chapter-label flex items-center gap-3 flex-wrap">
+                  <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">03 · Ligne IA</span>
+                  <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#7A62FF] border border-[#7A62FF]/45 rounded-full px-3 py-1.5">Violet line</span>
+                </div>
+                <h2 id="station-ia" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
+                  L'IA générative, appliquée à votre métier
+                </h2>
+                <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
+                  Des formations concrètes à l'IA générative pour les professionnels et les équipes : ChatGPT, ingénierie de prompts et outils IA, branchés directement sur vos tâches réelles — du gain de temps dès la première session.
+                </p>
+              </div>
+              <img className="home-chapter-art" src="/illustrations/ai-workflow.webp" alt="Illustration d'une tâche transformée en document utile grâce à un parcours d'IA guidé" width="1200" height="800" loading="lazy" decoding="async" />
+            </div>
+            <div className="home-service-facts mt-8 grid gap-3 sm:grid-cols-3 max-w-3xl">
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Pour qui</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Équipes &amp; indépendants</h3></div>
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Format</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Atelier sur mesure</h3></div>
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Résultat</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Productivité réelle</h3></div>
+            </div>
+            <a href="/ia"
+               onClick={() => trackEvent('station_route_click', { formation: 'ia', target: '/ia' })}
+               className="home-service-link mt-8 inline-flex items-center gap-2 bg-[#6A4FF0] text-white font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
+              Découvrir les formations IA <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
+        </section>
+
+      {/* "Le Conducteur" follows all three service chapters. */}
       {/* ===== PROOF · THREE SERVICES — La Ligne dark treatment.
            Folds the old trust strip + SEO intro into one station; every metric,
            the full crawlable text and both links are preserved. ===== */}
@@ -471,7 +469,7 @@ const Home = () => {
           style={{ background: 'radial-gradient(60% 70% at 92% 0%, rgba(246,164,99,.10), transparent 55%), radial-gradient(120% 90% at 50% 120%, rgba(11,16,48,.9), transparent 55%)' }} />
         {/* the line — spine + interchange node */}
         <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px opacity-50" aria-hidden="true"
-          style={{ background: 'linear-gradient(180deg,#E8473B,#7A62FF 55%,#F0974A)' }} />
+          style={{ background: 'linear-gradient(180deg,#E8473B,#F0974A 55%,#7A62FF)' }} />
         <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#E8473B]" aria-hidden="true"
           style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(232,71,59,.55)' }} />
 
@@ -481,7 +479,7 @@ const Home = () => {
             Un formateur, trois savoir-faire.
           </h2>
           <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
-            Un parcours de formateur, au service de vos projets en anglais, en IA et sur le web.
+            Un parcours de formateur, au service de vos projets en anglais et sur le web, avec l'IA en complément.
           </p>
 
           <RevealStagger className="home-metrics mt-9 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
@@ -536,7 +534,7 @@ const Home = () => {
                 <p className="text-lg text-[#CBCFE4] leading-relaxed mb-4 font-body">
                   <strong className="text-white">Antony Addy</strong> — Britannique, certifié{' '}
                   <a href="https://www.afpa.fr/formation-qualifiante/formateur-professionnel-d-adultes" target="_blank" rel="noopener noreferrer" className="text-[#F6A463] hover:underline">Formateur Professionnel d'Adultes</a>{' '}
-                  depuis 2017, plus de {EXPERIENCE_FLOOR} ans d'expérience — aujourd'hui aussi formateur en IA générative et créateur de sites et d'outils pédagogiques avec l'IA.
+                  depuis 2017, plus de {EXPERIENCE_FLOOR} ans d'expérience — aujourd'hui aussi créateur de sites et d'outils pédagogiques, et formateur en IA générative.
                 </p>
                 <p className="text-lg text-[#CBCFE4] leading-relaxed mb-6 font-body">
                   Le fil conducteur n'a jamais changé : faire passer les gens de l'hésitation à l'assurance — en réunion, face à un outil IA, ou au lancement d'un site.
@@ -632,7 +630,7 @@ const Home = () => {
           <div className="home-contact-inner relative max-w-3xl mx-auto pl-12 sm:pl-20 pr-4 py-16 sm:py-24">
             <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Prochain arrêt</span>
             <h2 id="station-contact" className="mt-3 font-heading font-extrabold tracking-tight text-3xl sm:text-5xl leading-[1.03]">
-              Un projet en anglais, en IA, un site ou un outil ?<br /><span className="text-[#F6A463]">Mind the gap.</span>
+              Un projet en anglais, un site, un outil ou un atelier IA ?<br /><span className="text-[#F6A463]">Mind the gap.</span>
             </h2>
             <p className="mt-5 text-lg text-[#CBCFE4] font-body leading-relaxed max-w-xl">
               Dites-moi où vous voulez aller — je vous réponds rapidement avec une proposition adaptée. Premier échange gratuit, réponse sous 24 h ouvrées.

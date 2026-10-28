@@ -35,9 +35,9 @@ const About = () => {
 
   return <>
       <SEOHead 
-        title="Antony Addy | Anglais, IA, sites web & outils numériques"
-        description={`Britannique natif certifié FPA (${EXPERIENCE_FLOOR}+ ans en formation d'anglais), également formateur en IA générative et créateur de sites web et d'outils numériques avec l'IA. Côte d'Azur et à distance.`}
-        keywords={["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "formateur IA générative", "création site web IA", "Var", "Alpes-Maritimes", "Fréjus"]}
+        title="Antony Addy | Anglais, sites web & IA générative"
+        description={`Britannique natif certifié FPA (${EXPERIENCE_FLOOR}+ ans en formation d'anglais), également créateur de sites web et d'outils numériques, et formateur en IA générative. Côte d'Azur et à distance.`}
+        keywords={["Antony Addy", "formateur anglais", "FPA certifié", "britannique natif", "création site web IA", "formateur IA générative", "Var", "Alpes-Maritimes", "Fréjus"]}
         canonicalUrl="https://www.antonyaddy.com/qui-je-suis"
         image="https://www.antonyaddy.com/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png"
         imageWidth={960}
@@ -83,7 +83,7 @@ const About = () => {
                 Qui je suis
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Britannique natif, certifié FPA — formateur d'anglais et d'IA générative, créateur de sites et d'outils numériques sur la Côte d'Azur et à distance
+                Britannique natif, certifié FPA — formateur d'anglais, créateur de sites et d'outils numériques, et animateur d'ateliers d'IA générative sur la Côte d'Azur et à distance
               </p>
               <figure className="visual-about-portrait">
                 <img src="/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png" alt="Antony Addy, à son bureau" width="960" height="960" />
@@ -108,10 +108,10 @@ const About = () => {
                 <p>
                   J'exerce aujourd'hui trois activités complémentaires : la formation en{' '}
                   <strong className="text-primary">anglais professionnel</strong> — détaillée sur ce site —, la{' '}
-                  <strong className="text-primary">formation à l'IA générative</strong>{' '}
-                  (<a href="/ia" className="text-accent underline underline-offset-2 hover:decoration-2">antonyaddy.com/ia</a>){' '}
-                  et la <strong className="text-primary">création de sites et d'outils numériques avec l'IA</strong>{' '}
-                  (<a href="/sites-web" className="text-accent underline underline-offset-2 hover:decoration-2">antonyaddy.com/sites-web</a>).
+                  <strong className="text-primary">création de sites et d'outils numériques</strong>{' '}
+                  (<a href="/sites-web" className="text-accent underline underline-offset-2 hover:decoration-2">antonyaddy.com/sites-web</a>){' '}
+                  et la <strong className="text-primary">formation à l'IA générative</strong>{' '}
+                  (<a href="/ia" className="text-accent underline underline-offset-2 hover:decoration-2">antonyaddy.com/ia</a>).
                 </p>
                 <p>
                   <strong className="text-primary">Britannique de naissance</strong>, je vis et travaille en France depuis plus de {EXPERIENCE_FLOOR} ans. J'enseigne l'anglais à des adultes dans des contextes professionnels exigeants : entreprises, écoles de commerce, organismes de formation, et accompagnement de personnes en reconversion ou en recherche d'emploi.
