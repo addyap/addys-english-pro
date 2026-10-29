@@ -45,7 +45,9 @@ export default function HubHeroLigne() {
 
         <div id="hero-routes" className="llx-board">
           <figure className="visual-hero-portrait">
-            <img src="/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png" alt="Antony Addy à son bureau" width="960" height="960" />
+            {/* The page's largest element on phones: fetch it first. React 18
+                passes the lowercase attribute through (it doesn't know fetchPriority). */}
+            <img src="/lovable-uploads/4cd831d2-27d6-4dbd-abcf-edcee4b0d28a.png" alt="Antony Addy à son bureau" width="960" height="960" decoding="async" {...{ fetchpriority: 'high' }} />
             <figcaption>Antony Addy <span>Votre formateur, votre interlocuteur.</span></figcaption>
           </figure>
           <div className="llx-board-top"><span>Choisissez votre parcours</span><span>01 — 03</span></div>
