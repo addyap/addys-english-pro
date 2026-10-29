@@ -128,7 +128,15 @@ const Contact = () => {
   // Proof of work (see src/lib/formPow.ts): solved in the background as soon
   // as the form loads, and again after every attempt (each one is single-use).
   const powRef = React.useRef<Promise<PowSolution | null> | null>(null);
+  // When the current challenge was requested. The server refuses a solution
+  // used less than 2 s after it issued the challenge (MIN_AGE_MS in
+  // api/_lib/form-guard.ts), so a very fast send (browser autofill) waits out
+  // the difference instead of being rejected as a bot. 3 s leaves room for
+  // network delay on the challenge request.
+  const powStartedRef = React.useRef<number>(0);
+  const POW_MIN_WAIT_MS = 3000;
   const startPow = React.useCallback(() => {
+    powStartedRef.current = Date.now();
     powRef.current = solveFormChallenge();
     powRef.current.catch(() => undefined); // surfaced at submit time
     return powRef.current;
@@ -225,6 +233,8 @@ const Contact = () => {
     try {
       // Normally already solved while the visitor was typing.
       const pow = await (powRef.current ?? startPow()).catch(() => null);
+      const wait = powStartedRef.current + POW_MIN_WAIT_MS - Date.now();
+      if (wait > 0) await new Promise((resolve) => setTimeout(resolve, wait));
       startPow();
 
       // Call the Vercel edge function to send email — sanitize header-bearing fields
