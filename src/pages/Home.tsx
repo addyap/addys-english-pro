@@ -410,11 +410,11 @@ const Home = () => {
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Outils métier</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Apps &amp; automatisations</h3></div>
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Éducation</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Outils pédagogiques sur mesure</h3></div>
             </div>
-            <a href="/sites-web"
-               onClick={() => trackEvent('station_route_click', { formation: 'creations', target: '/sites-web' })}
+            <Link to="/creation-site-web-multilingue"
+               onClick={() => trackEvent('station_route_click', { formation: 'creations', target: '/creation-site-web-multilingue' })}
                className="home-service-link mt-8 inline-flex items-center gap-2 bg-[#F0974A] text-[#1a1200] font-heading font-bold uppercase tracking-[0.12em] text-xs px-6 py-3.5 rounded-full hover:-translate-y-0.5 transition-transform">
               Voir mes sites web <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </a>
+            </Link>
 
             <div className="home-showcase">
               <div className="home-showcase-intro">

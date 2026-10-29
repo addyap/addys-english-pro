@@ -5,7 +5,7 @@ import './HubHeroLigne.css';
 
 const routes = [
   { key: 'anglais', number: '01', label: 'Anglais professionnel', detail: 'Prenez la parole avec confiance.', href: '#anglais', external: false },
-  { key: 'creations', number: '02', label: 'Sites web multilingues', detail: 'Pour une clientèle internationale.', href: '/sites-web', external: false },
+  { key: 'creations', number: '02', label: 'Sites web multilingues', detail: 'Pour une clientèle internationale.', href: '/creation-site-web-multilingue', external: false },
   { key: 'ia', number: '03', label: 'IA générative', detail: 'Faites travailler les outils pour vous.', href: '/ia', external: false },
 ] as const;
 
@@ -32,14 +32,13 @@ export default function HubHeroLigne() {
             >
               Parlons de votre formation <ArrowRight size={19} aria-hidden="true" />
             </Link>
-            {/* /sites-web is a rewrite to the créations app, so a plain link. */}
-            <a
-              href="/sites-web"
+            <Link
+              to="/creation-site-web-multilingue"
               className="llx-secondary"
-              onClick={() => trackEvent('hub_hero_secondary_click', { formation: 'creations', target: '/sites-web' })}
+              onClick={() => trackEvent('hub_hero_secondary_click', { formation: 'creations', target: '/creation-site-web-multilingue' })}
             >
               Découvrir mes sites web <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
+            </Link>
           </div>
           <p className="llx-reassurance">Premier échange gratuit · Réponse sous 24 h ouvrées</p>
         </div>

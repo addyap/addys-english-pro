@@ -1,7 +1,8 @@
 // Single source of truth for Antony Addy's three activities.
 // antonyaddy.com is the hub: the English formation lives on this site (root),
-// website creation at /sites-web and generative-AI training at /ia (separate
-// apps that www forwards to).
+// website creation on its own page here (/creation-site-web-multilingue, which
+// links to the /sites-web portfolio) and generative-AI training at /ia (a
+// separate app that www forwards to).
 // Update links or wording here and the header switcher, homepage hub section
 // and footer all follow automatically.
 
@@ -43,7 +44,7 @@ export const FORMATIONS: Formation[] = [
     title: 'Sites web multilingues & outils',
     tagline:
       "Sites web multilingues pour les entreprises qui travaillent avec une clientèle internationale, et outils numériques sur mesure, développés avec l'IA.",
-    href: '/sites-web',
+    href: '/creation-site-web-multilingue',
     external: true,
     icon: 'Code',
     cta: 'Découvrir mes créations',
