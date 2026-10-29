@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { trackEvent } from '@/lib/analytics';
 import './HubHeroLigne.css';
@@ -17,16 +17,29 @@ export default function HubHeroLigne() {
         <div className="llx-copy">
           <p className="llx-eyebrow"><span className="llx-signal" aria-hidden="true" />Antony Addy · Côte d’Azur &amp; à distance</p>
           <h1 id="llx-title" className="llx-title">
-            <span className="llx-services">L’anglais.<br />Le web.<br />L’IA.</span>
+            <span className="llx-services">L’anglais<br />professionnel.</span>
             <span className="llx-promise">À vous d’avancer.</span>
           </h1>
           <p className="llx-description">
-            Formations d’anglais professionnel, sites web et outils numériques, ateliers d’IA générative.
-            Trois façons d’avancer, avec un seul interlocuteur.
+            Réunions, appels, présentations, emails : des formations sur mesure pour les équipes et les
+            professionnels, sur la Côte d’Azur ou à distance. Je crée aussi des sites web multilingues.
           </p>
           <div className="llx-actions">
-            <Link to="/contact" className="llx-primary">Parler de mon projet <ArrowRight size={19} aria-hidden="true" /></Link>
-            <a href="#hero-routes" className="llx-secondary">Voir les parcours <ArrowDownRight size={18} aria-hidden="true" /></a>
+            <Link
+              to="/contact?sujet=anglais"
+              className="llx-primary"
+              onClick={() => trackEvent('hub_hero_primary_click', { formation: 'anglais', target: '/contact?sujet=anglais' })}
+            >
+              Parlons de votre formation <ArrowRight size={19} aria-hidden="true" />
+            </Link>
+            {/* /sites-web is a rewrite to the créations app, so a plain link. */}
+            <a
+              href="/sites-web"
+              className="llx-secondary"
+              onClick={() => trackEvent('hub_hero_secondary_click', { formation: 'creations', target: '/sites-web' })}
+            >
+              Découvrir mes sites web <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
           </div>
           <p className="llx-reassurance">Premier échange gratuit · Réponse sous 24 h ouvrées</p>
         </div>
