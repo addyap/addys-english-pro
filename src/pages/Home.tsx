@@ -366,16 +366,16 @@ const Home = () => {
                   <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">02 · Création de sites web</span>
                 </div>
                 <h2 id="station-creations" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
-                  Des sites et des outils faits pour avancer
+                  Des sites web multilingues, pour une clientèle internationale
                 </h2>
                 <p className="mt-3 max-w-2xl text-[#CBCFE4] font-body leading-relaxed">
-                  Je crée des <strong className="text-white">sites web</strong> pour présenter votre activité et des <strong className="text-white">outils numériques sur mesure</strong> : applications métier, automatisations et outils pédagogiques pour l'éducation et la formation. Avec l'IA, de la conception à la mise en ligne.
+                  Je crée des <strong className="text-white">sites web en plusieurs langues</strong> pour les entreprises qui accueillent des clients venus d'ailleurs : en français, en anglais et dans les langues de votre clientèle. Je développe aussi des <strong className="text-white">outils numériques sur mesure</strong>, avec l'IA, de la conception à la mise en ligne. Basé sur la Côte d'Azur, j'accompagne des clients partout en France et à l'étranger.
                 </p>
               </div>
               <img className="home-chapter-art" src="/illustrations/web-and-learning-tools.webp" alt="Illustration d'un site web et d'un outil pédagogique sur tablette, reliés par une ligne orange" width="1200" height="800" loading="lazy" decoding="async" />
             </div>
             <div className="home-service-facts mt-8 grid gap-3 sm:grid-cols-3 max-w-3xl">
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Sites web</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Vitrines &amp; conversion</h3></div>
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Sites web</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Multilingues, pensés pour convertir</h3></div>
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Outils métier</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Apps &amp; automatisations</h3></div>
               <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4"><p className="font-heading text-[0.6rem] uppercase tracking-[0.16em] text-[#8b93b6]">Éducation</p><h3 className="mt-1.5 font-heading font-semibold text-white text-base">Outils pédagogiques sur mesure</h3></div>
             </div>
