@@ -33,7 +33,7 @@ const AUDIENCE_LINKS = [
 // hero and the footer despite being the main lead magnet.
 const RESOURCE_LINKS = [
   { name: 'Test de positionnement', href: '/test-de-positionnement', desc: 'Évaluez votre niveau · A1 → C1' },
-  { name: 'Fluentory — mes plateformes', href: '/ressources-en-ligne', desc: "Entraînement en accès libre" },
+  { name: "Ressources pour pratiquer l'anglais", href: '/ressources-en-ligne', desc: "Les plateformes Fluentory, en accès libre" },
   { name: 'Blog', href: '/blog', desc: "Conseils et points de grammaire" },
 ];
 
@@ -268,25 +268,6 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                         <span className="block text-xs text-muted-foreground">{r.desc}</span>
                       </Link>
                     ))}
-                    <p className="mt-1 border-t border-border px-4 pt-3 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                      Mes outils d'entraînement
-                    </p>
-                    {MY_TOOLS.map(p => (
-                      <a
-                        key={p.name}
-                        href={toolHref(p)}
-                        target={toolOpensNewTab(p) ? '_blank' : undefined}
-                        rel={toolOpensNewTab(p) ? 'noopener' : undefined}
-                        onClick={() => { close(); trackEvent('nav_platform_click', { platform: p.name }); }}
-                        className="block px-4 py-2.5 transition-colors hover:bg-muted"
-                      >
-                        <span className="text-sm font-medium text-primary inline-flex items-center gap-1">
-                          {p.name}
-                          {toolOpensNewTab(p) && <ExternalLink className="h-3 w-3 text-muted-foreground" aria-hidden="true" />}
-                        </span>
-                        <span className="block text-xs text-muted-foreground">{p.tag}</span>
-                      </a>
-                    ))}
                   </>
                 )}
               </NavDropdown>
@@ -359,7 +340,10 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
           </div>
 
           {/* Mobile Navigation Menu — same grouping as desktop, as a flat
-              accordion-free list so nothing is hidden behind a second tap. */}
+              accordion-free list so nothing is hidden behind a second tap.
+              Commercial routes first (English, then websites & AI, then
+              contact); free resources last, with the individual tools left to
+              the resources hub rather than listed here. */}
           {isMobileMenuOpen && (
             <div id="mobile-navigation" className="site-mobile-navigation xl:hidden">
               <nav className="flex flex-col" aria-label="Navigation principale">
@@ -389,26 +373,6 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                       {FORMATION_LINKS.map(f => item(f.href, f.name))}
                       {AUDIENCE_LINKS.map(a => item(a.href, a.name))}
 
-                      {heading('Ressources')}
-                      {RESOURCE_LINKS.map(r => item(r.href, r.name))}
-                      {MY_TOOLS.map(p => (
-                        <a
-                          key={p.name}
-                          href={toolHref(p)}
-                          target={toolOpensNewTab(p) ? '_blank' : undefined}
-                          rel={toolOpensNewTab(p) ? 'noopener' : undefined}
-                          onClick={() => { setIsMobileMenuOpen(false); trackEvent('nav_platform_click', { platform: p.name }); }}
-                          className="flex items-center min-h-[44px] px-4 py-3 rounded-lg text-base font-medium transition-colors font-body active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent text-primary hover:bg-muted"
-                        >
-                          {p.name}
-                        </a>
-                      ))}
-
-                      {heading('À propos')}
-                      {item('/qui-je-suis', t('nav.about'))}
-                      {item('/temoignages', t('nav.testimonials'))}
-                      {item('/contact', t('nav.contact'))}
-
                       {heading('Sites web & IA')}
                       {otherDomains.map(f => {
                         const Icon = FORMATION_ICONS[f.icon];
@@ -429,6 +393,14 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
                           </a>
                         );
                       })}
+
+                      {heading('À propos')}
+                      {item('/qui-je-suis', t('nav.about'))}
+                      {item('/temoignages', t('nav.testimonials'))}
+                      {item('/contact', t('nav.contact'))}
+
+                      {heading('Ressources')}
+                      {RESOURCE_LINKS.map(r => item(r.href, r.name))}
                     </>
                   );
                 })()}

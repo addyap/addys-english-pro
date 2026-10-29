@@ -194,7 +194,7 @@ const Training = () => {
                   to="/contact?sujet=anglais"
                   className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300"
                 >
-                  Réserver un premier échange gratuit
+                  Demander un premier échange gratuit
                 </Link>
                 <Link
                   to="/test-de-positionnement"
@@ -506,10 +506,10 @@ const Training = () => {
                   to="/ressources-en-ligne"
                   className="font-semibold text-accent hover:text-accent/80 transition-colors"
                 >
-                  {PLATFORM_COUNT} plateformes d'entraînement gratuites
+                  {PLATFORM_COUNT} plateformes d'entraînement, gratuites pendant leur lancement
                 </Link>
                 {' '}— grammaire claire, vocabulaire utile, dialogues audio, préparation TOEIC et CLOE,
-                et un entraîneur d'expression orale. Accès libre, sans inscription.
+                et un entraîneur d'expression orale. Les conditions d'accès de chacune sont indiquées sur la page des ressources.
               </p>
             </div>
           </Reveal>
@@ -525,7 +525,7 @@ const Training = () => {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-3">
                 <Link to="/contact?sujet=anglais" className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-lg">
-                  Réserver un premier échange
+                  Demander un premier échange
                 </Link>
                 <a href={whatsappLink} onClick={(e) => { trackEvent('whatsapp_cta_click', { page: 'Training', target: whatsappLink, prefilled: true, location: 'final-cta' }); }} className="bg-green-700 hover:bg-green-800 text-white px-8 py-4 rounded-lg font-semibold transition-colors" target="_blank" rel="noopener noreferrer">
                   WhatsApp direct

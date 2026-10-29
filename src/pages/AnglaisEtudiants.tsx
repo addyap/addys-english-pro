@@ -36,7 +36,7 @@ const AnglaisEtudiants = () => (
       { q: "Intervenez-vous auprès des écoles et des universités elles-mêmes ?", a: "Oui. J'interviens comme formateur pour des écoles de commerce, des écoles spécialisées et des organismes de formation, dans le cadre de leurs propres dispositifs. Voir la page entreprise pour ce type de collaboration." },
     ]}
     closingPitch="Une certification à passer, un semestre à l'étranger en vue, ou l'anglais qui devient l'enjeu de votre filière ? Parlons de votre projet."
-    ctaLabel="Réserver un premier échange gratuit"
+    ctaLabel="Demander un premier échange gratuit"
   />
 );
 
