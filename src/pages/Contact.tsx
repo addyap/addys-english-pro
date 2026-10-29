@@ -80,6 +80,10 @@ const ARRIVAL_INTROS: Record<string, { title: string; lead: string }> = {
     title: 'Votre projet de formation en anglais',
     lead: "Dites-moi en quelques lignes votre niveau, votre objectif et votre contexte. Je vous réponds sous 24 h ouvrées pour en discuter, puis je vous envoie une proposition adaptée.",
   },
+  test: {
+    title: 'Votre résultat au test de positionnement',
+    lead: "Indiquez votre score et le numéro de la question où vous vous êtes arrêté : je vous confirme votre niveau CECRL indicatif sous 24 h ouvrées et je vous propose un parcours adapté.",
+  },
   sites: {
     title: 'Votre projet de site web',
     lead: "Quelques lignes suffisent pour commencer : votre activité, ce que le site doit faire, les langues de vos clients et votre échéance. Je vous réponds sous 24 h ouvrées.",
@@ -140,11 +144,18 @@ const Contact = () => {
     const training = requestedTraining && trainingTitles.has(requestedTraining) ? requestedTraining : null;
     const subject = training ? SUBJECTS[0] : SUBJECTS.find((s) => s.key === searchParams.get('sujet') && s.key !== 'autre');
     if (!subject) return;
-    setArrivalKey(subject.key);
+    // From the positioning test: a ready-made layout for the result, so the
+    // visitor doesn't have to remember what to send.
+    const fromTest = subject.key === 'anglais' && searchParams.get('test') === '1';
+    setArrivalKey(fromTest ? 'test' : subject.key);
     setFormData((prev) => ({
       ...prev,
       sujet: prev.sujet || subject.value,
-      message: prev.message || (training ? `Bonjour, je souhaite en savoir plus sur la formation « ${training} ».\n\nMon besoin : ` : ''),
+      message: prev.message || (training
+        ? `Bonjour, je souhaite en savoir plus sur la formation « ${training} ».\n\nMon besoin : `
+        : fromTest
+          ? "Bonjour, j'ai fait le test de positionnement.\n\nMon score : \nQuestion où je me suis arrêté(e) : \nMon objectif : "
+          : ''),
     }));
   }, [searchParams]);
 

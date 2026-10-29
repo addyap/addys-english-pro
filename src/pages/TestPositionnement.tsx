@@ -25,7 +25,7 @@ const STEPS = [
   {
     num: 1,
     title: 'Lancez le test',
-    body: 'Cliquez sur « Commencer le test », ou allez sur kahoot.it et entrez le PIN. Aucun compte nécessaire, entrez simplement votre prénom.',
+    body: 'Cliquez sur « Commencer le test », ou allez sur kahoot.it et entrez le PIN. Aucun compte nécessaire : entrez un pseudo de votre choix, inutile de donner votre nom.',
   },
   {
     num: 2,
@@ -43,7 +43,7 @@ const BADGES = [
   { icon: Zap, label: '120 questions' },
   { icon: Clock, label: '≈ 40 min max' },
   { icon: CheckCircle, label: 'Sans compte Kahoot!' },
-  { icon: Smartphone, label: 'Résultat immédiat' },
+  { icon: Smartphone, label: 'Score immédiat' },
 ];
 
 const TestPositionnement = () => {
@@ -68,7 +68,7 @@ const TestPositionnement = () => {
     <>
       <SEOHead
         title="Test de positionnement en anglais gratuit (A1–C1)"
-        description="Testez votre niveau d'anglais gratuitement en 40 minutes : 120 questions CECRL du A1 au C1, résultat immédiat. Formateur britannique certifié FPA."
+        description="Testez votre niveau d'anglais gratuitement en 40 minutes : 120 questions CECRL du A1 au C1, score immédiat. Formateur britannique certifié FPA."
         canonicalUrl="https://www.antonyaddy.com/test-de-positionnement"
         enableOrgJsonLd
         enableWebSiteJsonLd
@@ -303,7 +303,7 @@ const TestPositionnement = () => {
             <p className="mt-4 text-sm text-white/90 font-body">
               Pas de WhatsApp ?{' '}
               <Link
-                to="/contact?sujet=anglais"
+                to="/contact?sujet=anglais&test=1"
                 onClick={() => trackEvent('positioning_test_form_cta_click', { page: 'test-de-positionnement', target: '/contact' })}
                 className="underline underline-offset-2 font-semibold hover:text-white"
               >

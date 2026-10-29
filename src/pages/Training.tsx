@@ -107,6 +107,17 @@ const Training = () => {
   const HOURLY_RATE_FROM: number | null = null;
   const ACCESS_LEAD_TIME = '15 jours ouvrés';
 
+  // The practical facts at a glance, near the top: the full detail stays in
+  // "Informations pratiques" (#modalites) further down.
+  const summary = [
+    { label: 'Format', value: 'Individuel ou petit groupe, à distance ou en présentiel (Var, Alpes-Maritimes)' },
+    { label: 'Pour commencer', value: 'Premier échange sous 24 h ouvrées, puis test de positionnement' },
+    { label: 'Programme', value: 'Sur mesure : objectifs, durée et rythme fixés avec vous' },
+    { label: 'Démarrage', value: `Généralement sous ${ACCESS_LEAD_TIME} après le devis` },
+    { label: 'Suivi', value: 'Points de progression réguliers, bilan final et attestation' },
+    { label: 'Tarif et financement', value: HOURLY_RATE_FROM ? `À partir de ${HOURLY_RATE_FROM} €/h, sur devis · par l'entreprise ou à titre personnel (hors CPF et OPCO)` : "Sur devis gratuit · par l'entreprise ou à titre personnel (hors CPF et OPCO)" },
+  ];
+
   const practicalInfo = [
     {
       icon: CheckCircle,
@@ -180,7 +191,7 @@ const Training = () => {
           {/* Header */}
           <Reveal>
             <div className="inner-intro text-center mb-12">
-              <span className="inner-kicker">Ligne anglais · Vos formations</span>
+              <span className="inner-kicker">Formation en anglais professionnel</span>
               <span className="visual-photo-credit">Photo d’illustration · Pexels</span>
               <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
                 Formations d'anglais professionnel
@@ -206,7 +217,22 @@ const Training = () => {
             </div>
           </Reveal>
 
-          <hr className="border-t border-border mb-12" />
+          <Reveal>
+            <section className="mb-12 rounded-lg border border-border bg-white p-6 sm:p-8" aria-labelledby="training-summary-title">
+              <h2 id="training-summary-title" className="text-xl sm:text-2xl font-bold text-primary mb-5 font-heading">En bref</h2>
+              <dl className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-5">
+                {summary.map((item) => (
+                  <div key={item.label}>
+                    <dt className="text-xs font-semibold uppercase tracking-wider text-accent">{item.label}</dt>
+                    <dd className="mt-1 text-sm text-foreground leading-relaxed">{item.value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <a href="#modalites" className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-accent hover:underline underline-offset-2">
+                Toutes les informations pratiques <ArrowRight size={16} aria-hidden="true" />
+              </a>
+            </section>
+          </Reveal>
 
           <section id="formations" className="training-overview mb-12 scroll-mt-24" aria-labelledby="training-overview-title">
             <div className="training-overview-head">
