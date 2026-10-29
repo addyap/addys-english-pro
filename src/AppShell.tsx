@@ -7,7 +7,6 @@ import OfflineBanner from "./components/OfflineBanner";
 import A11yProvider from "./components/A11yProvider";
 import ScrollToTop from "./components/ScrollToTop";
 import PrefetchRoutes from "./components/PrefetchRoutes";
-import UmamiAnalytics from "./components/UmamiAnalytics";
 import Layout from "./components/Layout";
 import { HeroSkeleton, CardSkeleton } from "./components/SkeletonLoader";
 
@@ -38,7 +37,6 @@ export const AppShell = () => (
     <A11yProvider>
       <ScrollToTop />
       <PrefetchRoutes />
-      <UmamiAnalytics />
       <DiagnosticsPanel />
       <OfflineBanner />
       <Suspense fallback={<PageLoader />}>

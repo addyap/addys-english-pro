@@ -96,7 +96,7 @@ export const usePerformanceMonitor = (reportCallback?: (metrics: PerformanceMetr
       reportCallback?.(metrics);
     }
 
-    // Sent to Umami (was window.gtag, which never exists on this site).
+    // Sent through trackEvent (a no-op while there is no analytics provider).
     if (Object.keys(metrics).length > 0) {
       trackEvent('web_vitals', { ...metrics });
     }

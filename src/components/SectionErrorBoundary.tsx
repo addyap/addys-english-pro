@@ -25,7 +25,7 @@ export class SectionErrorBoundary extends Component<Props, State> {
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('Section error caught:', this.props.sectionName, error, errorInfo);
     
-    // Reported to Umami (was window.gtag, which never exists on this site).
+    // Reported through trackEvent (a no-op while there is no analytics provider).
     trackEvent('exception', {
       description: `${this.props.sectionName || 'Section'}: ${error.message}`,
       fatal: false,

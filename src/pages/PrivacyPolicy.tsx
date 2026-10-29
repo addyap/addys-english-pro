@@ -75,7 +75,6 @@ const PrivacyPolicy = () => {
               <ul className="list-disc list-inside mb-6 space-y-2">
                 <li><strong>Vercel Inc.</strong> (États-Unis) — hébergement du site.</li>
                 <li><strong>Resend</strong> — acheminement des emails de notification et de confirmation.</li>
-                <li><strong>Umami</strong> — mesure d'audience du site, sans cookie et sans identifiant publicitaire (voir « Cookies et mesures d'audience » ci-dessous).</li>
                 <li><strong>Supabase</strong> — base de données hébergeant le compteur anti-spam décrit ci-dessus (adresses IP uniquement, à durée de vie très courte).</li>
               </ul>
               <p className="mb-6">
@@ -116,14 +115,10 @@ const PrivacyPolicy = () => {
 
               <h2 className="text-xl font-semibold text-foreground mt-8 mb-3">Cookies et mesures d'audience</h2>
               <p className="mb-6">
-                Ce site n'utilise aucun cookie publicitaire ni traceur à des fins de profilage. La
-                mesure d'audience est assurée par <strong>Umami</strong>, un outil sans cookie qui
-                ne collecte que des statistiques agrégées (pages vues, provenance, type d'appareil)
-                sans permettre de vous identifier ni de vous suivre d'un site à l'autre. Ce type de
-                mesure entre dans les exemptions de consentement prévues par la CNIL, ce qui est la
-                raison pour laquelle aucune bannière cookies ne vous est présentée. Seul un stockage
-                technique strictement nécessaire au fonctionnement du site (préférences, langue)
-                peut par ailleurs être utilisé.
+                Ce site n'utilise aucun cookie publicitaire, aucun traceur à des fins de profilage et
+                aucun outil de mesure d'audience. C'est pourquoi aucune bannière cookies ne vous est
+                présentée. Seul un stockage technique strictement nécessaire au fonctionnement du site
+                (préférences, langue) peut être utilisé.
               </p>
 
               <h2 className="text-xl font-semibold text-foreground mt-8 mb-3">Vos droits</h2>
