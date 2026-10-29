@@ -18,6 +18,19 @@ import { useIsPositioningTestOpen } from '@/config/positioningTest';
 
 
 
+// The training process, in the order it actually happens.
+const TRAINING_STEPS = [
+  { title: 'On échange', body: 'Un premier appel gratuit sur votre contexte, vos objectifs et vos contraintes.' },
+  { title: 'J’évalue votre niveau', body: 'Un test de positionnement et un court entretien en anglais.' },
+  { title: 'Je vous propose un programme', body: 'Objectifs, format, rythme et devis, adaptés à vos situations réelles.' },
+  { title: 'Vous pratiquez', body: 'Des séances centrées sur vos réunions, appels, emails et présentations, avec mes outils entre deux.' },
+  { title: 'On mesure vos progrès', body: 'Des points réguliers et un bilan en fin de formation.' },
+];
+
+// The two tools shown on the homepage: speaking and listening, the skills
+// professional learners ask about most. The rest live on /ressources-en-ligne.
+const FEATURED_TOOLS = MY_TOOLS.filter((p) => ['SpeakUp AI', 'ListenUp'].includes(p.name));
+
 // Client logos (static row in the Passagers section)
 const CLIENT_LOGOS = [
   { src: "/lovable-uploads/a3da9e3b-1f6c-447a-b308-2ca44d071c67.png", alt: "Logo IGY Vieux-Port de Cannes, partenaire formation anglais", name: "IGY Vieux-Port de Cannes" },
@@ -301,6 +314,9 @@ const Home = () => {
                 <Link to="/anglais-cadres" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Cadres &amp; dirigeants</Link>
                 <Link to="/anglais-particuliers" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Particuliers</Link>
                 <Link to="/anglais-etudiants" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Étudiants</Link>
+              </div>
+              <p className="home-stations-label mt-6 font-heading text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-[#8b93b6]">En présentiel près de chez vous, ou à distance partout</p>
+              <div className="home-station-links mt-3 flex flex-wrap gap-2">
                 <Link to="/cours-anglais-frejus" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Fréjus</Link>
                 <Link to="/cours-anglais-nice" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Nice</Link>
                 <Link to="/cours-anglais-cannes" className="font-heading text-xs uppercase tracking-[0.08em] text-[#9aa2c0] border border-white/10 rounded-full px-3.5 py-2 hover:border-white/40 hover:text-white transition-colors">Cannes</Link>
@@ -313,12 +329,27 @@ const Home = () => {
                 </Link>
               </div>
 
-              {/* The free tools that extend the training. Each is a separate app
-                  forwarded under this domain (vercel.json), so plain <a>, not <Link>. */}
+              {/* How a training runs, so buyers see the process before the tools. */}
+              <div className="home-steps">
+                <span className="home-showcase-kicker">Comment se déroule une formation</span>
+                <ol className="home-steps-list">
+                  {TRAINING_STEPS.map((step, i) => (
+                    <li key={step.title}>
+                      <span className="home-steps-number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                      <strong>{step.title}</strong>
+                      <p>{step.body}</p>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              {/* Two of the free tools that extend the training; the rest are one
+                  click away on the resources page. Each is a separate app forwarded
+                  under this domain (vercel.json), so plain <a>, not <Link>. */}
               <div className="home-showcase home-tools">
                 <div className="home-showcase-intro">
                   <div>
-                    <span className="home-showcase-kicker">Mes outils</span>
+                    <span className="home-showcase-kicker">Pratiquer entre deux séances</span>
                     <h3>Entre deux séances, on continue.</h3>
                     <p className="home-tools-lede">
                       J'ai conçu ces outils pour que mes apprenants progressent aussi en dehors du cours :
@@ -326,11 +357,11 @@ const Home = () => {
                     </p>
                   </div>
                   <Link to="/ressources-en-ligne">
-                    Tous mes outils <ArrowRight size={18} aria-hidden="true" />
+                    Toutes les ressources <ArrowRight size={18} aria-hidden="true" />
                   </Link>
                 </div>
                 <div className="home-showcase-grid home-tools-grid">
-                  {MY_TOOLS.map((p) => (
+                  {FEATURED_TOOLS.map((p) => (
                     <a key={p.name} className="home-project" href={toolHref(p)}
                       target={toolOpensNewTab(p) ? '_blank' : undefined}
                       rel={toolOpensNewTab(p) ? 'noopener' : undefined}
