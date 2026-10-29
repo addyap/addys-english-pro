@@ -43,6 +43,7 @@ const SUBJECTS = [
     training: false,
     hints: [
       'Le type de projet : site vitrine, refonte, outil métier ou pédagogique',
+      'Les langues dont votre site a besoin',
       "L'échéance souhaitée",
       'Une fourchette de budget, si vous en avez une',
     ],
@@ -81,7 +82,7 @@ const ARRIVAL_INTROS: Record<string, { title: string; lead: string }> = {
   },
   sites: {
     title: 'Votre projet de site web',
-    lead: "Quelques lignes suffisent pour commencer : votre activité, ce que le site doit faire et votre échéance. Je vous réponds sous 24 h ouvrées.",
+    lead: "Quelques lignes suffisent pour commencer : votre activité, ce que le site doit faire, les langues de vos clients et votre échéance. Je vous réponds sous 24 h ouvrées.",
   },
   ia: {
     title: 'Votre projet de formation en IA générative',

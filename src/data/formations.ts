@@ -39,10 +39,10 @@ export const FORMATIONS: Formation[] = [
   },
   {
     key: 'creations',
-    navLabel: 'Sites web & outils',
-    title: 'Sites web & outils numériques',
+    navLabel: 'Création de sites web',
+    title: 'Sites web multilingues & outils',
     tagline:
-      "Sites web, outils métier et outils pédagogiques sur mesure pour entreprises, indépendants et acteurs de l'éducation, développés avec l'IA.",
+      "Sites web multilingues pour les entreprises qui travaillent avec une clientèle internationale, et outils numériques sur mesure, développés avec l'IA.",
     href: '/sites-web',
     external: true,
     icon: 'Code',
