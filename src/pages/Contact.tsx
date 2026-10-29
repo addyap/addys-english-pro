@@ -261,8 +261,7 @@ const Contact = () => {
       }
 
       trackFormSubmission('contact', true);
-      // sujet: which service the enquiry was for (anglais, sites, ia, autre).
-      trackEvent('contact_submit_success', { page: 'contact', sujet: SUBJECTS.find((sub) => sub.value === formData.sujet)?.key ?? 'autre' });
+      trackEvent('contact_submit_success', { page: 'contact' });
 
       setSubmitSuccess(true);
       // Captured before the reset below, so the thank-you page can follow the

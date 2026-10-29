@@ -26,7 +26,7 @@ cp .env.example .env   # optional locally — see below
 npm run dev            # http://localhost:8080
 ```
 
-The site runs locally with no env vars. In Vercel, set `RESEND_API_KEY` (server-only) or the contact form cannot send, and optionally `VITE_UMAMI_SRC` + `VITE_UMAMI_WEBSITE_ID` for analytics. The `api/` functions only run on Vercel (or `vercel dev`), not under `npm run dev`.
+The site runs locally with no env vars. In Vercel, set `RESEND_API_KEY` (server-only) or the contact form cannot send. The `api/` functions only run on Vercel (or `vercel dev`), not under `npm run dev`.
 
 The `supabase/` folder is a leftover from the original Lovable scaffold; nothing deployed uses it.
 

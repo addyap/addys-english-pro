@@ -100,8 +100,8 @@ gains an `antonyaddy-dist` config that serves the production build.
 - [ ] Resubmit sitemap in Search Console after deploy; inspect `/` with the URL Inspection tool
 
 **Analytics**
-- [x] Open A, CSP: Umami Cloud origins allowed
-- [ ] Open A: set Umami env vars in Vercel; verify pageview + `whatsapp_cta_click` + `contact_submit_success` in Umami
+- [x] Open A, CSP: Umami Cloud origins allowed (removed again 2026-10-29 with Umami)
+- [x] Open A: closed 2026-10-29 by removing Umami (not wanted); the site has no analytics provider and the CSP no longer allows Umami origins
 
 **Error handling**
 - [x] API returns generic errors; form shows French error banner + WhatsApp fallback
@@ -109,5 +109,5 @@ gains an `antonyaddy-dist` config that serves the production build.
 - [ ] Check Vercel function logs for `send-contact-email` after the test submission
 
 **Deployment**
-- [ ] Vercel env: `RESEND_API_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` (+ Umami)
+- [ ] Vercel env: `RESEND_API_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`
 - [ ] CI green on the PR (audit now passes); deploy preview → smoke test → promote

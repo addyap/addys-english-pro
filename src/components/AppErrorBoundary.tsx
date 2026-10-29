@@ -15,8 +15,9 @@ export class AppErrorBoundary extends React.Component<React.PropsWithChildren, S
   componentDidCatch(error: Error, info: React.ErrorInfo) {
     console.error("AppErrorBoundary", { error, info });
     
-    // Reported to Umami. This used to call window.gtag, which is never defined:
-    // the site has no Google Analytics, so every crash report was silently dropped.
+    // Reported through trackEvent (a no-op while there is no analytics
+    // provider; see src/lib/analytics.ts). The console line above is what
+    // surfaces it today.
     trackEvent('exception', {
       description: error?.message || 'Unknown error',
       fatal: true,

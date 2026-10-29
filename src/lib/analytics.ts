@@ -16,25 +16,17 @@ type EventParams = {
 };
 
 /**
- * Track a custom event to Umami (self-hosted, cookieless).
+ * Track a custom event.
  *
- * No-op until the Umami script is loaded (see src/components/UmamiAnalytics.tsx),
- * which only happens when VITE_UMAMI_SRC + VITE_UMAMI_WEBSITE_ID are configured.
- * Until then every call is a safe no-op, so the site works identically with or
- * without analytics wired up.
+ * The site has no analytics provider (Umami was removed in October 2026, by
+ * choice), so this does nothing. The calls stay in place across the site:
+ * connecting a provider later means changing this one function, and any
+ * provider here must stay cookieless or the privacy policy must change.
  */
 export const trackEvent = (
-  eventName: string,
-  params?: EventParams
-): void => {
-  if (typeof window === 'undefined' || !window.umami) return;
-
-  try {
-    window.umami.track(eventName, params as Record<string, unknown> | undefined);
-  } catch {
-    /* never let analytics break a user interaction */
-  }
-};
+  _eventName: string,
+  _params?: EventParams
+): void => {};
 
 /**
  * Track form submissions

@@ -4,11 +4,9 @@ import { trackEvent } from "@/lib/analytics";
 /**
  * Core Web Vitals reporting.
  *
- * Reports to Umami. This previously sent to `window.gtag`, gated on a
- * `VITE_GA_ID` that is not set and a Google Analytics snippet that this site
- * never loads — so every measurement was collected and then thrown away.
- * `trackEvent` is a no-op until Umami is configured, so the same "silent when
- * unconfigured" behaviour is preserved without pretending to use GA.
+ * Reports through `trackEvent`, which is a no-op while the site has no
+ * analytics provider (see src/lib/analytics.ts). This previously sent to
+ * `window.gtag`, which this site never loads.
  */
 function report(metric: Metric) {
   trackEvent("web_vital", {
