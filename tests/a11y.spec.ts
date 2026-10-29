@@ -38,6 +38,7 @@ for (const path of [
   "/thank-you?sujet=anglais",
   "/creation-site-web-multilingue",
   "/en/multilingual-websites",
+  "/creation-site-web-frejus",
 ]) {
   test(`${path} passes axe`, async ({ page }) => { await checkA11y(page, path); });
   test(`${path} passes axe on a phone`, async ({ page }) => {

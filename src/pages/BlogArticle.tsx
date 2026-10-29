@@ -285,7 +285,37 @@ const BlogArticle = () => {
             </div>
           )}
 
-          {/* Author CTA */}
+          {/* Author CTA: the websites articles end on the websites offer, the
+              rest on English training. */}
+          {article.category === 'Sites web' ? (
+          <div className="bg-accent/5 rounded-lg p-8">
+            <div className="text-center max-w-2xl mx-auto">
+              <h3 className="text-xl font-semibold text-foreground mb-3">
+                Un site dans les langues de vos clients
+              </h3>
+              <p className="text-muted-foreground mb-6">
+                Je crée des sites web multilingues pour les entreprises qui accueillent une clientèle
+                internationale, de la conception à la mise en ligne. Basé à Fréjus, j'accompagne des
+                clients partout en France et à l'étranger.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+                <Link
+                  to="/contact?sujet=sites"
+                  onClick={() => trackEvent('websites_enquiry_click', { page: 'BlogArticle', location: 'article-footer', target: '/contact?sujet=sites' })}
+                  className="inline-flex items-center justify-center bg-accent text-accent-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors"
+                >
+                  Parlez-moi de votre projet
+                </Link>
+                <Link
+                  to="/creation-site-web-multilingue"
+                  className="inline-flex items-center justify-center border-2 border-accent text-accent px-6 py-3 rounded-lg font-semibold hover:bg-accent hover:text-white transition-colors"
+                >
+                  Voir l'offre
+                </Link>
+              </div>
+            </div>
+          </div>
+          ) : (
           <div className="bg-accent/5 rounded-lg p-8">
             <div className="text-center max-w-2xl mx-auto">
               <h3 className="text-xl font-semibold text-foreground mb-3">
@@ -326,6 +356,7 @@ const BlogArticle = () => {
               </p>
             </div>
           </div>
+          )}
         </div>
       </div>
     </>

@@ -7,6 +7,9 @@
  * them from memory.
  *
  * They live here so routes.tsx and scripts/generate-sitemap.mjs can see them.
+ * Standalone articles outside the grammar series (such as the websites one,
+ * category 'Sites web', which BlogArticle closes on the websites offer) are
+ * added here too.
  */
 
 export interface ArticleData {
@@ -259,5 +262,54 @@ export const legacyBlogPosts: Record<string, ArticleData> = {
     readTime: '4 min',
     description: "Apprenez à adapter votre style de communication en anglais selon le canal : emails, présentations orales, appels téléphoniques.",
     ogImage: '/lovable-uploads/d29db9de-3e6a-459a-9275-77f27b988947.png'
+  },
+  'site-web-multilingue-entreprise': {
+    title: 'Site web multilingue : faut-il traduire le site de votre entreprise ?',
+    content: `
+      <p>Un touriste qui cherche un restaurant pour le soir, un propriétaire étranger qui cherche un artisan, une entreprise qui compare des prestataires : de plus en plus souvent, votre futur client découvre votre activité sur votre site avant de vous parler. S'il ne comprend pas ce qu'il lit, il passe au suivant. Voici comment savoir si un site multilingue vaut la peine pour vous, et comment le faire bien.</p>
+
+      <h2>Qui a vraiment besoin d'un site en plusieurs langues ?</h2>
+      <p>Pas tout le monde. Si votre clientèle est locale et francophone, un site en français, clair et rapide, fait très bien le travail. Un site multilingue devient utile dès qu'une part réelle de vos clients ne lit pas le français, par exemple :</p>
+      <ul>
+        <li>les restaurants, hôtels, locations saisonnières et activités de loisirs qui reçoivent des touristes ;</li>
+        <li>les agences immobilières, artisans et gestionnaires de biens qui travaillent avec des propriétaires étrangers ;</li>
+        <li>les cabinets, consultants et indépendants qui ont des clients ou des partenaires à l'étranger ;</li>
+        <li>les entreprises qui vendent ou exportent hors de France.</li>
+      </ul>
+      <p>Le bon réflexe : regardez vos clients des douze derniers mois. D'où viennent les réservations, les demandes de devis, les questions par e-mail ? Si vos statistiques de visites sont installées, elles indiquent aussi les pays et les langues des visiteurs.</p>
+
+      <h2>Quelles langues choisir ?</h2>
+      <p>Commencez par la langue qui couvre le plus de clients, souvent l'anglais, qui sert de langue commune à beaucoup de visiteurs. Ajoutez ensuite les langues de vos clients les plus nombreux : l'italien, l'allemand ou le néerlandais ont parfois plus de sens que l'espagnol, selon votre activité et votre région.</p>
+      <p>Mieux vaut deux langues bien tenues que six versions approximatives. Chaque langue ajoutée, c'est du contenu à relire et à mettre à jour.</p>
+
+      <h2>Traduction automatique ou traduction relue ?</h2>
+      <p>Les outils de traduction automatique sont devenus très bons pour produire un premier jet. Mais un site, c'est votre vitrine : un nom de plat mal traduit, une formule trop littérale ou une condition de réservation ambiguë coûtent de la confiance, et parfois des malentendus. La bonne méthode : un premier jet, puis une relecture par quelqu'un qui maîtrise vraiment la langue, et qui connaît votre activité.</p>
+      <p>Faites particulièrement attention aux textes qui engagent : prix, conditions d'annulation, mentions légales, informations de sécurité ou d'accès.</p>
+
+      <h2>Ce qui change techniquement</h2>
+      <p>Un site multilingue bien construit n'est pas qu'un texte traduit. Quelques points font la différence, pour vos visiteurs comme pour Google :</p>
+      <ul>
+        <li><strong>Une adresse par langue</strong> (par exemple <em>/en/</em> pour l'anglais), pour que chaque version puisse être trouvée et partagée ;</li>
+        <li><strong>des balises hreflang</strong>, qui indiquent aux moteurs de recherche quelle version montrer à qui ;</li>
+        <li><strong>un sélecteur de langue visible</strong>, et le choix du visiteur respecté : on peut proposer la langue de son navigateur, mais il doit toujours pouvoir changer ;</li>
+        <li><strong>des formulaires et des e-mails de confirmation dans la même langue</strong>, sinon le parcours se casse au moment de réserver ou de demander un devis ;</li>
+        <li><strong>un référencement par langue</strong> : on ne cherche pas avec les mêmes mots en anglais et en français, il faut donc travailler les titres et descriptions de chaque version.</li>
+      </ul>
+
+      <h2>Penser à la mise à jour dès le départ</h2>
+      <p>Le piège classique : la version française évolue, les autres restent figées avec l'ancien menu ou les horaires de l'an dernier. Avant de lancer le site, identifiez ce qui change souvent (carte, tarifs, dates, événements) et prévoyez une façon simple de le mettre à jour dans toutes les langues. Pour le reste (présentation, valeurs, services), un texte bien écrit peut rester en place longtemps.</p>
+
+      <h2>Deux exemples</h2>
+      <p>Pour le <a href="https://www.ristorantedalola.it" target="_blank" rel="noopener noreferrer">Ristorante da Lola</a>, un restaurant familial en Italie, j'ai créé un site en quatre langues : chaque visiteur découvre le lieu, la carte et réserve dans sa langue. Pour <a href="https://www.planb-concept.com" target="_blank" rel="noopener noreferrer">Plan B Concept</a>, spécialiste de la gestion de projet de construction sur la Côte d'Azur, un site bilingue français-anglais donne la même information aux clients français et aux propriétaires étrangers.</p>
+
+      <h2>En résumé</h2>
+      <p>Un site multilingue vaut la peine quand une part réelle de vos clients ne lit pas le français. Choisissez peu de langues mais bien tenues, faites relire les traductions, donnez une adresse à chaque langue et prévoyez la mise à jour dès le départ. Pour en parler, découvrez <a href="/creation-site-web-multilingue">mon offre de création de sites multilingues</a>, ou, si vous êtes dans le Var ou les Alpes-Maritimes, les pages <a href="/creation-site-web-frejus">Fréjus et Saint-Raphaël</a> et <a href="/creation-site-web-nice-cannes">Nice et Cannes</a>.</p>
+    `,
+    date: '2026-10-29',
+    author: 'Antony Addy',
+    category: 'Sites web',
+    readTime: '5 min',
+    description: "Site web multilingue : qui en a vraiment besoin, quelles langues choisir, traduction automatique ou relue, et ce qui change techniquement pour être bien référencé.",
+    ogImage: '/og/antonyaddy-hub.jpg'
   }
 };

@@ -379,6 +379,15 @@ export const WebsitesLanding = ({ lang }: { lang: Lang }) => {
             </div>
           </Reveal>
 
+          {lang === 'fr' && (
+            <nav aria-label="Près de chez vous" className="mb-10 text-sm text-muted-foreground">
+              Près de chez vous :{' '}
+              <Link to="/creation-site-web-frejus" className="text-primary underline underline-offset-2 hover:text-accent">Fréjus et Saint-Raphaël</Link>
+              {' · '}
+              <Link to="/creation-site-web-nice-cannes" className="text-primary underline underline-offset-2 hover:text-accent">Nice et Cannes</Link>
+            </nav>
+          )}
+
           {/* Closing CTA */}
           <Reveal as="section" variant="scale" className="bg-gradient-to-r from-primary to-primary/80 text-white rounded-lg p-8 sm:p-10 text-center">
             <h2 className="text-2xl sm:text-3xl font-bold mb-3 font-heading">{c.closingTitle}</h2>

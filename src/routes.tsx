@@ -50,6 +50,8 @@ export const routes: RouteRecord[] = [
 
           // Per-audience landing pages
           { path: "/creation-site-web-multilingue", lazy: page(() => import("./pages/CreationSiteWeb")), entry: "src/pages/CreationSiteWeb.tsx" },
+          { path: "/creation-site-web-frejus", lazy: page(() => import("./pages/CreationSiteWebFrejus")), entry: "src/pages/CreationSiteWebFrejus.tsx" },
+          { path: "/creation-site-web-nice-cannes", lazy: page(() => import("./pages/CreationSiteWebNiceCannes")), entry: "src/pages/CreationSiteWebNiceCannes.tsx" },
           { path: "/en/multilingual-websites", lazy: page(() => import("./pages/MultilingualWebsites")), entry: "src/pages/MultilingualWebsites.tsx" },
           { path: "/anglais-entreprise", lazy: page(() => import("./pages/AnglaisEntreprise")), entry: "src/pages/AnglaisEntreprise.tsx" },
           { path: "/anglais-cadres", lazy: page(() => import("./pages/AnglaisCadres")), entry: "src/pages/AnglaisCadres.tsx" },

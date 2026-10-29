@@ -12,6 +12,8 @@ const routeConfig: Record<string, { label: string; section?: string; sectionPath
   '/offres-de-formation': { label: 'Offres de formation' },
   '/creation-site-web-multilingue': { label: 'Création de sites web' },
   '/en/multilingual-websites': { label: 'Multilingual websites' },
+  '/creation-site-web-frejus': { label: 'Fréjus et Saint-Raphaël', section: 'Création de sites web', sectionPath: '/creation-site-web-multilingue' },
+  '/creation-site-web-nice-cannes': { label: 'Nice et Cannes', section: 'Création de sites web', sectionPath: '/creation-site-web-multilingue' },
   '/temoignages': { label: 'Témoignages' },
   '/contact': { label: 'Contact' },
   '/thank-you': { label: 'Merci' },
