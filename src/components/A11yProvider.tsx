@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSkipToContent, useReducedMotion } from '@/hooks/useA11y';
+import { useReducedMotion } from '@/hooks/useA11y';
 
 interface A11yProviderProps {
   children: React.ReactNode;
@@ -10,7 +10,8 @@ interface A11yProviderProps {
  * Sets up global accessibility features
  */
 const A11yProvider: React.FC<A11yProviderProps> = ({ children }) => {
-  useSkipToContent();
+  // No skip link here: Layout renders the one "Aller au contenu principal"
+  // link on every page, and a second injected copy duplicated it.
   const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {

@@ -220,7 +220,7 @@ const Training = () => {
           <Reveal>
             <section className="mb-12 rounded-lg border border-border bg-white p-6 sm:p-8" aria-labelledby="training-summary-title">
               <h2 id="training-summary-title" className="text-xl sm:text-2xl font-bold text-primary mb-5 font-heading">En bref</h2>
-              <dl className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-5">
+              <dl className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-5 [overflow-wrap:anywhere] [&>*]:min-w-0">
                 {summary.map((item) => (
                   <div key={item.label}>
                     <dt className="text-xs font-semibold uppercase tracking-wider text-accent">{item.label}</dt>
@@ -409,7 +409,7 @@ const Training = () => {
                 inscription.
               </p>
 
-              <dl className="grid md:grid-cols-2 gap-x-8 gap-y-6">
+              <dl className="grid md:grid-cols-2 gap-x-8 gap-y-6 [overflow-wrap:anywhere] [&>*]:min-w-0">
                 {practicalInfo.map((item) => (
                   <div key={item.title}>
                     <dt className="font-semibold text-primary mb-1.5 flex items-center gap-2">
