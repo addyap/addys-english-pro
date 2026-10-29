@@ -86,26 +86,6 @@ export const useA11yDialog = (
 };
 
 /**
- * Hook to skip to main content
- */
-export const useSkipToContent = () => {
-  useEffect(() => {
-    const skipLink = document.createElement('a');
-    skipLink.href = '#main-content';
-    skipLink.textContent = 'Aller au contenu principal';
-    skipLink.className = 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded';
-    
-    document.body.prepend(skipLink);
-
-    return () => {
-      if (document.body.contains(skipLink)) {
-        document.body.removeChild(skipLink);
-      }
-    };
-  }, []);
-};
-
-/**
  * Hook to handle reduced motion preference
  */
 export const useReducedMotion = () => {

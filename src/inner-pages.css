@@ -52,7 +52,7 @@
 .training-option-link:hover { text-decoration:underline; text-underline-offset:3px; }
 .training-option-link:focus-visible { outline:3px solid #e8473b; outline-offset:4px; border-radius:2px; }
 .inner-scan { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:0 0 48px; }
-.inner-scan > div { padding:20px; border:1px solid rgba(17,22,49,.1); border-top:3px solid var(--inner-accent); border-radius:12px; background:#fffdfa; }
+.inner-scan > div { overflow-wrap:anywhere; padding:20px; border:1px solid rgba(17,22,49,.1); border-top:3px solid var(--inner-accent); border-radius:12px; background:#fffdfa; }
 .inner-scan span { color:#a94331; font:800 .62rem/1.4 'Inter',sans-serif; letter-spacing:.13em; text-transform:uppercase; }
 .inner-scan p { margin:10px 0 0; color:#171b39; font:700 clamp(.92rem,1.4vw,1.05rem)/1.35 'Bricolage Grotesque',sans-serif; }
 .inner-page--contact form input,.inner-page--contact form select,.inner-page--contact form textarea { background:#fffdfa; }

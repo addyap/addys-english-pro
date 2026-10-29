@@ -21,7 +21,8 @@ async function checkA11y(page: Page, path: string) {
 }
 
 // One page per template: home, contact form, about, offers, blog index,
-// blog article, assessment, audience landing, city landing.
+// blog article, assessment, audience landing, city landing, resources,
+// testimonials, thank-you.
 for (const path of [
   "/",
   "/contact",
@@ -32,6 +33,13 @@ for (const path of [
   "/test-de-positionnement",
   "/anglais-entreprise",
   "/cours-anglais-nice",
+  "/ressources-en-ligne",
+  "/temoignages",
+  "/thank-you?sujet=anglais",
 ]) {
   test(`${path} passes axe`, async ({ page }) => { await checkA11y(page, path); });
+  test(`${path} passes axe on a phone`, async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await checkA11y(page, path);
+  });
 }

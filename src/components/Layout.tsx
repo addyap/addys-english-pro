@@ -180,7 +180,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="site-desktop-nav hidden xl:flex items-center gap-0.5" aria-label="Navigation principale">
+            <nav className="site-desktop-nav hidden nav:flex items-center gap-0.5" aria-label="Navigation principale">
               <NavDropdown label="Anglais" active={formationsActive} width="w-72">
                 {close => (
                   <>
@@ -291,7 +291,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
             </nav>
 
             {/* Mobile menu button + WhatsApp */}
-            <div className="xl:hidden flex items-center gap-2">
+            <div className="nav:hidden flex items-center gap-2">
               <a
                 href={whatsappLink}
                 className="site-mobile-contact"
@@ -318,7 +318,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
 
             {/* CTAs, separated from the nav proper: these start a conversation
                 rather than moving around within the site. */}
-            <div className="site-header-actions hidden xl:flex items-center gap-3">
+            <div className="site-header-actions hidden nav:flex items-center gap-3">
               <Link
                 to="/contact"
                 className="site-contact-button"
@@ -345,7 +345,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
               contact); free resources last, with the individual tools left to
               the resources hub rather than listed here. */}
           {isMobileMenuOpen && (
-            <div id="mobile-navigation" className="site-mobile-navigation xl:hidden">
+            <div id="mobile-navigation" className="site-mobile-navigation nav:hidden">
               <nav className="flex flex-col" aria-label="Navigation principale">
                 {(() => {
                   const item = (href: string, name: string, key?: string) => (
@@ -417,7 +417,9 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
       {/* Footer */}
       <footer className="site-footer px-4 py-12 text-sm text-white">
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-10 border-b border-white/15 pb-10 md:grid-cols-3">
+          {/* overflow-wrap: the email address and longer link labels may break
+              rather than push past their column when text is enlarged. */}
+          <div className="grid gap-10 border-b border-white/15 pb-10 md:grid-cols-3 [overflow-wrap:anywhere] [&>*]:min-w-0">
             <div>
               <Link to="/" className="site-wordmark mb-5" aria-label="Antony Addy — Accueil">
                 <img className="site-logo site-logo--footer" src="/brand/antony-addy-logo-white.svg" alt="Antony Addy" width="125" height="64" loading="lazy" />

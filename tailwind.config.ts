@@ -22,6 +22,12 @@ export default {
 			}
 		},
 		extend: {
+			screens: {
+				// The header's full-menu breakpoint, in em so it follows the
+				// visitor's browser text size: 80em is 1280px at the default 16px,
+				// and the compact menu takes over sooner when text is enlarged.
+				nav: '80em',
+			},
 			zIndex: {
 				'header': '50',
 				'dropdown': '100',
