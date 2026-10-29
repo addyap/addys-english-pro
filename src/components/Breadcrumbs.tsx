@@ -11,6 +11,7 @@ const routeConfig: Record<string, { label: string; section?: string; sectionPath
   '/qui-je-suis': { label: 'Qui je suis' },
   '/offres-de-formation': { label: 'Offres de formation' },
   '/creation-site-web-multilingue': { label: 'Création de sites web' },
+  '/en/multilingual-websites': { label: 'Multilingual websites' },
   '/temoignages': { label: 'Témoignages' },
   '/contact': { label: 'Contact' },
   '/thank-you': { label: 'Merci' },

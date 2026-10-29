@@ -48,6 +48,8 @@ export type SEOProps = {
   imageWidth?: number;
   imageHeight?: number;
   locale?: string;
+  /** The page's language, for <html lang>. The site is French; set "en" on the few English pages. */
+  lang?: string;
   type?: "website" | "article";
   twitterCard?: "summary" | "summary_large_image";
   twitterSite?: string;
@@ -121,6 +123,7 @@ export default function SEOHead(props: SEOProps) {
     imageWidth = 1200,
     imageHeight = 630,
     locale = DEFAULT_LOCALE,
+    lang = DEFAULT_LANG,
     type = "website",
     twitterCard = "summary_large_image",
     // No default handle. These used to default to "@antonyaddy", stamping
@@ -241,7 +244,7 @@ export default function SEOHead(props: SEOProps) {
   return (
     <>
       <Helmet
-        htmlAttributes={{ lang: DEFAULT_LANG }}
+        htmlAttributes={{ lang }}
         title={computedTitle}
         meta={metaTags}
         link={linkTags}
