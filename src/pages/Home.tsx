@@ -283,8 +283,7 @@ const Home = () => {
               <div className="home-chapter-intro">
                 <div>
                   <div className="home-chapter-label flex items-center gap-3 flex-wrap">
-                    <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">01 · Ligne Anglais</span>
-                    <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#E8473B] border border-[#E8473B]/45 rounded-full px-3 py-1.5">Red line</span>
+                    <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">01 · Formation en anglais</span>
                   </div>
                   <h2 id="station-anglais" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
                     L'anglais qui vous met en mouvement
@@ -296,7 +295,7 @@ const Home = () => {
                 <figure className="visual-home-photo"><img className="home-chapter-art" src="/visuals/learning-workshop.jpg" alt="Scène d’illustration : des adultes échangent autour de leurs notes pendant un atelier" width="1200" height="800" loading="lazy" decoding="async" /><figcaption>Photo d’illustration · Pexels</figcaption></figure>
               </div>
 
-              <p className="home-stations-label mt-7 font-heading text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-[#8b93b6]">Stations desservies</p>
+              <p className="home-stations-label mt-7 font-heading text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-[#8b93b6]">À qui s’adressent les formations</p>
               <div className="home-station-links mt-3 flex flex-wrap gap-2">
                 <Link to="/anglais-entreprise" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Entreprises</Link>
                 <Link to="/anglais-cadres" className="font-heading text-xs uppercase tracking-[0.08em] text-[#CBCFE4] border border-[#E8473B]/30 rounded-full px-3.5 py-2 hover:border-[#E8473B] hover:text-white transition-colors">Cadres &amp; dirigeants</Link>
@@ -364,8 +363,7 @@ const Home = () => {
             <div className="home-chapter-intro">
               <div>
                 <div className="home-chapter-label flex items-center gap-3 flex-wrap">
-                  <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">02 · Ligne Créations</span>
-                  <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#F0974A] border border-[#F0974A]/45 rounded-full px-3 py-1.5">Amber line</span>
+                  <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">02 · Création de sites web</span>
                 </div>
                 <h2 id="station-creations" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
                   Des sites et des outils faits pour avancer
@@ -435,8 +433,7 @@ const Home = () => {
             <div className="home-chapter-intro">
               <div>
                 <div className="home-chapter-label flex items-center gap-3 flex-wrap">
-                  <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">03 · Ligne IA</span>
-                  <span className="font-heading text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#7A62FF] border border-[#7A62FF]/45 rounded-full px-3 py-1.5">Violet line</span>
+                  <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">03 · IA générative</span>
                 </div>
                 <h2 id="station-ia" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">
                   L'IA générative, appliquée à votre métier
@@ -518,8 +515,8 @@ const Home = () => {
           <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#CBCFE4] opacity-30" aria-hidden="true" />
           <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#CBCFE4]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22' }} />
           <div className="home-section-inner relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
-            <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Le Conducteur</span>
-            <h2 id="station-conducteur" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">Qui est aux commandes</h2>
+            <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Qui je suis</span>
+            <h2 id="station-conducteur" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">Votre interlocuteur</h2>
             <div className="home-person-grid mt-8 grid lg:grid-cols-[320px_1fr] gap-10 items-start">
               <Reveal variant="left" className="flex flex-col items-center lg:items-start">
                 <img
@@ -560,7 +557,7 @@ const Home = () => {
           <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#CBCFE4] opacity-30" aria-hidden="true" />
           <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#CBCFE4]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22' }} />
           <div className="home-section-inner relative max-w-6xl mx-auto pl-12 sm:pl-20 pr-4 py-14 sm:py-20">
-            <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Les Passagers</span>
+            <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Références</span>
             <h2 id="station-passagers" className="mt-3 font-heading font-extrabold tracking-tight text-2xl sm:text-4xl leading-tight">Ils me font confiance</h2>
 
             {/* Client categories — served stations */}
@@ -628,9 +625,9 @@ const Home = () => {
           <span className="pointer-events-none absolute top-0 bottom-0 lg-x w-px bg-[#F6A463] opacity-50" aria-hidden="true" />
           <span className="pointer-events-none absolute lg-x -ml-[6px] top-[72px] w-3 h-3 rounded-full bg-[#070b22] border-2 border-[#F6A463]" aria-hidden="true" style={{ boxShadow: '0 0 0 4px #070b22, 0 0 12px rgba(246,164,99,.6)' }} />
           <div className="home-contact-inner relative max-w-3xl mx-auto pl-12 sm:pl-20 pr-4 py-16 sm:py-24">
-            <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Prochain arrêt</span>
+            <span className="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-[#8b93b6]">Contact</span>
             <h2 id="station-contact" className="mt-3 font-heading font-extrabold tracking-tight text-3xl sm:text-5xl leading-[1.03]">
-              Un projet en anglais, un site, un outil ou un atelier IA ?<br /><span className="text-[#F6A463]">Mind the gap.</span>
+              Un projet en anglais, un site, un outil ou un atelier IA ?<br /><span className="text-[#F6A463]">Parlons de votre besoin.</span>
             </h2>
             <p className="mt-5 text-lg text-[#CBCFE4] font-body leading-relaxed max-w-xl">
               Dites-moi où vous voulez aller — je vous réponds rapidement avec une proposition adaptée. Premier échange gratuit, réponse sous 24 h ouvrées.

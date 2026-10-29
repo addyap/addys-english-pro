@@ -72,6 +72,23 @@ const SUBJECTS = [
   },
 ] as const;
 
+// Heading for visitors who arrive from a service-specific link, so the page
+// acknowledges what they chose instead of restarting with the general offer.
+const ARRIVAL_INTROS: Record<string, { title: string; lead: string }> = {
+  anglais: {
+    title: 'Votre projet de formation en anglais',
+    lead: "Dites-moi en quelques lignes votre niveau, votre objectif et votre contexte. Je vous réponds sous 24 h ouvrées pour en discuter, puis je vous envoie une proposition adaptée.",
+  },
+  sites: {
+    title: 'Votre projet de site web',
+    lead: "Quelques lignes suffisent pour commencer : votre activité, ce que le site doit faire et votre échéance. Je vous réponds sous 24 h ouvrées.",
+  },
+  ia: {
+    title: 'Votre projet de formation en IA générative',
+    lead: "Dites-moi votre métier, vos outils actuels et ce que vous voulez y gagner. Je vous réponds sous 24 h ouvrées.",
+  },
+};
+
 const Contact = () => {
   const contactJsonLd = {
     "@context": "https://schema.org",
@@ -85,6 +102,7 @@ const Contact = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const whatsappLink = useWhatsAppLink();
+  const [arrivalKey, setArrivalKey] = useState<string | null>(null);
 
   const [formData, setFormData] = useState({
     prenom: '',
@@ -121,6 +139,7 @@ const Contact = () => {
     const training = requestedTraining && trainingTitles.has(requestedTraining) ? requestedTraining : null;
     const subject = training ? SUBJECTS[0] : SUBJECTS.find((s) => s.key === searchParams.get('sujet') && s.key !== 'autre');
     if (!subject) return;
+    setArrivalKey(subject.key);
     setFormData((prev) => ({
       ...prev,
       sujet: prev.sujet || subject.value,
@@ -233,6 +252,9 @@ const Contact = () => {
       trackEvent('contact_submit_success', { page: 'contact' });
 
       setSubmitSuccess(true);
+      // Captured before the reset below, so the thank-you page can follow the
+      // service the visitor asked about.
+      const sentSubjectKey = SUBJECTS.find((sub) => sub.value === formData.sujet)?.key ?? 'autre';
       setFormData({
         prenom: '',
         nom: '',
@@ -247,7 +269,7 @@ const Contact = () => {
 
       // Redirect to /thank-you after 2 seconds (banner stays visible until then)
       window.setTimeout(() => {
-        navigate('/thank-you');
+        navigate(`/thank-you?sujet=${sentSubjectKey}`);
       }, 2000);
     } catch (error) {
       console.error('Form submission error:', error);
@@ -336,12 +358,14 @@ const Contact = () => {
 
           {/* Header */}
           <Reveal as="header" className="inner-intro text-center mb-12">
-            <span className="inner-kicker">Prochain arrêt · Votre projet</span>
+            <span className="inner-kicker">Contact · Premier échange gratuit</span>
             <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
-              Prenons contact
+              {arrivalKey && ARRIVAL_INTROS[arrivalKey] ? ARRIVAL_INTROS[arrivalKey].title : 'Prenons contact'}
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Premier échange gratuit et sans engagement pour parler d'anglais, d'un site web, d'un outil sur mesure ou d'IA
+              {arrivalKey && ARRIVAL_INTROS[arrivalKey]
+                ? ARRIVAL_INTROS[arrivalKey].lead
+                : "Premier échange gratuit et sans engagement pour parler d'anglais, d'un site web, d'un outil sur mesure ou d'IA"}
             </p>
             <span className="heading-rule" aria-hidden="true" />
           </Reveal>

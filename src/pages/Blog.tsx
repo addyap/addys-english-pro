@@ -245,20 +245,22 @@ const Blog = () => {
             </div>
           )}
 
-          {/* Newsletter CTA */}
+          {/* Training CTA. This used to promise tips "dans votre boîte email"
+              but led to the general contact form: there is no newsletter. */}
           <div className="bg-primary text-primary-foreground rounded-lg p-8 text-center">
             <h2 className="text-2xl font-bold mb-4">
-              Restez informé des derniers conseils
+              Envie d'aller plus loin qu'un article ?
             </h2>
             <p className="text-primary-foreground/80 mb-6 max-w-2xl mx-auto">
-              Recevez mes meilleurs conseils pour progresser en anglais professionnel 
-              directement dans votre boîte email
+              Je construis des formations en anglais professionnel autour de vos situations
+              réelles : réunions, appels, emails, présentations. Premier échange gratuit,
+              réponse sous 24 h ouvrées.
             </p>
             <Link
-              to="/contact"
+              to="/contact?sujet=anglais"
               className="inline-block bg-background text-foreground px-8 py-3 rounded-lg font-semibold hover:bg-background/90 transition-colors"
             >
-              Me contacter pour plus d'informations
+              Parler de ma formation en anglais
             </Link>
           </div>
         </div>

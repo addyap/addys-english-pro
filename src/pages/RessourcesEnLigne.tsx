@@ -48,11 +48,11 @@ const RessourcesEnLigne = () => {
               </span>
               <span className="visual-photo-credit">Photo d’illustration · Pexels</span>
               <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-3 font-heading leading-tight">
-                Fluentory <span className="text-accent">by Antony Addy</span>
+                Ressources pour pratiquer l'anglais
               </h1>
               <p className="text-lg sm:text-xl font-semibold text-primary max-w-2xl mx-auto mb-4">
-                Tools for grammar, listening, reading, speaking and exam prep — built by a
-                certified trainer. Free during launch.
+                Les plateformes <span className="text-accent">Fluentory by Antony Addy</span> : grammaire,
+                écoute, lecture, expression orale et préparation aux examens. Gratuites pendant leur lancement.
               </p>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Mes formations se prolongent ici. Entre deux séances, je donne à mes apprenants des

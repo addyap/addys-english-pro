@@ -29,7 +29,7 @@
 .home-chapter h2 + p strong { color: hsl(var(--brand-ink)); }
 .home-chapter-label { font-size: .6875rem; line-height: 1.5; }
 .home-chapter-label > span:first-child { color: hsl(var(--muted-foreground)); font-size: .75rem; letter-spacing: .1em; font-weight: 600; }
-.home-chapter-label > span:last-child { color: hsl(var(--chapter-accent)); border-color: hsl(var(--chapter-accent) / .3); padding: 4px 12px; font-size: .625rem; letter-spacing: .06em; }
+.home-chapter-label > span + span { color: hsl(var(--chapter-accent)); border-color: hsl(var(--chapter-accent) / .3); padding: 4px 12px; font-size: .625rem; letter-spacing: .06em; }
 .home-stations-label { color: hsl(var(--muted-foreground)); font-size: .6875rem; letter-spacing: .1em; margin-top: 32px; }
 .home-station-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 16px; border: 1px solid hsl(var(--border)); background: white; color: hsl(var(--brand-ink)); font: 500 .8125rem/1.5 'Inter', sans-serif; letter-spacing: 0; text-transform: none; transition: background-color .2s, border-color .2s; }
 .home-station-links a:hover { color: hsl(var(--chapter-accent)); border-color: hsl(var(--chapter-accent) / .5); background: hsl(var(--brand-paper)); }
