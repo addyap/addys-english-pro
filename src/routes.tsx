@@ -50,6 +50,7 @@ export const routes: RouteRecord[] = [
 
           // Per-audience landing pages
           { path: "/creation-site-web-multilingue", lazy: page(() => import("./pages/CreationSiteWeb")), entry: "src/pages/CreationSiteWeb.tsx" },
+          { path: "/en/multilingual-websites", lazy: page(() => import("./pages/MultilingualWebsites")), entry: "src/pages/MultilingualWebsites.tsx" },
           { path: "/anglais-entreprise", lazy: page(() => import("./pages/AnglaisEntreprise")), entry: "src/pages/AnglaisEntreprise.tsx" },
           { path: "/anglais-cadres", lazy: page(() => import("./pages/AnglaisCadres")), entry: "src/pages/AnglaisCadres.tsx" },
           { path: "/anglais-particuliers", lazy: page(() => import("./pages/AnglaisParticuliers")), entry: "src/pages/AnglaisParticuliers.tsx" },

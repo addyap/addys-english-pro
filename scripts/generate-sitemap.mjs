@@ -43,6 +43,7 @@ const staticRoutes = [
 
   // Audience landing pages
   { path: "/creation-site-web-multilingue", priority: "0.8", changefreq: "monthly" },
+  { path: "/en/multilingual-websites", priority: "0.7", changefreq: "monthly" },
   { path: "/anglais-entreprise", priority: "0.9", changefreq: "monthly" },
   { path: "/anglais-cadres", priority: "0.9", changefreq: "monthly" },
   { path: "/anglais-particuliers", priority: "0.9", changefreq: "monthly" },
