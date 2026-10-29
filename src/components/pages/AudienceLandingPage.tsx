@@ -48,7 +48,7 @@ export const AudienceLandingPage: React.FC<AudiencePageProps> = ({
           <div className="aurora" aria-hidden="true" />
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Reveal>
-              <span className="inner-kicker">Ligne anglais · Selon votre profil</span>
+              <span className="inner-kicker">Formation en anglais · Selon votre profil</span>
               <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading leading-tight">
                 {h1}
               </h1>
