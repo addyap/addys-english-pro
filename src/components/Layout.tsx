@@ -468,6 +468,7 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
             <div>
               <p>© {year} Antony Addy · Déclaration d'activité n° 93830738883 auprès de la DREETS PACA. Cet enregistrement ne vaut pas agrément de l'État.</p>
               <p className="mt-2">Hébergeur : Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis · <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">vercel.com</a></p>
+              <p className="mt-2">Site réalisé par <a href="https://thevitrine.fr/" target="_blank" rel="noopener" className="underline hover:text-white">The Vitrine</a></p>
             </div>
             <nav aria-label="Informations légales" className="flex shrink-0 flex-wrap gap-x-4 gap-y-2">
               <Link to="/mentions-legales" className="hover:text-white">Mentions légales</Link>
