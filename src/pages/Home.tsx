@@ -209,7 +209,7 @@ const HOME_JSONLD_GRAPH = {
       serviceType: ["Conception et développement de sites web", "Création d'outils métier et pédagogiques"],
       description: "Création de sites web, d'outils métier et d'outils pédagogiques sur mesure pour entreprises, indépendants et acteurs de l'éducation, avec l'IA.",
       provider: { "@id": "https://www.antonyaddy.com/#antony-addy" },
-      url: "https://www.antonyaddy.com/sites-web",
+      url: "https://www.antonyaddy.com/creation-site-web-multilingue",
       areaServed: [
         { "@type": "Country", name: "France" },
         "Worldwide (remote)",
@@ -425,7 +425,7 @@ const Home = () => {
                   <span className="home-showcase-kicker">Réalisations en ligne</span>
                   <h3>Des projets que vous pouvez explorer.</h3>
                 </div>
-                <a href="/sites-web#work">
+                <a href="https://thevitrine.fr/work" target="_blank" rel="noopener">
                   Voir toutes les réalisations <ArrowRight size={18} aria-hidden="true" />
                 </a>
               </div>

@@ -11,7 +11,7 @@ import { trackEvent } from '@/lib/analytics';
 // local context and, where there is any, local work; the full offer, process and
 // FAQ stay on the main websites page, linked from here.
 
-const SCREENSHOTS = 'https://www.antonyaddy.com/sites-web/screenshots';
+const SCREENSHOTS = '/projects';
 const ENQUIRY = '/contact?sujet=sites';
 
 export interface LocalProject { slug: string; name: string; url: string; host: string; tag: string; text: string }

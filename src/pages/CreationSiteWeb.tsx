@@ -7,16 +7,16 @@ import { Reveal, RevealStagger } from '@/components/motion/Reveal';
 import { trackEvent } from '@/lib/analytics';
 
 // The sales page for website creation, in French (/creation-site-web-multilingue)
-// and English (/en/multilingual-websites). The portfolio itself lives at
-// /sites-web (a separate app, so plain <a> links to it); this page carries the
-// offer, three relevant projects, the process and the enquiry on the main
-// domain, where it can rank.
+// and English (/en/multilingual-websites). The studio and full portfolio live at
+// The Vitrine (thevitrine.fr — Antony Addy & Julien Bourgois); this page carries
+// the offer, three relevant projects, the process and the enquiry on the main
+// domain, where it can rank, and sends "see all work" and the English enquiry to
+// The Vitrine. Project screenshots are served locally from /public/projects.
 //
-// Facts here come from the portfolio (addyap2/showcase): project descriptions
-// and its FAQ. No client quotes yet: the portfolio's testimonials are
-// placeholders. Add real ones only once a client has agreed to be quoted.
+// Facts here come from The Vitrine's portfolio: project descriptions and its FAQ.
+// No client quotes yet — add real ones only once a client has agreed to be quoted.
 
-const SCREENSHOTS = 'https://www.antonyaddy.com/sites-web/screenshots';
+const SCREENSHOTS = '/projects';
 const FR_URL = 'https://www.antonyaddy.com/creation-site-web-multilingue';
 const EN_URL = 'https://www.antonyaddy.com/en/multilingual-websites';
 
@@ -57,12 +57,12 @@ const COPY: Record<Lang, Copy> = {
     },
     locale: 'fr_FR',
     enquiry: '/contact?sujet=sites',
-    portfolio: '/sites-web',
+    portfolio: 'https://thevitrine.fr/work',
     kicker: 'Création de sites web',
     h1: 'Des sites web multilingues, pour une clientèle internationale',
     sub: "Restaurants, hébergements, commerces, indépendants : je crée des sites qui parlent la langue de vos clients, et je vous accompagne jusqu'à la mise en ligne. Basé sur la Côte d'Azur, j'accompagne des clients partout en France et à l'étranger.",
     primary: 'Parlez-moi de votre projet',
-    secondary: 'Voir toutes mes réalisations',
+    secondary: 'Voir le portfolio The Vitrine',
     reassurance: 'Premier échange gratuit · Réponse sous 24 h ouvrées',
     factsLabel: 'En bref',
     facts: [
@@ -77,7 +77,7 @@ const COPY: Record<Lang, Copy> = {
     labels: { need: 'Le besoin', work: "Ce que j'ai réalisé", outcome: 'Ce que le site permet' },
     imgAlt: (name) => `Page d'accueil du site ${name}`,
     newTab: "(s'ouvre dans un nouvel onglet)",
-    allProjects: 'Voir les vingt projets du portfolio',
+    allProjects: 'Voir tout le portfolio sur The Vitrine',
     projects: [
       { ...PROJECT_LINKS.lola, tag: 'Restaurant · 4 langues',
         need: 'Un restaurant familial des Marches, à Fermignano, qui accueille des clients venus de plusieurs pays et voulait faire sentir son identité avant même la première visite.',
@@ -134,13 +134,13 @@ const COPY: Record<Lang, Copy> = {
       canonical: EN_URL,
     },
     locale: 'en_GB',
-    enquiry: '/sites-web/en#contact',
-    portfolio: '/sites-web/en',
+    enquiry: 'https://thevitrine.fr/en/contact',
+    portfolio: 'https://thevitrine.fr/en/work',
     kicker: 'Website design',
     h1: 'Multilingual websites for an international clientele',
     sub: "Restaurants, holiday lets, shops and independent professionals: I build websites that speak your customers' language, and see you through to launch. Based on the French Riviera, I work with clients across France and abroad.",
     primary: 'Tell me about your project',
-    secondary: 'See all my work',
+    secondary: 'See the full portfolio on The Vitrine',
     reassurance: 'First conversation free · Reply within one working day',
     factsLabel: 'At a glance',
     facts: [
@@ -155,7 +155,7 @@ const COPY: Record<Lang, Copy> = {
     labels: { need: 'The brief', work: 'What I built', outcome: 'What it does' },
     imgAlt: (name) => `Home page of the ${name} website`,
     newTab: '(opens in a new tab)',
-    allProjects: 'See all twenty projects in the portfolio',
+    allProjects: 'See the full portfolio on The Vitrine',
     projects: [
       { ...PROJECT_LINKS.lola, tag: 'Restaurant · 4 languages',
         need: 'A family restaurant in Fermignano, in Italy\'s Marche region, welcoming guests from several countries and wanting them to feel its character before their first visit.',
@@ -230,7 +230,7 @@ export const WebsitesLanding = ({ lang }: { lang: Lang }) => {
   const EnquiryLink = ({ location, className }: { location: string; className: string }) =>
     internalEnquiry
       ? <Link to={c.enquiry} onClick={enquiryClick(location)} className={className}>{c.primary}</Link>
-      : <a href={c.enquiry} onClick={enquiryClick(location)} className={className}>{c.primary}</a>;
+      : <a href={c.enquiry} target="_blank" rel="noopener" onClick={enquiryClick(location)} className={className}>{c.primary}</a>;
 
   return (
     <>
@@ -260,6 +260,8 @@ export const WebsitesLanding = ({ lang }: { lang: Lang }) => {
                 <EnquiryLink location="hero" className={enquiryClass} />
                 <a
                   href={c.portfolio}
+                  target="_blank"
+                  rel="noopener"
                   onClick={() => trackEvent('websites_portfolio_click', { page, location: 'hero', target: c.portfolio })}
                   className="border border-primary text-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary/5 transition-colors"
                 >
@@ -333,7 +335,7 @@ export const WebsitesLanding = ({ lang }: { lang: Lang }) => {
                 </Reveal>
               ))}
             </div>
-            <a href={`${c.portfolio}#work`} className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-accent">
+            <a href={c.portfolio} target="_blank" rel="noopener" className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-accent">
               {c.allProjects} <ArrowRight size={16} aria-hidden="true" />
             </a>
           </section>

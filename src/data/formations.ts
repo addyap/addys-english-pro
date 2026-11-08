@@ -1,8 +1,8 @@
 // Single source of truth for Antony Addy's three activities.
 // antonyaddy.com is the hub: the English formation lives on this site (root),
-// website creation on its own page here (/creation-site-web-multilingue, which
-// links to the /sites-web portfolio) and generative-AI training at /ia (a
-// separate app that www forwards to).
+// website creation on its own page here (/creation-site-web-multilingue, whose
+// studio and full portfolio are The Vitrine — thevitrine.fr) and generative-AI
+// training at /ia (a separate app that www forwards to).
 // Update links or wording here and the header switcher, homepage hub section
 // and footer all follow automatically.
 
@@ -15,7 +15,7 @@ export interface Formation {
   title: string;
   /** One-line description shown on the homepage cards. */
   tagline: string;
-  /** Destination. Internal (this site), or /ia and /sites-web. */
+  /** Destination. Internal (this site), or /ia. */
   href: string;
   /** True for the other activities, which are separate apps: linked with a
    *  plain <a> (full page load), listed under "Mes autres activités". */
@@ -62,9 +62,9 @@ export const FORMATIONS: Formation[] = [
   },
 ];
 
-/** Other domains open in a new tab; /ia and /sites-web are on this domain, so they don't. */
+/** Other domains open in a new tab; /ia and /creation-site-web-multilingue are on this domain, so they don't. */
 export const opensNewTab = (href: string) => href.startsWith('http');
 
-/** "antonyaddy.com/ia", "antonyaddy.com/sites-web" — shown under menu labels. */
+/** "antonyaddy.com/ia", "antonyaddy.com/creation-site-web-multilingue" — shown under menu labels. */
 export const displayAddress = (href: string) =>
   href.startsWith('/') ? `antonyaddy.com${href}` : href.replace('https://', '');
