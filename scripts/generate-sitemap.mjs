@@ -101,9 +101,11 @@ ${urls}
 </urlset>
 `;
 
-// Apps that vercel.json forwards from www (/sites-web, /books, …) publish
-// their own sitemaps; list them so crawlers find those pages too.
-const forwardedApps = ["sites-web", "books", "toeic", "grammatica", "listening", "ia"];
+// Apps that vercel.json forwards from www (/books, …) publish their own
+// sitemaps; list them so crawlers find those pages too. (sites-web is no longer
+// forwarded — the website studio moved to thevitrine.fr, which has its own
+// sitemap on its own domain.)
+const forwardedApps = ["books", "toeic", "grammatica", "listening", "ia"];
 
 const robots = `# Robots.txt for antonyaddy.com
 User-agent: *

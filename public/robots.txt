@@ -15,7 +15,6 @@ Disallow: /api/
 Disallow: /ia/api/
 
 Sitemap: https://www.antonyaddy.com/sitemap.xml
-Sitemap: https://www.antonyaddy.com/sites-web/sitemap.xml
 Sitemap: https://www.antonyaddy.com/books/sitemap.xml
 Sitemap: https://www.antonyaddy.com/toeic/sitemap.xml
 Sitemap: https://www.antonyaddy.com/grammatica/sitemap.xml

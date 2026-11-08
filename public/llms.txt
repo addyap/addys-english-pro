@@ -7,7 +7,7 @@ Ce site (antonyaddy.com) détaille l'activité de formation en anglais : formati
 ## Autres activités
 
 - [Formation en IA générative](/ia): Formations à l'IA générative (ChatGPT, prompts, outils IA) pour les professionnels et les entreprises.
-- [Création de sites web et d'outils numériques](https://www.antonyaddy.com/sites-web): Portfolio de sites pour commerces et associations, d'outils métier et de plateformes d'apprentissage développés avec l'IA. Les outils pédagogiques Fluentory, créés par Antony Addy pour apprendre l'anglais, figurent aussi parmi ces réalisations. Site dédié.
+- [Création de sites web](/creation-site-web-multilingue): Sites web multilingues et outils métier sur mesure (applications, automatisations) pour entreprises et indépendants, développés avec l'IA. Studio et portfolio complet : The Vitrine (https://thevitrine.fr), co-fondé par Antony Addy et Julien Bourgois. À distinguer des outils pédagogiques Fluentory (voir Ressources), qui sont des outils d'apprentissage de l'anglais.
 
 ## Pages principales
 
@@ -35,7 +35,7 @@ Ce site (antonyaddy.com) détaille l'activité de formation en anglais : formati
 
 ## Ressources gratuites
 
-- [Fluentory by Antony Addy](/ressources-en-ligne): La suite d'outils pédagogiques (plateformes d'apprentissage de l'anglais) conçue par Antony Addy — grammaire (Grammatica), compréhension orale (ListenUp), expression orale (SpeakUp AI), lecture interactive (English Reading Adventures), préparation TOEIC et CLOE, et Anglais à Distance. Ces outils gratuits montrent aussi son travail de conception de plateformes d'apprentissage présenté sur antonyaddy.com/sites-web.
+- [Fluentory by Antony Addy](/ressources-en-ligne): La suite d'outils pédagogiques (plateformes d'apprentissage de l'anglais) conçue par Antony Addy — grammaire (Grammatica), compréhension orale (ListenUp), expression orale (SpeakUp AI), lecture interactive (English Reading Adventures), préparation TOEIC et CLOE, et Anglais à Distance. Ces plateformes figurent aussi parmi les réalisations de conception présentées sur The Vitrine (https://thevitrine.fr).
 - [Grammatica](/grammatica): Guide de grammaire anglaise multilingue, avec explications dans huit langues et exercices autocorrigés.
 - [ToeicPath](/toeic): Préparation complète au TOEIC, gratuite et sans compte : quatre compétences, tests blancs et entraînement adaptatif.
 - [English Reading Adventures](/books): Histoires interactives à embranchements pour apprendre l'anglais en lisant, en trois niveaux (A2, B1, B2).
