@@ -6,33 +6,37 @@ import { Reveal } from '@/components/motion/Reveal';
 import { EXPERIENCE_FLOOR } from '@/lib/utils';
 import { PLATFORMS, ON_SITE_PLATFORMS, onSitePath } from '@/data/platforms';
 
-/** The Fluentory intro (logo, name, "English in Context"): plays once, muted,
- *  and holds on its last frame, which is also the poster. Visitors who ask
- *  for reduced motion get that still frame without the animation. */
-const FluentoryIntro = () => {
+/** The Fluentory website film (logo, the 7 platforms, Antony, sign-off).
+ *  Plays once, muted, when it scrolls into view; the controls let visitors
+ *  replay it. With reduced motion it waits on its poster (the last frame). */
+const FluentoryFilm = () => {
   const ref = useRef<HTMLVideoElement>(null);
   useEffect(() => {
     const video = ref.current;
-    if (!video || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    video.pause();
-    video.removeAttribute('autoplay');
+    if (!video || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      video.play().catch(() => {});
+      observer.disconnect();
+    }, { threshold: 0.5 });
+    observer.observe(video);
+    return () => observer.disconnect();
   }, []);
   return (
-    <figure className="fluentory-hero-media">
-      <video
-        ref={ref}
-        autoPlay
-        muted
-        playsInline
-        preload="metadata"
-        poster="/fluentory/fluentory-intro-poster.webp"
-        width={640}
-        height={800}
-        aria-label="Animation du logo Fluentory : English in Context"
-      >
-        <source src="/fluentory/fluentory-intro.mp4" type="video/mp4" />
-      </video>
-    </figure>
+    <video
+      ref={ref}
+      className="fluentory-film-video"
+      muted
+      playsInline
+      controls
+      preload="metadata"
+      poster="/fluentory/fluentory-website-intro-poster.webp"
+      width={1280}
+      height={720}
+      aria-label="Présentation de Fluentory : les 7 plateformes et leur formateur, Antony Addy"
+    >
+      <source src="/fluentory/fluentory-website-intro.mp4" type="video/mp4" />
+    </video>
   );
 };
 
@@ -68,8 +72,7 @@ const RessourcesEnLigne = () => {
       />
 
       <div className="inner-page inner-page--resources min-h-screen bg-background">
-        {/* Hero: the Fluentory identity (mark, "English in Context") with its
-            intro animation, trimmed from the brand outro video. */}
+        {/* Hero: the Fluentory identity (3D mark, "English in Context"). */}
         <section className="fluentory-hero" aria-labelledby="fluentory-title">
           <div className="fluentory-hero-inner">
             <Reveal className="fluentory-hero-copy">
@@ -101,7 +104,17 @@ const RessourcesEnLigne = () => {
                 <Link to="/offres-de-formation" className="fluentory-action--ghost">Mes formations</Link>
               </div>
             </Reveal>
-            <FluentoryIntro />
+            <figure className="fluentory-hero-media">
+              <img src="/fluentory/fluentory-mark-512.webp" alt="Logo Fluentory : un escalier qui monte vers le drapeau britannique" width={512} height={512} />
+            </figure>
+          </div>
+        </section>
+
+        {/* The website film, between the header and the platform cards. */}
+        <section className="fluentory-film" aria-labelledby="fluentory-film-title">
+          <div className="fluentory-film-inner">
+            <h2 id="fluentory-film-title">Fluentory en 15 secondes</h2>
+            <FluentoryFilm />
           </div>
         </section>
 

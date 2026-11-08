@@ -116,7 +116,8 @@
 }
 
 /* Fluentory page: a dark header in the brand's own navy, matching the 3D
-   artwork (mark, "English in Context" chips, intro video in public/fluentory). */
+   artwork (mark, "English in Context" chips), then the website film
+   (public/fluentory). */
 .fluentory-hero { position:relative; overflow:hidden; color:#eef1ff; border-bottom:1px solid rgba(255,255,255,.08);
   background:radial-gradient(60% 80% at 78% 30%, rgba(38,74,190,.55), transparent 62%), linear-gradient(160deg,#071232 0%,#0b1a4a 55%,#050c24 100%); }
 .fluentory-hero-inner { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr); align-items:center; gap:56px; max-width:1120px; margin:0 auto; padding:72px 24px 80px; }
@@ -138,10 +139,16 @@
 .fluentory-action--ghost { border:1px solid rgba(255,255,255,.3); color:#fff; }
 .fluentory-action--ghost:hover { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.55); }
 .fluentory-actions a:focus-visible { outline:2px solid #f6a463; outline-offset:3px; }
-.fluentory-hero-media { justify-self:center; width:min(100%,340px); aspect-ratio:4/5; margin:0; overflow:hidden; border-radius:24px; background:#0b1a4a; box-shadow:0 30px 80px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08); }
-.fluentory-hero-media video { display:block; width:100%; height:100%; object-fit:cover; }
+.fluentory-hero-media { justify-self:center; width:min(100%,320px); margin:0; overflow:hidden; border-radius:32px; box-shadow:0 30px 80px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08); }
+.fluentory-hero-media img { display:block; width:100%; height:auto; }
+.fluentory-film { background:#050c24; padding:48px 24px 56px; }
+.fluentory-film-inner { max-width:960px; margin:0 auto; }
+.fluentory-film h2 { margin:0 0 20px; color:#aab6e8; font:600 .75rem/1.4 'Inter',sans-serif; letter-spacing:.12em; text-transform:uppercase; }
+.fluentory-film-video { display:block; width:100%; height:auto; aspect-ratio:16/9; border-radius:20px; background:#0b1a4a; box-shadow:0 24px 64px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.08); }
 @media (max-width:860px) {
   .fluentory-hero-inner { grid-template-columns:1fr; gap:36px; padding:48px 20px 56px; }
-  .fluentory-hero-media { width:min(100%,280px); }
+  .fluentory-hero-media { width:min(100%,220px); }
+  .fluentory-film { padding:32px 16px 40px; }
+  .fluentory-film-video { border-radius:14px; }
 }
 @media (prefers-reduced-motion:reduce) { .fluentory-actions a { transition:none; } }
