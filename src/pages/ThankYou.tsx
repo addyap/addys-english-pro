@@ -11,7 +11,7 @@ import { Reveal } from "@/components/motion/Reveal";
 // Nothing here is needed for the request to go through.
 const NEXT_STEPS: Record<string, { label: string; href: string; external: boolean; event: string }> = {
   anglais: { label: "En attendant, entraînez-vous avec mes outils", href: "/ressources-en-ligne", external: false, event: "thankyou_resources_click" },
-  sites: { label: "En attendant, voir mes réalisations", href: "https://thevitrine.fr/work", external: true, event: "thankyou_sites_click" },
+  sites: { label: "En attendant, voir mes réalisations", href: "https://thevitrine.fr/#work", external: true, event: "thankyou_sites_click" },
   ia: { label: "En attendant, découvrir mes ateliers IA", href: "/ia", external: true, event: "thankyou_ia_click" },
 };
 

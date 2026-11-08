@@ -473,7 +473,7 @@ const Home = () => {
                   <span className="home-showcase-kicker">Réalisations en ligne</span>
                   <h3>Des projets que vous pouvez explorer.</h3>
                 </div>
-                <a href="https://thevitrine.fr/work" target="_blank" rel="noopener">
+                <a href="https://thevitrine.fr/#work" target="_blank" rel="noopener">
                   Voir toutes les réalisations <ArrowRight size={18} aria-hidden="true" />
                 </a>
               </div>

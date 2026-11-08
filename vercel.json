@@ -2,8 +2,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/sites-web/en", "destination": "https://thevitrine.fr/en/work", "permanent": true },
-    { "source": "/sites-web", "destination": "https://thevitrine.fr/work", "permanent": true },
+    { "source": "/sites-web/en", "destination": "https://thevitrine.fr/en/#work", "permanent": true },
+    { "source": "/sites-web", "destination": "https://thevitrine.fr/#work", "permanent": true },
     { "source": "/sites-web/en/:path*", "destination": "https://thevitrine.fr/en", "permanent": true },
     { "source": "/sites-web/:path*", "destination": "https://thevitrine.fr", "permanent": true },
     {
