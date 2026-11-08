@@ -6,7 +6,7 @@ import { Reveal } from '@/components/motion/Reveal';
 import { EXPERIENCE_FLOOR } from '@/lib/utils';
 import { PLATFORMS, ON_SITE_PLATFORMS, onSitePath } from '@/data/platforms';
 
-/** The Fluentory website film (logo, the 7 platforms, Antony, sign-off).
+/** The Fluentory website film, uncut (logo, the 7 platforms, Antony, sign-off).
  *  Plays once, muted, when it scrolls into view; the controls let visitors
  *  replay it. With reduced motion it waits on its poster (the last frame). */
 const FluentoryFilm = () => {
@@ -113,7 +113,7 @@ const RessourcesEnLigne = () => {
         {/* The website film, between the header and the platform cards. */}
         <section className="fluentory-film" aria-labelledby="fluentory-film-title">
           <div className="fluentory-film-inner">
-            <h2 id="fluentory-film-title">Fluentory en 15 secondes</h2>
+            <h2 id="fluentory-film-title">Fluentory en 20 secondes</h2>
             <FluentoryFilm />
           </div>
         </section>
