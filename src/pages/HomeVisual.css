@@ -64,6 +64,8 @@
 .home-project-copy p b { display: block; margin-bottom: 4px; color: hsl(var(--brand-ink)); font-size: .6875rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; }
 /* Free tools block in the English chapter: same cards as Réalisations, three
    to a row on wide screens (six tools: two even rows). */
+.home-tools-kicker { display: inline-flex; align-items: center; gap: 10px; }
+.home-tools-kicker img { width: 24px; height: 24px; border-radius: 6px; }
 .home-tools-lede { max-width: 52ch; margin-top: 12px; color: hsl(var(--muted-foreground)); font-size: 1rem; line-height: 1.7; }
 .home-tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .home-tools-grid .home-project-copy { padding: 20px; }

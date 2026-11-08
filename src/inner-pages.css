@@ -114,3 +114,34 @@
   .inner-page .inner-article { padding:24px; }
   .inner-page--article .inner-article h1 { font-size:2rem; }
 }
+
+/* Fluentory page: a dark header in the brand's own navy, matching the 3D
+   artwork (mark, "English in Context" chips, intro video in public/fluentory). */
+.fluentory-hero { position:relative; overflow:hidden; color:#eef1ff; border-bottom:1px solid rgba(255,255,255,.08);
+  background:radial-gradient(60% 80% at 78% 30%, rgba(38,74,190,.55), transparent 62%), linear-gradient(160deg,#071232 0%,#0b1a4a 55%,#050c24 100%); }
+.fluentory-hero-inner { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr); align-items:center; gap:56px; max-width:1120px; margin:0 auto; padding:72px 24px 80px; }
+.fluentory-kicker { display:inline-flex; align-items:center; gap:12px; margin:0 0 22px; color:#aab6e8; font:600 .75rem/1.4 'Inter',sans-serif; letter-spacing:.12em; text-transform:uppercase; }
+.fluentory-kicker img { width:40px; height:40px; border-radius:10px; box-shadow:0 0 0 1px rgba(255,255,255,.12); }
+.fluentory-hero h1 { max-width:16ch; margin:0 0 20px; color:#fff; font:700 clamp(2.25rem,4.2vw,3.25rem)/1.1 'Bricolage Grotesque','Poppins',sans-serif; letter-spacing:-.03em; }
+.fluentory-tagline { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 26px; transform:rotate(-2.5deg); transform-origin:left center; }
+.fluentory-tagline span { padding:7px 13px; border-radius:9px; font:800 1.0625rem/1 'Bricolage Grotesque','Poppins',sans-serif; box-shadow:0 4px 0 rgba(0,0,0,.35); }
+.fluentory-tag--red { background:#d6364a; color:#fff; }
+.fluentory-tag--white { background:#fff; color:#14205a; }
+.fluentory-tag--blue { background:#2f6fe0; color:#fff; }
+.fluentory-hero p { max-width:60ch; margin:0 0 16px; color:#c4ccec; font-size:1rem; line-height:1.7; }
+.fluentory-hero p.fluentory-lede { color:#fff; font-size:1.125rem; font-weight:600; line-height:1.6; }
+.fluentory-hero p strong { color:#fff; }
+.fluentory-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+.fluentory-actions a { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:10px 20px; border-radius:12px; font-weight:600; transition:background-color .2s, border-color .2s; }
+.fluentory-action--primary { background:#e8473b; color:#fff; }
+.fluentory-action--primary:hover { background:#c9362b; }
+.fluentory-action--ghost { border:1px solid rgba(255,255,255,.3); color:#fff; }
+.fluentory-action--ghost:hover { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.55); }
+.fluentory-actions a:focus-visible { outline:2px solid #f6a463; outline-offset:3px; }
+.fluentory-hero-media { justify-self:center; width:min(100%,340px); aspect-ratio:4/5; margin:0; overflow:hidden; border-radius:24px; background:#0b1a4a; box-shadow:0 30px 80px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08); }
+.fluentory-hero-media video { display:block; width:100%; height:100%; object-fit:cover; }
+@media (max-width:860px) {
+  .fluentory-hero-inner { grid-template-columns:1fr; gap:36px; padding:48px 20px 56px; }
+  .fluentory-hero-media { width:min(100%,280px); }
+}
+@media (prefers-reduced-motion:reduce) { .fluentory-actions a { transition:none; } }
