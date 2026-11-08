@@ -40,8 +40,8 @@ const CLIENT_LOGOS = [
   { src: "/lovable-uploads/edj-nice-logo.webp", alt: "Logo EDJ Nice, L'école du journalisme, partenaire formation anglais", name: "EDJ Nice" },
 ];
 
-// Share the portfolio's screenshots so both galleries show the same sites.
-const PROJECT_SCREENSHOTS_BASE = 'https://www.antonyaddy.com/sites-web/screenshots';
+// Project screenshots, copied from the old studio portfolio (now The Vitrine).
+const PROJECT_SCREENSHOTS_BASE = '/projects';
 
 const FEATURED_PROJECTS = [
   {

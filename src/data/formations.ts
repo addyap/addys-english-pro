@@ -40,14 +40,14 @@ export const FORMATIONS: Formation[] = [
   },
   {
     key: 'creations',
-    navLabel: 'Création de sites web',
-    title: 'Sites web multilingues & outils',
+    navLabel: 'Sites web · The Vitrine',
+    title: 'Sites web avec The Vitrine',
     tagline:
       "Sites web multilingues pour les entreprises qui travaillent avec une clientèle internationale, et outils numériques sur mesure, développés avec l'IA.",
     href: '/creation-site-web-multilingue',
     external: true,
     icon: 'Code',
-    cta: 'Découvrir mes créations',
+    cta: 'Découvrir The Vitrine',
   },
   {
     key: 'ia',
