@@ -8,6 +8,7 @@ import { MY_TOOLS, toolHref, toolOpensNewTab } from '@/data/platforms';
 const FORMATION_ICONS = { Globe, Sparkles, Code } as const;
 
 import { ScrollProgressBar } from "@/components/Effects";
+import RemembranceBanner from "@/components/RemembranceBanner";
 import './Layout.css';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
@@ -166,6 +167,9 @@ const Layout = ({ children, breadcrumbTitle, breadcrumbSection }: LayoutProps) =
         Aller au contenu principal
       </a>
       <ScrollProgressBar />
+
+      {/* Remembrance strip — shows 8–11 Nov, then removes itself (client-gated) */}
+      <RemembranceBanner />
 
       {/* Header */}
       <header className="site-header sticky top-0 z-50">
