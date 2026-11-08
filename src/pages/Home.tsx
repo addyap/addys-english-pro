@@ -349,7 +349,10 @@ const Home = () => {
               <div className="home-showcase home-tools">
                 <div className="home-showcase-intro">
                   <div>
-                    <span className="home-showcase-kicker">Pratiquer entre deux séances</span>
+                    <span className="home-showcase-kicker home-tools-kicker">
+                      <img src="/fluentory/fluentory-mark-160.webp" alt="" width={24} height={24} />
+                      Fluentory · Pratiquer entre deux séances
+                    </span>
                     <h3>Entre deux séances, on continue.</h3>
                     <p className="home-tools-lede">
                       J'ai conçu ces outils pour que mes apprenants progressent aussi en dehors du cours :

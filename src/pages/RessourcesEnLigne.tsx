@@ -1,10 +1,44 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Sparkles, ArrowRight, Gift, RefreshCw } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Gift, RefreshCw } from 'lucide-react';
 import SEOHead from '@/components/SEOHead';
 import { Reveal } from '@/components/motion/Reveal';
 import { EXPERIENCE_FLOOR } from '@/lib/utils';
 import { PLATFORMS, ON_SITE_PLATFORMS, onSitePath } from '@/data/platforms';
+
+/** The Fluentory website film (logo, the 7 platforms, Antony, sign-off).
+ *  Plays once, muted, when it scrolls into view; the controls let visitors
+ *  replay it. With reduced motion it waits on its poster (the last frame). */
+const FluentoryFilm = () => {
+  const ref = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const video = ref.current;
+    if (!video || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      video.play().catch(() => {});
+      observer.disconnect();
+    }, { threshold: 0.5 });
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+  return (
+    <video
+      ref={ref}
+      className="fluentory-film-video"
+      muted
+      playsInline
+      controls
+      preload="metadata"
+      poster="/fluentory/fluentory-website-intro-poster.webp"
+      width={1280}
+      height={720}
+      aria-label="Présentation de Fluentory : les 7 plateformes et leur formateur, Antony Addy"
+    >
+      <source src="/fluentory/fluentory-website-intro.mp4" type="video/mp4" />
+    </video>
+  );
+};
 
 const RessourcesEnLigne = () => {
   const collectionJsonLd = {
@@ -31,43 +65,62 @@ const RessourcesEnLigne = () => {
         description="Plateformes d'entraînement à l'anglais conçues par Antony Addy, formateur certifié FPA : grammaire, compréhension orale, lecture, préparation TOEIC et CLOE. Gratuit pendant le lancement."
         canonicalUrl="https://www.antonyaddy.com/ressources-en-ligne"
         image="/og/fluentory-og.jpg"
-        imageAlt="Fluentory by Antony Addy — mes plateformes d'apprentissage de l'anglais : CLOE, expression orale, TOEIC, compréhension orale, Anglais à Distance et grammaire."
+        imageAlt="Fluentory — English in Context : 7 plateformes gratuites pour progresser en anglais, par Antony Addy."
         imageWidth={1200}
-        imageHeight={600}
+        imageHeight={630}
         jsonLd={collectionJsonLd}
       />
 
       <div className="inner-page inner-page--resources min-h-screen bg-background">
-        {/* Hero */}
-        <section className="inner-hero bg-gradient-to-br from-primary/5 to-accent/5 py-12 sm:py-16">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <Reveal>
-              <span className="inner-kicker inline-flex items-center gap-2 rounded-full bg-accent/15 text-accent px-4 py-1.5 text-sm font-semibold mb-6">
-                <Sparkles className="h-4 w-4" aria-hidden="true" />
-                Conçues par un formateur certifié FPA
-              </span>
-              <span className="visual-photo-credit">Photo d’illustration · Pexels</span>
-              <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-3 font-heading leading-tight">
-                Ressources pour pratiquer l'anglais
-              </h1>
-              <p className="text-lg sm:text-xl font-semibold text-primary max-w-2xl mx-auto mb-4">
-                Les plateformes <span className="text-accent">Fluentory by Antony Addy</span> : grammaire,
-                écoute, lecture, expression orale et préparation aux examens. Gratuites pendant leur lancement.
+        {/* Hero: the Fluentory identity (3D mark, "English in Context"). */}
+        <section className="fluentory-hero" aria-labelledby="fluentory-title">
+          <div className="fluentory-hero-inner">
+            <Reveal className="fluentory-hero-copy">
+              <p className="fluentory-kicker">
+                <img src="/fluentory/fluentory-mark-160.webp" alt="" width={40} height={40} />
+                Fluentory by Antony Addy
               </p>
-              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              <h1 id="fluentory-title">Ressources pour pratiquer l'anglais</h1>
+              <p className="fluentory-tagline" aria-label="English in Context">
+                <span className="fluentory-tag--red" aria-hidden="true">English</span>
+                <span className="fluentory-tag--white" aria-hidden="true">in</span>
+                <span className="fluentory-tag--blue" aria-hidden="true">Context</span>
+              </p>
+              <p className="fluentory-lede">
+                {PLATFORMS.length} plateformes Fluentory pour progresser en anglais : grammaire, écoute,
+                lecture, expression orale et préparation aux examens. Gratuites pendant leur lancement.
+              </p>
+              <p>
                 Mes formations se prolongent ici. Entre deux séances, je donne à mes apprenants des
                 outils que j'ai conçus moi-même, sur {EXPERIENCE_FLOOR} ans de salle de classe :
                 comprendre une règle dans sa langue, entraîner son oreille, lire à son niveau,
                 préparer le TOEIC ou CLOE. {ON_SITE_PLATFORMS.length} d'entre eux vivent directement sur ce site.{' '}
-                <span className="font-semibold text-primary">Tous sont gratuits pendant leur lancement et enrichis en continu.</span> Je les conçois et les finance moi-même, grâce à mon activité de formateur, sans publicité.
+                <strong>Tous sont gratuits pendant leur lancement et enrichis en continu.</strong> Je les conçois et les finance moi-même, grâce à mon activité de formateur, sans publicité.
               </p>
+              <div className="fluentory-actions">
+                <a href="#plateformes" className="fluentory-action--primary">
+                  Voir les {PLATFORMS.length} plateformes <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+                <Link to="/offres-de-formation" className="fluentory-action--ghost">Mes formations</Link>
+              </div>
             </Reveal>
+            <figure className="fluentory-hero-media">
+              <img src="/fluentory/fluentory-mark-512.webp" alt="Logo Fluentory : un escalier qui monte vers le drapeau britannique" width={512} height={512} />
+            </figure>
+          </div>
+        </section>
+
+        {/* The website film, between the header and the platform cards. */}
+        <section className="fluentory-film" aria-labelledby="fluentory-film-title">
+          <div className="fluentory-film-inner">
+            <h2 id="fluentory-film-title">Fluentory en 15 secondes</h2>
+            <FluentoryFilm />
           </div>
         </section>
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           {/* Platform grid */}
-          <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
+          <div id="plateformes" className="grid scroll-mt-28 gap-6 sm:gap-8 md:grid-cols-2">
             {PLATFORMS.map((p) => {
               const inner = (
                 <>
