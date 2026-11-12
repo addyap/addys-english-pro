@@ -125,6 +125,48 @@ export function spamReason(f: { prenom: string; nom: string; message: string }):
   return null;
 }
 
+// ---------- 3b. Throwaway addresses ----------
+//
+// Form-spam bots drive a real browser (so they pass the proof of work) and
+// use throwaway mailboxes, typically "first.last1234@<free subdomain zone>".
+// Real enquiries never come from these.
+
+/** Zones where anyone can register a free subdomain (incl. probox.my.id). */
+const FREE_ZONE_SUFFIXES = [
+  ".my.id", ".biz.id", ".web.id", ".or.id", ".ponpes.id", ".sch.id",
+  ".eu.org", ".us.to", ".mooo.com", ".duckdns.org", ".freemyip.com",
+  ".pp.ua", ".co.ua", ".kr.ua", ".in.ua",
+  ".tk", ".ml", ".ga", ".cf", ".gq",
+];
+
+/** Well-known disposable mailbox providers (exact domain or any subdomain). */
+const DISPOSABLE_DOMAINS = new Set([
+  "mailinator.com", "guerrillamail.com", "guerrillamail.net", "guerrillamail.org", "sharklasers.com",
+  "grr.la", "10minutemail.com", "10minutemail.net", "temp-mail.org", "tempmail.com", "tempmail.net",
+  "tempmailo.com", "tempmail.plus", "temp-mail.io", "tempr.email", "throwawaymail.com", "yopmail.com",
+  "yopmail.fr", "yopmail.net", "trashmail.com", "trashmail.de", "trashmail.net", "getnada.com", "nada.email",
+  "dispostable.com", "maildrop.cc", "mailnesia.com", "mintemail.com", "moakt.com", "mohmal.com",
+  "emailondeck.com", "fakeinbox.com", "fakemail.net", "spamgourmet.com", "mytemp.email", "mailpoof.com",
+  "mail.tm", "mail.gw", "dropmail.me", "emltmp.com", "spymail.one", "1secmail.com", "1secmail.org",
+  "1secmail.net", "inboxkitten.com", "burnermail.io", "33mail.com", "harakirimail.com", "mailcatch.com",
+  "linshiyouxiang.net", "tmail.ws", "tmpmail.org", "tmpmail.net", "tmpbox.net", "byom.de", "jetable.org",
+  "cool.fr.nf", "courriel.fr.nf", "moncourrier.fr.nf", "monemail.fr.nf", "monmail.fr.nf", "spambox.us",
+  "luxusmail.org", "minuteinbox.com", "emailfake.com", "email-fake.com", "generator.email", "tempinbox.com",
+  "probox.my.id",
+]);
+
+/** True for throwaway / free-subdomain addresses. */
+export function isThrowawayEmail(email: string): boolean {
+  const domain = (email.split("@")[1] ?? "").toLowerCase().replace(/\.$/, "");
+  if (!domain) return true;
+  if (FREE_ZONE_SUFFIXES.some((s) => domain.endsWith(s))) return true;
+  const parts = domain.split(".");
+  for (let i = 0; i < parts.length - 1; i++) {
+    if (DISPOSABLE_DOMAINS.has(parts.slice(i).join("."))) return true;
+  }
+  return false;
+}
+
 // ---------- 4. Email domain ----------
 
 /**

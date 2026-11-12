@@ -1,5 +1,5 @@
 import { SUBJECTS, confirmationEmail, notificationEmail } from "./_lib/contact-emails";
-import { allowedOrigin, corsHeaders, emailDomainAcceptsMail, spamReason, verifySolution } from "./_lib/form-guard";
+import { allowedOrigin, corsHeaders, emailDomainAcceptsMail, isThrowawayEmail, spamReason, verifySolution } from "./_lib/form-guard";
 
 export const config = { runtime: "edge" };
 
@@ -75,7 +75,14 @@ export default async function handler(request: Request): Promise<Response> {
   try {
     const body: ContactEmailRequest = await request.json();
 
-    if (body._gotcha) return json(400, { error: "rejected" });
+    // Spam gets a fake success and nothing is sent: an error would tell the
+    // bot to change tactics, a 200 tells it nothing.
+    const silentDrop = (reason: string) => {
+      console.warn("Contact form dropped as spam:", reason);
+      return json(200, { success: true });
+    };
+
+    if (body._gotcha) return silentDrop("honeypot");
 
     // Proof of work also enforces the minimum fill time, with a timestamp the
     // server signed — the old client-sent renderedAt could simply be faked.
@@ -112,10 +119,8 @@ export default async function handler(request: Request): Promise<Response> {
     if (!emailRegex.test(email)) return json(400, { error: "invalid_email" });
 
     const spam = spamReason({ prenom, nom, message });
-    if (spam) {
-      console.warn("Contact form rejected as spam:", spam);
-      return json(400, { error: "rejected" });
-    }
+    if (spam) return silentDrop(spam);
+    if (isThrowawayEmail(email)) return silentDrop(`throwaway_email:${email.split("@")[1]}`);
 
     // Checked last (it is a network call). Spares Resend a bounce, which
     // protects the sending domain's reputation.
